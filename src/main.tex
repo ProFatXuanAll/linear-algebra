@@ -1,0 +1,57 @@
+\documentclass[12pt,oneside]{book}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[margin=1.2in]{geometry}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{dsfont}
+\usepackage[inline]{enumitem}
+\usepackage{mathtools}
+\usepackage{dirtytalk}
+
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=magenta,
+    urlcolor=cyan,
+}
+\urlstyle{same}
+
+\title{Linear Algebra}
+\author{ProFatXuanAll}
+
+\begin{document}
+
+\maketitle
+
+\tableofcontents{}
+
+\theoremstyle{definition}
+\newtheorem{axiom}{Axiom}[section]
+\newtheorem{exercise}{Exercise}[section]
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{corollary}{Corollary}[section]
+\newtheorem{definition}{Definition}[section]
+\newtheorem{example}{Example}[section]
+\newtheorem{lemma}{Lemma}[section]
+\newtheorem{proposition}{Proposition}[section]
+\newtheorem{remark}{Remark}[section]
+\newtheorem*{note}{Note}
+
+\renewcommand{\labelenumi}{\textnormal{(}\alph{enumi}\textnormal{)}}
+
+\DeclarePairedDelimiter\abs{\lvert}{\rvert}
+\DeclarePairedDelimiter\ceil{\lceil}{\rceil}
+\DeclarePairedDelimiter\floor{\lfloor}{\rfloor}
+
+\newcommand{\exercisesection}{
+    \begin{center}
+        \textbf{Exercises}
+    \end{center}
+}
+
+\input{1-vector-spaces.tex}
+
+\end{document}
