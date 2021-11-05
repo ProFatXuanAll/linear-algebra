@@ -2,9 +2,9 @@
 \usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc}
 \usepackage[margin=1.2in]{geometry}
+\usepackage{amssymb}                % Must load before mathtools.
 \usepackage{mathtools}              % Including amsmath.
 \usepackage{amsthm}                 % Must load after amsmath and mathtools.
-\usepackage{amssymb}
 \usepackage{microtype}
 \usepackage[inline]{enumitem}
 \usepackage{dirtytalk}
@@ -49,6 +49,9 @@
         \textbf{Exercises}
     \end{center}
 }
+
+\renewcommand{\theequation}{\thesection.\arabic{equation}}
+\numberwithin{equation}{section}
 
 \input{1-vector-spaces.tex}
 
