@@ -1,13 +1,13 @@
-\documentclass[12pt,oneside]{book}
-\usepackage[T1]{fontenc}
-\usepackage[utf8]{inputenc}
-\usepackage[margin=1.2in]{geometry}
-\usepackage{amssymb}                % Must load before mathtools.
-\usepackage{mathtools}              % Including amsmath.
-\usepackage{amsthm}                 % Must load after amsmath and mathtools.
-\usepackage{microtype}
-\usepackage[inline]{enumitem}
-\usepackage{dirtytalk}
+\documentclass[12pt,oneside]{book}  % We use chapter structure.
+\usepackage[T1]{fontenc}            % Correctly showing characters outside ASCII.
+\usepackage[utf8]{inputenc}         % File is written and read with utf8 encoding.
+\usepackage[margin=1.2in]{geometry} % Set paging layout.
+\usepackage{amssymb}                % Including `amsfonts', must load before `mathtools'.
+\usepackage{mathtools}              % Including `amsmath' and fixing bugs for `amsmath'.
+\usepackage{amsthm}                 % Must load after `amsmath' and `mathtools'.
+\usepackage{microtype}              % Automatically adjust character spacing at margins.
+\usepackage{enumitem}               % Provide further utilities and bug fixing for `enumerate', `itemize' and `description'.
+\usepackage{dirtytalk}              % Provide better quoting environment.
 \usepackage{hyperref}
 \hypersetup{
     colorlinks=true,
@@ -16,7 +16,7 @@
     urlcolor=cyan,
 }
 \urlstyle{same}
-\usepackage{cleveref} % Must load after hyperref.
+\usepackage{cleveref}               % Must load after hyperref.
 
 \begin{document}
 
