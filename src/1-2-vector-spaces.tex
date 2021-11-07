@@ -1,13 +1,13 @@
 \section{Vector Spaces}\label{sec:1.2}
 
-\begin{definition}\label{def:1.2.1}
+\begin{defn}\label{1.2.1}
     A \textbf{vector space} (or \textbf{linear space}) \(V\) over a field \(F\) consists of a set on which two operations (called \textbf{addition} and \textbf{scalar multiplication}, respectively) are defined so that for each pair of elements \(x\), \(y\) in \(V\) there is a unique element \(x + y\) in \(V\), and for each element \(a\) in \(F\) and each element \(x\) in \(V\) there is a unique element \(ax\) in \(V\), such that the following conditions hold.
     \begin{enumerate}[label=(VS \arabic*), ref=VS \arabic*]
         \item \label{1.2.1.1}
               For all \(x, y\) in \(V\), \(x + y = y + x\)
               (commutativity of addition).
         \item \label{1.2.1.2}
-              For all \(x, y, z\) in \(V\), \((x + y) + z = x + (y + z)\)
+              For all \(x, y, z\) in \(V\), \(\p{x + y} + z = x + \p{y + z}\)
               (associativity of addition).
         \item \label{1.2.1.3}
               There exists an element in \(V\) denoted by \(0\) such that \(x + 0 = x\) for each \(x\) in \(V\).
@@ -16,23 +16,23 @@
         \item \label{1.2.1.5}
               For each element \(x\) in \(V\), \(1x = x\).
         \item \label{1.2.1.6}
-              For each pair of elements \(a, b\) in \(F\) and each element \(x\) in \(V\), \((ab)x = a(bx)\).
+              For each pair of elements \(a, b\) in \(F\) and each element \(x\) in \(V\), \(\p{ab} x = a \p{bx}\).
         \item \label{1.2.1.7}
-              For each element \(a\) in \(F\) and each pair of elements \(x, y\) in \(V\), \(a(x + y) = ax + ay\).
+              For each element \(a\) in \(F\) and each pair of elements \(x, y\) in \(V\), \(a \p{x + y} = ax + ay\).
         \item \label{1.2.1.8}
-              For each pair of elements \(a, b\) in \(F\) and each element \(x\) in \(V\), \((a + b)x = ax + bx\).
+              For each pair of elements \(a, b\) in \(F\) and each element \(x\) in \(V\), \(\p{a + b} x = ax + bx\).
     \end{enumerate}
     The elements \(x + y\) and \(ax\) are called the \textbf{sum} of \(x\) and \(y\) and the \textbf{product} of \(a\) and \(x\), respectively.
-\end{definition}
+\end{defn}
 
-\begin{definition}\label{def:1.2.2}
+\begin{defn}\label{1.2.2}
     The elements of the field \(F\) are called \textbf{scalars} and the elements of the vector space \(V\) are called \textbf{vectors}.
-\end{definition}
+\end{defn}
 
 \begin{note}
     A vector space is frequently discussed in the text without explicitly mentioning its field of scalars.
     The reader is cautioned to remember, however, that \emph{every vector space is regarded as a vector space over a given field, which is denoted by \(F\)}.
-    Occasionally we restrict our attention to the fields of real and complex numbers, which are denoted \(\mathbf{R}\) and \(\mathbf{C}\), respectively.
+    Occasionally we restrict our attention to the fields of real and complex numbers, which are denoted \(\R\) and \(\C\), respectively.
 \end{note}
 
 \begin{note}
@@ -40,15 +40,15 @@
     (without the use of parentheses).
 \end{note}
 
-\begin{definition}\label{def:1.2.3}
-    An object of the form \((a_1, a_2, \dots, a_n)\), where the entries \(a_1, a_2, \dots, a_n\) are elements of a field \(F\), is called an \textbf{\(n\)-tuple} with entries from \(F\).
+\begin{defn}\label{1.2.3}
+    An object of the form \(\p{a_1, a_2, \dots, a_n}\), where the entries \(a_1, a_2, \dots, a_n\) are elements of a field \(F\), is called an \textbf{\(n\)-tuple} with entries from \(F\).
     The elements \(a_1, a_2, \dots, a_n\) are called the \textbf{entries} or \textbf{components} of the \(n\)-tuple.
-    Two \(n\)-tuples \((a_1, a_2, \dots, a_n)\) and \((b_1, b_2, \dots, b_n)\) with entries from a field \(F\) are called \textbf{equal} if \(a_i = b_i\) for \(i = 1, 2, \dots, n\).
-\end{definition}
+    Two \(n\)-tuples \(\p{a_1, a_2, \dots, a_n}\) and \(\p{b_1, b_2, \dots, b_n}\) with entries from a field \(F\) are called \textbf{equal} if \(a_i = b_i\) for \(i = 1, 2, \dots, n\).
+\end{defn}
 
-\begin{example}\label{eg:1.2.1}
+\begin{eg}\label{1.2.4}
     The set of all \(n\)-tuples with entries from a field \(F\) is denoted by \(F^n\).
     This set is a vector space over \(F\) with the operations of coordinatewise addition and scalar multiplication;
-    that is, if \(u = (a_1, a_2, \dots, a_n) \in F^n\), \(v = (b_1, b_2, \dots, b_n) \in F^n\), and \(c \in F\), then
-\end{example}
+    that is, if \(u = \p{a_1, a_2, \dots, a_n} \in F^n\), \(v = \p{b_1, b_2, \dots, b_n} \in F^n\), and \(c \in F\), then
+\end{eg}
 

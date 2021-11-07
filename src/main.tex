@@ -1,58 +1,150 @@
-\documentclass[12pt,oneside]{book}  % We use chapter structure.
-\usepackage[T1]{fontenc}            % Correctly showing characters outside ASCII.
-\usepackage[utf8]{inputenc}         % File is written and read with utf8 encoding.
-\usepackage[margin=1.2in]{geometry} % Set paging layout.
-\usepackage{amssymb}                % Including `amsfonts', must load before `mathtools'.
-\usepackage{mathtools}              % Including `amsmath' and fixing bugs for `amsmath'.
-\usepackage{amsthm}                 % Must load after `amsmath' and `mathtools'.
-\usepackage{microtype}              % Automatically adjust character spacing at margins.
-\usepackage{enumitem}               % Provide further utilities and bug fixing for `enumerate', `itemize' and `description'.
-\usepackage{dirtytalk}              % Provide better quoting environment.
+% We use chapter structure.
+\documentclass[12pt,oneside]{book}
+
+%==============================================================================
+% Preamble.
+%==============================================================================
+
+% Correctly showing characters outside ASCII.
+\usepackage[T1]{fontenc}
+% File is written and read with utf8 encoding.
+\usepackage[utf8]{inputenc}
+% Set paging layout.
+\usepackage[margin=1.2in]{geometry}
+% Including `amsfonts'.  Must be loaded before `mathtools'.
+\usepackage{amssymb}
+% Including `amsmath' and fixing bugs for `amsmath'.
+\usepackage{mathtools}
+% Must be loaded after `amsmath' and `mathtools'.
+\usepackage{amsthm}
+% Automatically adjust character spacing at margins.
+\usepackage{microtype}
+% Provide further utilities and fix bugs for `enumerate', `itemize' and
+% `description'.
+\usepackage{enumitem}
+% Provide better quoting environment.
+\usepackage{dirtytalk}
+% Automatically add hyperlinks to labels/refs.  Must be loaded after all
+% packages above and before `cleveref'.  Recommend to use with `natbib' when
+% you need bibtex.
 \usepackage{hyperref}
-\hypersetup{
-    colorlinks=true,
-    linkcolor=blue,
-    filecolor=magenta,
-    urlcolor=cyan,
+
+\hypersetup{         % This macro come with `hyperref'.
+    colorlinks=true, % Color hyperlinks.
+    linkcolor=blue,  % Color local hyperlinks with blue.
+    urlcolor=cyan,   % Color url links with cyan.
 }
-\urlstyle{same}
-\usepackage{cleveref}               % Must load after hyperref.
+
+% Must be loaded after `hyperref'.
+\usepackage{cleveref}
+
+%------------------------------------------------------------------------------
+% Define environments.
+%------------------------------------------------------------------------------
+
+% Text inside the body of theorem-like environments are set to Roman font.
+% theorem-like environments share their counters, counters follow section and
+% reset in every sections.  Exercises has their owned counter.  Notes do not
+% use counter.  See `amsthm' for details.
+\theoremstyle{definition}
+\newtheorem{ax}{Axiom}[section]
+\newtheorem{cor}[ax]{Corollary}
+\newtheorem{defn}[ax]{Definition}
+\newtheorem{eg}[ax]{Example}
+\newtheorem{ex}{Exercise}[section]
+\newtheorem{lem}[ax]{Lemma}
+\newtheorem*{note}{Note}
+\newtheorem{prop}[ax]{Proposition}
+\newtheorem{rem}[ax]{Remark}
+\newtheorem{thm}[ax]{Theorem}
+
+% In `enumerate' enviroments, items' label are alphabets and surrounded by
+% parentheses.  See `enumitem' for details.
+\renewcommand{\labelenumi}{\textnormal{(}\alph{enumi}\textnormal{)}}
+
+% Formatting equations tag appearence.  See `mathtools' for details.
+\renewcommand{\theequation}{\thechapter.\thesection.\arabic{equation}}
+\numberwithin{equation}{section}
+
+%------------------------------------------------------------------------------
+% Define operators and symbols.
+%------------------------------------------------------------------------------
+
+% Define common operators with paired of delimiters.  Always use star versions
+% of these operator to automatically adjust height.  See `mathtools' for
+% details.
+
+% Absolute value.
+\DeclarePairedDelimiter{\absTmp}{\lvert}{\rvert}
+\newcommand{\abs}[1]{\absTmp*{#1}}
+% Ceiling.
+\DeclarePairedDelimiter{\ceilTmp}{\lceil}{\rceil}
+\newcommand{\ceil}[1]{\ceilTmp*{#1}}
+% Floor.
+\DeclarePairedDelimiter{\floorTmp}{\lfloor}{\rfloor}
+\newcommand{\floor}[1]{\floorTmp*{#1}}
+% Parenthese.
+\DeclarePairedDelimiter{\pTmp}{\lparen}{\rparen}
+\newcommand{\p}[1]{\pTmp*{#1}}
+% Set.
+\DeclarePairedDelimiter{\setTmp}{\lbrace}{\rbrace}
+\newcommand{\set}[1]{\setTmp*{#1}}
+
+% Define common symbols.  See `amsmath' section 9.2 for details.
+
+% Field.  Defaults to F.
+\newcommand{\f}[1][F]{\mathbf{#1}}
+% Complex number field.
+\newcommand{\C}{\f{C}}
+% Natural number field.
+\newcommand{\N}{\f{N}}
+% Rational number field.
+\newcommand{\Q}{\f{Q}}
+% Real number field.
+\newcommand{\R}{\f{R}}
+% Integer number field.
+\newcommand{\Z}{\f{Z}}
+
+% Formatting exercises section.
+\newcommand{\exercisesection}{
+    \begin{center}
+        \textbf{EXERCISES}
+    \end{center}
+}
+
+%==============================================================================
+% Document.
+%==============================================================================
 
 \begin{document}
 
+%------------------------------------------------------------------------------
+% Front matters.
+%------------------------------------------------------------------------------
+
+\frontmatter
+
+% Author informations.
 \title{Linear Algebra}
 \author{ProFatXuanAll}
 \maketitle
 
-\tableofcontents{}
+% Table of contents.
+\tableofcontents
 
-\theoremstyle{definition}
-\newtheorem{axiom}{Axiom}[section]
-\newtheorem{exercise}{Exercise}[section]
-\newtheorem{theorem}{Theorem}[section]
-\newtheorem{corollary}{Corollary}[section]
-\newtheorem{definition}{Definition}[section]
-\newtheorem{example}{Example}[section]
-\newtheorem{lemma}{Lemma}[section]
-\newtheorem{proposition}{Proposition}[section]
-\newtheorem{remark}{Remark}[section]
-\newtheorem*{note}{Note}
+%------------------------------------------------------------------------------
+% Main matters.
+%------------------------------------------------------------------------------
 
-\renewcommand{\labelenumi}{\textnormal{(}\alph{enumi}\textnormal{)}}
+\mainmatter
 
-\DeclarePairedDelimiter\abs{\lvert}{\rvert}
-\DeclarePairedDelimiter\ceil{\lceil}{\rceil}
-\DeclarePairedDelimiter\floor{\lfloor}{\rfloor}
-
-\newcommand{\exercisesection}{
-    \begin{center}
-        \textbf{Exercises}
-    \end{center}
-}
-
-\renewcommand{\theequation}{\thesection.\arabic{equation}}
-\numberwithin{equation}{section}
-
+% All chapters are in separated files.  We include them here.
 \input{1-vector-spaces.tex}
+
+%------------------------------------------------------------------------------
+% Back matters.
+%------------------------------------------------------------------------------
+
+\backmatter
 
 \end{document}
