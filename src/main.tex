@@ -93,18 +93,28 @@
 
 % Define common symbols.  See `amsmath' section 9.2 for details.
 
-% Field.  Defaults to F.
-\newcommand{\f}[1][F]{\mathbf{#1}}
+% Fields.
+\newcommand{\field}[1]{\mathbf{#1}}
+% General field.
+\newcommand{\F}{\field{F}}
 % Complex number field.
-\newcommand{\C}{\f{C}}
+\newcommand{\C}{\field{C}}
 % Natural number field.
-\newcommand{\N}{\f{N}}
+\newcommand{\N}{\field{N}}
 % Rational number field.
-\newcommand{\Q}{\f{Q}}
+\newcommand{\Q}{\field{Q}}
 % Real number field.
-\newcommand{\R}{\f{R}}
+\newcommand{\R}{\field{R}}
 % Integer number field.
-\newcommand{\Z}{\f{Z}}
+\newcommand{\Z}{\field{Z}}
+
+% Vector spaces.
+\newcommand{\vs}[1]{\mathsf{#1}}
+% General vector space.
+\newcommand{\V}{\vs{V}}
+
+% n-tuple.
+\newcommand{\tp}[2]{\p{{#1}_{1}, {#1}_{2}, \dots, {#1}_{#2}}}
 
 % Formatting exercises section.
 \newcommand{\exercisesection}{
