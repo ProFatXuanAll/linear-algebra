@@ -51,7 +51,7 @@
     This set is a vector space over \(\F\) with the operations of coordinatewise addition and scalar multiplication;
     that is, if \(u = \tp{a}{n} \in \vs{F}^{n}\), \(v = \tp{b}{n} \in \vs{F}^{n}\), and \(c \in \F\), then
     \[
-        u + v = (a_{1} + b_{1}, a_{2} + b_{2}, \dots, a_{n} + b_{n}) \quad \text{ and } \quad cu = \tp{ca}{n}.
+        u + v = (a_{1} + b_{1}, a_{2} + b_{2}, \dots, a_{n} + b_{n}) \quad \text{and} \quad cu = \tp{ca}{n}.
     \]
 \end{eg}
 
@@ -168,3 +168,52 @@
     \end{description}
     From all proofs above we conclude by \cref{1.2.1} that \cref{1.2.4} is indeed a vector space.
 \end{proof}
+
+\begin{defn}\label{1.2.5}
+    Vectors in \(\F^n\) may be written as \textbf{column vectors}
+    \[
+        \begin{pmatrix}
+            a_{1}  \\
+            a_{2}  \\
+            \vdots \\
+            a_{n}
+        \end{pmatrix}
+    \]
+    rather than as \textbf{row vectors} \(\tp{a}{n}\).
+    Since a \(1\)-tuple whose only entry is from \(\F\) can be regarded as an element of \(\F\), we usually write \(\F\) rather than \(\vs{F}^{1}\) for the vector space of \(1\)-tuples with entry from \(\F\).
+\end{defn}
+
+\begin{defn}\label{1.2.6}
+    An \(m \times n\) \textbf{matrix} with entries from a field \(\F\) is a rectangular array of the form
+    \[
+        \begin{pmatrix}
+            a_{1 1} & a_{1 2} & \dots  & a_{1 n} \\
+            a_{2 1} & a_{2 2} & \dots  & a_{2 n} \\
+            \vdots  & \vdots  & \ddots & \vdots  \\
+            a_{m 1} & a_{m 2} & \dots  & a_{m n}
+        \end{pmatrix},
+    \]
+    where each entry \(a_{i j}\) (\(1 \leq i \leq m\), \(1 \leq j \leq n\)) is an element of \(\F\).
+    We call the entries \(a_{i j}\) with \(i = j\) the \textbf{diagonal entries} of the matrix.
+    The entries \(a_{i 1} ,a_{i 2} , \dots, a_{i n}\) compose the \textbf{\(i\)th row} of the matrix, and the entries \(a_{1 j}, a_{2 j}, \dots, a_{m j}\) compose the \textbf{\(j\)th column} of the matrix.
+    The rows of the preceding matrix are regarded as vectors in \(\vs{F}^{n}\), and the columns are regarded as vectors in \(\vs{F}^{m}\).
+    The \(m \times n\) matrix in which each entry equals zero is called the \textbf{zero matrix} and is denoted by \(\zm\).
+\end{defn}
+
+\begin{defn}\label{1.2.7}
+    In this book, we denote matrices by capital italic letters (e.g., \(A\), \(B\), and \(C\)), and we denote the entry of a matrix \(A\) that lies in row \(i\) and column \(j\) by \(A_{i j}\).
+    In addition, if the number of rows and columns of a matrix are equal, the matrix is called \textbf{square}.
+\end{defn}
+
+\begin{defn}\label{1.2.8}
+    Two \(m \times n\) matrices \(A\) and \(B\) are called \textbf{equal} if all their corresponding entries are equal, that is, if \(A_{i j} = B_{i j}\) for \(1 \leq i \leq m\) and \(1 \leq j \leq n\).
+\end{defn}
+
+\begin{eg}\label{1.2.9}
+    The set of all \(m \times n\) matrices with entries from a field \(\F\) is a vector space, which we denote by \(\ms{m}{n}{\F}\), with the following operations of \textbf{matrix addition} and \textbf{scalar multiplication}:
+    For \(A, B \in \ms{m}{n}{\F}\) and \(c \in \F\),
+    \[
+        \p{A + B}_{i j} = A_{i j} + B_{i j} \quad \text{and} \quad \p{c A}_{i j} = c A_{i j}
+    \]
+    for \(1 \leq i \leq m\) and \(1 \leq j \leq n\).
+\end{eg}
