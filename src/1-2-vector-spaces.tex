@@ -3,23 +3,23 @@
 \begin{defn}\label{1.2.1}
     A \textbf{vector space} (or \textbf{linear space}) \(\V\) over a field \(\F\) consists of a set on which two operations (called \textbf{addition} and \textbf{scalar multiplication}, respectively) are defined so that for each pair of elements \(x\), \(y\) in \(\V\) there is a unique element \(x + y\) in \(\V\), and for each element \(a\) in \(\F\) and each element \(x\) in \(\V\) there is a unique element \(ax\) in \(\V\), such that the following conditions hold.
     \begin{enumerate}[label=(VS \arabic*), ref=VS \arabic*]
-        \item\label{VS1}
+        \item\label{vs1}
         For all \(x, y\) in \(\V\), \(x + y = y + x\)
         (commutativity of addition).
-        \item\label{VS2}
+        \item\label{vs2}
         For all \(x, y, z\) in \(\V\), \(\p{x + y} + z = x + \p{y + z}\)
         (associativity of addition).
-        \item\label{VS3}
+        \item\label{vs3}
         There exists an element in \(\V\) denoted by \(0\) such that \(x + 0 = x\) for each \(x\) in \(\V\).
-        \item\label{VS4}
+        \item\label{vs4}
         For each element \(x\) in \(\V\) there exists an element \(y\) in \(\V\) such that \(x + y = 0\).
-        \item\label{VS5}
+        \item\label{vs5}
         For each element \(x\) in \(\V\), \(1x = x\).
-        \item\label{VS6}
+        \item\label{vs6}
         For each pair of elements \(a, b\) in \(\F\) and each element \(x\) in \(\V\), \(\p{ab} x = a \p{bx}\).
-        \item\label{VS7}
+        \item\label{vs7}
         For each element \(a\) in \(\F\) and each pair of elements \(x, y\) in \(\V\), \(a \p{x + y} = ax + ay\).
-        \item\label{VS8}
+        \item\label{vs8}
         For each pair of elements \(a, b\) in \(\F\) and each element \(x\) in \(\V\), \(\p{a + b} x = ax + bx\).
     \end{enumerate}
     The elements \(x + y\) and \(ax\) are called the \textbf{sum} of \(x\) and \(y\) and the \textbf{product} of \(a\) and \(x\), respectively.
@@ -36,7 +36,7 @@
 \end{note}
 
 \begin{note}
-    \ref{VS2} permits us to unambiguously define the addition of any finite number of vectors
+    \ref{vs2} permits us to unambiguously define the addition of any finite number of vectors
     (without the use of parentheses).
 \end{note}
 
@@ -47,11 +47,124 @@
 \end{defn}
 
 \begin{eg}\label{1.2.4}
-    The set of all \(n\)-tuples with entries from a field \(\F\) is denoted by \(\vs{F}^n\).
+    The set of all \(n\)-tuples with entries from a field \(\F\) is denoted by \(\vs{F}^{n}\).
     This set is a vector space over \(\F\) with the operations of coordinatewise addition and scalar multiplication;
-    that is, if \(u = \tp{a}{n} \in \vs{F}^n\), \(v = \tp{b}{n} \in \vs{F}^n\), and \(c \in \F\), then
+    that is, if \(u = \tp{a}{n} \in \vs{F}^{n}\), \(v = \tp{b}{n} \in \vs{F}^{n}\), and \(c \in \F\), then
     \[
         u + v = (a_{1} + b_{1}, a_{2} + b_{2}, \dots, a_{n} + b_{n}) \quad \text{ and } \quad cu = \tp{ca}{n}.
     \]
 \end{eg}
 
+\begin{proof}
+    Clearly we have
+    \[
+        \forall u, v \in \vs{F}^{n}, u + v \in \vs{F}^{n}
+    \]
+    and
+    \[
+        \begin{dcases}
+            \forall u \in \vs{F}^{n} \\
+            \forall c \in \F
+        \end{dcases}, cu \in \vs{F}^{n}.
+    \]
+
+    Let \(I_{n} = \set{i \in \N : 1 \leq i \leq n}\).
+    First we show that addition and scalar multiplication in \(\vs{F}^{n}\) over \(\F\) are unique.
+    Suppose that \(u, u', v, v' \in \vs{F}^{n}\) such that \(u = u'\) and \(v = v'\).
+    Then we have
+    \begin{align*}
+                 & \p{u = u'} \land \p{v = v'}                                                                                 \\
+        \implies & \forall i \in I_{n}, \begin{dcases}
+            u_{i} = u_{i}' \\
+            v_{i} = v_{i}'
+        \end{dcases}       &  & \text{(this is the definition of \(\vs{F}^{n}\))} \\
+        \implies & \forall i \in I_{n}, u_{i} + v_{i} = u_{i}' + v_{i}' &  & \text{(\(\F\) is a field)}                        \\
+        \implies & u + v = u' + v'                                      &  & \text{(this is the definition of \(\vs{F}^{n}\))}
+    \end{align*}
+    and thus the addition in \(\vs{F}^{n}\) over \(\F\) is unique.
+    Now suppose that \(u, u' \in \vs{F}^{n}\) and \(c, c' \in \F\) such that \(u = u'\) and \(c = c'\).
+    Then we have
+    \begin{align*}
+                 & \p{u = u'} \land \p{c = c'}                                                                     \\
+        \implies & \begin{dcases}
+            \forall i \in I_{n}, u_{i} = u_{i}' \\
+            c = c'
+        \end{dcases}                &  & \text{(this is the definition of \(\vs{F}^{n}\))} \\
+        \implies & \forall i \in I_{n}, c u_{i} = c' u_{i}' &  & \text{(\(\F\) is a field)}                        \\
+        \implies & cu = c' u'                               &  & \text{(this is the definition of \(\vs{F}^{n}\))}
+    \end{align*}
+    and thus the scalar multiplication in \(\vs{F}^{n}\) over \(\F\) is unique.
+
+    Now we show that \ref{vs1}--\ref{vs8} holds for \cref{1.2.4}.
+    \begin{description}
+        \item[For \ref{vs1}:]
+            For all \(x, y \in \vs{F}^{n}\), we have
+            \begin{align*}
+                x + y & = \p{x_{1} + y_{1}, x_{2} + y_{2}, \dots, x_{n} + y_{n}} &  & \text{(by \cref{1.2.4})}   \\
+                      & = \p{y_{1} + x_{1}, y_{2} + x_{2}, \dots, y_{n} + x_{n}} &  & \text{(\(\F\) is a field)} \\
+                      & = y + x.                                                 &  & \text{(by \cref{1.2.4})}
+            \end{align*}
+        \item[For \ref{vs2}:]
+            For all \(x, y, z \in \vs{F}^{n}\), we have
+            \begin{align*}
+                 & \p{x + y} + z                                                                                                                \\
+                 & = \p{x_{1} + y_{1}, x_{2} + y_{2}, \dots, x_{n} + y_{n}} + z                                 &  & \text{(by \cref{1.2.4})}   \\
+                 & = \p{\p{x_{1} + y_{1}} + z_{1}, \p{x_{2} + y_{2}} + z_{2}, \dots, \p{x_{n} + y_{n}} + z_{n}} &  & \text{(by \cref{1.2.4})}   \\
+                 & = \p{x_{1} + \p{y_{1} + z_{1}}, x_{2} + \p{y_{2} + z_{2}}, \dots, x_{n} + \p{y_{n} + z_{n}}} &  & \text{(\(\F\) is a field)} \\
+                 & = x + \p{y_{1} + z_{1}, y_{2} + z_{2}, \dots, y_{n} + z_{n}}                                 &  & \text{(by \cref{1.2.4})}   \\
+                 & = x + \p{y + z}.                                                                             &  & \text{(by \cref{1.2.4})}
+            \end{align*}
+        \item[For \ref{vs3}:]
+            Since \(\F\) is a field, we know that \(0 \in \F\) and thus \(\p{0, \dots, 0} \in \vs{F}^{n}\).
+            Then for all \(x \in \vs{F}^{n}\), we have
+            \begin{align*}
+                x + \p{0, \dots, 0} & = \p{x_{1} + 0, x_{2} + 0, \dots, x_{n} + 0} &  & \text{(by \cref{1.2.4})}   \\
+                                    & = \tp{x}{n}                                  &  & \text{(\(\F\) is a field)} \\
+                                    & = x.
+            \end{align*}
+            We denote \(\zv = \p{0, \dots, 0}\).
+        \item[For \ref{vs4}:]
+            For all \(x \in \vs{F}^{n}\), we have
+            \begin{align*}
+                         & \forall i \in I_{n}, x_{i} \in \F                                                                                 \\
+                \implies & \forall i \in I_{n}, \exists y_{i} \in \F : x_{i} + y_{i} = 0                  &  & \text{(\(\F\) is a field)}    \\
+                \implies & \exists y_{1}, y_{2}, \dots, y_{n} \in \F :                                                                       \\
+                         & \p{x_{1} + y_{1}, x_{2} + y_{2}, \dots, x_{n} + y_{n}} = \p{0, \dots, 0} = \zv                                    \\
+                \implies & \exists y \in \vs{F}^{n} : x + y = \zv.                                        &  & \text{(from the proof above)}
+            \end{align*}
+        \item[For \ref{vs5}:]
+            Since \(\F\) is a field, we know that \(1 \in \F\).
+            Then for all \(x \in \vs{F}^{n}\), we have
+            \begin{align*}
+                1x & = \p{1 x_{1}, 1 x_{2}, \dots, 1 x_{n}} &  & \text{(by \cref{1.2.4})}   \\
+                   & = \tp{x}{n}                            &  & \text{(\(\F\) is a field)} \\
+                   & = x.
+            \end{align*}
+        \item[For \ref{vs6}:]
+            For all \(a, b \in \F\) and \(x \in \vs{F}^{n}\), we have
+            \begin{align*}
+                \p{ab} x & = \p{\p{ab} x_{1}, \p{ab} x_{2}, \dots, \p{ab} x_{n}}    &  & \text{(by \cref{1.2.4})}   \\
+                         & = \p{a \p{b x_{1}}, a \p{b x_{2}}, \dots, a \p{b x_{n}}} &  & \text{(\(\F\) is a field)} \\
+                         & = a \p{b x_{1}, b x_{2}, \dots, b x_{n}}                 &  & \text{(by \cref{1.2.4})}   \\
+                         & = a \p{bx}.                                              &  & \text{(by \cref{1.2.4})}
+            \end{align*}
+        \item[For \ref{vs7}:]
+            For all \(a \in \F\) and \(x, y \in \vs{F}^{n}\), we have
+            \begin{align*}
+                a \p{x + y} & = a \p{x_{1} + y_{1}, x_{2} + y_{2}, \dots, x_{n} + y_{n}}                    &  & \text{(by \cref{1.2.4})}   \\
+                            & = \p{a \p{x_{1} + y_{1}}, a \p{x_{2} + y_{2}}, \dots, a \p{x_{n} + y_{n}}}    &  & \text{(by \cref{1.2.4})}   \\
+                            & = \p{a x_{1} + a y_{1}, a x_{2} + a y_{2}, \dots, a x_{n} + a y_{n}}          &  & \text{(\(\F\) is a field)} \\
+                            & = \p{a x_{1}, a x_{2}, \dots, a x_{n}} + \p{a y_{1}, a y_{2}, \dots, a y_{n}} &  & \text{(by \cref{1.2.4})}   \\
+                            & = a x + a y.                                                                  &  & \text{(by \cref{1.2.4})}
+            \end{align*}
+        \item[For \ref{vs8}:]
+            For all \(a, b \in \F\) and \(x \in \vs{F}^{n}\), we have
+            \begin{align*}
+                \p{a + b} x & = \p{\p{a + b} x_{1}, \p{a + b} x_{2}, \dots, \p{a + b} x_{n}}                &  & \text{(by \cref{1.2.4})}   \\
+                            & = \p{a x_{1} + b x_{1}, a x_{2} + b x_{2}, \dots, a x_{n} + b x_{n}}          &  & \text{(\(\F\) is a field)} \\
+                            & = \p{a x_{1}, a x_{2}, \dots, a x_{n}} + \p{b x_{1}, b x_{2}, \dots, b x_{n}} &  & \text{(by \cref{1.2.4})}   \\
+                            & = a x + b x.                                                                  &  & \text{(by \cref{1.2.4})}
+            \end{align*}
+    \end{description}
+    From all proofs above we conclude by \cref{1.2.1} that \cref{1.2.4} is indeed a vector space.
+\end{proof}
