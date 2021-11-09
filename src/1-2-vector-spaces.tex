@@ -217,3 +217,125 @@
     \]
     for \(1 \leq i \leq m\) and \(1 \leq j \leq n\).
 \end{eg}
+
+\begin{proof}
+    Clearly we have
+    \[
+        \forall A, B \in \ms{m}{n}{\F}, A + B \in \ms{m}{n}{\F}
+    \]
+    and
+    \[
+        \begin{dcases}
+            \forall A \in \ms{m}{n}{\F} \\
+            \forall c \in \F
+        \end{dcases}, cA \in \ms{m}{n}{\F}.
+    \]
+
+    Let \(I_{m} = \set{i \in \N : 1 \leq i \leq m}\) and \(J_{n} = \set{j \in \N : 1 \leq j \leq n}\).
+    First we show that addition and scalar multiplication in \(\ms{m}{n}{\F}\) over \(\F\) are unique.
+    Suppose that \(A, A', B, B' \in \ms{m}{n}{\F}\) such that \(A = A'\) and \(B = B'\).
+    Then we have
+    \begin{align*}
+                 & \p{A = A'} \land \p{B = B'}                                                                                      \\
+        \implies & \forall \p{i, j} \in I_{m} \times J_{n}, \begin{dcases}
+            A_{i j} = A_{i j}' \\
+            B_{i j} = B_{i j}'
+        \end{dcases}              &  & \text{(by \cref{1.2.9})}   \\
+        \implies & \forall \p{i, j} \in I_{m} \times J_{n}, A_{i j} + B_{i j} = A_{i j}' + B_{i j}' &  & \text{(\(\F\) is a field)} \\
+        \implies & A + B = A' + B'                                                                  &  & \text{(by \cref{1.2.9})}
+    \end{align*}
+    and thus the addition in \(\ms{m}{n}{\F}\) over \(\F\) is unique.
+    Now suppose that \(A, A' \in \ms{m}{n}{\F}\) and \(c, c' \in \F\) such that \(A = A'\) and \(c = c'\).
+    Then we have
+    \begin{align*}
+                 & \p{A = A'} \land \p{c = c'}                                                                      \\
+        \implies & \begin{dcases}
+            \forall \p{i, j} \in I_{m} \times J_{n}, A_{i j} = A_{i j}' \\
+            c = c'
+        \end{dcases}                                       &  & \text{(by \cref{1.2.9})}   \\
+        \implies & \forall \p{i, j} \in I_{m} \times J_{n}, c A_{i j} = c' A_{i j}' &  & \text{(\(\F\) is a field)} \\
+        \implies & cA = c' A'                                                       &  & \text{(by \cref{1.2.9})}
+    \end{align*}
+    and thus the scalar multiplication in \(\ms{m}{n}{\F}\) over \(\F\) is unique.
+
+    Now we show that \ref{vs1}--\ref{vs8} holds for \cref{1.2.9}.
+    \begin{description}
+        \item[For \ref{vs1}:]
+            For all \(A, B \in \ms{m}{n}{\F}\) and \(\p{i, j} \in I_{m} \times J_{n}\), we have
+            \begin{align*}
+                \p{A + B}_{i j} & = A_{i j} + B_{i j} &  & \text{(by \cref{1.2.9})}   \\
+                                & = B_{i j} + A_{i j} &  & \text{(\(\F\) is a field)} \\
+                                & = \p{B + A}_{i j}   &  & \text{(by \cref{1.2.9})}
+            \end{align*}
+            and thus by \cref{1.2.8} \(A + B = B + A\).
+        \item[For \ref{vs2}:]
+            For all \(A, B, C \in \ms{m}{n}{\F}\) and \(\p{i, j} \in I_{m} \times J_{n}\), we have
+            \begin{align*}
+                \p{\p{A + B} + C}_{i j} & = \p{A + B}_{i j} + C_{i + j}     &  & \text{(by \cref{1.2.9})}   \\
+                                        & = \p{A_{i j} + B_{i j}} + C_{i j} &  & \text{(by \cref{1.2.9})}   \\
+                                        & = A_{i j} + \p{B_{i j} + C_{i j}} &  & \text{(\(\F\) is a field)} \\
+                                        & = A_{i j} + \p{B + C}_{i j}       &  & \text{(by \cref{1.2.9})}   \\
+                                        & = \p{A + \p{B + C}}_{i j}         &  & \text{(by \cref{1.2.9})}
+            \end{align*}
+            and thus by \cref{1.2.8} \(\p{A + B} + C = A + \p{B + C}\).
+        \item[For \ref{vs3}:]
+            Since \(\F\) is a field, we know that \(0 \in \F\) and thus
+            \[
+                \zm = \begin{pmatrix}
+                    0      & 0      & \dots  & 0      \\
+                    0      & 0      & \dots  & 0      \\
+                    \vdots & \vdots & \ddots & \vdots \\
+                    0      & 0      & \dots  & 0
+                \end{pmatrix} \in \ms{m}{n}{\F}.
+            \]
+            Then for all \(A \in \ms{m}{n}{\F}\) and \(\p{i, j} \in I_{m} \times J_{n}\), we have
+            \begin{align*}
+                \p{A + \zm}_{i j} & = A_{i j} + \zm_{i j} &  & \text{(by \cref{1.2.9})}   \\
+                                  & = A_{i j} + 0         &  & \text{(by \cref{1.2.6})}   \\
+                                  & = A_{i j}             &  & \text{(\(\F\) is a field)}
+            \end{align*}
+            and thus by \cref{1.2.8} \(A + \zm = A\).
+        \item[For \ref{vs4}:]
+            For all \(A \in \ms{m}{n}{\F}\), we have
+            \begin{align*}
+                         & \forall \p{i, j} \in I_{m} \times J_{n}, A_{i j} \in \F                                                                    \\
+                \implies & \forall \p{i, j} \in I_{m} \times J_{n}, \exists B_{i j} \in \F : A_{i j} + B_{i j} = 0 &  & \text{(\(\F\) is a field)}    \\
+                \implies & \exists B \in \ms{m}{n}{\F} : A + B = \zm.                                              &  & \text{(from the proof above)}
+            \end{align*}
+        \item[For \ref{vs5}:]
+            Since \(\F\) is a field, we know that \(1 \in \F\).
+            Then for all \(A \in \ms{m}{n}{\F}\) and \(\p{i, j} \in I_{m} \times J_{n}\), we have
+            \begin{align*}
+                \p{1A}_{i j} & = 1 A_{i j} &  & \text{(by \cref{1.2.9})}   \\
+                             & = A_{i j}   &  & \text{(\(\F\) is a field)}
+            \end{align*}
+            and thus by \cref{1.2.8} \(1A = A\).
+        \item[For \ref{vs6}:]
+            For all \(c, d \in \F\), \(A \in \ms{m}{n}{\F}\) and \(\p{i, j} \in I_{m} \times J_{n}\), we have
+            \begin{align*}
+                \p{\p{cd} A}_{i j} & = \p{cd} A_{i j}      &  & \text{(by \cref{1.2.9})}   \\
+                                   & = c \p{d A_{i j}}     &  & \text{(\(\F\) is a field)} \\
+                                   & = c \p{d A}_{i j}     &  & \text{(by \cref{1.2.9})}   \\
+                                   & = \p{c \p{d A}}_{i j} &  & \text{(by \cref{1.2.9})}
+            \end{align*}
+            and thus by \cref{1.2.8} \(\p{cd} A = c \p{dA}\).
+        \item[For \ref{vs7}:]
+            For all \(c \in \F\), \(A, B \in \ms{m}{n}{\F}\) and \(\p{i, j} \in I_{m} \times J_{n}\), we have
+            \begin{align*}
+                \p{c \p{A + B}}_{i j} & = c \p{A + B}_{i j}           &  & \text{(by \cref{1.2.9})}   \\
+                                      & = c \p{A_{i j} + B_{i j}}     &  & \text{(by \cref{1.2.9})}   \\
+                                      & = c A_{i j} + c B_{i j}       &  & \text{(\(\F\) is a field)} \\
+                                      & = \p{cA}_{i j} + \p{cB}_{i j} &  & \text{(by \cref{1.2.9})}
+            \end{align*}
+            and thus by \cref{1.2.8} \(c \p{A + B} = cA + cB\).
+        \item[For \ref{vs8}:]
+            For all \(c, d \in \F\), \(A \in \ms{m}{n}{\F}\) and \(\p{i, j} \in I_{m} \times J_{n}\), we have
+            \begin{align*}
+                \p{\p{c + d} A}_{i j} & = \p{c + d} A_{i j}       &  & \text{(by \cref{1.2.9})}   \\
+                                      & = c A_{i j} + d A_{i j}   &  & \text{(\(\F\) is a field)} \\
+                                      & = (cA)_{i j} + (dA)_{i j} &  & \text{(by \cref{1.2.9})}
+            \end{align*}
+            and thus by \cref{1.2.8} \(\p{c + d} A = cA + dA\).
+    \end{description}
+    From all proofs above we conclude by \cref{1.2.1} that \cref{1.2.9} is indeed a vector space.
+\end{proof}
