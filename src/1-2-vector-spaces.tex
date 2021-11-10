@@ -339,3 +339,137 @@
     \end{description}
     From all proofs above we conclude by \cref{1.2.1} that \cref{1.2.9} is indeed a vector space.
 \end{proof}
+
+\begin{eg}\label{1.2.10}
+    Let \(S\) be any nonempty set and \(\F\) be any field, and let \(\mathcal{F}\p{S, \F}\) denote the set of all functions from \(S\) to \(\F\).
+    Two functions \(f\) and \(g\) in \(\mathcal{F}\p{S, \F}\) are called \textbf{equal} if \(f(s) = g(s)\) for each \(s \in S\).
+    The set \(\mathcal{F}\p{S, \F}\) is a vector space with the operations of addition and scalar multiplication defined for \(f, g \in \mathcal{F}\p{S, \F}\) and \(c \in \F\) by
+    \[
+        \p{f + g}\p{s} = f\p{s} + g\p{s} \quad \text{and} \quad \p{cf}\p{s} = cf\p{s}
+    \]
+    for each \(s \in S\).
+\end{eg}
+
+\begin{proof}
+    Clearly we have
+    \[
+        \forall f, g \in \mathcal{F}\p{S, \F}, f + g \in \mathcal{F}\p{S, \F}
+    \]
+    and
+    \[
+        \begin{dcases}
+            \forall f \in \mathcal{F}\p{S, \F} \\
+            \forall c \in \F
+        \end{dcases}, cf \in \mathcal{F}\p{S, \F}.
+    \]
+
+    First we show that addition and scalar multiplication in \(\mathcal{F}\p{S, \F}\) over \(\F\) are unique.
+    Suppose that \(f, f', g, g' \in \mathcal{F}\p{S, \F}\) such that \(f = f'\) and \(g = g'\).
+    Then we have
+    \begin{align*}
+                 & \p{f = f'} \land \p{g = g'}                                                          \\
+        \implies & \forall s \in S, \begin{dcases}
+            f\p{s} = f'\p{s} \\
+            g\p{s} = g'\p{s}
+        \end{dcases}          &  & \text{(by \cref{1.2.10})}  \\
+        \implies & \forall s \in S, f\p{s} + g\p{s} = f'\p{s} + g'\p{s} &  & \text{(\(\F\) is a field)} \\
+        \implies & \forall s \in S, (f + g)\p{s} = (f' + g')\p{s}       &  & \text{(by \cref{1.2.10})}  \\
+        \implies & f + g = f' + g'                                      &  & \text{(by \cref{1.2.10})}
+    \end{align*}
+    and thus the addition in \(\mathcal{F}\p{S, \F}\) over \(\F\) is unique.
+    Now suppose that \(f, f' \in \mathcal{F}\p{S, \F}\) and \(c, c' \in \F\) such that \(f = f'\) and \(c = c'\).
+    Then we have
+    \begin{align*}
+                 & \p{f = f'} \land \p{c = c'}                                                   \\
+        \implies & \begin{dcases}
+            \forall s \in S, f\p{s} = f'\p{s} \\
+            c = c'
+        \end{dcases}                    &  & \text{(by \cref{1.2.10})}  \\
+        \implies & \forall s \in S, c f\p{s} = c' f'\p{s}        &  & \text{(\(\F\) is a field)} \\
+        \implies & \forall s \in S, \p{cf}\p{s} = \p{c' f'}\p{s} &  & \text{(by \cref{1.2.10})}  \\
+        \implies & cf = c' f'                                    &  & \text{(by \cref{1.2.10})}
+    \end{align*}
+    and thus the scalar multiplication in \(\mathcal{F}\p{S, \F}\) over \(\F\) is unique.
+
+    Now we show that \ref{vs1}--\ref{vs8} holds for \cref{1.2.10}.
+    \begin{description}
+        \item[For \ref{vs1}:]
+            For all \(f, g \in \mathcal{F}\p{S, \F}\) and \(s \in S\), we have
+            \begin{align*}
+                \p{f + g}\p{s} & = f\p{s} + g\p{s} &  & \text{(by \cref{1.2.10})}  \\
+                               & = g\p{s} + f\p{s} &  & \text{(\(\F\) is a field)} \\
+                               & = \p{g + f}\p{s}  &  & \text{(by \cref{1.2.10})}
+            \end{align*}
+            and thus by \cref{1.2.10} \(f + g = g + f\).
+        \item[For \ref{vs2}:]
+            For all \(f, g, h \in \mathcal{F}\p{S, \F}\) and \(s \in S\), we have
+            \begin{align*}
+                 & \p{\p{f + g} + h}\p{s}                                         \\
+                 & = \p{f + g}\p{s} + h\p{s}      &  & \text{(by \cref{1.2.10})}  \\
+                 & = \p{f\p{s} + g\p{s}} + h\p{s} &  & \text{(by \cref{1.2.10})}  \\
+                 & = f\p{s} + \p{g\p{s} + h\p{s}} &  & \text{(\(\F\) is a field)} \\
+                 & = f\p{s} + \p{g + h}\p{s}      &  & \text{(by \cref{1.2.10})}  \\
+                 & = \p{f + \p{g + h}}\p{s}       &  & \text{(by \cref{1.2.10})}
+            \end{align*}
+            and thus by \cref{1.2.10} \(\p{f + g} + h = f + \p{g + h}\).
+        \item[For \ref{vs3}:]
+            Since \(\F\) is a field, we know that \(0 \in \F\).
+            If we define \(\zv : S \to \{0\}\), then we know that \(\zv \in \F\).
+            Thus for all \(f \in \mathcal{F}\p{S, \F}\) and \(s \in S\), we have
+            \begin{align*}
+                \p{f + \zv}\p{s} & = f\p{s} + \zv\p{s} &  & \text{(by \cref{1.2.10})}  \\
+                                 & = f\p{s} + 0                                        \\
+                                 & = f\p{s}            &  & \text{(\(\F\) is a field)}
+            \end{align*}
+            and by \cref{1.2.10} \(f + \zv = f\).
+        \item[For \ref{vs4}:]
+            For all \(f \in \mathcal{F}\p{S, \F}\), we have
+            \begin{align*}
+                         & \forall s \in S, f\p{s} \in \F                                                                     \\
+                \implies & \forall s \in S, \exists s' \in \F : f\p{s} + s' = 0            &  & \text{(\(\F\) is a field)}    \\
+                \implies & \exists g \in \mathcal{F}\p{S, \F} : \begin{dcases}
+                    g = s \mapsto s' \\
+                    f\p{s} + g\p{s} = 0
+                \end{dcases}                                    \\
+                \implies & \exists g \in \mathcal{F}\p{S, \F} : \p{f + g}\p{s} = 0         &  & \text{(by \cref{1.2.10})}     \\
+                \implies & \exists g \in \mathcal{F}\p{S, \F} : f + g = \zv.               &  & \text{(from the proof above)}
+            \end{align*}
+        \item[For \ref{vs5}:]
+            Since \(\F\) is a field, we know that \(1 \in \F\).
+            Then for all \(f \in \mathcal{F}\p{S, \F}\) and \(s \in S\), we have
+            \begin{align*}
+                \p{1f}\p{s} & = 1f\p{s} &  & \text{(by \cref{1.2.10})}  \\
+                            & = f\p{s}  &  & \text{(\(\F\) is a field)}
+            \end{align*}
+            and thus by \cref{1.2.10} \(1f = f\).
+        \item[For \ref{vs6}:]
+            For all \(a, b \in \F\), \(f \in \mathcal{F}\p{S, \F}\) and \(s \in S\), we have
+            \begin{align*}
+                \p{\p{ab} f}\p{s} & = \p{ab} f\p{s}     &  & \text{(by \cref{1.2.10})}  \\
+                                  & = a \p{b f\p{s}}    &  & \text{(\(\F\) is a field)} \\
+                                  & = a \p{\p{bf}\p{s}} &  & \text{(by \cref{1.2.10})}  \\
+                                  & = \p{a \p{bf}}\p{s} &  & \text{(by \cref{1.2.10})}
+            \end{align*}
+            and thus by \cref{1.2.10} \(\p{ab} f = a \p{bf}\).
+        \item[For \ref{vs7}:]
+            For all \(a \in \F\), \(f, g \in \mathcal{F}\p{S, \F}\) and \(s \in S\), we have
+            \begin{align*}
+                \p{a \p{f + g}}\p{s} & = a \p{\p{f + g}\p{s}}      &  & \text{(by \cref{1.2.10})}  \\
+                                     & = a \p{f\p{s} + g\p{s}}     &  & \text{(by \cref{1.2.10})}  \\
+                                     & = af\p{s} + ag\p{s}         &  & \text{(\(\F\) is a field)} \\
+                                     & = \p{af}\p{s} + \p{ag}\p{s} &  & \text{(by \cref{1.2.10})}  \\
+                                     & = \p{af + ag}\p{s}          &  & \text{(by \cref{1.2.10})}
+            \end{align*}
+            and thus by \cref{1.2.10} \(a \p{f + g} = af + ag\).
+        \item[For \ref{vs8}:]
+            For all \(a, b \in \F\), \(f \in \mathcal{F}\p{S, \F}\) and \(s \in S\), we have
+            \begin{align*}
+                \p{\p{a + b} f}\p{s} & = \p{a + b} f\p{s}          &  & \text{(by \cref{1.2.10})}  \\
+                                     & = af\p{s} + bf\p{s}         &  & \text{(\(\F\) is a field)} \\
+                                     & = \p{af}\p{s} + \p{bf}\p{s} &  & \text{(by \cref{1.2.10})}  \\
+                                     & = \p{af + bf}\p{s}          &  & \text{(by \cref{1.2.10})}
+            \end{align*}
+            and thus by \cref{1.2.10} \(\p{a + b} f = af + bf\).
+    \end{description}
+    From all proofs above we conclude by \cref{1.2.1} that \cref{1.2.10} is indeed a vector space.
+\end{proof}
