@@ -473,3 +473,173 @@
     \end{description}
     From all proofs above we conclude by \cref{1.2.1} that \cref{1.2.10} is indeed a vector space.
 \end{proof}
+
+\begin{defn}\label{1.2.11}
+    A \textbf{polynomial} with coefficients from a field \(\F\) is an expression of the form
+    \[
+        f\p{x} = a_{n} x^{n} + a_{n - 1} x^{n - 1} + \cdots + a_{1} x + a_{0},
+    \]
+    where \(n\) is a nonnegative integer and each \(a_{k}\), called the \textbf{coefficient} of \(x^{k}\), is in \(\F\).
+    If \(f\p{x} = 0\), that is, if \(a_{n} = a_{n - 1} = \cdots = a_{0} = 0\), then \(f\p{x}\) is called the \textbf{zero polynomial} and, for convenience, its degree is defined to be \(-1\);
+    otherwise, the \textbf{degree} of a polynomial is defined to be the largest exponent of \(x\) that appears in the representation
+    \[
+        f\p{x} = a_{n} x^{n} + a_{n - 1} x^{n - 1} + \cdots + a_{1} x + a_{0}
+    \]
+    with a nonzero coefficient.
+    Note that the polynomials of degree zero may be written in the form \(f\p{x} = c\) for some nonzero scalar \(c\).
+    Two polynomials,
+    \[
+        f\p{x} = a_{n} x^{n} + a_{n - 1} x^{n - 1} + \cdots + a_{1} x + a_{0}
+    \]
+    and
+    \[
+        g\p{x} = b_{m} x^{m} + b_{m - 1} x^{m - 1} + \cdots + b_{1} x + b_{0},
+    \]
+    are called \textbf{equal} if \(m = n\) and \(a_i = b_i\) for \(i = 0, 1, \dots, n\).
+\end{defn}
+
+\begin{eg}\label{1.2.12}
+    Let
+    \[
+        f\p{x} = a_{n} x^{n} + a_{n - 1} x^{n - 1} + \cdots + a_{1} x + a_{0}
+    \]
+    and
+    \[
+        g\p{x} = b_{m} x^{m} + b_{m - 1} x^{m - 1} + \cdots + b_{1} x + b_{0}
+    \]
+    be polynomials with coefficients from a field \(\F\).
+    Suppose that \(m \leq n\), and define \(b_{m + 1} = b_{m + 2} = \cdots = b_{n} = 0\).
+    Then \(g\p{x}\) can be written as
+    \[
+        g\p{x} = b_{n} x^{n} + b_{n - 1} x^{n - 1} + \cdots + b_{1} x + b_{0}.
+    \]
+
+    Define
+    \[
+        f\p{x} + g\p{x} = \p{a_{n} + b_{n}} x^{n} + \p{a_{n - 1} + b_{n - 1}} x^{n - 1} + \cdots + \p{a_{1} + b_{1}} x^{1} + \p{a_{0} + b_{0}}
+    \]
+    and for any scalar \(c \in \F\), define
+    \[
+        cf\p{x} = ca_{n} x^{n} + ca_{n - 1} x^{n - 1} + \cdots + ca_{1} x + ca_{0}.
+    \]
+    With these operations of addition and scalar multiplication, the set of all polynomials with coefficients from \(\F\) is a vector space, which we denote by \(\ps{\F}\).
+\end{eg}
+
+\begin{proof}
+    Observe that \(\ps{\F} \subseteq \mathcal{F}\p{\F, \F}\) (see \cref{1.2.10}).
+\end{proof}
+
+\begin{eg}\label{1.2.13}
+    Let \(\F\) be any field.
+    A sequence in \(\F\) is a function \(\sigma\) from the positive integers into \(\F\).
+    In this book, the sequence \(\sigma\) such that \(\sigma\p{n} = a_{n}\) for \(n = 1, 2, \dots\) is denoted \(\set{a_{n}}\).
+    Let \(\V\) consist of all sequences \(\set{a_{n}}\) in \(\F\) that have only a finite number of nonzero terms \(a_{n}\).
+    If \(\set{a_{n}}\) and \(\set{b_{n}}\) are in \(\V\) and \(t \in \F\), define
+    \[
+        \set{a_{n}} + \set{b_{n}} = \set{a_{n} + b_{n}} \quad \text{and} \quad t\set{a_{n}} = \set{ta_{n}}.
+    \]
+    With these operations \(\V\) is a vector space.
+\end{eg}
+
+\begin{thm}[Cancellation Law for Vector Addition]\label{1.2.14}
+    If \(x, y\), and \(z\) are vectors in a vector space \(\V\) such that \(x + z = y + z\), then \(x = y\).
+\end{thm}
+
+\begin{proof}
+    There exists a vector \(v\) in \(\V\) such that \(z + v = \zv\) (\ref{vs4}).
+    Thus
+    \begin{align*}
+        x & = x + \zv = x + \p{z + v} = \p{x + z} + v     \\
+          & = \p{y + z} + v = y + \p{z + v} = y + \zv = y
+    \end{align*}
+    by \ref{vs2} and \ref{vs3}.
+\end{proof}
+
+\begin{cor}\label{1.2.15}
+    The vector \(\zv\) described in \ref{vs3} is unique.
+\end{cor}
+
+\begin{proof}
+    Suppose for sake of contradiction that
+    \[
+        \exists \zv' \in V : \begin{dcases}
+            \zv \neq \zv' \\
+            \forall x \in \V, x + \zv' = x
+        \end{dcases}.
+    \]
+    But then we have
+    \begin{align*}
+                 & x + \zv = x = x + \zv' &  & \text{(by \ref{vs3})}     \\
+        \implies & \zv = \zv',            &  & \text{(by \cref{1.2.14})}
+    \end{align*}
+    a contradiction.
+    Thus \(\zv \in V\) is unique.
+\end{proof}
+
+\begin{cor}\label{1.2.16}
+    The vector \(y\) described in \ref{vs4} is unique.
+\end{cor}
+
+\begin{proof}
+    Suppose for sake of contradiction that
+    \[
+        \forall x \in \V, \exists y, y' \in \V : \begin{dcases}
+            y \neq y' \\
+            x + y = 0 = x + y'
+        \end{dcases}.
+    \]
+    But then we have
+    \begin{align*}
+                 & x + y = x + y'                                \\
+        \implies & y = y',        &  & \text{(by \cref{1.2.14})}
+    \end{align*}
+    a contradiction.
+    Thus \(y\) described in \ref{vs4} is unique.
+\end{proof}
+
+\begin{defn}\label{1.2.17}
+    The vector \(\zv\) in \ref{vs3} is called the \textbf{zero vector} of \(\V\), and the vector \(y\) in \ref{vs4} (that is, the unique vector such that \(x + y = \zv\)) is called the \textbf{additive inverse} of \(x\) and is denoted by \(-x\).
+\end{defn}
+
+\begin{thm}\label{1.2.18}
+    In any vector space \(\V\), the following statements are true:
+    \begin{enumerate}
+        \item \(0x = \zv\) for each \(x \in \V\).
+        \item \(\p{-a}x = -\p{ax} = a\p{-x}\) for each \(a \in \F\) and each \(x \in \V\).
+        \item \(a\zv = \zv\) for each \(a \in F\).
+    \end{enumerate}
+\end{thm}
+
+\begin{proof}{(a)}
+    By \ref{vs8}, \ref{vs3}, and \ref{vs1}, it follows that
+    \[
+        0x + 0x = \p{0 + 0} x = 0x = 0x + \zv = \zv + 0x.
+    \]
+    Hence \(0x = \zv\) by \cref{1.2.14}.
+\end{proof}
+
+\begin{proof}{(b)}
+    The vector \(-\p{ax}\) is the unique element of \(\V\) such that \(ax + \bk{-\p{ax}} = \zv\).
+    Thus if \(ax + \p{-a}x = 0\), \cref{1.2.16} to \cref{1.2.14} implies that \(\p{-a}x = -\p{ax}\).
+    But by \ref{vs8},
+    \[
+        ax + \p{-a}x = \bk{a + \p{-a}}x = 0x = \zv
+    \]
+    by \cref{1.2.18}(a).
+    Consequently \(\p{-a}x = -\p{ax}\).
+    In particular, \(\p{-1}x = -x\).
+    So, by \ref{vs6},
+    \[
+        a\p{-x} = a\bk{\p{-1}x} = \bk{a\p{-1}}x = \p{-a}x.
+    \]
+\end{proof}
+
+\begin{proof}{(c)}
+    We have
+    \begin{align*}
+        a\zv + \zv & = a\zv           &  & \text{(by \ref{vs3})} \\
+                   & = a\p{\zv + \zv} &  & \text{(by \ref{vs3})} \\
+                   & = a\zv + a\zv    &  & \text{(by \ref{vs7})}
+    \end{align*}
+    and thus by \cref{1.2.14} \(a\zv = \zv\).
+\end{proof}
