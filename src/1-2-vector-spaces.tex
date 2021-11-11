@@ -643,3 +643,104 @@
     \end{align*}
     and thus by \cref{1.2.14} \(a\zv = \zv\).
 \end{proof}
+
+\exercisesection
+
+\setcounter{ex}{7}
+\begin{ex}\label{ex:1.2.8}
+    In any vector space \(\V\), show that \(\p{a + b}\p{x + y} = ax + ay + bx + by\) for any \(x, y \in \V\) and any \(a, b \in \F\).
+\end{ex}
+
+\begin{proof}
+    We have
+    \begin{align*}
+        \p{a + b}\p{x + y} & = \p{a + b} x + \p{a + b} y &  & \text{(by \ref{vs7})} \\
+                           & = ax + bx + ay + by         &  & \text{(by \ref{vs8})} \\
+                           & = ax + ay + bx + by.        &  & \text{(by \ref{vs1})}
+    \end{align*}
+\end{proof}
+
+\setcounter{ex}{9}
+\begin{ex}\label{ex:1.2.10}
+    Let \(\V\) denote the set of all differentiable real-valued functions defined on the real line.
+    Prove that \(\V\) is a vector space with the operations of addition and scalar multiplication defined in \cref{1.2.10}.
+\end{ex}
+
+\begin{ex}\label{ex:1.2.11}
+    Let \(\V = \set{\zv}\) consist of a single vector \(\zv\) and define \(\zv + \zv = \zv\) and \(c\zv = \zv\) for each scalar \(c\) in \(\F\).
+    Prove that \(\V\) is a vector space over \(\F\).
+    (\(\V\) is called the \textbf{zero vector space}.)
+\end{ex}
+
+\begin{proof}
+    Clearly addition and scalar multiplication result in one unique element in \(\V\), namely \(\zv\).
+    We only need to show that \ref{vs1}--\ref{vs8} holds for \cref{ex:1.2.11}.
+    \begin{description}
+        \item[For \ref{vs1}:]
+            By definition we have
+            \[
+                \zv + \zv = \zv = \zv + \zv.
+            \]
+        \item[For \ref{vs2}:]
+            We have
+            \[
+                \p{\zv + \zv} + \zv = \zv + \zv = \zv + \p{\zv + \zv}.
+            \]
+        \item[For \ref{vs3}:]
+            By definition we have
+            \[
+                \zv + \zv = \zv.
+            \]
+        \item[For \ref{vs4}:]
+            By definition we have
+            \[
+                \zv + \zv = \zv.
+            \]
+        \item[For \ref{vs5}:]
+            By definition we have
+            \[
+                1\zv = \zv.
+            \]
+        \item[For \ref{vs6}:]
+            For all \(a, b \in \F\), we have
+            \begin{align*}
+                \p{ab} \zv & = \zv        &  & \text{(by definition)} \\
+                           & = b\zv       &  & (b \in \F)             \\
+                           & = a\p{b\zv}. &  & (a \in \F)
+            \end{align*}
+        \item[For \ref{vs7}:]
+            For all \(a \in \F\), we have
+            \begin{align*}
+                a\p{\zv + \zv} & = a\zv         &  & \text{(by definition)} \\
+                               & = \zv          &  & \text{(by definition)} \\
+                               & = \zv + \zv    &  & \text{(by definition)} \\
+                               & = a\zv + a\zv. &  & (a \in \F)
+            \end{align*}
+        \item[For \ref{vs8}:]
+            For all \(a, b \in \F\), \(f \in \mathcal{F}\p{S, \F}\) and \(s \in S\), we have
+            \begin{align*}
+                \p{a + b} \zv & = \zv          &  & \text{(by definition)} \\
+                              & = \zv + \zv    &  & \text{(by definition)} \\
+                              & = a\zv + b\zv. &  & (a, b \in \F)
+            \end{align*}
+    \end{description}
+    From all proofs above we conclude by \cref{1.2.1} that \cref{ex:1.2.11} is indeed a vector space.
+\end{proof}
+
+\begin{ex}\label{ex:1.2.12}
+    A real-valued function \(f\) defined on the real line is called an \textbf{even function} if \(f\p{-t} = f\p{t}\) for each real number \(t\).
+    Prove that the set of even functions defined on the real line with the operations of addition and scalar multiplication defined in \cref{1.2.10} is a vector space.
+\end{ex}
+
+\setcounter{ex}{20}
+\begin{ex}\label{ex:1.2.21}
+    Let \(\V\) and \(\W\) be vector spaces over a field \(\F\).
+    Let
+    \[
+        \vs{Z} = \set{\p{v, w} : v \in \V \land w \in \W}.
+    \]
+    Prove that \(\vs{Z}\) is a vector space over \(\F\) with the operations
+    \[
+        \p{v_1, w_1} + \p{v_2, w_2} = \p{v_1 + v_2, w_1 + w_2} \quad \text{and} \quad c\p{v_1, w_1} = \p{cv_1, cw_1}.
+    \]
+\end{ex}
