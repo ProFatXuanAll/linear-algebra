@@ -773,10 +773,126 @@
     Let \(\V\) and \(\W\) be vector spaces over a field \(\F\).
     Let
     \[
-        \vs{Z} = \set{\p{v, w} : v \in \V \land w \in \W}.
+        \V \times \W = \set{\p{v, w} : v \in \V \land w \in \W}.
     \]
-    Prove that \(\vs{Z}\) is a vector space over \(\F\) with the operations
+    Prove that \(\V \times \W\) is a vector space over \(\F\) with the operations
     \[
         \p{v_1, w_1} + \p{v_2, w_2} = \p{v_1 + v_2, w_1 + w_2} \quad \text{and} \quad c\p{v_1, w_1} = \p{cv_1, cw_1}.
     \]
 \end{ex}
+
+\begin{proof}
+    Clearly we have
+    \[
+        \forall \p{v_{1}, w_{1}}, \p{v_{2}, w_{2}} \in \V \times \W, \p{v_{1}, w_{1}} + \p{v_{2}, w_{2}} \in \V \times \W
+    \]
+    and
+    \[
+        \begin{dcases}
+            \forall \p{v, w} \in \V \times \W \\
+            \forall c \in \F
+        \end{dcases}, c \p{v, w} \in \V \times \W.
+    \]
+
+    First we show that addition in \(\V \times \W\) over \(\F\) is unique.
+    Let \(\p{v_{1}, w_{1}}, \p{v_{2}, w_{2}} \in \V \times \W\).
+    Suppose for sake of contradiction that
+    \[
+        \p{v_{1}, w_{1}} + \p{v_{2}, w_{2}} \neq \p{v_{1}, w_{1}} + \p{v_{2}, w_{2}}.
+    \]
+    Then we have
+    \begin{align*}
+                 & \p{v_{1}, w_{1}} + \p{v_{2}, w_{2}} \neq \p{v_{1}, w_{1}} + \p{v_{2}, w_{2}}                                                            \\
+        \implies & \p{v_{1} + v_{2}, w_{1} + w_{2}} \neq \p{v_{1} + v_{2}, w_{1} + w_{2}}         &  & \text{(by \cref{ex:1.2.21})}                        \\
+        \implies & \p{v_{1} + v_{2} \neq v_{1} + v_{2}} \lor \p{w_{1} + w_{2} \neq w_{1} + w_{2}} &  & \text{(this is the definition of \(\V \times \W\))}
+    \end{align*}
+    which contradict to the fact that \(v_{1} + v_{2} \in \V\) is unique and \(w_{1} + w_{2} \in \W\) is unique.
+    Thus addition in \(\V \times \W\) over \(\F\) is unique.
+
+    Next we show that scalar multiplication in \(\V \times \W\) over \(\F\) is unique.
+    Let \(\p{v, w} \in \V \times \W\) and \(c \in \F\).
+    Suppose for sake of contradiction that
+    \[
+        c\p{v, w} \neq c\p{v, w}.
+    \]
+    Then we have
+    \begin{align*}
+                 & c\p{v, w} \neq c\p{v, w}                                                                    \\
+        \implies & \p{cv, cw} \neq \p{cv, cw}         &  & \text{(by \cref{ex:1.2.21})}                        \\
+        \implies & \p{cv \neq cv} \lor \p{cw \neq cw} &  & \text{(this is the definition of \(\V \times \W\))}
+    \end{align*}
+    which contradict to the fact that \(cv \in \V\) is unique and \(cw \in \W\) is unique.
+    Thus scalar multiplication in \(\V \times \W\) over \(\F\) is unique.
+
+    Now we show that \ref{vs1}--\ref{vs8} holds for \cref{ex:1.2.21}.
+    \begin{description}
+        \item[For \ref{vs1}:]
+            For all \(\p{v_{1}, w_{1}}, \p{v_{2}, w_{2}} \in \V \times \W\), we have
+            \begin{align*}
+                \p{v_{1}, w_{1}} + \p{v_{2}, w_{2}} & = \p{v_{1} + v_{2}, w_{1} + w_{2}}     &  & \text{(by \cref{ex:1.2.21})} \\
+                                                    & = \p{v_{2} + v_{1}, w_{2} + w_{1}}     &  & \text{(bt \ref{vs1})}        \\
+                                                    & = \p{v_{2}, w_{2}} + \p{v_{1}, w_{1}}. &  & \text{(by \cref{ex:1.2.21})}
+            \end{align*}
+        \item[For \ref{vs2}:]
+            For all \(\p{v_{1}, w_{1}}, \p{v_{2}, w_{2}}, \p{v_{3}, w_{3}} \in \V \times \W\), we have
+            \begin{align*}
+                 & \p{\p{v_{1}, w_{1}} + \p{v_{2}, w_{2}}} + \p{v_{3}, w_{3}}                                      \\
+                 & = \p{v_{1} + v_{2}, w_{1} + w_{2}} + \p{v_{3}, w_{3}}         &  & \text{(by \cref{ex:1.2.21})} \\
+                 & = \p{\p{v_{1} + v_{2}} + v_{3}, \p{w_{1} + w_{2}} + w_{3}}    &  & \text{(by \cref{ex:1.2.21})} \\
+                 & = \p{v_{1} + \p{v_{2} + v_{3}}, w_{1} + \p{w_{2} + w_{3}}}    &  & \text{(by \ref{vs2})}        \\
+                 & = \p{v_{1}, w_{1}} + \p{v_{2} + v_{3}, w_{2} + w_{3}}         &  & \text{(by \cref{ex:1.2.21})} \\
+                 & = \p{v_{1}, w_{1}} + \p{\p{v_{2}, w_{2}} + \p{v_{3}, w_{3}}}. &  & \text{(by \cref{ex:1.2.21})}
+            \end{align*}
+        \item[For \ref{vs3}:]
+            Since \(\V, \W\) are vector spaces, we know that \(\zv_{\V} \in \V\) and \(\zv_{\W} \in \W\).
+            Thus for all \(\p{v, w} \in \V \times \W\), we have
+            \begin{align*}
+                \p{v, w} + \p{\zv_{\V}, \zv_{\W}} & = \p{v + \zv_{\V}, w + \zv_{\W}} &  & \text{(by \cref{ex:1.2.21})} \\
+                                                  & = \p{v, w}.                      &  & \text{(by \ref{vs3})}
+            \end{align*}
+            We denote \(\zv = \p{\zv_{\V}, \zv_{\W}}\).
+        \item[For \ref{vs4}:]
+            For all \(\p{v_{1}, w_{1}} \in \V \times \W\), we have
+            \begin{align*}
+                         & \p{v_{1} \in \V} \land \p{w_{1} \in \W}                                                &  & \text{(by \cref{ex:1.2.21})}  \\
+                \implies & \begin{dcases}
+                    \exists v_{2} \in \V : v_{1} + v_{2} = \zv_{\V} \\
+                    \exists w_{2} \in \V : w_{1} + w_{2} = \zv_{\W}
+                \end{dcases}                                                             &  & \text{(by \ref{vs4})}         \\
+                \implies & \exists \p{v_{2}, w_{2}} \in \V \times \W : \p{v_{1}, w_{1}} + \p{v_{2}, w_{2}} = \zv. &  & \text{(from the proof above)}
+            \end{align*}
+        \item[For \ref{vs5}:]
+            Since \(\F\) is a field, we know that \(1 \in \F\).
+            Thus for all \(\p{v, w} \in \V \times \W\), we have
+            \begin{align*}
+                1\p{v, w} & = \p{1v, 1w} &  & \text{(by \cref{ex:1.2.21})} \\
+                          & = \p{v, w}.  &  & \text{(by \ref{vs5})}
+            \end{align*}
+        \item[For \ref{vs6}:]
+            For all \(c, d \in \F\), \(\p{v, w} \in \V \times \W\), we have
+            \begin{align*}
+                \p{cd} \p{v, w} & = \p{\p{cd} v, \p{cd} w} &  & \text{(by \cref{ex:1.2.21})} \\
+                                & = \p{c\p{dv}, c\p{dw}}   &  & \text{(by \ref{vs6})}        \\
+                                & = c \p{dv, dw}           &  & \text{(by \cref{ex:1.2.21})} \\
+                                & = c\p{d\p{v, w}}.        &  & \text{(by \cref{ex:1.2.21})}
+            \end{align*}
+        \item[For \ref{vs7}:]
+            For all \(c \in \F\), \(\p{v_{1}, w_{1}}, \p{v_{2}, w_{2}} \in \V \times \W\), we have
+            \begin{align*}
+                c \p{\p{v_{1}, w_{1}} + \p{v_{2}, w_{2}}} & = c \p{v_{1} + v_{2}, w_{1}, w_{2}}         &  & \text{(by \cref{ex:1.2.21})} \\
+                                                          & = \p{c\p{v_{1} + v_{2}}, c\p{w_{1}, w_{2}}} &  & \text{(by \cref{ex:1.2.21})} \\
+                                                          & = \p{cv_{1} + cv_{2}, cw_{1} + cw_{2}}      &  & \text{(by \ref{vs7})}        \\
+                                                          & = \p{cv_{1}, cw_{1}} + \p{cv_{2}, cw_{2}}   &  & \text{(by \cref{ex:1.2.21})} \\
+                                                          & = c\p{v_{1}, w_{1}} + c\p{v_{2}, w_{2}}.    &  & \text{(by \cref{ex:1.2.21})}
+            \end{align*}
+        \item[For \ref{vs8}:]
+            For all \(c, d \in \F\), \(\p{v, w} \in \V \times \W\), we have
+            \begin{align*}
+                \p{c + d} \p{v, w} & = \p{\p{c + d} v, \p{c + d} w} &  & \text{(by \cref{ex:1.2.21})} \\
+                                   & = \p{cv + dv, cw + dw}         &  & \text{(by \ref{vs8})}        \\
+                                   & = \p{cv, cw} + \p{dv, dw}      &  & \text{(by \cref{ex:1.2.21})} \\
+                                   & = c\p{v, w} + d\p{v, w}.       &  & \text{(by \cref{ex:1.2.21})}
+            \end{align*}
+    \end{description}
+    From all proofs above we conclude by \cref{1.2.1} that \cref{ex:1.2.21} is indeed a vector space.
+\end{proof}
