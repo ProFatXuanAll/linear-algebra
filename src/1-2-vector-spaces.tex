@@ -86,7 +86,7 @@
         \implies & \exists i \in I_{n} : u_{i} + v_{i} \neq u_{i} + v_{i} &  & \text{(by \cref{1.2.4})}
     \end{align*}
     which contradict to the fact that \(u_{i} + v_{i} \in \F\) is unique.
-    Thus the addition in \(\vs{F}^{n}\) over \(\F\) is unique.
+    Thus addition in \(\vs{F}^{n}\) over \(\F\) is unique.
 
     Next we show that scalar multiplication in \(\vs{F}^{n}\) over \(\F\) is unique.
     Let \(u \in \vs{F}^{n}\) and \(c \in \F\).
@@ -105,7 +105,7 @@
         \implies & \exists i \in I_{n} : c u_{i} \neq c u_{i} &  & \text{(by \cref{1.2.4})}
     \end{align*}
     which contradict to the fact that \(c u_{i} \in \F\) is unique.
-    Thus the scalar multiplication in \(\vs{F}^{n}\) over \(\F\) is unique.
+    Thus scalar multiplication in \(\vs{F}^{n}\) over \(\F\) is unique.
 
     Now we show that \ref{vs1}--\ref{vs8} holds for \cref{1.2.4}.
     \begin{description}
@@ -244,31 +244,43 @@
     \]
 
     Let \(I_{m} = \set{i \in \N : 1 \leq i \leq m}\) and \(J_{n} = \set{j \in \N : 1 \leq j \leq n}\).
-    First we show that addition and scalar multiplication in \(\ms{m}{n}{\F}\) over \(\F\) are unique.
-    Suppose that \(A, A', B, B' \in \ms{m}{n}{\F}\) such that \(A = A'\) and \(B = B'\).
+    First we show that addition in \(\ms{m}{n}{\F}\) over \(\F\) is unique.
+    Let \(A, B \in \ms{m}{n}{\F}\).
+    Suppose for sake of contradiction that
+    \[
+        \begin{dcases}
+            A + B = C \in \ms{m}{n}{\F}  \\
+            A + B = C' \in \ms{m}{n}{\F} \\
+            C \neq C'
+        \end{dcases}.
+    \]
     Then we have
     \begin{align*}
-                 & \p{A = A'} \land \p{B = B'}                                                                                      \\
-        \implies & \forall \p{i, j} \in I_{m} \times J_{n}, \begin{dcases}
-            A_{i j} = A_{i j}' \\
-            B_{i j} = B_{i j}'
-        \end{dcases}              &  & \text{(by \cref{1.2.9})}   \\
-        \implies & \forall \p{i, j} \in I_{m} \times J_{n}, A_{i j} + B_{i j} = A_{i j}' + B_{i j}' &  & \text{(\(\F\) is a field)} \\
-        \implies & A + B = A' + B'                                                                  &  & \text{(by \cref{1.2.9})}
+                 & C \neq C'                                                                                                         \\
+        \implies & \exists \p{i, j} \in I_{m} \times J_{n} :  C_{i j} \neq C_{i j}'                    &  & \text{(by \cref{1.2.8})} \\
+        \implies & \exists \p{i, j} \in I_{m} \times J_{n} :  A_{i j} + B_{i j} \neq A_{i j} + B_{i j} &  & \text{(by \cref{1.2.9})}
     \end{align*}
-    and thus the addition in \(\ms{m}{n}{\F}\) over \(\F\) is unique.
-    Now suppose that \(A, A' \in \ms{m}{n}{\F}\) and \(c, c' \in \F\) such that \(A = A'\) and \(c = c'\).
+    which contradict to the fact that \(A_{i j} + B_{i j} \in \F\) is unique.
+    Thus addition in \(\ms{m}{n}{\F}\) over \(\F\) is unique.
+
+    Next we show that scalar multiplication in \(\ms{m}{n}{\F}\) over \(\F\) is unique.
+    Let \(A \in \ms{m}{n}{\F}\) and \(c \in \F\).
+    Suppose for sake of contradiction that
+    \[
+        \begin{dcases}
+            cA = B \in \ms{m}{n}{\F}  \\
+            cA = B' \in \ms{m}{n}{\F} \\
+            B \neq B'
+        \end{dcases}.
+    \]
     Then we have
     \begin{align*}
-                 & \p{A = A'} \land \p{c = c'}                                                                      \\
-        \implies & \begin{dcases}
-            \forall \p{i, j} \in I_{m} \times J_{n}, A_{i j} = A_{i j}' \\
-            c = c'
-        \end{dcases}                                       &  & \text{(by \cref{1.2.9})}   \\
-        \implies & \forall \p{i, j} \in I_{m} \times J_{n}, c A_{i j} = c' A_{i j}' &  & \text{(\(\F\) is a field)} \\
-        \implies & cA = c' A'                                                       &  & \text{(by \cref{1.2.9})}
+                 & B \neq B'                                                                                        \\
+        \implies & \exists \p{i, j} \in I_{m} \times J_{n} : B_{i j} \neq B_{i j}     &  & \text{(by \cref{1.2.8})} \\
+        \implies & \exists \p{i, j} \in I_{m} \times J_{n} : c A_{i j} \neq c A_{i j} &  & \text{(by \cref{1.2.9})}
     \end{align*}
-    and thus the scalar multiplication in \(\ms{m}{n}{\F}\) over \(\F\) is unique.
+    which contradict to the fact that \(c A_{i j} \in \F\) is unique.
+    Thus scalar multiplication in \(\ms{m}{n}{\F}\) over \(\F\) is unique.
 
     Now we show that \ref{vs1}--\ref{vs8} holds for \cref{1.2.9}.
     \begin{description}
@@ -388,7 +400,7 @@
         \implies & \forall s \in S, (f + g)\p{s} = (f' + g')\p{s}       &  & \text{(by \cref{1.2.10})}  \\
         \implies & f + g = f' + g'                                      &  & \text{(by \cref{1.2.10})}
     \end{align*}
-    and thus the addition in \(\mathcal{F}\p{S, \F}\) over \(\F\) is unique.
+    and thus addition in \(\mathcal{F}\p{S, \F}\) over \(\F\) is unique.
     Now suppose that \(f, f' \in \mathcal{F}\p{S, \F}\) and \(c, c' \in \F\) such that \(f = f'\) and \(c = c'\).
     Then we have
     \begin{align*}
@@ -401,7 +413,7 @@
         \implies & \forall s \in S, \p{cf}\p{s} = \p{c' f'}\p{s} &  & \text{(by \cref{1.2.10})}  \\
         \implies & cf = c' f'                                    &  & \text{(by \cref{1.2.10})}
     \end{align*}
-    and thus the scalar multiplication in \(\mathcal{F}\p{S, \F}\) over \(\F\) is unique.
+    and thus scalar multiplication in \(\mathcal{F}\p{S, \F}\) over \(\F\) is unique.
 
     Now we show that \ref{vs1}--\ref{vs8} holds for \cref{1.2.10}.
     \begin{description}
