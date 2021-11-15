@@ -69,101 +69,113 @@
     \]
 
     Let \(I_{n} = \set{i \in \N : 1 \leq i \leq n}\).
-    First we show that addition and scalar multiplication in \(\vs{F}^{n}\) over \(\F\) are unique.
-    Suppose that \(u, u', v, v' \in \vs{F}^{n}\) such that \(u = u'\) and \(v = v'\).
+    First we show that addition in \(\vs{F}^{n}\) over \(\F\) is unique.
+    Let \(u, v \in \vs{F}^{n}\).
+    Suppose for sake of contradiction that
+    \[
+        \begin{dcases}
+            u + v = w \in \vs{F}^{n}  \\
+            u + v = w' \in \vs{F}^{n} \\
+            w \neq w'
+        \end{dcases}.
+    \]
     Then we have
     \begin{align*}
-                 & \p{u = u'} \land \p{v = v'}                                                                                 \\
-        \implies & \forall i \in I_{n}, \begin{dcases}
-            u_{i} = u_{i}' \\
-            v_{i} = v_{i}'
-        \end{dcases}       &  & \text{(this is the definition of \(\vs{F}^{n}\))} \\
-        \implies & \forall i \in I_{n}, u_{i} + v_{i} = u_{i}' + v_{i}' &  & \text{(\(\F\) is a field)}                        \\
-        \implies & u + v = u' + v'                                      &  & \text{(this is the definition of \(\vs{F}^{n}\))}
+                 & w \neq w'                                                                            \\
+        \implies & \exists i \in I_{n} : w_i \neq w_i'                    &  & \text{(by \cref{1.2.3})} \\
+        \implies & \exists i \in I_{n} : u_{i} + v_{i} \neq u_{i} + v_{i} &  & \text{(by \cref{1.2.4})}
     \end{align*}
-    and thus the addition in \(\vs{F}^{n}\) over \(\F\) is unique.
-    Now suppose that \(u, u' \in \vs{F}^{n}\) and \(c, c' \in \F\) such that \(u = u'\) and \(c = c'\).
+    which contradict to the fact that \(u_{i} + v_{i} \in \F\) is unique.
+    Thus the addition in \(\vs{F}^{n}\) over \(\F\) is unique.
+
+    Next we show that scalar multiplication in \(\vs{F}^{n}\) over \(\F\) is unique.
+    Let \(u \in \vs{F}^{n}\) and \(c \in \F\).
+    Suppose for sake of contradiction that
+    \[
+        \begin{dcases}
+            cu = w \in \vs{F}^n  \\
+            cu = w' \in \vs{F}^n \\
+            w \neq w'
+        \end{dcases}.
+    \]
     Then we have
     \begin{align*}
-                 & \p{u = u'} \land \p{c = c'}                                                                     \\
-        \implies & \begin{dcases}
-            \forall i \in I_{n}, u_{i} = u_{i}' \\
-            c = c'
-        \end{dcases}                &  & \text{(this is the definition of \(\vs{F}^{n}\))} \\
-        \implies & \forall i \in I_{n}, c u_{i} = c' u_{i}' &  & \text{(\(\F\) is a field)}                        \\
-        \implies & cu = c' u'                               &  & \text{(this is the definition of \(\vs{F}^{n}\))}
+                 & w \neq w'                                                                \\
+        \implies & \exists i \in I_{n} : w_i \neq w_i'        &  & \text{(by \cref{1.2.3})} \\
+        \implies & \exists i \in I_{n} : c u_{i} \neq c u_{i} &  & \text{(by \cref{1.2.4})}
     \end{align*}
-    and thus the scalar multiplication in \(\vs{F}^{n}\) over \(\F\) is unique.
+    which contradict to the fact that \(c u_{i} \in \F\) is unique.
+    Thus the scalar multiplication in \(\vs{F}^{n}\) over \(\F\) is unique.
 
     Now we show that \ref{vs1}--\ref{vs8} holds for \cref{1.2.4}.
     \begin{description}
         \item[For \ref{vs1}:]
-            For all \(x, y \in \vs{F}^{n}\), we have
+            For all \(u, v \in \vs{F}^{n}\), we have
             \begin{align*}
-                x + y & = \p{x_{1} + y_{1}, x_{2} + y_{2}, \dots, x_{n} + y_{n}} &  & \text{(by \cref{1.2.4})}   \\
-                      & = \p{y_{1} + x_{1}, y_{2} + x_{2}, \dots, y_{n} + x_{n}} &  & \text{(\(\F\) is a field)} \\
-                      & = y + x.                                                 &  & \text{(by \cref{1.2.4})}
+                u + v & = \p{u_{1} + v_{1}, u_{2} + v_{2}, \dots, u_{n} + v_{n}} &  & \text{(by \cref{1.2.4})}   \\
+                      & = \p{v_{1} + u_{1}, v_{2} + u_{2}, \dots, v_{n} + u_{n}} &  & \text{(\(\F\) is a field)} \\
+                      & = v + u.                                                 &  & \text{(by \cref{1.2.4})}
             \end{align*}
         \item[For \ref{vs2}:]
-            For all \(x, y, z \in \vs{F}^{n}\), we have
+            For all \(u, v, w \in \vs{F}^{n}\), we have
             \begin{align*}
-                 & \p{x + y} + z                                                                                                                \\
-                 & = \p{x_{1} + y_{1}, x_{2} + y_{2}, \dots, x_{n} + y_{n}} + z                                 &  & \text{(by \cref{1.2.4})}   \\
-                 & = \p{\p{x_{1} + y_{1}} + z_{1}, \p{x_{2} + y_{2}} + z_{2}, \dots, \p{x_{n} + y_{n}} + z_{n}} &  & \text{(by \cref{1.2.4})}   \\
-                 & = \p{x_{1} + \p{y_{1} + z_{1}}, x_{2} + \p{y_{2} + z_{2}}, \dots, x_{n} + \p{y_{n} + z_{n}}} &  & \text{(\(\F\) is a field)} \\
-                 & = x + \p{y_{1} + z_{1}, y_{2} + z_{2}, \dots, y_{n} + z_{n}}                                 &  & \text{(by \cref{1.2.4})}   \\
-                 & = x + \p{y + z}.                                                                             &  & \text{(by \cref{1.2.4})}
+                 & \p{u + v} + w                                                                                                                \\
+                 & = \p{u_{1} + v_{1}, u_{2} + v_{2}, \dots, u_{n} + v_{n}} + w                                 &  & \text{(by \cref{1.2.4})}   \\
+                 & = \p{\p{u_{1} + v_{1}} + w_{1}, \p{u_{2} + v_{2}} + w_{2}, \dots, \p{u_{n} + v_{n}} + w_{n}} &  & \text{(by \cref{1.2.4})}   \\
+                 & = \p{u_{1} + \p{v_{1} + w_{1}}, u_{2} + \p{v_{2} + w_{2}}, \dots, u_{n} + \p{v_{n} + w_{n}}} &  & \text{(\(\F\) is a field)} \\
+                 & = u + \p{v_{1} + w_{1}, v_{2} + w_{2}, \dots, v_{n} + w_{n}}                                 &  & \text{(by \cref{1.2.4})}   \\
+                 & = u + \p{v + w}.                                                                             &  & \text{(by \cref{1.2.4})}
             \end{align*}
         \item[For \ref{vs3}:]
             Since \(\F\) is a field, we know that \(0 \in \F\) and thus \(\p{0, \dots, 0} \in \vs{F}^{n}\).
-            Then for all \(x \in \vs{F}^{n}\), we have
+            Then for all \(u \in \vs{F}^{n}\), we have
             \begin{align*}
-                x + \p{0, \dots, 0} & = \p{x_{1} + 0, x_{2} + 0, \dots, x_{n} + 0} &  & \text{(by \cref{1.2.4})}   \\
-                                    & = \tp{x}{n}                                  &  & \text{(\(\F\) is a field)} \\
-                                    & = x.
+                u + \p{0, \dots, 0} & = \p{u_{1} + 0, u_{2} + 0, \dots, u_{n} + 0} &  & \text{(by \cref{1.2.4})}   \\
+                                    & = \tp{u}{n}                                  &  & \text{(\(\F\) is a field)} \\
+                                    & = u.
             \end{align*}
             We denote \(\zv = \p{0, \dots, 0}\).
         \item[For \ref{vs4}:]
-            For all \(x \in \vs{F}^{n}\), we have
+            For all \(u \in \vs{F}^{n}\), we have
             \begin{align*}
-                         & \forall i \in I_{n}, x_{i} \in \F                                                                                 \\
-                \implies & \forall i \in I_{n}, \exists y_{i} \in \F : x_{i} + y_{i} = 0                  &  & \text{(\(\F\) is a field)}    \\
-                \implies & \exists y_{1}, y_{2}, \dots, y_{n} \in \F :                                                                       \\
-                         & \p{x_{1} + y_{1}, x_{2} + y_{2}, \dots, x_{n} + y_{n}} = \p{0, \dots, 0} = \zv                                    \\
-                \implies & \exists y \in \vs{F}^{n} : x + y = \zv.                                        &  & \text{(from the proof above)}
+                         & \forall i \in I_{n}, u_{i} \in \F                                                                                 \\
+                \implies & \forall i \in I_{n}, \exists v_{i} \in \F : u_{i} + v_{i} = 0                  &  & \text{(\(\F\) is a field)}    \\
+                \implies & \exists v_{1}, v_{2}, \dots, v_{n} \in \F :                                                                       \\
+                         & \p{u_{1} + v_{1}, u_{2} + v_{2}, \dots, u_{n} + v_{n}} = \p{0, \dots, 0} = \zv                                    \\
+                \implies & \exists y \in \vs{F}^{n} : u + v = \zv.                                        &  & \text{(from the proof above)}
             \end{align*}
         \item[For \ref{vs5}:]
             Since \(\F\) is a field, we know that \(1 \in \F\).
-            Then for all \(x \in \vs{F}^{n}\), we have
+            Then for all \(u \in \vs{F}^{n}\), we have
             \begin{align*}
-                1x & = \p{1 x_{1}, 1 x_{2}, \dots, 1 x_{n}} &  & \text{(by \cref{1.2.4})}   \\
-                   & = \tp{x}{n}                            &  & \text{(\(\F\) is a field)} \\
-                   & = x.
+                1u & = \p{1 u_{1}, 1 u_{2}, \dots, 1 u_{n}} &  & \text{(by \cref{1.2.4})}   \\
+                   & = \tp{u}{n}                            &  & \text{(\(\F\) is a field)} \\
+                   & = u.
             \end{align*}
         \item[For \ref{vs6}:]
-            For all \(a, b \in \F\) and \(x \in \vs{F}^{n}\), we have
+            For all \(a, b \in \F\) and \(u \in \vs{F}^{n}\), we have
             \begin{align*}
-                \p{ab} x & = \p{\p{ab} x_{1}, \p{ab} x_{2}, \dots, \p{ab} x_{n}}    &  & \text{(by \cref{1.2.4})}   \\
-                         & = \p{a \p{b x_{1}}, a \p{b x_{2}}, \dots, a \p{b x_{n}}} &  & \text{(\(\F\) is a field)} \\
-                         & = a \p{b x_{1}, b x_{2}, \dots, b x_{n}}                 &  & \text{(by \cref{1.2.4})}   \\
-                         & = a \p{bx}.                                              &  & \text{(by \cref{1.2.4})}
+                \p{ab} u & = \p{\p{ab} u_{1}, \p{ab} u_{2}, \dots, \p{ab} u_{n}}    &  & \text{(by \cref{1.2.4})}   \\
+                         & = \p{a \p{b u_{1}}, a \p{b u_{2}}, \dots, a \p{b u_{n}}} &  & \text{(\(\F\) is a field)} \\
+                         & = a \p{b u_{1}, b u_{2}, \dots, b u_{n}}                 &  & \text{(by \cref{1.2.4})}   \\
+                         & = a \p{bu}.                                              &  & \text{(by \cref{1.2.4})}
             \end{align*}
         \item[For \ref{vs7}:]
-            For all \(a \in \F\) and \(x, y \in \vs{F}^{n}\), we have
+            For all \(a \in \F\) and \(u, v \in \vs{F}^{n}\), we have
             \begin{align*}
-                a \p{x + y} & = a \p{x_{1} + y_{1}, x_{2} + y_{2}, \dots, x_{n} + y_{n}}                    &  & \text{(by \cref{1.2.4})}   \\
-                            & = \p{a \p{x_{1} + y_{1}}, a \p{x_{2} + y_{2}}, \dots, a \p{x_{n} + y_{n}}}    &  & \text{(by \cref{1.2.4})}   \\
-                            & = \p{a x_{1} + a y_{1}, a x_{2} + a y_{2}, \dots, a x_{n} + a y_{n}}          &  & \text{(\(\F\) is a field)} \\
-                            & = \p{a x_{1}, a x_{2}, \dots, a x_{n}} + \p{a y_{1}, a y_{2}, \dots, a y_{n}} &  & \text{(by \cref{1.2.4})}   \\
-                            & = a x + a y.                                                                  &  & \text{(by \cref{1.2.4})}
+                a \p{u + v} & = a \p{u_{1} + v_{1}, u_{2} + v_{2}, \dots, u_{n} + v_{n}}                    &  & \text{(by \cref{1.2.4})}   \\
+                            & = \p{a \p{u_{1} + v_{1}}, a \p{u_{2} + v_{2}}, \dots, a \p{u_{n} + v_{n}}}    &  & \text{(by \cref{1.2.4})}   \\
+                            & = \p{a u_{1} + a v_{1}, a u_{2} + a v_{2}, \dots, a u_{n} + a v_{n}}          &  & \text{(\(\F\) is a field)} \\
+                            & = \p{a u_{1}, a u_{2}, \dots, a u_{n}} + \p{a v_{1}, a v_{2}, \dots, a v_{n}} &  & \text{(by \cref{1.2.4})}   \\
+                            & = a u + a v.                                                                  &  & \text{(by \cref{1.2.4})}
             \end{align*}
         \item[For \ref{vs8}:]
-            For all \(a, b \in \F\) and \(x \in \vs{F}^{n}\), we have
+            For all \(a, b \in \F\) and \(u \in \vs{F}^{n}\), we have
             \begin{align*}
-                \p{a + b} x & = \p{\p{a + b} x_{1}, \p{a + b} x_{2}, \dots, \p{a + b} x_{n}}                &  & \text{(by \cref{1.2.4})}   \\
-                            & = \p{a x_{1} + b x_{1}, a x_{2} + b x_{2}, \dots, a x_{n} + b x_{n}}          &  & \text{(\(\F\) is a field)} \\
-                            & = \p{a x_{1}, a x_{2}, \dots, a x_{n}} + \p{b x_{1}, b x_{2}, \dots, b x_{n}} &  & \text{(by \cref{1.2.4})}   \\
-                            & = a x + b x.                                                                  &  & \text{(by \cref{1.2.4})}
+                \p{a + b} x & = \p{\p{a + b} u_{1}, \p{a + b} u_{2}, \dots, \p{a + b} u_{n}}                &  & \text{(by \cref{1.2.4})}   \\
+                            & = \p{a u_{1} + b u_{1}, a u_{2} + b u_{2}, \dots, a u_{n} + b u_{n}}          &  & \text{(\(\F\) is a field)} \\
+                            & = \p{a u_{1}, a u_{2}, \dots, a u_{n}} + \p{b u_{1}, b u_{2}, \dots, b u_{n}} &  & \text{(by \cref{1.2.4})}   \\
+                            & = a u + b u.                                                                  &  & \text{(by \cref{1.2.4})}
             \end{align*}
     \end{description}
     From all proofs above we conclude by \cref{1.2.1} that \cref{1.2.4} is indeed a vector space.
