@@ -222,8 +222,8 @@
 \end{defn}
 
 \begin{eg}\label{1.2.9}
-    The set of all \(m \times n\) matrices with entries from a field \(\F\) is a vector space, which we denote by \(\ms{m}{n}{\F}\), with the following operations of \textbf{matrix addition} and \textbf{scalar multiplication}:
-    For \(A, B \in \ms{m}{n}{\F}\) and \(c \in \F\),
+    The set of all \(m \times n\) matrices with entries from a field \(\F\) is a vector space, which we denote by \(\MS\), with the following operations of \textbf{matrix addition} and \textbf{scalar multiplication}:
+    For \(A, B \in \MS\) and \(c \in \F\),
     \[
         \p{A + B}_{i j} = A_{i j} + B_{i j} \quad \text{and} \quad \p{c A}_{i j} = c A_{i j}
     \]
@@ -233,24 +233,24 @@
 \begin{proof}
     Clearly we have
     \[
-        \forall A, B \in \ms{m}{n}{\F}, A + B \in \ms{m}{n}{\F}
+        \forall A, B \in \MS, A + B \in \MS
     \]
     and
     \[
         \begin{dcases}
-            \forall A \in \ms{m}{n}{\F} \\
+            \forall A \in \MS \\
             \forall c \in \F
-        \end{dcases}, cA \in \ms{m}{n}{\F}.
+        \end{dcases}, cA \in \MS.
     \]
 
     Let \(I_{m} = \set{i \in \N : 1 \leq i \leq m}\) and \(J_{n} = \set{j \in \N : 1 \leq j \leq n}\).
-    First we show that addition in \(\ms{m}{n}{\F}\) over \(\F\) is unique.
-    Let \(A, B \in \ms{m}{n}{\F}\).
+    First we show that addition in \(\MS\) over \(\F\) is unique.
+    Let \(A, B \in \MS\).
     Suppose for sake of contradiction that
     \[
         \begin{dcases}
-            A + B = C \in \ms{m}{n}{\F}  \\
-            A + B = C' \in \ms{m}{n}{\F} \\
+            A + B = C \in \MS  \\
+            A + B = C' \in \MS \\
             C \neq C'
         \end{dcases}.
     \]
@@ -261,15 +261,15 @@
         \implies & \exists \p{i, j} \in I_{m} \times J_{n} :  A_{i j} + B_{i j} \neq A_{i j} + B_{i j} &  & \text{(by \cref{1.2.9})}
     \end{align*}
     which contradict to the fact that \(A_{i j} + B_{i j} \in \F\) is unique.
-    Thus addition in \(\ms{m}{n}{\F}\) over \(\F\) is unique.
+    Thus addition in \(\MS\) over \(\F\) is unique.
 
-    Next we show that scalar multiplication in \(\ms{m}{n}{\F}\) over \(\F\) is unique.
-    Let \(A \in \ms{m}{n}{\F}\) and \(c \in \F\).
+    Next we show that scalar multiplication in \(\MS\) over \(\F\) is unique.
+    Let \(A \in \MS\) and \(c \in \F\).
     Suppose for sake of contradiction that
     \[
         \begin{dcases}
-            cA = B \in \ms{m}{n}{\F}  \\
-            cA = B' \in \ms{m}{n}{\F} \\
+            cA = B \in \MS  \\
+            cA = B' \in \MS \\
             B \neq B'
         \end{dcases}.
     \]
@@ -280,12 +280,12 @@
         \implies & \exists \p{i, j} \in I_{m} \times J_{n} : c A_{i j} \neq c A_{i j} &  & \text{(by \cref{1.2.9})}
     \end{align*}
     which contradict to the fact that \(c A_{i j} \in \F\) is unique.
-    Thus scalar multiplication in \(\ms{m}{n}{\F}\) over \(\F\) is unique.
+    Thus scalar multiplication in \(\MS\) over \(\F\) is unique.
 
     Now we show that \ref{vs1}--\ref{vs8} holds for \cref{1.2.9}.
     \begin{description}
         \item[For \ref{vs1}:]
-            For all \(A, B \in \ms{m}{n}{\F}\) and \(\p{i, j} \in I_{m} \times J_{n}\), we have
+            For all \(A, B \in \MS\) and \(\p{i, j} \in I_{m} \times J_{n}\), we have
             \begin{align*}
                 \p{A + B}_{i j} & = A_{i j} + B_{i j} &  & \text{(by \cref{1.2.9})}   \\
                                 & = B_{i j} + A_{i j} &  & \text{(\(\F\) is a field)} \\
@@ -293,7 +293,7 @@
             \end{align*}
             and thus by \cref{1.2.8} \(A + B = B + A\).
         \item[For \ref{vs2}:]
-            For all \(A, B, C \in \ms{m}{n}{\F}\) and \(\p{i, j} \in I_{m} \times J_{n}\), we have
+            For all \(A, B, C \in \MS\) and \(\p{i, j} \in I_{m} \times J_{n}\), we have
             \begin{align*}
                 \p{\p{A + B} + C}_{i j} & = \p{A + B}_{i j} + C_{i + j}     &  & \text{(by \cref{1.2.9})}   \\
                                         & = \p{A_{i j} + B_{i j}} + C_{i j} &  & \text{(by \cref{1.2.9})}   \\
@@ -310,9 +310,9 @@
                     0      & 0      & \dots  & 0      \\
                     \vdots & \vdots & \ddots & \vdots \\
                     0      & 0      & \dots  & 0
-                \end{pmatrix} \in \ms{m}{n}{\F}.
+                \end{pmatrix} \in \MS.
             \]
-            Then for all \(A \in \ms{m}{n}{\F}\) and \(\p{i, j} \in I_{m} \times J_{n}\), we have
+            Then for all \(A \in \MS\) and \(\p{i, j} \in I_{m} \times J_{n}\), we have
             \begin{align*}
                 \p{A + \zm}_{i j} & = A_{i j} + \zm_{i j} &  & \text{(by \cref{1.2.9})}   \\
                                   & = A_{i j} + 0         &  & \text{(by \cref{1.2.6})}   \\
@@ -320,22 +320,22 @@
             \end{align*}
             and thus by \cref{1.2.8} \(A + \zm = A\).
         \item[For \ref{vs4}:]
-            For all \(A \in \ms{m}{n}{\F}\), we have
+            For all \(A \in \MS\), we have
             \begin{align*}
                          & \forall \p{i, j} \in I_{m} \times J_{n}, A_{i j} \in \F                                                                    \\
                 \implies & \forall \p{i, j} \in I_{m} \times J_{n}, \exists B_{i j} \in \F : A_{i j} + B_{i j} = 0 &  & \text{(\(\F\) is a field)}    \\
-                \implies & \exists B \in \ms{m}{n}{\F} : A + B = \zm.                                              &  & \text{(from the proof above)}
+                \implies & \exists B \in \MS : A + B = \zm.                                                        &  & \text{(from the proof above)}
             \end{align*}
         \item[For \ref{vs5}:]
             Since \(\F\) is a field, we know that \(1 \in \F\).
-            Then for all \(A \in \ms{m}{n}{\F}\) and \(\p{i, j} \in I_{m} \times J_{n}\), we have
+            Then for all \(A \in \MS\) and \(\p{i, j} \in I_{m} \times J_{n}\), we have
             \begin{align*}
                 \p{1A}_{i j} & = 1 A_{i j} &  & \text{(by \cref{1.2.9})}   \\
                              & = A_{i j}   &  & \text{(\(\F\) is a field)}
             \end{align*}
             and thus by \cref{1.2.8} \(1A = A\).
         \item[For \ref{vs6}:]
-            For all \(c, d \in \F\), \(A \in \ms{m}{n}{\F}\) and \(\p{i, j} \in I_{m} \times J_{n}\), we have
+            For all \(c, d \in \F\), \(A \in \MS\) and \(\p{i, j} \in I_{m} \times J_{n}\), we have
             \begin{align*}
                 \p{\p{cd} A}_{i j} & = \p{cd} A_{i j}      &  & \text{(by \cref{1.2.9})}   \\
                                    & = c \p{d A_{i j}}     &  & \text{(\(\F\) is a field)} \\
@@ -344,7 +344,7 @@
             \end{align*}
             and thus by \cref{1.2.8} \(\p{cd} A = c \p{dA}\).
         \item[For \ref{vs7}:]
-            For all \(c \in \F\), \(A, B \in \ms{m}{n}{\F}\) and \(\p{i, j} \in I_{m} \times J_{n}\), we have
+            For all \(c \in \F\), \(A, B \in \MS\) and \(\p{i, j} \in I_{m} \times J_{n}\), we have
             \begin{align*}
                 \p{c \p{A + B}}_{i j} & = c \p{A + B}_{i j}           &  & \text{(by \cref{1.2.9})}   \\
                                       & = c \p{A_{i j} + B_{i j}}     &  & \text{(by \cref{1.2.9})}   \\
@@ -353,7 +353,7 @@
             \end{align*}
             and thus by \cref{1.2.8} \(c \p{A + B} = cA + cB\).
         \item[For \ref{vs8}:]
-            For all \(c, d \in \F\), \(A \in \ms{m}{n}{\F}\) and \(\p{i, j} \in I_{m} \times J_{n}\), we have
+            For all \(c, d \in \F\), \(A \in \MS\) and \(\p{i, j} \in I_{m} \times J_{n}\), we have
             \begin{align*}
                 \p{\p{c + d} A}_{i j} & = \p{c + d} A_{i j}       &  & \text{(by \cref{1.2.9})}   \\
                                       & = c A_{i j} + d A_{i j}   &  & \text{(\(\F\) is a field)} \\
@@ -365,9 +365,9 @@
 \end{proof}
 
 \begin{eg}\label{1.2.10}
-    Let \(S\) be any nonempty set and \(\F\) be any field, and let \(\mathcal{F}\p{S, \F}\) denote the set of all functions from \(S\) to \(\F\).
-    Two functions \(f\) and \(g\) in \(\mathcal{F}\p{S, \F}\) are called \textbf{equal} if \(f(s) = g(s)\) for each \(s \in S\).
-    The set \(\mathcal{F}\p{S, \F}\) is a vector space with the operations of addition and scalar multiplication defined for \(f, g \in \mathcal{F}\p{S, \F}\) and \(c \in \F\) by
+    Let \(S\) be any nonempty set and \(\F\) be any field, and let \(\FS\) denote the set of all functions from \(S\) to \(\F\).
+    Two functions \(f\) and \(g\) in \(\FS\) are called \textbf{equal} if \(f{s} = g{s}\) for each \(s \in S\).
+    The set \(\FS\) is a vector space with the operations of addition and scalar multiplication defined for \(f, g \in \FS\) and \(c \in \F\) by
     \[
         \p{f + g}\p{s} = f\p{s} + g\p{s} \quad \text{and} \quad \p{cf}\p{s} = cf\p{s}
     \]
@@ -377,48 +377,60 @@
 \begin{proof}
     Clearly we have
     \[
-        \forall f, g \in \mathcal{F}\p{S, \F}, f + g \in \mathcal{F}\p{S, \F}
+        \forall f, g \in \FS, f + g \in \FS
     \]
     and
     \[
         \begin{dcases}
-            \forall f \in \mathcal{F}\p{S, \F} \\
+            \forall f \in \FS \\
             \forall c \in \F
-        \end{dcases}, cf \in \mathcal{F}\p{S, \F}.
+        \end{dcases}, cf \in \FS.
     \]
 
-    First we show that addition and scalar multiplication in \(\mathcal{F}\p{S, \F}\) over \(\F\) are unique.
-    Suppose that \(f, f', g, g' \in \mathcal{F}\p{S, \F}\) such that \(f = f'\) and \(g = g'\).
+    First we show that addition in \(\FS\) over \(\F\) is unique.
+    Let \(f, g \in \FS\).
+    Suppose for sake of contradiction that
+    \[
+        \begin{dcases}
+            f + g = h \in \FS  \\
+            f + g = h' \in \FS \\
+            h \neq h'
+        \end{dcases}.
+    \]
     Then we have
     \begin{align*}
-                 & \p{f = f'} \land \p{g = g'}                                                          \\
-        \implies & \forall s \in S, \begin{dcases}
-            f\p{s} = f'\p{s} \\
-            g\p{s} = g'\p{s}
-        \end{dcases}          &  & \text{(by \cref{1.2.10})}  \\
-        \implies & \forall s \in S, f\p{s} + g\p{s} = f'\p{s} + g'\p{s} &  & \text{(\(\F\) is a field)} \\
-        \implies & \forall s \in S, (f + g)\p{s} = (f' + g')\p{s}       &  & \text{(by \cref{1.2.10})}  \\
-        \implies & f + g = f' + g'                                      &  & \text{(by \cref{1.2.10})}
+                 & h \neq h'                                                                             \\
+        \implies & \exists s \in S : h\p{s} \neq h'\p{s}                  &  & \text{(by \cref{1.2.10})} \\
+        \implies & \exists s \in S : \p{f + g}\p{s} \neq \p{f + g}\p{s}   &  & \text{(by \cref{1.2.10})} \\
+        \implies & \exists s \in S : f\p{s} + g\p{s} \neq f\p{s} + g\p{s} &  & \text{(by \cref{1.2.10})}
     \end{align*}
-    and thus addition in \(\mathcal{F}\p{S, \F}\) over \(\F\) is unique.
-    Now suppose that \(f, f' \in \mathcal{F}\p{S, \F}\) and \(c, c' \in \F\) such that \(f = f'\) and \(c = c'\).
+    which contradict to the fact that \(f\p{s} + g\p{s} \in \F\) is unique.
+    Thus addition in \(\FS\) over \(\F\) is unique.
+
+    Next we show that scalar multiplication in \(\FS\) over \(\F\) is unique.
+    Let \(f \in \FS\) and \(c \in \F\).
+    Suppose for sake of contradiction that
+    \[
+        \begin{dcases}
+            cf = h \in \FS  \\
+            cf = h' \in \FS \\
+            h \neq h'
+        \end{dcases}.
+    \]
     Then we have
     \begin{align*}
-                 & \p{f = f'} \land \p{c = c'}                                                   \\
-        \implies & \begin{dcases}
-            \forall s \in S, f\p{s} = f'\p{s} \\
-            c = c'
-        \end{dcases}                    &  & \text{(by \cref{1.2.10})}  \\
-        \implies & \forall s \in S, c f\p{s} = c' f'\p{s}        &  & \text{(\(\F\) is a field)} \\
-        \implies & \forall s \in S, \p{cf}\p{s} = \p{c' f'}\p{s} &  & \text{(by \cref{1.2.10})}  \\
-        \implies & cf = c' f'                                    &  & \text{(by \cref{1.2.10})}
+                 & h \neq h'                                                                     \\
+        \implies & \exists s \in S : h\p{s} \neq h'\p{s}          &  & \text{(by \cref{1.2.10})} \\
+        \implies & \exists s \in S : \p{cf}\p{s} \neq \p{cf}\p{s} &  & \text{(by \cref{1.2.10})} \\
+        \implies & \exists s \in S : cf\p{s} \neq cf\p{s}         &  & \text{(by \cref{1.2.10})}
     \end{align*}
-    and thus scalar multiplication in \(\mathcal{F}\p{S, \F}\) over \(\F\) is unique.
+    which contradict to the fact that \(cf\p{s} \in \F\) is unique.
+    Thus scalar multiplication in \(\FS\) over \(\F\) is unique.
 
     Now we show that \ref{vs1}--\ref{vs8} holds for \cref{1.2.10}.
     \begin{description}
         \item[For \ref{vs1}:]
-            For all \(f, g \in \mathcal{F}\p{S, \F}\) and \(s \in S\), we have
+            For all \(f, g \in \FS\) and \(s \in S\), we have
             \begin{align*}
                 \p{f + g}\p{s} & = f\p{s} + g\p{s} &  & \text{(by \cref{1.2.10})}  \\
                                & = g\p{s} + f\p{s} &  & \text{(\(\F\) is a field)} \\
@@ -426,7 +438,7 @@
             \end{align*}
             and thus by \cref{1.2.10} \(f + g = g + f\).
         \item[For \ref{vs2}:]
-            For all \(f, g, h \in \mathcal{F}\p{S, \F}\) and \(s \in S\), we have
+            For all \(f, g, h \in \FS\) and \(s \in S\), we have
             \begin{align*}
                  & \p{\p{f + g} + h}\p{s}                                         \\
                  & = \p{f + g}\p{s} + h\p{s}      &  & \text{(by \cref{1.2.10})}  \\
@@ -439,7 +451,7 @@
         \item[For \ref{vs3}:]
             Since \(\F\) is a field, we know that \(0 \in \F\).
             If we define \(\zv : S \to \{0\}\), then we know that \(\zv \in \F\).
-            Thus for all \(f \in \mathcal{F}\p{S, \F}\) and \(s \in S\), we have
+            Thus for all \(f \in \FS\) and \(s \in S\), we have
             \begin{align*}
                 \p{f + \zv}\p{s} & = f\p{s} + \zv\p{s} &  & \text{(by \cref{1.2.10})}  \\
                                  & = f\p{s} + 0                                        \\
@@ -447,27 +459,27 @@
             \end{align*}
             and by \cref{1.2.10} \(f + \zv = f\).
         \item[For \ref{vs4}:]
-            For all \(f \in \mathcal{F}\p{S, \F}\), we have
+            For all \(f \in \FS\), we have
             \begin{align*}
-                         & \forall s \in S, f\p{s} \in \F                                                                     \\
-                \implies & \forall s \in S, \exists s' \in \F : f\p{s} + s' = 0            &  & \text{(\(\F\) is a field)}    \\
-                \implies & \exists g \in \mathcal{F}\p{S, \F} : \begin{dcases}
+                         & \forall s \in S, f\p{s} \in \F                                                          \\
+                \implies & \forall s \in S, \exists s' \in \F : f\p{s} + s' = 0 &  & \text{(\(\F\) is a field)}    \\
+                \implies & \exists g \in \FS : \begin{dcases}
                     g = s \mapsto s' \\
                     f\p{s} + g\p{s} = 0
-                \end{dcases}                                    \\
-                \implies & \exists g \in \mathcal{F}\p{S, \F} : \p{f + g}\p{s} = 0         &  & \text{(by \cref{1.2.10})}     \\
-                \implies & \exists g \in \mathcal{F}\p{S, \F} : f + g = \zv.               &  & \text{(from the proof above)}
+                \end{dcases}                                          \\
+                \implies & \exists g \in \FS : \p{f + g}\p{s} = 0               &  & \text{(by \cref{1.2.10})}     \\
+                \implies & \exists g \in \FS : f + g = \zv.                     &  & \text{(from the proof above)}
             \end{align*}
         \item[For \ref{vs5}:]
             Since \(\F\) is a field, we know that \(1 \in \F\).
-            Then for all \(f \in \mathcal{F}\p{S, \F}\) and \(s \in S\), we have
+            Then for all \(f \in \FS\) and \(s \in S\), we have
             \begin{align*}
                 \p{1f}\p{s} & = 1f\p{s} &  & \text{(by \cref{1.2.10})}  \\
                             & = f\p{s}  &  & \text{(\(\F\) is a field)}
             \end{align*}
             and thus by \cref{1.2.10} \(1f = f\).
         \item[For \ref{vs6}:]
-            For all \(a, b \in \F\), \(f \in \mathcal{F}\p{S, \F}\) and \(s \in S\), we have
+            For all \(a, b \in \F\), \(f \in \FS\) and \(s \in S\), we have
             \begin{align*}
                 \p{\p{ab} f}\p{s} & = \p{ab} f\p{s}     &  & \text{(by \cref{1.2.10})}  \\
                                   & = a \p{b f\p{s}}    &  & \text{(\(\F\) is a field)} \\
@@ -476,7 +488,7 @@
             \end{align*}
             and thus by \cref{1.2.10} \(\p{ab} f = a \p{bf}\).
         \item[For \ref{vs7}:]
-            For all \(a \in \F\), \(f, g \in \mathcal{F}\p{S, \F}\) and \(s \in S\), we have
+            For all \(a \in \F\), \(f, g \in \FS\) and \(s \in S\), we have
             \begin{align*}
                 \p{a \p{f + g}}\p{s} & = a \p{\p{f + g}\p{s}}      &  & \text{(by \cref{1.2.10})}  \\
                                      & = a \p{f\p{s} + g\p{s}}     &  & \text{(by \cref{1.2.10})}  \\
@@ -486,7 +498,7 @@
             \end{align*}
             and thus by \cref{1.2.10} \(a \p{f + g} = af + ag\).
         \item[For \ref{vs8}:]
-            For all \(a, b \in \F\), \(f \in \mathcal{F}\p{S, \F}\) and \(s \in S\), we have
+            For all \(a, b \in \F\), \(f \in \FS\) and \(s \in S\), we have
             \begin{align*}
                 \p{\p{a + b} f}\p{s} & = \p{a + b} f\p{s}          &  & \text{(by \cref{1.2.10})}  \\
                                      & = af\p{s} + bf\p{s}         &  & \text{(\(\F\) is a field)} \\
@@ -550,7 +562,7 @@
 \end{eg}
 
 \begin{proof}
-    Observe that \(\ps{\F} \subseteq \mathcal{F}\p{\F, \F}\) (see \cref{1.2.10}).
+    Observe that \(\ps{\F} \subseteq \fs{\F}{\F}\) (see \cref{1.2.10}).
 \end{proof}
 
 \begin{eg}\label{1.2.13}
@@ -741,7 +753,7 @@
                                & = a\zv + a\zv. &  & (a \in \F)
             \end{align*}
         \item[For \ref{vs8}:]
-            For all \(a, b \in \F\), \(f \in \mathcal{F}\p{S, \F}\) and \(s \in S\), we have
+            For all \(a, b \in \F\), \(f \in \FS\) and \(s \in S\), we have
             \begin{align*}
                 \p{a + b} \zv & = \zv          &  & \text{(by definition)} \\
                               & = \zv + \zv    &  & \text{(by definition)} \\
