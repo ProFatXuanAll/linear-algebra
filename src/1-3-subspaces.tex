@@ -14,3 +14,27 @@
   Since \(\zv \in \V\) (by \ref{vs3}), we know that \(\set{\zv} \subseteq \V\).
   Thus by \cref{ex:1.2.11} and \cref{1.3.1} \(\set{\zv}\) is a subspace of \(\V\).
 \end{proof}
+
+\begin{thm}\label{1.3}
+  Let \(\V\) be a vector space and \(\W\) a subset of \(\V\).
+  Then \(\W\) is a subspace of \(\V\) if and only if the following three conditions hold for the operations defined in \(\V\).
+  \begin{enumerate}
+    \item \(\zv \in \W\).
+    \item (\(\W\) is \textbf{closed under addition}.)
+          \(x + y \in \W\) whenever \(x \in \W\) and \(y \in \W\).
+    \item (\(\W\) is \textbf{closed under scalar multiplication}.)
+          \(cx \in \W\) whenever \(c \in \F\) and \(x \in \W\).
+  \end{enumerate}
+\end{thm}
+
+\begin{proof}
+  If \(\W\) is a subspace of \(\V\), then \(\W\) is a vector space with the operations of addition and scalar multiplication defined on \(\V\).
+  Hence conditions (b) and (c) hold, and there exists a vector \(\zv' \in \W\) such that \(x + \zv' = x\) for each \(x \in \W\).
+  But also \(x + \zv = x\), and thus \(\zv' = \zv\) by \cref{1.1}.
+  So condition (a) holds.
+
+  Since properties \ref{vs1}, \ref{vs2}, \ref{vs5}, \ref{vs6}, \ref{vs7}, and \ref{vs8} hold for all vectors in the vector space, these properties automatically hold for the vectors in any subset.
+  Thus if conditions (a), (b), and (c) hold, then \(\W\) is a subspace of \(\V\) if the additive inverse of each vector in \(\W\) lies in \(\W\).
+  But if \(x \in W\), then \(\p{-1} x \in \W\) by condition (c), and \(-x = \p{-1} x\) by \cref{1.2}.
+  Hence \(\W\) is a subspace of \(\V\).
+\end{proof}

@@ -45,7 +45,8 @@
 
 % Text inside the body of theorem-like environments are set to Roman font.
 % theorem-like environments share their counters, counters follow section and
-% reset in every sections.  Exercises has their owned counter.  Notes do not
+% reset in every sections (except for theorems, theorems counters are reset for
+% each chapter).  Theorems and exercises has their owned counter.  Notes do not
 % use counter.  See `amsthm' for details.
 \theoremstyle{definition}
 \newtheorem{ax}{Axiom}[section]
@@ -57,7 +58,7 @@
 \newtheorem*{note}{Note}
 \newtheorem{prop}[ax]{Proposition}
 \newtheorem{rem}[ax]{Remark}
-\newtheorem{thm}[ax]{Theorem}
+\newtheorem{thm}{Theorem}[chapter]
 
 % In `enumerate' enviroments, items' label are alphabets and surrounded by
 % parentheses.  See `enumitem' for details.

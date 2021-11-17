@@ -577,7 +577,7 @@
   With these operations \(\V\) is a vector space.
 \end{eg}
 
-\begin{thm}[Cancellation Law for Vector Addition]\label{1.2.14}
+\begin{thm}[Cancellation Law for Vector Addition]\label{1.1}
   If \(x, y\), and \(z\) are vectors in a vector space \(\V\) such that \(x + z = y + z\), then \(x = y\).
 \end{thm}
 
@@ -591,7 +591,7 @@
   by \ref{vs2} and \ref{vs3}.
 \end{proof}
 
-\begin{cor}\label{1.2.15}
+\begin{cor}\label{1.2.14}
   The vector \(\zv\) described in \ref{vs3} is unique.
 \end{cor}
 
@@ -605,14 +605,14 @@
   \]
   But then we have
   \begin{align*}
-             & x + \zv = x = x + \zv' &  & \text{(by \ref{vs3})}     \\
-    \implies & \zv = \zv',            &  & \text{(by \cref{1.2.14})}
+             & x + \zv = x = x + \zv' &  & \text{(by \ref{vs3})}  \\
+    \implies & \zv = \zv',            &  & \text{(by \cref{1.1})}
   \end{align*}
   a contradiction.
   Thus \(\zv \in V\) is unique.
 \end{proof}
 
-\begin{cor}\label{1.2.16}
+\begin{cor}\label{1.2.15}
   The vector \(y\) described in \ref{vs4} is unique.
 \end{cor}
 
@@ -626,18 +626,18 @@
   \]
   But then we have
   \begin{align*}
-             & x + y = x + y'                                \\
-    \implies & y = y',        &  & \text{(by \cref{1.2.14})}
+             & x + y = x + y'                             \\
+    \implies & y = y',        &  & \text{(by \cref{1.1})}
   \end{align*}
   a contradiction.
   Thus \(y\) described in \ref{vs4} is unique.
 \end{proof}
 
-\begin{defn}\label{1.2.17}
+\begin{defn}\label{1.2.16}
   The vector \(\zv\) in \ref{vs3} is called the \textbf{zero vector} of \(\V\), and the vector \(y\) in \ref{vs4} (that is, the unique vector such that \(x + y = \zv\)) is called the \textbf{additive inverse} of \(x\) and is denoted by \(-x\).
 \end{defn}
 
-\begin{thm}\label{1.2.18}
+\begin{thm}\label{1.2}
   In any vector space \(\V\), the following statements are true:
   \begin{enumerate}
     \item \(0x = \zv\) for each \(x \in \V\).
@@ -651,17 +651,17 @@
   \[
     0x + 0x = \p{0 + 0} x = 0x = 0x + \zv = \zv + 0x.
   \]
-  Hence \(0x = \zv\) by \cref{1.2.14}.
+  Hence \(0x = \zv\) by \cref{1.1}.
 \end{proof}
 
 \begin{proof}{(b)}
   The vector \(-\p{ax}\) is the unique element of \(\V\) such that \(ax + \bk{-\p{ax}} = \zv\).
-  Thus if \(ax + \p{-a}x = 0\), \cref{1.2.16} to \cref{1.2.14} implies that \(\p{-a}x = -\p{ax}\).
+  Thus if \(ax + \p{-a}x = 0\), \cref{1.2.15} to \cref{1.1} implies that \(\p{-a}x = -\p{ax}\).
   But by \ref{vs8},
   \[
     ax + \p{-a}x = \bk{a + \p{-a}}x = 0x = \zv
   \]
-  by \cref{1.2.18}(a).
+  by \cref{1.2}(a).
   Consequently \(\p{-a}x = -\p{ax}\).
   In particular, \(\p{-1}x = -x\).
   So, by \ref{vs6},
@@ -677,7 +677,7 @@
                & = a\p{\zv + \zv} &  & \text{(by \ref{vs3})} \\
                & = a\zv + a\zv    &  & \text{(by \ref{vs7})}
   \end{align*}
-  and thus by \cref{1.2.14} \(a\zv = \zv\).
+  and thus by \cref{1.1} \(a\zv = \zv\).
 \end{proof}
 
 \exercisesection
