@@ -24,6 +24,10 @@
 \usepackage{enumitem}
 % Provide better quoting environment.
 \usepackage{dirtytalk}
+% Parsing list inside `\newcommand'.
+\usepackage{listofitems}
+% Nice looking if-then-else structure with comparison functionality.
+\usepackage{ifthen}
 % Automatically add hyperlinks to labels/refs.  Must be loaded after all
 % packages above and before `cleveref'.  Recommend to use with `natbib' when
 % you need bibtex.
@@ -85,6 +89,9 @@
 % Floor.
 \DeclarePairedDelimiter{\floorTmp}{\lfloor}{\rfloor}
 \newcommand{\floor}[1]{\floorTmp*{#1}}
+% Evaluate.
+\DeclarePairedDelimiter{\evalTmp}{.}{\rvert}
+\newcommand{\eval}[1]{\evalTmp*{#1}}
 % Parenthese.
 \DeclarePairedDelimiter{\pTmp}{\lparen}{\rparen}
 \newcommand{\p}[1]{\pTmp*{#1}}
@@ -130,8 +137,60 @@
 % Polynomial spaces.
 \newcommand{\ps}[1]{{\vs{P}\p{#1}}}
 
-% n-tuple.
-\newcommand{\tp}[2]{{\p{{#1}_{1}, {#1}_{2}, \dots, {#1}_{#2}}}}
+% Sequence.
+% #1 is a comma-separated list of sequence symbols.
+% #2 is a comma-separated list of sequence index.
+% #3 is a join operator.
+%
+% For example:
+% If we use \(\fseq{a}{1,2,3}{,}\), we will get
+%
+%    a_{1}, a_{2}, a_{3}
+%
+% If we use \(\fseq{a,b}{1,2,3}{+}\), we will get
+%
+%    a_{1} b_{1} + a_{2} b_{2} + a_{3} b_{3}
+%
+% If we use \(\fseq{a}{1}{,}\), we will get
+%
+%    a_{1}
+%
+% If we use \(\fseq{a}{1,2,,n}{,}\), we will get
+%
+%    a_{1}, a_{2}, \dots, a_{n}
+%
+\newcommand{\seq}[3]{%
+	\setsepchar{,}%                              List items are separated by comma.
+	\readlist\SeqSymbols{#1}%                    Define macro `\SeqSymbols' using #1.
+	\readlist\SeqIndices{#2}%                    Define macro `\SeqIndices' using #2.
+	\foreachitem\SeqIndex\in\SeqIndices{%        Loop over indices.
+		\ifthenelse{%------------------------------IF-BEGIN------------------------
+			\equal{\SeqIndex}{\SeqIndices[1]}%       No join operator for first index.
+		}%-----------------------------------------IF-END--------------------------
+		{%-----------------------------------------THEN-BEGIN----------------------
+			\foreachitem\SeqSymbol\in\SeqSymbols{%   Loop over symbols.
+				{\SeqSymbol}_{\SeqIndex}%              Output symbols with index.
+			}%
+		}%-----------------------------------------THEN-END------------------------
+		{%-----------------------------------------ELSE-BEGIN----------------------
+			\ifthenelse{%--------------------------------IF-BEGIN--------------------
+				\equal{\SeqIndex}{}%                   Replace empty item with `\dots'.
+			}%-------------------------------------------IF-END----------------------
+			{%-------------------------------------------THEN-BEGIN------------------
+				#3\dots%
+			}%-------------------------------------------THEN-END--------------------
+			{%-------------------------------------------ELSE-BEGIN------------------
+				#3%                                    Each non-first item in the list will prepend one join operator.
+				\foreachitem\SeqSymbol\in\SeqSymbols{% Loop over symbols.
+					{\SeqSymbol}_{\SeqIndex}%            Output symbols with index.
+				}%
+			}%-------------------------------------------ELSE-END--------------------
+		}%-----------------------------------------ELSE-END------------------------
+	}%
+}
+
+% Tuple.
+\newcommand{\tp}[2]{{\p{\seq{#1}{#2}{,}}}}
 
 % 0 vector.
 \newcommand{\zv}{\mathit{0}}

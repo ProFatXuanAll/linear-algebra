@@ -41,17 +41,17 @@
 \end{note}
 
 \begin{defn}\label{1.2.3}
-  An object of the form \(\tp{a}{n}\), where the entries \(a_{1}, a_{2}, \dots, a_{n}\) are elements of a field \(\F\), is called an \textbf{\(n\)-tuple} with entries from \(\F\).
-  The elements \(a_{1}, a_{2}, \dots, a_{n}\) are called the \textbf{entries} or \textbf{components} of the \(n\)-tuple.
-  Two \(n\)-tuples \(\tp{a}{n}\) and \(\tp{b}{n}\) with entries from a field \(\F\) are called \textbf{equal} if \(a_i = b_i\) for \(i = 1, 2, \dots, n\).
+  An object of the form \(\tp{a}{1,2,,n}\), where the entries \(\seq{a}{1,2,,n}{,}\) are elements of a field \(\F\), is called an \textbf{\(n\)-tuple} with entries from \(\F\).
+  The elements \(\seq{a}{1,2,,n}{,}\) are called the \textbf{entries} or \textbf{components} of the \(n\)-tuple.
+  Two \(n\)-tuples \(\tp{a}{1,2,,n}\) and \(\tp{b}{1,2,,n}\) with entries from a field \(\F\) are called \textbf{equal} if \(a_i = b_i\) for \(i = 1, 2, \dots, n\).
 \end{defn}
 
 \begin{eg}\label{1.2.4}
   The set of all \(n\)-tuples with entries from a field \(\F\) is denoted by \(\vs{F}^{n}\).
   This set is a vector space over \(\F\) with the operations of coordinatewise addition and scalar multiplication;
-  that is, if \(u = \tp{a}{n} \in \vs{F}^{n}\), \(v = \tp{b}{n} \in \vs{F}^{n}\), and \(c \in \F\), then
+  that is, if \(u = \tp{a}{1,2,,n} \in \vs{F}^{n}\), \(v = \tp{b}{1,2,,n} \in \vs{F}^{n}\), and \(c \in \F\), then
   \[
-    u + v = (a_{1} + b_{1}, a_{2} + b_{2}, \dots, a_{n} + b_{n}) \quad \text{and} \quad cu = \tp{ca}{n}.
+    u + v = (a_{1} + b_{1}, a_{2} + b_{2}, \dots, a_{n} + b_{n}) \quad \text{and} \quad cu = \tp{ca}{1,2,,n}.
   \]
 \end{eg}
 
@@ -131,7 +131,7 @@
       Then for all \(u \in \vs{F}^{n}\), we have
       \begin{align*}
         u + \p{0, \dots, 0} & = \p{u_{1} + 0, u_{2} + 0, \dots, u_{n} + 0} &  & \text{(by \cref{1.2.4})}   \\
-                            & = \tp{u}{n}                                  &  & \text{(\(\F\) is a field)} \\
+                            & = \tp{u}{1,2,,n}                             &  & \text{(\(\F\) is a field)} \\
                             & = u.
       \end{align*}
       We denote \(\zv = \p{0, \dots, 0}\).
@@ -140,7 +140,7 @@
       \begin{align*}
                  & \forall i \in I_{n}, u_{i} \in \F                                                                                 \\
         \implies & \forall i \in I_{n}, \exists v_{i} \in \F : u_{i} + v_{i} = 0                  &  & \text{(\(\F\) is a field)}    \\
-        \implies & \exists v_{1}, v_{2}, \dots, v_{n} \in \F :                                                                       \\
+        \implies & \exists \seq{v}{1,2,,n}{,} \in \F :                                                                               \\
                  & \p{u_{1} + v_{1}, u_{2} + v_{2}, \dots, u_{n} + v_{n}} = \p{0, \dots, 0} = \zv                                    \\
         \implies & \exists y \in \vs{F}^{n} : u + v = \zv.                                        &  & \text{(from the proof above)}
       \end{align*}
@@ -148,34 +148,34 @@
       Since \(\F\) is a field, we know that \(1 \in \F\).
       Then for all \(u \in \vs{F}^{n}\), we have
       \begin{align*}
-        1u & = \p{1 u_{1}, 1 u_{2}, \dots, 1 u_{n}} &  & \text{(by \cref{1.2.4})}   \\
-           & = \tp{u}{n}                            &  & \text{(\(\F\) is a field)} \\
+        1u & = \tp{1u}{1,2,,n} &  & \text{(by \cref{1.2.4})}   \\
+           & = \tp{u}{1,2,,n}  &  & \text{(\(\F\) is a field)} \\
            & = u.
       \end{align*}
     \item[For \ref{vs6}:]
       For all \(a, b \in \F\) and \(u \in \vs{F}^{n}\), we have
       \begin{align*}
-        \p{ab} u & = \p{\p{ab} u_{1}, \p{ab} u_{2}, \dots, \p{ab} u_{n}}    &  & \text{(by \cref{1.2.4})}   \\
+        \p{ab} u & = \tp{\p{ab} u}{1,2,,n}                                  &  & \text{(by \cref{1.2.4})}   \\
                  & = \p{a \p{b u_{1}}, a \p{b u_{2}}, \dots, a \p{b u_{n}}} &  & \text{(\(\F\) is a field)} \\
-                 & = a \p{b u_{1}, b u_{2}, \dots, b u_{n}}                 &  & \text{(by \cref{1.2.4})}   \\
+                 & = a \tp{bu}{1,2,,n}                                      &  & \text{(by \cref{1.2.4})}   \\
                  & = a \p{bu}.                                              &  & \text{(by \cref{1.2.4})}
       \end{align*}
     \item[For \ref{vs7}:]
       For all \(a \in \F\) and \(u, v \in \vs{F}^{n}\), we have
       \begin{align*}
-        a \p{u + v} & = a \p{u_{1} + v_{1}, u_{2} + v_{2}, \dots, u_{n} + v_{n}}                    &  & \text{(by \cref{1.2.4})}   \\
-                    & = \p{a \p{u_{1} + v_{1}}, a \p{u_{2} + v_{2}}, \dots, a \p{u_{n} + v_{n}}}    &  & \text{(by \cref{1.2.4})}   \\
-                    & = \p{a u_{1} + a v_{1}, a u_{2} + a v_{2}, \dots, a u_{n} + a v_{n}}          &  & \text{(\(\F\) is a field)} \\
-                    & = \p{a u_{1}, a u_{2}, \dots, a u_{n}} + \p{a v_{1}, a v_{2}, \dots, a v_{n}} &  & \text{(by \cref{1.2.4})}   \\
-                    & = a u + a v.                                                                  &  & \text{(by \cref{1.2.4})}
+        a \p{u + v} & = a \p{u_{1} + v_{1}, u_{2} + v_{2}, \dots, u_{n} + v_{n}}                 &  & \text{(by \cref{1.2.4})}   \\
+                    & = \p{a \p{u_{1} + v_{1}}, a \p{u_{2} + v_{2}}, \dots, a \p{u_{n} + v_{n}}} &  & \text{(by \cref{1.2.4})}   \\
+                    & = \p{a u_{1} + a v_{1}, a u_{2} + a v_{2}, \dots, a u_{n} + a v_{n}}       &  & \text{(\(\F\) is a field)} \\
+                    & = \tp{au}{1,2,,n} + \tp{av}{1,2,,n}                                        &  & \text{(by \cref{1.2.4})}   \\
+                    & = a u + a v.                                                               &  & \text{(by \cref{1.2.4})}
       \end{align*}
     \item[For \ref{vs8}:]
       For all \(a, b \in \F\) and \(u \in \vs{F}^{n}\), we have
       \begin{align*}
-        \p{a + b} x & = \p{\p{a + b} u_{1}, \p{a + b} u_{2}, \dots, \p{a + b} u_{n}}                &  & \text{(by \cref{1.2.4})}   \\
-                    & = \p{a u_{1} + b u_{1}, a u_{2} + b u_{2}, \dots, a u_{n} + b u_{n}}          &  & \text{(\(\F\) is a field)} \\
-                    & = \p{a u_{1}, a u_{2}, \dots, a u_{n}} + \p{b u_{1}, b u_{2}, \dots, b u_{n}} &  & \text{(by \cref{1.2.4})}   \\
-                    & = a u + b u.                                                                  &  & \text{(by \cref{1.2.4})}
+        \p{a + b} u & = \tp{\p{a + b} u}{1,2,,n}                                           &  & \text{(by \cref{1.2.4})}   \\
+                    & = \p{a u_{1} + b u_{1}, a u_{2} + b u_{2}, \dots, a u_{n} + b u_{n}} &  & \text{(\(\F\) is a field)} \\
+                    & = \tp{au}{1,2,,n} + \tp{bu}{1,2,,n}                                  &  & \text{(by \cref{1.2.4})}   \\
+                    & = a u + b u.                                                         &  & \text{(by \cref{1.2.4})}
       \end{align*}
   \end{description}
   From all proofs above we conclude by \cref{1.2.1} that \cref{1.2.4} is indeed a vector space.
@@ -191,7 +191,7 @@
       a_{n}
     \end{pmatrix}
   \]
-  rather than as \textbf{row vectors} \(\tp{a}{n}\).
+  rather than as \textbf{row vectors} \(\tp{a}{1,2,,n}\).
   Since a \(1\)-tuple whose only entry is from \(\F\) can be regarded as an element of \(\F\), we usually write \(\F\) rather than \(\vs{F}^{1}\) for the vector space of \(1\)-tuples with entry from \(\F\).
 \end{defn}
 
