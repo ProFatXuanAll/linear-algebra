@@ -598,14 +598,14 @@
 \end{eg}
 
 \begin{proof}
-  First observe that \(V \subseteq \fs{\N}{\F}\).
+  First observe that \(\V \subseteq \fs{\N}{\F}\).
   We know by \cref{1.2.10} that there exists a function \(\zv \in \fs{\N}{\F}\) such that \(\zv(n) = 0\) for all \(n \in \N\).
   Since \(\zv\) only have finite number of nonzero terms (actually, \(\zv\) has \(0\) nonzero term), we know that \(\zv \in \V\).
 
-  Let \(\B{a_{n}}, \B{b_{n}} \in V\) and \(c \in \R\).
+  Let \(\B{a_{n}}, \B{b_{n}} \in \V\) and \(c \in \R\).
   Since \(\B{a_{n}}, \B{b_{n}}\) have finite numbers of nonzero terms, we know that \(\B{a_{n}} + \B{b_{n}} = \B{a_{n} + b_{n}}\) also has a finite number of nonzero terms and thus \(\B{a_{n}} + \B{b_{n}} \in \V\).
   Similarly we know that \(c\B{a_{n}} = \B{ca_{n}}\) also has a finite number of nonzero terms and thus \(c\B{a_{n}} \in \V\).
-  by \cref{1.3} we know that \(\V\) is a subspace of \(\fs{\N}{\F}\) over \(\F\) and thus \(\V\) is a vector space over \(\F\).
+  Therefore by \cref{1.3} we know that \(\V\) is a subspace of \(\fs{\N}{\F}\) over \(\F\) and \(\V\) is a vector space over \(\F\).
 \end{proof}
 
 \begin{thm}[Cancellation Law for Vector Addition]\label{1.1}
@@ -629,7 +629,7 @@
 \begin{proof}
   Suppose for sake of contradiction that
   \[
-    \exists \zv' \in V : \begin{dcases}
+    \exists \zv' \in \V : \begin{dcases}
       \zv \neq \zv' \\
       \forall x \in \V, x + \zv' = x
     \end{dcases}.
@@ -640,7 +640,7 @@
     \implies & \zv = \zv',            &  & \text{(by \cref{1.1})}
   \end{align*}
   a contradiction.
-  Thus \(\zv \in V\) is unique.
+  Thus \(\zv \in \V\) is unique.
 \end{proof}
 
 \begin{cor}\label{1.2.15}
@@ -734,16 +734,17 @@
 \end{ex}
 
 \begin{proof}
-  First observe that \(V \subseteq \fs{S}{\R}\) for arbitrary domain \(S\).
+  First observe that \(\V \subseteq \fs{S}{\R}\) for arbitrary domain \(S\).
   Since \(\zv \in \fs{S}{\R}\) defined by \(\zv(x) = 0\) is differentiable on \(\R\), we know that \(\zv \in \V\).
-  Let \(f, g \in V\) and \(c \in \R\).
+
+  Let \(f, g \in \V\) and \(c \in \R\).
   Since
   \[
-    f' + g' = (f + g)' \in V
+    f' + g' = (f + g)' \in \V
   \]
   and
   \[
-    cf' = (cf)' \in V,
+    cf' = (cf)' \in \V,
   \]
   by \cref{1.3} we know that \(\V\) is a subspace of \(\fs{S}{\R}\) over \(\R\) and thus \(\V\) is a vector space over \(\R\).
 \end{proof}
@@ -813,6 +814,28 @@
   A real-valued function \(f\) defined on the real line is called an \textbf{even function} if \(f\p{-t} = f\p{t}\) for each real number \(t\).
   Prove that the set of even functions defined on the real line with the operations of addition and scalar multiplication defined in \cref{1.2.10} is a vector space.
 \end{ex}
+
+\begin{proof}
+  First observe that \(\V \subseteq \fs{\R}{\R}\).
+  We know by \cref{1.2.10} that there exists a function \(\zv \in \fs{\R}{\R}\) such that \(\zv(x) = 0\) for all \(x \in \R\).
+  Since \(\zv(t) = 0 = \zv(-t)\) for all \(t \in \R\), we know that \(\zv \in \V\).
+
+  Let \(f, g \in \V\) and \(t, c \in \R\).
+  Since
+  \begin{align*}
+    \p{f + g}\p{t} & = f\p{t} + g\p{t}   &  & \text{(by \cref{1.2.10})}    \\
+                   & = f\p{-t} + g\p{-t} &  & \text{(by \cref{ex:1.2.12})} \\
+                   & = \p{f + g}\p{-t}   &  & \text{(by \cref{1.2.10})}
+  \end{align*}
+  and
+  \begin{align*}
+    \p{cf}\p{t} & = cf\p{t}       &  & \text{(by \cref{1.2.10})}    \\
+                & = cf\p{-t}      &  & \text{(by \cref{ex:1.2.12})} \\
+                & = \p{cf}\p{-t}, &  & \text{(by \cref{1.2.10})}
+  \end{align*}
+  we know that \(f + g \in \V\) and \(cf \in \V\).
+  Thus by \cref{1.3} we know that \(\V\) is a subspace of \(\fs{\R}{\R}\) over \(\R\) and \(\V\) is a vector space over \(\R\).
+\end{proof}
 
 \setcounter{ex}{20}
 \begin{ex}\label{ex:1.2.21}
