@@ -38,3 +38,49 @@
   But if \(x \in W\), then \(\p{-1} x \in \W\) by condition (c), and \(-x = \p{-1} x\) by \cref{1.2}.
   Hence \(\W\) is a subspace of \(\V\).
 \end{proof}
+
+\begin{defn}\label{1.3.3}
+  The \textbf{transpose} \(\tp{A}\) of an \(m \times n\) matrix \(A\) is the \(n \times m\) matrix obtained from \(A\) by interchanging the rows with the columns;
+  that is, \(\p{\tp{A}}_{i j} = A_{j i}\).
+\end{defn}
+
+\begin{defn}\label{1.3.4}
+  A \textbf{symmetric matrix} is a matrix \(A\) such that \(\tp{A} = A\).
+  Clearly, a symmetric matrix must be square.
+\end{defn}
+
+\begin{eg}\label{1.3.5}
+  The set \(\W\) of all symmetric matrices in \(\ms{n}{n}{\F}\) is a subspace of \(\ms{n}{n}{\F}\).
+\end{eg}
+
+\begin{proof}
+  Observe that
+  \begin{itemize}
+    \item The zero matrix is equal to its transpose and hence belongs to \(\W\).
+    \item If \(A \in \W\) and \(B \in \W\), then \(\tp{A} = A\) and \(\tp{B} = B\).
+          Thus by \cref{ex:1.3.3} \(\tp{\p{A + B}} = \tp{A} + \tp{B} = A + B\), so that \(A + B \in \W\).
+    \item If \(A \in \W\), then \(\tp{A} = A\).
+          So for any \(a \in \F\), we have \(\tp{\p{aA}} = a\tp{A} = aA\) by \cref{ex:1.3.3}
+          Thus \(aA \in W\).
+  \end{itemize}
+  Thus by \cref{1.3} \(\W\) is a subspace of \(\ms{n}{n}{\F}\) over \(\F\).
+\end{proof}
+
+\exercisesection
+
+\setcounter{ex}{2}
+\begin{ex}\label{ex:1.3.3}
+  Prove that \(\tp{\p{aA + bB}} = a\tp{A} + b\tp{B}\) for any \(A, B \in \ms{m}{n}{\F}\) and any \(a, b \in \F\).
+\end{ex}
+
+\begin{proof}
+  Since
+  \begin{align*}
+    \tp{\p{aA + bB}}_{i j} & = \p{aA + bB}_{j i}                     &  & \text{(by \cref{1.3.3})} \\
+                           & = \p{aA}_{j i} + \p{bB}_{j i}           &  & \text{(by \cref{1.2.9})} \\
+                           & = aA_{j i} + bB_{j i}                   &  & \text{(by \cref{1.2.9})} \\
+                           & = a\p{\tp{A}}_{i j} + b\p{\tp{B}}_{i j} &  & \text{(by \cref{1.3.3})} \\
+                           & = \p{a\tp{A} + b\tp{B}}_{i j},          &  & \text{(by \cref{1.2.9})}
+  \end{align*}
+  by \cref{1.2.7} we know that \(\tp{\p{aA + bB}} = a\tp{A} + b\tp{B}\).
+\end{proof}
