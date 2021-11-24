@@ -121,21 +121,47 @@
 % Integer number field.
 \newcommand{\Z}{\mathbb{Z}}
 
-% Vector spaces.
+% Vector space.
 \newcommand{\vs}[1]{\mathsf{#1}}
 % General vector space.
 \newcommand{\V}{\vs{V}}
 \newcommand{\W}{\vs{W}}
-% Metric spaces.
+
+% Metric space with shape #1 x #2 over field #3.
 \newcommand{\ms}[3]{\vs{M}_{{#1} \times #2}({#3})}
 % General metric space.
 \newcommand{\MS}{\ms{m}{n}{\F}}
-% Function spaces
+
+% Function space from domain #1 to range #2.
 \newcommand{\fs}[2]{\mathcal{F}\p{#1, #2}}
 % General function space.
 \newcommand{\FS}{\fs{S}{\F}}
-% Polynomial spaces.
-\newcommand{\ps}[1]{\vs{P}\p{#1}}
+
+% Polynomial spaces of degree #1 over field #2.
+% #1 (optional) is the degree of polynomial.
+% #2 is field.
+%
+% For example:
+% If we use \(\ps{\F}\), we will get
+%
+%    \vs{P}(\F)
+%
+% If we use \(\ps[n]{\F}\), we will get
+%
+%    \vs{P}_{n}(\F)
+%
+\newcommand{\ps}[2][]{%
+\ifthenelse{%
+	\equal{#1}{}%
+}{%
+	\vs{P}\p{#2}%
+}{%
+	\vs{P}_{#1}\p{#2}%
+}%
+}
+
+% Continuous function space over matric space #1.
+\newcommand{\cfs}[1]{\vs{C}\p{#1}}
 
 % Sequence.
 % #1 is a comma-separated list of sequence symbols.
@@ -197,8 +223,11 @@
 % 0 metric.
 \newcommand{\zm}{\mathit{O}}
 
-% Transpose format.
+% Transpose of matrix #1.
 \newcommand{\tp}[1]{{#1}^{t}}
+
+% Trace of matrix #1.
+\newcommand{\tr}[1]{\operatorname{tr}\p{#1}}
 
 % Formatting exercises section.
 \newcommand{\exercisesection}{

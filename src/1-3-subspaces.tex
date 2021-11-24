@@ -66,6 +66,77 @@
   Thus by \cref{1.3} \(\W\) is a subspace of \(\ms{n}{n}{\F}\) over \(\F\).
 \end{proof}
 
+\begin{eg}\label{1.3.6}
+  Let \(n\) be a nonnegative integer, and let \(\ps[n]{\F}\) consist of all polynomials in \(\ps{\F}\) having degree less than or equal to \(n\).
+  Then \(\ps[n]{\F}\) is a subspace of \(\ps{\F}\) over \(\F\).
+\end{eg}
+
+\begin{proof}
+  Since the zero polynomial has degree \(-1\), it is in \(\ps[n]{\F}\).
+  Moreover, the sum of two polynomials with degrees less than or equal to \(n\) is another polynomial of degree less than or equal to \(n\), and the product of a scalar and a polynomial of degree less than or equal to \(n\) is a polynomial of degree less than or equal to \(n\).
+  So \(\ps[n]{\F}\) is closed under addition and scalar multiplication.
+  It therefore follows from \cref{1.3} that \(\ps[n]{\F}\) is a subspace of \(\ps{\F}\) over \(\F\).
+\end{proof}
+
+\begin{eg}\label{1.3.7}
+  Let \(\cfs{\R}\) denote the set of all continuous real-valued functions defined on \(\R\).
+  Clearly \(\cfs{\R}\) is a subset of the vector space \(\fs{\R}{\R}\) defined in \cref{1.2.10} of \cref{sec:1.2}.
+  We claim that \(\cfs{\R}\) is a subspace of \(\fs{\R}{\R}\) over \(\R\).
+\end{eg}
+
+\begin{proof}
+  First note that the zero of \(\fs{\R}{\R}\) is the constant function defined by \(f\p{t} = 0\) for all \(t \in \R\).
+  Since constant functions are continuous, we have \(f \in \cfs{\R}\).
+  Moreover, the sum of two continuous functions is continuous, and the product of a real number and a continuous function is continuous.
+  So \(\cfs{\R}\) is closed under addition and scalar multiplication and hence is a subspace of \(\fs{\R}{\R}\) over \(\R\) by \cref{1.3}.
+\end{proof}
+
+\begin{eg}\label{1.3.8}
+  An \(n \times n\) matrix \(M\) is called a \textbf{diagonal matrix} if \(M_{i j} = 0\) whenever \(i \neq j\), that is, if all its nondiagonal entries are zero.
+  Then the set of diagonal matrices is a subspace of \(\ms{n}{n}{\F}\) over \(\F\).
+\end{eg}
+
+\begin{proof}
+  Clearly the zero matrix is a diagonal matrix because all of its entries are \(0\).
+  Moreover, if \(A\) and \(B\) are diagonal \(n \times n\) matrices, then whenever \(i \neq j\),
+  \[
+    \p{A + B}_{i j} = A_{i j} + B_{i j} = 0 + 0 = 0 \quad \text{and} \quad \p{cA}_{i j} = cA_{i j} = c0 = 0
+  \]
+  for any scalar \(c \in \F\).
+  Hence \(A + B\) and \(cA\) are diagonal matrices for any scalar \(c \in \F\).
+  Therefore the set of diagonal matrices is a subspace of \(\ms{n}{n}{\F}\) over \(\F\) by \cref{1.3}.
+\end{proof}
+
+\begin{eg}\label{1.3.9}
+  The \textbf{trace} of an \(n \times n\) matrix \(M\), denoted \(\tr{M}\), is the sum of the diagonal entries of \(M\);
+  that is,
+  \[
+    \tr{M} = M_{1 1} + M_{2 2} + \dots + M_{n n}.
+  \]
+  The set \(\W\) of \(n \times n\) matrices having trace equal to \(0\) is a subspace of \(\ms{n}{n}{\F}\) over \(\F\).
+\end{eg}
+
+\begin{proof}
+  Clearly we have \(\W \subseteq \ms{n}{n}{\F}\), \(\tr{\zm} = 0\) and \(\zm \in \W\).
+  Moreover, if \(A, B \in \W\), then
+  \begin{align*}
+    \tr{A + B} & = \p{A + B}_{1 1} + \p{A + B}_{2 2} + \dots + \p{A + B}_{n n}               &  & \text{(by \cref{1.3.9})}  \\
+               & = A_{1 1} + B_{1 1} + A_{2 2} + B_{2 2} + \dots + A_{n n} + B_{n n}         &  & \text{(by \cref{1.2.9})}  \\
+               & = A_{1 1} + A_{2 2} + \dots + A_{n n} + B_{1 1} + B_{2 2} + \dots + B_{n n} &  & (A_{i i}, B_{i i} \in \F) \\
+               & = 0                                                                         &  & (A, B \in \W)
+  \end{align*}
+  and
+  \begin{align*}
+    \tr{cA} & = \p{cA}_{1 1} + \p{cA}_{2 2} + \dots + \p{cA}_{n n} &  & \text{(by \cref{1.3.9})} \\
+            & = cA_{1 1} + cA_{2 2} + \dots + cA_{n n}             &  & \text{(by \cref{1.2.9})} \\
+            & = c\p{A_{1 1} + A_{2 2} + A_{n n}}                   &  & (c, A_{i i} \in \F)      \\
+            & = c0                                                 &  & (A \in \W)               \\
+            & = 0                                                  &  & (c \in \F)
+  \end{align*}
+  for any scalar \(c \in \F\).
+  Therefore \(\W\) is a subspace of \(\ms{n}{n}{\F}\) over \(\F\) by \cref{1.3}.
+\end{proof}
+
 \exercisesection
 
 \setcounter{ex}{2}
