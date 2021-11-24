@@ -393,14 +393,14 @@
 \end{proof}
 
 \begin{ex}\label{ex:1.3.20}
-  Prove that if \(\W\) is a subspace of a vector space \(\V\) over \(\F\) and \(\seq{w}{1,2,,n}{,} \in \W\), then \(\seq{a,w}{1,2,,n}{+} \in \W\) for any \(\seq{a}{1,2,,n}{,} \in \F\).
+  Prove that if \(\W\) is a subspace of a vector space \(\V\) over \(\F\) and \(\seq{w}{1,2,,n} \in \W\), then \(\seq[+]{a,w}{1,2,,n} \in \W\) for any \(\seq{a}{1,2,,n} \in \F\).
 \end{ex}
 
 \begin{proof}
   We use induction on \(n\).
-  For \(n = 1\), we have \(\seq{a,w}{1}{,} \in \W\) by \cref{1.3}(c).
+  For \(n = 1\), we have \(\seq{a,w}{1} \in \W\) by \cref{1.3}(c).
   Thus the base case holds.
-  Suppose inductively that \(\seq{a,w}{1,2,,n}{+} = \sum_{i = 1}^{n} a_{i} w_{i} \in \W\) for some \(n \geq 1\).
+  Suppose inductively that \(\seq[+]{a,w}{1,2,,n} = \sum_{i = 1}^{n} a_{i} w_{i} \in \W\) for some \(n \geq 1\).
   Then for \(n + 1\), we have
   \begin{align*}
              & \begin{dcases}
@@ -412,7 +412,7 @@
       \sum_{i = 1}^{n} a_{i} w_{i} \in \W \\
       a_{n + 1} w_{n + 1} \in \W
     \end{dcases}                                          &  & \text{(by \cref{1.3}(c))}        \\
-    \implies & \seq{a,w}{1,2,,n,n + 1}{+}                                                                                \\
+    \implies & \seq[+]{a,w}{1,2,,n,n + 1}                                                                                \\
              & = \p{\sum_{i = 1}^{n} a_{i} w_{i}} + \p{a_{n + 1} w_{n + 1}} \in \W &  & \text{(by \cref{1.3}(b))}
   \end{align*}
   and this closes the induction.
@@ -433,11 +433,123 @@
   Therefore the set of convergent sequences is a subspace of \(\V\) over \(\F\) by \cref{1.3}.
 \end{proof}
 
+\begin{ex}\label{ex:1.3.22}
+  Let \(\F_{1}\) and \(\F_{2}\) be fields.
+  A function \(g \in \fs{\F_{1}}{\F_{2}}\) is called an \textbf{even function} if \(g\p{-t} = g\p{t}\) for each \(t \in \F_{1}\) and is called an \textbf{odd function} if \(g\p{-t} = -g\p{t}\) for each \(t \in \F_{1}\).
+  Prove that the set of all even functions in \(\fs{\F_{1}}{\F_{2}}\) and the set of all odd functions in \(\fs{\F_{1}}{\F_{2}}\) are subspaces of \(\fs{\F_{1}}{\F_{2}}\) over \(\F_{2}\).
+\end{ex}
+
+\begin{proof}
+  First note that the zero of \(\fs{\F_{1}}{\F_{2}}\) is the constant function defined by \(\zv\p{t} = 0\) for all \(t \in \F_{1}\).
+  Since
+  \[
+    \forall t \in \F_{1}, \begin{dcases}
+      \zv\p{t} = 0 = \zv\p{-t} \\
+      \zv\p{t} = 0 = -0 = -\zv\p{t}
+    \end{dcases},
+  \]
+  we know that \(\zv\) is both an even and odd function.
+  Moreover, if \(f, g \in \fs{\F_{1}}{\F_{2}}\) are even functions, then
+  \begin{align*}
+    \forall t \in \F_{1}, \p{f + g}\p{t} & = f\p{t} + g\p{t}   &  & \text{(by \cref{1.2.10})}    \\
+                                         & = f\p{-t} + g\p{-t} &  & \text{(by \cref{ex:1.3.22})} \\
+                                         & = \p{f + g}\p{-t}   &  & \text{(by \cref{1.2.10})}
+  \end{align*}
+  and
+  \begin{align*}
+    \forall t \in \F_{1}, \p{cf}\p{t} & = cf\p{t}      &  & \text{(by \cref{1.2.10})}    \\
+                                      & = cf\p{-t}     &  & \text{(by \cref{ex:1.3.22})} \\
+                                      & = \p{cf}\p{-t} &  & \text{(by \cref{1.2.10})}
+  \end{align*}
+  for any scalar \(c \in \F\).
+  Hence \(f + g, cf\) are even functions in \(\fs{\F_{1}}{\F_{2}}\) for any scalar \(c \in \F\).
+  Similarly if \(f, g \in \fs{\F_{1}}{\F_{2}}\) are odd functions, then
+  \begin{align*}
+    \forall t \in \F_{1}, \p{f + g}\p{t} & = f\p{t} + g\p{t}      &  & \text{(by \cref{1.2.10})}     \\
+                                         & = -f\p{t} + -g\p{t}    &  & \text{(by \cref{ex:1.3.22})}  \\
+                                         & = -\p{f\p{t} + g\p{t}} &  & (-f\p{t}, -g\p{t} \in \F_{2}) \\
+                                         & = -\p{\p{f + g}\p{t}}  &  & \text{(by \cref{1.2.10})}     \\
+                                         & = -\p{f + g}\p{t}      &  & \text{(by \cref{1.2.10})}
+  \end{align*}
+  and
+  \begin{align*}
+    \forall t \in \F_{1}, \p{cf}\p{t} & = cf\p{t}          &  & \text{(by \cref{1.2.10})}    \\
+                                      & = c\p{-f\p{t}}     &  & \text{(by \cref{ex:1.3.22})} \\
+                                      & = -\p{cf\p{t}}     &  & (c, -f\p{t} \in \F_{2})      \\
+                                      & = -\p{\p{cf}\p{t}} &  & \text{(by \cref{1.2.10})}    \\
+                                      & = -\p{cf}\p{t}     &  & \text{(by \cref{1.2.10})}
+  \end{align*}
+  for any scalar \(c \in \F\).
+  Hence \(f + g, cf\) are odd functions in \(\fs{\F_{1}}{\F_{2}}\) for any scalar \(c \in \F\).
+  Therefore the sets of even and odd functions in \(\fs{\F_{1}}{\F_{2}}\) are subspaces of \(\fs{\F_{1}}{\F_{2}}\) over \(\F_{2}\) by \cref{1.3}.
+\end{proof}
+
 \begin{defn}\label{1.3.10}
-  If \(S_{1}\) and \(S_{2}\) are nonempty subsets of a vector space \(\V\), then the \textbf{sum} of \(S_{1}\) and \(S_{2}\), denoted \(S_{1} + S_{2}\), is the set \(\set{x + y : x \in S_{1} \text{ and } y \in S_{2}}\).
+  If \(S_{1}\) and \(S_{2}\) are nonempty subsets of a vector space \(\V\) over \(\F\), then the \textbf{sum} of \(S_{1}\) and \(S_{2}\), denoted \(S_{1} + S_{2}\), is the set \(\set{x + y : x \in S_{1} \text{ and } y \in S_{2}}\).
 \end{defn}
 
 \begin{defn}\label{1.3.11}
-  A vector space \(\V\) is called the \textbf{direct sum} of \(\W_{1}\) and \(\W_{2}\) if \(\W_{1}\) and \(\W_{2}\) are subspaces of \(\V\) such that \(\W_{1} \cap \W_{2} = \set{0}\) and \(\W_{1} + \W_{2} = \V\).
+  A vector space \(\V\) over \(\F\) is called the \textbf{direct sum} of \(\W_{1}\) and \(\W_{2}\) if \(\W_{1}\) and \(\W_{2}\) are subspaces of \(\V\) over \(\F\) such that \(\W_{1} \cap \W_{2} = \set{0}\) and \(\W_{1} + \W_{2} = \V\).
   We denote that \(\V\) is the direct sum of \(\W_{1}\) and \(\W_{2}\) by writing \(\V = \W_{1} \oplus \W_{2}\).
 \end{defn}
+
+\begin{ex}\label{ex:1.3.23}
+  Let \(\W_{1}\) and \(\W_{2}\) be subspaces of a vector space \(\V\) over \(\F\).
+  \begin{enumerate}
+    \item Prove that \(\W_{1} + \W_{2}\) is a subspace of \(\V\) over \(\F\) that contains both \(\W_{1}\) and \(\W_{2}\).
+    \item Prove that any subspace of \(\V\) over \(\F\) that contains both \(\W_{1}\) and \(\W_{2}\) must also contain \(\W_{1} + \W_{2}\).
+  \end{enumerate}
+\end{ex}
+
+\begin{proof}{(a)}
+  We know the zero vector \(\zv \in \V\) is also in \(\W_{1} + \W_{2}\) since
+  \begin{align*}
+             & \W_{1}, \W_{2} \text{ are subspaces of } \V \text{ over } \F                                \\
+    \implies & \begin{dcases}
+      \zv \in \W_{1} \\
+      \zv \in \W_{2}
+    \end{dcases}                                   &  & \text{(by \cref{1.3})}    \\
+    \implies & \zv = \zv + \zv \in \W_{1} + \W_{2}.                         &  & \text{(by \cref{1.3.10})}
+  \end{align*}
+  Moreover, if \(z_{1}, z_{2} \in \W_{1} + \W_{2}\), then
+  \begin{align*}
+             & \begin{dcases}
+      \exists \p{x_{1}, y_{1}} \in \W_{1} \times \W_{2} : z_{1} = x_{1} + y_{1} \\
+      \exists \p{x_{2}, y_{2}} \in \W_{1} \times \W_{2} : z_{2} = x_{2} + y_{2}
+    \end{dcases}                                  &  & \text{(by \cref{1.3.10})} \\
+    \implies & z_{1} + z_{2} = \p{x_{1} + y_{1}} + \p{x_{2} + y_{2}}                                      \\
+             & = \p{x_{1} + x_{2}} + \p{y_{1} + y_{2}} \in \W_{1} + \W_{2} &  & \text{(by \cref{1.3.10})}
+  \end{align*}
+  and
+  \begin{align*}
+             & \exists \p{x_{1}, y_{1}} \in \W_{1} \times \W_{2} : z_{1} = x_{1} + y_{1} &  & \text{(by \cref{1.3.10})} \\
+    \implies & cz_{1} = c\p{x_{1} + y_{1}} = cx_{1} + cy_{1} \in \W_{1} + \W_{2}         &  & \text{(by \cref{1.3.10})}
+  \end{align*}
+  for any scalar \(c \in \F\).
+  Therefore \(\W_{1} + \W_{2}\) is a subspace of \(\V\) over \(\F\) by \cref{1.3}.
+
+  Now we show that \(\W_{1} + \W_{2}\) contains \(\W_{1}\) and \(\W_{2}\).
+  Since \(\zv \in \W_{2}\), we know that
+  \begin{align*}
+             & \forall x \in \W_{1}, x + \zv = x           &  & \text{(by \ref{vs3})}     \\
+    \implies & \forall x \in \W_{1}, x \in \W_{1} + \W_{2} &  & \text{(by \cref{1.3.10})} \\
+    \implies & \W_{1} \subseteq \W_{1} + \W_{2}.
+  \end{align*}
+  Using similar argument we can show that \(\W_{2} \subseteq \W_{1} + \W_{2}\).
+\end{proof}
+
+\begin{proof}{(b)}
+  Let \(\W\) be a subspace of \(\V\) over \(\F\) which contains \(\W_{1}\) and \(\W_{2}\).
+  Then we have
+  \begin{align*}
+             & \begin{dcases}
+      \forall x \in \W_{1}, x \in \W \\
+      \forall y \in \W_{2}, y \in \W
+    \end{dcases}               &  & (\W_{1} \cup \W_{2} \subseteq \W) \\
+    \implies & \begin{dcases}
+      \forall x \in \W_{1} \\
+      \forall y \in \W_{2}
+    \end{dcases}, x + y \in \W &  & \text{(by \cref{1.3}(b))}         \\
+    \implies & \W_{1} + \W_{2} \subseteq \W.            &  & \text{(by \cref{1.3.10})}
+  \end{align*}
+\end{proof}
