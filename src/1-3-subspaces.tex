@@ -120,18 +120,18 @@
   Clearly we have \(\W \subseteq \ms{n}{n}{\F}\), \(\tr{\zm} = 0\) and \(\zm \in \W\).
   Moreover, if \(A, B \in \W\), then
   \begin{align*}
-    \tr{A + B} & = \p{A + B}_{1 1} + \p{A + B}_{2 2} + \dots + \p{A + B}_{n n}               &  & \text{(by \cref{1.3.9})}  \\
-               & = A_{1 1} + B_{1 1} + A_{2 2} + B_{2 2} + \dots + A_{n n} + B_{n n}         &  & \text{(by \cref{1.2.9})}  \\
-               & = A_{1 1} + A_{2 2} + \dots + A_{n n} + B_{1 1} + B_{2 2} + \dots + B_{n n} &  & (A_{i i}, B_{i i} \in \F) \\
-               & = 0                                                                         &  & (A, B \in \W)
+    \tr{A + B} & = \sum_{i = 1}^{n} \p{A + B}_{i i}                    &  & \text{(by \cref{1.3.9})}  \\
+               & = \sum_{i = 1}^{n} \p{A_{i i} + B_{i i}}              &  & \text{(by \cref{1.2.9})}  \\
+               & = \sum_{i = 1}^{n} A_{i i} + \sum_{i = 1}^{n} B_{i i} &  & (A_{i i}, B_{i i} \in \F) \\
+               & = 0                                                   &  & (A, B \in \W)
   \end{align*}
   and
   \begin{align*}
-    \tr{cA} & = \p{cA}_{1 1} + \p{cA}_{2 2} + \dots + \p{cA}_{n n} &  & \text{(by \cref{1.3.9})} \\
-            & = cA_{1 1} + cA_{2 2} + \dots + cA_{n n}             &  & \text{(by \cref{1.2.9})} \\
-            & = c\p{A_{1 1} + A_{2 2} + A_{n n}}                   &  & (c, A_{i i} \in \F)      \\
-            & = c0                                                 &  & (A \in \W)               \\
-            & = 0                                                  &  & (c \in \F)
+    \tr{cA} & = \sum_{i = 1}^{n} \p{cA}_{i i} &  & \text{(by \cref{1.3.9})} \\
+            & = \sum_{i = 1}^{n} cA_{i i}     &  & \text{(by \cref{1.2.9})} \\
+            & = c \sum_{i = 1}^{n} A_{i i}    &  & (c, A_{i i} \in \F)      \\
+            & = c0                            &  & (A \in \W)               \\
+            & = 0                             &  & (c \in \F)
   \end{align*}
   for any scalar \(c \in \F\).
   Therefore \(\W\) is a subspace of \(\ms{n}{n}{\F}\) over \(\F\) by \cref{1.3}.
@@ -189,18 +189,13 @@
 \end{ex}
 
 \begin{proof}
-  Let \(i, j = 1, \dots, n\).
   Since
   \begin{align*}
-    \p{\tp{\p{A + \tp{A}}}}_{i j} & = \p{A + \tp{A}}_{j i}       &  & \text{(by \cref{1.3.3})}  \\
-                                  & = A_{j i} + \p{\tp{A}}_{j i} &  & \text{(by \cref{1.2.9})}  \\
-                                  & = A_{j i} + A_{i j}          &  & \text{(by \cref{1.3.3})}  \\
-                                  & = A_{i j} + A_{j i}          &  & (A_{i j}, A_{j i} \in \F) \\
-                                  & = A_{i j} + \p{\tp{A}}_{i j} &  & \text{(by \cref{1.3.3})}  \\
-                                  & = \p{A + \tp{A}}_{i j},      &  & \text{(by \cref{1.2.9})}
+    A + \tp{A} & = \tp{\p{\tp{A}}} + \tp{A} &  & \text{(by \cref{ex:1.3.4})} \\
+               & = \tp{\p{\tp{A} + A}}      &  & \text{(by \cref{ex:1.3.3})} \\
+               & = \tp{\p{A + \tp{A}}},     &  & \text{(by \cref{1.2.9})}
   \end{align*}
-  by \cref{1.2.8} we know that \(\tp{\p{A + \tp{A}}} = A + \tp{A}\).
-  Thus by \cref{1.3.4} \(A + \tp{A}\) is symmetric.
+  by \cref{1.3.4} \(A + \tp{A}\) is symmetric.
 \end{proof}
 
 \begin{ex}\label{ex:1.3.6}
@@ -210,11 +205,10 @@
 \begin{proof}
   We have
   \begin{align*}
-     & \tr{aA + bB}                                                                                                         \\
-     & = (aA + bB)_{1 1} + (aA + bB)_{2 2} + \dots + (aA + bB)_{n n}                       &  & \text{(by \cref{1.3.9})}    \\
-     & = aA_{1 1} + bB_{1 1} + aA_{2 2} + bB_{2 2} + \dots + aA_{n n} + bB_{n n}           &  & \text{(by \cref{1.2.9})}    \\
-     & = a\p{A_{1 1} + A_{2 2} + \dots + A_{n n}} + b\p{B_{1 1} + B_{2 2} + \dots B_{n n}} &  & (aA_{i i}, bB_{i i} \in \F) \\
-     & = a\tr{A} + b\tr{B}.                                                                &  & \text{(by \cref{1.3.9})}
+    \tr{aA + bB} & = \sum_{i = 1}^{n} (aA + bB)_{i i}                        &  & \text{(by \cref{1.3.9})}    \\
+                 & = \sum_{i = 1}^{n} \p{aA_{i i} + bB_{i i}}                &  & \text{(by \cref{1.2.9})}    \\
+                 & = a \sum_{i = 1}^{n} A_{i i} + b \sum_{i = 1}^{n} B_{i i} &  & (aA_{i i}, bB_{i i} \in \F) \\
+                 & = a\tr{A} + b\tr{B}.                                      &  & \text{(by \cref{1.3.9})}
   \end{align*}
 \end{proof}
 
@@ -234,4 +228,191 @@
     \implies & A = \tp{A}                           &  & \text{(by \cref{1.2.8})}
   \end{align*}
   and thus by \cref{1.3.4} diagonal matrices are symmetric.
+\end{proof}
+
+\setcounter{ex}{11}
+\begin{ex}\label{ex:1.3.12}
+  An \(m \times n\) matrix \(A\) is called \textbf{upper triangular} if all entries lying below the diagonal entries are zero, that is, if \(A_{i j} = 0\) whenever \(i > j\).
+  Prove that the upper triangular matrices form a subspace of \(\MS\) over \(\F\).
+\end{ex}
+
+\begin{proof}
+  Clearly the zero matrix is a upper triangular matrix because all of its entries are \(0\).
+  Moreover, if \(A\) and \(B\) are upper triangular \(m \times n\) matrices, then whenever \(i > j\),
+  \[
+    \p{A + B}_{i j} = A_{i j} + B_{i j} = 0 + 0 = 0 \quad \text{and} \quad \p{cA}_{i j} = cA_{i j} = c0 = 0
+  \]
+  for any scalar \(c \in \F\).
+  Hence \(A + B\) and \(cA\) are upper triangular matrices for any scalar \(c \in \F\).
+  Therefore the set of upper triangular matrices is a subspace of \(\MS\) over \(\F\) by \cref{1.3}.
+\end{proof}
+
+\begin{ex}\label{ex:1.3.13}
+  Let \(S\) be a nonempty set and \(\F\) a field.
+  Prove that for any \(s_{0} \in S\), \(\W = \set{f \in \FS : f\p{s_{0}} = 0}\), is a subspace of \(\FS\) over \(\F\).
+\end{ex}
+
+\begin{proof}
+  Clearly we have \(\W \subseteq \FS\) and the zero function \(\zv \in \W\) because \(\zv\p{s_{0}} = 0\).
+  Moreover, if \(f, g \in \W\), then
+  \begin{align*}
+    \p{f + g}\p{s_{0}} & = f\p{s_{0}} + g\p{s_{0}} &  & \text{(by \cref{1.2.10})} \\
+                       & = 0 + 0                   &  & (f, g \in \W)             \\
+                       & = 0
+  \end{align*}
+  and
+  \begin{align*}
+    \p{cf}\p{s_{0}} & = cf\p{s_0} &  & \text{(by \cref{1.2.10})} \\
+                    & = c0        &  & (f \in \W)                \\
+                    & = 0         &  & (c \in \F)
+  \end{align*}
+  for any scalar \(c \in \F\).
+  Hence \(f + g, cf \in \W\) for any scalar \(c \in \F\).
+  Therefore \(\W\) is a subspace of \(\FS\) over \(\F\) by \cref{1.3}.
+\end{proof}
+
+\setcounter{ex}{15}
+\begin{ex}\label{ex:1.3.16}
+  Let \(\cfs[n]{\R}\) denote the set of all real-valued functions defined on the real line that have a continuous \(n\)th derivative.
+  Prove that \(\cfs[n]{\R}\) is a subspace of \(\fs{\R}{\R}\).
+\end{ex}
+
+\begin{proof}
+  First note that the zero of \(\fs{\R}{\R}\) is the constant function defined by \(\zv\p{x} = 0\) for all \(x \in \R\).
+  Since constant functions has continuous \(n\)th derivative, we have \(\zv \in \cfs[n]{\R}\).
+  Moreover, if \(f, g \in \W\), then
+  \[
+    f^{\p{n}} + g^{\p{n}} = \p{f + g}^{\p{n}} \quad \text{and} \quad cf^{\p{n}} = \p{cf}^{\p{n}}
+  \]
+  for any scalar \(c \in \F\).
+  Hence \(f + g, cf \in \cfs[n]{\R}\) for any scalar \(c \in \F\).
+  Therefore \(\cfs[n]{\R}\) is a subspace of \(\fs{\R}{\R}\) over \(\R\) by \cref{1.3}.
+\end{proof}
+
+\begin{ex}\label{ex:1.3.17}
+  Prove that a subset \(\W\) of a vector space \(\V\) is a subspace of \(\V\) if and only if \(\W \neq \varnothing\), and, whenever \(a \in \F\) and \(x, y \in \W\), then \(ax \in \W\) and \(x + y \in \W\).
+\end{ex}
+
+\begin{proof}
+  Since
+  \begin{align*}
+             & \begin{dcases}
+      \W \neq \varnothing               \\
+      \forall x, y \in \W, x + y \in \W \\
+      \forall (x, a) \in \W \times \F, ax \in \W
+    \end{dcases}                                 \\
+    \implies & \begin{dcases}
+      \exists x \in \W                  \\
+      \forall x, y \in \W, x + y \in \W \\
+      \forall (x, a) \in \W \times \F, ax \in \W
+    \end{dcases}                                 \\
+    \implies & \begin{dcases}
+      0x = \zv \in \W                   \\
+      \forall x, y \in \W, x + y \in \W \\
+      \forall (x, a) \in \W \times \F, ax \in \W
+    \end{dcases}, &  & \text{(by \cref{1.2}(a))}
+  \end{align*}
+  by \cref{1.3} we know that
+  \[
+    \begin{dcases}
+      \zv \in \W                        \\
+      \forall x, y \in \W, x + y \in \W \\
+      \forall (x, a) \in \W \times \F, ax \in \W
+    \end{dcases} \iff \begin{dcases}
+      W \neq \varnothing                \\
+      \forall x, y \in \W, x + y \in \W \\
+      \forall (x, a) \in \W \times \F, ax \in \W
+    \end{dcases}.
+  \]
+\end{proof}
+
+\begin{ex}\label{ex:1.3.18}
+  Prove that a subset \(\W\) of a vector space \(\V\) is a subspace of \(\V\) if and only if \(0 \in \W\) and \(ax + y \in \W\) whenever \(a \in \F\) and \(x, y \in \W\).
+\end{ex}
+
+\begin{proof}
+  Since
+  \[
+    \begin{dcases}
+      \zv \in \W                        \\
+      \forall x, y \in \W, x + y \in \W \\
+      \forall (x, a) \in \W \times \F, ax \in \W
+    \end{dcases} \implies \begin{dcases}
+      \zv \in \W \\
+      \begin{dcases}
+        \forall x, y \in \W \\
+        \forall a \in \F
+      \end{dcases}, ax + y \in \W
+    \end{dcases}
+  \]
+  and
+  \[
+    \begin{dcases}
+      \zv \in \W \\
+      \begin{dcases}
+        \forall x, y \in \W \\
+        \forall a \in \F
+      \end{dcases}, ax + y \in \W
+    \end{dcases} \implies \begin{dcases}
+      \zv \in \W                                                      \\
+      \forall x, y \in \W, x + y \in \W          & \text{if } a = 1   \\
+      \forall (x, a) \in \W \times \F, ax \in \W & \text{if } y = \zv
+    \end{dcases},
+  \]
+  by \cref{1.3} we know that \cref{ex:1.3.18} is true.
+\end{proof}
+
+\begin{ex}\label{ex:1.3.19}
+  Let \(\W_{1}\) and \(\W_{2}\) be subspaces of a vector space \(\V\) over \(\F\).
+  Prove that \(\W_{1} \cup \W_{2}\) is a subspace of \(\V\) over \(\F\) if and only if \(\W_{1} \subseteq \W_{2}\) or \(\W_{2} \subseteq \W_{1}\).
+\end{ex}
+
+\begin{proof}
+  First suppose that \(\W_{1} \cup \W_{2}\) is a subspace of \(\V\) over \(\F\).
+  Let \(x \in \W_{1}\) and \(y \in \W_{2}\).
+  Then we have
+  \begin{align*}
+             & \begin{dcases}
+      \W_{1} \subseteq \W_{1} \cup \W_{2} \\
+      \W_{2} \subseteq \W_{1} \cup \W_{2}
+    \end{dcases}                                                                         \\
+    \implies & x + y \in \W_{1} \cup \W_{2}                                     &  & \text{(by \cref{1.3}(b))}    \\
+    \implies & \p{x + y \in \W_{1}} \lor \p{x + y \in \W_{2}}                                                     \\
+    \implies & \p{\p{-x} + x + y \in \W_{1}} \lor \p{x + y + \p{-y} \in \W_{2}} &  & \text{(by \cref{1.3}(b)(c))} \\
+    \implies & \p{y \in \W_{1}} \lor \p{x \in \W_{2}}                           &  & \text{(by \ref{vs4})}        \\
+    \implies & \p{\W_{2} \subseteq \W_{1}} \lor \p{\W_{1} \subseteq \W_{2}}.
+  \end{align*}
+
+  Now suppose that \(\W_{1} \subseteq \W_{2}\) or \(\W_{2} \subseteq \W_{1}\).
+  Then we have
+  \begin{align*}
+             & \p{\W_{2} \subseteq \W_{1}} \lor \p{\W_{1} \subseteq \W_{2}}          \\
+    \implies & \p{\W_{1} \cup \W_{2} = \W_{1}} \lor \p{\W_{1} \cup \W_{2} = \W_{2}}.
+  \end{align*}
+  Thus \cref{ex:1.3.19} is true.
+\end{proof}
+
+\begin{ex}\label{ex:1.3.20}
+  Prove that if \(\W\) is a subspace of a vector space \(\V\) over \(\F\) and \(\seq{w}{1,2,,n}{,} \in \W\), then \(\seq{a,w}{1,2,,n}{+} \in \W\) for any \(\seq{a}{1,2,,n}{,} \in \F\).
+\end{ex}
+
+\begin{proof}
+  We use induction on \(n\).
+  For \(n = 1\), we have \(\seq{a,w}{1}{,} \in \W\) by \cref{1.3}(c).
+  Thus the base case holds.
+  Suppose inductively that \(\seq{a,w}{1,2,,n}{+} = \sum_{i = 1}^{n} a_{i} w_{i} \in \W\) for some \(n \geq 1\).
+  Then for \(n + 1\), we have
+  \begin{align*}
+             & \begin{dcases}
+      \sum_{i = 1}^{n} a_{i} w_{i} \in \W \\
+      w_{n + 1} \in \W                    \\
+      a_{n + 1} \in \F
+    \end{dcases}                                          &  & \text{(by induction hypothesis)} \\
+             & \begin{dcases}
+      \sum_{i = 1}^{n} a_{i} w_{i} \in \W \\
+      a_{n + 1} w_{n + 1} \in \W
+    \end{dcases}                                          &  & \text{(by \cref{1.3}(c))}        \\
+    \implies & \seq{a,w}{1,2,,n,n + 1}{+}                                                                                \\
+             & = \p{\sum_{i = 1}^{n} a_{i} w_{i}} + \p{a_{n + 1} w_{n + 1}} \in \W &  & \text{(by \cref{1.3}(b))}
+  \end{align*}
 \end{proof}

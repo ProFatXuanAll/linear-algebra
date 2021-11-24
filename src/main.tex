@@ -139,6 +139,18 @@
 % General function space.
 \newcommand{\FS}{\fs{S}{\F}}
 
+% Continuous function space over matric space #2.
+% Function with continuous #1-th derivative
+\newcommand{\cfs}[2][]{%
+	\ifthenelse{%
+		\equal{#1}{}%
+	}{%
+	\vs{C}\p{#2}%
+	}{%
+	\vs{C}^{#1}\p{#2}
+	}%
+}
+
 % Polynomial spaces of degree #1 over field #2.
 % #1 (optional) is the degree of polynomial.
 % #2 is field.
@@ -155,15 +167,14 @@
 \newcommand{\ps}[2][]{%
 \ifthenelse{%
 	\equal{#1}{}%
-}{%
+}%
+{%
 	\vs{P}\p{#2}%
-}{%
+}%
+{%
 	\vs{P}_{#1}\p{#2}%
 }%
 }
-
-% Continuous function space over matric space #1.
-\newcommand{\cfs}[1]{\vs{C}\p{#1}}
 
 % Sequence.
 % #1 is a comma-separated list of sequence symbols.
