@@ -178,7 +178,7 @@
 				            & = a u + b u.                                                         &  & \text{(by \cref{1.2.4})}
 			\end{align*}
 	\end{description}
-	From all proofs above we conclude by \cref{1.2.1} that \cref{1.2.4} is indeed a vector space.
+	From all proofs above we conclude by \cref{1.2.1} that \cref{1.2.4} is indeed a vector space over \(\F\).
 \end{proof}
 
 \begin{defn}\label{1.2.5}
@@ -222,7 +222,7 @@
 \end{defn}
 
 \begin{eg}\label{1.2.9}
-	The set of all \(m \times n\) matrices with entries from a field \(\F\) is a vector space, which we denote by \(\MS\), with the following operations of \textbf{matrix addition} and \textbf{scalar multiplication}:
+	The set of all \(m \times n\) matrices with entries from a field \(\F\) is a vector space over \(\F\), which we denote by \(\MS\), with the following operations of \textbf{matrix addition} and \textbf{scalar multiplication}:
 	For \(A, B \in \MS\) and \(c \in \F\),
 	\[
 		\p{A + B}_{i j} = A_{i j} + B_{i j} \quad \text{and} \quad \p{c A}_{i j} = c A_{i j}
@@ -361,13 +361,13 @@
 			\end{align*}
 			and thus by \cref{1.2.8} \(\p{c + d} A = cA + dA\).
 	\end{description}
-	From all proofs above we conclude by \cref{1.2.1} that \cref{1.2.9} is indeed a vector space.
+	From all proofs above we conclude by \cref{1.2.1} that \cref{1.2.9} is indeed a vector space over \(\F\).
 \end{proof}
 
 \begin{eg}\label{1.2.10}
 	Let \(S\) be any nonempty set and \(\F\) be any field, and let \(\FS\) denote the set of all functions from \(S\) to \(\F\).
 	Two functions \(f\) and \(g\) in \(\FS\) are called \textbf{equal} if \(f\p{s} = g\p{s}\) for each \(s \in S\).
-	The set \(\FS\) is a vector space with the operations of addition and scalar multiplication defined for \(f, g \in \FS\) and \(c \in \F\) by
+	The set \(\FS\) is a vector space over \(\F\) with the operations of addition and scalar multiplication defined for \(f, g \in \FS\) and \(c \in \F\) by
 	\[
 		\p{f + g}\p{s} = f\p{s} + g\p{s} \quad \text{and} \quad \p{cf}\p{s} = cf\p{s}
 	\]
@@ -507,7 +507,7 @@
 			\end{align*}
 			and thus by \cref{1.2.10} \(\p{a + b} f = af + bf\).
 	\end{description}
-	From all proofs above we conclude by \cref{1.2.1} that \cref{1.2.10} is indeed a vector space.
+	From all proofs above we conclude by \cref{1.2.1} that \cref{1.2.10} is indeed a vector space over \(\F\).
 \end{proof}
 
 \begin{defn}\label{1.2.11}
@@ -558,7 +558,7 @@
 	\[
 		cf\p{x} = ca_{n} x^{n} + ca_{n - 1} x^{n - 1} + \cdots + ca_{1} x + ca_{0}.
 	\]
-	With these operations of addition and scalar multiplication, the set of all polynomials with coefficients from \(\F\) is a vector space, which we denote by \(\ps{\F}\).
+	With these operations of addition and scalar multiplication, the set of all polynomials with coefficients from \(\F\) is a vector space over \(\F\), which we denote by \(\ps{\F}\).
 \end{eg}
 
 \begin{proof}
@@ -594,7 +594,7 @@
 	\[
 		\set{a_{n}} + \set{b_{n}} = \set{a_{n} + b_{n}} \quad \text{and} \quad t\set{a_{n}} = \set{ta_{n}}.
 	\]
-	With these operations \(\V\) is a vector space.
+	With these operations \(\V\) is a vector space over \(\F\).
 \end{eg}
 
 \begin{proof}
@@ -609,7 +609,7 @@
 \end{proof}
 
 \begin{thm}[Cancellation Law for Vector Addition]\label{1.1}
-	If \(x, y\), and \(z\) are vectors in a vector space \(\V\) such that \(x + z = y + z\), then \(x = y\).
+	If \(x, y\), and \(z\) are vectors in a vector space \(\V\) over \(\F\) such that \(x + z = y + z\), then \(x = y\).
 \end{thm}
 
 \begin{proof}
@@ -669,7 +669,7 @@
 \end{defn}
 
 \begin{thm}\label{1.2}
-	In any vector space \(\V\), the following statements are true:
+	In any vector space \(\V\) over \(\F\), the following statements are true:
 	\begin{enumerate}
 		\item \(0x = \zv\) for each \(x \in \V\).
 		\item \(\p{-a}x = -\p{ax} = a\p{-x}\) for each \(a \in \F\) and each \(x \in \V\).
@@ -715,7 +715,7 @@
 
 \setcounter{ex}{7}
 \begin{ex}\label{ex:1.2.8}
-	In any vector space \(\V\), show that \(\p{a + b}\p{x + y} = ax + ay + bx + by\) for any \(x, y \in \V\) and any \(a, b \in \F\).
+	In any vector space \(\V\) over \(\F\), show that \(\p{a + b}\p{x + y} = ax + ay + bx + by\) for any \(x, y \in \V\) and any \(a, b \in \F\).
 \end{ex}
 
 \begin{proof}
@@ -730,7 +730,7 @@
 \setcounter{ex}{9}
 \begin{ex}\label{ex:1.2.10}
 	Let \(\V\) denote the set of all differentiable real-valued functions defined on the real line.
-	Prove that \(\V\) is a vector space with the operations of addition and scalar multiplication defined in \cref{1.2.10}.
+	Prove that \(\V\) is a vector space over \(\R\) with the operations of addition and scalar multiplication defined in \cref{1.2.10}.
 \end{ex}
 
 \begin{proof}
@@ -812,7 +812,7 @@
 
 \begin{ex}\label{ex:1.2.12}
 	A real-valued function \(f\) defined on the real line is called an \textbf{even function} if \(f\p{-t} = f\p{t}\) for each real number \(t\).
-	Prove that the set of even functions defined on the real line with the operations of addition and scalar multiplication defined in \cref{1.2.10} is a vector space.
+	Prove that the set of even functions defined on the real line with the operations of addition and scalar multiplication defined in \cref{1.2.10} is a vector space over \(\R\).
 \end{ex}
 
 \begin{proof}
@@ -963,5 +963,5 @@
 				                   & = c\p{v, w} + d\p{v, w}.       &  & \text{(by \cref{ex:1.2.21})}
 			\end{align*}
 	\end{description}
-	From all proofs above we conclude by \cref{1.2.1} that \cref{ex:1.2.21} is indeed a vector space.
+	From all proofs above we conclude by \cref{1.2.1} that \cref{ex:1.2.21} is indeed a vector space over \(\F\).
 \end{proof}
