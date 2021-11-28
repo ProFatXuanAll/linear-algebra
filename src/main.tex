@@ -93,11 +93,11 @@
 \DeclarePairedDelimiter{\evalTmp}{.}{\rvert}
 \newcommand{\eval}[1]{\evalTmp*{#1}}
 % Parenthese.
-\DeclarePairedDelimiter{\pTmp}{\lparen}{\rparen}
-\newcommand{\p}[1]{\pTmp*{#1}}
+\DeclarePairedDelimiter{\paTmp}{\lparen}{\rparen}
+\newcommand{\pa}[1]{\paTmp*{#1}}
 % Bracket.
-\DeclarePairedDelimiter{\bkTmp}{\lbrack}{\rbrack}
-\newcommand{\bk}[1]{\bkTmp*{#1}}
+\DeclarePairedDelimiter{\brTmp}{\lbrack}{\rbrack}
+\newcommand{\br}[1]{\brTmp*{#1}}
 % Brace.
 \DeclarePairedDelimiter{\BTmp}{\lbrace}{\rbrace}
 \newcommand{\B}[1]{\BTmp*{#1}}
@@ -135,7 +135,7 @@
 \newcommand{\MS}{\ms{m}{n}{\F}}
 
 % Function space from domain #1 to range #2.
-\newcommand{\fs}[2]{\mathcal{F}\p{#1, #2}}
+\newcommand{\fs}[2]{\mathcal{F}\pa{#1, #2}}
 % General function space.
 \newcommand{\FS}{\fs{S}{\F}}
 
@@ -145,9 +145,9 @@
 	\ifthenelse{%
 		\equal{#1}{}%
 	}{%
-	\vs{C}\p{#2}%
+	\vs{C}\pa{#2}%
 	}{%
-	\vs{C}^{#1}\p{#2}
+	\vs{C}^{#1}\pa{#2}
 	}%
 }
 
@@ -169,10 +169,10 @@
 	\equal{#1}{}%
 }%
 {%
-	\vs{P}\p{#2}%
+	\vs{P}\pa{#2}%
 }%
 {%
-	\vs{P}_{#1}\p{#2}%
+	\vs{P}_{#1}\pa{#2}%
 }%
 }
 
@@ -220,7 +220,7 @@
 }
 
 % Tuple.
-\newcommand{\tuple}[2]{\p{\seq{#1}{#2}{,}}}
+\newcommand{\tuple}[2]{\pa{\seq{#1}{#2}}}
 
 % 0 vector.
 \newcommand{\zv}{\mathit{0}}
@@ -231,7 +231,7 @@
 \newcommand{\tp}[1]{{#1}^{t}}
 
 % Trace of matrix #1.
-\newcommand{\tr}[1]{\operatorname{tr}\p{#1}}
+\newcommand{\tr}[1]{\operatorname{tr}\pa{#1}}
 
 % Formatting exercises section.
 \newcommand{\exercisesection}{
