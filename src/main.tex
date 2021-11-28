@@ -211,7 +211,14 @@
 		\ifthenelse{%                              Output dots if `\SeqIndex' is empty.
 			\equal{\SeqIndex}{}%
 		}%
-		{\dots}{%
+		{%
+			\ifthenelse{%                            If #1 is `,' use `\dots', otherwise use `\cdots'.
+				\equal{#1}{,}%
+			}%
+			{\dots}%
+			{\cdots}%
+		}%
+		{%
 			\foreachitem\SeqSymbol\in\SeqSymbols{%   Loop over symbols.
 				{\SeqSymbol}_{\SeqIndex}%              Output symbols with index.
 			}%
