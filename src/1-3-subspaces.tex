@@ -923,3 +923,177 @@
   contradict to the fact that \(y\) can be uniquely written as \(x_1 + x_2\) where \((x_1, x_2) \in \W_1 \times \W_2\).
   Thus we must have \(\W_1 \cap \W_2 = \set{\zv}\).
 \end{proof}
+
+\begin{ex}\label{ex:1.3.31}
+  Let \(\W\) be a subspace of a vector space \(\V\) over a field \(\F\).
+  For any \(v \in \V\) the set \(\set{v} + \W = \set{v + w : w \in \W}\) is called the \textbf{coset} of \(\W\) \textbf{containing} \(v\).
+  It is customary to denote this coset by \(v + \W\) rather than \(\set{v} + \W\).
+  \begin{enumerate}
+    \item Prove that \(v + \W\) is a subspace of \(\V\) over \(\F\) if and only if \(v \in \W\).
+    \item Prove that \(v_1 + \W = v_2 + \W\) if and only if \(v_1 - v_2 \in \W\).
+  \end{enumerate}
+  Addition and scalar multiplication by scalars of \(\F\) can be defined in the collection \(S = \set{v + \W : v \in \V}\) of all cosets of \(\W\) as follows:
+  \[
+    (v_1 + \W) + (v_2 + \W) = (v_1 + v_2) + \W
+  \]
+  for all \(v_1, v_2 \in \V\) and
+  \[
+    a(v + \W) = av + \W
+  \]
+  for all \(v \in \V\) and \(a \in \F\).
+  \begin{enumerate}[resume]
+    \item Prove that the preceding operations are well defined;
+          that is, show that if \(v_1 + \W = v_1' + \W\) and \(v_2 + \W = v_2' + \W\), then
+          \[
+            (v_1 + \W) + (v_2 + \W) = (v_1' + \W) + (v_2' + \W)
+          \]
+          and
+          \[
+            a(v_1 + \W) = a(v_1' + \W)
+          \]
+          for all \(a \in \F\).
+    \item Prove that the set \(S\) is a vector space over \(\F\) with the operations defined in (c).
+          This vector space is called the \textbf{quotient space of \(\V\) modulo \(\W\)} and is denoted by \(\V / \W\).
+  \end{enumerate}
+\end{ex}
+
+\begin{proof}{(a)}
+  We have
+  \begin{align*}
+             & \begin{dcases}
+      \W \text{ is a subspace of } \V \text{ over } \F \\
+      v \in \W
+    \end{dcases}                                                            \\
+    \implies & v + \W = \set{v + w : w \in \W} = \W                 &  & \text{(by \cref{ex:1.3.31})} \\
+    \implies & v + \W \text{ is a subspace of } \V \text{ over } \F
+  \end{align*}
+  and
+  \begin{align*}
+             & \begin{dcases}
+      \W \text{ is a subspace of } \V \text{ over } \F \\
+      v + \W \text{ is a subspace of } \V \text{ over } \F
+    \end{dcases}                                   \\
+    \implies & v = v + \zv \in v + \W      &  & \text{(by \cref{ex:1.3.31})} \\
+    \implies & -v \in v + \W               &  & \text{(by \ref{vs4})}        \\
+    \implies & v - 2v \in v + \W                                             \\
+    \implies & -2v \in \W                  &  & \text{(by \cref{ex:1.3.31})} \\
+    \implies & v \in \W.                   &  & \text{(by \cref{1.2.1})}
+  \end{align*}
+\end{proof}
+
+\begin{proof}{(b)}
+  We have
+  \begin{align*}
+         & v_1 + \W = v_2 + \W                                                                                     \\
+    \iff & (-v_1) + (v_1 + \W) = (-v_1) + (v_2 + \W)                             &  & \text{(by \cref{ex:1.3.31})} \\
+    \iff & \set{(-v_1) + v_1 + w : w \in \W} = \set{(-v_1) + v_2 + w : w \in \W} &  & \text{(by \cref{ex:1.3.31})} \\
+    \iff & \W = \set{(-v_1) + v_2 + w : w \in \W}                                                                  \\
+    \iff & (-v_1) + v_2 \in \W                                                                                     \\
+    \iff & v_1 - v_2 \in \W.                                                     &  & \text{(by \cref{1.2}(b))}
+  \end{align*}
+\end{proof}
+
+\begin{proof}{(c)}
+  We have
+  \begin{align*}
+             & \begin{dcases}
+      v_1 + \W = v_1' + \W \\
+      v_2 + \W = v_2' + \W
+    \end{dcases}                                                              \\
+    \implies & \begin{dcases}
+      v_1 - v_1' \in \W \\
+      v_2 - v_2' \in \W
+    \end{dcases}                         &  & \text{(by \cref{ex:1.3.31}(b))} \\
+    \implies & (v_1 + v_2) - (v_1' + v_2') \in \W                  &  & \text{(by \cref{1.2.1})}        \\
+    \implies & (v_1 + v_2) + \W = (v_1' + v_2') + \W               &  & \text{(by \cref{ex:1.3.31}(b))} \\
+    \implies & (v_1 + \W) + (v_2 + \W) = (v_1' + \W) + (v_2' + \W) &  & \text{(by \cref{ex:1.3.31})}
+  \end{align*}
+  and
+  \begin{align*}
+             & v_1 + \W = v_1' + \W                                             \\
+    \implies & v_1 - v_1' \in \W           &  & \text{(by \cref{ex:1.3.31}(b))} \\
+    \implies & a(v_1 - v_1') \in \W        &  & \text{(by \cref{1.2.1})}        \\
+    \implies & av_1 - av_1' \in \W         &  & \text{(by \ref{vs7})}           \\
+    \implies & av_1 + \W = av_1' + \W      &  & \text{(by \cref{ex:1.3.31}(b))} \\
+    \implies & a(v_1 + \W) = a(v_1' + \W). &  & \text{(by \cref{ex:1.3.31})}
+  \end{align*}
+\end{proof}
+
+\begin{proof}{(d)}
+  By \cref{ex:1.3.31} we have
+  \[
+    \forall v_1 + \W, v_2 + \W \in S, (v_1 + \W) + (v_2 + \W) = (v_1 + v_2) + \W \in S
+  \]
+  and
+  \[
+    \forall (a, v + \W) \in \F \times S, a(v + \W) = av + \W \in S.
+  \]
+  By \cref{ex:1.3.31}(c) we know that addition and scalar multiplication in \(S\) over \(\F\) are unique.
+  Thus by \cref{1.2.1} we only need to check \ref{vs1}--\ref{vs8}.
+  \begin{description}
+    \item[For \ref{vs1}:]
+      For all \(v_1 + \W, v_2 + \W \in S\), we have
+      \begin{align*}
+        (v_1 + \W) + (v_2 + \W) & = (v_1 + v_2) + \W         &  & \text{(by \cref{ex:1.3.31})}                  \\
+                                & = (v_2 + v_1) + \W         &  & \text{(\(\V\) is a vector space over \(\F\))} \\
+                                & = (v_2 + \W) + (v_1 + \W). &  & \text{(by \cref{ex:1.3.31})}
+      \end{align*}
+    \item[For \ref{vs2}:]
+      For all \(v_1 + \W, v_2 + \W, v_3 + \W \in S\), we have
+      \begin{align*}
+         & ((v_1 + \W) + (v_2 + \W)) + (v_3 + \W)                                                       \\
+         & = ((v_1 + v_2) + \W) + (v_3 + \W)         &  & \text{(by \cref{ex:1.3.31})}                  \\
+         & = ((v_1 + v_2) + v_3) + \W                &  & \text{(by \cref{ex:1.3.31})}                  \\
+         & = (v_1 + (v_2 + v_3)) + \W                &  & \text{(\(\V\) is a vector space over \(\F\))} \\
+         & = (v_1 + \W) + ((v_2 + v_3) + \W)         &  & \text{(by \cref{ex:1.3.31})}                  \\
+         & = (v_1 + \W) + ((v_2 + \W) + (v_3 + \W)). &  & \text{(by \cref{ex:1.3.31})}
+      \end{align*}
+    \item[For \ref{vs3}:]
+      Since \(\V\) is a vector space over \(\F\), we know that \(0 \in \V\).
+      Thus \(\zv + \W \in S\) and for all \(v + \W \in S\), we have
+      \begin{align*}
+        (v + \W) + (\zv + \W) & = (v + \zv) + \W &  & \text{(by \cref{ex:1.3.31})}                  \\
+                              & = v + \W.        &  & \text{(\(\V\) is a vector space over \(\F\))}
+      \end{align*}
+    \item[For \ref{vs4}:]
+      For all \(v + \W \in S\), we have
+      \begin{align*}
+                 & \exists v' \in \V : v + v' = 0                 &  & \text{(\(\V\) is a vector space over \(\F\))} \\
+        \implies & \exists v' \in \V : (v + \W) + (v' + \W) \in S &  & \text{(by \cref{ex:1.3.31})}                  \\
+        \implies & \exists v' \in \V : (v + v') + \W = \zv + \W.  &  & \text{(from the proof above)}
+      \end{align*}
+    \item[For \ref{vs5}:]
+      Since \(\V\) is a vector space over \(\F\), we know that \(1 \in \F\).
+      Then for all \(v + \W \in S\), we have
+      \begin{align*}
+        1(v + \W) & = 1v + \W &  & \text{(by \cref{ex:1.3.31})}                  \\
+                  & = v + \W. &  & \text{(\(\V\) is a vector space over \(\F\))}
+      \end{align*}
+    \item[For \ref{vs6}:]
+      For all \(a, b \in \F\), \(v + \W \in S\), we have
+      \begin{align*}
+        (ab) (v + \W) & = (ab)v + \W    &  & \text{(by \cref{ex:1.3.31})}                  \\
+                      & = a(bv) + \W    &  & \text{(\(\V\) is a vector space over \(\F\))} \\
+                      & = a(bv + \W)    &  & \text{(by \cref{ex:1.3.31})}                  \\
+                      & = a(b(v + \W)). &  & \text{(by \cref{ex:1.3.31})}
+      \end{align*}
+    \item[For \ref{vs7}:]
+      For all \(a \in \F\), \(v_1 + \W, v_2 + \W \in S\), we have
+      \begin{align*}
+        a((v_1 + \W) + (v_2 + \W)) & = a((v_1 + v_2) + \W)        &  & \text{(by \cref{ex:1.3.31})}                  \\
+                                   & = a(v_1 + v_2) + \W          &  & \text{(by \cref{ex:1.3.31})}                  \\
+                                   & = (av_1 + av_2) + \W         &  & \text{(\(\V\) is a vector space over \(\F\))} \\
+                                   & = (av_1 + \W) + (av_2 + \W)  &  & \text{(by \cref{ex:1.3.31})}                  \\
+                                   & = a(v_1 + \W) + a(v_2 + \W). &  & \text{(by \cref{ex:1.3.31})}
+      \end{align*}
+    \item[For \ref{vs8}:]
+      For all \(a, b \in \F\), \(v + \W \in S\), we have
+      \begin{align*}
+        (a + b) (v_1 + \W) & = (a + b) v_1 + \W           &  & \text{(by \cref{ex:1.3.31})}                  \\
+                           & = (av_1 + bv_1) + \W         &  & \text{(\(\V\) is a vector space over \(\F\))} \\
+                           & = (av_1 + \W) + (bv_1 + \W)  &  & \text{(by \cref{ex:1.3.31})}                  \\
+                           & = a(v_1 + \W) + b(v_1 + \W). &  & \text{(by \cref{ex:1.3.31})}
+      \end{align*}
+  \end{description}
+  From all proofs above we conclude by \cref{1.2.1} that \cref{ex:1.3.31} is indeed a vector space over \(\F\).
+\end{proof}
