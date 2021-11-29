@@ -569,25 +569,21 @@
   Obviously \(\W_1, \W_2\) are subspaces of \(\vs{F}^n\) over \(\F\).
   Since
   \begin{align*}
-             & \forall x \in \W_1 \cap \W_2, \begin{dcases}
-      x \in \W_1 \\
-      x \in \W_2
-    \end{dcases} \\
-    \implies & \forall x \in \W_1 \cap \W_2, \begin{cases}
-      x_n = 0 \\
-      \seq[=]{x}{1,2,,n - 1} = 0
+             & \forall a \in \W_1 \cap \W_2, \begin{cases}
+      a_n = 0 \\
+      \seq[=]{a}{1,2,,n - 1} = 0
     \end{cases} \\
-    \implies & \forall x \in \W_1 \cap \W_2, x = \zv                    \\
+    \implies & \forall a \in \W_1 \cap \W_2, a = \zv                    \\
     \implies & \W_1 \cap \W_2 = \set{\zv}
   \end{align*}
   and
   \begin{align*}
-             & \forall x \in \vs{F}^n, \begin{dcases}
-      x = (\seq{x}{1,2,,n - 1}, 0) + (0, \dots, 0, x_n) \\
-      (0, \dots, 0, x_n) \in \W_1                       \\
-      (\seq{x}{1,2,,n - 1}, 0) \in \W_2
+             & \forall a \in \vs{F}^n, \begin{dcases}
+      a = (\seq{a}{1,2,,n - 1}, 0) + (0, \dots, 0, a_n) \\
+      (0, \dots, 0, a_n) \in \W_1                       \\
+      (\seq{a}{1,2,,n - 1}, 0) \in \W_2
     \end{dcases}                                      \\
-    \implies & \forall x \in \vs{F}^n, x \in \W_1 + \W_2          &  & \text{(by \cref{1.3.11})}       \\
+    \implies & \forall a \in \vs{F}^n, a \in \W_1 + \W_2          &  & \text{(by \cref{1.3.11})}       \\
     \implies & \vs{F}^n \subseteq \W_1 + \W_2                                                          \\
     \implies & \vs{F}^n = \W_1 + \W_2,                            &  & \text{(by \cref{ex:1.3.23}(a))}
   \end{align*}
@@ -654,14 +650,16 @@
   \end{align*}
   and
   \begin{align*}
-             & \forall f \in \ps{\F}, \begin{dcases}
-      f(x) = a_n x^n + a_{n - 1} x^n + \cdots + a_1 x + a_0             \\
-      \sum_{i \in \N : i \text{ is odd and } i \leq n} a_i x^i \in \W_1 \\
-      \sum_{i \in \N : i \text{ is even and } i \leq n} a_i x^i \in \W_2
-    \end{dcases}                                      \\
-    \implies & \forall f \in \ps{\F}, f \in \W_1 + \W_2                                               \\
-    \implies & \ps{\F} \subseteq \W_1 + \W_2                                                          \\
-    \implies & \ps{\F} = \W_1 + \W_2,                            &  & \text{(by \cref{ex:1.3.23}(a))}
+             & \forall f \in \ps{\F}, \exists (g_1, g_2) \in \W_1 \times \W_2 :                                      \\
+             & \begin{dcases}
+      f(x) = a_n x^n + a_{n - 1} x^n + \cdots + a_1 x + a_0              \\
+      g_1(x) = \sum_{i \in \N : i \text{ is odd and } i \leq n} a_i x^i  \\
+      g_2(x) = \sum_{i \in \N : i \text{ is even and } i \leq n} a_i x^i \\
+      f = g_1 + g_2
+    \end{dcases}                                                                            \\
+    \implies & \forall f \in \ps{\F}, f \in \W_1 + \W_2                                                              \\
+    \implies & \ps{\F} \subseteq \W_1 + \W_2                                                                         \\
+    \implies & \ps{\F} = \W_1 + \W_2,                                           &  & \text{(by \cref{ex:1.3.23}(a))}
   \end{align*}
   by \cref{1.3.11} we know that \(\W_1 \oplus \W_2 = \ps{\F}\).
 \end{proof}
@@ -686,18 +684,17 @@
   \end{align*}
   and
   \begin{align*}
-             & \forall A \in \MS, \begin{dcases}
-      A = B + C                               \\
+             & \forall A \in \MS, \exists (B, C) \in \W_1 \times \W_2 :                                      \\
+             & \begin{dcases}
       B_{i j} = A_{i j} & \text{if } i \leq j \\
       B_{i j} = 0       & \text{if } i > j    \\
       C_{i j} = A_{i j} & \text{if } i > j    \\
       C_{i j} = 0       & \text{if } i \leq j \\
-      B \in \W_1                              \\
-      C \in \W_2
-    \end{dcases}                                      \\
-    \implies & \forall A \in \MS, A \in \W_1 + \W_2                                               \\
-    \implies & \MS \subseteq \W_1 + \W_2                                                          \\
-    \implies & \MS = \W_1 + \W_2,                            &  & \text{(by \cref{ex:1.3.23}(a))}
+      A = B + C
+    \end{dcases}                                                                    \\
+    \implies & \forall A \in \MS, A \in \W_1 + \W_2                                                          \\
+    \implies & \MS \subseteq \W_1 + \W_2                                                                     \\
+    \implies & \MS = \W_1 + \W_2,                                       &  & \text{(by \cref{ex:1.3.23}(a))}
   \end{align*}
   by \cref{1.3.11} we know that \(\W_1 \oplus \W_2 = \MS\).
 \end{proof}
@@ -752,18 +749,17 @@
   \end{align*}
   and
   \begin{align*}
-             & \forall A \in \V, \begin{dcases}
-      A = B + C                               \\
+             & \forall A \in \V, \exists (B, C) \in \W_1 \times \W_2 :                                      \\
+             & \begin{dcases}
       B_{i j} = A_{i j} & \text{if } i = j    \\
       B_{i j} = 0       & \text{if } i \neq j \\
       C_{i j} = A_{i j} & \text{if } i < j    \\
       C_{i j} = 0       & \text{if } i \geq j \\
-      B \in \W_1                              \\
-      C \in \W_2
-    \end{dcases}                                      \\
-    \implies & \forall A \in \V, A \in \W_1 + \W_2                                               \\
-    \implies & \V \subseteq \W_1 + \W_2                                                          \\
-    \implies & \V = \W_1 + \W_2,                            &  & \text{(by \cref{ex:1.3.23}(a))}
+      A = B + C
+    \end{dcases}                                                                   \\
+    \implies & \forall A \in \V, A \in \W_1 + \W_2                                                          \\
+    \implies & \V \subseteq \W_1 + \W_2                                                                     \\
+    \implies & \V = \W_1 + \W_2,                                       &  & \text{(by \cref{ex:1.3.23}(a))}
   \end{align*}
   by \cref{1.3.11} we know that \(\W_1 \oplus \W_2 = \V\).
 \end{proof}
@@ -811,20 +807,57 @@
   \end{align*}
   and
   \begin{align*}
-             & \forall A \in \ms{n}{n}{\F}, \begin{dcases}
-      A_{i j} = B_{i j} + C_{i j} \\
-      A_{j i} = -B_{i j} + C_{i j}
-    \end{dcases} \text{ for some } B_{i j}, C_{i j} \in \F \\
-    \implies & \forall A \in \ms{n}{n}{\F}, \begin{dcases}
+             & \forall A \in \ms{n}{n}{\F}, \exists (B, C) \in \W_1 \times \W_2 :                                                \\
+             & \begin{dcases}
       B_{i j} = \frac{A_{i j} - A_{j i}}{2} = - \frac{A_{j i} - A_{i j}}{2} = -B_{j i} \\
       C_{i j} = \frac{A_{i j} + A_{j i}}{2} = \frac{A_{j i} + A_{i j}}{2} = C_{j i}    \\
-      B \in \W_1                                                                       \\
-      C \in \W_2                                                                       \\
-      A = B + C
-    \end{dcases}                                           \\
-    \implies & \forall A \in \ms{n}{n}{\F}, A \in \W_1 + \W_2                                                    \\
-    \implies & \ms{n}{n}{\F} \subseteq \W_1 + \W_2                                                               \\
-    \implies & \ms{n}{n}{\F} = \W_1 + \W_2,
+      A_{i j} = B_{i j} + C_{i j}
+    \end{dcases}                                                                                        \\
+    \implies & \forall A \in \ms{n}{n}{\F}, \exists (B, C) \in \W_1 \times \W_2 : A = B + C &  & \text{(by \cref{1.2.8})}        \\
+    \implies & \forall A \in \ms{n}{n}{\F}, A \in \W_1 + \W_2                                                                    \\
+    \implies & \ms{n}{n}{\F} \subseteq \W_1 + \W_2                                                                               \\
+    \implies & \ms{n}{n}{\F} = \W_1 + \W_2,                                                 &  & \text{(by \cref{ex:1.3.23}(a))}
+  \end{align*}
+  by \cref{1.3.11} we know that \(\W_1 \oplus \W_2 = \ms{n}{n}{\F}\).
+\end{proof}
+
+\begin{ex}\label{ex:1.3.29}
+  Let \(\F\) be a field that is not of characteristic \(2\).
+  Define
+  \[
+    \W_1 = \set{A \in \ms{n}{n}{\F} : A_{i j} = 0 \text{ whenever } i \leq j}
+  \]
+  and \(\W_2\) to be the set of all symmetric \(n \times n\) matrices with entries from \(\F\).
+  Both \(\W_1\) and \(\W_2\) are subspaces of \(\ms{n}{n}{\F}\).
+  Prove that \(\ms{n}{n}{\F} = \W_1 \oplus \W_2\).
+  Compare this exercise with \cref{ex:1.3.28}.
+\end{ex}
+
+\begin{proof}
+  Since
+  \begin{align*}
+             & \forall A \in \W_1 \cap \W_2, \begin{dcases}
+      A_{i j} = 0 \text{ whenever } i \leq j \\
+      A_{i j} = A_{j i}
+    \end{dcases} &  & \text{(by \cref{1.3.5})} \\
+    \implies & \forall A \in \W_1 \cap \W_2, A_{i j} = 0                                              \\
+    \implies & \forall A \in \W_1 \cap \W_2, A = \zm                                                  \\
+    \implies & \W_1 \cap \W_2 = \set{\zm}
+  \end{align*}
+  and
+  \begin{align*}
+             & \forall A \in \ms{n}{n}{\F}, \exists (B, C) \in \W_1 \times \W_2 :                                                \\
+             & \begin{dcases}
+      C_{i j} = A_{i j} \text{ whenever } i \leq j        \\
+      C_{i j} = C_{j i} \text{ whenever } i > j           \\
+      B_{i j} = 0 \text{ whenever } i \leq j              \\
+      B_{i j} = A_{i j} - C_{i j} \text{ whenever } i > j \\
+      A_{i j} = B_{i j} + C_{i j}
+    \end{dcases}                                                                                        \\
+    \implies & \forall A \in \ms{n}{n}{\F}, \exists (B, C) \in \W_1 \times \W_2 : A = B + C &  & \text{(by \cref{1.2.8})}        \\
+    \implies & \forall A \in \ms{n}{n}{\F}, A \in \W_1 + \W_2                                                                    \\
+    \implies & \ms{n}{n}{\F} \subseteq \W_1 + \W_2                                                                               \\
+    \implies & \ms{n}{n}{\F} = \W_1 + \W_2,                                                 &  & \text{(by \cref{ex:1.3.23}(a))}
   \end{align*}
   by \cref{1.3.11} we know that \(\W_1 \oplus \W_2 = \ms{n}{n}{\F}\).
 \end{proof}
