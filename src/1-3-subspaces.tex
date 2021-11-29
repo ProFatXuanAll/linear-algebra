@@ -701,3 +701,69 @@
   \end{align*}
   by \cref{1.3.11} we know that \(\W_1 \oplus \W_2 = \MS\).
 \end{proof}
+
+\begin{ex}\label{ex:1.3.27}
+  Let \(\V\) denote the vector space over \(\F\) consisting of all upper triangular \(n \times n\) matrices (as defined in Exercise \cref{ex:1.3.12}), and let \(\W_1\) denote the subspace of \(\V\) over \(\F\) consisting of all diagonal matrices.
+  Show that \(\V = \W_1 \oplus \W_2\), where \(\W_2 = \set{A \in \V : A_{i j} = 0 \text{ whenever } i \geq j}\).
+\end{ex}
+
+\begin{proof}
+  First we show that \(\W_1\) is a subspace of \(\V\) over \(\F\).
+  Obviously \(\W_1 \subseteq \V\) and \(\zm \in \W_1\).
+  Since
+  \begin{align*}
+             & \forall A, B \in \W_1, A_{i j} = B_{i j} = 0 \text{ whenever } i \neq j \\
+    \implies & \forall A, B \in \W_1, A_{i j} + B_{i j} = 0 \text{ whenever } i \neq j \\
+    \implies & \forall A, B \in \W_1, A + B \in \W_1
+  \end{align*}
+  and
+  \begin{align*}
+             & \forall A \in \W_1, A_{i j} = 0 \text{ whenever } i \neq j                 \\
+    \implies & \forall (c, A) \in \F \times \W_1, cA_{i j} = 0 \text{ whenever } i \neq j \\
+    \implies & \forall (c, A) \in \F \times \W_1, cA \in \W_1,
+  \end{align*}
+  by \cref{1.3} we know that \(\W_1\) is a subspace of \(\V\) over \(\F\).
+
+  Next we show that \(\W_2\) is a subspace of \(\V\) over \(\F\).
+  Obviously \(\W_2 \subseteq \V\) and \(\zm \in \W_2\).
+  Since
+  \begin{align*}
+             & \forall A, B \in \W_2, A_{i j} = B_{i j} = 0 \text{ whenever } i \geq j \\
+    \implies & \forall A, B \in \W_2, A_{i j} + B_{i j} = 0 \text{ whenever } i \geq j \\
+    \implies & \forall A, B \in \W_2, A + B \in \W_2
+  \end{align*}
+  and
+  \begin{align*}
+             & \forall A \in \W_2, A_{i j} = 0 \text{ whenever } i \geq j                 \\
+    \implies & \forall (c, A) \in \F \times \W_2, cA_{i j} = 0 \text{ whenever } i \geq j \\
+    \implies & \forall (c, A) \in \F \times \W_2, cA \in \W_2,
+  \end{align*}
+  by \cref{1.3} we know that \(\W_2\) is a subspace of \(\V\) over \(\F\).
+
+  Now we show that \(\W_1 \oplus \W_2 = \V\).
+  Since
+  \begin{align*}
+             & \forall A \in \W_1 \cap \W_2, \begin{dcases}
+      A_{i j} = 0 & \text{if } i \neq j \\
+      A_{i j} = 0 & \text{if } i \geq j
+    \end{dcases} &  & \text{(by \cref{1.3.8})} \\
+    \implies & \forall A \in \W_1 \cap \W_2, A = \zm                                                  \\
+    \implies & \W_1 \cap \W_2 = \set{\zm}
+  \end{align*}
+  and
+  \begin{align*}
+             & \forall A \in \V, \begin{dcases}
+      A = B + C                               \\
+      B_{i j} = A_{i j} & \text{if } i = j    \\
+      B_{i j} = 0       & \text{if } i \neq j \\
+      C_{i j} = A_{i j} & \text{if } i < j    \\
+      C_{i j} = 0       & \text{if } i \geq j \\
+      B \in \W_1                              \\
+      C \in \W_2
+    \end{dcases}                                      \\
+    \implies & \forall A \in \V, A \in \W_1 + \W_2                                               \\
+    \implies & \V \subseteq \W_1 + \W_2                                                          \\
+    \implies & \V = \W_1 + \W_2,                            &  & \text{(by \cref{ex:1.3.23}(a))}
+  \end{align*}
+  by \cref{1.3.11} we know that \(\W_1 \oplus \W_2 = \V\).
+\end{proof}
