@@ -1,0 +1,63 @@
+\section{Linear Combinations and Systems of Linear Equations}\label{sec:1.4}
+
+\begin{defn}\label{1.4.1}
+  Let \(\V\) be a vector space over \(\F\) and \(S\) a nonempty subset of \(\V\).
+  A vector \(v \in \V\) is called a \textbf{linear combination} of vectors of \(S\) if there exist a finite number of vectors \(\seq{u}{1,2,,n}\) in \(S\) and scalars \(\seq{a}{1,2,,n}\) in \(\F\) such that \(v = \seq[+]{a,u}{1,2,,n}\).
+  In this case we also say that \(v\) is a linear combination of \(\seq{u}{1,2,,n}\) and call \(\seq{a}{1,2,,n}\) the \textbf{coefficients} of the linear combination.
+\end{defn}
+
+\begin{eg}\label{1.4.2}
+  Observe that in any vector space \(\V\), \(0v = \zv\) for each \(v \in \V\).
+  Thus the zero vector is a linear combination of any nonempty subset of \(\V\).
+\end{eg}
+
+\begin{defn}\label{1.4.3}
+  Let \(S\) be a nonempty subset of a vector space \(\V\) over \(\F\).
+  The \textbf{span} of \(S\), denoted \(\spn{S}\), is the set consisting of all linear combinations of the vectors in \(S\).
+  For convenience, we define \(\spn{\varnothing} = \set{\zv}\).
+\end{defn}
+
+\begin{thm}\label{1.5}
+  The span of any subset \(S\) of a vector space \(\V\) over \(\F\) is a subspace of \(\V\) over \(\F\).
+  Moreover, any subspace of \(\V\) over \(\F\) that contains \(S\) must also contain the span of \(S\).
+\end{thm}
+
+\begin{proof}
+  This result is immediate if \(S = \varnothing\) because \(\spn{\varnothing} = \set{\zv}\), which is a subspace that is contained in any subspace of \(\V\) over \(\F\)
+  (see \cref{1.3.2}).
+
+  If \(S \neq \varnothing\), then \(S\) contains a vector \(z\).
+  So \(0z = \zv\) is in \(\spn{S}\).
+  Let \(x, y \in \spn{S}\).
+  Then there exist vectors \(\seq{u}{1,2,,m}\), \(\seq{v}{1,2,,n}\) in \(S\) and scalars \(\seq{a}{1,2,,m}\), \(\seq{b}{1,2,,n}\) in \(\F\) such that
+  \[
+    x = \seq[+]{a,u}{1,2,,m} \quad \text{and} \quad y = \seq[+]{b,v}{1,2,,n}
+  \]
+  Then
+  \[
+    x + y = \seq[+]{a,u}{1,2,,m} + \seq[+]{b,v}{1,2,,n}
+  \]
+  and, for any scalar \(c \in \F\),
+  \[
+    cx = (ca_1) u_1 + (ca_2) u_2 + \cdots + (ca_m) u_m
+  \]
+  are clearly linear combinations of the vectors in \(S\);
+  so \(x + y\) and \(cx\) are in \(\spn{S}\).
+  Thus \(\spn{S}\) is a subspace of \(\V\) over \(\F\) (by \cref{1.3}).
+
+  Now let \(\W\) denote any subspace of \(\V\) over \(\F\) that contains \(S\).
+  If \(w \in \spn{S}\), then \(w\) has the form \(w = \seq[+]{c,w}{1,2,,k}\) for some vectors \(\seq{w}{1,2,,k}\) in \(S\) and some scalars \(\seq{c}{1,2,,k}\).
+  Since \(S \subseteq \W\), we have \(\seq{w}{1,2,,k} \in \W\).
+  Therefore \(w = \seq[+]{c,w}{1,2,,k}\) is in \(\W\) by \cref{ex:1.3.20} of \cref{sec:1.3}.
+  Because \(w\), an arbitrary vector in \(\spn{S}\), belongs to \(\W\), it follows that \(\spn{S} \subseteq \W\).
+\end{proof}
+
+\begin{defn}\label{1.4.4}
+  A subset \(S\) of a vector space \(\V\) over \(\F\) \textbf{generates} (or \textbf{spans}) \(\V\) if \(\spn{S} = \V\).
+  In this case, we also say that the vectors of \(S\) generate (or span) \(\V\).
+\end{defn}
+
+\begin{note}
+  Usually there are many different subsets that generate a subspace \(\W\).
+  It is natural to seek a subset of \(\W\) that generates \(\W\) and is as small as possible.
+\end{note}

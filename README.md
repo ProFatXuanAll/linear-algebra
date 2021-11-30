@@ -5,7 +5,7 @@ Latex notes for reading Linear Algebra, 4th edition by Arnold J. Insel, Lawrence
 ## Unsolved Exercises
 
 - Chapter1
-  - Section1.3~
+  - Section1.4~
 - Chapter2
 - Chapter3
 - Chapter4
