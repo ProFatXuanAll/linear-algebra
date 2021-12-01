@@ -105,3 +105,69 @@
     \implies & \ps[n]{\F} = \spn{\set{1, x, \dots, x_n}}                    &  & \text{(by \cref{1.5})}
   \end{align*}
 \end{proof}
+
+\setcounter{ex}{10}
+\begin{ex}\label{ex:1.4.11}
+  Prove that \(\spn{\set{x}} = \set{ax : a \in \F}\) for any vector \(x\) in a vector space \(\V\) over \(\F\).
+  Interpret this result geometrically in \(\R^3\).
+\end{ex}
+
+\begin{proof}
+  We have
+  \begin{align*}
+             & \forall v \in \spn{\set{x}}, \begin{dcases}
+      \exists \seq{x}{1,2,,n} \in \set{x} \\
+      \exists \seq{a}{1,2,,n} \in \F
+    \end{dcases} :                                                     \\
+             & v = \seq[+]{a,x}{1,2,,n} \in \spn{\set{x}}                                      &  & \text{(by \cref{1.4.3})} \\
+    \implies & \forall v \in \spn{\set{x}}, \exists \seq{a}{1,2,,n} \in \F :                                                 \\
+             & v = a_1 x + a_2 x + \cdots a_n x = (\seq[+]{a}{1,2,,n}) x                       &  & \text{(by \ref{vs8})}    \\
+    \implies & \forall v \in \spn{\set{x}}, \exists a \in \F : v = (a + 0 + \cdots + 0) x = ax                               \\
+    \implies & \spn{\set{x}} = \set{ax : a \in \F}.
+  \end{align*}
+
+  In \(\R^3\), \(\spn{x}\) is a line in the direction \(x\).
+\end{proof}
+
+\begin{ex}\label{ex:1.4.12}
+  Show that a subset \(\W\) of a vector space \(\V\) over \(\F\) is a subspace of \(\V\) over \(\F\) if and only if \(\spn{\W} = \W\).
+\end{ex}
+
+\begin{proof}
+  We have
+  \begin{align*}
+         & \begin{dcases}
+      \W \subseteq \spn{\W} \\
+      \W \subseteq \W \text{ and }\W \text{ is a subspace of } \V \text{ over } \F
+    \end{dcases} &  & \text{(by \cref{1.4.3})} \\
+    \iff & \begin{dcases}
+      \W \subseteq \spn{\W} \\
+      \spn{\W} \subseteq \W
+    \end{dcases} &  & \text{(by \cref{1.5})}   \\
+    \iff & \spn{\W} = \W.
+  \end{align*}
+\end{proof}
+
+\begin{ex}\label{ex:1.4.13}
+  Show that if \(S_1\) and \(S_2\) are subsets of a vector space \(\V\) over \(\F\) such that \(S_1 \subseteq S_2\), then \(\spn{S_1} \subseteq \spn{S_2}\).
+  In particular, if \(S_1 \subseteq S_2\) and \(\spn{S_1} = \V\), deduce that \(\spn{S_2} = \V\).
+\end{ex}
+
+\begin{proof}
+  We have
+  \begin{align*}
+             & \forall v \in \spn{S_1}, \begin{dcases}
+      \exists \seq{u}{1,2,,n} \in S_1 \subseteq S_2 \\
+      \exists \seq{a}{1,2,,n} \in \F
+    \end{dcases} :                               \\
+             & v = \seq[+]{a,u}{1,2,,n} \in \spn{S_2}                &  & \text{(by \cref{1.4.3})} \\
+    \implies & \spn{S_1} \subseteq \spn{S_2}.
+  \end{align*}
+
+  If \(S_1 \subseteq S_2\) and \(\spn{S_1} = \V\), then
+  \begin{align*}
+             & \V = \spn{S_1} \subseteq \spn{S_2}  &  & \text{(from the proof above)} \\
+    \implies & \V \subseteq \spn{S_2} \subseteq \V &  & \text{(by \cref{1.5})}        \\
+    \implies & \V = \spn{S_2}.
+  \end{align*}
+\end{proof}
