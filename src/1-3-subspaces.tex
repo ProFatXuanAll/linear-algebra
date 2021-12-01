@@ -9,7 +9,7 @@
   The latter is called the \textbf{zero subspace} of \(\V\) over \(\F\).
 \end{eg}
 
-\begin{proof}
+\begin{proof}[\pf{1.3.2}]
   Since \(\V \subseteq \V\) and \(\V\) is a vector space over \(\F\) with the operations of addition and scalar multiplication defined on \(\V\), by \cref{1.3.1} we know that \(\V\) is a subspace of \(\V\) over \(\F\).
   Since \(\zv \in \V\) (by \ref{vs3}), we know that \(\set{\zv} \subseteq \V\).
   Thus by \cref{ex:1.2.11} and \cref{1.3.1} \(\set{\zv}\) is a subspace of \(\V\) over \(\F\).
@@ -27,7 +27,7 @@
   \end{enumerate}
 \end{thm}
 
-\begin{proof}
+\begin{proof}[\pf{1.3}]
   If \(\W\) is a subspace of \(\V\) over \(\F\), then \(\W\) is a vector space over \(\F\) with the operations of addition and scalar multiplication defined on \(\V\).
   Hence conditions (b) and (c) hold, and there exists a vector \(\zv' \in \W\) such that \(x + \zv' = x\) for each \(x \in \W\).
   But also \(x + \zv = x\), and thus \(\zv' = \zv\) by \cref{1.1}.
@@ -53,7 +53,7 @@
   The set \(\W\) of all symmetric matrices in \(\ms{n}{n}{\F}\) is a subspace of \(\ms{n}{n}{\F}\) over \(\F\).
 \end{eg}
 
-\begin{proof}
+\begin{proof}[\pf{1.3.5}]
   Observe that
   \begin{itemize}
     \item The zero matrix is equal to its transpose and hence belongs to \(\W\).
@@ -71,7 +71,7 @@
   Then \(\ps[n]{\F}\) is a subspace of \(\ps{\F}\) over \(\F\).
 \end{eg}
 
-\begin{proof}
+\begin{proof}[\pf{1.3.6}]
   Since the zero polynomial has degree \(-1\), it is in \(\ps[n]{\F}\).
   Moreover, the sum of two polynomials with degrees less than or equal to \(n\) is another polynomial of degree less than or equal to \(n\), and the product of a scalar and a polynomial of degree less than or equal to \(n\) is a polynomial of degree less than or equal to \(n\).
   So \(\ps[n]{\F}\) is closed under addition and scalar multiplication.
@@ -84,7 +84,7 @@
   We claim that \(\cfs{\R}\) is a subspace of \(\fs{\R}{\R}\) over \(\R\).
 \end{eg}
 
-\begin{proof}
+\begin{proof}[\pf{1.3.7}]
   First note that the zero of \(\fs{\R}{\R}\) is the constant function defined by \(f(t) = 0\) for all \(t \in \R\).
   Since constant functions are continuous, we have \(f \in \cfs{\R}\).
   Moreover, the sum of two continuous functions is continuous, and the product of a real number and a continuous function is continuous.
@@ -96,7 +96,7 @@
   Then the set of diagonal matrices is a subspace of \(\ms{n}{n}{\F}\) over \(\F\).
 \end{eg}
 
-\begin{proof}
+\begin{proof}[\pf{1.3.8}]
   Clearly the zero matrix is a diagonal matrix because all of its entries are \(0\).
   Moreover, if \(A\) and \(B\) are diagonal \(n \times n\) matrices, then whenever \(i \neq j\),
   \[
@@ -116,7 +116,7 @@
   The set \(\W\) of \(n \times n\) matrices having trace equal to \(0\) is a subspace of \(\ms{n}{n}{\F}\) over \(\F\).
 \end{eg}
 
-\begin{proof}
+\begin{proof}[\pf{1.3.9}]
   Clearly we have \(\W \subseteq \ms{n}{n}{\F}\), \(\tr{\zm} = 0\) and \(\zm \in \W\).
   Moreover, if \(A, B \in \W\), then
   \begin{align*}
@@ -141,7 +141,7 @@
   Any intersection of subspaces of a vector space \(\V\) is a subspace of \(\V\).
 \end{thm}
 
-\begin{proof}
+\begin{proof}[\pf{1.4}]
   Let \(\cvs\) be a collection of subspaces of \(\V\) over \(\F\), and let \(\W\) denote the intersection of the subspaces in \(\cvs\).
   Since every subspace contains the zero vector, \(\zv \in \W\).
   Let \(a \in \F\) and \(x, y \in \W\).
@@ -157,7 +157,7 @@
   Prove that \(\tp{(aA + bB)} = a\tp{A} + b\tp{B}\) for any \(A, B \in \ms{m}{n}{\F}\) and any \(a, b \in \F\).
 \end{ex}
 
-\begin{proof}
+\begin{proof}[\pf{ex:1.3.3}]
   Let \(i = 1, \dots, n\) and \(j = 1, \dots, m\).
   Since
   \begin{align*}
@@ -174,7 +174,7 @@
   Prove that \(\tp{(\tp{A})} = A\) for each \(A \in \MS\).
 \end{ex}
 
-\begin{proof}
+\begin{proof}[\pf{ex:1.3.4}]
   Let \(i = 1, \dots, m\) and \(j = 1, \dots, n\).
   Since
   \begin{align*}
@@ -188,7 +188,7 @@
   Prove that \(A + \tp{A}\) is symmetric for any square matrix \(A \in \ms{n}{n}{\F}\).
 \end{ex}
 
-\begin{proof}
+\begin{proof}[\pf{ex:1.3.5}]
   Since
   \begin{align*}
     A + \tp{A} & = \tp{(\tp{A})} + \tp{A} &  & \text{(by \cref{ex:1.3.4})} \\
@@ -202,7 +202,7 @@
   Prove that \(\tr{aA + bB} = a\tr{A} + b\tr{B}\) for any \(A, B \in \ms{n}{n}{\F}\).
 \end{ex}
 
-\begin{proof}
+\begin{proof}[\pf{ex:1.3.6}]
   We have
   \begin{align*}
     \tr{aA + bB} & = \sum_{i = 1}^n (aA + bB)_{i i}                      &  & \text{(by \cref{1.3.9})}    \\
@@ -216,7 +216,7 @@
   Prove that diagonal matrices are symmetric matrices.
 \end{ex}
 
-\begin{proof}
+\begin{proof}[\pf{ex:1.3.7}]
   Let \(A \in \ms{n}{n}{\F}\) be a diagonal matrices and let \(i, j = 1, \dots, n\).
   Then we have
   \begin{align*}
@@ -236,7 +236,7 @@
   Prove that the upper triangular matrices form a subspace of \(\MS\) over \(\F\).
 \end{ex}
 
-\begin{proof}
+\begin{proof}[\pf{ex:1.3.12}]
   Clearly the zero matrix is a upper triangular matrix because all of its entries are \(0\).
   Moreover, if \(A\) and \(B\) are upper triangular \(m \times n\) matrices, then whenever \(i > j\),
   \[
@@ -252,7 +252,7 @@
   Prove that for any \(s_0 \in S\), \(\W = \set{f \in \FS : f(s_0) = 0}\), is a subspace of \(\FS\) over \(\F\).
 \end{ex}
 
-\begin{proof}
+\begin{proof}[\pf{ex:1.3.13}]
   Clearly we have \(\W \subseteq \FS\) and the zero function \(\zv \in \W\) because \(\zv(s_0) = 0\).
   Moreover, if \(f, g \in \W\), then
   \begin{align*}
@@ -277,7 +277,7 @@
   Prove that \(\cfs[n]{\R}\) is a subspace of \(\fs{\R}{\R}\).
 \end{ex}
 
-\begin{proof}
+\begin{proof}[\pf{ex:1.3.16}]
   First note that the zero of \(\fs{\R}{\R}\) is the constant function defined by \(\zv(x) = 0\) for all \(x \in \R\).
   Since constant functions has continuous \(n\)th derivative, we have \(\zv \in \cfs[n]{\R}\).
   Moreover, if \(f, g \in \W\), then
@@ -293,7 +293,7 @@
   Prove that a subset \(\W\) of a vector space \(\V\) is a subspace of \(\V\) if and only if \(\W \neq \varnothing\), and, whenever \(a \in \F\) and \(x, y \in \W\), then \(ax \in \W\) and \(x + y \in \W\).
 \end{ex}
 
-\begin{proof}
+\begin{proof}[\pf{ex:1.3.17}]
   Since
   \begin{align*}
              & \begin{dcases}
@@ -330,7 +330,7 @@
   Prove that a subset \(\W\) of a vector space \(\V\) is a subspace of \(\V\) if and only if \(0 \in \W\) and \(ax + y \in \W\) whenever \(a \in \F\) and \(x, y \in \W\).
 \end{ex}
 
-\begin{proof}
+\begin{proof}[\pf{ex:1.3.18}]
   Since
   \[
     \begin{dcases}
@@ -367,7 +367,7 @@
   Prove that \(\W_1 \cup \W_2\) is a subspace of \(\V\) over \(\F\) if and only if \(\W_1 \subseteq \W_2\) or \(\W_2 \subseteq \W_1\).
 \end{ex}
 
-\begin{proof}
+\begin{proof}[\pf{ex:1.3.19}]
   First suppose that \(\W_1 \cup \W_2\) is a subspace of \(\V\) over \(\F\).
   Let \(x \in \W_1\) and \(y \in \W_2\).
   Then we have
@@ -396,7 +396,7 @@
   Prove that if \(\W\) is a subspace of a vector space \(\V\) over \(\F\) and \(\seq{w}{1,2,,n} \in \W\), then \(\seq[+]{a,w}{1,2,,n} \in \W\) for any \(\seq{a}{1,2,,n} \in \F\).
 \end{ex}
 
-\begin{proof}
+\begin{proof}[\pf{ex:1.3.20}]
   We use induction on \(n\).
   For \(n = 1\), we have \(\seq{a,w}{1} \in \W\) by \cref{1.3}(c).
   Thus the base case holds.
@@ -422,7 +422,7 @@
   Show that the set of convergent sequences \(\set{a_n}\) (i.e., those for which \(\lim_{n \to \infty} a_n\) exists) is a subspace of the vector space \(\V\) over \(\F\) in \cref{1.2.13} of \cref{sec:1.2}.
 \end{ex}
 
-\begin{proof}
+\begin{proof}[\pf{ex:1.3.21}]
   Clearly the zero sequence converges to \(0\) because all of its entries are \(0\).
   Moreover, if \(\set{a_n}, \set{b_n}\) are convergent sequences, then
   \[
@@ -439,7 +439,7 @@
   Prove that the set of all even functions in \(\fs{\F_1}{\F_2}\) and the set of all odd functions in \(\fs{\F_1}{\F_2}\) are subspaces of \(\fs{\F_1}{\F_2}\) over \(\F_2\).
 \end{ex}
 
-\begin{proof}
+\begin{proof}[\pf{ex:1.3.22}]
   First note that the zero of \(\fs{\F_1}{\F_2}\) is the constant function defined by \(\zv(t) = 0\) for all \(t \in \F_1\).
   Since
   \[
@@ -501,7 +501,7 @@
   \end{enumerate}
 \end{ex}
 
-\begin{proof}{(a)}
+\begin{proof}[\pf{ex:1.3.23}(a)]
   We know the zero vector \(\zv \in \V\) is also in \(\W_1 + \W_2\) since
   \begin{align*}
              & \W_1, \W_2 \text{ are subspaces of } \V \text{ over } \F                                \\
@@ -538,7 +538,7 @@
   Using similar argument we can show that \(\W_2 \subseteq \W_1 + \W_2\).
 \end{proof}
 
-\begin{proof}{(b)}
+\begin{proof}[\pf{ex:1.3.23}(b)]
   Let \(\W\) be a subspace of \(\V\) over \(\F\) which contains \(\W_1\) and \(\W_2\).
   Then we have
   \begin{align*}
@@ -565,7 +565,7 @@
   \]
 \end{ex}
 
-\begin{proof}
+\begin{proof}[\pf{ex:1.3.24}]
   Obviously \(\W_1, \W_2\) are subspaces of \(\vs{F}^n\) over \(\F\).
   Since
   \begin{align*}
@@ -604,7 +604,7 @@
   Prove that \(\ps{\F} = \W_1 \oplus \W_2\).
 \end{ex}
 
-\begin{proof}
+\begin{proof}[\pf{ex:1.3.25}]
   First we show that \(\W_1\) is a subspace of \(\ps{\F}\) over \(\F\).
   Obviously the zero function \(\zv \in \W_1\).
   Since
@@ -670,7 +670,7 @@
   Show that \(\MS = \W_1 \oplus \W_2\).
 \end{ex}
 
-\begin{proof}
+\begin{proof}[\pf{ex:1.3.26}]
   From \cref{ex:1.3.12} we know that \(\W_1\) is a subspace of \(\MS\) over \(\F\).
   Using similar argument in \cref{ex:1.3.12} we know that \(\W_2\) is a subspace of \(\MS\) over \(\F\).
   Since
@@ -704,7 +704,7 @@
   Show that \(\V = \W_1 \oplus \W_2\), where \(\W_2 = \set{A \in \V : A_{i j} = 0 \text{ whenever } i \geq j}\).
 \end{ex}
 
-\begin{proof}
+\begin{proof}[\pf{ex:1.3.27}]
   First we show that \(\W_1\) is a subspace of \(\V\) over \(\F\).
   Obviously \(\W_1 \subseteq \V\) and \(\zm \in \W_1\).
   Since
@@ -773,7 +773,7 @@
   Prove that \(\ms{n}{n}{\F} = \W_1 \oplus \W_2\).
 \end{ex}
 
-\begin{proof}
+\begin{proof}[\pf{ex:1.3.28}]
   First we show that \(\W_1\) is a subspace of \(\ms{n}{n}{\F}\) over \(\F\).
   Since \(\tp{\zm} = \zm = -\zm\), we know that \(\zm \in \W_1\).
   Let \(A, B \in \W_1\) and let \(c \in \F\).
@@ -833,7 +833,7 @@
   Compare this exercise with \cref{ex:1.3.28}.
 \end{ex}
 
-\begin{proof}
+\begin{proof}[\pf{ex:1.3.29}]
   Since
   \begin{align*}
              & \forall A \in \W_1 \cap \W_2, \begin{dcases}
@@ -867,7 +867,7 @@
   Prove that \(\V\) is the direct sum of \(\W_1\) and \(\W_2\) if and only if each vector in \(\V\) can be \emph{uniquely} written as \(x_1 + x_2\), where \(x_1 \in \W_1\) and \(x_2 \in \W_2\).
 \end{ex}
 
-\begin{proof}
+\begin{proof}[\pf{ex:1.3.30}]
   First suppose that \(\W_1 \oplus \W_2 = \V\).
   Let \(y \in \V\).
   Suppose for sake of contradiction that
@@ -957,7 +957,7 @@
   \end{enumerate}
 \end{ex}
 
-\begin{proof}{(a)}
+\begin{proof}[\pf{ex:1.3.31}(a)]
   We have
   \begin{align*}
              & \begin{dcases}
@@ -977,7 +977,7 @@
   \end{align*}
 \end{proof}
 
-\begin{proof}{(b)}
+\begin{proof}[\pf{ex:1.3.31}(b)]
   We have
   \begin{align*}
          & v_1 + \W = v_2 + \W                                                                                     \\
@@ -989,7 +989,7 @@
   \end{align*}
 \end{proof}
 
-\begin{proof}{(c)}
+\begin{proof}[\pf{ex:1.3.31}(c)]
   We have
   \begin{align*}
              & \begin{dcases}
@@ -1015,7 +1015,7 @@
   \end{align*}
 \end{proof}
 
-\begin{proof}{(d)}
+\begin{proof}[\pf{ex:1.3.31}(d)]
   By \cref{ex:1.3.31} we have
   \[
     \forall v_1 + \W, v_2 + \W \in S, (v_1 + \W) + (v_2 + \W) = (v_1 + v_2) + \W \in S
