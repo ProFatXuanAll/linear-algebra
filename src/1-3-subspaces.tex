@@ -1054,9 +1054,10 @@
     \item[For \ref{vs4}:]
       For all \(v + \W \in S\), we have
       \begin{align*}
-                 & \exists v' \in \V : v + v' = 0                 &  & \text{(\(\V\) is a vector space over \(\F\))} \\
-        \implies & \exists v' \in \V : (v + \W) + (v' + \W) \in S &  & \text{(by \cref{ex:1.3.31})}                  \\
-        \implies & \exists v' \in \V : (v + v') + \W = \zv + \W.  &  & \text{(from the proof above)}
+                 & \exists v' \in \V : v + v' = 0       &  & \text{(\(\V\) is a vector space over \(\F\))} \\
+        \implies & \exists v' + \W \in S :              &  & \text{(by \cref{ex:1.3.31})}                  \\
+                 & (v + \W) + (v' + \W) = (v + v') + \W &  & \text{(by \cref{ex:1.3.31})}                  \\
+                 & = \zv + \W.                          &  & \text{(from the proof above)}
       \end{align*}
     \item[For \ref{vs5}:]
       Since \(\V\) is a vector space over \(\F\), we know that \(1 \in \F\).

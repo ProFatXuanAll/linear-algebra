@@ -171,3 +171,33 @@
     \implies & \V = \spn{S_2}.
   \end{align*}
 \end{proof}
+
+\begin{ex}\label{ex:1.4.14}
+  Show that if \(S_1\) and \(S_2\) are arbitrary subsets of a vector space \(\V\) over \(\F\), then \(\spn{S_1 \cup S_2} = \spn{S_1} + \spn{S_2}\).
+  (The sum of two subsets is defined in \cref{1.3.10}.)
+\end{ex}
+
+\begin{proof}
+  We have
+  \begin{align*}
+         & v \in \spn{S_1 \cup S_2}                                                                                   \\
+    \iff & \begin{dcases}
+      \exists \seq{u}{1,2,,n + m} \in S_1 \cup S_2 \\
+      \exists \seq{a}{1,2,,n + m} \in \F
+    \end{dcases} :                                                                               \\
+         & v = \seq[+]{a,u}{1,2,,n + m}                                                &  & \text{(by \cref{1.4.3})}  \\
+    \iff & \begin{dcases}
+      \exists \seq{u}{1,2,,n} \in S_1             \\
+      \exists \seq{u}{n + 1,n + 2,,n + m} \in S_2 \\
+      \exists \seq{a}{1,2,,n + m} \in \F
+    \end{dcases} :                                                                               \\
+         & \begin{dcases}
+      v_1 = \seq[+]{a,u}{1,2,,n}             \\
+      v_2 = \seq[+]{a,u}{n + 1,n + 2,,n + m} \\
+      v = v_1 + v_2
+    \end{dcases}                                                  &  & \text{(by \cref{1.4.3})}  \\
+    \iff & \exists \tuple{v}{1,2} \in \spn{S_1} \times \spn{S_2} : v = \seq[+]{v}{1,2} &  & \text{(by \cref{1.4.3})}  \\
+    \iff & v \in \spn{S_1} + \spn{S_2}                                                 &  & \text{(by \cref{1.3.10})}
+  \end{align*}
+  and thus \(\spn{S_1 \cup S_2} = \spn{S_1} + \spn{S_2}\).
+\end{proof}
