@@ -243,3 +243,75 @@
     \spn{\set{v_1, v_2}} \cap \spn{\set{v_1 + v_2}} = \spn{\set{v_1 + v_2}}.
   \]
 \end{proof}
+
+\begin{ex}\label{ex:1.4.16}
+  Let \(\V\) be a vector space over \(\F\) and \(S\) a subset of \(\V\) with the property that whenever \(\seq{v}{1,2,,n} \in S\) and \(\seq[+]{a,v}{1,2,,n} = \zv\), then \(\seq[=]{a}{1,2,,n} = 0\).
+  Prove that every vector in the span of \(S\) can be \emph{uniquely} written as a linear combination of vectors of \(S\).
+\end{ex}
+
+\begin{proof}[\pf{ex:1.4.16}]
+  Let \(x \in \spn{S}\).
+  If \(x = \zv\), then by hypothesis we know that
+  \begin{align*}
+             & \begin{dcases}
+      \forall \seq{v}{1,2,,n} \in S \\
+      \forall \seq{a}{1,2,,n} \in \F
+    \end{dcases}, \seq[+]{a,v}{1,2,,n} = \zv \\
+    \implies & \seq[=]{a}{1,2,,n} = 0
+  \end{align*}
+  and thus \(\zv\) can be uniquely written as a linear combination of vectors of \(S\).
+
+  Now suppose that \(x \neq \zv\).
+  Suppose for sake of contradiction that \(x\) can be written as two different linear combination of vectors of \(S\).
+  By \cref{1.4.3} this means
+  \[
+    \begin{dcases}
+      \exists \seq{v}{1,2,,n} \in S  \\
+      \exists \seq{a}{1,2,,n} \in \F \\
+      \exists \seq{u}{1,2,,m} \in S  \\
+      \exists \seq{b}{1,2,,m} \in \F
+    \end{dcases} : \begin{dcases}
+      x = \seq[+]{a,v}{1,2,,n} \\
+      x = \seq[+]{b,u}{1,2,,m}
+    \end{dcases}.
+  \]
+  But then we have
+  \begin{align*}
+             & x = \seq[+]{a,v}{1,2,,n}                                       \\
+             & \quad = \seq[+]{b,u}{1,2,,m}                                   \\
+    \implies & \seq[+]{a,v}{1,2,,n}                                           \\
+             & \quad - \seq[+]{b,u}{1,2,,m} = \zv                             \\
+    \implies & \seq[=]{a}{1,2,,n}                                             \\
+             & \quad = \seq[=]{b}{1,2,,m} = 0     &  & \text{(by hypothesis)} \\
+    \implies & x = 0v_1 + 0v_2 + \cdots + 0v_n                                \\
+             & = \zv + \zv + \cdots + \zv         &  & \text{(by \cref{1.2})} \\
+             & = \zv,                             &  & \text{(by \ref{vs3})}
+  \end{align*}
+  a contradiction.
+  Thus \(x\) can be uniquely written as a linear combination of vectors of \(S\).
+\end{proof}
+
+\begin{ex}\label{ex:1.4.17}
+  Let \(\W\) be a subspace of a vector space \(\V\) over \(\F\).
+  Under what conditions are there only a finite number of distinct subsets \(S\) of \(\W\) such that \(S\) generates \(\W\)?
+\end{ex}
+
+\begin{proof}[\pf{ex:1.4.17}]
+  The condition is when \(\W\) is a finite set.
+  To proof this, suppose for sake of contradiction that \(\W\) is an infinite set and \(\W\) has only a finite number of distinct subsets \(S\) of \(\W\) such that \(\spn{S} = \W\).
+
+  Let \(v \in \W\).
+  We claim that \(\spn{\W \setminus \set{v}} = \W\).
+  Since \(\W \setminus (\W \setminus \set{v}) = \set{v}\), by \cref{1.4.3} we only need to find a linear combination in \(\W \setminus \set{v}\) which equals to \(v\).
+  Now we split into two cases:
+  \begin{itemize}
+    \item If \(v = \zv\), then we know that there exists a vector \(x\) in \(\W \setminus \set{\zv}\) since \(\W\) is infinite.
+          By \ref{vs4} we know that there exist another vector \(y\) in \(\W \setminus \set{\zv}\) such that \(x + y = \zv\).
+          Thus we have found a linear combination of \(\zv\) in \(\W \setminus \set{\zv}\).
+    \item If \(v \neq \zv\), then by \ref{vs4} we know that \(-v \in \W\).
+          By \cref{1.2} we know that \(-(-v) = v\), thus we have found a linear combination of \(v\) in \(\W \setminus \set{v}\).
+  \end{itemize}
+  From all cases above we conclude that \(\spn{\W \setminus \set{v}} = \W\).
+  But \(\W\) is infinite implies we have infinite subset \(\W \setminus \set{v}\) which generate \(\W\), a contradiction.
+  Thus \(\W\) must be finite.
+\end{proof}
