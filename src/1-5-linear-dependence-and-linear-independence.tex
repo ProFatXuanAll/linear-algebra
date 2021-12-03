@@ -1,0 +1,30 @@
+\section{Linear Dependence and Linear Independence}\label{sec:1.5}
+
+\begin{note}
+  Suppose that \(\V\) is a vector space over an infinite field and that \(\W\) is a subspace of \(\V\).
+  Unless \(\W\) is the zero subspace, \(\W\) is an infinite set.
+  It is desirable to find a ``small'' finite subset \(S\) that generates \(\W\) because we can then describe each vector in \(\W\) as a linear combination of the finite number of vectors in \(S\).
+  Indeed, the smaller that \(S\) is, the fewer computations that are required to represent vectors in \(\W\).
+
+  Checking that some vector in \(S\) is a linear combination of the other vectors in \(S\) could require that we solve several different systems of linear equations before we determine which, if any, vectors in \(S\) is a linear combination of the others.
+
+  Because some vector in \(S\) is a linear combination of the others, the zero vector can be expressed as a linear combination of the vectors in \(S\) using coefficients that are not all zero.
+  The converse of this statement is also true:
+  If the zero vector can be written as a linear combination of the vectors in \(S\) in which not all the coefficients are zero, then some vector in \(S\) is a linear combination of the others.
+  Thus, rather than asking whether some vector in \(S\) is a linear combination of the other vectors in \(S\), it is more efficient to ask whether the zero vector can be expressed as a linear combination of the vectors in \(S\) with coefficients that are not all zero.
+\end{note}
+
+\begin{defn}\label{1.5.1}
+  A subset \(S\) of a vector space \(\V\) over \(\F\) is called \textbf{linearly dependent} if there exist a finite number of distinct vectors \(\seq{u}{1,2,,n}\) in \(S\) and scalars \(\seq{a}{1,2,,n}\) in \(\F\), not all zero, such that
+  \[
+    \seq[+]{a,u}{1,2,,n} = \zv.
+  \]
+  In this case we also say that the vectors of \(S\) are linearly dependent.
+\end{defn}
+
+\begin{defn}\label{1.5.2}
+  For any vectors \(\seq{u}{1,2,,n}\), we have \(\seq[+]{a,u}{1,2,,n} = \zv\) if \(\seq[=]{a}{1,2,,n} = 0\).
+  We call this the \textbf{trivial representation} of \(\zv\) as a linear combination of \(\seq{u}{1,2,,n}\).
+  Thus, for a set to be linearly dependent, there must exist a nontrivial representation of \(\zv\) as a linear combination of vectors in the set.
+  Consequently, any subset of a vector space that contains the zero vector is linearly dependent, because \(\zv = 1 \cdot \zv\) is a nontrivial representation of \(\zv\) as a linear combination of vectors in the set.
+\end{defn}
