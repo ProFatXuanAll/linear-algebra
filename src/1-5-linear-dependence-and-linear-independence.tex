@@ -28,3 +28,50 @@
   Thus, for a set to be linearly dependent, there must exist a nontrivial representation of \(\zv\) as a linear combination of vectors in the set.
   Consequently, any subset of a vector space that contains the zero vector is linearly dependent, because \(\zv = 1 \cdot \zv\) is a nontrivial representation of \(\zv\) as a linear combination of vectors in the set.
 \end{defn}
+
+\begin{defn}\label{1.5.3}
+  A subset \(S\) of a vector space over \(\F\) that is not linearly dependent is called \textbf{linearly independent}.
+  As before, we also say that the vectors of \(S\) are linearly independent.
+\end{defn}
+
+\begin{eg}\label{1.5.4}
+  The following facts about linearly independent sets are true in any vector space.
+  \begin{enumerate}
+    \item The empty set is linearly independent, for linearly dependent sets must be nonempty.
+    \item A set consisting of a single nonzero vector is linearly independent.
+          For if \(\set{u}\) is linearly dependent, then \(au = \zv\) for some nonzero scalar \(a\).
+          Thus
+          \[
+            u = a^{-1} (au) = a^{-1} \zv = \zv.
+          \]
+    \item A set is linearly independent if and only if the only representations of \(\zv\) as linear combinations of its vectors are trivial representations.
+  \end{enumerate}
+\end{eg}
+
+\begin{eg}\label{1.5.5}
+  For \(k = 0, 1, \dots, n\) let \(p_k(x) = x^k + x^{k + 1} + \cdots + x^n\).
+  The set
+  \[
+    \set{p_0(x), p_1(x), \dots, p_n(x)}
+  \]
+  is linearly independent in \(\ps[n]{\F}\).
+  For if
+  \[
+    a_0 p_0(x) + a_1 p_1(x) + \cdots + a_n p_n(x) = \zv
+  \]
+  for some scalars \(\seq{a}{0,1,,n}\), then
+  \[
+    a_0 + (a_0 + a_1) x + (a_0 + a_1 + a_2) x^2 + \cdots + (a_0 + a_1 + \cdots + a_n) x^n = \zv.
+  \]
+  By equating the coefficients of \(x^k\) on both sides of this equation for \(k = 0, 1, \dots, n\), we obtain
+  \[
+    \begin{matrix*}[l]
+      & \seq[+]{a}{0}      & = 0 \\
+      & \seq[+]{a}{0,1}    & = 0 \\
+      & \seq[+]{a}{0,1,2}  & = 0 \\
+      & \vdots & \\
+      & \seq[+]{a}{0,1,2,,n} & = 0
+    \end{matrix*}
+  \]
+  Clearly the only solution to this system of linear equations is \(\seq[=]{a}{0,1,,n} = 0\).
+\end{eg}
