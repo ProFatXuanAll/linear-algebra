@@ -158,3 +158,101 @@
   Since \(v \neq v_i\) for \(i = 1, 2, \dots, m\), the coefficient of \(v\) in this linear combination is nonzero, and so the set \(\set{\seq{v}{1,2,,m}, v}\) is linearly dependent.
   Therefore \(S \cup \set{v}\) is linearly dependent by \cref{1.6}.
 \end{proof}
+
+\exercisesection
+
+\setcounter{ex}{3}
+\begin{ex}\label{ex:1.5.4}
+  In \(\vs{F}^n\), let \(e_j\) denote the vector whose \(j\)th coordinate is \(1\) and whose other coordinates are \(0\).
+  Prove that \(\set{\seq{e}{1,2,,n}}\) is linearly independent.
+\end{ex}
+
+\begin{proof}[\pf{ex:1.5.4}]
+  Let \(\seq{a}{1,2,,n} \in \F\).
+  Since
+  \begin{align*}
+             & \seq[+]{a,e}{1,2,,n} = \zv                                                      \\
+    \implies & \begin{dcases}
+      a_1 1 + a_2 0 + \cdots + a_n 0 = 0 \\
+      a_1 0 + a_2 1 + \cdots + a_n 0 = 0 \\
+      \vdots                             \\
+      a_1 0 + a_2 0 + \cdots + a_n 1 = 0
+    \end{dcases}                        &  & \text{(by \cref{1.2.4})} \\
+    \implies & \forall i \in \set{1, \dots, n}, a_i 1 = a_i = 0,
+  \end{align*}
+  by \cref{1.5.3} we know that \(\set{\seq{e}{1,2,,n}}\) is linearly independent.
+\end{proof}
+
+\begin{ex}\label{ex:1.5.5}
+  Show that the set \(\set{1, x, x^2, \dots, x^n}\) is linearly independent in \(\ps[n]{\F}\).
+\end{ex}
+
+\begin{proof}[\pf{ex:1.5.5}]
+  Let \(\seq{a}{0,1,2,,n} \in \F\).
+  Since
+  \begin{align*}
+             & a_0 + a_1 x^1 + a_2 x^2 + \cdots + a_n x^n = \zv = 0 + 0x + 0x^2 + \cdots + 0x^n \\
+    \implies & \seq[=]{a}{0,1,2,,n} = 0,
+  \end{align*}
+  by \cref{1.5.3} we know that \(\set{1, x, x^2, \dots, x^n}\) is linearly independent.
+\end{proof}
+
+\begin{ex}\label{ex:1.5.6}
+  In \(\MS\), let \(E_{i j}\) denote the matrix whose only nonzero entry is \(1\) in the \(i\)th row and \(j\)th column.
+  Prove that \(\set{E_{i j} : 1 \leq i \leq m, 1 \leq j \leq n}\) is linearly independent.
+\end{ex}
+
+\begin{proof}[\pf{ex:1.5.6}]
+  Let \(a_{i j} \in \F\) where \(1 \leq i \leq m\) and \(1 \leq j \leq n\).
+  Since
+  \begin{align*}
+             & \sum_{i = 1}^m \sum_{j = 1}^{n} a_{i j} E_{i j} = \zm                               \\
+    \implies & \begin{pmatrix}
+      a_{1 1} 1 & a_{1 2} 1 & \cdots & a_{1 n} 1 \\
+      a_{2 1} 1 & a_{2 2} 1 & \cdots & a_{2 n} 1 \\
+      \vdots    & \vdots    & \ddots & \vdots    \\
+      a_{m 1} 1 & a_{m 2} 1 & \cdots & a_{m n} 1
+    \end{pmatrix}                                                          \\
+             & = \begin{pmatrix}
+      a_{1 1} & a_{1 2} & \cdots & a_{1 n} \\
+      a_{2 1} & a_{2 2} & \cdots & a_{2 n} \\
+      \vdots  & \vdots  & \ddots & \vdots  \\
+      a_{m 1} & a_{m 2} & \cdots & a_{m n}
+    \end{pmatrix} = \zm                                                  \\
+    \implies & a_{i j} = 0,                                          &  & \text{(by \cref{1.2.8})}
+  \end{align*}
+  by \cref{1.5.3} we know that \(\set{E_{i j} : 1 \leq i \leq m, 1 \leq j \leq n}\) is linearly independent.
+\end{proof}
+
+\setcounter{ex}{7}
+\begin{ex}\label{ex:1.5.8}
+  Let \(S = \set{(1, 1, 0), (1, 0, 1), (0, 1, 1)}\) be a subset of the vector space \(\vs{F}^3\) over \(\F\).
+  \begin{enumerate}
+    \item Prove that if \(\F = \R\), then \(S\) is linearly independent.
+    \item Prove that if \(\F\) has characteristic \(2\), then \(S\) is linearly dependent.
+  \end{enumerate}
+\end{ex}
+
+\begin{proof}[\pf{ex:1.5.8}(a)]
+  Let \(\seq{a}{1,2,3} \in \R\).
+  Since
+  \begin{align*}
+             & a_1 (1, 1, 0) + a_2 (1, 0, 1) + a_3 (0, 1, 1) = (0, 0, 0)                               \\
+    \implies & \begin{dcases}
+      a_1 1 + a_2 1 + a_3 0 = 0 \\
+      a_1 1 + a_2 0 + a_3 1 = 0 \\
+      a_1 0 + a_2 1 + a_3 1 = 0
+    \end{dcases}                                &  & \text{(by \cref{1.2.4})} \\
+    \implies & \seq[=]{a}{1,2,3} = 0,
+  \end{align*}
+  by \cref{1.5.3} we know that \(S\) is linearly independent.
+\end{proof}
+
+\begin{proof}[\pf{ex:1.5.8}(b)]
+  Observe that
+  \begin{align*}
+             & (1, 1, 0) + (1, 0, 1) = (1 + 1, 1 + 0, 0 + 1) = (0, 1, 1) \\
+    \implies & (1, 1, 0) + (1, 0, 1) - (0, 1, 1) = (0, 0, 0).
+  \end{align*}
+  Thus by \cref{1.5.1} \(S\) is linearly dependent.
+\end{proof}
