@@ -294,7 +294,135 @@
 \begin{proof}[\pf{ex:1.5.11}]
   We have
   \[
-    \forall v \in \spn{S}, \exists \seq{a}{1,2,,n} \in \Z_2 : \seq[+]{a,u}{1,2,,n} = v
+    \forall v \in \spn{S}, \exists \seq{a}{1,2,,n} \in \Z_2 : \seq[+]{a,u}{1,2,,n} = v.
   \]
-  and thus there are \(2^n\) vectors in \(\spn{S}\).
+  Since \(a_i \in \Z_2\) for all \(i \in \set{1, \dots, n}\), \(a_i\) has only two choices, which are \(0\) or \(1\).
+  Since there are \(n\) variables with \(2\) choices for each, there are \(2^n\) vectors in \(\spn{S}\).
+\end{proof}
+
+\setcounter{ex}{12}
+\begin{ex}\label{ex:1.5.13}
+  Let \(\V\) be a vector space over a field of characteristic not equal to two.
+  \begin{enumerate}
+    \item Let \(u\) and \(v\) be distinct vectors in \(\V\).
+          Prove that \(\set{u,v}\) is linearly independent if and only if \(\set{u + v, u - v}\) is linearly independent.
+    \item Let \(u, v\), and \(w\) be distinct vectors in \(\V\).
+          Prove that \(\set{u, v, w}\) is linearly independent if and only if \(\set{u + v, u + w, v + w}\) is linearly independent.
+  \end{enumerate}
+\end{ex}
+
+\begin{proof}[\pf{ex:1.5.13}(a)]
+  We have
+  \begin{align*}
+         & \set{u, v} \text{ is linearly independent}                                        \\
+    \iff & \forall a, b \in \F,                                                              \\
+         & [au + bv = \zv \implies a = b = 0]                  &  & \text{(by \cref{1.5.3})} \\
+    \iff & \forall a, b \in \F,                                                              \\
+         & [a(u + v) + b(u - v) = (a + b) u + (a - b) v                                      \\
+         & = \zv \implies a + b = a - b = 0]                                                 \\
+    \iff & \set{u + v, u - v} \text{ is linearly independent}. &  & \text{(by \cref{1.5.3})}
+  \end{align*}
+\end{proof}
+
+\begin{proof}[\pf{ex:1.5.13}(b)]
+  We have
+  \begin{align*}
+         & \set{u, v, w} \text{ is linearly independent}                                            \\
+    \iff & \forall a, b, c \in \F,                                                                  \\
+         & [au + bv + cw = \zv \implies a = b = c = 0]                &  & \text{(by \cref{1.5.3})} \\
+    \iff & \forall a, b \in \F,                                                                     \\
+         & [a(u + v) + b(u + w) + c(v + w)                                                          \\
+         & = (a + b) u + (a + c) v + (b + c) w                                                      \\
+         & = \zv \implies a + b = a + c = b + c = 0]                                                \\
+    \iff & \set{u + v, u + w, v + w} \text{ is linearly independent}. &  & \text{(by \cref{1.5.3})}
+  \end{align*}
+\end{proof}
+
+\begin{ex}\label{ex:1.5.14}
+  Prove that a set \(S\) is linearly dependent if and only if \(S = \set{\zv}\) or there exist distinct vectors \(v, \seq{u}{1,2,,n}\) in \(S\) such that \(v\) is a linear combination of \(\seq{u}{1,2,,n}\).
+\end{ex}
+
+\begin{proof}[\pf{ex:1.5.14}]
+  By \cref{1.5.4}(a) we know that \(\varnothing\) is linearly independent, so \(S\) has at least one element.
+  First suppose that \(S\) has only one element.
+  Then by \cref{1.5.4}(b) we know that \(S\) is linearly dependent iff \(S = \set{\zv}\).
+
+  Now suppose that \(S\) has more than one element.
+  Then we have
+  \begin{align*}
+         & S \text{ is linearly dependent}                                                                    \\
+    \iff & \begin{dcases}
+      \exists v \in S                                 \\
+      \exists \seq{u}{1,2,,n} \in S \setminus \set{v} \\
+      \exists a_0 \in \F \setminus \set{0}            \\
+      \exists \seq{a}{1,2,,n} \in \F
+    \end{dcases} :                                                                       \\
+         & a_0 v + \seq[+]{a,u}{1,2,,n} = \zv                                   &  & \text{(by \cref{1.5.1})} \\
+    \iff & \begin{dcases}
+      \exists v \in S                                 \\
+      \exists \seq{u}{1,2,,n} \in S \setminus \set{v} \\
+      \exists a_0 \in \F \setminus \set{0}            \\
+      \exists \seq{a}{1,2,,n} \in \F
+    \end{dcases} :                                                                       \\
+         & v = -a_0^{-1} a_1 u_1 - a_0^{-1} a_2 u_2 - \cdots - a_0^{-1} a_n u_n                               \\
+    \iff & \exists v, \seq{u}{1,2,,n} \in S :                                                                 \\
+         & v \text{ is a linear combination of } \seq{u}{1,2,,n}.               &  & \text{(by \cref{1.4.1})}
+  \end{align*}
+  Combine all proofs above we conclude that \(S\) is linearly dependent if and only if \(S = \set{\zv}\) or there exist distinct vectors \(v, \seq{u}{1,2,,n}\) in \(S\) such that \(v\) is a linear combination of \(\seq{u}{1,2,,n}\).
+\end{proof}
+
+\begin{ex}\label{ex:1.5.15}
+  Let \(S = \set{\seq{u}{1,2,,n}}\) be a finite set of vectors.
+  Prove that \(S\) is linearly dependent if and only if \(u_1 = \zv\) or \(u_{k + 1} \in \spn{\set{\seq{u}{1,2,,k}}}\) for some \(k\) (\(1 \leq k < n\)).
+\end{ex}
+
+\begin{proof}[\pf{ex:1.5.15}]
+  By \cref{1.5.1} and \cref{1.5.2} we know that if \(u_1 = \zv\) or \(u_{k + 1} \in \spn{\set{\seq{u}{1,2,,k}}}\) for some \(k\) (\(1 \leq k < n\)), then \(S\) is linearly dependent.
+  So we only need to show the converse is also true.
+
+  Let \(S = \set{\seq{u}{1,2,,n}}\) be linearly dependent.
+  Suppose for sake of contradiction that \(u_1 \neq \zv\) and
+  \[
+    \forall k \in \set{1, \dots, n - 1}, u_{k + 1} \notin \spn{\set{\seq{u}{1,2,,k}}}.
+  \]
+  By \cref{1.4.2} we know that \(u_k \neq \zv\) for all \(k \in \set{1, \dots, n}\).
+  But then we have
+  \begin{align*}
+             & u_n \notin \spn{\set{\seq{u}{1,2,,n - 1}}}                                                \\
+    \implies & \forall \seq{a}{1,2,,n - 1} \in \F,                                                       \\
+             & \seq[+]{a,u}{1,2,,n - 1} \neq u_n                           &  & \text{(by \cref{1.4.3})} \\
+    \implies & \begin{dcases}
+      \forall \seq{a}{1,2,,n - 1} \in \F \\
+      \forall a_n \in \F \setminus \set{0}
+    \end{dcases},                                                               \\
+             & \seq[+]{a,u}{1,2,,n - 1} \neq a_n u_n                                                     \\
+    \implies & \begin{dcases}
+      \forall \seq{a}{1,2,,n - 1} \in \F \\
+      \forall a_n \in \F \setminus \set{0}
+    \end{dcases},                                                               \\
+             & \seq[+]{a,u}{1,2,,n} \neq \zv                                                             \\
+    \implies & \forall \seq{a}{1,2,,n} \in \F, [\seq[+]{a,u}{1,2,,n} = \zv                               \\
+             & \iff \seq[=]{a}{1,2,,n} = 0]                                                              \\
+    \implies & S \text{ is linearly independent},                          &  & \text{(by \cref{1.5.3})}
+  \end{align*}
+  a contradiction.
+  Thus the converse must be true.
+\end{proof}
+
+\begin{ex}\label{ex:1.5.16}
+  Prove that a set \(S\) of vectors is linearly independent if and only if each finite subset of \(S\) is linearly independent.
+\end{ex}
+
+\begin{proof}[\pf{ex:1.5.16}]
+  First suppose that \(S\) is linearly independent.
+  Then by \cref{1.5.6} we know that every finite subset of \(S\) is linearly independent.
+
+  Now suppose that every finite subset of \(S\) is linearly independent.
+  Suppose for sake of contradiction that \(S\) is linearly dependent.
+  Then by \cref{ex:1.5.14} we know that \(S = \set{\zv}\) or there exist \(v, \seq{u}{1,2,,n} \in S\) such that \(v\) is a linear combination of \(\seq{u}{1,2,,n}\).
+  Clearly \(S \neq \set{\zv}\) since \(\set{\zv}\) is a finite subset of \(S\) but \(\set{\zv}\) is linearly dependent.
+  So we must have \(v\) as a linear combination of \(\seq{u}{1,2,,n}\).
+  Since the set \(\set{v,\seq{u}{1,2,,n}}\) is finite, by hypothese it is linearly independent.
+  But this contradict to the fact that \(v\) is a linear combination of \(\seq{u}{1,2,,n}\).
+  Thus \(S\) is linearly independent.
 \end{proof}
