@@ -75,3 +75,86 @@
   \]
   Clearly the only solution to this system of linear equations is \(\seq[=]{a}{0,1,,n} = 0\).
 \end{eg}
+
+\begin{thm}\label{1.6}
+  Let \(\V\) be a vector space over \(\F\), and let \(S_1 \subseteq S_2 \subseteq \V\).
+  If \(S_1\) is linearly dependent, then \(S_2\) is linearly dependent.
+\end{thm}
+
+\begin{proof}[\pf{1.6}]
+  We have
+  \begin{align*}
+             & \begin{dcases}
+      S_1 \subseteq S_2 \\
+      S_1 \text{ is linearly dependent}
+    \end{dcases}                                        \\
+    \implies & \begin{dcases}
+      \exists \seq{u}{1,2,,n} \in S_1 \subseteq S_2 \\
+      \exists \seq{a}{1,2,,n} \in \F
+    \end{dcases} :                                      \\
+             & \begin{dcases}
+      \seq[+]{a,u}{1,2,,n} = \zv \\
+      \lnot (\seq[=]{a}{1,2,,n} = 0)
+    \end{dcases}         &  & \text{(by \cref{1.5.1})} \\
+    \implies & S_2 \text{ is linearly dependent}. &  & \text{(by \cref{1.5.1})}
+  \end{align*}
+\end{proof}
+
+\begin{cor}\label{1.5.6}
+  Let \(\V\) be a vector space, and let \(S_1 \subseteq S_2 \subseteq \V\).
+  If \(S_2\) is linearly independent, then \(S_1\) is linearly independent.
+\end{cor}
+
+\begin{proof}[\pf{1.5.6}]
+  Suppose for sake of contradiction that \(S_1\) is linearly dependent.
+  But by \cref{1.6} \(S_1 \subseteq S_2\) implies \(S_2\) is linearly dependent, which contradict to the fact that \(S_2\) is linearly independent.
+  Thus \(S_1\) is linearly independent.
+\end{proof}
+
+\begin{note}
+  Earlier in this section, we noted that the issue of whether \(S\) is the smallest generating set for its span is related to the question of whether some vector in \(S\) is a linear combination of the other vectors in \(S\).
+  Thus the issue of whether \(S\) is the smallest generating set for its span is related to the question of whether \(S\) is linearly dependent.
+
+  More generally, suppose that \(S\) is any linearly dependent set containing two or more vectors.
+  Then some vector \(v \in S\) can be written as a linear combination of the other vectors in \(S\), and the subset obtained by removing \(v\) from \(S\) has the same span as \(S\).
+  It follows that \emph{if no proper subset of \(S\) generates the span of \(S\), then \(S\) must be linearly independent.}
+\end{note}
+
+\begin{thm}\label{1.7}
+  Let \(S\) be a linearly independent subset of a vector space \(\V\) over \(\F\), and let \(v\) be a vector in \(\V\) that is not in \(S\).
+  Then \(S \cup \set{v}\) is linearly dependent if and only if \(v \in \spn{S}\).
+\end{thm}
+
+\begin{proof}[\pf{1.7}]
+  By \cref{1.5.2} we see that when \(v = \zv\) the statement holds.
+  So suppose that \(v \neq \zv\).
+
+  If \(S \cup \set{v}\) is linearly dependent, then there are vectors \\
+  \(\seq{u}{1,2,,n}\) in \(S\) such that \(a_0 v + \seq[+]{a,u}{1,2,,n} = \zv\) for some nonzero scalars \(\seq{a}{0,1,2,,n}\) in \(\F\).
+  We claim that \(a_0 \neq 0\).
+  So suppose for sake of contradiction that \(a_0 = 0\).
+  Because \(S\) is linearly independent, we know that
+  \begin{align*}
+             & a_0 v + \seq[+]{a,u}{1,2,,n}                                \\
+             & = 0v + \seq[+]{a,u}{1,2,,n}                                 \\
+             & = \zv + \seq[+]{a,u}{1,2,,n} &  & \text{(by \cref{1.2}(a))} \\
+             & = \seq[+]{a,u}{1,2,,n}       &  & \text{(by \ref{vs3})}     \\
+             & = \zv                                                       \\
+    \implies & \seq[=]{a}{1,2,,n} = 0.      &  & \text{(by \cref{1.5.3})}
+  \end{align*}
+  But this means \(\seq[=]{a}{0,1,2,,n} = 0\), a contradiction.
+  Thus we must have \(a_0 \neq 0\), and so
+  \[
+    v = a_0^{-1} (-\seq[-]{a,u}{1,2,,n}) = -(a_0^{-1} a_1) u_1 - (a_0^{-1} a_2) u_2 - \cdots - (a_0^{-1} a_n) u_n.
+  \]
+  Since \(v\) is a linear combination of \(\seq{u}{1,2,,n}\), which are in \(S\), we have \(v \in \spn{S}\).
+
+  Conversely, let \(v \in \spn{S}\).
+  Then there exist vectors \(\seq{v}{1,2,,m}\) in \(S\) and scalars \(\seq{b}{1,2,,m}\) such that \(v = \seq[+]{b,v}{1,2,,m}\).
+  Hence
+  \[
+    \zv = \seq[+]{b,v}{1,2,,m} + (-1)v.
+  \]
+  Since \(v \neq v_i\) for \(i = 1, 2, \dots, m\), the coefficient of \(v\) in this linear combination is nonzero, and so the set \(\set{\seq{v}{1,2,,m}, v}\) is linearly dependent.
+  Therefore \(S \cup \set{v}\) is linearly dependent by \cref{1.6}.
+\end{proof}
