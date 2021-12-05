@@ -426,3 +426,112 @@
   But this contradict to the fact that \(v\) is a linear combination of \(\seq{u}{1,2,,n}\).
   Thus \(S\) is linearly independent.
 \end{proof}
+
+\begin{ex}\label{ex:1.5.17}
+  Let \(M \in \ms{n}{n}{\F}\) be a square upper triangular matrix (as defined in \cref{ex:1.3.12}) with nonzero diagonal entries.
+  Prove that the columns of \(M\) are linearly independent.
+\end{ex}
+
+\begin{proof}[\pf{ex:1.5.17}]
+  The columns of \(M\) are vectors in \(\vs{F}^n\), thus we can write the \(i\)th column (\(1 \leq i \leq n\)) of \(M\) as
+  \[
+    \begin{pmatrix}
+      M_{1 i} \\
+      M_{2 i} \\
+      \vdots  \\
+      M_{n i}
+    \end{pmatrix} = M_{1 i} \cdot e_1 + M_{2 i} \cdot e_2 + \cdots + M_{n i} \cdot e_n = \sum_{j = 1}^n M_{j i} \cdot e_j,
+  \]
+  where \(\seq{e}{1,2,,n}\) are defined as in \cref{ex:1.5.4}.
+  We now show that the set of column vectors of \(M\) is linearly independent.
+  Let \(\seq{a}{1,2,,n} \in \F\).
+  Since
+  \begin{align*}
+             & \sum_{i = 1}^n \br{a_i \cdot \pa{\sum_{j = 1}^n M_{j i} \cdot e_j}} = \zv                                                        \\
+    \implies & \sum_{i = 1}^n \pa{\sum_{j = 1}^n a_i \cdot M_{j i} \cdot e_j} = \zv                                                             \\
+    \implies & \sum_{j = 1}^n \pa{\sum_{i = 1}^n a_i \cdot M_{j i} \cdot e_j} = \zv      &  & \text{(by \ref{vs1} and \ref{vs2})}               \\
+    \implies & \sum_{j = 1}^n \pa{\sum_{i = 1}^n a_i \cdot M_{j i}} \cdot e_j = \zv                                                             \\
+    \implies & \forall j \in \set{1, \dots, n}, \sum_{i = 1}^n a_i \cdot M_{j i} = 0     &  & \text{(by \cref{ex:1.5.4})}                       \\
+    \implies & \forall j \in \set{1, \dots, n}, \sum_{i = j}^n a_i \cdot M_{j i} = 0     &  & \text{(by \cref{ex:1.3.12})}                      \\
+    \implies & \seq[=]{a}{1,2,,n} = 0,                                                   &  & (\forall j \in \set{1, \dots, n}, M_{j j} \neq 0)
+  \end{align*}
+  by \cref{1.5.3} we know that the column vectors of \(M\) is linearly independent.
+\end{proof}
+
+\begin{ex}\label{ex:1.5.18}
+  Let \(S\) be a set of nonzero polynomials in \(\ps{\F}\) such that no two have the same degree.
+  Prove that \(S\) is linearly independent.
+\end{ex}
+
+\begin{proof}[\pf{ex:1.5.18}]
+  Suppose for sake of contradiction that \(S\) is linearly dependent.
+  Then by \cref{ex:1.5.14} we know that
+  \[
+    \begin{dcases}
+      \exists g, \seq{f}{1,2,,n} \in S \\
+      \exists \seq{a}{1,2,,n} \in \F
+    \end{dcases} : \begin{dcases}
+      g = \seq[+]{a,f}{1,2,,n} \\
+      \lnot (\seq[=]{a}{1,2,,n} = 0)
+    \end{dcases}.
+  \]
+  Let \(\deg(h)\) be the degree of any function \(h \in \ps{\F}\) and let \(m = \deg(g)\).
+  Then by \cref{1.2.11} we have
+  \[
+    \exists \seq{c}{0,1,,m} \in \F : \begin{dcases}
+      g(x) = \sum_{j = 0}^m c_j x^j \\
+      c_m \neq 0
+    \end{dcases}.
+  \]
+  By hypothese we know that
+  \[
+    \forall i \in \set{1, \dots, n}, \deg(f_i) \neq m.
+  \]
+  But by \cref{ex:1.5.5} we have
+  \[
+    c_m x^m = \sum_{i = 1}^n a_i \cdot (0x^m) = 0 \implies c_m = 0,
+  \]
+  a contradiction.
+  Thus \(S\) is linearly independent.
+\end{proof}
+
+\begin{ex}\label{ex:1.5.19}
+  Prove that if \(\set{\seq{A}{1,2,,k}}\) is a linearly independent subset of \(\ms{n}{n}{\F}\), then \(\set{\tp{A}_1, \tp{A}_2, \dots, \tp{A}_k}\) is also linearly independent.
+\end{ex}
+
+\begin{proof}[\pf{ex:1.5.19}]
+  Let \(i, j \in \set{1, \dots, n}\).
+  Then we have
+  \begin{align*}
+             & \set{\seq{A}{1,2,,k}} \text{ is linearly independent}                                                                       \\
+    \implies & \br{\forall \seq{c}{1,2,,k} \in \F, \sum_{p = 1}^k c_p A_p = \zm \implies c_p = 0}            &  & \text{(by \cref{1.5.3})} \\
+    \implies & \br{\forall \seq{c}{1,2,,k} \in \F, \sum_{p = 1}^k c_p (A_p)_{i j} = 0 \implies c_p = 0}      &  & \text{(by \cref{1.2.9})} \\
+    \implies & \br{\forall \seq{c}{1,2,,k} \in \F, \sum_{p = 1}^k c_p \tp{(A_p)}_{j i} = 0 \implies c_p = 0} &  & \text{(by \cref{1.3.3})} \\
+    \implies & \br{\forall \seq{c}{1,2,,k} \in \F, \sum_{p = 1}^k c_p \tp{(A_p)} = \zm \implies c_p = 0}     &  & \text{(by \cref{1.2.9})} \\
+    \implies & \set{\tp{A}_1, \tp{A}_2, \dots, \tp{A}_k} \text{ is linearly independent}.                    &  & \text{(by \cref{1.5.3})}
+  \end{align*}
+\end{proof}
+
+\begin{ex}\label{ex:1.5.20}
+  Let \(f, g \in \fs{\R}{\R}\) be the functions defined by \(f(t) = e^{rt}\) and \(g(t) = e^{st}\), where \(r \neq s\).
+  Prove that \(f\) and \(g\) are linearly independent in \(\fs{\R}{\R}\).
+\end{ex}
+
+\begin{proof}[\pf{ex:1.5.20}]
+  Suppose for sake of contradiction that \(f, g\) are linearly dependent.
+  Then by \cref{1.5.1} we have
+  \[
+    \exists a, b \in \R : \begin{dcases}
+      af + bg = \zv \\
+      \lnot (a = b = 0)
+    \end{dcases}.
+  \]
+  But this means
+  \begin{align*}
+             & \forall t \in \R, ae^{rt} + be^{st} = 0                                                         \\
+    \implies & \forall t \in \R, a = -b e^{(s - r) t}                                                          \\
+    \implies & a = b = 0,                              &  & \text{(\(t \mapsto e^{(s - r) t}\) is one-to-one)}
+  \end{align*}
+  a contradiction.
+  Thus \(f, g\) are linearly independent.
+\end{proof}
