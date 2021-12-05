@@ -198,15 +198,15 @@
 \end{proof}
 
 \begin{ex}\label{ex:1.5.6}
-  In \(\MS\), let \(E_{i j}\) denote the matrix whose only nonzero entry is \(1\) in the \(i\)th row and \(j\)th column.
-  Prove that \(\set{E_{i j} : 1 \leq i \leq m, 1 \leq j \leq n}\) is linearly independent.
+  In \(\MS\), let \(E^{i j}\) denote the matrix whose only nonzero entry is \(1\) in the \(i\)th row and \(j\)th column.
+  Prove that \(\set{E^{i j} : 1 \leq i \leq m, 1 \leq j \leq n}\) is linearly independent.
 \end{ex}
 
 \begin{proof}[\pf{ex:1.5.6}]
   Let \(a_{i j} \in \F\) where \(1 \leq i \leq m\) and \(1 \leq j \leq n\).
   Since
   \begin{align*}
-             & \sum_{i = 1}^m \sum_{j = 1}^{n} a_{i j} E_{i j} = \zm                               \\
+             & \sum_{i = 1}^m \sum_{j = 1}^{n} a_{i j} E^{i j} = \zm                               \\
     \implies & \begin{pmatrix}
       a_{1 1} 1 & a_{1 2} 1 & \cdots & a_{1 n} 1 \\
       a_{2 1} 1 & a_{2 2} 1 & \cdots & a_{2 n} 1 \\
@@ -221,7 +221,7 @@
     \end{pmatrix} = \zm                                                  \\
     \implies & a_{i j} = 0,                                          &  & \text{(by \cref{1.2.8})}
   \end{align*}
-  by \cref{1.5.3} we know that \(\set{E_{i j} : 1 \leq i \leq m, 1 \leq j \leq n}\) is linearly independent.
+  by \cref{1.5.3} we know that \(\set{E^{i j} : 1 \leq i \leq m, 1 \leq j \leq n}\) is linearly independent.
 \end{proof}
 
 \setcounter{ex}{7}

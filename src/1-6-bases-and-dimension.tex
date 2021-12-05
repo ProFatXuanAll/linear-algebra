@@ -1,0 +1,103 @@
+\section{Bases and Dimension}\label{sec:1.6}
+
+\begin{defn}\label{1.6.1}
+  A \textbf{basis} \(\beta\) for a vector space \(\V\) over \(\F\) is a linearly independent subset of \(\V\) that generates \(\V\).
+  If \(\beta\) is a basis for \(\V\), we also say that the vectors of \(\beta\) form a basis for \(\V\).
+\end{defn}
+
+\begin{eg}\label{1.6.2}
+  Recalling that \(\spn{\varnothing} = \set{\zv}\) and \(\varnothing\) is linearly independent, we see that \(\varnothing\) is a basis for the zero vector space.
+\end{eg}
+
+\begin{eg}\label{1.6.3}
+  In \(\vs{F}^n\), let \(e_1 = (1, 0, 0, \dots, 0)\), \(e_2 = (0, 1, 0, \dots, 0)\), \dots, \(e_n = (0, 0, \dots, 0, 1)\);
+  \(\set{\seq{e}{1,2,,n}}\) is readily seen to be a basis for \(\vs{F}^n\) and is called the \textbf{standard basis} for \(\vs{F}^n\).
+\end{eg}
+
+\begin{proof}[\pf{1.6.3}]
+  By \cref{ex:1.5.4} we know that \(\set{\seq{e}{1,2,,n}}\) is linearly independent.
+  By \cref{ex:1.4.7} we know that \(\vs{F}^n = \spn{\set{\seq{e}{1,2,,n}}}\).
+  Thus by \cref{1.6.1} \(\set{\seq{e}{1,2,,n}}\) is a basis for \(\vs{F}^n\) over \(\F\).
+\end{proof}
+
+\begin{eg}\label{1.6.4}
+  In \(\MS\), let \(E^{i j}\) denote the matrix whose only nonzero entry is a \(1\) in the \(i\)th row and \(j\)th column.
+  Then \(\set{E^{i j} : 1 \leq i \leq m, 1 \leq j \leq n}\) is a basis for \(\MS\).
+\end{eg}
+
+\begin{proof}[\pf{1.6.4}]
+  By \cref{ex:1.5.6} we know that \(\set{E^{i j} : 1 \leq i \leq m, 1 \leq j \leq n}\) is linearly independent.
+  Since
+  \begin{align*}
+             & \forall A \in \MS, A = \begin{pmatrix}
+      A_{1 1} & A_{1 2} & \cdots & A_{1 n} \\
+      A_{2 1} & A_{2 2} & \cdots & A_{2 n} \\
+      \vdots  & \vdots  & \ddots & \vdots  \\
+      A_{m 1} & A_{m 2} & \cdots & A_{m n}
+    \end{pmatrix}                                                              \\
+             & = \sum_{i = 1}^m \sum_{j = 1}^n A_{i j} E^{i j}                                 &  & \text{(by \cref{1.2.9})} \\
+    \implies & \forall A \in \MS, A \in \spn{\set{E^{i j} : 1 \leq i \leq m, 1 \leq j \leq n}} &  & \text{(by \cref{1.4.3})} \\
+    \implies & \MS = \spn{\set{E^{i j} : 1 \leq i \leq m, 1 \leq j \leq n}},                   &  & \text{(by \cref{1.5})}
+  \end{align*}
+  by \cref{1.6.1} we know that \(\set{E^{i j} : 1 \leq i \leq m, 1 \leq j \leq n}\) is a basis for \(\MS\) over \(\F\).
+\end{proof}
+
+\begin{eg}\label{1.6.5}
+  In \(\ps[n]{\F}\) the set \(\set{1, x, x^2, \dots, x^n}\) is a basis.
+  We call this basis the \textbf{standard basis} for \(\ps[n]{\F}\).
+\end{eg}
+
+\begin{proof}[\pf{1.6.5}]
+  By \cref{ex:1.5.5} we know that \(\set{1, x, x^2, \dots, x^n}\) is linearly independent.
+  By \cref{ex:1.4.8} we know that \(\ps[n]{\F} = \spn{\set{1, x, x^2, \dots, x^n}}\).
+  Thus by \cref{1.6.1} \(\set{1, x, x^2, \dots, x^n}\) is a basis for \(\ps[n]{\F}\) over \(\F\).
+\end{proof}
+
+\begin{eg}\label{1.6.6}
+  In \(\ps{\F}\) the set \(\set{1, x, x^2, \dots}\) is a basis.
+\end{eg}
+
+\begin{proof}[\pf{1.6.6}]
+  Suppose for sake of contradiction that \(\set{1, x, x^2, \dots}\) is not a basis for \(\ps{\F}\).
+  Then by \cref{1.6.1} we can split into two cases:
+  \begin{itemize}
+    \item If \(\set{1, x, x^2, \dots}\) is linearly dependent, then by \cref{ex:1.5.14} we have
+          \[
+            \begin{dcases}
+              \exists x^n \in \set{1, x, x^2, \dots} \\
+              \exists \set{\seq{a}{0,1,2,}} \subseteq \F
+            \end{dcases} : x^n = \sum_{i \in \N : i \neq n} a_i x^i.
+          \]
+          By setting \(a_n = -1\) we have
+          \begin{align*}
+                     & \sum_{i \in \N} a_i x^i = \zv = \sum_{i \in \N} 0x^i                                \\
+            \implies & \seq[=]{a}{0,1,2,} = 0.                              &  & \text{(by \cref{1.2.11})}
+          \end{align*}
+          But this means \(a_n = 0\), a contradiction.
+    \item If \(\ps{\F} \neq \spn{\set{1, x, x^2, \dots}}\), then by \cref{1.4.3} we have
+          \[
+            \exists f \in \ps{\F} : \forall \set{\seq{a}{0,1,2,}} \subseteq \F, f(x) \neq \sum_{i \in \N} a_i x^i.
+          \]
+          Let \(m\) be the degree of \(f\).
+          Then by \cref{1.2.11} we have
+          \[
+            \exists \seq{c}{0,1,,m} \in \F : f(x) = c_0 + c_1 x + \cdots + c_m x^m.
+          \]
+          But by setting
+          \[
+            \begin{dcases}
+              a_i = c_i & \text{if } i \leq m \\
+              a_i = 0   & \text{if } i > m
+            \end{dcases}
+          \]
+          we have \(f(x) = \sum_{i \in \N} a_i x^i\), a contradiction.
+  \end{itemize}
+  From all cases above we derived contradictions.
+  Thus \(\set{1, x, x^2, \dots}\) is a basis for \(\ps{\F}\).
+\end{proof}
+
+\begin{note}
+  Observe that \cref{1.6.6} shows that a basis need not be finite.
+  In fact, later in \cref{sec:1.6} it is shown that no basis for \(\ps{\F}\) can be finite.
+  Hence not every vector space has a finite basis.
+\end{note}
