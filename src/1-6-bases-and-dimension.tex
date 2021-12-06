@@ -189,7 +189,7 @@
   Now suppose that the theorem is true for some integer \(m \geq 0\).
   We prove that the theorem is true for \(m + 1\).
   Let \(L = \set{\seq{v}{1,2,,m + 1}}\) be a linearly independent subset of \(\V\) consisting of \(m + 1\) vectors.
-  By \cref{1.5.6}, \(\set{\seq{v}{1,2,,m}}\) is linearly independent, and so we may apply the induction hypothesis to conclude that \(m \leq n\) and that there is a subset \(\set{\seq{u}{1,2,n - m}}\) of \(G\) such that \(\set{\seq{v}{1,2,,m}} \cup \set{\seq{u}{1,2,n - m}}\) generates \(\V\).
+  By \cref{1.5.6} \(\set{\seq{v}{1,2,,m}} \subseteq L\) is linearly independent, and so we may apply the induction hypothesis to conclude that \(m \leq n\) and that there is a subset \(\set{\seq{u}{1,2,,n - m}}\) of \(G\) such that \(\set{\seq{v}{1,2,,m}} \cup \set{\seq{u}{1,2,,n - m}}\) generates \(\V\).
   Thus there exist scalars \(\seq{a}{1,2,,m}, \seq{b}{1,2,,n - m} \in \F\) such that
   \begin{equation}\label{eq:1.6.1}
     \seq[+]{a,v}{1,2,,m} + \seq[+]{b,u}{1,2,,n - m} = v_{m + 1}
@@ -238,3 +238,185 @@
   The unique number of vectors in each basis for \(\V\) is called the \textbf{dimension} of \(\V\) and is denoted by \(\dim(\V)\).
   A vector space that is not finite-dimensional is called \textbf{infinite-dimensional}.
 \end{defn}
+
+\begin{eg}\label{1.6.9}
+  The vector space \(\set{\zv}\) has dimension zero.
+\end{eg}
+
+\begin{proof}[\pf{1.6.9}]
+  By \cref{1.6.2} and \cref{1.6.7} we are done.
+\end{proof}
+
+\begin{eg}\label{1.6.10}
+  The vector space \(\vs{F}^n\) has dimension \(n\).
+\end{eg}
+
+\begin{proof}[\pf{1.6.10}]
+  By \cref{1.6.3} and \cref{1.6.7} we are done.
+\end{proof}
+
+\begin{eg}\label{1.6.11}
+  The vector space \(\MS\) has dimension \(mn\).
+\end{eg}
+
+\begin{proof}[\pf{1.6.11}]
+  By \cref{1.6.4} and \cref{1.6.7} we are done.
+\end{proof}
+
+\begin{eg}\label{1.6.12}
+  The vector space \(\ps[n]{\F}\) has dimension \(n + 1\).
+\end{eg}
+
+\begin{proof}[\pf{1.6.12}]
+  By \cref{1.6.5} and \cref{1.6.7} we are done.
+\end{proof}
+
+\begin{eg}\label{1.6.13}
+  Over the field of complex numbers, the vector space of complex numbers has dimension \(1\).
+  (A basis is \(\set{1}\).)
+\end{eg}
+
+\begin{proof}[\pf{1.6.13}]
+  We have
+  \begin{align*}
+             & \forall c \in \C, c = c \cdot 1                               \\
+    \implies & \spn{\set{1}} = \C              &  & \text{(by \cref{1.5})}   \\
+    \implies & \#\pa{\set{1}} = 1 = \dim(\C).  &  & \text{(by \cref{1.6.8})}
+  \end{align*}
+\end{proof}
+
+\begin{eg}\label{1.6.14}
+  Over the field of real numbers, the vector space of complex numbers has dimension \(2\).
+  (A basis is \(\set{1, i}\).)
+\end{eg}
+
+\begin{proof}[\pf{1.6.14}]
+  We have
+  \begin{align*}
+             & \forall c \in \C, c = \Re(c) + i \Im(c) = \Re(c) \cdot 1 + \Im(c) \cdot i &  & (\Re(c), \Im(c) \in \R)  \\
+    \implies & \spn{\set{1, i}} = \C                                                     &  & \text{(by \cref{1.5})}   \\
+    \implies & \#\pa{\set{1, i}} = 2 = \dim(\C).                                         &  & \text{(by \cref{1.6.8})}
+  \end{align*}
+\end{proof}
+
+\begin{note}
+  From \cref{1.6.13} and \cref{1.6.14} we see that the dimension of a vector space depends on its field of scalars.
+\end{note}
+
+\begin{note}
+  In the terminology of dimension, the first conclusion in the replacement theorem states that if \(\V\) is a finite-dimensional vector space over \(\F\), then no linearly independent subset of \(\V\) can contain more than \(\dim(\V)\) vectors.
+  From this fact it follows that the vector space \(\ps{\F}\) over \(\F\) is infinite-dimensional because it has an infinite linearly independent set, namely \(\set{1, x, x^2, \dots}\).
+  This set is, in fact, a basis for \(\ps{\F}\).
+  Yet nothing that we have proved in this section guarantees an infinite-dimensional vector space must have a basis.
+  In \cref{sec:1.7} it is shown, however, that \emph{every vector space has a basis}.
+\end{note}
+
+\begin{cor}\label{1.6.15}
+  Let \(\V\) be a vector space over \(\F\) with dimension \(n\).
+  \begin{enumerate}
+    \item Any finite generating set for \(\V\) contains at least \(n\) vectors, and a generating set for \(\V\) that contains exactly \(n\) vectors is a basis for \(\V\).
+    \item Any linearly independent subset of \(\V\) that contains exactly \(n\) vectors is a basis for \(\V\).
+    \item Every linearly independent subset of \(\V\) can be extended to a basis for \(\V\).
+  \end{enumerate}
+\end{cor}
+
+\begin{proof}[\pf{1.6.15}]
+  Let \(\beta\) be a basis for \(\V\).
+  \begin{enumerate}
+    \item Let \(G\) be a finite generating set for \(\V\).
+          By \cref{1.9} some subset \(H\) of \(G\) is a basis for \(\V\).
+          \cref{1.6.7} implies that \(H\) contains exactly \(n\) vectors.
+          Since a subset of \(G\) contains \(n\) vectors, \(G\) must contain at least \(n\) vectors.
+          Moreover, if \(G\) contains exactly \(n\) vectors, then we must have \(H = G\), so that \(G\) is a basis for \(\V\).
+    \item Let \(L\) be a linearly independent subset of \(\V\) containing exactly \(n\) vectors.
+          It follows from the replacement theorem that there is a subset \(H\) of \(\beta\) containing \(n - n = 0\) vectors such that \(L \cup H\) generates \(\V\).
+          Thus \(H = \varnothing\), and \(L\) generates \(\V\).
+          Since \(L\) is also linearly independent, \(L\) is a basis for \(\V\).
+    \item If \(L\) is a linearly independent subset of \(\V\) containing \(m\) vectors, then the replacement theorem asserts that there is a subset \(H\) of \(\beta\) containing exactly \(n - m\) vectors such that \(L \cup H\) generates \(\V\).
+          Now \(L \cup H\) contains at most \(n\) vectors;
+          therefore (a) implies that \(L \cup H\) contains exactly \(n\) vectors and that \(L \cup H\) is a basis for \(\V\).
+  \end{enumerate}
+\end{proof}
+
+\begin{eg}\label{1.6.16}
+  For \(k = 0, 1, \dots, n\), let \(p_k(x) = x^k + x^{k + 1} + \cdots + x^n\).
+  It follows from \cref{1.5.5} and \cref{1.6.15}(b) that
+  \[
+    \set{p_0(x), p_1(x), \dots, p_n(x)}
+  \]
+  is a basis for \(\ps[n]{\F}\).
+\end{eg}
+
+\begin{thm}\label{1.11}
+  Let \(\W\) be a subspace of a finite-dimensional vector space \(\V\) over \(\F\).
+  Then \(\W\) is finite-dimensional and \(\dim(\W) \leq \dim(\V)\).
+  Moreover, if \(\dim(\W) = \dim(\V)\), then \(\V = \W\).
+\end{thm}
+
+\begin{proof}[\pf{1.11}]
+  Let \(\dim(\V) = n\).
+  If \(\W = \set{\zv}\), then \(\W\) is finite-dimensional and \(\dim(\W) = 0 \leq n\).
+  Otherwise, \(\W\) contains a nonzero vector \(x_1\);
+  so \(\set{x_1}\) is a linearly independent set.
+  Continue choosing vectors, \(\seq{x}{1,2,,k}\) in \(\W\) such that \(\set{\seq{x}{1,2,,k}}\) is linearly independent.
+  Since no linearly independent subset of \(\V\) can contain more than \(n\) vectors, this process must stop at a stage where \(k \leq n\) and \(\set{\seq{x}{1,2,,k}}\) is linearly independent but adjoining any other vector from \(\W\) produces a linearly dependent set.
+  \cref{1.7} implies that \(\set{\seq{x}{1,2,,k}}\) generates \(\W\), and hence it is a basis for \(\W\).
+  Therefore \(\dim(\W) = k \leq n\).
+
+  If \(\dim(\W) = n\), then a basis for \(\W\) is a linearly independent subset of \(\V\) containing \(n\) vectors.
+  But \cref{1.6.15}(b) implies that this basis for \(\W\) is also a basis for \(\V\);
+  so \(\W = \V\).
+\end{proof}
+
+\begin{eg}\label{1.6.17}
+  The set of diagonal \(n \times n\) matrices is a subspace \(\W\) of \(\ms{n}{n}{\F}\)
+  (see \cref{1.3.8}).
+  A basis for \(\W\) is
+  \[
+    \set{E^{1 1}, E^{2 2}, \dots, E^{n n}},
+  \]
+  where \(E^{i j}\) is the matrix in which the only nonzero entry is a \(1\) in the \(i\)th row and \(j\)th column.
+  Thus \(\dim(\W) = n\).
+\end{eg}
+
+\begin{proof}[\pf{1.6.17}]
+  By \cref{ex:1.5.6} we know that \(\set{E^{1 1}, E^{2 2}, \dots, E^{n n}}\) is linearly independent.
+  Since \(\W = \spn{\set{E^{1 1}, E^{2 2}, \dots, E^{n n}}}\), by \cref{1.6.15}(a) we know that \(\dim(\W) \leq n\).
+  By \cref{1.6.15}(c) we also know that \(\dim(\W) \geq n\).
+  Thus we have \(\dim(\W) = n\).
+\end{proof}
+
+\begin{eg}\label{1.6.18}
+  The set of symmetric \(n \times n\) matrices is a subspace \(\W\) of \(\ms{n}{n}{\F}\) over \(\F\).
+  A basis for \(\W\) is
+  \[
+    \set{A^{i j} : 1 \leq i \leq j \leq n}
+  \]
+  where \(A^{i j}\) is the \(n \times n\) matrix having \(1\) in the \(i\)th row and \(j\)th column, \(1\) in the \(j\)th row and \(i\)th column, and \(0\) elsewhere.
+  It follows that
+  \[
+    \dim(\W) = n + (n - 1) + \cdots + 1 = \frac{1}{2} n(n + 1).
+  \]
+\end{eg}
+
+\begin{proof}[\pf{1.6.18}]
+  By \cref{ex:1.5.6} we see that each \(A^{i j}\) can only express as \(E^{i j} + E^{j i}\).
+  Thus \(\set{A^{i j} : 1 \leq i \leq j \leq n}\) is linearly independent and by \cref{1.6.15}(c)we have  \(\dim(\W) \geq \#\pa{\set{A^{i j} : 1 \leq i \leq j \leq n}}\).
+  Since
+  \begin{align*}
+             & \forall M \in \W, M_{i j} = M_{j i} = M_{i j} \cdot 1                                                 \\
+    \implies & \forall M \in \W, M = \sum_{i = 1}^n \sum_{j = i}^n M_{i j} A^{i j} &  & \text{(by \cref{1.2.9})}     \\
+    \implies & \W = \spn{\set{A^{i j} : 1 \leq i \leq j \leq n}}                   &  & \text{(by \cref{1.5})}       \\
+    \implies & \dim(\W) \leq \#\pa{\set{A^{i j} : 1 \leq i \leq j \leq n}},        &  & \text{(by \cref{1.6.15}(a))}
+  \end{align*}
+  we have \(\dim(\W) = \#\pa{\set{A^{i j} : 1 \leq i \leq j \leq n}} = \frac{1}{2} n(n + 1)\).
+\end{proof}
+
+\begin{cor}\label{1.6.19}
+  If \(\W\) is a subspace of a finite-dimensional vector space \(\V\) over \(\F\), then any basis for \(\W\) can be extended to a basis for \(\V\).
+\end{cor}
+
+\begin{proof}[\pf{1.6.19}]
+  Let \(S\) be a basis for \(\W\).
+  Because \(S\) is a linearly independent subset of \(\V\), \cref{1.6.15}(c) guarantees that \(S\) can be extended to a basis for \(\V\).
+\end{proof}
