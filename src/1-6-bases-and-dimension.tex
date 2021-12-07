@@ -198,7 +198,7 @@
   Hence \(n > m\);
   that is, \(n \geq m + 1\).
   Moreover, some \(b_i\), say \(b_1\), is nonzero, for otherwise we obtain the same contradiction.
-  Solving \eqref{eq:1.6.1} for \(u_1\) gives
+  Solving \cref{eq:1.6.1} for \(u_1\) gives
   \begin{multline*}
     u_1 = (-b_1^{-1} a_1) v_1 + (-b_1^{-1} a_2) v_2 + \cdots + (-b_1^{-1} a_m) v_m + (b_1^{-1}) v_{m + 1} \\
     + (-b_1^{-1} b_2) u_2 + \cdots + (-b_1^{-1} b_{n - m}) u_{n - m}.
@@ -419,4 +419,175 @@
 \begin{proof}[\pf{1.6.19}]
   Let \(S\) be a basis for \(\W\).
   Because \(S\) is a linearly independent subset of \(\V\), \cref{1.6.15}(c) guarantees that \(S\) can be extended to a basis for \(\V\).
+\end{proof}
+
+\begin{defn}[The Lagrange Interpolation Formula]\label{1.6.20}
+  Let \(\seq{c}{0,1,,n}\) be distinct scalars in an infinite field \(\F\).
+  The polynomials \(f_0(x), f_1(x), \dots, f_n(x)\) defined by
+  \[
+    f_i(x) = \frac{(x - c_0) \cdots (x - c_{i - 1}) (x - c_{i + 1}) \cdots (x - c_n)}{(c_i - c_0) \cdots (c_i - c_{i - 1}) (c_i - c_{i + 1}) \cdots (c_i - c_n)} = \prod_{\substack{k = 0 \\ k \neq i}}^n \frac{x - c_k}{c_i - c_k}
+  \]
+  are called the \textbf{Lagrange polynomials} (associated with \(\seq{c}{0,1,,n}\)).
+  Note that each \(f_i(x)\) is a polynomial of degree \(n\) and hence is in \(\ps[n]{\F}\).
+  By regarding \(f_i(x)\) as a polynomial function \(f_i : \F \to \F\), we see that
+  \begin{equation}\label{eq:1.6.2}
+    f_i(c_j) = \begin{dcases}
+      0 & \text{if } i \neq j \\
+      1 & \text{if } i = j
+    \end{dcases}.
+  \end{equation}
+
+  This property of Lagrange polynomials can be used to show that \(\beta = \set{\seq{f}{0,1,,n}}\) is a linearly independent subset of \(\ps[n]{\F}\).
+  Suppose that
+  \[
+    \sum_{i = 0}^n a_i f_i = \zv \quad \text{for some scalars } \seq{a}{0,1,,n},
+  \]
+  where \(\zv\) denotes the zero function.
+  Then
+  \[
+    \sum_{i = 0}^n a_i f_i(c_j) = 0 \quad \text{for } j = 0, 1, \dots, n.
+  \]
+  But also
+  \[
+    \sum_{i = 0}^n a_i f_i(c_j) = a_j
+  \]
+  by \cref{eq:1.6.2}.
+  Hence \(a_j = 0\) for \(j = 0, 1, \dots, n\);
+  so \(\beta\) is linearly independent.
+  Since the dimension of \(\ps[n]{\F}\) is \(n + 1\), it follows from \cref{1.6.15} that \(\beta\) is a basis for \(\ps[n]{\F}\).
+
+  Because \(\beta\) is a basis for \(\ps[n]{\F}\), every polynomial function \(g\) in \(\ps[n]{\F}\) is a linear combination of polynomial functions of \(\beta\), say,
+  \[
+    g = \sum_{i = 0}^n b_i f_i.
+  \]
+  It follows that
+  \[
+    g(c_j) = \sum_{i = 0}^n b_i f_i(c_j) = b_j;
+  \]
+  so
+  \[
+    g = \sum_{i = 0}^n g(c_i) f_i
+  \]
+  is the unique representation of \(g\) as a linear combination of elements of \(\beta\).
+  This representation is called the \textbf{Lagrange interpolation formula}.
+  Notice that the preceding argument shows that if \(\seq{b}{0,1,,n}\) are any \(n + 1\) scalars in \(\F\) (not necessarily distinct), then the polynomial function
+  \[
+    g = \sum_{i = 0}^n b_i f_i
+  \]
+  is the unique polynomial in \(\ps[n]{\F}\) such that \(g(c_j) = b_j\).
+  Thus we have found the unique polynomial of degree not exceeding \(n\) that has specified values \(b_j\) at given points \(c_j\) in its domain (\(j = 0, 1, \dots, n\)).
+
+  An important consequence of the Lagrange interpolation formula is the following result:
+  If \(f \in \ps[n]{\F}\) and \(f(c_i) = 0\) for \(n + 1\) distinct scalars \(\seq{c}{0,1,,n}\) in \(\F\), then \(f\) is the zero function.
+\end{defn}
+
+\exercisesection
+
+\setcounter{ex}{10}
+\begin{ex}\label{ex:1.6.11}
+  Let \(u\) and \(v\) be distinct vectors of a vector space \(\V\) over \(\F\).
+  Show that if \(\set{u, v}\) is a basis for \(\V\) and \(a\) and \(b\) are nonzero scalars, then both \(\set{u + v, au}\) and \(\set{au, bv}\) are also bases for \(\V\).
+\end{ex}
+
+\begin{proof}[\pf{ex:1.6.11}]
+  Let \(c_1, c_2 \in \F\).
+  Since
+  \begin{align*}
+             & c_1 (u + v) + c_2 (au) = \zv                                \\
+    \implies & (c_1 + c_2 a) u + c_1 v = \zv &  & \text{(by \cref{1.2.1})} \\
+    \implies & \begin{dcases}
+      c_1 + c_2 a = 0 \\
+      c_1 = 0
+    \end{dcases}    &  & \text{(by \cref{1.5.3})} \\
+    \implies & \begin{dcases}
+      c_2 a = 0 \\
+      c_1 = 0
+    \end{dcases}                                  \\
+    \implies & c_1 = c_2 = 0                 &  & (a \neq 0)
+  \end{align*}
+  and
+  \begin{align*}
+             & c_1 (au) + c_2 (bv) = \zv                                 \\
+    \implies & (c_1 a) u + (c_2 b) v = \zv &  & \text{(by \cref{1.2.1})} \\
+    \implies & \begin{dcases}
+      c_1 a = 0 \\
+      c_2 b = 0
+    \end{dcases}  &  & \text{(by \cref{1.5.3})} \\
+    \implies & c_1 = c_2 = 0,              &  & (a \neq 0 \neq b)
+  \end{align*}
+  by \cref{1.5.3} we know that \(\set{u + v, au}\) and \(\set{au, bv}\) are linearly independent.
+  Since
+  \[
+    \#(\set{u + v, au}) = \#(\set{au, bv}) = 2 = \#(\set{u, v}),
+  \]
+  by \cref{1.6.15}(a) we know that \(\set{u + v, au}\) and \(\set{au, bv}\) are basis for \(\V\).
+\end{proof}
+
+\begin{ex}\label{ex:1.6.12}
+  Let \(u, v\), and \(w\) be distinct vectors of a vector space \(\V\) over \(\F\).
+  Show that if \(\set{u, v, w}\) is a basis for \(\V\), then \(\set{u + v + w, v + w, w}\) is also a basis for \(\V\).
+\end{ex}
+
+\begin{proof}[\pf{ex:1.6.12}]
+  Let \(a, b, c \in \F\).
+  Since
+  \begin{align*}
+             & a(u + v + w) + b(v + w) + cw = \zv                               \\
+    \implies & au + (a + b)v + (a + b + c)w = \zv &  & \text{(by \cref{1.2.1})} \\
+    \implies & \begin{dcases}
+      a = 0     \\
+      a + b = 0 \\
+      a + b + c = 0
+    \end{dcases}         &  & \text{(by \cref{1.5.3})} \\
+    \implies & a = b = c = 0,
+  \end{align*}
+  by \cref{1.5.3} we know that \(\set{u + v + w, v + w, w}\) is linearly independent.
+  Since
+  \[
+    \#(\set{u + v + w, v + w, w}) = 3 = \#(\set{u, v, w}),
+  \]
+  by \cref{1.6.15}(a) we know that \(\set{u + v + w, v + w, w}\) is a basis for \(\V\).
+\end{proof}
+
+\setcounter{ex}{14}
+\begin{ex}\label{ex:1.6.15}
+  The set of all \(n \times n\) matrices having trace equal to zero is a subspace \(\W\) of \(\ms{n}{n}{\F}\) (see \cref{1.3.9}).
+  Find a basis for \(\W\).
+  What is the dimension of \(\W\)?
+\end{ex}
+
+\begin{proof}[\pf{ex:1.6.15}]
+  Let \(E^{i j} \in \ms{n}{n}{\F}\) be matrix defined as in \cref{ex:1.5.6} and let \(\beta\) be the set
+  \[
+    \beta = \set{E^{i j} : i, j \in \set{1, \dots, n}, i \neq j} \cup \set{E^{i i} - E^{1 1} : 2 \leq i \leq n}.
+  \]
+  Observe that
+  \begin{align*}
+             & \forall A \in \W, \begin{dcases}
+      \tr{A} = 0 \\
+      A = \sum_{i = 1}^n \sum_{j = 1}^n A_{i j} E^{i j}
+    \end{dcases}                   &  & \text{(by \cref{ex:1.5.6})} \\
+    \implies & \forall A \in \W, \begin{dcases}
+      A_{1 1} + A_{2 2} + \cdots + A_{n n} = 0 \\
+      A = \sum_{i = 1}^n \sum_{j = 1}^n A_{i j} E^{i j}
+    \end{dcases}                   &  & \text{(by \cref{1.3.9})}    \\
+    \implies & \forall A \in \W, \begin{dcases}
+      A_{2 2} + \cdots + A_{n n} = -A_{1 1}        \\
+      A = \pa{\sum_{i = 1}^n \sum_{\substack{j = 1 \\ j \neq i}}^n A_{i j} E^{i j}} + \pa{\sum_{i = 1}^n A_{i i} E^{i i}}
+    \end{dcases}                                                    \\
+    \implies & \forall A \in \W, A = \pa{\sum_{i = 1}^n \sum_{\substack{j = 1                                  \\ j \neq i}}^n A_{i j} E^{i j}} + \pa{\sum_{i = 2}^n A_{i i} (E^{i i} - E^{1 1})} \\
+    \implies & \forall A \in \W, A \in \spn{\beta}                            &  & \text{(by \cref{1.4.3})}    \\
+    \implies & \W \subseteq \spn{\beta}.
+  \end{align*}
+  Since
+  \[
+    \tr{E^{i j}} = 0 \quad \forall i, j \in \set{1, \dots, n} \text{ and } i \neq j
+  \]
+  and
+  \[
+    \tr{E^{i i} - E^{1 1}} = 1 + (-1) = 0 \quad \forall i \in \set{2, \dots, n},
+  \]
+  we know that \(\beta \subseteq \W\).
+  Thus by \cref{1.5} we have \(\W = \spn{\beta}\).
+  By \cref{ex:1.5.6} we know that \(\beta\) is linearly independent, thus by \cref{1.6.1} \(\beta\) is a basis for \(\W\), and by \cref{1.6.8} we know that \(\dim(\W) = n^2 - 1\).
 \end{proof}
