@@ -735,3 +735,53 @@
     \iff & \W_1 \subseteq \W_2.
   \end{align*}
 \end{proof}
+
+\begin{ex}\label{ex:1.6.23}
+  Let \(\seq{v}{1,2,,k}, v\) be vectors in a vector space \(\V\), and define \(W_1 = \spn{\set{\seq{v}{1,2,,k}}}\), and \(\W_2 = \spn{\set{\seq{v}{1,2,,k}, v}}\).
+  \begin{enumerate}
+    \item Find necessary and sufficient conditions on \(v\) such that \(\dim(\W_1) = \dim(\W_2)\).
+    \item State and prove a relationship involving \(\dim(\W_1)\) and \(\dim(\W_2)\) in the case that \(\dim(\W_1) \neq \dim(\W_2)\).
+  \end{enumerate}
+\end{ex}
+
+\begin{proof}[\pf{ex:1.6.23}(a)]
+  We have
+  \begin{align*}
+         & \begin{dcases}
+      \W_1 \subseteq \W_2 \\
+      \dim(\W_1) = \dim(\W_2)
+    \end{dcases}                                  &  & \text{(by \cref{ex:1.4.13})} \\
+    \iff & \W_1 = \W_2                                                 &  & \text{(by \cref{1.11})}      \\
+    \iff & v \in \spn{\set{\seq{v}{1,2,,k}}}                           &  & \text{(by \cref{1.4.3})}     \\
+    \iff & v \cup \set{\seq{v}{1,2,,k}} \text{ is linearly dependent}. &  & \text{(by \cref{1.7})}
+  \end{align*}
+\end{proof}
+
+\begin{proof}[\pf{ex:1.6.23}(b)]
+  By \cref{1.11} we have
+  \[
+    \begin{dcases}
+      \W_1 \subseteq \W_2 \\
+      \W_1 \neq \W_2
+    \end{dcases} \implies \dim(\W_1) \neq \dim(\W_2).
+  \]
+\end{proof}
+
+\begin{ex}\label{ex:1.6.24}
+  Let \(f(x)\) be a polynomial of degree n in \(\ps[n]{\R}\).
+  Prove that for any \(g(x) \in \ps[n]{\R}\) there exist scalars \(\seq{c}{0,1,,n}\) such that
+  \[
+    g(x) = c_0 f(x) + c_1 f'(x) + c_2 f''(x) + \cdots + c_n f^{(n)}(x),
+  \]
+  where \(f^{(n)}(x)\) denotes the \(n\)th derivative of \(f(x)\).
+\end{ex}
+
+\begin{proof}
+  We denote \(f^{(0)} = f\).
+  Since \(f^{(i)}(x)\) has degree \(n - i\) for all \(i = 0, 1, \dots, n\), we know that the set
+  \[
+    \beta = \set{f^{(i)} : i = 0, 1, \dots, n}
+  \]
+  is linearly independent.
+  Since \(\#(\beta) = n + 1\), by \cref{1.6.15}(b) we know that \(\beta\) is a basis for \(\ps[n]{\R}\), thus there exist \(\seq{c}{0,1,,n}\) such that \(g = \sum_{i = 0}^n c_i f^{(i)}\).
+\end{proof}
