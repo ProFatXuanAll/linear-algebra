@@ -776,7 +776,7 @@
   where \(f^{(n)}(x)\) denotes the \(n\)th derivative of \(f(x)\).
 \end{ex}
 
-\begin{proof}
+\begin{proof}[\pf{ex:1.6.24}]
   We denote \(f^{(0)} = f\).
   Since \(f^{(i)}(x)\) has degree \(n - i\) for all \(i = 0, 1, \dots, n\), we know that the set
   \[
@@ -784,4 +784,39 @@
   \]
   is linearly independent.
   Since \(\#(\beta) = n + 1\), by \cref{1.6.15}(b) we know that \(\beta\) is a basis for \(\ps[n]{\R}\), thus there exist \(\seq{c}{0,1,,n}\) such that \(g = \sum_{i = 0}^n c_i f^{(i)}\).
+\end{proof}
+
+\begin{ex}\label{ex:1.6.25}
+  If \(\V\) and \(\W\) are vector spaces over \(\F\) of dimensions \(m\) and \(n\), determine the dimension of \(\V \times \W\) (see \cref{ex:1.2.21}).
+\end{ex}
+
+\begin{proof}[\pf{ex:1.6.25}]
+  Let \(\beta_v = \set{\seq{v}{1,2,,m}}, \beta_w = \set{\seq{w}{1,2,n}}\) be a basis for \(\V, \W\) respectively.
+  Let \(\zv_v, \zv_w\) be the zero vectors of \(\V, \W\) respectively.
+  Then we claim the set
+  \[
+    \beta = \pa{\beta_v \times \set{\zv_w}} \cup \pa{\set{\zv_v} \times \beta_w}
+  \]
+  is a basis for \(\V \times \W\).
+  Clearly \(\beta \subseteq \V \times \W\).
+  Since
+  \begin{align*}
+             & \forall \seq{a}{1,2,,m + n} \in \F, \sum_{i = 1}^m a_i (v_i, \zv_w) + \sum_{i = 1}^n a_{m + i} (\zv_v, w_i)                                   \\
+             & = (\sum_{i = 1}^m a_i v_i, \sum_{i = 1}^n a_{m + i} w_i) = (\zv_v, \zv_w)                                   &  & \text{(by \cref{ex:1.2.21})} \\
+    \implies & \begin{dcases}
+      \sum_{i = 1}^m a_i v_i = \zv_v \\
+      \sum_{i = 1}^n a_{m + i} w_i = \zv_w
+    \end{dcases}                                                                                                                    \\
+    \implies & \seq[=]{a}{1,2,,m + n} = 0,
+  \end{align*}
+  by \cref{1.5.3} we know that \(\beta\) is linearly independent.
+  Since
+  \begin{align*}
+             & \forall (v, w) \in \V \times \W, \exists \seq{a}{1,2,,m + n} \in \F :                                       \\
+             & (v, w) = (\sum_{i = 1}^m a_i v_i, \sum_{i = 1}^n a_{m + i} w_i)                                             \\
+             & = \sum_{i = 1}^m a_i (v_i, \zv_w) + \sum_{i = 1}^n a_{m + i} (\zv_v, w_i) &  & \text{(by \cref{ex:1.2.21})} \\
+    \implies & \forall (v, w) \in \V \times \W, (v, w) \in \spn{\beta}                                                     \\
+    \implies & \V \times \W = \spn{\beta},                                               &  & \text{(by \cref{1.5})}
+  \end{align*}
+  by \cref{1.6.1} we know that \(\beta\) is a basis for \(\V \times \W\) and \(\dim(\V \times \W) = m + n\).
 \end{proof}
