@@ -699,3 +699,39 @@
   From \cref{ex:1.6.20}(a) we know that there exists a subset of \(S\) which is a basis for \(\V\).
   Thus by \cref{1.6.15}(a) \(S\) must has at least \(n\) vectors.
 \end{proof}
+
+\begin{ex}\label{ex:1.6.21}
+  Prove that a vector space is infinite-dimensional if and only if it contains an infinite linearly independent subset.
+\end{ex}
+
+\begin{proof}[\pf{ex:1.6.21}]
+  Let \(\V\) be a vector spaces over \(\F\).
+  Then
+  \begin{align*}
+         & \V \text{ is infinite-dimensional}                                                    \\
+    \iff & \V \text{ has an infinite basis}                        &  & \text{(by \cref{1.6.8})} \\
+    \iff & \V \text{ has an infinite linearly independent subset}. &  & \text{(by \cref{1.6.1})}
+  \end{align*}
+\end{proof}
+
+\begin{ex}\label{ex:1.6.22}
+  Let \(\W_1\) and \(\W_2\) be subspaces of a finite-dimensional vector space \(\V\) over \(\F\).
+  Determine necessary and sufficient conditions on \(\W_1\) and \(\W_2\) so that \(\dim(\W_1 \cap \W_2) = \dim(\W_1)\).
+\end{ex}
+
+\begin{proof}[\pf{ex:1.6.22}]
+  We have
+  \begin{align*}
+         & \dim(\W_1 \cap \W_2) = \dim(\W_1)                                                     \\
+    \iff & \begin{dcases}
+      \exists \beta_1 \subseteq \W_1 \cap \W_2 \\
+      \exists \beta_2 \subseteq \W_1
+    \end{dcases} : \begin{dcases}
+      \beta_1 \text{ is a basis for } \W_1 \cap \W_2 \\
+      \beta_2 \text{ is a basis for } \W_1           \\
+      \#(\beta_1) = \#(\beta_2)
+    \end{dcases} &  & \text{(by \cref{1.6.8})} \\
+    \iff & \W_1 \cap \W_2 = \W_1                                   &  & \text{(by \cref{1.11})}  \\
+    \iff & \W_1 \subseteq \W_2.
+  \end{align*}
+\end{proof}
