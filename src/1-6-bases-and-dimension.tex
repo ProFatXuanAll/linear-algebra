@@ -613,3 +613,89 @@
   and \(\beta\) is linearly independent (by \cref{ex:1.5.6}), by \cref{1.6.1} we know that \(\beta\) is a basis for \(\W\).
   Thus by \cref{1.6.8} we have \(\dim(\W) = \frac{1}{2} n(n + 1)\).
 \end{proof}
+
+\begin{ex}\label{ex:1.6.17}
+  The set of all skew-symmetric \(n \times n\) matrices is a subspace \(\W\) of \(\ms{n}{n}{\F}\) (see \cref{ex:1.3.28}).
+  Find a basis for \(\W\).
+  What is the dimension of \(\W\)?
+\end{ex}
+
+\begin{proof}[\pf{ex:1.6.17}]
+  Let \(E^{i j} \in \ms{n}{n}{\F}\) be matrix defined as in \cref{ex:1.5.6} and let \(\beta\) be the set
+  \[
+    \beta = \set{E^{i j} - E^{j i} : i, j \in \set{1, \dots, n}, i < j}.
+  \]
+  By \cref{ex:1.3.28} we know that \(\beta \subseteq \W\).
+  Since
+  \begin{align*}
+             & \forall A \in \W, \tp{A} = -A                                                  &  & \text{(by \cref{ex:1.3.28})} \\
+    \implies & \forall A \in \W, A_{j i} = -A_{i j} \text{ where } i, j \in \set{1, \dots, n} &  & \text{(by \cref{1.3.3})}     \\
+    \implies & \forall A \in \W, \begin{dcases}
+      A_{i j} = -A_{j i} & \text{if } i \neq j \\
+      A_{i j} = 0        & \text{if } i = j
+    \end{dcases}                                                                     \\
+    \implies & \forall A \in \W, A = \sum_{i = 1}^n \sum_{j = 1}^n A_{i j} E^{i j}                                              \\
+             & = \sum_{i = 1}^n \sum_{j = 1}^{i - 1} (A_{i j} E^{i j} + A_{j i} E^{j i})                                        \\
+             & = \sum_{i = 1}^n \sum_{j = 1}^{i - 1} (A_{i j} E^{i j} - A_{i j} E^{j i})                                        \\
+             & = \sum_{i = 1}^n \sum_{j = 1}^{i - 1} A_{i j} (E^{i j} - E^{j i})                                                \\
+    \implies & \forall A \in \W, A \in \spn{\beta}                                            &  & \text{(by \cref{1.4.3})}     \\
+    \implies & \W = \spn{\beta}                                                               &  & \text{(by \cref{1.5})}
+  \end{align*}
+  and \(\beta\) is linearly independent (by \cref{ex:1.5.6}), by \cref{1.6.1} we know that \(\beta\) is a basis for \(\W\).
+  Thus by \cref{1.6.8} we have \(\dim(\W) = \frac{1}{2} n(n - 1)\).
+\end{proof}
+
+\begin{ex}\label{ex:1.6.18}
+  Find a basis for the vector space in \cref{1.2.13}.
+  Justify your answer.
+\end{ex}
+
+\begin{proof}[\pf{ex:1.6.18}]
+  Let \(\V\) be the vector space in \cref{1.2.13} over field \(\F\).
+  We claim that the set
+  \[
+    \beta = \set{\set{e_n^i} : e_n^i = 0 \text{ when } n \neq i ; e_n^i = 1 \text{ when } n = i}
+  \]
+  is a basis for \(\V\).
+  Clearly \(\beta \subseteq \V\).
+  Since
+  \begin{align*}
+             & \forall \set{a_n} \in \V, \set{a_n} = \sum_{i \in \N} a_n \set{e_n^i} &  & \text{(by \cref{1.2.13})} \\
+    \implies & \V = \spn{\beta}                                                      &  & \text{(by \cref{1.5})}
+  \end{align*}
+  and \(\beta\) is linearly independent (for obvious reason), by \cref{1.6.1} we know that \(\beta\) is a basis for \(\V\).
+\end{proof}
+
+\setcounter{ex}{19}
+\begin{ex}\label{ex:1.6.20}
+  Let \(\V\) be a vector space over \(\F\) having dimension \(n\), and let \(S\) be a subset of \(\V\) that generates \(\V\).
+  \begin{enumerate}
+    \item Prove that there is a subset of \(S\) that is a basis for \(\V\).
+          (Be careful not to assume that \(S\) is finite.)
+    \item Prove that \(S\) contains at least \(n\) vectors.
+  \end{enumerate}
+\end{ex}
+
+\begin{proof}[\pf{ex:1.6.20}(a)]
+  Note that the hypothesis of \cref{ex:1.6.20}(a) is different from \cref{1.9} that in \cref{1.9} \(S\) is assumed to be finite.
+  Suppose for sake of contradiction that such subset does not exist.
+  By \cref{1.6.1} this means every subset of \(S\) must either be linearly dependent or cannot generate \(\V\).
+  Since \(S\) is a subset of \(S\) and \(\spn{S} = \V\), we know that \(S\) must be linearly dependent.
+
+  Now we let \(\beta_0\) be a finite, linearly independent subset of \(S\).
+  From previous paragraph we know that \(\beta_0 \neq S\) and \(\V \neq \spn{\beta_0}\).
+  By \cref{1.10} we know that \(\#(\beta_0) \leq n\).
+  Then there exists a \(v_1 \in S\) such that \(v_1 \cup \beta_0\) is linearly independent.
+  If such \(v_1\) does not exist, then we would have \(S \subseteq \spn{\beta_0}\), which implies \(\spn{\beta_0} = \V\), a contradiction.
+  So such \(v_1\) exists and we let \(\beta_1 = \beta_0 \cup v_1\).
+  Again we must have \(\beta_1 \neq S\), \(\V \neq \spn{\beta_1}\) and \(\#(\beta_1) \leq n\).
+  Using the same argument as above there must exist a \(v_2 \in S\) such that \(v_2 \cup \beta_1\) is linearly independent.
+  Continue this definition we can define \(\beta_n = \set{\seq{v}{1,2,,n}}\).
+  But by \cref{1.6.15}(b) we know that \(\beta_n\) must be a basis for \(\V\), a contradiction.
+  Thus there must exists a subset of \(S\) which is a basis for \(\V\).
+\end{proof}
+
+\begin{proof}[\pf{ex:1.6.20}(b)]
+  From \cref{ex:1.6.20}(a) we know that there exists a subset of \(S\) which is a basis for \(\V\).
+  Thus by \cref{1.6.15}(a) \(S\) must has at least \(n\) vectors.
+\end{proof}
