@@ -878,3 +878,30 @@
     \end{dcases}.
   \]
 \end{proof}
+
+\begin{ex}\label{ex:1.6.28}
+  Let \(\V\) be a finite-dimensional vector space over \(\C\) with dimension \(n\).
+  Prove that if \(\V\) is now regarded as a vector space over \(\R\), then \(\dim(\V) = 2n\).
+\end{ex}
+
+\begin{proof}[\pf{ex:1.6.28}]
+  Let \(\beta = \set{\seq{v}{1,2,,n}}\) be a basis for \(\V\) over \(\C\).
+  Since
+  \begin{align*}
+             & \spn{\beta} = \V                                                           &  & \text{(by \cref{1.6.1})}    \\
+    \implies & \forall v \in \V, \exists \seq{a}{1,2,,n} \in \C :                                                          \\
+             & v = \sum_{j = 1}^n a_j v_j = \sum_{j = 1}^n \pa{\Re(a_j) + i \Im(a_j)} v_j                                  \\
+             & = \sum_{j = 1}^n \Re(a_j) (1 v_j) + \sum_{j = 1}^n \Im(a_j) (i v_j)        &  & \text{(by \cref{1.4.3})}    \\
+    \implies & \forall v \in \V, \exists \seq{b}{1,2,,2n} \in \R :                                                         \\
+             & v = \sum_{j = 1}^n b_j v_j + \sum_{j = 1}^n b_{n + j} (i v_j)              &  & (\Re(a_j), \Im(a_j) \in \R) \\
+    \implies & \spn{\set{\seq{v}{1,2,,n}, \seq{iv}{1,2,,n}}} = \V                         &  & \text{(by \cref{1.4.3})}
+  \end{align*}
+  and
+  \begin{align*}
+             & \forall \seq{b}{1,2,,2n} \in \R, \sum_{j = 1}^n b_j v_j + \sum_{j = 1}^n b_{n + j} (i v_j) = \zv                                            \\
+    \implies & \sum_{j = 1}^n (b_j + i b_{n + j}) v_j = \zv                                                                                                \\
+    \implies & b_1 + i b_{n + 1} = b_2 + i b_{n + 2} = \cdots = b_n + i b_{2n} = 0                              &  & \text{(by \cref{1.5.3})}              \\
+    \implies & \seq[=]{b}{1,2,,2n} = 0,                                                                         &  & (\set{\seq{b}{1,2,,2n}} \subseteq \R)
+  \end{align*}
+  by \cref{1.6.1} we know that \(\set{\seq{v}{1,2,,n}, \seq{iv}{1,2,,n}}\) is a basis for \(\V\) over \(\R\) with dimension \(2n\).
+\end{proof}
