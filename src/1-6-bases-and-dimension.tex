@@ -820,3 +820,23 @@
   \end{align*}
   by \cref{1.6.1} we know that \(\beta\) is a basis for \(\V \times \W\) and \(\dim(\V \times \W) = m + n\).
 \end{proof}
+
+\begin{ex}\label{ex:1.6.26}
+  For a fixed \(a \in \R\), determine the dimension of the subspace of \(\ps[n]{\R}\) defined by \(\set{f \in \ps[n]{\R} : f(a) = 0}\).
+\end{ex}
+
+\begin{proof}[\pf{ex:1.6.26}]
+  Since the set
+  \[
+    \beta = \set{x - a, x^2 - a^2, \dots, x^n - a^n} \subseteq \set{f \in \ps[n]{\R} : f(a) = 0} \subseteq \ps[n]{\R}
+  \]
+  is linearly independent (by \cref{ex:1.5.5}) and
+  \begin{align*}
+             & \forall g \in \set{f \in \ps[n]{\R} : f(a) = 0}, \exists \seq{c}{1,2,,n} \in \R :                               \\
+             & \forall x \in \R, g(x) = c_1 (x - a) + c_2 (x^2 - a^2) + \cdots + c_n (x^n - a^n)                               \\
+    \implies & \forall g \in \set{f \in \ps[n]{\R} : f(a) = 0}, g \in \spn{\beta}                &  & \text{(by \cref{1.4.3})} \\
+    \implies & \set{f \in \ps[n]{\R} : f(a) = 0} = \spn{\beta},                                  &  & \text{(by \cref{1.5})}
+  \end{align*}
+  by \cref{1.6.1} we know that \(\beta\) is a basis for \(\set{f \in \ps[n]{\R} : f(a) = 0}\).
+  Thus by \cref{1.6.8} we have \(\dim(\set{f \in \ps[n]{\R} : f(a) = 0}) = n\).
+\end{proof}
