@@ -996,3 +996,29 @@
     \iff & \dim(\V) = \dim(\W_1 + \W_2) = \dim(\W_1) + \dim(\W_2). &  & \text{(by \cref{ex:1.6.29}(a))}
   \end{align*}
 \end{proof}
+
+\setcounter{ex}{30}
+\begin{ex}\label{ex:1.6.31}
+  Let \(\W_1\) and \(\W_2\) be subspaces of a vector space \(\V\) over \(\F\) having dimensions \(m\) and \(n\), respectively, where \(m \geq n\).
+  \begin{enumerate}
+    \item Prove that \(\dim(\W_1 \cap \W_2) \leq n\).
+    \item Prove that \(\dim(\W_1 + \W_2) \leq m + n\).
+  \end{enumerate}
+\end{ex}
+
+\begin{proof}[\pf{ex:1.6.31}(a)]
+  We have
+  \begin{align*}
+             & \W_1 \cap \W_2 \subseteq \W_2                                          \\
+    \implies & \dim(\W_1 \cap \W_2) \leq \dim(\W_2) = n. &  & \text{(by \cref{1.11})}
+  \end{align*}
+\end{proof}
+
+\begin{proof}[\pf{ex:1.6.31}(b)]
+  We have
+  \begin{align*}
+    \dim(\W_1 + \W_2) & = \dim(\W_1) + \dim(\W_2) - \dim(\W_1 \cap \W_2) &  & \text{(by \cref{ex:1.6.29}(a))} \\
+                      & = m + n - \dim(\W_1 \cap \W_2)                                                        \\
+                      & \leq m + n.
+  \end{align*}
+\end{proof}
