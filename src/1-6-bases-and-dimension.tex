@@ -905,3 +905,78 @@
   \end{align*}
   by \cref{1.6.1} we know that \(\set{\seq{v}{1,2,,n}, \seq{iv}{1,2,,n}}\) is a basis for \(\V\) over \(\R\) with dimension \(2n\).
 \end{proof}
+
+\begin{ex}\label{ex:1.6.29}
+  \quad
+  \begin{enumerate}
+    \item Prove that if \(\W_1\) and \(\W_2\) are finite-dimensional subspaces of a vector space \(\V\) over \(\F\), then the subspace \(\W_1 + \W_2\) is finite-dimensional, and \(\dim(\W_1 + \W_2) = \dim(\W_1) + \dim(\W_2) - \dim(\W_1 \cap \W_2)\).
+    \item Let \(\W_1\) and \(\W_2\) be finite-dimensional subspaces of a vector space \(\V\) over \(\F\), and let \(\V = \W_1 + \W_2\).
+          Deduce that \(\V\) is the direct sum of \(\W_1\) and \(\W_2\) if and only if \(\dim(\V) = \dim(\W_1) + \dim(\W_2)\).
+  \end{enumerate}
+\end{ex}
+
+\begin{proof}[\pf{ex:1.6.29}(a)]
+  If \(\dim(\W_1) = \dim(\W_2) = 0\), then we have
+  \[
+    \dim(\W_1 + \W_2) = \dim(\set{\zv}) = 0 = 0 + 0 - 0 = \dim(\W_1) + \dim(\W_2) - \dim(\W_1 \cap \W_2).
+  \]
+  So suppose that \(\dim(\W_1) > 0\) or \(\dim(\W_2) > 0\).
+
+  By \cref{1.4} we know that \(\W_1 \cap \W_2\) is a subspace of \(\W_1\) and \(\W_2\) over \(\F\).
+  Since \(\W_1\) and \(\W_2\) are finite-dimensional, by \cref{1.11} we know that \(\W_1 \cap \W_2\) is finite-dimensional.
+
+  Let \(\beta = \set{\seq{u}{1,2,,k}}\) be a basis for \(\W_1 \cap \W_2\) over \(\F\).
+  Note that \(k \geq 0\) and when \(k = 0\) we have \(\beta = \varnothing\).
+  By \cref{1.6.15}(c) we can extend \(\beta\) to another set \(\beta_1 = \set{\seq{u}{1,2,,k}, \seq{v}{1,2,,m}}\) which is basis for \(\W_1\) over \(\F\).
+  Using similar argument we can extend \(\beta\) to \(\beta_2 = \set{\seq{u}{1,2,,k}, \seq{w}{1,2,,p}}\) which is a basis for \(\W_2\) over \(\F\).
+  Note that \(m, p \geq 0\) and \(\max(m, p) \geq 1\).
+  Since
+  \begin{align*}
+             & \begin{dcases}
+      \forall v \in \beta_1, v + \zv \in \W_1 + \W_2 \\
+      \forall w \in \beta_2, \zv + w \in \W_1 + \W_2
+    \end{dcases}                 &  & \text{(by \cref{1.3.10})} \\
+    \implies & \beta_1 \cup \beta_2 \subseteq \W_1 + \W_2
+  \end{align*}
+  and
+  \begin{align*}
+             & \forall x \in \W_1 + \W_2, \exists (y, z) \in \W_1 \times \W_2 : x = y + z                                                          &  & \text{(by \cref{1.3.10})} \\
+    \implies & \forall x \in \W_1 + \W_2, \begin{dcases}
+      \exists \seq{a}{1,2,,k + m} \in \F \\
+      \exists \seq{b}{1,2,,k + p} \in \F
+    \end{dcases} :                                                                                                            \\
+             & x = \pa{\sum_{i = 1}^k a_i u_i + \sum_{i = k + 1}^{k + m} a_i v_i} + \pa{\sum_{i = 1}^k b_i u_i + \sum_{i = k + 1}^{k + p} b_i w_i} &  & \text{(by \cref{1.6.1})}  \\
+             & = \sum_{i = 1}^k (a_i + b_i) u_i + \sum_{i = k + 1}^{k + m} a_i v_i + \sum_{i = k + 1}^{k + p} b_i w_i                              &  & \text{(by \cref{1.2.1})}  \\
+    \implies & \forall x \in \W_1 + \W_2, \exists \seq{a}{1,2,,k + m + p} \in \F :                                                                                                \\
+             & x = \sum_{i = 1}^k a_i u_i + \sum_{i = k + 1}^{k + m} a_i v_i + \sum_{i = k + m + 1}^{k + m + p} a_i w_i                                                           \\
+    \implies & \forall x \in \W_1 + \W_2, x \in \spn{\beta_1 \cup \beta_2}                                                                         &  & \text{(by \cref{1.4.3})}  \\
+    \implies & \W_1 + \W_2 = \spn{\beta_1 \cup \beta_2},                                                                                           &  & \text{(by \cref{1.5})}
+  \end{align*}
+  by \cref{1.9} we know that \(\dim(\W_1 + \W_2) \leq \#(\beta_1 \cup \beta_2)\) and there exist some \(S \subseteq \beta_1 \cup \beta_2\) such that \(S\) is a basis for \(\W_1 + \W_2\) over \(\F\).
+  We now claim that \(\beta_1 \cup \beta_2\) is a basis for \(\W_1 + \W_2\) over \(\F\).
+  By \cref{1.6.1} we need to show that \(\beta_1 \cup \beta_2\) is linearly independent.
+  Since
+  \begin{align*}
+             & \beta_1 \cap \beta_2 = \beta                                     \\
+    \implies & \begin{dcases}
+      \spn{\beta_1 \setminus \beta} \cap \beta_2 = \varnothing \\
+      \spn{\beta_2 \setminus \beta} \cap \beta_1 = \varnothing
+    \end{dcases}   &  & (\spn{\beta} = \W_1 \cap \W_2) \\
+    \implies & \begin{dcases}
+      \spn{\beta_1} \cap \beta_2 = \varnothing \\
+      \spn{\beta_2} \cap \beta_1 = \varnothing
+    \end{dcases},
+  \end{align*}
+  we know that
+  \begin{align*}
+             & \forall \seq{a}{1,2,,k + m + p} \in \F,                                                                                                  \\
+             & \sum_{i = 1}^k a_i u_i + \sum_{i = k + 1}^{k + m} a_i v_i + \sum_{i = k + m + 1}^{k + m + p} a_i w_i = \zv                               \\
+    \implies & \sum_{i = 1}^k a_i u_i + \sum_{i = k + 1}^{k + m} a_i v_i = \sum_{i = k + m + 1}^{k + m + p} -a_i w_i      &  & \text{(by \cref{1.2.1})} \\
+    \implies & \seq[=]{a}{1,2,,k + m + p} = 0.                                                                            &  & \text{(by \cref{1.5.3})}
+  \end{align*}
+  Thus by \cref{1.5.3} \(\beta_1 \cup \beta_2\) is linearly independent and by \cref{1.6.1} \(\beta_1 \cup \beta_2\) is a basis for \(\W_1 + \W_2\).
+  Then we have
+  \[
+    \dim(\W_1 + \W_2) = k + m + p = (k + m) + (k + p) - k = \dim(\W_1) + \dim(\W_2) - \dim(\W_1 \cap \W_2).
+  \]
+\end{proof}
