@@ -1083,3 +1083,84 @@
   \end{align*}
   by \cref{1.3.11} we know that \(\V = \W_1 \oplus \W_2\).
 \end{proof}
+
+\begin{ex}\label{ex:1.6.34}
+  \quad
+  \begin{enumerate}
+    \item Prove that if \(\W_1\) is any subspace of a finite-dimensional vector space \(\V\) over \(\F\), then there exists a subspace \(\W_2\) of \(\V\) over \(\F\) such that \(\V = \W_1 \oplus \W_2\).
+    \item Let \(\V = \R^2\) and \(\W_1 = \set{(a_1, 0) : a_1 \in \R}\).
+          Give examples of two different subspaces \(\W_2\) and \(\W_2'\) such that \(\V = \W_1 \oplus \W_2\) and \(\V = \W_1 \oplus \W_2'\).
+  \end{enumerate}
+\end{ex}
+
+\begin{proof}[\pf{ex:1.6.34}(a)]
+  Let \(\beta_1\) be a basis for \(\W_1\) over \(\F\).
+  By \cref{1.6.19} we know that \(\beta_1\) can extend to a basis \(\beta\) for \(\V\) over \(\F\).
+  Let \(\beta_2 = \beta \setminus \beta_1\) and let \(\W_2 = \spn{\beta_2}\).
+  Since \(\beta_1 \cap \beta_2 = \varnothing\) and \(\spn{\beta_1 \cup \beta_2} = \V\), by \cref{ex:1.6.33}(b) we have \(\V = \W_1 \oplus \W_2\).
+\end{proof}
+
+\begin{proof}[\pf{ex:1.6.34}(b)]
+  Let
+  \begin{align*}
+    \W_2  & = \set{(0, a_2) : a_2 \in \R}    \\
+    \W_2' & = \set{(a_2, a_2) : a_2 \in \R}.
+  \end{align*}
+  Clearly we have
+  \begin{align*}
+    \W_1 \cap \W_2  & = \set{(0, 0)}  \\
+    \W_1 \cap \W_2' & = \set{(0, 0)}.
+  \end{align*}
+  Since
+  \begin{align*}
+             & \forall x \in \R^2, x = (x_1, x_2) = (x_1, 0) + (0, x_2)                                           \\
+    \implies & \forall x \in \R^2, \exists (y, z) \in \W_1 \times \W_2 : x = y + z                                \\
+    \implies & \forall x \in \R^2, x \in \W_1 + \W_2                               &  & \text{(by \cref{1.3.10})} \\
+    \implies & \R^2 = \W_1 + \W_2                                                  &  & \text{(by \cref{1.5})}
+  \end{align*}
+  and
+  \begin{align*}
+             & \forall x \in \R^2, x = (x_1, x_2) = (x_1 - x_2, 0) + (x_2, x_2)                                    \\
+    \implies & \forall x \in \R^2, \exists (y, z) \in \W_1 \times \W_2' : x = y + z                                \\
+    \implies & \forall x \in \R^2, x \in \W_1 + \W_2'                               &  & \text{(by \cref{1.3.10})} \\
+    \implies & \R^2 = \W_1 + \W_2',                                                 &  & \text{(by \cref{1.5})}
+  \end{align*}
+  by \cref{1.3.11} we know that \(\V = \W_1 \oplus \W_2 = \W_1 \oplus \W_2'\).
+\end{proof}
+
+\begin{ex}\label{ex:1.6.35}
+  Let \(\W\) be a subspace of a finite-dimensional vector space \(\V\) over \(\F\), and consider the basis \(\set{\seq{u}{1,2,,k}}\) for \(\W\) over \(\F\).
+  Let \(\set{\seq{u}{1,2,,k,k + 1,,n}}\) be an extension of this basis to a basis for \(\V\) over \(\F\).
+  \begin{enumerate}
+    \item Prove that \(\set{u_{k + 1} + \W, u_{k + 2} + \W, \dots , u_n + \W}\) is a basis for \(\V / \W\) over \(\F\).
+    \item Derive a formula relating \(\dim(\V)\), \(\dim(\W)\), and \(\dim(\V / \W)\).
+  \end{enumerate}
+\end{ex}
+
+\begin{proof}[\pf{ex:1.6.35}(a)]
+  Let \(\beta = \set{u_{k + 1} + \W, u_{k + 2} + \W, \dots , u_n + \W}\).
+  First we show that \(\spn{\beta} = \V / \W\).
+  \begin{align*}
+             & \forall v + \W \in \V / \W, \begin{dcases}
+      v \in \V \\
+      v + \W = \set{v + w : w \in \W}
+    \end{dcases}      &  & \text{(by \cref{ex:1.3.31})} \\
+    \implies & \forall v + \W \in \V / \W, \exists \seq{a}{1,2,,n} \in \F :                                   \\
+             & v + \W = \pa{\sum_{i = 1}^n a_i u_i} + \W                    &  & \text{(by \cref{1.4.3})}     \\
+             & = \sum_{i = 1}^n a_i (u_i + \W)                              &  & \text{(by \cref{ex:1.3.31})} \\
+             & = \sum_{i = k + 1}^n a_i (u_i + \W)                          &  & (\seq{u}{1,2,,k} \in \W)     \\
+    \implies & \spn{\beta} = \V / \W.                                       &  & \text{(by \cref{1.4.3})}.
+  \end{align*}
+  Now we show that \(\beta\) is linearly independent.
+  \begin{align*}
+             & \forall \seq{a}{k + 1,,n} \in \F, \sum_{i = k + 1}^n a_i (u_i + \W) = \zv + \W                                    \\
+    \implies & \pa{\sum_{i = k + 1}^n a_i u_i} + \W = \W                                      &  & \text{(by \cref{ex:1.3.31})}  \\
+    \implies & \sum_{i = k + 1}^n a_i u_i \in \W                                              &  & \text{(by \cref{ex:1.3.31})}  \\
+    \implies & \seq[=]{a}{k + 1,,n} = 0.                                                      &  & (\seq{u}{k + 1,,n} \notin \W)
+  \end{align*}
+  From all proofs above we conclude by \cref{1.6.1} that \(\beta\) is a basis for \(\V / \W\) over \(\F\).
+\end{proof}
+
+\begin{proof}[\pf{ex:1.6.35}(b)]
+  From \cref{ex:1.6.35}(a) we see that \(\dim(\V / \W) = \dim(\V) - \dim(\W)\).
+\end{proof}
