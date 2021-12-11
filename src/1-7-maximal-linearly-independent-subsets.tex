@@ -1,1 +1,83 @@
 \section{Maximal Linearly Independent Subsets}\label{sec:1.7}
+
+\begin{note}
+  The difficulty that arises in extending the theorems of the preceding section to infinite-dimensional vector spaces is that the principle of mathematical induction, which played a crucial role in many of the proofs of \cref{sec:1.6}, is no longer adequate.
+  Instead, a more general result called the \emph{maximal principle} is needed.
+  Before stating this principle, we need to introduce some terminology.
+\end{note}
+
+\begin{defn}\label{1.7.1}
+  Let \(\mathcal{F}\) be a family of sets.
+  A member \(M\) of \(\mathcal{F}\) is called \textbf{maximal} (with respect to set inclusion) if \(M\) is contained in no member of \(\mathcal{F}\) other than \(M\) itself.
+\end{defn}
+
+\begin{eg}\label{1.7.2}
+  Let \(\mathcal{F}\) be the family of all subsets of a nonempty set \(S\).
+  (This family \(\mathcal{F}\) is called the \textbf{power set} of \(S\).)
+  The set \(S\) is easily seen to be a maximal element of \(\mathcal{F}\).
+\end{eg}
+
+\begin{eg}\label{1.7.3}
+  Let \(S\) and \(T\) be disjoint nonempty sets, and let \(\mathcal{F}\) be the union of their power sets.
+  Then \(S\) and \(T\) are both maximal elements of \(\mathcal{F}\).
+\end{eg}
+
+\begin{eg}\label{1.7.4}
+  Let \(\mathcal{F}\) be the family of all finite subsets of an infinite set \(S\).
+  Then \(\mathcal{F}\) has no maximal element.
+  For if \(M\) is any member of \(\mathcal{F}\) and \(s\) is any element of \(S\) that is not in \(M\), then \(M \cup \set{s}\) is a member of \(\mathcal{F}\) that contains \(M\) as a proper subset.
+\end{eg}
+
+\begin{defn}\label{1.7.5}
+  A collection of sets \(\mathcal{C}\) is called a \textbf{chain} (or \textbf{nest} or \textbf{tower}) if for each pair of sets \(A\) and \(B\) in \(\mathcal{C}\), either \(A \subseteq B\) or \(B \subseteq A\).
+\end{defn}
+
+\begin{eg}\label{1.7.6}
+  For each positive integer \(n\) let \(A_n = \set{1, 2, \dots, n}\).
+  Then the collection of sets \(\mathcal{C} = \set{A_n : n = 1, 2, 3, \dots}\) is a chain.
+  In fact, \(A_m \subseteq A_n\) if and only if \(m \leq n\).
+\end{eg}
+
+\begin{ax}[Maximal Principle]\label{1.7.7}
+  Let \(\mathcal{F}\) be a family of sets.
+  If, for each chain \(\mathcal{C} \subseteq \mathcal{F}\), there exists a member of \(\mathcal{F}\) that contains each member of \(\mathcal{C}\), then \(\mathcal{F}\) contains a maximal member.
+\end{ax}
+
+\begin{note}
+  The \emph{Maximal Principle} is logically equivalent to the \emph{Axiom of Choice}, which is an assumption in most axiomatic developments of set theory.
+\end{note}
+
+\begin{defn}\label{1.7.8}
+  Let \(S\) be a subset of a vector space \(\V\) over \(\F\).
+  A \textbf{maximal linearly independent subset} of \(S\) is a subset \(B\) of \(S\) satisfying both of the following conditions.
+  \begin{enumerate}
+    \item \(B\) is linearly independent.
+    \item The only linearly independent subset of \(S\) that contains \(B\) is \(B\) itself.
+  \end{enumerate}
+\end{defn}
+
+\begin{note}
+  Maximal linearly independent subsets of a set need not be unique.
+\end{note}
+
+\begin{eg}\label{1.7.9}
+  A basis \(\beta\) for a vector space \(\V\) over \(\F\) is a maximal linearly independent subset of \(\V\), because
+  \begin{enumerate}
+    \item \(\beta\) is linearly independent by definition.
+    \item If \(v \in V\) and \(v \notin \beta\), then \(\beta \cup \set{v}\) is linearly dependent by \cref{1.7} because \(\spn{\beta} = \V\).
+  \end{enumerate}
+\end{eg}
+
+\begin{thm}\label{1.12}
+  Let \(\V\) be a vector space over \(\F\) and \(S\) a subset that generates \(\V\).
+  If \(\beta\) is a maximal linearly independent subset of \(S\), then \(\beta\) is a basis for \(\V\) over \(\F\).
+\end{thm}
+
+\begin{proof}[\pf{1.12}]
+  Let \(\beta\) be a maximal linearly independent subset of \(S\).
+  Because \(\beta\) is linearly independent, it suffices to prove that \(\beta\) generates \(\V\).
+  We claim that \(S \subseteq \spn{\beta}\), for otherwise there exists a \(v \in S\) such that \(v \notin \spn{\beta}\).
+  Since \cref{1.7} implies that \(\beta \cup \set{v}\) is linearly independent, we have contradicted the maximality of \(\beta\).
+  Therefore \(S \subseteq \spn{\beta}\).
+  Because \(\spn{S} = \V\), it follows from \cref{1.5} that \(\spn{\beta} = \V\).
+\end{proof}
