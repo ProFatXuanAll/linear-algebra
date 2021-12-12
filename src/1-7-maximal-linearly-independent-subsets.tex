@@ -179,3 +179,47 @@
 \end{note}
 
 \exercisesection
+
+\setcounter{ex}{1}
+\begin{ex}\label{ex:1.7.2}
+  Show that the set of convergent sequences is an infinite-dimensional subspace of the vector space of all sequences of real numbers.
+\end{ex}
+
+\begin{proof}[\pf{ex:1.7.2}]
+  Let \(\W\) be the set of convergent sequences over \(\R\).
+  By \cref{ex:1.3.21} we know that \(\W\) is a vector space over \(\R\).
+  From \cref{ex:1.6.18} we see that \(\set{e_n^i} \in \W\) for all \(i \in \N\) since \(\lim_{n \to \infty} e_n^i = 0\).
+  Thus \(\W\) is an infinite-dimensional subspace of vector space of all sequences of \(\R\).
+\end{proof}
+
+\begin{ex}\label{ex:1.7.3}
+  Let \(\R\) be the set of real numbers regarded as a vector space over the field of rational numbers \(\Q\).
+  Prove that \(\R\) over \(\Q\) is infinite-dimensional.
+  (Use the fact that \(\pi\) is transcendental, that is, \(\pi\) is not a zero of any polynomial with rational coefficients.)
+\end{ex}
+
+\begin{proof}[\pf{ex:1.7.3}]
+  Let \(\beta_n = \set{1, \pi, \pi^2, \dots, \pi^n}\) for all \(n \in \N\).
+  We claim that \(\beta_n\) is linearly independent for all \(n \in \N\).
+  Since \(\pi\) is transcendental, we know that
+  \[
+    \forall \seq{q}{0,1,,n} \in \Q, \sum_{i = 0}^n q_i \pi^i = 0 \implies \seq[=]{q}{0,1,,n}.
+  \]
+  Thus by \cref{1.5.3} \(\beta_n\) is linearly independent for all \(n \in \N\).
+
+  Now we show that \(\R\) over \(\Q\) is infinite-dimensional.
+  Suppose for sake of contradiction that \(\R\) over \(\Q\) is finite-dimensional with dimension \(n + 1\).
+  Since \(\#(\beta_n) = n + 1\), by \cref{1.6.15}(b) we know that \(\beta_n\) is a basis for \(\R\) over \(\Q\).
+  Then we have
+  \begin{align*}
+             & \forall y \in \R, \exists \seq{q}{0,1,,n} \in \Q : y = \sum_{i = 0}^n q_i \pi^i &  & \text{(by \cref{1.6.1})} \\
+    \implies & \exists \seq{q}{0,1,,n} \in \Q : \pi^{n + 1} = \sum_{i = 1}^n q_i \pi^i                                       \\
+    \implies & \exists \seq{q}{0,1,,n} \in \Q : \pi^{n + 1} - \sum_{i = 1}^n q_i \pi^i = 0                                   \\
+    \implies & \exists \seq{q}{0,1,,n + 1} \in \Q : \begin{dcases}
+      \sum_{i = 1}^{n + 1} q_i \pi^i = 0 \\
+      q_{n + 1} \neq 0
+    \end{dcases}.
+  \end{align*}
+  But \(\pi\) is transcendental implies that \(\seq[=]{q}{0,1,,n + 1} = 0\), a contradiction.
+  Thus \(\R\) over \(\Q\) is infinite-dimensional.
+\end{proof}
