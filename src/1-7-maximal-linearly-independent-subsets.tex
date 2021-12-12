@@ -17,16 +17,43 @@
   The set \(S\) is easily seen to be a maximal element of \(\mathcal{F}\).
 \end{eg}
 
+\begin{proof}[\pf{1.7.2}]
+  Suppose for sake of contradiction that there exists a set \(S' \in 2^S\) such that \(S \subseteq S'\) and \(S \neq S'\).
+  But \(S' \in 2^S\) implies \(S' \subseteq S\), thus we have \(S = S'\), a contradiction.
+\end{proof}
+
 \begin{eg}\label{1.7.3}
   Let \(S\) and \(T\) be disjoint nonempty sets, and let \(\mathcal{F}\) be the union of their power sets.
   Then \(S\) and \(T\) are both maximal elements of \(\mathcal{F}\).
 \end{eg}
 
+\begin{proof}[\pf{1.7.3}]
+  Since \(2^S \cap 2^T = \varnothing\), we know that a maximal element of \(2^S \cup 2^T\) cannot be in \(S \cap T\).
+  Thus by \cref{1.7.2} we know that \(S, T\) are both maximal elements of \(\mathcal{F}\).
+\end{proof}
+
 \begin{eg}\label{1.7.4}
   Let \(\mathcal{F}\) be the family of all finite subsets of an infinite set \(S\).
   Then \(\mathcal{F}\) has no maximal element.
-  For if \(M\) is any member of \(\mathcal{F}\) and \(s\) is any element of \(S\) that is not in \(M\), then \(M \cup \set{s}\) is a member of \(\mathcal{F}\) that contains \(M\) as a proper subset.
 \end{eg}
+
+\begin{proof}[\pf{1.7.4}]
+  Suppose for sake of contradiction that there exists a maximal element \(M\) in \(\mathcal{F}\).
+  But then we have
+  \begin{align*}
+             & \begin{dcases}
+      M \text{ is finite} \\
+      S \text{ is infinite}
+    \end{dcases}                   \\
+    \implies & S \setminus M \neq \varnothing              \\
+    \implies & \exists s \in S : s \notin M                \\
+    \implies & \exists s \in S : \begin{dcases}
+      M \subseteq M \cup \set{s} \\
+      M \cup \set{s} \in \mathcal{F}
+    \end{dcases}
+  \end{align*}
+  which contradict the fact that \(M\) is a maximal element of \(\mathcal{F}\).
+\end{proof}
 
 \begin{defn}\label{1.7.5}
   A collection of sets \(\mathcal{C}\) is called a \textbf{chain} (or \textbf{nest} or \textbf{tower}) if for each pair of sets \(A\) and \(B\) in \(\mathcal{C}\), either \(A \subseteq B\) or \(B \subseteq A\).
@@ -37,6 +64,21 @@
   Then the collection of sets \(\mathcal{C} = \set{A_n : n = 1, 2, 3, \dots}\) is a chain.
   In fact, \(A_m \subseteq A_n\) if and only if \(m \leq n\).
 \end{eg}
+
+\begin{proof}[\pf{1.7.6}]
+  We have
+  \begin{align*}
+             & \forall \seq{A}{m,n} \in \mathcal{C}, \begin{dcases}
+      A_m = \set{1, 2, \dots, m} \\
+      A_n = \set{1, 2, \dots, n}
+    \end{dcases}                               \\
+    \implies & \forall \seq{A}{m,n} \in \mathcal{C}, \begin{dcases}
+      A_m \subseteq A_n & \text{if } m \leq n \\
+      A_n \subseteq A_m & \text{if } m > n
+    \end{dcases}                               \\
+    \implies & \mathcal{C} \text{ is a chain}.                                  &  & \text{(by \cref{1.7.5})}
+  \end{align*}
+\end{proof}
 
 \begin{ax}[Maximal Principle]\label{1.7.7}
   Let \(\mathcal{F}\) be a family of sets.
@@ -61,12 +103,16 @@
 \end{note}
 
 \begin{eg}\label{1.7.9}
-  A basis \(\beta\) for a vector space \(\V\) over \(\F\) is a maximal linearly independent subset of \(\V\), because
-  \begin{enumerate}
+  A basis \(\beta\) for a vector space \(\V\) over \(\F\) is a maximal linearly independent subset of \(\V\).
+\end{eg}
+
+\begin{proof}[\pf{1.7.9}]
+  \cref{1.7.9} is true since
+  \begin{itemize}
     \item \(\beta\) is linearly independent by definition.
     \item If \(v \in V\) and \(v \notin \beta\), then \(\beta \cup \set{v}\) is linearly dependent by \cref{1.7} because \(\spn{\beta} = \V\).
-  \end{enumerate}
-\end{eg}
+  \end{itemize}
+\end{proof}
 
 \begin{thm}\label{1.12}
   Let \(\V\) be a vector space over \(\F\) and \(S\) a subset that generates \(\V\).
