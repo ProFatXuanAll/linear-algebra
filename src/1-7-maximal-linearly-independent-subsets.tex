@@ -87,6 +87,7 @@
 
 \begin{note}
   The \emph{Maximal Principle} is logically equivalent to the \emph{Axiom of Choice}, which is an assumption in most axiomatic developments of set theory.
+  For a treatment of set theory using the Maximal Principle, see John L. Kelley, General Topology, Graduate Texts in Mathematics Series, Vol. 27, Springer-Verlag, 1991.
 \end{note}
 
 \begin{defn}\label{1.7.8}
@@ -127,3 +128,54 @@
   Therefore \(S \subseteq \spn{\beta}\).
   Because \(\spn{S} = \V\), it follows from \cref{1.5} that \(\spn{\beta} = \V\).
 \end{proof}
+
+\begin{note}
+  From \cref{1.7.9} and \cref{1.12} we see that a subset of a vector space is a basis if and only if it is a maximal linearly independent subset of the vector space.
+\end{note}
+
+\begin{thm}\label{1.13}
+  Let \(S\) be a linearly independent subset of a vector space \(\V\) over \(\F\).
+  There exists a maximal linearly independent subset of \(\V\) that contains \(S\).
+\end{thm}
+
+\begin{proof}[\pf{1.13}]
+  Let \(\mathcal{F}\) denote the family of all linearly independent subsets of \(\V\) that contain \(S\).
+  In order to show that \(\mathcal{F}\) contains a maximal element, we must show that if \(\mathcal{C}\) is a chain in \(\mathcal{F}\), then there exists a member \(U\) of \(\mathcal{F}\) that contains each member of \(\mathcal{C}\).
+  We claim that \(U\), the union of the members of \(\mathcal{C}\), is the desired set.
+  Clearly \(U\) contains each member of \(\mathcal{C}\), and so it suffices to prove that \(U \in \mathcal{F}\)
+  (i.e., that \(U\) is a linearly independent subset of \(\V\) that contains \(S\)).
+  Because each member of \(\mathcal{C}\) is a subset of \(\V\) containing \(S\), we have \(S \subseteq U \subseteq \V\).
+  Thus we need only prove that \(U\) is linearly independent.
+  Let \(\seq{u}{1,2,,n}\) be in \(U\) and \(\seq{a}{1,2,,n}\) be scalars in \(\F\) such that \(\seq[+]{a,u}{1,2,,n} = 0\).
+  Because \(u_i \in U\) for \(i = 1, 2, \dots, n\), there exists a set \(A_i\) in \(\mathcal{C}\) such that \(u_i \in A_i\).
+  But since \(\mathcal{C}\) is a chain, one of these sets, say \(A_k\), contains all the others.
+  Thus \(u_i \in A_k\) for \(i = 1, 2, \dots, n\).
+  However, \(A_k\) is a linearly independent set;
+  so \(\seq[+]{a,u}{1,2,,n} = 0\) implies that \(\seq[=]{a}{1,2,,n} = 0\).
+  It follows that \(U\) is linearly independent.
+
+  The maximal principle implies that \(\mathcal{F}\) has a maximal element.
+  This element is easily seen to be a maximal linearly independent subset of \(\V\) that contains \(S\).
+\end{proof}
+
+\begin{cor}\label{1.7.10}
+  Every vector space has a basis.
+\end{cor}
+
+\begin{proof}[\pf{1.7.10}]
+  Let \(\V\) be a vector space over \(\F\).
+  If \(\V = \set{\zv}\), then by \cref{1.6.2} \(\varnothing\) is the basis for \(\set{\zv}\).
+  So suppose that \(\V \neq \set{\zv}\).
+  Then there exists a \(v \in \V \setminus \set{\zv}\) and by \cref{1.5.4}(b) \(\set{v}\) is linearly independent.
+  From \cref{1.13} we see that there exists a maximal linearly independent subset \(\beta\) of \(\V\) that contains \(\set{v}\).
+  By \cref{1.7.8} we know that \(\spn{\beta} = \V\).
+  Thus by \cref{1.12} \(\beta\) is a basis for \(\V\) over \(\F\).
+\end{proof}
+
+\begin{note}
+  It can be shown, analogously to \cref{1.6.7}, that every basis for an infinite-dimensional vector space has the same \emph{cardinality}.
+  (Sets have the same cardinality if there is a one-to-one and onto mapping between them.)
+  (See, for example, N. Jacobson, Lectures in Ab- stract Algebra, vol. 2, Linear Algebra, D. Van Nostrand Company, New York, 1953, p. 240.)
+\end{note}
+
+\exercisesection
