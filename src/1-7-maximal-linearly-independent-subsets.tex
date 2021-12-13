@@ -328,3 +328,30 @@
   implies \(u_1\) can be expressed as two different linear combinations of vectors in \(\beta\), a contradiction.
   Thus \(\beta\) is a basis for \(\V\) over \(\F\).
 \end{proof}
+
+\begin{ex}\label{ex:1.7.6}
+  Prove the following generalization of \cref{1.9}:
+  Let \(S_1\) and \(S_2\) be subsets of a vector space \(\V\) over \(\F\) such that \(S_1 \subseteq S_2\).
+  If \(S_1\) is linearly independent and \(S_2\) generates \(\V\), then there exists a basis \(\beta\) for \(\V\) over \(\F\) such that \(S_1 \subseteq \beta \subseteq S_2\).
+\end{ex}
+
+\begin{proof}[\pf{ex:1.7.6}]
+  Let \(\mathcal{F}\) be the set of all linearly independent subsets of \(S_2\) that contain \(S_1\).
+  In order to show that \(\mathcal{F}\) contains a maximal element, we must show that if \(\mathcal{C}\) is a chain in \(\mathcal{F}\), then there exists a member \(U\) of \(\mathcal{F}\) that contains each member of \(\mathcal{C}\).
+  We claim that \(U\), the union of the members of \(\mathcal{C}\), is the desired set.
+  Clearly \(U\) contains each member of \(\mathcal{C}\), and so it suffices to prove that \(U \in \mathcal{F}\)
+  (i.e., that \(U\) is a linearly independent subset of \(S_2\) that contains \(S_1\)).
+  Because each member of \(\mathcal{C}\) is a subset of \(S_2\) containing \(S_1\), we have \(S_1 \subseteq U \subseteq S_2\).
+  Thus we need only prove that \(U\) is linearly independent.
+  Let \(\seq{u}{1,2,,n}\) be in \(U\) and \(\seq{a}{1,2,,n}\) be scalars in \(\F\) such that \(\seq[+]{a,u}{1,2,,n} = 0\).
+  Because \(u_i \in U\) for \(i = 1, 2, \dots, n\), there exists a set \(A_i\) in \(\mathcal{C}\) such that \(u_i \in A_i\).
+  But since \(\mathcal{C}\) is a chain, one of these sets, say \(A_k\), contains all the others.
+  Thus \(u_i \in A_k\) for \(i = 1, 2, \dots, n\).
+  However, \(A_k\) is a linearly independent set;
+  so \(\seq[+]{a,u}{1,2,,n} = 0\) implies that \(\seq[=]{a}{1,2,,n} = 0\).
+  It follows that \(U\) is linearly independent.
+
+  The maximal principle implies that \(\mathcal{F}\) has a maximal element \(\beta\).
+  This element is easily seen to be a maximal linearly independent subset of \(S_2\) that contains \(S_1\).
+  Since \(\spn{S_2} = \V\), by \cref{1.12} we see that \(\beta\) is a basis for \(\V\) over \(\F\).
+\end{proof}
