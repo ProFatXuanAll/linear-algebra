@@ -355,3 +355,15 @@
   This element is easily seen to be a maximal linearly independent subset of \(S_2\) that contains \(S_1\).
   Since \(\spn{S_2} = \V\), by \cref{1.12} we see that \(\beta\) is a basis for \(\V\) over \(\F\).
 \end{proof}
+
+\begin{ex}\label{ex:1.7.7}
+  Prove the following generalization of the replacement theorem (\cref{1.10}).
+  Let \(\beta\) be a basis for a vector space \(\V\) over \(\F\), and let \(S\) be a linearly independent subset of \(\V\).
+  There exists a subset \(S_1\) of \(\beta\) such that \(S \cup S_1\) is a basis for \(\V\) over \(\F\).
+\end{ex}
+
+\begin{proof}[\pf{ex:1.7.7}]
+  Since \(\spn{\beta} = \V\), we know that \(\spn{\beta \cup S} = \V\).
+  From \cref{ex:1.7.6} we see that there exists a set \(\beta'\) such that \(S \subseteq \beta' \subseteq \beta \cup S\) and \(\beta'\) is a basis for \(\V\) over \(\F\).
+  By setting \(S_1 = \beta' \setminus S\) we are done.
+\end{proof}
