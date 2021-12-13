@@ -234,3 +234,97 @@
   Since \(\beta_w \subseteq \W \subseteq \V\), by \cref{1.13} we know that there exists a maximal linearly independent subset \(\beta_v\) of \(\V\) that contains \(\beta_w\), and by \cref{1.12} we know that such \(\beta_v\) is a basis for \(\V\) over \(\F\).
   Since \(\beta_w\) is arbitrary, we conclude that any basis for \(\W\) over \(\F\) is a subset of a basis for \(\V\) over \(\F\).
 \end{proof}
+
+\begin{ex}\label{ex:1.7.5}
+  Prove the following infinite-dimensional version of \cref{1.8}:
+  Let \(\beta\) be a subset of an infinite-dimensional vector space \(\V\) over \(\F\).
+  Then \(\beta\) is a basis for \(\V\) over \(\F\) if and only if for each nonzero vector \(v\) in \(\V\), there exist unique vectors \(\seq{u}{1,2,,n}\) in \(\beta\) and unique nonzero scalars \(\seq{c}{1,2,,n} \in \F\) such that \(v = \seq[+]{c,u}{1,2,,n}\).
+\end{ex}
+
+\begin{proof}[\pf{ex:1.7.5}]
+  First suppose that \(\beta\) is a basis for \(\V\) over \(\F\).
+  Let \(v \in \V \setminus \set{\zv}\).
+  Then by \cref{1.6.1} we know that
+  \[
+    \begin{dcases}
+      \exists \seq{u}{1,2,,n} \in \V \\
+      \exists \seq{a}{1,2,,n} \in \F
+    \end{dcases} : \begin{dcases}
+      v = \seq[+]{a,u}{1,2,,n} \\
+      \lnot (\seq[=]{a}{1,2,,n} = 0)
+    \end{dcases}.
+  \]
+  Suppose for sake of contradiction that
+  \[
+    \begin{dcases}
+      \exists \seq{u}{1,2,,m} \in \V \\
+      \exists \seq{b}{1,2,,m} \in \F
+    \end{dcases} : \begin{dcases}
+      v = \seq[+]{b,u}{1,2,,m} \\
+      \lnot (\seq[=]{b}{1,2,,m} = 0)
+    \end{dcases}.
+  \]
+  If \(n \geq m\), then we have
+  \begin{align*}
+             & \begin{dcases}
+      v = \seq[+]{a,u}{1,2,,n} \\
+      v = \seq[+]{b,u}{1,2,,m}
+    \end{dcases}                                                                 \\
+    \implies & \seq[+]{a,u}{1,2,,n} - \seq[-]{b,u}{1,2,,m} = \zv            &  & \text{(by \cref{1.2.1})} \\
+    \implies & (a_1 - b_1) u_1 + (a_2 - b_2) u_2 + \cdots + (a_m - b_m) u_m                               \\
+             & + \seq[+]{a,u}{m + 1,,n} = \zv                               &  & \text{(by \cref{1.2.1})} \\
+    \implies & a_1 - b_1 = a_2 - b_2 = \cdots = a_m - b_m                                                 \\
+             & = \seq[=]{a}{m + 1,,n} = 0                                   &  & \text{(by \cref{1.5.3})} \\
+    \implies & \begin{dcases}
+      v = \seq[+]{a,u}{1,2,,m} \\
+      v = \seq[+]{b,u}{1,2,,m}
+    \end{dcases}
+  \end{align*}
+  Similar arguments show that when \(n \leq m\) we have
+  \[
+    \begin{dcases}
+      v = \seq[+]{a,u}{1,2,,n} \\
+      v = \seq[+]{b,u}{1,2,,n}
+    \end{dcases}.
+  \]
+  Thus we can savely assume that \(n = m\).
+  But then we have
+  \begin{align*}
+             & \begin{dcases}
+      v = \seq[+]{a,u}{1,2,,n} \\
+      v = \seq[+]{b,u}{1,2,,n}
+    \end{dcases}                                                                        \\
+    \implies & \seq[+]{a,u}{1,2,,n} - \seq[-]{b,u}{1,2,,n} = \zv                  &  & \text{(by \cref{1.2.1})}  \\
+    \implies & (a_1 - b_1) u_1 + (a_2 - b_2) u_2 + \cdots + (a_n - b_n) u_n = \zv &  & \text{(by \cref{1.2.1})}  \\
+    \implies & a_1 - b_1 = a_2 - b_2 = \cdots = a_n - b_n = 0                     &  & \text{(by \cref{1.5.3})}  \\
+    \implies & v = \zv,                                                           &  & \text{(by \cref{1.2}(a))}
+  \end{align*}
+  which contradict to the fact that \(v \neq \zv\).
+  Thus \(v\) can be uniquely expressed as linear combination of vectors in \(\beta\).
+  Since \(v\) is arbitrary non-zero vector of \(\V\), we conclude that every vector \(v \in \V \setminus \set{\zv}\) can be uniquely expressed as linear combination of vectors in \(\beta\).
+
+  Now suppose that every vector \(v \in \V \setminus \set{\zv}\) can be uniquely expressed as linear combination of vectors in \(\beta\).
+  Suppose for sake of contradiction that \(\beta\) is not a basis for \(\V\) over \(\F\).
+  Since \(\spn{\beta} = \V\), by \cref{1.6.1} we know that \(\beta\) is linearly dependent.
+  By \cref{1.5.1} this means
+  \[
+    \begin{dcases}
+      \exists \seq{u}{1,2,,n} \in \beta \setminus \set{\zv} \\
+      \exists \seq{a}{1,2,,n} \in \F \setminus \set{0}
+    \end{dcases} : \seq[+]{a,u}{1,2,,n} = \zv.
+  \]
+  Then we have
+  \begin{align*}
+             & a_1 u_1 = -\seq[-]{a,u}{2,,n}                        &  & \text{(by \cref{1.2.1})} \\
+    \implies & u_1 = -a_1^{-1} a_2 u_2 - \cdots - a_1^{-1} a_n u_n. &  & \text{(by \cref{1.2.1})}
+  \end{align*}
+  But
+  \[
+    \begin{dcases}
+      u_1 \in \beta \subseteq \V \\
+      u_1 = 1u_1
+    \end{dcases}
+  \]
+  implies \(u_1\) can be expressed as two different linear combinations of vectors in \(\beta\), a contradiction.
+  Thus \(\beta\) is a basis for \(\V\) over \(\F\).
+\end{proof}
