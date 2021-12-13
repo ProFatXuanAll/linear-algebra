@@ -1,1 +1,139 @@
 \section{Linear Transformations, Null Spaces and Ranges}\label{sec:2.1}
+
+\begin{defn}\label{2.1.1}
+  Let \(\V\) and \(\W\) be vector spaces over \(\F\).
+  We call a function \(\T : \V \to \W\) a \textbf{linear transformation from \(\V\) to \(\W\)} if, for all \(x, y \in \V\) and \(c \in \F\), we have
+  \begin{enumerate}
+    \item \(\T(x + y) = \T(x) + \T(y)\) and
+    \item \(\T(cx) = c\T(x)\).
+  \end{enumerate}
+  We often simply call \(\T\) \textbf{linear}.
+\end{defn}
+
+\begin{note}
+  If the underlying field \(\F\) is the field of rational numbers, then \cref{2.1.1}(a) implies \cref{2.1.1}(b) (see \cref{ex:2.1.37}), but, in general \cref{2.1.1}(a)(b) are logically independent.
+\end{note}
+
+\begin{prop}\label{2.1.2}
+  Let \(\V\) and \(\W\) be vector spaces over \(\F\) and let \(\T : \V \to \W\) be a function.
+  \begin{enumerate}
+    \item If \(\T\) is linear, then \(\T(\zv_v) = \zv_w\).
+    \item \(\T\) is linear if and only if \(\T(cx + y) = c\T(x) + \T(y)\) for all \(x, y \in \V\) and \(c \in \F\).
+    \item If \(\T\) is linear, then \(\T(x - y) = \T(x) - \T(y)\) for all \(x, y \in \V\).
+    \item \(\T\) is linear if and only if, for \(\seq{x}{1,2,,n} \in \V\) and \(\seq{a}{1,2,,n} \in F\), we have
+          \[
+            \T\pa{\sum_{i = 1}^n a_i x_i} = \sum_{i = 1}^n a_i \T(x_i).
+          \]
+  \end{enumerate}
+\end{prop}
+
+\begin{proof}[\pf{2.1.2}(a)]
+  We have
+  \begin{align*}
+             & \T \text{ is linear}                                                       \\
+    \implies & \T(\zv_v) + \T(\zv_v) = \T(\zv_v + \zv_v) &  & \text{(by \cref{2.1.1}(a))} \\
+             & = \T(\zv_v) = \T(\zv_v) + \zv_w           &  & \text{(by \ref{vs3})}       \\
+    \implies & \T(\zv_v) = \zv_w.                        &  & \text{(by \cref{1.1})}
+  \end{align*}
+\end{proof}
+
+\begin{proof}[\pf{2.1.2}(b)]
+  We have
+  \begin{align*}
+             & \T \text{ is linear}                                                                                  \\
+    \implies & \begin{dcases}
+      \forall x, y \in \V \\
+      \forall c \in \F
+    \end{dcases}, \begin{dcases}
+      \T(x + y) = \T(x) + \T(y) \\
+      \T(cx) = c\T(x)
+    \end{dcases}                    &  & \text{(by \cref{2.1.1})} \\
+    \implies & \begin{dcases}
+      \forall x, y \in \V \\
+      \forall c \in \F
+    \end{dcases}, \T(cx + y) = \T(cx) + \T(y) = c\T(x) + \T(y) &  & \text{(by \cref{2.1.1})}
+  \end{align*}
+  and
+  \begin{align*}
+             & \begin{dcases}
+      \forall x, y \in \V \\
+      \forall c \in \F
+    \end{dcases}, \T(cx + y) = c\T(x) + \T(y)                                  \\
+    \implies & \begin{dcases}
+      \forall x, y \in \V \\
+      \forall c \in \F
+    \end{dcases}, \begin{dcases}
+      \T(x + y) = \T(x) + \T(y)       & \text{if } c = 0     \\
+      \T(cx + \zv_v) = c\T(x) + \zv_w & \text{if } y = \zv_v
+    \end{dcases}  &  & \text{(by \cref{2.1.2}(a))} \\
+    \implies & \begin{dcases}
+      \forall x, y \in \V \\
+      \forall c \in \F
+    \end{dcases}, \begin{dcases}
+      \T(x + y) = \T(x) + \T(y) & \text{if } c = 0     \\
+      \T(cx) = c\T(x)           & \text{if } y = \zv_v
+    \end{dcases} &  & \text{(by \ref{vs3})}       \\
+    \implies & \T \text{ is linear}.                                  &  & \text{(by \cref{2.1.1})}
+  \end{align*}
+  Thus
+  \[
+    \T \text{ is linear} \iff \begin{dcases}
+      \forall x, y \in \V \\
+      \forall c \in \F
+    \end{dcases}, \T(cx + y) = c\T(x) + \T(y).
+  \]
+\end{proof}
+
+\begin{proof}[\pf{2.1.2}(c)]
+  For all \(x, y \in \V\), we have
+  \begin{align*}
+    \T(x - y) & = \T(x + (-1)y)      &  & \text{(by \cref{1.2}(b))}   \\
+              & = \T(x) + \T((-1)y)  &  & \text{(by \cref{2.1.1}(a))} \\
+              & = \T(x) + (-1) \T(y) &  & \text{(by \cref{2.1.1}(b))} \\
+              & = \T(x) - \T(y).     &  & \text{(by \cref{1.2}(b))}
+  \end{align*}
+\end{proof}
+
+\begin{proof}[\pf{2.1.2}(d)]
+  We have
+  \begin{align*}
+             & \T \text{ is linear}                                                                                                  \\
+    \implies & \begin{dcases}
+      \forall \seq{x}{1,2,,n} \in \V \\
+      \forall \seq{a}{1,2,,n} \in \F
+    \end{dcases},                                                                                           \\
+             & \T\pa{\sum_{i = 1}^n a_i x_i} = \sum_{i = 1}^n \T(a_i x_i) = \sum_{i = 1}^n a_i \T(x_i) &  & \text{(by \cref{2.1.1})}
+  \end{align*}
+  and
+  \begin{align*}
+             & \begin{dcases}
+      \forall \seq{x}{1,2,,n} \in \V \\
+      \forall \seq{a}{1,2,,n} \in \F
+    \end{dcases},                                                                 \\
+             & \T\pa{\sum_{i = 1}^n a_i x_i} = \sum_{i = 1}^n a_i \T(x_i) &  & \text{(by \cref{2.1.1})}    \\
+    \implies & \begin{dcases}
+      \forall x, y \in \V \\
+      \forall c \in \F
+    \end{dcases},                                                                 \\
+             & \T(cx + 1y) = c\T(x) + 1\T(y) = c\T(x) + \T(y)             &  & \text{(by \ref{vs5})}       \\
+    \implies & \T \text{ is linear}.                                      &  & \text{(by \cref{2.1.2}(b))}
+  \end{align*}
+  Thus
+  \[
+    \T \text{ is linear} \iff \begin{dcases}
+      \forall \seq{x}{1,2,,n} \in \V \\
+      \forall \seq{a}{1,2,,n} \in \F
+    \end{dcases}, \T\pa{\sum_{i = 1}^n a_i x_i} = \sum_{i = 1}^n a_i \T(x_i).
+  \]
+\end{proof}
+
+\begin{note}
+  We generally use \cref{2.1.2}(b) to prove that a given transformation is linear.
+\end{note}
+
+\exercisesection
+
+\begin{ex}\label{ex:2.1.37}
+  A function \(\T : \V \to \W\) between vector spaces \(\V\) and \(\W\) over \(\F\) is called \textbf{additive} if \(\T(x + y) = \T(x) + \T(y)\) for all \(x, y \in \V\).
+  Prove that if \(\V\) and \(\W\) are vector spaces over the field of rational numbers \(\Q\), then any additive function from \(\V\) into \(\W\) is a linear transformation.
+\end{ex}
