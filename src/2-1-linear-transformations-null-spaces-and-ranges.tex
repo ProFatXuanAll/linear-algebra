@@ -266,6 +266,20 @@
   Thus by \cref{2.1.2}(b) \(\IT[\V], \zT\) are linear.
 \end{proof}
 
+\begin{defn}\label{2.1.10}
+  Let \(\V\) and \(\W\) be vector spaces over \(\F\), and let \(\T : \V \to \W\) be linear.
+  We define the \textbf{null space} (or \textbf{kernel}) \(\ns{\T}\) of \(\T\) to be the set of all vectors \(x\) in \(\V\) such that \(\T(x) = \zv_{\W}\);
+  that is, \(\ns{\T} = \set{x \in \V : \T(x) = \zv_{\W}}\).
+
+  We define the \textbf{range} (or \textbf{image}) \(\rg{\T}\) of \(\T\) to be the subset of \(\W\) consisting of all images (under \(\T\)) of vectors in \(\V\);
+  that is, \(\rg{\T} = \set{\T(x) : x \in V}\).
+\end{defn}
+
+\begin{eg}\label{2.1.11}
+  Let \(\V\) and \(\W\) be vector spaces over \(\F\), and let \(\IT : \V \to \V\) and \(\zT : \V \to \W\) be the identity and zero transformations, respectively.
+  Then \(\ns{\IT} = \set{\zv_{\V}}\), \(\rg{\IT} = \V\), \(\ns{\zT} = \V\), and \(\rg{\zT} = \set{\zv_{\W}}\).
+\end{eg}
+
 \exercisesection
 
 \begin{ex}\label{ex:2.1.37}
