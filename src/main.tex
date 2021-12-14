@@ -150,7 +150,7 @@
 	}{%
 	\vs{C}\pa{#2}%
 	}{%
-	\vs{C}^{#1}\pa{#2}
+	\vs{C}^{#1}\pa{#2}%
 	}%
 }
 
@@ -249,6 +249,18 @@
 
 % Linear transformation T.
 \newcommand{\T}{\mathsf{T}}
+% Identity transformation I.
+\newcommand{\IT}[1][]{%
+\ifthenelse{%
+	\equal{#1}{}%
+}{%
+\mathsf{I}%
+}{%
+\mathsf{I}_{#1}%
+}%
+}
+% Zero transformation T_0.
+\newcommand{\zT}{\T_0}
 
 % Formatting exercises section.
 \newcommand{\exercisesection}{

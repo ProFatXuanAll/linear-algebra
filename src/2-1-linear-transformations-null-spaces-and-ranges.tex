@@ -17,7 +17,7 @@
 \begin{prop}\label{2.1.2}
   Let \(\V\) and \(\W\) be vector spaces over \(\F\) and let \(\T : \V \to \W\) be a function.
   \begin{enumerate}
-    \item If \(\T\) is linear, then \(\T(\zv_v) = \zv_w\).
+    \item If \(\T\) is linear, then \(\T(\zv_{\V}) = \zv_{\W}\).
     \item \(\T\) is linear if and only if \(\T(cx + y) = c\T(x) + \T(y)\) for all \(x, y \in \V\) and \(c \in \F\).
     \item If \(\T\) is linear, then \(\T(x - y) = \T(x) - \T(y)\) for all \(x, y \in \V\).
     \item \(\T\) is linear if and only if, for \(\seq{x}{1,2,,n} \in \V\) and \(\seq{a}{1,2,,n} \in F\), we have
@@ -30,10 +30,10 @@
 \begin{proof}[\pf{2.1.2}(a)]
   We have
   \begin{align*}
-             & \T \text{ is linear}                                                       \\
-    \implies & \T(\zv_v) + \T(\zv_v) = \T(\zv_v + \zv_v) &  & \text{(by \cref{2.1.1}(a))} \\
-             & = \T(\zv_v) = \T(\zv_v) + \zv_w           &  & \text{(by \ref{vs3})}       \\
-    \implies & \T(\zv_v) = \zv_w.                        &  & \text{(by \cref{1.1})}
+             & \T \text{ is linear}                                                                   \\
+    \implies & \T(\zv_{\V}) + \T(\zv_{\V}) = \T(\zv_{\V} + \zv_{\V}) &  & \text{(by \cref{2.1.1}(a))} \\
+             & = \T(\zv_{\V}) = \T(\zv_{\V}) + \zv_{\W}              &  & \text{(by \ref{vs3})}       \\
+    \implies & \T(\zv_{\V}) = \zv_{\W}.                              &  & \text{(by \cref{1.1})}
   \end{align*}
 \end{proof}
 
@@ -63,15 +63,15 @@
       \forall x, y \in \V \\
       \forall c \in \F
     \end{dcases}, \begin{dcases}
-      \T(x + y) = \T(x) + \T(y)       & \text{if } c = 0     \\
-      \T(cx + \zv_v) = c\T(x) + \zv_w & \text{if } y = \zv_v
+      \T(x + y) = \T(x) + \T(y)             & \text{if } c = 0        \\
+      \T(cx + \zv_{\V}) = c\T(x) + \zv_{\W} & \text{if } y = \zv_{\V}
     \end{dcases}  &  & \text{(by \cref{2.1.2}(a))} \\
     \implies & \begin{dcases}
       \forall x, y \in \V \\
       \forall c \in \F
     \end{dcases}, \begin{dcases}
-      \T(x + y) = \T(x) + \T(y) & \text{if } c = 0     \\
-      \T(cx) = c\T(x)           & \text{if } y = \zv_v
+      \T(x + y) = \T(x) + \T(y) & \text{if } c = 0        \\
+      \T(cx) = c\T(x)           & \text{if } y = \zv_{\V}
     \end{dcases} &  & \text{(by \ref{vs3})}       \\
     \implies & \T \text{ is linear}.                                  &  & \text{(by \cref{2.1.1})}
   \end{align*}
@@ -242,6 +242,28 @@
                & = c \T(g) + \T(h).                            &  & \text{(by \cref{2.1.8})}
   \end{align*}
   So by \cref{2.1.2}(b) \(\T\) is linear.
+\end{proof}
+
+\begin{eg}\label{2.1.9}
+  For vector spaces \(\V\) and \(\W\) over \(\F\), we define the \textbf{identity transformation} \(\IT[\V] : \V \to \V\) by \(\IT[\V](x) = x\) for all \(x \in \V\) and the \textbf{zero transformation} \(\zT : \V \to \W\) by \(\zT(x) = \zv_{\W}\) for all \(x \in \V\).
+  It is clear that both of these transformations are linear.
+  We often write \(\IT\) instead of \(\IT[\V]\).
+\end{eg}
+
+\begin{proof}[\pf{2.1.9}]
+  For all \(x, y \in \V\) and \(c \in \F\), we have
+  \begin{align*}
+    \IT[\V](cx + y) & = cx + y                    &  & \text{(by \cref{2.1.9})} \\
+                    & = c \IT[\V](x) + \IT[\V](y) &  & \text{(by \cref{2.1.9})}
+  \end{align*}
+  and
+  \begin{align*}
+    \zT(cx + y) & = \zv_{\W}              &  & \text{(by \cref{2.1.9})}  \\
+                & = c \zv_{\W}            &  & \text{(by \cref{1.2}(c))} \\
+                & = c \zv_{\W} + \zv_{\W} &  & \text{(by \ref{vs3})}     \\
+                & = c\T(x) + \T(y).       &  & \text{(by \cref{2.1.9})}
+  \end{align*}
+  Thus by \cref{2.1.2}(b) \(\IT[\V], \zT\) are linear.
 \end{proof}
 
 \exercisesection

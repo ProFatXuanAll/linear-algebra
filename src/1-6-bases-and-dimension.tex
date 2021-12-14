@@ -792,31 +792,31 @@
 
 \begin{proof}[\pf{ex:1.6.25}]
   Let \(\beta_v = \set{\seq{v}{1,2,,m}}, \beta_w = \set{\seq{w}{1,2,n}}\) be a basis for \(\V, \W\) over \(\F\), respectively.
-  Let \(\zv_v, \zv_w\) be the zero vectors of \(\V, \W\), respectively.
+  Let \(\zv_{\V}, \zv_{\W}\) be the zero vectors of \(\V, \W\), respectively.
   Then we claim the set
   \[
-    \beta = \pa{\beta_v \times \set{\zv_w}} \cup \pa{\set{\zv_v} \times \beta_w}
+    \beta = \pa{\beta_v \times \set{\zv_{\W}}} \cup \pa{\set{\zv_{\V}} \times \beta_w}
   \]
   is a basis for \(\V \times \W\) over \(\F\).
   Clearly \(\beta \subseteq \V \times \W\).
   Since
   \begin{align*}
-             & \forall \seq{a}{1,2,,m + n} \in \F, \sum_{i = 1}^m a_i (v_i, \zv_w) + \sum_{i = 1}^n a_{m + i} (\zv_v, w_i)                                   \\
-             & = (\sum_{i = 1}^m a_i v_i, \sum_{i = 1}^n a_{m + i} w_i) = (\zv_v, \zv_w)                                   &  & \text{(by \cref{ex:1.2.21})} \\
+             & \forall \seq{a}{1,2,,m + n} \in \F, \sum_{i = 1}^m a_i (v_i, \zv_{\W}) + \sum_{i = 1}^n a_{m + i} (\zv_{\V}, w_i)                                   \\
+             & = (\sum_{i = 1}^m a_i v_i, \sum_{i = 1}^n a_{m + i} w_i) = (\zv_{\V}, \zv_{\W})                                   &  & \text{(by \cref{ex:1.2.21})} \\
     \implies & \begin{dcases}
-      \sum_{i = 1}^m a_i v_i = \zv_v \\
-      \sum_{i = 1}^n a_{m + i} w_i = \zv_w
-    \end{dcases}                                                                                                                    \\
+      \sum_{i = 1}^m a_i v_i = \zv_{\V} \\
+      \sum_{i = 1}^n a_{m + i} w_i = \zv_{\W}
+    \end{dcases}                                                                                                                          \\
     \implies & \seq[=]{a}{1,2,,m + n} = 0,
   \end{align*}
   by \cref{1.5.3} we know that \(\beta\) is linearly independent.
   Since
   \begin{align*}
-             & \forall (v, w) \in \V \times \W, \exists \seq{a}{1,2,,m + n} \in \F :                                       \\
-             & (v, w) = (\sum_{i = 1}^m a_i v_i, \sum_{i = 1}^n a_{m + i} w_i)                                             \\
-             & = \sum_{i = 1}^m a_i (v_i, \zv_w) + \sum_{i = 1}^n a_{m + i} (\zv_v, w_i) &  & \text{(by \cref{ex:1.2.21})} \\
-    \implies & \forall (v, w) \in \V \times \W, (v, w) \in \spn{\beta}                                                     \\
-    \implies & \V \times \W = \spn{\beta},                                               &  & \text{(by \cref{1.5})}
+             & \forall (v, w) \in \V \times \W, \exists \seq{a}{1,2,,m + n} \in \F :                                             \\
+             & (v, w) = (\sum_{i = 1}^m a_i v_i, \sum_{i = 1}^n a_{m + i} w_i)                                                   \\
+             & = \sum_{i = 1}^m a_i (v_i, \zv_{\W}) + \sum_{i = 1}^n a_{m + i} (\zv_{\V}, w_i) &  & \text{(by \cref{ex:1.2.21})} \\
+    \implies & \forall (v, w) \in \V \times \W, (v, w) \in \spn{\beta}                                                           \\
+    \implies & \V \times \W = \spn{\beta},                                                     &  & \text{(by \cref{1.5})}
   \end{align*}
   by \cref{1.6.1} we know that \(\beta\) is a basis for \(\V \times \W\) over \(\F\) and \(\dim(\V \times \W) = m + n\).
 \end{proof}
