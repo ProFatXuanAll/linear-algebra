@@ -131,6 +131,37 @@
   We generally use \cref{2.1.2}(b) to prove that a given transformation is linear.
 \end{note}
 
+\begin{eg}\label{2.1.3}
+  For any angle \(\theta\), define \(\T_{\theta} : \R^2 \to \R^2\) by the rule: \(\T_{\theta}(a_1, a_2)\) is the vector obtained by rotating \((a_1, a_2)\) counterclockwise by \(\theta\) if \((a_1, a_2) \neq (0, 0)\), and \(\T_{\theta}(0, 0) = (0, 0)\).
+  Then \(\T_{\theta} : \R^2 \to \R^2\) is a linear transformation that is called the \textbf{rotation by \(\theta\)}.
+
+  We determine an explicit formula for \(\T_{\theta}\).
+  Fix a nonzero vector \((a_1, a_2) \in \R^2\).
+  Let \(\alpha\) be the angle that \((a_1, a_2)\) makes with the positive \(x\)-axis, and let \(r = \sqrt{a_1^2 +a_2^2}\).
+  Then \(a_1 = r \cos(\alpha)\) and \(a_2 = r \sin(\alpha)\).
+  Also, \(\T_{\theta}(a_1, a_2)\) has length \(r\) and makes an angle \(\alpha + \theta\) with the positive \(x\)-axis.
+  It follows that
+  \begin{align*}
+    \T_{\theta}(a_1, a_2) & = (r \cos(\alpha + \theta), r \sin(\alpha + \theta))                                                                     \\
+                          & = (r \cos(\alpha) \cos(\theta) - r \sin(\alpha) \sin(\theta), r \cos(\alpha) \sin(\theta) + r \sin(\alpha) \cos(\theta)) \\
+                          & = (a_1 \cos(\theta) - a_2 \sin(\theta), a_1 \sin(\theta) + a_2 \cos(\theta)).
+  \end{align*}
+  Finally, observe that this same formula is valid for \((a_1 ,a_2) = (0, 0)\).
+  It is now easy to show that \(\T_{\theta}\) is linear.
+\end{eg}
+
+\begin{proof}[\pf{2.1.3}]
+  For all \(x, y \in \R^2\) and \(c \in \R\), we have
+  \begin{align*}
+     & \T_{\theta}(cx + y)                                                                                             \\
+     & = ((cx_1 + y_1) \cos(\theta) - (cx_2 + y_2)\sin(\theta), (cx_1 + y_1) \sin(\theta) + (cx_2 + y_2) \cos(\theta)) \\
+     & = c (x_1 \cos(\theta) - x_2 \sin(\theta), x_1 \sin(\theta) + x_2 \cos(\theta))                                  \\
+     & \quad + (y_1 \cos(\theta) - y_2 \sin(\theta), y_1 \sin(\theta) + y_2 \cos(\theta))                              \\
+     & = c\T_{\theta}(x) + \T_{\theta}(y).
+  \end{align*}
+  Thus by \cref{2.1.2}(b) \(\T_{\theta}\) is linear.
+\end{proof}
+
 \exercisesection
 
 \begin{ex}\label{ex:2.1.37}
