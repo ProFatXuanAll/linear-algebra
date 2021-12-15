@@ -427,6 +427,65 @@
   The linearity of \(\T\) in \cref{2.4} and \cref{2.5} is essential, for it is easy to construct examples of functions from \(\R\) into \(\R\) that are not one-to-one, but are onto, and vice versa.
 \end{note}
 
+\begin{thm}\label{2.6}
+  Let \(\V\) and \(\W\) be vector spaces over \(\F\), and suppose that \(\set{\seq{v}{1,2,,n}}\) is a basis for \(\V\) over \(\F\).
+  For \(\seq{w}{1,2,,n}\) in \(\W\), there exists exactly one linear transformation \(\T : \V \to \W\) such that \(\T(v_i) = w_i\) for \(i = 1, 2, \dots, n\).
+\end{thm}
+
+\begin{proof}[\pf{2.6}]
+  Let \(x \in \V\).
+  Then
+  \[
+    x = \sum_{i = 1}^n a_i v_i
+  \]
+  where \(\seq{a}{1,2,,n}\) are unique scalars.
+  Define
+  \[
+    \T : \V \to \W \quad \text{by} \quad \T(x) = \sum_{i = 1}^n a_i w_i.
+  \]
+  \begin{enumerate}
+    \item \(\T\) is linear:
+          Suppose that \(u, v \in \V\) and \(d \in \F\).
+          Then we may write
+          \[
+            u = \sum_{i = 1}^n b_i v_i \quad \text{and} \quad v = \sum_{i = 1}^n c_i v_i
+          \]
+          for some scalars \(\seq{b}{1,2,,n}, \seq{c}{1,2,,n}\).
+          Thus
+          \[
+            du + v = \sum_{i = 1}^n (db_i + c_i) v_i.
+          \]
+          So
+          \[
+            T(du + v) = \sum_{i = 1}^n (db_i + c_i) w_i = d \sum_{i = 1}^n b_i w_i + \sum_{i = 1}^n c_i w_i = d \T(u) + \T(v).
+          \]
+    \item Clearly
+          \[
+            \T(v_i) = w_i \quad \text{for } i = 1, 2, \dots, n.
+          \]
+    \item \(\T\) is unique:
+          Suppose that \(\U : \V \to \W\) is linear and \(\U(v_i) = w_i\) for \(i = 1, 2, \dots, n\).
+          Then for \(x \in \V\) with
+          \[
+            x = \sum_{i = 1}^n a_i v_i,
+          \]
+          we have
+          \[
+            \U(x) = \sum_{i = 1}^n a_i \U(v_i) = \sum_{i = 1}^n a_i w_i = \T(x).
+          \]
+          Hence \(\U = \T\).
+  \end{enumerate}
+\end{proof}
+
+\begin{cor}\label{2.1.13}
+  Let \(\V\) and \(\W\) be vector spaces over \(\F\), and suppose that \(\V\) has a finite basis \(\set{\seq{v}{1,2,,n}}\) over \(\F\).
+  If \(\U, \T : \V \to \W\) are linear and \(\U(v_i) = \T(v_i)\) for \(i = 1, 2, \dots, n\), then \(\U = \T\).
+\end{cor}
+
+\begin{proof}[\pf{2.1.13}]
+  Since \(\U(v_i) = \T(v_i)\) for all \(i = 1, 2, \dots, n\), by \cref{2.6} we know that \(\U = \T\).
+\end{proof}
+
 \exercisesection
 
 \begin{ex}\label{ex:2.1.33}
