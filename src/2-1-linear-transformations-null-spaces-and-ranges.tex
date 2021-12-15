@@ -384,6 +384,49 @@
   therefore \(\rk{\T} = n - k\).
 \end{proof}
 
+\begin{thm}\label{2.4}
+  Let \(\V\) and \(\W\) be vector spaces over \(\F\), and let \(\T : \V \to \W\) be linear.
+  Then \(\T\) is one-to-one if and only if \(\ns{\T} = \set{\zv_{\V}}\).
+\end{thm}
+
+\begin{proof}[\pf{2.4}]
+  Suppose that \(\T\) is one-to-one and \(x \in \ns{\T}\).
+  Then \(\T(x) = \zv_{\W} = \T(\zv_{\V})\).
+  Since \(\T\) is one-to-one, we have \(x = \zv_{\V}\).
+  Hence \(\ns{\T} = \set{\zv_{\V}}\).
+
+  Now assume that \(\ns{\T} = \set{\zv_{\V}}\), and suppose that \(\T(x) = \T(y)\).
+  Then \(\zv_{\W} = \T(x) - \T(y) = \T(x - y)\) by \cref{2.1.2}(c).
+  Therefore \(x - y \in \ns{\T} = \set{\zv_{\V}}\).
+  So \(x - y = \zv_{\V}\), or \(x = y\).
+  This means that \(\T\) is one-to-one.
+\end{proof}
+
+\begin{thm}\label{2.5}
+  Let \(\V\) and \(\W\) be vector spaces over \(\F\) of equal (finite) dimension, and let \(\T : \V \to \W\) be linear.
+  Then the following are equivalent.
+  \begin{enumerate}
+    \item \(\T\) is one-to-one.
+    \item \(\T\) is onto.
+    \item \(\rk{\T} = \dim(\V)\)
+  \end{enumerate}
+\end{thm}
+
+\begin{proof}[\pf{2.5}]
+  From the dimension theorem (\cref{2.3}), we have
+  \[
+    \nt{\T} + \rk{\T} = \dim(\V).
+  \]
+  Now, with the use of \cref{2.4}, we have that \(\T\) is one-to-one if and only if \(\ns{\T} = \set{\zv_{\V}}\), if and only if \(\nt{\T} = 0\), if and only if \(\rk{\T} = \dim(\V)\), if and only if \(\rk{\T} = \dim(\W)\), and if and only if \(\dim(\rg{\T}) = \dim(\W)\).
+  By \cref{1.11}, this equality is equivalent to \(\rg{\T} = \W\), the definition of \(\T\) being onto.
+\end{proof}
+
+\begin{note}
+  We note that if \(\V\) is not finite-dimensional and \(\T : \V \to \V\) is linear, then it does \emph{not} follow that one-to-one and onto are equivalent.
+
+  The linearity of \(\T\) in \cref{2.4} and \cref{2.5} is essential, for it is easy to construct examples of functions from \(\R\) into \(\R\) that are not one-to-one, but are onto, and vice versa.
+\end{note}
+
 \exercisesection
 
 \begin{ex}\label{ex:2.1.33}
