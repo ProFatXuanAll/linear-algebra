@@ -54,7 +54,7 @@
 \end{eg}
 
 \begin{proof}[\pf{1.7.4}]
-  Suppose for sake of contradiction that there exists a maximal element \(M\) in \(\mathcal{F}\).
+  Suppose for sake of contradiction that \(\mathcal{F}\) has a maximal element \(M\).
   But then we have
   \begin{align*}
              & \begin{dcases}
@@ -68,7 +68,7 @@
       M \cup \set{s} \in \mathcal{F}
     \end{dcases}
   \end{align*}
-  which contradict the fact that \(M\) is a maximal element of \(\mathcal{F}\).
+  which contradict to the fact that \(M\) is a maximal element of \(\mathcal{F}\).
 \end{proof}
 
 \begin{defn}\label{1.7.5}
@@ -146,7 +146,7 @@
 \end{proof}
 
 \begin{note}
-  From \cref{1.7.9} and \cref{1.12} we see that a subset of a vector space is a basis if and only if it is a maximal linearly independent subset of the vector space.
+  From \cref{1.7.9} and \cref{1.12} (by replacing \(S\) with \(\V\) in \cref{1.12}) we see that a subset of a vector space is a basis if and only if it is a maximal linearly independent subset of the vector space.
 \end{note}
 
 \begin{thm}\label{1.13}
@@ -161,7 +161,7 @@
   Clearly \(U\) contains each member of \(\mathcal{C}\), and so it suffices to prove that \(U \in \mathcal{F}\)
   (i.e., that \(U\) is a linearly independent subset of \(\V\) that contains \(S\)).
   Because each member of \(\mathcal{C}\) is a subset of \(\V\) containing \(S\), we have \(S \subseteq U \subseteq \V\).
-  Thus we need only prove that \(U\) is linearly independent.
+  Thus we only need to prove that \(U\) is linearly independent.
   Let \(\seq{u}{1,2,,n}\) be in \(U\) and \(\seq{a}{1,2,,n}\) be scalars in \(\F\) such that \(\seq[+]{a,u}{1,2,,n} = 0\).
   Because \(u_i \in U\) for \(i = 1, 2, \dots, n\), there exists a set \(A_i\) in \(\mathcal{C}\) such that \(u_i \in A_i\).
   But since \(\mathcal{C}\) is a chain, one of these sets, say \(A_k\), contains all the others.
@@ -184,8 +184,7 @@
   So suppose that \(\V \neq \set{\zv}\).
   Then there exists a \(v \in \V \setminus \set{\zv}\) and by \cref{1.5.4}(b) \(\set{v}\) is linearly independent.
   From \cref{1.13} we see that there exists a maximal linearly independent subset \(\beta\) of \(\V\) that contains \(\set{v}\).
-  By \cref{1.7.8} we know that \(\spn{\beta} = \V\).
-  Thus by \cref{1.12} \(\beta\) is a basis for \(\V\) over \(\F\).
+  Since \(\spn{\V} = \V\), by \cref{1.12} we know that \(\beta\) is a basis for \(\V\) over \(\F\).
 \end{proof}
 
 \begin{note}
@@ -358,7 +357,7 @@
   Clearly \(U\) contains each member of \(\mathcal{C}\), and so it suffices to prove that \(U \in \mathcal{F}\)
   (i.e., that \(U\) is a linearly independent subset of \(S_2\) that contains \(S_1\)).
   Because each member of \(\mathcal{C}\) is a subset of \(S_2\) containing \(S_1\), we have \(S_1 \subseteq U \subseteq S_2\).
-  Thus we need only prove that \(U\) is linearly independent.
+  Thus we only need to prove that \(U\) is linearly independent.
   Let \(\seq{u}{1,2,,n}\) be in \(U\) and \(\seq{a}{1,2,,n}\) be scalars in \(\F\) such that \(\seq[+]{a,u}{1,2,,n} = 0\).
   Because \(u_i \in U\) for \(i = 1, 2, \dots, n\), there exists a set \(A_i\) in \(\mathcal{C}\) such that \(u_i \in A_i\).
   But since \(\mathcal{C}\) is a chain, one of these sets, say \(A_k\), contains all the others.
