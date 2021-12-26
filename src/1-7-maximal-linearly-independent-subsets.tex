@@ -12,14 +12,29 @@
 \end{defn}
 
 \begin{eg}\label{1.7.2}
-  Let \(\mathcal{F}\) be the family of all subsets of a nonempty set \(S\).
-  (This family \(\mathcal{F}\) is called the \textbf{power set} of \(S\).)
-  The set \(S\) is easily seen to be a maximal element of \(\mathcal{F}\).
+  Let \(2^S\) be the family of all subsets of a nonempty set \(S\).
+  (This family \(2^S\) is called the \textbf{power set} of \(S\).)
+  The set \(S\) is easily seen to be a maximal element of \(2^S\).
 \end{eg}
 
 \begin{proof}[\pf{1.7.2}]
-  Suppose for sake of contradiction that there exists a set \(S' \in 2^S\) such that \(S \subseteq S'\) and \(S \neq S'\).
-  But \(S' \in 2^S\) implies \(S' \subseteq S\), thus we have \(S = S'\), a contradiction.
+  Suppose for sake of contradiction that \(S\) is not a maximal element of \(2^S\).
+  Since \(S \in 2^S\), we know that \(S \in 2^S\).
+  Thus by \cref{1.7.1} we know that
+  \[
+    \exists S' \in 2^S : \begin{dcases}
+      S \subseteq S' \\
+      S \neq S'
+    \end{dcases}.
+  \]
+  But then we have
+  \begin{align*}
+             & S' \in 2^S                           \\
+    \implies & S' \subseteq S                       \\
+    \implies & S' = S,        &  & (S \subseteq S')
+  \end{align*}
+  which contradict to the fact that \(S \neq S'\).
+  Thus \(S\) is a maximal element of \(2^S\).
 \end{proof}
 
 \begin{eg}\label{1.7.3}
@@ -28,8 +43,9 @@
 \end{eg}
 
 \begin{proof}[\pf{1.7.3}]
-  Since \(2^S \cap 2^T = \varnothing\), we know that a maximal element of \(2^S \cup 2^T\) cannot be in \(S \cap T\).
-  Thus by \cref{1.7.2} we know that \(S, T\) are both maximal elements of \(\mathcal{F}\).
+  Since \(S \cap T = \varnothing\), we know that \(2^S \cap 2^T = \set{\varnothing}\).
+  Since \(\varnothing \subseteq U\) for all \(U \in (2^S \cup 2^T) \setminus \set{\varnothing}\), by \cref{1.7.1} we know that \(\varnothing\) is not a maximal element of \(2^S \cup 2^T\).
+  Thus we know that a maximal element of \(2^S \cup 2^T\) must be in either \(2^S \setminus \set{\varnothing}\) or \(2^T \setminus \set{\varnothing}\), and by \cref{1.7.2} we know that \(S, T\) are both maximal elements of \(\mathcal{F}\).
 \end{proof}
 
 \begin{eg}\label{1.7.4}
@@ -44,9 +60,9 @@
              & \begin{dcases}
       M \text{ is finite} \\
       S \text{ is infinite}
-    \end{dcases}                   \\
-    \implies & S \setminus M \neq \varnothing              \\
-    \implies & \exists s \in S : s \notin M                \\
+    \end{dcases}                    \\
+    \implies & S \setminus M \neq \varnothing               \\
+    \implies & \exists s \in S : s \notin M                 \\
     \implies & \exists s \in S : \begin{dcases}
       M \subseteq M \cup \set{s} \\
       M \cup \set{s} \in \mathcal{F}
