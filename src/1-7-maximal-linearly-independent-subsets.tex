@@ -218,7 +218,7 @@
   We claim that \(\beta_n\) is linearly independent for all \(n \in \N\).
   Since \(\pi\) is transcendental, we know that
   \[
-    \forall \seq{q}{0,1,,n} \in \Q, \sum_{i = 0}^n q_i \pi^i = 0 \implies \seq[=]{q}{0,1,,n}.
+    \forall \seq{q}{0,1,,n} \in \Q, \sum_{i = 0}^n q_i \pi^i = 0 \implies \seq[=]{q}{0,1,,n} = 0.
   \]
   Thus by \cref{1.5.3} \(\beta_n\) is linearly independent for all \(n \in \N\).
 
@@ -245,9 +245,9 @@
 \end{ex}
 
 \begin{proof}[\pf{ex:1.7.4}]
-  Let \(\beta_w\) be a basis for \(\W\) over \(\F\).
-  Since \(\beta_w \subseteq \W \subseteq \V\), by \cref{1.13} we know that there exists a maximal linearly independent subset \(\beta_v\) of \(\V\) that contains \(\beta_w\), and by \cref{1.12} we know that such \(\beta_v\) is a basis for \(\V\) over \(\F\).
-  Since \(\beta_w\) is arbitrary, we conclude that any basis for \(\W\) over \(\F\) is a subset of a basis for \(\V\) over \(\F\).
+  Let \(\beta_{\W}\) be a basis for \(\W\) over \(\F\).
+  Since \(\beta_{\W} \subseteq \W \subseteq \V\), by \cref{1.13} we know that there exists a maximal linearly independent subset \(\beta_{\V}\) of \(\V\) that contains \(\beta_{\W}\), and by \cref{1.12} we know that such \(\beta_{\V}\) is a basis for \(\V\) over \(\F\).
+  Since \(\beta_{\W}\) is arbitrary, we conclude that any basis for \(\W\) over \(\F\) is a subset of a basis for \(\V\) over \(\F\).
 \end{proof}
 
 \begin{ex}\label{ex:1.7.5}
@@ -273,10 +273,12 @@
   \[
     \begin{dcases}
       \exists \seq{u}{1,2,,m} \in \V \\
-      \exists \seq{b}{1,2,,m} \in \F
+      \exists \seq{b}{1,2,,m} \in \F \\
+      \exists i \in \set{1, \dots, n}
     \end{dcases} : \begin{dcases}
-      v = \seq[+]{b,u}{1,2,,m} \\
-      \lnot (\seq[=]{b}{1,2,,m} = 0)
+      v = \seq[+]{b,u}{1,2,,m}       \\
+      \lnot (\seq[=]{b}{1,2,,m} = 0) \\
+      a_i \neq b_i
     \end{dcases}.
   \]
   If \(n \geq m\), then we have
@@ -302,19 +304,19 @@
       v = \seq[+]{b,u}{1,2,,n}
     \end{dcases}.
   \]
-  Thus we can savely assume that \(n = m\).
+  Thus we can safely assume that \(n = m\).
   But then we have
   \begin{align*}
              & \begin{dcases}
       v = \seq[+]{a,u}{1,2,,n} \\
       v = \seq[+]{b,u}{1,2,,n}
-    \end{dcases}                                                                        \\
-    \implies & \seq[+]{a,u}{1,2,,n} - \seq[-]{b,u}{1,2,,n} = \zv                  &  & \text{(by \cref{1.2.1})}  \\
-    \implies & (a_1 - b_1) u_1 + (a_2 - b_2) u_2 + \cdots + (a_n - b_n) u_n = \zv &  & \text{(by \cref{1.2.1})}  \\
-    \implies & a_1 - b_1 = a_2 - b_2 = \cdots = a_n - b_n = 0                     &  & \text{(by \cref{1.5.3})}  \\
-    \implies & v = \zv,                                                           &  & \text{(by \cref{1.2}(a))}
+    \end{dcases}                                                                       \\
+    \implies & \seq[+]{a,u}{1,2,,n} - \seq[-]{b,u}{1,2,,n} = \zv                  &  & \text{(by \cref{1.2.1})} \\
+    \implies & (a_1 - b_1) u_1 + (a_2 - b_2) u_2 + \cdots + (a_n - b_n) u_n = \zv &  & \text{(by \cref{1.2.1})} \\
+    \implies & a_1 - b_1 = a_2 - b_2 = \cdots = a_n - b_n = 0                     &  & \text{(by \cref{1.5.3})} \\
+    \implies & \forall j \in \set{1, \dots, n}, a_j = b_j,
   \end{align*}
-  which contradict to the fact that \(v \neq \zv\).
+  which contradict to the fact that \(a_i \neq b_i\).
   Thus \(v\) can be uniquely expressed as linear combination of vectors in \(\beta\).
   Since \(v\) is arbitrary non-zero vector of \(\V\), we conclude that every vector \(v \in \V \setminus \set{\zv}\) can be uniquely expressed as linear combination of vectors in \(\beta\).
 
