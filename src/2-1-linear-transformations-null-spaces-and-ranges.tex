@@ -208,15 +208,15 @@
 \end{proof}
 
 \begin{eg}\label{2.1.7}
-  Define \(\T : \ps[n]{\R} \to \ps[n - 1]{\R}\) by \(\T(f(x)) = f'(x)\), where \(f'(x)\) denotes the derivative of \(f(x)\).
+  Define \(\T : \ps{\R} \to \ps{\R}\) by \(\T(f) = f'\), where \(f'\) denotes the derivative of \(f\).
   Then \(\T\) is linear.
 \end{eg}
 
 \begin{proof}[\pf{2.1.7}]
-  Let \(g(x), h(x) \in \ps[n]{\R}\) and \(a \in \R\).
+  Let \(g, h \in \ps{\R}\) and \(a \in \R\).
   Now
   \[
-    \T(ag(x) + h(x)) = (ag(x) + h(x))' = ag'(x) + h'(x) = a\T(g(x)) + \T(h(x)).
+    \T(ag + h) = (ag + h)' = ag' + h' = a\T(g) + \T(h).
   \]
   So by \cref{2.1.2}(b) \(\T\) is linear.
 \end{proof}
@@ -612,6 +612,71 @@
   Since \(\T\) is one-to-one, by \cref{ex:2.1.14}(b) we know that \(\T(\beta)\) is linearly independent.
   Since \(\T\) is onto, by \cref{2.2} we know that \(\spn{\T(\beta)} = \rg{\T} = \W\).
   Thus by \cref{1.6.1} \(\T(\beta)\) is a basis for \(\W\) over \(\F\).
+\end{proof}
+
+\begin{ex}\label{ex:2.1.15}
+  Define
+  \[
+    \T : \ps{\R} \to \ps{\R} \quad \text{by} \quad \T(f) = \int_0^x f(t) \; dt.
+  \]
+  Prove that \(\T\) is linear and one-to-one, but not onto.
+\end{ex}
+
+\begin{proof}[\pf{ex:2.1.15}]
+  First we show that \(\T\) is linear.
+  Let \(f, g \in \ps{\R}\) and let \(c \in \R\).
+  Since
+  \begin{align*}
+    \T(cf + g) & = \int_0^x (cf + g)(t) \; dt                  &  & \text{(by \cref{ex:2.1.15})} \\
+               & = \int_0^x cf(t) + g(t) \; dt                 &  & \text{(by \cref{1.2.10})}    \\
+               & = c \int_0^x f(t) \; dt + \int_0^x g(t) \; dt                                   \\
+               & = c \T(f) + \T(g),
+  \end{align*}
+  by \cref{2.1.2}(b) we know that \(\T\) is linear.
+
+  Next we show that \(\T\) is one-to-one.
+  Let \(\zv : \R \to \R\) denote the zero function.
+  Since
+  \[
+    \forall f \in \ps{\R}, \int_0^x f(t) \; dt = \zv \implies f = \zv \implies \ns{\T} = \set{\zv},
+  \]
+  by \cref{2.4} we know that \(\T\) is one-to-one.
+
+  Now we show that \(\T\) is not onto.
+  Let \(c \in \F \setminus \set{0}\).
+  Since \(c \in \ps{\R}\) and no polynomial function has indefinite integral equals to \(c\), we know that \(\T\) is not onto.
+\end{proof}
+
+\begin{ex}\label{ex:2.1.16}
+  Let \(\T : \ps{\R} \to \ps{\R}\) be defined by \(\T(f) = f'\).
+  Recall that \(\T\) is linear (\cref{2.1.7}).
+  Prove that \(\T\) is onto, but not one-to-one.
+\end{ex}
+
+\begin{proof}[\pf{ex:2.1.16}]
+  First we show that \(\T\) is onto.
+  Let \(f \in \ps{\R}\).
+  Since
+  \begin{align*}
+             & f \in \ps{\R}                                                          \\
+    \implies & \exists \seq{a}{0,1,,n} \in \R : f(x) = a_0 + a_1 x + \cdots + a_n x^n \\
+    \implies & \begin{dcases}
+      x \mapsto a_0 x + \frac{a_1}{2} x^2 + \cdots + \frac{a_n}{n + 1} x^{n + 1} \in \ps{\R} \\
+      (x \mapsto a_0 x + \frac{a_1}{2} x^2 + \cdots + \frac{a_n}{n + 1} x^{n + 1})' = f
+    \end{dcases}
+  \end{align*}
+  and \(f\) is arbitrary, we know that \(\T\) is onto.
+
+  Now we show that \(\T\) is not one-to-one.
+  Observe that
+  \begin{align*}
+     & x \mapsto x \in \ps{\R};          \\
+     & x \mapsto x + 1 \in \ps{\R};      \\
+     & (x \mapsto x)' = 1;               \\
+     & (x \mapsto x + 1)' = 1;           \\
+     & x \mapsto x \neq x \mapsto x + 1.
+  \end{align*}
+  Thus \(\T\) is not one-to-one.
 \end{proof}
 
 \begin{ex}\label{ex:2.1.33}
