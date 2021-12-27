@@ -241,7 +241,15 @@
 \newcommand{\tp}[1]{{#1}^{t}}
 
 % Trace of matrix #1.
-\newcommand{\tr}[1]{\operatorname{tr}\pa{#1}}
+\newcommand{\tr}[1][]{%
+	\ifthenelse{%
+	\equal{#1}{}%
+}{%
+\operatorname{tr}%
+}{%
+\operatorname{tr}\pa{#1}%
+}%
+}
 
 % Span of a set.
 % We cannot use `\span' since it is a tex primitive.

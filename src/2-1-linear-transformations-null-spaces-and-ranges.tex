@@ -488,6 +488,56 @@
 
 \exercisesection
 
+\setcounter{ex}{5}
+\begin{ex}\label{ex:2.1.6}
+  Define \(\T : \ms{n}{n}{\F} \to \F\) by \(\T(A) = \tr[A]\).
+  Prove that \(\T\) is a linear transformation, and find bases for both \(\ns{\T}\) and \(\rg{\T}\) over \(\F\).
+  Then compute the nullity and rank of \(\T\), and verify the dimension theorem.
+  Finally, use the appropriate theorems in \cref{sec:2.1} to determine whether \(\T\) is one-to-one or onto.
+\end{ex}
+
+\begin{proof}[\pf{ex:2.1.6}]
+  Let \(A, B \in \ms{n}{n}{\F}\) and let \(c \in \F\).
+  First we show that \(\T\) is linear.
+  Since
+  \begin{align*}
+    \T(cA + B) & = \tr[cA + B]                                       &  & \text{(by \cref{ex:2.1.6})}  \\
+               & = \sum_{i = 1}^n \pa{cA + B}_{i i}                  &  & \text{(by \cref{1.3.9})}     \\
+               & = \sum_{i = 1}^n \pa{cA_{i i} + B_{i i}}            &  & \text{(by \cref{1.2.9})}     \\
+               & = c \sum_{i = 1}^n A_{i i} + \sum_{i = 1}^n B_{i i} &  & (A_{i i}, B_{i i}, c \in \F) \\
+               & = c \tr[A] + \tr[B]                                 &  & \text{(by \cref{1.3.9})}     \\
+               & = c \T(A) + \T(B),                                  &  & \text{(by \cref{ex:2.1.6})}
+  \end{align*}
+  by \cref{2.1.2}(b) we know that \(\T\) is linear.
+
+  Next we find a basis for \(\ns{\T}\) over \(\F\).
+  Let \(\W\) and \(\beta\) be the sets defined in \cref{ex:1.6.15}.
+  From \cref{ex:1.6.15} we see that \(\W = \ns{\T}\) and \(\beta\) is a basis for \(\ns{\T}\) over \(\F\).
+  Thus we have \(\dim(\ns{\T}) = \nt{\T} = n^2 - 1\).
+
+  Next we find a basis for \(\rg{\T}\) over \(\F\).
+  Since \(\tr[A] \in \F\) for all \(A \in \ms{n}{n}{\F}\), we know that \(\tr[\ms{n}{n}{\F}] \subseteq \F\).
+  Since
+  \[
+    \forall c \in \F, \tr\begin{pmatrix}
+      c      & 0      & \cdots & 0      \\
+      0      & 0      & \cdots & 0      \\
+      \vdots & \vdots & \ddots & \vdots \\
+      0      & 0      & \cdots & 0
+    \end{pmatrix} = c,
+  \]
+  we know that \(\F \subseteq \tr[\ms{n}{n}{\F}]\).
+  Thus we have \(\rg{\T} = \T(\ms{n}{n}{\F}) = \tr[\ms{n}{n}{\F}] = \F\), and \(\dim(\rg{\T}) = \rk{\T} = 1\).
+
+  From the proof above we see that
+  \[
+    \dim(\ms{n}{n}{\F}) = n^2 = (n^2 - 1) + 1 = \nt{\T} + \rk{\T},
+  \]
+  thus the dimension theorem (\cref{2.3}) holds.
+  Since \(\ns{\T} \neq \set{\zm}\), by \cref{2.4} we know that \(\T\) is not one-to-one.
+  Since \(\rg{\T} = \F\), we know that \(\T\) is onto.
+\end{proof}
+
 \begin{ex}\label{ex:2.1.33}
   Prove \cref{2.2} for the case that \(\beta\) is infinite, that is, \(\rg{\T} = \spn{\set{\T(v) : v \in \beta}}\).
 \end{ex}

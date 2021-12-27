@@ -108,26 +108,26 @@
 \end{proof}
 
 \begin{eg}\label{1.3.9}
-  The \textbf{trace} of an \(n \times n\) matrix \(M\), denoted \(\tr{M}\), is the sum of the diagonal entries of \(M\);
+  The \textbf{trace} of an \(n \times n\) matrix \(M\), denoted \(\tr[M]\), is the sum of the diagonal entries of \(M\);
   that is,
   \[
-    \tr{M} = M_{1 1} + M_{2 2} + \dots + M_{n n}.
+    \tr[M] = M_{1 1} + M_{2 2} + \dots + M_{n n}.
   \]
   The set \(\W\) of \(n \times n\) matrices having trace equal to \(0\) is a subspace of \(\ms{n}{n}{\F}\) over \(\F\).
 \end{eg}
 
 \begin{proof}[\pf{1.3.9}]
-  Clearly we have \(\W \subseteq \ms{n}{n}{\F}\), \(\tr{\zm} = 0\) and \(\zm \in \W\).
+  Clearly we have \(\W \subseteq \ms{n}{n}{\F}\), \(\tr[\zm] = 0\) and \(\zm \in \W\).
   Moreover, if \(A, B \in \W\), then
   \begin{align*}
-    \tr{A + B} & = \sum_{i = 1}^n (A + B)_{i i}                    &  & \text{(by \cref{1.3.9})}  \\
+    \tr[A + B] & = \sum_{i = 1}^n (A + B)_{i i}                    &  & \text{(by \cref{1.3.9})}  \\
                & = \sum_{i = 1}^n (A_{i i} + B_{i i})              &  & \text{(by \cref{1.2.9})}  \\
                & = \sum_{i = 1}^n A_{i i} + \sum_{i = 1}^n B_{i i} &  & (A_{i i}, B_{i i} \in \F) \\
                & = 0                                               &  & (A, B \in \W)
   \end{align*}
   and
   \begin{align*}
-    \tr{cA} & = \sum_{i = 1}^n (cA)_{i i} &  & \text{(by \cref{1.3.9})} \\
+    \tr[cA] & = \sum_{i = 1}^n (cA)_{i i} &  & \text{(by \cref{1.3.9})} \\
             & = \sum_{i = 1}^n cA_{i i}   &  & \text{(by \cref{1.2.9})} \\
             & = c \sum_{i = 1}^n A_{i i}  &  & (c, A_{i i} \in \F)      \\
             & = c0                        &  & (A \in \W)               \\
@@ -199,16 +199,16 @@
 \end{proof}
 
 \begin{ex}\label{ex:1.3.6}
-  Prove that \(\tr{aA + bB} = a\tr{A} + b\tr{B}\) for any \(A, B \in \ms{n}{n}{\F}\).
+  Prove that \(\tr[aA + bB] = a\tr[A] + b\tr[B]\) for any \(A, B \in \ms{n}{n}{\F}\).
 \end{ex}
 
 \begin{proof}[\pf{ex:1.3.6}]
   We have
   \begin{align*}
-    \tr{aA + bB} & = \sum_{i = 1}^n (aA + bB)_{i i}                      &  & \text{(by \cref{1.3.9})}    \\
+    \tr[aA + bB] & = \sum_{i = 1}^n (aA + bB)_{i i}                      &  & \text{(by \cref{1.3.9})}    \\
                  & = \sum_{i = 1}^n (aA_{i i} + bB_{i i})                &  & \text{(by \cref{1.2.9})}    \\
                  & = a \sum_{i = 1}^n A_{i i} + b \sum_{i = 1}^n B_{i i} &  & (aA_{i i}, bB_{i i} \in \F) \\
-                 & = a\tr{A} + b\tr{B}.                                  &  & \text{(by \cref{1.3.9})}
+                 & = a\tr[A] + b\tr[B].                                  &  & \text{(by \cref{1.3.9})}
   \end{align*}
 \end{proof}
 
