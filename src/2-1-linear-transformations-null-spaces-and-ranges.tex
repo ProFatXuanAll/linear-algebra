@@ -529,13 +529,89 @@
   we know that \(\F \subseteq \tr[\ms{n}{n}{\F}]\).
   Thus we have \(\rg{\T} = \T(\ms{n}{n}{\F}) = \tr[\ms{n}{n}{\F}] = \F\), and \(\dim(\rg{\T}) = \rk{\T} = 1\).
 
-  From the proof above we see that
+  From the proofs above we see that
   \[
     \dim(\ms{n}{n}{\F}) = n^2 = (n^2 - 1) + 1 = \nt{\T} + \rk{\T},
   \]
   thus the dimension theorem (\cref{2.3}) holds.
   Since \(\ns{\T} \neq \set{\zm}\), by \cref{2.4} we know that \(\T\) is not one-to-one.
   Since \(\rg{\T} = \F\), we know that \(\T\) is onto.
+\end{proof}
+
+\setcounter{ex}{12}
+\begin{ex}\label{ex:2.1.13}
+  Let \(\V\) and \(\W\) be vector spaces over \(\F\), let \(\T : \V \to \W\) be linear, and let \(\set{\seq{w}{1,2,,k}}\) be a linearly independent subset of \(\rg{\T}\).
+  Prove that if \(S = \set{\seq{v}{1,2,,k}}\) is chosen so that \(\T(v_i) = w_i\) for \(i = 1, 2, \dots, k\), then \(S\) is linearly independent.
+\end{ex}
+
+\begin{proof}[\pf{ex:2.1.13}]
+  Let \(\seq{a}{1,2,,k} \in \F\).
+  Since
+  \begin{align*}
+             & \sum_{i = 1}^k a_i v_i = \zv_{\V}                                         \\
+    \implies & \T\pa{\sum_{i = 1}^k a_i v_i} = \zv_{\W} &  & \text{(by \cref{2.1.2}(a))} \\
+    \implies & \sum_{i = 1}^k a_i \T(v_i) = \zv_{\W}    &  & \text{(by \cref{2.1.2}(d))} \\
+    \implies & \sum_{i = 1}^k a_i w_i = \zv_{\W}                                         \\
+    \implies & \seq[=]{a}{1,2,,k} = 0,                  &  & \text{(by \cref{1.5.3})}
+  \end{align*}
+  by \cref{1.5.3} we know that \(\set{\seq{v}{1,2,,k}}\) is linearly independent.
+\end{proof}
+
+\begin{ex}\label{ex:2.1.14}
+  Let \(\V\) and \(\W\) be vector spaces over \(\F\) and \(\T : \V \to \W\) be linear.
+  \begin{enumerate}
+    \item Prove that \(\T\) is one-to-one if and only if \(\T\) carries linearly independent subsets of \(\V\) onto linearly independent subsets of \(\W\).
+    \item Suppose that \(\T\) is one-to-one and that \(S\) is a subset of \(\V\).
+          Prove that \(S\) is linearly independent if and only if \(\T(S)\) is linearly independent.
+    \item Suppose \(\beta = \set{\seq{v}{1,2,,n}}\) is a basis for \(\V\) over \(\F\) and \(\T\) is one-to-one and onto.
+          Prove that \(\T(\beta) = \set{\T(v_1), \T(v_2), \dots, \T(v_n)}\) is a basis for \(\W\) over \(\F\).
+  \end{enumerate}
+\end{ex}
+
+\begin{proof}[\pf{ex:2.1.14}(a)]
+  First suppose that \(\T\) is one-to-one.
+  Let \(S\) be a linearly independent subset of \(\V\).
+  Note that \(\V\) can be infinite-dimensional and thus \(S\) can be infinite.
+  Since
+  \begin{align*}
+             & \begin{dcases}
+      \forall \seq{w}{1,2,,k} \in \T(S) \\
+      \forall \seq{a}{1,2,,k} \in \F
+    \end{dcases}, \sum_{i = 1}^k a_i w_i = \zv_{\W}                                    \\
+    \implies & \exists \seq{v}{1,2,,k} \in S :                                                                  \\
+             & \begin{dcases}
+      \forall i \in \set{1, 2, \dots, k}, \T(v_i) = w_i \\
+      \sum_{i = 1}^k a_i w_i = \sum_{i = 1}^k a_i \T(v_i) = \T\pa{\sum_{i = 1}^k a_i v_i} = \zv_{\W} = \T(\zv_{\V})
+    \end{dcases}                                    &  & \text{(by \cref{2.1.2})}      \\
+    \implies & \sum_{i = 1}^k a_i v_i = \zv_{\V}                             &  & \text{(\(\T\) is one-to-one)} \\
+    \implies & \seq[=]{a}{1,2,,k} = 0,                                       &  & \text{(by \cref{1.5.3})}
+  \end{align*}
+  by \cref{1.5.3} we know that \(\T(S)\) is linearly independent.
+  Since \(S\) is arbitrary, we conclude that \(\T\) carries linearly independent subsets of \(\V\) onto linearly independent subsets of \(\W\).
+
+  Now suppose that \(\T\) carries linearly independent subsets of \(\V\) onto linearly independent subsets of \(\W\).
+  Since
+  \begin{align*}
+             & \forall x, y \in \V, x \neq y                                                    \\
+    \implies & x - y \neq \zv_{\V}                                                              \\
+    \implies & \set{x - y} \text{ is linearly independent}     &  & \text{(by \cref{1.5.4}(b))} \\
+    \implies & \set{\T(x - y)} \text{ is linearly independent} &  & \text{(by hypothesis)}      \\
+    \implies & \T(x - y) \neq \zv_{\W}                         &  & \text{(by \cref{1.5.2})}    \\
+    \implies & \T(x) - \T(y) \neq \zv_{\W}                     &  & \text{(by \cref{2.1.2}(c))} \\
+    \implies & \T(x) \neq \T(y),
+  \end{align*}
+  we know that \(\T\) is one-to-one.
+  From all proofs above we conclude that \(\T\) is one-to-one if and only if \(\T\) carries linearly independent subsets of \(\V\) onto linearly independent subsets of \(\W\).
+\end{proof}
+
+\begin{proof}[\pf{ex:2.1.14}(b)]
+  By \cref{ex:2.1.14}(a) and \cref{ex:2.1.13} we are done.
+\end{proof}
+
+\begin{proof}[\pf{ex:2.1.14}(c)]
+  Since \(\T\) is one-to-one, by \cref{ex:2.1.14}(b) we know that \(\T(\beta)\) is linearly independent.
+  Since \(\T\) is onto, by \cref{2.2} we know that \(\spn{\T(\beta)} = \rg{\T} = \W\).
+  Thus by \cref{1.6.1} \(\T(\beta)\) is a basis for \(\W\) over \(\F\).
 \end{proof}
 
 \begin{ex}\label{ex:2.1.33}
