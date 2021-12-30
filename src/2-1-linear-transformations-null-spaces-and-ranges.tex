@@ -679,6 +679,39 @@
   Thus \(\T\) is not one-to-one.
 \end{proof}
 
+\begin{ex}\label{ex:2.1.17}
+  Let \(\V\) and \(\W\) be finite-dimensional vector spaces over \(\F\) and \(\T : \V \to \W\) be linear.
+  \begin{enumerate}
+    \item Prove that if \(\dim(\V) < \dim(\W)\), then \(\T\) cannot be onto.
+    \item Prove that if \(\dim(\V) > \dim(\W)\), then \(\T\) cannot be one-to-one.
+  \end{enumerate}
+\end{ex}
+
+\begin{proof}[\pf{ex:2.1.17}(a)]
+  Suppose that \(\dim(\V) < \dim(\W)\).
+  Suppose for sake of contradiction that \(\T\) is onto.
+  Let \(\beta_{\W} = \set{\seq{w}{1,2,,n}}\) be a basis for \(\W\) over \(\F\).
+  Since \(\T\) is onto, there exists a set \(\beta_{\V} = \set{\seq{v}{1,2,,n}}\) such that \(\T(v_i) = w_i\) for all \(i \in \set{1, 2, \dots, n}\).
+  But by \cref{ex:2.1.13} we know that \(\beta_{\V}\) is linearly independent, by \cref{1.6.8} this means \(\dim(\V) \geq \dim(\W)\), a contradiction.
+  Thus \(\T\) cannot be onto.
+\end{proof}
+
+\begin{proof}[\pf{ex:2.1.17}(b)]
+  Suppose that \(\dim(\V) > \dim(\W)\).
+  Suppose for sake of contradiction that \(\T\) is one-to-one.
+  Since \(\T\) is one-to-one, by \cref{2.4} we know that \(\ns{\T} = \set{\zv_{\V}}\).
+  Thus we have
+  \begin{align*}
+    \dim(\V) & = \rk{\T} + \nt{\T} &  & \text{(by \cref{2.3})}    \\
+             & = \rk{\T} + 0       &  & \text{(by \cref{1.6.9})}  \\
+             & = \rk{\T}                                          \\
+             & = \dim(\rg{\T})     &  & \text{(by \cref{2.1.12})} \\
+             & \leq \dim(\W).      &  & \text{(by \cref{1.11})}
+  \end{align*}
+  But this contradict to the fact that \(\dim(\V) > \dim(\W)\).
+  Thus \(\T\) cannot be one-to-one.
+\end{proof}
+
 \begin{ex}\label{ex:2.1.33}
   Prove \cref{2.2} for the case that \(\beta\) is infinite, that is, \(\rg{\T} = \spn{\set{\T(v) : v \in \beta}}\).
 \end{ex}
