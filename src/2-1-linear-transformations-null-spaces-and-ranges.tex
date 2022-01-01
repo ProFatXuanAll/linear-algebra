@@ -977,6 +977,67 @@
   \end{align*}
 \end{proof}
 
+\begin{ex}\label{ex:2.1.27}
+  Suppose that \(\W\) is a subspace of a finite-dimensional vector space \(\V\) over \(\F\).
+  \begin{enumerate}
+    \item Prove that there exists a subspace \(\W'\) and a function \(\T : \V \to \V\) such that \(\T\) is a projection on \(\W\) along \(\W'\).
+    \item Give an example of a subspace \(\W\) of a vector space \(\V\) over \(\F\) such that there are two projections on \(\W\) along two (distinct) subspaces.
+  \end{enumerate}
+\end{ex}
+
+\begin{proof}[\pf{ex:2.1.27}(a)]
+  Let \(\beta_{\W} = \set{\seq{v}{1,2,,k}}\) be a basis for \(\V\) over \(\F\).
+  By \cref{1.6.19} we can extend \(\beta_{\W}\) to \(\beta = \set{\seq{v}{1,2,,n}}\) such that \(\beta\) is a basis for \(\V\) over \(\F\).
+  Let \(\beta_{\W'} = \beta \setminus \beta_{\W}\) and let \(\W' = \spn{\beta_{\W'}}\).
+  By \cref{1.5} we know that \(\W'\) is a subspace of \(\V\) over \(\F\).
+
+  First we claim that \(\W \cap \W' = \set{\zv}\).
+  Let \(v \in \W \cap \W'\).
+  Then we have
+  \begin{align*}
+             & v \in \W \cap \W'                                                                                                                \\
+    \implies & \exists \seq{a}{1,2,,k,k + 1,,n} \in \F : v = \sum_{i = 1}^k a_i v_i = \sum_{i = k + 1}^n a_i v_i &  & \text{(by \cref{1.4.3})}  \\
+    \implies & \exists \seq{a}{1,2,,k,k + 1,,n} \in \F :                                                                                        \\
+             & \sum_{i = 1}^k a_i v_i + \sum_{i = k + 1}^n (-a_i) v_i = \zv                                      &  & \text{(by \cref{1.2.1})}  \\
+    \implies & \seq[=]{a}{1,2,,n} = 0                                                                            &  & \text{(by \cref{1.5.3})}  \\
+    \implies & v = \zv                                                                                           &  & \text{(by \cref{1.2}(a))} \\
+    \implies & \W \cap \W' \subseteq \set{\zv}                                                                                                  \\
+    \implies & \W \cap \W' = \set{\zv}.                                                                          &  & \text{(by \cref{1.3}(a))}
+  \end{align*}
+
+  Next we claim that \(\V = \W \oplus \W'\).
+  Since
+  \begin{align*}
+             & \forall v \in \V, \exists \seq{a}{1,2,,n} \in \F : v = \sum_{i = 1}^n a_i v_i &  & \text{(by \cref{1.6.1})}        \\
+             & = \sum_{i = 1}^k a_i v_i + \sum_{i = k + 1}^n a_i v_i                         &  & \text{(by \cref{1.2.1})}        \\
+    \implies & \forall v \in \V, \exists (u, u') \in \W \times \W' : v = u + u'              &  & \text{(by \cref{1.4.3})}        \\
+    \implies & \V \subseteq \W + \W'                                                         &  & \text{(by \cref{1.3.10})}       \\
+    \implies & \V = \W + \W'                                                                 &  & \text{(by \cref{ex:1.3.23}(a))}
+  \end{align*}
+  and \(\W \cap \W' = \set{\zv}\), by \cref{1.3.11} we know that \(\V = \W \oplus \W'\).
+
+  Since \(\beta\) is a basis for \(\V\) over \(\F\), by \cref{1.8} we know that
+  \[
+    \forall v \in \V, \exists \seq{a}{1,2,,n} \in \F : v = \sum_{i = 1}^n a_i v_i.
+  \]
+  Now we define a function \(\T\) as follow:
+  \[
+    \forall v \in \V, \T(v) = \sum_{i = 1}^k a_i v_i.
+  \]
+  We claim that \(\T\) is a projection on \(\W\) along \(\W'\).
+  Since
+  \begin{align*}
+             & \forall v \in \V, \T(v) = \T\pa{\sum_{i = 1}^n a_i v_i}                                                             \\
+             & = \T\pa{\sum_{i = 1}^k a_i v_i + \sum_{i = k + 1}^n a_i v_i} = \sum_{i = 1}^k a_i v_i                               \\
+    \implies & \forall v \in \V, \exists (u, u') \in \W \times \W' : \T(v) = \T(u + u') = u,         &  & \text{(by \cref{1.4.3})}
+  \end{align*}
+  by \cref{2.1.14} we know that \(\T\) is a projection on \(\W\) along \(\W'\).
+\end{proof}
+
+\begin{proof}[\pf{ex:2.1.27}(b)]
+  See Exercise 2.1.24.
+\end{proof}
+
 \begin{ex}\label{ex:2.1.33}
   Prove \cref{2.2} for the case that \(\beta\) is infinite, that is, \(\rg{\T} = \spn{\set{\T(v) : v \in \beta}}\).
 \end{ex}
