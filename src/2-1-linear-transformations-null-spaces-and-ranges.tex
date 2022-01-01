@@ -773,6 +773,73 @@
   by \cref{1.3} we know that \(\V'\) is a subspace of \(\V\) over \(\F\).
 \end{proof}
 
+\begin{ex}\label{ex:2.1.21}
+  Let \(\V\) be the vector space of sequences over \(\F\) described in \cref{1.2.13}.
+  Define the functions \(\T, \U : \V \to \V\) by
+  \[
+    \T(\seq{a}{1,2,}) = \tuple{a}{2,3,} \quad \text{and} \quad \U(\seq{a}{1,2,}) = (0, \seq{a}{1,2,}).
+  \]
+  \(\T\) and \(\U\) are called the \textbf{left shift} and \textbf{right shift} operators on \(\V\), respectively.
+  \begin{enumerate}
+    \item Prove that \(\T\) and \(\U\) are linear.
+    \item Prove that \(\T\) is onto, but not one-to-one.
+    \item Prove that \(\U\) is one-to-one, but not onto.
+  \end{enumerate}
+\end{ex}
+
+\begin{proof}[\pf{ex:2.1.21}(a)]
+  Let \(\set{a_n}, \set{b_n} \in \V\) and let \(t \in \F\).
+  Since
+  \begin{align*}
+    \T(c \set{a_n} + \set{b_n}) & = \T(\set{c a_n + b_n})                   &  & \text{(by \cref{1.2.13})}    \\
+                                & = \T(c a_1 + b_1, c a_2 + b_2, \dots)                                       \\
+                                & = (c a_2 + b_2, c a_3 + b_3, \dots)       &  & \text{(by \cref{ex:2.1.21})} \\
+                                & = c \tuple{a}{2,3,} + \tuple{b}{2,3,}     &  & \text{(by \cref{1.2.13})}    \\
+                                & = c \T(\seq{a}{1,2,}) + \T(\seq{b}{1,2,}) &  & \text{(by \cref{ex:2.1.21})} \\
+                                & = c \T(\set{a_n}) + \T(\set{b_n}),
+  \end{align*}
+  by \cref{2.1.2}(b) we know that \(\T\) is linear.
+  Since
+  \begin{align*}
+    \U(c \set{a_n} + \set{b_n}) & = \U(\set{c a_n + b_n})                     &  & \text{(by \cref{1.2.13})}    \\
+                                & = \U(c a_1 + b_1, c a_2 + b_2, \dots)                                         \\
+                                & = (0, c a_1 + b_1, c a_2 + b_2, \dots)      &  & \text{(by \cref{ex:2.1.21})} \\
+                                & = c (0, \seq{a}{1,2,}) + (0, \seq{b}{1,2,}) &  & \text{(by \cref{1.2.13})}    \\
+                                & = c \U(\seq{a}{1,2,}) + \U(\seq{b}{1,2,})   &  & \text{(by \cref{ex:2.1.21})} \\
+                                & = c \U(\set{a_n}) + \U(\set{b_n}),
+  \end{align*}
+  by \cref{2.1.2}(b) we know that \(\U\) is linear.
+\end{proof}
+
+\begin{proof}[\pf{ex:2.1.21}(b)]
+  Since
+  \[
+    \forall \set{a_n} \in \V, \T(0, \seq{a}{1,2,}) = \tuple{a}{1,2,},
+  \]
+  we know that \(\T\) is onto.
+  Since
+  \[
+    \forall \set{a_n} \in \V, \T(0, \seq{a}{1,2,}) = \tuple{a}{1,2,} = \T(1, \seq{a}{1,2,}),
+  \]
+  we know that \(\T\) is not one-to-one.
+\end{proof}
+
+\begin{proof}[\pf{ex:2.1.21}(c)]
+  Since
+  \begin{align*}
+             & \forall \set{a_n}, \set{b_n} \in \V, \set{a_n} \neq \set{b_n} \\
+    \implies & \tuple{a}{1,2,} \neq \tuple{b}{1,2,}                          \\
+    \implies & (0, \seq{a}{1,2,}) \neq (0, \seq{b}{1,2,})                    \\
+    \implies & \U(\seq{a}{1,2,}) \neq \U(\seq{b}{1,2,}),
+  \end{align*}
+  we know that \(\U\) is one-to-one.
+  Since
+  \[
+    \forall \set{a_n} \in \V, (1, \seq{a}{1,2,}) \notin \T(\V),
+  \]
+  we know that \(\U\) is not onto.
+\end{proof}
+
 \begin{ex}\label{ex:2.1.33}
   Prove \cref{2.2} for the case that \(\beta\) is infinite, that is, \(\rg{\T} = \spn{\set{\T(v) : v \in \beta}}\).
 \end{ex}
