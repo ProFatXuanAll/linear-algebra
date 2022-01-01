@@ -712,6 +712,67 @@
   Thus \(\T\) cannot be one-to-one.
 \end{proof}
 
+\setcounter{ex}{19}
+\begin{ex}\label{ex:2.1.20}
+  Let \(\V\) and \(\W\) be vector spaces over \(\F\) with subspaces \(\V_1\) and \(\W_1\) over \(\F\), respectively.
+  If \(\T : \V \to \W\) is linear, prove that \(\T(\V_1)\) is a subspace of \(\W\) over \(\F\) and that \(\set{x \in \V : \T(x) \in \W_1}\) is a subspace of \(\V\) over \(\F\).
+\end{ex}
+
+\begin{proof}[\pf{ex:2.1.20}]
+  First we show that \(\T(\V_1)\) is a subspace of \(\W\) over \(\F\).
+  Let \(w_1, w_2 \in \T(\V_1)\) and let \(c \in \F\).
+  Since
+  \begin{align*}
+             & \zv_{\V} \in \V_1                    &  & \text{(by \cref{1.3}(a))}   \\
+    \implies & \T(\zv_{\V}) = \zv_{\W} \in \T(\V_1) &  & \text{(by \cref{2.1.2}(a))}
+  \end{align*}
+  and
+  \begin{align*}
+             & w_1, w_2 \in \T(\V_1)                                                                    \\
+    \implies & \exists v_1, v_2 \in \V_1 : \begin{dcases}
+      \T(v_1) = w_1 \\
+      \T(v_2) = w_2
+    \end{dcases}                                   \\
+    \implies & \begin{dcases}
+      v_1 + v_2 \in \V_1 \\
+      c v_1 \in \V_1
+    \end{dcases}                             &  & \text{(by \cref{1.3}(b)(c))} \\
+    \implies & \begin{dcases}
+      w_1 + w_2 = \T(v_1) + \T(v_2) = \T(v_1 + v_2) \in \T(\V_1) \\
+      c w_1 = c \T(v_1) = \T(c v_1) \in \T(\V_1)
+    \end{dcases},                            &  & \text{(by \cref{2.1.1})}
+  \end{align*}
+  by \cref{1.3} we know that \(\T(\V_1)\) is a subspace of \(\W\) over \(\F\).
+
+  Now we show that \(\V' = \set{x \in \V : \T(x) \in \W_1}\) is a subspace of \(\V\) over \(\F\).
+  Let \(v_1, v_2 \in \V'\) and let \(c \in \F\).
+  Since
+  \begin{align*}
+             & \zv_{\V} \in \V                  &  & \text{(by \cref{1.3}(a))}   \\
+    \implies & \T(\zv_{\V}) = \zv_{\W} \in \W   &  & \text{(by \cref{2.1.2}(a))} \\
+    \implies & \T(\zv_{\V}) = \zv_{\W} \in \W_1 &  & \text{(by \cref{1.3}(a))}   \\
+    \implies & \zv_{\V} \in \V'
+  \end{align*}
+  and
+  \begin{align*}
+             & v_1, v_2 \in \V'                                              \\
+    \implies & \T(v_1), \T(v_2) \in \W_1                                     \\
+    \implies & \begin{dcases}
+      \T(v_1) + \T(v_2) \in \W_1 \\
+      c \T(v_1) \in \W_1
+    \end{dcases}  &  & \text{(by \cref{1.3}(b)(c))} \\
+    \implies & \begin{dcases}
+      \T(v_1) + \T(v_2) = \T(v_1 + v_2) \in \W_1 \\
+      c \T(v_1) = \T(c v_1) \in \W_1
+    \end{dcases}  &  & \text{(by \cref{2.1.1})}     \\
+    \implies & \begin{dcases}
+      v_1 + v_2 \in \V' \\
+      c v_1 \in \V'
+    \end{dcases},
+  \end{align*}
+  by \cref{1.3} we know that \(\V'\) is a subspace of \(\V\) over \(\F\).
+\end{proof}
+
 \begin{ex}\label{ex:2.1.33}
   Prove \cref{2.2} for the case that \(\beta\) is infinite, that is, \(\rg{\T} = \spn{\set{\T(v) : v \in \beta}}\).
 \end{ex}
