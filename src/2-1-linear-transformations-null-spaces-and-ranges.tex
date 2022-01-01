@@ -840,6 +840,34 @@
   we know that \(\U\) is not onto.
 \end{proof}
 
+\begin{ex}\label{ex:2.1.22}
+  Let \(\T: \vs{F}^n \to \F\) be linear.
+  Show that
+  \[
+    \forall x = \tuple{x}{1,2,,n} \in \vs{F}^n, \exists \seq{a}{1,2,,n} \in \F : \T(\seq{x}{1,2,,n}) = \sum_{i = 1}^n a_i x_i.
+  \]
+  State and prove an analogous result for \(\T : \vs{F}^n \to \vs{F}^m\).
+\end{ex}
+
+\begin{proof}[\pf{ex:2.1.22}]
+  For all \(i \in \set{1, \dots, n}\), defined \(e_i \in \vs{F}^n\) as in \cref{1.6.3}.
+  We claim that if \(\T : \vs{F}^n \to \vs{F}^m\) is linear, then
+  \[
+    \forall x \in \vs{F}^n, \exists \seq{a}{1,2,,n} \in \vs{F}^m : \T(x) = \sum_{i = 1}^n x_i a_i.
+  \]
+  Since
+  \begin{align*}
+             & \vs{F}^n = \spn{\seq{e}{1,2,,n}}                                       &  & \text{(by \cref{1.6.3})}    \\
+    \implies & \forall x \in \vs{F}^n, x = \tuple{x}{1,2,,n} = \sum_{i = 1}^n x_i e_i &  & \text{(by \cref{1.4.3})}    \\
+    \implies & \forall x \in \vs{F}^n, \T(x) = \sum_{i = 1}^n x_i \T(e_i),            &  & \text{(by \cref{2.1.2}(d))}
+  \end{align*}
+  by setting \(\T(e_i) = a_i\) for all \(i \in \set{1, 2, \dots, n}\) we see that our claim is true.
+  In particular, when \(m = 1\) we see that
+  \[
+    \forall x \in \vs{F}^n, \exists \seq{a}{1,2,,n} \in \F : \T(x) = \sum_{i = 1}^n x_i a_i = \sum_{i = 1}^n a_i x_i.
+  \]
+\end{proof}
+
 \begin{ex}\label{ex:2.1.33}
   Prove \cref{2.2} for the case that \(\beta\) is infinite, that is, \(\rg{\T} = \spn{\set{\T(v) : v \in \beta}}\).
 \end{ex}
