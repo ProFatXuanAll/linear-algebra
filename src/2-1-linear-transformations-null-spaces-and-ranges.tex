@@ -868,6 +868,115 @@
   \]
 \end{proof}
 
+\begin{defn}\label{2.1.14}
+  Let \(\V\) be a vector space over \(\F\) and \(\W_1\) and \(\W_2\) be subspaces of \(\V\) over \(\F\) such that \(V = \W_1 \oplus \W_2\).
+  (See \cref{1.3.11}.)
+  A function \(\T : \V \to \V\) is called the \textbf{projection on \(\W_1\) along \(\W_2\)} if, for \(x = x_1 + x_2\) with \(x_1 \in \W_1\) and \(x_2 \in \W_2\), we have \(\T(x) = x_1\).
+\end{defn}
+
+\setcounter{ex}{25}
+\begin{ex}\label{ex:2.1.26}
+  Using the notation in \cref{2.1.14}, assume that \(\T : \V \to \V\) is the projection on \(\W_1\) along \(\W_2\).
+  \begin{enumerate}
+    \item Prove that \(\T\) is linear and \(\W_1 = \set{x \in \V : \T(x) = x}\).
+    \item Prove that \(\W_1 = \rg{\T}\) and \(\W_2 = \ns{\T}\).
+    \item Describe \(\T\) if \(\W_1 = \V\).
+    \item Describe \(\T\) if \(\W_1\) is the zero subspace.
+  \end{enumerate}
+\end{ex}
+
+\begin{proof}[\pf{ex:2.1.26}(a)]
+  First we show that \(\T\) is linear.
+  Let \(x, y \in \V\) and let \(c \in \F\).
+  Since
+  \begin{align*}
+             & \V = \W_1 \oplus \W_2                                                                                           \\
+    \implies & \exists (x_1, x_2), (y_1, y_2) \in \W_1 \times \W_2 : \begin{dcases}
+      x = x_1 + x_2 \\
+      y = y_1 + y_2
+    \end{dcases} &  & \text{(by \cref{1.3.11})} \\
+    \implies & \T(cx + y) = \T(c (x_1 + x_2) + y_1 + y_2)                                                                      \\
+             & = \T(c x_1 + y_1 + c x_2 + y_2) = c x_1 + y_1 = c \T(x) + \T(y),                 &  & \text{(by \cref{2.1.14})}
+  \end{align*}
+  by \cref{2.1.2}(b) we know that \(\T\) is linear.
+
+  Now we show that \(\W_1 = \set{x \in \V : \T(x) = x}\).
+  Since
+  \begin{align*}
+             & \zv \in \W_2                                &  & \text{(by \cref{1.3}(a))} \\
+    \implies & \forall x \in \W_1, x = x + \zv             &  & \text{(by \ref{vs3})}     \\
+    \implies & \forall x \in \W_1, \T(x) = \T(x + \zv) = x &  & \text{(by \cref{2.1.14})} \\
+    \implies & \W_1 \subseteq \set{x \in \V : \T(x) = x}
+  \end{align*}
+  and
+  \begin{align*}
+             & \forall x \in \V, \T(x) = x                                               \\
+    \implies & x = \T(x) \in \W_1                         &  & \text{(by \cref{2.1.14})} \\
+    \implies & \set{x \in \V : \T(x) = x} \subseteq \W_1,
+  \end{align*}
+  we know that \(\W_1 = \set{x \in \V : \T(x) = x}\).
+\end{proof}
+
+\begin{proof}[\pf{ex:2.1.26}(b)]
+  First we show that \(\W_1 = \rg{\T}\).
+  Since
+  \begin{align*}
+             & \W_1 = \set{x \in \V : \T(x) = x} &  & \text{(by \cref{ex:2.1.26}(a))} \\
+    \implies & \W_1 \subseteq \rg{\T}            &  & \text{(by \cref{2.1.10})}
+  \end{align*}
+  and
+  \begin{align*}
+             & \forall x \in \V, \T(x) \in \W_1 &  & \text{(by \cref{2.1.14})} \\
+    \implies & \rg{\T} \subseteq \W_1,
+  \end{align*}
+  we know that \(\W_1 = \rg{\T}\).
+
+  Now we show that \(\W_2 = \ns{\T}\).
+  Since
+  \begin{align*}
+             & \zv \in \W_1                    &  & \text{(by \cref{1.3}(a))} \\
+    \implies & \forall x \in \W_2, x = \zv + x &  & \text{(by \ref{vs3})}     \\
+    \implies & \forall x \in \W_2, \T(x) = \zv &  & \text{(by \cref{2.1.14})} \\
+    \implies & \W_2 \subseteq \ns{\T}          &  & \text{(by \cref{2.1.10})}
+  \end{align*}
+  and
+  \begin{align*}
+             & \ns{\T} \subseteq \V                                                           &  & \text{(by \cref{2.1.10})} \\
+    \implies & \forall x \in \ns{\T}, \exists (x_1, x_2) \in \W_1 \times \W_2 : x = x_1 + x_2 &  & \text{(by \cref{1.3.11})} \\
+    \implies & \forall x \in \ns{\T}, \exists (x_1, x_2) \in \W_1 \times \W_2 :                                              \\
+             & \T(x) = \T(x_1 + x_2) = \zv = x_1                                              &  & \text{(by \cref{2.1.14})} \\
+    \implies & \forall x \in \ns{\T}, \exists (x_1, x_2) \in \W_1 \times \W_2 :                                              \\
+             & x = x_1 + x_2 = \zv + x_2 = x_2 \in \W_2                                       &  & \text{(by \ref{vs3})}     \\
+    \implies & \ns{\T} \subseteq \W_2,
+  \end{align*}
+  we know that \(\W_2 = \ns{\T}\).
+\end{proof}
+
+\begin{proof}[\pf{ex:2.1.26}(c)]
+  We have
+  \begin{align*}
+             & \begin{dcases}
+      \V = \W_1 \oplus \W_2 \\
+      \V = \W_1
+    \end{dcases}                                                            \\
+    \implies & \W_1 \cap \W_2 = \V \cap \W_2 = \W_2 = \set{\zv} &  & \text{(by \cref{1.3.11})}       \\
+    \implies & \ns{\T} = \W_2 = \set{\zv}                       &  & \text{(by \cref{ex:2.1.26}(b))} \\
+    \implies & \T \text{ is one-to-one}                         &  & \text{(by \cref{2.4})}          \\
+    \implies & \T \text{ is onto}.                              &  & \text{(by \cref{2.5})}
+  \end{align*}
+\end{proof}
+
+\begin{proof}[\pf{ex:2.1.26}(d)]
+  We have
+  \begin{align*}
+             & \W_1 = \set{\zv}                                                            \\
+    \implies & \V = \W_1 \oplus \W_2 = \W_2           &  & \text{(by \cref{1.3.11})}       \\
+             & = \ns{\T}                              &  & \text{(by \cref{ex:2.1.26}(b))} \\
+    \implies & \forall x \in \V, \T(x) = \zv          &  & \text{(by \cref{2.1.10})}       \\
+    \implies & \T \text{ is the zero transformation}. &  & \text{(by \cref{2.1.9})}
+  \end{align*}
+\end{proof}
+
 \begin{ex}\label{ex:2.1.33}
   Prove \cref{2.2} for the case that \(\beta\) is infinite, that is, \(\rg{\T} = \spn{\set{\T(v) : v \in \beta}}\).
 \end{ex}
