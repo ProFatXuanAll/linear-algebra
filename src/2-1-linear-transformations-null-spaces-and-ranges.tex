@@ -1197,6 +1197,22 @@
   Prove \cref{2.2} for the case that \(\beta\) is infinite, that is, \(\rg{\T} = \spn{\set{\T(v) : v \in \beta}}\).
 \end{ex}
 
+\begin{proof}[\pf{ex:2.1.33}]
+  Clearly we have \(\set{\T(v) : v \in \beta} \subseteq \rg{\T}\).
+  By \cref{2.1} we know that \(\rg{\T}\) is a vector space over \(\F\), thus by \cref{1.5} we have
+  \[
+    \spn{\set{\T(v) : v \in \beta}} \subseteq \rg{\T}.
+  \]
+  Let \(x \in \V\).
+  Since \(\beta\) is a basis for \(\V\) over \(\F\), by \cref{1.6.1} there exists some \(\seq{v}{1,2,,n} \in \beta\) such that \(x \in \spn{\set{\seq{v}{1,2,,n}}}\).
+  In particular, there exist some \(\seq{a}{1,2,,n} \in \F\) such that \(x = \sum_{i = 1}^n a_i v_i\).
+  Since \(\T\) is linear, by \cref{2.1.2}(d) we know that
+  \[
+    \T(x) = \T\pa{\sum_{i = 1}^n a_i v_i} = \sum_{i = 1}^n a_i \T(v_i) \in \spn{\set{\T(v) : v \in \beta}}.
+  \]
+  This means \(\rg{\T} \subseteq \spn{\set{\T(v) : v \in \beta}}\), thus we have \(\rg{\T} = \spn{\set{\T(v) : v \in \beta}}\).
+\end{proof}
+
 \begin{ex}\label{ex:2.1.37}
   A function \(\T : \V \to \W\) between vector spaces \(\V\) and \(\W\) over \(\F\) is called \textbf{additive} if \(\T(x + y) = \T(x) + \T(y)\) for all \(x, y \in \V\).
   Prove that if \(\V\) and \(\W\) are vector spaces over the field of rational numbers \(\Q\), then any additive function from \(\V\) into \(\W\) is a linear transformation.
