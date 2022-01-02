@@ -871,7 +871,7 @@
 \begin{defn}\label{2.1.14}
   Let \(\V\) be a vector space over \(\F\) and \(\W_1\) and \(\W_2\) be subspaces of \(\V\) over \(\F\) such that \(V = \W_1 \oplus \W_2\).
   (See \cref{1.3.11}.)
-  A function \(\T : \V \to \V\) is called the \textbf{projection on \(\W_1\) along \(\W_2\)} if, for \(x = x_1 + x_2\) with \(x_1 \in \W_1\) and \(x_2 \in \W_2\), we have \(\T(x) = x_1\).
+  A function \(\T : \V \to \V\) is called a \textbf{projection on \(\W_1\) along \(\W_2\)} if, for \(x = x_1 + x_2\) with \(x_1 \in \W_1\) and \(x_2 \in \W_2\), we have \(\T(x) = x_1\).
 \end{defn}
 
 \setcounter{ex}{25}
@@ -1036,6 +1036,161 @@
 
 \begin{proof}[\pf{ex:2.1.27}(b)]
   See Exercise 2.1.24.
+\end{proof}
+
+\begin{defn}\label{2.1.15}
+  Let \(\V\) be a vector space over \(\F\), and let \(\T : \V \to \V\) be linear.
+  A subspace \(\W\) of \(\V\) over \(\F\) is said to be \textbf{\(\T\)-invariant} if \(\T(x) \in \W\) for every \(x \in \W\), that is, \(\T(\W) \subseteq \W\).
+  If \(\W\) is \(\T\)-invariant, we define the \textbf{restriction of \(\T\) on \(\W\)} to be the function \(\T_{\W} : \W \to \W\) defined by \(\T_{\W}(x) = \T(x)\) for all \(x \in \W\).
+\end{defn}
+
+\cref{ex:2.1.28,ex:2.1.29,ex:2.1.30,ex:2.1.31,ex:2.1.32} assume that \(\W\) is a subspace of a vector space \(\V\) over \(\F\) and that \(\T : \V \to \V\) is linear.
+
+\begin{ex}\label{ex:2.1.28}
+  Prove that the subspaces \(\set{\zv}\), \(\V\), \(\rg{\T}\), and \(\ns{\T}\) are all \(\T\)-invariant.
+\end{ex}
+
+\begin{proof}[\pf{ex:2.1.28}]
+  First we show that \(\set{\zv}\) is \(\T\)-invariant.
+  By \cref{2.1.2}(a) we know that \(\T(\set{\zv}) = \set{\zv} \subseteq \set{\zv}\), thus by \cref{2.1.15} \(\set{\zv}\) is \(\T\)-invariant.
+
+  Next we show that \(\V\) is \(\T\)-invariant.
+  Obviously \(\T(\V) \subseteq \T(\V)\), thus by \cref{2.1.15} \(\V\) is \(\T\)-invariant.
+
+  Next we show that \(\rg{\T}\) is \(\T\)-invariant.
+  Since
+  \begin{align*}
+             & \forall y \in \rg{\T}, y \in \V          &  & (\T : \V \to \V)          \\
+    \implies & \forall y \in \rg{\T}, \T(y) \in \rg{\T} &  & \text{(by \cref{2.1.10})} \\
+    \implies & \T(\rg{\T}) \subseteq \rg{\T},
+  \end{align*}
+  by \cref{2.1.15} we know that \(\rg{\T}\) is \(\T\)-invariant.
+
+  Finally we show that \(\ns{\T}\) is \(\T\)-invariant.
+  Since
+  \begin{align*}
+             & \forall x \in \ns{\T}, \T(x) = \zv                 &  & \text{(by \cref{2.1.10})} \\
+    \implies & \T(\ns{\T}) \subseteq \set{\zv} \subseteq \ns{\T}, &  & \text{(by \cref{1.3}(a))}
+  \end{align*}
+  by \cref{2.1.15} we know that \(\ns{\T}\) is \(\T\)-invariant.
+\end{proof}
+
+\begin{ex}\label{ex:2.1.29}
+  If \(\W\) is \(\T\)-invariant, prove that \(\T_{\W}\) is linear.
+\end{ex}
+
+\begin{proof}[\pf{ex:2.1.29}]
+  Let \(x, y \in \W\) and let \(c \in \F\).
+  Since
+  \begin{align*}
+             & cx + y \in \W                &  & \text{(by \cref{1.3}(b)(c))} \\
+    \implies & \T_{\W}(cx + y) = \T(cx + y) &  & \text{(by \cref{2.1.15})}    \\
+             & = c \T(x) + \T(y)            &  & \text{(by \cref{2.1.2}(b))}  \\
+             & = c \T_{\W}(x) + \T_{\W}(y), &  & \text{(by \cref{2.1.15})}
+  \end{align*}
+  by \cref{2.1.2}(b) we know that \(\T_{\W}\) is linear.
+\end{proof}
+
+\begin{ex}\label{ex:2.1.30}
+  Suppose that \(\T\) is a projection on \(\W\) along some subspace \(\W'\).
+  Prove that \(\W\) is \(\T\)-invariant and that \(\T_{\W} = \IT[\W]\).
+\end{ex}
+
+\begin{proof}[\pf{ex:2.1.30}]
+  We have
+  \begin{align*}
+             & \T \text{ is a projection on } \W \text{ along } \W'                                                                 \\
+    \implies & \begin{dcases}
+      \V = \W \oplus \W' \\
+      \forall x \in \V, \exists (x_1, x_2) \in \W \times \W' : \T(x) = \T(x_1 + x_2) = x_1
+    \end{dcases}                                                           &  & \text{(by \cref{2.1.14})} \\
+    \implies & \forall x \in \W, \exists (x, \zv) \in \W \times \W' : \T(x) = \T(x + \zv) = x \in \W &  & \text{(by \cref{1.3}(a))} \\
+    \implies & \T(\W) \subseteq \W                                                                                                  \\
+    \implies & \W \text{ is } \T\text{-invariant}                                                    &  & \text{(by \cref{2.1.15})}
+  \end{align*}
+  and
+  \begin{align*}
+             & \forall x \in \W, \T(x) = x                                     \\
+    \implies & \forall x \in \W, \T_{\W}(x) = x &  & \text{(by \cref{2.1.15})} \\
+    \implies & \T_{\W} = \IT[\W].               &  & \text{(by \cref{2.1.9})}
+  \end{align*}
+\end{proof}
+
+\begin{ex}\label{ex:2.1.31}
+  Suppose that \(\V = \rg{\T} \oplus \W\) and \(\W\) is \(\T\)-invariant.
+  (See \cref{1.3.11}.)
+  \begin{enumerate}
+    \item Prove that \(\W \subseteq \ns{\T}\).
+    \item Show that if \(\V\) is finite-dimensional, then \(\W = \ns{\T}\).
+    \item Show by example that the conclusion of (b) is not necessarily true if \(\V\) is not finite-dimensional.
+  \end{enumerate}
+\end{ex}
+
+\begin{proof}[\pf{ex:2.1.31}(a)]
+  We have
+  \begin{align*}
+             & \begin{dcases}
+      \V = \rg{\T} \oplus \W \\
+      \T(\W) \subseteq \W
+    \end{dcases}                               &  & \text{(by \cref{2.1.15})} \\
+    \implies & \rg{\T} \cap \T(\W) \subseteq \rg{\T} \cap \W = \set{\zv} &  & \text{(by \cref{1.3.11})} \\
+    \implies & \T(\W) = \rg{\T} \cap \T(\W) \subseteq \set{\zv}          &  & \text{(by \cref{2.1.10})} \\
+    \implies & \forall x \in \W, \T(x) = \zv                                                            \\
+    \implies & \W \subseteq \ns{\T}.                                     &  & \text{(by \cref{2.1.10})}
+  \end{align*}
+\end{proof}
+
+\begin{proof}[\pf{ex:2.1.31}(b)]
+  Since \(\V = \rg{\T} \oplus \W\), by \cref{ex:1.6.29}(b) we know that \(\dim(\V) = \rk{\T} + \dim(\W)\).
+  By dimension theorem (\cref{2.3}) we know that \(\ns{\T} = \dim(\V) - \rk{\T} = \dim(\W)\).
+  By \cref{ex:2.1.31}(a) we know that \(\W \subseteq \ns{\T}\), thus by \cref{1.11} we have \(\W = \ns{\T}\).
+\end{proof}
+
+\begin{proof}[\pf{ex:2.1.31}(c)]
+  Let \(\V\) and \(\T\) defined as in \cref{ex:2.1.21}.
+  Let \(\W = \set{(0, 0, \dots)}\).
+  By \cref{ex:2.1.21}(b) we know that \(\V = \rg{\T} = \rg{\T} \oplus \W\).
+  But then we have
+  \begin{align*}
+             & (1, 0, 0, \dots) \in \V                                                     \\
+    \implies & \T(1, 0, 0, \dots) = (0, 0, \dots)        &  & \text{(by \cref{ex:2.1.21})} \\
+    \implies & (1, 0, 0, \dots) \in \ns{\T} \setminus \W                                   \\
+    \implies & \ns{\T} \neq \W.
+  \end{align*}
+\end{proof}
+
+\begin{ex}\label{ex:2.1.32}
+  Suppose that \(\W\) is \(\T\)-invariant.
+  Prove that \(\ns{\T_{\W}} = \ns{\T} \cap \W\) and \(\rg{\T_{\W}} = \T(\W)\).
+\end{ex}
+
+\begin{proof}[\pf{ex:2.1.32}]
+  First we show that \(\ns{\T_{\W}} = \ns{\T} \cap \W\).
+  Since
+  \begin{align*}
+         & x \in \ns{\T_{\W}}                                         \\
+    \iff & \begin{dcases}
+      x \in \W \\
+      \T_{\W}(x) = \zv
+    \end{dcases} &  & \text{(by \cref{2.1.10})} \\
+    \iff & \begin{dcases}
+      x \in \W \\
+      \T(x) = \zv
+    \end{dcases} &  & \text{(by \cref{2.1.15})} \\
+    \iff & \begin{dcases}
+      x \in \W \\
+      x \in \ns{\T}
+    \end{dcases} &  & \text{(by \cref{2.1.15})} \\
+    \iff & x \in \ns{\T} \cap \W,
+  \end{align*}
+  we know that \(\ns{\T_{\W}} = \ns{\T} \cap \W\).
+
+  Now we show that \(\rg{\T_{\W}} = \T(\W)\).
+  This is true since
+  \begin{align*}
+    \T(\W) & = \T_{\W}(\W)   &  & \text{(by \cref{2.1.15})} \\
+           & = \rg{\T_{\W}}. &  & \text{(by \cref{2.1.10})}
+  \end{align*}
 \end{proof}
 
 \begin{ex}\label{ex:2.1.33}
