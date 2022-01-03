@@ -1335,3 +1335,43 @@
   A function \(\T : \V \to \W\) between vector spaces \(\V\) and \(\W\) over \(\F\) is called \textbf{additive} if \(\T(x + y) = \T(x) + \T(y)\) for all \(x, y \in \V\).
   Prove that if \(\V\) and \(\W\) are vector spaces over the field of rational numbers \(\Q\), then any additive function from \(\V\) into \(\W\) is a linear transformation.
 \end{ex}
+
+\begin{proof}[\pf{ex:2.1.37}]
+  First observe that for all \(b \in \Z^+\) we have
+  \begin{align*}
+             & \forall x \in \V, \T(x) = \T\pa{b \frac{1}{b} x} = \T\pa{\sum_{i = 1}^b \frac{1}{b} x} &  & \text{(by \cref{1.2.1})}     \\
+             & = \sum_{i = 1}^b \T\pa{\frac{1}{b} x} = b \T\pa{\frac{1}{b} x}                         &  & \text{(by \cref{ex:2.1.37})} \\
+    \implies & \forall x \in \V, \frac{1}{b} \T(x) = \T\pa{\frac{1}{b} x}.                            &  & \text{(by \cref{1.2.1})}
+  \end{align*}
+  Let \(q \in \Q\).
+  Then there exists some \((a, b) \in \Z \times \Z^+\) such that \(q = a / b\).
+  Now we split into three cases:
+  \begin{itemize}
+    \item If \(a = 0\), then we have
+          \begin{align*}
+                     & \forall x \in \V, \T\pa{\frac{0}{b} x} = \T(0x) = \T(0x + \zv_{\V}) &  & \text{(by \ref{vs3})}        \\
+                     & = \T(0x + 0x)                                                       &  & \text{(by \cref{1.2}(a))}    \\
+                     & = \T(0x) + \T(0x) = \T(0x) + \T\pa{\frac{0}{b} x}                   &  & \text{(by \cref{ex:2.1.37})} \\
+                     & = \T(0x) + \zv_{\W}                                                 &  & \text{(by \ref{vs3})}        \\
+                     & = \T(0x) + 0 \T(x) = \T(0x) + \frac{0}{b} \T(x)                     &  & \text{(by \cref{1.2}(a))}    \\
+            \implies & \forall x \in \V, \T\pa{\frac{0}{b}x} = \frac{0}{b} \T(x).          &  & \text{(by \cref{1.1})}
+          \end{align*}
+    \item If \(a > 0\), then we have
+          \begin{align*}
+            \forall x \in \V, \frac{a}{b} \T(x) & = \sum_{i = 1}^a \frac{1}{b} \T(x)    &  & \text{(by \cref{1.2.1})}      \\
+                                                & = \sum_{i = 1}^a \T\pa{\frac{1}{b} x} &  & \text{(from the proof above)} \\
+                                                & = \T\pa{\sum_{i = 1}^a \frac{1}{b} x} &  & \text{(by \cref{ex:2.1.37})}  \\
+                                                & = \T\pa{\frac{a}{b} x}.               &  & \text{(by \cref{1.2.1})}
+          \end{align*}
+    \item If \(a < 0\), then we have
+          \begin{align*}
+                     & \forall x \in \V, \T\pa{\frac{a}{b} x} + \T\pa{\frac{-a}{b} x} = \T\pa{\frac{a}{b} x + \frac{-a}{b} x} &  & \text{(by \cref{ex:2.1.37})}  \\
+                     & = \T(\zv_{\V})                                                                                         &  & \text{(by \cref{1.2.1})}      \\
+                     & = \zv_{\W}                                                                                             &  & \text{(from the proof above)} \\
+            \implies & \forall x \in \V, \T\pa{\frac{a}{b} x} + \frac{-a}{b} \T(x) = \zv_{\W}                                 &  & \text{(from the proof above)} \\
+            \implies & \forall x \in \V, \T\pa{\frac{a}{b} x} = \frac{a}{b} \T(x).
+          \end{align*}
+  \end{itemize}
+  From all cases above we conclude that \(\T(qx) = q \T(x)\).
+  Since \(q\) is arbitrary and \(\T\) is additive, by \cref{2.1.1} we know that \(\T\) is linear.
+\end{proof}
