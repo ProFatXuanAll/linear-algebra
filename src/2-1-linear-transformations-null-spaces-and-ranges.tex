@@ -1301,6 +1301,36 @@
   Thus by \cref{ex:2.1.35}(a) we know that \(\V = \rg{\T} \oplus \ns{\T}\).
 \end{proof}
 
+\begin{ex}\label{ex:2.1.36}
+  Let \(\V\) and \(\T\) be as defined in \cref{ex:2.1.21}.
+  \begin{enumerate}
+    \item Prove that \(\V = \rg{\T} + \ns{\T}\), but \(\V\) is not a direct sum of these two spaces.
+          Thus the result of \cref{ex:2.1.35}(a) cannot be proved without assuming that \(\V\) is finite-dimensional.
+    \item Find a linear operator \(\T_1\) on \(\V\) such that \(\rg{\T_1} \cap \ns{\T_1} = \set{\zv}\) but \(\V\) is not a direct sum of \(\rg{\T_1}\) and \(\ns{\T_1}\).
+          Conclude that \(\V\) being finite-dimensional is also essential in \cref{ex:2.1.35}(b).
+  \end{enumerate}
+\end{ex}
+
+\begin{proof}[\pf{ex:2.1.36}(a)]
+  We have
+  \begin{align*}
+             & \T \text{ is onto}                                                   &  & \text{(by \cref{ex:2.1.21}(b))} \\
+    \implies & \V = \rg{\T}                                                         &  & \text{(by \cref{2.1.10})}       \\
+    \implies & \rg{\T} + \ns{\T} \subseteq \V = \rg{\T} \subseteq \rg{\T} + \ns{\T} &  & \text{(by \cref{ex:1.3.23}(a))} \\
+    \implies & \V = \rg{\T} + \ns{\T}.
+  \end{align*}
+  Since \(\T(1, 0, 0, \dots) = (0, 0, \dots)\), we know that \((1, 0, 0, \dots) \in \ns{\T}\).
+  Thus \((1, 0, 0, \dots) \in \rg{\T} \cap \ns{\T}\) and \(\rg{\T} \cap \ns{\T} \neq \set{\zv}\).
+  By \cref{1.3.11} this means \(\V\) is not a direct sum of \(\rg{\T}\) and \(\ns{\T}\).
+\end{proof}
+
+\begin{proof}[\pf{ex:2.1.36}(b)]
+  Define \(\U\) as in \cref{ex:2.1.21}.
+  By \cref{ex:2.1.21}(c) we know that \(\U\) is one-to-one, thus by \cref{2.4} we know that \(\ns{\U} = \set{\zv}\) and therefore \(\rg{\U} \cap \ns{\U} = \set{\zv}\).
+  By \cref{ex:2.1.21}(c) we know that \(\U\) is not onto, thus \(\V \neq \rg{\U} \cup \ns{\U}\).
+  By \cref{1.3.11} this means \(\V\) is not a direct sum of \(\rg{\U}\) and \(\ns{\U}\).
+\end{proof}
+
 \begin{ex}\label{ex:2.1.37}
   A function \(\T : \V \to \W\) between vector spaces \(\V\) and \(\W\) over \(\F\) is called \textbf{additive} if \(\T(x + y) = \T(x) + \T(y)\) for all \(x, y \in \V\).
   Prove that if \(\V\) and \(\W\) are vector spaces over the field of rational numbers \(\Q\), then any additive function from \(\V\) into \(\W\) is a linear transformation.
