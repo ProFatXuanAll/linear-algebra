@@ -1375,3 +1375,29 @@
   From all cases above we conclude that \(\T(qx) = q \T(x)\).
   Since \(q\) is arbitrary and \(\T\) is additive, by \cref{2.1.1} we know that \(\T\) is linear.
 \end{proof}
+
+\begin{ex}\label{ex:2.1.38}
+  Let \(\T : \C \to \C\) be the function defined by \(\T(z) = \overline{z}\).
+  Prove that \(\T\) is additive (as defined in \cref{ex:2.1.37}) but not linear.
+\end{ex}
+
+\begin{proof}[\pf{ex:2.1.38}]
+  First we show that \(\T\) is additive.
+  Since
+  \begin{align*}
+    \forall x, y \in \C, \T(x + y) & = \T(\Re(x) + \Re(y) + i (\Im(x) + \Im(y)))                                       \\
+                                   & = \Re(x) + \Re(y) - i (\Im(x) + \Im(y))         &  & \text{(by \cref{ex:2.1.38})} \\
+                                   & = \Re(x) - i \Im(x) + \Re(y) - i \Im(y)                                           \\
+                                   & = \T(\Re(x) + i \Im(x)) + \T(\Re(y) + i \Im(y)) &  & \text{(by \cref{ex:2.1.38})} \\
+                                   & = \T(x) + \T(y),
+  \end{align*}
+  by \cref{ex:2.1.37} we know that \(\T\) is additive.
+
+  Now we show that \(\T\) is not linear.
+  Since
+  \begin{align*}
+     & \T(i \cdot i) = \T(-1) = -1      \\
+     & \neq i \T(i) = i \cdot (-i) = 1,
+  \end{align*}
+  by \cref{2.1.1} we know that \(\T\) is not linear.
+\end{proof}
