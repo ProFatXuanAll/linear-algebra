@@ -1422,3 +1422,59 @@
   \end{align*}
   Thus by \cref{2.1.1} \(\T\) is additive but not linear over \(\R\).
 \end{proof}
+
+\begin{ex}\label{ex:2.1.40}
+  Let \(\V\) be a vector space over \(\F\) and \(\W\) be a subspace of \(\V\) over \(\F\).
+  Define the mapping \(\eta : \V \to \V / \W\) by \(\eta(v) = v + \W\) for \(v \in \V\).
+  \begin{enumerate}
+    \item Prove that \(\eta\) is a linear transformation from \(\V\) onto \(\V / \W\) and that \(\ns{\eta} = \W\).
+    \item Suppose that \(\V\) is finite-dimensional.
+          Use (a) and the dimension theorem to derive a formula relating \(\dim(\V)\), \(\dim(\W)\), and \(\dim(\V / \W)\).
+    \item Read the proof of the dimension theorem.
+          Compare the method of solving (b) with the method of deriving the same result as outlined in \cref{ex:1.6.35}.
+  \end{enumerate}
+\end{ex}
+
+\begin{proof}[\pf{ex:2.1.40}(a)]
+  First we show that \(\eta\) is linear.
+  Let \(x, y \in \V\) and let \(c \in \F\).
+  Since
+  \begin{align*}
+    \eta(cx + y) & = (cx + y) + \W         &  & \text{(by \cref{ex:2.1.40})} \\
+                 & = (cx + \W) + (y + \W)  &  & \text{(by \cref{ex:1.3.31})} \\
+                 & = c (x + \W) + (y + \W) &  & \text{(by \cref{ex:1.3.31})} \\
+                 & = c \eta(x) + \eta(y),  &  & \text{(by \cref{ex:2.1.40})}
+  \end{align*}
+  by \cref{2.1.2}(b) we know that \(\eta\) is linear.
+
+  Next we show that \(\eta\) is onto.
+  Since
+  \begin{align*}
+             & \forall S \in \V / \W, \exists x \in \V : x + \W = S   &  & \text{(by \cref{ex:1.3.31})} \\
+    \implies & \forall S \in \V / \W, \exists x \in \V : \eta(x) = S, &  & \text{(by \cref{ex:2.1.40})}
+  \end{align*}
+  we know that \(\eta\) is onto.
+
+  Now we show that \(\ns{\eta} = \W\).
+  Since
+  \begin{align*}
+         & x \in \ns{\eta}                                                  \\
+    \iff & \eta(x) = x + \W = \zv + \W &  & \text{(by \cref{ex:1.3.31}(d))} \\
+    \iff & x - \zv \in \W              &  & \text{(by \cref{ex:1.3.31}(b))} \\
+    \iff & x \in \W,                   &  & \text{(by \cref{1.2.1})}
+  \end{align*}
+  we know that \(\ns{\eta} = \W\).
+\end{proof}
+
+\begin{proof}[\pf{ex:2.1.40}(b)]
+  We have
+  \begin{align*}
+    \dim(\V) & = \rk{\eta} + \nt{\eta}             &  & \text{(by \cref{2.3})}          \\
+             & = \dim(\rg{\eta}) + \dim(\ns{\eta}) &  & \text{(by \cref{2.1.12})}       \\
+             & = \dim(\V / \W) + \dim(\W).         &  & \text{(by \cref{ex:2.1.40}(a))}
+  \end{align*}
+\end{proof}
+
+\begin{proof}[\pf{ex:2.1.40}(c)]
+  See \cref{2.3} and \cref{ex:1.6.35}.
+\end{proof}
