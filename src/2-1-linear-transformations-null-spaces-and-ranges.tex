@@ -1401,3 +1401,24 @@
   \end{align*}
   by \cref{2.1.1} we know that \(\T\) is not linear.
 \end{proof}
+
+\begin{ex}\label{ex:2.1.39}
+  Prove that there is an additive function \(\T : \R \to \R\) (as defined in \cref{ex:2.1.37}) that is not linear.
+\end{ex}
+
+\begin{proof}[\pf{ex:2.1.39}]
+  Let \(\V\) be the set of real numbers regarded as a vector space over the field of rational numbers.
+  By the \cref{1.7.10}, \(\V\) has a basis \(\beta\) over \(\Q\).
+  Let \(x\) and \(y\) be two distinct vectors in \(\beta\), and define \(f : \beta \to \V\) by \(f(x) = y\), \(f(y) = x\), and \(f(z) = z\) for all \(z \in \beta \setminus \set{x, y}\).
+  By \cref{ex:2.1.34} there exists a linear transformation \(\T : \V \to \V\) such that \(\T(u) = f(u)\) for all \(u \in \beta\).
+
+  Fix such \(\T\).
+  Now we show that when \(\V\) is regarded as a vector space over the field of real number, then \(\T\) is not linear.
+  Since \(\T\) is linear over \(\Q\), by \cref{2.1.1,ex:2.1.37} we know that \(\T\) additive.
+  But for \(c = y / x \in \R\), we have
+  \begin{align*}
+     & \T(cx) = \T\pa{\frac{y}{x} x} = \T(y) = x                         \\
+     & \neq c \T(x) = \frac{y}{x} \T(x) = \frac{y}{x} y = \frac{y^2}{x}.
+  \end{align*}
+  Thus by \cref{2.1.1} \(\T\) is additive but not linear over \(\R\).
+\end{proof}
