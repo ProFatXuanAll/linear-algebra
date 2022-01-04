@@ -1,1 +1,51 @@
 \section{The Matrix Representation of a Linear Transformation}\label{sec:2.2}
+
+\begin{note}
+  In \cref{sec:2.2}, we embark on one of the most useful approaches to the analysis of a linear transformation on a finite-dimensional vector space:
+  the representation of a linear transformation by a matrix.
+  In fact, we develop a one-to-one correspondence between matrices and linear transformations that allows us to utilize properties of one to study properties of the other.
+\end{note}
+
+\begin{defn}\label{2.2.1}
+  Let \(\V\) be a finite-dimensional vector space over \(\F\).
+  An \textbf{ordered basis} for \(\V\) over \(\F\) is a basis for \(\V\) over \(\F\) endowed with a specific order;
+  that is, an ordered basis for \(\V\) over \(\F\) is a finite sequence of linearly independent vectors in \(\V\) that generates \(\V\).
+\end{defn}
+
+\begin{defn}\label{2.2.2}
+  For the vector space \(\vs{F}^n\), we call \(\set{\seq{e}{1,2,,n}}\) the \textbf{standard ordered basis} for \(\vs{F}^n\) over \(\F\).
+  Similarly, for the vector space \(\ps[n]{\F}\), we call \(\set{1, x, \dots, x^n}\) the \textbf{standard ordered basis} for \(\ps[n]{\F}\) over \(\F\).
+\end{defn}
+
+\begin{defn}\label{2.2.3}
+  Let \(\beta = \set{\seq{u}{1,2,,n}}\) be an ordered basis for a finite-dimensional vector space \(\V\) over \(\F\).
+  For \(x \in \V\), let \(\seq{a}{1,2,,n}\) be the unique scalars such that
+  \[
+    x = \sum_{i = 1}^n a_i u_i.
+  \]
+  We define the \textbf{coordinate vector of \(x\) relative to \(\beta\)}, denoted \([x]_{\beta}\), by
+  \[
+    [x]_{\beta} = \begin{pmatrix}
+      a_1    \\
+      a_2    \\
+      \vdots \\
+      a_n
+    \end{pmatrix}.
+  \]
+\end{defn}
+
+\begin{defn}\label{2.2.4}
+  Suppose that \(\V\) and \(\W\) are finite-dimensional vector spaces over \(\F\) with ordered bases \(\beta = \set{\seq{v}{1,2,,n}}\) and \(\gamma = \set{\seq{w}{1,2,,m}}\) over \(\F\), respectively.
+  Let \(\T : \V \to \W\) be linear.
+  Then for each \(j\), \(1 \leq j \leq n\), there exist unique scalars \(a_{i j} \in \F\), \(1 \leq i \leq m\), such that
+  \[
+    \T(v_j) = \sum_{i = 1}^m a_{i j} w_i \quad \text{for } 1 \leq j \leq n.
+  \]
+  We call the \(m \times n\) matrix \(A\) defined by \(A_{i j} = a_{i j}\) the \textbf{matrix representation of \(\T\) in the ordered bases \(\beta\) and \(\gamma\)} and write \(A = [\T]_{\beta}^{\gamma}\).
+  If \(\V = \W\) and \(\beta = \gamma\), then we write \(A = [\T]_{\beta}\).
+\end{defn}
+
+\begin{note}
+  Notice that the \(j\)th column of \(A\) is simply \([\T(v_j)]_{\gamma}\).
+  Also observe that if \(\U : \V \to \W\) is a linear transformation such that \([\U]_{\beta}^{\gamma} = [\T]_{\beta}^{\gamma}\), then \(\U = \T\) by \cref{2.1.13}.
+\end{note}
