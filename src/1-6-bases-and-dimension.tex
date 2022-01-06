@@ -30,11 +30,11 @@
   Since
   \begin{align*}
              & \forall A \in \MS, A = \begin{pmatrix}
-      A_{1 1} & A_{1 2} & \cdots & A_{1 n} \\
-      A_{2 1} & A_{2 2} & \cdots & A_{2 n} \\
-      \vdots  & \vdots  & \ddots & \vdots  \\
-      A_{m 1} & A_{m 2} & \cdots & A_{m n}
-    \end{pmatrix}                                                              \\
+                                        A_{1 1} & A_{1 2} & \cdots & A_{1 n} \\
+                                        A_{2 1} & A_{2 2} & \cdots & A_{2 n} \\
+                                        \vdots  & \vdots  & \ddots & \vdots  \\
+                                        A_{m 1} & A_{m 2} & \cdots & A_{m n}
+                                      \end{pmatrix}                                                   \\
              & = \sum_{i = 1}^m \sum_{j = 1}^n A_{i j} E^{i j}                                 &  & \text{(by \cref{1.2.9})} \\
     \implies & \forall A \in \MS, A \in \spn{\set{E^{i j} : 1 \leq i \leq m, 1 \leq j \leq n}} &  & \text{(by \cref{1.4.3})} \\
     \implies & \MS = \spn{\set{E^{i j} : 1 \leq i \leq m, 1 \leq j \leq n}},                   &  & \text{(by \cref{1.5})}
@@ -496,13 +496,13 @@
              & c_1 (u + v) + c_2 (au) = \zv                                \\
     \implies & (c_1 + c_2 a) u + c_1 v = \zv &  & \text{(by \cref{1.2.1})} \\
     \implies & \begin{dcases}
-      c_1 + c_2 a = 0 \\
-      c_1 = 0
-    \end{dcases}    &  & \text{(by \cref{1.5.3})} \\
+                 c_1 + c_2 a = 0 \\
+                 c_1 = 0
+               \end{dcases}            &  & \text{(by \cref{1.5.3})}       \\
     \implies & \begin{dcases}
-      c_2 a = 0 \\
-      c_1 = 0
-    \end{dcases}                                  \\
+                 c_2 a = 0 \\
+                 c_1 = 0
+               \end{dcases}                                               \\
     \implies & c_1 = c_2 = 0                 &  & (a \neq 0)
   \end{align*}
   and
@@ -510,9 +510,9 @@
              & c_1 (au) + c_2 (bv) = \zv                                 \\
     \implies & (c_1 a) u + (c_2 b) v = \zv &  & \text{(by \cref{1.2.1})} \\
     \implies & \begin{dcases}
-      c_1 a = 0 \\
-      c_2 b = 0
-    \end{dcases}  &  & \text{(by \cref{1.5.3})} \\
+                 c_1 a = 0 \\
+                 c_2 b = 0
+               \end{dcases}              &  & \text{(by \cref{1.5.3})}   \\
     \implies & c_1 = c_2 = 0,              &  & (a \neq 0 \neq b)
   \end{align*}
   by \cref{1.5.3} we know that \(\set{u + v, au}\) and \(\set{au, bv}\) are linearly independent.
@@ -535,10 +535,10 @@
              & a(u + v + w) + b(v + w) + cw = \zv                               \\
     \implies & au + (a + b)v + (a + b + c)w = \zv &  & \text{(by \cref{1.2.1})} \\
     \implies & \begin{dcases}
-      a = 0     \\
-      a + b = 0 \\
-      a + b + c = 0
-    \end{dcases}         &  & \text{(by \cref{1.5.3})} \\
+                 a = 0     \\
+                 a + b = 0 \\
+                 a + b + c = 0
+               \end{dcases}                     &  & \text{(by \cref{1.5.3})}   \\
     \implies & a = b = c = 0,
   \end{align*}
   by \cref{1.5.3} we know that \(\set{u + v + w, v + w, w}\) is linearly independent.
@@ -564,19 +564,19 @@
   Observe that
   \begin{align*}
              & \forall A \in \W, \begin{dcases}
-      \tr[A] = 0 \\
-      A = \sum_{i = 1}^n \sum_{j = 1}^n A_{i j} E^{i j}
-    \end{dcases}                   &  & \text{(by \cref{ex:1.5.6})} \\
+                                   \tr[A] = 0 \\
+                                   A = \sum_{i = 1}^n \sum_{j = 1}^n A_{i j} E^{i j}
+                                 \end{dcases}                                                                                                                                                                         &  & \text{(by \cref{ex:1.5.6})}                 \\
     \implies & \forall A \in \W, \begin{dcases}
-      A_{1 1} + A_{2 2} + \cdots + A_{n n} = 0 \\
-      A = \sum_{i = 1}^n \sum_{j = 1}^n A_{i j} E^{i j}
-    \end{dcases}                   &  & \text{(by \cref{1.3.9})}    \\
+                                   A_{1 1} + A_{2 2} + \cdots + A_{n n} = 0 \\
+                                   A = \sum_{i = 1}^n \sum_{j = 1}^n A_{i j} E^{i j}
+                                 \end{dcases}                                                                                                                                                                         &  & \text{(by \cref{1.3.9})}                    \\
     \implies & \forall A \in \W, \begin{dcases}
-      A_{2 2} + \cdots + A_{n n} = -A_{1 1}        \\
-      A = \pa{\sum_{i = 1}^n \sum_{\substack{j = 1 \\ j \neq i}}^n A_{i j} E^{i j}} + \pa{\sum_{i = 1}^n A_{i i} E^{i i}}
-    \end{dcases}                                                    \\
-    \implies & \forall A \in \W, A = \pa{\sum_{i = 1}^n \sum_{\substack{j = 1                                  \\ j \neq i}}^n A_{i j} E^{i j}} + \pa{\sum_{i = 2}^n A_{i i} (E^{i i} - E^{1 1})} \\
-    \implies & \forall A \in \W, A \in \spn{\beta}                            &  & \text{(by \cref{1.4.3})}    \\
+                                   A_{2 2} + \cdots + A_{n n} = -A_{1 1}        \\
+                                   A = \pa{\sum_{i = 1}^n \sum_{\substack{j = 1 \\ j \neq i}}^n A_{i j} E^{i j}} + \pa{\sum_{i = 1}^n A_{i i} E^{i i}}
+                                 \end{dcases}              \\
+    \implies & \forall A \in \W, A = \pa{\sum_{i = 1}^n \sum_{\substack{j = 1                                                                                                                                                                                          \\ j \neq i}}^n A_{i j} E^{i j}} + \pa{\sum_{i = 2}^n A_{i i} (E^{i i} - E^{1 1})} \\
+    \implies & \forall A \in \W, A \in \spn{\beta}                                                                                                                                                                                       &  & \text{(by \cref{1.4.3})} \\
     \implies & \W \subseteq \spn{\beta}.
   \end{align*}
   Since
@@ -631,9 +631,9 @@
              & \forall A \in \W, \tp{A} = -A                                                  &  & \text{(by \cref{ex:1.3.28})} \\
     \implies & \forall A \in \W, A_{j i} = -A_{i j} \text{ where } i, j \in \set{1, \dots, n} &  & \text{(by \cref{1.3.3})}     \\
     \implies & \forall A \in \W, \begin{dcases}
-      A_{i j} = -A_{j i} & \text{if } i \neq j \\
-      A_{i j} = 0        & \text{if } i = j
-    \end{dcases}                                                                     \\
+                                   A_{i j} = -A_{j i} & \text{if } i \neq j \\
+                                   A_{i j} = 0        & \text{if } i = j
+                                 \end{dcases}                                                       \\
     \implies & \forall A \in \W, A = \sum_{i = 1}^n \sum_{j = 1}^n A_{i j} E^{i j}                                              \\
              & = \sum_{i = 1}^n \sum_{j = 1}^{i - 1} (A_{i j} E^{i j} + A_{j i} E^{j i})                                        \\
              & = \sum_{i = 1}^n \sum_{j = 1}^{i - 1} (A_{i j} E^{i j} - A_{i j} E^{j i})                                        \\
@@ -722,16 +722,16 @@
 \begin{proof}[\pf{ex:1.6.22}]
   We have
   \begin{align*}
-         & \dim(\W_1 \cap \W_2) = \dim(\W_1)                                                     \\
+         & \dim(\W_1 \cap \W_2) = \dim(\W_1)                                                               \\
     \iff & \begin{dcases}
-      \exists \beta_1 \subseteq \W_1 \cap \W_2 \\
-      \exists \beta_2 \subseteq \W_1
-    \end{dcases} : \begin{dcases}
-      \beta_1 \text{ is a basis for } \W_1 \cap \W_2 \text{ over } \F \\
-      \beta_2 \text{ is a basis for } \W_1 \text{ over } \F           \\
-      \#(\beta_1) = \#(\beta_2)
-    \end{dcases} &  & \text{(by \cref{1.6.8})} \\
-    \iff & \W_1 \cap \W_2 = \W_1                                   &  & \text{(by \cref{1.11})}  \\
+             \exists \beta_1 \subseteq \W_1 \cap \W_2 \\
+             \exists \beta_2 \subseteq \W_1
+           \end{dcases} : \begin{dcases}
+                            \beta_1 \text{ is a basis for } \W_1 \cap \W_2 \text{ over } \F \\
+                            \beta_2 \text{ is a basis for } \W_1 \text{ over } \F           \\
+                            \#(\beta_1) = \#(\beta_2)
+                          \end{dcases} &  & \text{(by \cref{1.6.8})}                  \\
+    \iff & \W_1 \cap \W_2 = \W_1                                              &  & \text{(by \cref{1.11})} \\
     \iff & \W_1 \subseteq \W_2.
   \end{align*}
 \end{proof}
@@ -748,11 +748,11 @@
   We have
   \begin{align*}
          & \begin{dcases}
-      \W_1 \subseteq \W_2 \\
-      \dim(\W_1) = \dim(\W_2)
-    \end{dcases}                                  &  & \text{(by \cref{ex:1.4.13})} \\
-    \iff & \W_1 = \W_2                                                 &  & \text{(by \cref{1.11})}      \\
-    \iff & v \in \spn{\set{\seq{v}{1,2,,k}}}                           &  & \text{(by \cref{1.4.3})}     \\
+             \W_1 \subseteq \W_2 \\
+             \dim(\W_1) = \dim(\W_2)
+           \end{dcases}                                     &  & \text{(by \cref{ex:1.4.13})}        \\
+    \iff & \W_1 = \W_2                                                 &  & \text{(by \cref{1.11})}  \\
+    \iff & v \in \spn{\set{\seq{v}{1,2,,k}}}                           &  & \text{(by \cref{1.4.3})} \\
     \iff & v \cup \set{\seq{v}{1,2,,k}} \text{ is linearly dependent}. &  & \text{(by \cref{1.7})}
   \end{align*}
 \end{proof}
@@ -804,9 +804,9 @@
              & \forall \seq{a}{1,2,,m + n} \in \F, \sum_{i = 1}^m a_i (v_i, \zv_{\W}) + \sum_{i = 1}^n a_{m + i} (\zv_{\V}, w_i)                                   \\
              & = (\sum_{i = 1}^m a_i v_i, \sum_{i = 1}^n a_{m + i} w_i) = (\zv_{\V}, \zv_{\W})                                   &  & \text{(by \cref{ex:1.2.21})} \\
     \implies & \begin{dcases}
-      \sum_{i = 1}^m a_i v_i = \zv_{\V} \\
-      \sum_{i = 1}^n a_{m + i} w_i = \zv_{\W}
-    \end{dcases}                                                                                                                          \\
+                 \sum_{i = 1}^m a_i v_i = \zv_{\V} \\
+                 \sum_{i = 1}^n a_{m + i} w_i = \zv_{\W}
+               \end{dcases}                                                                                                              \\
     \implies & \seq[=]{a}{1,2,,m + n} = 0,
   \end{align*}
   by \cref{1.5.3} we know that \(\beta\) is linearly independent.
@@ -856,19 +856,19 @@
   Then we have
   \begin{align*}
              & \begin{dcases}
-      \beta_1 \text{ is linearly independent} \\
-      \beta_2 \text{ is linearly independent} \\
-      \W_1 = \spn{\beta_1}                    \\
-      \W_2 = \spn{\beta_2}
-    \end{dcases}  &  & \text{(by \cref{ex:1.3.25})} \\
+                 \beta_1 \text{ is linearly independent} \\
+                 \beta_2 \text{ is linearly independent} \\
+                 \W_1 = \spn{\beta_1}                    \\
+                 \W_2 = \spn{\beta_2}
+               \end{dcases}               &  & \text{(by \cref{ex:1.3.25})} \\
     \implies & \begin{dcases}
-      \beta_1 \text{ is a basis for } \W_1 \text{ over } \F \\
-      \beta_2 \text{ is a basis for } \W_2 \text{ over } \F
-    \end{dcases}  &  & \text{(by \cref{1.6.1})}     \\
+                 \beta_1 \text{ is a basis for } \W_1 \text{ over } \F \\
+                 \beta_2 \text{ is a basis for } \W_2 \text{ over } \F
+               \end{dcases} &  & \text{(by \cref{1.6.1})}        \\
     \implies & \begin{dcases}
-      \dim(\W_1) = \#(\beta_1) = \frac{n - 1}{2} \\
-      \dim(\W_2) = \#(\beta_2) = \frac{n - 1}{2}
-    \end{dcases}. &  & \text{(by \cref{1.6.8})}
+                 \dim(\W_1) = \#(\beta_1) = \frac{n - 1}{2} \\
+                 \dim(\W_2) = \#(\beta_2) = \frac{n - 1}{2}
+               \end{dcases}.            &  & \text{(by \cref{1.6.8})}
   \end{align*}
   Using similar arguments as above we can show that when \(n\) is even we have
   \[
@@ -933,18 +933,18 @@
   Since
   \begin{align*}
              & \begin{dcases}
-      \forall v \in \beta_1, v + \zv \in \W_1 + \W_2 \\
-      \forall w \in \beta_2, \zv + w \in \W_1 + \W_2
-    \end{dcases}                 &  & \text{(by \cref{1.3.10})} \\
+                 \forall v \in \beta_1, v = v + \zv \in \W_1 + \W_2 \\
+                 \forall w \in \beta_2, w = \zv + w \in \W_1 + \W_2
+               \end{dcases} &  & \text{(by \cref{1.3.10})} \\
     \implies & \beta_1 \cup \beta_2 \subseteq \W_1 + \W_2
   \end{align*}
   and
   \begin{align*}
              & \forall x \in \W_1 + \W_2, \exists (y, z) \in \W_1 \times \W_2 : x = y + z                                                          &  & \text{(by \cref{1.3.10})} \\
     \implies & \forall x \in \W_1 + \W_2, \begin{dcases}
-      \exists \seq{a}{1,2,,k + m} \in \F \\
-      \exists \seq{b}{1,2,,k + p} \in \F
-    \end{dcases} :                                                                                                            \\
+                                            \exists \seq{a}{1,2,,k + m} \in \F \\
+                                            \exists \seq{b}{1,2,,k + p} \in \F
+                                          \end{dcases} :                                                                                                      \\
              & x = \pa{\sum_{i = 1}^k a_i u_i + \sum_{i = k + 1}^{k + m} a_i v_i} + \pa{\sum_{i = 1}^k b_i u_i + \sum_{i = k + 1}^{k + p} b_i w_i} &  & \text{(by \cref{1.6.1})}  \\
              & = \sum_{i = 1}^k (a_i + b_i) u_i + \sum_{i = k + 1}^{k + m} a_i v_i + \sum_{i = k + 1}^{k + p} b_i w_i                              &  & \text{(by \cref{1.2.1})}  \\
     \implies & \forall x \in \W_1 + \W_2, \exists \seq{a}{1,2,,k + m + p} \in \F :                                                                                                \\
@@ -957,15 +957,15 @@
   By \cref{1.6.1} we need to show that \(\beta_1 \cup \beta_2\) is linearly independent.
   Since
   \begin{align*}
-             & \beta_1 \cap \beta_2 = \beta                                     \\
+             & \beta_1 \cap \beta_2 = \beta                                 \\
     \implies & \begin{dcases}
-      \spn{\beta_1 \setminus \beta} \cap \beta_2 = \varnothing \\
-      \spn{\beta_2 \setminus \beta} \cap \beta_1 = \varnothing
-    \end{dcases}   &  & (\spn{\beta} = \W_1 \cap \W_2) \\
+                 \spn{\beta_1} \cap (\beta_2 \setminus \beta) = \varnothing \\
+                 \spn{\beta_2} \cap (\beta_1 \setminus \beta) = \varnothing
+               \end{dcases}   \\
     \implies & \begin{dcases}
-      \spn{\beta_1} \cap \beta_2 = \varnothing \\
-      \spn{\beta_2} \cap \beta_1 = \varnothing
-    \end{dcases},
+                 \spn{\beta_1} \cap \spn{\beta_2 \setminus \beta} = \set{\zv} \\
+                 \spn{\beta_2} \cap \spn{\beta_1 \setminus \beta} = \set{\zv}
+               \end{dcases},
   \end{align*}
   we know that
   \begin{align*}
@@ -986,13 +986,13 @@
   \begin{align*}
          & \V = \W_1 \oplus \W_2                                                                        \\
     \iff & \begin{dcases}
-      \V = \W_1 + \W_2 \\
-      \W_1 \cap \W_2 = \varnothing
-    \end{dcases}                             &  & \text{(by \cref{1.3.11})}       \\
+             \V = \W_1 + \W_2 \\
+             \W_1 \cap \W_2 = \varnothing
+           \end{dcases}                            &  & \text{(by \cref{1.3.11})}                       \\
     \iff & \begin{dcases}
-      \V = \W_1 + \W_2 \\
-      \dim(\W_1 \cap \W_2) = 0
-    \end{dcases}                             &  & \text{(by \cref{1.6.2})}        \\
+             \V = \W_1 + \W_2 \\
+             \dim(\W_1 \cap \W_2) = 0
+           \end{dcases}                                &  & \text{(by \cref{1.6.2})}                    \\
     \iff & \dim(\V) = \dim(\W_1 + \W_2) = \dim(\W_1) + \dim(\W_2). &  & \text{(by \cref{ex:1.6.29}(a))}
   \end{align*}
 \end{proof}
@@ -1059,9 +1059,9 @@
   Since
   \begin{align*}
              & \begin{dcases}
-      \beta_1 \cap \beta_2 = \varnothing \\
-      \spn{\beta_1 \cup \beta_2} = \V
-    \end{dcases}                                                                                           \\
+                 \beta_1 \cap \beta_2 = \varnothing \\
+                 \spn{\beta_1 \cup \beta_2} = \V
+               \end{dcases}                                                                                    \\
     \implies & \forall v \in \V, v \in \spn{\beta_1 \cup \beta_2}                                                                    \\
     \implies & \forall v \in \V, \exists (x, y) \in \spn{\beta_1} \times \spn{\beta_2} : v = x + y &  & \text{(by \cref{1.2.1})}     \\
     \implies & \forall v \in \V, v \in \W_1 + \W_2                                                 &  & \text{(by \cref{1.3.10})}    \\
@@ -1071,14 +1071,14 @@
   and
   \begin{align*}
              & \begin{dcases}
-      \beta_1 \cap \beta_2 = \varnothing \\
-      \beta_1 \cup \beta_2 \text{ is a basis for } \V \text{ over } \F
-    \end{dcases}                                                \\
+                 \beta_1 \cap \beta_2 = \varnothing \\
+                 \beta_1 \cup \beta_2 \text{ is a basis for } \V \text{ over } \F
+               \end{dcases}                                \\
     \implies & \begin{dcases}
-      \spn{\beta_1} \cap \beta_2 = \varnothing \\
-      \spn{\beta_2} \cap \beta_1 = \varnothing
-    \end{dcases}                  &  & \text{(by \cref{1.7})}   \\
-    \implies & \spn{\beta_1} \cap \spn{\beta_2} = \set{\zv} &  & \text{(by \cref{1.5.3})} \\
+                 \spn{\beta_1} \cap \beta_2 = \varnothing \\
+                 \spn{\beta_2} \cap \beta_1 = \varnothing
+               \end{dcases}                      &  & \text{(by \cref{1.7})}                                  \\
+    \implies & \spn{\beta_1} \cap \spn{\beta_2} = \set{\zv}                     &  & \text{(by \cref{1.5.3})} \\
     \implies & \W_1 \cap \W_2 = \set{\zv},
   \end{align*}
   by \cref{1.3.11} we know that \(\V = \W_1 \oplus \W_2\).
@@ -1142,9 +1142,9 @@
   First we show that \(\spn{\beta} = \V / \W\).
   \begin{align*}
              & \forall v + \W \in \V / \W, \begin{dcases}
-      v \in \V \\
-      v + \W = \set{v + w : w \in \W}
-    \end{dcases}      &  & \text{(by \cref{ex:1.3.31})} \\
+                                             v \in \V \\
+                                             v + \W = \set{v + w : w \in \W}
+                                           \end{dcases}                   &  & \text{(by \cref{ex:1.3.31})}   \\
     \implies & \forall v + \W \in \V / \W, \exists \seq{a}{1,2,,n} \in \F :                                   \\
              & v + \W = \pa{\sum_{i = 1}^n a_i u_i} + \W                    &  & \text{(by \cref{1.4.3})}     \\
              & = \sum_{i = 1}^n a_i (u_i + \W)                              &  & \text{(by \cref{ex:1.3.31})} \\
