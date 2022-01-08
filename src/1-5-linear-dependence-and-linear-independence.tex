@@ -85,18 +85,18 @@
   We have
   \begin{align*}
              & \begin{dcases}
-      S_1 \subseteq S_2 \\
-      S_1 \text{ is linearly dependent}
-    \end{dcases}                                        \\
+                 S_1 \subseteq S_2 \\
+                 S_1 \text{ is linearly dependent}
+               \end{dcases}                                               \\
     \implies & \begin{dcases}
-      \exists \seq{u}{1,2,,n} \in S_1 \subseteq S_2 \\
-      \exists \seq{a}{1,2,,n} \in \F
-    \end{dcases} :                                      \\
+                 \exists \seq{u}{1,2,,n} \in S_1 \subseteq S_2 \\
+                 \exists \seq{a}{1,2,,n} \in \F
+               \end{dcases} :                                  \\
              & \begin{dcases}
-      \seq[+]{a,u}{1,2,,n} = \zv \\
-      \lnot (\seq[=]{a}{1,2,,n} = 0)
-    \end{dcases}         &  & \text{(by \cref{1.5.1})} \\
-    \implies & S_2 \text{ is linearly dependent}. &  & \text{(by \cref{1.5.1})}
+                 \seq[+]{a,u}{1,2,,n} = \zv \\
+                 \lnot (\seq[=]{a}{1,2,,n} = 0)
+               \end{dcases}                   &  & \text{(by \cref{1.5.1})}                   \\
+    \implies & S_2 \text{ is linearly dependent}.               &  & \text{(by \cref{1.5.1})}
   \end{align*}
 \end{proof}
 
@@ -171,13 +171,13 @@
   Let \(\seq{a}{1,2,,n} \in \F\).
   Since
   \begin{align*}
-             & \seq[+]{a,e}{1,2,,n} = \zv                                                      \\
+             & \seq[+]{a,e}{1,2,,n} = \zv                             \\
     \implies & \begin{dcases}
-      a_1 1 + a_2 0 + \cdots + a_n 0 = 0 \\
-      a_1 0 + a_2 1 + \cdots + a_n 0 = 0 \\
-      \vdots                             \\
-      a_1 0 + a_2 0 + \cdots + a_n 1 = 0
-    \end{dcases}                        &  & \text{(by \cref{1.2.4})} \\
+                 a_1 1 + a_2 0 + \cdots + a_n 0 = 0 \\
+                 a_1 0 + a_2 1 + \cdots + a_n 0 = 0 \\
+                 \vdots                             \\
+                 a_1 0 + a_2 0 + \cdots + a_n 1 = 0
+               \end{dcases}             &  & \text{(by \cref{1.2.4})} \\
     \implies & \forall i \in \set{1, \dots, n}, a_i 1 = a_i = 0,
   \end{align*}
   by \cref{1.5.3} we know that \(\set{\seq{e}{1,2,,n}}\) is linearly independent.
@@ -208,17 +208,17 @@
   \begin{align*}
              & \sum_{i = 1}^m \sum_{j = 1}^{n} a_{i j} E^{i j} = \zm                               \\
     \implies & \begin{pmatrix}
-      a_{1 1} 1 & a_{1 2} 1 & \cdots & a_{1 n} 1 \\
-      a_{2 1} 1 & a_{2 2} 1 & \cdots & a_{2 n} 1 \\
-      \vdots    & \vdots    & \ddots & \vdots    \\
-      a_{m 1} 1 & a_{m 2} 1 & \cdots & a_{m n} 1
-    \end{pmatrix}                                                          \\
+                 a_{1 1} 1 & a_{1 2} 1 & \cdots & a_{1 n} 1 \\
+                 a_{2 1} 1 & a_{2 2} 1 & \cdots & a_{2 n} 1 \\
+                 \vdots    & \vdots    & \ddots & \vdots    \\
+                 a_{m 1} 1 & a_{m 2} 1 & \cdots & a_{m n} 1
+               \end{pmatrix}                                          \\
              & = \begin{pmatrix}
-      a_{1 1} & a_{1 2} & \cdots & a_{1 n} \\
-      a_{2 1} & a_{2 2} & \cdots & a_{2 n} \\
-      \vdots  & \vdots  & \ddots & \vdots  \\
-      a_{m 1} & a_{m 2} & \cdots & a_{m n}
-    \end{pmatrix} = \zm                                                  \\
+                   a_{1 1} & a_{1 2} & \cdots & a_{1 n} \\
+                   a_{2 1} & a_{2 2} & \cdots & a_{2 n} \\
+                   \vdots  & \vdots  & \ddots & \vdots  \\
+                   a_{m 1} & a_{m 2} & \cdots & a_{m n}
+                 \end{pmatrix} = \zm                                              \\
     \implies & a_{i j} = 0,                                          &  & \text{(by \cref{1.2.8})}
   \end{align*}
   by \cref{1.5.3} we know that \(\set{E^{i j} : 1 \leq i \leq m, 1 \leq j \leq n}\) is linearly independent.
@@ -237,12 +237,12 @@
   Let \(\seq{a}{1,2,3} \in \R\).
   Since
   \begin{align*}
-             & a_1 (1, 1, 0) + a_2 (1, 0, 1) + a_3 (0, 1, 1) = (0, 0, 0)                               \\
+             & a_1 (1, 1, 0) + a_2 (1, 0, 1) + a_3 (0, 1, 1) = (0, 0, 0)               \\
     \implies & \begin{dcases}
-      a_1 1 + a_2 1 + a_3 0 = 0 \\
-      a_1 1 + a_2 0 + a_3 1 = 0 \\
-      a_1 0 + a_2 1 + a_3 1 = 0
-    \end{dcases}                                &  & \text{(by \cref{1.2.4})} \\
+                 a_1 1 + a_2 1 + a_3 0 = 0 \\
+                 a_1 1 + a_2 0 + a_3 1 = 0 \\
+                 a_1 0 + a_2 1 + a_3 1 = 0
+               \end{dcases}                              &  & \text{(by \cref{1.2.4})} \\
     \implies & \seq[=]{a}{1,2,3} = 0,
   \end{align*}
   by \cref{1.5.3} we know that \(S\) is linearly independent.
@@ -267,19 +267,19 @@
 \begin{proof}[\pf{ex:1.5.9}]
   We have
   \begin{align*}
-         & \set{u, v} \text{ is linearly dependent}                                       \\
+         & \set{u, v} \text{ is linearly dependent}                                \\
     \iff & \exists a, b \in \F : \begin{dcases}
-      au + bv = \zv \\
-      \lnot (a = b = 0)
-    \end{dcases} &  & \text{(by \cref{1.5.1})} \\
+                                   au + bv = \zv \\
+                                   \lnot (a = b = 0)
+                                 \end{dcases}        &  & \text{(by \cref{1.5.1})} \\
     \iff & \exists a, b \in \F : \begin{dcases}
-      au = -bv \\
-      \lnot (a = b = 0)
-    \end{dcases}                               \\
+                                   au = -bv \\
+                                   \lnot (a = b = 0)
+                                 \end{dcases}                                  \\
     \iff & \exists a, b \in \F : \begin{dcases}
-      u = -\frac{b}{a} v & \text{if } a \neq 0 \\
-      v = -\frac{a}{b} u & \text{if } b \neq 0
-    \end{dcases}                               \\
+                                   u = -\frac{b}{a} v & \text{if } a \neq 0 \\
+                                   v = -\frac{a}{b} u & \text{if } b \neq 0
+                                 \end{dcases}          \\
     \iff & \exists c \in \F : u = cv.
   \end{align*}
 \end{proof}
@@ -352,18 +352,18 @@
   \begin{align*}
          & S \text{ is linearly dependent}                                                                    \\
     \iff & \begin{dcases}
-      \exists v \in S                                 \\
-      \exists \seq{u}{1,2,,n} \in S \setminus \set{v} \\
-      \exists a_0 \in \F \setminus \set{0}            \\
-      \exists \seq{a}{1,2,,n} \in \F
-    \end{dcases} :                                                                       \\
+             \exists v \in S                                 \\
+             \exists \seq{u}{1,2,,n} \in S \setminus \set{v} \\
+             \exists a_0 \in \F \setminus \set{0}            \\
+             \exists \seq{a}{1,2,,n} \in \F
+           \end{dcases} :                                                    \\
          & a_0 v + \seq[+]{a,u}{1,2,,n} = \zv                                   &  & \text{(by \cref{1.5.1})} \\
     \iff & \begin{dcases}
-      \exists v \in S                                 \\
-      \exists \seq{u}{1,2,,n} \in S \setminus \set{v} \\
-      \exists a_0 \in \F \setminus \set{0}            \\
-      \exists \seq{a}{1,2,,n} \in \F
-    \end{dcases} :                                                                       \\
+             \exists v \in S                                 \\
+             \exists \seq{u}{1,2,,n} \in S \setminus \set{v} \\
+             \exists a_0 \in \F \setminus \set{0}            \\
+             \exists \seq{a}{1,2,,n} \in \F
+           \end{dcases} :                                                    \\
          & v = -a_0^{-1} a_1 u_1 - a_0^{-1} a_2 u_2 - \cdots - a_0^{-1} a_n u_n                               \\
     \iff & \exists v, \seq{u}{1,2,,n} \in S :                                                                 \\
          & v \text{ is a linear combination of } \seq{u}{1,2,,n}.               &  & \text{(by \cref{1.4.1})}
@@ -392,14 +392,14 @@
     \implies & \forall \seq{a}{1,2,,n - 1} \in \F,                                                       \\
              & \seq[+]{a,u}{1,2,,n - 1} \neq u_n                           &  & \text{(by \cref{1.4.3})} \\
     \implies & \begin{dcases}
-      \forall \seq{a}{1,2,,n - 1} \in \F \\
-      \forall a_n \in \F \setminus \set{0}
-    \end{dcases},                                                               \\
+                 \forall \seq{a}{1,2,,n - 1} \in \F \\
+                 \forall a_n \in \F \setminus \set{0}
+               \end{dcases},                                                       \\
              & \seq[+]{a,u}{1,2,,n - 1} \neq a_n u_n                                                     \\
     \implies & \begin{dcases}
-      \forall \seq{a}{1,2,,n - 1} \in \F \\
-      \forall a_n \in \F \setminus \set{0}
-    \end{dcases},                                                               \\
+                 \forall \seq{a}{1,2,,n - 1} \in \F \\
+                 \forall a_n \in \F \setminus \set{0}
+               \end{dcases},                                                       \\
              & \seq[+]{a,u}{1,2,,n} \neq \zv                                                             \\
     \implies & \forall \seq{a}{1,2,,n} \in \F, [\seq[+]{a,u}{1,2,,n} = \zv                               \\
              & \iff \seq[=]{a}{1,2,,n} = 0]                                                              \\

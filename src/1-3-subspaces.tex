@@ -221,11 +221,11 @@
   Then we have
   \begin{align*}
              & \begin{dcases}
-      A_{i j} = A_{j i} = 0 & \text{if } i \neq j \\
-      A_{i i} = A_{i i}     & \text{otherwise}
-    \end{dcases}         &  & \text{(by \cref{1.3.8})} \\
-    \implies & A_{i j} = A_{j i} = (\tp{A})_{i j} &  & \text{(by \cref{1.3.3})} \\
-    \implies & A = \tp{A}                         &  & \text{(by \cref{1.2.8})}
+                 A_{i j} = A_{j i} = 0 & \text{if } i \neq j \\
+                 A_{i i} = A_{i i}     & \text{otherwise}
+               \end{dcases} &  & \text{(by \cref{1.3.8})}                                  \\
+    \implies & A_{i j} = A_{j i} = (\tp{A})_{i j}             &  & \text{(by \cref{1.3.3})} \\
+    \implies & A = \tp{A}                                     &  & \text{(by \cref{1.2.8})}
   \end{align*}
   and thus by \cref{1.3.4} diagonal matrices are symmetric.
 \end{proof}
@@ -297,20 +297,20 @@
   Since
   \begin{align*}
              & \begin{dcases}
-      \W \neq \varnothing               \\
-      \forall x, y \in \W, x + y \in \W \\
-      \forall (x, a) \in \W \times \F, ax \in \W
-    \end{dcases}                                 \\
+                 \W \neq \varnothing               \\
+                 \forall x, y \in \W, x + y \in \W \\
+                 \forall (x, a) \in \W \times \F, ax \in \W
+               \end{dcases}    \\
     \implies & \begin{dcases}
-      \exists x \in \W                  \\
-      \forall x, y \in \W, x + y \in \W \\
-      \forall (x, a) \in \W \times \F, ax \in \W
-    \end{dcases}                                 \\
+                 \exists x \in \W                  \\
+                 \forall x, y \in \W, x + y \in \W \\
+                 \forall (x, a) \in \W \times \F, ax \in \W
+               \end{dcases}    \\
     \implies & \begin{dcases}
-      0x = \zv \in \W                   \\
-      \forall x, y \in \W, x + y \in \W \\
-      \forall (x, a) \in \W \times \F, ax \in \W
-    \end{dcases}, &  & \text{(by \cref{1.2}(a))}
+                 0x = \zv \in \W                   \\
+                 \forall x, y \in \W, x + y \in \W \\
+                 \forall (x, a) \in \W \times \F, ax \in \W
+               \end{dcases}, &  & \text{(by \cref{1.2}(a))}
   \end{align*}
   by \cref{1.3} we know that
   \[
@@ -373,9 +373,9 @@
   Then we have
   \begin{align*}
              & \begin{dcases}
-      \W_1 \subseteq \W_1 \cup \W_2 \\
-      \W_2 \subseteq \W_1 \cup \W_2
-    \end{dcases}                                                             \\
+                 \W_1 \subseteq \W_1 \cup \W_2 \\
+                 \W_2 \subseteq \W_1 \cup \W_2
+               \end{dcases}                                                          \\
     \implies & x + y \in \W_1 \cup \W_2                             &  & \text{(by \cref{1.3}(b))}    \\
     \implies & (x + y \in \W_1) \lor (x + y \in \W_2)                                                 \\
     \implies & ((-x) + x + y \in \W_1) \lor (x + y + (-y) \in \W_2) &  & \text{(by \cref{1.3}(b)(c))} \\
@@ -404,15 +404,15 @@
   Then for \(n + 1\), we have
   \begin{align*}
              & \begin{dcases}
-      \sum_{i = 1}^n a_i w_i \in \W \\
-      w_{n + 1} \in \W              \\
-      a_{n + 1} \in \F
-    \end{dcases}                                   &  & \text{(by induction hypothesis)} \\
+                 \sum_{i = 1}^n a_i w_i \in \W \\
+                 w_{n + 1} \in \W              \\
+                 a_{n + 1} \in \F
+               \end{dcases}                             &  & \text{(by induction hypothesis)}              \\
              & \begin{dcases}
-      \sum_{i = 1}^n a_i w_i \in \W \\
-      a_{n + 1} w_{n + 1} \in \W
-    \end{dcases}                                   &  & \text{(by \cref{1.3}(c))}        \\
-    \implies & \seq[+]{a,w}{1,2,,n,n + 1}                                                                         \\
+                 \sum_{i = 1}^n a_i w_i \in \W \\
+                 a_{n + 1} w_{n + 1} \in \W
+               \end{dcases}                             &  & \text{(by \cref{1.3}(c))}                     \\
+    \implies & \seq[+]{a,w}{1,2,,n,n + 1}                                                                  \\
              & = \pa{\sum_{i = 1}^n a_i w_i} + (a_{n + 1} w_{n + 1}) \in \W &  & \text{(by \cref{1.3}(b))}
   \end{align*}
   and this closes the induction.
@@ -506,19 +506,19 @@
   \begin{align*}
              & \W_1, \W_2 \text{ are subspaces of } \V \text{ over } \F                                \\
     \implies & \begin{dcases}
-      \zv \in \W_1 \\
-      \zv \in \W_2
-    \end{dcases}                               &  & \text{(by \cref{1.3})}    \\
+                 \zv \in \W_1 \\
+                 \zv \in \W_2
+               \end{dcases}                                          &  & \text{(by \cref{1.3})}       \\
     \implies & \zv = \zv + \zv \in \W_1 + \W_2.                         &  & \text{(by \cref{1.3.10})}
   \end{align*}
   Moreover, if \(z_1, z_2 \in \W_1 + \W_2\), then
   \begin{align*}
              & \begin{dcases}
-      \exists (x_1, y_1) \in \W_1 \times \W_2 : z_1 = x_1 + y_1 \\
-      \exists (x_2, y_2) \in \W_1 \times \W_2 : z_2 = x_2 + y_2
-    \end{dcases}                  &  & \text{(by \cref{1.3.10})} \\
-    \implies & z_1 + z_2 = (x_1 + y_1) + (x_2 + y_2)                                      \\
-             & = (x_1 + x_2) + (y_1 + y_2) \in \W_1 + \W_2 &  & \text{(by \cref{1.3.10})}
+                 \exists (x_1, y_1) \in \W_1 \times \W_2 : z_1 = x_1 + y_1 \\
+                 \exists (x_2, y_2) \in \W_1 \times \W_2 : z_2 = x_2 + y_2
+               \end{dcases} &  & \text{(by \cref{1.3.10})}                                   \\
+    \implies & z_1 + z_2 = (x_1 + y_1) + (x_2 + y_2)                                                       \\
+             & = (x_1 + x_2) + (y_1 + y_2) \in \W_1 + \W_2                  &  & \text{(by \cref{1.3.10})}
   \end{align*}
   and
   \begin{align*}
@@ -543,14 +543,14 @@
   Then we have
   \begin{align*}
              & \begin{dcases}
-      \forall x \in \W_1, x \in \W \\
-      \forall y \in \W_2, y \in \W
-    \end{dcases}               &  & (\W_1 \cup \W_2 \subseteq \W) \\
+                 \forall x \in \W_1, x \in \W \\
+                 \forall y \in \W_2, y \in \W
+               \end{dcases} &  & (\W_1 \cup \W_2 \subseteq \W)                \\
     \implies & \begin{dcases}
-      \forall x \in \W_1 \\
-      \forall y \in \W_2
-    \end{dcases}, x + y \in \W &  & \text{(by \cref{1.3}(b))}     \\
-    \implies & \W_1 + \W_2 \subseteq \W.                &  & \text{(by \cref{1.3.10})}
+                 \forall x \in \W_1 \\
+                 \forall y \in \W_2
+               \end{dcases}, x + y \in \W      &  & \text{(by \cref{1.3}(b))} \\
+    \implies & \W_1 + \W_2 \subseteq \W.       &  & \text{(by \cref{1.3.10})}
   \end{align*}
 \end{proof}
 
@@ -570,22 +570,22 @@
   Since
   \begin{align*}
              & \forall a \in \W_1 \cap \W_2, \begin{cases}
-      a_n = 0 \\
-      \seq[=]{a}{1,2,,n - 1} = 0
-    \end{cases} \\
-    \implies & \forall a \in \W_1 \cap \W_2, a = \zv                    \\
+                                               a_n = 0 \\
+                                               \seq[=]{a}{1,2,,n - 1} = 0
+                                             \end{cases} \\
+    \implies & \forall a \in \W_1 \cap \W_2, a = \zv                   \\
     \implies & \W_1 \cap \W_2 = \set{\zv}
   \end{align*}
   and
   \begin{align*}
              & \forall a \in \vs{F}^n, \begin{dcases}
-      a = (\seq{a}{1,2,,n - 1}, 0) + (0, \dots, 0, a_n) \\
-      (0, \dots, 0, a_n) \in \W_1                       \\
-      (\seq{a}{1,2,,n - 1}, 0) \in \W_2
-    \end{dcases}                                      \\
-    \implies & \forall a \in \vs{F}^n, a \in \W_1 + \W_2          &  & \text{(by \cref{1.3.11})}       \\
-    \implies & \vs{F}^n \subseteq \W_1 + \W_2                                                          \\
-    \implies & \vs{F}^n = \W_1 + \W_2,                            &  & \text{(by \cref{ex:1.3.23}(a))}
+                                         a = (\seq{a}{1,2,,n - 1}, 0) + (0, \dots, 0, a_n) \\
+                                         (0, \dots, 0, a_n) \in \W_1                       \\
+                                         (\seq{a}{1,2,,n - 1}, 0) \in \W_2
+                                       \end{dcases}                 \\
+    \implies & \forall a \in \vs{F}^n, a \in \W_1 + \W_2            &  & \text{(by \cref{1.3.11})}       \\
+    \implies & \vs{F}^n \subseteq \W_1 + \W_2                                                            \\
+    \implies & \vs{F}^n = \W_1 + \W_2,                              &  & \text{(by \cref{ex:1.3.23}(a))}
   \end{align*}
   By \cref{1.3.11} we know that \(\W_1 \oplus \W_2 = \vs{F}^n\).
 \end{proof}
@@ -610,28 +610,28 @@
   Since
   \begin{align*}
              & \forall f, g \in \W_1, \begin{dcases}
-      f(x) = a_n x^n + a_{n - 1} x^n + \cdots + a_1 x + a_0 \\
-      a_i = 0 \text{ if } i \text{ is even}                 \\
-      g(x) = b_m x^m + b_{m - 1} x^m + \cdots + b_1 x + b_0 \\
-      b_i = 0 \text{ if } i \text{ is even}
-    \end{dcases} \\
+                                        f(x) = a_n x^n + a_{n - 1} x^n + \cdots + a_1 x + a_0 \\
+                                        a_i = 0 \text{ if } i \text{ is even}                 \\
+                                        g(x) = b_m x^m + b_{m - 1} x^m + \cdots + b_1 x + b_0 \\
+                                        b_i = 0 \text{ if } i \text{ is even}
+                                      \end{dcases}    \\
     \implies & \forall f, g \in \W_1, \begin{dcases}
-      (f + g)(x) = c_p x^p + c_{p - 1} x^{p - 1} + c_1 x + c_0 \\
-      p \leq \max(n, m)                                        \\
-      p_i = 0 \text{ if } i \text{ is even}
-    \end{dcases} \\
+                                        (f + g)(x) = c_p x^p + c_{p - 1} x^{p - 1} + c_1 x + c_0 \\
+                                        p \leq \max(n, m)                                        \\
+                                        p_i = 0 \text{ if } i \text{ is even}
+                                      \end{dcases} \\
     \implies & \forall f, g \in \W_1, f + g \in \W_1
   \end{align*}
   and
   \begin{align*}
              & \forall f \in \W_1, \begin{dcases}
-      f(x) = a_n x^n + a_{n - 1} x^n + \cdots + a_1 x + a_0 \\
-      a_i = 0 \text{ if } i \text{ is even}
-    \end{dcases}                \\
+                                     f(x) = a_n x^n + a_{n - 1} x^n + \cdots + a_1 x + a_0 \\
+                                     a_i = 0 \text{ if } i \text{ is even}
+                                   \end{dcases}                       \\
     \implies & \forall (c, f) \in \F \times \W_1, \begin{dcases}
-      (cf)(x) = ca_n x^n + ca_{n - 1} x^n + \cdots + ca_1 x + ca_0 \\
-      ca_i = 0 \text{ if } i \text{ is even}
-    \end{dcases} \\
+                                                    (cf)(x) = ca_n x^n + ca_{n - 1} x^n + \cdots + ca_1 x + ca_0 \\
+                                                    ca_i = 0 \text{ if } i \text{ is even}
+                                                  \end{dcases} \\
     \implies & \forall (c, f) \in \F \times \W_1, cf \in \W_1,
   \end{align*}
   by \cref{1.3} we know that \(\W_1\) is a subspace of \(\ps{\F}\) over \(\F\).
@@ -641,25 +641,25 @@
   Since
   \begin{align*}
              & \forall f \in \W_1 \cap \W_2, \begin{dcases}
-      f(x) = a_n x^n + a_{n - 1} x^n + \cdots + a_1 x + a_0 \\
-      a_i = 0 \text{ if } i \text{ is even}                 \\
-      a_i = 0 \text{ if } i \text{ is odd}
-    \end{dcases} \\
-    \implies & \forall f \in \W_1 \cap \W_2, f = \zv                    \\
+                                               f(x) = a_n x^n + a_{n - 1} x^n + \cdots + a_1 x + a_0 \\
+                                               a_i = 0 \text{ if } i \text{ is even}                 \\
+                                               a_i = 0 \text{ if } i \text{ is odd}
+                                             \end{dcases} \\
+    \implies & \forall f \in \W_1 \cap \W_2, f = \zv                                               \\
     \implies & \W_1 \cap \W_2 = \set{\zv}
   \end{align*}
   and
   \begin{align*}
-             & \forall f \in \ps{\F}, \exists (g_1, g_2) \in \W_1 \times \W_2 :                                      \\
+             & \forall f \in \ps{\F}, \exists (g_1, g_2) \in \W_1 \times \W_2 :                                               \\
              & \begin{dcases}
-      f(x) = a_n x^n + a_{n - 1} x^n + \cdots + a_1 x + a_0              \\
-      g_1(x) = \sum_{i \in \N : i \text{ is odd and } i \leq n} a_i x^i  \\
-      g_2(x) = \sum_{i \in \N : i \text{ is even and } i \leq n} a_i x^i \\
-      f = g_1 + g_2
-    \end{dcases}                                                                            \\
-    \implies & \forall f \in \ps{\F}, f \in \W_1 + \W_2                                                              \\
-    \implies & \ps{\F} \subseteq \W_1 + \W_2                                                                         \\
-    \implies & \ps{\F} = \W_1 + \W_2,                                           &  & \text{(by \cref{ex:1.3.23}(a))}
+                 f(x) = a_n x^n + a_{n - 1} x^n + \cdots + a_1 x + a_0              \\
+                 g_1(x) = \sum_{i \in \N : i \text{ is odd and } i \leq n} a_i x^i  \\
+                 g_2(x) = \sum_{i \in \N : i \text{ is even and } i \leq n} a_i x^i \\
+                 f = g_1 + g_2
+               \end{dcases}                                         \\
+    \implies & \forall f \in \ps{\F}, f \in \W_1 + \W_2                                                                       \\
+    \implies & \ps{\F} \subseteq \W_1 + \W_2                                                                                  \\
+    \implies & \ps{\F} = \W_1 + \W_2,                                                    &  & \text{(by \cref{ex:1.3.23}(a))}
   \end{align*}
   by \cref{1.3.11} we know that \(\W_1 \oplus \W_2 = \ps{\F}\).
 \end{proof}
@@ -676,22 +676,22 @@
   Since
   \begin{align*}
              & \forall A \in \W_1 \cap \W_2, \begin{dcases}
-      A_{i j} = 0 & \text{if } i > j    \\
-      A_{i j} = 0 & \text{if } i \leq j
-    \end{dcases} \\
-    \implies & \forall A \in \W_1 \cap \W_2, A = \zm                    \\
+                                               A_{i j} = 0 & \text{if } i > j    \\
+                                               A_{i j} = 0 & \text{if } i \leq j
+                                             \end{dcases} \\
+    \implies & \forall A \in \W_1 \cap \W_2, A = \zm                           \\
     \implies & \W_1 \cap \W_2 = \set{\zm}
   \end{align*}
   and
   \begin{align*}
              & \forall A \in \MS, \exists (B, C) \in \W_1 \times \W_2 :                                      \\
              & \begin{dcases}
-      B_{i j} = A_{i j} & \text{if } i \leq j \\
-      B_{i j} = 0       & \text{if } i > j    \\
-      C_{i j} = A_{i j} & \text{if } i > j    \\
-      C_{i j} = 0       & \text{if } i \leq j \\
-      A = B + C
-    \end{dcases}                                                                    \\
+                 B_{i j} = A_{i j} & \text{if } i \leq j \\
+                 B_{i j} = 0       & \text{if } i > j    \\
+                 C_{i j} = A_{i j} & \text{if } i > j    \\
+                 C_{i j} = 0       & \text{if } i \leq j \\
+                 A = B + C
+               \end{dcases}                                                       \\
     \implies & \forall A \in \MS, A \in \W_1 + \W_2                                                          \\
     \implies & \MS \subseteq \W_1 + \W_2                                                                     \\
     \implies & \MS = \W_1 + \W_2,                                       &  & \text{(by \cref{ex:1.3.23}(a))}
@@ -741,22 +741,22 @@
   Since
   \begin{align*}
              & \forall A \in \W_1 \cap \W_2, \begin{dcases}
-      A_{i j} = 0 & \text{if } i \neq j \\
-      A_{i j} = 0 & \text{if } i \geq j
-    \end{dcases} &  & \text{(by \cref{1.3.8})} \\
-    \implies & \forall A \in \W_1 \cap \W_2, A = \zm                                                  \\
+                                               A_{i j} = 0 & \text{if } i \neq j \\
+                                               A_{i j} = 0 & \text{if } i \geq j
+                                             \end{dcases} &  & \text{(by \cref{1.3.8})} \\
+    \implies & \forall A \in \W_1 \cap \W_2, A = \zm                                    \\
     \implies & \W_1 \cap \W_2 = \set{\zm}
   \end{align*}
   and
   \begin{align*}
              & \forall A \in \V, \exists (B, C) \in \W_1 \times \W_2 :                                      \\
              & \begin{dcases}
-      B_{i j} = A_{i j} & \text{if } i = j    \\
-      B_{i j} = 0       & \text{if } i \neq j \\
-      C_{i j} = A_{i j} & \text{if } i < j    \\
-      C_{i j} = 0       & \text{if } i \geq j \\
-      A = B + C
-    \end{dcases}                                                                   \\
+                 B_{i j} = A_{i j} & \text{if } i = j    \\
+                 B_{i j} = 0       & \text{if } i \neq j \\
+                 C_{i j} = A_{i j} & \text{if } i < j    \\
+                 C_{i j} = 0       & \text{if } i \geq j \\
+                 A = B + C
+               \end{dcases}                                                      \\
     \implies & \forall A \in \V, A \in \W_1 + \W_2                                                          \\
     \implies & \V \subseteq \W_1 + \W_2                                                                     \\
     \implies & \V = \W_1 + \W_2,                                       &  & \text{(by \cref{ex:1.3.23}(a))}
@@ -797,26 +797,26 @@
   Since
   \begin{align*}
              & \forall A \in \W_1 \cap \W_2, \begin{dcases}
-      \tp{A} = -A \\
-      \tp{A} = A
-    \end{dcases} &  & \text{(by \cref{1.3.5})}                       \\
-    \implies & \forall A \in \W_1 \cap \W_2, A = -A                                                                         \\
-    \implies & \forall A \in \W_1 \cap \W_2, 2A = \zm                                                                       \\
-    \implies & \forall A \in \W_1 \cap \W_2, A = \zm                    &  & \text{(\(\F\) is not of characteristic \(2\))} \\
+                                               \tp{A} = -A \\
+                                               \tp{A} = A
+                                             \end{dcases} &  & \text{(by \cref{1.3.5})}                         \\
+    \implies & \forall A \in \W_1 \cap \W_2, A = -A                                                             \\
+    \implies & \forall A \in \W_1 \cap \W_2, 2A = \zm                                                           \\
+    \implies & \forall A \in \W_1 \cap \W_2, A = \zm        &  & \text{(\(\F\) is not of characteristic \(2\))} \\
     \implies & \W_1 \cap \W_2 = \set{\zm}
   \end{align*}
   and
   \begin{align*}
-             & \forall A \in \ms{n}{n}{\F}, \exists (B, C) \in \W_1 \times \W_2 :                                                \\
+             & \forall A \in \ms{n}{n}{\F}, \exists (B, C) \in \W_1 \times \W_2 :                                                                                                                                                   \\
              & \begin{dcases}
-      B_{i j} = \frac{A_{i j} - A_{j i}}{2} = - \frac{A_{j i} - A_{i j}}{2} = -B_{j i} \\
-      C_{i j} = \frac{A_{i j} + A_{j i}}{2} = \frac{A_{j i} + A_{i j}}{2} = C_{j i}    \\
-      A_{i j} = B_{i j} + C_{i j}
-    \end{dcases}                                                                                        \\
-    \implies & \forall A \in \ms{n}{n}{\F}, \exists (B, C) \in \W_1 \times \W_2 : A = B + C &  & \text{(by \cref{1.2.8})}        \\
-    \implies & \forall A \in \ms{n}{n}{\F}, A \in \W_1 + \W_2                                                                    \\
-    \implies & \ms{n}{n}{\F} \subseteq \W_1 + \W_2                                                                               \\
-    \implies & \ms{n}{n}{\F} = \W_1 + \W_2,                                                 &  & \text{(by \cref{ex:1.3.23}(a))}
+                 B_{i j} = \frac{A_{i j} - A_{j i}}{2} = - \frac{A_{j i} - A_{i j}}{2} = -B_{j i} \\
+                 C_{i j} = \frac{A_{i j} + A_{j i}}{2} = \frac{A_{j i} + A_{i j}}{2} = C_{j i}    \\
+                 A_{i j} = B_{i j} + C_{i j}
+               \end{dcases}                                         \\
+    \implies & \forall A \in \ms{n}{n}{\F}, \exists (B, C) \in \W_1 \times \W_2 : A = B + C                                                                                                    &  & \text{(by \cref{1.2.8})}        \\
+    \implies & \forall A \in \ms{n}{n}{\F}, A \in \W_1 + \W_2                                                                                                                                                                       \\
+    \implies & \ms{n}{n}{\F} \subseteq \W_1 + \W_2                                                                                                                                                                                  \\
+    \implies & \ms{n}{n}{\F} = \W_1 + \W_2,                                                                                                                                                    &  & \text{(by \cref{ex:1.3.23}(a))}
   \end{align*}
   by \cref{1.3.11} we know that \(\W_1 \oplus \W_2 = \ms{n}{n}{\F}\).
 \end{proof}
@@ -837,23 +837,23 @@
   Since
   \begin{align*}
              & \forall A \in \W_1 \cap \W_2, \begin{dcases}
-      A_{i j} = 0 \text{ whenever } i \leq j \\
-      A_{i j} = A_{j i}
-    \end{dcases} &  & \text{(by \cref{1.3.5})} \\
-    \implies & \forall A \in \W_1 \cap \W_2, A_{i j} = 0                                              \\
-    \implies & \forall A \in \W_1 \cap \W_2, A = \zm                                                  \\
+                                               A_{i j} = 0 \text{ whenever } i \leq j \\
+                                               A_{i j} = A_{j i}
+                                             \end{dcases} &  & \text{(by \cref{1.3.5})} \\
+    \implies & \forall A \in \W_1 \cap \W_2, A_{i j} = 0                                \\
+    \implies & \forall A \in \W_1 \cap \W_2, A = \zm                                    \\
     \implies & \W_1 \cap \W_2 = \set{\zm}
   \end{align*}
   and
   \begin{align*}
              & \forall A \in \ms{n}{n}{\F}, \exists (B, C) \in \W_1 \times \W_2 :                                                \\
              & \begin{dcases}
-      C_{i j} = A_{i j} \text{ whenever } i \leq j        \\
-      C_{i j} = C_{j i} \text{ whenever } i > j           \\
-      B_{i j} = 0 \text{ whenever } i \leq j              \\
-      B_{i j} = A_{i j} - C_{i j} \text{ whenever } i > j \\
-      A_{i j} = B_{i j} + C_{i j}
-    \end{dcases}                                                                                        \\
+                 C_{i j} = A_{i j} \text{ whenever } i \leq j        \\
+                 C_{i j} = C_{j i} \text{ whenever } i > j           \\
+                 B_{i j} = 0 \text{ whenever } i \leq j              \\
+                 B_{i j} = A_{i j} - C_{i j} \text{ whenever } i > j \\
+                 A_{i j} = B_{i j} + C_{i j}
+               \end{dcases}                                                               \\
     \implies & \forall A \in \ms{n}{n}{\F}, \exists (B, C) \in \W_1 \times \W_2 : A = B + C &  & \text{(by \cref{1.2.8})}        \\
     \implies & \forall A \in \ms{n}{n}{\F}, A \in \W_1 + \W_2                                                                    \\
     \implies & \ms{n}{n}{\F} \subseteq \W_1 + \W_2                                                                               \\
@@ -887,12 +887,12 @@
   Then we have
   \begin{align*}
              & \begin{dcases}
-      \W_1 \cap \W_2 = \set{\zv} \\
-      x_1 - x_1' \in \W_1        \\
-      x_1 - x_1' \in \W_2
-    \end{dcases} &  & \text{(by \cref{1.3.11})} \\
-    \implies & x_1 - x_1' = \zv                                           \\
-    \implies & x_1 = x_1'                  &  & \text{(by \cref{1.1})}
+                 \W_1 \cap \W_2 = \set{\zv} \\
+                 x_1 - x_1' \in \W_1        \\
+                 x_1 - x_1' \in \W_2
+               \end{dcases} &  & \text{(by \cref{1.3.11})}               \\
+    \implies & x_1 - x_1' = \zv                                          \\
+    \implies & x_1 = x_1'                    &  & \text{(by \cref{1.1})}
   \end{align*}
   and similar argument show that \(x_2 = x_2'\).
   But this means \((x_1, x_2) = (x_1', x_2')\), a contradiction.
@@ -914,11 +914,11 @@
   Since \(\W_1, \W_2\) are subspaces of \(\V\) over \(\F\), we know that \(\zv \in \W_1 \cap \W_2\).
   But
   \begin{align*}
-             & y \in \W_1 \cap \W_2        \\
+             & y \in \W_1 \cap \W_2                                     \\
     \implies & \begin{dcases}
-      y = y + \zv \text{ where } (y, \zv) \in \W_1 \times \W_2 \\
-      y = \zv + y \text{ where } (\zv, y) \in \W_1 \times \W_2
-    \end{dcases}
+                 y = y + \zv \text{ where } (y, \zv) \in \W_1 \times \W_2 \\
+                 y = \zv + y \text{ where } (\zv, y) \in \W_1 \times \W_2
+               \end{dcases}
   \end{align*}
   contradict to the fact that \(y\) can be uniquely written as \(x_1 + x_2\) where \((x_1, x_2) \in \W_1 \times \W_2\).
   Thus we must have \(\W_1 \cap \W_2 = \set{\zv}\).
@@ -961,9 +961,9 @@
   We have
   \begin{align*}
              & \begin{dcases}
-      \W \text{ is a subspace of } \V \text{ over } \F \\
-      v \in \W
-    \end{dcases}                                                            \\
+                 \W \text{ is a subspace of } \V \text{ over } \F \\
+                 v \in \W
+               \end{dcases}                                       \\
     \implies & v + \W = \set{v + w : w \in \W} = \W                 &  & \text{(by \cref{ex:1.3.31})} \\
     \implies & v + \W \text{ is a subspace of } \V \text{ over } \F
   \end{align*}
@@ -993,13 +993,13 @@
   We have
   \begin{align*}
              & \begin{dcases}
-      v_1 + \W = v_1' + \W \\
-      v_2 + \W = v_2' + \W
-    \end{dcases}                                                              \\
+                 v_1 + \W = v_1' + \W \\
+                 v_2 + \W = v_2' + \W
+               \end{dcases}                                                                     \\
     \implies & \begin{dcases}
-      v_1 - v_1' \in \W \\
-      v_2 - v_2' \in \W
-    \end{dcases}                         &  & \text{(by \cref{ex:1.3.31}(b))} \\
+                 v_1 - v_1' \in \W \\
+                 v_2 - v_2' \in \W
+               \end{dcases}                                &  & \text{(by \cref{ex:1.3.31}(b))}         \\
     \implies & (v_1 + v_2) - (v_1' + v_2') \in \W                  &  & \text{(by \cref{1.2.1})}        \\
     \implies & (v_1 + v_2) + \W = (v_1' + v_2') + \W               &  & \text{(by \cref{ex:1.3.31}(b))} \\
     \implies & (v_1 + \W) + (v_2 + \W) = (v_1' + \W) + (v_2' + \W) &  & \text{(by \cref{ex:1.3.31})}

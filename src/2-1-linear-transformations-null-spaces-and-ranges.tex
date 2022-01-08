@@ -40,40 +40,40 @@
 \begin{proof}[\pf{2.1.2}(b)]
   We have
   \begin{align*}
-             & \T \text{ is linear}                                                                                  \\
+             & \T \text{ is linear}                                                                     \\
     \implies & \begin{dcases}
-      \forall x, y \in \V \\
-      \forall c \in \F
-    \end{dcases}, \begin{dcases}
-      \T(x + y) = \T(x) + \T(y) \\
-      \T(cx) = c\T(x)
-    \end{dcases}                    &  & \text{(by \cref{2.1.1})} \\
+                 \forall x, y \in \V \\
+                 \forall c \in \F
+               \end{dcases}, \begin{dcases}
+                               \T(x + y) = \T(x) + \T(y) \\
+                               \T(cx) = c\T(x)
+                             \end{dcases}                               &  & \text{(by \cref{2.1.1})}   \\
     \implies & \begin{dcases}
-      \forall x, y \in \V \\
-      \forall c \in \F
-    \end{dcases}, \T(cx + y) = \T(cx) + \T(y) = c\T(x) + \T(y) &  & \text{(by \cref{2.1.1})}
+                 \forall x, y \in \V \\
+                 \forall c \in \F
+               \end{dcases}, \T(cx + y) = \T(cx) + \T(y) = c\T(x) + \T(y) &  & \text{(by \cref{2.1.1})}
   \end{align*}
   and
   \begin{align*}
              & \begin{dcases}
-      \forall x, y \in \V \\
-      \forall c \in \F
-    \end{dcases}, \T(cx + y) = c\T(x) + \T(y)                                  \\
+                 \forall x, y \in \V \\
+                 \forall c \in \F
+               \end{dcases}, \T(cx + y) = c\T(x) + \T(y)                                                        \\
     \implies & \begin{dcases}
-      \forall x, y \in \V \\
-      \forall c \in \F
-    \end{dcases}, \begin{dcases}
-      \T(x + y) = \T(x) + \T(y)             & \text{if } c = 0        \\
-      \T(cx + \zv_{\V}) = c\T(x) + \zv_{\W} & \text{if } y = \zv_{\V}
-    \end{dcases}  &  & \text{(by \cref{2.1.2}(a))} \\
+                 \forall x, y \in \V \\
+                 \forall c \in \F
+               \end{dcases}, \begin{dcases}
+                               \T(x + y) = \T(x) + \T(y)             & \text{if } c = 0        \\
+                               \T(cx + \zv_{\V}) = c\T(x) + \zv_{\W} & \text{if } y = \zv_{\V}
+                             \end{dcases} &  & \text{(by \cref{2.1.2}(a))}                    \\
     \implies & \begin{dcases}
-      \forall x, y \in \V \\
-      \forall c \in \F
-    \end{dcases}, \begin{dcases}
-      \T(x + y) = \T(x) + \T(y) & \text{if } c = 0        \\
-      \T(cx) = c\T(x)           & \text{if } y = \zv_{\V}
-    \end{dcases} &  & \text{(by \ref{vs3})}       \\
-    \implies & \T \text{ is linear}.                                  &  & \text{(by \cref{2.1.1})}
+                 \forall x, y \in \V \\
+                 \forall c \in \F
+               \end{dcases}, \begin{dcases}
+                               \T(x + y) = \T(x) + \T(y) & \text{if } c = 0        \\
+                               \T(cx) = c\T(x)           & \text{if } y = \zv_{\V}
+                             \end{dcases}             &  & \text{(by \ref{vs3})}                                \\
+    \implies & \T \text{ is linear}.                                              &  & \text{(by \cref{2.1.1})}
   \end{align*}
   Thus
   \[
@@ -99,22 +99,22 @@
   \begin{align*}
              & \T \text{ is linear}                                                                                                  \\
     \implies & \begin{dcases}
-      \forall \seq{x}{1,2,,n} \in \V \\
-      \forall \seq{a}{1,2,,n} \in \F
-    \end{dcases},                                                                                           \\
+                 \forall \seq{x}{1,2,,n} \in \V \\
+                 \forall \seq{a}{1,2,,n} \in \F
+               \end{dcases},                                                                                        \\
              & \T\pa{\sum_{i = 1}^n a_i x_i} = \sum_{i = 1}^n \T(a_i x_i) = \sum_{i = 1}^n a_i \T(x_i) &  & \text{(by \cref{2.1.1})}
   \end{align*}
   and
   \begin{align*}
              & \begin{dcases}
-      \forall \seq{x}{1,2,,n} \in \V \\
-      \forall \seq{a}{1,2,,n} \in \F
-    \end{dcases},                                                                 \\
+                 \forall \seq{x}{1,2,,n} \in \V \\
+                 \forall \seq{a}{1,2,,n} \in \F
+               \end{dcases},                                                              \\
              & \T\pa{\sum_{i = 1}^n a_i x_i} = \sum_{i = 1}^n a_i \T(x_i) &  & \text{(by \cref{2.1.1})}    \\
     \implies & \begin{dcases}
-      \forall x, y \in \V \\
-      \forall c \in \F
-    \end{dcases},                                                                 \\
+                 \forall x, y \in \V \\
+                 \forall c \in \F
+               \end{dcases},                                                                         \\
              & \T(cx + 1y) = c\T(x) + 1\T(y) = c\T(x) + \T(y)             &  & \text{(by \ref{vs5})}       \\
     \implies & \T \text{ is linear}.                                      &  & \text{(by \cref{2.1.2}(b))}
   \end{align*}
@@ -575,16 +575,16 @@
   Since
   \begin{align*}
              & \begin{dcases}
-      \forall \seq{w}{1,2,,k} \in \T(S) \\
-      \forall \seq{a}{1,2,,k} \in \F
-    \end{dcases}, \sum_{i = 1}^k a_i w_i = \zv_{\W}                                    \\
-    \implies & \exists \seq{v}{1,2,,k} \in S :                                                                  \\
+                 \forall \seq{w}{1,2,,k} \in \T(S) \\
+                 \forall \seq{a}{1,2,,k} \in \F
+               \end{dcases}, \sum_{i = 1}^k a_i w_i = \zv_{\W}                                                                                                             \\
+    \implies & \exists \seq{v}{1,2,,k} \in S :                                                                                                                             \\
              & \begin{dcases}
-      \forall i \in \set{1, 2, \dots, k}, \T(v_i) = w_i \\
-      \sum_{i = 1}^k a_i w_i = \sum_{i = 1}^k a_i \T(v_i) = \T\pa{\sum_{i = 1}^k a_i v_i} = \zv_{\W} = \T(\zv_{\V})
-    \end{dcases}                                    &  & \text{(by \cref{2.1.2})}      \\
-    \implies & \sum_{i = 1}^k a_i v_i = \zv_{\V}                             &  & \text{(\(\T\) is one-to-one)} \\
-    \implies & \seq[=]{a}{1,2,,k} = 0,                                       &  & \text{(by \cref{1.5.3})}
+                 \forall i \in \set{1, 2, \dots, k}, \T(v_i) = w_i \\
+                 \sum_{i = 1}^k a_i w_i = \sum_{i = 1}^k a_i \T(v_i) = \T\pa{\sum_{i = 1}^k a_i v_i} = \zv_{\W} = \T(\zv_{\V})
+               \end{dcases} &  & \text{(by \cref{2.1.2})}                                     \\
+    \implies & \sum_{i = 1}^k a_i v_i = \zv_{\V}                                                                                        &  & \text{(\(\T\) is one-to-one)} \\
+    \implies & \seq[=]{a}{1,2,,k} = 0,                                                                                                  &  & \text{(by \cref{1.5.3})}
   \end{align*}
   by \cref{1.5.3} we know that \(\T(S)\) is linearly independent.
   Since \(S\) is arbitrary, we conclude that \(\T\) carries linearly independent subsets of \(\V\) onto linearly independent subsets of \(\W\).
@@ -658,12 +658,12 @@
   Let \(f \in \ps{\R}\).
   Since
   \begin{align*}
-             & f \in \ps{\R}                                                          \\
-    \implies & \exists \seq{a}{0,1,,n} \in \R : f(x) = a_0 + a_1 x + \cdots + a_n x^n \\
+             & f \in \ps{\R}                                                                          \\
+    \implies & \exists \seq{a}{0,1,,n} \in \R : f(x) = a_0 + a_1 x + \cdots + a_n x^n                 \\
     \implies & \begin{dcases}
-      x \mapsto a_0 x + \frac{a_1}{2} x^2 + \cdots + \frac{a_n}{n + 1} x^{n + 1} \in \ps{\R} \\
-      (x \mapsto a_0 x + \frac{a_1}{2} x^2 + \cdots + \frac{a_n}{n + 1} x^{n + 1})' = f
-    \end{dcases}
+                 x \mapsto a_0 x + \frac{a_1}{2} x^2 + \cdots + \frac{a_n}{n + 1} x^{n + 1} \in \ps{\R} \\
+                 (x \mapsto a_0 x + \frac{a_1}{2} x^2 + \cdots + \frac{a_n}{n + 1} x^{n + 1})' = f
+               \end{dcases}
   \end{align*}
   and \(f\) is arbitrary, we know that \(\T\) is onto.
 
@@ -728,19 +728,19 @@
   \end{align*}
   and
   \begin{align*}
-             & w_1, w_2 \in \T(\V_1)                                                                    \\
+             & w_1, w_2 \in \T(\V_1)                                                                  \\
     \implies & \exists v_1, v_2 \in \V_1 : \begin{dcases}
-      \T(v_1) = w_1 \\
-      \T(v_2) = w_2
-    \end{dcases}                                   \\
+                                             \T(v_1) = w_1 \\
+                                             \T(v_2) = w_2
+                                           \end{dcases}                                              \\
     \implies & \begin{dcases}
-      v_1 + v_2 \in \V_1 \\
-      c v_1 \in \V_1
-    \end{dcases}                             &  & \text{(by \cref{1.3}(b)(c))} \\
+                 v_1 + v_2 \in \V_1 \\
+                 c v_1 \in \V_1
+               \end{dcases}                                         &  & \text{(by \cref{1.3}(b)(c))} \\
     \implies & \begin{dcases}
-      w_1 + w_2 = \T(v_1) + \T(v_2) = \T(v_1 + v_2) \in \T(\V_1) \\
-      c w_1 = c \T(v_1) = \T(c v_1) \in \T(\V_1)
-    \end{dcases},                            &  & \text{(by \cref{2.1.1})}
+                 w_1 + w_2 = \T(v_1) + \T(v_2) = \T(v_1 + v_2) \in \T(\V_1) \\
+                 c w_1 = c \T(v_1) = \T(c v_1) \in \T(\V_1)
+               \end{dcases}, &  & \text{(by \cref{2.1.1})}
   \end{align*}
   by \cref{1.3} we know that \(\T(\V_1)\) is a subspace of \(\W\) over \(\F\).
 
@@ -755,20 +755,20 @@
   \end{align*}
   and
   \begin{align*}
-             & v_1, v_2 \in \V'                                              \\
-    \implies & \T(v_1), \T(v_2) \in \W_1                                     \\
+             & v_1, v_2 \in \V'                                               \\
+    \implies & \T(v_1), \T(v_2) \in \W_1                                      \\
     \implies & \begin{dcases}
-      \T(v_1) + \T(v_2) \in \W_1 \\
-      c \T(v_1) \in \W_1
-    \end{dcases}  &  & \text{(by \cref{1.3}(b)(c))} \\
+                 \T(v_1) + \T(v_2) \in \W_1 \\
+                 c \T(v_1) \in \W_1
+               \end{dcases}                 &  & \text{(by \cref{1.3}(b)(c))} \\
     \implies & \begin{dcases}
-      \T(v_1) + \T(v_2) = \T(v_1 + v_2) \in \W_1 \\
-      c \T(v_1) = \T(c v_1) \in \W_1
-    \end{dcases}  &  & \text{(by \cref{2.1.1})}     \\
+                 \T(v_1) + \T(v_2) = \T(v_1 + v_2) \in \W_1 \\
+                 c \T(v_1) = \T(c v_1) \in \W_1
+               \end{dcases} &  & \text{(by \cref{2.1.1})}                     \\
     \implies & \begin{dcases}
-      v_1 + v_2 \in \V' \\
-      c v_1 \in \V'
-    \end{dcases},
+                 v_1 + v_2 \in \V' \\
+                 c v_1 \in \V'
+               \end{dcases},
   \end{align*}
   by \cref{1.3} we know that \(\V'\) is a subspace of \(\V\) over \(\F\).
 \end{proof}
@@ -890,13 +890,13 @@
   Let \(x, y \in \V\) and let \(c \in \F\).
   Since
   \begin{align*}
-             & \V = \W_1 \oplus \W_2                                                                                           \\
+             & \V = \W_1 \oplus \W_2                                                                               \\
     \implies & \exists (x_1, x_2), (y_1, y_2) \in \W_1 \times \W_2 : \begin{dcases}
-      x = x_1 + x_2 \\
-      y = y_1 + y_2
-    \end{dcases} &  & \text{(by \cref{1.3.11})} \\
-    \implies & \T(cx + y) = \T(c (x_1 + x_2) + y_1 + y_2)                                                                      \\
-             & = \T(c x_1 + y_1 + c x_2 + y_2) = c x_1 + y_1 = c \T(x) + \T(y),                 &  & \text{(by \cref{2.1.14})}
+                                                                       x = x_1 + x_2 \\
+                                                                       y = y_1 + y_2
+                                                                     \end{dcases} &  & \text{(by \cref{1.3.11})}   \\
+    \implies & \T(cx + y) = \T(c (x_1 + x_2) + y_1 + y_2)                                                          \\
+             & = \T(c x_1 + y_1 + c x_2 + y_2) = c x_1 + y_1 = c \T(x) + \T(y),     &  & \text{(by \cref{2.1.14})}
   \end{align*}
   by \cref{2.1.2}(b) we know that \(\T\) is linear.
 
@@ -956,9 +956,9 @@
   We have
   \begin{align*}
              & \begin{dcases}
-      \V = \W_1 \oplus \W_2 \\
-      \V = \W_1
-    \end{dcases}                                                            \\
+                 \V = \W_1 \oplus \W_2 \\
+                 \V = \W_1
+               \end{dcases}                                                                 \\
     \implies & \W_1 \cap \W_2 = \V \cap \W_2 = \W_2 = \set{\zv} &  & \text{(by \cref{1.3.11})}       \\
     \implies & \ns{\T} = \W_2 = \set{\zv}                       &  & \text{(by \cref{ex:2.1.26}(b))} \\
     \implies & \T \text{ is one-to-one}                         &  & \text{(by \cref{2.4})}          \\
@@ -1101,9 +1101,9 @@
   \begin{align*}
              & \T \text{ is a projection on } \W \text{ along } \W'                                                                 \\
     \implies & \begin{dcases}
-      \V = \W \oplus \W' \\
-      \forall x \in \V, \exists (x_1, x_2) \in \W \times \W' : \T(x) = \T(x_1 + x_2) = x_1
-    \end{dcases}                                                           &  & \text{(by \cref{2.1.14})} \\
+                 \V = \W \oplus \W' \\
+                 \forall x \in \V, \exists (x_1, x_2) \in \W \times \W' : \T(x) = \T(x_1 + x_2) = x_1
+               \end{dcases}  &  & \text{(by \cref{2.1.14})}                                  \\
     \implies & \forall x \in \W, \exists (x, \zv) \in \W \times \W' : \T(x) = \T(x + \zv) = x \in \W &  & \text{(by \cref{1.3}(a))} \\
     \implies & \T(\W) \subseteq \W                                                                                                  \\
     \implies & \W \text{ is } \T\text{-invariant}                                                    &  & \text{(by \cref{2.1.15})}
@@ -1130,9 +1130,9 @@
   We have
   \begin{align*}
              & \begin{dcases}
-      \V = \rg{\T} \oplus \W \\
-      \T(\W) \subseteq \W
-    \end{dcases}                               &  & \text{(by \cref{2.1.15})} \\
+                 \V = \rg{\T} \oplus \W \\
+                 \T(\W) \subseteq \W
+               \end{dcases}                                 &  & \text{(by \cref{2.1.15})}              \\
     \implies & \rg{\T} \cap \T(\W) \subseteq \rg{\T} \cap \W = \set{\zv} &  & \text{(by \cref{1.3.11})} \\
     \implies & \T(\W) = \rg{\T} \cap \T(\W) \subseteq \set{\zv}          &  & \text{(by \cref{2.1.10})} \\
     \implies & \forall x \in \W, \T(x) = \zv                                                            \\
@@ -1168,19 +1168,19 @@
   First we show that \(\ns{\T_{\W}} = \ns{\T} \cap \W\).
   Since
   \begin{align*}
-         & x \in \ns{\T_{\W}}                                         \\
+         & x \in \ns{\T_{\W}}                                  \\
     \iff & \begin{dcases}
-      x \in \W \\
-      \T_{\W}(x) = \zv
-    \end{dcases} &  & \text{(by \cref{2.1.10})} \\
+             x \in \W \\
+             \T_{\W}(x) = \zv
+           \end{dcases}       &  & \text{(by \cref{2.1.10})}   \\
     \iff & \begin{dcases}
-      x \in \W \\
-      \T(x) = \zv
-    \end{dcases} &  & \text{(by \cref{2.1.15})} \\
+             x \in \W \\
+             \T(x) = \zv
+           \end{dcases}         &  & \text{(by \cref{2.1.15})} \\
     \iff & \begin{dcases}
-      x \in \W \\
-      x \in \ns{\T}
-    \end{dcases} &  & \text{(by \cref{2.1.15})} \\
+             x \in \W \\
+             x \in \ns{\T}
+           \end{dcases}         &  & \text{(by \cref{2.1.15})} \\
     \iff & x \in \ns{\T} \cap \W,
   \end{align*}
   we know that \(\ns{\T_{\W}} = \ns{\T} \cap \W\).
@@ -1282,9 +1282,9 @@
   We have
   \begin{align*}
              & \begin{dcases}
-      \V = \rg{\T} + \ns{\T} \\
-      \dim(\V) = \rk{\T} + \nt{\T}
-    \end{dcases}  &  & \text{(by \cref{2.3})}          \\
+                 \V = \rg{\T} + \ns{\T} \\
+                 \dim(\V) = \rk{\T} + \nt{\T}
+               \end{dcases} &  & \text{(by \cref{2.3})}                          \\
     \implies & \V = \rg{\T} \oplus \ns{\T}. &  & \text{(by \cref{ex:1.6.29}(b))}
   \end{align*}
 \end{proof}

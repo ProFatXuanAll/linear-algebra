@@ -58,15 +58,15 @@
   But then we have
   \begin{align*}
              & \begin{dcases}
-      M \text{ is finite} \\
-      S \text{ is infinite}
-    \end{dcases}                    \\
-    \implies & S \setminus M \neq \varnothing               \\
-    \implies & \exists s \in S : s \notin M                 \\
+                 M \text{ is finite} \\
+                 S \text{ is infinite}
+               \end{dcases}                            \\
+    \implies & S \setminus M \neq \varnothing                  \\
+    \implies & \exists s \in S : s \notin M                    \\
     \implies & \exists s \in S : \begin{dcases}
-      M \subseteq M \cup \set{s} \\
-      M \cup \set{s} \in \mathcal{F}
-    \end{dcases}
+                                   M \subseteq M \cup \set{s} \\
+                                   M \cup \set{s} \in \mathcal{F}
+                                 \end{dcases}
   \end{align*}
   which contradict to the fact that \(M\) is a maximal element of \(\mathcal{F}\).
 \end{proof}
@@ -85,14 +85,14 @@
   We have
   \begin{align*}
              & \forall \seq{A}{m,n} \in \mathcal{C}, \begin{dcases}
-      A_m = \set{1, 2, \dots, m} \\
-      A_n = \set{1, 2, \dots, n}
-    \end{dcases}                               \\
+                                                       A_m = \set{1, 2, \dots, m} \\
+                                                       A_n = \set{1, 2, \dots, n}
+                                                     \end{dcases}                   \\
     \implies & \forall \seq{A}{m,n} \in \mathcal{C}, \begin{dcases}
-      A_m \subseteq A_n & \text{if } m \leq n \\
-      A_n \subseteq A_m & \text{if } m > n
-    \end{dcases}                               \\
-    \implies & \mathcal{C} \text{ is a chain}.                                  &  & \text{(by \cref{1.7.5})}
+                                                       A_m \subseteq A_n & \text{if } m \leq n \\
+                                                       A_n \subseteq A_m & \text{if } m > n
+                                                     \end{dcases}      \\
+    \implies & \mathcal{C} \text{ is a chain}.                      &  & \text{(by \cref{1.7.5})}
   \end{align*}
 \end{proof}
 
@@ -231,9 +231,9 @@
     \implies & \exists \seq{q}{0,1,,n} \in \Q : \pi^{n + 1} = \sum_{i = 1}^n q_i \pi^i                                       \\
     \implies & \exists \seq{q}{0,1,,n} \in \Q : \pi^{n + 1} - \sum_{i = 1}^n q_i \pi^i = 0                                   \\
     \implies & \exists \seq{q}{0,1,,n + 1} \in \Q : \begin{dcases}
-      \sum_{i = 1}^{n + 1} q_i \pi^i = 0 \\
-      q_{n + 1} \neq 0
-    \end{dcases}.
+                                                      \sum_{i = 1}^{n + 1} q_i \pi^i = 0 \\
+                                                      q_{n + 1} \neq 0
+                                                    \end{dcases}.
   \end{align*}
   But \(\pi\) is transcendental implies that \(\seq[=]{q}{0,1,,n + 1} = 0\), a contradiction.
   Thus \(\R\) over \(\Q\) is infinite-dimensional.
@@ -284,18 +284,18 @@
   If \(n \geq m\), then we have
   \begin{align*}
              & \begin{dcases}
-      v = \seq[+]{a,u}{1,2,,n} \\
-      v = \seq[+]{b,u}{1,2,,m}
-    \end{dcases}                                                                 \\
+                 v = \seq[+]{a,u}{1,2,,n} \\
+                 v = \seq[+]{b,u}{1,2,,m}
+               \end{dcases}                                                                   \\
     \implies & \seq[+]{a,u}{1,2,,n} - \seq[-]{b,u}{1,2,,m} = \zv            &  & \text{(by \cref{1.2.1})} \\
     \implies & (a_1 - b_1) u_1 + (a_2 - b_2) u_2 + \cdots + (a_m - b_m) u_m                               \\
              & + \seq[+]{a,u}{m + 1,,n} = \zv                               &  & \text{(by \cref{1.2.1})} \\
     \implies & a_1 - b_1 = a_2 - b_2 = \cdots = a_m - b_m                                                 \\
              & = \seq[=]{a}{m + 1,,n} = 0                                   &  & \text{(by \cref{1.5.3})} \\
     \implies & \begin{dcases}
-      v = \seq[+]{a,u}{1,2,,m} \\
-      v = \seq[+]{b,u}{1,2,,m}
-    \end{dcases}
+                 v = \seq[+]{a,u}{1,2,,m} \\
+                 v = \seq[+]{b,u}{1,2,,m}
+               \end{dcases}
   \end{align*}
   Similar arguments show that when \(n \leq m\) we have
   \[
@@ -308,9 +308,9 @@
   But then we have
   \begin{align*}
              & \begin{dcases}
-      v = \seq[+]{a,u}{1,2,,n} \\
-      v = \seq[+]{b,u}{1,2,,n}
-    \end{dcases}                                                                       \\
+                 v = \seq[+]{a,u}{1,2,,n} \\
+                 v = \seq[+]{b,u}{1,2,,n}
+               \end{dcases}                                                                         \\
     \implies & \seq[+]{a,u}{1,2,,n} - \seq[-]{b,u}{1,2,,n} = \zv                  &  & \text{(by \cref{1.2.1})} \\
     \implies & (a_1 - b_1) u_1 + (a_2 - b_2) u_2 + \cdots + (a_n - b_n) u_n = \zv &  & \text{(by \cref{1.2.1})} \\
     \implies & a_1 - b_1 = a_2 - b_2 = \cdots = a_n - b_n = 0                     &  & \text{(by \cref{1.5.3})} \\

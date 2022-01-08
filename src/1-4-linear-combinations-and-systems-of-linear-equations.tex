@@ -116,9 +116,9 @@
   We have
   \begin{align*}
              & \forall v \in \spn{\set{x}}, \begin{dcases}
-      \exists \seq{x}{1,2,,n} \in \set{x} \\
-      \exists \seq{a}{1,2,,n} \in \F
-    \end{dcases} :                                                     \\
+                                              \exists \seq{x}{1,2,,n} \in \set{x} \\
+                                              \exists \seq{a}{1,2,,n} \in \F
+                                            \end{dcases} :                                              \\
              & v = \seq[+]{a,x}{1,2,,n} \in \spn{\set{x}}                                      &  & \text{(by \cref{1.4.3})} \\
     \implies & \forall v \in \spn{\set{x}}, \exists \seq{a}{1,2,,n} \in \F :                                                 \\
              & v = a_1 x + a_2 x + \cdots a_n x = (\seq[+]{a}{1,2,,n}) x                       &  & \text{(by \ref{vs8})}    \\
@@ -137,13 +137,13 @@
   We have
   \begin{align*}
          & \begin{dcases}
-      \W \subseteq \spn{\W} \\
-      \W \subseteq \W \text{ and }\W \text{ is a subspace of } \V \text{ over } \F
-    \end{dcases} &  & \text{(by \cref{1.4.3})} \\
+             \W \subseteq \spn{\W} \\
+             \W \subseteq \W \text{ and }\W \text{ is a subspace of } \V \text{ over } \F
+           \end{dcases} &  & \text{(by \cref{1.4.3})}                  \\
     \iff & \begin{dcases}
-      \W \subseteq \spn{\W} \\
-      \spn{\W} \subseteq \W
-    \end{dcases} &  & \text{(by \cref{1.5})}   \\
+             \W \subseteq \spn{\W} \\
+             \spn{\W} \subseteq \W
+           \end{dcases}                                                     &  & \text{(by \cref{1.5})} \\
     \iff & \spn{\W} = \W.
   \end{align*}
 \end{proof}
@@ -157,10 +157,10 @@
   We have
   \begin{align*}
              & \forall v \in \spn{S_1}, \begin{dcases}
-      \exists \seq{u}{1,2,,n} \in S_1 \subseteq S_2 \\
-      \exists \seq{a}{1,2,,n} \in \F
-    \end{dcases} :                               \\
-             & v = \seq[+]{a,u}{1,2,,n} \in \spn{S_2}                &  & \text{(by \cref{1.4.3})} \\
+                                          \exists \seq{u}{1,2,,n} \in S_1 \subseteq S_2 \\
+                                          \exists \seq{a}{1,2,,n} \in \F
+                                        \end{dcases} :         \\
+             & v = \seq[+]{a,u}{1,2,,n} \in \spn{S_2}           &  & \text{(by \cref{1.4.3})} \\
     \implies & \spn{S_1} \subseteq \spn{S_2}.
   \end{align*}
 
@@ -182,20 +182,20 @@
   \begin{align*}
          & v \in \spn{S_1 \cup S_2}                                                                                   \\
     \iff & \begin{dcases}
-      \exists \seq{u}{1,2,,n + m} \in S_1 \cup S_2 \\
-      \exists \seq{a}{1,2,,n + m} \in \F
-    \end{dcases} :                                                                               \\
+             \exists \seq{u}{1,2,,n + m} \in S_1 \cup S_2 \\
+             \exists \seq{a}{1,2,,n + m} \in \F
+           \end{dcases} :                                                               \\
          & v = \seq[+]{a,u}{1,2,,n + m}                                                &  & \text{(by \cref{1.4.3})}  \\
     \iff & \begin{dcases}
-      \exists \seq{u}{1,2,,n} \in S_1             \\
-      \exists \seq{u}{n + 1,n + 2,,n + m} \in S_2 \\
-      \exists \seq{a}{1,2,,n + m} \in \F
-    \end{dcases} :                                                                               \\
+             \exists \seq{u}{1,2,,n} \in S_1             \\
+             \exists \seq{u}{n + 1,n + 2,,n + m} \in S_2 \\
+             \exists \seq{a}{1,2,,n + m} \in \F
+           \end{dcases} :                                                                \\
          & \begin{dcases}
-      v_1 = \seq[+]{a,u}{1,2,,n}             \\
-      v_2 = \seq[+]{a,u}{n + 1,n + 2,,n + m} \\
-      v = v_1 + v_2
-    \end{dcases}                                                  &  & \text{(by \cref{1.4.3})}  \\
+             v_1 = \seq[+]{a,u}{1,2,,n}             \\
+             v_2 = \seq[+]{a,u}{n + 1,n + 2,,n + m} \\
+             v = v_1 + v_2
+           \end{dcases}                                   &  & \text{(by \cref{1.4.3})}                               \\
     \iff & \exists \tuple{v}{1,2} \in \spn{S_1} \times \spn{S_2} : v = \seq[+]{v}{1,2} &  & \text{(by \cref{1.4.3})}  \\
     \iff & v \in \spn{S_1} + \spn{S_2}                                                 &  & \text{(by \cref{1.3.10})}
   \end{align*}
@@ -213,14 +213,14 @@
   We have
   \begin{align*}
              & \forall v \in \spn{S_1 \cap S_2}, \begin{dcases}
-      \exists \seq{u}{1,2,,n} \in S_1 \cap S_2 \\
-      \exists \seq{a}{1,2,,n} \in \F
-    \end{dcases} :                               \\
+                                                   \exists \seq{u}{1,2,,n} \in S_1 \cap S_2 \\
+                                                   \exists \seq{a}{1,2,,n} \in \F
+                                                 \end{dcases} : \\
              & \begin{dcases}
-      \seq[+]{a,u}{1,2,,n} \in \spn{S_1} \\
-      \seq[+]{a,u}{1,2,,n} \in \spn{S_2} \\
-      v = \seq[+]{a,u}{1,2,,n}
-    \end{dcases}                                     &  & \text{(by \cref{1.4.3})} \\
+                 \seq[+]{a,u}{1,2,,n} \in \spn{S_1} \\
+                 \seq[+]{a,u}{1,2,,n} \in \spn{S_2} \\
+                 v = \seq[+]{a,u}{1,2,,n}
+               \end{dcases}                  &  & \text{(by \cref{1.4.3})}                \\
     \implies & \spn{S_1 \cap S_2} \subseteq \spn{S_1} \cap \spn{S_2}.
   \end{align*}
 
@@ -254,9 +254,9 @@
   If \(x = \zv\), then by hypothesis we know that
   \begin{align*}
              & \begin{dcases}
-      \forall \seq{v}{1,2,,n} \in S \\
-      \forall \seq{a}{1,2,,n} \in \F
-    \end{dcases}, \seq[+]{a,v}{1,2,,n} = \zv \\
+                 \forall \seq{v}{1,2,,n} \in S \\
+                 \forall \seq{a}{1,2,,n} \in \F
+               \end{dcases}, \seq[+]{a,v}{1,2,,n} = \zv \\
     \implies & \seq[=]{a}{1,2,,n} = 0
   \end{align*}
   and thus \(\zv\) can be uniquely written as a linear combination of vectors of \(S\).
