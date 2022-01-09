@@ -273,3 +273,25 @@
     \end{pmatrix}.
   \]
 \end{proof}
+
+\begin{ex}\label{ex:2.2.10}
+  Let \(\V\) be a vector space over \(\F\) with the ordered basis \(\beta = \set{\seq{v}{1,2,,n}}\) over \(\F\).
+  Define \(v_0 = 0\).
+  By \cref{2.6} there exists a linear transformation \(\T : \V \to \V\) such that \(\T(v_j) = v_j + v_{j - 1}\) for \(j = 1, 2, \dots, n\).
+  Compute \([\T]_{\beta}\).
+\end{ex}
+
+\begin{proof}[\pf{ex:2.2.10}]
+  By \cref{2.2.4,ex:1.5.6} we have
+  \[
+    [\T]_{\beta} = \begin{pmatrix}
+      1      & 1      & 0      & \cdots & 0      & 0      & 0      \\
+      0      & 1      & 1      & \cdots & 0      & 0      & 0      \\
+      0      & 0      & 1      & \cdots & 0      & 0      & 0      \\
+      \vdots & \vdots & \vdots & \ddots & \vdots & \vdots & \vdots \\
+      0      & 0      & 0      & \cdots & 1      & 1      & 0      \\
+      0      & 0      & 0      & \cdots & 0      & 1      & 1      \\
+      0      & 0      & 0      & \cdots & 0      & 0      & 1
+    \end{pmatrix} = \sum_{i = 1}^n E^{i i} + \sum_{i = 2}^n E^{(i - 1) i}.
+  \]
+\end{proof}
