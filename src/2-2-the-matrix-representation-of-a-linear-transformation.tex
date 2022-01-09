@@ -173,7 +173,7 @@
   \end{enumerate}
 \end{thm}
 
-\begin{proof}[\pf{2.8}]
+\begin{proof}[\pf{2.8}(a)]
   Let \(\beta = \set{\seq{v}{1,2,,n}}\) and \(\gamma = \set{\seq{w}{1,2,,m}}\).
   There exist unique scalars \(a_{i j}\) and \(b_{i j}\) (\(1 \leq i \leq m\), \(1 \leq j \leq n\)) such that
   \[
@@ -187,5 +187,57 @@
   \[
     ([\T + \U]_{\beta}^{\gamma})_{i j} = a_{i j} + b_{i j} = ([\T]_{\beta}^{\gamma} + [\U]_{\beta}^{\gamma})_{i j}.
   \]
-  So (a) is proved, and the proof of (b) is similar.
+\end{proof}
+
+\begin{proof}[\pf{2.8}(b)]
+  Let \(\beta = \set{\seq{v}{1,2,,n}}\).
+  There exist unique scalars \(c_{i j}\) (\(1 \leq i \leq m\), \(1 \leq j \leq n\)) such that
+  \[
+    \T(v_j) = \sum_{i = 1}^m c_{i j} w_i \quad \text{for } 1 \leq j \leq n.
+  \]
+  Hence
+  \[
+    (a \T)(v_j) = \sum_{i = 1}^m (a c_{i j}) w_i.
+  \]
+  Thus
+  \[
+    ([a \T]_{\beta}^{\gamma})_{i j} = a c_{i j} = a ([\T]_{\beta}^{\gamma})_{i j}.
+  \]
+\end{proof}
+
+\exercisesection
+
+\setcounter{ex}{7}
+\begin{ex}\label{ex:2.2.8}
+  Let \(\V\) be an \(n\)-dimensional vector space over \(\F\) with an ordered basis \(\beta\) over \(\F\).
+  Define \(\T : \V \to \vs{F}^n\) by \(\T(x) = [x]_{\beta}\).
+  Prove that \(\T\) is linear.
+\end{ex}
+
+\begin{proof}[\pf{ex:2.2.8}]
+  Let \(\beta = \set{\seq{v}{1,2,,n}}\), let \(x, y \in \V\) and let \(c \in \F\).
+  Since
+  \begin{align*}
+             & \exists \seq{a}{1,2,,n}, \seq{b}{1,2,,n} \in \F : \begin{dcases}
+                                                                   x = \sum_{i = 1}^n a_i v_i \\
+                                                                   y = \sum_{i = 1}^n b_i v_i
+                                                                 \end{dcases} &  & \text{(by \cref{1.8})}       \\
+    \implies & cx + y = \sum_{i = 1}^n (ca_i + b_i) v_i                         &  & \text{(by \cref{1.2.1})}   \\
+    \implies & \T(cx + y) = [cx + y]_{\beta} = \begin{pmatrix}
+                                                 ca_1 + b_1 \\
+                                                 \vdots     \\
+                                                 ca_n + b_n
+                                               \end{pmatrix}                  &  & \text{(by \cref{2.2.3})}     \\
+             & = c \begin{pmatrix}
+                     a_1    \\
+                     \vdots \\
+                     a_n
+                   \end{pmatrix} + \begin{pmatrix}
+                                     b_1    \\
+                                     \vdots \\
+                                     b_n
+                                   \end{pmatrix}                                  &  & \text{(by \cref{1.2.9})} \\
+             & = c [x]_{\beta} + [y]_{\beta} = c \T(x) + \T(y),                 &  & \text{(by \cref{2.2.3})}
+  \end{align*}
+  by \cref{2.1.2}(b) we know that \(\T\) is linear.
 \end{proof}
