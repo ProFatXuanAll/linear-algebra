@@ -241,3 +241,35 @@
   \end{align*}
   by \cref{2.1.2}(b) we know that \(\T\) is linear.
 \end{proof}
+
+\begin{ex}\label{ex:2.2.9}
+  Let \(\V\) be the vector space of complex numbers \(\C\) over the field \(\R\).
+  Define \(\T : \V \to \V\) by \(\T(z) = \overline{z}\), where \(\overline{z}\) is the complex conjugate of \(z\).
+  Prove that \(\T\) is linear, and compute \([\T]_{\beta}\), where \(\beta = \set{1, i}\).
+  (Recall by \cref{ex:2.1.38} that \(\T\) is not linear if \(\V\) is regarded as a vector space over the field \(\C\).)
+\end{ex}
+
+\begin{proof}[\pf{ex:2.2.9}]
+  Let \(x, y \in \C\) and let \(c \in \R\).
+  Since
+  \begin{align*}
+    \T(cx + y) & = \overline{cx + y}                              \\
+               & = \overline{cx} + \overline{y}                   \\
+               & = \overline{c} \cdot \overline{x} + \overline{y} \\
+               & = c \overline{x} + \overline{y}                  \\
+               & = c \T(x) + \T(y),
+  \end{align*}
+  by \cref{2.1.2}(b) we know that \(\T\) is linear.
+  Since
+  \begin{align*}
+    \T(1) & = 1 = 1 \cdot 1 + 0 \cdot i,     \\
+    \T(i) & = -i = 0 \cdot 1 + (-1) \cdot i,
+  \end{align*}
+  by \cref{2.2.4} we know that
+  \[
+    [\T]_{\beta} = \begin{pmatrix}
+      1 & 0  \\
+      0 & -1
+    \end{pmatrix}.
+  \]
+\end{proof}
