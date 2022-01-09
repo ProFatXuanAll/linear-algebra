@@ -19,7 +19,7 @@
 
 \begin{defn}\label{2.2.3}
   Let \(\beta = \set{\seq{u}{1,2,,n}}\) be an ordered basis for a finite-dimensional vector space \(\V\) over \(\F\).
-  For \(x \in \V\), let \(\seq{a}{1,2,,n}\) be the unique scalars such that
+  For \(x \in \V\), let \(\seq{a}{1,2,,n} \in \F\) be the unique scalars such that
   \[
     x = \sum_{i = 1}^n a_i u_i.
   \]
@@ -163,3 +163,29 @@
   We denote the vector space of all linear transformations from \(\V\) into \(\W\) by \(\ls(\V, \W)\).
   In the case that \(\V = \W\), we write \(\ls(\V)\) instead of \(\ls(\V, \W)\).
 \end{defn}
+
+\begin{thm}\label{2.8}
+  Let \(\V\) and \(\W\) be finite-dimensional vector spaces over \(\F\) with ordered bases \(\beta\) and \(\gamma\) over \(\F\), respectively, and let \(\T, \U : \V \to \W\) be linear transformations.
+  Then
+  \begin{enumerate}
+    \item \([\T + \U]_{\beta}^{\gamma} = [\T]_{\beta}^{\gamma} + [\U]_{\beta}^{\gamma}\) and
+    \item \([a \T]_{\beta}^{\gamma} = a [\T]_{\beta}^{\gamma}\) for all scalars \(a \in \F\).
+  \end{enumerate}
+\end{thm}
+
+\begin{proof}[\pf{2.8}]
+  Let \(\beta = \set{\seq{v}{1,2,,n}}\) and \(\gamma = \set{\seq{w}{1,2,,m}}\).
+  There exist unique scalars \(a_{i j}\) and \(b_{i j}\) (\(1 \leq i \leq m\), \(1 \leq j \leq n\)) such that
+  \[
+    \T(v_j) = \sum_{i = 1}^m a_{i j} w_i \quad \text{and} \quad \U(v_j) = \sum_{i = 1}^m b_{i j} w_i \quad \text{for } 1 \leq j \leq n.
+  \]
+  Hence
+  \[
+    (\T + \U)(v_j) = \sum_{i = 1}^m (a_{i j} + b_{i j}) w_i.
+  \]
+  Thus
+  \[
+    ([\T + \U]_{\beta}^{\gamma})_{i j} = a_{i j} + b_{i j} = ([\T]_{\beta}^{\gamma} + [\U]_{\beta}^{\gamma})_{i j}.
+  \]
+  So (a) is proved, and the proof of (b) is similar.
+\end{proof}
