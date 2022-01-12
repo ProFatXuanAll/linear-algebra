@@ -366,3 +366,42 @@
                      \end{pmatrix}.
   \end{align*}
 \end{proof}
+
+\begin{ex}\label{ex:2.2.12}
+  Let \(\V\) be a finite-dimensional vector space over \(\F\) and \(\T\) be the projection on \(\W\) along \(\W'\), where \(\W\) and \(\W'\) are subspaces of \(\V\) over \(\F\).
+  (See \cref{2.1.14}.)
+  Find an ordered basis \(\beta\) for \(\V\) over \(\F\) such that \([\T]_{\beta}\) is a diagonal matrix.
+\end{ex}
+
+\begin{proof}[\pf{ex:2.2.12}]
+  Let \(\beta_{\W} = \set{\seq{v}{1,2,,k}}\) be a basis for \(\W\) over \(\F\).
+  By \cref{1.6.19} we can extend \(\beta_{\W}\) to \(\beta = \set{\seq{v}{1,2,,n}}\) such that \(\beta\) is a basis for \(\V\) over \(\F\).
+  Since
+  \begin{align*}
+             & \begin{dcases}
+                 \forall v_j \in \beta_{\W}, v_j = v_j + \zv \in \W + \W' \\
+                 \forall v_j \in \beta \setminus \beta_{\W}, v_j = \zv + v_j \in \W + \W'
+               \end{dcases}                         &  & \text{(by \cref{1.3.10})}                         \\
+    \implies & \begin{dcases}
+                 \forall v_j \in \beta_{\W}, \T(v_j) = v_j \\
+                 \forall v_j \in \beta \setminus \beta_{\W}, \T(v_j) = \zv
+               \end{dcases}                                        &  & \text{(by \cref{2.1.14})}              \\
+    \implies & \begin{dcases}
+                 \forall v_j \in \beta_{\W}, [\T(v_j)]_{\beta} = e_j \in \vs{F}^n \\
+                 \forall v_j \in \beta \setminus \beta_{\W}, [\T(v_j)]_{\beta} = \zv \in \vs{F}^n
+               \end{dcases} &  & \text{(by \cref{2.2.2})} \\
+    \implies & [\T]_{\beta} = \begin{pmatrix}
+                                e_1 & \cdots & e_k & \zv & \cdots & \zv
+                              \end{pmatrix}                                          \\
+             & = \begin{pmatrix}
+                   1      & 0      & \cdots & 0      & 0      & \cdots & 0      \\
+                   0      & 1      & \cdots & 0      & 0      & \cdots & 0      \\
+                   \vdots & \vdots & \ddots & \vdots & 0      & \cdots & 0      \\
+                   0      & 0      & \cdots & 1      & 0      & \cdots & 0      \\
+                   0      & 0      & \cdots & 0      & 0      & \cdots & 0      \\
+                   \vdots & \vdots & \ddots & \vdots & \vdots & \ddots & \vdots \\
+                   0      & 0      & \cdots & 0      & 0      & \cdots & 0
+                 \end{pmatrix},
+  \end{align*}
+  by \cref{1.3.8} we know that \([\T]_{\beta}\) is a diagonal matrix.
+\end{proof}
