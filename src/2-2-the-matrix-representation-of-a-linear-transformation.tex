@@ -405,3 +405,29 @@
   \end{align*}
   by \cref{1.3.8} we know that \([\T]_{\beta}\) is a diagonal matrix.
 \end{proof}
+
+\begin{ex}\label{ex:2.2.13}
+  Let \(\V\) and \(\W\) be vector spaces over \(\F\), and let \(\T\) and \(\U\) be nonzero linear transformations from \(\V\) into \(\W\).
+  If \(\rg{\T} \cap \rg{\U} = \set{\zv}\), prove that \(\set{\T, \U}\) is a linearly independent subset of \(\ls(\V, \W)\).
+\end{ex}
+
+\begin{proof}
+  Let \(\zT : \V \to \W\) be the zero transformation in \(\ls(\V, \W)\).
+  Suppose for sake of contradiction that \(\set{\T, \U}\) is linearly dependent.
+  Since
+  \begin{align*}
+             & \set{\T} \text{ is linearly independent}        &  & \text{(by \cref{1.5.4}(b))} \\
+    \implies & \U \in \spn{\set{\T}}                           &  & \text{(by \cref{1.7})}      \\
+    \implies & \exists c \in \F \setminus \set{0} : \U = c \T, &  & \text{(by \cref{1.4.3})}
+  \end{align*}
+  by fixing such \(c\) we know that
+  \begin{align*}
+             & \T \neq \zT                                                                             \\
+    \implies & \exists x \in \V : \T(x) \neq \zv_{\W}                                                  \\
+    \implies & \exists x \in \V : \U(\frac{1}{c} x) = \frac{1}{c} \U(x) &  & \text{(by \cref{2.1.1})}  \\
+             & = \frac{1}{c} (c \T(x)) = \T(x) \neq \zv_{\W}                                           \\
+    \implies & \rg{\U} \cap \rg{\T} \neq \set{\zv}.                     &  & \text{(by \cref{2.1.10})}
+  \end{align*}
+  But this contradict to the fact that \(\rg{\U} \cap \rg{\T} = \set{\zv}\).
+  Thus \(\set{\T, \U}\) is linearly independent.
+\end{proof}
