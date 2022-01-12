@@ -552,3 +552,52 @@
   \end{align*}
   we know that \((\V_1 + \V_2)^0 = \V_1^0 \cap \V_2^0\).
 \end{proof}
+
+\begin{ex}\label{ex:2.2.16}
+  Let \(\V\) and \(\W\) be vector spaces over \(\F\) such that \(\dim(\V) = \dim(\W)\), and let \(\T : \V \to \W\) be linear.
+  Show that there exist ordered bases \(\beta\) and \(\gamma\) for \(\V\) and \(\W\) over \(\F\), respectively, such that \([\T]_{\beta}^{\gamma}\) is a diagonal matrix.
+\end{ex}
+
+\begin{proof}[\pf{ex:2.2.16}]
+  If \(\T\) is zero transformation, then for arbitrary bases \(\beta\) and \(\gamma\) for \(\V\) and \(\W\) over \(\F\), respectively, we have
+  \[
+    [\T]_{\beta}^{\gamma} = \zm
+  \]
+  which by \cref{1.3.8} is a diagonal matrix.
+  So suppose that \(\T\) is not the zero transformation.
+  Let \(\beta\) be a basis for \(\V\) over \(\F\).
+  By \cref{2.2} we know that \(\spn{\T(\beta)} = \rg{\T}\).
+  Since \(\T\) is not the zero transformation, we know that
+  \begin{align*}
+             & \exists x \in \V : \T(x) \neq \zv_{\W}                &  & \text{(by \cref{2.1.9})}  \\
+    \implies & 1 \leq \rk{\T} \leq \dim(\W)                          &  & \text{(by \cref{2.1.12})} \\
+    \implies & \exists \gamma_1 \subseteq \T(\beta) : \begin{dcases}
+                                                        \gamma_1 \text{ is linearly independent} \\
+                                                        \spn{\gamma_1} = \rg{\T}
+                                                      \end{dcases}. &  & \text{(by \cref{1.6.8})}
+  \end{align*}
+  Fix such \(\gamma_1\).
+  Let \(\beta_1 \subseteq \beta\) such that \(\T(\beta_1) = \gamma_1\).
+  By \cref{2.3} we know that \(\#(\beta_1) = \#(\gamma_1)\).
+  Let \(k = \#(\beta_1)\) and we can write \(\beta_1 = \set{\seq{v}{1,2,,k}}\) and \(\gamma_1 = \set{\seq{w}{1,2,,k}}\) such that
+  \[
+    \forall i \in \set{1, \dots, k}, \T(v_i) = w_i.
+  \]
+  If we let \(\beta\) follow this ordered and we extend \(\gamma_1\) to a basis \(\gamma\) for \(\W\) over \(\F\) (this can be done by \cref{1.6.19}), then we see that (by setting \(n = \dim(\V)\) and \(\beta = \set{\seq{v}{1,2,,n}}\))
+  \begin{align*}
+             & \forall v_i \in \beta, [\T(v_i)]_{\gamma} = \begin{dcases}
+                                                             \zv_{\W}           & \text{if } i \notin \set{1, \dots, k} \\
+                                                             e_i \in \vs{F}^{n} & \text{if } i \in \set{1, \dots, k}
+                                                           \end{dcases}   &  & \text{(by \cref{2.2.3})} \\
+    \implies & [\T]_{\beta}^{\gamma} = \begin{pmatrix}
+                                         1      & 0      & \cdots & 0      & 0      & \cdots & 0      \\
+                                         0      & 1      & \cdots & 0      & 0      & \cdots & 0      \\
+                                         \vdots & \vdots & \ddots & \vdots & \vdots & \ddots & \vdots \\
+                                         0      & 0      & \cdots & 1      & 0      & \cdots & 0      \\
+                                         0      & 0      & \cdots & 0      & 0      & \cdots & 0      \\
+                                         \vdots & \vdots & \ddots & \vdots & \vdots & \ddots & 0      \\
+                                         0      & 0      & \cdots & 0      & 0      & \cdots & 0
+                                       \end{pmatrix} &  & \text{(by \cref{2.2.4})}
+  \end{align*}
+  and by \cref{1.3.8} \([\T]_{\beta}^{\gamma}\) is a diagonal matrix.
+\end{proof}
