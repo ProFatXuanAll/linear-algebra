@@ -475,3 +475,80 @@
   \end{align*}
   by \cref{1.5.3} we know that \(\set{\seq{\T}{1,2,,n}}\) is linearly independent.
 \end{proof}
+
+\begin{ex}\label{ex:2.2.15}
+  Let \(\V\) and \(\W\) be vector spaces over \(\F\), and let \(S\) be a subset of \(\V\).
+  Define \(S^0 = \set{\T \in \ls(\V, \W) : \T(x) = 0 \text{ for all } x \in S}\).
+  Prove the following statements.
+  \begin{enumerate}
+    \item \(S^0\) is a subspace of \(\ls(\V, \W)\) over \(\F\).
+    \item If \(S_1\) and \(S_2\) are subsets of \(V\) and \(S_1 \subseteq S_2\), then \(S_2^0 \subseteq S_1^0\).
+    \item If \(\V_1\) and \(\V_2\) are subspaces of \(\V\) over \(\F\), then \((\V_1 + \V_2)^0 = \V_1^0 \cap \V_2^0\).
+  \end{enumerate}
+\end{ex}
+
+\begin{proof}[\pf{ex:2.2.15}(a)]
+  Let \(\zT : \V \to \W\) be the zero transformation in \(\ls(\V, \W)\).
+  Since
+  \begin{align*}
+             & \forall x \in \V, \zT(x) = \zv_{\W} &  & \text{(by \cref{2.1.9})}     \\
+    \implies & \forall x \in S, \zT(x) = \zv_{\W}                                    \\
+    \implies & \zT \in S^0                         &  & \text{(by \cref{ex:2.2.15})}
+  \end{align*}
+  and
+  \begin{align*}
+             & \begin{dcases}
+                 \forall \T, \U \in S^0 \\
+                 \forall c \in \F       \\
+                 \forall x \in S
+               \end{dcases}, \begin{dcases}
+                               (\T + \U)(x) = \T(x) + \U(x) = \zv_{\W} \\
+                               (c \T)(x) = c \T(x) = \zv_{\W}
+                             \end{dcases} &  & \text{(by \cref{2.2.5})}                    \\
+    \implies & \begin{dcases}
+                 \forall \T, \U \in S^0 \\
+                 \forall c \in \F
+               \end{dcases}, \begin{dcases}
+                               \T + \U \in S^0 \\
+                               c \T \in S^0
+                             \end{dcases},               &  & \text{(by \cref{ex:2.2.15})}
+  \end{align*}
+  by \cref{1.3} we know that \(S^0\) is a subspace of \(\ls(\V, \W)\) over \(\F\).
+\end{proof}
+
+\begin{proof}[\pf{ex:2.2.15}(b)]
+  Let \(\T \in S_2^0\).
+  Since
+  \begin{align*}
+             & \T \in S_2^0                                                          \\
+    \implies & \forall x \in S_2, \T(x) = \zv_{\W} &  & \text{(by \cref{ex:2.2.15})} \\
+    \implies & \forall x \in S_1, \T(x) = \zv_{\W} &  & (S_1 \subseteq S_2)          \\
+    \implies & \T \in S_1^0,                       &  & \text{(by \cref{ex:2.2.15})}
+  \end{align*}
+  and \(\T\) is arbitrary, we know that \(S_2^0 \subseteq S_1^0\).
+\end{proof}
+
+\begin{proof}[\pf{ex:2.2.15}(c)]
+  Since
+  \begin{align*}
+         & \T \in (\V_1 + \V_2)^0                                                         \\
+    \iff & \forall x \in \V_1 + \V_2, \T(x) = \zv_{\W}  &  & \text{(by \cref{ex:2.2.15})} \\
+    \iff & \begin{dcases}
+             \forall x_1 \in \V_1 \\
+             \forall x_2 \in \V_2
+           \end{dcases}, \begin{dcases}
+                           x_1 + \zv_{\V} \in \V_1 + \V_2 \\
+                           \zv_{\V} + x_2 \in \V_1 + \V_2 \\
+                           x_1 + x_2 \in \V_1 + \V_2      \\
+                           \T(x_1) = \zv_{\W}             \\
+                           \T(x_2) = \zv_{\W}             \\
+                           \T(x_1 + x_2) = \T(x_1) + \T(x_2) = \zv_{\W}
+                         \end{dcases} &  & \text{(by \cref{1.3.10})}                      \\
+    \iff & \begin{dcases}
+             \T \in \V_1^0 \\
+             \T \in \V_2^0
+           \end{dcases}                             &  & \text{(by \cref{ex:2.2.15})}     \\
+    \iff & \T \in \V_1^0 \cap \V_2^0,
+  \end{align*}
+  we know that \((\V_1 + \V_2)^0 = \V_1^0 \cap \V_2^0\).
+\end{proof}
