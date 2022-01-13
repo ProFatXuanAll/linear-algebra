@@ -276,6 +276,115 @@
   When the context is clear, we sometimes omit the subscript \(n\) from \(I_n\).
 \end{note}
 
+\begin{cor}\label{2.3.5}
+  Let
+  \begin{align*}
+    A               & \in \MS,           \\
+    \seq{B}{1,2,,k} & \in \ms{n}{p}{\F}, \\
+    \seq{C}{1,2,,k} & \in \ms{q}{m}{\F}, \\
+    \seq{a}{1,2,,k} & \in \F.
+  \end{align*}
+  Then
+  \begin{align*}
+    A \pa{\sum_{i = 1}^k a_i B_i} & = \sum_{i = 1}^k a_i A B_i, \\
+    \pa{\sum_{i = 1}^k a_i C_i} A & = \sum_{i = 1}^k a_i C_i A.
+  \end{align*}
+\end{cor}
+
+\begin{proof}[\pf{2.3.5}]
+  We have
+  \begin{align*}
+    A \pa{\sum_{i = 1}^k a_i B_i} & = \sum_{i = 1}^k (A a_i B_i)  &  & \text{(by \cref{2.12}(a))} \\
+                                  & = \sum_{i = 1}^k (a_i A B_i), &  & \text{(by \cref{2.12}(b))} \\
+    \pa{\sum_{i = 1}^k a_i C_i} A & = \sum_{i = 1}^k (a_i C_i A). &  & \text{(by \cref{2.12}(a))}
+  \end{align*}
+\end{proof}
+
+\begin{defn}\label{2.3.6}
+  For an \(n \times n\) matrix \(A\), we define \(A^1 = A\), \(A^2 = AA\), \(A^3 = A^2 A\), and, in general, \(A^k = A^{k - 1} A\) for \(k = 2, 3, \dots\).
+  We define \(A^0 = I_n\).
+\end{defn}
+
+\begin{eg}\label{2.3.7}
+  If
+  \[
+    A = \begin{pmatrix}
+      0 & 0 \\
+      1 & 0
+    \end{pmatrix},
+  \]
+  then \(A^2 = \zm\) (the zero matrix) even though \(A \neq \zm\).
+  Thus the cancellation property for multiplication in fields is not valid for matrices.
+  To see why, assume that the cancellation law is valid.
+  Then, from \(A \cdot A = A^2 = \zm = A \cdot \zm\), we would conclude that \(A = \zm\), which is false.
+\end{eg}
+
+\begin{thm}\label{2.13}
+  Let \(A\) be an \(m \times n\) matrix and \(B\) be an \(n \times p\) matrix.
+  For each \(j\) (\(1 \leq j \leq p\)) let \(u_j\) and \(v_j\) denote the \(j\)th columns of \(AB\) and \(B\), respectively.
+  Then
+  \begin{enumerate}
+    \item \(u_j = A v_j\).
+    \item \(v_j = B e_j\), where \(e_j\) is the \(j\)th standard vector of \(\vs{F}^p\).
+  \end{enumerate}
+\end{thm}
+
+\begin{proof}[\pf{2.13}(a)]
+  We have
+  \begin{align*}
+    u_j & = \begin{pmatrix}
+              (AB)_{1 j} \\
+              (AB)_{2 j} \\
+              \vdots     \\
+              (AB)_{m j}
+            \end{pmatrix}                 &  & \text{(by \cref{2.2.4})}   \\
+        & = \begin{pmatrix}
+              \sum_{k = 1}^n A_{1 k} B_{k j} \\
+              \sum_{k = 1}^n A_{2 k} B_{k j} \\
+              \vdots                         \\
+              \sum_{k = 1}^n A_{m k} B_{k j}
+            \end{pmatrix} &  & \text{(by \cref{2.3.1})}                   \\
+        & = A \begin{pmatrix}
+                B_{1 j} \\
+                B_{2 j} \\
+                \vdots  \\
+                B_{n j}
+              \end{pmatrix}               &  & \text{(by \cref{2.3.1})}   \\
+        & = A v_j.                          &  & \text{(by \cref{2.2.4})}
+  \end{align*}
+\end{proof}
+
+\begin{proof}[\pf{2.13}(b)]
+  We have
+  \begin{align*}
+    v_j & = \begin{pmatrix}
+              B_{1 j} \\
+              B_{2 j} \\
+              \vdots  \\
+              B_{m j}
+            \end{pmatrix}                     &  & \text{(by \cref{2.2.4})}   \\
+        & = \begin{pmatrix}
+              (B I_p)_{1 j} \\
+              (B I_p)_{2 j} \\
+              \vdots        \\
+              (B I_p)_{m j}
+            \end{pmatrix}                     &  & \text{(by \cref{2.12}(c))} \\
+        & = \begin{pmatrix}
+              \sum_{k = 1}^p B_{1 k} (I_p)_{k j} \\
+              \sum_{k = 1}^p B_{2 k} (I_p)_{k j} \\
+              \vdots                             \\
+              \sum_{k = 1}^p B_{m k} (I_p)_{k j}
+            \end{pmatrix} &  & \text{(by \cref{2.3.1})}                       \\
+        & = B \begin{pmatrix}
+                (I_p)_{1 j} \\
+                (I_p)_{2 j} \\
+                \vdots      \\
+                (I_p)_{n j}
+              \end{pmatrix}                   &  & \text{(by \cref{2.3.1})}   \\
+        & = B e_j.                              &  & \text{(by \cref{2.3.4})}
+  \end{align*}
+\end{proof}
+
 \begin{thm}\label{2.16}
 
 \end{thm}
