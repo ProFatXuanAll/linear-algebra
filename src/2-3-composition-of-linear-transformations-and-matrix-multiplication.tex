@@ -385,6 +385,36 @@
   \end{align*}
 \end{proof}
 
+\begin{note}
+  It follows (see \cref{ex:2.3.14}) from \cref{2.13} that column \(j\) of \(AB\) is a linear combination of the columns of \(A\) with the coefficients in the linear combination being the entries of column \(j\) of \(B\).
+  An analogous result holds for rows;
+  that is, row \(i\) of \(AB\) is a linear combination of the rows of \(B\) with the coefficients in the linear combination being the entries of row \(i\) of \(A\).
+\end{note}
+
+\begin{thm}\label{2.14}
+  Let \(\V\) and \(\W\) be finite-dimensional vector spaces over \(\F\) having ordered bases \(\beta\) and \(\gamma\) over \(\F\), respectively, and let \(\T : \V \to \W\) be linear.
+  Then, for each \(u \in \V\), we have
+  \[
+    [\T(u)]_{\gamma} = [\T]_{\beta}^{\gamma} [u]_{\beta}.
+  \]
+\end{thm}
+
+\begin{proof}[\pf{2.14}]
+  Fix \(u \in \V\), and define the linear transformations \(f : \F \to \V\) by \(f(a) = au\) and \(g : \F \to \W\) by \(g(a) = a \T(u)\) for all \(a \in \F\).
+  Let \(\alpha = \set{1}\) be the standard ordered basis for \(\F\).
+  Notice that \(g = \T f\).
+  Identifying column vectors as matrices and using \cref{2.11}, we obtain
+  \[
+    [\T(u)]_{\gamma} = [g(1)]_{\gamma} = [g]_{\alpha}^{\gamma} = [\T f]_{\alpha}^{\gamma} = [\T]_{\beta}^{\gamma} [f]_{\alpha}^{\beta} = [\T]_{\beta}^{\gamma} [f(1)]_{\beta} = [\T]_{\beta}^{\gamma} [u]_{\beta}.
+  \]
+\end{proof}
+
 \begin{thm}\label{2.16}
 
 \end{thm}
+
+\exercisesection
+
+\begin{ex}\label{ex:2.3.14}
+
+\end{ex}
