@@ -86,3 +86,84 @@
   \end{align*}
   and thus \(a (\U_1 \U_2) = (a \U_1) \U_2 = \U_1 (a \U_2)\).
 \end{proof}
+
+\begin{note}
+  Let \(\T : \V \to \W\) and \(\U : \W \to \vs{Z}\) be linear transformations, and let \(A = [\U]_{\beta}^{\gamma}\) and \(B = [\T]_{\alpha}^{\beta}\), where \(\alpha = \set{\seq{v}{1,2,,n}}\), \(\beta = \set{\seq{w}{1,2,,m}}\), and \(\gamma = \set{\seq{z}{1,2,,p}}\) are ordered bases for \(\V\), \(\W\), and \(\vs{Z}\) over \(\F\), respectively.
+  We would like to define the product \(AB\) of two matrices so that \(AB = [\U \T]_{\alpha}^{\gamma}\).
+  Consider the matrix \([\U \T]_{\alpha}^{\gamma}\).
+  For \(1 \leq j \leq n\), we have
+  \begin{align*}
+    (\U \T)(v_j) & = \U(\T(v_j))                                                                              \\
+                 & = \U\pa{\sum_{k = 1}^m B_{k j} w_k}                       &  & \text{(by \cref{2.2.3})}    \\
+                 & = \sum_{k = 1}^m B_{k j} \U(w_k)                          &  & \text{(by \cref{2.1.2}(d))} \\
+                 & = \sum_{k = 1}^m B_{k j} \pa{\sum_{i = 1}^p A_{i k} z_i}  &  & \text{(by \cref{2.2.3})}    \\
+                 & = \sum_{k = 1}^m \pa{\sum_{i = 1}^p B_{k j}  A_{i k} z_i} &  & \text{(by \cref{1.2.1})}    \\
+                 & = \sum_{k = 1}^m \pa{\sum_{i = 1}^p A_{i k} B_{k j} z_i}  &  & \text{(by \cref{1.2.1})}    \\
+                 & = \sum_{i = 1}^p \pa{\sum_{k = 1}^m A_{i k} B_{k j} z_i}  &  & \text{(by \cref{1.2.1})}    \\
+                 & = \sum_{i = 1}^p C_{i j} z_i,
+  \end{align*}
+  where
+  \[
+    C_{i j} = \sum_{k = 1}^m A_{i k} B_{k j}.
+  \]
+  This computation motivates the definition of matrix multiplication.
+\end{note}
+
+\begin{defn}\label{2.3.1}
+  Let \(A\) be an \(m \times n\) matrix and \(B\) be an \(n \times p\) matrix.
+  We define the \textbf{product} of \(A\) and \(B\), denoted \(AB\), to be the \(m \times p\) matrix such that
+  \[
+    (AB)_{i j} = \sum_{k = 1}^n A_{i k} B_{k j} \quad \text{for } 1 \leq i \leq m, 1 \leq j \leq p.
+  \]
+  Note that \((AB)_{i j}\) is the sum of products of corresponding entries from the \(i\)th row of \(A\) and the \(j\)th column of \(B\).
+\end{defn}
+
+\begin{note}
+  The reader should observe that in order for the product \(AB\) to be defined, there are restrictions regarding the relative sizes of \(A\) and \(B\).
+  The following mnemonic device is helpful:
+  ``\((m \times n) \cdot (n \times p) = (m \times p)\)'';
+  that is, in order for the product \(AB\) to be defined, the two ``inner'' dimensions must be equal, and the two ``outer'' dimensions yield the size of the product.
+\end{note}
+
+\begin{note}
+  As in the case with composition of functions, we have that matrix multi- plication is not commutative. Consider the following two products:
+  \[
+    \begin{pmatrix}
+      1 & 1 \\
+      0 & 0
+    \end{pmatrix} \begin{pmatrix}
+      0 & 1 \\
+      1 & 0
+    \end{pmatrix} = \begin{pmatrix}
+      1 & 1 \\
+      0 & 0
+    \end{pmatrix} \quad \text{and} \quad \begin{pmatrix}
+      0 & 1 \\
+      1 & 0
+    \end{pmatrix} \begin{pmatrix}
+      1 & 1 \\
+      0 & 0
+    \end{pmatrix} = \begin{pmatrix}
+      0 & 0 \\
+      1 & 1
+    \end{pmatrix}.
+  \]
+  Hence we see that even if both of the matrix products \(AB\) and \(BA\) are defined, it need not be true that \(AB = BA\).
+\end{note}
+
+\begin{eg}\label{2.3.2}
+  If \(A\) is an \(m \times n\) matrix and \(B\) is an \(n \times p\) matrix, then \(\tp{(AB)} = \tp{B} \tp{A}\).
+\end{eg}
+
+\begin{proof}[\pf{2.3.2}]
+  Since
+  \[
+    \tp{(AB)}_{i j} = (AB)_{j i} = \sum_{k = 1}^n A_{j k} B_{k i}
+  \]
+  and
+  \[
+    (\tp{B} \tp{A})_{i j} = \sum_{k = 1}^n \tp{B}_{i k} \tp{A}_{k j} = \sum_{k = 1}^n B_{k i} A_{j k},
+  \]
+  we are finished.
+  Therefore the transpose of a product is the product of the transposes in the \emph{opposite order}.
+\end{proof}
