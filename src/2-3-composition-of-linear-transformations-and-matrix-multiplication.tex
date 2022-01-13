@@ -1,1 +1,88 @@
 \section{Composition of Linear Transformations and Matrix Multiplication}\label{sec:2.3}
+
+\begin{note}
+  We use the more convenient notation of \(\U \T\) rather than \(\U \circ \T\) for the composite of linear transformations \(\U\) and \(\T\).
+\end{note}
+
+\begin{thm}\label{2.9}
+  Let \(\V\), \(\W\), and \(\vs{Z}\) be vector spaces over the same field \(\F\), and let \(\T : \V \to \W\) and \(\U : \W \to \vs{Z}\) be linear.
+  Then \(\U \T : \V \to \vs{Z}\) is linear.
+\end{thm}
+
+\begin{proof}[\pf{2.9}]
+  Let \(x, y \in \V\) and \(a \in \F\).
+  Then
+  \begin{align*}
+    \U \T(ax + y) & = \U(\T(ax + y))                                            \\
+                  & = \U(a \T(x) + \T(y))      &  & \text{(by \cref{2.1.2}(b))} \\
+                  & = a \U(\T(x)) + \U(\T(y))  &  & \text{(by \cref{2.1.2}(b))} \\
+                  & = a (\U \T)(x) + \U \T(y).
+  \end{align*}
+\end{proof}
+
+\begin{thm}\label{2.10}
+  Let \(\V\) be a vector space over \(\F\).
+  Let \(\T, \U_1, \U_2 \in \ls(\V)\).
+  Then
+  \begin{enumerate}
+    \item \(\T(\U_1 + \U_2) = \T \U_1 + \T \U_2\) and \((\U_1 + \U_2) \T = \U_1 \T + \U_2 \T\).
+    \item \(\T(\U_1 \U_2) = (\T \U_1) \U_2\).
+    \item \(\T \IT = \IT \T = \T\).
+    \item \(a(\U_1 \U_2) = (a \U_1) \U_2 = \U_1 (a \U_2)\) for all scalars \(a\).
+  \end{enumerate}
+\end{thm}
+
+\begin{proof}[\pf{2.10}(a)]
+  For all \(x \in \V\), we have
+  \begin{align*}
+    (\T(\U_1 + \U_2))(x) & = \T((\U_1 + \U_2)(x))                                      \\
+                         & = \T(\U_1(x) + \U_2(x))       &  & \text{(by \cref{2.2.5})} \\
+                         & = \T(\U_1(x)) + \T(\U_2(x))   &  & \text{(by \cref{2.1.1})} \\
+                         & = (\T \U_1)(x) + (\T \U_2)(x)                               \\
+                         & = (\T \U_1 + \T \U_2)(x)      &  & \text{(by \cref{2.2.5})}
+  \end{align*}
+  and
+  \begin{align*}
+    ((\U_1 + \U_2) \T)(x) & = (\U_1 + \U_2)(\T(x))                                      \\
+                          & = \U_1(\T(x)) + \U_2(\T(x))   &  & \text{(by \cref{2.2.5})} \\
+                          & = (\U_1 \T)(x) + (\U_2 \T)(x)                               \\
+                          & = (\U_1 \T + \U_2 \T)(x).     &  & \text{(by \cref{2.2.5})}
+  \end{align*}
+  Thus \(\T(\U_1 + \U_2) = \T \U_1 + \T \U_2\) and \((\U_1 + \U_2) \T = \U_1 \T + \U_2 \T\).
+\end{proof}
+
+\begin{proof}[\pf{2.10}(b)]
+  For all \(x \in \V\), we have
+  \begin{align*}
+    (\T (\U_1 \U_2))(x) & = \T((\U_1 \U_2)(x))  \\
+                        & = \T(\U_1(\U_2(x)))   \\
+                        & = (\T \U_1)(\U_2(x))  \\
+                        & = ((\T \U_1) \U_2)(x)
+  \end{align*}
+  and thus \(\T (\U_1 \U_2) = (\T \U_1) \U_2\).
+\end{proof}
+
+\begin{proof}[\pf{2.10}(c)]
+  For all \(x \in \V\), we have
+  \begin{align*}
+    (\T \IT)(x) & = \T(\IT(x))                                \\
+                & = \T(x)       &  & \text{(by \cref{2.1.9})} \\
+                & = \IT(\T(x))  &  & \text{(by \cref{2.1.9})} \\
+                & = (\IT \T)(x)
+  \end{align*}
+  and thus \(\T \IT = \T = \IT \T\).
+\end{proof}
+
+\begin{proof}[\pf{2.10}(d)]
+  For all \(x \in \V\), we have
+  \begin{align*}
+    (a (\U_1 \U_2))(x) & = a (\U_1 \U_2)(x)                                 \\
+                       & = a \U_1(\U_2(x))                                  \\
+                       & = (a \U_1)(\U_2(x))  &  & \text{(by \cref{2.2.5})} \\
+                       & = ((a \U_1) \U_2)(x)                               \\
+                       & = \U_1(a \U_2(x))    &  & \text{(by \cref{2.1.1})} \\
+                       & = \U_1((a \U_2)(x))                                \\
+                       & = (\U_1 (a \U_2))(x)
+  \end{align*}
+  and thus \(a (\U_1 \U_2) = (a \U_1) \U_2 = \U_1 (a \U_2)\).
+\end{proof}
