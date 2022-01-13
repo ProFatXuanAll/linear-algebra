@@ -87,28 +87,6 @@
   and thus \(a (\U_1 \U_2) = (a \U_1) \U_2 = \U_1 (a \U_2)\).
 \end{proof}
 
-\begin{note}
-  Let \(\T : \V \to \W\) and \(\U : \W \to \vs{Z}\) be linear transformations, and let \(A = [\U]_{\beta}^{\gamma}\) and \(B = [\T]_{\alpha}^{\beta}\), where \(\alpha = \set{\seq{v}{1,2,,n}}\), \(\beta = \set{\seq{w}{1,2,,m}}\), and \(\gamma = \set{\seq{z}{1,2,,p}}\) are ordered bases for \(\V\), \(\W\), and \(\vs{Z}\) over \(\F\), respectively.
-  We would like to define the product \(AB\) of two matrices so that \(AB = [\U \T]_{\alpha}^{\gamma}\).
-  Consider the matrix \([\U \T]_{\alpha}^{\gamma}\).
-  For \(1 \leq j \leq n\), we have
-  \begin{align*}
-    (\U \T)(v_j) & = \U(\T(v_j))                                                                              \\
-                 & = \U\pa{\sum_{k = 1}^m B_{k j} w_k}                       &  & \text{(by \cref{2.2.3})}    \\
-                 & = \sum_{k = 1}^m B_{k j} \U(w_k)                          &  & \text{(by \cref{2.1.2}(d))} \\
-                 & = \sum_{k = 1}^m B_{k j} \pa{\sum_{i = 1}^p A_{i k} z_i}  &  & \text{(by \cref{2.2.3})}    \\
-                 & = \sum_{k = 1}^m \pa{\sum_{i = 1}^p B_{k j}  A_{i k} z_i} &  & \text{(by \cref{1.2.1})}    \\
-                 & = \sum_{k = 1}^m \pa{\sum_{i = 1}^p A_{i k} B_{k j} z_i}  &  & \text{(by \cref{1.2.1})}    \\
-                 & = \sum_{i = 1}^p \pa{\sum_{k = 1}^m A_{i k} B_{k j} z_i}  &  & \text{(by \cref{1.2.1})}    \\
-                 & = \sum_{i = 1}^p C_{i j} z_i,
-  \end{align*}
-  where
-  \[
-    C_{i j} = \sum_{k = 1}^m A_{i k} B_{k j}.
-  \]
-  This computation motivates the definition of matrix multiplication.
-\end{note}
-
 \begin{defn}\label{2.3.1}
   Let \(A\) be an \(m \times n\) matrix and \(B\) be an \(n \times p\) matrix.
   We define the \textbf{product} of \(A\) and \(B\), denoted \(AB\), to be the \(m \times p\) matrix such that
@@ -166,4 +144,50 @@
   \]
   we are finished.
   Therefore the transpose of a product is the product of the transposes in the \emph{opposite order}.
+\end{proof}
+
+\begin{thm}\label{2.11}
+  Let \(\V\), \(\W\), and \(\vs{Z}\) be finite-dimensional vector spaces over \(\F\) with ordered bases \(\alpha\), \(\beta\), and \(\gamma\) over \(\F\), respectively.
+  Let \(\T : \V \to \W\) and \(\U : \W \to \vs{Z}\) be linear transformations.
+  Then
+  \[
+    [\U \T]_{\alpha}^{\gamma} = [\U]_{\beta}^{\gamma} [\T]_{\alpha}^{\beta}.
+  \]
+\end{thm}
+
+\begin{proof}[\pf{2.11}]
+  Define
+  \begin{align*}
+    \alpha & = \set{\seq{v}{1,2,,n}}  \\
+    \beta  & = \set{\seq{w}{1,2,,m}}  \\
+    \gamma & = \set{\seq{z}{1,2,,p}}.
+  \end{align*}
+  For \(1 \leq j \leq n\), we have
+  \begin{align*}
+    (\U \T)(v_j) & = \sum_{i = 1}^p ([\U \T]_{\alpha}^{\gamma})_{i j} \cdot z_i                                                      &  & \text{(by \cref{2.2.4})}    \\
+                 & = \U(\T(v_j))                                                                                                                                      \\
+                 & = \U\pa{\sum_{k = 1}^m ([\T]_{\alpha}^{\beta})_{k j} \cdot w_k}                                                   &  & \text{(by \cref{2.2.4})}    \\
+                 & = \sum_{k = 1}^m ([\T]_{\alpha}^{\beta})_{k j} \cdot \U(w_k)                                                      &  & \text{(by \cref{2.1.2}(d))} \\
+                 & = \sum_{k = 1}^m ([\T]_{\alpha}^{\beta})_{k j} \cdot \pa{\sum_{i = 1}^p ([\U]_{\beta}^{\gamma})_{i k} \cdot z_i}  &  & \text{(by \cref{2.2.4})}    \\
+                 & = \sum_{k = 1}^m \sum_{i = 1}^p \pa{([\T]_{\alpha}^{\beta})_{k j}  \cdot ([\U]_{\beta}^{\gamma})_{i k} \cdot z_i} &  & \text{(by \cref{1.2.1})}    \\
+                 & = \sum_{k = 1}^m \sum_{i = 1}^p \pa{([\U]_{\beta}^{\gamma})_{i k} \cdot ([\T]_{\alpha}^{\beta})_{k j} \cdot z_i}  &  & \text{(by \cref{1.2.1})}    \\
+                 & = \sum_{i = 1}^p \sum_{k = 1}^m \pa{([\U]_{\beta}^{\gamma})_{i k} \cdot ([\T]_{\alpha}^{\beta})_{k j} \cdot z_i}  &  & \text{(by \cref{1.2.1})}    \\
+                 & = \sum_{i = 1}^p \pa{\sum_{k = 1}^m ([\U]_{\beta}^{\gamma})_{i k} \cdot ([\T]_{\alpha}^{\beta})_{k j}} \cdot z_i. &  & \text{(by \cref{1.2.1})}
+  \end{align*}
+  Thus by \cref{2.3.1} we see that \([\U \T]_{\alpha}^{\gamma} = [\U]_{\beta}^{\gamma} [\T]_{\alpha}^{\beta}\).
+\end{proof}
+
+\begin{cor}\label{2.3.3}
+  Let \(\V\) be a finite-dimensional vector space over \(\F\) with an ordered basis \(\beta\).
+  Let \(\T, \U \in \ls(\V)\).
+  Then \([\U \T]_{\beta} = [\U]_{\beta} [\T]_{\beta}\).
+\end{cor}
+
+\begin{proof}[\pf{2.3.3}]
+  We have
+  \begin{align*}
+    [\U \T]_{\beta} & = [\U \T]_{\beta}^{\beta}                   &  & \text{(by \cref{2.2.4})} \\
+                    & = [\U]_{\beta}^{\beta} [\T]_{\beta}^{\beta} &  & \text{(by \cref{2.11})}  \\
+                    & = [\U]_{\beta} [\T]_{\beta}.                &  & \text{(by \cref{2.2.4})}
+  \end{align*}
 \end{proof}
