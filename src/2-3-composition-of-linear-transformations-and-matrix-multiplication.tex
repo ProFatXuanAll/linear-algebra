@@ -191,3 +191,91 @@
                     & = [\U]_{\beta} [\T]_{\beta}.                &  & \text{(by \cref{2.2.4})}
   \end{align*}
 \end{proof}
+
+\begin{defn}\label{2.3.4}
+  We define the \textbf{Kronecker delta} \(\delta_{i j}\) by \(\delta_{i j} = 1\) if \(i = j\) and \(\delta_{i j} = 0\) if \(i \neq j\).
+  The \(n \times n\) \textbf{identity matrix} \(I_n\) is defined by \((I_n)_{i j} = \delta_{i j}\).
+\end{defn}
+
+\begin{thm}\label{2.12}
+  Let \(A \in \MS\), let \(B, C \in \ms{n}{p}{\F}\) and let \(D, E \in \ms{q}{m}{\F}\).
+  Then
+  \begin{enumerate}
+    \item \(A (B + C) = AB + AC\) and \((D + E) A = DA + EA\).
+    \item \(a (AB) = (aA) B = A (aB)\) for any \(a \in \F\).
+    \item \(I_m A = A = A I_n\).
+    \item If \(\V\) is an \(n\)-dimensional vector space over \(\F\) with an ordered basis \(\beta\), then \([\IT[\V]]_{\beta} = I_n\).
+  \end{enumerate}
+\end{thm}
+
+\begin{proof}[\pf{2.12}(a)]
+  We have
+  \begin{align*}
+    (A (B + C))_{i j} & = \sum_{k = 1}^n A_{i k} (B + C)_{k j}                            &  & \text{(by \cref{2.3.1})}           \\
+                      & = \sum_{k = 1}^n A_{i k} (B_{k j} + C_{k j})                      &  & \text{(by \cref{1.2.9})}           \\
+                      & = \sum_{k = 1}^n (A_{i k} B_{k j} + A_{i k} B_{k j})              &  & (A_{i k}, B_{k j}, C_{k j} \in \F) \\
+                      & = \sum_{k = 1}^n A_{i k} B_{k j} + \sum_{k = 1}^n A_{i k} C_{k j} &  & (A_{i k}, B_{k j}, C_{k j} \in \F) \\
+                      & = (AB)_{i j} + (AC)_{i j}                                         &  & \text{(by \cref{2.3.1})}           \\
+                      & = (AB + AC)_{i j}                                                 &  & \text{(by \cref{1.2.9})}
+  \end{align*}
+  and
+  \begin{align*}
+    ((D + E) A)_{i j} & = \sum_{k = 1}^m (D + E)_{i k} A_{k j}                            &  & \text{(by \cref{2.3.1})}           \\
+                      & = \sum_{k = 1}^m (D_{i k} + E_{i k}) A_{k j}                      &  & \text{(by \cref{1.2.9})}           \\
+                      & = \sum_{k = 1}^m (D_{i k} A_{k j} + E_{i k} A_{k j})              &  & (A_{k j}, D_{i k}, E_{i k} \in \F) \\
+                      & = \sum_{k = 1}^m D_{i k} A_{k j} + \sum_{k = 1}^n E_{i k} A_{k j} &  & (A_{k j}, D_{i k}, E_{i k} \in \F) \\
+                      & = (DA)_{i j} + (EA)_{i j}                                         &  & \text{(by \cref{2.3.1})}           \\
+                      & = (DA + EA)_{i j}.                                                &  & \text{(by \cref{1.2.9})}
+  \end{align*}
+  Thus by \cref{1.2.8} \(A (B + C) = AB + AC\) and \((D + E) A = DA + EA\).
+\end{proof}
+
+\begin{proof}[\pf{2.12}(b)]
+  We have
+  \begin{align*}
+    (a (AB))_{i j} & = a (AB)_{i j}                          &  & \text{(by \cref{1.2.9})} \\
+                   & = a \pa{\sum_{k = 1}^n A_{i k} B_{k j}} &  & \text{(by \cref{2.3.1})} \\
+                   & = \sum_{k = 1}^n (a A_{i k}) B_{k j}    &  & \text{(by \cref{1.2.9})} \\
+                   & = \sum_{k = 1}^n (a A)_{i k} B_{k j}    &  & \text{(by \cref{1.2.9})} \\
+                   & = ((aA) B)_{i j}                        &  & \text{(by \cref{2.3.1})} \\
+                   & = \sum_{k = 1}^n A_{i k} (a B_{k j})    &  & \text{(by \cref{1.2.9})} \\
+                   & = \sum_{k = 1}^n A_{i k} (a B)_{k j}    &  & \text{(by \cref{1.2.9})} \\
+                   & = (A (aB))_{i j}                        &  & \text{(by \cref{2.3.1})}
+  \end{align*}
+  thus by \cref{1.2.8} \(a (AB) = (aA) B = A (aB)\).
+\end{proof}
+
+\begin{proof}[\pf{2.12}(c)]
+  We have
+  \begin{align*}
+    (I_m A)_{i j} & = \sum_{k = 1}^m (I_m)_{i k} A_{k j}  &  & \text{(by \cref{2.3.1})} \\
+                  & = \sum_{k = 1}^m \delta_{i k} A_{k j} &  & \text{(by \cref{2.3.4})} \\
+                  & = A_{i j}                             &  & \text{(by \cref{2.3.4})} \\
+                  & = \sum_{k = 1}^n A_{i k} \delta_{k j} &  & \text{(by \cref{2.3.4})} \\
+                  & = \sum_{k = 1}^n A_{i k} (I_n)_{k j}  &  & \text{(by \cref{2.3.4})} \\
+                  & = (A I_n)_{i j}                       &  & \text{(by \cref{2.3.1})}
+  \end{align*}
+  thus by \cref{1.2.8} \(I_m A = A = A I_n\).
+\end{proof}
+
+\begin{proof}[\pf{2.12}(d)]
+  Let \(\beta = \set{\seq{v}{1,2,,n}}\).
+  For all \(j \in \set{1, 2, \dots, n}\), we have
+  \begin{align*}
+             & \IT[\V](v_j) = v_j                                                                          &  & \text{(by \cref{2.1.9})} \\
+             & = \sum_{i = 1}^n ([\IT[\V]]_{\beta})_{i j} v_i                                              &  & \text{(by \cref{2.2.4})} \\
+    \implies & \forall i \in \set{1, 2, \dots, n}, ([\IT[\V]]_{\beta})_{i j} = \delta_{i j} = (I_n)_{i j}. &  & \text{(by \cref{2.3.4})}
+  \end{align*}
+  Thus by \cref{1.2.8} \([\IT[\V]]_{\beta} = I_n\).
+\end{proof}
+
+\begin{note}
+  \cref{2.12} provides analogs of (a), (c), and (d) of \cref{2.10}.
+  \cref{2.10}(b) has its analog in \cref{2.16}.
+  Observe also that part (c) of the \cref{2.12} illustrates that the identity matrix acts as a multiplicative identity in \(\ms{n}{n}{\F}\).
+  When the context is clear, we sometimes omit the subscript \(n\) from \(I_n\).
+\end{note}
+
+\begin{thm}\label{2.16}
+
+\end{thm}
