@@ -44,7 +44,7 @@
           \[
             u = a^{-1} (au) = a^{-1} \zv = \zv.
           \]
-    \item A set is linearly independent if and only if the only representations of \(\zv\) as linear combinations of its vectors are trivial representations.
+    \item A set is linearly independent iff the only representations of \(\zv\) as linear combinations of its vectors are trivial representations.
   \end{enumerate}
 \end{eg}
 
@@ -122,7 +122,7 @@
 
 \begin{thm}\label{1.7}
   Let \(S\) be a linearly independent subset of a vector space \(\V\) over \(\F\), and let \(v\) be a vector in \(\V\) that is not in \(S\).
-  Then \(S \cup \set{v}\) is linearly dependent if and only if \(v \in \spn{S}\).
+  Then \(S \cup \set{v}\) is linearly dependent iff \(v \in \spn{S}\).
 \end{thm}
 
 \begin{proof}[\pf{1.7}]
@@ -261,7 +261,7 @@
 
 \begin{ex}\label{ex:1.5.9}
   Let \(u\) and \(v\) be distinct vectors in a vector space \(\V\) over \(\F\).
-  Show that \(\set{u, v}\) is linearly dependent if and only if \(u\) or \(v\) is a multiple of the other.
+  Show that \(\set{u, v}\) is linearly dependent iff \(u\) or \(v\) is a multiple of the other.
 \end{ex}
 
 \begin{proof}[\pf{ex:1.5.9}]
@@ -305,9 +305,9 @@
   Let \(\V\) be a vector space over a field of characteristic not equal to two.
   \begin{enumerate}
     \item Let \(u\) and \(v\) be distinct vectors in \(\V\).
-          Prove that \(\set{u,v}\) is linearly independent if and only if \(\set{u + v, u - v}\) is linearly independent.
+          Prove that \(\set{u,v}\) is linearly independent iff \(\set{u + v, u - v}\) is linearly independent.
     \item Let \(u, v\), and \(w\) be distinct vectors in \(\V\).
-          Prove that \(\set{u, v, w}\) is linearly independent if and only if \(\set{u + v, u + w, v + w}\) is linearly independent.
+          Prove that \(\set{u, v, w}\) is linearly independent iff \(\set{u + v, u + w, v + w}\) is linearly independent.
   \end{enumerate}
 \end{ex}
 
@@ -339,7 +339,7 @@
 \end{proof}
 
 \begin{ex}\label{ex:1.5.14}
-  Prove that a set \(S\) is linearly dependent if and only if \(S = \set{\zv}\) or there exist distinct vectors \(v, \seq{u}{1,2,,n}\) in \(S\) such that \(v\) is a linear combination of \(\seq{u}{1,2,,n}\).
+  Prove that a set \(S\) is linearly dependent iff \(S = \set{\zv}\) or there exist distinct vectors \(v, \seq{u}{1,2,,n}\) in \(S\) such that \(v\) is a linear combination of \(\seq{u}{1,2,,n}\).
 \end{ex}
 
 \begin{proof}[\pf{ex:1.5.14}]
@@ -368,12 +368,12 @@
     \iff & \exists v, \seq{u}{1,2,,n} \in S :                                                                 \\
          & v \text{ is a linear combination of } \seq{u}{1,2,,n}.               &  & \text{(by \cref{1.4.1})}
   \end{align*}
-  Combine all proofs above we conclude that \(S\) is linearly dependent if and only if \(S = \set{\zv}\) or there exist distinct vectors \(v, \seq{u}{1,2,,n}\) in \(S\) such that \(v\) is a linear combination of \(\seq{u}{1,2,,n}\).
+  Combine all proofs above we conclude that \(S\) is linearly dependent iff \(S = \set{\zv}\) or there exist distinct vectors \(v, \seq{u}{1,2,,n}\) in \(S\) such that \(v\) is a linear combination of \(\seq{u}{1,2,,n}\).
 \end{proof}
 
 \begin{ex}\label{ex:1.5.15}
   Let \(S = \set{\seq{u}{1,2,,n}}\) be a finite set of vectors.
-  Prove that \(S\) is linearly dependent if and only if \(u_1 = \zv\) or \(u_{k + 1} \in \spn{\set{\seq{u}{1,2,,k}}}\) for some \(k\) (\(1 \leq k < n\)).
+  Prove that \(S\) is linearly dependent iff \(u_1 = \zv\) or \(u_{k + 1} \in \spn{\set{\seq{u}{1,2,,k}}}\) for some \(k\) (\(1 \leq k < n\)).
 \end{ex}
 
 \begin{proof}[\pf{ex:1.5.15}]
@@ -410,7 +410,7 @@
 \end{proof}
 
 \begin{ex}\label{ex:1.5.16}
-  Prove that a set \(S\) of vectors is linearly independent if and only if each finite subset of \(S\) is linearly independent.
+  Prove that a set \(S\) of vectors is linearly independent iff each finite subset of \(S\) is linearly independent.
 \end{ex}
 
 \begin{proof}[\pf{ex:1.5.16}]

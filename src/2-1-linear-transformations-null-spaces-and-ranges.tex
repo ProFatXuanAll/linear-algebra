@@ -18,9 +18,9 @@
   Let \(\V\) and \(\W\) be vector spaces over \(\F\) and let \(\T : \V \to \W\) be a function.
   \begin{enumerate}
     \item If \(\T\) is linear, then \(\T(\zv_{\V}) = \zv_{\W}\).
-    \item \(\T\) is linear if and only if \(\T(cx + y) = c\T(x) + \T(y)\) for all \(x, y \in \V\) and \(c \in \F\).
+    \item \(\T\) is linear iff \(\T(cx + y) = c\T(x) + \T(y)\) for all \(x, y \in \V\) and \(c \in \F\).
     \item If \(\T\) is linear, then \(\T(x - y) = \T(x) - \T(y)\) for all \(x, y \in \V\).
-    \item \(\T\) is linear if and only if, for \(\seq{x}{1,2,,n} \in \V\) and \(\seq{a}{1,2,,n} \in F\), we have
+    \item \(\T\) is linear iff, for \(\seq{x}{1,2,,n} \in \V\) and \(\seq{a}{1,2,,n} \in F\), we have
           \[
             \T\pa{\sum_{i = 1}^n a_i x_i} = \sum_{i = 1}^n a_i \T(x_i).
           \]
@@ -386,7 +386,7 @@
 
 \begin{thm}\label{2.4}
   Let \(\V\) and \(\W\) be vector spaces over \(\F\), and let \(\T : \V \to \W\) be linear.
-  Then \(\T\) is one-to-one if and only if \(\ns{\T} = \set{\zv_{\V}}\).
+  Then \(\T\) is one-to-one iff \(\ns{\T} = \set{\zv_{\V}}\).
 \end{thm}
 
 \begin{proof}[\pf{2.4}]
@@ -417,7 +417,7 @@
   \[
     \nt{\T} + \rk{\T} = \dim(\V).
   \]
-  Now, with the use of \cref{2.4}, we have that \(\T\) is one-to-one if and only if \(\ns{\T} = \set{\zv_{\V}}\), if and only if \(\nt{\T} = 0\), if and only if \(\rk{\T} = \dim(\V)\), if and only if \(\rk{\T} = \dim(\W)\), and if and only if \(\dim(\rg{\T}) = \dim(\W)\).
+  Now, with the use of \cref{2.4}, we have that \(\T\) is one-to-one iff \(\ns{\T} = \set{\zv_{\V}}\), iff \(\nt{\T} = 0\), iff \(\rk{\T} = \dim(\V)\), iff \(\rk{\T} = \dim(\W)\), and iff \(\dim(\rg{\T}) = \dim(\W)\).
   By \cref{1.11}, this equality is equivalent to \(\rg{\T} = \W\), the definition of \(\T\) being onto.
 \end{proof}
 
@@ -560,9 +560,9 @@
 \begin{ex}\label{ex:2.1.14}
   Let \(\V\) and \(\W\) be vector spaces over \(\F\) and \(\T : \V \to \W\) be linear.
   \begin{enumerate}
-    \item Prove that \(\T\) is one-to-one if and only if \(\T\) carries linearly independent subsets of \(\V\) onto linearly independent subsets of \(\W\).
+    \item Prove that \(\T\) is one-to-one iff \(\T\) carries linearly independent subsets of \(\V\) onto linearly independent subsets of \(\W\).
     \item Suppose that \(\T\) is one-to-one and that \(S\) is a subset of \(\V\).
-          Prove that \(S\) is linearly independent if and only if \(\T(S)\) is linearly independent.
+          Prove that \(S\) is linearly independent iff \(\T(S)\) is linearly independent.
     \item Suppose \(\beta = \set{\seq{v}{1,2,,n}}\) is a basis for \(\V\) over \(\F\) and \(\T\) is one-to-one and onto.
           Prove that \(\T(\beta) = \set{\T(v_1), \T(v_2), \dots, \T(v_n)}\) is a basis for \(\W\) over \(\F\).
   \end{enumerate}
@@ -601,7 +601,7 @@
     \implies & \T(x) \neq \T(y),
   \end{align*}
   we know that \(\T\) is one-to-one.
-  From all proofs above we conclude that \(\T\) is one-to-one if and only if \(\T\) carries linearly independent subsets of \(\V\) onto linearly independent subsets of \(\W\).
+  From all proofs above we conclude that \(\T\) is one-to-one iff \(\T\) carries linearly independent subsets of \(\V\) onto linearly independent subsets of \(\W\).
 \end{proof}
 
 \begin{proof}[\pf{ex:2.1.14}(b)]

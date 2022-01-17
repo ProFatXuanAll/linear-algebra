@@ -267,22 +267,26 @@
 % We cannot use `\span' since it is a tex primitive.
 \newcommand{\spn}[1]{\operatorname{span}\pa{#1}}
 
+% Linear transformation.
+\newcommand{\lt}[1]{\mathsf{#1}}
 % Linear transformation T.
-\newcommand{\T}{\mathsf{T}}
+\newcommand{\T}{\lt{T}}
 % Linear transformation U.
-\newcommand{\U}{\mathsf{U}}
+\newcommand{\U}{\lt{U}}
 % Identity transformation I.
 \newcommand{\IT}[1][]{%
 \ifthenelse{%
 	\equal{#1}{}%
 }{%
-\mathsf{I}%
+\lt{I}%
 }{%
-\mathsf{I}_{#1}%
+\lt{I}_{#1}%
 }%
 }
 % Zero transformation T_0.
 \newcommand{\zT}{\T_0}
+% Left-multiplication transformation L_A.
+\renewcommand{\L}{\lt{L}}
 
 % Null space N(T).
 \newcommand{\ns}[1]{\mathsf{N}\pa{#1}}
