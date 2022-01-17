@@ -489,8 +489,35 @@
 \end{proof}
 
 \begin{thm}\label{2.16}
-
+  Let \(A\), \(B\), and \(C\) be matrices such that \(A (BC)\) is defined.
+  Then \((AB) C\) is also defined and \(A (BC) = (AB) C\);
+  that is, matrix multiplication is associative.
 \end{thm}
+
+\begin{proof}[\pf{2.16}]
+  Since \(A (BC)\) is defined, by \cref{2.3.1} we can let \(A \in \MS\) and \(BC \in \ms{n}{p}{\F}\) such that \(A (BC) \in \ms{m}{p}{\F}\).
+  Since \(BC\) is also defined, by \cref{2.3.1} again we can let \(B \in \ms{n}{k}{\F}\) and \(C \in \ms{k}{p}{\F}\).
+  Then we have
+  \begin{align*}
+             & \begin{dcases}
+                 A \in \MS           \\
+                 B \in \ms{n}{k}{\F} \\
+                 C \in \ms{k}{p}{\F}
+               \end{dcases}                                    \\
+    \implies & \begin{dcases}
+                 AB \in \ms{m}{k}{\F} \\
+                 C \in \ms{k}{p}{\F}
+               \end{dcases}  &  & \text{(by \cref{2.3.1})}            \\
+    \implies & (AB) C \in \ms{m}{p}{\F} &  & \text{(by \cref{2.3.1})}
+  \end{align*}
+  and thus \((AB) C\) is defined.
+
+  Using \cref{2.15}(e) and the associativity of functional composition, we have
+  \[
+    \L_{A (BC)} = \L_A \L_{BC} = \L_A (\L_B \L_C) = (\L_A \L_B) \L_C = \L_{AB} \L_C = \L_{(AB) C}.
+  \]
+  So by \cref{2.15}(b), it follows that \(A (BC) = (AB) C\).
+\end{proof}
 
 \exercisesection
 
