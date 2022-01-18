@@ -541,6 +541,37 @@
 
 \exercisesection
 
+\setcounter{ex}{9}
+\begin{ex}\label{ex:2.3.10}
+  Let \(A \in \ms{n}{n}{\F}\).
+  Prove that \(A\) is a diagonal matrix iff \(A_{i j} = \delta_{i j} A_{i j}\) for all \(i\) and \(j\).
+\end{ex}
+
+\begin{proof}[\pf{ex:2.3.10}]
+  We have
+  \begin{align*}
+         & A \text{ is diagonal matrix}                                                                                              \\
+    \iff & A_{i j} = 0 \text{ for all } i, j \in \set{1, 2, \dots, n} \text{ and } i \neq j            &  & \text{(by \cref{1.3.8})} \\
+    \iff & A_{i j} = \delta_{i j} \text{ for all } i, j \in \set{1, 2, \dots, n} \text{ and } i \neq j &  & \text{(by \cref{2.3.4})} \\
+    \iff & A_{i j} = \delta_{i j} A_{i j} \text{ for all } i, j \in \set{1, 2, \dots, n}.              &  & \text{(by \cref{2.3.4})}
+  \end{align*}
+\end{proof}
+
+\begin{ex}\label{ex:2.3.11}
+  Let \(\V\) be a vector space over \(\F\), and let \(\T : \V \to \V\) be linear.
+  Prove that \(\T^2 = \zT\) iff \(\rg{\T} \subseteq \ns{\T}\).
+\end{ex}
+
+\begin{proof}[\pf{ex:2.3.11}]
+  We have
+  \begin{align*}
+         & \T^2 = \zT                                                                \\
+    \iff & \forall x \in \V, \T(\T(x)) = \zT(x) = \zv &  & \text{(by \cref{2.1.9})}  \\
+    \iff & \forall x \in \V, \T(x) \in \ns{\T}        &  & \text{(by \cref{2.1.10})} \\
+    \iff & \rg{\T} \subseteq \ns{\T}.                 &  & \text{(by \cref{2.1.10})}
+  \end{align*}
+\end{proof}
+
 \begin{ex}\label{ex:2.3.14}
 
 \end{ex}
