@@ -572,6 +572,88 @@
   \end{align*}
 \end{proof}
 
+\begin{ex}\label{ex:2.3.12}
+  Let \(\V\), \(\W\), and \(\vs{Z}\) be vector spaces over \(\F\), and let \(\T \in \ls(\V, \W)\) and \(\U \in \ls(\W, \vs{Z})\).
+  \begin{enumerate}
+    \item Prove that if \(\U \T\) is one-to-one, then \(\T\) is one-to-one.
+          Must \(\U\) also be one-to-one?
+    \item Prove that if \(\U \T\) is onto, then \(\U\) is onto.
+          Must \(\T\) also be onto?
+    \item Prove that if \(\U\) and \(\T\) are one-to-one and onto, then \(\U \T\) is also.
+  \end{enumerate}
+\end{ex}
+
+\begin{proof}[\pf{ex:2.3.12}(a)]
+  Let \(x, y \in \V\) such that \(x \neq y\).
+  Then we have
+  \begin{align*}
+             & (\U \T)(x) \neq (\U \T)(y) &  & \text{(\(\U \T\) is one-to-one)}            \\
+    \implies & \U(\T(x)) \neq \U(\T(y))                                                    \\
+    \implies & \T(x) \neq \T(y)           &  & \text{(this is the definition of function)} \\
+    \implies & \T \text{ is one-to-one}.
+  \end{align*}
+  From the proof above we see that is doesn't matter whether \(\U\) is one-to-one or not.
+\end{proof}
+
+\begin{proof}[\pf{ex:2.3.12}(b)]
+  Let \(z \in \vs{Z}\).
+  Then we have
+  \begin{align*}
+             & \exists x \in \V : (\U \T)(x) = z                &  & \text{(\(\U \T\) is onto)} \\
+    \implies & \exists (x, y) \in \V \times \W : \begin{dcases}
+                                                   \T(x) = y \\
+                                                   \U(\T(x)) = \U(y) = z
+                                                 \end{dcases} &  & \text{(\(\U \T\) is onto)}   \\
+    \implies & \U \text{ is onto}.
+  \end{align*}
+  From the proof above we see that is doesn't matter whether \(\T\) is onto or not.
+\end{proof}
+
+\begin{proof}[\pf{ex:2.3.12}(c)]
+  First we show that \(\U \T\) is one-to-one.
+  Let \(x, y \in \V\) such that \(x \neq y\).
+  Then we have
+  \begin{align*}
+             & \T(x) \neq \T(y)             &  & \text{(\(\T\) is one-to-one)} \\
+    \implies & \U(\T(x)) \neq \U(\T(y))     &  & \text{(\(\U\) is one-to-one)} \\
+    \implies & \U \T \text{ is one-to-one}.
+  \end{align*}
+
+  Now we show that \(\U \T\) is onto.
+  This is true since
+  \begin{align*}
+             & \begin{dcases}
+                 \forall y \in \W, \exists x \in \V : \T(x) = y \\
+                 \forall z \in \vs{Z}, \exists y \in \W : \U(y) = z
+               \end{dcases}     &  & \text{(\(\U, \T\) are onto)}     \\
+    \implies & \forall z \in \vs{Z}, \exists x \in \V : \U(\T(x)) = z \\
+    \implies & \U \T \text{ is onto}.
+  \end{align*}
+\end{proof}
+
+\begin{ex}\label{ex:2.3.13}
+  Let \(A, B \in \ms{n}{n}{\F}\).
+  Prove that \(\tr[AB] = \tr[BA]\) and \(\tr[A] = \tr[\tp{A}]\).
+\end{ex}
+
+\begin{proof}[\pf{ex:2.3.13}]
+  We have
+  \begin{align*}
+    \tr[AB] & = \sum_{i = 1}^n (AB)_{i i}                          &  & \text{(by \cref{1.3.9})} \\
+            & = \sum_{i = 1}^n \pa{\sum_{k = 1}^n A_{i k} B_{k i}} &  & \text{(by \cref{2.3.1})} \\
+            & = \sum_{i = 1}^n \pa{\sum_{k = 1}^n B_{k i} A_{i k}} &  & \text{(by \cref{1.2.1})} \\
+            & = \sum_{k = 1}^n \pa{\sum_{i = 1}^n B_{k i} A_{i k}} &  & \text{(by \cref{1.2.1})} \\
+            & = \sum_{k = 1}^n (BA)_{k k}                          &  & \text{(by \cref{2.3.1})} \\
+            & = \tr[BA]                                            &  & \text{(by \cref{1.3.9})}
+  \end{align*}
+  and
+  \begin{align*}
+    \tr[A] & = \sum_{i = 1}^n A_{i i}        &  & \text{(by \cref{1.3.9})} \\
+           & = \sum_{i = 1}^n (\tp{A})_{i i} &  & \text{(by \cref{1.3.3})} \\
+           & = \tr[\tp{A}].                  &  & \text{(by \cref{1.3.9})}
+  \end{align*}
+\end{proof}
+
 \begin{ex}\label{ex:2.3.14}
 
 \end{ex}
