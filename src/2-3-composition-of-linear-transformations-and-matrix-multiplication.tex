@@ -519,6 +519,25 @@
   So by \cref{2.15}(b), it follows that \(A (BC) = (AB) C\).
 \end{proof}
 
+\begin{defn}\label{2.3.9}
+  An \textbf{incidence matrix} is a square matrix in which all the entries are either zero or one and, for convenience, all the diagonal entries are zero.
+  If we have a relationship on a set of \(n\) objects that we denote by \(1, 2, \dots, n\), then we define the associated incidence matrix \(A\) by \(A_{i j} = 1\) if \(i\) is related to \(j\), and \(A_{i j} = 0\) otherwise.
+\end{defn}
+
+\begin{eg}\label{2.3.10}
+  A maximal collection of three or more people with the property that any two can send to each other is called a \textbf{clique}.
+  The problem of determining cliques is difficult, but there is a simple method for determining if someone belongs to a clique.
+  If we define a new matrix \(B\) by \(B_{i j} = 1\) if \(i\) and \(j\) can send to each other, and \(B_{i j} = 0\) otherwise, then person \(i\) belongs to a clique if and only if \((B^3)_{i i} > 0\).
+\end{eg}
+
+\begin{eg}\label{2.3.11}
+  A relation among a group of people is called a \textbf{dominance relation} if the associated incidence matrix \(A\) has the property that for all distinct pairs \(i\) and \(j\), \(A_{i j} = 1\) if and only if \(A_{j i} = 0\), that is, given any two people, exactly one of them dominates the other.
+  Since \(A\) is an incidence matrix, \(A_{i i} = 0\) for all \(i\).
+  For such a relation, it can be shown that the matrix \(A + A^2\) has a row [column] in which each entry is positive except for the diagonal entry.
+  In other words, there is at least one person who dominates [is dominated by] all others in one or two stages.
+  In fact, it can be shown that any person who dominates [is dominated by] the greatest number of people in the first stage has this property.
+\end{eg}
+
 \exercisesection
 
 \begin{ex}\label{ex:2.3.14}
