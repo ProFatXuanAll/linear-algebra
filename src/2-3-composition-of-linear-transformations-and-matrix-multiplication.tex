@@ -21,14 +21,14 @@
 \end{proof}
 
 \begin{thm}\label{2.10}
-  Let \(\V\) be a vector space over \(\F\).
-  Let \(\T, \U_1, \U_2 \in \ls(\V)\).
+  Let \(\V, \W, \vs{X}, \vs{Y}\) be vector spaces over \(\F\).
+  Let \(\lt{S}, \lt{S}_1, \lt{S}_2 \in \ls(\vs{X}, \vs{Y})\), let \(\T \in \ls(\W, \vs{X})\) and let \(\U, \U_1, \U_2 \in \ls(\V, \W)\).
   Then
   \begin{enumerate}
-    \item \(\T(\U_1 + \U_2) = \T \U_1 + \T \U_2\) and \((\U_1 + \U_2) \T = \U_1 \T + \U_2 \T\).
-    \item \(\T(\U_1 \U_2) = (\T \U_1) \U_2\).
-    \item \(\T \IT = \IT \T = \T\).
-    \item \(a(\U_1 \U_2) = (a \U_1) \U_2 = \U_1 (a \U_2)\) for all scalars \(a\).
+    \item \(\T(\U_1 + \U_2) = \T \U_1 + \T \U_2\) and \((\lt{S}_1 + \lt{S}_2) \T = \lt{S}_1 \T + \lt{S}_2 \T\).
+    \item \(\lt{S} (\T \U) = (\lt{S} \T) \U\).
+    \item \(\T \IT[\W] = \IT[\vs{X}] \T = \T\).
+    \item \(a(\T \U) = (a \T) \U = \T (a \U)\) for all scalars \(a \in \F\).
   \end{enumerate}
 \end{thm}
 
@@ -39,52 +39,53 @@
                          & = \T(\U_1(x) + \U_2(x))       &  & \text{(by \cref{2.2.5})} \\
                          & = \T(\U_1(x)) + \T(\U_2(x))   &  & \text{(by \cref{2.1.1})} \\
                          & = (\T \U_1)(x) + (\T \U_2)(x)                               \\
-                         & = (\T \U_1 + \T \U_2)(x)      &  & \text{(by \cref{2.2.5})}
+                         & = (\T \U_1 + \T \U_2)(x).     &  & \text{(by \cref{2.2.5})}
   \end{align*}
-  and
+  Thus \(\T(\U_1 + \U_2) = \T \U_1 + \T \U_2\).
+  For all \(x \in \W\), we have
   \begin{align*}
-    ((\U_1 + \U_2) \T)(x) & = (\U_1 + \U_2)(\T(x))                                      \\
-                          & = \U_1(\T(x)) + \U_2(\T(x))   &  & \text{(by \cref{2.2.5})} \\
-                          & = (\U_1 \T)(x) + (\U_2 \T)(x)                               \\
-                          & = (\U_1 \T + \U_2 \T)(x).     &  & \text{(by \cref{2.2.5})}
+    ((\vs{S}_1 + \vs{S}_2) \T)(x) & = (\vs{S}_1 + \vs{S}_2)(\T(x))                                      \\
+                                  & = \vs{S}_1(\T(x)) + \vs{S}_2(\T(x))   &  & \text{(by \cref{2.2.5})} \\
+                                  & = (\vs{S}_1 \T)(x) + (\vs{S}_2 \T)(x)                               \\
+                                  & = (\vs{S}_1 \T + \vs{S}_2 \T)(x).     &  & \text{(by \cref{2.2.5})}
   \end{align*}
-  Thus \(\T(\U_1 + \U_2) = \T \U_1 + \T \U_2\) and \((\U_1 + \U_2) \T = \U_1 \T + \U_2 \T\).
+  Thus \((\vs{S}_1 + \vs{S}_2) \T = \vs{S}_1 \T + \vs{S}_2 \T\).
 \end{proof}
 
 \begin{proof}[\pf{2.10}(b)]
   For all \(x \in \V\), we have
   \begin{align*}
-    (\T (\U_1 \U_2))(x) & = \T((\U_1 \U_2)(x))  \\
-                        & = \T(\U_1(\U_2(x)))   \\
-                        & = (\T \U_1)(\U_2(x))  \\
-                        & = ((\T \U_1) \U_2)(x)
+    (\lt{S} (\T \U))(x) & = \lt{S}((\T \U)(x))  \\
+                        & = \lt{S}(\T(\U(x)))   \\
+                        & = (\lt{S} \T)(\U(x))  \\
+                        & = ((\lt{S} \T) \U)(x)
   \end{align*}
-  and thus \(\T (\U_1 \U_2) = (\T \U_1) \U_2\).
+  and thus \(\lt{S} (\T \U) = (\lt{S} \T) \U\).
 \end{proof}
 
 \begin{proof}[\pf{2.10}(c)]
   For all \(x \in \V\), we have
   \begin{align*}
-    (\T \IT)(x) & = \T(\IT(x))                                \\
-                & = \T(x)       &  & \text{(by \cref{2.1.9})} \\
-                & = \IT(\T(x))  &  & \text{(by \cref{2.1.9})} \\
-                & = (\IT \T)(x)
+    (\T \IT[\W])(x) & = \T(\IT[\W](x))                                    \\
+                    & = \T(x)               &  & \text{(by \cref{2.1.9})} \\
+                    & = \IT[\vs{X}](\T(x))  &  & \text{(by \cref{2.1.9})} \\
+                    & = (\IT[\vs{X}] \T)(x)
   \end{align*}
-  and thus \(\T \IT = \T = \IT \T\).
+  and thus \(\T \IT[\W] = \T = \IT[\vs{X}] \T\).
 \end{proof}
 
 \begin{proof}[\pf{2.10}(d)]
   For all \(x \in \V\), we have
   \begin{align*}
-    (a (\U_1 \U_2))(x) & = a (\U_1 \U_2)(x)                                 \\
-                       & = a \U_1(\U_2(x))                                  \\
-                       & = (a \U_1)(\U_2(x))  &  & \text{(by \cref{2.2.5})} \\
-                       & = ((a \U_1) \U_2)(x)                               \\
-                       & = \U_1(a \U_2(x))    &  & \text{(by \cref{2.1.1})} \\
-                       & = \U_1((a \U_2)(x))                                \\
-                       & = (\U_1 (a \U_2))(x)
+    (a (\T \U))(x) & = a (\T \U)(x)                                 \\
+                   & = a \T(\U(x))                                  \\
+                   & = (a \T)(\U(x))  &  & \text{(by \cref{2.2.5})} \\
+                   & = ((a \T) \U)(x)                               \\
+                   & = \T(a \U(x))    &  & \text{(by \cref{2.1.1})} \\
+                   & = \T((a \U)(x))                                \\
+                   & = (\T (a \U))(x)
   \end{align*}
-  and thus \(a (\U_1 \U_2) = (a \U_1) \U_2 = \U_1 (a \U_2)\).
+  and thus \(a (\T \U) = (a \T) \U = \T (a \U)\).
 \end{proof}
 
 \begin{defn}\label{2.3.1}
