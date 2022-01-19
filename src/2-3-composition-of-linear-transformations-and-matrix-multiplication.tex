@@ -769,3 +769,35 @@
                                       \end{pmatrix}}.                                                               &  & \text{(by \cref{1.2.9})}
   \end{align*}
 \end{proof}
+
+\begin{ex}\label{ex:2.3.15}
+  Let \(M\) and \(A\) be matrices for which the product matrix \(MA\) is defined.
+  If the \(j\)th column of \(A\) is a linear combination of a set of columns of \(A\), prove that the \(j\)th column of \(MA\) is a linear combination of the corresponding columns of \(MA\) with the same corresponding coefficients.
+\end{ex}
+
+\begin{proof}[\pf{ex:2.3.15}]
+  Let \(M \in \MS\) and let \(A \in \ms{n}{p}{\F}\).
+  For all \(i \in \set{1, 2, \dots, p}\) we define \(v_i\) to be the \(i\)th column of \(A\).
+  By hypothesis we know that
+  \[
+    \exists \seq{c}{1,2,,p} \in \F : v_j = \sum_{i = 1}^p c_i v_i.
+  \]
+  Then we have
+  \begin{align*}
+    \begin{pmatrix}
+      (MA)_{1 j} \\
+      (MA)_{2 j} \\
+      \vdots     \\
+      (MA)_{p j}
+    \end{pmatrix} & = M v_j                              &  & \text{(by \cref{2.13}(a))}   \\
+                    & = M \pa{\sum_{i = 1}^p c_i v_i}                                      \\
+                    & = \sum_{i = 1}^p M (c_i v_i)         &  & \text{(by \cref{2.12}(a))} \\
+                    & = \sum_{i = 1}^p c_i (M v_i)         &  & \text{(by \cref{2.12}(b))} \\
+                    & = \sum_{i = 1}^p c_i \begin{pmatrix}
+                                             (MA)_{1 i} \\
+                                             (MA)_{2 i} \\
+                                             \vdots     \\
+                                             (MA)_{p i}
+                                           \end{pmatrix}. &  & \text{(by \cref{2.13}(b))}
+  \end{align*}
+\end{proof}
