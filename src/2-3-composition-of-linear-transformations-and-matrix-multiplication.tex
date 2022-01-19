@@ -655,5 +655,117 @@
 \end{proof}
 
 \begin{ex}\label{ex:2.3.14}
-
+  Assume the notation in \cref{2.13}.
+  \begin{enumerate}
+    \item Suppose that \(z\) is a (column) vector in \(\vs{F}^p\).
+          Use \cref{2.13}(b) to prove that \(Bz\) is a linear combination of the columns of \(B\).
+          In particular, if \(z = \tp{\tuple{a}{1,2,,p}}\), then show that
+          \[
+            Bz = \sum_{j = 1}^p a_j v_j.
+          \]
+    \item Extend (a) to prove that column \(j\) of \(AB\) is a linear combination of the columns of \(A\) with the coefficients in the linear combination being the entries of column \(j\) of \(B\).
+    \item For any row vector \(w \in \vs{F}^m\), prove that \(wA\) is a linear combination of the rows of \(A\) with the coefficients in the linear combination being the coordinates of \(w\).
+    \item Prove the analogous result to (b) about rows:
+          Row \(i\) of \(AB\) is a linear combination of the rows of \(B\) with the coefficients in the linear combination being the entries of row \(i\) of \(A\).
+  \end{enumerate}
 \end{ex}
+
+\begin{proof}[\pf{ex:2.3.14}(a)]
+  We have
+  \begin{align*}
+    Bz & = \begin{pmatrix}
+             (Bz)_{1 1} \\
+             (Bz)_{2 1} \\
+             \vdots     \\
+             (Bz)_{n 1}
+           \end{pmatrix} = \begin{pmatrix}
+                             \sum_{k = 1}^p B_{1 k} z_{k 1} \\
+                             \sum_{k = 1}^p B_{2 k} z_{k 1} \\
+                             \vdots                         \\
+                             \sum_{k = 1}^p B_{n k} z_{k 1}
+                           \end{pmatrix}                      &  & \text{(by \cref{2.3.1})}                   \\
+       & = \begin{pmatrix}
+             \sum_{k = 1}^p B_{1 k} z_k \\
+             \sum_{k = 1}^p B_{2 k} z_k \\
+             \vdots                     \\
+             \sum_{k = 1}^p B_{n k} z_k
+           \end{pmatrix} = \begin{pmatrix}
+                             \sum_{k = 1}^p B_{1 k} a_k \\
+                             \sum_{k = 1}^p B_{2 k} a_k \\
+                             \vdots                     \\
+                             \sum_{k = 1}^p B_{n k} a_k
+                           \end{pmatrix}                                                         \\
+       & = \sum_{k = 1}^p \begin{pmatrix}
+                            B_{1 k} a_k \\
+                            B_{2 k} a_k \\
+                            \vdots      \\
+                            B_{n k} a_k
+                          \end{pmatrix} = \sum_{k = 1}^p \pa{a_k \begin{pmatrix}
+                                                                     B_{1 k} \\
+                                                                     B_{2 k} \\
+                                                                     \vdots  \\
+                                                                     B_{n k}
+                                                                   \end{pmatrix}} &  & \text{(by \cref{1.2.9})} \\
+       & = \sum_{k = 1}^p a_k v_k.                              &  & \text{(by \cref{2.13})}
+  \end{align*}
+\end{proof}
+
+\begin{proof}[\pf{ex:2.3.14}(b)]
+  We have
+  \begin{align*}
+    u_j & = A v_j = A \begin{pmatrix}
+                        B_{1 j} \\
+                        B_{2 j} \\
+                        \vdots  \\
+                        B_{n j}
+                      \end{pmatrix}              &  & \text{(by \cref{2.13}(a))}       \\
+        & = \sum_{k = 1}^n B_{k j} \begin{pmatrix}
+                                     A_{1 k} \\
+                                     A_{2 k} \\
+                                     \vdots  \\
+                                     A_{n k}
+                                   \end{pmatrix}. &  & \text{(by \cref{ex:2.3.14}(a))}
+  \end{align*}
+\end{proof}
+
+\begin{proof}[\pf{ex:2.3.14}(c)]
+  We have
+  \begin{align*}
+    wA & = \begin{pmatrix}
+             (wA)_1 & (wA)_2 & \cdots & (wA)_n
+           \end{pmatrix}                                                                         &  & \text{(by \cref{2.3.1})}                    \\
+       & = \begin{pmatrix}
+             (wA)_{1 1} & (wA)_{1 2} & \cdots & (wA)_{1 n}
+           \end{pmatrix}                                                             &  & \text{(by \cref{2.3.1})}                                \\
+       & = \begin{pmatrix}
+             \sum_{k = 1}^m w_{1 k} A_{k 1} & \sum_{k = 1}^m w_{1 k} A_{k 2} & \cdots & \sum_{k = 1}^m w_{1 k} A_{k n}
+           \end{pmatrix} &  & \text{(by \cref{2.3.1})}                              \\
+       & = \sum_{k = 1}^m \begin{pmatrix}
+                            w_{1 k} A_{k 1} & w_{1 k} A_{k 2} & \cdots & w_{1 k} A_{k n}
+                          \end{pmatrix}                                              &  & \text{(by \cref{1.2.9})}                                \\
+       & = \sum_{k = 1}^m \begin{pmatrix}
+                            w_k A_{k 1} & w_k A_{k 2} & \cdots & w_k A_{k n}
+                          \end{pmatrix}                                                          &  & \text{(by \cref{2.3.1})}                    \\
+       & = \sum_{k = 1}^m \pa{w_k \begin{pmatrix}
+                                      A_{k 1} & A_{k 2} & \cdots & A_{k n}
+                                    \end{pmatrix}}.                                                                   &  & \text{(by \cref{1.2.9})} \\
+  \end{align*}
+\end{proof}
+
+\begin{proof}[\pf{ex:2.3.14}(d)]
+  We have
+  \begin{align*}
+     & \begin{pmatrix}
+         (AB)_{i 1} & (AB)_{i 2} & \cdots & (AB)_{i p}
+       \end{pmatrix}                                                                                            \\
+     & = \begin{pmatrix}
+           \sum_{k = 1}^n A_{i k} B_{k 1} & \sum_{k = 1}^n A_{i k} B_{k 2} & \cdots & \sum_{k = 1}^n A_{i k} B_{k p}
+         \end{pmatrix} &  & \text{(by \cref{2.3.1})}                              \\
+     & = \sum_{k = 1}^n \begin{pmatrix}
+                          A_{i k} B_{k 1} & A_{i k} B_{k 2} & \cdots & A_{i k} B_{k p}
+                        \end{pmatrix}                                              &  & \text{(by \cref{1.2.9})}                                \\
+     & = \sum_{k = 1}^n \pa{A_{i k} \begin{pmatrix}
+                                        B_{k 1} & B_{k 2} & \cdots & B_{k p}
+                                      \end{pmatrix}}.                                                               &  & \text{(by \cref{1.2.9})}
+  \end{align*}
+\end{proof}
