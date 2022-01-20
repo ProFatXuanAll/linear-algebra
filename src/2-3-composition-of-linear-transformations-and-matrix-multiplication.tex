@@ -801,3 +801,61 @@
                                            \end{pmatrix}. &  & \text{(by \cref{2.13}(b))}
   \end{align*}
 \end{proof}
+
+\begin{ex}\label{ex:2.3.16}
+  Let \(V\) be a finite-dimensional vector space over \(\F\), and let \(\T : \V \to \V\) be linear.
+  \begin{enumerate}
+    \item If \(\rk{\T} = \rk{\T^2}\), prove that \(\rg{\T} \cap \ns{\T} = \set{\zv}\).
+          Deduce that \(\V = \rg{\T} \oplus \ns{\T}\).
+    \item Prove that \(\V = \rg{\T^k} \oplus \ns{\T^k}\) for some positive integer \(k\).
+  \end{enumerate}
+\end{ex}
+
+\begin{proof}[\pf{ex:2.3.16}(a)]
+  First observe that
+  \begin{align*}
+             & \begin{dcases}
+                 \T(\V) \subseteq \V \\
+                 \rk{\T^2} = \rk{\T}
+               \end{dcases}                                                                                             \\
+    \implies & \begin{dcases}
+                 \rg{\T^2} = \T^{2}(\V) = \T(\T(\V)) \subseteq \T(\V) = \rg{\T} \\
+                 \rk{\T^2} = \rk{\T}
+               \end{dcases} &  & \text{(by \cref{2.1.10})}                                 \\
+    \implies & \rg{\T^2} = \rg{\T}.                                                               &  & \text{(by \cref{1.11})}
+  \end{align*}
+  Let \(\beta = \set{\seq{v}{1,2,,n}}\) be a basis for \(\rg{\T}\) over \(\F\).
+  Since \(\rg{\T^2} = \rg{\T}\), by \cref{2.2} we know that \(\T(\beta)\) is a basis for \(\rg{\T}\) over \(\F\).
+  Let \(x \in \rg{\T} \cap \ns{\T}\).
+  Since \(x \in \rg{\T}\), by \cref{1.6.1} we know that
+  \[
+    \exists \seq{a}{1,2,,n} \in \F : x = \sum_{i = 1}^n a_i v_i.
+  \]
+  Since \(x \in \ns{\T}\), we have
+  \begin{align*}
+             & \T(x) = \zv                                                   &  & \text{(by \cref{2.1.10})}   \\
+    \implies & \T(\sum_{i = 1}^n a_i v_i) = \sum_{i = 1}^n a_i \T(v_i) = \zv &  & \text{(by \cref{2.1.2}(d))} \\
+    \implies & \seq[=]{a}{1,2,,n} = 0                                        &  & \text{(by \cref{1.5.3})}    \\
+    \implies & x = \zv.                                                      &  & \text{(by \cref{1.2}(a))}
+  \end{align*}
+  Thus \(\rg{\T} \cap \ns{\T} = \zv\).
+  Since
+  \begin{align*}
+     & \dim(\rg{\T} + \ns{\T})                                                                        \\
+     & = \dim(\rg{\T}) + \dim(\ns{\T}) - \dim(\rg{\T} \cap \ns{\T}) &  & \text{(by \cref{ex:1.6.29})} \\
+     & = \dim(\rg{\T}) + \dim(\ns{\T})                              &  & \text{(by \cref{1.6.9})}     \\
+     & = \rk{\T} + \nt{\T} = \dim(\V)                               &  & \text{(by \cref{2.3})}
+  \end{align*}
+  and by \cref{ex:1.3.23}(a) \(\rg{\T} + \ns{\T}\) is a subspace of \(\V\) over \(\F\), by \cref{1.11} we know that \(\V = \rg{\T} + \ns{\T}\).
+  Thus by \cref{1.3.11} we know that \(\V = \rg{\T} \oplus \ns{\T}\).
+\end{proof}
+
+\begin{proof}[\pf{ex:2.3.16}(b)]
+  First observe that
+  \begin{align*}
+             & \forall k \in \Z^+, \rg{\T^{k + 1}} = \T^{k + 1}(\V) \subseteq \T^k(\V) = \rg{\T^k} &  & \text{(by \cref{2.1.10})}   \\
+    \implies & \forall k \in \Z^+, 0 \leq \rk{\T^{k + 1}} \leq \rk{\T^k} \leq \dim(\V).            &  & \text{(by \cref{1.11,2.3})}
+  \end{align*}
+  Since \(\V\) is finite-dimensional, we know that there must exists a \(k \in \Z^+\) such that \(\rk{\T^{k + 1}} = \rk{\T^k}\).
+  By \cref{ex:2.3.16}(a) we see that \(\rg{\T^k} \cap \ns{\T^k} = \set{\zv}\) and \(\V = \rg{\T^k} \oplus \ns{\T^k}\).
+\end{proof}
