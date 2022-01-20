@@ -897,3 +897,23 @@
     \implies & \V = \set{y \in \V : \T(y) = y} \oplus \ns{\T}.                       &  & \text{(by \cref{ex:2.3.16}(a))}
   \end{align*}
 \end{proof}
+
+\begin{ex}\label{ex:2.3.18}
+  Using only the definition of matrix multiplication, prove that multipli- cation of matrices is associative.
+\end{ex}
+
+\begin{proof}[\pf{ex:2.3.18}]
+  Let \(A \in \MS\), \(B \in \ms{n}{p}{\F}\) and \(C \in \ms{p}{q}{\F}\).
+  Then we have
+  \begin{align*}
+    ((AB) C)_{i j} & = \sum_{k_2 = 1}^p (AB)_{i k_2} C_{k_2 j}                                     &  & \text{(by \cref{2.3.1})} \\
+                   & = \sum_{k_2 = 1}^p \pa{\pa{\sum_{k_1 = 1}^n A_{i k_1} B_{k_1 k_2}} C_{k_2 j}} &  & \text{(by \cref{2.3.1})} \\
+                   & = \sum_{k_2 = 1}^p \pa{\sum_{k_1 = 1}^n (A_{i k_1} B_{k_1 k_2}) C_{k_2 j}}    &  & \text{(by \cref{1.2.1})} \\
+                   & = \sum_{k_2 = 1}^p \pa{\sum_{k_1 = 1}^n A_{i k_1} (B_{k_1 k_2} C_{k_2 j})}    &  & \text{(by \cref{1.2.1})} \\
+                   & = \sum_{k_1 = 1}^n \pa{\sum_{k_2 = 1}^p A_{i k_1} (B_{k_1 k_2} C_{k_2 j})}    &  & \text{(by \cref{1.2.1})} \\
+                   & = \sum_{k_1 = 1}^n \pa{A_{i k_1} \pa{\sum_{k_2 = 1}^p B_{k_1 k_2} C_{k_2 j}}} &  & \text{(by \cref{1.2.1})} \\
+                   & = \sum_{k_1 = 1}^n A_{i k_1} (BC)_{k_1 j}                                     &  & \text{(by \cref{2.3.1})} \\
+                   & = (A (BC))_{i j}                                                              &  & \text{(by \cref{2.3.1})}
+  \end{align*}
+  and thus by \cref{1.2.9} \((AB) C = A (BC)\).
+\end{proof}
