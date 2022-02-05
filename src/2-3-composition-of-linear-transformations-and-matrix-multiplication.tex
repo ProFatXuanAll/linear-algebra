@@ -528,16 +528,89 @@
 \begin{eg}\label{2.3.10}
   A maximal collection of three or more people with the property that any two can send to each other is called a \textbf{clique}.
   The problem of determining cliques is difficult, but there is a simple method for determining if someone belongs to a clique.
-  If we define a new matrix \(B\) by \(B_{i j} = 1\) if \(i\) and \(j\) can send to each other, and \(B_{i j} = 0\) otherwise, then person \(i\) belongs to a clique if and only if \((B^3)_{i i} > 0\).
+  If we define a new matrix \(B\) by \(B_{i j} = 1\) if \(i\) and \(j\) can send to each other, and \(B_{i j} = 0\) otherwise, then person \(i\) belongs to a clique iff \((B^3)_{i i} > 0\).
 \end{eg}
 
+\begin{proof}[\pf{2.3.10}]
+  Suppose that \(B \in \ms{n}{n}{\F}\).
+  We know that person \(i\) belongs to a clique iff there exists at least two other people \(j, k\) such that \(i\) can send to \(j\), \(j\) can send to \(k\) and \(k\) can send back to \(i\).
+  In other words \(B_{i j} = B_{j k} = B_{k i} = 1\).
+  Thus we have
+  \begin{align*}
+         & \exists j, k \in \set{1, \dots, n} \setminus \set{i} : B_{i j} = B_{j k} = B_{k i} = 1           &  & \text{(by \cref{2.3.10})} \\
+    \iff & \exists j, k \in \set{1, \dots, n} \setminus \set{i} : B_{i j} B_{j k} B_{k i} = 1                                              \\
+    \iff & (B^3)_{i i} = (BBB)_{i i}                                                                        &  & \text{(by \cref{2.3.6})}  \\
+         & = \sum_{j = 1}^n B_{i j} (BB)_{j i} = \sum_{j = 1}^n B_{i j} \pa{\sum_{k = 1}^n B_{j k} B_{k i}} &  & \text{(by \cref{2.3.1})}  \\
+         & = \sum_{j = 1}^n \sum_{k = 1}^n (B_{i j} B_{j k} B_{k i}) > 0.                                   &  & \text{(by \cref{1.2.1})}
+  \end{align*}
+\end{proof}
+
 \begin{eg}\label{2.3.11}
-  A relation among a group of people is called a \textbf{dominance relation} if the associated incidence matrix \(A\) has the property that for all distinct pairs \(i\) and \(j\), \(A_{i j} = 1\) if and only if \(A_{j i} = 0\), that is, given any two people, exactly one of them dominates the other.
+  A relation among a group of people is called a \textbf{dominance relation} if the associated incidence matrix \(A\) has the property that for all distinct pairs \(i\) and \(j\), \(A_{i j} = 1\) iff \(A_{j i} = 0\), that is, given any two people, exactly one of them dominates the other.
   Since \(A\) is an incidence matrix, \(A_{i i} = 0\) for all \(i\).
   For such a relation, it can be shown that the matrix \(A + A^2\) has a row [column] in which each entry is positive except for the diagonal entry.
   In other words, there is at least one person who dominates [is dominated by] all others in one or two stages.
   In fact, it can be shown that any person who dominates [is dominated by] the greatest number of people in the first stage has this property.
 \end{eg}
+
+\begin{proof}[\pf{2.3.11}]
+  Let \(A \in \ms{n}{n}{\F}\).
+  First observe that
+  \begin{align*}
+    (A + A^2)_{i j} & = A_{i j} + (A^2)_{i j}                     &  & \text{(by \cref{1.2.9})} \\
+                    & = A_{i j} + (AA)_{i j}                      &  & \text{(by \cref{2.3.6})} \\
+                    & = A_{i j} + \sum_{k = 1}^n A_{i k} A_{k j}. &  & \text{(by \cref{2.3.1})}
+  \end{align*}
+  We see that all diagonal entries of \(A + A^2\) is \(0\) since
+  \begin{align*}
+             & \forall (i, j) \in \set{1, \dots, n}^2, (A_{i j} = 0) \lor (A_{j i} = 0)      &  & \text{(by \cref{2.3.11})}     \\
+    \implies & \forall (i, j) \in \set{1, \dots, n}^2, A_{i j} A_{j i} = 0                                                      \\
+    \implies & \forall i \in \set{1, \dots, n}, \sum_{j = 1}^n A_{i j} A_{j i} = 0                                              \\
+    \implies & \forall i \in \set{1, \dots, n}, A_{i i} + \sum_{j = 1}^n A_{i j} A_{j i} = 0 &  & \text{(by \cref{2.3.9})}      \\
+    \implies & \forall i \in \set{1, \dots, n}, (A + A^2)_{i i} = 0.                         &  & \text{(from the proof above)}
+  \end{align*}
+
+  Next we show that there exists an \(i \in \set{1, \dots, n}\) such that each entry in the \(i\)-th row of \(A + A^2\) is positive except for the diagonal entry.
+  Let \(v_1 \in \set{1, \dots, n}\).
+  If each entry in the \(v_1\)-th row of \(A + A^2\) is positive except for the diagonal entry, then we are done.
+  If not, then there exists a \(v_2 \in \set{1, \dots, n} \setminus \set{v_1}\) such that \((A + A^2)_{v_1 v_2} = 0\).
+  From the proof above we see that \(A_{v_1 v_2} = 0\) and thus by \cref{2.3.11} we must have \(A_{v_2 v_1} = 1\).
+  We claim that if \(k \in \set{1, \dots, n} \setminus \set{v_1, v_2}\) such that \(A_{v_1 k} = 1\), then \(A_{v_2 k} = 1\).
+  Otherwise we would have
+  \begin{align*}
+             & A_{v_2 k} = 0                                               \\
+    \implies & A_{k v_2} = 1            &  & \text{(by \cref{2.3.11})}     \\
+    \implies & A_{v_1 k} A_{k v_2} = 1                                     \\
+    \implies & (A + A^2)_{v_1 v_2} > 0, &  & \text{(from the proof above)}
+  \end{align*}
+  a contradiction.
+  From the claim above we see that the \(v_2\)-th row of \(A + A^2\) has greater number of positive entries than the \(v_1\)-th row of \(A + A^2\) (at least larger than one since \(A_{v_2 v_1} = 1\)).
+  Now we can ask if each entry in the \(v_2\)-th row of \(A + A^2\) is positive except for the diagonal entry.
+  If yes, then we are done.
+  If not, we can find a \(v_3 \in \set{1, \dots, n} \setminus \set{v_1, v_2}\) such that \((A + A^2)_{v_2 v_3} = 0\).
+  Using similar arguments as above we see that the \(v_3\)-th row of \(A + A^2\) has greater number of positive entries than the \(v_2\)-th row of \(A + A^2\) (at least larger than one since \(A_{v_3 v_2} = 1\)).
+  Since there are only finitely many rows in \(A + A^2\), we see that by continuing the above process we can find an \(i \in \set{1, \dots, n}\) such that each entry in the \(i\)-th row of \(A + A^2\) is positive except for the diagonal entry.
+
+  Finally we show that if \(i\) is the person who dominates the most in \(A\), then each entry in the \(i\)-th row of \(A + A^2\) is positive except for the diagonal entry.
+  Suppose for sake of contradiction that there exists a \(j \in \set{1, \dots, n} \setminus \set{i}\) such that \((A + A^2)_{i j} = 0\).
+  This means
+  \begin{align*}
+             & A_{i j} + \sum_{k = 1}^n A_{i k} A_{k j} = 0                                                            \\
+    \implies & \begin{dcases}
+                 A_{i j} = 0 \\
+                 \sum_{k = 1}^n A_{i k} A_{k j} = 0
+               \end{dcases}                                       &  & \text{(by \cref{2.3.11})}                       \\
+    \implies & \forall k \in \set{1, \dots, n},                                                                        \\
+             & (A_{i k} = 0 \land A_{k j} = 1) \lor (A_{i k} = 1 \land A_{k j} = 0)     &  & \text{(by \cref{2.3.9})}  \\
+    \implies & \forall k \in \set{1, \dots, n},                                                                        \\
+             & (A_{i k} = 0 \land A_{k j} = 1 \land A_{k i} = 1 \land A_{j k} = 0)                                     \\
+             & \lor (A_{i k} = 1 \land A_{k j} = 0 \land A_{k i} = 0 \land A_{j k} = 1) &  & \text{(by \cref{2.3.11})} \\
+    \implies & \sum_{k = 1}^n A_{i k} = \sum_{k = 1}^n A_{j k} > 0.                     &  & \text{(by \cref{2.3.11})}
+  \end{align*}
+  But this contradict to the fact that \(i\) is the person who dominates the most in \(A\).
+  Thus such \(j\) does not exist and each entry in the \(i\)-th row of \(A + A^2\) is positive except for the diagonal entry.
+  One can replace the role of \(i\)-th row with \(j\)-th column and derive similar arguments.
+\end{proof}
 
 \exercisesection
 
