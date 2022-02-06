@@ -1,1 +1,38 @@
 \section{Invertibility and Isomorphisms}\label{sec:2.4}
+
+\begin{defn}\label{2.4.1}
+  Let \(\V\) and \(\W\) be vector spaces over \(\F\), and let \(\T : \V \to \W\) be linear.
+  A function \(\U : \W \to \V\) is said to be an \textbf{inverse} of \(\T\) if \(\T \U = \IT[\W]\) and \(\U \T = \IT[\V]\).
+  If \(\T\) has an inverse, then \(\T\) is said to be \textbf{invertible}.
+  If \(\T\) is invertible, then the inverse of \(\T\) is unique and is denoted by \(\T^{-1}\).
+  The following facts hold for invertible functions T and U.
+  \begin{itemize}
+    \item \((\T \U)^{-1} = \U^{-1} \T^{-1}\).
+    \item \((\T^{-1})^{-1} = \T\);
+          in particular, \(\T^{-1}\) is invertible.
+  \end{itemize}
+  We often use the fact that a function is invertible iff it is both one-to-one and onto.
+  We can therefore restate \cref{2.5} as follows.
+  \begin{itemize}
+    \item Let \(\T : \V \to \W\) be a linear transformation, where \(\V\) and \(\W\) are finite-dimensional spaces over \(\F\) of equal dimension.
+          Then \(\T\) is invertible if and only if \(\rk{\T} = \dim(\V)\).
+  \end{itemize}
+\end{defn}
+
+\begin{thm}\label{2.17}
+  Let \(\V\) and \(\W\) be vector spaces over \(\F\), and let \(\T : \V \to \W\) be linear and invertible.
+  Then \(\T^{-1} : \W \to \V\) is linear.
+\end{thm}
+
+\begin{proof}[\pf{2.17}]
+  Let \(y_1, y_2 \in \W\) and \(c \in \F\).
+  Since \(\T\) is onto and one-to-one, there exist unique vectors \(x_1\) and \(x_2\) such that \(\T(x_1) = y_1\) and \(\T(x_2) = y_2\).
+  Thus \(x_1 = \T^{-1}(y_1)\) and \(x_2 = \T^{-1}(y_2)\);
+  so
+  \begin{align*}
+    \T^{-1}(c y_1 + y_2) & = \T^{-1}(c \T(x_1) + \T(x_2))   &  & \text{(by \cref{2.4.1})}    \\
+                         & = \T^{-1}(\T(c x_1 + x_2))       &  & \text{(by \cref{2.1.2}(b))} \\
+                         & = c x_1 + x_2                    &  & \text{(by \cref{2.4.1})}    \\
+                         & = c \T^{-1}(x_1) + \T^{-1}(x_2). &  & \text{(by \cref{2.4.1})}
+  \end{align*}
+\end{proof}
