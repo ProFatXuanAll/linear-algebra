@@ -36,3 +36,29 @@
                          & = c \T^{-1}(x_1) + \T^{-1}(x_2). &  & \text{(by \cref{2.4.1})}
   \end{align*}
 \end{proof}
+
+\begin{cor}\label{2.4.2}
+  If \(\T\) is a linear transformation between vector spaces of equal (finite) dimension, then the conditions of being invertible, one-to-one, and onto are all equivalent.
+\end{cor}
+
+\begin{proof}[\pf{2.4.2}]
+  By \cref{2.5} we see that this is true.
+\end{proof}
+
+\begin{defn}\label{2.4.3}
+  Let \(A \in \ms{n}{n}{\F}\).
+  Then \(A\) is \textbf{invertible} if there exists an \(B \in \ms{n}{n}{\F}\) such that \(AB = BA = I_n\).
+\end{defn}
+
+\begin{cor}\label{2.4.4}
+  If \(A\) is invertible, then the matrix \(B\) such that \(AB = BA = I\) is unique.
+  The matrix \(B\) is called the \textbf{inverse} of \(A\) and is denoted by \(A^{-1}\).
+\end{cor}
+
+\begin{proof}[\pf{2.4.4}]
+  If \(C\) were another such matrix, then
+  \[
+    C = CI = C(AB) = (CA)B = IB = B.
+  \]
+  Thus \(B\) is unique.
+\end{proof}
