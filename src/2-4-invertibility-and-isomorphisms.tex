@@ -62,3 +62,60 @@
   \]
   Thus \(B\) is unique.
 \end{proof}
+
+\begin{lem}\label{2.4.5}
+  Let \(\T\) be an invertible linear transformation from \(\V\) to \(\W\).
+  Then \(\V\) is finite-dimensional iff \(\W\) is finite-dimensional.
+  In this case, \(\dim(\V) = \dim(\W)\).
+\end{lem}
+
+\begin{proof}[\pf{2.4.5}]
+  Suppose that \(\V\) is finite-dimensional.
+  Let \(\beta = \set{\seq{x}{1,,n}}\) be a basis for \(\V\) over \(\F\).
+  By \cref{2.2} \(\T(\beta)\) spans \(\rg{\T} = \W\);
+  hence \(\W\) is finite-dimensional by \cref{1.9}.
+  Conversely, if \(\W\) is finite-dimensional, then so is \(\V\) by a similar argument, using \(T^{-1}\).
+
+  Now suppose that \(\V\) and \(\W\) are finite-dimensional.
+  Because \(\T\) is one-to-one and onto, we have
+  \[
+    \nt{\T} = 0 \quad \text{and} \quad \rk{\T} = \dim(\rg{\T}) = \dim(\W).
+  \]
+  So by the dimension theorem (\cref{2.3}), it follows that \(\dim(\V) = \dim(\W)\).
+\end{proof}
+
+\begin{thm}\label{2.18}
+  Let \(\V\) and \(\W\) be finite-dimensional vector spaces over \(\F\) with ordered bases \(\beta\) and \(\gamma\) over \(\F\), respectively.
+  Let \(\T : \V \to \W\) be linear.
+  Then \(\T\) is invertible iff \([\T]_{\beta}^{\gamma}\) is invertible.
+  Furthermore, \([\T^{-1}]_{\gamma}^{\beta} = ([\T]_{\beta}^{\gamma})^{-1}\).
+\end{thm}
+
+\begin{proof}[\pf{2.18}]
+  Suppose that \(\T\) is invertible.
+  By \cref{2.4.5}, we have \(\dim(\V) = \dim(\W)\).
+  Let \(n = \dim(\V)\).
+  So \([\T]_{\beta}^{\gamma} \in \ms{n}{n}{\F}\).
+  Now \(\T^{-1} : \W \to \V\) satisfies \(\T \T^{-1} = \IT[\W]\) and \(\T^{-1} \T = \IT[\V]\).
+  Thus
+  \[
+    I_n = [\IT[\V]]_{\beta} = [\T^{-1} \T]_{\beta} = [\T^{-1}]_{\gamma}^{\beta} [\T]_{\beta}^{\gamma}.
+  \]
+  Similarly, \([\T]_{\beta}^{\gamma} [\T^{-1}]_{\gamma}^{\beta} = I_n\).
+  So \([\T]_{\beta}^{\gamma}\) is invertible and \(\pa{[\T]_{\beta}^{\gamma}}^{-1} = [\T^{-1}]_{\gamma}^{\beta}\).
+
+  Now suppose that \(A = [\T]_{\beta}^{\gamma}\) is invertible.
+  Then there exists an \(B \in \ms{n}{n}{\F}\) such that \(AB = BA = I_n\).
+  By \cref{2.6} there exists \(U \in \ls(\W, \V)\) such that
+  \[
+    \U(w_j) = \sum_{i = 1}^n B_{i j} v_i \quad \text{for } j \in \set{1, \dots, n},
+  \]
+  where \(\gamma = \set{\seq{w}{1,,n}}\) and \(\beta = \set{\seq{v}{1,,n}}\).
+  It follows that \([\U]_{\gamma}^{\beta} = B\).
+  To show that \(\U = \T^{-1}\), observe that
+  \[
+    [\U \T]_{\beta} = [\U]_{\gamma}^{\beta} [\T]_{\beta}^{\gamma} = BA = I_n = [\IT[\V]]_{\beta}
+  \]
+  by \cref{2.11}.
+  So \(\U \T = \IT[\V]\), and similarly, \(\T \U = \IT[\W]\).
+\end{proof}
