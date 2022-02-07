@@ -190,3 +190,30 @@
     \iff & \dim(\V) = \dim(\vs{F}^n) = n.        &  & \text{(by \cref{1.6.10})}
   \end{align*}
 \end{proof}
+
+\begin{thm}\label{2.20}
+  Let \(\V\) and \(\W\) be finite-dimensional vector spaces over \(\F\) of dimensions \(n\) and \(m\), respectively, and let \(\beta\) and \(\gamma\) be ordered bases for \(\V\) and \(\W\) over \(\F\), respectively.
+  Then the function \(\Phi : \ls(\V, \W) \to \MS\), defined by \(\Phi(\T) = [\T]_{\beta}^{\gamma}\) for \(\T \in \ls(\V, \W)\), is an isomorphism.
+\end{thm}
+
+\begin{proof}[\pf{2.20}]
+  By \cref{2.8} \(\Phi\) is linear.
+  Hence we must show that \(\Phi\) is one-to-one and onto.
+  This is accomplished if we show that for every \(A \in \MS\), there exists a unique linear transformation \(\T : \V \to \W\) such that \(\Phi(\T) = A\).
+  Let \(\beta = \set{\seq{v}{1,,n}}\), \(\gamma = \set{\seq{w}{1,,m}}\), and let \(A \in \MS\).
+  By \cref{2.6} there exists a unique linear transformation \(\T : \V \to \W\) such that
+  \[
+    \T(v_j) = \sum_{i = 1}^m A_{i j} w_i \quad \text{for } 1 \leq j \leq n.
+  \]
+  But this means that \([\T]_{\beta}^{\gamma} = A\), or \(\Phi(\T) = A\).
+  Thus \(\Phi\) is an isomorphism.
+\end{proof}
+
+\begin{cor}\label{2.4.10}
+  Let \(\V\) and \(\W\) be finite-dimensional vector spaces over \(\F\) of dimensions \(n\) and \(m\), respectively.
+  Then \(\ls(\V, \W)\) is finite-dimensional of dimension \(mn\).
+\end{cor}
+
+\begin{proof}[\pf{2.4.10}]
+  The proof follows from \cref{2.20} and \cref{2.19} and the fact that \(\dim(\MS) = mn\).
+\end{proof}
