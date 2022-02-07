@@ -316,3 +316,44 @@
   \end{align*}
   by \cref{2.4.3} we see that \(\tp{A}\) is invertible and \((\tp{A})^{-1} = \tp{(A^{-1})}\).
 \end{proof}
+
+\begin{ex}\label{ex:2.4.6}
+  Prove that if \(A\) is invertible and \(AB = \zm\), then \(B = \zm\).
+\end{ex}
+
+\begin{proof}[\pf{ex:2.4.6}]
+  We have
+  \begin{align*}
+             & AB = \zm                                                   \\
+    \implies & A^{-1} AB = A^{-1} \zm = \zm &  & \text{(by \cref{2.3.1})} \\
+    \implies & IB = B = \zm.                &  & \text{(by \cref{2.3.4})}
+  \end{align*}
+\end{proof}
+
+\begin{ex}\label{ex:2.4.7}
+  Let \(A \in \ms{n}{n}{\F}\).
+  \begin{enumerate}
+    \item Suppose that \(A^2 = \zm\).
+          Prove that \(A\) is not invertible.
+    \item Suppose that \(AB = \zm\) for some \(B \in \ms{n}{n}{\F} \setminus \set{\zm}\).
+          Could \(A\) be invertible?
+          Explain.
+  \end{enumerate}
+\end{ex}
+
+\begin{proof}[\pf{ex:2.4.7}(a)]
+  Suppose for sake of contradiction that \(A\) is invertible.
+  Then we have
+  \begin{align*}
+             & A^2 = \zm                                                   \\
+    \implies & A^{-1} A^2 = A^{-1} \zm = \zm &  & \text{(by \cref{2.3.1})} \\
+    \implies & (A^{-1} A) A = \zm            &  & \text{(by \cref{2.16})}  \\
+    \implies & I_n A = A = \zm.              &  & \text{(by \cref{2.3.4})}
+  \end{align*}
+  But we know that \(\zm\) is not invertible since \(B \zm = \zm B = \zm \neq I_n\) for all \(B \in \ms{n}{n}{\F}\).
+  Thus \(A\) is not invertible.
+\end{proof}
+
+\begin{proof}[\pf{ex:2.4.7}(b)]
+  \(A\) cannot be invertible for which it contradict to \cref{ex:2.4.6}.
+\end{proof}
