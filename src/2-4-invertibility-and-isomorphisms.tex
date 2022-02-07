@@ -233,3 +233,39 @@
   Since \(\sum_{i = 1}^n a_i v_i\) is unique, we know that \(\phi_{\beta}\) is one-to-one.
   Thus by \cref{2.4.8} \(\phi_{\beta}\) is an isomorphism from \(\V\) onto \(\vs{\F}^n\).
 \end{proof}
+
+\begin{note}
+  \cref{2.21} provides us with an alternate proof that an \(n\)-dimensional vector space is isomorphic to \(\vs{F}^n\)
+  (see \cref{2.4.9}).
+\end{note}
+
+\begin{cor}\label{2.4.12}
+  Let \(\V\) and \(\W\) be vector spaces of dimension \(n\) and \(m\) over \(\F\), respectively, and let \(\T : \V \to \W\) be a linear transformation.
+  Define \(A = [\T]_{\beta}^{\gamma}\), where \(\beta\) and \(\gamma\) are arbitrary ordered bases of \(\V\) and \(\W\) over \(\F\), respectively.
+  We are now able to use \(\phi_{\beta}\) and \(\phi_{\gamma}\) to study the relationship between the linear transformations \(\T\) and \(\L_A : \vs{F}^n \to \vs{F}^m\).
+  There are two composites of linear transformations that map \(\V\) into \(\vs{F}^m\):
+  \begin{itemize}
+    \item Map \(\V\) into \(\vs{F}^n\) with \(\phi_{\beta}\) and follow this transformation with \(\L_A\);
+          this yields the composite \(\L_A \phi_{\beta}\).
+    \item Map \(\V\) into \(\W\) with \(\T\) and follow it by \(\phi_{\gamma}\) to obtain the composite \(\phi_{\gamma} \T\).
+  \end{itemize}
+  By a simple reformulation of \cref{2.14}, we may conclude that
+  \[
+    \L_A \phi_{\beta} = \phi_{\gamma} \T.
+  \]
+  Heuristically, this relationship indicates that after \(\V\) and \(\W\) are identified with \(\vs{F}^n\) and \(\vs{F}^m\) via \(\phi_{\beta}\) and \(\phi_{\gamma}\), respectively, we may ``identify'' \(\T\) with \(\L_A\).
+\end{cor}
+
+\begin{proof}[\pf{2.4.12}]
+  For all \(x \in \V\), we have
+  \begin{align*}
+    (\L_A \phi_{\beta})(x) & = \L_A(\phi_{\beta}(x))                                            \\
+                           & = \L_A([x]_{\beta})                 &  & \text{(by \cref{2.4.11})} \\
+                           & = A [x]_{\beta}                     &  & \text{(by \cref{2.3.8})}  \\
+                           & = [\T]_{\beta}^{\gamma} [x]_{\beta}                                \\
+                           & = [\T(x)]_{\gamma}                  &  & \text{(by \cref{2.14})}   \\
+                           & = \phi_{\gamma}(\T(x))              &  & \text{(by \cref{2.4.11})} \\
+                           & = (\phi_{\gamma} \T)(x).
+  \end{align*}
+  Thus \(\L_A \phi_{\beta} = \phi_{\gamma} \T\).
+\end{proof}
