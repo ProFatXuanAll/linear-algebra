@@ -74,7 +74,7 @@
   Let \(\beta = \set{\seq{x}{1,,n}}\) be a basis for \(\V\) over \(\F\).
   By \cref{2.2} \(\T(\beta)\) spans \(\rg{\T} = \W\);
   hence \(\W\) is finite-dimensional by \cref{1.9}.
-  Conversely, if \(\W\) is finite-dimensional, then so is \(\V\) by a similar argument, using \(T^{-1}\).
+  Conversely, if \(\W\) is finite-dimensional, then so is \(\V\) by a similar argument, using \(\T^{-1}\).
 
   Now suppose that \(\V\) and \(\W\) are finite-dimensional.
   Because \(\T\) is one-to-one and onto, we have
@@ -141,4 +141,52 @@
   Thus by \cref{2.4.7} \(A\) is invertible iff \([\L_A]_{\beta}\) is invertible iff \(\L_A\) is invertible.
   And we have \([\L_A^{-1}]_{\beta} = ([\L_A]_{\beta})^{-1} = A^{-1} = [\L_{A^{-1}}]_{\beta}\).
   By \cref{2.1.13} this means \((\L_A)^{-1} = \L_{A^{-1}}\).
+\end{proof}
+
+\begin{defn}\label{2.4.8}
+  Let \(\V\) and \(\W\) be vector spaces over \(\F\).
+  We say that \(\V\) is \textbf{isomorphic} to \(\W\) if there exists a linear transformation \(\T : \V \to \W\) that is invertible.
+  Such a linear transformation is called an \textbf{isomorphism} from \(\V\) onto \(\W\).
+\end{defn}
+
+\begin{note}
+  Since ``is isomorphic to'' is an equivalence relation.
+  So we need only say that \(\V\) and \(\W\) are isomorphic.
+\end{note}
+
+\begin{thm}\label{2.19}
+  Let \(\V\) and \(\W\) be finite-dimensional vector spaces (over the same field).
+  Then \(\V\) is isomorphic to \(\W\) iff \(\dim(\V) = \dim(\W)\).
+\end{thm}
+
+\begin{proof}[\pf{2.19}]
+  Suppose that \(\V\) is isomorphic to \(\W\) and that \(\T : \V \to \W\) is an isomorphism from \(\V\) to \(\W\).
+  By \cref{2.4.5} we have that \(\dim(\V) = \dim(\W)\).
+
+  Now suppose that \(\dim(\V) = \dim(\W)\), and let \(\beta = \set{\seq{v}{1,,n}}\) and \(\gamma = \set{\seq{w}{1,,n}}\) be bases for \(\V\) and \(\W\) over \(\F\), respectively.
+  By \cref{2.6} there exists \(\T : \V \to \W\) such that \(\T\) is linear and \(\T(v_i) = w_i\) for \(i = 1, 2, \dots, n\).
+  Using \cref{2.2} we have
+  \[
+    \rg{\T} = \spn{\T(\beta)} = \spn{\gamma} = \W.
+  \]
+  So \(\T\) is onto.
+  From \cref{2.5} we have that \(\T\) is also one-to-one.
+  Hence \(\T\) is an isomorphism.
+\end{proof}
+
+\begin{note}
+  By \cref{2.4.5} if \(\V\) and \(\W\) are isomorphic, then either both of \(\V\) and \(\W\) are finite-dimensional or both are infinite-dimensional.
+\end{note}
+
+\begin{cor}\label{2.4.9}
+  Let \(\V\) be a vector space over \(\F\).
+  Then \(\V\) is isomorphic to \(\vs{F}^n\) iff \(\dim(\V) = n\).
+\end{cor}
+
+\begin{proof}[\pf{2.4.9}]
+  We have
+  \begin{align*}
+         & \V \text{ is isomorphic to } \vs{F}^n &  & \text{(by \cref{2.19})}   \\
+    \iff & \dim(\V) = \dim(\vs{F}^n) = n.        &  & \text{(by \cref{1.6.10})}
+  \end{align*}
 \end{proof}
