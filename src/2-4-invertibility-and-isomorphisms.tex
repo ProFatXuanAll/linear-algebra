@@ -217,3 +217,19 @@
 \begin{proof}[\pf{2.4.10}]
   The proof follows from \cref{2.20} and \cref{2.19} and the fact that \(\dim(\MS) = mn\).
 \end{proof}
+
+\begin{defn}\label{2.4.11}
+  Let \(\beta\) be an ordered basis for an \(n\)-dimensional vector space \(\V\) over the field \(\F\).
+  The \textbf{standard representation of \(\V\) with respect to \(\beta\)} is the function \(\phi_{\beta} : \V \to \vs{F}^n\) defined by \(\phi_{\beta}(x) = [x]_{\beta}\) for each \(x \in \V\).
+\end{defn}
+
+\begin{thm}\label{2.21}
+  For any finite-dimensional vector space \(\V\) with ordered basis \(\beta\) over \(\F\), \(\phi_{\beta}\) is an isomorphism.
+\end{thm}
+
+\begin{proof}[\pf{2.21}]
+  Let \(n = \dim(\V)\), let \(\beta = \set{\seq{v}{1,,n}}\), let \(\tuple{a}{1,,n} \in \vs{F}^n\) and let \(x = \sum_{i = 1}^n a_i v_i\).
+  Since \(x \in \V\), by \cref{2.2.3} we know that \([x]_{\beta} = \tp{\tuple{a}{1,,n}}\) and thus \(\phi_{\beta}\) is onto.
+  Since \(\sum_{i = 1}^n a_i v_i\) is unique, we know that \(\phi_{\beta}\) is one-to-one.
+  Thus by \cref{2.4.8} \(\phi_{\beta}\) is an isomorphism from \(\V\) onto \(\vs{\F}^n\).
+\end{proof}
