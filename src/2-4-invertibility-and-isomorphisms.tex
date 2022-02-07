@@ -119,3 +119,26 @@
   by \cref{2.11}.
   So \(\U \T = \IT[\V]\), and similarly, \(\T \U = \IT[\W]\).
 \end{proof}
+
+\begin{cor}\label{2.4.6}
+  Let \(\V\) be a finite-dimensional vector space over \(\F\) with an ordered basis \(\beta\), and let \(\T : \V \to \V\) be linear.
+  Then \(\T\) is invertible iff \([\T]_{\beta}\) is invertible.
+  Furthermore, \([\T^{-1}]_{\beta} = ([\T]_{\beta})^{-1}\).
+\end{cor}
+
+\begin{proof}[\pf{2.4.6}]
+  This is done by \cref{2.18}.
+\end{proof}
+
+\begin{cor}\label{2.4.7}
+  Let \(A \in \ms{n}{n}{\F}\).
+  Then \(A\) is invertible iff \(\L_A\) is invertible.
+  Furthermore, \((\L_A)^{-1} = \L_{A^{-1}}\).
+\end{cor}
+
+\begin{proof}[\pf{2.4.7}]
+  By \cref{2.15} we know that \(\L_A\) is linear and \([\L_A]_{\beta} = A\) where \(\beta\) is the standard ordered basis for \(\vs{F}^n\) over \(\F\).
+  Thus by \cref{2.4.7} \(A\) is invertible iff \([\L_A]_{\beta}\) is invertible iff \(\L_A\) is invertible.
+  And we have \([\L_A^{-1}]_{\beta} = ([\L_A]_{\beta})^{-1} = A^{-1} = [\L_{A^{-1}}]_{\beta}\).
+  By \cref{2.1.13} this means \((\L_A)^{-1} = \L_{A^{-1}}\).
+\end{proof}
