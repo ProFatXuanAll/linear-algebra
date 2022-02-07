@@ -357,3 +357,39 @@
 \begin{proof}[\pf{ex:2.4.7}(b)]
   \(A\) cannot be invertible for which it contradict to \cref{ex:2.4.6}.
 \end{proof}
+
+\setcounter{ex}{8}
+\begin{ex}\label{ex:2.4.9}
+  Let \(A, B \in \ms{n}{n}{\F}\) such that \(AB\) is invertible.
+  Prove that \(A\) and \(B\) are invertible.
+  Give an example to show that arbitrary matrices \(A\) and \(B\) need not be invertible if \(AB\) is invertible.
+\end{ex}
+
+\begin{proof}[\pf{ex:2.4.9}]
+  First we show that if \(A, B \in \ms{n}{n}{\F}\) and \(AB\) is invertible, then \(A, B\) are invertible.
+  This is true since
+  \begin{align*}
+             & AB \text{ is invertible}                                                             \\
+    \implies & \L_{AB} \text{ is invertible}                        &  & \text{(by \cref{2.4.7})}   \\
+    \implies & \L_A \L_B \text{ is invertible}                      &  & \text{(by \cref{2.15}(e))} \\
+    \implies & \L_A \text{ is onto and } \L_B \text{ is one-to-one}                                 \\
+    \implies & \L_A \text{ is invertible}                           &  & \text{(by \cref{2.5})}     \\
+    \implies & \L_{A^{-1}} \L_A \L_B \text{ is invertible}          &  & \text{(by \cref{2.4.7})}   \\
+    \implies & \L_B \text{ is invertible}                           &  & \text{(by \cref{2.5})}     \\
+    \implies & A, B \text{ are invertible}.                         &  & \text{(by \cref{2.4.7})}
+  \end{align*}
+
+  Now we show that if \(A \in \ms{n}{m}{\F}\) and \(B \in \MS\), then \(AB\) can be invertible.
+  We define \(A, B\) as follow:
+  \[
+    A = \begin{pmatrix}
+      1 & 0 & 0 \\
+      0 & 1 & 0
+    \end{pmatrix} \quad \text{and} \quad B = \begin{pmatrix}
+      1 & 0 \\
+      0 & 1 \\
+      0 & 0
+    \end{pmatrix}.
+  \]
+  Then we see that \(AB = I_2\) which is invertible.
+\end{proof}
