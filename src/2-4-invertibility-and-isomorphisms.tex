@@ -393,3 +393,50 @@
   \]
   Then we see that \(AB = I_2\) which is invertible.
 \end{proof}
+
+\begin{ex}\label{ex:2.4.10}
+  Let \(A, B \in \ms{n}{n}{\F}\) such that \(AB = I_n\).
+  \begin{enumerate}
+    \item Use \cref{ex:2.4.9} to conclude that \(A\) and \(B\) are invertible.
+    \item Prove \(A = B^{-1}\) (and hence \(B = A^{-1}\)).
+          (We are, in effect, saying that for square matrices, a ``one-sided'' inverse is a ``two-sided'' inverse.)
+    \item State and prove analogous results for linear transformations defined on finite-dimensional vector spaces.
+  \end{enumerate}
+\end{ex}
+
+\begin{proof}[\pf{ex:2.4.10}(a)]
+  Since \(I_n\) is invertible, by \cref{ex:2.4.9} we see that \(A, B\) are invertible.
+\end{proof}
+
+\begin{proof}[\pf{ex:2.4.10}(b)]
+  We have
+  \begin{align*}
+    B^{-1} & = I_n B^{-1} = (AB) B^{-1} &  & \text{(by \cref{2.12}(c))} \\
+           & = A (B B^{-1})             &  & \text{(by \cref{2.16})}    \\
+           & = A I_n                    &  & \text{(by \cref{2.4.3})}   \\
+           & = A                        &  & \text{(by \cref{2.12}(c))}
+  \end{align*}
+  and
+  \begin{align*}
+    A^{-1} & = A^{-1} I_n = A^{-1} (AB) &  & \text{(by \cref{2.12}(c))} \\
+           & = (A^{-1} A) B             &  & \text{(by \cref{2.16})}    \\
+           & = I_n B                    &  & \text{(by \cref{2.4.3})}   \\
+           & = B.                       &  & \text{(by \cref{2.12}(c))}
+  \end{align*}
+\end{proof}
+
+\begin{proof}[\pf{ex:2.4.10}(c)]
+  Let \(\V, \W\) be finite dimensional vector spaces over \(\F\) with equal dimension.
+  Let \(\T \in \ls(\V, \W), \U \in \ls(\W, \V)\) such that \(\U \T = \IT[\V]\) and \(\T \U = \IT[\W]\).
+  We claim that \(\T, \U\) are invertible and \(\T = \U^{-1}\).
+  Let \(\beta\) and \(\gamma\) be bases for \(\V\) and \(\W\) over \(\F\), respectively.
+  Since
+  \begin{align*}
+             & \U \T = \IT[\V]                                                                                    \\
+    \implies & [\U \T]_{\beta} = [\U]_{\gamma}^{\beta} [\T]_{\beta}^{\gamma} &  & \text{(by \cref{2.11})}         \\
+             & = [\IT[\V]]_{\beta} = I_n                                     &  & \text{(by \cref{2.12}(d))}      \\
+    \implies & [\U]_{\gamma}^{\beta} = ([\T]_{\beta}^{\gamma})^{-1}          &  & \text{(by \cref{ex:2.4.10}(b))} \\
+    \implies & \U = \T^{-1},                                                 &  & \text{(by \cref{2.18})}
+  \end{align*}
+  we see that \(\T = \U^{-1}\).
+\end{proof}
