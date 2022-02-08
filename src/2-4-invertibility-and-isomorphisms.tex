@@ -440,3 +440,30 @@
   \end{align*}
   we see that \(\T = \U^{-1}\).
 \end{proof}
+
+\setcounter{ex}{12}
+\begin{ex}\label{ex:2.4.13}
+  Let \(\sim\) mean ``is isomorphic to.''
+  Prove that \(\sim\) is an equivalence relation on the class of vector spaces over \(\F\).
+\end{ex}
+
+\begin{proof}[\pf{ex:2.4.13}]
+  To show that \(\sim\) is an equivalence relation, we need to show that \(\sim\) is reflexive, symmetric and transitive.
+  \begin{description}
+    \item[For reflexive:]
+      Let \(\V\) be a vector spaces over \(\F\).
+      Since \(\IT[\V] \in \ls(\V)\) is invertible, by \cref{2.4.8} we see that \(\IT[\V]\) is an isomorphism from \(\V\) onto \(\V\).
+      Thus \(\V \sim \V\).
+    \item[For symmetric:]
+      Let \(\V, \W\) be vector spaces over \(\F\) such that \(\V \sim \W\).
+      By \cref{2.4.8} there exists a \(\T \in \ls(\V, \W)\) such that \(\T\) is invertible.
+      Since \(\T\) is invertible, by \cref{2.17} we know that \(\T^{-1} \in \ls(\W, \V)\) and \(\T^{-1}\) is invertible.
+      Thus by \cref{2.4.8} \(\T^{-1}\) is an isomorphism from \(\W\) onto \(\V\) and \(\W \sim \V\).
+    \item[For transitive:]
+      Let \(\V, \W, \vs{X}\) be vector spaces over \(\F\) such that \(\V \sim \W\) and \(\W \sim \vs{X}\).
+      By \cref{2.4.8} there exist \(\T \in \ls(\V, \W)\) and \(\U \in \ls(\W, \vs{X})\) such that \(\T, \U\) are invertible.
+      By \cref{2.9} we know that \(\U \T \in \ls(\V, \vs{X})\) is invertible.
+      Thus by \cref{2.4.8} \(\U \T\) is an isomorphism from \(\V\) onto \(\vs{X}\) and \(\V \sim \vs{X}\).
+  \end{description}
+  From proof above we see that \(\sim\) is an equivalence relation.
+\end{proof}
