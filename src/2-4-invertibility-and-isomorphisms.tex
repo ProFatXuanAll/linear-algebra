@@ -532,3 +532,46 @@
   \end{align*}
   we know that \(\Phi^{-1} = \phi\) and thus by \cref{2.4.8} \(\Phi\) is an isomorphism from \(\ms{n}{n}{\F}\) onto \(\ms{n}{n}{\F}\).
 \end{proof}
+
+\begin{ex}\label{ex:2.4.17}
+  Let \(\V\) and \(\W\) be finite-dimensional vector spaces over \(\F\) and \(\T : \V \to \W\) be an isomorphism.
+  Let \(\V_0\) be a subspace of \(\V\) over \(\F\).
+  \begin{enumerate}
+    \item Prove that \(\T(\V_0)\) is a subspace of \(\W\) over \(\F\).
+    \item Prove that \(\dim(\V_0) = \dim(\T(\V_0))\).
+  \end{enumerate}
+\end{ex}
+
+\begin{proof}[\pf{ex:2.4.17}(a)]
+  Let \(x, y \in \T(\V_0)\) and let \(c \in \F\).
+  Since
+  \begin{align*}
+             & x, y \in \T(\V_0)                                                  \\
+    \implies & \exists u, v \in \V_0 : \begin{dcases}
+                                         \T(u) = x \\
+                                         \T(v) = y
+                                       \end{dcases}                              \\
+    \implies & \exists u, v \in \V_0 : \begin{dcases}
+                                         \T(u + v) = \T(u) + \T(v) = x + y \\
+                                         \T(cu) = c \T(u) = cx
+                                       \end{dcases} &  & \text{(by \cref{2.1.1})} \\
+    \implies & \begin{dcases}
+                 x + y \in \T(\V_0) \\
+                 cx \in \T(\V_0)
+               \end{dcases}                  &  & \text{(by \cref{1.3}(b)(c))}
+  \end{align*}
+  and
+  \begin{align*}
+             & \zv_{\V} \in \V_0                     &  & \text{(by \cref{1.3}(a))}   \\
+    \implies & \T(\zv_{\V}) = \zv_{\W} \in \T(\V_0), &  & \text{(by \cref{2.1.2}(a))}
+  \end{align*}
+  by \cref{1.3} we know that \(\T(\V_0)\) is a subspace of \(\W\) over \(\F\).
+\end{proof}
+
+\begin{proof}[\pf{ex:2.4.17}(b)]
+  Since \(\T\) is an isomorphism from \(\V\) onto \(\W\), by \cref{2.4.8} we know that \(\T\) is invertible.
+  Since \(\T\) is invertible, we know that \(\T|_{\V_0}\) is also invertible.
+  Since \(\V\) is finite-dimensional, we know that \(\V_0\) is finite-dimensional.
+  Thus by \cref{2.4.8} \(\T|_{\V_0}\) is an isomorphism from \(\V_0\) onto \(\T(\V_0)\).
+  By \cref{2.19} we have \(\dim(\V_0) = \dim(\T(\V_0))\).
+\end{proof}
