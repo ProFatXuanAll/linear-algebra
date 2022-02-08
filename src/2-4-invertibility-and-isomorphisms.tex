@@ -467,3 +467,24 @@
   \end{description}
   From proof above we see that \(\sim\) is an equivalence relation.
 \end{proof}
+
+\setcounter{ex}{14}
+\begin{ex}\label{ex:2.4.15}
+  Let \(\V\) and \(\W\) be finite-dimensional vector spaces over \(\F\), and let \(\T : \V \to \W\) be a linear transformation.
+  Suppose that \(\beta\) is a basis for \(\V\) over \(\F\).
+  Prove that \(\T\) is an isomorphism iff \(\T(\beta)\) is a basis for \(\W\) over \(\F\).
+\end{ex}
+
+\begin{proof}[\pf{ex:2.4.15}]
+  We have
+  \begin{align*}
+         & \T \text{ is an isomorphism from } \V \text{ onto } \W                                   \\
+    \iff & \begin{dcases}
+             \dim(\V) = \dim(\W) \\
+             \T \text{ is one-to-one}
+           \end{dcases}                               &  & \text{(by \cref{2.19})}                  \\
+    \iff & \dim(\W) = \rk{\T}                                     &  & \text{(by \cref{2.5}(c))}    \\
+    \iff & \dim(\W) = \dim(\spn{\T(\beta)})                       &  & \text{(by \cref{2.2})}       \\
+    \iff & \T(\beta) \text{ is a basis for } \W \text{ over } \F. &  & \text{(by \cref{1.6.15}(a))}
+  \end{align*}
+\end{proof}
