@@ -488,3 +488,47 @@
     \iff & \T(\beta) \text{ is a basis for } \W \text{ over } \F. &  & \text{(by \cref{1.6.15}(a))}
   \end{align*}
 \end{proof}
+
+\begin{ex}\label{ex:2.4.16}
+  Let \(B \in \ms{n}{n}{\F}\) be invertible.
+  Define \(\Phi : \ms{n}{n}{\F} \to \ms{n}{n}{\F}\) by \(\Phi(A) = B^{-1} AB\).
+  Prove that \(\Phi\) is an isomorphism.
+\end{ex}
+
+\begin{proof}[\pf{ex:2.4.16}]
+  First we show that \(\Phi\) is linear.
+  Let \(A, C \in \ms{n}{n}{\F}\) and let \(c \in \F\).
+  Since
+  \begin{align*}
+    \Phi(cA + C) & = B^{-1} (cA + C) B                                               \\
+                 & = (B^{-1} (cA + C)) B             &  & \text{(by \cref{2.16})}    \\
+                 & = ((B^{-1} c A) + (B^{-1} C)) B   &  & \text{(by \cref{2.12}(a))} \\
+                 & = (B^{-1} c A) B + (B^{-1} C) B   &  & \text{(by \cref{2.12}(a))} \\
+                 & = (c (B^{-1} A)) B + (B^{-1} C) B &  & \text{(by \cref{2.12}(b))} \\
+                 & = c ((B^{-1} A) B) + (B^{-1} C) B &  & \text{(by \cref{2.12}(b))} \\
+                 & = c (B^{-1} A B) + B^{-1} CB      &  & \text{(by \cref{2.16})}    \\
+                 & = c \Phi(A) + \Phi(C),
+  \end{align*}
+  by \cref{2.1.2}(b) we see that \(\Phi\) is linear.
+
+  Now we show that \(\Phi\) is invertible.
+  We define \(\phi : \ms{n}{n}{\F} \to \ms{n}{n}{\F}\) as follow:
+  \[
+    \forall A \in \ms{n}{n}{\F}, \phi(A) = BAB^{-1}.
+  \]
+  Since
+  \begin{align*}
+    \forall A \in \ms{n}{n}{\F}, (\phi \Phi)(A) & = \phi(\Phi(A))                                           \\
+                                                & = \phi(B^{-1} AB)                                         \\
+                                                & = B(B^{-1} AB) B^{-1}                                     \\
+                                                & = (BB^{-1}) A (BB^{-1})   &  & \text{(by \cref{2.16})}    \\
+                                                & = I_n A I_n               &  & \text{(by \cref{2.4.4})}   \\
+                                                & = A                       &  & \text{(by \cref{2.12}(c))} \\
+                                                & = (B^{-1} B) A (B^{-1} B) &  & \text{(by \cref{2.4.4})}   \\
+                                                & = B^{-1} (BAB^{-1}) B     &  & \text{(by \cref{2.16})}    \\
+                                                & = \Phi(BAB^{-1})                                          \\
+                                                & = \Phi(\phi(A))                                           \\
+                                                & = (\Phi \phi)(A),
+  \end{align*}
+  we know that \(\Phi^{-1} = \phi\) and thus by \cref{2.4.8} \(\Phi\) is an isomorphism from \(\ms{n}{n}{\F}\) onto \(\ms{n}{n}{\F}\).
+\end{proof}
