@@ -575,3 +575,30 @@
   Thus by \cref{2.4.8} \(\T|_{\V_0}\) is an isomorphism from \(\V_0\) onto \(\T(\V_0)\).
   By \cref{2.19} we have \(\dim(\V_0) = \dim(\T(\V_0))\).
 \end{proof}
+
+\setcounter{ex}{19}
+\begin{ex}\label{ex:2.4.20}
+  Let \(\T : \V \to \W\) be a linear transformation from an \(n\)-dimensional vector space \(\V\) over \(\F\) to an \(m\)-dimensional vector space \(\W\) over \(\F\).
+  Let \(\beta\) and \(\gamma\) be ordered bases for \(\V\) and \(\W\) over \(\F\), respectively.
+  Prove that \(\rk{\T} = \rk{\L_A}\) and that \(\nt{\T} = \nt{\L_A}\), where \(A = [\T]_{\beta}^{\gamma}\).
+\end{ex}
+
+\begin{proof}[\pf{ex:2.4.20}]
+  By \cref{2.4.12} we have \(\L_A \phi_{\beta} = \phi_{\gamma} \T\).
+  By \cref{2.9,2.21} we know that \(\phi_{\gamma} \T\) is linear.
+  Since
+  \begin{align*}
+             & \phi_{\gamma} \text{ is an isomorphism from } \V \text{ onto } \vs{F}^n &  & \text{(by \cref{2.21})}         \\
+    \implies & \rk{\T} = \dim(\T(\V))                                                  &  & \text{(by \cref{2.1.12})}       \\
+             & = \dim(\phi_{\gamma}(\T(\V)))                                           &  & \text{(by \cref{ex:2.4.17})}    \\
+             & = \dim(\L_A(\phi_{\beta}(\V)))                                          &  & \text{(by \cref{2.4.12})}       \\
+             & = \dim(\L_A(\vs{F}^n))                                                  &  & \text{(by \cref{2.21})}         \\
+             & = \rk{\L_A},                                                            &  & \text{(by \cref{2.1.12,2.3.8})}
+  \end{align*}
+  we know that
+  \begin{align*}
+             & \dim(\V) = \dim(\phi_{\beta}(\V)) = \dim(\vs{F}^n) &  & \text{(by \cref{ex:2.4.17})} \\
+    \implies & \rk{\T} + \nt{\T} = \rk{\L_A} + \nt{\L_A}          &  & \text{(by \cref{2.3})}       \\
+    \implies & \nt{\T} = \nt{\L_A}.                               &  & (\rk{\T} = \rk{\L_A})
+  \end{align*}
+\end{proof}
