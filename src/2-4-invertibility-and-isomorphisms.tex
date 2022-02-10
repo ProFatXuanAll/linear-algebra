@@ -602,3 +602,66 @@
     \implies & \nt{\T} = \nt{\L_A}.                               &  & (\rk{\T} = \rk{\L_A})
   \end{align*}
 \end{proof}
+
+\begin{ex}\label{ex:2.4.21}
+  Let \(\V\) and \(\W\) be finite-dimensional vector spaces over \(\F\) with ordered bases \(\beta = \set{\seq{v}{1,,n}}\) and \(\gamma = \set{\seq{w}{1,,m}}\) over \(\F\), respectively.
+  By \cref{2.6} there exist linear transformations \(\T_{i j} : \V \to \W\) such that
+  \[
+    \T_{i j}(v_k) = \begin{dcases}
+      w_i      & \text{if } k = j    \\
+      \zv_{\W} & \text{if } k \neq j
+    \end{dcases}.
+  \]
+  First prove that \(\set{\T_{i j} : 1 \leq i \leq m, 1 \leq j \leq n}\) is a basis for \(\ls(\V, \W)\) over \(\F\).
+  Then let \(E^{i j} \in \MS\) with \(1\) in the \(i\)th row and \(j\)th column and \(0\) elsewhere, and prove that \([\T_{i j}]_{\beta}^{\gamma} = E^{i j}\).
+  Again by \cref{2.6}, there exists a linear transformation \(\Phi : \ls(\V, \W) \to \MS\) such that \(\Phi(\T_{i j}) = E^{i j}\).
+  Prove that \(\Phi\) is an isomorphism.
+\end{ex}
+
+\begin{proof}[\pf{ex:2.4.21}]
+  First we show that \(S = \set{\T_{i j} : 1 \leq i \leq m, 1 \leq j \leq n}\) is a basis for \(\ls(\V, \W)\) over \(\F\).
+  For all \(i \in \set{1, \dots, m}\) and \(j \in \set{1, \dots, n}\), let \(a_{i j} \in \F\) such that
+  \[
+    \sum_{i = 1}^m \sum_{j = 1}^n a_{i j} \T_{i j} = \zv.
+  \]
+  Note that \(\zv\) is the zero function in \(\ls(\V, \W)\).
+  Since
+  \begin{align*}
+             & \forall k \in \set{1, \dots, n}, \T_{i j}(v_k) = \begin{dcases}
+                                                                  w_i      & \text{if } k = j    \\
+                                                                  \zv_{\W} & \text{if } k \neq j
+                                                                \end{dcases}                                                                            \\
+    \implies & \forall k \in \set{1, \dots, n}, \T_{i j}(a_{i j} v_k) = a_{i j} \T_{i j}(v_k) = \begin{dcases}
+                                                                                                  a_{i k} w_i & \text{if } k = j    \\
+                                                                                                  \zv         & \text{if } k \neq j
+                                                                                                \end{dcases}                              &  & \text{(by \cref{2.1.1})}   \\
+    \implies & \forall k \in \set{1, \dots, n}, \sum_{j = 1}^n a_{i j} \T_{i j}(v_k) = a_{i k} w_i                                                                        \\
+    \implies & \forall k \in \set{1, \dots, n}, \sum_{i = 1}^m \sum_{j = 1}^n a_{i j} \T_{i j}(v_k) = \sum_{i = 1}^m a_{i k} w_i = \zv_{\W}                               \\
+    \implies & \forall (i, k) \in \set{1, \dots, m} \times \set{1, \dots, n}, a_{i k} = 0                                                   &  & \text{(by \cref{1.6.1})}
+  \end{align*}
+  and \(\#(S) = mn\), by \cref{1.6.15}(a) and \cref{2.4.10} we know that \(S\) is a basis for \(\ls(\V, \W)\) over \(\F\).
+
+  Next we show that \([\T_{i j}]_{\beta}^{\gamma} = E^{i j}\).
+  This is true since
+  \begin{align*}
+             & \forall k \in \set{1, \dots, n}, [\T_{i j}(v_k)]_{\gamma} = \begin{dcases}
+                                                                             [w_i]_{\gamma} = e_i                 & \text{if } k = j    \\
+                                                                             [\zv_{\W}]_{\gamma} = \zv_{\vs{F}^m} & \text{if } k \neq j
+                                                                           \end{dcases} &  & \text{(by \cref{2.2.3})} \\
+    \implies & [\T_{i j}]_{\beta}^{\gamma} = E^{i j}.                                       &  & \text{(by \cref{2.2.4})}
+  \end{align*}
+
+  Finally we show that \(\Phi\) is an isomorphism from \(\ls(\V, \W)\) onto \(\MS\).
+  Let \(\U \in \ls(\V, \W)\).
+  Since
+  \begin{align*}
+             & \U \in \ls(\V, \W)                                                                                                                                 \\
+    \implies & \forall (i, j) \in \set{1, \dots, m} \times \set{1, \dots, n}, \exists a_{i j} \in \F :                                                            \\
+             & \U = \sum_{i = 1}^m \sum_{j = 1}^n a_{i j} \T_{i j}                                                             &  & \text{(by \cref{1.6.1})}      \\
+    \implies & \forall (i, j) \in \set{1, \dots, m} \times \set{1, \dots, n}, \exists a_{i j} \in \F :                                                            \\
+             & \Phi(\U) = \sum_{i = 1}^m \sum_{j = 1}^n a_{i j} \Phi(\T_{i j}) = \sum_{i = 1}^m \sum_{j = 1}^n a_{i j} E^{i j} &  & \text{(by \cref{2.1.2}(d))}   \\
+             & = \sum_{i = 1}^m \sum_{j = 1}^n a_{i j} [\T_{i j}]_{\beta}^{\gamma}                                             &  & \text{(from the proof above)} \\
+             & = \br{\sum_{i = 1}^m \sum_{j = 1}^n a_{i j} \T_{i j}}_{\beta}^{\gamma} = [\U]_{\beta}^{\gamma},                 &  & \text{(by \cref{2.8})}
+  \end{align*}
+  by \cref{2.20} we see that \(\Phi\) is an isomorphism from \(\ls(\V, \W)\) onto \(\MS\).
+\end{proof}
