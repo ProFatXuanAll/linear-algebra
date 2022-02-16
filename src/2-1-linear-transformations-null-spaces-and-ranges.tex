@@ -326,7 +326,7 @@
 \end{proof}
 
 \begin{note}
-  It should be noted that \cref{2.2} is true if \(\beta\) is infinite.
+  \cref{2.2} is true if \(\beta\) is infinite.
   (See \cref{ex:2.1.33}.)
 \end{note}
 
@@ -418,11 +418,11 @@
     \nt{\T} + \rk{\T} = \dim(\V).
   \]
   Now, with the use of \cref{2.4}, we have that \(\T\) is one-to-one iff \(\ns{\T} = \set{\zv_{\V}}\), iff \(\nt{\T} = 0\), iff \(\rk{\T} = \dim(\V)\), iff \(\rk{\T} = \dim(\W)\), and iff \(\dim(\rg{\T}) = \dim(\W)\).
-  By \cref{1.11}, this equality is equivalent to \(\rg{\T} = \W\), the definition of \(\T\) being onto.
+  By \cref{1.11} this equality is equivalent to \(\rg{\T} = \W\), the definition of \(\T\) being onto.
 \end{proof}
 
 \begin{note}
-  We note that if \(\V\) is not finite-dimensional and \(\T : \V \to \V\) is linear, then it does \emph{not} follow that one-to-one and onto are equivalent.
+  If \(\V\) is not finite-dimensional and \(\T : \V \to \V\) is linear, then it does \emph{not} follow that one-to-one and onto are equivalent.
 
   The linearity of \(\T\) in \cref{2.4} and \cref{2.5} is essential, for it is easy to construct examples of functions from \(\R\) into \(\R\) that are not one-to-one, but are onto, and vice versa.
 \end{note}
@@ -564,7 +564,7 @@
     \item Suppose that \(\T\) is one-to-one and that \(S\) is a subset of \(\V\).
           Prove that \(S\) is linearly independent iff \(\T(S)\) is linearly independent.
     \item Suppose \(\beta = \set{\seq{v}{1,2,,n}}\) is a basis for \(\V\) over \(\F\) and \(\T\) is one-to-one and onto.
-          Prove that \(\T(\beta) = \set{\T(v_1), \T(v_2), \dots, \T(v_n)}\) is a basis for \(\W\) over \(\F\).
+          Prove that \(\T(\beta)\) is a basis for \(\W\) over \(\F\).
   \end{enumerate}
 \end{ex}
 
@@ -1194,23 +1194,24 @@
 \end{proof}
 
 \begin{ex}\label{ex:2.1.33}
-  Prove \cref{2.2} for the case that \(\beta\) is infinite, that is, \(\rg{\T} = \spn{\set{\T(v) : v \in \beta}}\).
+  Prove \cref{2.2} for the case that \(\beta\) is infinite, that is, \(\rg{\T} = \spn{\T(\beta)}\).
 \end{ex}
 
 \begin{proof}[\pf{ex:2.1.33}]
-  Clearly we have \(\set{\T(v) : v \in \beta} \subseteq \rg{\T}\).
+  Clearly we have \(\T(\beta) \subseteq \rg{\T}\).
   By \cref{2.1} we know that \(\rg{\T}\) is a vector space over \(\F\), thus by \cref{1.5} we have
   \[
-    \spn{\set{\T(v) : v \in \beta}} \subseteq \rg{\T}.
+    \spn{\T(\beta)} \subseteq \rg{\T}.
   \]
-  Let \(x \in \V\).
-  Since \(\beta\) is a basis for \(\V\) over \(\F\), by \cref{1.6.1} there exists some \(\seq{v}{1,2,,n} \in \beta\) such that \(x \in \spn{\set{\seq{v}{1,2,,n}}}\).
-  In particular, there exist some \(\seq{a}{1,2,,n} \in \F\) such that \(x = \sum_{i = 1}^n a_i v_i\).
+  Let \(y \in \rg{\T}\).
+  By \cref{2.1.10} there exists a \(x \in \V\) such that \(\T(x) = y\).
+  Since \(\beta\) is a basis for \(\V\) over \(\F\), by \cref{1.6.1} there exist some \(\seq{v}{1,2,,n} \in \beta\) and \(\seq{a}{1,2,,n} \in \F\) such that \(x = \sum_{i = 1}^n a_i v_i\).
   Since \(\T\) is linear, by \cref{2.1.2}(d) we know that
   \[
-    \T(x) = \T\pa{\sum_{i = 1}^n a_i v_i} = \sum_{i = 1}^n a_i \T(v_i) \in \spn{\set{\T(v) : v \in \beta}}.
+    \T(x) = \T\pa{\sum_{i = 1}^n a_i v_i} = \sum_{i = 1}^n a_i \T(v_i) \in \spn{\T(\beta)}.
   \]
-  This means \(\rg{\T} \subseteq \spn{\set{\T(v) : v \in \beta}}\), thus we have \(\rg{\T} = \spn{\set{\T(v) : v \in \beta}}\).
+  Since \(y\) is arbitrary, this means \(\rg{\T} \subseteq \spn{\T(\beta)}\).
+  Thus we have \(\rg{\T} = \spn{\T(\beta)}\).
 \end{proof}
 
 \begin{ex}\label{ex:2.1.34}
