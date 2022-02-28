@@ -835,7 +835,7 @@
   we know that \(\U\) is one-to-one.
   Since
   \[
-    \forall \set{a_n} \in \V, (1, \seq{a}{1,2,}) \notin \T(\V),
+    \forall \set{a_n} \in \V, (1, \seq{a}{1,2,}) \notin \U(\V),
   \]
   we know that \(\U\) is not onto.
 \end{proof}
@@ -869,7 +869,7 @@
 \end{proof}
 
 \begin{defn}\label{2.1.14}
-  Let \(\V\) be a vector space over \(\F\) and \(\W_1\) and \(\W_2\) be subspaces of \(\V\) over \(\F\) such that \(V = \W_1 \oplus \W_2\).
+  Let \(\V\) be a vector space over \(\F\) and \(\W_1\) and \(\W_2\) be subspaces of \(\V\) over \(\F\) such that \(\V = \W_1 \oplus \W_2\).
   (See \cref{1.3.11}.)
   A function \(\T : \V \to \V\) is called a \textbf{projection on \(\W_1\) along \(\W_2\)} if, for \(x = x_1 + x_2\) with \(x_1 \in \W_1\) and \(x_2 \in \W_2\), we have \(\T(x) = x_1\).
 \end{defn}
@@ -910,8 +910,7 @@
   \end{align*}
   and
   \begin{align*}
-             & \forall x \in \V, \T(x) = x                                               \\
-    \implies & x = \T(x) \in \W_1                         &  & \text{(by \cref{2.1.14})} \\
+             & \forall x \in \V, \T(x) = x \in \W_1       &  & \text{(by \cref{2.1.14})} \\
     \implies & \set{x \in \V : \T(x) = x} \subseteq \W_1,
   \end{align*}
   we know that \(\W_1 = \set{x \in \V : \T(x) = x}\).
@@ -986,7 +985,7 @@
 \end{ex}
 
 \begin{proof}[\pf{ex:2.1.27}(a)]
-  Let \(\beta_{\W} = \set{\seq{v}{1,2,,k}}\) be a basis for \(\V\) over \(\F\).
+  Let \(\beta_{\W} = \set{\seq{v}{1,2,,k}}\) be a basis for \(\W\) over \(\F\).
   By \cref{1.6.19} we can extend \(\beta_{\W}\) to \(\beta = \set{\seq{v}{1,2,,n}}\) such that \(\beta\) is a basis for \(\V\) over \(\F\).
   Let \(\beta_{\W'} = \beta \setminus \beta_{\W}\) and let \(\W' = \spn{\beta_{\W'}}\).
   By \cref{1.5} we know that \(\W'\) is a subspace of \(\V\) over \(\F\).
@@ -1142,7 +1141,7 @@
 
 \begin{proof}[\pf{ex:2.1.31}(b)]
   Since \(\V = \rg{\T} \oplus \W\), by \cref{ex:1.6.29}(b) we know that \(\dim(\V) = \rk{\T} + \dim(\W)\).
-  By dimension theorem (\cref{2.3}) we know that \(\ns{\T} = \dim(\V) - \rk{\T} = \dim(\W)\).
+  By dimension theorem (\cref{2.3}) we know that \(\nt{\T} = \dim(\V) - \rk{\T} = \dim(\W)\).
   By \cref{ex:2.1.31}(a) we know that \(\W \subseteq \ns{\T}\), thus by \cref{1.11} we have \(\W = \ns{\T}\).
 \end{proof}
 
@@ -1204,7 +1203,7 @@
     \spn{\T(\beta)} \subseteq \rg{\T}.
   \]
   Let \(y \in \rg{\T}\).
-  By \cref{2.1.10} there exists a \(x \in \V\) such that \(\T(x) = y\).
+  By \cref{2.1.10} there exists an \(x \in \V\) such that \(\T(x) = y\).
   Since \(\beta\) is a basis for \(\V\) over \(\F\), by \cref{1.6.1} there exist some \(\seq{v}{1,2,,n} \in \beta\) and \(\seq{a}{1,2,,n} \in \F\) such that \(x = \sum_{i = 1}^n a_i v_i\).
   Since \(\T\) is linear, by \cref{2.1.2}(d) we know that
   \[
@@ -1294,9 +1293,10 @@
   By \cref{ex:1.3.23}(a) we know that \(\rg{\T} + \ns{\T} \subseteq \V\).
   Since
   \begin{align*}
-    \dim(\rg{\T} + \ns{\T}) & = \rk{\T} + \ns{\T} - \dim(\rg{\T} \cap \ns{\T}) &  & \text{(by \cref{ex:1.6.29}(a))} \\
-                            & = \rk{\T} + \ns{\T} - 0                          &  & \text{(by hypothesis)}          \\
-                            & = \dim(\V),                                      &  & \text{(by \cref{2.3})}
+     & \dim(\rg{\T} + \ns{\T})                                                               \\
+     & = \rk{\T} + \nt{\T} - \dim(\rg{\T} \cap \ns{\T}) &  & \text{(by \cref{ex:1.6.29}(a))} \\
+     & = \rk{\T} + \nt{\T} - 0                          &  & \text{(by hypothesis)}          \\
+     & = \dim(\V),                                      &  & \text{(by \cref{2.3})}
   \end{align*}
   by \cref{1.11} we know that \(\V = \rg{\T} + \ns{\T}\).
   Thus by \cref{ex:2.1.35}(a) we know that \(\V = \rg{\T} \oplus \ns{\T}\).
@@ -1321,7 +1321,7 @@
     \implies & \V = \rg{\T} + \ns{\T}.
   \end{align*}
   Since \(\T(1, 0, 0, \dots) = (0, 0, \dots)\), we know that \((1, 0, 0, \dots) \in \ns{\T}\).
-  Thus \((1, 0, 0, \dots) \in \rg{\T} \cap \ns{\T}\) and \(\rg{\T} \cap \ns{\T} \neq \set{\zv}\).
+  Thus \((1, 0, 0, \dots) \in \rg{\T} \cap \ns{\T}\) and \(\rg{\T} \cap \ns{\T} \neq \set{(0, 0, \dots)}\).
   By \cref{1.3.11} this means \(\V\) is not a direct sum of \(\rg{\T}\) and \(\ns{\T}\).
 \end{proof}
 
