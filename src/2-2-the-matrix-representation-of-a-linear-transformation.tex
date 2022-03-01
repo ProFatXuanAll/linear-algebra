@@ -46,7 +46,7 @@
 \end{defn}
 
 \begin{note}
-  Notice that the \(j\)th column of \(A\) is simply \([\T(v_j)]_{\gamma}\).
+  The \(j\)th column of \(A\) is simply \([\T(v_j)]_{\gamma}\).
   Also observe that if \(\U : \V \to \W\) is a linear transformation such that \([\U]_{\beta}^{\gamma} = [\T]_{\beta}^{\gamma}\), then \(\U = \T\) by \cref{2.1.13}.
 \end{note}
 
@@ -138,10 +138,10 @@
       and thus \(a(f + g) = af + ag\).
     \item[For \ref{vs8}:] We have
       \begin{align*}
-        \forall x \in \V, ((a + b)f)(x) & = (a + b) f(x)    &  & \text{(by \cref{2.2.5})} \\
-                                        & = af(x) + bf(x)   &  & \text{(by \ref{vs8})}    \\
-                                        & = af(x) + (bf)(x) &  & \text{(by \cref{2.2.5})} \\
-                                        & = (af + bf)(x)    &  & \text{(by \cref{2.2.5})}
+        \forall x \in \V, ((a + b)f)(x) & = (a + b) f(x)      &  & \text{(by \cref{2.2.5})} \\
+                                        & = af(x) + bf(x)     &  & \text{(by \ref{vs8})}    \\
+                                        & = (af)(x) + (bf)(x) &  & \text{(by \cref{2.2.5})} \\
+                                        & = (af + bf)(x)      &  & \text{(by \cref{2.2.5})}
       \end{align*}
       and thus \((a + b)f = af + bf\).
   \end{description}
@@ -169,40 +169,26 @@
   Then
   \begin{enumerate}
     \item \([\T + \U]_{\beta}^{\gamma} = [\T]_{\beta}^{\gamma} + [\U]_{\beta}^{\gamma}\) and
-    \item \([a \T]_{\beta}^{\gamma} = a [\T]_{\beta}^{\gamma}\) for all scalars \(a \in \F\).
+    \item \([c \T]_{\beta}^{\gamma} = c [\T]_{\beta}^{\gamma}\) for all scalars \(c \in \F\).
   \end{enumerate}
 \end{thm}
 
-\begin{proof}[\pf{2.8}(a)]
+\begin{proof}[\pf{2.8}]
   Let \(\beta = \set{\seq{v}{1,2,,n}}\) and \(\gamma = \set{\seq{w}{1,2,,m}}\).
   There exist unique scalars \(a_{i j}\) and \(b_{i j}\) (\(1 \leq i \leq m\), \(1 \leq j \leq n\)) such that
   \[
     \T(v_j) = \sum_{i = 1}^m a_{i j} w_i \quad \text{and} \quad \U(v_j) = \sum_{i = 1}^m b_{i j} w_i \quad \text{for } 1 \leq j \leq n.
   \]
   Hence
-  \[
-    (\T + \U)(v_j) = \sum_{i = 1}^m (a_{i j} + b_{i j}) w_i.
-  \]
+  \begin{align*}
+    (\T + \U)(v_j) & = \sum_{i = 1}^m (a_{i j} + b_{i j}) w_i \\
+    (c \T)(v_j)    & = \sum_{i = 1}^m (c a_{i j}) w_i.
+  \end{align*}
   Thus
-  \[
-    ([\T + \U]_{\beta}^{\gamma})_{i j} = a_{i j} + b_{i j} = ([\T]_{\beta}^{\gamma} + [\U]_{\beta}^{\gamma})_{i j}.
-  \]
-\end{proof}
-
-\begin{proof}[\pf{2.8}(b)]
-  Let \(\beta = \set{\seq{v}{1,2,,n}}\).
-  There exist unique scalars \(c_{i j}\) (\(1 \leq i \leq m\), \(1 \leq j \leq n\)) such that
-  \[
-    \T(v_j) = \sum_{i = 1}^m c_{i j} w_i \quad \text{for } 1 \leq j \leq n.
-  \]
-  Hence
-  \[
-    (a \T)(v_j) = \sum_{i = 1}^m (a c_{i j}) w_i.
-  \]
-  Thus
-  \[
-    ([a \T]_{\beta}^{\gamma})_{i j} = a c_{i j} = a ([\T]_{\beta}^{\gamma})_{i j}.
-  \]
+  \begin{align*}
+    ([\T + \U]_{\beta}^{\gamma})_{i j} & = a_{i j} + b_{i j} = ([\T]_{\beta}^{\gamma} + [\U]_{\beta}^{\gamma})_{i j} \\
+    ([c \T]_{\beta}^{\gamma})_{i j}    & = c a_{i j} = c ([\T]_{\beta}^{\gamma})_{i j}.
+  \end{align*}
 \end{proof}
 
 \exercisesection
