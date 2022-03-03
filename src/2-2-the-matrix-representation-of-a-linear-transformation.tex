@@ -263,7 +263,7 @@
 \begin{ex}\label{ex:2.2.10}
   Let \(\V\) be a vector space over \(\F\) with the ordered basis \(\beta = \set{\seq{v}{1,2,,n}}\) over \(\F\).
   Define \(v_0 = 0\).
-  By \cref{2.6} there exists a linear transformation \(\T : \V \to \V\) such that \(\T(v_j) = v_j + v_{j - 1}\) for \(j = 1, 2, \dots, n\).
+  By \cref{2.6} there exists a \(\T \in \ls(\V)\) such that \(\T(v_j) = v_j + v_{j - 1}\) for \(j = 1, 2, \dots, n\).
   Compute \([\T]_{\beta}\).
 \end{ex}
 
@@ -283,7 +283,7 @@
 \end{proof}
 
 \begin{ex}\label{ex:2.2.11}
-  Let \(\V\) be an \(n\)-dimensional vector space over \(\F\), and let \(\T : \V \to \V\) be a linear transformation.
+  Let \(\V\) be an \(n\)-dimensional vector space over \(\F\), and let \(\T \in \ls(\V)\).
   Suppose that \(\W\) is a \(\T\)-invariant subspace of \(\V\) over \(\F\) (see \cref{2.1.15}) having dimension \(k\).
   Show that there is a basis \(\beta\) for \(\V\) over \(\F\) such that \([\T]_{\beta}\) has the form
   \[
@@ -414,7 +414,7 @@
              & = \frac{1}{c} (c \T(x)) = \T(x) \neq \zv_{\W}                                           \\
     \implies & \rg{\U} \cap \rg{\T} \neq \set{\zv}.                     &  & \text{(by \cref{2.1.10})}
   \end{align*}
-  But this contradict to the fact that \(\rg{\U} \cap \rg{\T} = \set{\zv}\).
+  But this contradicts to the fact that \(\rg{\U} \cap \rg{\T} = \set{\zv}\).
   Thus \(\set{\T, \U}\) is linearly independent.
 \end{proof}
 
@@ -425,34 +425,22 @@
 
 \begin{proof}[\pf{ex:2.2.14}]
   First we show that \(\T_i \in \ls(\ps{\R})\) for all \(i \in \Z^+\).
-  Fix one \(i \in \Z^+\).
   Let \(f, g \in \ps{\R}\) and let \(c \in \R\).
   Since
   \[
-    \T_i(cf + g) = (cf + g)^{(i)} = c f^{(i)} + g^{(i)} = c \T_i(f) + \T_i(g),
+    \forall i \in \Z^+, \begin{dcases}
+      \rg{\T_i} \subseteq \ps{\R} \\
+      \T_i(cf + g) = (cf + g)^{(i)} = c f^{(i)} + g^{(i)} = c \T_i(f) + \T_i(g)
+    \end{dcases},
   \]
-  by \cref{2.1.2}(b) we know that \(\T_i\) is linear.
-  Let \(\seq{a}{0,1,,m} \in \F\) such that
-  \[
-    \forall x \in \R, f(x) = \sum_{j = 0}^m a_j x^j.
-  \]
-  Since
-  \begin{align*}
-    \forall x \in \R, f^{(i)}(x) & = \begin{dcases}
-                                       0                                                                                & \text{if } i > m    \\
-                                       \sum_{j = i}^m \pa{a_j \cdot \pa{\prod_{k = 0}^{i - 1} (j - k)} \cdot x^{j - i}} & \text{if } i \leq m
-                                     \end{dcases} \\
-                                 & \in \ps{\R},
-  \end{align*}
-  and \(f\) is arbitrary, by \cref{2.2.6} we know that \(\T_i \in \ls(\ps{\R})\).
-  Since \(i\) is arbitrary, we know that \(\T_i \in \ls(\ps{\R})\) for all \(i \in \Z^+\).
+  by \cref{2.1.2}(b) we know that \(\T_i \in \ls(\ps{\R})\) for all \(i \in \Z^+\).
 
   Now we show that \(\set{\seq{\T}{1,2,,n}}\) is linearly independent.
   Let \(\seq{b}{1,2,,n} \in \R\) such that
   \[
     \sum_{i = 1}^n b_i \T_i = \zT
   \]
-  where \(\zT : \ps{R} \to \ps{\R}\) is the zero transformation of \(\ls(\ps{\R})\).
+  where \(\zT\) is the zero transformation of \(\ls(\ps{\R})\).
   Since
   \begin{align*}
              & \sum_{i = 1}^n b_i \T_i(x^n) = \sum_{i = 1}^n \pa{b_i \cdot \pa{\prod_{k = 0}^{i - 1} (n - k)} x^{n - i}} = 0                               \\
@@ -487,19 +475,13 @@
                  \forall \T, \U \in S^0 \\
                  \forall c \in \F       \\
                  \forall x \in S
-               \end{dcases}, \begin{dcases}
-                               (\T + \U)(x) = \T(x) + \U(x) = \zv_{\W} \\
-                               (c \T)(x) = c \T(x) = \zv_{\W}
-                             \end{dcases} &  & \text{(by \cref{2.2.5})}                    \\
+               \end{dcases}, (c\T + \U)(x) = c \T(x) + \U(x) = \zv_{\W} &  & \text{(by \cref{2.2.5})}     \\
     \implies & \begin{dcases}
                  \forall \T, \U \in S^0 \\
                  \forall c \in \F
-               \end{dcases}, \begin{dcases}
-                               \T + \U \in S^0 \\
-                               c \T \in S^0
-                             \end{dcases},               &  & \text{(by \cref{ex:2.2.15})}
+               \end{dcases}, c\T + \U \in S^0,                          &  & \text{(by \cref{ex:2.2.15})}
   \end{align*}
-  by \cref{1.3} we know that \(S^0\) is a subspace of \(\ls(\V, \W)\) over \(\F\).
+  by \cref{ex:1.3.18} we know that \(S^0\) is a subspace of \(\ls(\V, \W)\) over \(\F\).
 \end{proof}
 
 \begin{proof}[\pf{ex:2.2.15}(b)]
@@ -509,7 +491,7 @@
              & \T \in S_2^0                                                          \\
     \implies & \forall x \in S_2, \T(x) = \zv_{\W} &  & \text{(by \cref{ex:2.2.15})} \\
     \implies & \forall x \in S_1, \T(x) = \zv_{\W} &  & (S_1 \subseteq S_2)          \\
-    \implies & \T \in S_1^0,                       &  & \text{(by \cref{ex:2.2.15})}
+    \implies & \T \in S_1^0                        &  & \text{(by \cref{ex:2.2.15})}
   \end{align*}
   and \(\T\) is arbitrary, we know that \(S_2^0 \subseteq S_1^0\).
 \end{proof}
@@ -517,35 +499,30 @@
 \begin{proof}[\pf{ex:2.2.15}(c)]
   Since
   \begin{align*}
-         & \T \in (\V_1 + \V_2)^0                                                         \\
-    \iff & \forall x \in \V_1 + \V_2, \T(x) = \zv_{\W}  &  & \text{(by \cref{ex:2.2.15})} \\
-    \iff & \begin{dcases}
-             \forall x_1 \in \V_1 \\
-             \forall x_2 \in \V_2
-           \end{dcases}, \begin{dcases}
-                           x_1 + \zv_{\V} \in \V_1 + \V_2 \\
-                           \zv_{\V} + x_2 \in \V_1 + \V_2 \\
-                           x_1 + x_2 \in \V_1 + \V_2      \\
-                           \T(x_1) = \zv_{\W}             \\
-                           \T(x_2) = \zv_{\W}             \\
-                           \T(x_1 + x_2) = \T(x_1) + \T(x_2) = \zv_{\W}
-                         \end{dcases} &  & \text{(by \cref{1.3.10})}                      \\
+         & \T \in (\V_1 + \V_2)^0                                                                    \\
+    \iff & \forall x \in \V_1 + \V_2, \T(x) = \zv_{\W}             &  & \text{(by \cref{ex:2.2.15})} \\
+    \iff & \forall (x_1, x_2) \in \V_1 \times \V_2, \begin{dcases}
+                                                      x_1 + \zv_{\V} \in \V_1 + \V_2 \\
+                                                      \zv_{\V} + x_2 \in \V_1 + \V_2 \\
+                                                      x_1 + x_2 \in \V_1 + \V_2      \\
+                                                      \T(x_1) = \T(x_2) = \T(x_1 + x_2) = \zv_{\W}
+                                                    \end{dcases} &  & \text{(by \cref{1.3.10})}      \\
     \iff & \begin{dcases}
              \T \in \V_1^0 \\
              \T \in \V_2^0
-           \end{dcases}                             &  & \text{(by \cref{ex:2.2.15})}     \\
+           \end{dcases}                                        &  & \text{(by \cref{ex:2.2.15})}     \\
     \iff & \T \in \V_1^0 \cap \V_2^0,
   \end{align*}
   we know that \((\V_1 + \V_2)^0 = \V_1^0 \cap \V_2^0\).
 \end{proof}
 
 \begin{ex}\label{ex:2.2.16}
-  Let \(\V\) and \(\W\) be vector spaces over \(\F\) such that \(\dim(\V) = \dim(\W)\), and let \(\T : \V \to \W\) be linear.
+  Let \(\V\) and \(\W\) be vector spaces over \(\F\) such that \(\dim(\V) = \dim(\W)\), and let \(\T \in \ls(\V, \W)\).
   Show that there exist ordered bases \(\beta\) and \(\gamma\) for \(\V\) and \(\W\) over \(\F\), respectively, such that \([\T]_{\beta}^{\gamma}\) is a diagonal matrix.
 \end{ex}
 
 \begin{proof}[\pf{ex:2.2.16}]
-  If \(\T\) is zero transformation, then for arbitrary bases \(\beta\) and \(\gamma\) for \(\V\) and \(\W\) over \(\F\), respectively, we have
+  If \(\T\) is the zero transformation, then for arbitrary bases \(\beta\) and \(\gamma\) for \(\V\) and \(\W\) over \(\F\), respectively, we have
   \[
     [\T]_{\beta}^{\gamma} = \zm
   \]
@@ -563,8 +540,8 @@
                                                       \end{dcases}. &  & \text{(by \cref{1.6.8})}
   \end{align*}
   Fix such \(\gamma_1\).
-  Let \(\beta_1 \subseteq \beta\) such that \(\T(\beta_1) = \gamma_1\).
-  By \cref{2.3} we know that \(\#(\beta_1) = \#(\gamma_1)\).
+  By \cref{2.3} we know that \(\#(\gamma_1) \leq \#(\beta_1)\) for all \(\beta_1 \subseteq \beta\) and \(\T(\beta_1) = \gamma_1\).
+  Thus we can define \(\beta_1 \subseteq \beta\) such that \(\T(\beta_1) = \gamma_1\) and \(\#(\beta_1) = \#(\gamma_1)\).
   Let \(k = \#(\beta_1)\) and we can write \(\beta_1 = \set{\seq{v}{1,2,,k}}\) and \(\gamma_1 = \set{\seq{w}{1,2,,k}}\) such that
   \[
     \forall i \in \set{1, \dots, k}, \T(v_i) = w_i.
