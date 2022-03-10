@@ -5,8 +5,8 @@
 \end{note}
 
 \begin{thm}\label{2.9}
-  Let \(\V\), \(\W\), and \(\vs{Z}\) be vector spaces over the same field \(\F\), and let \(\T : \V \to \W\) and \(\U : \W \to \vs{Z}\) be linear.
-  Then \(\U \T : \V \to \vs{Z}\) is linear.
+  Let \(\V\), \(\W\), and \(\vs{Z}\) be vector spaces over the same field \(\F\), and let \(\T \in \ls(\V, \W)\) and \(\U \in \ls(\W, \vs{Z})\).
+  Then \(\U \T \in \ls(\V, \vs{Z})\).
 \end{thm}
 
 \begin{proof}[\pf{2.9}]
@@ -149,7 +149,7 @@
 
 \begin{thm}\label{2.11}
   Let \(\V\), \(\W\), and \(\vs{Z}\) be finite-dimensional vector spaces over \(\F\) with ordered bases \(\alpha\), \(\beta\), and \(\gamma\) over \(\F\), respectively.
-  Let \(\T : \V \to \W\) and \(\U : \W \to \vs{Z}\) be linear transformations.
+  Let \(\T \in \ls(\V, \W)\) and \(\U \in \ls(\W, \vs{Z})\).
   Then
   \[
     [\U \T]_{\alpha}^{\gamma} = [\U]_{\beta}^{\gamma} [\T]_{\alpha}^{\beta}.
@@ -173,9 +173,10 @@
                  & = \sum_{k = 1}^m \sum_{i = 1}^p \pa{([\T]_{\alpha}^{\beta})_{k j}  \cdot ([\U]_{\beta}^{\gamma})_{i k} \cdot z_i} &  & \text{(by \cref{1.2.1})}    \\
                  & = \sum_{k = 1}^m \sum_{i = 1}^p \pa{([\U]_{\beta}^{\gamma})_{i k} \cdot ([\T]_{\alpha}^{\beta})_{k j} \cdot z_i}  &  & \text{(by \cref{1.2.1})}    \\
                  & = \sum_{i = 1}^p \sum_{k = 1}^m \pa{([\U]_{\beta}^{\gamma})_{i k} \cdot ([\T]_{\alpha}^{\beta})_{k j} \cdot z_i}  &  & \text{(by \cref{1.2.1})}    \\
-                 & = \sum_{i = 1}^p \pa{\sum_{k = 1}^m ([\U]_{\beta}^{\gamma})_{i k} \cdot ([\T]_{\alpha}^{\beta})_{k j}} \cdot z_i. &  & \text{(by \cref{1.2.1})}
+                 & = \sum_{i = 1}^p \pa{\sum_{k = 1}^m ([\U]_{\beta}^{\gamma})_{i k} \cdot ([\T]_{\alpha}^{\beta})_{k j}} \cdot z_i  &  & \text{(by \cref{1.2.1})}    \\
+                 & = \sum_{i = 1}^p \pa{\pa{[\U]_{\beta}^{\gamma} [\T]_{\alpha}^{\beta}}_{i j} \cdot z_i}.                           &  & \text{(by \cref{2.3.1})}
   \end{align*}
-  Thus by \cref{2.3.1} we see that \([\U \T]_{\alpha}^{\gamma} = [\U]_{\beta}^{\gamma} [\T]_{\alpha}^{\beta}\).
+  Thus by \cref{1.8} we see that \([\U \T]_{\alpha}^{\gamma} = [\U]_{\beta}^{\gamma} [\T]_{\alpha}^{\beta}\).
 \end{proof}
 
 \begin{cor}\label{2.3.3}
@@ -321,7 +322,7 @@
 \end{eg}
 
 \begin{thm}\label{2.13}
-  Let \(A \in \MS\) matrix and \(B \in \ms{n}{p}{\F}\).
+  Let \(A \in \MS\) and \(B \in \ms{n}{p}{\F}\).
   For each \(j\) (\(1 \leq j \leq p\)) let \(u_j\) and \(v_j\) denote the \(j\)th columns of \(AB\) and \(B\), respectively.
   Then
   \begin{enumerate}
@@ -393,7 +394,7 @@
 \end{note}
 
 \begin{thm}\label{2.14}
-  Let \(\V\) and \(\W\) be finite-dimensional vector spaces over \(\F\) having ordered bases \(\beta\) and \(\gamma\) over \(\F\), respectively, and let \(\T : \V \to \W\) be linear.
+  Let \(\V\) and \(\W\) be finite-dimensional vector spaces over \(\F\) having ordered bases \(\beta\) and \(\gamma\) over \(\F\), respectively, and let \(\T \in \ls(\V, \W)\).
   Then, for each \(u \in \V\), we have
   \[
     [\T(u)]_{\gamma} = [\T]_{\beta}^{\gamma} [u]_{\beta}.
@@ -464,7 +465,7 @@
 
 \begin{proof}[\pf{2.15}(d)]
   Let \(C = [\T]_{\beta}^{\gamma}\).
-  By \cref{2.14}, we have \([\T(x)]_{\gamma} = [\T]_{\beta}^{\gamma} [x]_{\beta}\), or \(\T(x) = Cx = \L_C(x)\) for all \(x \in \vs{F}^n\).
+  By \cref{2.14} we have \([\T(x)]_{\gamma} = [\T]_{\beta}^{\gamma} [x]_{\beta}\), or \(\T(x) = Cx = \L_C(x)\) for all \(x \in \vs{F}^n\).
   So \(\T = \L_C\).
   The uniqueness of \(C\) follows from \cref{2.15}(b).
 \end{proof}
@@ -474,7 +475,7 @@
   So \((AE) e_j = A (Ee_j)\).
   Thus
   \[
-    \L_{AE}(e_j) = (AE) e_j = A (E e_j) = \\L_A(E e_j) = \L_A(L_E(e_j)).
+    \L_{AE}(e_j) = (AE) e_j = A (E e_j) = \L_A(E e_j) = \L_A(L_E(e_j)).
   \]
   Hence \(\L_{AE} = \L_A \L_E\) by \cref{2.1.13}.
 \end{proof}
