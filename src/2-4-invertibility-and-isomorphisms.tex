@@ -86,7 +86,7 @@
 
 \begin{thm}\label{2.18}
   Let \(\V\) and \(\W\) be finite-dimensional vector spaces over \(\F\) with ordered bases \(\beta\) and \(\gamma\) over \(\F\), respectively.
-  Let \(\T : \V \to \W\) be linear.
+  Let \(\T \in \ls(\V, \W)\).
   Then \(\T\) is invertible iff \([\T]_{\beta}^{\gamma}\) is invertible.
   Furthermore, \([\T^{-1}]_{\gamma}^{\beta} = ([\T]_{\beta}^{\gamma})^{-1}\).
 \end{thm}
@@ -121,7 +121,7 @@
 \end{proof}
 
 \begin{cor}\label{2.4.6}
-  Let \(\V\) be a finite-dimensional vector space over \(\F\) with an ordered basis \(\beta\), and let \(\T : \V \to \V\) be linear.
+  Let \(\V\) be a finite-dimensional vector space over \(\F\) with an ordered basis \(\beta\), and let \(\T \in \ls(\V)\).
   Then \(\T\) is invertible iff \([\T]_{\beta}\) is invertible.
   Furthermore, \([\T^{-1}]_{\beta} = ([\T]_{\beta})^{-1}\).
 \end{cor}
@@ -156,11 +156,11 @@
 
 \begin{thm}\label{2.19}
   Let \(\V\) and \(\W\) be finite-dimensional vector spaces (over the same field).
-  Then \(\V\) is isomorphic to \(\W\) iff \(\dim(\V) = \dim(\W)\).
+  Then \(\V\) and \(\W\) are isomorphic iff \(\dim(\V) = \dim(\W)\).
 \end{thm}
 
 \begin{proof}[\pf{2.19}]
-  Suppose that \(\V\) is isomorphic to \(\W\) and that \(\T : \V \to \W\) is an isomorphism from \(\V\) to \(\W\).
+  Suppose that \(\V\) and \(\W\) are isomorphic and that \(\T : \V \to \W\) is an isomorphism from \(\V\) to \(\W\).
   By \cref{2.4.5} we have that \(\dim(\V) = \dim(\W)\).
 
   Now suppose that \(\dim(\V) = \dim(\W)\), and let \(\beta = \set{\seq{v}{1,,n}}\) and \(\gamma = \set{\seq{w}{1,,n}}\) be bases for \(\V\) and \(\W\) over \(\F\), respectively.
@@ -180,14 +180,14 @@
 
 \begin{cor}\label{2.4.9}
   Let \(\V\) be a vector space over \(\F\).
-  Then \(\V\) is isomorphic to \(\vs{F}^n\) iff \(\dim(\V) = n\).
+  Then \(\V\) and \(\vs{F}^n\) are isomorphic iff \(\dim(\V) = n\).
 \end{cor}
 
 \begin{proof}[\pf{2.4.9}]
   We have
   \begin{align*}
-         & \V \text{ is isomorphic to } \vs{F}^n &  & \text{(by \cref{2.19})}   \\
-    \iff & \dim(\V) = \dim(\vs{F}^n) = n.        &  & \text{(by \cref{1.6.10})}
+         & \V, \vs{F}^n \text{ are isomorphic} &  & \text{(by \cref{2.19})}   \\
+    \iff & \dim(\V) = \dim(\vs{F}^n) = n.      &  & \text{(by \cref{1.6.10})}
   \end{align*}
 \end{proof}
 
