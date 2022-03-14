@@ -1,11 +1,11 @@
 \section{Invertibility and Isomorphisms}\label{sec:2.4}
 
 \begin{defn}\label{2.4.1}
-  Let \(\V\) and \(\W\) be vector spaces over \(\F\), and let \(\T : \V \to \W\) be linear.
-  A function \(\U : \W \to \V\) is said to be an \textbf{inverse} of \(\T\) if \(\T \U = \IT[\W]\) and \(\U \T = \IT[\V]\).
+  Let \(\V\) and \(\W\) be sets, and let \(\T : \V \to \W\) be a function.
+  A function \(\U : \W \to \V\) is said to be a \textbf{inverse} of \(\T\) if \(\T \U = \IT[\W]\) and \(\U \T = \IT[\V]\).
   If \(\T\) has an inverse, then \(\T\) is said to be \textbf{invertible}.
-  If \(\T\) is invertible, then the inverse of \(\T\) is unique and is denoted by \(\T^{-1}\).
-  The following facts hold for invertible functions T and U.
+  If \(\T\) is invertible, then the inverse of \(\T\) is denoted by \(\T^{-1}\).
+  The following facts hold for invertible functions \(\T\) and \(\U\).
   \begin{itemize}
     \item \((\T \U)^{-1} = \U^{-1} \T^{-1}\).
     \item \((\T^{-1})^{-1} = \T\);
@@ -14,8 +14,8 @@
   We often use the fact that a function is invertible iff it is both one-to-one and onto.
   We can therefore restate \cref{2.5} as follows.
   \begin{itemize}
-    \item Let \(\T : \V \to \W\) be a linear transformation, where \(\V\) and \(\W\) are finite-dimensional spaces over \(\F\) of equal dimension.
-          Then \(\T\) is invertible if and only if \(\rk{\T} = \dim(\V)\).
+    \item Let \(\T \in \ls(\V, \W)\) where \(\V\) and \(\W\) are finite-dimensional spaces over \(\F\) of equal dimension.
+          Then \(\T\) is invertible iff \(\rk{\T} = \dim(\V)\).
   \end{itemize}
 \end{defn}
 
