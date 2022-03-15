@@ -186,8 +186,8 @@
 \begin{proof}[\pf{2.4.9}]
   We have
   \begin{align*}
-         & \V, \vs{F}^n \text{ are isomorphic} &  & \text{(by \cref{2.19})}   \\
-    \iff & \dim(\V) = \dim(\vs{F}^n) = n.      &  & \text{(by \cref{1.6.10})}
+         & \V \text{ and } \vs{F}^n \text{ are isomorphic} &  & \text{(by \cref{2.19})}   \\
+    \iff & \dim(\V) = \dim(\vs{F}^n) = n.                  &  & \text{(by \cref{1.6.10})}
   \end{align*}
 \end{proof}
 
@@ -228,6 +228,17 @@
 \end{thm}
 
 \begin{proof}[\pf{2.21}]
+  First we show that \(\phi_{\beta} \in \ls(\V, \vs{F}^n)\).
+  Let \(x, y \in \V\) and let \(c \in \F\).
+  Since
+  \begin{align*}
+    \phi_{\beta}(cx + y) & = [cx + y]_{\beta}                     &  & \text{(by \cref{2.4.11})} \\
+                         & = c [x]_{\beta} + [y]_{\beta}          &  & \text{(by \cref{1.2.4})}  \\
+                         & = c \phi_{\beta}(x) + \phi_{\beta}(y), &  & \text{(by \cref{2.4.11})}
+  \end{align*}
+  by \cref{2.1.2}(b) we know that \(\phi_{\beta} \in \ls(\V, \vs{F}^n)\).
+
+  Now we show that \(\phi_{\beta}\) is an isomorphism.
   Let \(n = \dim(\V)\), let \(\beta = \set{\seq{v}{1,,n}}\), let \(\tuple{a}{1,,n} \in \vs{F}^n\) and let \(x = \sum_{i = 1}^n a_i v_i\).
   Since \(x \in \V\), by \cref{2.2.3} we know that \([x]_{\beta} = \tp{\tuple{a}{1,,n}}\) and thus \(\phi_{\beta}\) is onto.
   Since \(\sum_{i = 1}^n a_i v_i\) is unique, we know that \(\phi_{\beta}\) is one-to-one.
@@ -240,7 +251,7 @@
 \end{note}
 
 \begin{cor}\label{2.4.12}
-  Let \(\V\) and \(\W\) be vector spaces of dimension \(n\) and \(m\) over \(\F\), respectively, and let \(\T : \V \to \W\) be a linear transformation.
+  Let \(\V\) and \(\W\) be vector spaces of dimension \(n\) and \(m\) over \(\F\), respectively, and let \(\T \in \ls(\V, \W)\).
   Define \(A = [\T]_{\beta}^{\gamma}\), where \(\beta\) and \(\gamma\) are arbitrary ordered bases of \(\V\) and \(\W\) over \(\F\), respectively.
   We are now able to use \(\phi_{\beta}\) and \(\phi_{\gamma}\) to study the relationship between the linear transformations \(\T\) and \(\L_A : \vs{F}^n \to \vs{F}^m\).
   There are two composites of linear transformations that map \(\V\) into \(\vs{F}^m\):
