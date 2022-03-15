@@ -150,7 +150,7 @@
 \end{defn}
 
 \begin{note}
-  Since ``is isomorphic to'' is an equivalence relation.
+  ``Is isomorphic to'' is an equivalence relation (see \cref{ex:2.4.13}).
   So we need only say that \(\V\) and \(\W\) are isomorphic.
 \end{note}
 
@@ -384,9 +384,7 @@
     \implies & \L_{AB} \text{ is invertible}                        &  & \text{(by \cref{2.4.7})}   \\
     \implies & \L_A \L_B \text{ is invertible}                      &  & \text{(by \cref{2.15}(e))} \\
     \implies & \L_A \text{ is onto and } \L_B \text{ is one-to-one}                                 \\
-    \implies & \L_A \text{ is invertible}                           &  & \text{(by \cref{2.5})}     \\
-    \implies & \L_{A^{-1}} \L_A \L_B \text{ is invertible}          &  & \text{(by \cref{2.4.7})}   \\
-    \implies & \L_B \text{ is invertible}                           &  & \text{(by \cref{2.5})}     \\
+    \implies & \L_A, \L_B \text{ are invertible}                    &  & \text{(by \cref{2.4.2})}   \\
     \implies & A, B \text{ are invertible}.                         &  & \text{(by \cref{2.4.7})}
   \end{align*}
 
@@ -463,25 +461,25 @@
   \begin{description}
     \item[For reflexive:]
       Let \(\V\) be a vector spaces over \(\F\).
-      Since \(\IT[\V] \in \ls(\V)\) is invertible, by \cref{2.4.8} we see that \(\IT[\V]\) is an isomorphism from \(\V\) onto \(\V\).
+      Since \(\IT[\V] \in \ls(\V)\) and \(\IT[\V]\) is invertible, by \cref{2.4.8} we see that \(\IT[\V]\) is an isomorphism from \(\V\) onto \(\V\).
       Thus \(\V \sim \V\).
     \item[For symmetric:]
       Let \(\V, \W\) be vector spaces over \(\F\) such that \(\V \sim \W\).
       By \cref{2.4.8} there exists a \(\T \in \ls(\V, \W)\) such that \(\T\) is invertible.
-      Since \(\T\) is invertible, by \cref{2.17} we know that \(\T^{-1} \in \ls(\W, \V)\) and \(\T^{-1}\) is invertible.
-      Thus by \cref{2.4.8} \(\T^{-1}\) is an isomorphism from \(\W\) onto \(\V\) and \(\W \sim \V\).
+      Since \(\T\) is invertible, by \cref{2.17} we know that \(\T^{-1} \in \ls(\W, \V)\).
+      Since \(\T^{-1}\) is invertible, by \cref{2.4.8} \(\T^{-1}\) is an isomorphism from \(\W\) onto \(\V\) and thus \(\W \sim \V\).
     \item[For transitive:]
       Let \(\V, \W, \vs{X}\) be vector spaces over \(\F\) such that \(\V \sim \W\) and \(\W \sim \vs{X}\).
       By \cref{2.4.8} there exist \(\T \in \ls(\V, \W)\) and \(\U \in \ls(\W, \vs{X})\) such that \(\T, \U\) are invertible.
-      By \cref{2.9} we know that \(\U \T \in \ls(\V, \vs{X})\) is invertible.
-      Thus by \cref{2.4.8} \(\U \T\) is an isomorphism from \(\V\) onto \(\vs{X}\) and \(\V \sim \vs{X}\).
+      By \cref{2.9} we know that \(\U \T \in \ls(\V, \vs{X})\).
+      Since \(\U \T\) is invertible, by \cref{2.4.8} \(\U \T\) is an isomorphism from \(\V\) onto \(\vs{X}\) and thus \(\V \sim \vs{X}\).
   \end{description}
   From proof above we see that \(\sim\) is an equivalence relation.
 \end{proof}
 
 \setcounter{ex}{14}
 \begin{ex}\label{ex:2.4.15}
-  Let \(\V\) and \(\W\) be finite-dimensional vector spaces over \(\F\), and let \(\T : \V \to \W\) be a linear transformation.
+  Let \(\V\) and \(\W\) be finite-dimensional vector spaces over \(\F\), and let \(\T \in \ls(\V, \W)\).
   Suppose that \(\beta\) is a basis for \(\V\) over \(\F\).
   Prove that \(\T\) is an isomorphism iff \(\T(\beta)\) is a basis for \(\W\) over \(\F\).
 \end{ex}
@@ -589,7 +587,7 @@
 
 \setcounter{ex}{19}
 \begin{ex}\label{ex:2.4.20}
-  Let \(\T : \V \to \W\) be a linear transformation from an \(n\)-dimensional vector space \(\V\) over \(\F\) to an \(m\)-dimensional vector space \(\W\) over \(\F\).
+  Let \(\T \in \ls(\V, \W)\) where \(\V\) is an \(n\)-dimensional vector space over \(\F\) and \(\W\) is an \(m\)-dimensional vector space over \(\F\).
   Let \(\beta\) and \(\gamma\) be ordered bases for \(\V\) and \(\W\) over \(\F\), respectively.
   Prove that \(\rk{\T} = \rk{\L_A}\) and that \(\nt{\T} = \nt{\L_A}\), where \(A = [\T]_{\beta}^{\gamma}\).
 \end{ex}
@@ -601,15 +599,15 @@
   \begin{align*}
              & \phi_{\gamma} \text{ is an isomorphism from } \V \text{ onto } \vs{F}^n &  & \text{(by \cref{2.21})}         \\
     \implies & \rk{\T} = \dim(\T(\V))                                                  &  & \text{(by \cref{2.1.12})}       \\
-             & = \dim(\phi_{\gamma}(\T(\V)))                                           &  & \text{(by \cref{ex:2.4.17})}    \\
+             & = \dim(\phi_{\gamma}(\T(\V)))                                           &  & \text{(by \cref{ex:2.4.17}(b))} \\
              & = \dim(\L_A(\phi_{\beta}(\V)))                                          &  & \text{(by \cref{2.4.12})}       \\
              & = \dim(\L_A(\vs{F}^n))                                                  &  & \text{(by \cref{2.21})}         \\
              & = \rk{\L_A},                                                            &  & \text{(by \cref{2.1.12,2.3.8})}
   \end{align*}
   we know that
   \begin{align*}
-             & \dim(\V) = \dim(\phi_{\beta}(\V)) = \dim(\vs{F}^n) &  & \text{(by \cref{ex:2.4.17})} \\
-    \implies & \rk{\T} + \nt{\T} = \rk{\L_A} + \nt{\L_A}          &  & \text{(by \cref{2.3})}       \\
+             & \dim(\V) = \dim(\phi_{\beta}(\V)) = \dim(\vs{F}^n) &  & \text{(by \cref{ex:2.4.17}(b))} \\
+    \implies & \rk{\T} + \nt{\T} = \rk{\L_A} + \nt{\L_A}          &  & \text{(by \cref{2.3})}          \\
     \implies & \nt{\T} = \nt{\L_A}.                               &  & (\rk{\T} = \rk{\L_A})
   \end{align*}
 \end{proof}
@@ -633,22 +631,23 @@
   First we show that \(S = \set{\T_{i j} : 1 \leq i \leq m, 1 \leq j \leq n}\) is a basis for \(\ls(\V, \W)\) over \(\F\).
   For all \(i \in \set{1, \dots, m}\) and \(j \in \set{1, \dots, n}\), let \(a_{i j} \in \F\) such that
   \[
-    \sum_{i = 1}^m \sum_{j = 1}^n a_{i j} \T_{i j} = \zv.
+    \sum_{i = 1}^m \sum_{j = 1}^n a_{i j} \T_{i j} = \zT.
   \]
-  Note that \(\zv\) is the zero function in \(\ls(\V, \W)\).
+  Note that \(\zT\) is the zero function in \(\ls(\V, \W)\).
   Since
   \begin{align*}
              & \forall k \in \set{1, \dots, n}, \T_{i j}(v_k) = \begin{dcases}
                                                                   w_i      & \text{if } k = j    \\
                                                                   \zv_{\W} & \text{if } k \neq j
-                                                                \end{dcases}                                                                            \\
+                                                                \end{dcases}                                                      \\
     \implies & \forall k \in \set{1, \dots, n}, \T_{i j}(a_{i j} v_k) = a_{i j} \T_{i j}(v_k) = \begin{dcases}
                                                                                                   a_{i k} w_i & \text{if } k = j    \\
                                                                                                   \zv_{\W}    & \text{if } k \neq j
-                                                                                                \end{dcases}                              &  & \text{(by \cref{2.1.1})}   \\
-    \implies & \forall k \in \set{1, \dots, n}, \sum_{j = 1}^n a_{i j} \T_{i j}(v_k) = a_{i k} w_i                                                                        \\
-    \implies & \forall k \in \set{1, \dots, n}, \sum_{i = 1}^m \sum_{j = 1}^n a_{i j} \T_{i j}(v_k) = \sum_{i = 1}^m a_{i k} w_i = \zv_{\W}                               \\
-    \implies & \forall (i, k) \in \set{1, \dots, m} \times \set{1, \dots, n}, a_{i k} = 0                                                   &  & \text{(by \cref{1.6.1})}
+                                                                                                \end{dcases}        &  & \text{(by \cref{2.1.1})}   \\
+    \implies & \forall k \in \set{1, \dots, n}, \sum_{j = 1}^n a_{i j} \T_{i j}(v_k) = a_{i k} w_i                                                  \\
+    \implies & \forall k \in \set{1, \dots, n},                                                                                                     \\
+             & \sum_{i = 1}^m \sum_{j = 1}^n a_{i j} \T_{i j}(v_k) = \sum_{i = 1}^m a_{i k} w_i = \zT(v_k) = \zv_{\W}                               \\
+    \implies & \forall (i, k) \in \set{1, \dots, m} \times \set{1, \dots, n}, a_{i k} = 0                             &  & \text{(by \cref{1.6.1})}
   \end{align*}
   and \(\#(S) = mn\), by \cref{1.6.15}(a) and \cref{2.4.10} we know that \(S\) is a basis for \(\ls(\V, \W)\) over \(\F\).
 
@@ -675,4 +674,41 @@
              & = \br{\sum_{i = 1}^m \sum_{j = 1}^n a_{i j} \T_{i j}}_{\beta}^{\gamma} = [\U]_{\beta}^{\gamma},                 &  & \text{(by \cref{2.8})}
   \end{align*}
   by \cref{2.20} we see that \(\Phi\) is an isomorphism from \(\ls(\V, \W)\) onto \(\MS\).
+\end{proof}
+
+\begin{ex}\label{ex:2.4.22}
+  Let \(\seq{c}{0,1,,n}\) be distinct scalars from an infinite field \(\F\).
+  Define \(\T : \ps[n]{\F} \to \vs{F}^{n + 1}\) by \(\T(f) = (f(c_0), f(c_1), \dots, f(c_n))\).
+  Prove that \(\T\) is an isomorphism.
+\end{ex}
+
+\begin{proof}[\pf{ex:2.4.22}]
+  First we show that \(\T \in \ls(\ps[n]{\F}, \vs{F}^{n + 1})\).
+  Let \(f, g \in \ps[n]{\F}\) and let \(a \in \F\).
+  Since
+  \begin{align*}
+    \T(af + g) & = ((af + g)(c_0), \dots, (af + g)(c_n))               &  & \text{(by \cref{ex:2.4.22})} \\
+               & = (af(c_0) + g(c_0), \dots, af(c_n) + g(c_n))         &  & \text{(by \cref{1.2.12})}    \\
+               & = a (f(c_0), \dots, f(c_n)) + (g(c_0), \dots, g(c_n)) &  & \text{(by \cref{1.2.4})}     \\
+               & = a \T(f) + \T(g),                                    &  & \text{(by \cref{ex:2.4.22})}
+  \end{align*}
+  by \cref{2.1.2}(b) we know that \(\T \in \ls(\ps[n]{\F}, \vs{F}^{n + 1})\).
+
+  Next we show that \(\T\) is an isomorphism from \(\ps[n]{\F}\) onto \(\vs{F}^{n + 1}\).
+  By \cref{1.6.10,1.6.12} we know that \(\dim(\ps[n]{\F}) = \dim(\vs{F}^{n + 1}) = n + 1\).
+  Since \(\T \in \ls(\ps[n]{\F}, \vs{F}^{n + 1})\), by \cref{2.4.8} we only need to show that \(\T\) is invertible.
+  For each \(i \in \set{0, \dots, n}\), let \(f_i \in \ps[n]{\F}\) be the Lagrange polynomials with respect to \(\seq{c}{0,,n}\) as defined in \cref{1.6.20}.
+  To be precise, we define \(f_i\) as follow:
+  \[
+    \forall x \in \F, f_i(x) = \frac{(x - c_0) \cdots (x - c_{i - 1}) (x - c_{i + 1}) \cdots (x - c_n)}{(c_i - c_0) \cdots (c_i - c_{i - 1}) (c_i - c_{i + 1}) \cdots (c_i - c_n)} = \prod_{\substack{k = 0 \\ k \neq i}}^n \frac{x - c_k}{c_i - c_k}.
+  \]
+  By \cref{1.6.20} we have \(\spn{\set{f_i : 0 \leq i \leq n}} = \ps[n]{\F}\).
+  Then we have
+  \begin{align*}
+             & \forall i \in \set{0, \dots, n}, \T(f_i) = (f_i(c_0), \dots, f_i(c_i), \dots, f_i(c_n)) &  & \text{(by \cref{ex:2.4.22})} \\
+             & = (0, \dots, 1, \dots, 0) = e_{i + 1}                                                   &  & \text{(by \cref{2.2.2})}     \\
+    \implies & \spn{\T(\set{f_i : 0 \leq i \leq n})} = \spn{\set{\seq{e}{1,,n+1}}} = \vs{F}^{n + 1},   &  & \text{(by \cref{1.6.3})}     \\
+    \implies & \T \text{ is onto}                                                                      &  & \text{(by \cref{2.2})}       \\
+    \implies & \T \text{ is invertible}.                                                               &  & \text{(by \cref{2.4.2})}
+  \end{align*}
 \end{proof}
