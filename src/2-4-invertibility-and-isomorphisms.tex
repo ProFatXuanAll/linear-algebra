@@ -150,7 +150,7 @@
 \end{defn}
 
 \begin{note}
-  ``Is isomorphic to'' is an equivalence relation (see \cref{ex:2.4.13}).
+  ``Is isomorphic to'' is an equivalence relation (See \cref{ex:2.4.13}).
   So we need only say that \(\V\) and \(\W\) are isomorphic.
 \end{note}
 
@@ -247,7 +247,7 @@
 
 \begin{note}
   \cref{2.21} provides us with an alternate proof that an \(n\)-dimensional vector space is isomorphic to \(\vs{F}^n\)
-  (see \cref{2.4.9}).
+  (See \cref{2.4.9}).
 \end{note}
 
 \begin{cor}\label{2.4.12}
@@ -826,4 +826,71 @@
                                               & = \T(v)                      &  & \text{(by \cref{ex:2.4.24})}
   \end{align*}
   and thus \(\T = \overline{\T} \eta\).
+\end{proof}
+
+\begin{ex}\label{ex:2.4.25}
+  Let \(\V\) be a nonzero vector space over a field \(\F\), and suppose that \(S\) is a basis for \(\V\) over \(\F\)
+  (By \cref{1.7.10} every vector space has a basis).
+  Let \(\cvs(S, \F)\) denote the vector space of all functions \(f \in \FS\) such that \(f(s) = 0\) for all but a finite number of vectors in \(S\)
+  (See \cref{ex:1.3.14}).
+  Let \(\Psi : \cvs(S, \F) \to \V\) be the function defined by
+  \[
+    \Psi(f) = \sum_{s \in S, f(s) \neq 0} f(s) s.
+  \]
+  Prove that \(\Psi\) is an isomorphism.
+  Thus every nonzero vector space can be viewed as a space of functions.
+\end{ex}
+
+\begin{proof}[\pf{ex:2.4.25}]
+  First we show that \(\Psi \in \ls(\cvs(S, \F), \V)\).
+  Let \(f, g \in \cvs(S, \F)\) and let \(c \in \F\).
+  Since
+  \begin{align*}
+     & \Psi(cf + g)                                                                                                                            \\
+     & = \sum_{s \in S, (cf + g)(s) \neq 0} (cf + g)(s) s                                           &  & \text{(by \cref{ex:2.4.25})}          \\
+     & = \sum_{s \in S, cf(s) + g(s) \neq 0} (cf(s)) s + g(s) s                                                                                \\
+     & = \sum_{s \in S, cf(s) + g(s) \neq 0} (cf(s)) s + \sum_{s \in S, cf(s) + g(s) \neq 0} g(s) s &  & \text{(finitely many non-zero terms)} \\
+     & = \sum_{s \in S, cf(s) \neq 0} (cf(s)) s + \sum_{s \in S, g(s) \neq 0} g(s) s                                                           \\
+     & = c \pa{\sum_{s \in S, f(s) \neq 0} f(s) s} + \sum_{s \in S, g(s) \neq 0} g(s) s             &  & \text{(finitely many non-zero terms)} \\
+     & = c \Psi(f) + \Psi(g),                                                                       &  & \text{(by \cref{ex:2.4.25})}
+  \end{align*}
+  by \cref{2.1.2}(b) we know that \(\Psi \in \ls(\cvs(S, \F), \V)\).
+
+  Next we show that \(\Psi\) is one-to-one.
+  Let \(f, g \in \cvs(S, \F)\) such that \(\Psi(f) = \Psi(g)\).
+  Since
+  \begin{align*}
+             & \sum_{s \in S, f(s) \neq 0} f(s) s = \sum_{s \in S, g(s) \neq 0} g(s) s            &  & \text{(by \cref{ex:2.4.25})}          \\
+    \implies & \sum_{s \in S, f(s) \neq 0} f(s) s - \sum_{s \in S, g(s) \neq 0} g(s) s = \zv_{\V}                                            \\
+    \implies & \sum_{s \in S, (f(s) \neq 0) \lor (g(s) \neq 0)} f(s) s - g(s) s = \zv_{\V}        &  & \text{(finitely many non-zero terms)} \\
+    \implies & \sum_{s \in S, (f(s) \neq 0) \lor (g(s) \neq 0)} (f(s) - g(s)) s = \zv_{\V}        &  & \text{(by \cref{1.2.1})}              \\
+    \implies & \forall s \in S,                                                                                                              \\
+             & \begin{dcases}
+                 f(s) - g(s) = 0 & \text{if } (f(s) \neq 0) \lor (g(s) \neq 0) \\
+                 f(s) = 0 = g(s) & \text{if } (f(s) = 0) \land (g(s) = 0)
+               \end{dcases}                   &  & \text{(by \cref{1.6.1})}                                                                 \\
+    \implies & \forall s \in S, f(s) = g(s)                                                                                                  \\
+    \implies & f = g,
+  \end{align*}
+  we know that \(\Psi\) is one-to-one.
+
+  Next we show that \(\Psi\) is onto.
+  Let \(x \in \V\).
+  By \cref{1.6.1} we know that there exist some \(\seq{v}{1,,n} \in S\) and \(\seq{a}{1,,n} \in \F\) such that \(x = \sum_{i = 1}^n a_i v_i\).
+  By \cref{1.8} we know that such \(\seq{v}{1,,n}\) and \(\seq{a}{1,,n}\) are unique.
+  Now we define \(f \in \cvs(S, \F)\) as follow:
+  \[
+    \forall s \in S, f(s) = \begin{dcases}
+      a_i & \text{if } s = v_i                               \\
+      0   & \text{if } s \in S \setminus \set{\seq{v}{1,,n}}
+    \end{dcases}.
+  \]
+  Clearly we have
+  \[
+    \Psi(f) = \sum_{s \in S, f(s) \neq 0} f(s) s = \sum_{i = 1}^n f(v_i) v_i = \sum_{i = 1}^n a_i v_i = x.
+  \]
+  Thus \(\Psi\) is onto.
+
+  Finally we show that \(\Psi\) is an isomorphism from \(\cvs(S, \F)\) onto \(\V\).
+  From all proofs above we see that \(\Psi \in \ls(\cvs(S, \F), \V)\) and \(\Psi\) is invertible, thus by \cref{2.4.8} \(\Psi\) is an isomorphism from \(\cvs(S, \F)\) onto \(\V\).
 \end{proof}

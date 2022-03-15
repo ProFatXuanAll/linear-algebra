@@ -271,6 +271,68 @@
   Therefore \(\W\) is a subspace of \(\FS\) over \(\F\) by \cref{1.3}.
 \end{proof}
 
+\begin{ex}\label{ex:1.3.14}
+  Let \(S\) be a nonempty set and \(\F\) a field.
+  Let \(\cvs(S, \F)\) denote the set of all functions \(f \in \FS\) such that \(f(s) = 0\) for all but a finite number of elements of \(S\).
+  Prove that \(\cvs(S, \F)\) is a subspace of \(\FS\).
+\end{ex}
+
+\begin{proof}[\pf{ex:1.3.14}]
+  Let \(f, g \in \cvs(S, \F)\) and let \(c \in \F\).
+  Let \(S_f, S_g\) be the subsets of \(S\) such that
+  \begin{align*}
+     & f(S_f) \cap \set{0} = \varnothing = g(S_g) \cap \set{0}; \\
+     & f(S \setminus S_f) = \set{0} = g(S \setminus S_g).
+  \end{align*}
+  By hypothesis we know that \(S_f, S_g\) are finite.
+
+  First we claim that the set
+  \[
+    S_{f + g} = \set{s \in S : (f + g)(s) \neq 0}
+  \]
+  is a subset of \(S_f \cup S_g\) and is thus finite.
+  Suppose for sake of contradiction that there exists an \(s \in S \setminus (S_f \cup S_g)\) such that \((f + g)(s) \neq 0\).
+  But then we have
+  \begin{align*}
+             & s \in S \setminus (S_f \cup S_g) \\
+    \implies & \begin{dcases}
+                 s \notin S_f \\
+                 s \notin S_g
+               \end{dcases}                    \\
+    \implies & \begin{dcases}
+                 f(s) = 0 \\
+                 g(s) = 0
+               \end{dcases}                    \\
+    \implies & (f + g)(s) = f(s) + g(s) = 0,
+  \end{align*}
+  a contradiction.
+  Thus we see that \(f + g \in \cvs(S, \F)\).
+
+  Next we claim that the set
+  \[
+    S_{cf} = \set{s \in S : (cf)(s) \neq 0}
+  \]
+  is a subset of \(S_f\) and is thus finite.
+  We split into two cases:
+  \begin{itemize}
+    \item  If \(c = 0\), then we have \(S_{cf} = \varnothing \subseteq S_f\).
+    \item If \(c \neq 0\), then we have
+          \begin{align*}
+                 & s \in S_{cf}   \\
+            \iff & (cf)(s) \neq 0 \\
+            \iff & c f(s) \neq 0  \\
+            \iff & f(s) \neq 0    \\
+            \iff & s \in S_f
+          \end{align*}
+          and thus \(S_{cf} = S_f\).
+  \end{itemize}
+  From all cases above we conclude that \(S_{cf} \subseteq S_f\).
+  Hence \(cf \in \cvs(S, \F)\).
+
+  Obviously the zero function of \(\FS\) is also an element of \(\cvs(S, \F)\).
+  Thus from all proofs above we conclude by \cref{1.3} that \(\cvs(S, \F)\) is a subspace of \(\FS\) over \(\F\).
+\end{proof}
+
 \setcounter{ex}{15}
 \begin{ex}\label{ex:1.3.16}
   Let \(\cfs[n]{\R}\) denote the set of all real-valued functions defined on the real line that have a continuous \(n\)th derivative.
