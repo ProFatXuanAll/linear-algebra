@@ -712,3 +712,45 @@
     \implies & \T \text{ is invertible}.                                                               &  & \text{(by \cref{2.4.2})}
   \end{align*}
 \end{proof}
+
+\begin{ex}\label{ex:2.4.23}
+  Let \(\V\) denote the vector space defined in \cref{1.2.13}, and let \(\W = \ps{\F}\).
+  Define
+  \[
+    \T : \V \to \W \quad \text{by} \quad \T(\set{a_n}) = \sum_{i \in \N} a_i x^i.
+  \]
+  Prove that \(\T\) is an isomorphism.
+\end{ex}
+
+\begin{proof}[\pf{ex:2.4.23}]
+  First we show that \(\T \in \ls(\V, \ps{\F})\).
+  Let \(\set{a_n}, \set{b_n} \in \V\) and let \(c \in \F\).
+  Since
+  \begin{align*}
+    \T(c \set{a_n} + \set{b_n}) & = \T(\set{c a_n + b_n})                                    &  & \text{(by \cref{1.2.13})}             \\
+                                & = \sum_{i \in \N} (c a_i + b_i) x^i                        &  & \text{(by \cref{ex:2.4.23})}          \\
+                                & = c \pa{\sum_{i \in \N} a_i x^i} + \sum_{i \in \N} b_i x^i &  & \text{(finitely many non-zero terms)} \\
+                                & = c \T(\set{a_n}) + \T(\set{b_n}),
+  \end{align*}
+  by \cref{2.1.2}(b) we know that \(\T \in \ls(\V, \ps{\F})\).
+
+  Now we show that \(\T\) is an isomorphism from \(\V\) onto \(\ps{\F}\).
+  We already show that \(\T \in \ls(\V, \ps{\F})\), thus by \cref{2.4.8} we only need to show that \(\T\) is invertible.
+  This can be done by showing that every \(f \in \ps{\F}\) there exists a unique \(\set{b_n} \in \V\) such that \(\T(\set{b_n}) = f\).
+  Let \(f \in \ps{\F}\).
+  By \cref{1.2.12} we know that there exists an \(m \in \N\) such that
+  \[
+    \forall x \in \F, f(x) = \sum_{i = 0}^m a_i x^i
+  \]
+  for some \(\seq{a}{0,,m} \in \F\).
+  Now we define a sequence \(\set{b_n}\) where
+  \[
+    \forall n \in \N, b_n = \begin{dcases}
+      a_n & \text{if } n \leq m \\
+      0   & \text{if } n > m
+    \end{dcases}.
+  \]
+  By \cref{1.2.13} we see that \(\set{b_n} \in \V\).
+  Since \(\seq{a}{0,,m} \in \F\) are unique (by \cref{1.8}), we know that \(\set{b_n}\) is unique.
+  Thus \(\T\) is invertible.
+\end{proof}
