@@ -754,3 +754,76 @@
   Since \(\seq{a}{0,,m} \in \F\) are unique (by \cref{1.8}), we know that \(\set{b_n}\) is unique.
   Thus \(\T\) is invertible.
 \end{proof}
+
+\begin{ex}\label{ex:2.4.24}
+  Let \(\T \in \ls(\V, \W)\) where \(\V, \W\) are vector spaces over \(\F\) and \(\T\) is onto.
+  Define the mapping
+  \[
+    \overline{\T} : \V / \ns{\T} \to \W \quad \text{by} \quad \overline{\T}(v + \ns{\T}) = \T(v)
+  \]
+  for any coset \(v + \ns{\T}\) in \(\V / \ns{\T}\).
+  \begin{enumerate}
+    \item Prove that \(\overline{\T}\) is well-defined;
+          that is, prove that if \(v + \ns{\T} = v' + \ns{\T}\), then \(\T(v) = \T(v')\).
+    \item Prove that \(\overline{\T}\) is linear.
+    \item Prove that \(\overline{\T}\) is an isomorphism.
+    \item prove that \(\T = \overline{\T} \eta\) where \(\eta : \V \to \V / \ns{\T}\) is defined by \(\eta(v) = v + \ns{\T}\) for \(v \in \V\).
+  \end{enumerate}
+\end{ex}
+
+\begin{proof}[\pf{ex:2.4.24}(a)]
+  We have
+  \begin{align*}
+             & v + \ns{\T} = v' + \ns{\T}                                                                     \\
+    \implies & v - v' \in \ns{\T}                                        &  & \text{(by \cref{ex:1.3.31}(b))} \\
+    \implies & \T(v - v') = \zv_{\W}                                     &  & \text{(by \cref{2.1.10})}       \\
+    \implies & \T(v) = \T(v')                                            &  & \text{(by \cref{2.1.2}(c))}     \\
+    \implies & \overline{\T}(v + \ns{\T}) = \overline{\T}(v' + \ns{\T}). &  & \text{(by \cref{ex:2.4.24})}
+  \end{align*}
+\end{proof}
+
+\begin{proof}[\pf{ex:2.4.24}(b)]
+  Let \(x + \ns{\T}, y + \ns{\T} \in \V / \ns{\T}\) and let \(c \in \F\).
+  Then we have
+  \begin{align*}
+     & \overline{\T}(c (x + \ns{\T}) + (y + \ns{\T}))                                                   \\
+     & = \overline{\T}((cx + y) + \ns{\T})                         &  & \text{(by \cref{ex:1.3.31}(c))} \\
+     & = \T(cx + y)                                                &  & \text{(by \cref{ex:2.4.24})}    \\
+     & = c \T(x) + \T(y)                                           &  & \text{(by \cref{2.1.2}(b))}     \\
+     & = c \overline{\T}(x + \ns{\T}) + \overline{\T}(y + \ns{\T}) &  & \text{(by \cref{ex:2.4.24})}
+  \end{align*}
+  and thus by \cref{2.1.2}(b) \(\overline{\T} \in \ls(\V / \ns{\T}, \W)\).
+\end{proof}
+
+\begin{proof}[\pf{ex:2.4.24}(c)]
+  First we show that \(\overline{\T}\) is one-to-one.
+  Let \(x + \ns{\T}, y + \ns{\T} \in \V / \ns{\T}\) such that \(\overline{\T}(x + \ns{\T}) = \overline{\T}(y + \ns{\T})\).
+  Then we have
+  \begin{align*}
+             & \overline{\T}(x + \ns{\T}) - \overline{\T}(y + \ns{\T}) = \T(x) - \T(y) &  & \text{(by \cref{ex:2.4.24})}    \\
+             & = \T(x - y) = \zv_{\W}                                                  &  & \text{(by \cref{2.1.2}(c))}     \\
+    \implies & x - y \in \ns{\T}                                                                                            \\
+    \implies & x + \ns{\T} = y + \ns{\T}                                               &  & \text{(by \cref{ex:1.3.31}(b))}
+  \end{align*}
+  and thus \(\overline{\T}\) is one-to-one.
+
+  Next we show that \(\overline{T}\) is onto.
+  Let \(y \in \W\).
+  By hypothesis we know that \(\T\) is onto, thus there exists a \(x \in \V\) such that \(\T(x) = y\).
+  Since \(x \in \V\), by definition we know that \(\overline{\T}(x + \ns{\T}) = \T(x) = y\).
+  Thus \(\overline{\T}\) is onto.
+
+  Finally we show that \(\overline{\T}\) is an isomorphism from \(\V / \ns{\T}\) onto \(\W\).
+  From the proofs above we know that \(\overline{\T}\) is invertible.
+  By \cref{ex:2.4.24}(b) we also know that \(\overline{\T} \in \ls(\V / \ns{\T}, \W)\), thus by \cref{2.4.8} \(\T\) is an isomorphism from \(\V / \ns{\T}\) onto \(\W\).
+\end{proof}
+
+\begin{proof}[\pf{ex:2.4.24}(d)]
+  We have
+  \begin{align*}
+    \forall v \in \V, (\overline{\T} \eta)(v) & = \overline{\T}(\eta(v))                                       \\
+                                              & = \overline{\T}(v + \ns{\T}) &  & \text{(by \cref{ex:2.1.40})} \\
+                                              & = \T(v)                      &  & \text{(by \cref{ex:2.4.24})}
+  \end{align*}
+  and thus \(\T = \overline{\T} \eta\).
+\end{proof}
