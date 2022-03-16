@@ -263,3 +263,32 @@
   Thus by \cref{1.6.15}(b) \(\beta'\) is a basis for \(\V\) over \(\F\).
   We conclude by \cref{2.5.1} that \(Q\) is the change of coordinate matrix changin \(\beta'\)-coordinates into \(\beta\)-coordinates.
 \end{proof}
+
+\begin{ex}\label{ex:2.5.14}
+  Prove the converse of \cref{ex:2.5.8}:
+  If \(A, B \in \MS\), and if there exist invertible matrices \(P \in \ms{m}{m}{\F}\) and \(Q \in \ms{n}{n}{\F}\) such that \(B = P^{-1} A Q\), then there exist an \(n\)-dimensional vector space \(\V\) and an \(m\)-dimensional vector space \(\W\) (both over \(\F\)), ordered bases \(\beta, \beta'\) for \(\V\) and \(\gamma, \gamma'\) for \(\W\) (all over \(\F\)), and a \(\T \in \ls(\V, \W)\) such that
+  \[
+    A = [\T]_{\beta}^{\gamma} \quad \text{and} \quad B = [\T]_{\beta'}^{\gamma'}.
+  \]
+\end{ex}
+
+\begin{proof}[\pf{ex:2.5.14}]
+  Let \(\beta\) and \(\gamma\) be the standard ordered bases for \(\vs{F}^n\) and \(\vs{F}^m\) over \(\F\), respectively.
+  We define \(\beta'\) and \(\gamma'\) as follow:
+  \begin{align*}
+     & \beta' = \set{\sum_{i = 1}^n \pa{Q^{-1}}_{i j} e_i : (j \in \set{1, \dots, n}) \land (e_i \in \beta)};   \\
+     & \gamma' = \set{\sum_{i = 1}^n \pa{P}^{-1}_{i j} e_i : (j \in \set{1, \dots, m}) \land (e_i \in \gamma)}.
+  \end{align*}
+  By \cref{ex:2.5.13} we see that \(\beta'\) and \(\gamma'\) are bases of \(\vs{F}^n\) and \(\vs{F}^m\) over \(\F\), respectively.
+  By \cref{2.5.1} we see that \(Q^{-1}\) changes \(\beta\)-coordinates into \(\beta'\)-coordinates and \(P^{-1}\) changes \(\gamma\)-coordinates into \(\gamma'\)-coordinates.
+  By \cref{ex:2.5.11}(b) we see that \(Q\) changes \(\beta'\)-coordinates into \(\beta\)-coordinates.
+  If we set \(\V = \vs{F}^n\), \(\W = \vs{F}^m\) and \(\T = \L_A\), then we have
+  \begin{align*}
+    B & = P^{-1} A Q                                                                                  &  & \text{(by hypothesis)}         \\
+      & = [\IT[\vs{F}^m]]_{\gamma}^{\gamma'} A [\IT[\vs{F}^n]]_{\beta'}^{\beta}                       &  & \text{(from the proofs above)} \\
+      & = [\IT[\vs{F}^m]]_{\gamma}^{\gamma'} [\L_A]_{\beta}^{\gamma} [\IT[\vs{F}^n]]_{\beta'}^{\beta} &  & \text{(by \cref{2.15}(a))}     \\
+      & = [\IT[\vs{F}^m]]_{\gamma}^{\gamma'} [\T]_{\beta}^{\gamma} [\IT[\vs{F}^n]]_{\beta'}^{\beta}                                       \\
+      & = [\IT[\vs{F}^m] \T \IT[\vs{F}^n]]_{\beta'}^{\gamma'}                                         &  & \text{(by \cref{2.11})}        \\
+      & = [\T]_{\beta'}^{\gamma'}.                                                                    &  & \text{(by \cref{2.1.9})}
+  \end{align*}
+\end{proof}
