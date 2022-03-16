@@ -220,11 +220,46 @@
 \begin{proof}[\pf{ex:2.5.11}(b)]
   We have
   \begin{align*}
-    I_n & = [\IT[\V]]_{\beta}                                     &  & \text{(by \cref{2.12}(d))} \\
-        & = [\IT[\V]]_{\beta}^{\beta}                             &  & \text{(by \cref{2.2.4})}   \\
-        & = [\IT[\V] \IT[\V]]_{\beta}^{\beta}                     &  & \text{(by \cref{2.1.9})}   \\
-        & = [\IT[\V]]_{\beta'}^{\beta} [\IT[\V]]_{\beta}^{\beta'} &  & \text{(by \cref{2.11})}    \\
-        & = Q [\IT[\V]]_{\beta}^{\beta'}.                         &  & \text{(by \cref{2.5.1})}
+    Q^{-1} & = \pa{[\IT[\V]]_{\alpha}^{\beta}}^{-1} &  & \text{(by \cref{2.5.1})} \\
+           & = [\IT[\V]^{-1}]_{\beta}^{\alpha}      &  & \text{(by \cref{2.18})}  \\
+           & = [\IT[\V]]_{\beta}^{\alpha}.          &  & \text{(by \cref{2.1.9})}
   \end{align*}
-  Thus by \cref{ex:2.4.10}(b) we know that \(Q^{-1} = [\IT[\V]]_{\beta}^{\beta'}\) and by \cref{2.5.1} \(Q^{-1}\) is the change of coordinate matrix that changes \(\beta\)-coordinates into \(\beta'\)-coordinates.
+\end{proof}
+
+\setcounter{ex}{12}
+\begin{ex}\label{ex:2.5.13}
+  Let \(\V\) be a finite-dimensional vector space over a field \(\F\), and let \(\beta = \set{\seq{x}{1,2,,n}}\) be an ordered basis for \(\V\) over \(\F\).
+  Let \(Q \in \ms{n}{n}{\F}\) and \(Q\) is invertible.
+  Define
+  \[
+    x_j' = \sum_{i = 1}^n Q_{i j} x_i \quad \text{for } 1 \leq j \leq n,
+  \]
+  and set \(\beta' = \set{x_1', x_2', \dots, x_n'}\).
+  Prove that \(\beta'\) is a basis for \(\V\) over \(\F\) and hence that \(Q\) is the change of coordinate matrix changing \(\beta'\)-coordinates into \(\beta\)-coordinates.
+\end{ex}
+
+\begin{proof}[\pf{ex:2.5.13}]
+  Let \(a = \tp{\tuple{a}{1,,n}} \in \vs{F}^n\) such that
+  \[
+    \sum_{j = 1}^n a_j x_j' = \zv.
+  \]
+  Since
+  \begin{align*}
+             & \sum_{j = 1}^n a_j x_j' = \sum_{j = 1}^n \pa{a_j \sum_{i = 1}^n Q_{i j} x_i}                                                                           \\
+             & = \sum_{j = 1}^n \pa{\sum_{i = 1}^n a_j Q_{i j} x_i} = \sum_{i = 1}^n \pa{\sum_{j = 1}^n a_j Q_{i j}} x_i = \zv &  & \text{(by \cref{1.2.1})}          \\
+    \implies & \forall i \in \set{1, \dots, n}, \sum_{j = 1}^n a_j Q_{i j} = 0                                                 &  & \text{(by \cref{1.6.1})}          \\
+    \implies & Qa = \begin{pmatrix}
+                      Q_{1 1} & \cdots & Q_{1 n} \\
+                      \vdots  & \ddots & \vdots  \\
+                      Q_{n 1} & \cdots & Q_{n n}
+                    \end{pmatrix} \cdot \begin{pmatrix}
+                                          a_1    \\
+                                          \vdots \\
+                                          a_n
+                                        \end{pmatrix} = \zm                                                                             &  & \text{(by \cref{2.3.1})} \\
+    \implies & a = \zv,                                                                                                        &  & \text{(by \cref{ex:2.4.6})}
+  \end{align*}
+  by \cref{1.5.3} we know that \(\beta'\) is linearly independent.
+  Thus by \cref{1.6.15}(b) \(\beta'\) is a basis for \(\V\) over \(\F\).
+  We conclude by \cref{2.5.1} that \(Q\) is the change of coordinate matrix changin \(\beta'\)-coordinates into \(\beta\)-coordinates.
 \end{proof}
