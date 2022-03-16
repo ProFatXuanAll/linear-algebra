@@ -123,14 +123,108 @@
 
 \exercisesection
 
+\setcounter{ex}{7}
 \begin{ex}\label{ex:2.5.8}
-
+  Prove the following generalization of \cref{2.23}.
+  Let \(\T \in \ls(\V, \W)\) where \(\V, \W\) are finite-dimensional vector spaces over \(\F\).
+  Let \(\beta\) and \(\beta'\) be ordered bases for \(\V\) over \(\F\), and let \(\gamma\) and \(\gamma'\) be ordered bases for \(\W\) over \(\F\).
+  Then \([\T]_{\beta'}^{\gamma'} = P^{-1} [\T]_{\beta}^{\gamma} Q\), where \(Q\) is the matrix that changes \(\beta'\)-coordinates into \(\beta\)-coordinates and \(P\) is the matrix that changes \(\gamma'\)-coordinates into \(\gamma\)-coordinates.
 \end{ex}
+
+\begin{proof}[\pf{ex:2.5.8}]
+  We have
+  \begin{align*}
+    P [\T]_{\beta'}^{\gamma'} & = [\IT[\W]]_{\gamma'}^{\gamma} [\T]_{\beta'}^{\gamma'} &  & \text{(by \cref{2.5.1})} \\
+                              & = [\IT[\W] \T]_{\beta'}^{\gamma}                       &  & \text{(by \cref{2.11})}  \\
+                              & = [\T]_{\beta'}^{\gamma}                               &  & \text{(by \cref{2.1.9})} \\
+                              & = [\T \IT[\V]]_{\beta'}^{\gamma}                       &  & \text{(by \cref{2.1.9})} \\
+                              & = [\T]_{\beta}^{\gamma} [\IT[\V]]_{\beta'}^{\beta}     &  & \text{(by \cref{2.11})}  \\
+                              & = [\T]_{\beta}^{\gamma} Q                              &  & \text{(by \cref{2.5.1})}
+  \end{align*}
+  and thus
+  \begin{align*}
+             & P [\T]_{\beta'}^{\gamma'} = [\T]_{\beta}^{\gamma} Q                                               \\
+    \implies & P^{-1} P [\T]_{\beta'}^{\gamma'} = P^{-1} [\T]_{\beta}^{\gamma} Q &  & \text{(by \cref{2.22}(a))} \\
+    \implies & [\T]_{\beta'}^{\gamma'} = P^{-1} [\T]_{\beta}^{\gamma} Q.         &  & \text{(by \cref{2.4.3})}
+  \end{align*}
+\end{proof}
 
 \begin{ex}\label{ex:2.5.9}
-
+  Prove that ``is similar to'' is an equivalence relation on \(\ms{n}{n}{\F}\).
 \end{ex}
+
+\begin{proof}[\pf{ex:2.5.9}]
+  Let \(A, B, C \in \ms{n}{n}{\F}\).
+  \begin{description}
+    \item[For reflexive:]
+      We have
+      \[
+        A = I_n A I_n = I_n^{-1} A I_n.
+      \]
+    \item[For symmetric:]
+      Suppose that \(B = Q^{-1} A Q\).
+      Let \(P = Q^{-1}\).
+      Then we have
+      \begin{align*}
+             & B = Q^{-1} A Q                                                                 \\
+        \iff & Q B Q^{-1} = Q Q^{-1} A Q Q^{-1} = I_n A I_n = A &  & \text{(by \cref{2.4.3})} \\
+        \iff & P^{-1} B P = A.                                  &  & \text{(by \cref{2.4.3})}
+      \end{align*}
+    \item[For transitive:]
+      Suppose that \(B = Q^{-1} A Q\) and \(C = P^{-1} B P\).
+      Then we have
+      \begin{align*}
+        C & = P^{-1} B P                                           \\
+          & = P^{-1} Q^{-1} A Q P                                  \\
+          & = (QP)^{-1} A (QP).   &  & \text{(by \cref{ex:2.4.4})}
+      \end{align*}
+  \end{description}
+  From all cases above we see that ``is similar to'' defined in \cref{2.5.4} is an equivalence relation on \(\ms{n}{n}{\F}\).
+\end{proof}
+
+\begin{ex}\label{ex:2.5.10}
+  Prove that if \(A, B \in \ms{n}{n}{\F}\) and \(A, B\) are similar, then \(\tr[A] = \tr[B]\).
+\end{ex}
+
+\begin{proof}[\pf{ex:2.5.10}]
+  By \cref{2.5.4} we know that there exists a \(Q \in \ms{n}{n}{\F}\) such that \(B = Q^{-1} A Q\).
+  Thus we have
+  \begin{align*}
+    \tr[B] & = \tr[Q^{-1} A Q]                                     \\
+           & = \tr[(Q^{-1} A) Q] &  & \text{(by \cref{2.16})}      \\
+           & = \tr[Q (Q^{-1} A)] &  & \text{(by \cref{ex:2.3.13})} \\
+           & = \tr[(Q Q^{-1}) A] &  & \text{(by \cref{2.16})}      \\
+           & = \tr[I_n A]        &  & \text{(by \cref{2.4.3})}     \\
+           & = \tr[A].           &  & \text{(by \cref{2.4.3})}
+  \end{align*}
+\end{proof}
 
 \begin{ex}\label{ex:2.5.11}
-
+  Let \(\V\) be a finite-dimensional vector space over \(\F\) with ordered bases \(\alpha\), \(\beta\), and \(\gamma\).
+  \begin{enumerate}
+    \item Prove that if \(Q\) and \(R\) are the change of coordinate matrices that change \(\alpha\)-coordinates into \(\beta\)-coordinates and \(\beta\)-coordinates into \(\gamma\)-coordinates, respectively, then \(RQ\) is the change of coordinate matrix that changes \(\alpha\)-coordinates into \(\gamma\)-coordinates.
+    \item Prove that if \(Q\) changes \(\alpha\)-coordinates into \(\beta\)-coordinates, then \(Q^{-1}\) changes \(\beta\)-coordinates into \(\alpha\)-coordinates.
+  \end{enumerate}
 \end{ex}
+
+\begin{proof}[\pf{ex:2.5.11}(a)]
+  We have
+  \begin{align*}
+    QR & = [\IT[\V]]_{\alpha}^{\beta} [\IT[\V]]_{\beta}^{\gamma} &  & \text{(by \cref{2.5.1})} \\
+       & = [\IT[\V] \IT[\V]]_{\alpha}^{\gamma}                   &  & \text{(by \cref{2.11})}  \\
+       & = [\IT[\V]]_{\alpha}^{\gamma}                           &  & \text{(by \cref{2.1.9})}
+  \end{align*}
+  and thus by \cref{2.5.1} \(QR\) is the change of coordinate matrix that changes \(\alpha\)-coordinates into \(\gamma\)-coordinates.
+\end{proof}
+
+\begin{proof}[\pf{ex:2.5.11}(b)]
+  We have
+  \begin{align*}
+    I_n & = [\IT[\V]]_{\beta}                                     &  & \text{(by \cref{2.12}(d))} \\
+        & = [\IT[\V]]_{\beta}^{\beta}                             &  & \text{(by \cref{2.2.4})}   \\
+        & = [\IT[\V] \IT[\V]]_{\beta}^{\beta}                     &  & \text{(by \cref{2.1.9})}   \\
+        & = [\IT[\V]]_{\beta'}^{\beta} [\IT[\V]]_{\beta}^{\beta'} &  & \text{(by \cref{2.11})}    \\
+        & = Q [\IT[\V]]_{\beta}^{\beta'}.                         &  & \text{(by \cref{2.5.1})}
+  \end{align*}
+  Thus by \cref{ex:2.4.10}(b) we know that \(Q^{-1} = [\IT[\V]]_{\beta}^{\beta'}\) and by \cref{2.5.1} \(Q^{-1}\) is the change of coordinate matrix that changes \(\beta\)-coordinates into \(\beta'\)-coordinates.
+\end{proof}
