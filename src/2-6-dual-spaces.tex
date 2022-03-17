@@ -83,37 +83,154 @@
 \begin{thm}\label{2.24}
   Suppose that \(\V\) is a finite-dimensional vector space over \(\F\) with the ordered basis \(\beta = \set{\seq{x}{1,,n}}\).
   Let \(f_i\) (\(1 \leq i \leq n\)) be the \(i\)th coordinate function with respect to \(\beta\) as defined in \cref{2.6.4}, and let \(\beta^* = \set{\seq{f}{1,,n}}\).
-  Then \(\beta^*\) is an ordered basis for \(\V^*\), and, for any \(f \in \V^*\), we have
+  Then \(\beta^*\) is an ordered basis for \(\V^*\), and, for any \(g \in \V^*\), we have
   \[
-    f = \sum_{i = 1}^n f(x_i) f_i.
+    g = \sum_{i = 1}^n g(x_i) f_i.
   \]
 \end{thm}
 
 \begin{proof}[\pf{2.24}]
-  Let \(f \in \V^*\).
+  Let \(g \in \V^*\).
   Since \(\dim(\V^*) = n\), we need only show that
   \[
-    f = \sum_{i = 1}^n f(x_i) f_i,
+    g = \sum_{i = 1}^n g(x_i) f_i,
   \]
   from which it follows that \(\beta^*\) generates \(\V^*\), and hence is a basis by \cref{1.6.15}(a).
   Let
   \[
-    g = \sum_{i = 1}^n f(x_i) f_i.
+    h = \sum_{i = 1}^n g(x_i) f_i.
   \]
   For \(1 \leq j \leq n\), we have
   \begin{align*}
-    g(x_j) & = \pa{\sum_{i = 1}^n f(x_i) f_i}(x_j)                               \\
-           & = \sum_{i = 1}^n f(x_i) f_i(x_j)      &  & \text{(by \cref{2.2.5})} \\
-           & = \sum_{i = 1}^n f(x_i) \delta_{i j}  &  & \text{(by \cref{2.6.4})} \\
-           & = f(x_j).
+    h(x_j) & = \pa{\sum_{i = 1}^n g(x_i) f_i}(x_j)                               \\
+           & = \sum_{i = 1}^n g(x_i) f_i(x_j)      &  & \text{(by \cref{2.2.5})} \\
+           & = \sum_{i = 1}^n g(x_i) \delta_{i j}  &  & \text{(by \cref{2.6.4})} \\
+           & = g(x_j).
   \end{align*}
-  Therefore \(f = g\) by \cref{2.1.13}.
+  Therefore \(g = h\) by \cref{2.1.13}.
 \end{proof}
 
 \begin{defn}\label{2.6.6}
   Using the notation of \cref{2.24}, we call the ordered basis \(\beta^* = \set{\seq{f}{1,,n}}\) of \(\V^*\) over \(\F\) that satisfies \(f_i(x_j) = \delta_{i j}\) (\(1 \leq i, j \leq n\)) the \textbf{dual basis} of \(\beta\).
 \end{defn}
 
-\begin{thm}\label{2.26}
+\begin{note}
+  We now assume that \(\V\) and \(\W\) are finite-dimensional vector spaces over \(\F\) with ordered bases \(\beta\) and \(\gamma\) over \(\F\), respectively.
+  In \cref{sec:2.4}, we proved that there is a one-to-one correspondence between linear transformations \(\T : \V \to \W\) and \(m \times n\) matrices (over \(\F\)) via the correspondence \(\T \leftrightarrow [\T]_{\beta}^{\gamma}\).
+  For a matrix of the form \(A = [\T]_{\beta}^{\gamma}\), the question arises as to whether or not there exists a linear transformation \(\U\) associated with \(\T\) in some natural way such that \(\U\) may be represented in some basis as \(\tp{A}\).
+  Of course, if \(m \neq n\), it would be impossible for \(\U\) to be a linear transformation from \(\V\) into \(\W\).
+  We now answer this question by applying what we have already learned about dual spaces.
+\end{note}
 
+\begin{thm}\label{2.25}
+  Let \(\V\) and \(\W\) be finite-dimensional vector spaces over \(\F\) with ordered bases \(\beta\) and \(\gamma\), respectively.
+  For any \(\T \in \ls(\V, \W)\), the mapping \(\tp{\T} : \W^* \to \V^*\) defined by \(\tp{\T}(g) = g \T\) for all \(g \in \W^*\) is a linear transformation with the property that \([\tp{\T}]_{\gamma^*}^{\beta^*} = \tp{[\T]_{\beta}^{\gamma}}\).
 \end{thm}
+
+\begin{proof}[\pf{2.25}]
+  For \(g \in \W^*\), it is clear that \(\tp{\T}(g) = g \T\) is a linear functional on \(\V\) and hence is in \(\V^*\) (see \cref{2.9}).
+  Thus \(\tp{\T}\) maps \(\W^*\) into \(\V^*\).
+  Now we show that \(\tp{\T} \in \ls(\W^*, \V^*)\).
+  Let \(x, y \in \W^*\) and let \(c \in \F\).
+  Since
+  \begin{align*}
+    \tp{\T}(cx + y) & = (cx + y) \T                &  & \text{(by \cref{2.25})}  \\
+                    & = c x \T + y \T              &  & \text{(by \cref{2.2.5})} \\
+                    & = c \tp{\T}(x) + \tp{\T}(y), &  & \text{(by \cref{2.25})}
+  \end{align*}
+  by \cref{2.1.2} we see that \(\tp{\T} \in \ls(\W^*, \V^*)\).
+
+  To complete the proof, let \(\beta = \set{\seq{x}{1,,n}}\) and \(\gamma = \set{\seq{y}{1,,m}}\) with dual bases \(\beta^* = \set{\seq{f}{1,,n}}\) and \(\gamma^* = \set{\seq{g}{1,,m}}\), respectively.
+  For convenience, let \(A = [\T]_{\beta}^{\gamma}\).
+  To find the \(j\)th column of \([\tp{\T}]_{\gamma^*}^{\beta^*}\), we begin by expressing \(\tp{\T}(g_j)\) as a linear combination of the vectors of \(\beta^*\).
+  By \cref{2.24}, we have
+  \[
+    \tp{\T}(g_j) = g_j \T = \sum_{i = 1}^n (g_j \T)(x_i) f_i.
+  \]
+  So the row \(i\), column \(j\) entry of \([\tp{\T}]_{\gamma^*}^{\beta^*}\) is
+  \begin{align*}
+    (g_j \T)(x_i) & = g_j(\T(x_i))                                                         \\
+                  & = g_j \pa{\sum_{k = 1}^m A_{k i} y_k} &  & \text{(by \cref{2.2.4})}    \\
+                  & = \sum_{k = 1}^m A_{k i} g_j(y_k)     &  & \text{(by \cref{2.1.2}(d))} \\
+                  & = \sum_{k = 1}^m A_{k i} \delta_{j k} &  & \text{(by \cref{2.6.4})}    \\
+                  & = A_{j i}.
+  \end{align*}
+  Hence \([\tp{\T}]_{\gamma^*}^{\beta^*} = \tp{A}\).
+\end{proof}
+
+\begin{note}
+  The linear transformation \(\tp{\T}\) defined in \cref{2.25} is called the \textbf{transpose} of \(\T\).
+  It is clear that \(\tp{\T}\) is the unique linear transformation \(\U\) such that \([\U]_{\gamma^*}^{\beta^*} = \tp{\pa{[\T]_{\beta}^{\gamma}}}\)
+  (see \cref{2.1.13}).
+\end{note}
+
+\begin{defn}\label{2.6.7}
+  For a vector \(x \in \V\), we define \(\widehat{x} : \V^* \to \F\) by \(\widehat{x}(f) = f(x)\) for every \(f \in \V^*\).
+  It is easy to verify that \(\widehat{x}\) is a linear functional on \(\V^*\), so \(\widehat{x} \in \V^{**}\).
+  The correspondence \(x \leftrightarrow \widehat{x}\) allows us to define the desired isomorphism between \(\V\) and \(\V^{**}\).
+\end{defn}
+
+\begin{lem}\label{2.6.8}
+  Let \(\V\) be a finite-dimensional vector space over \(\F\), and let \(x \in \V\).
+  If \(\widehat{x}(f) = 0\) for all \(f \in \V^*\), then \(x = \zv\).
+\end{lem}
+
+\begin{proof}[\pf{2.6.8}]
+  Let \(x \neq \zv\).
+  We show that there exists \(f \in \V^*\) such that \(\widehat{x}(f) \neq 0\).
+  Choose an ordered basis \(\beta = \set{\seq{x}{1,,n}}\) for \(\V\) over \(\F\) such that \(x_1 = x\).
+  Let \(\set{\seq{f}{1,,n}}\) be the dual basis of \(\beta\).
+  Then \(f_1(x_1) = 1 \neq 0\).
+  Let \(f = f_1\).
+\end{proof}
+
+\begin{thm}\label{2.26}
+  Let \(\V\) be a finite-dimensional vector space over \(\F\), and define \(\psi : \V \to \V^{**}\) by \(\psi(x) = \widehat{x}\).
+  Then \(\psi\) is an isomorphism.
+\end{thm}
+
+\begin{proof}[\pf{2.26}]
+  \begin{description}
+    \item[\(\psi\) is linear:]
+      Let \(x, y \in \V\) and \(c \in \F\).
+      For \(f \in \V^*\), we have
+      \begin{align*}
+        \psi(cx + y)(f) & = f(cx + y)                         &  & \text{(by \cref{2.6.7})} \\
+                        & = cf(x) + f(y)                      &  & \text{(by \cref{2.6.5})} \\
+                        & = c \widehat{x}(f) + \widehat{y}(f) &  & \text{(by \cref{2.6.7})} \\
+                        & = (c \widehat{x} + \widehat{y})(f). &  & \text{(by \cref{2.2.5})}
+      \end{align*}
+      Therefore
+      \[
+        \psi(cx + y) = c \widehat{x} + \widehat{y} = c \psi(x) + \psi(y).
+      \]
+    \item[\(\psi\) is one-to-one:]
+      Suppose that \(\psi(x)\) is the zero functional on \(\V^*\) for some \(x \in \V\).
+      Then \(\widehat{x}(f) = 0\) for every \(f \in \V^*\).
+      By \cref{2.6.8} we conclude that \(x = \zv\).
+      Since \(\ns{\psi} = \set{\zv}\) and \(\psi \in \ls(\V, \V^{**})\), by \cref{2.4} we know that \(\psi\) is one-to-one.
+    \item[\(\psi\) is an isomorphism:]
+      Since \(\psi \in \ls(\V, \V^{**})\), \(\psi\) is one-to-one and \(\dim(\V) = \dim(\V^{**})\), by \cref{2.5} and \cref{2.4.8} we know that \(\psi\) is isomorphism.
+  \end{description}
+\end{proof}
+
+\begin{cor}\label{2.6.9}
+  Let \(\V\) be a finite-dimensional vector space over \(\F\) with dual space \(\V^*\).
+  Then every ordered basis for \(\V^*\) over \(\F\) is the dual basis for some basis for \(\V\) over \(\F\).
+\end{cor}
+
+\begin{proof}[\pf{2.6.9}]
+  Let \(\set{\seq{f}{1,,n}}\) be an ordered basis for \(\V^*\) over \(\F\).
+  We may combine \cref{2.24,2.26} to conclude that for this basis for \(\V^*\) over \(\F\), there exists a dual basis \(\set{\seq{\widehat{x}}{1,,n}}\) in \(\V^{**}\), that is,
+  \begin{align*}
+    \delta_{i j} & = \widehat{x}_i(f_j) &  & \text{(by \cref{2.24,2.26})} \\
+                 & = f_j(x_i)           &  & \text{(by \cref{2.6.7})}
+  \end{align*}
+  for all \(i\) and \(j\).
+  Thus by \cref{2.24} \(\set{\seq{f}{1,,n}}\) is the dual basis of \(\set{\seq{x}{1,,n}}\).
+\end{proof}
+
+\begin{note}
+  Although many of the ideas of \cref{sec:2.6}, (e.g., the existence of a dual space), can be extended to the case where \(\V\) is not finite-dimensional, only a finite-dimensional vector space is isomorphic to its double dual via the map \(x \mapsto \widehat{x}\).
+  In fact, for infinite-dimensional vector spaces, no two of \(\V\), \(\V^*\), and \(\V^{**}\) are isomorphic.
+\end{note}
