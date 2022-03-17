@@ -234,3 +234,39 @@
   Although many of the ideas of \cref{sec:2.6}, (e.g., the existence of a dual space), can be extended to the case where \(\V\) is not finite-dimensional, only a finite-dimensional vector space is isomorphic to its double dual via the map \(x \mapsto \widehat{x}\).
   In fact, for infinite-dimensional vector spaces, no two of \(\V\), \(\V^*\), and \(\V^{**}\) are isomorphic.
 \end{note}
+
+\exercisesection
+
+\setcounter{ex}{7}
+\begin{ex}\label{ex:2.6.8}
+  Show that every plane through the origin in \(\R^3\) may be identified with the null space of a vector in \((\R^3)^*\).
+  State an analogous result for \(\R^2\).
+\end{ex}
+
+\begin{proof}[\pf{ex:2.6.8}]
+  First we prove the statement in the case of \(\R^3\).
+  Let \((a, b, c) \in \R^3\) and let \(P\) be the following plane through the origin
+  \[
+    P = \set{(x, y, z) \in \R^3 : ax + by + cz = 0}.
+  \]
+  Let \(\T : \R^3 \to \R\) be the function \(\T(x, y, z) = ax + by + cz\).
+  Clearly \(\T \in (\R^3)^*\).
+  Then we have
+  \begin{align*}
+    \ns{\T} & = \set{(x, y, z) \in \R^3 : \T(x, y, z) = 0}       &  & \text{(by \cref{2.1.10})} \\
+            & = \set{(x, y, z) \in \R^3 : ax + by + cz = 0} = P.
+  \end{align*}
+
+  Now we prove the statement in the case of \(\R^2\).
+  Let \((a, b) \in \R^2\) and let \(P\) be the following plane through the origin
+  \[
+    P = \set{(x, y) \in \R^2 : ax + by = 0}.
+  \]
+  Let \(\T : \R^2 \to \R\) be the function \(\T(x, y) = ax + by\).
+  Clearly \(\T \in (\R^2)^*\).
+  Then we have
+  \begin{align*}
+    \ns{\T} & = \set{(x, y) \in \R^2 : \T(x, y) = 0}     &  & \text{(by \cref{2.1.10})} \\
+            & = \set{(x, y) \in \R^2 : ax + by = 0} = P.
+  \end{align*}
+\end{proof}
