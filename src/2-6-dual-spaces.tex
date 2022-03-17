@@ -270,3 +270,41 @@
             & = \set{(x, y) \in \R^2 : ax + by = 0} = P.
   \end{align*}
 \end{proof}
+
+\begin{ex}\label{ex:2.6.9}
+  Prove that a function \(\T : \vs{F}^n \to \vs{F}^m\) is linear iff there exist \(\seq{f}{1,,m} \in (\vs{F}^n)^*\) such that \(\T(x) = (f_1(x), f_2(x), \dots, f_m(x))\) for all \(x \in \vs{F}^n\).
+\end{ex}
+
+\begin{proof}[\pf{ex:2.6.9}]
+  First suppose that \(\T \in \ls(\vs{F}^n, \vs{F}^m)\).
+  Let \(\gamma\) be the standard ordered basis for \(\vs{F}^m\) over \(\F\) and let \(\set{\seq{g}{1,,m}}\) be the dual basis of \(\gamma\).
+  For each \(i \in \set{1, \dots, m}\), we define \(f_i : \vs{F}^n \to \F\) as follow:
+  \[
+    f_i = \tp{\T}(g_i) = g_i \T.
+  \]
+  By \cref{2.9,2.24} we see that \(f_i \in \ls(\vs{F}^n, \F)\).
+  Thus by \cref{2.6.1} \(f_i \in (\vs{F}^n)^*\) and we have
+  \begin{align*}
+    \forall x \in \vs{F}^n, \T(x) & = [\T(x)]_{\gamma}                &  & \text{(by \cref{2.2.3})} \\
+                                  & = \begin{pmatrix}
+                                        g_1(\T(x)) & \cdots & g_m(\T(x))
+                                      \end{pmatrix} &  & \text{(by \cref{2.6.4})}                   \\
+                                  & = \begin{pmatrix}
+                                        f_1(x) & \cdots & f_m(x)
+                                      \end{pmatrix}.
+  \end{align*}
+
+  Now suppose that \(\T : \vs{F}^n \to \vs{F}^m\) is a function and there exist \(\seq{f}{1,,m} \in (\vs{F}^n)^*\) such that \(\T(x) = (f_1(x), \dots, f_m(x))\) for all \(x \in \vs{F}^n\).
+  Let \(x, y \in \vs{F}^n\) and let \(c \in \F\).
+  Then we have
+  \begin{align*}
+    \T(cx + y) & = \begin{pmatrix}
+                     f_1(cx + y) & \cdots & f_m(cx + y)
+                   \end{pmatrix}             \\
+               & = \begin{pmatrix}
+                     c f_1(x) + f_1(y) & \cdots & c f_m(x) + f_m(y)
+                   \end{pmatrix} &  & \text{(by \cref{2.1.2}(b))} \\
+               & = c \T(x) + \T(y)
+  \end{align*}
+  and thus by \cref{2.1.2}(b) \(\T \in \ls(\vs{F}^n, \vs{F}^m)\).
+\end{proof}
