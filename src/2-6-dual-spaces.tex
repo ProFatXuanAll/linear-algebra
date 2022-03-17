@@ -354,10 +354,10 @@
   \]
   Then we have
   \begin{align*}
-             & p_j(c_i) \neq 0 \iff j \neq i                                                                                                 \\
+             & p_j(c_i) \neq 0 \iff j = i                                                                                                    \\
     \implies & \forall i \in \set{0, \dots, n}, \pa{\sum_{i = 0}^n a_i f_i}(p_j) = \sum_{i = 0}^n a_i f_i(p_j) &  & \text{(by \cref{2.2.5})} \\
              & = \sum_{i = 0}^n a_i p_j(c_i) = a_j p_j(c_j) = 0                                                                              \\
-    \implies & \forall i \in \set{0, \dots, n}, a_j = 0.
+    \implies & \forall i \in \set{0, \dots, n}, a_j = 0.                                                       &  & (p_j(c_j) \neq 0)
   \end{align*}
   Thus by \cref{1.5.3} \(\set{\seq{f}{0,,n}}\) is linearly independent.
   Since
@@ -368,4 +368,31 @@
                          & = \#(\set{\seq{f}{0,,n}}),
   \end{align*}
   by \cref{1.6.15}(b) we know that \(\set{\seq{f}{0,,n}}\) is a basis for \((\ps[n]{\F})^*\).
+\end{proof}
+
+\begin{proof}[\pf{ex:2.6.10}(b)]
+  By \cref{2.6.9} there exists a set \(\beta = \set{\seq{p}{0,,n}}\) such that \(\beta\) is an ordered basis for \(\ps[n]{\F}\) over \(\F\) and the set \(\beta^* = \set{\seq{f}{0,,n}}\) defined in \cref{ex:2.6.10}(a) is the dual basis of \(\beta\).
+  Then we have
+  \begin{align*}
+             & \forall i, j \in \set{0, \dots, n}, f_j(p_i) = \delta_{j i} = \delta_{i j} &  & \text{(by \cref{2.6.6})}        \\
+    \implies & \forall i, j \in \set{0, \dots, n}, p_i(c_j) = \delta_{i j}.               &  & \text{(by \cref{ex:2.6.10}(b))}
+  \end{align*}
+  Now we show that \(\beta\) is unique.
+  Suppose for sake of contradiction that there exists a set \(\gamma = \set{\seq{q}{0,,n}}\) such that \(\beta \neq \gamma\), \(\gamma\) is an ordered basis for \(\ps[n]{\F}\) over \(\F\) and \(\beta^*\) is also the dual basis for \(\gamma\).
+  Since \(q_0 \in \ps[n]{\F}\), by \cref{1.6.1} we know that there exist some \(\seq{a}{0,,n} \in \F\) such that
+  \[
+    q_0 = \sum_{i = 0}^n a_i p_i.
+  \]
+  But
+  \begin{align*}
+    \forall j \in \set{0, \dots, n}, q_0(c_j) & = \delta_{0 j}                     &  & \text{(by \cref{2.6.6})}      \\
+                                              & = \pa{\sum_{i = 0}^n a_i p_i}(c_j) &  & \text{(by \cref{2.2.5})}      \\
+                                              & = \sum_{i = 0}^n a_i p_i(c_j)                                         \\
+                                              & = \sum_{i = 0}^n a_i \delta_{i j}  &  & \text{(from the proof above)} \\
+                                              & = a_j
+  \end{align*}
+  implies \(a_0 = 1\) and \(a_j = 0\) for all \(j \in \set{0, \dots, n} \setminus \set{0}\).
+  Thus we have \(q_0 = p_0\).
+  Using similar argument we see that \(q_i = p_i\) for all \(i \in \set{0, \dots, n}\), a contradiction.
+  Thus \(\beta\) is unique.
 \end{proof}
