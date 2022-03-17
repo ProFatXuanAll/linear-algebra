@@ -308,3 +308,64 @@
   \end{align*}
   and thus by \cref{2.1.2}(b) \(\T \in \ls(\vs{F}^n, \vs{F}^m)\).
 \end{proof}
+
+\begin{ex}\label{ex:2.6.10}
+  Let \(\seq{c}{0,,n}\) be distinct scalars in \(\F\).
+  \begin{enumerate}
+    \item For \(0 \leq i \leq n\), define \(f_i \in (\ps[n]{\F})^*\) by \(f_i(p) = p(c_i)\).
+          Prove that \(\set{\seq{f}{0,,n}}\) is a basis for \((\ps[n]{\F})^*\).
+    \item Use \cref{2.6.9} and (a) to show that there exist unique polynomials \(\seq{p}{0,,n}\) such that \(p_i(c_j) = \delta_{i j}\) for \(0 \leq i \leq n\).
+          These polynomials are the Lagrange polynomials defined in \cref{1.6.20}.
+    \item For any scalars \(\seq{a}{0,,n} \in \F\) (not necessarily distinct), deduce that there exists a unique polynomial \(q(x)\) of degree at most \(n\) such that \(q(c_i) = a_i\) for \(0 \leq i \leq n\).
+          In fact,
+          \[
+            q(x) = \sum_{i = 0}^n a_i p_i(x).
+          \]
+    \item Deduce the Lagrange interpolation formula:
+          \[
+            p(x) = \sum_{i = 0}^n p(c_i) p_i(x)
+          \]
+          for any \(p \in \ps[n]{\F}\).
+    \item Prove that
+          \[
+            \int_a^b p(t) \; dt = \sum_{i = 0}^n p(c_i) d_i,
+          \]
+          where
+          \[
+            d_i = \int_a^b p_i(t) \; dt.
+          \]
+          Suppose now that
+          \[
+            c_i = a + \frac{i (b - a)}{n} \quad \text{for } i \in \set{0, \dots, n}.
+          \]
+          For \(n = 1\), the preceding result yields the trapezoidal rule for evaluating the definite integral of a polynomial.
+          For \(n = 2\), this result yields Simpson's rule for evaluating the definite integral of a polynomial.
+  \end{enumerate}
+\end{ex}
+
+\begin{proof}[\pf{ex:2.6.10}(a)]
+  Let \(\seq{a}{0,,n} \in \F\) such that
+  \[
+    \sum_{i = 0}^n a_i f_i = \zv.
+  \]
+  For each \(j \in \set{0, \dots, n}\), we define \(p_j \in \ps[n]{\F}\) as follow:
+  \[
+    \forall x \in \F, p_j(x) = \prod_{\substack{i = 0 \\ i \neq j}}^n (x - c_i).
+  \]
+  Then we have
+  \begin{align*}
+             & p_j(c_i) \neq 0 \iff j \neq i                                                                                                 \\
+    \implies & \forall i \in \set{0, \dots, n}, \pa{\sum_{i = 0}^n a_i f_i}(p_j) = \sum_{i = 0}^n a_i f_i(p_j) &  & \text{(by \cref{2.2.5})} \\
+             & = \sum_{i = 0}^n a_i p_j(c_i) = a_j p_j(c_j) = 0                                                                              \\
+    \implies & \forall i \in \set{0, \dots, n}, a_j = 0.
+  \end{align*}
+  Thus by \cref{1.5.3} \(\set{\seq{f}{0,,n}}\) is linearly independent.
+  Since
+  \begin{align*}
+    \dim((\ps[n]{\F})^*) & = \dim(\ls(\ps[n]{\F}, \F))       &  & \text{(by \cref{2.6.5})}  \\
+                         & = \dim(\ps[n]{\F}) \cdot \dim(\F) &  & \text{(by \cref{2.4.10})} \\
+                         & = n + 1                           &  & \text{(by \cref{1.6.12})} \\
+                         & = \#(\set{\seq{f}{0,,n}}),
+  \end{align*}
+  by \cref{1.6.15}(b) we know that \(\set{\seq{f}{0,,n}}\) is a basis for \((\ps[n]{\F})^*\).
+\end{proof}
