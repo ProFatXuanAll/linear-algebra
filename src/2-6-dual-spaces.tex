@@ -429,3 +429,28 @@
                                                   & = \sum_{i = 0}^n p(c_i) d_i.
   \end{align*}
 \end{proof}
+
+\begin{ex}\label{ex:2.6.11}
+  Let \(\V\) and \(\W\) be finite-dimensional vector spaces over \(\F\), and let \(\psi_1\) and \(\psi_2\) be the isomorphisms between \(\V\) and \(\V^{**}\) and \(\W\) and \(\W^{**}\), respectively, as defined in \cref{2.26}.
+  Let \(\T \in \ls(\V, \W)\), and define \(\tp{\tp{\T}} = \tp{\pa{\tp{\T}}}\).
+  Prove that \(\psi_2 \T = \tp{\tp{\T}} \psi_1\).
+\end{ex}
+
+\begin{proof}[\pf{ex:2.6.11}]
+  By \cref{2.25} we see that \(\tp{\tp{\T}} \in \ls(\V^{**}, \W^{**})\).
+  Let \(x \in \V\) and let \(y \in \W^*\).
+  Then we have
+  \begin{align*}
+    \pa{\pa{\tp{\tp{\T}} \psi_1}(x)}(y) & = \pa{\tp{\tp{\T}}(\psi_1(x))}(y)                                 \\
+                                        & = \pa{\tp{\tp{\T}}(\widehat{x})}(y) &  & \text{(by \cref{2.26})}  \\
+                                        & = \pa{\widehat{x} \tp{\T}}(y)       &  & \text{(by \cref{2.25})}  \\
+                                        & = \widehat{x}\pa{\tp{\T}(y)}                                      \\
+                                        & = \widehat{x}(y \T)                 &  & \text{(by \cref{2.26})}  \\
+                                        & = (y \T)(x)                         &  & \text{(by \cref{2.6.7})} \\
+                                        & = y(\T(x))                                                        \\
+                                        & = \widehat{\T(x)}(y)                &  & \text{(by \cref{2.6.7})} \\
+                                        & = \psi_2(\T(x))(y)                  &  & \text{(by \cref{2.26})}  \\
+                                        & = ((\psi_2 \T)(x))(y).
+  \end{align*}
+  Thus we have \(\tp{\tp{\T}} \psi_1 = \psi_2 \T\).
+\end{proof}
