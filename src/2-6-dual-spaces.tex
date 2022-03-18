@@ -396,3 +396,36 @@
   Using similar argument we see that \(q_i = p_i\) for all \(i \in \set{0, \dots, n}\), a contradiction.
   Thus \(\beta\) is unique.
 \end{proof}
+
+\begin{proof}[\pf{ex:2.6.10}(c)]
+  Defined \(\seq{p}{0,,n} \in \ps[n]{\F}\) as in \cref{ex:2.6.10}(b).
+  For any \(\seq{a}{0,,n} \in \F\), we can define \(q \in \ps[n]{\F}\) as follow:
+  \[
+    q = \sum_{j = 0}^n a_j p_j.
+  \]
+  Note that by \cref{ex:2.6.10}(b) \(q\) is unique.
+  Then we have
+  \[
+    \forall i \in \set{0, \dots, n}, q(c_i) = \pa{\sum_{j = 0}^n a_j p_j}(c_i) = \sum_{j = 0}^n a_j p_j(c_i) = \sum_{j = 0}^n a_j \delta_{j i} = a_i
+  \]
+  and thus
+  \[
+    q = \sum_{j = 0}^n q(c_j) p_j.
+  \]
+\end{proof}
+
+\begin{proof}[\pf{ex:2.6.10}(d)]
+  By \cref{ex:2.6.10}(c) we see that
+  \[
+    \forall p \in \ps[n]{\F}, p = \sum_{i = 0}^n p(c_i) p_i.
+  \]
+\end{proof}
+
+\begin{proof}[\pf{ex:2.6.10}(e)]
+  By \cref{ex:2.6.10}(d) we have
+  \begin{align*}
+    \forall p \in \ps[n]{\F}, \int_a^b p(t) \; dt & = \int_a^b \pa{\sum_{i = 0}^n p(c_i) p_i(t)} \; dt \\
+                                                  & = \sum_{i = 0}^n \pa{p(c_i) \int_a^b p_i(t) \; dt} \\
+                                                  & = \sum_{i = 0}^n p(c_i) d_i.
+  \end{align*}
+\end{proof}
