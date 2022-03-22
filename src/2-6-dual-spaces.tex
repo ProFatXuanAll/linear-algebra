@@ -475,3 +475,138 @@
   \end{align*}
   by \cref{2.6.6} we see that \(\beta^{**} = \set{\seq{\widehat{x}}{1,,n}}\).
 \end{proof}
+
+\begin{defn}\label{2.6.10}
+  Let \(\V\) denotes a finite-dimensional vector space over \(\F\).
+  For every subset \(S\) of \(\V\), define the \textbf{annihilator} \(S^0\) of \(S\) as
+  \[
+    S^0 = \set{f \in \V^* : f(x) = 0 \text{ for all } x \in S}.
+  \]
+\end{defn}
+
+\begin{ex}\label{ex:2.6.13}
+  Let \(\V\) be a vector space over \(\F\) and let \(S \subseteq \V\).
+  \begin{enumerate}
+    \item Prove that \(S^0\) is a subspace of \(\V^*\) over \(\F\).
+    \item If \(\W\) is a subspace of \(\V\) over \(\F\) and \(x \notin \W\), prove that there exists \(f \in \W^0\) such that \(f(x) \neq 0\).
+    \item Prove that \((S^0)^0 = \spn{\psi(S)}\), where \(\psi\) is defined as in \cref{2.26}.
+    \item For subspaces \(\W_1\) and \(\W_2\) of \(\V\) over \(\F\), prove that \(\W_1 = \W_2\) iff \(\W_1^0 = \W_2^0\).
+    \item For subspaces \(W_1\) and \(\W_2\) of \(\V\) over \(\F\), show that \((\W_1 + \W_2)^0 = \W_1^0 \cap \W_2^0\).
+  \end{enumerate}
+\end{ex}
+
+\begin{proof}[\pf{ex:2.6.13}(a)]
+  Let \(f, g \in S^0\) and let \(c \in \F\).
+  Since
+  \begin{align*}
+    \forall x \in S, (cf + g)(x) & = cf(x) + g(x) &  & \text{(by \cref{2.2.5})}  \\
+                                 & = c0 + 0       &  & \text{(by \cref{2.6.10})} \\
+                                 & = 0,
+  \end{align*}
+  by \cref{2.6.10} we see that \(cf + g \in S^0\).
+  Let \(\zT \in \V^*\) be the zero transformation of \(\V^*\).
+  Since
+  \begin{align*}
+             & \forall x \in \V, \zT(x) = 0 &  & \text{(by \cref{2.1.9})}  \\
+    \implies & \forall x \in S, \zT(x) = 0  &  & (S \subseteq \V)          \\
+    \implies & \zT \in S^0,                 &  & \text{(by \cref{2.6.10})}
+  \end{align*}
+  by \cref{ex:1.3.18} we see that \(S^0\) is a subspace of \(\V^*\).
+\end{proof}
+
+\begin{proof}[\pf{ex:2.6.13}(b)]
+  Let \(\beta_{\W}\) be a basis for \(\W\) over \(\F\).
+  Since \(x \notin \W\), by \cref{1.7} we know that \(\beta_{\W} \cup \set{x}\) is linearly independent.
+  By \cref{1.6.19} \(\beta_{\W} \cup \set{x}\) can be extended to a basis \(\beta\) for \(\V\) over \(\F\).
+  By \cref{2.6} there exists a \(f \in \V^*\) such that
+  \[
+    \forall v \in \beta, f(v) = \begin{dcases}
+      0 & \text{if } v \neq x \\
+      1 & \text{if } v = x
+    \end{dcases}.
+  \]
+  Then we have
+  \begin{align*}
+             & \W = \spn{\beta_{\W}}                          &  & \text{(by \cref{1.6.1})}  \\
+    \implies & f(\W) = \rg{f} = \spn{f(\beta_{\W})} = \set{0} &  & \text{(by \cref{2.2})}    \\
+    \implies & f \in \W^0.                                    &  & \text{(by \cref{2.6.10})}
+  \end{align*}
+\end{proof}
+
+\begin{proof}[\pf{ex:2.6.13}(c)]
+  Since
+  \begin{align*}
+         & f \in S^0                                                        \\
+    \iff & \forall x \in S, f(x) = 0       &  & \text{(by \cref{2.6.10})}   \\
+    \iff & \forall x \in \spn{S}, f(x) = 0 &  & \text{(by \cref{2.1.2}(d))} \\
+    \iff & f \in (\spn{S})^0,              &  & \text{(by \cref{2.6.10})}
+  \end{align*}
+  we have \(S^0 = (\spn{S})^0\).
+  Since \(\psi \in \ls(\V, \V^{**})\), by \cref{2.2} we know that \(\psi(\spn{S}) = \spn{\psi(S)}\).
+  Thus to prove that \((S^0)^0 = \spn{\psi(S)}\), we can instead prove that \(((\spn{S})^0)^0 = \psi(\spn{S})\).
+  By \cref{ex:2.6.13}(a) we see that \(S^0 \subseteq \V^*\), thus by \cref{2.6.10} we have
+  \[
+    (S^0)^0 = ((\spn{S})^0)^0 = \set{f \in \V^{**} : f((\spn{S})^0) = \set{0}}.
+  \]
+
+  First we show that \(((\spn{S})^0)^0 \subseteq \psi(\spn{S})\).
+  Let \(f \in ((\spn{S})^0)^0\).
+  Since \(f \in \V^{**}\), by \cref{2.26} we know that there exists an \(s \in \V\) such that \(\psi(s) = \widehat{s} = f\).
+  Then we have
+  \begin{align*}
+             & f = \widehat{s}                                                                                  \\
+    \implies & \forall g \in (\spn{S})^0, f(g) = 0 = \widehat{s}(g) = g(s) &  & \text{(by \cref{2.6.7})}        \\
+    \implies & s \in \spn{S}                                               &  & \text{(by \cref{ex:2.6.13}(b))} \\
+    \implies & f = \widehat{s} = \psi(s) \in \psi(\spn{S}).
+  \end{align*}
+  Since \(f\) is arbitrary, we see that \(((\spn{S})^0)^0 \subseteq \psi(\spn{S})\).
+
+  Now we show that \(\psi(\spn{S}) \subseteq ((\spn{S})^0)^0\).
+  Let \(f \in \psi(\spn{S})\).
+  By \cref{2.26} we know that there exists an \(s \in \spn{S}\) such that \(\psi(s) = \widehat{s} = f\).
+  Then we have
+  \begin{align*}
+             & f = \widehat{s}                                                                       \\
+    \implies & \forall g \in \V^*, f(g) = \widehat{s}(g) = g(s) &  & \text{(by \cref{2.6.7})}        \\
+    \implies & \forall g \in (\spn{S})^0, f(g) = g(s)           &  & \text{(by \cref{ex:2.6.13}(a))} \\
+             & = 0                                              &  & \text{(by \cref{2.6.10})}       \\
+    \implies & f = \widehat{s} = \psi(s) \in ((\spn{S})^0)^0.   &  & \text{(by \cref{2.6.10})}
+  \end{align*}
+  Since \(f\) is arbitrary, we see that \(\psi(\spn{S}) \subseteq ((\spn{S})^0)^0\).
+\end{proof}
+
+\begin{proof}[\pf{ex:2.6.13}(d)]
+  We have
+  \begin{align*}
+             & \W_1 = \W_2                                                                    \\
+    \implies & \W_1^0 = \set{f \in \V^* : f(\W_1) = \set{0}}   &  & \text{(by \cref{2.6.10})} \\
+             & = \set{f \in \V^* : f(\W_2) = \set{0}} = \W_2^0 &  & \text{(by \cref{2.6.10})} \\
+  \end{align*}
+  and
+  \begin{align*}
+             & \W_1^0 = \W_2^0                                                                                                  \\
+    \implies & \set{f \in \V^* : f(\W_1) = \set{0}} = \set{f \in \V^* : f(\W_2) = \set{0}} &  & \text{(by \cref{2.6.10})}       \\
+    \implies & \W_1 = \W_2.                                                                &  & \text{(by \cref{ex:2.6.13}(b))}
+  \end{align*}
+  Thus \(\W_1 = \W_2 \iff \W_1^0 = \W_2^0\).
+\end{proof}
+
+\begin{proof}[\pf{ex:2.6.13}(e)]
+  Since
+  \begin{align*}
+         & f \in (\W_1 + \W_2)^0                                                                  \\
+    \iff & \forall x \in \W_1 + \W_2, f(x) = 0                     &  & \text{(by \cref{2.6.10})} \\
+    \iff & \forall (x_1, x_2) \in \W_1 \times \W_2, \begin{dcases}
+                                                      x_1 + \zv_{\V} \in \W_1 + \W_2 \\
+                                                      \zv_{\V} + x_2 \in \W_1 + \W_2 \\
+                                                      x_1 + x_2 \in \W_1 + \W_2      \\
+                                                      f(x_1) = f(x_2) = f(x_1 + x_2) = 0
+                                                    \end{dcases} &  & \text{(by \cref{1.3.10})}   \\
+    \iff & \begin{dcases}
+             f \in \W_1^0 \\
+             f \in \W_2^0
+           \end{dcases}                                         &  & \text{(by \cref{2.6.10})}    \\
+    \iff & f \in \W_1^0 \cap \W_2^0,
+  \end{align*}
+  we know that \((\W_1 + \W_2)^0 = \W_1^0 \cap \W_2^0\).
+\end{proof}
