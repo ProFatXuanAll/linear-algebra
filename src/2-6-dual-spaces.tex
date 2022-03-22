@@ -124,7 +124,7 @@
 
 \begin{thm}\label{2.25}
   Let \(\V\) and \(\W\) be finite-dimensional vector spaces over \(\F\) with ordered bases \(\beta\) and \(\gamma\), respectively.
-  For any \(\T \in \ls(\V, \W)\), the mapping \(\tp{\T} : \W^* \to \V^*\) defined by \(\tp{\T}(g) = g \T\) for all \(g \in \W^*\) is a linear transformation with the property that \([\tp{\T}]_{\gamma^*}^{\beta^*} = \tp{[\T]_{\beta}^{\gamma}}\).
+  For any \(\T \in \ls(\V, \W)\), the mapping \(\tp{\T} : \W^* \to \V^*\) defined by \(\tp{\T}(g) = g \T\) for all \(g \in \W^*\) is a linear transformation with the property that \([\tp{\T}]_{\gamma^*}^{\beta^*} = \tp{\pa{[\T]_{\beta}^{\gamma}}}\).
 \end{thm}
 
 \begin{proof}[\pf{2.25}]
@@ -143,7 +143,7 @@
   To complete the proof, let \(\beta = \set{\seq{x}{1,,n}}\) and \(\gamma = \set{\seq{y}{1,,m}}\) with dual bases \(\beta^* = \set{\seq{f}{1,,n}}\) and \(\gamma^* = \set{\seq{g}{1,,m}}\), respectively.
   For convenience, let \(A = [\T]_{\beta}^{\gamma}\).
   To find the \(j\)th column of \([\tp{\T}]_{\gamma^*}^{\beta^*}\), we begin by expressing \(\tp{\T}(g_j)\) as a linear combination of the vectors of \(\beta^*\).
-  By \cref{2.24}, we have
+  By \cref{2.24} we have
   \[
     \tp{\T}(g_j) = g_j \T = \sum_{i = 1}^n (g_j \T)(x_i) f_i.
   \]
@@ -162,6 +162,11 @@
   The linear transformation \(\tp{\T}\) defined in \cref{2.25} is called the \textbf{transpose} of \(\T\).
   It is clear that \(\tp{\T}\) is the unique linear transformation \(\U\) such that \([\U]_{\gamma^*}^{\beta^*} = \tp{\pa{[\T]_{\beta}^{\gamma}}}\)
   (see \cref{2.1.13}).
+\end{note}
+
+\begin{note}
+  We now concern ourselves with demonstrating that any finite-dimensional vector space \(\V\) over \(\F\) \textbf{can be identified} in a natural way with its double dual \(\V^{**}\).
+  There is, in fact, an isomorphism between \(\V\) and \(\V^{**}\) that does not depend on any choice of bases for the two vector spaces.
 \end{note}
 
 \begin{defn}\label{2.6.7}
@@ -375,17 +380,17 @@
   Then we have
   \begin{align*}
              & \forall i, j \in \set{0, \dots, n}, f_j(p_i) = \delta_{j i} = \delta_{i j} &  & \text{(by \cref{2.6.6})}        \\
-    \implies & \forall i, j \in \set{0, \dots, n}, p_i(c_j) = \delta_{i j}.               &  & \text{(by \cref{ex:2.6.10}(b))}
+    \implies & \forall i, j \in \set{0, \dots, n}, p_i(c_j) = \delta_{i j}.               &  & \text{(by \cref{ex:2.6.10}(a))}
   \end{align*}
   Now we show that \(\beta\) is unique.
-  Suppose for sake of contradiction that there exists a set \(\gamma = \set{\seq{q}{0,,n}}\) such that \(\beta \neq \gamma\), \(\gamma\) is an ordered basis for \(\ps[n]{\F}\) over \(\F\) and \(\beta^*\) is also the dual basis for \(\gamma\).
+  Suppose for sake of contradiction that there exists a set \(\gamma = \set{\seq{q}{0,,n}}\) such that \(\beta \neq \gamma\), \(q_i(c_j) = \delta_{i j}\) for \(i \in \set{0, \dots, n}\), \(\gamma\) is an ordered basis for \(\ps[n]{\F}\) over \(\F\) and \(\beta^*\) is also the dual basis for \(\gamma\).
   Since \(q_0 \in \ps[n]{\F}\), by \cref{1.6.1} we know that there exist some \(\seq{a}{0,,n} \in \F\) such that
   \[
     q_0 = \sum_{i = 0}^n a_i p_i.
   \]
   But
   \begin{align*}
-    \forall j \in \set{0, \dots, n}, q_0(c_j) & = \delta_{0 j}                     &  & \text{(by \cref{2.6.6})}      \\
+    \forall j \in \set{0, \dots, n}, q_0(c_j) & = \delta_{0 j}                                                        \\
                                               & = \pa{\sum_{i = 0}^n a_i p_i}(c_j) &  & \text{(by \cref{2.2.5})}      \\
                                               & = \sum_{i = 0}^n a_i p_i(c_j)                                         \\
                                               & = \sum_{i = 0}^n a_i \delta_{i j}  &  & \text{(from the proof above)} \\
@@ -452,5 +457,21 @@
                                         & = \psi_2(\T(x))(y)                  &  & \text{(by \cref{2.26})}  \\
                                         & = ((\psi_2 \T)(x))(y).
   \end{align*}
-  Thus we have \(\tp{\tp{\T}} \psi_1 = \psi_2 \T\).
+  Thus \(\tp{\tp{\T}} \psi_1 = \psi_2 \T\).
+\end{proof}
+
+\begin{ex}\label{ex:2.6.12}
+  Let \(\V\) be a finite-dimensional vector space over \(\F\) with the ordered basis \(\beta\) over \(\F\).
+  Prove that \(\psi(\beta) = \beta^{**}\), where \(\psi\) is defined in \cref{2.26}.
+\end{ex}
+
+\begin{proof}[\pf{ex:2.6.12}]
+  Let \(\beta = \set{\seq{x}{1,,n}}\) and let \(\beta^* = \set{\seq{f}{1,,n}}\) be the dual basis of \(\beta\).
+  By \cref{2.26} we have \(\psi(\beta) = \set{\seq{\widehat{x}}{1,,n}}\).
+  Since
+  \begin{align*}
+    \forall i, j \in \set{1, \dots, n}, \widehat{x}_i(f_j) & = f_j(x_i)      &  & \text{(by \cref{2.6.7})} \\
+                                                           & = \delta_{i j}, &  & \text{(by \cref{2.6.6})}
+  \end{align*}
+  by \cref{2.6.6} we see that \(\beta^{**} = \set{\seq{\widehat{x}}{1,,n}}\).
 \end{proof}
