@@ -610,3 +610,49 @@
   \end{align*}
   we know that \((\W_1 + \W_2)^0 = \W_1^0 \cap \W_2^0\).
 \end{proof}
+
+\begin{ex}\label{ex:2.6.14}
+  Prove that if \(\V\) is a finite-dimensional vector space over \(\F\) and \(\W\) is a subspace of \(\V\) over \(\F\), then \(\dim(\W) + \dim(\W^0) = \dim(\V)\).
+\end{ex}
+
+\begin{proof}[\pf{ex:2.6.14}]
+  Let \(\dim(\V) = n\) and let \(\beta_{\W} = \set{\seq{x}{1,,k}}\) be an ordered basis for \(\W\) over \(\F\).
+  By \cref{1.6.19} we can extended \(\beta_{\W}\) to an ordered basis \(\beta = \set{\seq{x}{1,,k,k+1,,n}}\) for \(\V\) over \(\F\).
+  By \cref{2.6.6} we denote the dual basis of \(\beta\) as \(\beta^* = \set{\seq{f}{1,,n}}\).
+  If we can show that the set \(\gamma = \set{\seq{f}{k+1,,n}}\) is a basis for \(\W^0\) over \(\F\), then we have
+  \[
+    \dim(\W) + \dim(\W^0) = k + (n - k) = n = \dim(\V).
+  \]
+  By \cref{2.24} we know that \(\beta^*\) is a basis for \(\V^*\) over \(\F\), thus \(\gamma\) is linearly independent and by \cref{1.6.1} we only need to show that \(\spn{\gamma} = \W^0\).
+
+  First we show that \(\spn{\gamma} \subseteq \W^0\).
+  By \cref{2.24} we have \(\spn{\gamma} \subseteq \V^*\).
+  Let \(w \in \W\).
+  By \cref{1.6.1} we know that
+  \[
+    \exists \seq{a}{1,,k} \in \F : w = \sum_{j = 1}^k a_j x_j.
+  \]
+  Thus we have
+  \begin{align*}
+             & \forall g \in \spn{\gamma}, \exists \seq{b}{1,,n-k} \in \F : g = \sum_{i = 1}^{n - k} b_i f_{i + k}  &  & \text{(by \cref{1.4.3})}    \\
+    \implies & \forall g \in \spn{\gamma}, g(w) = \pa{\sum_{i = 1}^{n - k} b_i f_{i + k}}(w)                                                         \\
+             & = \sum_{i = 1}^{n - k} b_i f_{i + k}(w) = \sum_{i = 1}^{n - k} \sum_{j = 1}^k b_i a_j f_{i + k}(x_j) &  & \text{(by \cref{2.1.2}(d))} \\
+             & = 0                                                                                                  &  & \text{(by \cref{2.6.6})}    \\
+    \implies & \forall g \in \spn{\gamma}, g(\W) = \set{0}                                                                                           \\
+    \implies & \forall g \in \spn{\gamma}, g \in \W^0                                                               &  & \text{(by \cref{2.6.10})}   \\
+    \implies & \spn{\gamma} \subseteq \W^0.
+  \end{align*}
+
+  Now we show that \(\W^0 \subseteq \spn{\gamma}\).
+  This is true since
+  \begin{align*}
+             & \W^0 \subseteq \V^*                                         &  & \text{(by \cref{2.6.10})} \\
+    \implies & \W^0 \subseteq \spn{\beta^*}                                &  & \text{(by \cref{2.24})}   \\
+    \implies & \forall g \in \W^0, g = \sum_{i = 1}^n g(x_i) f_i           &  & \text{(by \cref{2.24})}   \\
+             & = \sum_{i = 1}^k g(x_i) f_i + \sum_{i = k + 1}^n g(x_i) f_i                                \\
+             & = 0 + \sum_{i = k + 1}^n g(x_i) f_i                         &  & \text{(by \cref{2.6.10})} \\
+    \implies & \forall g \in \W^0, g \in \spn{\gamma}                                                     \\
+    \implies & \W^0 \subseteq \spn{\gamma}.
+  \end{align*}
+  Thus we have \(\W^0 = \spn{\gamma}\).
+\end{proof}
