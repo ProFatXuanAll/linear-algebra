@@ -656,3 +656,20 @@
   \end{align*}
   Thus we have \(\W^0 = \spn{\gamma}\).
 \end{proof}
+
+\begin{ex}\label{ex:2.6.15}
+  Suppose that \(\V, \W\) are finite-dimensional vector spaces over \(\F\) and that \(T \in \ls(\V, \W)\).
+  Prove that \(\ns{\tp{\T}} = (\rg{\T})^0\).
+\end{ex}
+
+\begin{proof}[\pf{ex:2.6.15}]
+  We have
+  \begin{align*}
+         & x \in \ns{\tp{\T}}                                                           \\
+    \iff & \tp{\T}(x) = 0_{\V^*}                         &  & \text{(by \cref{2.1.10})} \\
+    \iff & x \T = 0_{\V^*}                               &  & \text{(by \cref{2.25})}   \\
+    \iff & (x \T)(\V) = x(\T(\V)) = x(\rg{\T}) = \set{0} &  & \text{(by \cref{2.1.10})} \\
+    \iff & x \in (\rg{\T})^0                             &  & \text{(by \cref{2.6.10})}
+  \end{align*}
+  and thus \(\ns{\tp{\T}} = (\rg{\T})^0\).
+\end{proof}
