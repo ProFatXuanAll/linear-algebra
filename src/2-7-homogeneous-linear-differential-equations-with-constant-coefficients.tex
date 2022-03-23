@@ -1,1 +1,22 @@
 \section{Homogeneous Linear Differential Equations with Constant Coefficients}\label{sec:2.7}
+
+\begin{defn}\label{2.7.1}
+  A \textbf{differential equation} in an unknown function \(y = y(t)\) is an equation involving \(y\), \(t\), and derivatives of \(y\).
+  If the differential equation is of the form
+  \begin{equation}\label{eq:2.7.1}
+    a_n y^{(n)} + a_{n - 1} y^{(n - 1)} + \cdots + a_1 y^{(1)} + a_0 y = f,
+  \end{equation}
+  where \(\seq{a}{0,,n}\) and \(f\) are functions of \(t\) and \(y^{(k)}\) denotes the \(k\)th derivative of \(y\), then the equation is said to be \textbf{linear}.
+  The functions \(a_i\) are called the \textbf{coefficients} of the differential equation \cref{eq:2.7.1}.
+  When \(f\) is identically zero, \cref{eq:2.7.1} is called \textbf{homogeneous}.
+
+  If \(a_n \neq 0\), we say that differential equation \cref{eq:2.7.1} is of \textbf{order \(n\)}.
+  In this case, we divide both sides by \(a_n\) to obtain a new, but equivalent, equation
+  \[
+    y^{(n)} + b_{n - 1} y^{(n - 1)} + \cdots + b_1 y^{(1)} + b_0 y = \zv,
+  \]
+  where \(b_i = a_i / a_n\) for \(i \in \set{0, \dots, n - 1}\).
+  Because of this observation, we always assume that the coefficient \(a_n\) in \cref{eq:2.7.1} is \(1\).
+
+  A \textbf{solution} to \cref{eq:2.7.1} is a function that when substituted for \(y\) reduces \cref{eq:2.7.1} to an identity.
+\end{defn}
