@@ -617,7 +617,7 @@
 
 \begin{proof}[\pf{ex:2.6.14}]
   Let \(\dim(\V) = n\) and let \(\beta_{\W} = \set{\seq{x}{1,,k}}\) be an ordered basis for \(\W\) over \(\F\).
-  By \cref{1.6.19} we can extended \(\beta_{\W}\) to an ordered basis \(\beta = \set{\seq{x}{1,,k,k+1,,n}}\) for \(\V\) over \(\F\).
+  By \cref{1.6.19} we can extend \(\beta_{\W}\) to an ordered basis \(\beta = \set{\seq{x}{1,,k,k+1,,n}}\) for \(\V\) over \(\F\).
   By \cref{2.6.6} we denote the dual basis of \(\beta\) as \(\beta^* = \set{\seq{f}{1,,n}}\).
   If we can show that the set \(\gamma = \set{\seq{f}{k+1,,n}}\) is a basis for \(\W^0\) over \(\F\), then we have
   \[
@@ -719,7 +719,7 @@
 \begin{ex}\label{ex:2.6.18}
   Let \(\V\) be a nonzero vector space over a field \(\F\), and let \(S\) be a basis for \(\V\) over \(\F\).
   (By \cref{1.7.10}, every vector space has a basis.)
-  Let \(\Phi : \V^* \to \ls(S, \F)\) be the mapping defined by \(\Phi(f) = f_S\), the restriction of \(f\) to \(S\).
+  Let \(\Phi : \V^* \to \FS\) be the mapping defined by \(\Phi(f) = f_S\), the restriction of \(f\) to \(S\).
   Prove that \(\Phi\) is an isomorphism.
 \end{ex}
 
@@ -731,7 +731,7 @@
       \[
         \Phi(cf + g) = (cf + g)_S = c f_S + g_S = c \Phi(f) + \Phi(g)
       \]\
-      and thus by \cref{2.1.2}(b) \(\Phi \in \ls(\V^*, \ls(S, \F))\).
+      and thus by \cref{2.1.2}(b) \(\Phi \in \ls(\V^*, \FS)\).
     \item[For invertibility:]
       By \cref{ex:2.1.34} we see that \(\Phi\) is one-to-one and onto.
   \end{description}
@@ -745,7 +745,7 @@
 
 \begin{proof}[\pf{ex:2.6.19}]
   Let \(\beta_{\W}\) be a basis for \(\W\) over \(\F\).
-  By \cref{1.12,1.13} we can extended \(\beta_{\W}\) to a basis \(\beta\) for \(\V\) over \(\F\).
+  By \cref{1.12,1.13} we can extend \(\beta_{\W}\) to a basis \(\beta\) for \(\V\) over \(\F\).
   Then by \cref{ex:2.1.34} there exists a \(f \in \V^*\) such that
   \[
     \forall v \in \beta, f(v) = \begin{dcases}
@@ -792,7 +792,46 @@
                                          & = \pa{\tp{\T}(f)}(x) &  & \text{(by \cref{2.25})}
   \end{align*}
   and thus \(\tp{\T}(g) = \tp{\T}(f)\).
-  But \(\T\) is one-to-one implies \(f = g\), a contradiction.
+  But \(\tp{\T}\) is one-to-one implies \(f = g\), a contradiction.
   Thus \(\T\) is onto.
 \end{proof}
 
+\begin{proof}[\pf{ex:2.6.20}(b)]
+  First suppose that \(\tp{\T}\) is onto.
+  Suppose for sake of contradiction that \(\T\) is not one-to-one.
+  By \cref{2.4} there exists an \(x \in \V \setminus \set{\zv_{\V}}\) such that \(\T(x) = \zv_{\W}\).
+  By \cref{ex:2.1.34} there exists a \(f \in \V^*\) such that \(f(x) \neq 0\).
+  Since \(f \in \V^*\) and \(\tp{\T}\) is onto, there exists a \(g \in \W^*\) such that \(f = \tp{\T}(g)\).
+  But this means
+  \begin{align*}
+    f(x) & = \pa{\tp{\T}(g)}(x)                                  \\
+         & = (g \T)(x)          &  & \text{(by \cref{2.25})}     \\
+         & = g(\T(x))                                            \\
+         & = g(\zv_{\W})        &  & \text{(by hypothesis)}      \\
+         & = 0,                 &  & \text{(by \cref{2.1.2}(a))}
+  \end{align*}
+  a contradiction.
+  Thus \(\T\) is one-to-one.
+
+  Now suppose that \(\T\) is one-to-one.
+  Let \(f \in \V^*\) and let \(\beta\) be a basis for \(\V\) over \(\F\).
+  Since \(\T\) is one-to-one, by \cref{ex:2.1.14}(a) we know that \(\T(\beta)\) is linearly independent.
+  By \cref{1.12,1.13} we can extend \(\T(\beta)\) to a basis \(\gamma\) for \(\W\) over \(\F\).
+  If we define \(h \in \fs{\gamma}{\F}\) by setting
+  \[
+    \forall w \in \gamma, h(w) = \begin{dcases}
+      f(v) & \text{if } (w \in \T(\beta)) \land (\exists! v \in \beta : \T(v) = w) \\
+      0    & \text{if } w \in \gamma \setminus \T(\beta)
+    \end{dcases},
+  \]
+  then by \cref{ex:2.6.18} we know that there exists a \(g \in \W^*\) such that \(\Phi(g) = g_{\gamma} = h\).
+  Since
+  \begin{align*}
+    \forall v \in \beta, f(v) & = h(\T(v))            &  & \text{(by definition)}       \\
+                              & = (h \T)(v)                                             \\
+                              & = (g \T)(v)           &  & \text{(by \cref{ex:2.6.18})} \\
+                              & = \pa{\tp{\T}(g)}(v), &  & \text{(by \cref{2.25})}
+  \end{align*}
+  by \cref{ex:2.1.34} we know that \(f = \tp{\T}(g)\).
+  Since \(f\) is arbitrary, we know that \(\tp{\T}\) is onto.
+\end{proof}
