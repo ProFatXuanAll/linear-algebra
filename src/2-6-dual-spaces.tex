@@ -715,3 +715,24 @@
     \iff & \W \text{ is } \T \text{-invariant}.           &  & \text{(by \cref{2.1.15})}
   \end{align*}
 \end{proof}
+
+\begin{ex}\label{ex:2.6.18}
+  Let \(\V\) be a nonzero vector space over a field \(\F\), and let \(S\) be a basis for \(\V\) over \(\F\).
+  (By \cref{1.7.10}, every vector space has a basis.)
+  Let \(\Phi : \V^* \to \ls(S, \F)\) be the mapping defined by \(\Phi(f) = f_S\), the restriction of \(f\) to \(S\).
+  Prove that \(\Phi\) is an isomorphism.
+\end{ex}
+
+\begin{proof}[\pf{ex:2.6.18}]
+  \begin{description}
+    \item[For linearity:]
+      Let \(f, g \in \V^*\) and let \(c \in \F\).
+      Then we have
+      \[
+        \Phi(cf + g) = (cf + g)_S = c f_S + g_S = c \Phi(f) + \Phi(g)
+      \]\
+      and thus by \cref{2.1.2}(b) \(\Phi \in \ls(\V^*, \ls(S, \F))\).
+    \item[For invertibility:]
+      By \cref{ex:2.1.34} we see that \(\Phi\) is one-to-one and onto.
+  \end{description}
+\end{proof}
