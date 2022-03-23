@@ -673,3 +673,28 @@
   \end{align*}
   and thus \(\ns{\tp{\T}} = (\rg{\T})^0\).
 \end{proof}
+
+\begin{ex}\label{ex:2.6.16}
+  Use \cref{ex:2.6.14,ex:2.6.15} to deduce that \(\rk{\L_{\tp{A}}} = \rk{\L_A}\) for any \(A \in \MS\).
+\end{ex}
+
+\begin{proof}[\pf{ex:2.6.16}]
+  Let \(\beta\) and \(\gamma\) be ordered bases for \(\vs{F}^n\) and \(\vs{F}^m\) over \(\F\), respectively.
+  Let \(\beta^*\) and \(\gamma^*\) be the dual bases of \(\beta\) and \(\gamma\), respectively.
+  Since
+  \begin{align*}
+    [\tp{\pa{\L_A}}]_{\gamma^*}^{\beta^*} & = \tp{\pa{[\L_A]_{\beta}^{\gamma}}} &  & \text{(by \cref{2.25})}    \\
+                                          & = \tp{A}                            &  & \text{(by \cref{2.15}(a))} \\
+                                          & = [\L_{\tp{A}}]_{\gamma}^{\beta},   &  & \text{(by \cref{2.15}(a))}
+  \end{align*}
+  we have
+  \begin{align*}
+    \rk{\L_{\tp{A}}} & = \rk{\tp{\pa{\L_A}}}                                     &  & \text{(by \cref{2.15}(b))}   \\
+                     & = \dim\pa{\pa{\vs{F}^m}^*} - \nt{\tp{\pa{\L_A}}}          &  & \text{(by \cref{2.3})}       \\
+                     & = \dim\pa{\pa{\vs{F}^m}^*} - \dim\pa{\ns{\tp{\pa{\L_A}}}} &  & \text{(by \cref{2.1.12})}    \\
+                     & = \dim\pa{\vs{F}^m} - \dim\pa{\ns{\tp{\pa{\L_A}}}}        &  & \text{(by \cref{2.6.5})}     \\
+                     & = \dim\pa{\vs{F}^m} - \dim\pa{\pa{\rg{\L_A}}^0}           &  & \text{(by \cref{ex:2.6.15})} \\
+                     & = \dim\pa{\rg{\L_A}}                                      &  & \text{(by \cref{ex:2.6.14})} \\
+                     & = \rk{\L_A}.                                              &  & \text{(by \cref{2.1.12})}
+  \end{align*}
+\end{proof}
