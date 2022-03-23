@@ -755,3 +755,44 @@
   \]
   Note that \(\W \neq \V\) implies \(\beta \setminus \beta_{\W} \neq \varnothing\) and thus \(f\) is not a zero transformation.
 \end{proof}
+
+\begin{ex}\label{ex:2.6.20}
+  Let \(\V\) and \(\W\) be nonzero vector spaces over the same field \(\F\), and let \(\T \in \ls(\V, \W)\).
+  \begin{enumerate}
+    \item Prove that \(\T\) is onto iff \(\tp{\T}\) is one-to-one.
+    \item Prove that \(\tp{\T}\) is onto iff \(\T\) is one-to-one.
+  \end{enumerate}
+\end{ex}
+
+\begin{proof}[\pf{ex:2.6.20}(a)]
+  First suppose that \(\T\) is onto.
+  Let \(f \in \ns{\tp{\T}}\).
+  Since
+  \begin{align*}
+             & \tp{\T}(f) = 0_{\V^*}          &  & \text{(by \cref{2.1.10})} \\
+    \implies & f \T = 0_{\V^*}                &  & \text{(by \cref{2.25})}   \\
+    \implies & f(\T(\V)) = f(\W) = \set{0}    &  & \text{(\(f\) is onto)}    \\
+    \implies & f = 0_{\W^*}                   &  & \text{(by \cref{2.1.9})}  \\
+    \implies & \ns{\tp{\T}} = \set{0_{\W^*}}, &  & \text{(by \cref{2.1.10})}
+  \end{align*}
+  by \cref{2.4} we know that \(\tp{\T}\) is one-to-one.
+
+  Now suppose that \(\tp{\T}\) is one-to-one.
+  Suppose for sake of contradiction that \(\T\) is not onto.
+  By \cref{ex:2.1.33} we know that \(\rg{\T} \subsetneq \W\).
+  By \cref{ex:2.6.19} there exists a \(f \in \W^*\) such that \(f(\rg{\T}) = \set{0}\) and \(f(\W) \neq \set{0}\).
+  Let \(g \in \W^*\) be the zero transformation.
+  Then we have
+  \begin{align*}
+    \forall x \in \V, \pa{\tp{\T}(g)}(x) & = (g \T)(x)          &  & \text{(by \cref{2.25})} \\
+                                         & = g(\T(x))                                        \\
+                                         & = 0                                               \\
+                                         & = f(\T(x))                                        \\
+                                         & = (f \T)(x)                                       \\
+                                         & = \pa{\tp{\T}(f)}(x) &  & \text{(by \cref{2.25})}
+  \end{align*}
+  and thus \(\tp{\T}(g) = \tp{\T}(f)\).
+  But \(\T\) is one-to-one implies \(f = g\), a contradiction.
+  Thus \(\T\) is onto.
+\end{proof}
+
