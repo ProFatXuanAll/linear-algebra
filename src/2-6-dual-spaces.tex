@@ -698,3 +698,20 @@
                      & = \rk{\L_A}.                                              &  & \text{(by \cref{2.1.12})}
   \end{align*}
 \end{proof}
+
+\begin{ex}\label{ex:2.6.17}
+  Let \(\V\) be a vector space over \(\F\), let \(\T \in \ls(\V)\) and let \(\W\) be a subspace of \(\V\) over \(\F\).
+  Prove that \(\W\) is \(\T\)-invariant (as defined in \cref{2.1.15}) iff \(\W^0\) is \(\tp{\T}\)-invariant.
+\end{ex}
+
+\begin{proof}[\pf{ex:2.6.17}]
+  We have
+  \begin{align*}
+         & \W^0 \text{ is } \tp{\T} \text{-invariant}                                          \\
+    \iff & \tp{\T}(\W^0) \subseteq \W^0                   &  & \text{(by \cref{2.1.15})}       \\
+    \iff & \forall f \in \W^0, \tp{\T}(f) = f \T \in \W^0 &  & \text{(by \cref{2.25})}         \\
+    \iff & \forall f \in \W^0, f(\T(\W)) = \set{0}        &  & \text{(by \cref{2.6.10})}       \\
+    \iff & \T(\W) \subseteq \W                            &  & \text{(by \cref{ex:2.6.13}(b))} \\
+    \iff & \W \text{ is } \T \text{-invariant}.           &  & \text{(by \cref{2.1.15})}
+  \end{align*}
+\end{proof}
