@@ -736,3 +736,22 @@
       By \cref{ex:2.1.34} we see that \(\Phi\) is one-to-one and onto.
   \end{description}
 \end{proof}
+
+\begin{ex}\label{ex:2.6.19}
+  Let \(\V\) be a nonzero vector space over \(\F\), and let \(\W\) be a proper subspace of \(\V\) over \(\F\)
+  (i.e., \(\W \neq \V\)).
+  Prove that there exists a nonzero linear functional \(f \in \V^*\) such that \(f(x) = 0\) for all \(x \in \W\).
+\end{ex}
+
+\begin{proof}[\pf{ex:2.6.19}]
+  Let \(\beta_{\W}\) be a basis for \(\W\) over \(\F\).
+  By \cref{1.12,1.13} we can extended \(\beta_{\W}\) to a basis \(\beta\) for \(\V\) over \(\F\).
+  Then by \cref{ex:2.1.34} there exists a \(f \in \V^*\) such that
+  \[
+    \forall v \in \beta, f(v) = \begin{dcases}
+      0 & \text{if } v \in \beta_{\W}                 \\
+      1 & \text{if } v \in \beta \setminus \beta_{\W}
+    \end{dcases}.
+  \]
+  Note that \(\W \neq \V\) implies \(\beta \setminus \beta_{\W} \neq \varnothing\) and thus \(f\) is not a zero transformation.
+\end{proof}
