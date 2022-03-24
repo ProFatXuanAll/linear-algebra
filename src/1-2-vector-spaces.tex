@@ -563,12 +563,12 @@
 
 \begin{proof}[\pf{1.2.12}]
 	Note that we prove \cref{1.2.12} without circularity.
-	Observe that \(\ps{\F} \subseteq \fs{\F}{\F}\) (see \cref{1.2.10}), thus we can use \cref{1.3} to prove \cref{1.2.12}.
+	Observe that \(\ps{\F} \subseteq \fs(\F, \F)\) (see \cref{1.2.10}), thus we can use \cref{1.3} to prove \cref{1.2.12}.
 	Since \(\F\) is a field, we know that \(0 \in F\).
-	Let \(\zv\) be the zero vector in \(\fs{\F}{\F}\) (cf. \cref{1.2.10}).
+	Let \(\zv\) be the zero vector in \(\fs(\F, \F)\) (cf. \cref{1.2.10}).
 	Then we have
 	\begin{align*}
-		         & \forall f \in \fs{\F}{\F}, \forall s \in \F, (f + \zv)(s) = f(s) \\
+		         & \forall f \in \fs(\F, \F), \forall s \in \F, (f + \zv)(s) = f(s) \\
 		\implies & \forall p \in \ps{\F}, \forall s \in \F, (p + \zv)(s) = p(s).
 	\end{align*}
 	Now we define \(\zv' \in \ps{F}\) as follow:
@@ -582,7 +582,7 @@
 		\implies & \zv' = \zv,                                                                    &  & \text{(by \cref{1.2.10})}
 	\end{align*}
 	we know that \(\zv \in \ps{\F}\).
-	Since \(\ps{\F}\) is closed under addition and scalar multiplication for obvious reason, by \cref{1.3} we conclude that \(\ps{\F}\) is a subspace of \(\fs{\F}{\F}\) over \(\F\) and thus \(\ps{\F}\) is a vector space over \(\F\).
+	Since \(\ps{\F}\) is closed under addition and scalar multiplication for obvious reason, by \cref{1.3} we conclude that \(\ps{\F}\) is a subspace of \(\fs(\F, \F)\) over \(\F\) and thus \(\ps{\F}\) is a vector space over \(\F\).
 \end{proof}
 
 \begin{eg}\label{1.2.13}
@@ -598,14 +598,14 @@
 \end{eg}
 
 \begin{proof}[\pf{1.2.13}]
-	First observe that \(\V \subseteq \fs{\N}{\F}\).
-	We know by \cref{1.2.10} that there exists a function \(\zv \in \fs{\N}{\F}\) such that \(\zv(n) = 0\) for all \(n \in \N\).
+	First observe that \(\V \subseteq \fs(\N, \F)\).
+	We know by \cref{1.2.10} that there exists a function \(\zv \in \fs(\N, \F)\) such that \(\zv(n) = 0\) for all \(n \in \N\).
 	Since \(\zv\) only have finite number of nonzero terms (actually, \(\zv\) has \(0\) nonzero term), we know that \(\zv \in \V\).
 
 	Let \(\B{a_n}, \B{b_n} \in \V\) and \(c \in \R\).
 	Since \(\B{a_n}, \B{b_n}\) have finite numbers of nonzero terms, we know that \(\B{a_n} + \B{b_n} = \B{a_n + b_n}\) also has a finite number of nonzero terms and thus \(\B{a_n} + \B{b_n} \in \V\).
 	Similarly we know that \(c\B{a_n} = \B{ca_n}\) also has a finite number of nonzero terms and thus \(c\B{a_n} \in \V\).
-	Therefore by \cref{1.3} we know that \(\V\) is a subspace of \(\fs{\N}{\F}\) over \(\F\) and \(\V\) is a vector space over \(\F\).
+	Therefore by \cref{1.3} we know that \(\V\) is a subspace of \(\fs(\N, \F)\) over \(\F\) and \(\V\) is a vector space over \(\F\).
 \end{proof}
 
 \begin{thm}[Cancellation Law for Vector Addition]\label{1.1}
@@ -734,8 +734,8 @@
 \end{ex}
 
 \begin{proof}[\pf{ex:1.2.10}]
-	First observe that \(\V \subseteq \fs{S}{\R}\) for arbitrary domain \(S\).
-	Since \(\zv \in \fs{S}{\R}\) defined by \(\zv(x) = 0\) is differentiable on \(\R\), we know that \(\zv \in \V\).
+	First observe that \(\V \subseteq \fs(S, \R)\) for arbitrary domain \(S\).
+	Since \(\zv \in \fs(S, \R)\) defined by \(\zv(x) = 0\) is differentiable on \(\R\), we know that \(\zv \in \V\).
 
 	Let \(f, g \in \V\) and \(c \in \R\).
 	Since
@@ -746,7 +746,7 @@
 	\[
 		cf' = (cf)' \in \V,
 	\]
-	by \cref{1.3} we know that \(\V\) is a subspace of \(\fs{S}{\R}\) over \(\R\) and thus \(\V\) is a vector space over \(\R\).
+	by \cref{1.3} we know that \(\V\) is a subspace of \(\fs(S, \R)\) over \(\R\) and thus \(\V\) is a vector space over \(\R\).
 \end{proof}
 
 \begin{ex}\label{ex:1.2.11}
@@ -816,8 +816,8 @@
 \end{ex}
 
 \begin{proof}[\pf{ex:1.2.12}]
-	First observe that \(\V \subseteq \fs{\R}{\R}\).
-	We know by \cref{1.2.10} that there exists a function \(\zv \in \fs{\R}{\R}\) such that \(\zv(x) = 0\) for all \(x \in \R\).
+	First observe that \(\V \subseteq \fs(\R, \R)\).
+	We know by \cref{1.2.10} that there exists a function \(\zv \in \fs(\R, \R)\) such that \(\zv(x) = 0\) for all \(x \in \R\).
 	Since \(\zv(t) = 0 = \zv(-t)\) for all \(t \in \R\), we know that \(\zv \in \V\).
 
 	Let \(f, g \in \V\) and \(t, c \in \R\).
@@ -834,7 +834,7 @@
 		        & = (cf)(-t), &  & \text{(by \cref{1.2.10})}
 	\end{align*}
 	we know that \(f + g \in \V\) and \(cf \in \V\).
-	Thus by \cref{1.3} we know that \(\V\) is a subspace of \(\fs{\R}{\R}\) over \(\R\) and \(\V\) is a vector space over \(\R\).
+	Thus by \cref{1.3} we know that \(\V\) is a subspace of \(\fs(\R, \R)\) over \(\R\) and \(\V\) is a vector space over \(\R\).
 \end{proof}
 
 \setcounter{ex}{20}

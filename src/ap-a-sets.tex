@@ -1,0 +1,85 @@
+\chapter{Sets}\label{ch:a}
+
+\begin{defn}\label{a.0.1}
+  A \textbf{set} is a collection of objects, called \textbf{elements} of the set.
+  If \(x\) is an element of the set \(A\), then we write \(x \in A\);
+  otherwise, we write \(x \notin A\).
+\end{defn}
+
+\begin{note}
+  One set that appears frequently is the set of real numbers, which we denote by \(\R\) throughout this text.
+\end{note}
+
+\begin{defn}\label{a.0.2}
+  Two sets \(A\) and \(B\) are called equal, written \(A = B\), if they contain exactly the same elements.
+  Sets may be described in one of two ways:
+  \begin{enumerate}
+    \item By listing the elements of the set between set braces \(\set{}\).
+    \item By describing the elements of the set in terms of some characteristic property.
+  \end{enumerate}
+\end{defn}
+
+\begin{note}
+  The order in which the elements of a set are listed is immaterial.
+\end{note}
+
+\begin{defn}\label{a.0.3}
+  A set \(B\) is called a \textbf{subset} of a set \(A\), written \(B \subseteq A\) or \(A \supseteq B\), if every element of \(B\) is an element of \(A\).
+  If \(B \subseteq A\), and \(B \neq A\), then \(B\) is called a \textbf{proper subset} of \(A\).
+  Observe that \(A = B\) iff \(A \subseteq B\) and \(B \subseteq A\), a fact that is often used to prove that two sets are equal.
+\end{defn}
+
+\begin{defn}\label{a.0.4}
+  The \textbf{empty set}, denoted by \(\varnothing\), is the set containing no elements.
+  The empty set is a subset of every set.
+\end{defn}
+
+\begin{defn}\label{a.0.5}
+  Sets may be combined to form other sets in two basic ways.
+  The \textbf{union} of two sets \(A\) and \(B\), denoted \(A \cup B\), is the set of elements that are in \(A\), or \(B\), or both;
+  that is,
+  \[
+    A \cup B = \set{x : x \in A \text{ or } x \in B}.
+  \]
+  The \textbf{intersection} of two sets \(A\) and \(B\), denoted \(A \cap B\), is the set of elements that are in both \(A\) and \(B\);
+  that is,
+  \[
+    A \cap B = \set{x : x \in A \text{ and } x \in B}.
+  \]
+  Two sets are called \textbf{disjoint} if their intersection equals the empty set.
+  The union and intersection of more than two sets can be defined analogously.
+  Specifically, if \(\seq{A}{1,,n}\) are sets, then the union and intersections of these sets are defined, respectively, by
+  \[
+    \bigcup_{i = 1}^n A_i = \set{x : x \in A_i \text{ for some } i \in \set{1, \dots, n}}
+  \]
+  and
+  \[
+    \bigcap_{i = 1}^n A_i = \set{x : x \in A_i \text{ for all } i \in \set{1, \dots, n}}.
+  \]
+  Similarly, if \(\Lambda\) is an index set and \(\set{A_{\alpha} : \alpha \in \Lambda}\) is a collection of sets, the union and intersection of these sets are defined, respectively, by
+  \[
+    \bigcup_{\alpha \in \Lambda} A_{\alpha} = \set{x : x \in A_{\alpha} \text{ for some } \alpha \in \Lambda}
+  \]
+  and
+  \[
+    \bigcap_{\alpha \in \Lambda} A_{\alpha} = \set{x : x \in A_{\alpha} \text{ for all } \alpha \in \Lambda}.
+  \]
+\end{defn}
+
+\begin{defn}\label{a.0.6}
+  By a relation on a set \(A\), we mean a rule for determining whether or not, for any elements \(x\) and \(y\) in \(A\), \(x\) stands in a given relationship to \(y\).
+  More precisely, a \textbf{relation} on \(A\) is a set \(S\) of ordered pairs of elements of \(A\) such that \((x, y) \in S\) iff \(x\) stands in the given relationship to \(y\).
+  If \(S\) is a relation on a set \(A\), we often write \(x \sim y\) in place of \((x, y) \in S\).
+\end{defn}
+
+\begin{defn}\label{a.0.7}
+  A relation \(S\) on a set \(A\) is called an \textbf{equivalence relation} on \(A\) if the following three conditions hold:
+  \begin{description}
+    \item[Reflexivity:]
+      For each \(x \in A\), \(x \sim x\).
+    \item[Symmetry:]
+      If \(x \sim y\), then \(y \sim x\).
+    \item[Transitivity:]
+      If \(x \sim y\) and \(y \sim z\), then \(x \sim z\).
+  \end{description}
+\end{defn}

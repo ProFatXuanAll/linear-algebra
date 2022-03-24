@@ -152,20 +152,19 @@
 % General metric space.
 \newcommand{\MS}{\ms{m}{n}{\F}}
 
-% Function space from domain #1 to range #2.
-\newcommand{\fs}[2]{\mathcal{F}\pa{#1, #2}}
+% Function space.
+\newcommand{\fs}{\mathcal{F}}
 % General function space.
-\newcommand{\FS}{\fs{S}{\F}}
+\newcommand{\FS}{\fs(S, \F)}
 
-% Continuous function space over matric space #2.
-% Function with continuous #1-th derivative
-\newcommand{\cfs}[2][]{%
+% Continuous function space with continuous #1-th derivative.
+\newcommand{\cfs}[1][]{%
 	\ifthenelse{%
 		\equal{#1}{}%
 	}{%
-	\vs{C}\pa{#2}%
+	\vs{C}%
 	}{%
-	\vs{C}^{#1}\pa{#2}%
+	\vs{C}^{#1}%
 	}%
 }
 
@@ -193,6 +192,9 @@
 	\vs{P}_{#1}\pa{#2}%
 }%
 }
+
+% Derivative operation.
+\newcommand{\Dop}{\mathsf{D}}
 
 % Sequence.
 % #1 is a join operator (defaults to comma).
@@ -344,6 +346,16 @@
 % All chapters are in separated files.  We include them here.
 \input{1-vector-spaces.tex}
 \input{2-linear-transformations-and-matrices.tex}
+
+% Begin of appendix.
+\appendix
+
+% All appendices are in separated files.  We include them here.
+\input{ap-a-sets.tex}
+\input{ap-b-functions.tex}
+\input{ap-c-fields.tex}
+\input{ap-d-complex-numbers.tex}
+\input{ap-e-polynomials.tex}
 
 %------------------------------------------------------------------------------
 % Back matters.

@@ -1,0 +1,47 @@
+\chapter{Functions}\label{ch:b}
+
+\begin{defn}\label{b.0.1}
+  If \(A\) and \(B\) are sets, then a \textbf{function} \(f\) from \(A\) to \(B\), written \(f : A \to B\), is a rule that associates to each element \(x\) in \(A\) a unique element denoted \(f(x)\) in \(B\).
+  The element \(f(x)\) is called the \textbf{image} of \(x\) (under \(f\)), and \(x\) is called a preimage of \(f(x)\) (under \(f\)).
+  If \(f : A \to B\), then \(A\) is called the \textbf{domain} of \(f\), \(B\) is called the \textbf{codomain} of \(f\), and the set \(\set{f(x) : x \in A}\) is called the \textbf{range} of \(f\).
+  Note that the range of \(f\) is a subset of \(B\).
+  If \(S \subseteq A\), we denote by \(f(S)\) the set \(\set{f(x) : x \in S}\) of all images of elements of \(S\).
+  Likewise, if \(T \subseteq B\), we denote by \(f^{-1}(T)\) the set \(\set{x \in A : f(x) \in T}\) of all preimages of elements in \(T\).
+  Finally, two functions \(f : A \to B\) and \(g : A \to B\) are \textbf{equal}, written \(f = g\), if \(f(x) = g(x)\) for all \(x \in A\).
+\end{defn}
+
+\begin{defn}\label{b.0.2}
+  the preimage of an element in the range need not be unique.
+  Functions such that each element of the range has a unique preimage are called \textbf{one-to-one};
+  that is \(f : A \to B\) is one-to-one if \(f(x) = f(y)\) implies \(x = y\) or, equivalently, if \(x \neq y\) implies \(f(x) \neq f(y)\).
+\end{defn}
+
+\begin{defn}\label{b.0.3}
+  If \(f : A \to B\) is a function with range \(B\), that is, if \(f(A) = B\), then \(f\) is called \textbf{onto}.
+  So \(f\) is onto iff the range of \(f\) equals the codomain of \(f\).
+\end{defn}
+
+\begin{defn}\label{b.0.4}
+  Let \(f : A \to B\) be a function and \(S \subseteq A\).
+  Then a function \(f_S : S \to B\), called the \textbf{restriction} of \(f\) to \(S\), can be formed by defining \(f_S(x) = f(x)\) for each \(x \in S\).
+\end{defn}
+
+\begin{defn}\label{b.0.5}
+  Let \(A\), \(B\), and \(C\) be sets and \(f : A \to B\) and \(g : B \to C\) be functions.
+  By following \(f\) with \(g\), we obtain a function \(g \circ f : A \to C\) called the \textbf{composite} of \(g\) and \(f\).
+  Thus \((g \circ f)(x) = g(f(x))\) for all \(x \in A\).
+  Functional composition is associative, however;
+  that is, if \(h : C \to D\) is another function, then \(h \circ (g \circ f) = (h \circ g) \circ f\).
+\end{defn}
+
+\begin{defn}\label{b.0.6}
+  A function \(f : A \to B\) is said to be \textbf{invertible} if there exists a function \(g : B \to A\) such that \((f \circ g)(y) = y\) for all \(y \in B\) and \((g \circ f)(x) = x\) for all \(x \in A\).
+  If such a function \(g\) exists, then it is unique and is called the \textbf{inverse} of \(f\).
+  We denote the inverse of \(f\) (when it exists) by \(f^{-1}\).
+  It can be shown that \(f\) is invertible iff \(f\) is both one-to-one and onto.
+  The following facts about invertible functions are easily proved.
+  \begin{itemize}
+    \item If \(f : A \to B\) is invertible, then \(f^{-1}\) is invertible, and \((f^{-1})^{-1} = f\).
+    \item If \(f : A \to B\) and \(g : B \to C\) are invertible, then \(g \circ f\) is invertible, and \((g \circ f)^{-1} = f^{-1} \circ g^{-1}\).
+  \end{itemize}
+\end{defn}

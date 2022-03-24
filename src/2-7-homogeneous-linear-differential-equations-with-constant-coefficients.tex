@@ -24,9 +24,9 @@
 \begin{defn}\label{2.7.2}
   In our study of differential equations, it is useful to regard solutions as complex-valued functions of a real variable even though the solutions that are meaningful to us in a physical sense are real-valued.
   The convenience of this viewpoint will become clear later.
-  Thus we are concerned with the vector space \(\fs{\R}{\C}\).
+  Thus we are concerned with the vector space \(\fs(\R, \C)\).
   In order to consider complex-valued functions of a real variable as solutions to differential equations, we must define what it means to differentiate such functions.
-  Given a complex-valued function \(x \in \fs{\R}{\C}\) of a real variable \(t\), there exist unique real-valued functions \(x_1\) and \(x_2\) of \(t\), such that
+  Given a complex-valued function \(x \in \fs(\R, \C)\) of a real variable \(t\), there exist unique real-valued functions \(x_1\) and \(x_2\) of \(t\), such that
   \[
     x(t) = x_1(t) + i x_2(t) \quad \text{for} \quad t \in \R,
   \]
@@ -35,7 +35,7 @@
 \end{defn}
 
 \begin{defn}\label{2.7.3}
-  Given a function \(x \in \fs{\R}{\C}\) with real part \(x_1\) and imaginary part \(x_2\), we say that \(x\) is \textbf{differentiable} if \(x_1\) and \(x_2\) are differentiable.
+  Given a function \(x \in \fs(\R, \C)\) with real part \(x_1\) and imaginary part \(x_2\), we say that \(x\) is \textbf{differentiable} if \(x_1\) and \(x_2\) are differentiable.
   If \(x\) is differentiable, we define the derivative \(x'\) of \(x\) by
   \[
     x' = x_1' + i x_2'.
@@ -74,3 +74,24 @@
     y^{(n + k)} = (y^{(n)})^{(k)} = -a_{n - 1} y^{(n - 1 + k)} - \cdots - a_1 y^{(1 + k)} - a_0 y^{(k)}.
   \]
 \end{proof}
+
+\begin{defn}\label{2.7.4}
+  We use \(\cfs[\infty](\R, \C)\) to denote the set of all functions in \(\fs(\R, \C)\) that have derivatives of all orders.
+  By \cref{ex:2.7.5} \(\cfs[\infty](\R, \C)\) is a subspace of \(\fs(\R, \C)\) over \(\C\) and hence is a vector space over \(\C\).
+\end{defn}
+
+\begin{defn}\label{2.7.5}
+  For \(x \in \cfs[\infty](\R, \C)\), the derivative \(x'\) of \(x\) also lies in \(\cfs[\infty](\R, \C)\).
+  We can use the derivative operation to define a mapping \(\Dop : \cfs[\infty](\R, \C) \to \cfs[\infty](\R, \C)\) by
+  \[
+    \Dop(x) = x' \quad \text{for } x \in \cfs[\infty](\R, \C).
+  \]
+  It is easy to show that \(\Dop\) is a linear operator.
+  More generally, consider any polynomial over \(\C\) of the form
+\end{defn}
+
+\exercisesection
+
+\begin{ex}\label{ex:2.7.5}
+  Show that \(\cfs[\infty](\R, \C)\) is a subspace of \(\fs(\R, \C)\).
+\end{ex}
