@@ -20,3 +20,57 @@
 
   A \textbf{solution} to \cref{eq:2.7.1} is a function that when substituted for \(y\) reduces \cref{eq:2.7.1} to an identity.
 \end{defn}
+
+\begin{defn}\label{2.7.2}
+  In our study of differential equations, it is useful to regard solutions as complex-valued functions of a real variable even though the solutions that are meaningful to us in a physical sense are real-valued.
+  The convenience of this viewpoint will become clear later.
+  Thus we are concerned with the vector space \(\fs{\R}{\C}\).
+  In order to consider complex-valued functions of a real variable as solutions to differential equations, we must define what it means to differentiate such functions.
+  Given a complex-valued function \(x \in \fs{\R}{\C}\) of a real variable \(t\), there exist unique real-valued functions \(x_1\) and \(x_2\) of \(t\), such that
+  \[
+    x(t) = x_1(t) + i x_2(t) \quad \text{for} \quad t \in \R,
+  \]
+  where \(i\) is the imaginary number such that \(i^2 = -1\).
+  We call \(x_1\) the \textbf{real part} and \(x_2\) the \textbf{imaginary part} of \(x\).
+\end{defn}
+
+\begin{defn}\label{2.7.3}
+  Given a function \(x \in \fs{\R}{\C}\) with real part \(x_1\) and imaginary part \(x_2\), we say that \(x\) is \textbf{differentiable} if \(x_1\) and \(x_2\) are differentiable.
+  If \(x\) is differentiable, we define the derivative \(x'\) of \(x\) by
+  \[
+    x' = x_1' + i x_2'.
+  \]
+\end{defn}
+
+\begin{thm}\label{2.27}
+  Any solution to a homogeneous linear differential equation with constant coefficients has derivatives of all orders;
+  that is, if \(x\) is a solution to such an equation, then \(x^{(k)}\) exists for every positive integer \(k\).
+\end{thm}
+
+\begin{proof}[\pf{2.27}]
+  Let
+  \[
+    y^{(n)} + a_{n - 1} y^{(n - 1)} + \cdots + a_1 y^{(1)} + a_0 y = 0
+  \]
+  be a homogeneous linear differential equation of order \(n\) with constant coefficients.
+  Clearly \(y^{(k)}\) exists for all \(k \in \set{0, \dots, n}\).
+  Now we prove that \(y^{(k)}\) exists for all \(k \in \N \setminus \set{0, \dots, n}\).
+  We can rewrite the equation above as
+  \[
+    y^{(n)} = -a_{n - 1} y^{(n - 1)} - \cdots - a_1 y^{(1)} - a_0 y.
+  \]
+  Since \(y^{(n)}\) exists, each term on the right hand side of the above equation can be differentiated at least one more time.
+  Thus \(y^{(n + 1)}\) must exist and is equal to the follow:
+  \[
+    y^{(n + 1)} = (y^{(n)})' = -a_{n - 1} y^{(n)} - \cdots - a_1 y^{(2)} - a_0 y^{(1)}.
+  \]
+  But again \(y^{(n + 1)}\) exists, therefore each term on the right hand side of the above equation can be differentiated at least one more time.
+  Thus \(y^{(n + 2)}\) must exist and is equal to the follow:
+  \[
+    y^{(n + 2)} = (y^{(n + 1)})' = -a_{n - 1} y^{(n + 1)} - \cdots - a_1 y^{(3)} - a_0 y^{(2)}.
+  \]
+  In general we see that for all \(k \in \N\), we have
+  \[
+    y^{(n + k)} = (y^{(n)})^{(k)} = -a_{n - 1} y^{(n - 1 + k)} - \cdots - a_1 y^{(1 + k)} - a_0 y^{(k)}.
+  \]
+\end{proof}
