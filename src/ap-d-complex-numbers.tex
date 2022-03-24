@@ -1,1 +1,275 @@
 \chapter{Complex Numbers}\label{ch:d}
+
+\begin{defn}\label{d.0.1}
+  A complex number is an expression of the form \(z = a + bi\), where \(a\) and \(b\) are real numbers called the \textbf{real part} and the \textbf{imaginary part} of \(z\), respectively.
+
+  The \textbf{sum} and \textbf{product} of two complex numbers \(z = a + bi\) and \(w = c + di\) (where \(a, b, c\), and \(d\) are real numbers) are defined, respectively, as follows:
+  \[
+    z + w = (a + bi) + (c + di) = (a + c) + (b + d) i
+  \]
+  and
+  \[
+    zw = (a + bi)(c + di) = (ac - bd) + (ad + bc) i.
+  \]
+\end{defn}
+
+\begin{defn}\label{d.0.2}
+  Any real number \(c\) may be regarded as a complex number by identifying \(c\) with the complex number \(c + 0i\).
+  Observe that this correspondence preserves sums and products;
+  that is,
+  \[
+    (c + 0i) + (d + 0i) = (c + d) + 0i \quad \text{and} \quad (c + 0i)(d + 0i) = cd + 0i.
+  \]
+  Any complex number of the form \(bi = 0 + bi\), where \(b\) is a nonzero real number, is called \textbf{imaginary}.
+  The product of two imaginary numbers is real since
+  \[
+    (bi)(di) = (0 + bi)(0 + di) = (0 - bd) + (0 \cdot d + b \cdot 0) i = -bd.
+  \]
+  In particular, for \(i = 0 + 1i\), we have \(i \cdot i = -1\).
+\end{defn}
+
+\begin{note}
+  The observation that \(i^2 = i \cdot i = -1\) provides an easy way to remember the definition of multiplication of complex numbers:
+  simply multiply two complex numbers as you would any two algebraic expressions, and replace \(i^2\) by \(-1\).
+\end{note}
+
+\begin{defn}\label{d.0.3}
+  The real number \(0\), regarded as a complex number, is an additive identity element for the complex numbers since
+  \[
+    (a + bi) + 0 = (a + bi) + (0 + 0i) = (a + 0) + (b + 0) i = a + bi.
+  \]
+  Likewise the real number \(1\), regarded as a complex number, is a multiplicative identity element for the set of complex numbers since
+  \[
+    (a + bi) \cdot 1 = (a + bi)(1 + 0i) = (a \cdot 1 - b \cdot 0) + (a \cdot 0 + b \cdot 1) i = a + bi.
+  \]
+  Every complex number \(a + bi\) has an additive inverse, namely \((-a) + (-b)i\).
+  But also each complex number except \(0\) has a multiplicative inverse.
+  In fact,
+  \[
+    (a + bi)^{-1} = \frac{a}{a^2 + b^2} - \frac{b}{a^2 + b^2} i.
+  \]
+\end{defn}
+
+\begin{thm}\label{d.1}
+  The set of complex numbers with the operations of addition and multiplication previously defined is a field.
+\end{thm}
+
+\begin{proof}[\pf{d.1}]
+  Let \(x, y, z \in \C\).
+  By \cref{d.0.1} we know that \(x = a + bi, y = c + di, z = e + fi\) for some \(a, b, c, d, e, f \in \R\).
+  By \cref{d.0.1} we know that \(x + y \in \C\) and \(xy \in \C\).
+  Thus by \cref{c.0.1} we only need to show that \ref{f1} -- \ref{f5} hold.
+  \begin{description}
+    \item[For \ref{f1}:]
+      We have
+      \begin{align*}
+        x + y & = (a + c) + (b + d) i &  & \text{(by \cref{d.0.1})} \\
+              & = (c + a) + (d + b) i &  & (a, b, c, d \in \R)      \\
+              & = y + x               &  & \text{(by \cref{d.0.1})}
+      \end{align*}
+      and
+      \begin{align*}
+        xy & = (ac - bd) + (ad + bc) i &  & \text{(by \cref{d.0.1})} \\
+           & = (ca - db) + (da + cb) i &  & (a, b, c, d \in \R)      \\
+           & = yx.                     &  & \text{(by \cref{d.0.1})}
+      \end{align*}
+    \item[For \ref{f2}:]
+      We have
+      \begin{align*}
+        (x + y) + z & = ((a + c) + (b + d)i) + z        &  & \text{(by \cref{d.0.1})}  \\
+                    & = ((a + c) + e) + ((b + d) + f) i &  & \text{(by \cref{d.0.1})}  \\
+                    & = (a + (c + e)) + (b + (d + f)) i &  & (a, b, c, d, e, f \in \R) \\
+                    & = x + ((c + e) + (d + f)i)        &  & \text{(by \cref{d.0.1})}  \\
+                    & = x + (y + z)                     &  & \text{(by \cref{d.0.1})}
+      \end{align*}
+      and
+      \begin{align*}
+        (x \cdot y) \cdot z & = ((ac - bd) + (ad + bc) i) \cdot z   &  & \text{(by \cref{d.0.1})}  \\
+                            & = ((ac - bd) e - (ad + bc) f)                                        \\
+                            & \quad + ((ac - bd) f + (ad + bc) e) i &  & \text{(by \cref{d.0.1})}  \\
+                            & = (a (ce - df) - b (cf + de))                                        \\
+                            & \quad + (a (cf + de) + b(ce - df)) i  &  & (a, b, c, d, e, f \in \R) \\
+                            & = x \cdot ((ce - df) + (cf + de) i)   &  & \text{(by \cref{d.0.1})}  \\
+                            & = x \cdot (y \cdot z).                &  & \text{(by \cref{d.0.1})}
+      \end{align*}
+    \item[For \ref{f3}:]
+      See \cref{d.0.3}.
+    \item[For \ref{f4}:]
+      See \cref{d.0.3}.
+    \item[For \ref{f5}:]
+      We have
+      \begin{align*}
+        x \cdot (y + z) & = x \cdot ((c + e) + (d + f) i)               &  & \text{(by \cref{d.0.1})}          \\
+                        & = (a (c + e) - b (d + f))                                                            \\
+                        & \quad + (a (d + f) + b (c + e)) i             &  & \text{(by \cref{d.0.1})}          \\
+                        & = (ac + ae - bd - bf) + (ad + af + bc + be) i &  & (a, b, c, d, e, f \in \R)         \\
+                        & = (ac - bd) + (ad + bc) i                                                            \\
+                        & \quad + (ae - bf) + (af + be) i               &  & \text{(by \ref{f1} and \ref{f2})} \\
+                        & = xy + xz.                                    &  & \text{(by \cref{d.0.1})}
+      \end{align*}
+      From all cases above we conclude by \cref{c.0.1} that \(\C\) is a field.
+  \end{description}
+\end{proof}
+
+\begin{defn}\label{d.0.4}
+  The \textbf{(complex) conjugate} of a complex number \(a + bi\) is the complex number \(a - bi\).
+  We denote the conjugate of the complex number \(z\) by \(\conj{z}\).
+\end{defn}
+
+\begin{thm}\label{d.2}
+  Let \(z\) and \(w\) be complex numbers.
+  Then the following statements are true.
+  \begin{enumerate}
+    \item \(\conj{\conj{z}} = z\).
+    \item \(\conj{z + w} = \conj{z} + \conj{w}\).
+    \item \(\conj{zw} = \conj{z} \cdot \conj{w}\).
+    \item \(\conj{\frac{z}{w}} = \frac{\conj{z}}{\conj{w}}\) if \(w \neq 0\).
+    \item \(z \in \R\) iff \(\conj{z} = z\).
+  \end{enumerate}
+\end{thm}
+
+\begin{proof}[\pf{d.2}(a)]
+  We have
+  \begin{align*}
+    \conj{\conj{z}} & = \conj{\Re(z) - \Im(z) i} &  & \text{(by \cref{d.0.4})} \\
+                    & = \Re(z) + \Im(z) i        &  & \text{(by \cref{d.0.4})} \\
+                    & = z.
+  \end{align*}
+\end{proof}
+
+\begin{proof}[\pf{d.2}(b)]
+  We have
+  \begin{align*}
+    \conj{z + w} & = \conj{\Re(z) + \Re(w) + (\Im(z) + \Im(w)) i} &  & \text{(by \cref{d.0.1})} \\
+                 & = \Re(z) + \Re(w) - (\Im(z) + \Im(w)) i        &  & \text{(by \cref{d.0.4})} \\
+                 & = \Re(z) - \Im(z) i + \Re(w) - \Im(w) i        &  & \text{(by \cref{d.1})}   \\
+                 & = \conj{z} + \conj{w}.                         &  & \text{(by \cref{d.0.4})}
+  \end{align*}
+\end{proof}
+
+\begin{proof}[\pf{d.2}(c)]
+  We have
+  \begin{align*}
+    \conj{zw} & = \conj{(\Re(z) \Re(w) - \Im(z) \Im(w)) + (\Re(z) \Im(w) + \Im(z) \Re(w)) i} &  & \text{(by \cref{d.0.1})} \\
+              & = (\Re(z) \Re(w) - \Im(z) \Im(w)) - (\Re(z) \Im(w) + \Im(z) \Re(w)) i        &  & \text{(by \cref{d.0.4})} \\
+              & = (\Re(z) - \Im(z) i) (\Re(w) - \Im(w) i)                                    &  & \text{(by \cref{d.0.1})} \\
+              & = \conj{z} \cdot \conj{w}.                                                   &  & \text{(by \cref{d.0.4})}
+  \end{align*}
+\end{proof}
+
+\begin{proof}[\pf{d.2}(d)]
+  We have
+  \begin{align*}
+    \conj{\frac{z}{w}} & = \conj{z \cdot w^{-1}}                                                                                        &  & \text{(by \cref{d.0.3})}  \\
+                       & = \conj{z} \cdot \conj{w^{-1}}                                                                                 &  & \text{(by \cref{d.2}(c))} \\
+                       & = \conj{z} \cdot \pa{\conj{\frac{\Re(w)}{(\Re(w))^2 + (\Im(w))^2} - \frac{\Im(w)}{(\Re(w))^2 + (\Im(w))^2} i}} &  & \text{(by \cref{d.0.3})}  \\
+                       & = \conj{z} \cdot \pa{\frac{\Re(w)}{(\Re(w))^2 + (\Im(w))^2} + \frac{\Im(w)}{(\Re(w))^2 + (\Im(w))^2} i}        &  & \text{(by \cref{d.0.4})}  \\
+                       & = \conj{z} \cdot (\Re(w) - \Im(w))^{-1}                                                                        &  & \text{(by \cref{d.0.3})}  \\
+                       & = \conj{z} \cdot \conj{w}^{-1}                                                                                 &  & \text{(by \cref{d.0.4})}  \\
+                       & = \frac{\conj{z}}{\conj{w}}.                                                                                   &  & \text{(by \cref{d.0.3})}
+  \end{align*}
+\end{proof}
+
+\begin{proof}[\pf{d.2}(e)]
+  We have
+  \begin{align*}
+         & z \in \R                                                            \\
+    \iff & \Im(z) = 0                            &  & \text{(by \cref{d.0.2})} \\
+    \iff & \Re(z) + \Im(z) i = \Re(z) - \Im(z) i                               \\
+    \iff & \conj{z} = z.                         &  & \text{(by \cref{d.0.4})}
+  \end{align*}
+\end{proof}
+
+\begin{defn}\label{d.0.5}
+  Let \(z = a + bi\), where \(a, b \in \R\).
+  The \textbf{absolute value} (or \textbf{modulus}) of \(z\) is the real number \(\sqrt{a^2 + b^2}\).
+  We denote the absolute value of \(z\) by \(\abs{z}\).
+
+  Observe that \(z \conj{z} = \abs{z}^2\).
+  The fact that the product of a complex number and its conjugate is real provides an easy method for determining the quotient of two complex numbers;
+  for if \(c + di \neq 0\), then
+  \[
+    \frac{a + bi}{c + di} = \frac{a + bi}{c + di} \cdot \frac{c - di}{c - di} = \frac{(ac + bd) + (bc - ad) i}{c^2 + d^2} = \frac{ac + bd}{c^2 + d^2} + \frac{bc - ad}{c^2 + d^2} i.
+  \]
+\end{defn}
+
+\begin{thm}\label{d.3}
+  Let \(z\) and \(w\) denote any two complex numbers.
+  Then the following statements are true.
+  \begin{enumerate}
+    \item \(\abs{zw} = \abs{z} \cdot \abs{w}\).
+    \item \(\abs{\frac{z}{w}} = \frac{\abs{z}}{\abs{w}}\) if \(w \neq 0\).
+    \item \(\abs{z + w} \leq \abs{z} + \abs{w}\).
+    \item \(\abs{z} - \abs{w} \leq \abs{z + w}\).
+  \end{enumerate}
+\end{thm}
+
+\begin{proof}[\pf{d.3}(a)]
+  By \cref{d.2} we have
+  \[
+    \abs{zw}^2 = (zw) \conj{(zw)} = (zw) (\conj{z} \cdot \conj{w}) = (z \conj{z}) (w \conj{w}) = \abs{z}^2 \abs{w}^2
+  \]
+  and thus \(\abs{zw} = \abs{z} \abs{w}\).
+\end{proof}
+
+\begin{proof}[\pf{d.3}(b)]
+  We have
+  \begin{align*}
+    \abs{z} & = \abs{\frac{z}{w} w}       &  & \text{(by \cref{d.0.3})}  \\
+            & = \abs{\frac{z}{w}} \abs{w} &  & \text{(by \cref{d.3}(a))}
+  \end{align*}
+  and thus
+  \[
+    \frac{\abs{z}}{\abs{w}} = \abs{\frac{z}{w}}.
+  \]
+\end{proof}
+
+\begin{proof}[\pf{d.3}(c)]
+  For any complex number \(x = a + bi\), where \(a, b \in \R\), observe that
+  \[
+    x + \conj{x} = (a + bi) + (a - bi) = 2a \leq 2 \sqrt{a^2 + b^2} = 2 \abs{x}.
+  \]
+  Thus \(x + \conj{x}\) is real and satisfies the inequality \(x + \conj{x} \leq 2 \abs{x}\).
+  Taking \(x = w \conj{z}\), we have, by \cref{d.2} and \cref{d.3}(a),
+  \[
+    w \conj{z} + \conj{w} z \leq 2 \abs{w \conj{z}} = 2 \abs{w} \abs{\conj{z}} = 2 \abs{z} \abs{w}.
+  \]
+  Using \cref{d.2} again gives
+  \begin{align*}
+    \abs{z + w}^2 & = (z + w) \conj{(z + w)} = (z + w) (\conj{z} + \conj{w}) = z \conj{z} + w \conj{z} + z \conj{w} + w \conj{w} \\
+                  & \leq \abs{z}^2 + 2 \abs{z} \abs{w} + \abs{w}^2 = (\abs{z} + \abs{w})^2.
+  \end{align*}
+  By taking square roots, we obtain \cref{d.3}(c).
+\end{proof}
+
+\begin{proof}[\pf{d.3}(d)]
+  From \cref{d.3}(a) and (c), it follows that
+  \[
+    \abs{z} = \abs{(z + w) - w} \leq \abs{z + w} + \abs{-w} = \abs{z + w} + \abs{w}.
+  \]
+  So
+  \[
+    \abs{z} - \abs{w} \leq \abs{z + w},
+  \]
+  proving \cref{d.3}(d).
+\end{proof}
+
+\begin{defn}\label{d.0.6}
+  It is interesting as well as useful that complex numbers have both a geometric and an algebraic representation.
+  Suppose that \(z = a + bi\), where \(a\) and \(b\) are real numbers.
+  We may represent \(z\) as a vector in the complex plane.
+  Notice that, as in \(\R^2\), there are two axes, the \textbf{real axis} and the \textbf{imaginary axis}.
+  The real and imaginary parts of \(z\) are the first and second coordinates, and the absolute value of \(z\) gives the length of the vector \(z\).
+  It is clear that addition of complex numbers may be represented as in \(\R^2\) using the parallelogram law.
+
+  In \cref{sec:2.7}, we introduce Euler's formula.
+  The special case \(e^{i \theta} = \cos(\theta) + i \sin(\theta)\) is of particular interest.
+  \(e^{i \theta}\) is the unit vector that makes an angle \(\theta\) with the positive real axis.
+  We see that any nonzero complex number \(z\) may be depicted as a multiple of a unit vector, namely, \(z = \abs{z} e^{i \phi}\), where \(\phi\) is the angle that the vector \(z\) makes with the positive real axis.
+  Thus multiplication, as well as addition, has a simple geometric interpretation:
+  If \(z = \abs{z} e^{i \theta}\) and \(w = \abs{w} e^{i \omega}\) are two nonzero complex numbers, then from the properties established in \cref{sec:2.7} and \cref{d.3}, we have
+  \[
+    zw = \abs{z} e^{i \theta} \cdot \abs{w} e^{i \omega} = \abs{zw} e^{i (\theta + \omega)}.
+  \]
+  So \(zw\) is the vector whose length is the product of the lengths of \(z\) and \(w\), and makes the angle \(\theta + \omega\) with the positive real axis.
+\end{defn}

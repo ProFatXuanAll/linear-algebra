@@ -230,7 +230,7 @@
 
 \begin{ex}\label{ex:2.2.9}
   Let \(\V\) be the vector space of complex numbers \(\C\) over the field \(\R\).
-  Define \(\T : \V \to \V\) by \(\T(z) = \overline{z}\), where \(\overline{z}\) is the complex conjugate of \(z\).
+  Define \(\T : \V \to \V\) by \(\T(z) = \conj{z}\), where \(\conj{z}\) is the complex conjugate of \(z\).
   Prove that \(\T\) is linear, and compute \([\T]_{\beta}\), where \(\beta = \set{1, i}\).
   (Recall by \cref{ex:2.1.38} that \(\T\) is not linear if \(\V\) is regarded as a vector space over the field \(\C\).)
 \end{ex}
@@ -239,10 +239,10 @@
   Let \(x, y \in \C\) and let \(c \in \R\).
   Since
   \begin{align*}
-    \T(cx + y) & = \overline{cx + y}                              \\
-               & = \overline{cx} + \overline{y}                   \\
-               & = \overline{c} \cdot \overline{x} + \overline{y} \\
-               & = c \overline{x} + \overline{y}                  \\
+    \T(cx + y) & = \conj{cx + y}                      \\
+               & = \conj{cx} + \conj{y}               \\
+               & = \conj{c} \cdot \conj{x} + \conj{y} \\
+               & = c \conj{x} + \conj{y}              \\
                & = c \T(x) + \T(y),
   \end{align*}
   by \cref{2.1.2}(b) we know that \(\T\) is linear.
