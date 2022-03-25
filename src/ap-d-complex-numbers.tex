@@ -273,3 +273,52 @@
   \]
   So \(zw\) is the vector whose length is the product of the lengths of \(z\) and \(w\), and makes the angle \(\theta + \omega\) with the positive real axis.
 \end{defn}
+
+\begin{thm}[The Fundamental Theorem of Algebra]\label{d.4}
+  Suppose that \(p(z) = a_n z^n + a_{n - 1} z^{n - 1} + \cdots + a_1 z + a_0\) is a polynomial in \(\ps{\C}\) of degree \(n \geq 1\).
+  Then \(p(z)\) has a zero.
+\end{thm}
+
+\begin{proof}[\pf{d.4}]
+  We want to find \(z_0\) in \(\C\) such that \(p(z_0) = 0\).
+  Let \(m\) be the greatest lower bound of \(\set{\abs{p(z)} : z \in \C}\).
+  For \(\abs{z} = s > 0\), we have
+  \begin{align*}
+    \abs{p(z)} & = \abs{a_n z^n + a_{n - 1} z^{n - 1} + \cdots + a_0}                                                              \\
+               & \geq \abs{a_n} \abs{z^n} - \abs{a_{n - 1}} \abs{z^{n - 1}} - \cdots - \abs{a_0} &  & \text{(by \cref{d.3}(a)(d))} \\
+               & = \abs{a_n} s^n - \abs{a_{n - 1}} s^{n - 1} - \cdots - \abs{a_0}                                                  \\
+               & = s^{n} \pa{\abs{a_n} - \abs{a_{n - 1}} s^{-1} - \cdots - \abs{a_0} s^{-n}}.
+  \end{align*}
+  Because the last expression approaches infinity as \(s\) approaches infinity, the set \(\set{\abs{p(z)} : (z \in \C) \land (\abs{p(z)} \leq m + 1)}\) is non-empty and closed.
+  Since \(p\) is continuous, we know that the set \(D = \set{z \in \C : \abs{p(z)} \leq m + 1}\) is also closed.
+  It follows that \(m\) is the greatest lower bound of \(\set{\abs{p(z)} : z \in D}\).
+  Because \(D\) is closed and bounded and \(p\) is continuous, there exists \(z_0\) in \(D\) such that \(\abs{p(z_0)} = m\).
+  We want to show that \(m = 0\).
+  We argue by contradiction.
+
+  Assume that \(m \neq 0\).
+  Let \(q(z) = \frac{p(z + z_0)}{p(z_0)}\).
+  Then \(q(z)\) is a polynomial of degree \(n\), \(q(0) = 1\), and \(\abs{q(z)} \geq 1\) for all \(z \in \C\)
+  (this is true since \(\abs{p(z + z_0)} \geq \abs{p(z_0)}\)).
+  So we may write
+  \[
+    q(z) = 1 + b_k z^k + b_{k + 1} z^{k + 1} + \cdots + b_n z^n,
+  \]
+  where \(k \in \N\), \(1 \leq k \leq n\) and \(b_k \neq 0\).
+  Because \(-\frac{\abs{b_k}}{b_k}\) has modulus one (\(\abs{-\frac{\abs{b_k}}{b_k}} = 1\)), we may pick a real number \(\theta\) such that \(e^{i k \theta} = - \frac{\abs{b_k}}{b_k}\), or \(e^{i k \theta} b_k = -\abs{b_k}\).
+  For any \(r > 0\), we have
+  \begin{align*}
+    q(r e^{i \theta}) & = 1 + b_k r^k e^{i k \theta} + b_{k + 1} r^{k + 1} e^{i (k + 1) \theta} + \cdots + b_n r^n e^{i n \theta} \\
+                      & = 1 - \abs{b_k} r^k + b_{k + 1} r^{k + 1} e^{i (k + 1) \theta} + \cdots + b_n r^n e^{i n \theta}.
+  \end{align*}
+  Choose \(r\) small enough so that \(1 - \abs{b_k} r^k > 0\).
+  Then
+  \begin{align*}
+    \abs{q(r e^{i \theta})} & \leq \abs{1 - \abs{b_k} r^k} + \abs{b_{k + 1} r^{k + 1} e^{i (k + 1) \theta}} + \cdots + \abs{b_n r^n e^{i n \theta}} &  & \text{(by \cref{d.3}(c))} \\
+                            & = 1 - \abs{b_k} r^k + \abs{b_{k + 1}} r^{k + 1} + \cdots + \abs{b_n} r^n                                              &  & \text{(by \cref{d.3}(a))} \\
+                            & = 1 - r^k \pa{\abs{b_k} - \abs{b_{k + 1}} r - \cdots - \abs{b_n} r^{n - k}}.
+  \end{align*}
+  Now choose \(r\) even smaller, if necessary, so that the expression within the brackets is positive.
+  We obtain that \(\abs{q(r e^{i \theta})} < 1\).
+  But this is a contradiction.
+\end{proof}
