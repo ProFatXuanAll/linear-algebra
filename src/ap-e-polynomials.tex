@@ -1,1 +1,166 @@
 \chapter{Polynomial}\label{ch:e}
+
+\begin{defn}\label{e.0.1}
+  A polynomial \(f\) \textbf{divides} a polynomial \(g\) if there exists a polynomial \(q\) such that \(g(x) = f(x) q(x)\).
+\end{defn}
+
+\begin{thm}[The Division Algorithm for Polynomials]\label{e.1}
+  Let \(f \in \ps[n]{\F}\) and let \(g \in \ps[m]{\F}\).
+  Then there exist unique polynomials \(q\) and \(r\) such that
+  \begin{equation}\label{eq:e.0.1}
+    \forall x \in \F, f(x) = q(x) g(x) + r(x),
+  \end{equation}
+  where \(r \in \ps[m - 1]{\F}\).
+\end{thm}
+
+\begin{proof}[\pf{e.1}]
+  We begin by establishing the existence of \(q\) and \(r\) that satisfy \cref{eq:e.0.1}.
+  \begin{description}
+    \item[Case 1.]
+      If \(n < m\), take \(q = \zv\) and \(r = f\) to satisfy \cref{eq:e.0.1}.
+    \item[Case 2.]
+      When \(0 \leq m \leq n\), we apply mathematical induction on \(n\).
+      First suppose that \(n = 0\).
+      Then \(m = 0\), and it follows that \(f\) and \(g\) are nonzero constants.
+      Hence we may take \(q = f / g\) and \(r = \zv\) to satisfy \cref{eq:e.0.1}.
+
+      Now suppose that the result is valid for all polynomials with degree less than \(n\) for some fixed \(n > 0\), and assume that \(f\) has degree \(n\).
+      Suppose that
+      \[
+        \forall x \in \F, f(x) = a_n x^n + a_{n - 1} x^{n - 1} + \cdots + a_1 x + a_0
+      \]
+      and
+      \[
+        \forall x \in \F, g(x) = b_m x^m + b_{m - 1} x^{m - 1} + \cdots + b_1 x + b_0
+      \]
+      and let \(h\) be the polynomial defined by
+      \begin{equation}\label{eq:e.0.2}
+        \forall x \in \F, h(x) = f(x) - a_n b_m^{-1} x^{n - m} g(x).
+      \end{equation}
+      Then \(h\) is a polynomial of degree less than \(n\), and therefore we may apply the induction hypothesis or Case 1 (whichever is relevant) to obtain polynomials \(q_1\) and \(r\) such that \(r\) has degree less than \(m\) and
+      \begin{equation}\label{eq:e.0.3}
+        \forall x \in \F, h(x) = q_1(x) g(x) + r(x).
+      \end{equation}
+      Combining \cref{eq:e.0.2,eq:e.0.3} and solving for \(f\) gives us \(f = q g + r\) with
+      \[
+        \forall x \in \F, q(x) = a_n b_m^{-1} x^{n - m} + q_1(x),
+      \]
+      which establishes Case I and Case II for any \(n \geq 0\) by mathematical induction.
+      This establishes the existence of \(q\) and \(r\).
+
+      We now show the uniqueness of \(q\) and \(r\).
+      Suppose that \(q_1, q_2, r_1\), and \(r_2\) exist such that \(r_1\) and \(r_2\) each has degree less than \(m\) and
+      \[
+        \forall x \in \F, f(x) = q_1(x) g(x) + r_1(x) = q_2(x) g(x) + r_2(x).
+      \]
+      Then
+      \begin{equation}\label{eq:e.0.4}
+        \forall x \in \F, (q_1(x) - q_2(x)) g(x) = r_2(x) - r_1(x).
+      \end{equation}
+      The right side of \cref{eq:e.0.4} is a polynomial of degree less than \(m\).
+      Since \(g\) has degree \(m\), it must follow that \(q_1 - q_2\) is the zero polynomial.
+      Hence \(q_1 = q_2\);
+      thus \(r_1 = r_2\) by \cref{eq:e.0.4}.
+  \end{description}
+\end{proof}
+
+\begin{defn}\label{e.0.2}
+  In the context of \cref{e.1}, we call \(q\) and \(r\) the \textbf{quotient} and \textbf{remainder}, respectively, for the division of \(f\) by \(g\).
+\end{defn}
+
+\begin{cor}\label{e.0.3}
+  Let \(f\) be a polynomial of positive degree, and let \(a \in \F\).
+  Then \(f(a) = 0\) iff \(x - a\) divides \(f\).
+\end{cor}
+
+\begin{proof}[\pf{e.0.3}]
+  Suppose that \(x - a\) divides \(f\).
+  Then there exists a polynomial \(q\) such that \(f(x) = (x - a) q(x)\) for all \(x \in \F\).
+  Thus \(f(a) = (a - a) q(a) = 0 \cdot q(a) = 0\).
+
+  Conversely, suppose that \(f(a) = 0\).
+  By the division algorithm, there exist polynomials \(q\) and \(r\) such that \(r\) has degree less than one and
+  \[
+    \forall x \in \F, f(x) = q(x) (x - a) + r(x).
+  \]
+  Substituting \(a\) for \(x\) in the equation above, we obtain \(r(a) = 0\).
+  Since \(r\) has degree less than \(1\), it must be the constant polynomial \(r = \zv\).
+  Thus \(f(x) = q(x) (x - a)\).
+\end{proof}
+
+\begin{defn}\label{e.0.4}
+  For any polynomial \(f\) with coefficients from a field \(\F\), an element \(a \in \F\) is called a \textbf{zero} of \(f\) if \(f(a) = 0\).
+  With this terminology, \cref{e.0.3} states that \(a\) is a zero of \(f\) iff \(x - a\) divides \(f\).
+\end{defn}
+
+\begin{cor}\label{e.0.5}
+  Any polynomial of degree \(n \geq 1\) has at most \(n\) distinct zeros.
+\end{cor}
+
+\begin{proof}[\pf{e.0.5}]
+  The proof is by mathematical induction on \(n\).
+  The result is obvious if \(n = 1\).
+  Now suppose that the result is true for some positive integer \(n\), and let \(f\) be a polynomial of degree \(n + 1\).
+  If \(f\) has no zeros, then there is nothing to prove.
+  Otherwise, if \(a\) is a zero of \(f\), then by \cref{e.0.5} we may write \(f(x) = (x - a) q(x)\) for some polynomial \(q\).
+  Note that \(q\) must be of degree \(n\);
+  therefore, by the induction hypothesis, \(q\) can have at most \(n\) distinct zeros.
+  Since any zero of \(q\) distinct from \(a\) is also a zero of \(f\), it follows that \(f\) can have at most \(n + 1\) distinct zeros.
+\end{proof}
+
+\begin{defn}\label{e.0.6}
+  Two nonzero polynomials are called \textbf{relatively prime} if no polynomial of positive degree divides each of them.
+\end{defn}
+
+\begin{thm}\label{e.2}
+  If \(f_1\) and \(f_2\) are relatively prime polynomials over \(\F\), there exist polynomials \(q_1\) and \(q_2\) such that
+  \[
+    \forall x \in \F, q_1(x) f_1(x) + q_2(x) f_2(x) = 1,
+  \]
+  where \(1 \in \F\).
+\end{thm}
+
+\begin{proof}[\pf{e.2}]
+  Without loss of generality, assume that the degree of \(f_1\) is greater than or equal to the degree of \(f_2\).
+  The proof is by mathematical induction on the degree of \(f_2\).
+  If \(f_2\) has degree \(0\), then \(f_2\) is a nonzero constant \(c\).
+  In this case, we can take \(q_1 = \zv\) and \(q_2 = 1 / c\).
+
+  Now suppose that the theorem holds whenever the polynomial of lesser degree has degree less than \(n\) for some positive integer \(n\), and suppose that \(f_2\) has degree \(n\).
+  By the division algorithm, there exist polynomials \(q\) and \(r\) such that \(r\) has degree less than \(n\) and
+  \begin{equation}\label{eq:e.0.5}
+    \forall x \in \F, f_1(x) = q(x) f_2(x) + r(x).
+  \end{equation}
+  Since \(f_1\) and \(f_2\) are relatively prime, \(r\) is not the zero polynomial.
+  We claim that \(f_2\) and \(r\) are relatively prime.
+  Suppose otherwise;
+  then there exists a polynomial \(g\) of positive degree that divides both \(f_2\) and \(r\).
+  Hence, by (5), \(g\) also divides \(f_1\), contradicting the fact that \(f_1\) and \(f_2\) are relatively prime.
+  Since \(r\) has degree less than \(n\), we may apply the induction hypothesis to \(f_2\) and \(r\).
+  Thus there exist polynomials \(g_1\) and \(g_2\) such that
+  \begin{equation}\label{eq:e.0.6}
+    \forall x \in \F, g_1(x) f_2(x) + g_2(x) r(x) = 1.
+  \end{equation}
+  Combining \cref{eq:e.0.5,eq:e.0.6}, we have
+  \begin{align*}
+    1 & = g_1(x) f_2(x) + g_2(x) (f_1(x) - q(x) f_2(x))  \\
+      & = g_2(x) f_1(x) + (g_1(x) - g_2(x) q(x)) f_2(x).
+  \end{align*}
+  Thus, setting \(q_1 = g_2\) and \(q_2 = g_1 - g_2 q\), we obtain the desired result.
+\end{proof}
+
+\begin{defn}\label{e.0.7}
+  Let
+  \[
+    f(x) = a_0 + a_1(x) + \cdots + a_n x^n
+  \]
+  be a polynomial with coefficients from a field \(\F\).
+  If \(\T\) is a linear operator on a vector space \(\V\) over \(\F\), we define
+  \[
+    f(\T) = a_0 \IT + a_1 \T + \cdots + a_n \T^n.
+  \]
+  Similarly, if \(A \in \ms{n}{n}{\F}\), we define
+  \[
+    f(A) = a_0 I + a_1 A + \cdots + a_n A^n.
+  \]
+\end{defn}

@@ -322,3 +322,63 @@
   We obtain that \(\abs{q(r e^{i \theta})} < 1\).
   But this is a contradiction.
 \end{proof}
+
+\begin{cor}\label{d.0.7}
+  If \(p(z) = a_n z^n + a_{n - 1} z^{n - 1} + \cdots + a_1 z + a_0\) is a polynomial of degree \(n \geq 1\) with complex coefficients, then there exist complex numbers \(\seq{c}{1,,n}\) (not necessarily distinct) such that
+  \[
+    p(z) = a_n (z - c_1)(z - c_2) \cdots (z - c_n).
+  \]
+\end{cor}
+
+\begin{proof}[\pf{d.0.7}]
+  We use induction on \(n\).
+  For \(n = 1\), let \(p \in \ps{\C}\) be the function
+  \[
+    \forall z \in \C, p(z) = a_1 z + a_0
+  \]
+  where \(\seq{a}{0,1} \in \C\) and \(a_1 \neq 0\).
+  Then we have
+  \[
+    p(z) = a_1 z + a_0 = a_1 (z - (-a_0 / a_1))
+  \]
+  and thus the base case holds.
+  Suppose inductively that \cref{d.0.7} is true for some \(n \geq 1\).
+  Then we need to show that \cref{d.0.7} is true for \(n + 1\).
+  Let \(p \in \ps{\C}\) be the function
+  \[
+    \forall z \in \C, p(z) = a_{n + 1} z^{n + 1} + a_n z^n + \cdots + a_1 z + a_0
+  \]
+  where \(\seq{a}{0,,n+1} \in \C\) and \(a_{n + 1} \neq 0\).
+  By \cref{d.4} we know that there exists a \(c_{n + 1} \in \C\) such that \(p(c_{n + 1}) = 0\).
+  By \cref{e.0.3} there exists a polynomial \(q_1 \in \ps{\C}\) such that
+  \[
+    \forall z \in \C, p(z) = q_1(z) (z - c_{n + 1}).
+  \]
+  Since \(a_{n + 1} \neq 0\), we can rewrite the above equation as
+  \[
+    \forall z \in \C, p(z) = a_{n + 1} (z - c_{n + 1}) q_2(z)
+  \]
+  where \(q_2 = \frac{1}{a_{n + 1}} q_1\).
+  Since \(p\) has degree \(n + 1\), we know that \(q_2\) has degree \(n\).
+  Then there exist \(\seq{b}{0,,n-1} \in \C\) such that
+  \[
+    \forall z \in \C, q_2(z) = b_0 + b_1 z + \cdots + b_n z^n.
+  \]
+  Note that we must have \(b_n = 1\), otherwise the \((n + 1)\)th coefficient of \(p\) is \(a_n b_n\) instead of \(a_n\).
+  By induction hypothesis \(q_2\) can be written as
+  \[
+    \forall z \in \C, q_2(z) = (z - c_1) (z - c_2) \cdots (z - c_n)
+  \]
+  where \(\seq{c}{1,,n} \in \C\).
+  Then we have
+  \begin{align*}
+    \forall z \in \C, p(z) & = a_{n + 1} (z - c_{n + 1}) q_2(z)                               \\
+                           & = a_{n + 1} (z - c_1) (z - c_2) \cdots (z - c_n) (z - c_{n + 1})
+  \end{align*}
+  and this closes the induction.
+\end{proof}
+
+\begin{defn}\label{d.0.8}
+  A field is called \textbf{algebraically closed} if it has the property that every polynomial of positive degree with coefficients from that field factors as a product of polynomials of degree \(1\).
+  Thus \cref{d.0.7} asserts that the field of complex numbers is algebraically closed.
+\end{defn}
