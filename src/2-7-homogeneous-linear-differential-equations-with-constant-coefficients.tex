@@ -88,10 +88,131 @@
   \]
   It is easy to show that \(\Dop\) is a linear operator.
   More generally, consider any polynomial over \(\C\) of the form
+  \[
+    p(t) = a_n t^n + a_{n - 1} t^{n - 1} + \cdots + a_1 t + a_0.
+  \]
+  If we define
+  \[
+    p(\Dop) = a_n \Dop^n + a_{n - 1} \Dop^{n - 1} + \cdots + a_1 \Dop + a_0 \IT,
+  \]
+  then \(p(\Dop)\) is a linear operator on \(\cfs[\infty](\R, \C)\).
+  (See \cref{e.0.7,ex:2.7.6}.)
+
+  For any polynomial \(p\) over \(\C\) of positive degree, \(p(\Dop)\) is called a \textbf{differential operator}.
+  The \textbf{order} of the differential operator \(p(\Dop)\) is the degree of the polynomial \(p\).
+
+  Differential operators are useful since they provide us with a means of reformulating a differential equation in the context of linear algebra.
+  Any homogeneous linear differential equation with constant coefficients,
+  \[
+    y^{(n)} + a_{n - 1} y^{(n - 1)} + \cdots + a_1 y^{(1)} + a_0 y = \zv,
+  \]
+  can be rewritten using differential operators as
+  \[
+    \pa{\Dop^{(n)} + a_{n - 1} \Dop^{(n - 1)} + \cdots + a_1 \Dop^{(1)} + a_0 \IT}(y) = \zv.
+  \]
+  Given the differential equation above, the complex polynomial
+  \[
+    p(t) = t^n + a_{n - 1} t^{n - 1} + \cdots + a_1 t + a_0
+  \]
+  is called the \textbf{auxiliary polynomial} associated with the equation.
+  Any homogeneous linear differential equation with constant coefficients can be rewritten as
+  \[
+    p(\Dop)(y) = \zv,
+  \]
+  where \(p(t)\) is the auxiliary polynomial associated with the equation.
+\end{defn}
+
+\begin{thm}\label{2.28}
+  The set of all solutions to a homogeneous linear differential equation with constant coefficients coincides with the null space of \(p(\Dop)\), where \(p(t)\) is the auxiliary polynomial associated with the equation.
+\end{thm}
+
+\begin{proof}[\pf{2.28}]
+  Let
+  \[
+    y^{(n)} + a_{n - 1} y^{(n - 1)} + \cdots + a_1 y^{(1)} + a_0 y = \zv
+  \]
+  be a homogeneous linear differential equation where \(\seq{a}{0,,n-1} \in \C\).
+  By \cref{2.7.5}
+  \[
+    p(t) = t^n + a_{n - 1} t^{n - 1} + \cdots + a_1 t + a_0
+  \]
+  is the auxiliary polynomial associated with the above homogeneous linear differential equation.
+  Then we have
+  \begin{align*}
+         & x \in \cfs[\infty](\R, \C) \text{ is a solution of }                                                \\
+         & y^{(n)} + a_{n - 1} y^{(n - 1)} + \cdots + a_1 y^{(1)} + a_0 y = \zv                                \\
+    \iff & x^{(n)} + a_{n - 1} x^{(n - 1)} + \cdots + a_1 x^{(1)} + a_0 x = \zv &  & \text{(by \cref{2.7.1})}  \\
+    \iff & p(\Dop)(x) = \zv                                                     &  & \text{(by \cref{2.7.5})}  \\
+    \iff & x \in \ns{p(\Dop)}                                                   &  & \text{(by \cref{2.1.10})}
+  \end{align*}
+  and thus \(\set{x \in \cfs[\infty](\R, \C) : x^{(n)} + a_{n - 1} x^{(n - 1)} + \cdots + a_1 x^{(1)} + a_0 x = \zv} = \ns{p(\Dop)}\).
+\end{proof}
+
+\begin{cor}\label{2.7.6}
+  The set of all solutions to a homogeneous linear differential equation with constant coefficients is a subspace of \(\cfs[\infty](\R, \C)\).
+\end{cor}
+
+\begin{proof}[\pf{2.7.6}]
+  By \cref{2.1,2.28} we see that this is true.
+\end{proof}
+
+\begin{defn}\label{2.7.7}
+  In view of \cref{2.7.6}, we call the set of solutions to a homogeneous linear differential equation with constant coefficients the \textbf{solution space} of the equation.
+  A practical way of describing such a space is in terms of a basis.
 \end{defn}
 
 \exercisesection
 
+\setcounter{ex}{4}
 \begin{ex}\label{ex:2.7.5}
   Show that \(\cfs[\infty](\R, \C)\) is a subspace of \(\fs(\R, \C)\).
 \end{ex}
+
+\begin{proof}[\pf{ex:2.7.5}]
+  Clearly we have \(\cfs[\infty](\R, \C) \subseteq \fs(\R, \C)\).
+  Since the zero function \(\zv\) is continously differentiable and \(\zv' = \zv\), we know that \(\zv \in \cfs[\infty](\R, \C)\).
+  Thus by \cref{ex:1.3.18} we only need to show that \(cf + g \in \cfs[\infty](\R, \C)\) for any \(f, g \in \cfs[\infty](\R, \C)\) and \(c \in \C\).
+  Since
+  \[
+    \forall k \in \N, (cf + g)^{(k)} = c f^{(k)} + g^{(k)},
+  \]
+  we see that \(cf + g \in \cfs[\infty](\R, \C)\).
+\end{proof}
+
+\begin{ex}\label{ex:2.7.6}
+  \begin{enumerate}
+    \item Show that \(\Dop : \cfs[\infty](\R, \C) \to \cfs[\infty](\R, \C)\) is a linear operator.
+    \item Show that any differential operator is a linear operator on \(\cfs[\infty](\R, \C)\).
+  \end{enumerate}
+\end{ex}
+
+\begin{proof}[\pf{ex:2.7.6}(a)]
+  Let \(f, g \in \cfs[\infty](\R, \C)\) and let \(c \in \C\).
+  Since
+  \begin{align*}
+    \Dop(cf + g) & = (cf + g)'            &  & \text{(by \cref{2.7.5})} \\
+                 & = c f' + g'                                          \\
+                 & = c \Dop(f) + \Dop(g), &  & \text{(by \cref{2.7.5})}
+  \end{align*}
+  by \cref{2.1.2}(b) we know that \(\Dop \in \ls(\cfs[\infty](\R, \C))\).
+\end{proof}
+
+\begin{proof}[\pf{ex:2.7.6}(b)]
+  Let
+  \[
+    p(\Dop) = a_n \Dop^n + \cdots + a_1 \Dop + a_0 \IT
+  \]
+  be a differential operator where \(\seq{a}{0,,n} \in \C\).
+  Let \(f, g \in \cfs[\infty](\R, \C)\) and let \(c \in \C\).
+  Since
+  \begin{align*}
+     & p(\Dop)(cf + g)                                                                                                                     \\
+     & = \pa{a_n \Dop^n + \cdots + a_1 \Dop + a_0 \IT}(cf + g)                                               &  & \text{(by \cref{2.7.5})} \\
+     & = a_n \Dop^n(cf + g) + \cdots + a_1 \Dop(cf + g) + a_0 \IT(cf + g)                                    &  & \text{(by \cref{2.2.5})} \\
+     & = a_n (cf + g)^{(n)} + \cdots + a_1 (cf + g)^{(1)} + a_0 (cf + g)                                                                   \\
+     & = c a_n f^{(n)} + a_n g^{(n)} + \cdots + c a_1 f^{(1)} + a_1 g^{(1)} + c a_0 f + a_0 g                                              \\
+     & = c \pa{a_n f^{(n)} + \cdots + a_1 f^{(1)} + a_0 f} + \pa{a_n g^{(n)} + \cdots + a_1 g^{(1)} + a_0 g}                               \\
+     & = c p(\Dop)(f) + p(\Dop)(g),                                                                          &  & \text{(by \cref{2.7.5})}
+  \end{align*}
+  by \cref{2.1.2}(b) we know that \(p(\Dop) \in \ls(\cfs[\infty](\R, \C))\).
+\end{proof}
