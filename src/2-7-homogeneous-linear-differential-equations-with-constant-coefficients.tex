@@ -161,6 +161,112 @@
   A practical way of describing such a space is in terms of a basis.
 \end{defn}
 
+\begin{defn}\label{2.7.8}
+  Let \(c = a + ib\) be a complex number with real part \(a\) and imaginary part \(b\).
+  Define
+  \[
+    e^c = e^a (\cos(b) + i \sin(b)).
+  \]
+  The special case
+  \[
+    e^{ib} = \cos(b) + i \sin(b)
+  \]
+  is called \textbf{Euler's formula}.
+  Clearly, if \(c\) is real (\(b = 0\)), then we obtain the usual result:
+  \(e^c = e^a\).
+  We can show by the use of trigonometric identities that
+  \[
+    e^{c + d} = e^c e^d \quad \text{and} \quad e^{-c} = \frac{1}{e^c}
+  \]
+  for any complex number \(c\) and \(d\).
+\end{defn}
+
+\begin{defn}\label{2.7.9}
+  A function \(f : \R \to \C\) defined by \(f(t) = e^{ct}\) for a fixed complex number \(c\) is called an \textbf{exponential function}.
+\end{defn}
+
+\begin{thm}\label{2.29}
+  For any exponential function \(f(t) = e^{ct}\), \(f'(t) = c e^{ct}\).
+\end{thm}
+
+\begin{proof}[\pf{2.29}]
+  We have
+  \begin{align*}
+    f'(t) & = (e^{ct})'                                                                                                     \\
+          & = (e^{\Re(ct) + i \Im(ct)})'                                                      &  & \text{(by \cref{2.7.2})} \\
+          & = (e^{\Re(ct)} \cdot (\cos(\Im(ct)) + i \cdot \sin(\Im(ct))))'                    &  & \text{(by \cref{2.7.8})} \\
+          & = (e^{\Re(ct)} \cdot \cos(\Im(ct)) + i \cdot e^{\Re(ct)} \cdot \sin(\Im(ct)))'                                  \\
+          & = (e^{\Re(ct)} \cdot \cos(\Im(ct)))' + i \cdot (e^{\Re(ct)} \cdot \sin(\Im(ct)))' &  & \text{(by \cref{2.7.3})} \\
+          & = e^{\Re(ct)} \cdot (\Re(ct))' \cdot \cos(\Im(ct))                                                              \\
+          & \quad - e^{\Re(ct)} \cdot \sin(\Im(ct)) \cdot (\Im(ct))'                                                        \\
+          & \quad + i \cdot e^{\Re(ct)} \cdot (\Re(ct))' \cdot \sin(\Im(ct))                                                \\
+          & \quad + i \cdot e^{\Re(ct)} \cdot \cos(\Im(ct)) \cdot (\Im(ct))'                                                \\
+          & = e^{\Re(ct)} \cdot \Re(c) \cdot \cos(\Im(ct))                                    &  & \text{(by \cref{2.7.3})} \\
+          & \quad - e^{\Re(ct)} \cdot \sin(\Im(ct)) \cdot \Im(c)                              &  & (\Re(ct) = t \Re(c))     \\
+          & \quad + i \cdot e^{\Re(ct)} \cdot \Re(c) \cdot \sin(\Im(ct))                      &  & (\Im(ct) = t \Im(c))     \\
+          & \quad + i \cdot e^{\Re(ct)} \cdot \cos(\Im(ct)) \cdot \Im(c)                                                    \\
+          & = e^{\Re(ct)} \cdot \Re(c) \cdot (\cos(\Im(ct)) + i \sin(\Im(ct)))                                              \\
+          & \quad + e^{\Re(ct)} \cdot \Im(c) \cdot (i \cos(\Im(ct)) - \sin(\Im(ct)))                                        \\
+          & = e^{\Re(ct)} \cdot \Re(c) \cdot (\cos(\Im(ct)) + i \sin(\Im(ct)))                                              \\
+          & \quad + e^{\Re(ct)} \cdot i \cdot \Im(c) \cdot (\cos(\Im(ct)) + i \sin(\Im(ct)))                                \\
+          & = e^{\Re(ct)} \cdot (\Re(c) + i \Im(c)) \cdot (\cos(\Im(ct)) + i \sin(\Im(ct)))                                 \\
+          & = c \cdot e^{ct}.                                                                 &  & \text{(by \cref{2.7.8})}
+  \end{align*}
+\end{proof}
+
+\begin{thm}\label{2.30}
+  The solution space for
+  \[
+    y' + a_0 y = \zv
+  \]
+  (homogeneous linear differential equation with order \(1\)) is of dimension \(1\) and has \(\set{e^{-a_0 t}}\) as a basis.
+\end{thm}
+
+\begin{proof}[\pf{2.30}]
+  Since
+  \begin{align*}
+    (e^{-a_0 t})' + a_0 e^{-a_0 t} & = -a_0 e^{-a_0 t} + a_0 e^{-a_0 t} &  & \text{(by \cref{2.29})} \\
+                                   & = 0,
+  \end{align*}
+  we know that \(e^{-a_0 t}\) is a solution of \(y' + a_0 y = \zv\).
+  Suppose that \(x(t)\) is any solution to \(y' + a_0 y = \zv\).
+  Then
+  \[
+    \forall t \in \R, x'(t) = -a_0 x(t).
+  \]
+  Define
+  \[
+    \forall t \in \R, z(t) = e^{a_0 t} x(t).
+  \]
+  Differentiating \(z\) yields
+  \[
+    \forall t \in \R, z'(t) = (e^{a_0 t})' x(t) + e^{a_0 t} x'(t) = a_0 e^{a_0 t} x(t) - a_0 e^{a_0 t} x(t) = 0.
+  \]
+  (Notice that the familiar product rule for differentiation holds for complex-valued functions of a real variable.
+  A justification of this involves a lengthy, although direct, computation.)
+
+  Since \(z'\) is identically zero, \(z\) is a constant function.
+  (Again, this fact, well known for real-valued functions, is also true for complex-valued functions.
+  The proof, which relies on the real case, involves looking separately at the real and imaginary parts of \(z\).)
+  Thus there exists a complex number \(k\) such that
+  \[
+    \forall t \in \R, z(t) = e^{a_0 t} x(t) = k
+  \]
+  So
+  \[
+    x(t) = k e^{-a_0 t}.
+  \]
+  We conclude that any solution to \(y' + a_0 y = \zv\) is a linear combination of \(e^{-a_0 t}\).
+\end{proof}
+
+\begin{cor}\label{2.7.10}
+  For any complex number \(c\), the null space of the differential operator \(\Dop - c \IT\) has \(\set{e^{ct}}\) as a basis.
+\end{cor}
+
+\begin{proof}[\pf{2.7.10}]
+  This is simply another way of stating \cref{2.30}.
+\end{proof}
+
 \exercisesection
 
 \setcounter{ex}{4}

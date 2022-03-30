@@ -292,7 +292,8 @@
   Because the last expression approaches infinity as \(s\) approaches infinity, the set \(\set{\abs{p(z)} : (z \in \C) \land (\abs{p(z)} \leq m + 1)}\) is non-empty and closed.
   Since \(p\) is continuous, we know that the set \(D = \set{z \in \C : \abs{p(z)} \leq m + 1}\) is also closed.
   It follows that \(m\) is the greatest lower bound of \(\set{\abs{p(z)} : z \in D}\).
-  Because \(D\) is closed and bounded and \(p\) is continuous, there exists \(z_0\) in \(D\) such that \(\abs{p(z_0)} = m\).
+  Because \(D \subseteq \C\) is closed, \(\C\) is compact and \(\abs{p}\) is continuous, we know that \(\abs{p}\) is bounded.
+  Since the codomain of \(\abs{p}\) is \(\R\), by maximum principle there exists \(z_0\) in \(D\) such that \(\abs{p(z_0)} = m\).
   We want to show that \(m = 0\).
   We argue by contradiction.
 
