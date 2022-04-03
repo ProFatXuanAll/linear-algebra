@@ -267,6 +267,209 @@
   This is simply another way of stating \cref{2.30}.
 \end{proof}
 
+\begin{thm}\label{2.31}
+  Let \(p\) be the auxiliary polynomial for a homogeneous linear differential equation with constant coefficients.
+  For any complex number \(c\), if \(c\) is a zero of \(p\), then \(e^{ct}\) is a solution to the differential equation.
+\end{thm}
+
+\begin{proof}[\pf{2.31}]
+  Given an \(n\)th order homogeneous linear differential equation with constant coefficients,
+  \[
+    y^{(n)} + a_{n - 1} y^{(n - 1)} + \cdots + a_1 y^{(1)} + a_0 y = \zv,
+  \]
+  its auxiliary polynomial
+  \[
+    p(t) = t^n + a_{n - 1} t^{n - 1} + \cdots + a_1 t + a_0
+  \]
+  factors into a product of polynomials of degree \(1\), that is,
+  \[
+    p(t) = (t - c_1) (t - c_2) \cdots (t - c_n),
+  \]
+  where \(\seq{c}{1,,n}\) are (not necessarily distinct) complex numbers.
+  (This follows from the fundamental theorem of algebra, see \cref{d.0.7}.)
+  Thus
+  \[
+    p(\Dop) = (\Dop - c_1 \IT) (\Dop - c_2 \IT) \cdots (\Dop - c_n \IT).
+  \]
+  The operators \(\Dop - c_i \IT\) commute, and so, by \cref{ex:2.7.9}, we have that
+  \[
+    \ns{\Dop - c_i \IT} \subseteq \ns{p(\Dop)} \quad \text{for all } i \in \set{1, \dots, n}.
+  \]
+  Since \(\ns{p(\Dop)}\) coincides with the solution space of the given differential equation, we conclude by \cref{2.7.10} that \cref{2.31} is true.
+\end{proof}
+
+\begin{lem}\label{2.7.11}
+  The differential operator \(\Dop - c \IT : \cfs[\infty](\R, \C) \to \cfs[\infty](\R, \C)\) is onto for any complex number \(c\).
+\end{lem}
+
+\begin{proof}[\pf{2.7.11}]
+  Let \(v \in \cfs[\infty](\R, \C)\).
+  We wish to find a \(u \in \cfs[\infty](\R, \C)\) such that \((\Dop - c \IT) u = v\).
+  Let \(w(t) = v(t) e^{-ct}\) for \(t \in \R\).
+  Clearly, \(w \in \cfs[\infty](\R, \C)\) because both \(v\) and \(e^{-ct}\) lie in \(\cfs[\infty](\R, \C)\).
+  Let \(w_1\) and \(w_2\) be the real and imaginary parts of \(w\).
+  Then \(w_1\) and \(w_2\) are continuous because they are differentiable.
+  Hence they have antiderivatives, say, \(W_1\) and \(W_2\), respectively.
+  Let \(W : \R \to \C\) be defined by
+  \[
+    \forall t \in \R, W(t) = W_1(t) + i W_2(t).
+  \]
+  Then \(W \in \cfs[\infty](\R, \C)\), and the real and imaginary parts of \(W\) are \(W_1\) and \(W_2\), respectively.
+  Furthermore, \(W' = w\).
+  Finally, let \(u : \R \to \C\) be defined by \(u(t) = W(t) e^{ct}\) for \(t \in \R\).
+  Clearly \(u \in \cfs[\infty](\R, \C)\), and since
+  \begin{align*}
+    (\Dop - c \IT) u(t) & = u'(t) - cu(t)                                                             \\
+                        & = W'(t) e^{ct} + W(t) c e^{ct} - c W(t) e^{ct} &  & \text{(by \cref{2.29})} \\
+                        & = w(t) e^{ct}                                                               \\
+                        & = v(t) e^{-ct} e^{ct}                                                       \\
+                        & = v(t),
+  \end{align*}
+  we have \((\Dop - c \IT) u = v\).
+\end{proof}
+
+\begin{lem}\label{2.7.12}
+  Let \(\V\) be a vector space over \(\F\), and suppose that \(\T\) and \(\U\) are linear operators on \(\V\) such that \(\U\) is onto and the null spaces of \(\T\) and \(\U\) are finite-dimensional.
+  Then the null space of \(\T \U\) is finite-dimensional, and
+  \[
+    \dim(\ns{\T \U}) = \dim(\ns{\T}) + \dim(\ns{\U}).
+  \]
+\end{lem}
+
+\begin{proof}[\pf{2.7.12}]
+  Let \(p = \dim(\ns{\T})\), \(q = \dim(\ns{\U})\), and \(\set{\seq{u}{1,,p}}\) and \(\set{\seq{v}{1,,q}}\) be bases for \(\ns{\T}\) and \(\ns{\U}\) over \(\F\), respectively.
+  Since \(\U\) is onto, we can choose for each \(i \in \set{1, \dots, p}\) a vector \(w_i \in \V\) such that \(\U(w_i) = u_i\).
+  Note that the \(w_i\)'s are distinct.
+  Furthermore, for any \(i\) and \(j\), \(w_i \neq v_j\), for otherwise \(u_i = \U(w_i) = \U(v_j) = \zv\) --- a contradiction.
+  Hence the set
+  \[
+    \beta = \set{\seq{w}{1,,p}, \seq{v}{1,,q}}
+  \]
+  contains \(p + q\) distinct vectors.
+  To complete the proof of the lemma, it suffices to show that \(\beta\) is a basis for \(\ns{\T \U}\) over \(\F\).
+
+  We first show that \(\beta\) generates \(\ns{\T \U}\).
+  Since for any \(w_i\) and \(v_j\) in \(\beta\), \(\T \U(w_i) = \T(u_i) = \zv\) and \(\T \U(v_j) = \T(\zv) = \zv\), it follows that \(\beta \subseteq \ns{\T \U}\).
+  Now suppose that \(v \in \ns{\T \U}\).
+  Then \(\zv = \T \U(v) = \T(\U(v))\).
+  Thus \(\U(v) \in \ns{\T}\).
+  So there exist scalars \(\seq{a}{1,,p} \in \F\) such that
+  \begin{align*}
+    \U(v) & = \seq[+]{a,u}{1,,p}                 \\
+          & = a_1 \U(w_1) + \cdots + a_p \U(w_p) \\
+          & = \U(\seq[+]{a,w}{1,,p}).
+  \end{align*}
+  Hence
+  \[
+    \U(v - (\seq[+]{a,w}{1,,p})) = \zv.
+  \]
+  Consequently, \(v - (\seq[+]{a,w}{1,,p})\) lies in \(\ns{\U}\).
+  It follows that there exist scalars \(\seq{b}{1,,q} \in \F\) such that
+  \[
+    v - (\seq[+]{a,w}{1,,p}) = \seq[+]{b,v}{1,,q}
+  \]
+  or
+  \[
+    v = \seq[+]{a,w}{1,,p} + \seq[+]{b,v}{1,,q}.
+  \]
+  Therefore \(\beta\) spans \(\ns{\T \U}\).
+
+  To prove that \(\beta\) is linearly independent, let \(\seq{a}{1,,p}, \seq{b}{1,,q} \in \F\) be any scalars such that
+  \[
+    \seq[+]{a,w}{1,,p} + \seq[+]{b,v}{1,,q} = \zv.
+  \]
+  Applying \(\U\) to both sides of the above equation, we obtain
+  \[
+    \seq[+]{a,u}{1,,p} = \zv.
+  \]
+  Since \(\set{\seq{u}{1,,p}}\) is linearly independent, the \(a_i\)'s are all zero.
+  Thus the original equation reduces to
+  \[
+    \seq[+]{b,v}{1,,q} = \zv.
+  \]
+  Again, the linear independence of \(\set{\seq{v}{1,,q}}\) implies that the \(b_i\)'s are all zero.
+  We conclude that \(\beta\) is a basis for \(\ns{\T \U}\) over \(\F\).
+  Hence \(\ns{\T \U}\) is finite-dimensional, and \(\dim(\ns{\T \U}) = p + q = \dim(\ns{\T}) + \dim(\ns{\U})\).
+\end{proof}
+
+\begin{thm}\label{2.32}
+  For any differential operator \(p(\Dop)\) of order \(n\), the null space of \(p(\Dop)\) is an \(n\)-dimensional subspace of \(\cfs[\infty](\R, \C)\).
+\end{thm}
+
+\begin{proof}[\pf{2.32}]
+  The proof is by mathematical induction on the order of the differential operator \(p(\Dop)\).
+  The first-order case coincides with \cref{2.30}.
+  For some integer \(n > 1\), suppose that \cref{2.32} holds for any differential operator of order less than \(n\), and consider a differential operator \(p(\Dop)\) of order \(n\).
+  The polynomial \(p\) can be factored into a product of two polynomials as follows:
+  \[
+    \forall t \in \R, p(t) = q(t) (t - c),
+  \]
+  where \(q\) is a polynomial of degree \(n - 1\) and \(c\) is a complex number.
+  Thus the given differential operator may be rewritten as
+  \[
+    p(\Dop) = q(\Dop) (\Dop - c \IT).
+  \]
+  Now, by \cref{2.7.11}, \(\Dop - c \IT\) is onto, and by \cref{2.7.10}, \(\dim(\ns{\Dop - c \IT}) = 1\).
+  Also, by the induction hypothesis, \(\dim(\ns{q(\Dop)}) = n - 1\).
+  Thus, by \cref{2.7.12} we conclude that
+  \[
+    \dim(\ns{p(\Dop)}) = \dim(\ns{q(\Dop)}) + \dim(\ns{\Dop - c \IT}) = (n - 1) + 1 = n.
+  \]
+\end{proof}
+
+\begin{cor}\label{2.7.13}
+  The solution space of any \(n\)th-order homogeneous linear differential equation with constant coefficients is an \(n\)-dimensional subspace of \(\cfs[\infty](\R, \C)\).
+\end{cor}
+
+\begin{proof}[\pf{2.7.13}]
+  By \cref{2.28,2.32} we conclude that \cref{2.7.13} is true.
+\end{proof}
+
+\begin{note}
+  \cref{2.7.13} reduces the problem of finding all solutions to an \(n\)th-order homogeneous linear differential equation with constant coefficients to finding a set of \(n\) linearly independent solutions to the equation.
+  By the results of \cref{ch:1}, any such set must be a basis for the solution space.
+\end{note}
+
+\begin{thm}\label{2.33}
+  Given \(n\) distinct complex numbers \(\seq{c}{1,,n}\), the set of exponential functions \(\set{e^{c_1 t}, \dots, e^{c_n t}}\) is linearly independent.
+\end{thm}
+
+\begin{proof}[\pf{2.33}]
+  We use induction on \(n\).
+  For \(n = 1\), let \(b_1, c_1 \in \C\) such that
+  \[
+    \forall t \in \R, b_1 e^{c_1 t} = 0.
+  \]
+  By substituting \(t\) with \(0\) we have \(b_1 e^{c_1 0} = b_1 e^0 = b_1 = 0\).
+  Thus by \cref{1.5.3} we know that the set \(\set{e^{c_1 t}}\) is linearly independent and the base case holds.
+  Suppose inductively that \cref{2.33} is true for some \(n \geq 1\).
+  We want to show that it is also true for \(n + 1\).
+  Let \(\seq{c}{1,,n+1} \in \C\) be distinct and let \(\seq{b}{1,,n+1} \in \C\) such that
+  \[
+    \forall t \in \R, \sum_{i = 1}^{n + 1} b_i e^{c_i t} = 0.
+  \]
+  By applying the operator \(\Dop - c_{n + 1} \IT\) we have
+  \begin{align*}
+             & \forall t \in \R, \sum_{i = 1}^{n + 1} b_i c_i e^{c_i t} - \sum_{i = 1}^{n + 1} b_i c_{n + 1} e^{c_i t} = 0                                             \\
+    \implies & \forall t \in \R, \sum_{i = 1}^n b_i c_i e^{c_i t} + b_{n + 1} c_{n + 1} e^{c_{n + 1} t}                                                                \\
+             & - \sum_{i = 1}^n b_i c_{n + 1} e^{c_i t} - b_{n + 1} c_{n + 1} e^{c_{n + 1} t} = 0                                                                      \\
+    \implies & \forall t \in \R, \sum_{i = 1}^n b_i c_i e^{c_i t} - \sum_{i = 1}^n b_i c_{n + 1} e^{c_i t} = 0                                                         \\
+    \implies & \forall t \in \R, \sum_{i = 1}^n b_i (c_i - c_{n + 1}) e^{c_i t} = 0                                                                                    \\
+    \implies & \seq[=]{b}{1,,n} = 0                                                                                        &  & \text{(by induction hypothesis)}       \\
+    \implies & \forall t \in \R, \sum_{t = 1}^{n + 1} b_i e^{c_i t} = b_{n + 1} e^{c_{n + 1} t} = 0                                                                    \\
+    \implies & b_{n + 1} = 0.                                                                                              &  & \text{(substituting \(t\) with \(0\))}
+  \end{align*}
+  Thus by \cref{1.5.3} we know that the set \(\set{e^{c_1 t}, \dots, e^{c_{n + 1} t}}\) is linearly independent and this closes the induction.
+\end{proof}
+
+\begin{cor}\label{2.7.14}
+  For any \(n\)th-order homogeneous linear differential equation with constant coefficients, if the auxiliary polynomial has \(n\) distinct zeros \(\seq{c}{1,,n}\), then \(\set{e^{c_1 t}, \dots, e^{c_n t}}\) is a basis for the solution space of the differential equation.
+\end{cor}
+
+\begin{proof}[\pf{2.7.14}]
+  By \cref{2.7.13,2.33} we see that this is true.
+\end{proof}
+
 \exercisesection
 
 \setcounter{ex}{4}
@@ -321,4 +524,47 @@
      & = c p(\Dop)(f) + p(\Dop)(g),                                                                          &  & \text{(by \cref{2.7.5})}
   \end{align*}
   by \cref{2.1.2}(b) we know that \(p(\Dop) \in \ls(\cfs[\infty](\R, \C))\).
+\end{proof}
+
+\begin{ex}\label{ex:2.7.7}
+  Prove that if \(\set{x, y}\) is a basis for a vector space \(\V\) over \(\C\), then so is
+  \[
+    \set{\frac{1}{2} (x + y), \frac{1}{2i} (x - y)}.
+  \]
+\end{ex}
+
+\begin{proof}[\pf{ex:2.7.7}]
+  Let \(v \in \V\).
+  By \cref{1.6.1} there exist \(\seq{c}{1,2} \in \C\) such that \(v = c_1 x + c_2 y\).
+  Then we have
+  \begin{align*}
+    v & = c_1 x + c_2 y                                                                      \\
+      & = \frac{c_1}{2} x + \frac{c_2}{2} y + \frac{c_1 i}{2 i} x - \frac{-c_2 i}{2 i} y     \\
+      & \quad + \frac{c_2}{2} x + \frac{c_1}{2} y - \frac{c_2 i}{2 i} x - \frac{c_1 i}{2i} y \\
+      & = \pa{\frac{c_1 + c_2}{2}} (x + y) + i \pa{\frac{c_1 - c_2}{2i}} (x - y).
+  \end{align*}
+  Thus by \cref{1.6.15}(a) we know that \(\set{\frac{1}{2} (x + y), \frac{1}{2i} (x - y)}\) is a basis for \(\V\) over \(\C\).
+\end{proof}
+
+\begin{ex}\label{ex:2.7.9}
+  Suppose that \(\set{\seq{\U}{1,,n}}\) is a collection of pairwise commutative linear operators on a vector space \(\V\) over \(\F\)
+  (i.e., operators such that \(\U_i \U_j = \U_j \U_i\) for all \(i, j \in \set{1, \dots, n}\)).
+  Prove that, for any \(i \in \set{1, \dots, n}\),
+  \[
+    \ns{\U_i} \subseteq \ns{\U_1 \cdots \U_n}.
+  \]
+\end{ex}
+
+\begin{proof}[\pf{ex:2.7.9}]
+  Let \(i \in \set{1, \dots, n}\) and let \(x \in \ns{\U_i}\).
+  Then we have
+  \begin{align*}
+             & \U_i(x) = \zv                                                                   &  & \text{(by \cref{2.1.10})}     \\
+    \implies & (\U_1 \cdots \U_n)(x) = (\U_1 \cdots \U_{i - 1} \U_{i + 1} \cdots \U_n \U_i)(x) &  & \text{(pairwise commutative)} \\
+             & = (\U_1 \cdots \U_{i - 1} \U_{i + 1} \cdots \U_n)(\U_i(x))                                                         \\
+             & = (\U_1 \cdots \U_{i - 1} \U_{i + 1} \cdots \U_n)(\zv)                                                             \\
+             & = \zv                                                                           &  & \text{(by \cref{2.1.2}(a))}   \\
+    \implies & x \in \ns{\U_1 \cdots \U_n}                                                     &  & \text{(by \cref{2.1.10})}
+  \end{align*}
+  and thus \(\ns{\U_i} \subseteq \ns{\U_1 \cdots \U_n}\).
 \end{proof}
