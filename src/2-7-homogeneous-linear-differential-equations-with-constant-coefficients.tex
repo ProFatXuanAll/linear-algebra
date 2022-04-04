@@ -769,3 +769,119 @@
   \end{align*}
   Thus \(z + y\) is a solution to the nonhomogeneous linear differential equation with constant coefficients.
 \end{proof}
+
+\begin{ex}\label{ex:2.7.14}
+  Given any \(n\)th-order homogeneous linear differential equation with constant coefficients, prove that, for any solution \(x\), if there exists a \(t_0 \in \R\) such that \(x(t_0) = x'(t_0) = \cdots = x^{(n - 1)}(t_0) = 0\), then \(x = 0\) (the zero function).
+\end{ex}
+
+\begin{proof}[\pf{ex:2.7.14}]
+  Let \(p\) be the auxiliary polynomial of the homogeneous linear differential equation with order \(n\).
+  We use induction on \(n\).
+  For \(n = 1\), we have
+  \begin{align*}
+             & \exists c \in \C : \forall t \in \R, p(t) = t - c       &  & \text{(by \cref{d.0.7})}  \\
+    \implies & \exists c \in \C : e^{ct} \in \ns{p(\Dop)}              &  & \text{(by \cref{2.31})}   \\
+    \implies & \exists c, k \in \C : \forall t \in \R, x(t) = k e^{ct} &  & \text{(by \cref{2.7.13})} \\
+    \implies & \exists c, k \in \C : \begin{dcases}
+                                       0 = x(t_0) = k e^{c t_0} \\
+                                       0 = x'(t_0) = k c e^{c t_0}
+                                     \end{dcases}                                       \\
+    \implies & x(t_0) = 0                                              &  & (e^{c t_0} \neq 0)
+  \end{align*}
+  and thus the base case holds.
+  Suppose inductively that \cref{ex:2.7.14} is true for some \(n \geq 1\).
+  We need to show that for \(n + 1\) \cref{ex:2.7.14} is also true.
+  Let \(p\) be of order \(n + 1\).
+  By \cref{d.0.7} we know that there exist a polynomial \(q\) with order \(n\) and a \(c \in \C\) such that
+  \[
+    \forall t \in \R, p(t) = q(t) (t - c).
+  \]
+  Let \(z = q(\Dop)(x)\).
+  Since
+  \begin{align*}
+    (\Dop - c \IT)(z) & = (\Dop - c \IT)(q(\Dop)(x))                                   \\
+                      & = 0                          &  & \text{(\(x\) is a solution)}
+  \end{align*}
+  we know that \(z \in \ns{\Dop - c \IT}\).
+  Since
+  \begin{align*}
+    z(t_0) & = (q(\Dop)(x))(t_0)                                                  \\
+           & = 0                        &  & (x(t_0) = \cdots = x^{(n)}(t_0) = 0) \\
+           & = ((\Dop - c \IT)(z))(t_0) &  & (z \in \ns{\Dop - c \IT})            \\
+           & = z'(t_0) - c z(t_0)                                                 \\
+           & = z'(t_0)                  &  & (z(t_0) = 0)
+  \end{align*}
+  and \(\Dop - c \IT\) has order \(1\), by induction hypothesis we know that \(z = \zv\).
+  Thus we have \(z = q(\Dop)(x) = \zv\).
+  Since \(q(\Dop)\) has order \(n\), by induction hypothesis we know that \(x = \zv\).
+\end{proof}
+
+\begin{ex}\label{ex:2.7.15}
+  Let \(\V\) be the solution space of an \(n\)th-order homogeneous linear differential equation with constant coefficients.
+  Fix \(t_0 \in \R\), and define a mapping \(\Phi : \V \to \C^n\) by
+  \[
+    \Phi(x) = \begin{pmatrix}
+      x(t_0)  \\
+      x'(t_0) \\
+      \vdots  \\
+      x^{(n - 1)}(t_0)
+    \end{pmatrix} \text{ for each } x \in \V.
+  \]
+  \begin{enumerate}
+    \item Prove that \(\Phi\) is linear and its null space is the zero subspace of \(\V\).
+          Deduce that \(\Phi\) is an isomorphism.
+    \item Prove the following:
+          For any \(n\)th-order homogeneous linear differential equation with constant coefficients, any \(t_0 \in \R\), and any complex numbers \(\seq{c}{0,,n-1}\) (not necessarily distinct), there exists exactly one solution, \(x\), to the given differential equation such that \(x(t_0) = c_0\) and \(x^{(k)}(t_0) = c_k\) for \(k \in \set{1, \dots, n - 1}\).
+  \end{enumerate}
+\end{ex}
+
+\begin{proof}[\pf{ex:2.7.15}(a)]
+  Let \(x, y \in \V\) and let \(c \in \C\).
+  Since
+  \begin{align*}
+    \Phi(cx + y) & = \begin{pmatrix}
+                       (cx + y)(t_0)  \\
+                       (cx + y)'(t_0) \\
+                       \vdots         \\
+                       (cx + y)^{(n - 1)}(t_0)
+                     \end{pmatrix}              \\
+                 & = \begin{pmatrix}
+                       cx(t_0) + y(t_0)   \\
+                       cx'(t_0) + y'(t_0) \\
+                       \vdots             \\
+                       cx^{(n - 1)}(t_0) + y^{(n - 1)}(t_0)
+                     \end{pmatrix} \\
+                 & = c \begin{pmatrix}
+                         x(t_0)  \\
+                         x'(t_0) \\
+                         \vdots  \\
+                         x^{(n - 1)}(t_0)
+                       \end{pmatrix} + \begin{pmatrix}
+                                         y(t_0)  \\
+                                         y'(t_0) \\
+                                         \vdots  \\
+                                         y^{(n - 1)}(t_0)
+                                       \end{pmatrix}   \\
+                 & = c \Phi(x) + \Phi(y),
+  \end{align*}
+  by \cref{2.1.2}(b) we know that \(\Phi \in \ls(\V, \C^n)\).
+  By \cref{2.1.2}(a) and \cref{ex:2.7.14} we know that \(\Phi(x) = \zv_{\C^n}\) iff \(x\) is the zero function, thus by \cref{2.4} we know that \(\Phi\) is one-to-one.
+  By \cref{2.32} we know that \(\dim(\V) = n = \dim(\C^n)\), thus by \cref{2.5,2.4.8} we know that \(\Phi\) is an isomorphism.
+\end{proof}
+
+\begin{proof}[\pf{ex:2.7.15}(b)]
+  Since \(\Phi\) is an isomorphism (by \cref{ex:2.7.15}(a)), we know that there exists an \(x \in \V\) such that
+  \[
+    \Phi(x) = \begin{pmatrix}
+      x(t_0)  \\
+      x'(t_0) \\
+      \vdots  \\
+      x^{(n - 1)}(t_0)
+    \end{pmatrix} = \begin{pmatrix}
+      c_0    \\
+      c_1    \\
+      \vdots \\
+      c_{n - 1}
+    \end{pmatrix}.
+  \]
+\end{proof}
