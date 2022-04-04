@@ -470,6 +470,97 @@
   By \cref{2.7.13,2.33} we see that this is true.
 \end{proof}
 
+\begin{lem}
+  For a given complex number \(c\) and positive integer \(n\), suppose that \((t - c)^n\) is the auxiliary polynomial of a homogeneous linear differential equation with constant coefficients.
+  Then the set
+  \[
+    \beta = \set{e^{ct}, t e^{ct}, \dots, t^{n - 1} e^{ct}}
+  \]
+  is a basis for the solution space of the equation.
+\end{lem}
+
+\begin{proof}[\pf{2.7.14}]
+  Since the solution space is \(n\)-dimensional, we need only show that \(\beta\) is linearly independent and lies in the solution space.
+  First, observe that for any positive integer \(k\),
+  \[
+    (\Dop - c \IT)(t^k e^{ct}) = k t^{k - 1} e^{ct} + c t^k e^{ct} - c t^k e^{ct} = k t^{k - 1} e^{ct}.
+  \]
+  Hence for \(k < n\),
+  \[
+    (\Dop - c \IT)^n (t^k e^{ct}) = \zv.
+  \]
+  It follows that \(\beta\) is a subset of the solution space.
+
+  We next show that \(\beta\) is linearly independent.
+  Consider any linear combination of vectors in \(\beta\) such that
+  \[
+    b_0 e^{ct} + b_1 t e^{ct} + \cdots + b_{n - 1} t^{n - 1} e^{ct} = \zv
+  \]
+  for some scalars \(\seq{b}{0,,n-1}\).
+  Dividing by \(e^{ct}\) in the above equation, we obtain
+  \[
+    b_0 + b_1 t + \cdots + b_{n - 1} t^{n - 1} = \zv.
+  \]
+  Thus the left side of the above equation must be the zero polynomial function.
+  We conclude that the coefficients \(\seq{b}{0,,n-1}\) are all zero.
+  So \(\beta\) is linearly independent and hence is a basis for the solution space.
+\end{proof}
+
+\begin{thm}\label{2.34}
+  Given a homogeneous linear differential equation with constant coefficients and auxiliary polynomial
+  \[
+    p(\Dop) = (t - c_1)^{n_1} (t - c_2)^{n_2} \cdots (t - c_k)^{n_k}
+  \]
+  where \(\seq{n}{1,,k}\) are positive integers and \(\seq{c}{1,,k}\) are distinct complex numbers, the following set is a basis for the solution space of the equation:
+  \[
+    \beta = \set{e^{c_1 t}, t e^{c_1 t}, \dots, t^{n_1 - 1} e^{c_1 t}, \dots, e^{c_k t}, t e^{c_k t}, \dots, t^{n_k - 1} e^{c_k t}}.
+  \]
+\end{thm}
+
+\begin{proof}[\pf{2.34}]
+  For any \(k \in \Z^+\), let \(\beta_k = \set{e^{c_k t}, \dots, t^{n_k - 1} e^{c_k t}}\).
+  Observe that \(\beta = \bigcup_{i = 1}^k \beta_i\) and \(\#(\beta) = \seq[+]{n}{1,,k} = \sum_{i = 1}^k \#(\beta_i)\).
+  Thus by \cref{2.7.13} we only need to show that \(\bigcup_{i = 1}^k \beta_i \subseteq \ns{p(\Dop)}\) and \(\bigcup_{i = 1}^k \beta_i\) is linearly independent.
+
+  First we show that \(\bigcup_{i = 1}^k \beta_i \subseteq \ns{p(\Dop)}\).
+  This is true since
+  \begin{align*}
+             & \forall i \in \set{1, \dots, k}, \beta_i \subseteq \ns{(\Dop - c_i \IT)^{n_i}} &  & \text{(by \cref{2.7.14})}   \\
+    \implies & \forall i \in \set{1, \dots, k}, \beta_i \subseteq \ns{p(\Dop)}                &  & \text{(by \cref{ex:2.7.9})} \\
+    \implies & \bigcup_{i = 1}^k \beta_i \subseteq \ns{p(\Dop)}.
+  \end{align*}
+
+  Now we show that \(\bigcup_{i = 1}^k \beta_i\) is linearly independent.
+  We use induction on \(k\).
+  For \(k = 1\), we have
+  \[
+    p(\Dop) = (t - c_1)^{n_1} \quad \text{and} \quad \beta_1 = \set{e^{c_1 t}, t e^{c_1 t}, \dots, t^{n_1 - 1} e^{c_1 t}}.
+  \]
+  By \cref{2.7.14} we know that \(\beta_1\) is linearly independent and thus the base case holds.
+  Suppose inductively that \(\bigcup_{i = 1}^k \beta_i\) is linearly independent for some \(k \geq 1\).
+  We need to show that when \(\bigcup_{i = 1}^{k + 1} \beta_i\) is also linearly independent.
+  For each \(i \in \set{1, \dots, k + 1}\) and \(j \in \set{0, \dots, n_i - 1}\), let \(b_{i j} \in \C\) such that
+  \[
+    \sum_{i = 1}^{k + 1} \sum_{j = 0}^{n_i - 1} b_{i j} t^j e^{c_i t} = \zv.
+  \]
+  Observe that
+  \begin{align*}
+             & (\Dop - c_{k + 1} \IT)(t^j e^{c_i t}) = j t^{j - 1} e^{c_i t} + (c_i - c_{k + 1}) t^j e^{c_i t}                                                                                                             \\
+    \implies & (\Dop - c_{k + 1} \IT)^{n_{k + 1}} \pa{t^j e^{c_i t}} = \sum_{q = 0}^j \binom{n_{k + 1}}{q} (c_i - c_{k + 1})^{n_{k + 1} - q} \frac{j!}{(j - q)!} t^{j - q} e^{c_i t}                                       \\
+    \implies & \zv = (\Dop - c_{k + 1} \IT)^{n_{k + 1}} \pa{\sum_{i = 1}^{k + 1} \sum_{j = 0}^{n_i - 1} b_{i j} t^j e^{c_i t}} = \sum_{i = 1}^{k + 1} \sum_{j = 0}^{n_i - 1} b_{i j} (\Dop - c_{k + 1} \IT)(t^j e^{c_i t}) \\
+             & = \sum_{i = 1}^{k + 1} \sum_{j = 0}^{n_i - 1} \sum_{q = 0}^j b_{i j} \binom{n_{k + 1}}{q} (c_i - c_{k + 1})^{n_{k + 1} - q} \frac{j!}{(j - q)!} t^{j - q} e^{c_i t}                                         \\
+             & = \sum_{i = 1}^k \sum_{j = 0}^{n_i - 1} \sum_{q = 0}^j b_{i j} \binom{n_{k + 1}}{q} (c_i - c_{k + 1})^{n_{k + 1} - q} \frac{j!}{(j - q)!} t^{j - q} e^{c_i t}.
+  \end{align*}
+  Note that the last line follow since \(q \leq n_{k + 1} - 1 < n_{k + 1}\).
+  Since \(c_i - c_{k + 1} \neq 0\) for all \(i \in \set{1, \dots, k}\) and factorials are positive, by induction hypothesis we must have \(b_{i j} = 0\) for all \(i \in \set{1, \dots, k}\) and \(j \in \set{0, \dots n_i - 1}\).
+  Thus we have
+  \[
+    \zv = \sum_{i = 1}^{k + 1} \sum_{j = 0}^{n_i - 1} b_{i j} t^j e^{c_i t} = \sum_{j = 0}^{n_{k + 1} - 1} b_{(k + 1) j} t^j e^{c_{k + 1} t}.
+  \]
+  By \cref{2.7.14} we know that \(b_{(k + 1) j} = 0\) for all \(j \in \set{0, \dots, n_{k + 1} - 1}\).
+  Thus by \cref{1.5.3} \(\bigcup_{i = 1}^{k + 1} \beta_i\) is linearly independent and this closes the induction.
+\end{proof}
+
 \exercisesection
 
 \setcounter{ex}{4}
