@@ -470,7 +470,7 @@
   By \cref{2.7.13,2.33} we see that this is true.
 \end{proof}
 
-\begin{lem}
+\begin{lem}\label{2.7.15}
   For a given complex number \(c\) and positive integer \(n\), suppose that \((t - c)^n\) is the auxiliary polynomial of a homogeneous linear differential equation with constant coefficients.
   Then the set
   \[
@@ -479,7 +479,7 @@
   is a basis for the solution space of the equation.
 \end{lem}
 
-\begin{proof}[\pf{2.7.14}]
+\begin{proof}[\pf{2.7.15}]
   Since the solution space is \(n\)-dimensional, we need only show that \(\beta\) is linearly independent and lies in the solution space.
   First, observe that for any positive integer \(k\),
   \[
@@ -536,7 +536,7 @@
   \[
     p(\Dop) = (t - c_1)^{n_1} \quad \text{and} \quad \beta_1 = \set{e^{c_1 t}, t e^{c_1 t}, \dots, t^{n_1 - 1} e^{c_1 t}}.
   \]
-  By \cref{2.7.14} we know that \(\beta_1\) is linearly independent and thus the base case holds.
+  By \cref{2.7.15} we know that \(\beta_1\) is linearly independent and thus the base case holds.
   Suppose inductively that \(\bigcup_{i = 1}^k \beta_i\) is linearly independent for some \(k \geq 1\).
   We need to show that when \(\bigcup_{i = 1}^{k + 1} \beta_i\) is also linearly independent.
   For each \(i \in \set{1, \dots, k + 1}\) and \(j \in \set{0, \dots, n_i - 1}\), let \(b_{i j} \in \C\) such that
@@ -546,10 +546,10 @@
   Observe that
   \begin{align*}
              & (\Dop - c_{k + 1} \IT)(t^j e^{c_i t}) = j t^{j - 1} e^{c_i t} + (c_i - c_{k + 1}) t^j e^{c_i t}                                                                                                             \\
-    \implies & (\Dop - c_{k + 1} \IT)^{n_{k + 1}} \pa{t^j e^{c_i t}} = \sum_{q = 0}^j \binom{n_{k + 1}}{q} (c_i - c_{k + 1})^{n_{k + 1} - q} \frac{j!}{(j - q)!} t^{j - q} e^{c_i t}                                       \\
+    \implies & (\Dop - c_{k + 1} \IT)^{n_{k + 1}} \pa{t^j e^{c_i t}} = \sum_{q = 0}^{\min(n_{k + 1} - 1, j)} \binom{n_{k + 1}}{q} (c_i - c_{k + 1})^{n_{k + 1} - q} \frac{j!}{(j - q)!} t^{j - q} e^{c_i t}                \\
     \implies & \zv = (\Dop - c_{k + 1} \IT)^{n_{k + 1}} \pa{\sum_{i = 1}^{k + 1} \sum_{j = 0}^{n_i - 1} b_{i j} t^j e^{c_i t}} = \sum_{i = 1}^{k + 1} \sum_{j = 0}^{n_i - 1} b_{i j} (\Dop - c_{k + 1} \IT)(t^j e^{c_i t}) \\
-             & = \sum_{i = 1}^{k + 1} \sum_{j = 0}^{n_i - 1} \sum_{q = 0}^j b_{i j} \binom{n_{k + 1}}{q} (c_i - c_{k + 1})^{n_{k + 1} - q} \frac{j!}{(j - q)!} t^{j - q} e^{c_i t}                                         \\
-             & = \sum_{i = 1}^k \sum_{j = 0}^{n_i - 1} \sum_{q = 0}^j b_{i j} \binom{n_{k + 1}}{q} (c_i - c_{k + 1})^{n_{k + 1} - q} \frac{j!}{(j - q)!} t^{j - q} e^{c_i t}.
+             & = \sum_{i = 1}^{k + 1} \sum_{j = 0}^{n_i - 1} \sum_{q = 0}^{\min(n_{k + 1} - 1, j)} b_{i j} \binom{n_{k + 1}}{q} (c_i - c_{k + 1})^{n_{k + 1} - q} \frac{j!}{(j - q)!} t^{j - q} e^{c_i t}                  \\
+             & = \sum_{i = 1}^k \sum_{j = 0}^{n_i - 1} \sum_{q = 0}^{\min(n_{k + 1} - 1, j)} b_{i j} \binom{n_{k + 1}}{q} (c_i - c_{k + 1})^{n_{k + 1} - q} \frac{j!}{(j - q)!} t^{j - q} e^{c_i t}.
   \end{align*}
   Note that the last line follow since \(q \leq n_{k + 1} - 1 < n_{k + 1}\).
   Since \(c_i - c_{k + 1} \neq 0\) for all \(i \in \set{1, \dots, k}\) and factorials are positive, by induction hypothesis we must have \(b_{i j} = 0\) for all \(i \in \set{1, \dots, k}\) and \(j \in \set{0, \dots n_i - 1}\).
@@ -557,7 +557,7 @@
   \[
     \zv = \sum_{i = 1}^{k + 1} \sum_{j = 0}^{n_i - 1} b_{i j} t^j e^{c_i t} = \sum_{j = 0}^{n_{k + 1} - 1} b_{(k + 1) j} t^j e^{c_{k + 1} t}.
   \]
-  By \cref{2.7.14} we know that \(b_{(k + 1) j} = 0\) for all \(j \in \set{0, \dots, n_{k + 1} - 1}\).
+  By \cref{2.7.15} we know that \(b_{(k + 1) j} = 0\) for all \(j \in \set{0, \dots, n_{k + 1} - 1}\).
   Thus by \cref{1.5.3} \(\bigcup_{i = 1}^{k + 1} \beta_i\) is linearly independent and this closes the induction.
 \end{proof}
 
@@ -715,4 +715,57 @@
      & = \text{order of } h(\Dop)                                                                    \\
      & = \dim(\ns{h(\Dop)}).                                          &  & \text{(by \cref{2.32})}
   \end{align*}
+\end{proof}
+
+\begin{defn}\label{2.7.16}
+  A differential equation
+  \[
+    y^{(n)} + a_{n - 1} y^{(n - 1)} + \cdots + a_1 y^{(1)} + a_0 y = x
+  \]
+  is called a \textbf{nonhomogeneous} linear differential equation with constant coefficients if the \(a_i\)'s are constant and \(x\) is a function that is not identically zero.
+\end{defn}
+
+\begin{ex}\label{ex:2.7.13}
+  Let
+  \[
+    y^{(n)} + a_{n - 1} y^{(n - 1)} + \cdots + a_1 y^{(1)} + a_0 y = x
+  \]
+  be a nonhomogeneous linear differential equation with constant coefficients.
+  \begin{enumerate}
+    \item Prove that for any \(x \in \cfs[\infty](\R, \C)\) there exists \(y \in \cfs[\infty](\R, \C)\) such that \(y\) is a solution to the differential equation.
+    \item Let \(\V\) be the solution space for the homogeneous linear equation
+          \[
+            y^{(n)} + a_{n - 1} y^{(n - 1)} + \cdots + a_1 y^{(1)} + a_0 y = \zv.
+          \]
+          Prove that if \(z\) is any solution to the associated nonhomogeneous linear differential equation, then the set of all solutions to the nonhomogeneous linear differential equation is
+          \[
+            \set{z + y : y \in \V}.
+          \]
+  \end{enumerate}
+\end{ex}
+
+\begin{proof}[\pf{ex:2.7.13}(a)]
+  By \cref{d.0.7} there exist some \(\seq{c}{1,,n} \in \C\) (not necessarily distinct) such that
+  \[
+    y^{(n)} + a_{n - 1} y^{(n - 1)} + \cdots + a_1 y^{(1)} + a_0 y = \pa{\prod_{i = 1}^n (\Dop - c_i \IT)}(y).
+  \]
+  Then we have
+  \begin{align*}
+             & \forall i \in \set{1, \dots, n}, \Dop - c_i \IT \text{ is onto}                                                     &  & \text{(by \cref{2.7.11})} \\
+    \implies & \prod_{i = 1}^n (\Dop - c_i \IT) = (\Dop - c_n \IT)(\Dop - c_{n - 1} \IT( \cdots (\Dop - c_1 \IT))) \text{ is onto}                                \\
+    \implies & y^{(n)} + a_{n - 1} y^{(n - 1)} + \cdots + a_1 y^{(1)} + a_0 y \text{ is onto}.
+  \end{align*}
+\end{proof}
+
+\begin{proof}[\pf{ex:2.7.13}(b)]
+  We have
+  \begin{align*}
+             & \begin{dcases}
+                 z^{(n)} + a_{n - 1} z^{(n - 1)} + \cdots + a_1 z^{(1)} + a_0 z = x \\
+                 y^{(n)} + a_{n - 1} y^{(n - 1)} + \cdots + a_1 y^{(1)} + a_0 y = \zv
+               \end{dcases}                                                        \\
+    \implies & z^{(n)} + y^{(n)} + a_{n - 1} (z^{(n - 1)} + y^{(n - 1)}) + \cdots + a_1 (z^{(1)} + y^{(1)}) + a_0 (z^{(0)} + y^{(0)}) = x \\
+    \implies & (z + y)^{(n)} + a_{n - 1} (z + y)^{(n - 1)} + \cdots + a_1 (z + y)^{(1)} + a_0 (z + y) = x.
+  \end{align*}
+  Thus \(z + y\) is a solution to the nonhomogeneous linear differential equation with constant coefficients.
 \end{proof}
