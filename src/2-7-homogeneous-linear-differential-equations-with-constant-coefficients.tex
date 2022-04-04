@@ -637,6 +637,28 @@
   Thus by \cref{1.6.15}(a) we know that \(\set{\frac{1}{2} (x + y), \frac{1}{2i} (x - y)}\) is a basis for \(\V\) over \(\C\).
 \end{proof}
 
+\begin{ex}\label{ex:2.7.8}
+  Consider a second-order homogeneous linear differential equation with constant coefficients in which the auxiliary polynomial has distinct conjugate complex roots \(a + ib\) and \(a - ib\), where \(a, b \in \R\).
+  Show that \(\set{e^{at} \cos(bt), e^{at} \sin(bt)}\) is a basis for the solution space.
+\end{ex}
+
+\begin{proof}[\pf{ex:2.7.8}]
+  By \cref{2.7.14} we know that \(\set{e^{(a + ib) t}, e^{(a - ib) t}}\) is a basis for the solution space.
+  Since
+  \begin{align*}
+    e^{(a + ib) t} & = e^{at + ibt}                                                   \\
+                   & = e^{at} (\cos(bt) + i \sin(bt))   &  & \text{(by \cref{2.7.8})} \\
+    e^{(a - ib) t} & = e^{at - ibt}                                                   \\
+                   & = e^{at} (\cos(-bt) + i \sin(-bt)) &  & \text{(by \cref{2.7.8})} \\
+                   & = e^{at} (\cos(bt) - i \sin(bt))
+  \end{align*}
+  By \cref{ex:2.7.7} we know that the set
+  \[
+    \set{\frac{1}{2} (e^{(a + ib) t} + e^{(a - ib) t}), \frac{1}{2i} (e^{(a + ib) t} - e^{(a - ib) t})} = \set{e^{at} \cos(bt), e^{at} \sin(bt)}
+  \]
+  is also a basis for the solution space.
+\end{proof}
+
 \begin{ex}\label{ex:2.7.9}
   Suppose that \(\set{\seq{\U}{1,,n}}\) is a collection of pairwise commutative linear operators on a vector space \(\V\) over \(\F\)
   (i.e., operators such that \(\U_i \U_j = \U_j \U_i\) for all \(i, j \in \set{1, \dots, n}\)).
@@ -658,4 +680,39 @@
     \implies & x \in \ns{\U_1 \cdots \U_n}                                                     &  & \text{(by \cref{2.1.10})}
   \end{align*}
   and thus \(\ns{\U_i} \subseteq \ns{\U_1 \cdots \U_n}\).
+\end{proof}
+
+\setcounter{ex}{11}
+\begin{ex}\label{ex:2.7.12}
+  Let \(\V\) be the solution space of an \(n\)th-order homogeneous linear differential equation with constant coefficients having auxiliary polynomial \(p\).
+  Prove that if \(p(t)\) = \(g(t) h(t)\) for all \(t \in \R\), where \(g\) and \(h\) are polynomials of positive degree, then
+  \[
+    \ns{h(\Dop)} = \rg{g(\Dop_{\V})} = g(\Dop)(\V),
+  \]
+  where \(\Dop_{\V} : \V \to \V\) is defined by \(\Dop_{\V}(x) = x'\) for \(x \in \V\).
+\end{ex}
+
+\begin{proof}[\pf{ex:2.7.12}]
+  By \cref{2.28} we have \(\V = \ns{p(\Dop)}\).
+  By \cref{e.0.7} we have \(\rg{g(\Dop_{\V})} = g(\Dop)(\V) = g(\Dop)(\ns{p(\Dop)})\).
+  Since
+  \begin{align*}
+             & y \in g(\Dop)(\ns{p(\Dop)})                                                                  \\
+    \implies & \exists x \in \ns{p(\Dop)} : g(\Dop)(x) = y                                                  \\
+    \implies & \exists x \in \ns{p(\Dop)} : h(\Dop)(y) = h(\Dop)(g(\Dop)(x))                                \\
+             & = (h(\Dop) g(\Dop))(x) = p(\Dop)(x) = \zv                     &  & \text{(by \cref{2.1.10})} \\
+    \implies & y \in \ns{h(\Dop)},                                           &  & \text{(by \cref{2.1.10})}
+  \end{align*}
+  we know that \(g(\Dop)(\ns{p(\Dop)}) \subseteq \ns{h(\Dop)}\).
+  By \cref{1.11} if we can show that \(\dim(g(\Dop)(\ns{p(\Dop)})) = \dim(\ns{h(\Dop)})\), then we can prove that \(g(\Dop)(\ns{p(\Dop)}) = \ns{h(\Dop)}\).
+  This is true since
+  \begin{align*}
+     & \dim(g(\Dop)(\ns{p(\Dop)}))                                                                   \\
+     & = \rk{g(\Dop_{\V})}                                            &  & \text{(by \cref{2.1.10})} \\
+     & = \dim(\ns{p(\Dop)}) - \nt{g(\Dop_{\V})}                       &  & \text{(by \cref{2.3})}    \\
+     & = (\text{order of } p(\Dop)) - (\text{order of } g(\Dop_{\V})) &  & \text{(by \cref{2.32})}   \\
+     & = (\text{degree of } p) - (\text{degree of } g)                                               \\
+     & = \text{order of } h(\Dop)                                                                    \\
+     & = \dim(\ns{h(\Dop)}).                                          &  & \text{(by \cref{2.32})}
+  \end{align*}
 \end{proof}
