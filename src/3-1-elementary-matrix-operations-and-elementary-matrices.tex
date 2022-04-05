@@ -37,8 +37,106 @@
 
 \exercisesection
 
+\setcounter{ex}{3}
 \begin{ex}\label{ex:3.1.4}
+  Prove the following statement:
+  Any elementary \(n \times n\) matrix can be obtained in at least two ways ---
+  either by performing an elementary row operation on \(I_n\) or by performing an elementary column operation on \(I_n\).
 \end{ex}
+
+\begin{proof}[\pf{ex:3.1.4}]
+  First we show that a type 1 elementary matrix can be obtained in at least two ways.
+  Let \(E \in \ms{n}{n}{\F}\) be an elementary matrix of type 1 which interchange the \(i\)th row with \(j\)th row.
+  Let \(F \in \ms{n}{n}{\F}\) be an elementary matrix of type 1 which interchange the \(i\)th column with \(j\)th column.
+  Observe that
+  \begin{align*}
+    \forall p, q \in \set{1, \dots, n}, E_{p q} & = \begin{dcases}
+                                                      \delta_{p q} & \text{if } (p \neq i) \land (p \neq j) \\
+                                                      \delta_{j q} & \text{if } p = i                       \\
+                                                      \delta_{i q} & \text{if } p = j
+                                                    \end{dcases}    &  & \text{(by \cref{2.3.4})}    \\
+                                                & = \begin{dcases}
+                                                      1 & \text{if } (p \neq i) \land (p \neq j) \land (p = q) \\
+                                                      1 & \text{if } (p = i) \land (q = j)                     \\
+                                                      1 & \text{if } (p = j) \land (q = i)                     \\
+                                                      0 & \text{otherwise}
+                                                    \end{dcases} &  & \text{(by \cref{2.3.4})} \\
+                                                & = \begin{dcases}
+                                                      1 & \text{if } (q \neq i) \land (q \neq j) \land (p = q) \\
+                                                      1 & \text{if } (p = i) \land (q = j)                     \\
+                                                      1 & \text{if } (p = j) \land (q = i)                     \\
+                                                      0 & \text{otherwise}
+                                                    \end{dcases} \\
+                                                & = \begin{dcases}
+                                                      \delta_{p q} & \text{if } (q \neq i) \land (q \neq j) \\
+                                                      \delta_{p i} & \text{if } q = j                       \\
+                                                      \delta_{p j} & \text{if } q = i
+                                                    \end{dcases}    &  & \text{(by \cref{2.3.4})}    \\
+                                                & = F_{p q}.
+  \end{align*}
+  Thus a type 1 elementary matrix can be obtained in at least two ways.
+
+  Next we show that a type 2 elementary matrix can be obtained in at least two ways.
+  Let \(E \in \ms{n}{n}{\F}\) be an elementary matrix of type 2 which multiply the \(i\)th row with \(c \in \F\).
+  Let \(F \in \ms{n}{n}{\F}\) be an elementary matrix of type 2 which multiply the \(i\)th column with \(c \in \F\).
+  Observe that
+  \begin{align*}
+    \forall p, q \in \set{1, \dots, n}, E_{p q} & = \begin{dcases}
+                                                      \delta_{p q}   & \text{if } p \neq i \\
+                                                      c \delta_{i q} & \text{if } p = i
+                                                    \end{dcases}    &  & \text{(by \cref{2.3.4})}                          \\
+                                                & = \begin{dcases}
+                                                      1 & \text{if } (p \neq i) \land (p = q) \\
+                                                      c & \text{if } (p = i) \land (q = i)    \\
+                                                      0 & \text{otherwise}
+                                                    \end{dcases} &  & \text{(by \cref{2.3.4})}                             \\
+                                                & = \begin{dcases}
+                                                      1 & \text{if } (q \neq i) \land (p = q) \\
+                                                      c & \text{if } (p = i) \land (q = i)    \\
+                                                      0 & \text{otherwise}
+                                                    \end{dcases}                                \\
+                                                & = \begin{dcases}
+                                                      \delta_{p q}   & \text{if } q \neq i \\
+                                                      c \delta_{p i} & \text{if } q = i
+                                                    \end{dcases}    &  & \text{(by \cref{2.3.4})}                          \\
+                                                & = F_{p q}.                                 &  & \text{(by \cref{2.3.4})}
+  \end{align*}
+  Thus a type 2 elementary matrix can be obtained in at least two ways.
+
+  Finally we show that a type 3 elementary matrix can be obtained in at least two ways.
+  Let \(E \in \ms{n}{n}{\F}\) be an elementary matrix of type 3 which multiply the \(i\)th row with \(c \in \F\) and add it to the \(j\)th row.
+  Let \(F \in \ms{n}{n}{\F}\) be an elementary matrix of type 3 which multiply the \(j\)th column with \(c \in \F\) and add it to the \(i\)th column.
+  Observe that
+  \begin{align*}
+    \forall p, q \in \set{1, \dots, n}, E_{p q} & = \begin{dcases}
+                                                      \delta_{p q}                  & \text{if } p \neq j \\
+                                                      c \delta_{i q} + \delta_{j q} & \text{if } p = j
+                                                    \end{dcases} &  & \text{(by \cref{2.3.4})}                                \\
+                                                & = \begin{dcases}
+                                                      1 & \text{if } (p \neq j) \land (p = q) \\
+                                                      c & \text{if } (p = j) \land (q = i)    \\
+                                                      1 & \text{if } (p = j) \land (q = j)    \\
+                                                      0 & \text{otherwise}
+                                                    \end{dcases}             &  & \text{(by \cref{2.3.4})}                             \\
+                                                & = \begin{dcases}
+                                                      1 & \text{if } p = q                 \\
+                                                      c & \text{if } (p = j) \land (q = i) \\
+                                                      0 & \text{otherwise}
+                                                    \end{dcases}                                               \\
+                                                & = \begin{dcases}
+                                                      1 & \text{if } (p = q) \land (q \neq i) \\
+                                                      c & \text{if } (p = j) \land (q = i)    \\
+                                                      1 & \text{if } (p = i) \land (q = i)    \\
+                                                      0 & \text{otherwise}
+                                                    \end{dcases}                                            \\
+                                                & = \begin{dcases}
+                                                      \delta_{p q}                  & \text{if } q \neq i \\
+                                                      c \delta_{p j} + \delta_{p i} & \text{if } q = i
+                                                    \end{dcases} &  & \text{(by \cref{2.3.4})}                                \\
+                                                & = F_{p q}.                                             &  & \text{(by \cref{2.3.4})}
+  \end{align*}
+  Thus a type 3 elementary matrix can be obtained in at least two ways.
+\end{proof}
 
 \begin{ex}\label{ex:3.1.8}
 \end{ex}
