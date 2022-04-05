@@ -1,0 +1,44 @@
+\section{Elementary Matrix Operations and Elementary Matrices}\label{sec:3.1}
+
+\begin{defn}\label{3.1.1}
+  Let \(A \in \MS\).
+  Any one of the following three operations on the rows (columns) of \(A\) is called an \textbf{elementary row (column) operation}:
+  \begin{enumerate}[label=(\arabic*)]
+    \item interchanging any two rows (columns) of \(A\);
+    \item multiplying any row (column) of \(A\) by a nonzero scalar;
+    \item adding any scalar multiple of a row (column) of \(A\) to another row (column).
+  \end{enumerate}
+  Any of these three operations is called an \textbf{elementary operation}.
+  Elementary operations are of \textbf{type 1}, \textbf{type 2}, or \textbf{type 3} depending on whether they are obtained by (1), (2), or (3).
+\end{defn}
+
+\begin{note}
+  Notice that if a matrix \(Q\) can be obtained from a matrix \(P\) by means of an elementary row operation, then \(P\) can be obtained from \(Q\) by an elementary row operation of the same type.
+  (See \cref{ex:3.1.8}.)
+\end{note}
+
+\begin{defn}\label{3.1.2}
+  An \(n \times n\) \textbf{elementary matrix} is a matrix obtained by performing an elementary operation on \(I_n\).
+  The elementary matrix is said to be of \textbf{type 1}, \textbf{2}, or \textbf{3} according to whether the elementary operation performed on \(I_n\) is a type 1, 2, or 3 operation, respectively.
+\end{defn}
+
+\begin{note}
+  Any elementary matrix can be obtained in at least two ways ---
+  either by performing an elementary row operation on \(I_n\) or by performing an elementary column operation on \(I_n\).
+  (See \cref{ex:3.1.4}.)
+\end{note}
+
+\begin{thm}\label{3.1}
+  Let \(A \in \MS\), and suppose that \(B\) is obtained from \(A\) by performing an elementary row (column) operation.
+  Then there exists an \(m \times m\) (\(n \times n\)) elementary matrix \(E\) such that \(B = EA\) (\(B = AE\)).
+  In fact, \(E\) is obtained from \(I_m\) (\(I_n\)) by performing the same elementary row (column) operation as that which was performed on \(A\) to obtain \(B\).
+  Conversely, if \(E\) is an elementary \(m \times m\) (\(n \times n\)) matrix, then \(EA\) (\(AE\)) is the matrix obtained from \(A\) by performing the same elementary row (column) operation as that which produces \(E\) from \(I_m\) (\(I_n\)).
+\end{thm}
+
+\exercisesection
+
+\begin{ex}\label{ex:3.1.4}
+\end{ex}
+
+\begin{ex}\label{ex:3.1.8}
+\end{ex}
