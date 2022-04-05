@@ -7,8 +7,6 @@ If you are not familiar with set theory, make sure you learn them first (you can
 
 ## Unsolved Exercises
 
-- Chapter2
-  - section 2.3~
 - Chapter3
 - Chapter4
 - Chapter5
