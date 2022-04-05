@@ -969,3 +969,83 @@
   \end{align*}
   for some \(a, b \in \C\).
 \end{proof}
+
+\begin{ex}[Periodic Motion of a Spring with Damping]\label{ex:2.7.18}
+  The ideal periodic motion described by solutions to \cref{ex:2.7.17} is due to the ignoring of frictional forces.
+  In reality, however, there is a frictional force acting on the motion that is proportional to the speed of motion, but that acts in the opposite direction.
+  The modification of \cref{ex:2.7.17} to account for the frictional force, called the \emph{damping force}, is given by
+  \[
+    m y'' + r y' + ky = \zv,
+  \]
+  where \(r > 0\) is the proportionality constant.
+  \begin{enumerate}
+    \item Find the general solution to this equation.
+    \item Find the unique solution in (a) that satisfies the initial conditions \(y(0) = 0\) and \(y'(0) = v_0\), the initial velocity.
+    \item For \(y(t)\) as in (b), show that the amplitude of the oscillation decreases to zero;
+          that is, prove that \(\lim_{t \to \infty} y(t) = 0\).
+  \end{enumerate}
+\end{ex}
+
+\begin{proof}[\pf{ex:2.7.18}(a)]
+  Since
+  \[
+    t^2 + \frac{r}{m} t + \frac{k}{m} = 0 \implies t = \frac{-r \pm \sqrt{r^2 - 4mk}}{2m},
+  \]
+  by \cref{2.7.14} we know that
+  \[
+    \forall t \in \R, y(t) = a e^{\pa{\frac{-r + \sqrt{r^2 - 4mk}}{2m}} t} + b e^{\pa{\frac{-r - \sqrt{r^2 - 4mk}}{2m}} t}
+  \]
+  for some \(a, b \in \C\).
+\end{proof}
+
+\begin{proof}[\pf{ex:2.7.18}(b)]
+  Since
+  \begin{align*}
+    0   & = y(0)                                                                                                                    \\
+        & = a + b                                                                              &  & \text{(by \cref{ex:2.7.18}(a))} \\
+    v_0 & = y'(0)                                                                                                                   \\
+        & = a \pa{\frac{-r + \sqrt{r^2 - 4mk}}{2m}} + b \pa{\frac{-r - \sqrt{r^2 - 4mk}}{2m}},
+  \end{align*}
+  we have
+  \[
+    a = \frac{v_0 m}{\sqrt{r^2 - 4mk}} \quad \text{and} \quad b = \frac{-v_0 m}{\sqrt{r^2 - 4mk}}
+  \]
+  and thus
+  \[
+    \forall y \in \R, y(t) = \frac{v_0 m}{\sqrt{r^2 - 4mk}} e^{\pa{\frac{-r + \sqrt{r^2 - 4mk}}{2m}} t} - \frac{v_0 m}{\sqrt{r^2 - 4mk}} e^{\pa{\frac{-r - \sqrt{r^2 - 4mk}}{2m}} t}.
+  \]
+\end{proof}
+
+\begin{proof}[\pf{ex:2.7.18}(c)]
+  We split into two cases:
+  \begin{itemize}
+    \item If \(r^2 - 4mk \geq 0\), then we have
+          \begin{align*}
+                     & r^2 > r^2 - 4mk                                                                                                                       &  & (mk > 0)                        \\
+            \implies & r > \sqrt{r^2 - 4mk} \geq -\sqrt{r^2 - 4mk}                                                                                           &  & (r > 0)                         \\
+            \implies & 0 > -r + \sqrt{r^2 - 4mk} \geq -r - \sqrt{r^2 - 4mk}                                                                                                                       \\
+            \implies & 0 > \frac{-r + \sqrt{r^2 - 4mk}}{2m} \geq \frac{-r - \sqrt{r^2 - 4mk}}{2m}                                                            &  & (m > 0)                         \\
+            \implies & \lim_{t \to \infty} e^{\pa{\frac{-r + \sqrt{r^2 - 4mk}}{2m}} t} = \lim_{t \to \infty} e^{\pa{\frac{-r - \sqrt{r^2 - 4mk}}{2m}} t} = 0                                      \\
+            \implies & \lim_{t \to \infty} y(t) = 0.                                                                                                         &  & \text{(by \cref{ex:2.7.18}(b))}
+          \end{align*}
+    \item If \(r^2 - 4mk < 0\), then we have
+          \begin{align*}
+             & \abs{e^{\pa{\frac{-r + \sqrt{r^2 - 4mk}}{2m}} t}}                                                                                               \\
+             & = \abs{e^{\frac{-rt}{2m}} \pa{\cos\pa{\frac{\sqrt{r^2 - 4mk}}{2m} t} + i \sin\pa{\frac{\sqrt{r^2 - 4mk}}{2m} t}}} &  & \text{(by \cref{2.7.8})} \\
+             & \leq \abs{e^{\frac{-rt}{2m}}}                                                                                     &  & (\cos^2 + \sin^2 = 1)
+          \end{align*}
+          and
+          \begin{align*}
+             & \abs{e^{\pa{\frac{-r - \sqrt{r^2 - 4mk}}{2m}} t}}                                                                                                 \\
+             & = \abs{e^{\frac{-rt}{2m}} \pa{\cos\pa{\frac{-\sqrt{r^2 - 4mk}}{2m} t} + i \sin\pa{\frac{-\sqrt{r^2 - 4mk}}{2m} t}}} &  & \text{(by \cref{2.7.8})} \\
+             & \leq \abs{e^{\frac{-rt}{2m}}}.                                                                                      &  & (\cos^2 + \sin^2 = 1)
+          \end{align*}
+          Thus
+          \begin{align*}
+                     & \lim_{t \to \infty} \abs{e^{\pa{\frac{-r - \sqrt{r^2 - 4mk}}{2m}} t}} = \lim_{t \to \infty} \abs{e^{\pa{\frac{-r - \sqrt{r^2 - 4mk}}{2m}} t}} = 0 \\
+            \implies & \lim_{t \to \infty} e^{\pa{\frac{-r - \sqrt{r^2 - 4mk}}{2m}} t} = \lim_{t \to \infty} e^{\pa{\frac{-r - \sqrt{r^2 - 4mk}}{2m}} t} = 0             \\
+            \implies & \lim_{t \to \infty} y(t) = 0.
+          \end{align*}
+  \end{itemize}
+  From all cases above we conclude that \(\lim_{t \to \infty} y(t) = 0\).
+\end{proof}
