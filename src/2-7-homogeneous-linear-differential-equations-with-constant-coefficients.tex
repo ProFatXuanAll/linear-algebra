@@ -885,3 +885,87 @@
     \end{pmatrix}.
   \]
 \end{proof}
+
+\begin{ex}[Pendular Motion]\label{ex:2.7.16}
+  It is well known that the motion of a pendulum is approximated by the differential equation
+  \[
+    \theta'' + \frac{g}{l} \theta = \zv,
+  \]
+  where \(\theta(t)\) is the angle in radians that the pendulum makes with a vertical line at time \(t\), interpreted so that \(\theta\) is positive if the pendulum is to the right and negative if the pendulum is to the left of the vertical line as viewed by the reader.
+  Here \(l\) is the length of the pendulum and \(g\) is the magnitude of acceleration due to gravity.
+  The variable \(t\) and constants \(l\) and \(g\) must be in compatible units
+  (e.g., \(t\) in seconds, \(l\) in meters, and \(g\) in meters per second per second).
+  \begin{enumerate}
+    \item Express an arbitrary solution to this equation as a linear combination of two real-valued solutions.
+    \item Find the unique solution to the equation that satisfies the conditions
+          \[
+            \theta(0) = \theta_0 > 0 \quad \text{and} \quad \theta'(0) = 0.
+          \]
+          (The significance of these conditions is that at time \(t = 0\) the pendulum is released from a position displaced from the vertical by \(\theta_0\).)
+    \item Prove that it takes \(2 \pi \sqrt{l / g}\) units of time for the pendulum to make one circuit back and forth.
+          (This time is called the \textbf{period} of the pendulum.)
+  \end{enumerate}
+\end{ex}
+
+\begin{proof}[\pf{ex:2.7.16}(a)]
+  Since
+  \[
+    t^2 + \frac{g}{l} = \pa{t - i \sqrt{\frac{g}{l}}} \pa{t + i \sqrt{\frac{g}{l}}} = 0 \implies t = \pm i \sqrt{\frac{g}{l}},
+  \]
+  by \cref{2.7.14} we know that
+  \begin{align*}
+    \forall t \in \R, \theta(t) & = a e^{i \sqrt{\frac{g}{l}} t} + b e^{- i \sqrt{\frac{g}{l}} t}                                      \\
+                                & = a \cos\pa{\sqrt{\frac{g}{l}} t} + b \sin\pa{\sqrt{\frac{g}{l}} t} &  & \text{(by \cref{ex:2.7.8})}
+  \end{align*}
+  for some \(a, b \in \C\).
+\end{proof}
+
+\begin{proof}[\pf{ex:2.7.16}(b)]
+  Since
+  \begin{align*}
+    \theta_0 & = \theta(0)                                                                                                                                                             \\
+             & = a \cos\pa{\sqrt{\frac{g}{l}} 0} + b \sin\pa{\sqrt{\frac{g}{l}} 0}                                                                &  & \text{(by \cref{ex:2.7.16}(a))} \\
+             & = a                                                                                                                                                                     \\
+    0        & = \theta'(0)                                                                                                                                                            \\
+             & = -a \cdot \sin\pa{\sqrt{\frac{g}{l}} 0} \cdot \sqrt{\frac{g}{l}} + b \cdot \cos\pa{\sqrt{\frac{g}{l}} 0} \cdot \sqrt{\frac{g}{l}} &  & \text{(by \cref{ex:2.7.16}(a))} \\
+             & = b \sqrt{\frac{g}{l}},
+  \end{align*}
+  we know that \(a = \theta_0\) and \(b = 0\).
+  Thus we have
+  \[
+    \forall t \in \R, \theta(t) = \theta_0 \cos\pa{\sqrt{\frac{g}{l}} t}
+  \]
+\end{proof}
+
+\begin{proof}[\pf{ex:2.7.16}(c)]
+  Since
+  \begin{align*}
+    \theta(0) & = a \cos\pa{\sqrt{\frac{g}{l}} 0} + b \sin\pa{\sqrt{\frac{g}{l}} 0}                                                            &  & \text{(by \cref{ex:2.7.16}(a))} \\
+              & = a \cos(0) + b \sin(0)                                                                                                                                             \\
+              & = a \cos(2 \pi) + b \sin(2 \pi)                                                                                                                                     \\
+              & = a \cos\pa{\sqrt{\frac{g}{l}} \cdot 2 \pi \sqrt{\frac{l}{g}}} + b \sin\pa{\sqrt{\frac{g}{l}}  \cdot 2 \pi \sqrt{\frac{l}{g}}}                                      \\
+              & = \theta\pa{2 \pi \sqrt{\frac{l}{g}}},                                                                                         &  & \text{(by \cref{ex:2.7.16}(a))}
+  \end{align*}
+  we know that the period of \(\theta\) is \(2 \pi \sqrt{\frac{l}{g}}\).
+\end{proof}
+
+\begin{ex}[Periodic Motion of a Spring without Damping]\label{ex:2.7.17}
+  Find the general solution to
+  \[
+    y'' + \frac{k}{m} y = \zv,
+  \]
+  which describes the periodic motion of a spring, ignoring frictional forces.
+\end{ex}
+
+\begin{proof}[\pf{ex:2.7.17}]
+  Since
+  \[
+    t^2 + \frac{k}{m} = \pa{t - i \sqrt{\frac{k}{m}}} \pa{t + i \sqrt{\frac{k}{m}}} = 0 \implies t = \pm i \sqrt{\frac{k}{m}},
+  \]
+  we know that
+  \begin{align*}
+    \forall t \in \R, y(t) & = a e^{i \sqrt{\frac{k}{m}} t} + b e^{-i \sqrt{\frac{k}{m}} t}      &  & \text{(by \cref{2.7.14})}   \\
+                           & = a \cos\pa{\sqrt{\frac{k}{m}} t} + b \sin\pa{\sqrt{\frac{k}{m}} t} &  & \text{(by \cref{ex:2.7.8})}
+  \end{align*}
+  for some \(a, b \in \C\).
+\end{proof}
