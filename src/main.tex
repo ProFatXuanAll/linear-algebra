@@ -17,6 +17,37 @@
 \usepackage{mathtools}
 % Must be loaded after `amsmath' and `mathtools'.
 \usepackage{amsthm}
+% Define page header and footer layout.
+\usepackage{fancyhdr}
+
+% Use `fancyhdr' page style.  All page style settings must be called only after
+% this command.  See `fancyhdr' for details.
+\pagestyle{fancy}
+
+% Make header height enough to fit chapter / section titles.
+\setlength{\headheight}{15pt}
+% Change chapter and section marks' formatting.  Note that I use `\markright'
+% to make sure header use chapter information when section information is not
+% available (this is need for appendix).
+\renewcommand{\chaptermark}[1]{\markright{\textsf{\small Chap. \thechapter \quad #1}}}
+\renewcommand{\sectionmark}[1]{\markright{\textsf{\small Sec. \thesection \quad #1}}}
+% Cleanup page header settings.
+\fancyhead{}
+% Put page number on the left of page header.
+\fancyhead[L]{\textbf{\textsf{\small \thepage}}}
+% Put chapter / section information on the right of page header.
+\fancyhead[R]{\rightmark}
+% Cleanup page footer settings.
+\fancyfoot{}
+
+% Reset `plain' page style which is used for the first page of each chapter.
+% I set this to make page number style consistent.
+\fancypagestyle{plain}{%
+  \fancyhf{}% clear all fields
+  \fancyfoot[C]{\textbf{\textsf{\small \thepage}}}%
+  \renewcommand{\headrulewidth}{0pt}%
+}
+
 % Automatically adjust character spacing at margins.
 \usepackage{microtype}
 % Provide further utilities and fix bugs for `enumerate', `itemize' and
