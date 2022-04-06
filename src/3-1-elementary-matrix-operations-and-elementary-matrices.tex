@@ -197,6 +197,19 @@
   and we have \(B = AE\).
 \end{proof}
 
+\begin{thm}\label{3.2}
+  Elementary matrices are invertible, and the inverse of an elementary matrix is an elementary matrix of the same type.
+\end{thm}
+
+\begin{proof}[\pf{3.2}]
+  Let \(E\) be an elementary \(n \times n\) matrix.
+  Then \(E\) can be obtained by an elementary row operation on \(I_n\).
+  By reversing the steps used to transform \(I_n\) into \(E\), we can transform \(E\) back into \(I_n\).
+  The result is that \(I_n\) can be obtained from \(E\) by an elementary row operation of the same type.
+  By \cref{3.1} there is an elementary matrix \(\overline{E}\) such that \(\overline{E} E = I_n\).
+  Therefore, by \cref{ex:2.4.10} \(E\) is invertible and \(E^{-1} = \overline{E}\).
+\end{proof}
+
 \exercisesection
 
 \setcounter{ex}{3}
