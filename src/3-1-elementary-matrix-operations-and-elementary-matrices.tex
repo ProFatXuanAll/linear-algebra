@@ -432,5 +432,40 @@
   Thus the transpose of a type 3 elementary matrix is a type 3 elementary matrix.
 \end{proof}
 
-\begin{ex}\label{ex:3.1.8}
+\begin{ex}\label{ex:3.1.6}
+  Let \(A \in \MS\).
+  Prove that if \(B\) can be obtained from \(A\) by an elementary row (column) operation, then \(\tp{B}\) can be obtained from \(\tp{A}\) by the corresponding elementary column (row) operation.
 \end{ex}
+
+\begin{proof}[\pf{ex:3.1.6}]
+  First suppose that \(B\) is obtained from \(A\) by an elementary row operation.
+  By \cref{3.1} we know that there exists an elementary matrix \(E\) such that \(B = EA\).
+  By \cref{2.3.2} we know that \(\tp{B} = \tp{A} \tp{E}\).
+  By \cref{ex:3.1.5} we know that \(\tp{E}\) is an elementary operation.
+  Thus by \cref{3.1} we know that \(\tp{B}\) can be obtained from \(\tp{A}\) by an elementary column operation.
+
+  Now suppose that \(B\) is obtained from \(A\) by an elementary column operation.
+  By \cref{3.1} we know that there exists an elementary matrix \(E\) such that \(B = AE\).
+  By \cref{2.3.2} we know that \(\tp{B} = \tp{E} \tp{A}\).
+  By \cref{ex:3.1.5} we know that \(\tp{E}\) is an elementary operation.
+  Thus by \cref{3.1} we know that \(\tp{B}\) can be obtained from \(\tp{A}\) by an elementary row operation.
+\end{proof}
+
+\setcounter{ex}{7}
+\begin{ex}\label{ex:3.1.8}
+  Prove that if a matrix \(Q\) can be obtained from a matrix \(P\) by an elementary row operation, then \(P\) can be obtained from \(Q\) by an elementary matrix of the same type.
+\end{ex}
+
+\begin{proof}[\pf{ex:3.1.8}]
+  First suppose that \(Q\) is obtained from \(P\) by an elementary row operation.
+  By \cref{3.1} we know that there exists an elementary matrix \(E\) such that \(Q = EP\).
+  By \cref{3.2} we know that \(E^{-1}\) exists and \(E^{-1}\) is an elementary row operation of the same type.
+  Thus we have \(P = E^{-1} E P = E^{-1} Q\).
+  By \cref{3.1} this means \(P\) can be obtained from \(Q\) by an elementary row operation of the same type.
+
+  Now suppose that \(Q\) is obtained from \(P\) by an elementary column operation.
+  By \cref{3.1} we know that there exists an elementary matrix \(E\) such that \(Q = PE\).
+  By \cref{3.2} we know that \(E^{-1}\) exists and \(E^{-1}\) is an elementary column operation of the same type.
+  Thus we have \(P = P E E^{-1} = Q E^{-1}\).
+  By \cref{3.1} this means \(P\) can be obtained from \(Q\) by an elementary column operation of the same type.
+\end{proof}
