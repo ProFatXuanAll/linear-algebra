@@ -40,14 +40,20 @@
 \setcounter{ex}{3}
 \begin{ex}\label{ex:3.1.4}
   Prove the following statement:
-  Any elementary \(n \times n\) matrix can be obtained in at least two ways ---
-  either by performing an elementary row operation on \(I_n\) or by performing an elementary column operation on \(I_n\).
+  Any elementary \(n \times n\) matrix can be obtained in at least two ways.
+  More precisely, let \(E \in \ms{n}{n}{\F}\) and let \(c \in \F \setminus \set{0}\).
+  For distinct \(i, j \in \set{1, \dots, n}\), we have
+  \begin{itemize}
+    \item \(E\) is an elementary matrix of type 1 which interchange the \(i\)th row with \(j\)th row, iff, \(E\) is an elementary matrix of type 1 which interchange the \(i\)th column with \(j\)th column.
+    \item \(E\) is an elementary matrix of type 2 which multiply the \(i\)th row with \(c\), iff, \(E\) is an elementary matrix of type 2 which multiply the \(i\)th column with \(c\).
+    \item \(E\) is an elementary matrix of type 3 which multiply the \(i\)th row with \(c\) and add it to the \(j\)th row, iff, \(E\) is an elementary matrix of type 3 which multiply the \(j\)th column with \(c\) and add it to the \(i\)th column.
+  \end{itemize}
 \end{ex}
 
 \begin{proof}[\pf{ex:3.1.4}]
   First we show that a type 1 elementary matrix can be obtained in at least two ways.
-  Let \(E \in \ms{n}{n}{\F}\) be an elementary matrix of type 1 which interchange the \(i\)th row with \(j\)th row.
-  Let \(F \in \ms{n}{n}{\F}\) be an elementary matrix of type 1 which interchange the \(i\)th column with \(j\)th column.
+  Fix \(i, j \in \set{1, \dots, n}\) and \(i \neq j\).
+  Let \(E \in \ms{n}{n}{\F}\) be an elementary matrix of type 1 which interchange the \(i\)th row with \(j\)th row, and let \(F \in \ms{n}{n}{\F}\) be an elementary matrix of type 1 which interchange the \(i\)th column with \(j\)th column.
   Observe that
   \begin{align*}
     \forall p, q \in \set{1, \dots, n}, E_{p q} & = \begin{dcases}
@@ -77,8 +83,8 @@
   Thus a type 1 elementary matrix can be obtained in at least two ways.
 
   Next we show that a type 2 elementary matrix can be obtained in at least two ways.
-  Let \(E \in \ms{n}{n}{\F}\) be an elementary matrix of type 2 which multiply the \(i\)th row with \(c \in \F\).
-  Let \(F \in \ms{n}{n}{\F}\) be an elementary matrix of type 2 which multiply the \(i\)th column with \(c \in \F\).
+  Fix \(i \in \set{1, \dots, n}\).
+  Let \(c \in \F\), let \(E \in \ms{n}{n}{\F}\) be an elementary matrix of type 2 which multiply the \(i\)th row with \(c\), and let \(F \in \ms{n}{n}{\F}\) be an elementary matrix of type 2 which multiply the \(i\)th column with \(c\).
   Observe that
   \begin{align*}
     \forall p, q \in \set{1, \dots, n}, E_{p q} & = \begin{dcases}
@@ -104,8 +110,8 @@
   Thus a type 2 elementary matrix can be obtained in at least two ways.
 
   Finally we show that a type 3 elementary matrix can be obtained in at least two ways.
-  Let \(E \in \ms{n}{n}{\F}\) be an elementary matrix of type 3 which multiply the \(i\)th row with \(c \in \F\) and add it to the \(j\)th row.
-  Let \(F \in \ms{n}{n}{\F}\) be an elementary matrix of type 3 which multiply the \(j\)th column with \(c \in \F\) and add it to the \(i\)th column.
+  Fix \(i, j \in \set{1, \dots, n}\) and \(i \neq j\).
+  Let \(c \in \F\), let \(E \in \ms{n}{n}{\F}\) be an elementary matrix of type 3 which multiply the \(i\)th row with \(c\) and add it to the \(j\)th row, and let \(F \in \ms{n}{n}{\F}\) be an elementary matrix of type 3 which multiply the \(j\)th column with \(c\) and add it to the \(i\)th column.
   Observe that
   \begin{align*}
     \forall p, q \in \set{1, \dots, n}, E_{p q} & = \begin{dcases}
@@ -136,6 +142,119 @@
                                                 & = F_{p q}.                                             &  & \text{(by \cref{2.3.4})}
   \end{align*}
   Thus a type 3 elementary matrix can be obtained in at least two ways.
+\end{proof}
+
+\begin{ex}\label{ex:3.1.5}
+  Prove that \(E\) is an elementary matrix iff \(\tp{E}\) is.
+  More precisely, let \(E \in \ms{n}{n}{\F}\) and let \(c \in \F \setminus \set{0}\).
+  For distinct \(i, j \in \set{1, \dots, n}\), we have
+  \begin{itemize}
+    \item \(\tp{E} = E\) iff \(E\) is an elementary matrix of type 1 or type 2.
+    \item \(E\) is an elementary matrix of type 3 which multiply the \(i\)th row (column) with \(c\) and add it to the \(j\)th row (column), iff, \(\tp{E}\) is an elementary matrix of type 3 which multiply the \(i\)th row (column) with \(c\) and add it to the \(j\)th row (column).
+  \end{itemize}
+\end{ex}
+
+\begin{proof}[\pf{ex:3.1.5}]
+  First we show that the transpose of a type 1 elementary matrix is a type 1 elementary matrix.
+  Fix \(i, j \in \set{1, \dots, n}\) and \(i \neq j\).
+  Let \(E \in \ms{n}{n}{\F}\) be an elementary matrix of type 1 which interchange the \(i\)th row with \(j\)th row.
+  Observe that
+  \begin{align*}
+    \forall p, q \in \set{1, \dots, n}, \pa{\tp{E}}_{p q} & = E_{q p}                                                   &  & \text{(by \cref{1.3.3})} \\
+                                                          & = \begin{dcases}
+                                                                \delta_{q p} & \text{if } (q \neq i) \land (q \neq j) \\
+                                                                \delta_{j p} & \text{if } q = i                       \\
+                                                                \delta_{i p} & \text{if } q = j
+                                                              \end{dcases}    &  & \text{(by \cref{2.3.4})}                                   \\
+                                                          & = \begin{dcases}
+                                                                1 & \text{if } (q \neq i) \land (q \neq j) \land (q = p) \\
+                                                                1 & \text{if } (q = i) \land (p = j)                     \\
+                                                                1 & \text{if } (q = j) \land (p = i)                     \\
+                                                                0 & \text{otherwise}
+                                                              \end{dcases} &  & \text{(by \cref{2.3.4})}                                \\
+                                                          & = \begin{dcases}
+                                                                1 & \text{if } (p \neq i) \land (p \neq j) \land (q = p) \\
+                                                                1 & \text{if } (q = i) \land (p = j)                     \\
+                                                                1 & \text{if } (q = j) \land (p = i)                     \\
+                                                                0 & \text{otherwise}
+                                                              \end{dcases}                                \\
+                                                          & = \begin{dcases}
+                                                                \delta_{p q} & \text{if } (p \neq i) \land (p \neq j) \\
+                                                                \delta_{i q} & \text{if } p = j                       \\
+                                                                \delta_{j q} & \text{if } p = i
+                                                              \end{dcases}    &  & \text{(by \cref{2.3.4})}                                   \\
+                                                          & = E_{p q}.                                                  &  & \text{(by \cref{2.3.4})}
+  \end{align*}
+  Thus we have \(\tp{E} = E\).
+  By \cref{ex:3.1.4} we see that \(E\) is also an elementary matrix of type 1 which interchange the \(i\)th column with \(j\)th column.
+  Thus the transpose of a type 1 elementary matrix is a type 1 elementary matrix.
+
+  Next we show that the transpose of a type 2 elementary matrix is a type 2 elementary matrix.
+  Fix \(i \in \set{1, \dots, n}\).
+  Let \(E \in \ms{n}{n}{\F}\) be an elementary matrix of type 2 which multiply the \(i\)th row with \(c \in \F\).
+  Observe that
+  \begin{align*}
+    \forall p, q \in \set{1, \dots, n}, \pa{\tp{E}}_{p q} & = E_{q p}                                  &  & \text{(by \cref{1.3.3})} \\
+                                                          & = \begin{dcases}
+                                                                \delta_{q p}   & \text{if } q \neq i \\
+                                                                c \delta_{i p} & \text{if } q = i
+                                                              \end{dcases}    &  & \text{(by \cref{2.3.4})}                          \\
+                                                          & = \begin{dcases}
+                                                                1 & \text{if } (q \neq i) \land (q = p) \\
+                                                                c & \text{if } (q = i) \land (p = i)    \\
+                                                                0 & \text{otherwise}
+                                                              \end{dcases} &  & \text{(by \cref{2.3.4})}                             \\
+                                                          & = \begin{dcases}
+                                                                1 & \text{if } (p \neq i) \land (q = p) \\
+                                                                c & \text{if } (q = i) \land (p = i)    \\
+                                                                0 & \text{otherwise}
+                                                              \end{dcases}                                \\
+                                                          & = \begin{dcases}
+                                                                \delta_{p q}   & \text{if } p \neq i \\
+                                                                c \delta_{i q} & \text{if } p = i
+                                                              \end{dcases}    &  & \text{(by \cref{2.3.4})}                          \\
+                                                          & = E_{p q}.                                 &  & \text{(by \cref{2.3.4})}
+  \end{align*}
+  Thus we have \(\tp{E} = E\).
+  By \cref{ex:3.1.4} we see that \(E\) is also an elementary matrix of type 2 which multiply the \(i\)th column with \(c\).
+  Thus the transpose of a type 2 elementary matrix is a type 2 elementary matrix.
+
+  Finally we show that the transpose of a type 3 elementary matrix is a type 3 elementary matrix.
+  Fix \(i, j \in \set{1, \dots, n}\) and \(i \neq j\).
+  Let \(c \in \F\), let \(E \in \ms{n}{n}{\F}\) be an elementary matrix of type 3 which multiply the \(i\)th row with \(c\) and add it to the \(j\)th row, and let \(F \in \ms{n}{n}{\F}\) be an elementary matrix of type 3 which multiply the \(j\)th row with \(c\) and add it to the \(i\)th row.
+  Observe that
+  \begin{align*}
+    \forall p, q \in \set{1, \dots, n}, \pa{\tp{E}}_{p q} & = E_{q p}                                              &  & \text{(by \cref{1.3.3})} \\
+                                                          & = \begin{dcases}
+                                                                \delta_{q p}                  & \text{if } q \neq j \\
+                                                                c \delta_{i p} + \delta_{j p} & \text{if } q = j
+                                                              \end{dcases} &  & \text{(by \cref{2.3.4})}                                \\
+                                                          & = \begin{dcases}
+                                                                1 & \text{if } (q \neq j) \land (q = p) \\
+                                                                c & \text{if } (q = j) \land (p = i)    \\
+                                                                1 & \text{if } (q = j) \land (p = j)    \\
+                                                                0 & \text{otherwise}
+                                                              \end{dcases}             &  & \text{(by \cref{2.3.4})}                             \\
+                                                          & = \begin{dcases}
+                                                                1 & \text{if } q = p                 \\
+                                                                c & \text{if } (q = j) \land (p = i) \\
+                                                                0 & \text{otherwise}
+                                                              \end{dcases}                                               \\
+                                                          & = \begin{dcases}
+                                                                1 & \text{if } (p \neq i) \land (p = q) \\
+                                                                c & \text{if } (p = i) \land (q = j)    \\
+                                                                1 & \text{if } (p = i) \land (q = i)    \\
+                                                                0 & \text{otherwise}
+                                                              \end{dcases}                                            \\
+                                                          & = \begin{dcases}
+                                                                \delta_{p q}                  & \text{if } p \neq i \\
+                                                                c \delta_{j q} + \delta_{i q} & \text{if } p = i
+                                                              \end{dcases} &  & \text{(by \cref{2.3.4})}                                \\
+                                                          & = F_{p q}.                                             &  & \text{(by \cref{2.3.4})}
+  \end{align*}
+  Thus we have \(\tp{E} = F\).
+  By \cref{ex:3.1.4} we see that \(E\) is also an elementary matrix of type 3 which multiply the \(j\)th column with \(c\) and add it to the \(i\)th column.
+  Thus the transpose of a type 3 elementary matrix is a type 3 elementary matrix.
 \end{proof}
 
 \begin{ex}\label{ex:3.1.8}
