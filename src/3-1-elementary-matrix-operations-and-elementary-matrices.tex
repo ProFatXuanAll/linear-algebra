@@ -324,7 +324,10 @@
   More precisely, let \(E \in \ms{n}{n}{\F}\) and let \(c \in \F \setminus \set{0}\).
   For distinct \(i, j \in \set{1, \dots, n}\), we have
   \begin{itemize}
-    \item \(\tp{E} = E\) iff \(E\) is an elementary matrix of type 1 or type 2.
+    \item If \(E\) is an elementary matrix of type 1 iff \(\tp{E}\) is an elementary matrix of type 1.
+          Futhermore, \(E = \tp{E}\).
+    \item If \(E\) is an elementary matrix of type 2 iff \(\tp{E}\) is an elementary matrix of type 2.
+          Futhermore, \(E = \tp{E}\).
     \item \(E\) is an elementary matrix of type 3 which multiply the \(i\)th row (column) with \(c\) and add it to the \(j\)th row (column), iff, \(\tp{E}\) is an elementary matrix of type 3 which multiply the \(i\)th row (column) with \(c\) and add it to the \(j\)th row (column).
   \end{itemize}
 \end{ex}
@@ -468,4 +471,88 @@
   By \cref{3.2} we know that \(E^{-1}\) exists and \(E^{-1}\) is an elementary column operation of the same type.
   Thus we have \(P = P E E^{-1} = Q E^{-1}\).
   By \cref{3.1} this means \(P\) can be obtained from \(Q\) by an elementary column operation of the same type.
+\end{proof}
+
+\begin{ex}\label{ex:3.1.9}
+  Prove that any elementary row (column) operation of type 1 can be obtained by a succession of three elementary row (column) operations of type 3 followed by one elementary row (column) operation of type 2.
+\end{ex}
+
+\begin{proof}[\pf{ex:3.1.9}]
+  Fix \(i, j \in \set{1, \dots n}\) such that \(i \neq j\).
+  First suppose that \(E \in \ms{n}{n}{\F}\) is an elementary matrix of type 1 which interchange the \(i\)th row and the \(j\)th row.
+  Let \(E_1 \in \ms{n}{n}{\F}\) be the elementary matrix of type 3 which add the \(i\)th row to the \(j\)th row.
+  Let \(E_2 \in \ms{n}{n}{\F}\) be the elementary matrix of type 3 which multiply \(j\)th row with \(-1\) and add it to the \(i\)th row.
+  Let \(E_3 \in \ms{n}{n}{\F}\) be the elementary matrix of type 3 which add the \(i\)th row to the \(j\)th row.
+  Let \(E_4 \in \ms{n}{n}{\F}\) be the elementary matrix of type 4 which multiply \(i\)th row with \(-1\).
+  Observe that
+  \begin{align*}
+    \forall p, q \in \set{1, \dots, n}, E_{p q} & = \begin{dcases}
+                                                      \delta_{p q} & \text{if } (p \neq i) \land (p \neq j) \\
+                                                      \delta_{j q} & \text{if } p = i                       \\
+                                                      \delta_{i q} & \text{if } p = j
+                                                    \end{dcases} &  & \text{(by \cref{2.3.4})}         \\
+    (E_1)_{p q}                                 & = \begin{dcases}
+                                                      \delta_{p q}                & \text{if } p \neq j \\
+                                                      \delta_{i q} + \delta_{j q} & \text{if } p = j
+                                                    \end{dcases}     &  & \text{(by \cref{2.3.4})}             \\
+    (E_2)_{p q}                                 & = \begin{dcases}
+                                                      \delta_{p q}                 & \text{if } p \neq i \\
+                                                      -\delta_{j q} + \delta_{i q} & \text{if } p = i
+                                                    \end{dcases}    &  & \text{(by \cref{2.3.4})}            \\
+    (E_3)_{p q}                                 & = \begin{dcases}
+                                                      \delta_{p q}                & \text{if } p \neq j \\
+                                                      \delta_{i q} + \delta_{j q} & \text{if } p = j
+                                                    \end{dcases}     &  & \text{(by \cref{2.3.4})}             \\
+    (E_4)_{p q}                                 & = \begin{dcases}
+                                                      \delta_{p q}  & \text{if } p \neq i \\
+                                                      -\delta_{i q} & \text{if } p = i
+                                                    \end{dcases}.                   &  & \text{(by \cref{2.3.4})}
+  \end{align*}
+  Then we have
+  \begin{align*}
+     & \forall p, q \in \set{1, \dots, n},                                                                                                                           \\
+     & (E_4 E_3 E_2 E_1)_{p q} = \sum_{r = 1}^n \sum_{s = 1}^n \sum_{t = 1}^n (E_4)_{p r} (E_3)_{r s} (E_2)_{s t} (E_1)_{t q}          &  & \text{(by \cref{2.3.1})} \\
+     & = \begin{dcases}
+           \sum_{r = 1}^n \sum_{s = 1}^n \sum_{t = 1}^n \delta_{p r} (E_3)_{r s} (E_2)_{s t} (E_1)_{t q}  & \text{if } p \neq i \\
+           \sum_{r = 1}^n \sum_{s = 1}^n \sum_{t = 1}^n -\delta_{i r} (E_3)_{r s} (E_2)_{s t} (E_1)_{t q} & \text{if } p = i
+         \end{dcases}                                        \\
+     & = \begin{dcases}
+           \sum_{s = 1}^n \sum_{t = 1}^n (E_3)_{p s} (E_2)_{s t} (E_1)_{t q}  & \text{if } p \neq i \\
+           \sum_{s = 1}^n \sum_{t = 1}^n -(E_3)_{i s} (E_2)_{s t} (E_1)_{t q} & \text{if } p = i
+         \end{dcases}                                                                    \\
+     & = \begin{dcases}
+           \sum_{s = 1}^n \sum_{t = 1}^n \delta_{p s} (E_2)_{s t} (E_1)_{t q}                  & \text{if } (p \neq i) \land (p \neq j) \\
+           \sum_{s = 1}^n \sum_{t = 1}^n (\delta_{i s} + \delta_{j s}) (E_2)_{s t} (E_1)_{t q} & \text{if } p = j                       \\
+           \sum_{s = 1}^n \sum_{t = 1}^n -\delta_{i s} (E_2)_{s t} (E_1)_{t q}                 & \text{if } p = i
+         \end{dcases}                                \\
+     & = \begin{dcases}
+           \sum_{t = 1}^n (E_2)_{p t} (E_1)_{t q}                 & \text{if } (p \neq i) \land (p \neq j) \\
+           \sum_{t = 1}^n ((E_2)_{i t} + (E_2)_{j t}) (E_1)_{t q} & \text{if } p = j                       \\
+           \sum_{t = 1}^n -(E_2)_{i t} (E_1)_{t q}                & \text{if } p = i
+         \end{dcases}                                                             \\
+     & = \begin{dcases}
+           \sum_{t = 1}^n \delta_{p t} (E_1)_{t q}                                  & \text{if } (p \neq i) \land (p \neq j) \\
+           \sum_{t = 1}^n (-\delta_{j t} + \delta_{i t} + \delta_{j t}) (E_1)_{t q} & \text{if } p = j                       \\
+           \sum_{t = 1}^n -(-\delta_{j t} + \delta_{i t}) (E_1)_{t q}               & \text{if } p = i
+         \end{dcases}                                           \\
+     & = \begin{dcases}
+           (E_1)_{p q}               & \text{if } (p \neq i) \land (p \neq j) \\
+           (E_1)_{i q}               & \text{if } p = j                       \\
+           (E_1)_{j q} - (E_1)_{i q} & \text{if } p = i
+         \end{dcases}                                                                                          \\
+     & = \begin{dcases}
+           \delta_{p q}                               & \text{if } (p \neq i) \land (p \neq j) \\
+           \delta_{i q}                               & \text{if } p = j                       \\
+           \delta_{i q} + \delta_{j q} - \delta_{i q} & \text{if } p = i
+         \end{dcases}                                                                         \\
+     & = E_{p q}.
+  \end{align*}
+  Thus \(E = E_4 E_3 E_2 E_1\).
+  We conclude by \cref{3.1} that an elementary row operation of type 1 can be replaced with three consecutive elementary row operations of type 3 followed by one elementary row operation of type 2.
+  Since
+  \begin{align*}
+    E & = \tp{E}                              &  & \text{(by \cref{ex:3.1.5})} \\
+      & = \tp{E_1} \tp{E_2} \tp{E_3} \tp{E_4} &  & \text{(by \cref{2.3.2})}
+  \end{align*}
+  and \(E\) is also an elementary matrix of type 1 which interchange columns, we can conclude by \cref{3.1} and \cref{ex:3.1.5} that an elementary column operation of type 1 can be replaced with three consecutive elementary column operations of type 3 followed by one elementary column operation of type 2.
 \end{proof}
