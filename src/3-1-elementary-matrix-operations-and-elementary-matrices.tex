@@ -95,7 +95,7 @@
   and we have \(B = AE\).
 
   Next we prove that \cref{3.1} is true for a type 2 row operation.
-  Let \(c \in \F\) and let \(A, B \in \MS\) such that \(B\) is obtained by multiplying the \(i\)th row of \(A\) with \(c\).
+  Let \(c \in \F \setminus \set{0}\) and let \(A, B \in \MS\) such that \(B\) is obtained by multiplying the \(i\)th row of \(A\) with \(c\).
   If \(E \in \ms{m}{m}{\F}\) is the elementary matrix performing the same operation, then by \cref{2.3.4} we have
   \[
     \forall p, q \in \set{1, \dots, m}, E_{p q} = \begin{dcases}
@@ -120,7 +120,7 @@
   and we have \(B = EA\).
 
   Next we prove that \cref{3.1} is true for a type 2 column operation.
-  Let \(c \in \F\) and let \(A, B \in \MS\) such that \(B\) is obtained by multiplying the \(i\)th column of \(A\) with \(c\).
+  Let \(c \in \F \setminus \set{0}\) and let \(A, B \in \MS\) such that \(B\) is obtained by multiplying the \(i\)th column of \(A\) with \(c\).
   If \(E \in \ms{n}{n}{\F}\) is the elementary matrix performing the same operation, then by \cref{2.3.4} we have
   \[
     \forall p, q \in \set{1, \dots, n}, E_{p q} = \begin{dcases}
@@ -146,7 +146,7 @@
 
   Next we prove that \cref{3.1} is true for a type 3 row operation.
   Let \(i, j \in \set{1, \dots, m}\) such that \(i \neq j\).
-  Let \(A, B \in \MS\) such that \(B\) is obtained by multiplying the \(i\)th row of \(A\) with \(c \in \F\) and add it to the \(j\)th row of \(A\).
+  Let \(A, B \in \MS\) such that \(B\) is obtained by multiplying the \(i\)th row of \(A\) with \(c \in \F \setminus \set{0}\) and add it to the \(j\)th row of \(A\).
   If \(E \in \ms{m}{m}{\F}\) is the elementary matrix performing the same operation, then by \cref{2.3.4} we have
   \[
     \forall p, q \in \set{1, \dots, m}, E_{p q} = \begin{dcases}
@@ -172,7 +172,7 @@
 
   Finally we prove that \cref{3.1} is true for a type 3 column operation.
   Let \(i, j \in \set{1, \dots, m}\) such that \(i \neq j\).
-  Let \(A, B \in \MS\) such that \(B\) is obtained by multiplying the \(i\)th column of \(A\) with \(c \in \F\) and add it to the \(j\)th column of \(A\).
+  Let \(A, B \in \MS\) such that \(B\) is obtained by multiplying the \(i\)th column of \(A\) with \(c \in \F \setminus \set{0}\) and add it to the \(j\)th column of \(A\).
   If \(E \in \ms{n}{n}{\F}\) is the elementary matrix performing the same operation, then by \cref{2.3.4} we have
   \[
     \forall p, q \in \set{1, \dots, n}, E_{p q} = \begin{dcases}
@@ -259,7 +259,7 @@
 
   Next we show that a type 2 elementary matrix can be obtained in at least two ways.
   Fix \(i \in \set{1, \dots, n}\).
-  Let \(c \in \F\), let \(E \in \ms{n}{n}{\F}\) be an elementary matrix of type 2 which multiply the \(i\)th row with \(c\), and let \(F \in \ms{n}{n}{\F}\) be an elementary matrix of type 2 which multiply the \(i\)th column with \(c\).
+  Let \(c \in \F \setminus \set{0}\), let \(E \in \ms{n}{n}{\F}\) be an elementary matrix of type 2 which multiply the \(i\)th row with \(c\), and let \(F \in \ms{n}{n}{\F}\) be an elementary matrix of type 2 which multiply the \(i\)th column with \(c\).
   Observe that
   \begin{align*}
     \forall p, q \in \set{1, \dots, n}, E_{p q} & = \begin{dcases}
@@ -286,7 +286,7 @@
 
   Finally we show that a type 3 elementary matrix can be obtained in at least two ways.
   Fix \(i, j \in \set{1, \dots, n}\) and \(i \neq j\).
-  Let \(c \in \F\), let \(E \in \ms{n}{n}{\F}\) be an elementary matrix of type 3 which multiply the \(i\)th row with \(c\) and add it to the \(j\)th row, and let \(F \in \ms{n}{n}{\F}\) be an elementary matrix of type 3 which multiply the \(j\)th column with \(c\) and add it to the \(i\)th column.
+  Let \(c \in \F \setminus \set{0}\), let \(E \in \ms{n}{n}{\F}\) be an elementary matrix of type 3 which multiply the \(i\)th row with \(c\) and add it to the \(j\)th row, and let \(F \in \ms{n}{n}{\F}\) be an elementary matrix of type 3 which multiply the \(j\)th column with \(c\) and add it to the \(i\)th column.
   Observe that
   \begin{align*}
     \forall p, q \in \set{1, \dots, n}, E_{p q} & = \begin{dcases}
@@ -369,7 +369,7 @@
 
   Next we show that the transpose of a type 2 elementary matrix is a type 2 elementary matrix.
   Fix \(i \in \set{1, \dots, n}\).
-  Let \(E \in \ms{n}{n}{\F}\) be an elementary matrix of type 2 which multiply the \(i\)th row with \(c \in \F\).
+  Let \(E \in \ms{n}{n}{\F}\) be an elementary matrix of type 2 which multiply the \(i\)th row with \(c \in \F \setminus \set{0}\).
   Observe that
   \begin{align*}
     \forall p, q \in \set{1, \dots, n}, \pa{\tp{E}}_{p q} & = E_{q p}                                  &  & \text{(by \cref{1.3.3})} \\
@@ -399,7 +399,7 @@
 
   Finally we show that the transpose of a type 3 elementary matrix is a type 3 elementary matrix.
   Fix \(i, j \in \set{1, \dots, n}\) and \(i \neq j\).
-  Let \(c \in \F\), let \(E \in \ms{n}{n}{\F}\) be an elementary matrix of type 3 which multiply the \(i\)th row with \(c\) and add it to the \(j\)th row, and let \(F \in \ms{n}{n}{\F}\) be an elementary matrix of type 3 which multiply the \(j\)th row with \(c\) and add it to the \(i\)th row.
+  Let \(c \in \F \setminus \set{0}\), let \(E \in \ms{n}{n}{\F}\) be an elementary matrix of type 3 which multiply the \(i\)th row with \(c\) and add it to the \(j\)th row, and let \(F \in \ms{n}{n}{\F}\) be an elementary matrix of type 3 which multiply the \(j\)th row with \(c\) and add it to the \(i\)th row.
   Observe that
   \begin{align*}
     \forall p, q \in \set{1, \dots, n}, \pa{\tp{E}}_{p q} & = E_{q p}                                              &  & \text{(by \cref{1.3.3})} \\
@@ -555,4 +555,97 @@
       & = \tp{E_1} \tp{E_2} \tp{E_3} \tp{E_4} &  & \text{(by \cref{2.3.2})}
   \end{align*}
   and \(E\) is also an elementary matrix of type 1 which interchange columns, we can conclude by \cref{3.1} and \cref{ex:3.1.5} that an elementary column operation of type 1 can be replaced with three consecutive elementary column operations of type 3 followed by one elementary column operation of type 2.
+\end{proof}
+
+\begin{ex}\label{ex:3.1.10}
+  Prove that any elementary row (column) operation of type 2 can be obtained by \emph{dividing} some row (column) by a nonzero scalar.
+\end{ex}
+
+\begin{proof}[\pf{ex:3.1.10}]
+  Let \(E \in \ms{n}{n}{\F}\) be an elementary matrix of type 2 which multiply the \(i\)th row with \(c \in \F \setminus \set{0}\).
+  Then we have
+  \begin{align*}
+    \forall p, q \in \set{1, \dots, n}, E_{p q} & = \begin{dcases}
+                                                      \delta_{p q}   & \text{if } p \neq i \\
+                                                      c \delta_{i q} & \text{if } p = i
+                                                    \end{dcases}                                      &  & \text{(by \cref{2.3.4})} \\
+                                                & = \begin{dcases}
+                                                      \delta_{p q}                  & \text{if } p \neq i \\
+                                                      \frac{1}{c^{-1}} \delta_{i q} & \text{if } p = i
+                                                    \end{dcases}. &  & (c \neq 0)
+  \end{align*}
+  Thus \(E\) can be obtained by dividing the \(i\)th row of \(I_n\) with \(c^{-1}\).
+  Since \(E\) is also an elementary matrix of type 2 which multiply the \(i\)th column with \(c\) (by \cref{ex:3.1.4}), we know that \(E\) can also be obtained by dividing the \(i\)th column of \(I_n\) with \(c^{-1}\).
+\end{proof}
+
+\begin{ex}\label{ex:3.1.11}
+  Prove that any elementary row (column) operation of type 3 can be obtained by \emph{subtracting} a multiple of some row (column) from another row (column).
+\end{ex}
+
+\begin{proof}[\pf{ex:3.1.11}]
+  Fix \(i, j \in \set{1, \dots, n}\) such that \(i \neq j\).
+  First suppose that \(E \in \ms{n}{n}{\F}\) is an elementary matrix of type 3 which multiply the \(i\)th row with \(c \in \F \setminus \set{0}\) and add it to the \(j\)th row.
+  Then we have
+  \begin{align*}
+    \forall p, q \in \set{1, \dots, n}, E_{p q} & = \begin{dcases}
+                                                      \delta_{p q}                  & \text{if } p \neq j \\
+                                                      c \delta_{i q} + \delta_{j q} & \text{if } p = j
+                                                    \end{dcases}    &  & \text{(by \cref{2.3.4})}    \\
+                                                & = \begin{dcases}
+                                                      \delta_{p q}                     & \text{if } p \neq j \\
+                                                      \delta_{j q} - (-c) \delta_{i q} & \text{if } p = j
+                                                    \end{dcases}. &  & (c \in \F)
+  \end{align*}
+  Thus \(E\) can be obtained by subtracting the \(j\)th row with a multiple of \(i\)th row.
+
+  Now suppose that \(E \in \ms{n}{n}{\F}\) is an elementary matrix of type 3 which multiply the \(i\)th column with \(c \in \F \setminus \set{0}\) and add it to the \(j\)th column.
+  Then we have
+  \begin{align*}
+    \forall p, q \in \set{1, \dots, n}, E_{p q} & = \begin{dcases}
+                                                      \delta_{p q}                  & \text{if } q \neq j \\
+                                                      c \delta_{p i} + \delta_{p j} & \text{if } q = j
+                                                    \end{dcases}    &  & \text{(by \cref{2.3.4})}    \\
+                                                & = \begin{dcases}
+                                                      \delta_{p q}                     & \text{if } q \neq j \\
+                                                      \delta_{p j} - (-c) \delta_{p i} & \text{if } q = j
+                                                    \end{dcases}. &  & (c \in \F)
+  \end{align*}
+  Thus \(E\) can be obtained by subtracting the \(j\)th column with a multiple of \(i\)th column.
+\end{proof}
+
+\begin{ex}\label{ex:3.1.12}
+  Let \(A \in \MS\).
+  Prove that there exists a sequence of elementary row operations of types 1 and 3 that transforms \(A\) into an upper triangular matrix.
+\end{ex}
+
+\begin{proof}[\pf{ex:3.1.12}]
+  We use induction on \(m\).
+  For \(m = 1\), by \cref{ex:1.3.12} every \(A \in \ms{1}{n}{\F}\) is an upper triangular matrix and thus the base case holds.
+  Suppose inductive that for some \(m \geq 1\), every \(A \in \MS\) can be transformed into an upper triangular matrix.
+  Let \(B \in \ms{(m + 1)}{n}{\F}\).
+  By induction hypothesis we can transform the first \(m\) rows of \(B\) into an upper triangular matrix with row operations of type 1 and type 3.
+  Call the transformed matrix as \(C\).
+  Now we only need to deal with the \((m + 1)\)th row of \(C\) to make it an upper triangular matrix.
+  First we check if \(C_{(m + 1) 1}\) is zero or not.
+  If \(C_{(m + 1) 1} = 0\) then we do nothing.
+  If not, then we split into two cases:
+  \begin{itemize}
+    \item If \(C_{1 1} \neq 0\), then we multiply the first row of \(C\) with \(\frac{-C_{(m + 1) 1}}{C_{1 1}}\) and add it to the \((m + 1)\)th row of \(C\).
+          The resulting matrix, called it \(D\), will have \(D_{(m + 1) 1} = 0\) (thanks to the elementary row operation of type 3) and the first \(m\) rows of \(D\) is upper triangular (since they are the first \(m\) rows of \(C\)).
+    \item If \(C_{1 1} = 0\), then we interchange the first and the \((m + 1)\)th rows of \(C\).
+          The resulting matrix, called it \(D\), will have \(D_{(m + 1) 1} = 0\) (thanks to the elementary row operation of type 1) and the first \(m\) rows of \(D\) is upper triangular (since the second to the \(m\)th rows of \(D\) is the same as \(C\)).
+  \end{itemize}
+  After the above operation (if there is any) we can obtain a matrix \(D\) with \(D_{(m + 1) 1} = 0\) and the first \(m\) rows of \(D\) is upper triangular.
+  Next we check if \(D_{(m + 1) 2}\) is zero or not.
+  If \(D_{(m + 1) 2} = 0\) then we do nothing.
+  If not, then we split into two cases:
+  \begin{itemize}
+    \item If \(D_{2 2} \neq 0\), then we multiply the second row of \(D\) with \(\frac{-D_{(m + 1) 2}}{D_{2 2}}\) and add it to the \((m + 1)\)th row of \(D\).
+          The resulting matrix, called it \(E\), will have \(E_{(m + 1) 1} = E_{(m + 1) 2} = 0\) (thanks to the elementary row operation of type 3 and \(D_{2 1} = 0\)) and the first \(m\) rows of \(E\) is upper triangular (since they are the first \(m\) rows of \(D\)).
+    \item If \(D_{2 2} = 0\), then we interchange the second and the \((m + 1)\)th rows of \(D\).
+          The resulting matrix, called it \(E\), will have \(E_{(m + 1) 1} = E_{(m + 1) 2} = 0\) (thanks to the elementary row operation of type 1 and \(D_{2 1} = 0\)) and the first \(m\) rows of \(E\) is upper triangular (since the first row and the third to the \(m\)th rows of \(E\) is the same as \(D\), and \(E_{2 1} = D_{(m + 1) 1} = 0\)).
+  \end{itemize}
+  After the above operation (if there is any) we can obtain a matrix \(E\) with \(E_{(m + 1) 1} = E_{(m + 1) 2} = 0\) and the first \(m\) rows of \(E\) is upper triangular.
+  Continue this manner at most \(z = \max(m, n)\) times we can obtain a matrix \(Z\) with \(Z_{(m + 1) 1} = Z_{(m + 1) 2} = \cdots = Z_{(m + 1) z} = 0\) and the first \(m\) rows of \(Z\) is upper triangular.
+  But this also means \(Z\) is an upper triangular matrix and the induction is closed.
 \end{proof}
