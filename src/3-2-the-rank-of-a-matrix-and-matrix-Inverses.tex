@@ -1,1 +1,90 @@
 \section{The Rank of a Matrix and Matrix Inverses}\label{sec:3.2}
+
+\begin{defn}\label{3.2.1}
+  If \(A \in \MS\), we define the \textbf{rank} of \(A\), denoted \(\rk{A}\), to be the rank of the linear transformation \(\L_A : \vs{F}^n \to \vs{F}^m\).
+\end{defn}
+
+\begin{cor}\label{3.2.2}
+  An \(n \times n\) matrix is invertible iff its rank is \(n\).
+\end{cor}
+
+\begin{proof}[\pf{3.2.2}]
+  We have
+  \begin{align*}
+         & A \in \ms{n}{n}{\F} \text{ is invertible}                               \\
+    \iff & \L_A \text{ is invertible}                &  & \text{(by \cref{2.4.7})} \\
+    \iff & \rk{\L_A} = \dim(\vs{F}^n) = n            &  & \text{(by \cref{2.4.2})} \\
+    \iff & \rk{A} = n.                               &  & \text{(by \cref{3.2.1})}
+  \end{align*}
+\end{proof}
+
+\begin{note}
+  Every matrix \(A\) is the matrix representation of the linear transformation \(\L_A\) with respect to the appropriate standard ordered bases.
+  Thus the rank of the linear transformation \(\L_A\) is the same as the rank of one of its matrix representations, namely, \(A\).
+  \cref{3.3} extends this fact to any matrix representation of any linear transformation defined on finite-dimensional vector spaces.
+\end{note}
+
+\begin{thm}\label{3.3}
+  Let \(\T : \V \to \W\) be a linear transformation between finite-dimensional vector spaces, and let \(\beta\) and \(\gamma\) be ordered bases for \(\V\) and \(\W\), respectively.
+  Then \(\rk{\T} = \rk{[\T]_{\beta}^{\gamma}}\).
+\end{thm}
+
+\begin{proof}[\pf{3.3}]
+  This is a restatement of \cref{ex:2.4.20}.
+\end{proof}
+
+\begin{note}
+  Now that the problem of finding the rank of a linear transformation has been reduced to the problem of finding the rank of a matrix, we need a result that allows us to perform rank-preserving operations on matrices.
+  \cref{3.4} and \cref{3.2.3} tell us how to do this.
+\end{note}
+
+\begin{thm}\label{3.4}
+  Let \(A \in \MS\).
+  If \(P \in \ms{m}{m}{\F}\) and \(Q \in \ms{n}{n}{\F}\) are invertible, then
+  \begin{enumerate}
+    \item \(\rk{AQ} = \rk{A}\).
+    \item \(\rk{PA} = \rk{A}\).
+    \item \(\rk{PAQ} = \rk{A}\).
+  \end{enumerate}
+\end{thm}
+
+\begin{proof}[\pf{3.4}]
+  First observe that
+  \begin{align*}
+    \rg{\L_{AQ}} & = \rg{\L_A \L_Q}       &  & \text{(by \cref{2.15}(e))} \\
+                 & = \L_A \L_Q(\vs{F}^n)  &  & \text{(by \cref{2.1.10})}  \\
+                 & = \L_A(\L_Q(\vs{F}^n))                                 \\
+                 & = \L_A(\vs{F}^n)       &  & \text{(by \cref{2.4.7})}   \\
+                 & = \rg{\L_A}            &  & \text{(by \cref{2.1.10})}
+  \end{align*}
+  since \(\L_Q\) is onto.
+  Therefore
+  \begin{align*}
+    \rk{AQ} & = \dim(\rg{\L_{AQ}}) &  & \text{(by \cref{3.2.1})}      \\
+            & = \dim(\rg{\L_A})    &  & \text{(from the proof above)} \\
+            & = \rk{A}.            &  & \text{(by \cref{3.2.1})}
+  \end{align*}
+  This establishes (a).
+  To establish (b), observe that
+  \begin{align*}
+    \rk{PA} & = \dim(\rg{\L_{PA}})         &  & \text{(by \cref{3.2.1})}        \\
+            & = \dim(\rg{\L_P \L_A})       &  & \text{(by \cref{2.15}(e))}      \\
+            & = \dim(\L_P(\L_A(\vs{F}^n))) &  & \text{(by \cref{2.1.10})}       \\
+            & = \dim(\L_A(\vs{F}^n))       &  & \text{(by \cref{ex:2.4.17}(b))} \\
+            & = \dim(\rg{\L_A})            &  & \text{(by \cref{2.1.10})}       \\
+            & = \rk{A}.                    &  & \text{(by \cref{3.2.1})}
+  \end{align*}
+  Finally, applying (a) and (b), we have
+  \[
+    \rk{PAQ} = \rk{PA} = \rk{A}.
+  \]
+\end{proof}
+
+\begin{cor}\label{3.2.3}
+  Elementary row and column operations on a matrix are rank-preserving.
+\end{cor}
+
+\begin{proof}[\pf{3.2.3}]
+  If \(B\) is obtained from a matrix \(A\) by an elementary row (column) operation, then by \cref{3.1} there exists an elementary matrix \(E\) such that \(B = EA\) (\(B = AE\)).
+  By \cref{3.2} \(E\) is invertible, and hence \(\rk{B} = \rk{A}\) by \cref{3.4}.
+\end{proof}
