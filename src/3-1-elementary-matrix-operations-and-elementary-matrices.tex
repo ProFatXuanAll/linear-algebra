@@ -35,6 +35,168 @@
   Conversely, if \(E\) is an elementary \(m \times m\) (\(n \times n\)) matrix, then \(EA\) (\(AE\)) is the matrix obtained from \(A\) by performing the same elementary row (column) operation as that which produces \(E\) from \(I_m\) (\(I_n\)).
 \end{thm}
 
+\begin{proof}[\pf{3.1}]
+  First we prove that \cref{3.1} is true for a type 1 row operation.
+  Let \(A, B \in \MS\) such that \(B\) is obtained by interchanging two rows of \(A\).
+  Let the interchanging rows be \(i, j \in \set{1, \dots, m}\).
+  If \(E \in \ms{m}{m}{\F}\) is the elementary matrix performing the same operation, then by \cref{2.3.4} we have
+  \[
+    \forall p, q \in \set{1, \dots, m}, E_{p q} = \begin{dcases}
+      \delta_{p q} & \text{if } (p \neq i) \land (p \neq j) \\
+      \delta_{j q} & \text{if } p = i                       \\
+      \delta_{i q} & \text{if } p = j
+    \end{dcases}.
+  \]
+  Thus
+  \begin{align*}
+     & \forall (p, k) \in \set{1, \dots, m} \times \set{1, \dots, n},                                                \\
+     & (EA)_{p k} = \sum_{q = 1}^m E_{p q} A_{q k}                                     &  & \text{(by \cref{2.3.1})} \\
+     & = \begin{dcases}
+           \sum_{q = 1}^m \delta_{p q} A_{q k} & \text{if } (p \neq i) \land (p \neq j) \\
+           \sum_{q = 1}^m \delta_{j q} A_{q k} & \text{if } p = i                       \\
+           \sum_{q = 1}^m \delta_{i q} A_{q k} & \text{if } p = j
+         \end{dcases}                                \\
+     & = \begin{dcases}
+           A_{p k} & \text{if } (p \neq i) \land (p \neq j) \\
+           A_{j k} & \text{if } p = i                       \\
+           A_{i k} & \text{if } p = j
+         \end{dcases}                                                            \\
+     & = B_{p k}                                                                       &  & \text{(by \cref{3.1.1})}
+  \end{align*}
+  and we have \(B = EA\).
+
+  Next we prove that \cref{3.1} is true for a type 1 column operation.
+  Let \(A, B \in \MS\) such that \(B\) is obtained by interchanging two columns of \(A\).
+  Let the interchanging columns be \(i, j \in \set{1, \dots, n}\).
+  If \(E \in \ms{n}{n}{\F}\) is the elementary matrix performing the same operation, then by \cref{2.3.4} we have
+  \[
+    \forall p, q \in \set{1, \dots, n}, E_{p q} = \begin{dcases}
+      \delta_{p q} & \text{if } (q \neq i) \land (q \neq j) \\
+      \delta_{p j} & \text{if } q = i                       \\
+      \delta_{p i} & \text{if } q = j
+    \end{dcases}.
+  \]
+  Thus
+  \begin{align*}
+     & \forall (k, q) \in \set{1, \dots, m} \times \set{1, \dots, n},                                                \\
+     & (AE)_{k q} = \sum_{p = 1}^n A_{k p} E_{p q}                                     &  & \text{(by \cref{2.3.1})} \\
+     & = \begin{dcases}
+           \sum_{p = 1}^n A_{k p} \delta_{p q} & \text{if } (q \neq i) \land (q \neq j) \\
+           \sum_{p = 1}^n A_{k p} \delta_{p j} & \text{if } q = i                       \\
+           \sum_{p = 1}^n A_{k p} \delta_{p i} & \text{if } q = j
+         \end{dcases}                                \\
+     & = \begin{dcases}
+           A_{k q} & \text{if } (q \neq i) \land (q \neq j) \\
+           A_{k j} & \text{if } q = i                       \\
+           A_{k i} & \text{if } q = j
+         \end{dcases}                                                            \\
+     & = B_{k q}                                                                       &  & \text{(by \cref{3.1.1})}
+  \end{align*}
+  and we have \(B = AE\).
+
+  Next we prove that \cref{3.1} is true for a type 2 row operation.
+  Let \(c \in \F\) and let \(A, B \in \MS\) such that \(B\) is obtained by multiplying the \(i\)th row of \(A\) with \(c\).
+  If \(E \in \ms{m}{m}{\F}\) is the elementary matrix performing the same operation, then by \cref{2.3.4} we have
+  \[
+    \forall p, q \in \set{1, \dots, m}, E_{p q} = \begin{dcases}
+      \delta_{p q}   & \text{if } p \neq i \\
+      c \delta_{i q} & \text{if } p = i
+    \end{dcases}.
+  \]
+  Thus
+  \begin{align*}
+     & \forall (p, k) \in \set{1, \dots, m} \times \set{1, \dots, n},                               \\
+     & (EA)_{p k} = \sum_{q = 1}^m E_{p q} A_{q k}                    &  & \text{(by \cref{2.3.1})} \\
+     & = \begin{dcases}
+           \sum_{q = 1}^m \delta_{p q} A_{q k}   & \text{if } p \neq i \\
+           \sum_{q = 1}^m c \delta_{i q} A_{q k} & \text{if } p = i
+         \end{dcases}                                \\
+     & = \begin{dcases}
+           A_{p k}   & \text{if } p \neq i \\
+           c A_{i k} & \text{if } p = i
+         \end{dcases}                                                            \\
+     & = B_{p k}                                                      &  & \text{(by \cref{3.1.1})}
+  \end{align*}
+  and we have \(B = EA\).
+
+  Next we prove that \cref{3.1} is true for a type 2 column operation.
+  Let \(c \in \F\) and let \(A, B \in \MS\) such that \(B\) is obtained by multiplying the \(i\)th column of \(A\) with \(c\).
+  If \(E \in \ms{n}{n}{\F}\) is the elementary matrix performing the same operation, then by \cref{2.3.4} we have
+  \[
+    \forall p, q \in \set{1, \dots, n}, E_{p q} = \begin{dcases}
+      \delta_{p q}   & \text{if } q \neq i \\
+      c \delta_{p i} & \text{if } q = i
+    \end{dcases}.
+  \]
+  Thus
+  \begin{align*}
+     & \forall (k, q) \in \set{1, \dots, m} \times \set{1, \dots, n},                               \\
+     & (AE)_{k q} = \sum_{p = 1}^n A_{k p} E_{p q}                    &  & \text{(by \cref{2.3.1})} \\
+     & = \begin{dcases}
+           \sum_{p = 1}^n A_{k p} \delta_{p q}   & \text{if } q \neq i \\
+           \sum_{p = 1}^n A_{k p} c \delta_{p i} & \text{if } q = i
+         \end{dcases}                                \\
+     & = \begin{dcases}
+           A_{k q}   & \text{if } q \neq i \\
+           c A_{k i} & \text{if } q = i
+         \end{dcases}                                                            \\
+     & = B_{k q}                                                      &  & \text{(by \cref{3.1.1})}
+  \end{align*}
+  and we have \(B = AE\).
+
+  Next we prove that \cref{3.1} is true for a type 3 row operation.
+  Let \(i, j \in \set{1, \dots, m}\) such that \(i \neq j\).
+  Let \(A, B \in \MS\) such that \(B\) is obtained by multiplying the \(i\)th row of \(A\) with \(c \in \F\) and add it to the \(j\)th row of \(A\).
+  If \(E \in \ms{m}{m}{\F}\) is the elementary matrix performing the same operation, then by \cref{2.3.4} we have
+  \[
+    \forall p, q \in \set{1, \dots, m}, E_{p q} = \begin{dcases}
+      \delta_{p q}                  & \text{if } p \neq j \\
+      c \delta_{i q} + \delta_{j q} & \text{if } p = j
+    \end{dcases}.
+  \]
+  Thus
+  \begin{align*}
+     & \forall (p, k) \in \set{1, \dots, m} \times \set{1, \dots, n},                                                                      \\
+     & (EA)_{p k} = \sum_{q = 1}^m E_{p q} A_{q k}                                                           &  & \text{(by \cref{2.3.1})} \\
+     & = \begin{dcases}
+           \sum_{q = 1}^m \delta_{p q} A_{q k}                    & \text{if } p \neq j \\                    \\
+           \sum_{q = 1}^m (c \delta_{i q} + \delta_{j q}) A_{q k} & \text{if } p = j
+         \end{dcases}                                \\
+     & = \begin{dcases}
+           A_{p k}             & \text{if } p \neq j \\
+           c A_{i k} + A_{j k} & \text{if } p = j
+         \end{dcases}                                                                                         \\
+     & = B_{p k}                                                                                             &  & \text{(by \cref{3.1.1})}
+  \end{align*}
+  and we have \(B = EA\).
+
+  Finally we prove that \cref{3.1} is true for a type 3 column operation.
+  Let \(i, j \in \set{1, \dots, m}\) such that \(i \neq j\).
+  Let \(A, B \in \MS\) such that \(B\) is obtained by multiplying the \(i\)th column of \(A\) with \(c \in \F\) and add it to the \(j\)th column of \(A\).
+  If \(E \in \ms{n}{n}{\F}\) is the elementary matrix performing the same operation, then by \cref{2.3.4} we have
+  \[
+    \forall p, q \in \set{1, \dots, n}, E_{p q} = \begin{dcases}
+      \delta_{p q}                  & \text{if } q \neq j \\
+      c \delta_{p i} + \delta_{p j} & \text{if } q = j
+    \end{dcases}.
+  \]
+  Thus
+  \begin{align*}
+     & \forall (k, q) \in \set{1, \dots, m} \times \set{1, \dots, n},                                                \\
+     & (AE)_{k q} = \sum_{p = 1}^n A_{k p} E_{p q}                                     &  & \text{(by \cref{2.3.1})} \\
+     & = \begin{dcases}
+           \sum_{p = 1}^n A_{k p} \delta_{p q}                    & \text{if } q \neq j \\
+           \sum_{p = 1}^n A_{k p} (c \delta_{p i} + \delta_{p j}) & \text{if } q = j
+         \end{dcases}                                \\
+     & = \begin{dcases}
+           A_{k q}             & \text{if } q \neq j \\
+           c A_{k i} + A_{k j} & \text{if } q = j
+         \end{dcases}                                                                   \\
+     & = B_{k q}                                                                       &  & \text{(by \cref{3.1.1})}
+  \end{align*}
+  and we have \(B = AE\).
+\end{proof}
+
 \exercisesection
 
 \setcounter{ex}{3}
