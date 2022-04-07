@@ -364,6 +364,64 @@
   In summary, perform row and column operations until the matrix is simplified enough so that the maximum number of linearly independent rows or columns is obvious.
 \end{note}
 
+\begin{defn}\label{3.2.7}
+  Let \(A \in \MS\) and \(B \in \ms{m}{p}{\F}\).
+  By the \textbf{augmented matrix} \((A | B)\), we mean the \(m \times (n + p)\) matrix whose first \(n\) columns are the columns of \(A\), and whose last \(p\) columns are the columns of \(B\).
+\end{defn}
+
+\begin{cor}\label{3.2.8}
+  If \(A \in \ms{n}{n}{\F}\) is invertible, then it is possible to transform the matrix \((A | I_n)\) into the matrix \((I_n | A^{-1})\) by means of a finite number of elementary row operations.
+\end{cor}
+
+\begin{proof}[\pf{3.2.8}]
+  Let \(A \in \ms{n}{n}{\F}\) be invertible, and consider the \(n \times 2n\) augmented matrix \(C = (A | I_n)\).
+  By \cref{ex:3.2.15} we have
+  \[
+    A^{-1} C = (A^{-1} A | A^{-1} I_n) = (I_n | A^{-1}).
+  \]
+  By \cref{3.2.6} \(A^{-1}\) is the product of elementary matrices, say \(A^{-1} = E_p E_{p - 1} \cdots E_1\).
+  Thus the above equation becomes
+  \[
+    E_p E_{p - 1} \cdots E_1 (A | I_n) = A^{-1} C = (I_n | A^{-1}).
+  \]
+  Because multiplying a matrix on the left by an elementary matrix transforms the matrix by an elementary row operation (\cref{3.1}), we see that \cref{3.2.8} is true.
+\end{proof}
+
+\begin{cor}\label{3.2.9}
+  If \(A \in \ms{n}{n}{\F}\) is invertible, and the matrix \((A | I_n)\) is transformed into a matrix of the form \((I_n | B)\) by means of a finite number of elementary row operations, then \(B = A^{-1}\).
+\end{cor}
+
+\begin{proof}[\pf{3.2.9}]
+  Suppose that \(A\) is invertible and that, for some \(B \in \ms{n}{n}{\F}\), the matrix \((A | I_n)\) can be transformed into the matrix \((I_n | B)\) by a finite number of elementary row operations.
+  Let \(\seq{E}{1,,p}\) be the elementary matrices associated with these elementary row operations as in \cref{3.1};
+  then
+  \[
+    E_p E_{p - 1} \cdots E_1 (A | I_n) = (I_n | B).
+  \]
+  Letting \(M = E_p E_{p - 1} \cdots E_1\).
+  From above equation we have
+  \[
+    (MA | M) = M (A | I_n) = (I_n | B).
+  \]
+  Hence \(MA = I_n\) and \(M = B\).
+  It follows by \cref{ex:2.4.10}(b) that \(M = A^{-1}\).
+  So \(B = A^{-1}\).
+\end{proof}
+
+\begin{cor}\label{3.2.10}
+  If \(A \in \ms{n}{n}{\F}\) is not invertible, then any attempt to transform \((A | I_n)\) into a matrix of the form \((I_n | B)\) produces a row whose first \(n\) entries are zeros.
+\end{cor}
+
+\begin{proof}[\pf{3.2.10}]
+  Let \(A \in \ms{n}{n}{\F}\) be non-invertible.
+  Then \(\rk{A} < n\).
+  Hence any attempt to transform \((A | I_n)\) into a matrix of the form \((I_n | B)\) by means of elementary row operations must fail because otherwise \(A\) can be transformed into \(I_n\) using the same row operations.
+  This is impossible, however, because elementary row operations preserve rank
+  (see \cref{3.2.3}).
+  By \cref{3.2.5}(b) this means at least one row of \(A\) is a linear combination of other rows.
+  Thus \(A\) can be transformed into a matrix with a row containing only zero entries with at most \(n - 1\) row operations of type 3.
+\end{proof}
+
 \exercisesection
 
 \setcounter{ex}{2}
@@ -563,4 +621,27 @@
   and we have \(D = EB\).
   By \cref{3.1} this means \(D\) can be obtained from \(B\) by a elementary row operation.
   Using similar argument we can prove the case for elementary column operation.
+\end{proof}
+
+\begin{ex}\label{ex:3.2.15}
+  Suppose that \(A \in \ms{n}{p}{\F}\) and \(B \in \ms{n}{q}{\F}\).
+  Prove that \(M (A | B) = (MA | MB)\) for any \(M \in \MS\).
+\end{ex}
+
+\begin{proof}[\pf{ex:3.2.15}]
+  Let \(i \in \set{1, \dots, m}\) and \(j \in \set{1, \dots, p + q}\).
+  Then we have
+  \begin{align*}
+    (M (A | B))_{i j} & = \sum_{k = 1}^n M_{i k} (A | B)_{k j}                                        &  & \text{(by \cref{2.3.1})} \\
+                      & = \begin{dcases}
+                            \sum_{k = 1}^n M_{i k} A_{k j} & \text{if } j \in \set{1, \dots p}         \\
+                            \sum_{k = 1}^n M_{i k} B_{k j} & \text{if } j \in \set{p + 1, \dots p + q}
+                          \end{dcases} &  & \text{(by \cref{3.2.7})}                                \\
+                      & = \begin{dcases}
+                            (MA)_{i j} & \text{if } j \in \set{1, \dots p}         \\
+                            (MB)_{i j} & \text{if } j \in \set{p + 1, \dots p + q}
+                          \end{dcases}                     &  & \text{(by \cref{2.3.1})}                                            \\
+                      & = (MA | MB)_{i j}                                                             &  & \text{(by \cref{3.2.7})}
+  \end{align*}
+  and thus by \cref{1.2.8} \(M (A | B) = (MA | MB)\).
 \end{proof}
