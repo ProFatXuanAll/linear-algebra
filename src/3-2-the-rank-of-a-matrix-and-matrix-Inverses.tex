@@ -756,3 +756,37 @@
     \implies & \rk{AB} = \rk{\L_{AB}} = \rk{\L_A} = \rk{A} = m.               &  & \text{(by \cref{3.2.1})}
   \end{align*}
 \end{proof}
+
+\setcounter{ex}{20}
+\begin{ex}\label{ex:3.2.21}
+  Let \(A \in \MS\) with rank \(m\).
+  Prove that there exists an \(B \in \ms{n}{m}{\F}\) such that \(AB = I_m\).
+\end{ex}
+
+\begin{proof}[\pf{ex:3.2.21}]
+  By \cref{3.6} we know that \(m \leq n\).
+  By \cref{3.5} we can use at most \(n - m\) elementary column operations of type 1 on \(A\) such that the first \(m\) columns of the resulting matrix, called it \(C\), is linearly independent.
+  By \cref{3.1} there exist elementary column matrices \(\seq{E}{1,,p} \in \ms{n}{n}{\F}\) such that \(C = A \seq[]{E}{1,,p}\).
+  Let \(D \in \ms{n}{m}{\F}\) be the matrix
+  \[
+    D = \begin{pmatrix}
+      I_m   & \zm_1 \\
+      \zm_2 & \zm_3
+    \end{pmatrix}
+  \]
+  where \(\seq{\zm}{1,2,3}\) are zero matrices.
+  We claim that for each \(i \in \set{1, \dots, m}\), the \(i\)th column of \(CD\) is also the \(i\)th column of \(C\).
+  This is true since
+  \begin{align*}
+    \forall j \in \set{1, \dots, m}, (CD)_{i j} & = \sum_{k = 1}^n C_{i k} D_{k j}      &  & \text{(by \cref{2.3.1})}                           \\
+                                                & = \sum_{k = 1}^m C_{i k} D_{k j}      &  & (\forall k \in \set{m + 1, \dots, n}, D_{k j} = 0) \\
+                                                & = \sum_{k = 1}^m C_{i k} \delta_{k j} &  & \text{(by \cref{2.3.4})}                           \\
+                                                & = C_{i j}.                            &  & \text{(by \cref{2.3.4})}
+  \end{align*}
+  Since the first \(m\) columns of \(C\) is linearly independent and \(CD \in \ms{m}{m}{\F}\), by \cref{3.5} we know that \(\rk{CD} = m\) and thus by \cref{3.2.2} \(CD\) is invertible.
+  Then we have
+  \[
+    (A \seq[]{E}{1,,p} D) (CD)^{-1} = (CD) (CD)^{-1} = I_m.
+  \]
+  By setting \(B = \seq[]{E}{1,,p} D (CD)^{-1}\) we are done.
+\end{proof}
