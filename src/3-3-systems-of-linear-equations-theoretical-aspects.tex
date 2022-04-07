@@ -57,3 +57,41 @@
   System \((S)\) is called \textbf{consistent} if its solution set is nonempty;
   otherwise it is called \textbf{inconsistent}.
 \end{defn}
+
+\begin{defn}\label{3.3.2}
+  A system \(Ax = b\) of \(m\) linear equations in \(n\) unknowns is said to be \textbf{homogeneous} if \(b = \zv\).
+  Otherwise the system is said to be \textbf{nonhomogeneous}.
+\end{defn}
+
+\begin{note}
+  Any homogeneous system has at least one solution, namely, the zero vector.
+\end{note}
+
+\begin{thm}\label{3.8}
+  Let \(Ax = \zv\) be a homogeneous system of \(m\) linear equations in \(n\) unknowns over a field \(\F\).
+  Let \(\vs{K}\) denote the set of all solutions to \(Ax = \zv\).
+  Then \(\vs{K} = \ns{\L_A}\);
+  hence \(\vs{K}\) is a subspace of \(\vs{F}^n\) of dimension \(n - \rk{\L_A} = n - \rk{A}\).
+\end{thm}
+
+\begin{proof}[\pf{3.8}]
+  Clearly, \(\vs{K} = \set{s \in \vs{F}^n : As = \zv} = \ns{\L_A}\).
+  The second part now follows from the dimension theorem (\cref{2.3}).
+\end{proof}
+
+\begin{cor}\label{3.3.3}
+  If \(m < n\), the system \(Ax = \zv\) has a nonzero solution.
+\end{cor}
+
+\begin{proof}[\pf{3.3.3}]
+  Suppose that \(m < n\).
+  Then we have \(\rk{A} = \rk{\L_A} \leq m\) by \cref{3.6}.
+  Hence
+  \[
+    \dim(\vs{K}) = n - \rk{\L_A} \geq n - m > 0,
+  \]
+  where \(\vs{K} = \ns{\L_A}\).
+  Since \(\dim(\vs{K}) > 0\), \(\vs{K} \neq \set{\zv}\).
+  Thus there exists a nonzero vector \(s \in \vs{K}\);
+  so \(s\) is a nonzero solution to \(Ax = \zv\).
+\end{proof}
