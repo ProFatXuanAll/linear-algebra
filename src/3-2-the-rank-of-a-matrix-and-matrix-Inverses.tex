@@ -422,6 +422,10 @@
   Thus \(A\) can be transformed into a matrix with a row containing only zero entries with at most \(n - 1\) row operations of type 3.
 \end{proof}
 
+\begin{note}
+  Being able to test for invertibility and compute the inverse of a matrix allows us, with the help of \cref{2.18,2.4.6,2.4.7}, to test for invertibility and compute the inverse of a linear transformation.
+\end{note}
+
 \exercisesection
 
 \setcounter{ex}{2}
@@ -439,6 +443,28 @@
     \iff & \forall x \in \vs{F}^n, \L_A(x) = Ax = \zv = \zm x                                 \\
     \iff & A = \zm.                                           &  & \text{(by \cref{2.15}(b))}
   \end{align*}
+\end{proof}
+
+\setcounter{ex}{7}
+\begin{ex}\label{ex:3.2.8}
+  Let \(A \in \MS\).
+  Prove that if \(c \in \F \setminus \set{0}\), then \(\rk{cA} = \rk{A}\).
+\end{ex}
+
+\begin{proof}[\pf{ex:3.2.8}]
+  For each \(i \in \set{1, \dots, m}\), we define \(E_i \in \ms{m}{m}{\F}\) to be the elementary row operation of type 2 such that the \(i\)th row of \(E_i\) is multiplied by \(c\).
+  Then we have
+  \begin{align*}
+    cA & = c I_m A                            &  & \text{(by \cref{2.12}(c))} \\
+       & = \begin{pmatrix}
+             c      & 0      & \cdots & 0      \\
+             0      & c      & \cdots & 0      \\
+             \vdots & \vdots & \ddots & \vdots \\
+             0      & 0      & \cdots & c
+           \end{pmatrix} A                                  \\
+       & = \seq[]{E}{1,,m} A.                 &  & \text{(by \cref{3.1})}
+  \end{align*}
+  Thus by \cref{3.2.3} we have \(\rk{cA} = \rk{\seq[]{E}{1,,m} A} = \rk{A}\).
 \end{proof}
 
 \setcounter{ex}{9}
@@ -621,6 +647,47 @@
   and we have \(D = EB\).
   By \cref{3.1} this means \(D\) can be obtained from \(B\) by a elementary row operation.
   Using similar argument we can prove the case for elementary column operation.
+\end{proof}
+
+\setcounter{ex}{13}
+\begin{ex}\label{ex:3.2.14}
+  Let \(\V, \W\) be vector spaces over \(\F\) and let \(\T, \U \in \ls(\V, \W)\).
+  \begin{enumerate}
+    \item Prove that \(\rg{\T + \U} \subseteq \rg{\T} + \rg{\U}\).
+          (See \cref{1.3.10}.)
+    \item Prove that if \(\W\) is finite-dimensional, then \(\rk{\T + \U} \leq \rk{\T} + \rk{\U}\).
+    \item Deduce from (b) that \(\rk{A + B} \leq \rk{A} + \rk{B}\) for any \(A, B \in \MS\).
+  \end{enumerate}
+\end{ex}
+
+\begin{proof}[\pf{ex:3.2.14}(a)]
+  Let \(y \in \rg{\T + \U}\).
+  Then there exists an \(x \in \V\) such that \((\T + \U)(x) = y\).
+  Thus by \cref{1.3.10}
+  \[
+    y = (\T + \U)(x) = \T(x) + \U(x) \in \rg{\T} + \rg{\U}
+  \]
+  and therefore \(\rg{\T + \U} \subseteq \rg{\T} + \rg{\U}\).
+\end{proof}
+
+\begin{proof}[\pf{ex:3.2.14}(b)]
+  We have
+  \begin{align*}
+    \rk{\T + \U} & = \dim(\rg{\T + \U})               &  & \text{(by \cref{2.1.12})}            \\
+                 & \leq \dim(\rg{\T} + \rg{\U})       &  & \text{(by \cref{1.11,ex:1.3.23}(a))} \\
+                 & \leq \dim(\rg{\T}) + \dim(\rg{\U}) &  & \text{(by \cref{ex:1.6.31}(b))}      \\
+                 & = \rk{\T} + \rk{\U}.               &  & \text{(by \cref{2.1.12})}
+  \end{align*}
+\end{proof}
+
+\begin{proof}[\pf{ex:3.2.14}(c)]
+  We have
+  \begin{align*}
+    \rk{A + B} & = \rk{\L_{A + B}}          &  & \text{(by \cref{3.2.1})}        \\
+               & = \rk{\L_A + \L_B}         &  & \text{(by \cref{2.15}(c))}      \\
+               & \leq \rk{\L_A} + \rk{\L_B} &  & \text{(by \cref{ex:3.2.14}(b))} \\
+               & = \rk{A} + \rk{B}.         &  & \text{(by \cref{3.2.1})}
+  \end{align*}
 \end{proof}
 
 \begin{ex}\label{ex:3.2.15}
