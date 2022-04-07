@@ -712,3 +712,47 @@
   \end{align*}
   and thus by \cref{1.2.8} \(M (A | B) = (MA | MB)\).
 \end{proof}
+
+\setcounter{ex}{17}
+\begin{ex}\label{ex:3.2.18}
+  Let \(A \in \MS\) and \(B \in \ms{n}{p}{\F}\).
+  Prove that \(AB\) can be written as a sum of \(n\) matrices of rank one.
+\end{ex}
+
+\begin{proof}[\pf{ex:3.2.18}]
+  For each \(k \in \set{1, \dots, n}\), we define \(C_k \in \ms{m}{p}{\F}\) by setting \(C_{i j} = A_{i k} B_{k j}\).
+  By \cref{2.3.1} we have
+  \[
+    \forall (i, j) \in \set{1, \dots, m} \times \set{1, \dots, p}, (AB)_{i j} = \sum_{k = 1}^n A_{i k} B_{k j} = \sum_{k = 1}^n (C_k)_{i j}.
+  \]
+  Thus we only need to show that \(\rk{C_k} = 1\) for all \(k \in \set{1, \dots, n}\).
+  Let \(a_k\) be the \(k\)th column of \(A\).
+  Since
+  \[
+    C_k = \begin{pmatrix}
+      A_{1 k} B_{k 1} & A_{1 k} B_{k 2} & \cdots & A_{1 k} B_{k p} \\
+      A_{2 k} B_{k 1} & A_{2 k} B_{k 2} & \cdots & A_{2 k} B_{k p} \\
+      \vdots          & \vdots          & \ddots & \vdots          \\
+      A_{m k} B_{k 1} & A_{m k} B_{k 2} & \cdots & A_{m k} B_{k p}
+    \end{pmatrix} = \begin{pmatrix}
+      B_{k 1} a_k & B_{k 2} a_k & \cdots & B_{k p} a_k
+    \end{pmatrix},
+  \]
+  by \cref{3.5} we know that \(\rk{C_k} = 1\) for all \(k \in \set{1, \dots, n}\).
+\end{proof}
+
+\begin{ex}\label{ex:3.2.19}
+  Let \(A \in \MS\) with rank \(m\) and \(B \in \ms{n}{p}{\F}\) with rank \(n\).
+  Determine the rank of \(AB\).
+  Justify your answer.
+\end{ex}
+
+\begin{proof}[\pf{ex:3.2.19}]
+  We have
+  \begin{align*}
+             & \dim(\vs{F}^n) = n = \rk{B} = \rk{\L_B} = \dim(\L_B(\vs{F}^p)) &  & \text{(by \cref{3.2.1})}   \\
+    \implies & \L_B(\vs{F}^p) = \vs{F}^n                                      &  & \text{(by \cref{1.11})}    \\
+    \implies & \L_{AB}(\vs{F}^p) = \L_A(\L_B(\vs{F}^p)) = \L_A(\vs{F}^n)      &  & \text{(by \cref{2.15}(e))} \\
+    \implies & \rk{AB} = \rk{\L_{AB}} = \rk{\L_A} = \rk{A} = m.               &  & \text{(by \cref{3.2.1})}
+  \end{align*}
+\end{proof}
