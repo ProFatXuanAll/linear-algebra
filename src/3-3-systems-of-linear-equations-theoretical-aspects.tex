@@ -1,1 +1,59 @@
 \section{Systems of Linear Equations --- Theoretical Aspects}\label{sec:3.3}
+
+\begin{defn}\label{3.3.1}
+  The system of equations
+  \[
+    (S) \quad \begin{matrix}
+      a_{1 1} x_1 + a_{1 2} x_2 + \cdots + a_{1 n} x_n = b_1 \\
+      a_{2 1} x_1 + a_{2 2} x_2 + \cdots + a_{2 n} x_n = b_2 \\
+      \vdots                                                 \\
+      a_{m 1} x_1 + a_{m 2} x_2 + \cdots + a_{m n} x_n = b_m
+    \end{matrix}
+  \]
+  where \(a_{i j}\) and \(b_i\) (\(1 \leq i \leq m\) and \(1 \leq j \leq n\)) are scalars in a field \(\F\) and \(\seq{x}{1,,n}\) are \(n\) variables taking values in \(\F\), is called a \textbf{system of \(m\) linear equations in \(n\) unknowns over the field \(\F\)}.
+
+  The \(m \times n\) matrix
+  \[
+    A = \begin{pmatrix}
+      a_{1 1} & a_{1 2} & \cdots & a_{1 n} \\
+      a_{2 1} & a_{2 2} & \cdots & a_{2 n} \\
+      \vdots  & \vdots  &        & \vdots  \\
+      a_{m 1} & a_{m 2} & \cdots & a_{m n}
+    \end{pmatrix}
+  \]
+  is called the \textbf{coefficient matrix} of the system \((S)\).
+
+  If we let
+  \[
+    x = \begin{pmatrix}
+      x_1    \\
+      x_2    \\
+      \vdots \\
+      x_n
+    \end{pmatrix} \quad \text{and} \quad b = \begin{pmatrix}
+      b_1    \\
+      b_2    \\
+      \vdots \\
+      b_m
+    \end{pmatrix},
+  \]
+  then the system \((S)\) may be rewritten as a single matrix equation
+  \[
+    Ax = b.
+  \]
+  To exploit the results that we have developed, we often consider a system of linear equations as a single matrix equation.
+
+  A \textbf{solution} to the system \((S)\) is an \(n\)-tuple
+  \[
+    s = \begin{pmatrix}
+      s_1    \\
+      s_2    \\
+      \vdots \\
+      s_n
+    \end{pmatrix} \in \vs{F}^n
+  \]
+  such that \(As = b\).
+  The set of all solutions to the system \((S)\) is called the \textbf{solution set} of the system.
+  System \((S)\) is called \textbf{consistent} if its solution set is nonempty;
+  otherwise it is called \textbf{inconsistent}.
+\end{defn}

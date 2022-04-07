@@ -716,7 +716,7 @@
 \setcounter{ex}{17}
 \begin{ex}\label{ex:3.2.18}
   Let \(A \in \MS\) and \(B \in \ms{n}{p}{\F}\).
-  Prove that \(AB\) can be written as a sum of \(n\) matrices of rank one.
+  Prove that \(AB\) can be written as a sum of \(n\) matrices of rank at most one.
 \end{ex}
 
 \begin{proof}[\pf{ex:3.2.18}]
@@ -725,7 +725,7 @@
   \[
     \forall (i, j) \in \set{1, \dots, m} \times \set{1, \dots, p}, (AB)_{i j} = \sum_{k = 1}^n A_{i k} B_{k j} = \sum_{k = 1}^n (C_k)_{i j}.
   \]
-  Thus we only need to show that \(\rk{C_k} = 1\) for all \(k \in \set{1, \dots, n}\).
+  Thus we only need to show that \(\rk{C_k} \leq 1\) for all \(k \in \set{1, \dots, n}\).
   Let \(a_k\) be the \(k\)th column of \(A\).
   Since
   \[
@@ -738,7 +738,7 @@
       B_{k 1} a_k & B_{k 2} a_k & \cdots & B_{k p} a_k
     \end{pmatrix},
   \]
-  by \cref{3.5} we know that \(\rk{C_k} = 1\) for all \(k \in \set{1, \dots, n}\).
+  by \cref{3.5} we know that \(\rk{C_k} \leq 1\) for all \(k \in \set{1, \dots, n}\).
 \end{proof}
 
 \begin{ex}\label{ex:3.2.19}
