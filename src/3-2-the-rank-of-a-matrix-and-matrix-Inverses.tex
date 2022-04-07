@@ -790,3 +790,36 @@
   \]
   By setting \(B = \seq[]{E}{1,,p} D (CD)^{-1}\) we are done.
 \end{proof}
+
+\begin{ex}\label{ex:3.2.22}
+  Let \(B \in \ms{n}{m}{\F}\) with rank \(m\).
+  Prove that there exists an \(A \in \MS\) such that \(AB = I_m\).
+\end{ex}
+
+\begin{proof}[\pf{ex:3.2.22}]
+  By \cref{3.6} we know that \(m \leq n\).
+  By \cref{3.5} we can use at most \(n - m\) elementary row operations of type 1 on \(B\) such that the first \(m\) rows of the resulting matrix, called it \(C\), is linearly independent.
+  By \cref{3.1} there exist elementary row matrices \(\seq{E}{1,,p} \in \ms{n}{n}{\F}\) such that \(C = \seq[]{E}{p,,1} B\).
+  Let \(D \in \ms{m}{n}{\F}\) be the matrix
+  \[
+    D = \begin{pmatrix}
+      I_m   & \zm_1 \\
+      \zm_2 & \zm_3
+    \end{pmatrix}
+  \]
+  where \(\seq{\zm}{1,2,3}\) are zero matrices.
+  We claim that for each \(i \in \set{1, \dots, m}\), the \(i\)th row of \(DC\) is also the \(i\)th row of \(C\).
+  This is true since
+  \begin{align*}
+    \forall j \in \set{1, \dots, m}, (DC)_{i j} & = \sum_{k = 1}^n D_{i k} C_{k j}      &  & \text{(by \cref{2.3.1})}                           \\
+                                                & = \sum_{k = 1}^m D_{i k} C_{k j}      &  & (\forall k \in \set{m + 1, \dots, n}, D_{i k} = 0) \\
+                                                & = \sum_{k = 1}^m \delta_{i k} C_{k j} &  & \text{(by \cref{2.3.4})}                           \\
+                                                & = C_{i j}.                            &  & \text{(by \cref{2.3.4})}
+  \end{align*}
+  Since the first \(m\) rows of \(C\) is linearly independent and \(DC \in \ms{m}{m}{\F}\), by \cref{3.5} we know that \(\rk{DC} = m\) and thus by \cref{3.2.2} \(DC\) is invertible.
+  Then we have
+  \[
+    (DC)^{-1} (D \seq[]{E}{p,,1} B) = (DC)^{-1} (DC) = I_m.
+  \]
+  By setting \(A = (DC)^{-1} D \seq[]{E}{p,,1}\) we are done.
+\end{proof}
