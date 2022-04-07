@@ -302,6 +302,68 @@
   The inverses of elementary matrices are elementary matrices (see \cref{3.2}), however, and hence \(A\) is the product of elementary matrices.
 \end{proof}
 
+\begin{thm}\label{3.7}
+  Let \(\V, \W, \vs{Z}\) be finite-dimensional vector spaces over \(\F\), let \(\T \in \ls(\V, \W)\) and \(\U \in \ls(\W, \vs{Z})\), and let \(A\) and \(B\) be matrices such that the product \(AB\) is defined.
+  Then
+  \begin{enumerate}
+    \item \(\rk{\U \T} \leq \rk{\U}\).
+    \item \(\rk{\U \T} \leq \rk{\T}\).
+    \item \(\rk{AB} \leq \rk{A}\).
+    \item \(\rk{AB} \leq \rk{B}\).
+  \end{enumerate}
+\end{thm}
+
+\begin{proof}[\pf{3.7}]
+  We prove these items in the order:
+  (a), (c), (d), and (b).
+  \begin{description}
+    \item[(a)]
+      By \cref{2.1} we know that \(\rg{\T}\) is a subspace of \(\W\) over \(\F\).
+      Hence
+      \[
+        \rg{\U \T} = \U \T(\V) = \U(\T(\V)) = \U(\rg{\T}) \subseteq \U(\W) = \rg{\U}.
+      \]
+      Thus
+      \begin{align*}
+        \rk{\U \T} & = \dim(\rg{\U \T}) &  & \text{(by \cref{2.1.12})} \\
+                   & \leq \dim(\rg{\U}) &  & \text{(by \cref{1.11})}   \\
+                   & = \rk{\U}.         &  & \text{(by \cref{2.1.12})}
+      \end{align*}
+    \item[(c)]
+      \begin{align*}
+        \rk{AB} & = \rk{\L_{AB}}   &  & \text{(by \cref{3.2.1})}   \\
+                & = \rk{\L_A \L_B} &  & \text{(by \cref{2.15}(e))} \\
+                & \leq \rk{\L_A}   &  & \text{(by \cref{3.7}(a))}  \\
+                & = \rk{A}.        &  & \text{(by \cref{3.2.1})}
+      \end{align*}
+    \item[(d)]
+      \begin{align*}
+        \rk{AB} & = \rk{\tp{(AB)}}     &  & \text{(by \cref{3.2.5}(a))} \\
+                & = \rk{\tp{B} \tp{A}} &  & \text{(by \cref{2.3.2})}    \\
+                & \leq \rk{\tp{B}}     &  & \text{(by \cref{3.7}(c))}   \\
+                & = \rk{B}.            &  & \text{(by \cref{3.2.5}(a))}
+      \end{align*}
+    \item[(b)]
+      Let \(\alpha, \beta, \gamma\) be ordered bases for \(\V, \W, \vs{Z}\) over \(\F\), respectively, and let \(A' = [\U]_{\beta}^{\gamma}\) and \(B' = [\T]_{\alpha}^{\beta}\).
+      Then \(A' B' = [\U \T]_{\alpha}^{\gamma}\) by \cref{2.11}.
+      Hence
+      \begin{align*}
+        \rk{\U \T} & = \rk{A' B'} &  & \text{(by \cref{3.3})}    \\
+                   & \leq \rk{B'} &  & \text{(by \cref{3.7}(d))} \\
+                   & = \rk{\T}.   &  & \text{(by \cref{3.3})}
+      \end{align*}
+  \end{description}
+\end{proof}
+
+\begin{note}
+  It is important to be able to compute the rank of any matrix.
+  We can use \cref{3.2.3,3.5,3.6,3.2.5} to accomplish this goal.
+
+  The object is to perform elementary row and column operations on a matrix to ``simplify'' it (so that the transformed matrix has many zero entries) to the point where a simple observation enables us to determine how many linearly independent rows or columns the matrix has, and thus to determine its rank.
+
+  In summary, perform row and column operations until the matrix is simplified enough so that the maximum number of linearly independent rows or columns is obvious.
+\end{note}
+
 \exercisesection
 
 \setcounter{ex}{2}
