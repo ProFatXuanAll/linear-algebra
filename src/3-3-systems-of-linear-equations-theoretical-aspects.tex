@@ -237,3 +237,19 @@
     \iff & b \in \rg{\L_A}.                     &  & \text{(by \cref{2.1.10})}
   \end{align*}
 \end{proof}
+
+\begin{ex}\label{ex:3.3.10}
+  Prove or give a counterexample to the following statement:
+  If the coefficient matrix of a system of \(m\) linear equations in \(n\) unknowns has rank \(m\), then the system has a solution.
+\end{ex}
+
+\begin{proof}[\pf{ex:3.3.10}]
+  Let \(A \in \MS\) such that \(\rk{A} = m\).
+  Since
+  \begin{align*}
+             & \rk{A} = \rk{\L_A} = m                                             &  & \text{(by \cref{3.2.1})} \\
+    \implies & \rg{\L_A} = \vs{F}^m                                               &  & \text{(by \cref{1.11})}  \\
+    \implies & \forall b \in \vs{F}^m, \exists x \in \vs{F}^n : \L_A(x) = Ax = b,
+  \end{align*}
+  we know that any system \(Ax = b\) has a solution.
+\end{proof}
