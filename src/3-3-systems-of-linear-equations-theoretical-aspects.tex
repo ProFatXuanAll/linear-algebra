@@ -95,3 +95,58 @@
   Thus there exists a nonzero vector \(s \in \vs{K}\);
   so \(s\) is a nonzero solution to \(Ax = \zv\).
 \end{proof}
+
+\begin{defn}\label{3.3.4}
+  We refer to the equation \(Ax = \zv\) as the \textbf{homogeneous system corresponding to} \(Ax = b\).
+\end{defn}
+
+\begin{thm}\label{3.9}
+  Let \(K\) be the solution set of a system of linear equations \(Ax = b\), and let \(\vs{K}_{\vs{H}}\) be the solution set of the corresponding homogeneous system \(Ax = \zv\).
+  Then for any solution \(s\) to \(Ax = b\)
+  \[
+    K = \set{s} + \vs{K}_{\vs{H}} = \set{s + k : k \in \vs{K}_{\vs{H}}}.
+  \]
+\end{thm}
+
+\begin{proof}[\pf{3.9}]
+  Let \(s\) be any solution to \(Ax = b\).
+  We must show that \(K = \set{s} + \vs{K}_{\vs{H}}\) .
+  If \(w \in K\), then \(Aw = b\).
+  Hence
+  \[
+    A(w - s) = Aw - As = b - b = \zv.
+  \]
+  So \(w - s \in \vs{K}_{\vs{H}}\).
+  Thus there exists \(k \in \vs{K}_{\vs{H}}\) such that \(w - s = k\).
+  It follows that \(w = s + k \in \set{s} + \vs{K}_{\vs{H}}\), and therefore
+  \[
+    K \subseteq \set{s} + \vs{K}_{\vs{H}}.
+  \]
+
+  Conversely, suppose that \(w \in \set{s} + \vs{K}_{\vs{H}}\);
+  then \(w = s + k\) for some \(k \in \vs{K}_{\vs{H}}\).
+  But then \(Aw = A(s + k) = As + Ak = b + \zv = b\);
+  so \(w \in K\).
+  Therefore \(\set{s} + \vs{K}_{\vs{H}} \subseteq K\), and thus \(K = \set{s} + \vs{K}_{\vs{H}}\).
+\end{proof}
+
+\begin{thm}\label{3.10}
+  Let \(Ax = b\) be a system of \(n\) linear equations in \(n\) unknowns.
+  If \(A\) is invertible, then the system has exactly one solution, namely, \(A^{-1} b\).
+  Conversely, if the system has exactly one solution, then \(A\) is invertible.
+\end{thm}
+
+\begin{proof}[\pf{3.10}]
+  Suppose that \(A\) is invertible.
+  Substituting \(A^{-1} b\) into the system, we have \(A (A^{-1} b) = (A A^{-1}) b = b\).
+  Thus \(A^{-1} b\) is a solution.
+  If \(s\) is an arbitrary solution, then \(As = b\).
+  Multiplying both sides by \(A^{-1}\) gives \(s = A^{-1} b\).
+  Thus the system has one and only one solution, namely, \(A^{-1} b\).
+
+  Conversely, suppose that the system has exactly one solution \(s\).
+  Let \(\vs{K}_{\vs{H}}\) denote the solution set for the corresponding homogeneous system \(Ax = \zv\).
+  By \cref{3.9}, \(\set{s} = \set{s} + \vs{K}_{\vs{H}}\).
+  But this is so only if \(\vs{K}_{\vs{H}} = \set{\zv}\).
+  Thus \(\ns{\L_A} = \set{\zv}\), and hence \(A\) is invertible (by \cref{2.5}).
+\end{proof}
