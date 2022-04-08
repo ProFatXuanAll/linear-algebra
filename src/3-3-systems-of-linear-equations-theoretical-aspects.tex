@@ -150,3 +150,49 @@
   But this is so only if \(\vs{K}_{\vs{H}} = \set{\zv}\).
   Thus \(\ns{\L_A} = \set{\zv}\), and hence \(A\) is invertible (by \cref{2.5}).
 \end{proof}
+
+\begin{defn}\label{3.3.5}
+  The matrix \((A | b)\) is called the \textbf{augmented matrix of the system} \(Ax = b\).
+\end{defn}
+
+\begin{thm}\label{3.11}
+  Let \(Ax = b\) be a system of linear equations.
+  Then the system is consistent iff \(\rk{A} = \rk{A | b}\).
+\end{thm}
+
+\begin{proof}[\pf{3.11}]
+  To say that \(Ax = b\) has a solution is equivalent to saying that \(b \in \rg{\L_A}\).
+  (See \cref{ex:3.3.9}.)
+  In the proof of \cref{3.5}, we saw that
+  \[
+    \rg{\L_A} = \spn{\set{\seq{a}{1,,n}}},
+  \]
+  the span of the columns of \(A\).
+  Thus \(Ax = b\) has a solution iff \(b \in \spn{\set{\seq{a}{1,,n}}}\).
+  But \(b \in \spn{\set{\seq{a}{1,,n}}}\) iff \(\spn{\set{\seq{a}{1,,n}}} = \spn{\set{\seq{a}{1,,n}, b}}\).
+  This last statement is equivalent to
+  \[
+    \dim(\spn{\set{\seq{a}{1,,n}}}) = \dim(\spn{\set{\seq{a}{1,,n}, b}}).
+  \]
+  So by \cref{3.5}, the preceding equation reduces to
+  \[
+    \rk{A} = \rk{A | b}.
+  \]
+\end{proof}
+
+\exercisesection
+
+\setcounter{ex}{8}
+\begin{ex}\label{ex:3.3.9}
+  Prove that the system of linear equations \(Ax = b\) has a solution iff \(b \in \rg{\L_A}\).
+\end{ex}
+
+\begin{proof}[\pf{ex:3.3.9}]
+  Let \(A \in \MS\) and let \(b \in \vs{F}^m\).
+  Then we have
+  \begin{align*}
+         & \exists x \in \vs{F}^n : Ax = b                                     \\
+    \iff & \exists x \in \vs{F}^n : \L_A(x) = b &  & \text{(by \cref{2.3.8})}  \\
+    \iff & b \in \rg{\L_A}.                     &  & \text{(by \cref{2.1.10})}
+  \end{align*}
+\end{proof}
