@@ -1,1 +1,100 @@
 \section{Systems of Linear Equations --- Computational Aspects}\label{sec:3.4}
+
+\begin{defn}\label{3.4.1}
+  Two systems of linear equations are called \textbf{equivalent} if they have the same solution set.
+\end{defn}
+
+\begin{thm}\label{3.13}
+  Let \(Ax = b\) be a system of \(m\) linear equations in \(n\) unknowns, and let \(C \in \ms{m}{m}{\F}\) be invertible.
+  Then the system \((CA)x = Cb\) is equivalent to \(Ax = b\).
+\end{thm}
+
+\begin{proof}[\pf{3.13}]
+  Let \(K\) be the solution set for \(Ax = b\) and \(K'\) the solution set for \((CA)x = Cb\).
+  If \(w \in K\), then \(Aw = b\).
+  So \((CA)w = Cb\), and hence \(w \in K'\).
+  Thus \(K \subseteq K'\).
+
+  Conversely, if \(w \in K'\), then \((CA)w = Cb\).
+  Hence
+  \[
+    Aw = C^{-1} (CAw) = C^{-1} (Cb) = b;
+  \]
+  so \(w \in K\).
+  Thus \(K' \subseteq K\), and therefore, \(K = K'\).
+\end{proof}
+
+\begin{cor}\label{3.4.2}
+  Let \(Ax = b\) be a system of \(m\) linear equations in \(n\) unknowns.
+  If \((A' | b')\) is obtained from \((A | b)\) by a finite number of elementary row operations, then the system \(A' x = b'\) is equivalent to the original system.
+\end{cor}
+
+\begin{proof}[\pf{3.4.2}]
+  Suppose that \((A' | b')\) is obtained from \((A | b)\) by elementary row operations.
+  These may be executed by multiplying \((A | b)\) by elementary \(m \times m\) matrices \(\seq{E}{1,,p}\).
+  Let \(C = \seq[]{E}{p,,1}\);
+  then by \cref{ex:3.2.15}
+  \[
+    (A' | b') = C (A | b) = (CA | Cb).
+  \]
+  Since each \(E_i\) is invertible, so is \(C\)
+  (see \cref{ex:2.4.4}).
+  Now \(A' = CA\) and \(b' = Cb\).
+  Thus by \cref{3.13}, the system \(A' x = b'\) is equivalent to the system \(Ax = b\).
+\end{proof}
+
+\begin{defn}\label{3.4.3}
+  A matrix is said to be in \textbf{reduced row echelon form} if the following three conditions are satisfied.
+  \begin{enumerate}
+    \item Any row containing a nonzero entry precedes any row in which all the entries are zero (if any).
+    \item The first nonzero entry in each row is the only nonzero entry in its column.
+    \item The first nonzero entry in each row is \(1\) and it occurs in a column to the right of the first nonzero entry in the preceding row.
+  \end{enumerate}
+\end{defn}
+
+\begin{note}
+  It can be shown (see \cref{3.4.5}) that the reduced row echelon form of a matrix is unique;
+  that is, if different sequences of elementary row operations are used to transform a matrix into matrices \(Q\) and \(Q'\) in reduced row echelon form, then \(Q = Q'\).
+  Thus, although there are many different sequences of elementary row operations that can be used to transform a given matrix into reduced row echelon form, they all produce the same result.
+\end{note}
+
+\begin{defn}\label{3.4.4}
+  The following procedure for reducing an augmented matrix to reduced row echelon form is called \textbf{Gaussian-Jordan elimination}.
+  \begin{enumerate}[label=\arabic*.]
+    \item In the leftmost nonzero column, create a \(1\) in the first row.
+    \item By means of type 3 row operations, use the first row to obtain zeros in the remaining positions of the leftmost nonzero column.
+    \item Create a \(1\) in the next row in the leftmost possible column, without using previous row(s).
+    \item Now use type 3 elementary row operations to obtain zeros below the \(1\) created in the preceding step.
+    \item Repeat steps 3 and 4 on each succeeding row until no nonzero rows remain.
+          (This creates zeros below the first nonzero entry in each row.)
+    \item Work upward, beginning with the last nonzero row, and add multiples of each row to the rows above.
+    \item Repeat the process described in step 6 for each preceding row until it is performed with the second row, at which time the reduction process is complete.
+  \end{enumerate}
+  Note that
+  \begin{itemize}
+    \item In the forward pass (steps 1 -- 5), the augmented matrix is transformed into an upper triangular matrix in which the first nonzero entry of each row is \(1\), and it occurs in a column to the right of the first nonzero entry of each preceding row.
+    \item In the backward pass or back-substitution (steps 6 -- 7), the upper triangular matrix is transformed into reduced row echelon form by making the first nonzero entry of each row the only nonzero entry of its column.
+  \end{itemize}
+\end{defn}
+
+\begin{thm}\label{3.14}
+  Gaussian elimination transforms any matrix into its reduced row echelon form.
+\end{thm}
+
+\begin{proof}[\pf{3.14}]
+  First, however, we note that every matrix can be transformed into reduced row echelon form by Gaussian elimination.
+  In the forward pass, we satisfy conditions \cref{3.4.3}(a) and (c) in the definition of reduced row echelon form and thereby make zero all entries below the first nonzero entry in each row.
+  Then in the backward pass, we make zero all entries above the first nonzero entry in each row, thereby satisfying condition \cref{3.4.3}(b) in the definition of reduced row echelon form.
+\end{proof}
+
+\begin{thm}\label{3.15}
+
+\end{thm}
+
+\begin{thm}\label{3.16}
+
+\end{thm}
+
+\begin{cor}\label{3.4.5}
+
+\end{cor}
