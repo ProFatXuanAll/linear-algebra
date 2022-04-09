@@ -139,12 +139,109 @@
 \end{proof}
 
 \begin{thm}\label{3.16}
-
+  Let \(A \in \MS\) be of rank \(r\), where \(r > 0\), and let \(B\) be a reduced row echelon form of \(A\).
+  Denote columns of \(A\) (\(B\)) as \(\seq{a}{1,,n}\) (\(\seq{b}{1,,n}\)).
+  Then
+  \begin{enumerate}
+    \item The number of nonzero rows in \(B\) is \(r\).
+    \item For each \(i \in \set{1, \dots, r}\), there is a column \(b_{j_i}\) of \(B\) such that \(b_{j_i} = e_i\).
+    \item The columns of \(A\) numbered \(\seq{j}{1,,r}\) are linearly independent.
+    \item For each \(k \in \set{1, \dots, n}\), if column \(k\) of \(B\) is \(\seq[+]{d,e}{1,,r}\), then column \(k\) of \(A\) is \(d_1 a_{j_1} + \cdots + d_r a_{j_r}\).
+  \end{enumerate}
 \end{thm}
 
-\begin{cor}\label{3.4.5}
+\begin{proof}[\pf{3.16}]
+  If \(\rk{A} = r\), then \(\rk{B} = r\) by \cref{3.2.3}.
+  Because \(B\) is in reduced row echelon form, no nonzero row of \(B\) can be a linear combination of the other rows of \(B\).
+  Hence \(B\) must have exactly \(r\) nonzero rows.
+  The vectors \(\seq{e}{1,,r}\) must occur among the columns of \(B\).
+  For \(i \in \set{1, \dots, r}\), let \(j_i\) denote a column number of \(B\) such that \(b_{j_i} = e_i\).
+  We claim that \(a_{j_1}, \dots, a_{j_r}\), the columns of \(A\) corresponding to these columns of \(B\), are linearly independent.
+  For suppose that there are scalars \(\seq{c}{1,,r}\) such that
+  \[
+    c_1 a_{j_1} + \cdots + c_r a_{j_r} = \zv.
+  \]
+  Because \(B\) can be obtained from \(A\) by a sequence of elementary row operations, there exists (as in the proof of \cref{3.4.2}) an invertible matrix \(M \in \ms{m}{m}{\F}\) such that \(MA = B\).
+  Multiplying the preceding equation by \(M\) yields
+  \[
+    c_1 M a_{j_1} + \cdots + c_r M a_{j_r} = \zv.
+  \]
+  Since \(M a_{j_i} = b_{j_i} = e_i\), it follows that
+  \[
+    \seq[+]{c,e}{1,,r} = \zv.
+  \]
+  Hence \(\seq[=]{c}{1,,r} = 0\), proving that the vectors \(a_{j_1}, \dots, a_{j_r}\) are linearly independent.
 
+  Because \(B\) has only \(r\) nonzero rows, every column of \(B\) has the form
+  \[
+    \begin{pmatrix}
+      d_1    \\
+      \vdots \\
+      d_r    \\
+      0      \\
+      \vdots \\
+      0
+    \end{pmatrix}
+  \]
+  for scalars \(\seq{d}{1,,r}\).
+  The corresponding column of \(A\) must be
+  \begin{align*}
+    M^{-1} (\seq[+]{d,e}{1,,r}) & = d_1 M^{-1} e_1 + \cdots d_r M^{-1} e_r           \\
+                                & = d_1 M^{-1} b_{j 1} + \cdots + d_r M^{-1} b_{j_r} \\
+                                & = d_1 a_{j_1} + \cdots + d_r a_{j_r}.
+  \end{align*}
+\end{proof}
+
+\begin{cor}\label{3.4.5}
+  The reduced row echelon form of a matrix is unique.
 \end{cor}
+
+\begin{proof}[\pf{3.4.5}]
+  Let \(A \in \MS\).
+  If \(A = \zm\), then we are done.
+  So suppose that \(A \neq \zm\).
+  We use induction on \(n\).
+  For \(n = 1\), by \cref{3.4.3} we know that if \(B\) is a reduced row echelon form of \(A\), then
+  \[
+    B = \begin{pmatrix}
+      1      \\
+      0      \\
+      \vdots \\
+      0
+    \end{pmatrix} = e_1 \in \vs{F}^m.
+  \]
+  (if \(C \in \ms{m}{1}{\F}\) and \(C \neq e_1\), then \(C\) is not in reduced row echelon form.)
+  Thus the base case holds.
+  Suppose inductively that for some \(n \geq 1\), any matrix \(A \in \MS\) has unique reduced row echelon form.
+  Then we need to show that any matrix \(A \in \ms{m}{(n + 1)}{\F}\) has unique reduced row echelon form.
+  So let \(A \in \ms{m}{(n + 1)}{\F}\).
+  Let \(B, C\) be reduced row echelon forms of \(A\).
+  We denote the \(j\)th column of \(A, B, C\) as \(a_j, b_j, c_j\), respectively.
+  Then we have \(A = (a_1, \dots, a_n | a_{n + 1})\), \(B = (b_1, \dots, b_n | b_{n + 1})\) and \(C = (c_1, \dots, c_n | c_{n + 1})\).
+  Because \(B, C\) can be obtained from \(A\) by sequences of elementary row operations, there exists (as in the proof of \cref{3.4.2}) invertible matrices \(E, F \in \ms{m}{m}{\F}\) such that \(EA = B\) and \(FA = C\).
+  By \cref{ex:3.2.15} we have \(EA = (E (\seq{a}{1,,n}) | E a_{n + 1})\) and \(FA = (F (\seq{a}{1,,n}) | F a_{n + 1})\).
+  Since \(EA, FA\) are in reduced row echelon forms, we know that \(E (\seq{a}{1,,n}), F (\seq{a}{1,,n})\) are reduced row echelon forms of \((\seq{a}{1,,n})\).
+  Thus we have
+  \begin{align*}
+             & E (\seq{a}{1,,n}) = F (\seq{a}{1,,n})       &  & \text{(by induction hypothesis)}  \\
+    \implies & (\seq{a}{1,,n}) = E^{-1} F (\seq{a}{1,,n}). &  & \text{(\(E^{-1}\) is invertible)}
+  \end{align*}
+  Now we split into two cases:
+  \begin{itemize}
+    \item If \(a_{n + 1} \in \spn{\set{\seq{a}{1,,n}}}\), then we have
+          \begin{align*}
+                     & \exists \seq{d}{1,,n} \in \F : a_{n + 1} = \sum_{i = 1}^n d_i a_i &  & \text{(by \cref{1.5.3})}          \\
+            \implies & (E^{-1} F) a_{n + 1} = (E^{-1} F) \pa{\sum_{i = 1}^n d_i a_i}                                            \\
+                     & = \sum_{i = 1}^n d_i (E^{-1} F a_i)                               &  & \text{(by \cref{2.3.5})}          \\
+                     & = \sum_{i = 1}^n d_i a_i = a_{n + 1}                              &  & \text{(from the proof above)}     \\
+            \implies & E a_{n + 1} = F a_{n + 1}                                         &  & \text{(\(E^{-1}\) is invertible)}
+          \end{align*}
+          and thus \(B = EA = FA = C\).
+    \item If \(a_{n + 1} \notin \spn{\set{\seq{a}{1,,n}}}\), then by \cref{3.16}(b) we know that \(b_{n + 1} = e_{\rk{A}} = c_{n + 1}\) and thus \(B = C\).
+  \end{itemize}
+  From all cases above we conclude that \(B = C\).
+  This closes the induction.
+\end{proof}
 
 \exercisesection
 
