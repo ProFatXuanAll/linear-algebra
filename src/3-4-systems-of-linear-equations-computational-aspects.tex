@@ -273,3 +273,23 @@
 \begin{proof}[\pf{ex:3.4.3}(b)]
   This is the immediate consequence of \cref{3.11,ex:3.4.3}(a).
 \end{proof}
+
+\setcounter{ex}{13}
+\begin{ex}\label{ex:3.4.14}
+  If \((A | b)\) is in reduced row echelon form, prove that \(A\) is also in reduced row echelon form.
+\end{ex}
+
+\begin{proof}[\pf{ex:3.4.14}]
+  If not, then at least one conditions in \cref{3.4.3} is not satisfied by \(A\).
+  We split into three cases:
+  \begin{itemize}
+    \item If \cref{3.4.3}(a) is not satisfied, then there exists one row, say the \(i\)th row of \(A\) with nonzero entry \(A_{i j}\), is preceded by rows with only zeros.
+          But this means the \((i - 1)\)th row of \((A | b)\) violate \cref{3.4.3}(a) if \(b_{i - 1} = 0\) and violate \cref{3.4.3}(c) if \(b_{i - 1} \neq 0\), a contradiction.
+    \item If \cref{3.4.3}(b) is not satisfied, then there exists one row, say the \(i\)th row of \(A\) with first nonzero entry \(A_{i j}\), is not the only nonzero entry in the \(j\)th column.
+          But this means the \(j\)th column of \((A | b)\) violate \cref{3.4.3}(b), a contradiction.
+    \item If \cref{3.4.3}(c) is not satisfied, then there exists one row, say the \(i\)th row of \(A\) with first nonzero entry \(A_{i j}\), has \(A_{i j} \neq 1\) or the first nonzero entry in \((i - 1)\)th row is \(a_{(i - 1) k}\), where \(k \leq j\).
+          But in either cases \((A | b)\) violate \cref{3.4.3}(c), a contradiction.
+  \end{itemize}
+  From all cases above we derive contradictions.
+  Thus \(A\) is also in reduced row echelon form.
+\end{proof}
