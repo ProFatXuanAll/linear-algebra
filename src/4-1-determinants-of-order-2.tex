@@ -1,1 +1,137 @@
 \section{Determinants of Order 2}\label{sec:4.1}
+
+\begin{defn}
+  If
+  \[
+    A = \begin{pmatrix}
+      a & b \\
+      c & d
+    \end{pmatrix}
+  \]
+  is a \(2 \times 2\) matrix with entries from a field \(\F\), then we define the \textbf{determinant} of \(A\), denoted \(\det(A)\) or \(\abs{A}\), to be the scalar \(ad - bc\).
+\end{defn}
+
+\begin{note}
+  There exist \(A, B \in \ms{2}{2}{\F}\) such that \(\det(A + B) \neq \det(A) + \det(B)\), the function \(\det : \ms{2}{2}{\F} \to \F\) is \emph{not} a linear transformation.
+\end{note}
+
+\begin{thm}\label{4.1}
+  The function \(\det : \ms{2}{2}{\F} \to \F\) is a linear function of each row of a \(2 \times 2\) matrix when the other row is held fixed.
+  That is, if \(u, v, w \in \vs{F}^2\) and \(k \in \F\), then
+  \[
+    \det\begin{pmatrix}
+      u + kv \\
+      w
+    \end{pmatrix} = \det\begin{pmatrix}
+      u \\
+      w
+    \end{pmatrix} + k \det\begin{pmatrix}
+      v \\
+      w
+    \end{pmatrix}
+  \]
+  and
+  \[
+    \det\begin{pmatrix}
+      w \\
+      u + kv
+    \end{pmatrix} = \det\begin{pmatrix}
+      w \\
+      u
+    \end{pmatrix} + k \det\begin{pmatrix}
+      w \\
+      v
+    \end{pmatrix}.
+  \]
+\end{thm}
+
+\begin{proof}[\pf{4.1}]
+  Let \(u = \tuple{a}{1,2}, v = \tuple{b}{1,2}, w = \tuple{c}{1,2} \in \vs{F}^2\) and let \(k \in \F\).
+  Then
+  \begin{align*}
+    \det\begin{pmatrix}
+          u \\
+          w
+        \end{pmatrix} + k \det\begin{pmatrix}
+                                v \\
+                                w
+                              \end{pmatrix} & = \det\begin{pmatrix}
+                                                      a_1 & a_2 \\
+                                                      c_1 & c_2
+                                                    \end{pmatrix} + k \det\begin{pmatrix}
+                                                                            b_1 & b_2 \\
+                                                                            c_1 & c_2
+                                                                          \end{pmatrix}  \\
+                                          & = (a_1 c_2 - a_2 c_1) + k (b_1 c_2 - b_2 c_1) \\
+                                          & = (a_1 + k b_1) c_2 - (a_2 + k b_2) c_1       \\
+                                          & = \det\begin{pmatrix}
+                                                    a_1 + k b_1 & a_2 + k b_2 \\
+                                                    c_1         & c_2
+                                                  \end{pmatrix}               \\
+                                          & = \det\begin{pmatrix}
+                                                    u + kv \\
+                                                    w
+                                                  \end{pmatrix}.
+  \end{align*}
+  A similar calculation shows that
+  \[
+    \det\begin{pmatrix}
+      w \\
+      u
+    \end{pmatrix} + k \det\begin{pmatrix}
+      w \\
+      v
+    \end{pmatrix} = \det\begin{pmatrix}
+      w \\
+      u + kv
+    \end{pmatrix}.
+  \]
+\end{proof}
+
+\begin{thm}\label{4.2}
+  Let \(A \in \ms{2}{2}{\F}\).
+  Then the determinant of \(A\) is nonzero iff \(A\) is invertible.
+  Moreover, if \(A\) is invertible, then
+  \[
+    A^{-1} = \frac{1}{\det(A)} \begin{pmatrix}
+      A_{2 2}  & -A_{1 2} \\
+      -A_{2 1} & A_{1 1}
+    \end{pmatrix}.
+  \]
+\end{thm}
+
+\begin{proof}[\pf{4.2}]
+  If \(\det(A) \neq 0\), then we can define a matrix
+  \[
+    M = \frac{1}{\det(A)} \begin{pmatrix}
+      A_{2 2}  & -A_{1 2} \\
+      -A_{2 1} & A_{1 1}
+    \end{pmatrix}.
+  \]
+  A straightforward calculation shows that \(AM = MA = I\), and so \(A\) is invertible and \(M = A^{-1}\).
+
+  Conversely, suppose that \(A\) is invertible.
+  \cref{3.2.2} shows that the rank of
+  \[
+    A = \begin{pmatrix}
+      A_{1 1} & A_{1 2} \\
+      A_{2 1} & A_{2 2}
+    \end{pmatrix}
+  \]
+  must be \(2\).
+  Hence \(A_{1 1} \neq 0\) or \(A_{2 1} \neq 0\).
+  If \(A_{1 1} \neq 0\), add \(-A_{2 1} / A_{1 1}\) times row \(1\) of \(A\) to row \(2\) to obtain the matrix
+  \[
+    \begin{pmatrix}
+      A_{1 1} & A_{1 2}                                   \\
+      0       & A_{2 2} - \frac{A_{1 2} A_{2 1}}{A_{1 1}}
+    \end{pmatrix}.
+  \]
+  Because elementary row operations are rank-preserving by \cref{3.2.3}, it follows that
+  \[
+    A_{2 2} - \frac{A_{1 2} A_{2 1}}{A_{1 1}} \neq 0.
+  \]
+  Therefore \(\det(A) = A_{1 1} A_{2 2} - A_{1 2} A_{2 1} \neq 0\).
+  On the other hand, if \(A_{2 1} \neq 0\), we see that \(\det(A) \neq 0\) by adding \(-A_{1 1} / A_{2 1}\) times row \(2\) of \(A\) to row \(1\) and applying a similar argument.
+  Thus, in either case, \(\det(A) \neq 0\).
+\end{proof}
