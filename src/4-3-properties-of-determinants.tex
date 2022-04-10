@@ -70,6 +70,65 @@
   Thus, in either case, \(\det(\tp{A}) = \det(A)\).
 \end{proof}
 
+\begin{note}
+  In our discussion of determinants until now, we have used only the rows of a matrix.
+  For example, the recursive definition of a determinant involved cofactor expansion along a row, and the more efficient method developed in \cref{sec:4.2} used elementary row operations.
+  \cref{4.8} shows that the determinants of \(A\) and \(\tp{A}\) are always equal.
+  Since the rows of \(A\) are the columns of \(\tp{A}\), this fact enables us to translate any statement about determinants that involves the rows of a matrix into a corresponding statement that involves its columns.
+\end{note}
+
+\begin{thm}[Cramer's Rule]\label{4.9}
+  Let \(Ax = b\) be the matrix form of a system of \(n\) linear equations in \(n\) unknowns, where \(x = \tp{\tuple{x}{1,,n}}\).
+  If \(\det(A) \neq 0\), then this system has a unique solution, and for each \(k \in \set{1, \dots, n}\),
+  \[
+    x_k = \frac{\det(M_k)}{\det(A)},
+  \]
+  where \(M_k \in \ms{n}{n}{\F}\) is obtained from \(A\) by replacing column \(k\) of \(A\) by \(b\).
+\end{thm}
+
+\begin{proof}[\pf{4.9}]
+  If \(\det(A) \neq 0\), then the system \(Ax = b\) has a unique solution by the \cref{4.3.1,3.10}.
+  For each integer \(k \in \set{1, \dots, n}\), let \(a_k\) denote the \(k\)th column of \(A\) and \(X_k\) denote the matrix obtained from the \(I_n\) by replacing column \(k\) by \(x\).
+  Then by \cref{2.13}, \(A X_k\) is the \(n \times n\) matrix whose \(i\)th column is
+  \[
+    A e_i = a_i \text{ if } i \neq k \quad \text{and} \quad Ax = b \text{ if } i = k.
+  \]
+  Thus \(A X_k = M_k\).
+  Evaluating \(X_k\) by cofactor expansion along row \(k\) produces
+  \[
+    \det(X_k) = x_k \cdot \det(I_{n - 1}) = x_k.
+  \]
+  Hence by \cref{4.7},
+  \[
+    \det(M_k) = \det(A X_k) = \det(A) \cdot \det(X_k) = \det(A) \cdot x_k.
+  \]
+  Therefore
+  \[
+    x_k = \pa{\det(A)}^{-1} \cdot \det(M_k).
+  \]
+\end{proof}
+
+\begin{note}
+  In applications involving systems of linear equations, we sometimes need to know that there is a solution in which the unknowns are integers.
+  In this situation, Cramer's rule can be useful because it implies that a system of linear equations with integral coefficients has an integral solution if the determinant of its coefficient matrix is \(\pm 1\).
+  On the other hand, Cramer's rule is not useful for computation because it requires evaluating \(n + 1\) determinants of \(n \times n\) matrices to solve a system of \(n\) linear equations in \(n\) unknowns.
+  The amount of computation to do this is far greater than that required to solve the system by the method of Gaussian-Jordan elimination, which was discussed in \cref{sec:3.4}.
+  Thus Cramer's rule is primarily of theoretical and aesthetic interest, rather than of computational value.
+\end{note}
+
+\begin{note}
+  As in \cref{sec:4.1}, it is possible to interpret the determinant of a matrix \(A \in \ms{n}{n}{\F}\) geometrically.
+  If the rows of \(A\) are \(\seq{a}{1,,n}\), respectively, then \(\abs{\det(A)}\) is the \textbf{\(n\)-dimensional volume} (the generalization of area in \(\R^2\) and volume in \(\R^3\)) of the parallelepiped having the vectors \(\seq{a}{1,,n}\) as adjacent sides.
+\end{note}
+
+\begin{note}
+  In our earlier discussion of the geometric significance of the determinant formed from the vectors in an ordered basis for \(\R^2\), we also saw that this determinant is positive iff the basis induces a right-handed coordinate system.
+  A similar statement is true in \(\R^n\).
+  Specifically, if \(\gamma\) is any ordered basis for \(\R^n\) and \(\beta\) is the standard ordered basis for \(\R^n\), then \(\gamma\) induces a \emph{right-handed coordinate system} iff \(\det(Q) > 0\), where \(Q\) is the change of coordinate matrix changing \(\gamma\)-coordinates into \(\beta\)-coordinates, i.e., \(Q = [I_n]_{\gamma}^{\beta}\)
+  (see \cref{2.5.1}).
+  More generally, if \(\beta\) and \(\gamma\) are two ordered bases for \(\R^n\), then the coordinate systems induced by \(\beta\) and \(\gamma\) have the same \textbf{orientation} (either both are right-handed or both are left-handed) iff \(\det(Q) > 0\), where \(Q\) is the change of coordinate matrix changing \(\gamma\)-coordinates into \(\beta\)-coordinates.
+\end{note}
+
 \exercisesection
 
 \begin{ex}\label{ex:4.3.18}
