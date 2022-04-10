@@ -483,3 +483,35 @@
   Since \(A\) has tow identical columns, by \cref{3.5} we know that \(\rk{A} < n\).
   Thus by \cref{4.2.7} we have \(\det(A) = 0\).
 \end{proof}
+
+\begin{ex}\label{ex:4.2.28}
+  Compute \(\det(E_i)\) if \(E_i\) is an elementary matrix of type \(i\).
+\end{ex}
+
+\begin{proof}[\pf{ex:4.2.28}]
+  Let \(\seq{E}{1,2,3} \in \ms{n}{n}{\F}\) be elementary matrix of type 1, 2, 3, respectively.
+  By \cref{4.2.3} we have \(\det(I_n) = 1\).
+  By \cref{ex:3.1.4} we know that \(E_1\) can be obtained by interchanging two rows of \(I_n\), thus by \cref{4.5} we have \(\det(E_1) = -\det(I_n) = -1\).
+  By \cref{ex:3.1.4} we know that \(E_2\) can be obtained by multiplying one row of \(I_n\) with some \(k \in \F\), thus by \cref{4.3} we have \(\det(E_2) = k \det(I_n) = k\).
+  By \cref{ex:3.1.4} we know that \(E_3\) can be obtained by multiplying one row of \(I_n\) and add it to another row of \(I_n\), thus by \cref{4.6} we have \(\det(E_3) = \det(I_n) = 1\).
+\end{proof}
+
+\begin{ex}\label{ex:4.2.29}
+  Prove that if \(E\) is an elementary matrix, then \(\det(\tp{E}) = \det(E)\).
+\end{ex}
+
+\begin{proof}[\pf{ex:4.2.29}]
+  If \(E\) is an elementary matrix of type 1 or type 2, then by \cref{ex:3.1.5} we have \(E = \tp{E}\) and thus \(\det(\tp{E}) = \det(E)\).
+  So suppose that \(E\) is an elementary matrix of type 3.
+  By \cref{ex:3.1.5} we see that \(\tp{E}\) is also an elementary matrix of type 3, thus by \cref{ex:4.2.28} we have \(\det(\tp{E}) = 1 = \det(E)\).
+\end{proof}
+
+\begin{ex}\label{ex:4.2.30}
+  Let the rows of \(A \in \ms{n}{n}{\F}\) be \(\seq{a}{1,,n}\), and let \(B\) be the matrix in which the rows are \(\seq{a}{n,n-1,,1}\).
+  Calculate \(\det(B)\) in terms of \(\det(A)\).
+\end{ex}
+
+\begin{proof}[\pf{ex:4.2.30}]
+  If \(n\) is even, then it needs \(n / 2\) times type 2 row operation to change \(B\) into \(A\), thus by \cref{4.5} we have \(\det(A) = (-1)^{n / 2} \det(B)\).
+  If \(n\) is odd, then it needs \((n - 1) / 2\) times type 2 row operation to change \(B\) into \(A\), thus by \cref{4.5} we have \(\det(A) = (-1)^{(n - 1) / 2} \det(B)\).
+\end{proof}
