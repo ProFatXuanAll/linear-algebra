@@ -1,1 +1,77 @@
 \section{Properties of Determinants}\label{sec:4.3}
+
+\begin{thm}\label{4.7}
+  For any \(A, B \in \ms{n}{n}{\F}\), \(\det(AB) = \det(A) \cdot \det(B)\).
+\end{thm}
+
+\begin{proof}[\pf{4.7}]
+  We begin by establishing the result when \(A\) is an elementary matrix.
+  If \(A\) is an elementary matrix obtained by interchanging two rows of \(I_n\), then by \cref{ex:4.2.28} we have \(\det(A) = -1\).
+  But by \cref{3.1}, \(AB\) is a matrix obtained by interchanging two rows of \(B\).
+  Hence by \cref{4.5}, \(\det(AB) = -\det(B) = \det(A) \cdot \det(B)\).
+  Similar arguments establish the result when \(A\) is an elementary matrix of type 2 or type 3.
+  (See \cref{ex:4.3.18}.)
+
+  If \(\rk{A} < n\), then \(\det(A) = 0\) by \cref{4.2.7}.
+  Since \(\rk{AB} \leq \rk{A} < n\) by \cref{3.7}, we have \(\det(AB) = 0\).
+  Thus \(\det(AB) = \det(A) \cdot \det(B)\) in this case.
+
+  On the other hand, if \(\rk{A} = n\), then \(A\) is invertible and hence is the product of elementary matrices (\cref{3.2.6}), say, \(A = \seq[]{E}{m,,1}\).
+  The first paragraph of this proof shows that
+  \begin{align*}
+    \det(AB) & = \det(\seq[]{E}{m,,1} B)                     \\
+             & = \det(E_m) \cdot \det(\seq[]{E}{m - 1,,1} B) \\
+             & \vdots                                        \\
+             & = \det(E_m) \cdots \det(E_1) \cdot \det(B)    \\
+             & = \det(\seq[]{E}{m,,1}) \cdot \det(B)         \\
+             & = \det(A) \cdot \det(B).
+  \end{align*}
+\end{proof}
+
+\begin{note}
+  The determinant is a \emph{multiplicative} function.
+\end{note}
+
+\begin{cor}\label{4.3.1}
+  A matrix \(A \in \ms{n}{n}{\F}\) is invertible iff \(\det(A) \neq 0\).
+  Furthermore, if \(A\) is invertible, then \(\det(A^{-1}) = \frac{1}{\det(A)}\).
+\end{cor}
+
+\begin{proof}[\pf{4.3.1}]
+  If \(A \in \ms{n}{n}{\F}\) is not invertible, then by \cref{3.2.2} the rank of \(A\) is less than \(n\).
+  So \(\det(A) = 0\) by \cref{4.2.7}.
+  On the other hand, if \(A \in \ms{n}{n}{\F}\) is invertible, then
+  \[
+    \det(A) \cdot \det(A^{-1}) = \det(A A^{-1}) = \det(I_n) = 1
+  \]
+  by \cref{4.7}.
+  Hence \(\det(A) \neq 0\) and \(\det(A^{-1}) = \frac{1}{\det(A)}\).
+\end{proof}
+
+\begin{thm}\label{4.8}
+  For any \(A \in \ms{n}{n}{\F}\), \(\det(\tp{A}) = \det(A)\).
+\end{thm}
+
+\begin{proof}[\pf{4.8}]
+  If \(A\) is not invertible, then \(\rk{A} < n\).
+  But \(\rk{\tp{A}} = \rk{A}\) by \cref{3.2.5}(a), and so \(\tp{A}\) is not invertible.
+  Thus \(\det(\tp{A}) = 0 = \det(A)\) in this case.
+
+  On the other hand, if \(A\) is invertible, then \(A\) is a product of elementary matrices, say \(A = \seq[]{E}{m,,1}\).
+  This means
+  \begin{align*}
+    \det(\tp{A}) & = \det(\tp{E_1} \cdots \tp{E_m})       &  & \text{(by \cref{2.3.2})}     \\
+                 & = \det(\tp{E_1}) \cdots \det(\tp{E_m}) &  & \text{(by \cref{4.7})}       \\
+                 & = \det(E_1) \cdots \det(E_m)           &  & \text{(by \cref{ex:4.2.29})} \\
+                 & = \det(E_m) \cdots \det(E_1)           &  & (\det(\tp{E_i}) \in \F)      \\
+                 & = \det(E_m \cdots E_1)                 &  & \text{(by \cref{4.7})}       \\
+                 & = \det(A).
+  \end{align*}
+  Thus, in either case, \(\det(\tp{A}) = \det(A)\).
+\end{proof}
+
+\exercisesection
+
+\begin{ex}\label{ex:4.3.18}
+
+\end{ex}
