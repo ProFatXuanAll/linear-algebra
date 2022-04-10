@@ -193,6 +193,110 @@
   \end{align*}
 \end{proof}
 
+\begin{ex}\label{ex:4.3.10}
+  A matrix \(M \in \ms{n}{n}{\C}\) is called \textbf{nilpotent} if, for some positive integer \(k\), \(M^k = \zm\), where \(\zm\) is the \(n \times n\) zero matrix.
+  Prove that if \(M\) is nilpotent, then \(\det(M) = 0\).
+\end{ex}
+
+\begin{proof}[\pf{ex:4.3.10}]
+  Suppose for sake of contradiction that \(\det(M) \neq 0\).
+  Then we have
+  \begin{align*}
+             & \det(M) \neq 0                                       \\
+    \implies & (\det(M))^k \neq 0                                   \\
+    \implies & \det(M^k) \neq 0   &  & \text{(by \cref{4.7})}       \\
+    \implies & \det(\zm) \neq 0.  &  & \text{(by \cref{ex:4.3.10})}
+  \end{align*}
+  But we know that \(\det(\zm) = 0\), a contradiction.
+  Thus \(\det(M) = 0\).
+\end{proof}
+
+\begin{ex}\label{ex:4.3.11}
+  A matrix \(M \in \ms{n}{n}{\C}\) is called \textbf{skew-symmetric} if \(\tp{M} = -M\).
+  Prove that if \(M\) is skew-symmetric and \(n\) is odd, then \(M\) is not invertible.
+  What happens if \(n\) is even?
+\end{ex}
+
+\begin{proof}[\pf{ex:4.3.11}]
+  Since
+  \begin{align*}
+    \det(M) & = \det(\tp{M})    &  & \text{(by \cref{4.8})}       \\
+            & = \det(-M)        &  & \text{(by \cref{ex:4.3.11})} \\
+            & = (-1)^n \det(M), &  & \text{(by \cref{4.3})}
+  \end{align*}
+  we know that when \(n\) is odd,
+  \begin{align*}
+             & \det(M) = -\det(M)                                         \\
+    \implies & 2 \det(M) = 0                                              \\
+    \implies & \det(M) = 0                                                \\
+    \implies & M \text{ is not invertible}. &  & \text{(by \cref{4.3.1})}
+  \end{align*}
+  We cannot conclude anything when \(n\) is even.
+\end{proof}
+
+\begin{ex}\label{ex:4.3.12}
+  A matrix \(Q \in \ms{n}{n}{\R}\) is called \textbf{orthogonal} if \(Q \tp{Q} = I_n\).
+  Prove that if \(Q\) is orthogonal, then \(\det(Q) = \pm 1\).
+\end{ex}
+
+\begin{proof}[\pf{ex:4.3.12}]
+  We have
+  \begin{align*}
+    1 & = \det(I_n)            &  & \text{(by \cref{4.2.3})}     \\
+      & = \det(Q \tp{Q})       &  & \text{(by \cref{ex:4.3.12})} \\
+      & = \det(Q) \det(\tp{Q}) &  & \text{(by \cref{4.7})}       \\
+      & = (\det(Q))^2          &  & \text{(by \cref{4.8})}
+  \end{align*}
+  and thus \(\det(Q) = \pm 1\).
+\end{proof}
+
+\begin{ex}\label{ex:4.3.13}
+  For \(M \in \ms{n}{n}{\C}\), let \(\conj{M}\) be the matrix such that \((\conj{M})_{i j} = \conj{M_{i j}}\) for all \(i, j \in \set{1, \dots, n}\), where \(\conj{M_{i j}}\) is the complex conjugate of \(M_{i j}\).
+  \begin{enumerate}
+    \item Prove that \(\det(\conj{M}) = \conj{\det(M)}\).
+    \item A matrix \(Q \in \ms{n}{n}{\C}\) is called \textbf{unitary} if \(Q Q^* = I_n\), where \(Q^* = \conj{\tp{Q}}\).
+          Prove that if \(Q\) is a unitary matrix, then \(\abs{\det(Q)} = 1\).
+  \end{enumerate}
+\end{ex}
+
+\begin{proof}[\pf{ex:4.3.13}(a)]
+  We use induction on \(n\).
+  For \(n = 1\), we have
+  \begin{align*}
+    \det(\conj{M}) & = (\conj{M})_{1 1} &  & \text{(by \cref{4.2.2})}     \\
+                   & = \conj{M_{1 1}}   &  & \text{(by \cref{ex:4.3.13})} \\
+                   & = \conj{\det(M)}   &  & \text{(by \cref{4.2.2})}
+  \end{align*}
+  and thus the base case holds.
+  Suppose inductively that for some \(n \geq 1\), we have \(\det(\conj{M}) = \conj{\det(M)}\) for all \(M \in \ms{n}{n}{\C}\).
+  We need to show that \(\det(\conj{M}) = \conj{\det(M)}\) for all \(M \in \ms{(n + 1)}{(n + 1)}{\C}\).
+  Let \(M \in \ms{(n + 1)}{(n + 1)}{\C}\).
+  Then we have
+  \begin{align*}
+    \conj{\det(M)} & = \conj{\sum_{j = 1}^{n + 1} (-1)^{1 + j} M_{1 j} \cdot \det(\tilde{M}_{1 j})}          &  & \text{(by \cref{4.2.2})}         \\
+                   & = \sum_{j = 1}^{n + 1} (-1)^{1 + j} \conj{M_{1 j}} \cdot \conj{\det(\tilde{M}_{1 j})}   &  & \text{(by \cref{d.2}(b)(c))}     \\
+                   & = \sum_{j = 1}^{n + 1} (-1)^{1 + j} (\conj{M})_{1 j} \cdot \conj{\det(\tilde{M}_{1 j})} &  & \text{(by \cref{ex:4.3.13})}     \\
+                   & = \sum_{j = 1}^{n + 1} (-1)^{1 + j} (\conj{M})_{1 j} \cdot \det(\conj{\tilde{M}_{1 j}}) &  & \text{(by induction hypothesis)} \\
+                   & = \sum_{j = 1}^{n + 1} (-1)^{1 + j} (\conj{M})_{1 j} \cdot \det(\tilde{\conj{M}}_{1 j}) &  & \text{(by \cref{ex:4.3.13})}     \\
+                   & = \det(\conj{M})                                                                        &  & \text{(by \cref{4.2.2})}
+  \end{align*}
+  and this closes the induction.
+\end{proof}
+
+\begin{proof}[\pf{ex:4.3.13}(b)]
+  We have
+  \begin{align*}
+    1 & = \det(I_n)                         &  & \text{(by \cref{4.2.3})}        \\
+      & = \det(Q Q^*)                       &  & \text{(by \cref{ex:4.3.13})}    \\
+      & = \det(Q) \cdot \det(Q^*)           &  & \text{(by \cref{4.7})}          \\
+      & = \det(Q) \cdot \det(\conj{\tp{Q}}) &  & \text{(by \cref{ex:4.3.13})}    \\
+      & = \det(Q) \cdot \conj{\det(\tp{Q})} &  & \text{(by \cref{ex:4.3.13}(a))} \\
+      & = \det(Q) \cdot \conj{\det(Q)}      &  & \text{(by \cref{4.8})}          \\
+      & = \abs{\det(Q)}^2                   &  & \text{(by \cref{d.0.5})}
+  \end{align*}
+  and thus \(\abs{\det(Q)} = 1\).
+\end{proof}
+
 \begin{ex}\label{ex:4.3.18}
 
 \end{ex}
