@@ -1,1 +1,125 @@
 \section{Determinants of Order \textit{n}}\label{sec:4.2}
+
+\begin{defn}\label{4.2.1}
+  Given \(A \in \ms{n}{n}{\F}\), for \(n \geq 2\), denote the \((n - 1) \times (n - 1)\) matrix obtained from \(A\) by deleting row \(i\) and column \(j\) by \(\tilde{A}_{i j}\).
+\end{defn}
+
+\begin{defn}\label{4.2.2}
+  Let \(A \in \ms{n}{n}{\F}\).
+  If \(n = 1\), so that \(A = (A_{1 1})\), we define \(\det(A) = A_{1 1}\).
+  For \(n \geq 2\), we define \(\det(A)\) recursively as
+  \[
+    \det(A) = \sum_{j = 1}^n (-1)^{1 + j} A_{1 j} \cdot \det(\tilde{A}_{1 j}).
+  \]
+  The scalar \(\det(A)\) is called the \textbf{determinant} of \(A\) and is also denoted by \(\abs{A}\).
+  The scalar
+  \[
+    (-1)^{i + j} \det(\tilde{A}_{i j})
+  \]
+  is called the \textbf{cofactor} of the entry of \(A\) in row \(i\), column \(j\).
+
+  Letting
+  \[
+    c_{i j} = (-1)^{i + j} \det(\tilde{A}_{i j})
+  \]
+  denote the cofactor of the row \(i\), column \(j\) entry of \(A\), we can express the formula for the determinant of \(A\) as
+  \[
+    \det(A) = A_{1 1} c_{1 1} + A_{1 2} c_{1 2} + \cdots + A_{1 n} c_{1 n}.
+  \]
+  Thus the determinant of \(A\) equals the sum of the products of each entry in row \(1\) of \(A\) multiplied by its cofactor.
+  This formula is called \textbf{cofactor expansion along the first row of \(A\)}.
+  Note that, for \(2 \times 2\) matrices, this definition of the determinant of \(A\) agrees with the one given in \cref{4.1.1} because
+  \[
+    \det(A) = A_{1 1} (-1)^{1 + 1} \det(\tilde{A}_{1 1}) + A_{1 2} (-1)^{1 + 2} \det(\tilde{A}_{1 2}) = A_{1 1} A_{2 2} - A_{1 2} A_{2 1}.
+  \]
+\end{defn}
+
+\begin{eg}\label{4.2.3}
+  The determinant of the identity matrix \(I_n\) is \(1\).
+\end{eg}
+
+\begin{proof}[\pf{4.2.3}]
+  We prove this assertion by mathematical induction on \(n\).
+  The result is clearly true for the \(I_1\).
+  Assume that the determinant of \(I_n\) is \(1\) for some \(n \geq 1\).
+  Using cofactor expansion along the first row of \(I_{n + 1}\), we obtain
+  \begin{align*}
+     & \det(I_{n + 1})                                                                                                                             \\
+     & = (-1)^2 (1) \cdot \det(\tilde{(I_{n + 1})}_{1 1}) + (-1)^3 (0) \cdot \det(\tilde{(I_{n + 1})}_{1 2})                                       \\
+     & \quad + \cdots  + (-1)^{n + 2} (0) \cdot \det(\tilde{(I_{n + 1})}_{1 (n + 1)})                        &  & \text{(by \cref{4.2.2})}         \\
+     & = 1(1) + 0 + \cdots + 0                                                                               &  & \text{(by induction hypothesis)} \\
+     & = 1
+  \end{align*}
+  because \(\tilde{(I_{n + 1})}_{1 1} = I_n\).
+  This shows that the determinant of \(I_{n + 1}\) is \(1\), and so the determinant of any identity matrix is \(1\) by the principle of mathematical induction.
+\end{proof}
+
+\begin{thm}\label{4.3}
+  The determinant of an \(n \times n\) matrix is a linear function of each row when the remaining rows are held fixed.
+  That is, for \(1 \leq r \leq n\), we have
+  \[
+    \det\begin{pmatrix}
+      a_1       \\
+      \vdots    \\
+      a_{r - 1} \\
+      u + kv    \\
+      a_{r + 1} \\
+      \vdots    \\
+      a_n
+    \end{pmatrix} = \det\begin{pmatrix}
+      a_1       \\
+      \vdots    \\
+      a_{r - 1} \\
+      u         \\
+      a_{r + 1} \\
+      \vdots    \\
+      a_n
+    \end{pmatrix} + k \det\begin{pmatrix}
+      a_1       \\
+      \vdots    \\
+      a_{r - 1} \\
+      v         \\
+      a_{r + 1} \\
+      \vdots    \\
+      a_n
+    \end{pmatrix}
+  \]
+  whenever \(k \in \F\) and \(u, v\), and each \(a_i\) are row vectors in \(\vs{F}^n\).
+\end{thm}
+
+\begin{proof}[\pf{4.3}]
+  The proof is by mathematical induction on \(n\).
+  The result is immediate if \(n = 1\).
+  Assume that for some integer \(n \geq 1\) the determinant of any \(n \times n\) matrix is a linear function of each row when the remaining rows are held fixed.
+  Let \(A \in \ms{(n + 1)}{(n + 1)}{\F}\) with rows \(\seq{a}{1,,n+1}\), and suppose that for some \(r \in \set{1, \dots, n + 1}\), we have \(a_r = u + kv\) for some \(u, v \in \vs{F}^{n + 1}\) and some \(k \in \F\).
+  Let \(u = \tuple{b}{1,,n+1}\) and \(v = \tuple{c}{1,,n+1}\), and let \(B\) and \(C\) be the matrices obtained from \(A\) by replacing row \(r\) of \(A\) by \(u\) and \(v\), respectively.
+  We must prove that \(\det(A) = \det(B) + k \det(C)\).
+  If \(r = 1\), we have
+  \begin{align*}
+    \det(A) & = \sum_{j = 1}^{n + 1} (-1)^{1 + j} A_{1 j} \det(\tilde{A}_{1 j})                                                                     &  & \text{(by \cref{4.2.2})} \\
+            & = \sum_{j = 1}^{n + 1} (-1)^{1 + j} (u + kv)_j \det(\tilde{A}_{1 j})                                                                                                \\
+            & = \sum_{j = 1}^{n + 1} (-1)^{1 + j} (b_j + k c_j) \det(\tilde{A}_{1 j})                                                                                             \\
+            & = \sum_{j = 1}^{n + 1} (-1)^{1 + j} b_j \det(\tilde{A}_{1 j}) + k \sum_{j = 1}^{n + 1} (-1)^{1 + j} c_j \det(\tilde{A}_{1 j})                                       \\
+            & = \sum_{j = 1}^{n + 1} (-1)^{1 + j} B_{1 j} \det(\tilde{A}_{1 j}) + k \sum_{j = 1}^{n + 1} (-1)^{1 + j} C_{1 j} \det(\tilde{A}_{1 j})                               \\
+            & = \det(B) + k \det(C).                                                                                                                &  & \text{(by \cref{4.2.2})}
+  \end{align*}
+  For \(r > 1\) and \(j \in \set{1, \dots, n + 1}\), the rows of \(\tilde{A}_{1 j}, \tilde{B}_{1 j}, \tilde{C}_{1 j}\) are the same except for row \(r - 1\).
+  Moreover, row \(r - 1\) of \(\tilde{A}_{1 j}\) is
+  \[
+    (b_1 + k c_1, \dots, b_{j - 1} + k c_{j - 1}, b_{j + 1} + k c_{j + 1}, \dots, b_{n + 1} + k c_{n + 1}),
+  \]
+  which is the sum of row \(r - 1\) of \(\tilde{B}_{1 j}\) and \(k\) times row \(r - 1\) of \(\tilde{C}_{1 j}\).
+  Since \(\tilde{B}_{1 j}\) and \(\tilde{C}_{1 j}\) are \(n \times n\) matrices, we have
+  \[
+    \det(\tilde{A}_{1 j}) = \det(\tilde{B}_{1 j}) + k \det(\tilde{C}_{1 j})
+  \]
+  by the induction hypothesis.
+  Thus since \(A_{1 j} = B_{1 j} = C_{1 j}\), we have
+  \begin{align*}
+    \det(A) & = \sum_{j = 1}^{n + 1} (-1)^{1 + j} A_{1 j} \cdot \det(\tilde{A}_{1 j})                                                                           \\
+            & = \sum_{j = 1}^{n + 1} (-1)^{1 + j} A_{1 j} \cdot \pa{\det(\tilde{B}_{1 j}) + k \det(\tilde{C}_{1 j})}                                            \\
+            & = \sum_{j = 1}^{n + 1} (-1)^{1 + j} A_{1 j} \cdot \det(\tilde{B}_{1 j}) + k \sum_{j = 1}^{n + 1} (-1)^{1 + j} A_{1 j} \cdot \det(\tilde{C}_{1 j}) \\
+            & = \det(B) + k \det(C).
+  \end{align*}
+  This shows that the theorem is true for \((n + 1) \times (n + 1)\) matrices, and so the theorem is true for all square matrices by mathematical induction.
+\end{proof}
