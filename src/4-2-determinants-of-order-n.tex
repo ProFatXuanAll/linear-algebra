@@ -429,3 +429,57 @@
   we see that \cref{ex:4.2.23} is true for \(n + 1\).
   This closes the induction.
 \end{proof}
+
+\setcounter{ex}{24}
+\begin{ex}\label{ex:4.2.25}
+  Prove that \(\det(kA) = k^n \det(A)\) for any \(A \in \ms{n}{n}{\F}\).
+\end{ex}
+
+\begin{proof}[\pf{ex:4.2.25}]
+  Let \(\seq{a}{1,,n}\) be the rows of \(A\).
+  Then we have
+  \begin{align*}
+    \det(kA) & = \det\begin{pmatrix}
+                       k a_1  \\
+                       k a_2  \\
+                       \vdots \\
+                       k a_n
+                     \end{pmatrix}                   &  & \text{(by \cref{1.2.9})}       \\
+             & = k \det\begin{pmatrix}
+                         a_1    \\
+                         k a_2  \\
+                         \vdots \\
+                         k a_n
+                       \end{pmatrix} = k^n \det\begin{pmatrix}
+                                                 a_1    \\
+                                                 a_2    \\
+                                                 \vdots \\
+                                                 a_n
+                                               \end{pmatrix} &  & \text{(by \cref{4.3})} \\
+             & = k^n \det(A).
+  \end{align*}
+\end{proof}
+
+\begin{ex}\label{ex:4.2.26}
+  Let \(A \in \ms{n}{n}{\F}\).
+  Under what conditions is \(\det(-A) = \det(A)\)?
+\end{ex}
+
+\begin{proof}[\pf{ex:4.2.26}]
+  Since
+  \begin{align*}
+             & \det(-A) = \det(A)                                          \\
+    \implies & (-1)^n \det(A) = \det(A)  &  & \text{(by \cref{ex:4.2.25})} \\
+    \implies & ((-1)^n - 1) \det(A) = 0,
+  \end{align*}
+  we see that when \(n\) is even or when \(\rk{A} < n\) the above equation holds.
+\end{proof}
+
+\begin{ex}\label{ex:4.2.27}
+  Prove that if \(A \in \ms{n}{n}{\F}\) has two identical columns, then \(\det(A) = 0\).
+\end{ex}
+
+\begin{proof}[\pf{ex:4.2.27}]
+  Since \(A\) has tow identical columns, by \cref{3.5} we know that \(\rk{A} < n\).
+  Thus by \cref{4.2.7} we have \(\det(A) = 0\).
+\end{proof}
