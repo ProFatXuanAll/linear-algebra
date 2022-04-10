@@ -297,6 +297,53 @@
   and thus \(\abs{\det(Q)} = 1\).
 \end{proof}
 
+\begin{ex}\label{ex:4.3.14}
+  Let \(\beta = \set{\seq{u}{1,,n}}\) be a subset of \(\vs{F}^n\) containing \(n\) distinct vectors, and let \(B \in \ms{n}{n}{\F}\) having \(u_j\) as column \(j\).
+  Prove that \(\beta\) is a basis for \(\vs{F}^n\) over \(\F\) iff \(\det(B) \neq 0\).
+\end{ex}
+
+\begin{proof}[\pf{ex:4.3.14}]
+  We have
+  \begin{align*}
+         & \beta \text{ is a basis for } \vs{F}^n \text{ over } \F                               \\
+    \iff & \beta \text{ is linearly independent}                   &  & \text{(by \cref{1.6.1})} \\
+    \iff & \rk{B} = \#(\beta) = n                                  &  & \text{(by \cref{3.5})}   \\
+    \iff & B \text{ is invertible}                                 &  & \text{(by \cref{3.2.2})} \\
+    \iff & \det(B) \neq 0.                                         &  & \text{(by \cref{4.3.1})}
+  \end{align*}
+\end{proof}
+
+\begin{ex}\label{ex:4.3.15}
+  Prove that if \(A, B \in \ms{n}{n}{\F}\) are similar, then \(\det(A) = \det(B)\).
+\end{ex}
+
+\begin{proof}[\pf{ex:4.3.15}]
+  Since \(A, B\) are similar, by \cref{2.5.4} we know that there exists a \(Q \in \ms{n}{n}{\F}\) such that \(A = Q^{-1} B Q\).
+  Then we have
+  \begin{align*}
+    \det(A) & = \det(Q^{-1} B Q)                                           \\
+            & = \det(Q^{-1}) \det(B) \det(Q) &  & \text{(by \cref{4.7})}   \\
+            & = \det(Q^{-1}) \det(Q) \det(B)                               \\
+            & = \det(Q^{-1} Q) \det(B)       &  & \text{(by \cref{4.7})}   \\
+            & = \det(I_n) \det(B) = \det(B). &  & \text{(by \cref{4.2.3})}
+  \end{align*}
+\end{proof}
+
+\begin{ex}\label{ex:4.3.16}
+  Use determinants to prove that if \(A, B \in \ms{n}{n}{\F}\) are such that \(AB = I_n\), then \(A\) is invertible
+  (and hence \(B = A^{-1}\)).
+\end{ex}
+
+\begin{proof}[\pf{ex:4.3.16}]
+  Since
+  \begin{align*}
+    1 & = \det(I)          &  & \text{(by \cref{4.2.3})} \\
+      & = \det(AB)                                       \\
+      & = \det(A) \det(B), &  & \text{(by \cref{4.7})}
+  \end{align*}
+  we know that \(\det(A) \neq 0\) and thus by \cref{4.3.1} \(A\) is invertible.
+\end{proof}
+
 \begin{ex}\label{ex:4.3.18}
 
 \end{ex}
