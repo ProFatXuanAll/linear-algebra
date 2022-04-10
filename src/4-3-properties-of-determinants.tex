@@ -131,6 +131,68 @@
 
 \exercisesection
 
+\setcounter{ex}{7}
+\begin{ex}\label{ex:4.3.8}
+  Use \cref{4.8} to prove a result analogous to \cref{4.3}, but for columns.
+\end{ex}
+
+\begin{proof}[\pf{ex:4.3.8}]
+  Let \(A \in \ms{n}{n}{\F}\) and let \(\seq{a}{1,,n}\) be columns of \(A\).
+  Let \(u, v \in \vs{F}^n\) and let \(k \in \F\).
+  If \(a_r = u + kv\) for some \(r \in \set{1, \dots, n}\), then we have
+  \begin{align*}
+    \det(A) & = \det\begin{pmatrix}
+                      a_1 & \cdots & a_{r - 1} & u + kv & a_{r + 1} & \cdots & a_n
+                    \end{pmatrix}                            \\
+            & = \det\begin{pmatrix}
+                      \tp{a_1}          \\
+                      \vdots            \\
+                      \tp{a_{r - 1}}    \\
+                      \tp{u} + k \tp{v} \\
+                      \tp{a_{r + 1}}    \\
+                      \vdots            \\
+                      \tp{a_n}
+                    \end{pmatrix}                      &  & \text{(by \cref{4.8})}                          \\
+            & = \det\begin{pmatrix}
+                      \tp{a_1}       \\
+                      \vdots         \\
+                      \tp{a_{r - 1}} \\
+                      \tp{u}         \\
+                      \tp{a_{r + 1}} \\
+                      \vdots         \\
+                      \tp{a_n}
+                    \end{pmatrix} + k \det\begin{pmatrix}
+                                            \tp{a_1}       \\
+                                            \vdots         \\
+                                            \tp{a_{r - 1}} \\
+                                            \tp{v}         \\
+                                            \tp{a_{r + 1}} \\
+                                            \vdots         \\
+                                            \tp{a_n}
+                                          \end{pmatrix}                         &  & \text{(by \cref{4.3})} \\
+            & = \det\begin{pmatrix}
+                      a_1 & \cdots & a_{r - 1} & u & a_{r + 1} & \cdots & a_n
+                    \end{pmatrix}                                 \\
+            & \quad + k \det\begin{pmatrix}
+                              a_1 & \cdots & a_{r - 1} & v & a_{r + 1} & \cdots & a_n
+                            \end{pmatrix}.      &  & \text{(by \cref{4.8})}
+  \end{align*}
+\end{proof}
+
+\begin{ex}\label{ex:4.3.9}
+  Prove that an upper triangular matrix \(A \in \ms{n}{n}{\F}\) is invertible iff all its diagonal entries are nonzero.
+\end{ex}
+
+\begin{proof}[\pf{ex:4.3.9}]
+  We have
+  \begin{align*}
+         & A \text{ is invertible}                                                            \\
+    \iff & \det(A) \neq 0                                   &  & \text{(by \cref{4.3.1})}     \\
+    \iff & \prod_{j = 1}^n A_{j j} \neq 0                   &  & \text{(by \cref{ex:4.2.23})} \\
+    \iff & \forall j \in \set{1, \dots, n}, A_{j j} \neq 0.
+  \end{align*}
+\end{proof}
+
 \begin{ex}\label{ex:4.3.18}
 
 \end{ex}
