@@ -398,3 +398,114 @@
   \end{itemize}
   From all cases above we conclude that \(\det(AB) = \det(A) \cdot \det(B)\).
 \end{proof}
+
+\begin{ex}\label{ex:4.3.19}
+  A matrix \(A \in \ms{n}{n}{\F}\) is called \textbf{lower triangular} if \(A_{i j} = 0\) for \(1 \leq i < j \leq n\).
+  Suppose that \(A\) is a lower triangular matrix.
+  Describe \(\det(A)\) in terms of the entries of \(A\).
+\end{ex}
+
+\begin{proof}[\pf{ex:4.3.19}]
+  First we claim that \(A \in \ms{n}{n}{\F}\) is lower triangular iff \(\tp{A}\) is upper triangular.
+  This is true since
+  \begin{align*}
+         & A \text{ is lower triangular}                                          \\
+    \iff & A_{i j} = 0 \text{ if } i < j        &  & \text{(by \cref{ex:4.3.19})} \\
+    \iff & (\tp{A})_{j i} = 0 \text{ if } i < j &  & \text{(by \cref{1.3.3})}     \\
+    \iff & \tp{A} \text{ is upper triangular}.  &  & \text{(by \cref{ex:1.3.12})}
+  \end{align*}
+  Now we claim that if \(A \in \ms{n}{n}{\F}\) is lower triangular, then \(\det(A) = \prod_{j = 1}^n A_{j j}\).
+  This is true since
+  \begin{align*}
+    \det(A) & = \det(\tp{A})                   &  & \text{(by \cref{4.8})}       \\
+            & = \prod_{j = 1}^n (\tp{A})_{j j} &  & \text{(by \cref{ex:4.2.23})} \\
+            & = \prod_{j = 1}^n A_{j j}.       &  & \text{(by \cref{1.3.3})}
+  \end{align*}
+\end{proof}
+
+\begin{ex}\label{ex:4.3.20}
+  Suppose that \(M \in \ms{n}{n}{\F}\) can be written in the form
+  \[
+    M = \begin{pmatrix}
+      A   & B         \\
+      \zm & I_{n - m}
+    \end{pmatrix},
+  \]
+  where \(A \in \ms{m}{m}{\F}\) for some \(m \in \set{1, \dots, n - 1}\).
+  Prove that \(\det(M) = \det(A)\).
+\end{ex}
+
+\begin{proof}[\pf{ex:4.3.20}]
+  For each \(j \in \set{2, \dots, n - m}\), let \(B_{j : n - m}\) denote the matrix consist of the \(j\)th column of \(B\) to the \((n - m)\)th column (the last column) of \(B\).
+  Then we have
+  \begin{align*}
+    \det(M) & = (-1)^{(m + 1) + (m + 1)} \det\pa{\tilde{M}_{(m + 1) (m + 1)}} &  & \text{(by \cref{4.2.5})}                   \\
+            & = \det\begin{pmatrix}
+                      A   & B_{2 : n - m} \\
+                      \zm & I_{n - m - 1}
+                    \end{pmatrix}                                          &  & \text{(by \cref{4.2.1})}                      \\
+            & = (-1)^{(m + 1) + (m + 1)} \det\pa{\tilde{\begin{pmatrix}
+                                                              A   & B_{2 : n - m} \\
+                                                              \zm & I_{n - m - 1}
+                                                            \end{pmatrix}}_{(m + 1) (m + 1)}}       &  & \text{(by \cref{4.2.5})} \\
+            & = \det\begin{pmatrix}
+                      A   & B_{3 : n - m} \\
+                      \zm & I_{n - m - 2}
+                    \end{pmatrix}                                          &  & \text{(by \cref{4.2.1})}                      \\
+            & \vdots                                                                                                          \\
+            & = \det\begin{pmatrix}
+                      A   & B_{n - m - 1 : n - m} \\
+                      \zm & I_1
+                    \end{pmatrix}                                                                               \\
+            & = (-1)^{(m + 1) + (m + 1)} \det(A)                              &  & \text{(by \cref{4.2.5})}                   \\
+            & = \det(A).
+  \end{align*}
+\end{proof}
+
+\begin{ex}\label{ex:4.3.21}
+  Prove that if \(M \in \ms{n}{n}{\F}\) can be written in the form
+  \[
+    M = \begin{pmatrix}
+      A   & B \\
+      \zm & C
+    \end{pmatrix},
+  \]
+  where \(A\) and \(C\) are square matrices, then \(\det(M) = \det(A) \cdot \det(C)\).
+\end{ex}
+
+\begin{proof}[\pf{ex:4.3.21}]
+  Let \(m \in \set{1, \dots, n - 1}\) such that \(A \in \ms{m}{m}{\F}\) and \(C \in \ms{(n - m)}{(n - m)}{\F}\).
+  We split into two cases:
+  \begin{itemize}
+    \item If \(C\) is not invertible, then by \cref{3.2.2} and \cref{3.2.5}(b) we know that \(\rk{\zm | C} = \rk{C} < n - m\).
+          Thus by \cref{3.2.5}(b) \(\rk{M} < n\) and by \cref{3.2.2} \(M\) is not invertible.
+          By \cref{4.3.1} this means
+          \[
+            \det(M) = 0 = \det(A) \cdot 0 = \det(A) \cdot \det(C).
+          \]
+    \item If \(C\) is invertible, then we have
+          \begin{align*}
+            \det(M) \frac{1}{\det(C)} & = \det(M) \det(C^{-1})        &  & \text{(by \cref{4.3.1})}     \\
+                                      & = \det(M) \det\begin{pmatrix}
+                                                        I_m   & \zm_1  \\
+                                                        \zm_2 & C^{-1}
+                                                      \end{pmatrix} &  & \text{(by \cref{4.2.5})}       \\
+                                      & = \det\pa{M \begin{pmatrix}
+                                                        I_m   & \zm_1  \\
+                                                        \zm_2 & C^{-1}
+                                                      \end{pmatrix}}   &  & \text{(by \cref{4.7})}        \\
+                                      & = \det\begin{pmatrix}
+                                                A   & BC^{-1} \\
+                                                \zm & CC^{-1}
+                                              \end{pmatrix}         &  & \text{(by \cref{2.3.1})}       \\
+                                      & = \det\begin{pmatrix}
+                                                A   & BC^{-1}   \\
+                                                \zm & I_{n - m}
+                                              \end{pmatrix}         &  & \text{(by \cref{2.4.3})}       \\
+                                      & = \det(A)                     &  & \text{(by \cref{ex:4.3.20})}
+          \end{align*}
+          where \(\zm_1 \in \ms{m}{(n - m)}{\F}\) and \(\zm_2 \in \ms{(n - m)}{m}{\F}\) are zero matrices.
+          Thus \(\det(M) = \det(A) \det(C)\).
+  \end{itemize}
+  From all cases above we conclude that \(\det(M) = \det(A) \det(C)\).
+\end{proof}
