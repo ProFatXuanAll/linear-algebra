@@ -619,3 +619,65 @@
     \end{pmatrix} = \prod_{i = 0}^n \prod_{j = i + 1}^n (c_j - c_i).
   \]
 \end{proof}
+
+\begin{ex}\label{ex:4.3.23}
+  Let \(A \in \ms{n}{n}{\F} \setminus \set{\zm}\).
+  For any \(m \in \set{1, \dots, n}\), an \(m \times m\) \textbf{submatrix} is obtained by deleting any \(n - m\) rows and any \(n - m\) columns of \(A\).
+  \begin{enumerate}
+    \item Let \(k \in \set{1, \dots, n}\) denote the largest integer such that some \(k \times k\) submatrix has a nonzero determinant.
+          Prove that \(\rk{A} = k\).
+    \item Conversely, suppose that \(\rk{A} = k\).
+          Prove that there exists a \(k \times k\) submatrix with a nonzero determinant.
+  \end{enumerate}
+\end{ex}
+
+\begin{proof}[\pf{ex:4.3.23}(a)]
+  We use induction on \(n\).
+  For \(n = 1\), we have \(\det(A) \neq 0\) for any \(A \in \ms{1}{1}{\F} \setminus \set{\zm}\).
+  Thus the largest submatrix of \(A\) with nonzero determinant is \(A\) itself and therefore \(\rk{A} = 1\).
+  Suppose inductively that for some \(n \geq 1\) the statement is true.
+  We need to show that for \(n + 1\) the statement is also true.
+  Let \(A \in \ms{(n + 1)}{(n + 1)}{\F} \setminus \set{\zm}\) and let \(k\) be the largest integer such that some \(k \times k\) submatrix of \(A\) have nonzero determinant.
+  If \(k = n + 1\), then we have \(\det(A) \neq 0\) and by \cref{4.3.1,3.2.2} we have \(\rk{A} = n + 1\).
+  So suppose that \(k < n + 1\).
+
+  Since \(k < n + 1\), by definition we must have \(\det(A) = 0\) (otherwise we would have \(\det(A) \neq 0\) and thus \(k = n + 1\)).
+  By \cref{4.3.1,3.2.2} we have \(\rk{A} < n + 1\).
+  By \cref{3.5} there must exists at least one column of \(A\), say column \(p\), is a linear combination of other columns.
+  Using elementary column operations of type 3 we can make the \(p\)th column of \(A\) become all zeros.
+  By \cref{3.2.3} the resulting matrix, denoted as \(B\), has the same rank as \(A\).
+  Since \(\rk{B} = \rk{A} < n + 1\), using similar argument with \cref{3.2.5}(b) we know can obtain another matrix from \(B\), called it \(C\), such that the \(q\)th row of \(C\) is all zeros and \(\rk{B} = \rk{C}\).
+  Since the \(p\)th column and the \(q\)th row of \(C\) is all zeros, the submatrix obtained by deleting the \(p\)th column and the \(q\)th row of \(C\), called it \(D\), must have the same rank as \(C\).
+  (This is guaranteed since \(\zv\) cannot be expressed as linear combination with nonzero coefficients of linearly independent rows or columns.)
+  Note that
+  \[
+    \forall i, j \in \set{1, \dots, n}, D_{i j} = \begin{dcases}
+      A_{i j}             & \text{if } (1 \leq i \leq q - 1) \land (1 \leq j \leq p - 1) \\
+      A_{i (j + 1)}       & \text{if } (1 \leq i \leq q - 1) \land (p + 1 \leq j \leq n) \\
+      A_{(i + 1) j}       & \text{if } (q + 1 \leq i \leq n) \land (1 \leq j \leq p - 1) \\
+      A_{(i + 1) (j + 1)} & \text{if } (q + 1 \leq i \leq n) \land (p + 1 \leq j \leq n)
+    \end{dcases}.
+  \]
+
+  We claim that we can find a \(k \times k\) submatrix of \(D\) with nonzero determinant.
+  If not, then we cannot find \(k\) linearly independent rows from \(D\).
+  But this means we cannot find \(k\) linearly independent rows from \(A\), since \(D\) is obtained from \(A\) by removing linearly dependent row \(q\) and column \(p\), clearly a contradiction.
+
+  Now we claim that if \(k' \in \set{1, \dots, n}\) is the largest integer such that some \(k' \times k'\) submatrix of \(D\) has a nonzero determinant, then \(k = k'\).
+  From previous paragraph we know that \(k \leq k'\).
+  So suppose for sake of contradiction that \(k < k'\).
+  But any submatrix of \(D\) is also a submatrix of \(A\), \(k\) cannot be the largest integer such that some \(k \times k\) submatrix of \(A\) has nonzero determinant.
+  Thus we have \(k = k'\).
+  By induction hypothesis we know that \(\rk{D} = k\).
+  From previous paragraph we have \(\rk{A} = \rk{D} = k\), this closes the induction.
+\end{proof}
+
+\begin{proof}[\pf{ex:4.3.23}(b)]
+  Since \(\rk{A} = k\), by \cref{3.5} and \cref{3.2.5}(b) \(A\) has \((n - k)\) linearly dependent rows and columns.
+  We can perform elementary operations of type 3 to make these linearly dependent rows and columns become all zeros.
+  We claim that the resulting matrix, called it \(B\), has \(k\) linearly independent rows and columns.
+  If not, then by \cref{3.5} we have \(\rk{B} < k\).
+  But by \cref{3.2.3} we have \(k = \rk{A} = \rk{B} < k\), a contradiction.
+  By removing all-zero rows and column we now obtain a \(k \times k\) submatrix whose rank is \(k\) (since the removed rows and columns are all zeros).
+  By \cref{3.2.2} and \cref{4.1.3} we see that this submatrix has nonzero determinant.
+\end{proof}
