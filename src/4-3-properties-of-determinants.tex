@@ -509,3 +509,58 @@
   \end{itemize}
   From all cases above we conclude that \(\det(M) = \det(A) \det(C)\).
 \end{proof}
+
+\begin{ex}\label{ex:4.3.22}
+  Let \(\T : \ps[n]{\F} \to \vs{F}^{n + 1}\) be the linear transformation defined in \cref{ex:2.4.22} by \(\T(f) = (f(c_0), f(c_1), \dots, f(c_n))\), where \(\seq{c}{0,,n}\) are distinct scalars in an infinite field \(\F\).
+  Let \(\beta\) be the standard ordered basis for \(\ps[n]{\F}\) and \(\gamma\) be the standard ordered basis for \(\vs{F}^{n + 1}\) .
+  \begin{enumerate}
+    \item Show that \(M = [\T]_{\beta}^{\gamma}\) has the form
+          \[
+            \begin{pmatrix}
+              1      & c_0    & c_0^2  & \cdots & c_0^n  \\
+              1      & c_1    & c_1^2  & \cdots & c_1^n  \\
+              \vdots & \vdots & \vdots &        & \vdots \\
+              1      & c_n    & c_n^2  & \cdots & c_n^n
+            \end{pmatrix}
+          \]
+          A matrix with this form is called a \textbf{Vandermonde matrix}.
+    \item Use \cref{ex:2.4.22} to prove that \(\det(M) \neq 0\).
+    \item Prove that
+          \[
+            \det(M) = \prod_{0 \leq i < j \leq n} (c_j - c_i),
+          \]
+          the product of all terms of the form \(c_j - c_i\) for \(0 \leq i < j \leq n\).
+  \end{enumerate}
+\end{ex}
+
+\begin{proof}[\pf{ex:4.3.22}(a)]
+  We have
+  \begin{align*}
+             & \forall i \in \set{0, \dots, n}, [\T(x^i)]_{\beta} = [(c_0^i, c_1^i, \dots, c_n^i)]_{\beta}                                 \\
+             & = \begin{pmatrix}
+                   c_0^i  \\
+                   c_1^i  \\
+                   \vdots \\
+                   c_n^i
+                 \end{pmatrix} = \sum_{j = 1}^{n + 1} c_{j - 1}^i e_j                                        &  & \text{(by \cref{2.2.3})} \\
+    \implies & [\T]_{\beta}^{\gamma} = \begin{pmatrix}
+                                         1      & c_0    & c_0^2  & \cdots & c_0^n  \\
+                                         1      & c_1    & c_1^2  & \cdots & c_1^n  \\
+                                         \vdots & \vdots & \vdots &        & \vdots \\
+                                         1      & c_n    & c_n^2  & \cdots & c_n^n
+                                       \end{pmatrix}.                                               &  & \text{(by \cref{2.2.4})}
+  \end{align*}
+\end{proof}
+
+\begin{proof}[\pf{ex:4.3.22}(b)]
+  We have
+  \begin{align*}
+             & \T \text{ is invertible}                        &  & \text{(by \cref{ex:2.4.22})} \\
+    \implies & M = [\T]_{\beta}^{\gamma} \text{ is invertible} &  & \text{(by \cref{2.18})}      \\
+    \implies & \det(M) \neq 0.                                 &  & \text{(by \cref{4.3.1})}
+  \end{align*}
+\end{proof}
+
+\begin{proof}[\pf{ex:4.3.22}(c)]
+
+\end{proof}
