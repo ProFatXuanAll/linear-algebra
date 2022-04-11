@@ -344,6 +344,57 @@
   we know that \(\det(A) \neq 0\) and thus by \cref{4.3.1} \(A\) is invertible.
 \end{proof}
 
-\begin{ex}\label{ex:4.3.18}
-
+\begin{ex}\label{ex:4.3.17}
+  Let \(A, B \in \ms{n}{n}{\F}\) be such that \(AB = -BA\).
+  Prove that if \(n\) is odd and \(\F\) is not a field of characteristic two, then \(A\) or \(B\) is not invertible.
 \end{ex}
+
+\begin{proof}[\pf{ex:4.3.17}]
+  Since
+  \begin{align*}
+    \det(A) \det(B) & = \det(AB)               &  & \text{(by \cref{4.7})} \\
+                    & = \det(-BA)                                          \\
+                    & = (-1)^n \det(BA)        &  & \text{(by \cref{4.3})} \\
+                    & = (-1)^n \det(B) \det(A) &  & \text{(by \cref{4.7})} \\
+                    & = -\det(B) \det(A),      &  & \text{(\(n\) is odd)}
+  \end{align*}
+  we know that
+  \begin{align*}
+             & 2 \det(A) \det(B) = 0                                                                           \\
+    \implies & \det(A) \det(B) = 0                                               &  & (\F \neq \Z_2)           \\
+    \implies & (\det(A) = 0) \lor (\det(B) = 0)                                                                \\
+    \implies & (A \text{ is not invertible}) \lor (B \text{ is not invertible}). &  & \text{(by \cref{4.3.1})}
+  \end{align*}
+\end{proof}
+
+\begin{ex}\label{ex:4.3.18}
+  If \(A, B \in \ms{n}{n}{\F}\) and \(A\) is an elementary matrix, then \(\det(AB) = \det(A) \cdot \det(B)\).
+\end{ex}
+
+\begin{proof}[\pf{ex:4.3.18}]
+  We split into three cases:
+  \begin{itemize}
+    \item If \(A\) is type 1, then by \cref{3.1} \(AB\) is equivalent to interchang rows of \(B\).
+          Thus we have
+          \begin{align*}
+            \det(AB) & = -\det(B)           &  & \text{(by \cref{4.5})}   \\
+                     & = -\det(I_n) \det(B) &  & \text{(by \cref{4.2.3})} \\
+                     & = \det(A) \det(B).   &  & \text{(by \cref{4.5})}
+          \end{align*}
+    \item If \(A\) is type 2, then by \cref{3.1} \(AB\) is equivalent to multiply \(1\) rows of \(B\) with some \(k \in \F\).
+          Thus we have
+          \begin{align*}
+            \det(AB) & = k \det(B)           &  & \text{(by \cref{4.3})}   \\
+                     & = k \det(I_n) \det(B) &  & \text{(by \cref{4.2.3})} \\
+                     & = \det(A) \det(B).    &  & \text{(by \cref{4.3})}
+          \end{align*}
+    \item If \(A\) is type 3, then by \cref{3.1} \(AB\) is equivalent to multiply \(1\) rows of \(B\) with some \(k \in \F\) and add it to another row of \(B\).
+          Thus we have
+          \begin{align*}
+            \det(AB) & = \det(B)           &  & \text{(by \cref{4.6})}   \\
+                     & = \det(I_n) \det(B) &  & \text{(by \cref{4.2.3})} \\
+                     & = \det(A) \det(B).  &  & \text{(by \cref{4.6})}
+          \end{align*}
+  \end{itemize}
+  From all cases above we conclude that \(\det(AB) = \det(A) \cdot \det(B)\).
+\end{proof}
