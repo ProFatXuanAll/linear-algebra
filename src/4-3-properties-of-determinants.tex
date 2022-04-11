@@ -562,5 +562,60 @@
 \end{proof}
 
 \begin{proof}[\pf{ex:4.3.22}(c)]
-
+  Starting from the last column and stoping at the second column, we subtract each column with its preceding column times \(c_0\) and get the following result.
+  \[
+    \det\begin{pmatrix}
+      1      & c_0    & c_0^2  & \cdots & c_0^n  \\
+      1      & c_1    & c_1^2  & \cdots & c_1^n  \\
+      1      & c_2    & c_2^2  & \cdots & c_2^n  \\
+      \vdots & \vdots & \vdots &        & \vdots \\
+      1      & c_n    & c_n^2  & \cdots & c_n^n
+    \end{pmatrix} = \det\begin{pmatrix}
+      1      & c_0 - c_0 & c_0^2 - c_0^2   & \cdots & c_0^n - c_0^n           \\
+      1      & c_1 - c_0 & c_1^2 - c_0 c_1 & \cdots & c_1^n - c_0 c_1^{n - 1} \\
+      1      & c_2 - c_0 & c_2^2 - c_0 c_2 & \cdots & c_2^n - c_0 c_2^{n - 1} \\
+      \vdots & \vdots    & \vdots          &        & \vdots                  \\
+      1      & c_n - c_0 & c_n^2 - c_0 c_n & \cdots & c_n^n - c_0 c_n^{n - 1}
+    \end{pmatrix}.
+  \]
+  The equality holds by \cref{4.6,4.8}.
+  Since
+  \begin{align*}
+     & \det\begin{pmatrix}
+             1      & c_0 - c_0 & c_0^2 - c_0^2   & \cdots & c_0^n - c_0^n           \\
+             1      & c_1 - c_0 & c_1^2 - c_0 c_1 & \cdots & c_1^n - c_0 c_1^{n - 1} \\
+             1      & c_2 - c_0 & c_2^2 - c_0 c_2 & \cdots & c_2^n - c_0 c_2^{n - 1} \\
+             \vdots & \vdots    & \vdots          &        & \vdots                  \\
+             1      & c_n - c_0 & c_n^2 - c_0 c_n & \cdots & c_n^n - c_0 c_n^{n - 1}
+           \end{pmatrix}                           \\
+     & = \det\begin{pmatrix}
+               1      & 0         & 0               & \cdots & 0                       \\
+               1      & c_1 - c_0 & c_1 (c_1 - c_0) & \cdots & c_1^{n - 1} (c_1 - c_0) \\
+               1      & c_2 - c_0 & c_2 (c_2 - c_0) & \cdots & c_2^{n - 1} (c_2 - c_0) \\
+               \vdots & \vdots    & \vdots          &        & \vdots                  \\
+               1      & c_n - c_0 & c_n (c_n - c_0) & \cdots & c_n^{n - 1} (c_n - c_0)
+             \end{pmatrix}                         \\
+     & = \det\begin{pmatrix}
+               c_1 - c_0 & c_1 (c_1 - c_0) & \cdots & c_1^{n - 1} (c_1 - c_0) \\
+               c_2 - c_0 & c_2 (c_2 - c_0) & \cdots & c_2^{n - 1} (c_2 - c_0) \\
+               \vdots    & \vdots          &        & \vdots                  \\
+               c_n - c_0 & c_n (c_n - c_0) & \cdots & c_n^{n - 1} (c_n - c_0)
+             \end{pmatrix}          &  & \text{(by \cref{4.2.2})}                                  \\
+     & = \pa{\prod_{j = 1}^n (c_j - c_0)} \cdot \det\begin{pmatrix}
+                                                      1      & c_1    & \cdots & c_1^{n - 1} \\
+                                                      1      & c_2    & \cdots & c_2^{n - 1} \\
+                                                      \vdots & \vdots &        & \vdots      \\
+                                                      1      & c_n    & \cdots & c_n^{n - 1}
+                                                    \end{pmatrix},               &  & \text{(by \cref{4.3})}
+  \end{align*}
+  appling the same calculation \(n + 1\) times we obtain
+  \[
+    \det\begin{pmatrix}
+      1      & c_0    & c_0^2  & \cdots & c_0^n  \\
+      1      & c_1    & c_1^2  & \cdots & c_1^n  \\
+      1      & c_2    & c_2^2  & \cdots & c_2^n  \\
+      \vdots & \vdots & \vdots &        & \vdots \\
+      1      & c_n    & c_n^2  & \cdots & c_n^n
+    \end{pmatrix} = \prod_{i = 0}^n \prod_{j = i + 1}^n (c_j - c_i).
+  \]
 \end{proof}
