@@ -297,3 +297,195 @@
   By \cref{4.5.1} we have \(\delta(E_2) = k \delta(I_n)\).
   By \cref{4.5.6}(a) we have \(\delta(E_3) = \delta(I_n)\).
 \end{proof}
+
+\begin{thm}\label{4.11}
+  Let \(\delta : \ms{n}{n}{\F} \to \F\) be an alternating \(n\)-linear function such that \(\delta(I_n) = 1\).
+  For any \(A, B \in \ms{n}{n}{\F}\), we have \(\delta(AB) = \delta(A) \cdot \delta(B)\).
+\end{thm}
+
+\begin{proof}[\pf{4.11}]
+  We begin by establishing the result when \(A\) is an elementary matrix.
+  \begin{itemize}
+    \item If \(A\) is an elementary matrix obtained by interchanging two rows of \(I_n\), then by \cref{4.5.8} we have \(\delta(A) = -\delta(I_n) = -1\).
+          But by \cref{3.1}, \(AB\) is a matrix obtained by interchanging two rows of \(B\).
+          Hence by \cref{4.10}(a), \(\delta(AB) = -\delta(B) = \delta(A) \cdot \delta(B)\).
+    \item If \(A\) is an elementary matrix obtained by multiplying one row of \(I_n\) with \(k \in \F\), then by \cref{4.5.8} we have \(\delta(A) = k \delta(I_n) = k\).
+          But by \cref{3.1}, \(AB\) is a matrix obtained by multiplying the same row of \(B\) with \(k\).
+          Hence by \cref{4.5.1}, \(\delta(AB) = k \delta(B) = \delta(A) \cdot \delta(B)\).
+    \item If \(A\) is an elementary matrix obtained by adding a multiple of some row of \(I_n\) to another row, then by \cref{4.5.8} we have \(\delta(A) = \delta(I_n) = 1\).
+          But by \cref{3.1}, \(AB\) is a matrix obtained by adding the same multiple of the same row of \(B\) to the same other row.
+          Hence by \cref{4.10}(a), \(\delta(AB) = \delta(B) = \delta(A) \cdot \delta(B)\).
+  \end{itemize}
+
+  If \(\rk{A} < n\), then \(\delta(A) = 0\) by \cref{4.5.7}.
+  Since \(\rk{AB} \leq \rk{A} < n\) by \cref{3.7}, we have \(\delta(AB) = 0\).
+  Thus \(\delta(AB) = \delta(A) \cdot \delta(B)\) in this case.
+
+  On the other hand, if \(\rk{A} = n\), then \(A\) is invertible and hence is the product of elementary matrices (\cref{3.2.6}), say, \(A = \seq[]{E}{m,,1}\).
+  The first paragraph of this proof shows that
+  \begin{align*}
+    \delta(AB) & = \delta(\seq[]{E}{m,,1} B)                       \\
+               & = \delta(E_m) \cdot \delta(\seq[]{E}{m - 1,,1} B) \\
+               & \vdots                                            \\
+               & = \delta(E_m) \cdots \delta(E_1) \cdot \delta(B)  \\
+               & = \delta(\seq[]{E}{m,,1}) \cdot \delta(B)         \\
+               & = \delta(A) \cdot \delta(B).
+  \end{align*}
+\end{proof}
+
+\begin{thm}\label{4.12}
+  If \(\delta : \ms{n}{n}{\F} \to \F\) is an alternating \(n\)-linear function such that \(\delta(I_n) = 1\), then \(\delta(A) = \det(A)\) for every \(A \in \ms{n}{n}{\F}\).
+\end{thm}
+
+\begin{proof}[\pf{4.12}]
+  Let \(\delta : \ms{n}{n}{\F} \to \F\) be an alternating \(n\)-linear function such that \(\delta(I_n) = 1\), and let \(A \in \ms{n}{n}{\F}\).
+  If \(A\) has rank less than \(n\), then by \cref{4.5.7}, \(\delta(A) = 0\).
+  Since \cref{4.2.7} gives \(\det(A) = 0\), we have \(\delta(A) = \det(A)\) in this case.
+  If, on the other hand, \(A\) has rank \(n\), then \(A\) is invertible and hence is the product of elementary matrices (\cref{3.2.6}), say \(A = \seq[]{E}{m,,1}\).
+  Since \(\delta(I_n) = 1\), it follows from \cref{4.5.8} and the properties of determinant that \(\delta(E) = \det(E)\) for every elementary matrix \(E\).
+  Hence by \cref{4.7,4.11}, we have
+  \begin{align*}
+    \delta(A) & = \delta(\seq[]{E}{m,,1})        \\
+              & = \delta(E_m) \cdots \delta(E_1) \\
+              & = \det(E_m) \cdots \det(E_1)     \\
+              & = \det(\seq[]{E}{m,,1})          \\
+              & = \det(A).
+  \end{align*}
+\end{proof}
+
+\begin{note}
+  \cref{4.12} provides the desired characterization of the determinant:
+  It is the unique function \(\delta : \ms{n}{n}{\F} \to \F\) that is \(n\)-linear, is alternating, and has the property that \(\delta(I_n) = 1\).
+\end{note}
+
+\exercisesection
+
+\setcounter{ex}{1}
+\begin{ex}\label{ex:4.5.2}
+  Determine all the \(1\)-linear functions \(\delta : \ms{1}{1}{\F} \to \F\).
+\end{ex}
+
+\begin{proof}[\pf{ex:4.5.2}]
+  We claim that the set of all \(1\)-linear functions, denoted as \(S\), is \(\ls(\ms{1}{1}{\F}, \F)\).
+  Since
+  \begin{align*}
+         & f \in \ls(\ms{1}{1}{\F}, \F)                                                                   \\
+    \iff & \forall x, y \in \ms{1}{1}{\F} \text{ and } \forall c \in \F,                                  \\
+         & f(cx + y) = cf(x) + f(y)                                      &  & \text{(by \cref{2.1.2}(b))} \\
+    \iff & f \in S,                                                      &  & \text{(by \cref{4.5.1})}
+  \end{align*}
+  we see that \(S = \ls(\ms{1}{1}{\F}, \F)\).
+\end{proof}
+
+\setcounter{ex}{12}
+\begin{ex}\label{ex:4.5.13}
+  Prove that \(\det : \ms{2}{2}{\F} \to \F\) is a \(2\)-linear function of the columns of a matrix.
+\end{ex}
+
+\begin{proof}[\pf{ex:4.5.13}]
+  By \cref{4.1,4.8} we see that this is true.
+\end{proof}
+
+\begin{ex}\label{ex:4.5.14}
+  Let \(a, b, c, d \in \F\).
+  Prove that the function \(\delta : \ms{2}{2}{\F} \to \F\) defined by \(\delta(A) = A_{1 1} A_{2 2} a + A_{1 1} A_{2 1} b + A_{1 2} A_{2 2} c + A_{1 2} A_{2 1} d\) is a \(2\)-linear function.
+\end{ex}
+
+\begin{proof}[\pf{ex:4.5.14}]
+  Let \(x, y, k \in \F\).
+  Since
+  \begin{align*}
+     & \delta\begin{pmatrix}
+               A_{1 1}      & A_{1 2}      \\
+               A_{2 1} + kx & A_{2 2} + ky
+             \end{pmatrix}                                                                           \\
+     & = A_{1 1} (A_{2 2} + ky) a + A_{1 1} (A_{2 1} + kx) b + A_{1 2} (A_{2 2} + ky) c + A_{1 2} (A_{2 1} + kx) d \\
+     & = A_{1 1} A_{2 2} a + A_{1 1} A_{2 1} b + A_{1 2} A_{2 2} c + A_{1 2} A_{2 1} d                             \\
+     & \quad + A_{1 1} ky a + A_{1 1} kx b + A_{1 2} ky c + A_{1 2} kx d                                           \\
+     & = \delta\begin{pmatrix}
+                 A_{1 1} & A_{1 2} \\
+                 A_{2 1} & A_{2 2}
+               \end{pmatrix} + k \delta\begin{pmatrix}
+                                         A_{1 1} & A_{1 2} \\
+                                         x       & y
+                                       \end{pmatrix}
+  \end{align*}
+  and
+  \begin{align*}
+     & \delta\begin{pmatrix}
+               A_{1 1} + kx & A_{1 2} + ky \\
+               A_{2 1}      & A_{2 2}
+             \end{pmatrix}                                                                           \\
+     & = (A_{1 1} + kx) A_{2 2} a + (A_{1 1} + kx) A_{2 1} b + (A_{1 2} + ky) A_{2 2} c + (A_{1 2} + ky) A_{2 1} d \\
+     & = A_{1 1} A_{2 2} a + A_{1 1} A_{2 1} b + A_{1 2} A_{2 2} c + A_{1 2} A_{2 1} d                             \\
+     & \quad + kx A_{2 2} a + kx A_{2 1} b + ky A_{2 2} c + ky A_{2 1} d                                           \\
+     & = \delta\begin{pmatrix}
+                 A_{1 1} & A_{1 2} \\
+                 A_{2 1} & A_{2 2}
+               \end{pmatrix} + k \delta\begin{pmatrix}
+                                         x       & y       \\
+                                         A_{2 1} & A_{2 2}
+                                       \end{pmatrix},
+  \end{align*}
+  by \cref{4.5.1} we know that \(\delta\) is a \(2\)-linear function.
+\end{proof}
+
+\begin{ex}\label{ex:4.5.15}
+  Prove that \(\delta : \ms{2}{2}{\F} \to \F\) is a \(2\)-linear function iff it has the form
+  \[
+    \delta(A) = A_{1 1} A_{2 2} a + A_{1 1} A_{2 1} b + A_{1 2} A_{2 2} c + A_{1 2} A_{2 1} d
+  \]
+  for some scalars \(a, b, c, d \in \F\).
+\end{ex}
+
+\begin{proof}[\pf{ex:4.5.15}]
+  Thanks to \cref{ex:4.5.14}, we only need to prove that if \(\delta\) is a \(2\)-linear function, then
+  \[
+    \exists a, b, c, d \in \F : \forall A \in \ms{2}{2}{\F}, \delta(A) = A_{1 1} A_{2 2} a + A_{1 1} A_{2 1} b + A_{1 2} A_{2 2} c + A_{1 2} A_{2 1} d.
+  \]
+  Define \(a, b, c, d \in \F\) such that
+  \[
+    a = \delta\begin{pmatrix}
+      1 & 0 \\
+      0 & 1
+    \end{pmatrix} \quad b = \delta\begin{pmatrix}
+      1 & 0 \\
+      1 & 0
+    \end{pmatrix} \quad c = \delta\begin{pmatrix}
+      0 & 1 \\
+      0 & 1
+    \end{pmatrix} \quad d = \delta\begin{pmatrix}
+      0 & 1 \\
+      1 & 0
+    \end{pmatrix}.
+  \]
+  Let \(A \in \ms{2}{2}{\F}\).
+  Then we have
+  \begin{align*}
+    \delta\begin{pmatrix}
+            A_{1 1} & A_{1 2} \\
+            A_{2 1} & A_{2 2}
+          \end{pmatrix} & = A_{1 1} \delta\begin{pmatrix}
+                                            1       & 0       \\
+                                            A_{2 1} & A_{2 2}
+                                          \end{pmatrix} + A_{1 2} \delta\begin{pmatrix}
+                                                                          0       & 1       \\
+                                                                          A_{2 1} & A_{2 2}
+                                                                        \end{pmatrix}                                    &  & \text{(by \cref{4.5.1})}                 \\
+                          & = A_{1 1} A_{2 1} \delta\begin{pmatrix}
+                                                      1 & 0 \\
+                                                      1 & 0
+                                                    \end{pmatrix} + A_{1 1} A_{2 2} \delta\begin{pmatrix}
+                                                                                            1 & 0 \\
+                                                                                            0 & 1
+                                                                                          \end{pmatrix}                            &  & \text{(by \cref{4.5.1})}       \\
+                          & \quad + A_{1 2} A_{2 1} \delta\begin{pmatrix}
+                                                            0 & 1 \\
+                                                            1 & 0
+                                                          \end{pmatrix} + A_{1 2} A_{2 2} \delta\begin{pmatrix}
+                                                                                                  0 & 1 \\
+                                                                                                  0 & 1
+                                                                                                \end{pmatrix}                            &  & \text{(by \cref{4.5.1})} \\
+                          & = A_{1 1} A_{2 2} a + A_{1 1} A_{2 1} b + A_{1 2} A_{2 2} c + A_{1 2} A_{2 1} d.
+  \end{align*}
+\end{proof}
