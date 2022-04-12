@@ -326,7 +326,6 @@
   \begin{align*}
     \delta(AB) & = \delta(\seq[]{E}{m,,1} B)                       \\
                & = \delta(E_m) \cdot \delta(\seq[]{E}{m - 1,,1} B) \\
-               & \vdots                                            \\
                & = \delta(E_m) \cdots \delta(E_1) \cdot \delta(B)  \\
                & = \delta(\seq[]{E}{m,,1}) \cdot \delta(B)         \\
                & = \delta(A) \cdot \delta(B).
@@ -488,4 +487,126 @@
                                                                                                 \end{pmatrix}                            &  & \text{(by \cref{4.5.1})} \\
                           & = A_{1 1} A_{2 2} a + A_{1 1} A_{2 1} b + A_{1 2} A_{2 2} c + A_{1 2} A_{2 1} d.
   \end{align*}
+\end{proof}
+
+\begin{ex}\label{ex:4.5.16}
+  Prove that if \(\delta : \ms{n}{n}{\F} \to \F\) is an alternating \(n\)-linear function, then there exists a scalar \(k\) such that \(\delta(A) = k \det(A)\) for all \(A \in \ms{n}{n}{\F}\).
+\end{ex}
+
+\begin{proof}[\pf{ex:4.5.16}]
+  First we claim that for any elementary matrix \(E \in \ms{n}{n}{\F}\), we have \(\delta(EA) = \det(E) \delta(A)\) for all \(A \in \ms{n}{n}{\F}\).
+  \begin{itemize}
+    \item If \(E\) is an elementary matrix of type 1, then by \cref{3.1,4.10}(a) we have \(\delta(EA) = -\delta(A) = \det(E) \cdot \delta(A)\).
+    \item If \(E\) is an elementary matrix of type 2, then by \cref{3.1,4.5.1} we have \(\delta(EA) = \det(E) \delta(A)\).
+    \item If \(E\) is an elementary matrix of type 3, then by \cref{3.1,4.5.6} we have \(\delta(EA) = \delta(A) = \det(E) \delta(A)\).
+  \end{itemize}
+
+  Now we claim that \(\delta(A) = \delta(I_n) \det(A)\) for all \(A \in \ms{n}{n}{\F}\).
+  If \(\rk{A} < n\), then by \cref{4.5.7,4.3.1} we have \(\delta(A) = 0 = \delta(I_n) 0 = \delta(I_n) \det(A)\).
+  If \(\rk{A} = n\), then \(A\) is invertible and hence is the product of elementary matrices (\cref{3.2.6}), say, \(A = \seq[]{E}{m,,1}\).
+  Thus we have
+  \begin{align*}
+    \delta(A) & = \delta(\seq[]{E}{m,,1})                                                         \\
+              & = \delta(\seq[]{E}{m,,1} I_n)                                                     \\
+              & = \det(E_m) \cdot \delta(\seq[]{E}{m - 1,,1})  &  & \text{(from the proof above)} \\
+              & = \det(E_m) \cdots \det(E_1) \cdot \delta(I_n) &  & \text{(from the proof above)} \\
+              & = \det(\seq[]{E}{m,,1}) \cdot \delta(I_n)      &  & \text{(by \cref{4.7})}        \\
+              & = \delta(I_n) \det(A).
+  \end{align*}
+\end{proof}
+
+\begin{ex}\label{ex:4.5.17}
+  Prove that a linear combination of two \(n\)-linear functions is an \(n\)-linear function.
+\end{ex}
+
+\begin{proof}[\pf{ex:4.5.17}]
+  Let \(f_1, f_2\) be \(n\)-linear functions, let \(c_1, c_2, k \in \F\) and let \(\seq{a}{1,,n}, v \in \vs{F}^n\).
+  Since
+  \begin{align*}
+     & (c_1 f_1 + c_2 f_2)\begin{pmatrix}
+                            a_1       \\
+                            \vdots    \\
+                            a_{r - 1} \\
+                            a_r + kv  \\
+                            a_{r + 1} \\
+                            \vdots    \\
+                            a_n
+                          \end{pmatrix} = c_1 f_1\begin{pmatrix}
+                                                   a_1       \\
+                                                   \vdots    \\
+                                                   a_{r - 1} \\
+                                                   a_r + kv  \\
+                                                   a_{r + 1} \\
+                                                   \vdots    \\
+                                                   a_n
+                                                 \end{pmatrix} + c_2 f_2\begin{pmatrix}
+                                                                          a_1       \\
+                                                                          \vdots    \\
+                                                                          a_{r - 1} \\
+                                                                          a_r + kv  \\
+                                                                          a_{r + 1} \\
+                                                                          \vdots    \\
+                                                                          a_n
+                                                                        \end{pmatrix}                 \\
+     & = c_1 f_1\begin{pmatrix}
+                  a_1       \\
+                  \vdots    \\
+                  a_{r - 1} \\
+                  a_r       \\
+                  a_{r + 1} \\
+                  \vdots    \\
+                  a_n
+                \end{pmatrix} + k c_1 f_1\begin{pmatrix}
+                                           a_1       \\
+                                           \vdots    \\
+                                           a_{r - 1} \\
+                                           v         \\
+                                           a_{r + 1} \\
+                                           \vdots    \\
+                                           a_n
+                                         \end{pmatrix}             &  & \text{(by \cref{4.5.1})}       \\
+     & \quad + c_2 f_2\begin{pmatrix}
+                        a_1       \\
+                        \vdots    \\
+                        a_{r - 1} \\
+                        a_r       \\
+                        a_{r + 1} \\
+                        \vdots    \\
+                        a_n
+                      \end{pmatrix} + k c_2 f_2\begin{pmatrix}
+                                                 a_1       \\
+                                                 \vdots    \\
+                                                 a_{r - 1} \\
+                                                 v         \\
+                                                 a_{r + 1} \\
+                                                 \vdots    \\
+                                                 a_n
+                                               \end{pmatrix}             &  & \text{(by \cref{4.5.1})} \\
+     & = (c_1 f_1 + c_2 f_2)\begin{pmatrix}
+                              a_1       \\
+                              \vdots    \\
+                              a_{r - 1} \\
+                              a_r       \\
+                              a_{r + 1} \\
+                              \vdots    \\
+                              a_n
+                            \end{pmatrix} + k (c_1 f_1 + c_2 f_2)\begin{pmatrix}
+                                                                   a_1       \\
+                                                                   \vdots    \\
+                                                                   a_{r - 1} \\
+                                                                   a_r       \\
+                                                                   a_{r + 1} \\
+                                                                   \vdots    \\
+                                                                   a_n
+                                                                 \end{pmatrix},
+  \end{align*}
+  by \cref{4.5.1} we see that \(c_1 f_1 + c_2 f_2\) is an \(n\)-linear function.
+\end{proof}
+
+\begin{ex}\label{ex:4.5.18}
+  Prove that the set of all \(n\)-linear functions over a field \(\F\) is a vector space over \(\F\).
+\end{ex}
+
+\begin{proof}[\pf{ex:4.5.18}]
+  By \cref{4.5.2,ex:4.5.17,1.3} we see that the set of all \(n\)-linear functions over a field \(\F\) is a subspace of \(\fs(\ms{n}{n}{\F}, \F)\) over \(\F\) and thus a vector space over \(\F\).
 \end{proof}
