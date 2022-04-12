@@ -1,1 +1,57 @@
 \section{Eigenvalues and Eigenvectors}\label{sec:5.1}
+
+\begin{defn}\label{5.1.1}
+  A linear operator \(\T\) on a finite-dimensional vector space \(\V\) over \(\F\) is called \textbf{diagonalizable} if there is an ordered basis \(\beta\) for \(\V\) over \(\F\) such that \([\T]_{\beta}\) is a diagonal matrix.
+  A square matrix \(A\) is called \textbf{diagonalizable} if \(\L_A\) is diagonalizable.
+\end{defn}
+
+\begin{note}
+  We want to determine when a linear operator \(\T\) on a finite-dimensional vector space \(\V\) over \(\F\) is diagonalizable and, if so, how to obtain an ordered basis \(\beta = \set{\seq{v}{1,,n}}\) for \(\V\) over \(\F\) such that \([\T]_{\beta}\) is a diagonal matrix.
+  Note that, if \(D = [\T]_{\beta}\) is a diagonal matrix, then for each vector \(v_j \in \beta\), we have
+  \[
+    \T(v_j) = \sum_{i = 1}^n D_{i j} v_i = D_{j j} v_j = \lambda_j v_j,
+  \]
+  where \(\lambda_j = D_{j j}\).
+
+  Conversely, if \(\beta = \set{\seq{v}{1,,n}}\) is an ordered basis for \(\V\) over \(\F\) such that \(\T(v_j) = \lambda_j v_j\) for some scalars \(\seq{\lambda}{1,,n}\), then clearly
+  \[
+    [\T]_{\beta} = \begin{pmatrix}
+      \lambda_1 & 0         & \cdots & 0         \\
+      0         & \lambda_2 & \cdots & 0         \\
+      \vdots    & \vdots    &        & \vdots    \\
+      0         & 0         & \cdots & \lambda_n
+    \end{pmatrix}.
+  \]
+  In the preceding paragraph, each vector \(v\) in the basis \(\beta\) satisfies the condition that \(\T(v) = \lambda v\) for some scalar \(\lambda\).
+  Moreover, because \(v\) lies in a basis, \(v\) is nonzero.
+  These computations motivate \cref{5.1.2}.
+\end{note}
+
+\begin{defn}\label{5.1.2}
+  Let \(\T\) be a linear operator on a vector space \(\V\) over \(\F\).
+  A nonzero vector \(v \in \V\) is called an \textbf{eigenvector} of \(\T\) if there exists a scalar \(\lambda\) such that \(\T(v) = \lambda v\).
+  The scalar \(\lambda\) is called the \textbf{eigenvalue} corresponding to the eigenvector \(v\).
+
+  Let \(A \in \ms{n}{n}{\F}\).
+  A nonzero vector \(v \in \vs{F}^n\) is called an \textbf{eigenvector} of \(A\) if \(v\) is an eigenvector of \(\L_A\);
+  that is, if \(Av = \lambda v\) for some scalar \(\lambda\).
+  The scalar \(\lambda\) is called the \textbf{eigenvalue} of \(A\) corresponding to the eigenvector \(v\).
+\end{defn}
+
+\begin{note}
+  The words \emph{characteristic vector} and \emph{proper vector} are also used in place of eigenvector.
+  The corresponding terms for eigenvalue are \emph{characteristic value} and \emph{proper value}.
+\end{note}
+
+\begin{thm}\label{5.1}
+  A linear operator \(\T\) on a finite-dimensional vector space \(\V\) over \(\F\) is diagonalizable iff there exists an ordered basis \(\beta\) for \(\V\) over \(\F\) consisting of eigenvectors of \(\T\).
+  Furthermore, if \(\T\) is diagonalizable, \(\beta = \set{\seq{v}{1,,n}}\) is an ordered basis of eigenvectors of \(\T\), and \(D = [\T]_{\beta}\), then \(D\) is a diagonal matrix and \(D_{j j}\) is the eigenvalue corresponding to \(v_j\) for \(j \in \set{1, \dots, n}\).
+\end{thm}
+
+\begin{proof}[\pf{5.1}]
+  This is simply a restatement of \cref{5.1.1,5.1.2}.
+\end{proof}
+
+\begin{note}
+  To \emph{diagonalize} a matrix or a linear operator is to find a basis of eigenvectors and the corresponding eigenvalues.
+\end{note}
