@@ -931,3 +931,81 @@
     \implies & A^{-1} \text{ is an upper triangular matrix}. &  & \text{(from the proof above)}
   \end{align*}
 \end{proof}
+
+\begin{ex}\label{ex:4.3.28}
+  Let \(\seq{y}{1,,n}\) be linearly independent functions in \(\cfs[\infty](\R, \C)\).
+  For each \(y \in \cfs[\infty](\R, \C)\), define \(\T(y) \in \cfs[\infty](\R, \C)\) by
+  \[
+    (\T(y))(t) = \det\begin{pmatrix}
+      y(t)       & y_1(t)       & y_2(t)       & \cdots & y_n(t)       \\
+      y'(t)      & y_1'(t)      & y_2'(t)      & \cdots & y_n'(t)      \\
+      \vdots     & \vdots       & \vdots       &        & \vdots       \\
+      y^{(n)}(t) & y_1^{(n)}(t) & y_2^{(n)}(t) & \cdots & y_n^{(n)}(t)
+    \end{pmatrix}.
+  \]
+  The preceding determinant is called the \textbf{Wronskian} of \(y, \seq{y}{1,,n}\).
+  \begin{enumerate}
+    \item Prove that \(\T : \cfs[\infty](\R, \C) \to \cfs[\infty](\R, \C)\) is a linear transformation.
+    \item Prove that \(\spn{\set{\seq{y}{1,,n}}} \subseteq \ns{\T}\).
+  \end{enumerate}
+\end{ex}
+
+\begin{proof}[\pf{ex:4.3.28}(a)]
+  Let \(f, g \in \cfs[\infty](\R, \C)\) and let \(c \in \C\).
+  Since
+  \begin{align*}
+     & \forall t \in \R, (\T(cf + g))(t)                                                                                   \\
+     & = \det\begin{pmatrix}
+               (cf + g)(t)       & y_1(t)       & y_2(t)       & \cdots & y_n(t)       \\
+               (cf + g)'(t)      & y_1'(t)      & y_2'(t)      & \cdots & y_n'(t)      \\
+               \vdots            & \vdots       & \vdots       &        & \vdots       \\
+               (cf + g)^{(n)}(t) & y_1^{(n)}(t) & y_2^{(n)}(t) & \cdots & y_n^{(n)}(t)
+             \end{pmatrix}        &  & \text{(by \cref{ex:4.3.28})}                                       \\
+     & = \det\begin{pmatrix}
+               cf(t) + g(t)             & y_1(t)       & y_2(t)       & \cdots & y_n(t)       \\
+               cf'(t) + g'(t)           & y_1'(t)      & y_2'(t)      & \cdots & y_n'(t)      \\
+               \vdots                   & \vdots       & \vdots       &        & \vdots       \\
+               cf^{(n)}(t) + g^{(n)}(t) & y_1^{(n)}(t) & y_2^{(n)}(t) & \cdots & y_n^{(n)}(t)
+             \end{pmatrix}                                \\
+     & = c \det\begin{pmatrix}
+                 f(t)       & y_1(t)       & y_2(t)       & \cdots & y_n(t)       \\
+                 f'(t)      & y_1'(t)      & y_2'(t)      & \cdots & y_n'(t)      \\
+                 \vdots     & \vdots       & \vdots       &        & \vdots       \\
+                 f^{(n)}(t) & y_1^{(n)}(t) & y_2^{(n)}(t) & \cdots & y_n^{(n)}(t)
+               \end{pmatrix}                                            \\
+     & \quad + \det\begin{pmatrix}
+                     g(t)       & y_1(t)       & y_2(t)       & \cdots & y_n(t)       \\
+                     g'(t)      & y_1'(t)      & y_2'(t)      & \cdots & y_n'(t)      \\
+                     \vdots     & \vdots       & \vdots       &        & \vdots       \\
+                     g^{(n)}(t) & y_1^{(n)}(t) & y_2^{(n)}(t) & \cdots & y_n^{(n)}(t)
+                   \end{pmatrix}               &  & \text{(by \cref{ex:4.3.8})}                                        \\
+     & = c (\T(f))(t) + (\T(g))(t)                                                       &  & \text{(by \cref{ex:4.3.28})} \\
+     & = (c \T(f) + \T(g))(t),
+  \end{align*}
+  we know that \(\T(cf + g) = c \T(f) + \T(g)\).
+  Thus by \cref{2.1.2}(b) \(\T \in \ls(\cfs[\infty](\R, \C))\).
+\end{proof}
+
+\begin{proof}[\pf{ex:4.3.28}(b)]
+  Let \(y \in \spn{\set{\seq{y}{1,,n}}}\).
+  Then there exist \(\seq{c}{1,,n} \in \C\) such that \(y = \sum_{i = 1}^n c_i y_i\).
+  Since
+  \begin{align*}
+     & \forall t \in \R, (\T(y))(t)                                                                                         \\
+     & = \det\begin{pmatrix}
+               y(t)       & y_1(t)       & y_2(t)       & \cdots & y_n(t)       \\
+               y'(t)      & y_1'(t)      & y_2'(t)      & \cdots & y_n'(t)      \\
+               \vdots     & \vdots       & \vdots       &        & \vdots       \\
+               y^{(n)}(t) & y_1^{(n)}(t) & y_2^{(n)}(t) & \cdots & y_n^{(n)}(t)
+             \end{pmatrix}                    &  & \text{(by \cref{ex:4.3.28})}                                             \\
+     & = \det\begin{pmatrix}
+               \sum_{i = 1}^n c_i y_i(t)     & y_1(t)       & y_2(t)       & \cdots & y_n(t)       \\
+               \sum_{i = 1}^n c_i y_i'(t)    & y_1'(t)      & y_2'(t)      & \cdots & y_n'(t)      \\
+               \vdots                        & \vdots       & \vdots       &        & \vdots       \\
+               \sum_{i = 1}^n c_i y^{(n)}(t) & y_1^{(n)}(t) & y_2^{(n)}(t) & \cdots & y_n^{(n)}(t)
+             \end{pmatrix}                            \\
+     & = 0,                                                                                   &  & \text{(by \cref{4.2.7})}
+  \end{align*}
+  we know that \(\T(y)\) is the zero function of \(\cfs[\infty](\R, \C)\) and by \cref{2.1.10} \(y \in \ns{\T}\).
+  Thus we have \(\spn{\set{\seq{y}{1,,n}}} \subseteq \ns{\T}\).
+\end{proof}
