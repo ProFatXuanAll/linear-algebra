@@ -1,1 +1,299 @@
 \section{A Characterization of the Determinant}\label{sec:4.5}
+
+\begin{defn}\label{4.5.1}
+  A function \(\delta : \ms{n}{n}{\F} \to \F\) is called an \textbf{\(n\)-linear function} if it is a linear function of each row of an \(n \times n\) matrix when the remaining \(n - 1\) rows are held fixed, that is, \(\delta\) is \(n\)-linear if, for every \(r \in \set{1, \dots, n}\), we have
+  \[
+    \delta\begin{pmatrix}
+      a_1       \\
+      \vdots    \\
+      a_{r - 1} \\
+      u + kv    \\
+      a_{r + 1} \\
+      \vdots    \\
+      a_n
+    \end{pmatrix} = \delta\begin{pmatrix}
+      a_1       \\
+      \vdots    \\
+      a_{r - 1} \\
+      u         \\
+      a_{r + 1} \\
+      \vdots    \\
+      a_n
+    \end{pmatrix} + \delta\begin{pmatrix}
+      a_1       \\
+      \vdots    \\
+      a_{r - 1} \\
+      kv        \\
+      a_{r + 1} \\
+      \vdots    \\
+      a_n
+    \end{pmatrix}
+  \]
+  whenever \(k \in \F\) and \(u, v\), and each \(a_i\) are vectors in \(\vs{F}^n\).
+\end{defn}
+
+\begin{eg}\label{4.5.2}
+  The function \(\delta : \ms{n}{n}{\F} \to \F\) defined by \(\delta(A) = 0\) for each \(A \in \ms{n}{n}{\F}\) is an \(n\)-linear function.
+\end{eg}
+
+\begin{proof}[\pf{4.5.2}]
+  Let \(\seq{a}{1,,n}, u, v \in \vs{F}^n\) and let \(k \in \F\).
+  Since
+  \[
+    \forall r \in \set{1, \dots, n}, \delta\begin{pmatrix}
+      a_1       \\
+      \vdots    \\
+      a_{r - 1} \\
+      u + kv    \\
+      a_{r + 1} \\
+      \vdots    \\
+      a_n
+    \end{pmatrix} = 0 = 0 + k \cdot 0 = \begin{pmatrix}
+      a_1       \\
+      \vdots    \\
+      a_{r - 1} \\
+      u         \\
+      a_{r + 1} \\
+      \vdots    \\
+      a_n
+    \end{pmatrix} + k \begin{pmatrix}
+      a_1       \\
+      \vdots    \\
+      a_{r - 1} \\
+      v         \\
+      a_{r + 1} \\
+      \vdots    \\
+      a_n
+    \end{pmatrix},
+  \]
+  by \cref{4.5.1} \(\delta\) is a \(n\)-linear function.
+\end{proof}
+
+\begin{eg}\label{4.5.3}
+  For \(j \in \set{1, \dots, n}\), define \(\delta_j : \ms{n}{n}{\F} \to \F\) by \(\delta_j(A) = \prod_{i = 1}^n A_{i j}\) for each \(A \in \ms{n}{n}{\F}\);
+  that is, \(\delta_j(A)\) equals the product of the entries of column \(j\) of \(A\).
+  Then each \(\delta_j\) is an \(n\)-linear function.
+\end{eg}
+
+\begin{proof}[\pf{4.5.3}]
+  Let \(A \in \ms{n}{n}{\F}\), \(a_i = (A_{i 1}, \dots, A_{i n})\), and \(v = \tuple{b}{1,,n} \in \vs{F}^n\).
+  For any \(k \in \F\), we have
+  \begin{align*}
+    \delta_j\begin{pmatrix}
+              a_1       \\
+              \vdots    \\
+              a_{r - 1} \\
+              a_r + kv  \\
+              a_{r + 1} \\
+              \vdots    \\
+              a_n
+            \end{pmatrix} & = \pa{\prod_{i = 1}^{r - 1} A_{i j}} \cdot (A_{r j} + k b_j) \cdot \pa{\prod_{i = r + 1}^n A_{i j}}                        \\
+                            & = \pa{\prod_{i = 1}^n A_{i j}} + \pa{\prod_{i = 1}^{r - 1} A_{i j}} \cdot (k b_j) \cdot \pa{\prod_{i = r + 1}^n A_{i j}} \\
+                            & = \delta_j\begin{pmatrix}
+                                          a_1       \\
+                                          \vdots    \\
+                                          a_{r - 1} \\
+                                          a_r       \\
+                                          a_{r + 1} \\
+                                          \vdots    \\
+                                          a_n
+                                        \end{pmatrix} + k \delta_j\begin{pmatrix}
+                                                                    a_1       \\
+                                                                    \vdots    \\
+                                                                    a_{r - 1} \\
+                                                                    v         \\
+                                                                    a_{r + 1} \\
+                                                                    \vdots    \\
+                                                                    a_n
+                                                                  \end{pmatrix}.
+  \end{align*}
+  Thus by \cref{4.5.1} \(\delta_j\) is an \(n\)-linear function.
+\end{proof}
+
+\begin{eg}\label{4.5.4}
+  The function \(\delta : \ms{n}{n}{\F} \to \F\) defined for each \(A \in \ms{n}{n}{\F}\) by \(\delta(A) = \prod_{i = 1}^n A_{i i}\) (i.e., \(\delta(A)\) equals the product of the diagonal entries of \(A\)) is an \(n\)-linear function.
+\end{eg}
+
+\begin{proof}[\pf{4.5.4}]
+  Let \(A \in \ms{n}{n}{\F}\), \(a_i = (A_{i 1}, \dots, A_{i n})\), and \(v = \tuple{b}{1,,n} \in \vs{F}^n\).
+  For any \(k \in \F\), we have
+  \begin{align*}
+    \delta\begin{pmatrix}
+            a_1       \\
+            \vdots    \\
+            a_{r - 1} \\
+            a_r + kv  \\
+            a_{r + 1} \\
+            \vdots    \\
+            a_n
+          \end{pmatrix} & = \pa{\prod_{i = 1}^{r - 1} A_{i i}} \cdot (A_{r r} + k b_r) \cdot \pa{\prod_{i = r + 1}^m A_{i i}}                   \\
+                          & = \prod_{i = 1}^n A_{i i} + \pa{\prod_{i = 1}^{r - 1} A_{i i}} \cdot (k b_r) \cdot \pa{\prod_{i = r + 1}^m A_{i i}} \\
+                          & = \delta\begin{pmatrix}
+                                      a_1       \\
+                                      \vdots    \\
+                                      a_{r - 1} \\
+                                      a_r       \\
+                                      a_{r + 1} \\
+                                      \vdots    \\
+                                      a_n
+                                    \end{pmatrix} + k \delta\begin{pmatrix}
+                                                              a_1       \\
+                                                              \vdots    \\
+                                                              a_{r - 1} \\
+                                                              v         \\
+                                                              a_{r + 1} \\
+                                                              \vdots    \\
+                                                              a_n
+                                                            \end{pmatrix}.
+  \end{align*}
+  Thus by \cref{4.5.1} \(\delta\) is an \(n\)-linear function.
+\end{proof}
+
+\begin{note}
+  \cref{4.3} asserts that the determinant is an \(n\)-linear function.
+\end{note}
+
+\begin{defn}\label{4.5.5}
+  An \(n\)-linear function \(\delta : \ms{n}{n}{\F} \to \F\) is called \textbf{alternating} if, for each \(A \in \ms{n}{n}{\F}\), we have \(\delta(A) = 0\) whenever two adjacent rows of \(A\) are identical.
+\end{defn}
+
+\begin{thm}\label{4.10}
+  Let \(\delta : \ms{n}{n}{\F} \to \F\) be an alternating \(n\)-linear function.
+  \begin{enumerate}
+    \item If \(A \in \ms{n}{n}{\F}\) and \(B\) is a matrix obtained from \(A\) by interchanging any two rows of \(A\), then \(\delta(B) = -\delta(A)\).
+    \item If \(A \in \ms{n}{n}{\F}\) has two identical rows, then \(\delta(A) = 0\).
+  \end{enumerate}
+\end{thm}
+
+\begin{proof}[\pf{4.10}(a)]
+  Let \(A \in \ms{n}{n}{\F}\), and let \(B\) be the matrix obtained from \(A\) by interchanging rows \(r\) and \(s\), where \(r < s\).
+  We first establish the result in the case that \(s = r + 1\).
+  Because \(\delta : \ms{n}{n}{\F} \to \F\) is an \(n\)-linear function that is alternating, we have
+  \begin{align*}
+    0 & = \delta\begin{pmatrix}
+                  a_1             \\
+                  \vdots          \\
+                  a_r + a_{r + 1} \\
+                  a_r + a_{r + 1} \\
+                  \vdots          \\
+                  a_n
+                \end{pmatrix}               &  & \text{(by \cref{4.5.5})}                                                     \\
+      & = \delta\begin{pmatrix}
+                  a_1             \\
+                  \vdots          \\
+                  a_r             \\
+                  a_r + a_{r + 1} \\
+                  \vdots          \\
+                  a_n
+                \end{pmatrix} + \delta\begin{pmatrix}
+                                        a_1             \\
+                                        \vdots          \\
+                                        a_{r + 1}       \\
+                                        a_r + a_{r + 1} \\
+                                        \vdots          \\
+                                        a_n
+                                      \end{pmatrix} &  & \text{(by \cref{4.5.1})}                                             \\
+      & = \delta\begin{pmatrix}
+                  a_1    \\
+                  \vdots \\
+                  a_r    \\
+                  a_r    \\
+                  \vdots \\
+                  a_n
+                \end{pmatrix} + \delta\begin{pmatrix}
+                                        a_1       \\
+                                        \vdots    \\
+                                        a_r       \\
+                                        a_{r + 1} \\
+                                        \vdots    \\
+                                        a_n
+                                      \end{pmatrix} + \delta\begin{pmatrix}
+                                                              a_1       \\
+                                                              \vdots    \\
+                                                              a_{r + 1} \\
+                                                              a_r       \\
+                                                              \vdots    \\
+                                                              a_n
+                                                            \end{pmatrix} + \delta\begin{pmatrix}
+                                                                                    a_1       \\
+                                                                                    \vdots    \\
+                                                                                    a_{r + 1} \\
+                                                                                    a_{r + 1} \\
+                                                                                    \vdots    \\
+                                                                                    a_n
+                                                                                  \end{pmatrix} &  & \text{(by \cref{4.5.1})} \\
+      & = 0 + \delta(A) + \delta(B) + 0.
+  \end{align*}
+  Thus \(\delta(B) = -\delta(A)\).
+
+  Next suppose that \(s > r + 1\), and let the rows of \(A\) be \(\seq{a}{1,,n}\).
+  Beginning with \(a_r\) and \(a_{r + 1}\), successively interchange \(a_r\) with the row that follows it until the rows are in the sequence
+  \[
+    \seq{a}{1,2,,r-1,r+1,,s,r,s+1,,n}.
+  \]
+  In all, \(s - r\) interchanges of adjacent rows are needed to produce this sequence.
+  Then successively interchange \(a_s\) with the row that precedes it until the rows are in the order
+  \[
+    \seq{a}{1,2,,r-1,s,r+1,,s-1,r,s+1,,n}.
+  \]
+  This process requires an additional \(s - r - 1\) interchanges of adjacent rows and produces the matrix \(B\).
+  It follows from the preceding paragraph that
+  \[
+    \delta(B) = (-1)^{(s - r) + (s - r - 1)} \delta(A) = -\delta(A).
+  \]
+\end{proof}
+
+\begin{proof}[\pf{4.10}(b)]
+  Suppose that rows \(r\) and \(s\) of \(A \in \ms{n}{n}{\F}\) are identical, where \(r < s\).
+  If \(s = r + 1\), then \(\delta(A) = 0\) because \(\delta\) is alternating and two adjacent rows of \(A\) are identical.
+  If \(s > r + 1\), let \(B\) be the matrix obtained from \(A\) by interchanging rows \(r + 1\) and \(s\).
+  Then \(\delta(B) = 0\) because two adjacent rows of \(B\) are identical.
+  But \(\delta(B) = -\delta(A)\) by \cref{4.10}(a).
+  Hence \(\delta(A) = 0\).
+\end{proof}
+
+\begin{cor}\label{4.5.6}
+  Let \(\delta : \ms{n}{n}{\F} \to \F\) be an alternating \(n\)-linear function.
+  If \(B\) is a matrix obtained from \(A \in \ms{n}{n}{\F}\) by adding a multiple of some row of \(A\) to another row, then \(\delta(B) = \delta(A)\).
+\end{cor}
+
+\begin{proof}[\pf{4.5.6}]
+  Let \(B\) be obtained from \(A \in \ms{n}{n}{\F}\) by adding \(k\) times row \(i\) of \(A\) to row \(j\), where \(j \neq i\), and let \(C\) be obtained from \(A\) by replacing row \(j\) of \(A\) by row \(i\) of \(A\).
+  Then the rows of \(A\), \(B\), and \(C\) are identical except for row \(j\).
+  Moreover, row \(j\) of \(B\) is the sum of row \(j\) of \(A\) and \(k\) times row \(j\) of \(C\).
+  Since \(\delta\) is an \(n\)-linear function and \(C\) has two identical rows, it follows that
+  \[
+    \delta(B) = \delta(A) + k \delta(C) = \delta(A) + k \cdot 0 = \delta(A).
+  \]
+\end{proof}
+
+\begin{cor}\label{4.5.7}
+  Let \(\delta : \ms{n}{n}{\F} \to \F\) be an alternating \(n\)-linear function.
+  If \(M \in \ms{n}{n}{\F}\) has rank less than \(n\), then \(\delta(M) = 0\).
+\end{cor}
+
+\begin{proof}[\pf{4.5.7}]
+  If \(\rk{A} < n\), then the rows \(\seq{a}{1,,n}\) of \(A\) are linearly dependent.
+  By \cref{ex:1.5.14}, some row of \(A\), say, row \(r\), is a linear combination of the other rows.
+  So there exist scalars \(c_i \in \F\) such that
+  \[
+    a_r = \seq[+]{c,a}{1,,r-1,r+1,,n}.
+  \]
+  Let \(B\) be the matrix obtained from \(A\) by adding \(-c_i\) times row \(i\) to row \(r\) for each \(i \neq r\).
+  Then row \(r\) of \(B\) consists entirely of zeros and by \cref{4.5.6} \(\delta(B) = \delta(A)\).
+  Let \(C\) be the matrix obtained from \(B\) by adding row \(1\) to row \(r\).
+  Then \(C\) has two identical rows and by \cref{4.5.6} and \cref{4.10}(b) \(\delta(B) = \delta(C) = 0\).
+  Hence \(\delta(A) = 0\).
+\end{proof}
+
+\begin{cor}\label{4.5.8}
+  Let \(\delta : \ms{n}{n}{\F} \to \F\) be an alternating \(n\)-linear function, and let \(\seq{E}{1,2,3} \in \ms{n}{n}{\F}\) be elementary matrices of types 1, 2, and 3, respectively.
+  Suppose that \(E_2\) is obtained by multiplying some row of \(I_n\) by the nonzero scalar \(k\).
+  Then \(\delta(E_1) = -\delta(I_n)\), \(\delta(E_2) = k \cdot \delta(I_n)\), and \(\delta(E_3) = \delta(I_n)\).
+\end{cor}
+
+\begin{proof}[\pf{4.5.8}]
+  By \cref{4.10}(a) we have \(\delta(E_1) = -\delta(I_n)\).
+  By \cref{4.5.1} we have \(\delta(E_2) = k \delta(I_n)\).
+  By \cref{4.5.6}(a) we have \(\delta(E_3) = \delta(I_n)\).
+\end{proof}
