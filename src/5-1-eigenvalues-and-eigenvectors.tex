@@ -109,7 +109,7 @@
 
 \begin{note}
   It is easily shown that similar matrices have the same characteristic polynomial (see \cref{ex:5.1.12}).
-  This fact enables us to define the characteristic polynomial of a linear operator as in \cref{5.1.6}
+  This fact enables us to define the characteristic polynomial of a linear operator as in \cref{5.1.6}.
 \end{note}
 
 \begin{defn}\label{5.1.6}
@@ -179,6 +179,74 @@
     \iff & \exists v \in \V \setminus \set{\zv} : [\T(v)]_{\beta} = [\lambda v]_{\beta}          &  & \text{(by \cref{2.21})}  \\
     \iff & \exists v \in \V \setminus \set{\zv} : [\T]_{\beta} [v]_{\beta} = \lambda [v]_{\beta} &  & \text{(by \cref{2.14})}  \\
     \iff & \lambda \text{ is an eigenvalue of } [\T]_{\beta}.                                    &  & \text{(by \cref{5.1.2})}
+  \end{align*}
+\end{proof}
+
+\begin{ex}\label{ex:5.1.7}
+  Let \(\T\) be a linear operator on a finite-dimensional vector space \(\V\) over \(\F\).
+  Let \(\dim(\V) = n\).
+  We define the \textbf{determinant} of \(\T\), denoted \(\det(\T)\), as follows:
+  Choose any ordered basis \(\beta\) for \(\V\) over \(\F\), and define \(\det(\T) = \det([\T]_{\beta})\).
+  \begin{enumerate}
+    \item Prove that the preceding definition is independent of the choice of an ordered basis for \(\V\) over \(\F\).
+          That is, prove that if \(\beta\) and \(\gamma\) are two ordered bases for \(\V\) over \(\F\), then \(\det([\T]_{\beta}) = \det([\T]_{\gamma})\).
+    \item Prove that \(\T\) is invertible iff \(\det(\T) \neq 0\).
+    \item Prove that if \(\T\) is invertible, then \(\det(\T^{-1}) = [\det(\T)]^{-1}\).
+    \item Prove that if \(\U\) is also a linear operator on \(\V\), then \(\det(\T \U) = \det(\T) \cdot \det(\U)\).
+    \item Prove that \(\det(\T - \lambda \IT[\V]) = \det([\T]_{\beta} - \lambda I_n)\) for any scalar \(\lambda\) and any ordered basis \(\beta\) for \(\V\).
+  \end{enumerate}
+\end{ex}
+
+\begin{proof}[\pf{ex:5.1.7}(a)]
+  We have
+  \begin{align*}
+    \det([\T]_{\beta}) & = \det([\IT[\V]]_{\gamma}^{\beta} [\T]_{\gamma} [\IT[\V]]_{\beta}^{\gamma})             &  & \text{(by \cref{2.23})}         \\
+                       & = \det([\IT[\V]]_{\gamma}^{\beta}) \det([\T]_{\gamma}) \det([\IT[\V]]_{\beta}^{\gamma}) &  & \text{(by \cref{4.7})}          \\
+                       & = \det([\IT[\V]]_{\gamma}^{\beta}) \det([\IT[\V]]_{\beta}^{\gamma}) \det([\T]_{\gamma})                                      \\
+                       & = \det([\IT[\V]]_{\gamma}^{\beta} [\IT[\V]]_{\beta}^{\gamma}) \det([\T]_{\gamma})       &  & \text{(by \cref{4.7})}          \\
+                       & = \det(I_n) \det([\T]_{\gamma})                                                         &  & \text{(by \cref{ex:2.5.11}(b))} \\
+                       & = \det([\T]_{\gamma}).                                                                  &  & \text{(by \cref{4.2.3})}
+  \end{align*}
+\end{proof}
+
+\begin{proof}[\pf{ex:5.1.7}(b)]
+  We have
+  \begin{align*}
+         & \T \text{ is invertible}                                            \\
+    \iff & [\T]_{\beta} \text{ is invertible} &  & \text{(by \cref{2.4.6})}    \\
+    \iff & \det([\T]_{\beta}) \neq 0          &  & \text{(by \cref{4.3.1})}    \\
+    \iff & \det(\T) \neq 0.                   &  & \text{(by \cref{ex:5.1.7})}
+  \end{align*}
+\end{proof}
+
+\begin{proof}[\pf{ex:5.1.7}(c)]
+  We have
+  \begin{align*}
+             & \T \text{ is invertible}                                                                     \\
+    \implies & \det(\T) \neq 0                                          &  & \text{(by \cref{ex:5.1.7}(b))} \\
+    \implies & \det([\T]_{\beta}) \neq 0                                &  & \text{(by \cref{ex:5.1.7})}    \\
+    \implies & \det(([\T]_{\beta})^{-1}) = \frac{1}{\det([\T]_{\beta})} &  & \text{(by \cref{4.3.1})}       \\
+    \implies & \det([\T^{-1}]_{\beta}) = \frac{1}{\det([\T]_{\beta})}   &  & \text{(by \cref{2.4.6})}       \\
+    \implies & \det(\T^{-1}) = \frac{1}{\det(\T)}.                      &  & \text{(by \cref{ex:5.1.7})}
+  \end{align*}
+\end{proof}
+
+\begin{proof}[\pf{ex:5.1.7}(d)]
+  We have
+  \begin{align*}
+    \det(\T \U) & = \det([\T \U]_{\beta})                 &  & \text{(by \cref{ex:5.1.7})} \\
+                & = \det([\T]_{\beta} [\U]_{\beta})       &  & \text{(by \cref{2.3.3})}    \\
+                & = \det([\T]_{\beta}) \det([\U]_{\beta}) &  & \text{(by \cref{4.7})}      \\
+                & = \det(\T) \det(\U).                    &  & \text{(by \cref{ex:5.1.7})}
+  \end{align*}
+\end{proof}
+
+\begin{proof}[\pf{ex:5.1.7}(e)]
+  We have
+  \begin{align*}
+    \det(\T - \lambda \IT[\V]) & = \det([\T - \lambda \IT[\V]]_{\beta})           &  & \text{(by \cref{ex:5.1.7})} \\
+                               & = \det([\T]_{\beta} - \lambda [\IT[\V]]_{\beta}) &  & \text{(by \cref{2.8})}      \\
+                               & = \det([\T]_{\beta} - \lambda I_n).              &  & \text{(by \cref{2.12}(d))}
   \end{align*}
 \end{proof}
 
