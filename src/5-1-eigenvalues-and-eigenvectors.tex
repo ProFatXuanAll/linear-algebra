@@ -55,3 +55,105 @@
 \begin{note}
   To \emph{diagonalize} a matrix or a linear operator is to find a basis of eigenvectors and the corresponding eigenvalues.
 \end{note}
+
+\begin{eg}\label{5.1.3}
+  Let \(\T\) be the linear operator on \(\R^2\) that rotates each vector in the plane through an angle of \(\pi / 2\).
+  It is clear geometrically that for any nonzero vector \(v\), the vectors \(v\) and \(\T(v)\) are not collinear;
+  hence \(\T(v)\) is not a multiple of \(v\).
+  Therefore \(\T\) has no eigenvectors and, consequently, no eigenvalues.
+  Thus there exist operators (and matrices) with no eigenvalues or eigenvectors.
+  Of course, such operators and matrices are not diagonalizable.
+\end{eg}
+
+\begin{eg}\label{5.1.4}
+  Let \(\cfs[\infty](\R)\) denote the set of all functions \(f : \R \to \R\) having derivatives of all orders.
+  (Thus \(\cfs[\infty](\R)\) includes the polynomial functions, the sine and cosine functions, the exponential functions, etc.)
+  Clearly, \(\cfs[\infty](\R)\) is a subspace of the vector space \(\fs(\R, \R)\) of all functions from \(\R\) to \(\R\) as defined in \cref{1.2.10}.
+  Let \(\T : \cfs[\infty](\R) \to \cfs[\infty](\R)\) be the function defined by \(\T(f) = f'\), the derivative of \(f\).
+  It is easily verified that \(\T\) is a linear operator on \(\cfs[\infty](\R)\) (\cref{ex:2.7.6}).
+  We determine the eigenvalues and eigenvectors of \(\T\).
+
+  Suppose that \(f\) is an eigenvector of \(\T\) with corresponding eigenvalue \(\lambda\).
+  Then \(f' = T(f) = \lambda f\).
+  This is a first-order differential equation whose solutions are of the form \(f(t) = ce^{\lambda t}\) for some constant \(c\) (\cref{2.30}).
+  Consequently, every real number \(\lambda\) is an eigenvalue of \(\T\), and \(\lambda\) corresponds to eigenvectors of the form \(ce^{\lambda t}\) for \(c \neq 0\).
+  Note that for \(\lambda = 0\), the eigenvectors are the nonzero constant functions.
+\end{eg}
+
+\begin{thm}\label{5.2}
+  Let \(A \in \ms{n}{n}{\F}\).
+  Then a scalar \(\lambda\) is an eigenvalue of \(A\) iff \(\det(A - \lambda I_n) = 0\).
+\end{thm}
+
+\begin{proof}[\pf{5.2}]
+  A scalar \(\lambda \in \F\) is an eigenvalue of \(A\) iff there exists a nonzero vector \(v \in \vs{F}^n\) such that \(Av = \lambda v\), that is, \((A - \lambda I_n)(v) = 0\).
+  By \cref{2.5}, this is true iff \(A - \lambda I_n\) is not invertible.
+  However, by \cref{4.3.1} this result is equivalent to the statement that \(\det(A - \lambda I_n) = 0\).
+\end{proof}
+
+\begin{defn}\label{5.1.5}
+  Let \(A \in \ms{n}{n}{\F}\).
+  The polynomial \(f(t) = \det(A - t I_n)\) is called the \textbf{characteristic polynomial} of \(A\).
+\end{defn}
+
+\begin{note}
+  The entries of the matrix \(A - t I_n\) are not scalars in the field \(\F\).
+  They are, however, scalars in another field \(F(t)\), the field of quotients of polynomials in \(t\) with coefficients from \(\F\).
+  Consequently, any results proved about determinants in \cref{ch:4} remain valid in this context.
+\end{note}
+
+\begin{note}
+  \cref{5.2} states that the eigenvalues of a matrix are the zeros of its characteristic polynomial.
+  When determining the eigenvalues of a matrix or a linear operator, we normally compute its characteristic polynomial.
+\end{note}
+
+\begin{note}
+  It is easily shown that similar matrices have the same characteristic polynomial (see \cref{ex:5.1.12}).
+  This fact enables us to define the characteristic polynomial of a linear operator as in \cref{5.1.6}
+\end{note}
+
+\begin{defn}\label{5.1.6}
+  Let \(\T\) be a linear operator on an \(n\)-dimensional vector space \(\V\) over \(\F\) with ordered basis \(\beta\).
+  We define the \textbf{characteristic polynomial} \(f(t)\) of \(\T\) to be the characteristic polynomial of \(A = [\T]_{\beta}\).
+  That is,
+  \[
+    f(t) = \det(A - t I_n).
+  \]
+\end{defn}
+
+\begin{note}
+  \cref{ex:5.1.12} shows that \cref{5.1.6} is independent of the choice of ordered basis \(\beta\).
+  Thus if \(\T\) is a linear operator on a finite-dimensional vector space \(\V\) over \(\F\) and \(\beta\) is an ordered basis for \(\V\) over \(\F\), then \(\lambda\) is an eigenvalue of \(\T\) iff \(\lambda\) is an eigenvalue of \([\T]_{\beta}\).
+  We often denote the characteristic polynomial of an operator \(\T\) by \(\det(\T - tI)\).
+\end{note}
+
+\exercisesection
+
+\begin{ex}\label{ex:5.1.12}
+  \begin{enumerate}
+    \item Prove that similar matrices have the same characteristic polynomial.
+    \item Show that the definition of the characteristic polynomial of a linear operator on a finite-dimensional vector space \(\V\) over \(\F\) is independent of the choice of basis for \(\V\) over \(\F\).
+  \end{enumerate}
+\end{ex}
+
+\begin{proof}[\pf{ex:5.1.12}(a)]
+  Let \(A, B \in \ms{n}{n}{\F}\) such that \(A, B\) are similar.
+  By \cref{2.5.4} there exists some \(Q \in \ms{n}{n}{\F}\) such that \(B = Q^{-1} A Q\).
+  Then we have
+  \begin{align*}
+    \det(A - t I_n) & = \det(I_n) \det(A - t I_n)            &  & \text{(by \cref{4.2.3})} \\
+                    & = \det(Q^{-1} Q) \det(A - t I_n)       &  & \text{(by \cref{2.4.3})} \\
+                    & = \det(Q^{-1}) \det(Q) \det(A - t I_n) &  & \text{(by \cref{4.7})}   \\
+                    & = \det(Q^{-1}) \det(A - t I_n) \det(Q)                               \\
+                    & = \det(Q^{-1} (A - t I_n) Q)           &  & \text{(by \cref{4.7})}   \\
+                    & = \det(Q^{-1} A Q - t Q^{-1} I_n Q)    &  & \text{(by \cref{2.3.5})} \\
+                    & = \det(B - t I_n).                     &  & \text{(by \cref{2.4.3})}
+  \end{align*}
+\end{proof}
+
+\begin{proof}[\pf{ex:5.1.12}(b)]
+  Let \(\beta, \beta'\) be ordered basis for \(\V\) over \(\F\).
+  By \cref{2.23} we know that \([\T]_{\beta}\) and \([\T]_{\beta'}\) are similar.
+  Thus by \cref{ex:5.1.12}(a) we have \(\det([\T]_{\beta} - t I_n) = \det([\T]_{\beta'} - t I_n)\).
+  We conclude that the definition of the characteristic polynomial of a linear operator on a finite-dimensional vector space \(\V\) over \(\F\) is independent of the choice of basis for \(\V\) over \(\F\).
+\end{proof}
