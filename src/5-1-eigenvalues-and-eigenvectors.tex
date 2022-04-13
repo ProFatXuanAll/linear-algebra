@@ -127,7 +127,60 @@
   We often denote the characteristic polynomial of an operator \(\T\) by \(\det(\T - tI)\).
 \end{note}
 
+\begin{thm}\label{5.3}
+  Let \(A \in \ms{n}{n}{\F}\).
+  \begin{enumerate}
+    \item The characteristic polynomial of \(A\) is a polynomial of degree \(n\) with leading coefficient \((-1)^n\).
+    \item \(A\) has at most \(n\) distinct eigenvalues.
+  \end{enumerate}
+\end{thm}
+
+\begin{proof}[\pf{5.3}]
+
+\end{proof}
+
+\begin{thm}\label{5.4}
+  Let \(\T\) be a linear operator on a vector space \(\V\) over \(\F\), and let \(\lambda\) be an eigenvalue of \(\T\).
+  A vector \(v \in \V\) is an eigenvector of \(\T\) corresponding to \(\lambda\) iff \(v \neq 0\) and \(v \in \ns{\T - \lambda \IT[\V]}\).
+\end{thm}
+
+\begin{proof}[\pf{5.4}]
+  We have
+  \begin{align*}
+         & v \text{ is an eigenvector of } \T \text{ corresponds to eigenvalue } \lambda                             \\
+    \iff & \begin{dcases}
+             v \neq 0 \\
+             \T(v) = \lambda v
+           \end{dcases}                                                                &  & \text{(by \cref{5.1.2})} \\
+    \iff & \begin{dcases}
+             v \neq 0 \\
+             (\T - \lambda \IT[\V])(v) = \T(v) - \lambda \IT[\V](v) = \T(v) - \lambda v = \zv
+           \end{dcases} &  & \text{(by \cref{2.1.9})}                           \\
+    \iff & \begin{dcases}
+             v \neq 0 \\
+             v \in \ns{\T - \lambda \IT[\V]}
+           \end{dcases}.                                   &  & \text{(by \cref{2.1.10})}
+  \end{align*}
+\end{proof}
+
 \exercisesection
+
+\setcounter{ex}{5}
+\begin{ex}\label{ex:5.1.6}
+  Let \(\T\) be a linear operator on a finite-dimensional vector space \(\V\) over \(\F\), and let \(\beta\) be an ordered basis for \(\V\) over \(\F\).
+  Prove that \(\lambda\) is an eigenvalue of \(\T\) iff \(\lambda\) is an eigenvalue of \([\T]_{\beta}\).
+\end{ex}
+
+\begin{proof}[\pf{ex:5.1.6}]
+  We have
+  \begin{align*}
+         & \lambda \text{ is an eigenvalue of } \T                                                                             \\
+    \iff & \exists v \in \V \setminus \set{\zv} : \T(v) = \lambda v                              &  & \text{(by \cref{5.1.2})} \\
+    \iff & \exists v \in \V \setminus \set{\zv} : [\T(v)]_{\beta} = [\lambda v]_{\beta}          &  & \text{(by \cref{2.21})}  \\
+    \iff & \exists v \in \V \setminus \set{\zv} : [\T]_{\beta} [v]_{\beta} = \lambda [v]_{\beta} &  & \text{(by \cref{2.14})}  \\
+    \iff & \lambda \text{ is an eigenvalue of } [\T]_{\beta}.                                    &  & \text{(by \cref{5.1.2})}
+  \end{align*}
+\end{proof}
 
 \begin{ex}\label{ex:5.1.12}
   \begin{enumerate}
