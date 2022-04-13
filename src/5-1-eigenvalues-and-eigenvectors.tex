@@ -250,6 +250,58 @@
   \end{align*}
 \end{proof}
 
+\begin{ex}\label{ex:5.1.8}
+  \begin{enumerate}
+    \item Prove that a linear operator \(\T\) on a finite-dimensional vector space \(\V\) over \(\F\) is invertible iff zero is not an eigenvalue of \(\T\).
+    \item Let \(\T\) be an invertible linear operator.
+          Prove that a scalar \(\lambda\) is an eigenvalue of \(\T\) iff \(\lambda^{-1}\) is an eigenvalue of \(\T^{-1}\).
+    \item State and prove results analogous to (a) and (b) for matrices.
+  \end{enumerate}
+\end{ex}
+
+\begin{proof}[\pf{ex:5.1.8}(a)]
+  We have
+  \begin{align*}
+         & \T \text{ is invertible}                                               \\
+    \iff & \ns{\T} = \set{\zv}                    &  & \text{(by \cref{2.4,2.5})} \\
+    \iff & \ns{\T - 0 \IT[\V]} = \set{\zv}        &  & \text{(by \cref{2.1.9})}   \\
+    \iff & 0 \text{ is not an eigenvalue of } \T. &  & \text{(by \cref{5.4})}
+  \end{align*}
+\end{proof}
+
+\begin{proof}[\pf{ex:5.1.8}(b)]
+  We have
+  \begin{align*}
+         & \lambda \text{ is an eigenvalue of } \T                                                    \\
+    \iff & \exists v \in \V : \T(v) = \lambda v                   &  & \text{(by \cref{5.1.2})}       \\
+    \iff & \exists v \in \V : \T^{-1}(\T(v)) = \T^{-1}(\lambda v)                                     \\
+    \iff & \exists v \in \V : v = \lambda \T^{-1}(v)              &  & \text{(by \cref{2.17})}        \\
+    \iff & \exists v \in \V : \T^{-1}(v) = \lambda^{-1} v         &  & \text{(by \cref{ex:5.1.8}(a))} \\
+    \iff & \lambda^{-1} \text{ is an eigenvalue of } \T^{-1}.     &  & \text{(by \cref{5.1.2})}
+  \end{align*}
+\end{proof}
+
+\begin{proof}[\pf{ex:5.1.8}(c)]
+  First we claim that if \(A \in \ms{n}{n}{\F}\), then \(A\) is invertible iff \(0\) is not an eigenvalue of \(A\).
+  This is true since
+  \begin{align*}
+         & A \text{ is invertible}                                                     \\
+    \iff & \L_A \text{ is invertible}              &  & \text{(by \cref{2.4.7})}       \\
+    \iff & 0 \text{ is not an eigenvalue of } \L_A &  & \text{(by \cref{ex:5.1.8}(a))} \\
+    \iff & 0 \text{ is not an eigenvalue of } A.   &  & \text{(by \cref{5.1.2})}
+  \end{align*}
+
+  Now we claim that if \(A \in \ms{n}{n}{\F}\), then \(\lambda\) is an eigenvalue of \(A\) iff \(\lambda^{-1}\) is an eigenvalue of \(A^{-1}\).
+  This is true since
+  \begin{align*}
+         & \lambda \text{ is an eigenvalue of } A                                                    \\
+    \iff & \lambda \text{ is an eigenvalue of } \L_A             &  & \text{(by \cref{5.1.2})}       \\
+    \iff & \lambda^{-1} \text{ is an eigenvalue of } \L_A^{-1}   &  & \text{(by \cref{ex:5.1.8}(b))} \\
+    \iff & \lambda^{-1} \text{ is an eigenvalue of } \L_{A^{-1}} &  & \text{(by \cref{2.4.7})}       \\
+    \iff & \lambda^{-1} \text{ is an eigenvalue of } A^{-1}.     &  & \text{(by \cref{5.1.2})}
+  \end{align*}
+\end{proof}
+
 \begin{ex}\label{ex:5.1.12}
   \begin{enumerate}
     \item Prove that similar matrices have the same characteristic polynomial.
