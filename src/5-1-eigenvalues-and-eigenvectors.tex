@@ -685,3 +685,44 @@
   Since \(\#(\beta \cup \gamma) = n^2\), by \cref{1.6.11} and \cref{1.6.15}(b) we know that \(\beta \cup \gamma\) is a basis for \(\ms{n}{n}{\R}\) over \(\R\).
   By \cref{ex:5.1.17}(b) we see that \(\beta \cup \gamma\) is an ordered basis for \(\ms{n}{n}{\R}\) over \(\R\) which diagonalize \(\T\).
 \end{proof}
+
+\begin{ex}\label{ex:5.1.18}
+  Let \(A, B \in \ms{n}{n}{\C}\).
+  \begin{enumerate}
+    \item Prove that if \(B\) is invertible, then there exists a scalar \(c \in \C\) such that \(A + cB\) is not invertible.
+    \item Find \(A, B \in \ms{2}{2}{\C} \setminus \set{\zm}\) such that both \(A\) and \(A + cB\) are invertible for all \(c \in \C\).
+  \end{enumerate}
+\end{ex}
+
+\begin{proof}[\pf{ex:5.1.18}(a)]
+  Since
+  \begin{align*}
+             & \det(B) \neq 0                                   &  & \text{(by \cref{4.3.1})} \\
+    \implies & \det(A - tB) = \det(B) \det(B^{-1} A - t I_n)    &  & \text{(by \cref{4.7})}   \\
+    \implies & \det(A - tB) = 0 \iff \det(B^{-1} A - t I_n) = 0 &  & (\det(B) \neq 0)
+  \end{align*}
+  and \(\det(B^{-1} A - t I_n)\) is a polynomial of degree \(n\) by \cref{5.3}, we know that there exists a root in \(t \in \C\) such that \(\det(B^{-1} A - t I_n) = 0\) by \cref{d.4}.
+  Therefore \(\det(A - tB)\) has a root \(t \in \C\).
+  By setting \(c = -t\) we are done.
+\end{proof}
+
+\begin{proof}[\pf{ex:5.1.18}(b)]
+  Let
+  \[
+    A = \begin{pmatrix}
+      1 & 0 \\
+      0 & 1
+    \end{pmatrix} \quad \text{and} \quad B = \begin{pmatrix}
+      1 & 1  \\
+      1 & -1
+    \end{pmatrix}.
+  \]
+  Then we have
+  \begin{align*}
+             & \forall c \in \C, \det(A + cB) = \det\begin{pmatrix}
+                                                      1 + c & -c    \\
+                                                      c     & 1 - c
+                                                    \end{pmatrix} = 1 \neq 0 &  & \text{(by \cref{4.1.1})} \\
+    \implies & \forall c \in \C, A + cB \text{ is invertible}.      &  & \text{(by \cref{4.3.1})}
+  \end{align*}
+\end{proof}
