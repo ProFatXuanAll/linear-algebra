@@ -751,3 +751,21 @@
       & = [\T]_{\gamma}.                                                                   &  & \text{(by \cref{2.1.9})}
   \end{align*}
 \end{proof}
+
+\begin{ex}\label{ex:5.1.20}
+  Let \(A \in \ms{n}{n}{\F}\) with characteristic polynomial
+  \[
+    f(t) = (-1)^n t^n + a_{n - 1} t^{n - 1} + \cdots + a_1 t + a_0.
+  \]
+  Prove that \(f(0) = a_0 = \det(A)\).
+  Deduce that \(A\) is invertible iff \(a_0 \neq 0\).
+\end{ex}
+
+\begin{proof}[\pf{ex:5.1.20}]
+  We have
+  \begin{align*}
+             & \det(A - t I_n) = f(t) = (-1)^n t^n + a_{n - 1} t^{n - 1} + \cdots + a_1 t + a_0 &  & \text{(by \cref{5.1.5})} \\
+    \implies & \det(A - 0 I_n) = \det(A) = f(0) = a_0                                                                         \\
+    \implies & A \text{ is invertible } \iff a_0 \neq 0.                                        &  & \text{(by \cref{4.3.1})}
+  \end{align*}
+\end{proof}
