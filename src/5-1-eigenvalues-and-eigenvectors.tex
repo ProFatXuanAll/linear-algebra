@@ -163,6 +163,50 @@
   \end{align*}
 \end{proof}
 
+\begin{note}
+  Suppose that \(\beta\) is a basis for \(\vs{F}^n\) over \(\F\) consisting of eigenvectors of \(A\).
+  \cref{2.5.3} assures us that if \(Q\) is the \(n \times n\) matrix whose columns are the vectors in \(\beta\), then \(Q^{-1} A Q\) is a diagonal matrix.
+
+  To find the eigenvectors of a linear operator \(\T\) on an \(n\)-dimensional vector space \(\V\) over \(\F\), select an ordered basis \(\beta\) for \(\V\) over \(\F\) and let \(A = [\T]_{\beta}\).
+  Recall from \cref{2.4.11} that for \(v \in \V\), \(\phi_{\beta}(v) = [v]_{\beta}\), the coordinate vector of \(v\) relative to \(\beta\).
+  We show that \(v \in \V\) is an eigenvector of \(\T\) corresponding to \(\lambda\) iff \(\phi_{\beta}(v)\) is an eigenvector of \(A\) corresponding to \(\lambda\).
+  Suppose that \(v\) is an eigenvector of \(\T\) corresponding to \(\lambda\).
+  Then \(\T(v) = \lambda v\).
+  Hence
+  \[
+    A \phi_{\beta}(v) = \L_A \phi_{\beta}(v) = \phi_{\beta} \T(v) = \phi_{\beta}(\lambda v) = \lambda \phi_{\beta}(v).
+  \]
+  Now \(\phi_{\beta}(v) \neq \zv\), since \(\phi_{\beta}\) is an isomorphism;
+  hence \(\phi_{\beta}(v)\) is an eigenvector of \(A\).
+  This argument is reversible, and so we can establish that if \(\phi_{\beta}(v)\) is an eigenvector of \(A\) corresponding to \(\lambda\), then \(v\) is an eigenvector of \(\T\) corresponding to \(\lambda\).
+  (See \cref{ex:5.1.13}.)
+
+  An equivalent formulation of the result discussed in the preceding paragraph is that for an eigenvalue \(\lambda\) of \(A\) (and hence of \(\T\)), a vector \(y \in \vs{F}^n\) is an eigenvector of \(A\) corresponding to \(\lambda\) iff \(\phi_{\beta}^{-1}(y)\) is an eigenvector of \(\T\) corresponding to \(\lambda\).
+
+  Thus we have reduced the problem of finding the eigenvectors of a linear operator on a finite-dimensional vector space to the problem of finding the eigenvectors of a matrix.
+\end{note}
+
+\begin{note}
+  We give a geometric description of how a linear operator \(\T\) acts on an eigenvector in the context of a vector space \(\V\) over \(\R\).
+  Let \(v\) be an eigenvector of \(\T\) and \(\lambda\) be the corresponding eigenvalue.
+  We can think of \(\W = \spn{\set{v}}\), the one-dimensional subspace of \(\V\) over \(\F\) spanned by \(v\), as a line in \(\V\) that passes through \(\zv\) and \(v\).
+  For any \(w \in \W\), \(w = cv\) for some scalar \(c \in \R\), and hence
+  \[
+    \T(w) = \T(cv) = c \T(v) = c \lambda v = \lambda w;
+  \]
+  so \(\T\) acts on the vectors in \(\W\) by multiplying each such vector by \(\lambda\).
+  There are several possible ways for \(\T\) to act on the vectors in \(\W\), depending on the value of \(\lambda\).
+  We consider several cases.
+  \begin{itemize}
+    \item If \(\lambda > 1\), then \(\T\) moves vectors in \(\W\) farther from \(\zv\) by a factor of \(\lambda\).
+    \item If \(\lambda = 1\), then \(\T\) acts as the identity operator on \(\W\).
+    \item If \(0 < \lambda < 1\), then \(\T\) moves vectors in \(\W\) closer to \(\zv\) by a factor of \(\lambda\).
+    \item If \(\lambda = 0\), then \(\T\) acts as the zero transformation on \(\W\).
+    \item If \(\lambda < 0\), then \(\T\) reverses the orientation of \(\W\);
+          that is, \(\T\) moves vectors in \(\W\) from one side of \(\zv\) to the other.
+  \end{itemize}
+\end{note}
+
 \exercisesection
 
 \setcounter{ex}{5}
@@ -428,4 +472,46 @@
   By \cref{2.23} we know that \([\T]_{\beta}\) and \([\T]_{\beta'}\) are similar.
   Thus by \cref{ex:5.1.12}(a) we have \(\det([\T]_{\beta} - t I_n) = \det([\T]_{\beta'} - t I_n)\).
   We conclude that the definition of the characteristic polynomial of a linear operator on a finite-dimensional vector space \(\V\) over \(\F\) is independent of the choice of basis for \(\V\) over \(\F\).
+\end{proof}
+
+\begin{ex}\label{ex:5.1.13}
+  Let \(\T\) be a linear operator on a finite-dimensional vector space \(\V\) over a field \(\F\) , let \(\beta\) be an ordered basis for \(\V\) over \(\F\), and let \(A = [\T]_{\beta}\).
+  Prove the following.
+  \begin{enumerate}
+    \item If \(\lambda\) is an eigenvalue of \(A\), then \(v \in \V\) is an eigenvector of \(\T\) corresponding to \(\lambda\) iff \(\phi_{\beta}(v)\) is an eigenvector of \(A\) corresponding to \(\lambda\).
+    \item If \(\lambda\) is an eigenvalue of \(A\) (and hence of \(\T\)), then a vector \(y \in \vs{F}^n\) is an eigenvector of \(A\) corresponding to \(\lambda\) iff \(\phi_{\beta}^{-1}(y)\) is an eigenvector of \(\T\) corresponding to \(\lambda\).
+  \end{enumerate}
+\end{ex}
+
+\begin{proof}[\pf{ex:5.1.13}(a)]
+  By \cref{2.4.12} we have \(\L_A \phi_{\beta} = \phi_{\beta} \T\).
+  By \cref{2.4,2.21} we know that \(v \neq \zv \iff \phi_{\beta}(v) \neq \zv\).
+  Thus we have
+  \begin{align*}
+         & v \in \V \setminus \set{\zv} \text{ is an eigenvector of } \T \text{ corresponding to } \lambda                                \\
+    \iff & \T(v) = \lambda v                                                                               &  & \text{(by \cref{5.1.2})}  \\
+    \iff & (\phi_{\beta} \T)(v) = \phi_{\beta}(\T(v)) = \phi_{\beta}(\lambda v)                            &  & \text{(by \cref{2.21})}   \\
+    \iff & (\L_A \phi_{\beta})(v) = \L_A(\phi_{\beta}(v)) = \phi_{\beta}(\lambda v)                        &  & \text{(by \cref{2.4.12})} \\
+    \iff & \L_A(\phi_{\beta}(v)) = \lambda \phi_{\beta}(v)                                                 &  & \text{(by \cref{2.21})}   \\
+    \iff & A \phi_{\beta}(v) = \lambda \phi_{\beta}(v)                                                     &  & \text{(by \cref{2.3.8})}  \\
+    \iff & \phi_{\beta}(v) \in \vs{F}^n \setminus \set{\zv} \text{ is an eigenvector of } A                                               \\
+         & \text{corresponding to } \lambda.                                                               &  & \text{(by \cref{5.1.2})}
+  \end{align*}
+\end{proof}
+
+\begin{proof}[\pf{ex:5.1.13}(b)]
+  By \cref{5.1.2} we know that \(y \neq \zv\), thus by \cref{2.4,2.21} we know that \(\phi_{\beta}^{-1}(v) \neq \zv\).
+  Then we have
+  \begin{align*}
+         & A y = \lambda y                                                                          &  & \text{(by \cref{5.1.2})} \\
+    \iff & \exists x \in \V : \begin{dcases}
+                                x = \phi_{\beta}^{-1}(y) \\
+                                A \phi_{\beta}(x) = \lambda \phi_{\beta}(x)
+                              \end{dcases}                                              &  & \text{(by \cref{2.21})}              \\
+    \iff & \exists x \in \V : \begin{dcases}
+                                x = \phi_{\beta}^{-1}(y) \\
+                                x \text{ is an eigenvector of } \T \text{ corresponding to } \lambda
+                              \end{dcases}                     &  & \text{(by \cref{ex:5.1.13}(a))}                               \\
+    \iff & \phi_{\beta}^{-1}(y) \text{ is an eigenvector of } \T \text{ corresponding to } \lambda. &  & \text{(by \cref{2.21})}
+  \end{align*}
 \end{proof}
