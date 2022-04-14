@@ -726,3 +726,28 @@
     \implies & \forall c \in \C, A + cB \text{ is invertible}.      &  & \text{(by \cref{4.3.1})}
   \end{align*}
 \end{proof}
+
+\begin{ex}\label{ex:5.1.19}
+  Let \(A, B \in \ms{n}{n}{\F}\) be similar.
+  Prove that there exists an \(n\)-dimensional vector space \(\V\) over \(\F\), a linear operator \(\T \in \ls(\V)\), and ordered bases \(\beta\) and \(\gamma\) for \(\V\) over \(\F\) such that \(A = [\T]_{\beta}\) and \(B = [\T]_{\gamma}\).
+\end{ex}
+
+\begin{proof}[\pf{ex:5.1.19}]
+  Since \(A, B\) are similar, by \cref{2.5.4} there exists an \(Q \in \ms{n}{n}{\F}\) such that \(B = Q^{-1} A Q\).
+  Fix such \(Q\).
+  Let \(\beta\) be the standard ordered bases for \(\vs{F}^n\) over \(\F\).
+  We define \(\gamma\) as follow:
+  \[
+    \gamma = \set{\sum_{i = 1}^n Q_{i j} e_i : (j \in \set{1, \dots, n}) \land (e_i \in \beta)}.
+  \]
+  By \cref{ex:2.5.13} we see that \(\gamma\) is an ordered basis for \(\vs{F}^n\) over \(\F\) and \(Q\) changes \(\gamma\)-coordinates into \(\beta\)-coordinates.
+  If we set \(\V = \vs{F}^n\) and \(\T = \L_A\), then we have
+  \begin{align*}
+    B & = Q^{-1} A Q                                                                                                         \\
+      & = [\IT[\vs{F}^n]]_{\beta}^{\gamma} A [\IT[\vs{F}^n]]_{\gamma}^{\beta}              &  & \text{(by \cref{ex:2.5.11})} \\
+      & = [\IT[\vs{F}^n]]_{\beta}^{\gamma} [\L_A]_{\beta} [\IT[\vs{F}^n]]_{\gamma}^{\beta} &  & \text{(by \cref{2.15}(a))}   \\
+      & = [\IT[\vs{F}^n]]_{\beta}^{\gamma} [\T]_{\beta} [\IT[\vs{F}^n]]_{\gamma}^{\beta}                                     \\
+      & = [\IT[\vs{F}^n] \T \IT[\vs{F}^n]]_{\gamma}                                        &  & \text{(by \cref{2.11})}      \\
+      & = [\T]_{\gamma}.                                                                   &  & \text{(by \cref{2.1.9})}
+  \end{align*}
+\end{proof}
