@@ -127,6 +127,36 @@
   We often denote the characteristic polynomial of an operator \(\T\) by \(\det(\T - tI)\).
 \end{note}
 
+\begin{lem}\label{5.1.7}
+  If \(B\) is an \(n \times n\) matrix such that the entries of \(B\) are polynomial of degree at most \(1\), then \(\det(B)\) is a polynomial of degree at most \(n\).
+\end{lem}
+
+\begin{proof}[\pf{5.1.7}]
+  To be precise, we want to prove the following statement:
+  \[
+    \forall i, j \in \set{1, \dots, n}, B_{i j} \in \ps[1]{\F} \implies \det(B) \in \ps[n]{\F}.
+  \]
+  We use induction on \(n\) to prove the claim.
+  For \(n = 1\), we have
+  \begin{align*}
+             & \exists \seq{a}{0,1} \in \F : B = \begin{pmatrix}
+                                                   a_0 + a_1 t
+                                                 \end{pmatrix}                                                 \\
+    \implies & \exists \seq{a}{0,1} \in \F : \det(B) = a_0 + a_1 t \in \ps[1]{\F} &  & \text{(by \cref{4.2.2})}
+  \end{align*}
+  and thus the base case holds.
+  Suppose inductively that the claim is true for some \(n \geq 1\).
+  Then we need to show that for \(n + 1\) the claim is also true.
+  Let \(B\) be an \((n + 1) \times (n + 1)\) matrix with entries lies in \(\ps[1]{\F}\).
+  By \cref{4.2.2} we have
+  \[
+    \det(B) = \sum_{j = 1}^{n + 1} (-1)^{1 + j} B_{1 j} \det(\tilde{B}_{1 j}).
+  \]
+  Since \(\tilde{B}_{1 j}\) is an \(n \times n\) matrix with entries lies in \(\ps[1]{\F}\), by induction hypothesis we know that \(\det(\tilde{B}_{1 j}) \in \ps[n]{\F}\).
+  Since \(B_{1 j} \in \ps[1]{\F}\), we know that \((-1)^{1 + j} B_{1 j} \det(\tilde{B}_{1 j}) \in \ps[n + 1]{\F}\).
+  Thus \(\det(B) \in \ps[n + 1]{\F}\) and this closes the induction.
+\end{proof}
+
 \begin{thm}\label{5.3}
   Let \(A \in \ms{n}{n}{\F}\).
   \begin{enumerate}
@@ -135,8 +165,39 @@
   \end{enumerate}
 \end{thm}
 
-\begin{proof}[\pf{5.3}]
+\begin{proof}[\pf{5.3}(a)]
+  We use induction on \(n\).
+  For \(n = 1\), by \cref{4.2.2} we have
+  \[
+    \det(A - t I_1) = A_{1 1} - t = (-1)^1 t + A_{1 1} \in \ps[1]{\F}.
+  \]
+  Thus the base case holds.
+  Suppose inductively that \cref{5.3}(a) is true for some \(n \geq 1\).
+  We need to show that \cref{5.3}(a) is true for \(n + 1\).
+  Let \(A \in \ms{(n + 1)}{(n + 1)}{\F}\) and let \(B = A - t I_{n + 1}\).
+  Observe that
+  \begin{align*}
+    \det(B) & = \sum_{j = 1}^{n + 1} (-1)^{1 + j} B_{1 j} \det(\tilde{B}_{1 j})                                          &  & \text{(by \cref{4.2.2})} \\
+            & = (-1)^{2} B_{1 1} \det(\tilde{B}_{1 1}) + \sum_{j = 2}^{n + 1} (-1)^{1 + j} B_{1 j} \det(\tilde{B}_{1 j})                               \\
+            & = (A_{1 1} - t) \det(\tilde{B}_{1 1}) + \sum_{j = 2}^{n + 1} (-1)^{1 + j} A_{1 j} \det(\tilde{B}_{1 j}).
+  \end{align*}
+  Since \(\tilde{B}_{1 1}\) is an \(n \times n\) matrix with the form \(C - t I_n\) where \(C_{i j} = A_{(i + 1) (j + 1)}\) for all \(i, j \in \set{1, \dots, n}\), by induction hypothesis we know that \(\det(\tilde{B}_{1 1})\) is a polynomial of degree \(n\) with leading coefficient \((-1)^n\).
+  Let \(\det(\tilde{B}_{1 1}) = (-1)^n t^n + c_{n - 1} t^{n - 1} + \cdots + c_1 t + c_0\) for some \(\seq{c}{0,1,,n-1} \in \F\).
+  Then we have
+  \begin{align*}
+    \det(B) & = (A_{1 1} - t) ((-1)^{n} t^n + c_{n - 1} t^{n - 1} + \cdots + c_1 t + c_0) + \sum_{j = 2}^{n + 1} (-1)^{1 + j} A_{1 j} \det(\tilde{B}_{1 j}) \\
+            & = (-1)^{n + 1} t^{n + 1} - c_{n - 1} t^n - \cdots - c_1 t^2 - c_0 t                                                                           \\
+            & \quad + (-1)^n A_{1 1} t^n + c_{n - 1} A_{1 1} t^{n - 1} + \cdots + c_1 A_{1 1} t + c_0 A_{1 1}                                               \\
+            & \quad + \sum_{j = 2}^{n + 1} (-1)^{1 + j} A_{1 j} \det(\tilde{B}_{1 j}).
+  \end{align*}
+  Thus if we can show that \(\sum_{j = 2}^{n + 1} (-1)^{1 + j} A_{1 j} \det(\tilde{B}_{1 j})\) is a polynomial of degree at most \(n\), then the induction is closed.
+  But this can be seen by \cref{5.1.7}.
+\end{proof}
 
+\begin{proof}[\pf{5.3}(b)]
+  By \cref{5.3} we see that \(\det(A - t I_n)\) is of degree \(n\).
+  Thus \(\det(A - t I_n)\) can have at most \(n\) distinct roots.
+  By \cref{5.2} this means \(A\) can have at most \(n\) distinct eigenvalues.
 \end{proof}
 
 \begin{thm}\label{5.4}
@@ -768,4 +829,68 @@
     \implies & \det(A - 0 I_n) = \det(A) = f(0) = a_0                                                                         \\
     \implies & A \text{ is invertible } \iff a_0 \neq 0.                                        &  & \text{(by \cref{4.3.1})}
   \end{align*}
+\end{proof}
+
+\begin{ex}\label{ex:5.1.21}
+  Let \(A\) and \(f(t)\) be as in \cref{ex:5.1.20}.
+  \begin{enumerate}
+    \item Prove that \(f(t) = (A_{1 1} - t)(A_{2 2} - t) \cdots (A_{n n} - t) + q(t)\), where \(q(t)\) is a polynomial of degree at most \(n - 2\).
+    \item Show that \(\tr(A) = (-1)^{n - 1} a_{n - 1}\).
+  \end{enumerate}
+\end{ex}
+
+\begin{proof}[\pf{ex:5.1.21}(a)]
+  We use induction on \(n\).
+  For \(n = 1\), we have
+  \begin{align*}
+             & \det(A - t I_1) = f(t) = -t + a_0                         &  & \text{(by \cref{ex:5.1.20})} \\
+    \implies & A_{1 1} = \det(A)                                         &  & \text{(by \cref{4.2.2})}     \\
+             & = \det(A - 0 I_1) = f(0) = a_0                            &  & \text{(by \cref{ex:5.1.20})} \\
+    \implies & \det(A - t I_1) = f(t) = A_{1 1} - t = A_{1 1} - t + q(t)
+  \end{align*}
+  where \(q\) is the zero polynomial.
+  Thus the base case holds.
+  Suppose inductively that \cref{ex:5.1.21}(a) is true for some \(n \geq 1\).
+  We need to show that for \(n + 1\) it is still true.
+  Let \(A \in \ms{(n + 1)}{(n + 1)}{\F}\) and let \(B = A - t I_{n + 1}\).
+  Observe that
+  \begin{align*}
+    \det(B) & = \sum_{j = 1}^{n + 1} (-1)^{1 + j} B_{1 j} \det(\tilde{B}_{1 j})                                          &  & \text{(by \cref{4.2.2})} \\
+            & = (-1)^{2} B_{1 1} \det(\tilde{B}_{1 1}) + \sum_{j = 2}^{n + 1} (-1)^{1 + j} B_{1 j} \det(\tilde{B}_{1 j})                               \\
+            & = (A_{1 1} - t) \det(\tilde{B}_{1 1}) + \sum_{j = 2}^{n + 1} (-1)^{1 + j} A_{1 j} \det(\tilde{B}_{1 j}).
+  \end{align*}
+  Since \(\tilde{B}_{1 1}\) is in the form \(C - t I_n\) where \(C_{i j} = A_{(i + 1) (j + 1)}\) for all \(i, j \in \set{1, \dots, n}\), by induction hypothesis we know that
+  \[
+    \det(\tilde{B}_{1 1}) = (A_{2 2} - t) \cdots (A_{(n + 1) (n + 1)} - t) + q_1(t)
+  \]
+  where \(q_1\) is a polynomial of degree at most \(n - 2\).
+  Thus we have
+  \begin{align*}
+    \det(B) & = (A_{1 1} - t) (A_{2 2} - t) \cdots (A_{(n + 1) (n + 1)} - t) + q_1(t) (A_{1 1} - t) \\
+            & \quad + \sum_{j = 2}^{n + 1} (-1)^{1 + j} A_{1 j} \det(\tilde{B}_{1 j}).
+  \end{align*}
+  Since \(q_1(t) (A_{1 1} - t)\) is a polynomial of degree at most \(n - 1\),  to close the induction we only need to show that \(\sum_{j = 2}^{n + 1} (-1)^{1 + j} A_{1 j} \det(\tilde{B}_{1 j})\) is a polynomial of degree at most \(n - 1\).
+  Observe that for each \(j \in \set{2, \dots, n - 1}\), all entries in the first column of \(\tilde{B}_{1 j}\) are values in \(\F\).
+  Thus by \cref{4.2.2} \(\det(\tilde{B}_{1 j})\) can be written as the sum of the determinant of \((n - 1) \times (n - 1)\) matrices.
+  Since entries in the \((n - 1) \times (n - 1)\) matrices are in \(\ps[1]{\F}\), by \cref{5.1.7} we see that the determinant are polynomials of degree at most \(n - 1\).
+  Thus \(\det(\tilde{B}_{1 j})\) is a polynomial of degree at most \(n - 1\) and so does \(\sum_{j = 2}^{n + 1} (-1)^{1 + j} A_{1 j} \det(\tilde{B}_{1 j})\).
+  Now let \(q\) be the polynomial
+  \[
+    q(t) = q_1(t) (A_{1 1} - t) + \sum_{j = 2}^{n + 1} (-1)^{1 + j} A_{1 j} \det(\tilde{B}_{1 j}).
+  \]
+  Then the degree of \(q\) is at most \(n - 1\) and this closes the induction.
+\end{proof}
+
+\begin{proof}[\pf{ex:5.1.21}(b)]
+  By \cref{ex:5.1.21}(a) we have
+  \begin{align*}
+     & \det(A - t I_n)                                                                                             \\
+     & = (A_{1 1} - t) (A_{2 2} - t) \cdots (A_{n n} - t) + q(t)                                                   \\
+     & = ((-1^1 t^1 + (-1)^0 A_{1 1})) (A_{2 2} - t) \cdots (A_{n n} - t) + q(t)                                   \\
+     & = ((-1)^2 t^2 + (-1)^1 (A_{1 1} + A_{2 2}) t + A_{1 1} A_{2 2}) (A_{3 3} - t) \cdots (A_{n n} - t) + q(t)   \\
+     & = ((-1)^3 t^3 + (-1)^2 (A_{1 1} + A_{2 2} + A_{3 3}) t^2 + \dots) (A_{4 4} - t) \cdots (A_{n n} - t) + q(t) \\
+     & = (-1)^n t^n + (-1)^{n - 1} (A_{1 1} + \cdots + A_{n n}) t^{n - 1} + \cdots + q(t)                          \\
+     & = (-1)^n t^n + (-1)^{n - 1} \tr(A) t^{n - 1} + \cdots + q(t).
+  \end{align*}
+  Thus by \cref{ex:5.1.20} we have \(a_{n - 1} = (-1)^{n - 1} \tr(A)\) and \(\tr(A) = (-1)^{n - 1} a_{n - 1}\).
 \end{proof}
