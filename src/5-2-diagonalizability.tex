@@ -261,3 +261,137 @@
   Furthermore, if \(A\) is an \(n \times n\) diagonalizable matrix, we can use the \cref{2.5.3} to find an invertible \(n \times n\) matrix \(Q\) and a diagonal \(n \times n\) matrix \(D\) such that \(Q^{-1} A Q = D\).
   The matrix \(Q\) has as its columns the vectors in a basis of eigenvectors of \(A\), and \(D\) has as its \(j\)th diagonal entry the eigenvalue of \(A\) corresponding to the \(j\)th column of \(Q\).
 \end{note}
+
+\begin{defn}\label{5.2.6}
+  Let \(\seq{\W}{1,,k}\) be subspaces of a vector space \(\V\) over \(\F\).
+  We define the \textbf{sum} of these subspaces to be the set
+  \[
+    \set{\seq[+]{v}{1,,k} : v_i \in \W_i \text{ for } i \in \set{1, \dots, k}},
+  \]
+  which we denote by \(\seq[+]{\W}{1,,k}\) or \(\sum_{i = 1}^k \W_i\).
+\end{defn}
+
+\begin{defn}\label{5.2.7}
+  Let \(\seq{\W}{1,,k}\) be subspaces of a vector space \(\V\) over \(\F\).
+  We call \(\V\) the \textbf{direct sum} of the subspaces \(\seq{\W}{1,,k}\) and write \(\V = \seq[\oplus]{\W}{1,,k}\), if
+  \[
+    \V = \sum_{i = 1}^k \W_i
+  \]
+  and
+  \[
+    \W_j \cap \sum_{i \neq j} \W_i = \set{\zv} \quad \text{for each } j \in \set{1, \dots, k}.
+  \]
+\end{defn}
+
+\begin{thm}\label{5.10}
+  Let \(\seq{\W}{1,,k}\) be subspaces of a finite-dimensional vector space \(\V\) over \(\F\).
+  The following conditions are equivalent.
+  \begin{enumerate}
+    \item \(\V = \seq[\oplus]{\W}{1,,k}\).
+    \item \(\V = \sum_{i = 1}^k \W_i\) and, for any vectors \(\seq{v}{1,,k}\) such that \(v_i \in \W\) for \(i \in \set{1, \dots, k}\), if \(\seq[+]{v}{1,,k} = \zv\), then \(v_i = \zv\) for all \(i \in \set{1, \dots, k}\).
+    \item Each vector \(v \in \V\) can be uniquely written as \(v = \seq[+]{v}{1,,k}\), where \(v_i \in \W_i\) for all \(i \in \set{1, \dots, k}\).
+    \item For each \(i \in \set{1, \dots, k}\), if \(\gamma_i\) is an ordered basis for \(\W_i\) over \(\F\), then \(\bigcup_{i = 1}^k \gamma_i\) is an ordered basis for \(\V\) over \(\F\).
+    \item For each \(i \in \set{1, \dots, k}\), there exists an ordered basis \(\gamma_i\) for \(\W_i\) over \(\F\) such that \(\bigcup_{i = 1}^k \gamma_i\) is an ordered basis for \(\V\) over \(\F\).
+  \end{enumerate}
+\end{thm}
+
+\begin{proof}[\pf{5.10}]
+  Assume (a).
+  We prove (b).
+  Clearly
+  \[
+    \V = \sum_{i = 1}^k \W_i.
+  \]
+  Now suppose that \(\seq{v}{1,,k}\) are vectors such that \(v_i \in \W_i\) for all \(i \in \set{1, \dots, k}\) and \(\seq[+]{v}{1,,k} = \zv\).
+  Then for any \(j \in \set{1, \dots, k}\)
+  \[
+    -v_j = \sum_{\substack{i = 1 \\ i \neq j}}^k v_i \in \sum_{\substack{i = 1 \\ i \neq j}}^k \W_i.
+  \]
+  But \(-v_j \in \W_j\) and hence
+  \[
+    -v_j \in \W_j \cap \sum_{\substack{i = 1 \\ i \neq j}}^k \W_i = \set{\zv}.
+  \]
+  So \(v_j = \zv\), proving (b).
+
+  Now assume (b).
+  We prove (c).
+  Let \(v \in \V\).
+  By (b), there exist vectors \(\seq{v}{1,,k}\) such that \(v_i \in \W_i\) for all \(i \in \set{1, \dots, k}\) and \(v = \seq[+]{v}{1,,k}\).
+  We must show that this representation is unique.
+  Suppose also that \(v = \seq[+]{w}{1,,k}\), where \(w_i \in \W_i\) for all \(i \in \set{1, \dots, k}\).
+  Then
+  \[
+    (v_1 - w_1) + \cdots + (v_k - w_k) = \zv.
+  \]
+  But \(v_i - w_i \in \W_i\) for all \(i \in \set{1, \dots, k}\), and therefore \(v_i - w_i = \zv\) for all \(i \in \set{1, \dots, k}\) by (b).
+  Thus \(v_i = w_i\) for all \(i \in \set{1, \dots, k}\), proving the uniqueness of the representation.
+
+  Now assume (c).
+  We prove (d).
+  For each \(i \in \set{1, \dots, k}\), let \(\gamma_i\) be an ordered basis for \(\W_i\) over \(\F\).
+  Since
+  \[
+    \V = \sum_{i = 1}^k \W_i
+  \]
+  by (c), it follows that \(\bigcup_{i = 1}^k \gamma_i\) generates \(\V\).
+  To show that this set is linearly independent, consider vectors \(v_{i j} \in \gamma_i\) (where \(j \in \set{1, \dots, m_i}\) and \(i \in \set{1, \dots, k}\)) and scalars \(a_{i j} \in \F\) such that
+  \[
+    \sum_{i = 1}^k \sum_{j = 1}^{m_i} a_{i j} v_{i j} = \zv.
+  \]
+  For each \(i \in \set{1, \dots, k}\), set
+  \[
+    w_i = \sum_{j = 1}^{m_i} a_{i j} v_{i j}.
+  \]
+  Then for each \(i \in \set{1, \dots, k}\), \(w_i \in \spn{\gamma_i} = \W_i\) and
+  \[
+    \seq[+]{w}{1,,k} = \sum_{i = 1}^k \sum_{j = 1}^{m_i} a_{i j} v_{i j} = \zv.
+  \]
+  Since \(\zv \in \W_i\) for each \(i \in \set{1, \dots, k}\) and \(\zv + \cdots + \zv = \seq[+]{w}{1,,k}\), (c) implies that \(w_i = \zv\) for all \(i \in \set{1, \dots, k}\).
+  Thus
+  \[
+    \zv = w_i = \sum_{j = 1}^{m_i} a_{i j} v_{i j}
+  \]
+  for each \(i \in \set{1, \dots, k}\).
+  But each \(\gamma_i\) is linearly independent, and hence \(a_{i j} = 0\) for all \(i \in \set{1, \dots, k}\) and \(j \in \set{1, \dots, m_i}\).
+  Consequently \(\bigcup_{i = 1}^k \gamma_i\) is linearly independent and therefore is a basis for \(\V\) over \(\F\).
+
+  Clearly (e) follows immediately from (d).
+
+  Finally, we assume (e) and prove (a).
+  For each \(i \in \set{1, \dots, k}\), let \(\gamma_i\) be an ordered basis for \(\W_i\) over \(\F\) such that \(\bigcup_{i = 1}^k \gamma_i\) is an ordered basis for \(\V\) over \(\F\).
+  Then
+  \[
+    \V = \spn{\bigcup_{i = 1}^k \gamma_i} = \sum_{i = 1}^k \spn{\gamma_i} = \sum_{i = 1}^k \W_i
+  \]
+  by repeated applications of \cref{ex:1.4.14}.
+  Fix \(j \in \set{1, \dots, k}\), and suppose that, for some nonzero vector \(v \in \V\),
+  \[
+    v \in \W_j \cap \sum_{\substack{i = 1 \\ i \neq j}}^k \W_i.
+  \]
+  Then
+  \[
+    v \in \W_j = \spn{\gamma_j} \quad \text{and} \quad v \in \sum_{\substack{i = 1 \\ i \neq j}}^k \W_i = \spn{\bigcup_{\substack{i = 1 \\ i \neq j}}^k \gamma_i}.
+  \]
+  Hence \(v\) is a nontrivial linear combination of both \(\gamma_j\) and \(\bigcup_{i \neq j} \gamma_i\), so that \(v\) can be expressed as a linear combination of \(\bigcup_{i = 1}^k \gamma_i\) in more than one way.
+  But these representations contradict \cref{1.8}, and so we conclude that
+  \[
+    \W_j \cap \sum_{\substack{i = 1 \\ i \neq j}}^k \W_i = \set{\zv},
+  \]
+  proving (a).
+\end{proof}
+
+\begin{thm}\label{5.11}
+  A linear operator \(\T\) on a finite-dimensional vector space \(\V\) over \(\F\) is diagonalizable iff \(\V\) is the direct sum of the eigenspaces of \(\T\).
+\end{thm}
+
+\begin{proof}[\pf{5.11}]
+  Let \(\seq{\lambda}{1,,k}\) be the distinct eigenvalues of \(\T\).
+
+  First suppose that \(\T\) is diagonalizable, and for each \(i \in \set{1, \dots, k}\) choose an ordered basis \(\gamma_i\) for the eigenspace \(E_{\lambda_i}\) over \(\F\).
+  By \cref{5.9}, \(\bigcup_{i = 1}^k \gamma_i\) is a basis for \(\V\) over \(\F\), and hence \(\V\) is a direct sum of the \(E_{\lambda_i}\)'s by \cref{5.10}.
+
+  Conversely, suppose that \(\V\) is a direct sum of the eigenspaces of \(\T\).
+  For each \(i \in \set{1, \dots, k}\), choose an ordered basis \(\gamma_i\) for \(E_{\lambda_i}\) over \(\F\).
+  By \cref{5.10}, the union \(\bigcup_{i = 1}^k \gamma_i\) is a basis for \(\V\) over \(\F\).
+  Since this basis consists of eigenvectors of \(\T\), we conclude that \(\T\) is diagonalizable.
+\end{proof}
