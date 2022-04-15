@@ -1,1 +1,150 @@
 \section{Diagonalizability}\label{sec:5.2}
+
+\begin{thm}\label{5.5}
+  Let \(\T\) be a linear operator on a vector space \(\V\) over \(\F\), and let \(\seq{\lambda}{1,,k}\) be distinct eigenvalues of \(\T\).
+  If \(\seq{v}{1,,k}\) are eigenvectors of \(\T\) such that \(\lambda_i\) corresponds to \(v_i\) for all \(i \in \set{1, \dots, k}\), then \(\set{\seq{v}{1,,k}}\) is linearly independent.
+\end{thm}
+
+\begin{proof}[\pf{5.5}]
+  The proof is by mathematical induction on \(k\).
+  Suppose that \(k = 1\).
+  Then \(v_1 \neq \zv\) since \(v_1\) is an eigenvector, and hence \(\set{v_1}\) is linearly independent.
+  Now assume that the theorem holds for \(k\) distinct eigenvalues, where \(k \geq 1\), and that we have \(k + 1\) eigenvectors \(\seq{v}{1,,k+1}\) corresponding to the distinct eigenvalues \(\seq{\lambda}{1,,k+1}\).
+  We wish to show that \(\set{\seq{v}{1,,k+1}}\) is linearly independent.
+  Suppose that \(\seq{a}{1,,k+1} \in \F\) such that
+  \[
+    \seq[+]{a,v}{1,2,,k+1} = \zv.
+  \]
+  Applying \(\T - \lambda_{k + 1} \IT[\V]\) to both sides of the above equation, we obtain
+  \[
+    a_1 (\lambda_1 - \lambda_{k + 1}) v_1 + a_2 (\lambda_2 - \lambda_{k + 1}) v_2 + \cdots + a_k (\lambda_k - \lambda_{k + 1}) v_k = \zv.
+  \]
+  By the induction hypothesis \(\set{\seq{v}{1,,k}}\) is linearly independent, and
+  hence
+  \[
+    a_1 (\lambda_1 - \lambda_{k + 1}) = a_2 (\lambda_2 - \lambda_{k + 1}) = \cdots = a_k (\lambda_k - \lambda_{k + 1}) = 0.
+  \]
+  Since \(\seq{\lambda}{1,,k+1}\) are distinct, it follows that \(\lambda_i - \lambda_{k + 1} \neq 0\) for \(i \in \set{1, \dots, k}\).
+  So \(\seq[=]{a}{1,,k} = 0\), and therefore \(\seq[+]{a,v}{1,,k+1} = \zv\) reduces to \(a_{k + 1} v_{k + 1} = \zv\).
+  But \(v_{k + 1} \neq \zv\) and therefore \(a_{k + 1} = 0\).
+  Consequently \(\seq[=]{a}{1,,k+1} = 0\), and it follows that \(\set{\seq{v}{1,,k+1}}\) is linearly independent.
+\end{proof}
+
+\begin{cor}\label{5.2.1}
+  Let \(\T\) be a linear operator on an \(n\)-dimensional vector space \(\V\) over \(\F\).
+  If \(\T\) has \(n\) distinct eigenvalues, then \(\T\) is diagonalizable.
+\end{cor}
+
+\begin{proof}[\pf{5.2.1}]
+  Suppose that \(\T\) has \(n\) distinct eigenvalues \(\seq{\lambda}{1,,n}\).
+  For each \(i \in \set{1, \dots, n}\) choose an eigenvector \(v_i\) corresponding to \(\lambda_i\).
+  By \cref{5.5}, \(\set{\seq{v}{1,,n}}\) is linearly independent, and since \(\dim(\V) = n\), this set is a basis for \(\V\) over \(\F\).
+  Thus by \cref{5.1} \(\T\) is diagonalizable.
+\end{proof}
+
+\begin{note}
+  The converse of \cref{5.5} is false.
+  That is, it is not true that if \(\T\) is diagonalizable, then it has \(n\) distinct eigenvalues.
+  For example, the identity operator is diagonalizable even though it has only one eigenvalue, namely, \(\lambda = 1\).
+\end{note}
+
+\begin{defn}\label{5.2.2}
+  A polynomial \(f\) in \(\ps{\F}\) splits over \(\F\) if there are scalars \(c, \seq{a}{1,,n}\) (not necessarily distinct) in \(\F\) such that
+  \[
+    f(t) = c (t - a_1) (t - a_2) \cdots (t - a_n).
+  \]
+  If \(f\) is the characteristic polynomial of a linear operator or a matrix over a field \(\F\), then the statement that \(f\) splits is understood to mean that it splits over \(\F\).
+\end{defn}
+
+\begin{thm}\label{5.6}
+  The characteristic polynomial of any diagonalizable linear operator splits.
+\end{thm}
+
+\begin{proof}[\pf{5.6}]
+  Let \(\T\) be a diagonalizable linear operator on the \(n\)-dimensional vector space \(\V\) over \(\F\), and let \(\beta\) be an ordered basis for \(\V\) over \(\F\) such that \([\T]_{\beta} = D\) is a diagonal matrix.
+  Suppose that
+  \[
+    D = \begin{pmatrix}
+      \lambda_1 & 0         & \cdots & 0         \\
+      0         & \lambda_2 & \cdots & 0         \\
+      \vdots    & \vdots    &        & \vdots    \\
+      0         & 0         & \cdots & \lambda_n
+    \end{pmatrix},
+  \]
+  and let \(f\) be the characteristic polynomial of \(\T\).
+  Then
+  \begin{align*}
+    f(t) & = \det(D - t I_n)                                                &  & \text{(by \cref{5.1.6})}     \\
+         & = \det\begin{pmatrix}
+                   \lambda_1 - t & 0             & \cdots & 0             \\
+                   0             & \lambda_2 - t & \cdots & 0             \\
+                   \vdots        & \vdots        &        & \vdots        \\
+                   0             & 0             & \cdots & \lambda_n - t
+                 \end{pmatrix}                                       \\
+         & = (\lambda_1 - t) (\lambda_2 - t) \cdots (\lambda_n - t)         &  & \text{(by \cref{ex:4.2.23})} \\
+         & = (-1)^n (t - \lambda_1) (t - \lambda_2) \cdots (t - \lambda_n).
+  \end{align*}
+\end{proof}
+
+\begin{note}
+  From \cref{5.6}, it is clear that if \(\T\) is a diagonalizable linear operator on an \(n\)-dimensional vector space that fails to have distinct eigenvalues, then the characteristic polynomial of \(\T\) must have repeated zeros.
+
+  The converse of \cref{5.6} is false;
+  that is, the characteristic polynomial of \(\T\) may split, but \(\T\) need not be diagonalizable.
+\end{note}
+
+\begin{defn}\label{5.2.3}
+  Let \(\lambda\) be an eigenvalue of a linear operator or matrix with characteristic polynomial \(f\).
+  The \textbf{(algebraic) multiplicity} of \(\lambda\) is the largest positive integer \(k\) for which \((t - \lambda)^k\) is a factor of \(f\).
+\end{defn}
+
+\begin{note}
+  If \(\T\) is a diagonalizable linear operator on a \(n\)-dimensional vector space \(\V\) over \(\F\), then there is an ordered basis \(\beta\) for \(\V\) over \(\F\) consisting of eigenvectors of \(\T\).
+  We know from \cref{5.1} that \([\T]_{\beta}\) is a diagonal matrix in which the diagonal entries are the eigenvalues of \(\T\).
+  Since the characteristic polynomial of \(\T\) is \(\det([\T]_{\beta} - t I_n)\), it is easily seen that each eigenvalue of \(\T\) must occur as a diagonal entry of \([\T]_{\beta}\) exactly as many times as its multiplicity.
+  Hence \(\beta\) contains as many (linearly independent) eigenvectors corresponding to an eigenvalue as the multiplicity of that eigenvalue.
+  So the number of linearly independent eigenvectors corresponding to a given eigenvalue is of interest in determining whether an operator can be diagonalized.
+  Recalling from \cref{5.4} that the eigenvectors of \(\T\) corresponding to the eigenvalue \(\lambda\) are the nonzero vectors in the null space of \(\T - \lambda \IT[\V]\), we are led naturally to the study of this set.
+\end{note}
+
+\begin{defn}\label{5.2.4}
+  Let \(\T\) be a linear operator on a vector space \(\V\) over \(\F\), and let \(\lambda\) be an eigenvalue of \(\T\).
+  Define \(E_\lambda = \set{x \in \V : \T(x) = \lambda x} = \ns{\T - \lambda \IT[\V]}\).
+  The set \(E_\lambda\) is called the \textbf{eigenspace} of \(\T\) corresponding to the eigenvalue \(\lambda\).
+  Analogously, we define the \textbf{eigenspace} of a square matrix \(A\) to be the eigenspace of \(\L_A\).
+\end{defn}
+
+\begin{note}
+  Clearly, \(E_{\lambda}\) is a subspace of \(\V\) over \(\F\) consisting of the zero vector and the eigenvectors of \(\T\) corresponding to the eigenvalue \(\lambda\).
+  The maximum number of linearly independent eigenvectors of \(\T\) corresponding to the eigenvalue \(\lambda\) is therefore the dimension of \(E_{\lambda}\).
+  \cref{5.7} relates this dimension to the multiplicity of \(\lambda\).
+\end{note}
+
+\begin{thm}\label{5.7}
+  Let \(\T\) be a linear operator on a finite-dimensional vector space \(\V\) over \(\F\), and let \(\lambda\) be an eigenvalue of \(\T\) having multiplicity \(m\).
+  Then \(1 \leq \dim(E_{\lambda}) \leq m\).
+\end{thm}
+
+\begin{proof}[\pf{5.7}]
+  Choose an ordered basis \(\set{\seq{v}{1,,p}}\) for \(E_{\lambda}\), extend it to an ordered basis \(\beta = \set{\seq{v}{1,,p,p+1,,n}}\) for \(\V\) over \(\F\), and let \(A = [\T]_{\beta}\).
+  Observe that for each \(i \in \set{1, \dots p}\), \(v_i\) is an eigenvector of \(\T\) corresponding to \(\lambda\), and therefore
+  \[
+    A = \begin{pmatrix}
+      \lambda I_p & B \\
+      \zm         & C
+    \end{pmatrix}.
+  \]
+  By \cref{ex:4.3.21}, the characteristic polynomial of \(\T\) is
+  \begin{align*}
+    f(t) & = \det(A - t I_n)                               &  & \text{(by \cref{5.1.6})}     \\
+         & = \det\begin{pmatrix}
+                   (\lambda - t) I_p & B               \\
+                   \zm               & C - t I_{n - p}
+                 \end{pmatrix}                                         \\
+         & = \det((\lambda - t) I_p) \det(C - t I_{n - p}) &  & \text{(by \cref{ex:4.3.21})} \\
+         & = (\lambda - t)^p g(t),                         &  & \text{(by \cref{ex:4.2.23})}
+  \end{align*}
+  where \(g\) is a polynomial.
+  Thus \((\lambda - t)^p\) is a factor of \(f\), and hence the multiplicity of \(\lambda\) is at least \(p\).
+  But \(\dim(E_{\lambda}) = p\), and so \(\dim(E_{\lambda}) \leq m\).
+\end{proof}
