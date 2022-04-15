@@ -616,11 +616,11 @@
   We claim that if \(x \in \vs{F}^n\) is an eigenvector of \(A \in \ms{n}{n}{\F}\) corresponding to the eigenvalue \(\lambda \in \F\), then for any positive integer \(m\), \(x\) is an eigenvalue of \(A^m\) corresponding to the eigenvalue \(\lambda^m\).
   This is true since
   \begin{align*}
-    A^m (x) & = A^{m - 1} Ax                &  & \text{(by \cref{2.3.6})}     \\
-            & = A^{m - 1}(\lambda x)        &  & \text{(by \cref{5.1.2})}     \\
-            & = \lambda A^{m - 1} x         &  & \text{(by \cref{2.12}(b))}   \\
-            & = \lambda (\lambda^{m - 1} x) &  & \text{(recursive structure)} \\
-            & = \lambda^m x.
+    A^m x & = A^{m - 1} Ax                &  & \text{(by \cref{2.3.6})}     \\
+          & = A^{m - 1}(\lambda x)        &  & \text{(by \cref{5.1.2})}     \\
+          & = \lambda A^{m - 1} x         &  & \text{(by \cref{2.12}(b))}   \\
+          & = \lambda (\lambda^{m - 1} x) &  & \text{(recursive structure)} \\
+          & = \lambda^m x.
   \end{align*}
 \end{proof}
 
@@ -890,7 +890,93 @@
      & = ((-1)^2 t^2 + (-1)^1 (A_{1 1} + A_{2 2}) t + A_{1 1} A_{2 2}) (A_{3 3} - t) \cdots (A_{n n} - t) + q(t)   \\
      & = ((-1)^3 t^3 + (-1)^2 (A_{1 1} + A_{2 2} + A_{3 3}) t^2 + \dots) (A_{4 4} - t) \cdots (A_{n n} - t) + q(t) \\
      & = (-1)^n t^n + (-1)^{n - 1} (A_{1 1} + \cdots + A_{n n}) t^{n - 1} + \cdots + q(t)                          \\
-     & = (-1)^n t^n + (-1)^{n - 1} \tr(A) t^{n - 1} + \cdots + q(t).
+     & = (-1)^n t^n + (-1)^{n - 1} \tr(A) t^{n - 1} + \cdots + q(t)
   \end{align*}
+  where \(q \in \ps[n - 2]{\F}\).
   Thus by \cref{ex:5.1.20} we have \(a_{n - 1} = (-1)^{n - 1} \tr(A)\) and \(\tr(A) = (-1)^{n - 1} a_{n - 1}\).
+\end{proof}
+
+\begin{ex}\label{ex:5.1.22}
+  \begin{enumerate}
+    \item Let \(\T\) be a linear operator on a vector space \(\V\) over the field \(\F\), and let \(g\) be a polynomial with coefficients from \(\F\).
+          Prove that if \(x\) is an eigenvector of \(\T\) with corresponding eigenvalue \(\lambda\), then \(g(\T)(x) = g(\lambda) x\).
+          That is, \(x\) is an eigenvector of \(g(\T)\) with corresponding eigenvalue \(g(\lambda)\).
+    \item State and prove a comparable result for matrices.
+  \end{enumerate}
+\end{ex}
+
+\begin{proof}[\pf{ex:5.1.22}(a)]
+  Let \(\seq{a}{0,,n} \in \F\) such that
+  \[
+    \forall t \in \F, g(t) = a_0 + a_1 t + \cdots + a_n t^n.
+  \]
+  Then we have
+  \begin{align*}
+             & \T(x) = \lambda x                                            &  & \text{(by \cref{5.1.2})}        \\
+    \implies & g(\T)(x) = a_0 \IT[\V](x) + a_1 \T(x) + \cdots + a_n \T^n(x) &  & \text{(by \cref{e.0.7})}        \\
+             & = a_0 x + a_1 \lambda x + \cdots + a_n \lambda^n x           &  & \text{(by \cref{ex:5.1.15}(a))} \\
+             & = (a_0 + a_1 \lambda + \cdots + a_n \lambda^n) x                                                  \\
+             & = g(\lambda) x.
+  \end{align*}
+  Thus by \cref{5.1.2} \(x\) is an eigenvalue of \(g(\T)\) with corresponding eigenvalue \(g(\lambda)\).
+\end{proof}
+
+\begin{proof}[\pf{ex:5.1.22}(b)]
+  Let \(A \in \ms{n}{n}{\F}\) and let \(g \in \ps[m]{\F}\).
+  We claim that if \(x \in \vs{F}^n \setminus \set{\zv}\) such that \(Ax = \lambda x\) for some \(\lambda \in \F\), then \(g(A)(x) = g(\lambda) x\).
+  Let \(\seq{a}{0,,m} \in \F\) such that
+  \[
+    \forall t \in \F, g(t) = a_0 + a_1 t + \cdots + a_m t^m.
+  \]
+  Then we have
+  \begin{align*}
+             & Ax = \lambda x                                     &  & \text{(by \cref{5.1.2})}        \\
+    \implies & g(A)(x) = a_0 I_n x + a_1 A x + \cdots + a_m A^m x &  & \text{(by \cref{e.0.7})}        \\
+             & = a_0 x + a_1 \lambda x + \cdots + a_m \lambda^m x &  & \text{(by \cref{ex:5.1.15}(b))} \\
+             & = (a_0 + a_1 \lambda + \cdots + a_m \lambda^m) x                                        \\
+             & = g(\lambda) x.
+  \end{align*}
+\end{proof}
+
+\begin{ex}\label{ex:5.1.23}
+  Let \(\V\) be a vector space over \(\F\).
+  Use \cref{ex:5.1.22} to prove that if \(f(t)\) is the characteristic polynomial of a diagonalizable linear operator \(\T \in \ls(\V)\), then \(f(\T) = \zT\), the zero operator.
+  (In \cref{sec:5.4} we prove that this result does not depend on the diagonalizability of \(\T\).)
+\end{ex}
+
+\begin{proof}[\pf{ex:5.1.23}]
+  By \cref{5.1.1} there exists an ordered basis \(\beta\) such that \([\T]_{\beta}\) is diagonal matrix.
+  Then we have
+  \begin{align*}
+             & \forall v \in \beta, \exists \lambda \in \F : \T(v) = \lambda v        &  & \text{(by \cref{5.1.2})}        \\
+    \implies & \forall v \in \beta, \exists \lambda \in \F : f(\T)(v) = f(\lambda)(v) &  & \text{(by \cref{ex:5.1.22}(a))} \\
+             & = 0v = \zv = \zT(v)                                                    &  & \text{(by \cref{5.2})}          \\
+    \implies & f(\T) = \zT.                                                           &  & \text{(by \cref{2.1.13})}
+  \end{align*}
+\end{proof}
+
+\setcounter{ex}{25}
+\begin{ex}\label{ex:5.1.26}
+  Determine the number of distinct characteristic polynomials of matrices in \(\ms{2}{2}{\Z_2}\).
+\end{ex}
+
+\begin{proof}[\pf{ex:5.1.26}]
+  Let \(A \in \ms{2}{2}{\Z_2}\).
+  Then we have
+  \begin{align*}
+    \det(A - t I_2) & = \det\begin{pmatrix}
+                              A_{1 1} - t & A_{1 2}     \\
+                              A_{2 1}     & A_{2 2} - t
+                            \end{pmatrix}                                                                  \\
+                    & = (A_{1 1} - t) (A_{2 2} - t) - A_{1 2} A_{2 1}                    &  & \text{(by \cref{4.1.1})} \\
+                    & = t^2 - (A_{1 1} + A_{2 2}) t + A_{1 1} A_{2 2} - A_{1 2} A_{2 1}.
+  \end{align*}
+  Rewriting \(-(A_{1 1} + A_{2 2}) = a\) and \(A_{1 1} A_{2 2} - A_{1 2} A_{2 1} = b\) we have \(\det(A - t I_2) = t^2 + at + b\).
+  Since \(a, b \in \Z_2\), we see that there are \(4\) different characteristic polynomials of matrices in \(\ms{2}{2}{\F}\), i.e.,
+  \begin{align*}
+     & t^2 + 0t + 0 = t^2          \\
+     & t^2 + 0t + 1 = t^2 + 1      \\
+     & t^2 + 1t + 0 = t^2 + t      \\
+     & t^2 + 1t + 1 = t^2 + t + 1.
+  \end{align*}
 \end{proof}
