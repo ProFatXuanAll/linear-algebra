@@ -279,7 +279,7 @@
   \]
   and
   \[
-    \W_j \cap \sum_{i \neq j} \W_i = \set{\zv} \quad \text{for each } j \in \set{1, \dots, k}.
+    \W_j \cap \sum_{\substack{i = 1 \\ i \neq j}}^k \W_i = \set{\zv} \quad \text{for each } j \in \set{1, \dots, k}.
   \]
 \end{defn}
 
@@ -833,4 +833,144 @@
   By \cref{5.1.1} there exists an ordered basis \(\beta\) for \(\V\) over \(\F\) such that \([\T]_{\beta}\) is a diagonal matrix.
   Since the product of diagonal matrices is a diagonal matrix, by \cref{2.11} we see that \(([\T]_{\beta})^m = [\T^m]_{\beta}\) is a diagonal matrix for any \(m \in \Z^+\).
   Thus by \cref{5.2.8} \(\T\) and \(\T^m\) are simultaneously diagonalizable.
+\end{proof}
+
+\begin{ex}\label{ex:5.2.20}
+  Let \(\seq{\W}{1,,k}\) be subspaces of a finite-dimensional vector space \(\V\) over \(\F\) such that
+  \[
+    \sum_{i = 1}^k \W_i = \V.
+  \]
+  Prove that \(\V\) is the direct sum of \(\seq{\W}{1,,k}\) iff
+  \[
+    \dim(\V) = \sum_{i = 1}^k \dim(\W_i).
+  \]
+\end{ex}
+
+\begin{proof}[\pf{ex:5.2.20}]
+  Fisrt suppose that \(\V = \W_1 \oplus \cdots \oplus \W_k\).
+  For each \(i \in \set{1, \dots, k}\), let \(\beta_i\) be an ordered basis for \(\W_i\) over \(\F\).
+  Then we have
+  \begin{align*}
+             & \V = \W_1 \oplus \cdots \oplus \W_k                                                                &  & \text{(by \cref{5.2.7})}      \\
+    \implies & \bigcup_{i = 1}^k \beta_i \text{ is an ordered basis for } \V \text{ over } \F                     &  & \text{(by \cref{5.10}(a)(d))} \\
+    \implies & \dim(\V) = \#(\bigcup_{i = 1}^k \beta_i) = \sum_{i = 1}^k \#(\beta_i) = \sum_{i = 1}^k \dim(\W_i). &  & \text{(by \cref{1.6.8})}
+  \end{align*}
+
+  Now suppose that \(\dim(\V) = \sum_{i = 1}^k \dim(\W_i)\).
+  Let \(\beta\) be an ordered basis for \(\V\) over \(\F\).
+  For each \(i \in \set{1, \dots, k}\), we define \(\beta_i = \beta \cap \W_i\), and we claim that \(\beta_i\) is an ordered basis for \(\W_i\) over \(\F\).
+  Suppose for sake of contradiction that there exists an \(j \in \set{1, \dots, k}\) such that \(\beta_j\) is not an ordered basis for \(\W_j\) over \(\F\).
+  Then there exists a \(v \in \W_j\) such that \(v \notin \spn{\beta_j}\).
+  Since \(\W_j \subseteq \V = \spn{\beta}\), we see that \(v \in \spn{\beta \setminus \beta_j}\).
+  But \((\beta \setminus \beta_j) \cap \W_j = \varnothing\) implies \(v \notin \W_j\), a contradiction.
+  Thus for each \(i \in \set{1, \dots, k}\), we know that \(\beta_i\) is an ordered basis for \(\W_i\) over \(\F\).
+  Now we claim that \(\beta = \bigcup_{i = 1}^k \beta_i\).
+  If not, then there exists a \(v \in \beta\) such that \(v \in \beta \setminus \pa{\bigcup_{i = 1}^k \beta_i}\), i.e., \(v \notin \W_i\) for all \(i \in \set{1, \dots, k}\).
+  But this contradicts to the fact that \(\V = \sum_{i = 1}^k \W_i\).
+  Thus we have
+  \begin{align*}
+             & \beta = \bigcup_{i = 1}^k \beta_i                                       \\
+    \implies & \V = \W_1 \oplus \cdots \oplus \W_k. &  & \text{(by \cref{5.10}(a)(d))}
+  \end{align*}
+\end{proof}
+
+\begin{ex}\label{ex:5.2.21}
+  Let \(\V\) be a finite-dimensional vector space with a basis \(\beta\) over \(\F\), and let \(\seq{\beta}{1,,k}\) be a partition of \(\beta\)
+  (i.e., \(\seq{\beta}{1,,k}\) are subsets of \(\beta\) such that \(\beta = \bigcup_{i = 1}^k \beta_i\) and \(\beta_i \cap \beta_j = \varnothing\) if \(i \neq j\)).
+  Prove that \(\V = \spn{\beta_1} \oplus \cdots \oplus \spn{\beta_k}\).
+\end{ex}
+
+\begin{proof}[\pf{ex:5.2.21}]
+  By \cref{1.5} we know that \(\spn{\beta_i}\) is a subspace of \(\V\) over \(\F\) for all \(i \in \set{1, \dots, k}\).
+  By \cref{5.10}(a)(d) we see that \(\V = \spn{\beta_1} \oplus \cdots \oplus \spn{\beta_k}\).
+\end{proof}
+
+\begin{ex}\label{ex:5.2.22}
+  Let \(\T\) be a linear operator on a finite-dimensional vector space \(\V\) over \(\F\), and suppose that the distinct eigenvalues of \(\T\) are \(\seq{\lambda}{1,,k}\).
+  Prove that
+  \[
+    \spn{\set{x \in \V : x \text{ is an eigenvector of } \T}} = E_{\lambda_1} \oplus \cdots \oplus E_{\lambda_k}.
+  \]
+\end{ex}
+
+\begin{proof}[\pf{ex:5.2.22}]
+  Let \(S = \set{x \in \V : x \text{ is an eigenvector of } \T}\).
+  Since
+  \begin{align*}
+         & v \in S                                                                             \\
+    \iff & \exists i \in \set{1, \dots, k} : \T(v) = \lambda_i v &  & \text{(by \cref{5.1.2})} \\
+    \iff & \exists i \in \set{1, \dots, k} : v \in E_{\lambda_i} &  & \text{(by \cref{5.2.4})} \\
+    \iff & v \in \bigcup_{i = 1}^k E_{\lambda_i},
+  \end{align*}
+  we know that \(S = \bigcup_{i = 1}^k E_{\lambda_i}\).
+  For each \(i \in \set{1, \dots, k}\), let \(\beta_i\) be an ordered basis for \(E_{\lambda_i}\) over \(\F\).
+  We claim that for all \(i, j \in \set{1, \dots, k}\), \(\beta_i \cap \beta_j = \varnothing\) if \(i \neq j\).
+  If not, then there exist some \(i, j \in \set{1, \dots, k}\) such that \(i \neq j\) and \(\beta_i \cap \beta_j \neq \varnothing\).
+  Let \(v \in \beta_i \cap \beta_j\).
+  Clearly \(v \neq \zv\).
+  But then we have
+  \begin{align*}
+             & \T(v) = \lambda_i v = \lambda_j v                                 \\
+    \implies & (\lambda_i - \lambda_j) v = \zv                                   \\
+    \implies & v = \zv,                          &  & (\lambda_i \neq \lambda_j)
+  \end{align*}
+  a contradiction.
+  Thus we know that for all \(i, j \in \set{1, \dots, k}\), \(\beta_i \cap \beta_j = \varnothing\) if \(i \neq j\).
+  Now let \(\beta = \bigcup_{i = 1}^k \beta_i\).
+  By \cref{ex:5.2.21} we know that \(\seq{\beta}{1,,k}\) is a partition of \(\beta\).
+  Since \(S = \bigcup_{i = 1}^k E_{\lambda_i}\), by \cref{1.8} we know that \(\beta\) is a basis for \(\spn{S}\) over \(\F\).
+  Thus by \cref{5.10}(a)(d) we have \(\spn{S} = E_{\lambda_1} \oplus \cdots \oplus E_{\lambda_k}\).
+\end{proof}
+
+\begin{ex}\label{ex:5.2.23}
+  Let \(\seq{\W}{1,2}, \seq{\vs{K}}{1,,p}, \seq{\vs{M}}{1,,q}\) be subspaces of a vector space \(\V\) over \(\F\) such that \(\W_1 = \vs{K}_1 \oplus \cdots \oplus \vs{K}_p\) and \(\W_2 = \vs{M}_1 \oplus \cdots \oplus \vs{M}_q\).
+  Prove that if \(\W_1 \cap \W_2 = \set{\zv}\), then
+  \[
+    \W_1 + \W_2 = \W_1 \oplus \W_2 = \vs{K}_1 \oplus \cdots \oplus \vs{K}_p \oplus \vs{M}_1 \oplus \cdots \vs{M}_q.
+  \]
+\end{ex}
+
+\begin{proof}[\pf{ex:5.2.23}]
+  Observe that
+  \begin{align*}
+             & \W_1 \cap \W_2 = \varnothing                                                                                  \\
+    \implies & \W_1 + \W_2 = \W_1 \oplus \W_2                                                  &  & \text{(by \cref{5.2.7})} \\
+    \implies & \W_1 + \W_2 = (\seq[\oplus]{\vs{K}}{1,,p}) \oplus (\seq[\oplus]{\vs{M}}{1,,q}).
+  \end{align*}
+  Thus we only need to show that
+  \[
+    \W_1 \oplus \W_2 = \seq[\oplus]{\vs{K}}{1,,p} \oplus \seq[\oplus]{\vs{M}}{1,,q}.
+  \]
+  This is true since
+  \begin{align*}
+             & \begin{dcases}
+                 \W_1 = \seq[\oplus]{\vs{K}}{1,,p} \\
+                 \W_2 = \seq[\oplus]{\vs{M}}{1,,q}
+               \end{dcases}                                                                                                                          \\
+    \implies & \begin{dcases}
+                 \forall i \in \set{1, \dots, p}, \vs{K}_i \cap \sum_{\substack{j = 1 \\ j \neq i}}^p \vs{K}_j = \varnothing \\
+                 \forall i \in \set{1, \dots, q}, \vs{M}_i \cap \sum_{\substack{j = 1 \\ j \neq i}}^q \vs{M}_j = \varnothing
+               \end{dcases}                                                                      &  & \text{(by \cref{5.2.7})}                                                             \\
+    \implies & \begin{dcases}
+                 \forall i \in \set{1, \dots, p}, \vs{K}_i \cap \pa{\sum_{\substack{j = 1                           \\ j \neq i}}^p \vs{K}_j + \sum_{j = 1}^q \vs{M}_j} = \varnothing \\
+                 \forall i \in \set{1, \dots, q}, \vs{M}_i \cap \pa{\sum_{j = 1}^p \vs{K}_j + \sum_{\substack{j = 1 \\ j \neq i}}^q \vs{M}_j} = \varnothing
+               \end{dcases}, &  & (\W_1 \cap \W_2 = \varnothing)
+  \end{align*}
+  and
+  \begin{align*}
+         & v \in \W_1 \oplus \W_2                                                                                                                \\
+    \iff & v \in (\seq[\oplus]{\vs{K}}{1,,p}) \oplus (\seq[\oplus]{\vs{M}}{1,,q})                                                                \\
+    \iff & \begin{dcases}
+             \exists k \in \seq[\oplus]{\vs{K}}{1,,p} \\
+             \exists m \in \seq[\oplus]{\vs{M}}{1,,q}
+           \end{dcases} : v = k + m                                            &  & \text{(by \cref{5.2.7})}                                     \\
+    \iff & \begin{dcases}
+             \exists \seq{k}{1,,p} \in \seq[\times]{\vs{K}}{1,,p} \\
+             \exists \seq{m}{1,,q} \in \seq[\times]{\vs{M}}{1,,q}
+           \end{dcases} :                                                                 \\
+         & v = \seq[+]{k}{1,,p} + \seq[+]{m}{1,,q}                                                                 &  & \text{(by \cref{5.2.7})} \\
+    \iff & \exists \seq{k}{1,,p}, \seq{m}{1,,q} \in \seq[\times]{\vs{K}}{1,,p} \times \seq[\times]{\vs{M}}{1,,q} :                               \\
+         & v = \seq[+]{k}{1,,p} + \seq[+]{m}{1,,q}                                                                 &  & \text{(by \cref{5.2.7})} \\
+    \iff & v \in \seq[\oplus]{\vs{K}}{1,,p} \oplus \seq[\oplus]{\vs{M}}{1,,q}.                                     &  & \text{(by \cref{5.2.7})}
+  \end{align*}
 \end{proof}
