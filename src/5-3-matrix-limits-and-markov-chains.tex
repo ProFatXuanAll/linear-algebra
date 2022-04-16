@@ -1,1 +1,64 @@
 \section{Matrix Limits and Markov Chains}\label{sec:5.3}
+
+\begin{defn}\label{5.3.1}
+  Let \(L, \seq{A}{1,2,}\) be \(n \times p\) matrices having complex entries.
+  The sequence \(\seq{A}{1,2,}\) is said to \textbf{converge} to the \(n \times p\) matrix \(L\), called the \textbf{limit} of the sequence, if
+  \[
+    \lim_{m \to \infty} (A_m)_{i j} = L_{i j}
+  \]
+  for all \(i \in \set{1, \dots, n}\) and \(j \in \set{1, \dots, p}\).
+  To designate that \(L\) is the limit of the sequence, we write
+  \[
+    \lim_{m \to \infty} A_m = L.
+  \]
+\end{defn}
+
+\begin{thm}\label{5.12}
+  Let \(\seq{A}{1,2,}\) be a sequence of \(n \times p\) matrices with complex entries that converges to the matrix \(L\).
+  Then for any \(P \in \ms{r}{n}{\C}\) and \(Q \in \ms{p}{s}{\C}\),
+  \[
+    \lim_{m \to \infty} P A_m = PL \quad \text{and} \quad \lim_{m \to \infty} A_m Q = LQ.
+  \]
+\end{thm}
+
+\begin{proof}[\pf{5.12}]
+  For any \(i \in \set{1, \dots, r}\) and \(j \in \set{1, \dots, p}\),
+  \begin{align*}
+    \lim_{m \to \infty} (P A_m)_{i j} & = \lim_{m \to \infty} \sum_{k = 1}^n P_{i k} (A_m)_{k j}      &  & \text{(by \cref{2.3.1})} \\
+                                      & = \sum_{k = 1}^n P_{i k} \pa{\lim_{m \to \infty} (A_m)_{k j}}                               \\
+                                      & = \sum_{k = 1}^n P_{i k} L_{k j}                              &  & \text{(by \cref{5.3.1})} \\
+                                      & = (PL)_{i j}.                                                 &  & \text{(by \cref{2.3.1})}
+  \end{align*}
+  Hence \(\lim_{m \to \infty} P A_m = PL\).
+  The proof that \(\lim_{m \to \infty} A_m Q = LQ\) is similar.
+\end{proof}
+
+\begin{cor}\label{5.3.2}
+  Let \(A \in \ms{n}{n}{\C}\) be such that \(\lim_{m \to \infty} A^m = L\).
+  Then for any invertible matrix \(Q \in \ms{n}{n}{\C}\),
+  \[
+    \lim_{m \to \infty} (Q A Q^{-1})^m = Q L Q^{-1}.
+  \]
+\end{cor}
+
+\begin{proof}[\pf{5.3.2}]
+  Since
+  \[
+    (Q A Q^{-1})^m = (Q A Q^{-1}) (Q A Q^{-1}) \cdots (Q A Q^{-1}) = Q A^m Q^{-1},
+  \]
+  we have
+  \[
+    \lim_{m \to \infty} (Q A Q^{-1})^m = \lim_{m \to \infty} Q A^m Q^{-1} = Q \pa{\lim_{m \to \infty} A^m} Q^{-1} = Q L Q^{-1}
+  \]
+  by applying \cref{5.12} twice.
+\end{proof}
+
+\begin{defn}\label{5.3.3}
+  In the discussion that follows, we frequently encounter the set
+  \[
+    S = \set{\lambda \in \C : \abs{\lambda} < 1 \text{ or } \lambda = 1}.
+  \]
+  Geometrically, this set consists of the complex number \(1\) and the interior of the unit disk (the disk of radius \(1\) centered at the origin).
+  This set is of interest because if \(\lambda\) is a complex number, then \(\lim_{m \to \infty} \lambda^m\) exists iff \(\lambda \in S\).
+  This fact, which is obviously true if \(\lambda\) is real, can be shown to be true for complex numbers also.
+\end{defn}
