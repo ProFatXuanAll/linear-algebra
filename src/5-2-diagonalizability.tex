@@ -49,7 +49,7 @@
 \end{note}
 
 \begin{defn}\label{5.2.2}
-  A polynomial \(f\) in \(\ps{\F}\) splits over \(\F\) if there are scalars \(c, \seq{a}{1,,n}\) (not necessarily distinct) in \(\F\) such that
+  A polynomial \(f\) in \(\ps{\F}\) \textbf{splits over} \(\F\) if there are scalars \(c, \seq{a}{1,,n}\) (not necessarily distinct) in \(\F\) such that
   \[
     f(t) = c (t - a_1) (t - a_2) \cdots (t - a_n).
   \]
@@ -394,4 +394,86 @@
   For each \(i \in \set{1, \dots, k}\), choose an ordered basis \(\gamma_i\) for \(E_{\lambda_i}\) over \(\F\).
   By \cref{5.10}, the union \(\bigcup_{i = 1}^k \gamma_i\) is a basis for \(\V\) over \(\F\).
   Since this basis consists of eigenvectors of \(\T\), we conclude that \(\T\) is diagonalizable.
+\end{proof}
+
+\exercisesection
+
+\setcounter{ex}{3}
+\begin{ex}\label{ex:5.2.4}
+  Prove the matrix version of \cref{5.2.1}:
+  If \(A \in \ms{n}{n}{\F}\) has \(n\) distinct eigenvalues, then \(A\) is diagonalizable.
+\end{ex}
+
+\begin{proof}[\pf{ex:5.2.4}]
+  We have
+  \begin{align*}
+             & A \in \ms{n}{n}{\F} \text{ has } n \text{ distinct  eigenvalues}                               \\
+    \implies & \L_A \text{ has } n \text{ distinct  eigenvalues}                &  & \text{(by \cref{5.1.2})} \\
+    \implies & \L_A \text{ is diagonalizable}                                   &  & \text{(by \cref{5.2.1})} \\
+    \implies & A \text{ is diagonalizable}.                                     &  & \text{(by \cref{5.1.1})}
+  \end{align*}
+\end{proof}
+
+\begin{ex}\label{ex:5.2.5}
+  State and prove the matrix version of \cref{5.6}.
+\end{ex}
+
+\begin{proof}[\pf{ex:5.2.5}]
+  We claim that the characteristic polynomial of any diagonalizable matrix splits.
+  This is true since
+  \begin{align*}
+             & A \text{ is diagonalizable}                                                                 \\
+    \implies & \L_A \text{ is diagonalizable}                                &  & \text{(by \cref{5.1.1})} \\
+    \implies & \text{ the characteristic polynomial of } \L_A \text{ splits} &  & \text{(by \cref{5.6})}   \\
+    \implies & \text{ the characteristic polynomial of } A \text{ splits}.   &  & \text{(by \cref{5.1.6})}
+  \end{align*}
+\end{proof}
+
+\setcounter{ex}{7}
+\begin{ex}\label{ex:5.2.8}
+  Suppose that \(A \in \ms{n}{n}{\F}\) has two distinct eigenvalues, \(\lambda_1\) and \(\lambda_2\), and that \(\dim(E_{\lambda_1}) = n - 1\).
+  Prove that \(A\) is diagonalizable.
+\end{ex}
+
+\begin{proof}[\pf{ex:5.2.8}]
+  Let \(\beta_1, \beta_2\) be ordered bases for \(E_{\lambda_1}, E_{\lambda_2}\) over \(\F\), respectively.
+  By \cref{5.8} we know that \(\beta = \beta_1 \cup \beta_2\) is linearly independent.
+  Since
+  \begin{align*}
+             & \begin{dcases}
+                 \dim(E_{\lambda_1}) = n - 1 \\
+                 \dim(E_{\lambda_2}) \geq 1
+               \end{dcases}                                    &  & \text{(by \cref{5.7})}       \\
+    \implies & \begin{dcases}
+                 \#(\beta_1) = n - 1 \\
+                 1 \leq \#(\beta_2) \leq n
+               \end{dcases}                                         &  & \text{(by \cref{1.11})} \\
+    \implies & n = (n - 1) + 1 \leq \#(\beta_1) + \#(\beta_2) = \#(\beta) \leq n                 \\
+    \implies & \#(\beta) = n,
+  \end{align*}
+  by \cref{1.6.15}(b) we know that \(\beta\) is an ordered basis for \(\vs{F}^n\) over \(\F\).
+  Since \(\beta\) is consist of eigenvectors, by \cref{5.1.1} we know that \(A\) is diagonalizable.
+\end{proof}
+
+\begin{ex}\label{ex:5.2.9}
+  Let \(\T\) be a linear operator on a \(n\)-dimensional vector space \(\V\) over \(\F\), and suppose there exists an ordered basis \(\beta\) for \(\V\) over \(\F\) such that \([\T]_{\beta}\) is an upper triangular matrix.
+  \begin{enumerate}
+    \item Prove that the characteristic polynomial for \(\T\) splits.
+    \item State and prove an analogous result for matrices.
+  \end{enumerate}
+  The converse of (a) is treated in \cref{ex:5.4.32}.
+\end{ex}
+
+\begin{proof}[\pf{ex:5.2.9}(a)]
+  Let \(A = [\T]_{\beta}\).
+  Since \(A\) and \(t I_n\) are upper triangular matrices, by \cref{ex:1.3.12} we know that \(A - t I_n\) is also an upper triangular matrix.
+  Thus by \cref{ex:4.2.23} we have \(\det(A - t I_n) = \prod_{i = 1}^n (A_{i i} - t)\).
+  By \cref{5.2.2} this means the characteristic polynomial for \(\T\) splits.
+\end{proof}
+
+\begin{proof}[\pf{ex:5.2.9}(b)]
+  Let \(A \in \ms{n}{n}{\F}\) be an upper triangular matrix.
+  We claim that the characteristic polynomial for \(A\) splits.
+  Let \(\beta\) be the standard ordered basis for \(\vs{F}^n\).
+  By \cref{2.15}(a) we have \(A = [\L_A]_{\beta}\), thus by \cref{ex:5.2.9}(a) and \cref{5.1.6} the characteristic polynomial for \(A\) splits.
 \end{proof}
