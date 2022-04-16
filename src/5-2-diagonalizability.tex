@@ -632,3 +632,111 @@
     \iff & \tp{A} \text{ is diagonalizable}.                                            &  & \text{(by \cref{5.9})}
   \end{align*}
 \end{proof}
+
+\setcounter{ex}{14}
+\begin{ex}\label{ex:5.2.15}
+  Let
+  \[
+    A = \begin{pmatrix}
+      a_{1 1} & a_{1 2} & \cdots & a_{1 n} \\
+      a_{2 1} & a_{2 2} & \cdots & a_{2 n} \\
+      \vdots  & \vdots  &        & \vdots  \\
+      a_{n 1} & a_{n 2} & \cdots & a_{n n}
+    \end{pmatrix} \in \ms{n}{n}{\R}
+  \]
+  be the coefficient matrix of the system of differential equations
+  \begin{align*}
+    x_1' & = a_{1 1} x_1 + a_{1 2} x_2 + \cdots + a_{1 n} x_n  \\
+    x_2' & = a_{2 1} x_1 + a_{2 2} x_2 + \cdots + a_{2 n} x_n  \\
+    x_n' & = a_{n 1} x_1 + a_{n 2} x_2 + \cdots + a_{n n} x_n.
+  \end{align*}
+  Suppose that \(A\) is diagonalizable and that the distinct eigenvalues of \(A\) are \(\seq{\lambda}{1,,k}\).
+  Prove that a differentiable function \(x : \R \to \R^n\) is a solution to the system iff \(x\) is of the form
+  \[
+    x(t) = e^{\lambda_1 t} z_1 + e^{\lambda_2 t} z_2 + \cdots + e^{\lambda_k t} z_k,
+  \]
+  where \(z_i \in E_{\lambda_i}\) for \(i \in \set{1, \dots, k}\).
+  Use this result to prove that the set of solutions to the system is an \(n\)-dimensional real vector space.
+\end{ex}
+
+\begin{proof}[\pf{ex:5.2.15}]
+  Let \(m_i\) be the multiplicity of \(\lambda_i\) for each \(i \in \set{1, \dots, k}\) and let \(\beta\) be the standard ordered basis for \(\R^n\) over \(\R\).
+  Since \(A\) is diagonalizable, by \cref{5.1.1} there exists an ordered basis \(\gamma = \set{\seq{q}{1,,n}}\) for \(\R^n\) over \(\R\) such that \([\L_A]_{\gamma}\) is a diagonal matrix.
+  Let \(D = [\L_A]_{\gamma}\) and let \(Q = [\IT[\R^n]]_{\gamma}^{\beta}\).
+  Note that we can order \(\gamma\) such that \(D_{i i} = \lambda_1\) for all \(i \in \set{1, \dots, m_i}\), \(D_{i i} = \lambda_2\) for all \(i \in \set{m_1 + 1, \dots, m_1 + m_2}\), and in general
+  \[
+    \forall j \in \set{1, \dots, k}, D_{i i} = \lambda_j \text{ if } i \in \set{\pa{\sum_{p = 1}^{j - 1} m_p} - 1, \dots, \sum_{p = 1}^j m_p}.
+  \]
+  By \cref{2.5.3} and \cref{ex:2.5.11}(b) we have \(A = Q D Q^{-1}\).
+  Observe that
+  \begin{align*}
+         & x = z \text{ is a solution of } Ax = x'                                                                       \\
+    \iff & Q D Q^{-1} z = Az = z'                                                                                        \\
+    \iff & D Q^{-1} z = Q^{-1} z'                                                   &  & \text{(by \cref{ex:2.5.11}(b))} \\
+    \iff & D Q^{-1} z = (Q^{-1} z)'                                                 &  & \text{(by \cref{ex:5.2.16})}    \\
+    \iff & y = Q^{-1} z \text{ is a solution of } D y = y'                                                               \\
+    \iff & y = Q^{-1} z \text{ is a solution of } D_{i i} y_i = y_i'                                                     \\
+         & \text{ for all } i \in \set{1, \dots, n}                                 &  & \text{(by \cref{1.3.8})}        \\
+    \iff & y = Q^{-1} z \text{ is a solution of } y_i(t) = c_i e^{D_{i i} t}                                             \\
+         & \text{for all } i \in \set{1, \dots, n} \text{ and for all } c_i \in \R. &  & \text{(by \cref{2.30})}
+  \end{align*}
+  Thus we see that \(x\) is a solution of \(Ax = x'\) iff \(x = Qy\), where \(y_i(t) = c_i e^{D_{i i} t}\) for all \(i \in \set{1, \dots, n}\) and \(c_i \in \R\).
+
+  By \cref{2.5.1} we see that \(q_i \in \gamma\) is the \(i\)th column of \(Q\) for all \(i \in \set{1, \dots, n}\).
+  By \cref{5.1.1} we see that \(\seq{q}{1,,m_1}\) are eigenvectors of \(A\) corresponding to \(\lambda_1\), and in general \(\seq{q}{\pa{\sum_{p = 1}^{j - 1} m_p} + 1,,\sum_{p = 1}^j m_p}\) are eigenvectors of \(A\) corresponding to \(\lambda_j\) for all \(j \in \set{1, \dots, k}\).
+  Thus a solution of \(Ax = x'\) is in the form
+  \begin{align*}
+    x(t) & = Qy(t)                                                                                                                                            \\
+         & = y_1(t) q_1 + \cdots + y_n(t) q_n                                           &  & \text{(by \cref{ex:2.3.14}(a))}                                  \\
+         & = c_1 e^{D_{1 1} t} q_1 + \cdots + c_n e^{D_{n n} t} q_n                                                                                           \\
+         & = e^{\lambda_1 t} (c_1 q_1 + \cdots + c_{m_1} q_{m_1}) + \cdots                                                                                    \\
+         & \quad + e^{\lambda_k t} (c_{n - m_k + 1} q_{n - m_k + 1} + \cdots + c_n q_n)                                                                       \\
+         & = e^{\lambda_1 t} z_1 + \cdots + e^{\lambda_k t} z_k.                        &  & (z_i \in E_{\lambda_i} \text{ for all } i \in \set{1, \dots, k})
+  \end{align*}
+  By \cref{2.33} we know that the set \(\set{e^{\lambda_1 t}, \dots, e^{\lambda_k t}}\) is linearly independent.
+  If \(\seq{a}{1,,n} \in \F\) such that
+  \[
+    a_1 e^{\lambda_1 t} q_1 + \cdots + a_{m_1} e^{\lambda_1 t} q_{m_1} + \cdots + a_{n - m_k + 1} e^{\lambda_k t} q_{n - m_k + 1} + \cdots + a_n e^{\lambda_k t} q_n = \zv,
+  \]
+  then for each \(i \in \set{1, \dots, n}\), we have
+  \begin{align*}
+    a_1 Q_{i 1} + \cdots + a_{m_1} Q_{i m_1}                   & = 0  \\
+    \vdots                                                            \\
+    a_{n - m_k + 1} Q_{i (n - m_k + 1)} + \cdots + a_n Q_{i n} & = 0.
+  \end{align*}
+  In particular, we have
+  \begin{align*}
+    a_1 q_1 + \cdots + a_{m_1} q_{m_1}                 & = \zv  \\
+    \vdots                                                      \\
+    a_{n - m_k + 1} q_{n - m_k + 1} + \cdots + a_n q_n & = \zv.
+  \end{align*}
+  Summing all the equations together we get
+  \[
+    \seq[+]{a,q}{1,,n} = \zv.
+  \]
+  But \(\gamma = \set{\seq{q}{1,,n}}\) implies \(\seq[=]{a}{1,,n} = 0\).
+  Thus the set
+  \[
+    \set{e^{\lambda_1 t} q_1, \dots, e^{\lambda_1 t} q_{m_1}, \dots, e^{\lambda_k t} q_{n - m_k + 1}, \dots, e^{\lambda_k t} q_n}
+  \]
+  is linearly independent.
+  We conclude that the set of solution to \(Ax = x'\) is an \(n\)-dimensional real vector space.
+\end{proof}
+
+\begin{ex}\label{ex:5.2.16}
+  Let \(C \in \ms{m}{n}{\R}\), and let \(Y\) be an \(n \times p\) matrix of differentiable functions.
+  Prove \((CY)' = C Y'\), where \((Y')_{i j} = (Y_{i j})'\) for all \(i \in \set{1, \dots, n}\) and \(j \in \set{1, \dots, p}\).
+\end{ex}
+
+\begin{proof}[\pf{ex:5.2.16}]
+  Let \(k \in \set{1, \dots, n}\) and let \(j \in \set{1, \dots, p}\).
+  Then we have
+  \begin{align*}
+    ((CY)')_{k j} & = ((CY)_{k j})'                        &  & \text{(by \cref{ex:5.2.16})} \\
+                  & = \pa{\sum_{i = 1}^n C_{k i} Y_{i j}}' &  & \text{(by \cref{2.3.1})}     \\
+                  & = \sum_{i = 1}^n C_{k i} (Y_{i j})'                                      \\
+                  & = \sum_{i = 1}^n C_{k i} (Y')_{i j}                                      \\
+                  & = (C Y')_{k j}                         &  & \text{(by \cref{2.3.1})}
+  \end{align*}
+  and thus by \cref{1.2.8} \((CY)' = C Y'\).
+\end{proof}
