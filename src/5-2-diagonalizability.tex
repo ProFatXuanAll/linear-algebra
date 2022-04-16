@@ -740,3 +740,97 @@
   \end{align*}
   and thus by \cref{1.2.8} \((CY)' = C Y'\).
 \end{proof}
+
+\begin{defn}\label{5.2.8}
+  Two linear operators \(\T\) and \(\U\) on a finite-dimensional vector space \(\V\) over \(\F\) are called \textbf{simultaneously diagonalizable} if there exists an ordered basis \(\beta\) for \(\V\) over \(\F\) such that both \([\T]_{\beta}\) and \([\U]_{\beta}\) are diagonal matrices.
+  Similarly, \(A, B \in \ms{n}{n}{\F}\) are called \textbf{simultaneously diagonalizable} if there exists an invertible matrix \(Q \in \ms{n}{n}{\F}\) such that both \(Q^{-1} A Q\) and \(Q^{-1} B Q\) are diagonal matrices.
+\end{defn}
+
+\begin{ex}\label{ex:5.2.17}
+  \begin{enumerate}
+    \item Prove that if \(\T\) and \(\U\) are simultaneously diagonalizable linear operators on a finite-dimensional vector space \(\V\) over \(\F\), then the matrices \([\T]_{\beta}\) and \([\U]_{\beta}\) are simultaneously diagonalizable for any ordered basis \(\beta\).
+    \item Prove that if \(A\) and \(B\) are simultaneously diagonalizable matrices, then \(\L_A\) and \(\L_B\) are simultaneously diagonalizable linear operators.
+  \end{enumerate}
+\end{ex}
+
+\begin{proof}[\pf{ex:5.2.17}(a)]
+  We have
+  \begin{align*}
+             & \T, \U \text{ are simultaneously diagonalizable}                                                                                                                                                                                                                \\
+    \implies & \exists \gamma \subseteq \V : \begin{dcases}
+                                               \gamma \text{ is an ordered basis for } \V \text{ over } \F \\
+                                               [\T]_{\gamma}, [\U]_{\gamma} \text{ are diagonal matrices}
+                                             \end{dcases}                                                                                                                                                                    &  & \text{(by \cref{5.2.8})}                     \\
+    \implies & \text{any ordered basis } \beta \text{ for } \V \text{ over } \F,                                                                                                                                                                                               \\
+             & \begin{dcases}
+                 [\T]_{\gamma} = [\IT[\V]]_{\beta}^{\gamma} [\T]_{\beta} [\IT[\V]]_{\gamma}^{\beta} = \pa{[\IT[\V]]_{\gamma}^{\beta}}^{-1} [\T]_{\beta} [\IT[\V]]_{\gamma}^{\beta} \\
+                 [\U]_{\gamma} = [\IT[\V]]_{\beta}^{\gamma} [\U]_{\beta} [\IT[\V]]_{\gamma}^{\beta} = \pa{[\IT[\V]]_{\gamma}^{\beta}}^{-1} [\U]_{\beta} [\IT[\V]]_{\gamma}^{\beta}
+               \end{dcases} &  & \text{(by \cref{2.23})}                                  \\
+    \implies & \text{any ordered basis } \beta \text{ for } \V \text{ over } \F,                                                                                                                                                                                               \\
+             & [\T]_{\beta}, [\U]_{\beta} \text{ are simultaneously diagonalizable}.                                                                                                                                                             &  & \text{(by \cref{5.2.8})}
+  \end{align*}
+\end{proof}
+
+\begin{proof}[\pf{ex:5.2.17}(b)]
+  Let \(A, B \in \ms{n}{n}{\F}\) and let \(\beta\) be the standard ordered basis for \(\vs{F}^n\) over \(\F\).
+  Then we have
+  \begin{align*}
+             & A, B \text{ are simultaneously diagonalizable}                                                                     \\
+    \implies & \exists Q \in \ms{n}{n}{\F} : Q^{-1} A Q, Q^{-1} B Q \text{ are diagonal matrices} &  & \text{(by \cref{5.2.8})}   \\
+    \implies & \exists Q \in \ms{n}{n}{\F} :                                                                                      \\
+             & Q^{-1} [\L_A]_{\beta} Q, Q^{-1} [\L_B]_{\beta} Q \text{ are diagonal matrices}.    &  & \text{(by \cref{2.15}(a))}
+  \end{align*}
+  Fix one such \(Q\).
+  Since \(Q\) is invertible, by \cref{2.4.5} we see that \(\L_Q(\beta)\) is an ordered basis for \(\vs{F}^n\) over \(\F\).
+  If we let \(\gamma = \L_Q(\beta)\), then by \cref{2.5.1} we see that \(Q = [\IT[\vs{F}^n]]_{\gamma}^{\beta}\).
+  Thus by \cref{2.23} we have \([\L_A]_{\gamma} = Q^{-1} [\L_A]_{\beta} Q\) and \([\L_B]_{\gamma} = Q^{-1} [\L_B]_{\beta} Q\).
+  By \cref{5.2.8} this means \(\L_A\) and \(\L_B\) are simultaneously diagonalizable.
+\end{proof}
+
+\begin{ex}\label{ex:5.2.18}
+  \begin{enumerate}
+    \item Prove that if \(\T\) and \(\U\) are simultaneously diagonalizable operators on a finite dimensional vector space \(\V\) over \(\F\), then \(\T\) and \(\U\) commute (i.e., \(\T \U = \U \T\)).
+    \item Show that if \(A, B \in \ms{n}{n}{\F}\) are simultaneously diagonalizable matrices, then \(A\) and \(B\) commute.
+  \end{enumerate}
+  The converses of (a) and (b) are established in \cref{ex:5.4.25}.
+\end{ex}
+
+\begin{proof}[\pf{ex:5.2.18}(a)]
+  By \cref{5.2.8} there exists an ordered basis \(\beta\) for \(\V\) over \(\F\) such that \([\T]_{\beta}\) and \([\U]_{\beta}\) are diagonal matrices.
+  By \cref{5.1.1} \(\beta\) is consist of eigenvectors of \(\T\) and \(\U\).
+  If \(\lambda_{\T}\) and \(\lambda_{\U}\) are eigenvalues of \(\T\) and \(\U\) corresponding to the same eigenvector \(v \in \beta\), then
+  \begin{align*}
+    (\T \U)(v) & = \T(\U(v))                                                    \\
+               & = \T(\lambda_{\U} v)          &  & \text{(by \cref{5.1.2})}    \\
+               & = \lambda_{\U} \T(v)          &  & \text{(by \cref{2.1.1}(b))} \\
+               & = \lambda_{\U} \lambda_{\T} v &  & \text{(by \cref{5.1.2})}    \\
+               & = \lambda_{\T} \lambda_{\U} v &  & \text{(by \ref{1.2.1})}     \\
+               & = \lambda_{\T} \U(v)          &  & \text{(by \cref{5.1.2})}    \\
+               & = \U(\lambda_{\T} v)          &  & \text{(by \cref{2.1.1}(b))} \\
+               & = \U(\T(v))                   &  & \text{(by \cref{5.1.2})}    \\
+               & = (\U \T)(v).
+  \end{align*}
+  But \(\T \U\) and \(\U \T\) are linear by \cref{2.9}, thus by \cref{2.1.13} we have \(\T \U = \U \T\).
+\end{proof}
+
+\begin{proof}[\pf{ex:5.2.18}(b)]
+  We have
+  \begin{align*}
+             & A, B \text{ are simultaneously diagonalizable}                                            \\
+    \implies & \L_A, \L_B \text{ are simultaneously diagonalizable} &  & \text{(by \cref{ex:5.2.17}(b))} \\
+    \implies & \L_A \L_B = \L_B \L_A                                &  & \text{(by \cref{ex:5.2.18}(a))} \\
+    \implies & \L_{AB} = \L_{BA}                                    &  & \text{(by \cref{2.15}(e))}      \\
+    \implies & AB = BA.                                             &  & \text{(by \cref{2.15}(b))}
+  \end{align*}
+\end{proof}
+
+\begin{ex}\label{ex:5.2.19}
+  Let \(\T\) be a diagonalizable linear operator on a finite-dimensional vector space \(\V\) over \(\F\), and let \(m\) be any positive integer.
+  Prove that \(\T\) and \(\T^m\) are simultaneously diagonalizable.
+\end{ex}
+
+\begin{proof}[\pf{ex:5.2.19}]
+  By \cref{5.1.1} there exists an ordered basis \(\beta\) for \(\V\) over \(\F\) such that \([\T]_{\beta}\) is a diagonal matrix.
+  Since the product of diagonal matrices is a diagonal matrix, by \cref{2.11} we see that \(([\T]_{\beta})^m = [\T^m]_{\beta}\) is a diagonal matrix for any \(m \in \Z^+\).
+  Thus by \cref{5.2.8} \(\T\) and \(\T^m\) are simultaneously diagonalizable.
+\end{proof}
