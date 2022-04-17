@@ -413,3 +413,139 @@
   But \(Au = \lambda u\), and hence \(\lambda > 0\).
   Therefore, \(\lambda = \abs{\lambda} = \rho(A)\).
 \end{proof}
+
+\begin{cor}\label{5.3.13}
+  Let \(A \in \ms{n}{n}{\C}\) be a matrix in which each entry is positive, and let \(\lambda\) be an eigenvalue of \(A\) such that \(\abs{\lambda} = \nu(A)\).
+  Then \(\lambda = \nu(A)\), and the dimension of \(E_{\lambda} = 1\).
+\end{cor}
+
+\begin{proof}[\pf{5.3.13}]
+  We have
+  \begin{align*}
+             & \abs{\lambda} = \nu(A) = \rho(\tp{A})                                                       &  & \text{(by \cref{5.3.8})} \\
+    \implies & \begin{dcases}
+                 \lambda = \rho(\tp{A}) = \nu(A) \\
+                 \set{u} \text{ is a basis for } \ns{\tp{A} - \lambda I_n} \text{ over } \C
+               \end{dcases} &  & \text{(by \cref{5.18})}                                \\
+    \implies & \begin{dcases}
+                 \lambda = \nu(A) \\
+                 \dim(\ns{\tp{A} - \lambda I_n}) = 1
+               \end{dcases}                          &  & \text{(by \cref{1.6.8})}                                                       \\
+    \implies & \begin{dcases}
+                 \lambda = \nu(A) \\
+                 \dim(\ns{A - \lambda I_n}) = 1
+               \end{dcases}.                                                              &  & \text{(by \cref{ex:5.2.13}(b))}
+  \end{align*}
+\end{proof}
+
+\begin{cor}\label{5.3.14}
+  Let \(A \in \ms{n}{n}{\C}\) be a transition matrix in which each entry is positive, and let \(\lambda\) be any eigenvalue of \(A\) other than \(1\).
+  Then \(\abs{\lambda} < 1\).
+  Moreover, the eigenspace corresponding to the eigenvalue \(1\) has dimension \(1\).
+\end{cor}
+
+\begin{proof}[\pf{5.3.14}]
+  By \cref{5.3.12} we see that \(\abs{\lambda} \leq 1\).
+  We claim that \(\abs{\lambda} < 1\).
+  Suppose for sake of contradiction that \(\abs{\lambda} = 1\).
+  Then by \cref{5.3.4,5.3.13} we know that \(\lambda = 1\).
+  But by hypothesis we know that \(\lambda \neq 1\), a contradiction.
+  Thus we must have \(\abs{\lambda} < 1\).
+  The other statement follows from \cref{5.18}.
+\end{proof}
+
+\begin{thm}\label{5.19}
+  Let \(A\) be a regular transition matrix, and let \(\lambda\) be an eigenvalue of \(A\).
+  Then
+  \begin{enumerate}
+    \item \(\abs{\lambda} \leq 1\).
+    \item If \(\abs{\lambda} = 1\), then \(\lambda = 1\), and \(\dim(E_{\lambda}) = 1\).
+  \end{enumerate}
+\end{thm}
+
+\begin{proof}[\pf{5.19}]
+  Statement (a) was proved as \cref{5.3.12}.
+
+  Since \(A\) is regular, by \cref{5.3.7} there exists a positive integer \(s\) such that \(A^s\) has only positive entries.
+  Because \(A\) is a transition matrix and the entries of \(A^s\) are positive, the entries of \(A^{s + 1} = A^s (A)\) are positive.
+  Suppose that \(\abs{\lambda} = 1\).
+  Then \(\lambda^s\) and \(\lambda^{s + 1}\) are eigenvalues of \(A^s\) and \(A^{s + 1}\), respectively, having absolute value \(1\).
+  So by \cref{5.3.14}, \(\lambda^s = \lambda^{s + 1} = 1\).
+  Thus \(\lambda = 1\).
+  Let \(E_{\lambda}\) and \(E_{\lambda}'\) denote the eigenspaces of \(A\) and \(A^s\), respectively, corresponding to \(\lambda = 1\).
+  Then \(E_{\lambda} \subseteq E_{\lambda}'\) and, by \cref{5.3.14}, \(\dim(E_{\lambda}') = 1\).
+  Hence \(E_{\lambda} = E_{\lambda}'\), and \(\dim(E_{\lambda}) = 1\).
+\end{proof}
+
+\begin{cor}\label{5.3.15}
+  Let \(A\) be a regular transition matrix that is diagonalizable.
+  Then \(\lim_{m \to \infty} A^m\) exists.
+\end{cor}
+
+\begin{proof}[\pf{5.3.15}]
+  By \cref{5.19} and \cref{5.14}(b) we see that this is true.
+\end{proof}
+
+\begin{note}
+  In fact, it can be shown that if \(A\) is a regular transition matrix, then the multiplicity of \(1\) as an eigenvalue of \(A\) is \(1\).
+  Thus, by \cref{5.7}, condition (b) of \cref{5.13} is satisfied.
+  So if \(A\) is a regular transition matrix, \(\lim_{m \to \infty} A^m\) exists regardless of whether \(A\) is or is not diagonalizable.
+  As with \cref{5.13}, however, the fact that the multiplicity of \(1\) as an eigenvalue of \(A\) is \(1\) cannot be proved at this time.
+  Nevertheless, we state this result here (leaving the proof until \cref{ex:7.2.20}) and deduce further facts about \(\lim_{m \to \infty} A^m\) when \(A\) is a regular transition matrix.
+\end{note}
+
+\begin{thm}\label{5.20}
+  Let \(A \in \ms{n}{n}{\C}\) be a regular transition matrix.
+  Then
+  \begin{enumerate}
+    \item The multiplicity of \(1\) as an eigenvalue of \(A\) is \(1\).
+    \item \(\lim_{m \to \infty} A^m\) exists.
+    \item \(L = \lim_{m \to \infty} A^m\) is a transition matrix.
+    \item \(AL = LA = L\).
+    \item The columns of \(L\) are identical.
+          In fact, each column of \(L\) is equal to the unique probability vector \(v\) that is also an eigenvector of \(A\) corresponding to the eigenvalue \(1\).
+    \item For any probability vector \(w\), \(\lim_{m \to \infty} (A^m w) = v\).
+  \end{enumerate}
+\end{thm}
+
+\begin{proof}[\pf{5.20}(a)]
+  See \cref{ex:7.2.20}.
+\end{proof}
+
+\begin{proof}[\pf{5.20}(b)]
+  This follows from \cref{5.20}(a), \cref{5.19,5.13}.
+\end{proof}
+
+\begin{proof}[\pf{5.20}(c)]
+  By \cref{5.15}(a), we must show that \(\tp{u} L = \tp{u}\).
+  Now \(A^m\) is a transition matrix by \cref{5.3.5}(a), so
+  \[
+    \tp{u} L = \tp{u} \lim_{m \to \infty} A^m = \lim_{m \to \infty} \tp{u} A^m = \lim_{m \to \infty} \tp{u} = \tp{u},
+  \]
+  and it follows that \(L\) is a transition matrix.
+\end{proof}
+
+\begin{proof}[\pf{5.20}(d)]
+  By \cref{5.12},
+  \[
+    AL = A \lim_{m \to \infty} A^m = \lim_{m \to \infty} AA^m = \lim_{m \to \infty} A^{m + 1} = L.
+  \]
+  Similarly, \(LA = L\).
+\end{proof}
+
+\begin{proof}[\pf{5.20}(e)]
+  Since \(AL = L\) by \cref{5.20}(d), each column of \(L\) is an eigenvector of \(A\) corresponding to the eigenvalue \(1\).
+  Moreover, by \cref{5.20}(c), each column of \(L\) is a probability vector.
+  Thus, by \cref{5.20}(a), each column of \(L\) is equal to the unique probability vector \(v\) corresponding to the eigenvalue \(1\) of \(A\).
+\end{proof}
+
+\begin{proof}[\pf{5.20}(f)]
+  Let \(w\) be any probability vector, and set \(y = \lim_{m \to \infty} A^m w = Lw\).
+  Then \(y\) is a probability vector by \cref{5.3.5}(b), and also \(Ay = ALw = Lw = y\) by \cref{5.20}(d).
+  Hence \(y\) is also an eigenvector corresponding to the eigenvalue \(1\) of \(A\).
+  So \(y = v\) by \cref{5.20}(e).
+\end{proof}
+
+\begin{defn}\label{5.3.16}
+  The vector \(v\) in \cref{5.20}(e) is called the \textbf{fixed probability vector} or \textbf{stationary vector} of the regular transition matrix \(A\).
+\end{defn}
