@@ -200,3 +200,146 @@
   \end{align*}
   by \cref{5.15} we see that \(Av\) is a probability vector.
 \end{proof}
+
+\begin{defn}\label{5.3.6}
+  The city--suburb problem is an example of a process in which elements of a set are each classified as being in one of several fixed states that can switch over time.
+  In general, such a process is called a \textbf{stochastic process}.
+  The switching to a particular state is described by a probability, and in general this probability depends on such factors as the state in question, the time in question, some or all of the previous states in which the object has been (including the current state), and the states that other objects are in or have been in.
+
+  If, however, the probability that an object in one state changes to a different state in a fixed interval of time depends only on the two states (and not on the time, earlier states, or other factors), then the stochastic process is called a \textbf{Markov process}.
+  If, in addition, the number of possible states is finite, then the Markov process is called a \textbf{Markov chain}.
+  Of course, a Markov process is usually only an idealization of reality because the probabilities involved are almost never constant over time.
+
+  The vector that describes the initial probability of being in each state is called the \textbf{initial probability vector} for the Markov chain.
+  We saw that \(\lim_{m \to \infty} A^m P\), where \(A\) is the transition matrix and \(P\) is the initial probability vector of the Markov chain, gives the eventual proportions in each state.
+  In general, however, the limit of powers of a transition matrix need not exist.
+  In fact, it can be shown that the only transition matrices \(A\) such that \(\lim_{m \to \infty} A^m\) does not exist are precisely those matrices for which condition (a) of \cref{5.13} fails to hold.
+\end{defn}
+
+\begin{note}
+  Even if the limit of powers of the transition matrix exists, the computation of the limit may be quite difficult.
+  Fortunately, there is a large and important class of transition matrices for which this limit exists and is easily computed
+  --- this is the class of regular transition matrices.
+\end{note}
+
+\begin{defn}\label{5.3.7}
+  A transition matrix is called \textbf{regular} if some power of the matrix contains only positive entries.
+\end{defn}
+
+\begin{defn}\label{5.3.8}
+  Let \(A \in \ms{n}{n}{\C}\).
+  For \(i, j \in \set{1, \dots, n}\), define \(\rho_i(A)\) to be the sum of the absolute values of the entries of row \(i\) of \(A\), and define \(\nu_j(A)\) to be equal to the sum of the absolute values of the entries of column \(j\) of \(A\).
+  Thus
+  \[
+    \rho_i(A) = \sum_{j = 1}^n \abs{A_{i j}} \quad \text{for } i \in \set{1, \dots, n}
+  \]
+  and
+  \[
+    \nu_j(A) = \sum_{i = 1}^n \abs{A_{i j}} \quad \text{for } j \in \set{1, \dots, n}.
+  \]
+  The \textbf{row sum} of \(A\), denoted \(\rho(A)\), and the \textbf{column sum} of \(A\), denoted \(\nu(A)\), are defined as
+  \[
+    \rho(A) = \max\set{\rho_i(A) : i \in \set{1, \dots, n}} \quad \text{and} \quad \nu(A) = \max\set{\nu_j(A) : j \in \set{1, \dots, n}}.
+  \]
+\end{defn}
+
+\begin{defn}\label{5.3.9}
+  For \(A \in \ms{n}{n}{\C}\), we define the \(i\)th \textbf{Gerschgorin disk} \(C_i\) to be the disk in the complex plane with center \(A_{i i}\) and radius \(r_i = \rho_i(A) - \abs{A_{i i}}\);
+  that is,
+  \[
+    C_i = \set{z \in \C : \abs{z - A_{i i}} \leq r_i}
+  \]
+\end{defn}
+
+\begin{thm}[Gerschgorin's Disk Theorem]\label{5.16}
+  Let \(A \in \ms{n}{n}{\C}\).
+  Then every eigenvalue of \(A\) is contained in a Gerschgorin disk.
+\end{thm}
+
+\begin{proof}[\pf{5.16}]
+  Let \(\lambda\) be an eigenvalue of \(A\) with the corresponding eigenvector
+  \[
+    v = \begin{pmatrix}
+      v_1    \\
+      \vdots \\
+      v_n
+    \end{pmatrix}.
+  \]
+  Then \(v\) satisfies the matrix equation \(Av = \lambda v\), which can be written
+  \[
+    \sum_{j = 1}^n A_{i j} v_j = \lambda v_i \quad \text{for } i \in \set{1, \dots, n}.
+  \]
+  Suppose that \(v_k\) is the coordinate of \(v\) having the largest absolute value;
+  note that \(v_k \neq 0\) because \(v\) is an eigenvector of \(A\).
+
+  We show that \(\lambda\) lies in \(C_k\), that is, \(\abs{\lambda - A_{k k}} \leq r_k\).
+  For \(i = k\), it follows from above equation that
+  \begin{align*}
+    \abs{\lambda v_k - A_{k k} v_k} & = \abs{\sum_{j = 1}^n A_{k j} v_j - A_{k k} v_k}                               \\
+                                    & = \abs{\sum_{\substack{j = 1                                                   \\ j \neq k}}^n A_{k j} v_j}              \\
+                                    & \leq \sum_{\substack{j = 1                                                     \\ j \neq k}}^n \abs{A_{k j}} \abs{v_j}    && \text{(by \cref{d.3}(a)(c))} \\
+                                    & \leq \sum_{\substack{j = 1                                                     \\ j \neq k}}^n \abs{A_{k j}} \abs{v_k}     \\
+                                    & = \abs{v_k} \sum_{\substack{j = 1                                              \\ j \neq k}}^n \abs{A_{k j}}        \\
+                                    & = \abs{v_k} r_k.                                 &  & \text{(by \cref{5.3.9})}
+  \end{align*}
+  Thus
+  \[
+    \abs{v_k} \abs{\lambda - A_{k k}} \leq \abs{v_k} r_k;
+  \]
+  so
+  \[
+    \abs{\lambda - A_{k k}} \leq r_k
+  \]
+  because \(\abs{v_k} > 0\).
+\end{proof}
+
+\begin{cor}\label{5.3.10}
+  Let \(\lambda\) be any eigenvalue of \(A \in \ms{n}{n}{\C}\).
+  Then \(\abs{\lambda} \leq \rho(A)\).
+\end{cor}
+
+\begin{proof}[\pf{5.3.10}]
+  By Gerschgorin's disk theorem (\cref{5.16}), \(\abs{\lambda - A_{k k}} \leq r_k\) for some \(k\).
+  Hence
+  \begin{align*}
+    \abs{\lambda} & = \abs{(\lambda - A_{k k}) + A_{k k}}                                       \\
+                  & \leq \abs{\lambda - A_{k k}} + \abs{A_{k k}} &  & \text{(by \cref{d.3}(c))} \\
+                  & \leq r_k + \abs{A_{k k}}                     &  & \text{(by \cref{5.16})}   \\
+                  & = \rho_k(A)                                  &  & \text{(by \cref{5.3.9})}  \\
+                  & \leq \rho(A).                                &  & \text{(by \cref{5.3.8})}
+  \end{align*}
+\end{proof}
+
+\begin{cor}\label{5.3.11}
+  Let \(\lambda\) be any eigenvalue of \(A \in \ms{n}{n}{\C}\).
+  Then
+  \[
+    \abs{\lambda} \leq \min\set{\rho(A), \nu(A)}.
+  \]
+\end{cor}
+
+\begin{proof}[\pf{5.3.11}]
+  Since \(\abs{\lambda} \leq \rho(A)\) by \cref{5.3.10}, it suffices to show that \(\abs{\lambda} \leq \nu(A)\).
+  By \cref{ex:5.1.14}, \(\lambda\) is an eigenvalue of \(\tp{A}\), and so \(\abs{\lambda} \leq \rho(\tp{A})\) by \cref{5.3.10}.
+  But the rows of \(\tp{A}\) are the columns of \(A\);
+  consequently \(\rho(\tp{A}) = \nu(A)\).
+  Therefore \(\abs{\lambda} \leq \nu(A)\).
+\end{proof}
+
+\begin{cor}\label{5.3.12}
+  If \(\lambda\) is an eigenvalue of a transition matrix, then \(\abs{\lambda} \leq 1\).
+\end{cor}
+
+\begin{proof}[\pf{5.3.12}]
+  This is the immediate consequence of \cref{5.3.4} and \cref{5.3.11}.
+\end{proof}
+
+\begin{thm}\label{5.17}
+  Every transition matrix has \(1\) as an eigenvalue.
+\end{thm}
+
+\begin{proof}[\pf{5.17}]
+  Let \(A \in \ms{n}{n}{\R}\) be a transition matrix, and let \(u \in \R^n\) be the column vector in which each coordinate is \(1\).
+  Then \(\tp{A} u = u\) by \cref{5.15}, and hence \(u\) is an eigenvector of \(\tp{A}\) corresponding to the eigenvalue \(1\).
+  But since \(A\) and \(\tp{A}\) have the same eigenvalues (\cref{ex:5.1.14}), it follows that \(1\) is also an eigenvalue of \(A\).
+\end{proof}
