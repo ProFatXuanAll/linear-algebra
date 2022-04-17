@@ -62,3 +62,141 @@
   This set is of interest because if \(\lambda\) is a complex number, then \(\lim_{m \to \infty} \lambda^m\) exists iff \(\lambda \in S\).
   This fact, which is obviously true if \(\lambda\) is real, can be shown to be true for complex numbers also.
 \end{defn}
+
+\begin{thm}\label{5.13}
+  Let \(A\) be a square matrix with complex entries.
+  Then \(\lim_{m \to \infty} A^m\) exists iff both of the following conditions hold.
+  \begin{enumerate}
+    \item Every eigenvalue of \(A\) is contained in \(S\).
+    \item If \(1\) is an eigenvalue of \(A\), then the dimension of the eigenspace corresponding to \(1\) equals the multiplicity of \(1\) as an eigenvalue of \(A\).
+  \end{enumerate}
+\end{thm}
+
+\begin{proof}[\pf{5.13}]
+  The necessity of condition (a) is easily justified.
+  For suppose that \(\lambda\) is an eigenvalue of \(A\) such that \(\lambda \notin S\).
+  Let \(v\) be an eigenvector of \(A\) corresponding to \(\lambda\).
+  Regarding \(v\) as an \(n \times 1\) matrix, we see that
+  \[
+    \lim_{m \to \infty} (A^m v) = \pa{\lim_{m \to \infty} A^m} v = Lv
+  \]
+  by \cref{5.12}, where \(L = \lim_{m \to \infty} A^m\).
+  But \(\lim_{m \to \infty} (A^m v) = \lim_{m \to \infty} (\lambda^m v)\) diverges because \(\lim_{m \to \infty} \lambda^m\) does not exist.
+  Hence if \(\lim_{m \to \infty} A^m\) exists, then condition (a) of \cref{5.13} must hold.
+
+  We see in Chapter 7 that if \(A\) is a matrix for which condition (b) fails, then \(A\) is similar to a matrix whose upper left \(2 \times 2\) submatrix is precisely this matrix \(B = \begin{pmatrix}
+    1 & 1 \\
+    0 & 1
+  \end{pmatrix}\).
+\end{proof}
+
+\begin{thm}\label{5.14}
+  Let \(A \in \ms{n}{n}{\C}\) satisfy the following two conditions.
+  \begin{enumerate}
+    \item Every eigenvalue of \(A\) is contained in \(S\).
+    \item \(A\) is diagonalizable.
+  \end{enumerate}
+  Then \(\lim_{m \to \infty} A^m\) exists.
+\end{thm}
+
+\begin{proof}[\pf{5.14}]
+  Since \(A\) is diagonalizable, there exists an invertible matrix \(Q\) such that \(Q^{-1} A Q = D\) is a diagonal matrix.
+  Suppose that
+  \[
+    D = \begin{pmatrix}
+      \lambda_1 & 0         & \cdots & 0         \\
+      0         & \lambda_2 & \cdots & 0         \\
+      \vdots    & \vdots    &        & \vdots    \\
+      0         & 0         & \cdots & \lambda_n
+    \end{pmatrix}.
+  \]
+  Because \(\seq{\lambda}{1,,n}\) are the eigenvalues of \(A\), condition (i) requires that for each \(i \in \set{1, \dots, n}\), either \(\lambda_i = 1\) or \(\abs{\lambda_i} < 1\).
+  Thus
+  \[
+    \lim_{m \to \infty} \lambda_i^m = \begin{dcases}
+      1 & \text{if } \lambda_i = 1 \\
+      0 & \text{otherwise}
+    \end{dcases}.
+  \]
+  But since
+  \[
+    D^m = \begin{pmatrix}
+      \lambda_1^m & 0           & \cdots & 0           \\
+      0           & \lambda_2^m & \cdots & 0           \\
+      \vdots      & \vdots      &        & \vdots      \\
+      0           & 0           & \cdots & \lambda_n^m
+    \end{pmatrix},
+  \]
+  the sequence \(D, D^2, \cdots\) converges to a limit \(L\).
+  Hence
+  \[
+    \lim_{m \to \infty} A^m = \lim_{m \to \infty} (Q D Q^{-1})^m = Q L Q^{-1}
+  \]
+  by \cref{5.3.2}.
+\end{proof}
+
+\begin{defn}\label{5.3.4}
+  Any square matrix having these two properties (nonnegative entries and columns that sum to \(1\)) is called a \textbf{transition matrix} or a \textbf{stochastic matrix}.
+  For an arbitrary \(n \times n\) transition matrix \(M\), the rows and columns correspond to \(n\) \textbf{states}, and the entry \(M_{i j}\) represents the probability of moving from state \(j\) to state \(i\) in one \textbf{stage}.
+  In general, for any transition matrix \(M\), the entry \((M^m)_{i j}\) represents the probability of moving from state \(j\) to state \(i\) in \(m\) stages.
+
+  A column vector \(P\) contains nonnegative entries that sum to \(1\) is called a \textbf{probability vector}.
+  In this terminology, each column of a transition matrix is a probability vector.
+  It is often convenient to regard the entries of a transition matrix or a probability vector as proportions or percentages instead of probabilities.
+\end{defn}
+
+\begin{thm}\label{5.15}
+  Let \(M \in \ms{n}{n}{\R}\) having real nonnegative entries, let \(v \in \R^n\) having nonnegative coordinates, and let \(u \in \R^n\) be the column vector in which each coordinate equals \(1\).
+  Then
+  \begin{enumerate}
+    \item \(M\) is a transition matrix iff \(\tp{M} u = u\);
+    \item \(v\) is a probability vector iff \(\tp{u} v = (1)\).
+  \end{enumerate}
+\end{thm}
+
+\begin{proof}[\pf{5.15}]
+  We have
+  \begin{align*}
+         & M \text{ is a transition matrix}                                                                                                 \\
+    \iff & \forall j \in \set{1, \dots, n}, \sum_{i = 1}^n M_{i j} = 1              &  & \text{(by \cref{5.3.4})}                           \\
+    \iff & \forall j \in \set{1, \dots, n}, \sum_{i = 1}^n (\tp{M})_{j i} = 1       &  & \text{(by \cref{1.3.3})}                           \\
+    \iff & \forall j \in \set{1, \dots, n}, \sum_{i = 1}^n (\tp{M})_{j i} u_i = u_i &  & (u_i = 1 \text{ for all } i \in \set{1, \dots, n}) \\
+    \iff & \tp{M} u = u                                                             &  & \text{(by \cref{2.3.1})}
+  \end{align*}
+  and
+  \begin{align*}
+         & v \text{ is a probability vector}                                                         \\
+    \iff & \sum_{i = 1}^n v_i = 1            &  & \text{(by \cref{5.3.4})}                           \\
+    \iff & \sum_{i = 1}^n (\tp{v})_i = 1     &  & \text{(by \cref{1.3.3})}                           \\
+    \iff & \sum_{i = 1}^n (\tp{v})_i u_i = 1 &  & (u_i = 1 \text{ for all } i \in \set{1, \dots, n}) \\
+    \iff & \tp{v} u = (1).                   &  & \text{(by \cref{2.3.1})}
+  \end{align*}
+\end{proof}
+
+\begin{cor}\label{5.3.5}
+  \begin{enumerate}
+    \item The product of two \(n \times n\) transition matrices is an \(n \times n\) transition matrix.
+          In particular, any power of a transition matrix is a transition matrix.
+    \item The product of a transition matrix and a probability vector is a probability vector.
+  \end{enumerate}
+\end{cor}
+
+\begin{proof}[\pf{5.3.5}]
+  Let \(A, B \in \ms{n}{n}{\R}\) be transition matrices, let \(v \in \R^n\) be a probability vector and let \(u \in \R^n\) such that \(u_i = 1\) for all \(i \in \set{1, \dots, n}\).
+  Since
+  \begin{align*}
+    \tp{(AB)} u & = (\tp{B} \tp{A}) u &  & \text{(by \cref{2.3.2})}   \\
+                & = \tp{B} (\tp{A} u) &  & \text{(by \cref{2.16})}    \\
+                & = \tp{B} u          &  & \text{(by \cref{5.15}(a))} \\
+                & = u,                &  & \text{(by \cref{5.15}(a))}
+  \end{align*}
+  by \cref{5.15} we see that \(AB\) is a transition matrix.
+  Since
+  \begin{align*}
+    \tp{(Av)} u & = (\tp{v} \tp{A}) u &  & \text{(by \cref{2.3.2})}   \\
+                & = \tp{v} (\tp{A} u) &  & \text{(by \cref{2.16})}    \\
+                & = \tp{v} u          &  & \text{(by \cref{5.15}(a))} \\
+                & = 1,                &  & \text{(by \cref{5.15}(b))}
+  \end{align*}
+  by \cref{5.15} we see that \(Av\) is a probability vector.
+\end{proof}
