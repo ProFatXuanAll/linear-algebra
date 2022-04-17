@@ -84,7 +84,7 @@
   But \(\lim_{m \to \infty} (A^m v) = \lim_{m \to \infty} (\lambda^m v)\) diverges because \(\lim_{m \to \infty} \lambda^m\) does not exist.
   Hence if \(\lim_{m \to \infty} A^m\) exists, then condition (a) of \cref{5.13} must hold.
 
-  We see in Chapter 7 that if \(A\) is a matrix for which condition (b) fails, then \(A\) is similar to a matrix whose upper left \(2 \times 2\) submatrix is precisely this matrix \(B = \begin{pmatrix}
+  We see in \cref{ch:7} that if \(A\) is a matrix for which condition (b) fails, then \(A\) is similar to a matrix whose upper left \(2 \times 2\) submatrix is precisely this matrix \(B = \begin{pmatrix}
     1 & 1 \\
     0 & 1
   \end{pmatrix}\).
@@ -213,7 +213,7 @@
   The vector that describes the initial probability of being in each state is called the \textbf{initial probability vector} for the Markov chain.
   We saw that \(\lim_{m \to \infty} A^m P\), where \(A\) is the transition matrix and \(P\) is the initial probability vector of the Markov chain, gives the eventual proportions in each state.
   In general, however, the limit of powers of a transition matrix need not exist.
-  In fact, it can be shown that the only transition matrices \(A\) such that \(\lim_{m \to \infty} A^m\) does not exist are precisely those matrices for which condition (a) of \cref{5.13} fails to hold.
+  In fact, it can be shown (\cref{ex:7.2.20}) that the only transition matrices \(A\) such that \(\lim_{m \to \infty} A^m\) does not exist are precisely those matrices for which condition (a) of \cref{5.13} fails to hold.
 \end{defn}
 
 \begin{note}
@@ -342,4 +342,74 @@
   Let \(A \in \ms{n}{n}{\R}\) be a transition matrix, and let \(u \in \R^n\) be the column vector in which each coordinate is \(1\).
   Then \(\tp{A} u = u\) by \cref{5.15}, and hence \(u\) is an eigenvector of \(\tp{A}\) corresponding to the eigenvalue \(1\).
   But since \(A\) and \(\tp{A}\) have the same eigenvalues (\cref{ex:5.1.14}), it follows that \(1\) is also an eigenvalue of \(A\).
+\end{proof}
+
+\begin{note}
+  Suppose that \(A\) is a transition matrix for which some eigenvector corresponding to the eigenvalue \(1\) has only nonnegative coordinates.
+  Then some multiple of this vector is a probability vector \(P\) as well as an eigenvector of \(A\) corresponding to eigenvalue \(1\).
+  It is interesting to observe that if \(P\) is the initial probability vector of a Markov chain having \(A\) as its transition matrix, then the Markov chain is completely static.
+  For in this situation, \(A^m P = P\) for every positive integer \(m\);
+  hence the probability of being in each state never changes.
+\end{note}
+
+\begin{thm}\label{5.18}
+  Let \(A \in \ms{n}{n}{\C}\) be a matrix in which each entry is positive, and let \(\lambda\) be an eigenvalue of \(A\) such that \(\abs{\lambda} = \rho(A)\).
+  Then \(\lambda = \rho(A)\) and \(\set{u}\) is a basis for \(E_{\lambda}\) over \(\C\), where \(u \in \C^n\) is the column vector in which each coordinate equals \(1\).
+\end{thm}
+
+\begin{proof}[\pf{5.18}]
+  Let \(v\) be an eigenvector of \(A\) corresponding to \(\lambda\), with coordinates \(\seq{v}{1,,n}\).
+  Suppose that \(v_k\) is the coordinate of \(v\) having the largest absolute value, and let \(b = \abs{v_k}\).
+  Then
+  \begin{align*}
+    \abs{\lambda} b & = \abs{\lambda} \abs{v_k}                                               \\
+                    & = \abs{\lambda v_k}                      &  & \text{(by \cref{d.3}(a))} \\
+                    & = \abs{\sum_{j = 1}^n A_{k j} v_j}       &  & \text{(by \cref{5.1.2})}  \\
+                    & \leq \sum_{j = 1}^n \abs{A_{k j} v_j}    &  & \text{(by \cref{d.3}(c))} \\
+                    & = \sum_{j = 1}^n \abs{A_{k j}} \abs{v_j} &  & \text{(by \cref{d.3}(a))} \\
+                    & \leq \sum_{j = 1}^n \abs{A_{k j}} b                                     \\
+                    & = \rho_k(A) b                            &  & \text{(by \cref{5.3.8})}  \\
+                    & \leq \rho(A) b.                          &  & \text{(by \cref{5.3.8})}
+  \end{align*}
+  Since \(\abs{\lambda} = \rho(A)\), the three inequalities above are actually equalities;
+  that is,
+  \begin{enumerate}
+    \item \(\abs{\sum_{j = 1}^n A_{k j} v_j} = \sum_{j = 1}^n \abs{A_{k j} v_j}\),
+    \item \(\sum_{j = 1}^n \abs{A_{k j}} \abs{v_j} = \sum_{j = 1}^n \abs{A_{k j}} b\), and
+    \item \(\rho_k(A) = \rho(A)\).
+  \end{enumerate}
+
+  We see in \cref{ex:6.1.15}(b) that (a) holds iff all the terms \(A_{k j} v_j\) (\(j \in \set{1, \dots, n}\)) are nonnegative multiples of some nonzero complex number \(z\).
+  Without loss of generality, we assume that \(\abs{z} = 1\).
+  Thus there exist nonnegative real numbers \(\seq{c}{1,,n}\) such that
+  \[
+    A_{k j} v_j = c_j z
+  \]
+
+  By (b) and the assumption that \(A_{k j} \neq 0\) for all \(k, j \in \set{1, \dots, n}\), we have
+  \[
+    \abs{v_j} = b \quad \text{for } j \in \set{1, \dots, n}.
+  \]
+  Combining equations above, we obtain
+  \[
+    b = \abs{v_j} = \abs{\frac{c_j}{A_{k j}} z} = \frac{c_j}{A_{k j}} \quad \text{for } j \in \set{1, \dots, n},
+  \]
+  and therefore we have \(v_j = bz\) for all \(j\).
+  So
+  \[
+    v = \begin{pmatrix}
+      v_1    \\
+      \vdots \\
+      v_n
+    \end{pmatrix} = \begin{pmatrix}
+      bz     \\
+      \vdots \\
+      bz
+    \end{pmatrix} = bzu,
+  \]
+  and hence \(\set{u}\) is a basis for \(E_{\lambda}\) over \(\C\).
+
+  Finally, observe that all of the entries of \(Au\) are positive because the same is true for the entries of both \(A\) and \(u\).
+  But \(Au = \lambda u\), and hence \(\lambda > 0\).
+  Therefore, \(\lambda = \abs{\lambda} = \rho(A)\).
 \end{proof}
