@@ -549,3 +549,134 @@
 \begin{defn}\label{5.3.16}
   The vector \(v\) in \cref{5.20}(e) is called the \textbf{fixed probability vector} or \textbf{stationary vector} of the regular transition matrix \(A\).
 \end{defn}
+
+\begin{note}
+  \cref{5.20} can be used to deduce information about the eventual distribution in each state of a Markov chain having a regular transition matrix.
+\end{note}
+
+\begin{defn}\label{5.3.17}
+  There is another interesting class of transition matrices that can be represented in the form
+  \[
+    \begin{pmatrix}
+      I   & B \\
+      \zm & C
+    \end{pmatrix},
+  \]
+  where \(I\) is an identity matrix and \(\zm\) is a zero matrix.
+  (Such transition matrices are not regular since the lower left block remains \(\zm\) in any power of the matrix.)
+  The states corresponding to the identity submatrix are called \textbf{absorbing states} because such a state is never left once it is entered.
+  A Markov chain is called an \textbf{absorbing Markov chain} if it is possible to go from an arbitrary state into an absorbing state in a finite number of stages.
+\end{defn}
+
+\exercisesection
+
+\setcounter{ex}{2}
+\begin{ex}\label{ex:5.3.3}
+  Prove that if \(\seq{A}{1,2,}\) is a sequence of \(n \times p\) matrices with complex entries such that \(\lim_{m \to \infty} A_m = L\), then \(\lim_{m \to \infty} \tp{(A_m)} = \tp{L}\).
+\end{ex}
+
+\begin{proof}[\pf{ex:5.3.3}]
+  We have
+  \begin{align*}
+         & \lim_{m \to \infty} A_m = L                                                                                                                                 \\
+    \iff & \forall i \in \set{1, \dots, n} \text{ and } j \in \set{1, \dots, p}, \lim_{m \to \infty} (A_m)_{i j} = L_{i j}               &  & \text{(by \cref{5.3.1})} \\
+    \iff & \forall i \in \set{1, \dots, n} \text{ and } j \in \set{1, \dots, p}, \lim_{m \to \infty} (\tp{(A_m)})_{j i} = (\tp{L})_{j i} &  & \text{(by \cref{1.3.3})} \\
+    \iff & \lim_{m \to \infty} \tp{(A_m)} = \tp{L}.                                                                                      &  & \text{(by \cref{5.3.1})}
+  \end{align*}
+\end{proof}
+
+\begin{ex}\label{ex:5.3.4}
+  Prove that if \(A \in \ms{n}{n}{\C}\) is diagonalizable and \(L = \lim_{m \to \infty} A^m\) exists, then either \(L = I_n\) or \(\rk{L} < n\).
+\end{ex}
+
+\begin{proof}[\pf{ex:5.3.4}]
+  Since \(A\) is diagonalizable, there exists some \(Q \in \ms{n}{n}{\C}\) such that \(D = Q^{-1} A Q\) is a diagonal matrix.
+  Then we have
+  \begin{align*}
+    L & = \lim_{m \to \infty} A^m                                                                                   \\
+      & = \lim_{m \to \infty} (Q D Q^{-1})^m                                                                        \\
+      & = Q \pa{\lim_{m \to \infty} D^m} Q^{-1}                                       &  & \text{(by \cref{5.3.2})} \\
+      & = Q \begin{pmatrix}
+              \lim_{m \to \infty} (D_{1 1})^m & \cdots & 0                               \\
+              \vdots                          & \ddots & \vdots                          \\
+              0                               & \cdots & \lim_{m \to \infty} (D_{n n})^m
+            \end{pmatrix} Q^{-1}. &  & \text{(by \cref{5.3.1})}                              \\
+  \end{align*}
+  Since \(D_{i i} \in \C\) for all \(i \in \set{1, \dots, n}\), by \cref{5.3.3} we see that \(\lim_{m \to \infty} D^m\) exists iff \(\abs{D_{i i}} < 1\) or \(D_{i i} = 1\).
+  Now we split into two cases:
+  \begin{itemize}
+    \item If \(D_{i i} = 1\) for all \(i \in \set{1, \dots, n}\), then we have
+          \begin{align*}
+                     & D = I_n                                                                               \\
+            \implies & \lim_{m \to \infty} D^m = \lim_{m \to \infty} I_n = I_n &  & \text{(by \cref{5.3.1})} \\
+            \implies & L = Q I_n Q^{-1} = I_n.
+          \end{align*}
+    \item If \(\abs{D_{j j}} < 1\) for some \(j \in \set{1, \dots, n}\), then we have
+          \begin{align*}
+                     & \lim_{m \to \infty} D_{j j}^m = 0                                   \\
+            \implies & \rk{\lim_{m \to \infty} D} < n    &  & \text{(by \cref{3.5})}       \\
+            \implies & \rk{L} < n.                       &  & \text{(by \cref{3.7}(c)(d))}
+          \end{align*}
+  \end{itemize}
+  From all cases above we conclude that \cref{ex:5.3.4} is true.
+\end{proof}
+
+\begin{ex}\label{ex:5.3.5}
+  Find \(A, B \in \ms{2}{2}{\R}\) such that
+  \begin{align*}
+     & \lim_{m \to \infty} A^m \in \ms{2}{2}{\R}    \\
+     & \lim_{m \to \infty} B^m \in \ms{2}{2}{\R}    \\
+     & \lim_{m \to \infty} (AB)^m \in \ms{2}{2}{\R}
+  \end{align*}
+  but
+  \[
+    \lim_{m \to \infty} (AB)^m \neq (\lim_{m \to \infty} A^m) (\lim_{m \to \infty} B^m).
+  \]
+\end{ex}
+
+\begin{proof}[\pf{ex:5.3.5}]
+  Let
+  \[
+    A = \begin{pmatrix}
+      \frac{1}{2} & \frac{1}{2} \\
+      0           & 0
+    \end{pmatrix} \quad \text{and} \quad B = \begin{pmatrix}
+      1 & 0 \\
+      1 & 0
+    \end{pmatrix}.
+  \]
+  Then we have
+  \begin{align*}
+    \lim_{m \to \infty} A^m    & = \lim_{m \to \infty} \begin{pmatrix}
+                                                         \frac{1}{2^m} & \frac{1}{2^m} \\
+                                                         0             & 0
+                                                       \end{pmatrix} = \begin{pmatrix}
+                                                                         0 & 0 \\
+                                                                         0 & 0
+                                                                       \end{pmatrix} \\
+    \lim_{m \to \infty} B^m    & = \lim_{m \to \infty} \begin{pmatrix}
+                                                         1 & 0 \\
+                                                         1 & 0
+                                                       \end{pmatrix} = \begin{pmatrix}
+                                                                         1 & 0 \\
+                                                                         1 & 0
+                                                                       \end{pmatrix} \\
+    \lim_{m \to \infty} (AB)^m & = \lim_{m \to \infty} \begin{pmatrix}
+                                                         1 & 0 \\
+                                                         0 & 0
+                                                       \end{pmatrix} = \begin{pmatrix}
+                                                                         1 & 0 \\
+                                                                         0 & 0
+                                                                       \end{pmatrix}
+  \end{align*}
+  and thus
+  \[
+    (\lim_{m \to \infty} A^m) (\lim_{m \to \infty} B^m) = \begin{pmatrix}
+      0 & 0 \\
+      0 & 0
+    \end{pmatrix} \neq \begin{pmatrix}
+      1 & 0 \\
+      0 & 0
+    \end{pmatrix} = \lim_{m \to \infty} (AB)^m.
+  \]
+\end{proof}
