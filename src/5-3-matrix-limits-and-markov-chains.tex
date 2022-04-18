@@ -765,3 +765,272 @@
 \begin{proof}[\pf{ex:5.3.19}(c)]
   This is the immediate consequence of \cref{ex:5.3.19}(a)(b).
 \end{proof}
+
+\begin{defn}\label{5.3.18}
+  For \(A \in \ms{n}{n}{\C}\), define \(e^A = \lim_{m \to \infty} B_m\), where
+  \[
+    B_m = I_n + A + \frac{A^2}{2!} + \cdots + \frac{A^m}{m!}.
+  \]
+  Thus \(e^A\) is the sum of the infinite series
+  \[
+    I_n + A + \frac{A^2}{2!} + \frac{A^3}{3!} + \cdots,
+  \]
+  and \(B_m\) is the \(m\)th partial sum of this series.
+  Note the analogy with the power series
+  \[
+    e^a = 1 + a + \frac{a^2}{2!} + \frac{a^3}{3!} + \cdots,
+  \]
+  which is valid for all complex numbers \(a\).
+\end{defn}
+
+\begin{ex}\label{ex:5.3.20}
+  Compute \(e^{\zm}\) and \(e^{I_n}\), where \(\zm\) and \(I_n\) are zero and identity matrices in \(\ms{n}{n}{\C}\), respectively.
+\end{ex}
+
+\begin{proof}[\pf{ex:5.3.20}]
+  Since \(\zm^m = \zm\) and \((I_n)^m = I_n\) for all \(m \in \Z^+\), we have
+  \begin{align*}
+    e^{\zm} & = \sum_{m = 0}^\infty \frac{\zm^m}{m!}       &  & \text{(by \cref{5.3.18})} \\
+            & = I_n + \sum_{m = 1}^\infty \frac{\zm^m}{m!} &  & \text{(by \cref{2.3.6})}  \\
+            & = I_n + \sum_{m = 1}^\infty \zm                                             \\
+            & = I_n + \zm                                                                 \\
+            & = I_n
+  \end{align*}
+  and
+  \begin{align*}
+    e^{I_n} & = \sum_{m = 0}^\infty \frac{(I_n)^m}{m!}                                                                      &  & \text{(by \cref{5.3.18})} \\
+            & = \sum_{m = 0}^\infty \frac{I_n}{m!}                                                                                                         \\
+            & = \lim_{M \to \infty} \sum_{m = 0}^M \begin{pmatrix}
+                                                     \frac{1}{m!} & \cdots & 0            \\
+                                                     \vdots       & \ddots & \vdots       \\
+                                                     0            & \cdots & \frac{1}{m!}
+                                                   \end{pmatrix}                                                                    \\
+            & = \lim_{M \to \infty} \begin{pmatrix}
+                                      \sum_{m = 0}^M  \frac{1}{m!} & \cdots & 0                           \\
+                                      \vdots                       & \ddots & \vdots                      \\
+                                      0                            & \cdots & \sum_{m = 0}^M \frac{1}{m!}
+                                    \end{pmatrix}                                        &  & \text{(by \cref{1.2.9})}                                     \\
+            & = \begin{pmatrix}
+                  \lim_{M \to \infty} \sum_{m = 0}^M  \frac{1}{m!} & \cdots & 0                                              \\
+                  \vdots                                           & \ddots & \vdots                                         \\
+                  0                                                & \cdots & \lim_{M \to \infty}\sum_{m = 0}^M \frac{1}{m!}
+                \end{pmatrix} &  & \text{(by \cref{5.3.1})}                                 \\
+            & = \begin{pmatrix}
+                  \sum_{m = 0}^\infty \frac{1}{m!} & \cdots & 0                                \\
+                  \vdots                           & \ddots & \vdots                           \\
+                  0                                & \cdots & \sum_{m = 0}^\infty \frac{1}{m!}
+                \end{pmatrix}                               &  & \text{(by \cref{1.2.9})}                                                               \\
+            & = \begin{pmatrix}
+                  e      & \cdots & 0      \\
+                  \vdots & \ddots & \vdots \\
+                  0      & \cdots & e
+                \end{pmatrix}                                                                                                                   \\
+            & = e I_n.                                                                                                      &  & \text{(by \cref{1.2.9})}
+  \end{align*}
+\end{proof}
+
+\begin{ex}\label{ex:5.3.21}
+  Let \(P^{-1} A P = D\) be a diagonal matrix.
+  Prove that \(e^A = P e^D P^{-1}\).
+\end{ex}
+
+\begin{proof}[\pf{ex:5.3.21}]
+  Let \(A \in \ms{n}{n}{\C}\).
+  Since
+  \begin{align*}
+    e^D & = \sum_{m = 0}^\infty \frac{D^m}{m!}                                                                                                                     &  & \text{(by \cref{5.3.18})} \\
+        & = \lim_{M \to \infty} \sum_{m = 0}^M \frac{D^m}{m!}                                                                                                                                     \\
+        & = \lim_{M \to \infty} \begin{pmatrix}
+                                  \sum_{m = 0}^M \frac{(D_{1 1})^m}{m!} & \cdots & 0                                     \\
+                                  \vdots                                & \ddots & \vdots                                \\
+                                  0                                     & \cdots & \sum_{m = 0}^M \frac{(D_{n n})^m}{m!}
+                                \end{pmatrix}                                         &  & \text{(by \cref{2.3.5})}                                                     \\
+        & = \begin{pmatrix}
+              \lim_{M \to \infty} \sum_{m = 0}^M \frac{(D_{1 1})^m}{m!} & \cdots & 0                                                         \\
+              \vdots                                                    & \ddots & \vdots                                                    \\
+              0                                                         & \cdots & \lim_{M \to \infty} \sum_{m = 0}^M \frac{(D_{n n})^m}{m!}
+            \end{pmatrix} &  & \text{(by \cref{5.3.1})}                                 \\
+        & = \begin{pmatrix}
+              e^{D_{1 1}} & \cdots & 0           \\
+              \vdots      & \ddots & \vdots      \\
+              0           & \cdots & e^{D_{n n}}
+            \end{pmatrix},
+  \end{align*}
+  we have
+  \begin{align*}
+    e^A & = \sum_{m = 0}^\infty \frac{A^m}{m!}                                   &  & \text{(by \cref{5.3.18})} \\
+        & = \sum_{m = 0}^\infty \frac{P D^m P^{-1}}{m!}                                                         \\
+        & = \lim_{M \to \infty} \sum_{m = 0}^M \frac{P D^m P^{-1}}{m!}                                          \\
+        & = \lim_{M \to \infty} P \pa{\sum_{m = 0}^M \frac{D^m}{m!}} P^{-1}      &  & \text{(by \cref{2.3.5})}  \\
+        & = P \pa{\lim_{M \to \infty} \pa{\sum_{m = 0}^M \frac{D^m}{m!}}} P^{-1} &  & \text{(by \cref{5.3.2})}  \\
+        & = P \pa{\sum_{m = 0}^\infty \frac{D^m}{m!}} P^{-1}                                                    \\
+        & = P e^D P^{-1}.                                                        &  & \text{(by \cref{5.3.18})}
+  \end{align*}
+\end{proof}
+
+\begin{ex}\label{ex:5.3.22}
+  Let \(A \in \ms{n}{n}{\C}\) be diagonalizable.
+  Use the result of \cref{ex:5.3.21} to show that \(e^A\) exists.
+  (\cref{ex:7.2.21} shows that \(e^A\) exists for every \(A \in \ms{n}{n}{\C}\).)
+\end{ex}
+
+\begin{proof}[\pf{ex:5.3.22}]
+  Since \(A\) is diagonalizable, by \cref{5.1.1} there exists some \(Q \in \ms{n}{n}{\C}\) such that \(D = Q^{-1} A Q\) is a diagonal matrix.
+  Then by \cref{ex:5.3.21} we have \(e^A = Q e^D Q^{-1}\).
+\end{proof}
+
+\begin{ex}\label{ex:5.3.23}
+  Find \(A, B \in \ms{2}{2}{\R}\) such that \(e^A e^B \neq e^{A + B}\).
+\end{ex}
+
+\begin{proof}[\pf{ex:5.3.23}]
+  Let
+  \[
+    A = \begin{pmatrix}
+      1 & 0 \\
+      0 & 0
+    \end{pmatrix} \quad \text{and} \quad B = \begin{pmatrix}
+      0 & 0 \\
+      0 & 1
+    \end{pmatrix}.
+  \]
+  Observe that \(A^m = A\) and \(B^m = B\) for all \(m \in \Z^+\).
+  Then we have
+  \begin{align*}
+    e^A       & = \sum_{m = 0}^\infty \frac{A^m}{m!} = \sum_{m = 0}^\infty \frac{A}{m!} = \begin{pmatrix}
+                                                                                            e & 0 \\
+                                                                                            0 & 0
+                                                                                          \end{pmatrix} &  & \text{(by \cref{5.3.18})}                           \\
+    e^B       & = \sum_{m = 0}^\infty \frac{B^m}{m!} = \sum_{m = 0}^\infty \frac{B}{m!} = \begin{pmatrix}
+                                                                                            0 & 0 \\
+                                                                                            0 & e
+                                                                                          \end{pmatrix} &  & \text{(by \cref{5.3.18})}                           \\
+    e^{A + B} & = e^{I_2} = \begin{pmatrix}
+                              e & 0 \\
+                              0 & e
+                            \end{pmatrix} \neq \begin{pmatrix}
+                                                 0 & 0 \\
+                                                 0 & 0
+                                               \end{pmatrix} = e^A e^B.                                                        &  & \text{(by \cref{ex:5.3.20})}
+  \end{align*}
+\end{proof}
+
+\begin{ex}\label{ex:5.3.24}
+  Prove that a differentiable function \(x : \R \to \R^n\) is a solution to the system of differential equations defined in \cref{ex:5.2.15} iff \(x(t) = e^{tA} v\) for some \(v \in \R^n\), where \(A\) is defined in that exercise.
+\end{ex}
+
+\begin{proof}[\pf{ex:5.3.24}]
+  Let \(\seq{\lambda}{1,,k} \in \R\) be distinct eigenvalues of \(A\) and let \(\seq{m}{1,,k}\) be multiplicities of \(\seq{\lambda}{1,,k}\).
+  Since \(A\) is diagonalizable, by \cref{5.1.1} there exists some \(Q \in \ms{n}{n}{\R}\) such that \(D = Q^{-1} A Q\).
+  We can ordered \(Q\) and \(D\) in the way that the \((1 + \sum_{i = 1}^{j - 1} m_i)\)-th column to the \((\sum_{i = 1}^j m_i)\)-th column of \(Q\) and \(D\) are eigenvectors of \(\lambda_j\) and eigenvalue \(\lambda_j\), respectively.
+  By \cref{ex:5.2.15} we know that \(x\) is a solution to \(Ax = x'\) iff
+  \[
+    x(t) = e^{\lambda_1 t} z_1 + \cdots + e^{\lambda_k t} z_k
+  \]
+  where \(z_j \in E_{\lambda_j}\) for all \(j \in \set{1, \dots, k}\).
+  Then we can rewrite the above equation as follow:
+  \begin{align*}
+    x(t) & = e^{\lambda_1 t} z_1 + \cdots + e^{\lambda_k t} z_k                                               \\
+         & = e^{\lambda_1 t} (\seq[+]{c,q}{1,,m_1}) + \cdots + e^{\lambda_k t} (\seq[+]{c,q}{n - m_k + 1,,n}) \\
+         & = \begin{pmatrix}
+               c_1 q_1 & \cdots & c_n q_n
+             \end{pmatrix} \begin{pmatrix}
+                             e^{\lambda_1 t} & \cdots & 0             \\
+                             \vdots          & \ddots & \vdots        \\
+                             0               & \cdots & e^{\lambda_k}
+                           \end{pmatrix} \begin{pmatrix}
+                                           1      \\
+                                           \vdots \\
+                                           1
+                                         \end{pmatrix}                                           \\
+         & = Q \begin{pmatrix}
+                 c_1    & \cdots & 0      \\
+                 \vdots & \ddots & \vdots \\
+                 0      & \cdots & c_n
+               \end{pmatrix} \begin{pmatrix}
+                               e^{\lambda_1 t} & \cdots & 0             \\
+                               \vdots          & \ddots & \vdots        \\
+                               0               & \cdots & e^{\lambda_k}
+                             \end{pmatrix} \begin{pmatrix}
+                                             1      \\
+                                             \vdots \\
+                                             1
+                                           \end{pmatrix}                                         \\
+         & = Q \begin{pmatrix}
+                 e^{\lambda_1 t} & \cdots & 0             \\
+                 \vdots          & \ddots & \vdots        \\
+                 0               & \cdots & e^{\lambda_k}
+               \end{pmatrix} \begin{pmatrix}
+                               c_1    & \cdots & 0      \\
+                               \vdots & \ddots & \vdots \\
+                               0      & \cdots & c_n
+                             \end{pmatrix} \begin{pmatrix}
+                                             1      \\
+                                             \vdots \\
+                                             1
+                                           \end{pmatrix}
+  \end{align*}
+  where \(\seq{c}{1,,n} \in \R\) and \(q_i\) is the \(i\)th column of \(Q\).
+  By \cref{5.3.18} we see that
+  \[
+    e^{tD} = \begin{pmatrix}
+      e^{\lambda_1 t} & \cdots & 0             \\
+      \vdots          & \ddots & \vdots        \\
+      0               & \cdots & e^{\lambda_k}
+    \end{pmatrix}.
+  \]
+  Thus we have
+  \begin{align*}
+    x(t) & = Q e^{tD} \begin{pmatrix}
+                        c_1    & \cdots & 0      \\
+                        \vdots & \ddots & \vdots \\
+                        0      & \cdots & c_n
+                      \end{pmatrix} \begin{pmatrix}
+                                      1      \\
+                                      \vdots \\
+                                      1
+                                    \end{pmatrix}                                             \\
+         & = Q e^{tD} Q^{-1} Q \begin{pmatrix}
+                                 c_1    & \cdots & 0      \\
+                                 \vdots & \ddots & \vdots \\
+                                 0      & \cdots & c_n
+                               \end{pmatrix} \begin{pmatrix}
+                                               1      \\
+                                               \vdots \\
+                                               1
+                                             \end{pmatrix}                                    \\
+         & = e^{Q (tD) Q^{-1}} Q \begin{pmatrix}
+                                   c_1    & \cdots & 0      \\
+                                   \vdots & \ddots & \vdots \\
+                                   0      & \cdots & c_n
+                                 \end{pmatrix} \begin{pmatrix}
+                                                 1      \\
+                                                 \vdots \\
+                                                 1
+                                               \end{pmatrix} &  & \text{(by \cref{ex:5.3.21})} \\
+         & = e^{t Q D Q^{-1}} Q \begin{pmatrix}
+                                  c_1    & \cdots & 0      \\
+                                  \vdots & \ddots & \vdots \\
+                                  0      & \cdots & c_n
+                                \end{pmatrix} \begin{pmatrix}
+                                                1      \\
+                                                \vdots \\
+                                                1
+                                              \end{pmatrix}  &  & \text{(by \cref{2.3.5})}     \\
+         & = e^{tA} Q \begin{pmatrix}
+                        c_1    & \cdots & 0      \\
+                        \vdots & \ddots & \vdots \\
+                        0      & \cdots & c_n
+                      \end{pmatrix} \begin{pmatrix}
+                                      1      \\
+                                      \vdots \\
+                                      1
+                                    \end{pmatrix}         &  & (Q^{-1} A Q = D)                \\
+         & = e^{tA} (\seq[+]{c,q}{1,,n}).
+  \end{align*}
+  Since \(\seq{q}{1,,n}\) is a basis for \(\R^n\) over \(\R\), we can simply rewrite as
+  \[
+    x(t) = e^{tA} v
+  \]
+  for all \(v \in \R^n\).
+\end{proof}
