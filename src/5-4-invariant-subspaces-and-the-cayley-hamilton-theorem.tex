@@ -466,6 +466,102 @@
   Thus \(\T(v) = \lambda v\) and by \cref{5.1.2} \(v\) is an eigenvector of \(\T\).
 \end{proof}
 
+\begin{ex}\label{ex:5.4.17}
+  Let \(A \in \ms{n}{n}{\F}\).
+  Prove that
+  \[
+    \dim\pa{\spn{\set{I_n, A, A^2, \dots}}} \leq n.
+  \]
+\end{ex}
+
+\begin{proof}[\pf{ex:5.4.17}]
+  Let \(f\) be the characteristic polynomial of \(A\).
+  By \cref{5.3} there exist some \(\seq{a}{0,,n-1} \in \F\) such that
+  \[
+    f(t) = a_0 + a_1 t + \cdots + a_{n - 1} t^{n - 1} + (-1)^n t^n.
+  \]
+  By Cayley--Hamilton theorem (\cref{5.4.4}) we see that
+  \[
+    f(A) = a_0 I_n + a_1 A + \cdots + a_{n - 1} A^{n - 1} + (-1)^n A^n = \zm.
+  \]
+  Thus \(A^n \in \spn{\set{I_n, A, A^2, \dots, A^{n - 1}}}\).
+  Since
+  \[
+    a_0 A + a_1 A^2 + \cdots + a_{n - 1} A^n + (-1)^n A^{n + 1} = \zm,
+  \]
+  we see that \(A^{n + 1} \in \spn{\set{A, A^2, \dots, A^{n - 1}, A^n}} = \spn{\set{I_n, A, A^2, \dots, A^{n - 1}}}\).
+  Thus for all \(m \geq n\), we have \(A^m \in \spn{\set{I_n, A, A^2, \dots, A^{n - 1}}}\).
+  By \cref{1.6.8} this means \(\dim\pa{\spn{\set{I_n, A, A^2, \dots}}} = \dim\pa{\spn{\set{I_n, A, A^2, \dots, A^{n - 1}}}} \leq n\).
+\end{proof}
+
+\begin{ex}\label{ex:5.4.18}
+  Let \(A \in \ms{n}{n}{\F}\) with characteristic polynomial
+  \[
+    f(t) = (-1)^n t^n + a_{n - 1} t^{n - 1} + \cdots + a_1 t + a_0.
+  \]
+  \begin{enumerate}
+    \item Prove that \(A\) is invertible iff \(a_0 \neq 0\).
+    \item Prove that if \(A\) is invertible, then
+          \[
+            A^{-1} = \frac{-1}{a_0} \pa{(-1)^n A^{n - 1} + a_{n - 1} A^{n - 2} + \cdots + a_1 I_n}.
+          \]
+    \item Use (b) to compute \(A^{-1}\) for
+          \[
+            A = \begin{pmatrix}
+              1 & 2 & 1  \\
+              0 & 2 & 3  \\
+              0 & 0 & -1
+            \end{pmatrix}.
+          \]
+  \end{enumerate}
+\end{ex}
+
+\begin{proof}[\pf{ex:5.4.18}(a)]
+  See \cref{ex:5.1.20}
+\end{proof}
+
+\begin{proof}[\pf{ex:5.4.18}(b)]
+  We have
+  \begin{align*}
+             & f(A) = (-1)^n A^n + a_{n - 1} A^{n - 1} + \cdots + a_1 A + a_0 I_n = \zm                   &  & \text{(by \cref{5.4.4})} \\
+    \implies & (-1)^n A^n + a_{n - 1} A^{n - 1} + \cdots + a_1 A = -a_0 I_n                                                             \\
+    \implies & A \pa{(-1)^n A^{n - 1} + a_{n - 1} A^{n - 2} + \cdots + a_1 I_n} = -a_0 I_n                &  & \text{(by \cref{2.3.5})} \\
+    \implies & A \pa{\frac{-1}{a_0} \pa{(-1)^n A^{n - 1} + a_{n - 1} A^{n - 2} + \cdots + a_1 I_n}} = I_n &  & (a_0 \neq 0)             \\
+    \implies & \frac{-1}{a_0} \pa{(-1)^n A^{n - 1} + a_{n - 1} A^{n - 2} + \cdots + a_1 I_n} = A^{-1}.    &  & \text{(by \cref{2.4.3})}
+  \end{align*}
+\end{proof}
+
+\begin{proof}[\pf{ex:5.4.18}(c)]
+  We have
+  \begin{align*}
+    \det(A - t I_3) & = \begin{pmatrix}
+                          1 - t & 2     & 1      \\
+                          0     & 2 - t & 3      \\
+                          0     & 0     & -1 - t
+                        \end{pmatrix} &  & \text{(by \cref{4.2.2})}               \\
+                    & = (1 - t)(2 - t)(-1 - t)  &  & \text{(by \cref{ex:4.2.23})} \\
+                    & = -t^3 + 2t^2 + t - 2
+  \end{align*}
+  and
+  \begin{align*}
+    A^{-1} & = \frac{-1}{-2} \pa{-A^2 + 2A + I_3} &  & \text{(by \cref{ex:5.4.18})} \\
+           & = \frac{1}{2} \pa{-\begin{pmatrix}
+                                    1 & 6 & 6 \\
+                                    0 & 4 & 3 \\
+                                    0 & 0 & 1
+                                  \end{pmatrix} + 2\begin{pmatrix}
+                                                     1 & 2 & 1  \\
+                                                     0 & 2 & 3  \\
+                                                     0 & 0 & -1
+                                                   \end{pmatrix} + I_3}               \\
+           & = \begin{pmatrix}
+                 1 & -1          & -2          \\
+                 0 & \frac{1}{2} & \frac{3}{2} \\
+                 0 & 0           & -1
+               \end{pmatrix}.
+  \end{align*}
+\end{proof}
+
 \begin{ex}\label{ex:5.4.19}
   Let \(A \in \ms{k}{k}{\F}\)
   \[
