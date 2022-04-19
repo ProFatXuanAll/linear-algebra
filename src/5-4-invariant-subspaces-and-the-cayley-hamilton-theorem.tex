@@ -185,6 +185,93 @@
   \end{align*}
 \end{proof}
 
+\begin{note}
+  It is useful to decompose a finite-dimensional vector space \(\V\) over \(\F\) into a direct sum of as many \(\T\)-invariant subspaces as possible because the behavior of \(\T\) on \(\V\) can be inferred from its behavior on the direct summands.
+  For example, \(\T\) is diagonalizable iff \(\V\) can be decomposed into a direct sum of one-dimensional \(\T\)-invariant subspaces (see \cref{ex:5.4.36}).
+  In \cref{ch:7}, we consider alternate ways of decomposing \(\V\) into direct sums of \(\T\)-invariant subspaces if \(\T\) is not diagonalizable.
+\end{note}
+
+\begin{thm}\label{5.24}
+  Let \(\T\) be a linear operator on a finite-dimensional vector space \(\V\) over \(\F\), and suppose that \(\V = \seq[\oplus]{\W}{1,,k}\), where \(\W_i\) is a \(\T\)-invariant subspace of \(\V\) over \(\F\) for each \(i \in \set{1, \dots, k}\).
+  Suppose that \(f_i\) is the characteristic polynomial of \(\T_{\W}\) for each \(i \in \set{1, \dots, k}\).
+  Then \(\prod_{i = 1}^k f_i\) is the characteristic polynomial of \(\T\).
+\end{thm}
+
+\begin{proof}[\pf{5.24}]
+  The proof is by mathematical induction on \(k\).
+  In what follows, \(f\) denotes the characteristic polynomial of \(\T\).
+  Suppose first that \(k = 2\).
+  Let \(\beta_1\) be an ordered basis for \(\W_1\) over \(\F\), \(\beta_2\) an ordered basis for \(\W_2\) over \(\F\), and \(\beta = \beta_1 \cup \beta_2\).
+  Then \(\beta\) is an ordered basis for \(\V\) over \(\F\) by \cref{5.10}(d).
+  Let \(A = [\T]_{\beta}\), \(B_1 = [\T_{\W_1}]_{\beta_1}\), and \(B_2 = [\T_{\W_2}]_{\beta_2}\).
+  By \cref{ex:5.4.34}, it follows that
+  \[
+    A = \begin{pmatrix}
+      B_1  & \zm \\
+      \zm' & B_2
+    \end{pmatrix},
+  \]
+  where \(\zm\) and \(\zm'\) are zero matrices of the appropriate sizes.
+  Then
+  \[
+    f(t) = \det(A - tI) = \det(B_1 - tI) \cdot \det(B_2 - tI) = f_1(t) \cdot f_2(t)
+  \]
+  as in the proof of \cref{5.21}, proving the result for \(k = 2\).
+  Now assume that the theorem is valid for \(k\) summands, where \(k \geq 2\), and suppose that \(\V\) is a direct sum of \(k + 1\) subspaces, say,
+  \[
+    \V = \seq[\oplus]{\W}{1,,k+1}.
+  \]
+  Let \(\W = \seq[+]{\W}{1,,k}\).
+  It is easily verified that \(\W\) is \(\T\)-invariant and that \(\V = \W \oplus \W_{k + 1}\).
+  So by the case for \(k = 2\), \(f = g \cdot f_{k + 1}\), where \(g\) is the characteristic polynomial of \(\T_{\W}\).
+  Clearly \(\W = \seq[\oplus]{\W}{1,,k}\), and therefore \(g = \prod_{i = 1}^k f_i\) by the induction hypothesis.
+  We conclude that \(f = g \cdot f_{k + 1} = \prod_{i = 1}^{k + 1} f_i\).
+\end{proof}
+
+\begin{note}
+  As an illustration of \cref{5.24}, suppose that \(\T\) is a diagonalizable linear operator on a finite-dimensional vector space \(\V\) over \(\F\) with distinct eigenvalues \(\seq{\lambda}{1,,k}\).
+  By \cref{5.11}, \(\V\) is a direct sum of the eigenspaces of \(\T\).
+  Since each eigenspace is \(\T\)-invariant, we may view this situation in the context of \cref{5.24}.
+  For each eigenvalue \(\lambda_i\), the restriction of \(\T\) to \(E_{\lambda_i}\) has characteristic polynomial \((\lambda_i - t)^{m_i}\), where \(m_i\) is the dimension of \(E_{\lambda_i}\).
+  By \cref{5.24}, the characteristic polynomial \(f\) of \(\T\) is the product
+  \[
+    f(t) = (\lambda_1 - t)^{m_1} (\lambda_2 - t)^{m_2} \cdots (\lambda_k - t)^{m_k}.
+  \]
+  It follows that the multiplicity of each eigenvalue is equal to the dimension of the corresponding eigenspace, as expected.
+\end{note}
+
+\begin{defn}\label{5.4.5}
+  Let \(B_1 \in \ms{m}{m}{\F}\), and let \(B_2 \in \ms{n}{n}{\F}\).
+  We define the \textbf{direct sum} of \(B_1\) and \(B_2\), denoted \(B_1 \oplus B_2\), as the \((m + n) \times (m + n)\) matrix \(A\) such that
+  \[
+    A_{i j} = \begin{dcases}
+      (B_1)_{i j}             & \text{for } i, j \in \set{1, \dots, m}         \\
+      (B_2)_{(i - m) (j - m)} & \text{for } i, j \in \set{m + 1, \dots, m + n} \\
+      0                       & \text{otherwise}
+    \end{dcases}.
+  \]
+  If \(\seq{B}{1,,k}\) are square matrices with entries from \(\F\), then we define the \textbf{direct sum} of \(\seq{B}{1,,k}\) recursively by
+  \[
+    \seq[\oplus]{B}{1,,k} = (\seq[\oplus]{B}{1,,k-1}) \oplus B_k.
+  \]
+  If \(A = \seq[\oplus]{B}{1,,k}\), then we often write
+  \[
+    A = \begin{pmatrix}
+      B_1    & \zm    & \cdots & \zm    \\
+      \zm    & B_2    & \cdots & \zm    \\
+      \vdots & \vdots &        & \vdots \\
+      \zm    & \zm    & \cdots & B_k
+    \end{pmatrix}.
+  \]
+\end{defn}
+
+\begin{thm}\label{5.25}
+  Let \(\T\) be a linear operator on a finite-dimensional vector space \(\V\) over \(\F\), and let \(\seq{\W}{1,,k}\) be \(\T\)-invariant subspaces of \(\V\) over \(\F\) such that \(\V = \seq[\oplus]{\W}{1,,k}\).
+  For each \(i \in \set{1, \dots, k}\), let \(\beta_i\) be an ordered basis for \(\W_i\), and let \(\beta = \bigcup_{i = 1}^k \beta_i\).
+  Let \(A = [\T]_{\beta}\) and \(B_i = [\T_{\W_i}]_{\beta_i}\) for \(i \in \set{1, \dots, k}\).
+  Then \(A = \seq[\oplus]{B}{1,,k}\).
+\end{thm}
+
 \exercisesection
 
 \setcounter{ex}{3}
@@ -356,6 +443,29 @@
   \]
 \end{proof}
 
+\setcounter{ex}{15}
+\begin{ex}\label{ex:5.4.16}
+  Let \(\T\) be a linear operator on a finite-dimensional vector space \(\V\) over \(\F\).
+  \begin{enumerate}
+    \item Prove that if the characteristic polynomial of \(\T\) splits, then so does the characteristic polynomial of the restriction of \(\T\) to any \(\T\)-invariant subspace of \(\V\).
+    \item Deduce that if the characteristic polynomial of \(\T\) splits, then any nontrivial \(\T\)-invariant subspace of \(\V\) contains an eigenvector of \(\T\).
+  \end{enumerate}
+\end{ex}
+
+\begin{proof}[\pf{ex:5.4.16}(a)]
+  Let \(\W\) be a \(\T\)-invariant subspace of \(\V\) over \(\F\), and let \(f, g\) be the characteristic polynomials of \(\T, \T_{\W}\), respectively.
+  By \cref{5.21} we see that \(g\) divides \(f\), thus there exists some polynomial \(q\) such that \(f = g \cdot q\).
+  Since \(f\) splits, we see that \(g\) and \(q\) must split.
+\end{proof}
+
+\begin{proof}[\pf{ex:5.4.16}(b)]
+  Let \(\W\) be a nontrivial \(\T\)-invariant subspace of \(\V\) over \(\F\), and let \(f, g\) be the characteristic polynomials of \(\T, \T_{\W}\), respectively.
+  By \cref{ex:5.4.16}(a) we know that \(f, g\) split and \(f = g \cdot q\) for some polynomial \(q\), thus there exists some \(\lambda \in \F\) such that \(g(\lambda) = f(\lambda) = 0\).
+  By \cref{5.2} we see that \(\lambda\) is an eigenvalue of \(\T\) and \(\T_{\W}\).
+  Since \(\W \neq \set{\zv}\), by \cref{5.7} we can find some \(v \in \W \setminus \set{\zv}\) such that \(\T_{\W}(v) = \lambda v\).
+  Thus \(\T(v) = \lambda v\) and by \cref{5.1.2} \(v\) is an eigenvector of \(\T\).
+\end{proof}
+
 \begin{ex}\label{ex:5.4.19}
   Let \(A \in \ms{k}{k}{\F}\)
   \[
@@ -425,5 +535,13 @@
 \end{ex}
 
 \begin{ex}\label{ex:5.4.32}
+
+\end{ex}
+
+\begin{ex}\label{ex:5.4.34}
+
+\end{ex}
+
+\begin{ex}\label{ex:5.4.36}
 
 \end{ex}
