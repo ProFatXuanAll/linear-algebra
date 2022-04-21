@@ -763,6 +763,20 @@
   and this closes the induction.
 \end{proof}
 
+\begin{ex}\label{ex:5.4.24}
+  Prove that the restriction of a diagonalizable linear operator \(\T\) to any nontrivial \(\T\)-invariant subspace is also diagonalizable.
+\end{ex}
+
+\begin{proof}[\pf{ex:5.4.24}]
+  Let \(\V\) be a finite-dimensional vector space over \(\F\), let \(\T \in \ls(\V)\) such that \(\T\) is diagonalizable and let \(\W\) be a nontrivial \(\T\)-invariant subspace of \(\V\) over \(\F\).
+  By \cref{5.1.1} there exist an ordered basis \(\beta\) such that \([\T]_{\beta}\) is diagonal matrix.
+  We claim that \(\W \cap \beta \neq \varnothing\) and \(\W \cap \beta\) is an ordered basis for \(\W\).
+  If not, then we must have \(\W = \set{\zv}\), which contradict to our hypothesis that \(\W\) is nontrivial.
+  Let \(\beta_{\W} = \W \cap \beta\).
+  Since \(\beta\) is consist of eigenvectors of \(\T\) and \(\W\) is \(\T\)-invariant, by \cref{5.1.2,5.4.1} we know that \(\T(\beta_{\W}) = \T_{\W}(\beta_{\W}) \subseteq \W\) and \(\beta_{\W}\) is consist of eigenvectors of \(\T_{\W}\).
+  Thus \([\T_{\W}]_{\beta_{\W}}\) is diagonal matrix and by \cref{5.1.1} \(\T_{\W}\) is diagonalizable.
+\end{proof}
+
 \begin{ex}\label{ex:5.4.25}
 
 \end{ex}
