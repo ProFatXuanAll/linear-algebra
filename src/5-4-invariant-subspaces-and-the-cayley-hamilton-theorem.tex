@@ -358,18 +358,15 @@
   Then we have
   \begin{align*}
              & \begin{dcases}
-                 \exists \seq{v}{1,,k} \in \W \\
-                 \exists \seq{a}{1,,k} \in \F
-               \end{dcases} : x = \seq[+]{a,v}{1,,k}                                     &  & \text{(by \cref{1.4.3})} \\
+                 \exists k \in \N \\
+                 \exists \seq{a}{0,,k} \in \F
+               \end{dcases} : x = a_0 v + a_1 \T(v) + \cdots + a_k \T^k(v)  &  & \text{(by \cref{5.4.3})} \\
     \implies & \begin{dcases}
-                 \exists \seq{i}{1,,k} \in \N \\
-                 \exists \seq{a}{1,,k} \in \F
-               \end{dcases} : x = a_1 \T^{i_1}(v) + \cdots + a_k \T^{i_k}(v)             &  & \text{(by \cref{5.4.3})} \\
-    \implies & \begin{dcases}
-                 \exists \seq{i}{1,,k} \in \N \\
-                 \exists \seq{a}{1,,k} \in \F
-               \end{dcases} : \T(x) = a_1 \T^{i_1 + 1}(v) + \cdots + a_k \T^{i_k + 1}(v) &  & \text{(by \cref{2.10})}  \\
-    \implies & \T(x) \in \W.                                                             &  & \text{(by \cref{5.4.3})}
+                 \exists k \in \N \\
+                 \exists \seq{a}{0,,k} \in \F
+               \end{dcases} :                                                                \\
+             & \T(x) = a_0 \T(x) + a_1 \T^2(v) + \cdots + a_k \T^{k + 1}(v) &  & \text{(by \cref{2.10})}  \\
+    \implies & \T(x) \in \W.                                                &  & \text{(by \cref{5.4.3})}
   \end{align*}
   Since \(x\) is arbitrary, we see that \(\T(\W) \subseteq \W\) and by \cref{5.4.1} \(\W\) is \(\T\)-invariant.
 \end{proof}
@@ -405,22 +402,18 @@
 \begin{proof}[\pf{ex:5.4.13}]
   We have
   \begin{align*}
-         & w \in \W                                                                                    \\
-    \iff & \begin{dcases}
-             \exists \seq{i}{1,,k} \in \N \\
-             \exists \seq{a}{1,,k} \in \F
-           \end{dcases} : w = a_1 \T^{i_1}(v) + \cdots + a_k \T^{i_k}(v) &  & \text{(by \cref{5.4.3})} \\
+         & w \in \W                                                                                  \\
     \iff & \begin{dcases}
              \exists k \in \N \\
              \exists \seq{a}{0,,k} \in \F
-           \end{dcases} : w = a_0 v + a_1 \T(v) + \cdots + a_k \T^k(v)                                 \\
+           \end{dcases} : w = a_0 v + a_1 \T(v) + \cdots + a_k \T^k(v) &  & \text{(by \cref{5.4.3})} \\
     \iff & \begin{dcases}
              \exists k \in \N \\
              \exists \seq{a}{0,,k} \in \F
            \end{dcases} : \begin{dcases}
                             g(t) = a_0 + a_1 t + \cdots + a_k t^k \\
                             w = g(\T)(v)
-                          \end{dcases}.                      &  & \text{(by \cref{e.0.7})}
+                          \end{dcases}.                    &  & \text{(by \cref{e.0.7})}
   \end{align*}
 \end{proof}
 
@@ -778,8 +771,42 @@
 \end{proof}
 
 \begin{ex}\label{ex:5.4.25}
-
+  \begin{enumerate}
+    \item Prove the converse to \cref{ex:5.2.18}(a):
+          If \(\T\) and \(\U\) are diagonalizable linear operators on a finite-dimensional vector space \(\V\) over \(\F\) such that \(\U \T = \T \U\), then \(\T\) and \(\U\) are simultaneously diagonalizable.
+          (See the definitions in the \cref{5.2.8}.)
+    \item State and prove a matrix version of (a).
+  \end{enumerate}
 \end{ex}
+
+\begin{proof}[\pf{ex:5.4.25}(a)]
+  Let \(\lambda\) be an eigenvalue of \(\T\) and let \(E_{\lambda} = \ns{\T - \lambda \IT[\V]}\).
+  We claim that \(E_{\lambda}\) is \(\U\)-invariant.
+  This is true since
+  \begin{align*}
+             & \forall v \in E_{\lambda}, \T(v) = \lambda v                                     &  & \text{(by \cref{5.1.2})} \\
+    \implies & \forall v \in E_{\lambda}, \U(\T(v)) = \U(\lambda v) = \lambda \U(v) = \T(\U(v)) &  & (\U \T = \T \U)          \\
+    \implies & \forall v \in E_{\lambda}, \U(v) \in E_{\lambda}                                 &  & \text{(by \cref{5.2.4})} \\
+    \implies & \U(E_{\lambda}) \subseteq E_{\lambda}.
+  \end{align*}
+  Since \(\U\) is diagonalizable and \(E_{\lambda}\) is \(\U\)-invariant, by \cref{ex:5.4.24} we see that \(\U_{E_{\lambda}}\) is diagonalizable.
+  Thus we can find an ordered basis \(\beta_{\lambda}\) for \(E_{\lambda}\) over \(\F\) such that \([\U]_{\beta_{\lambda}}\) is a diagonal matrix.
+  Note that since \(\beta_{\lambda}\) is an ordered basis for \(E_{\lambda}\) over \(\F\), \([\T]_{\beta_{\lambda}}\) is also a diagonal matrix.
+  Applying the above argument to every eigenvalue of \(\T\) we can find an ordered basis \(\beta\) over \(\F\) such that \(\beta\) is an union of bases of eigenspaces (by \cref{5.9}(b)) and both \([\U]_{\beta}\) and \([\T]_{\beta}\) are diagonal matrix.
+  Thus by \cref{5.2.8} \(\T, \U\) are simultaneously diagonalizable.
+\end{proof}
+
+\begin{proof}[\pf{ex:5.4.25}(b)]
+  Let \(A, B \in \ms{n}{n}{\F}\) be diagonalizable matrix.
+  We claim that if \(AB = BA\), then \(A, B\) are simultaneously diagonalizable.
+  This is true since
+  \begin{align*}
+             & AB = BA                                                                                   \\
+    \implies & \L_A \L_B = \L_{AB} = \L_{BA} = \L_B \L_A            &  & \text{(by \cref{2.15}(e))}      \\
+    \implies & \L_A, \L_B \text{ are simultaneously diagonalizable} &  & \text{(by \cref{ex:5.4.25}(a))} \\
+    \implies & A, B \text{ are simultaneously diagonalizable}.      &  & \text{(by \cref{5.2.17}(a))}
+  \end{align*}
+\end{proof}
 
 \begin{ex}\label{ex:5.4.32}
 
