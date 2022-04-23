@@ -272,6 +272,42 @@
   Then \(A = \seq[\oplus]{B}{1,,k}\).
 \end{thm}
 
+\begin{proof}[\pf{5.25}]
+  We use induction on \(k\).
+  The case for \(k = 1\) is trivial.
+  Suppose inductively that the statement is true for some \(k \geq 1\).
+  We need to show that it is also true for \(k + 1\).
+  So let \(\V\) be a vector space over \(\F\), let \(\T \in \ls(\V)\) and let \(\seq{\W}{1,,k+1}\) be \(\T\)-invariant subspaces of \(\V\) over \(\F\) such that \(\V = \seq[\oplus]{\W}{1,,k+1}\).
+  For each \(i \in \set{1, \dots, k + 1}\), let \(\beta_i\) be an ordered basis for \(\W_i\) over \(\F\).
+  By \cref{5.10}(a)(d) we know that \(\beta = \bigcup_{i = 1}^{k + 1} \beta_i\) is an ordered basis for \(\V\) over \(\F\).
+  If we let \(\W = \seq[\oplus]{\W}{2,,k+1}\), then we have \(\V = \W_1 \oplus \W\) and by \cref{ex:5.4.34} we have
+  \[
+    [\T]_{\beta} = \begin{pmatrix}
+      [\T_{\W_1}]_{\beta_1} & \zm_1                                       \\
+      \zm_2                 & [\T_{\W}]_{\bigcup_{i = 2}^{k + 1} \beta_i}
+    \end{pmatrix}
+  \]
+  By induction hypothesis we have
+  \[
+    [\T_{\W}]_{\bigcup_{i = 2}^{k + 1} \beta_i} = \begin{pmatrix}
+      [\T_{\W_2}]_{\beta_2} & \zm                   & \cdots & \zm                               \\
+      \zm                   & [\T_{\W_3}]_{\beta_3} & \cdots & \zm                               \\
+      \vdots                & \vdots                &        & \vdots                            \\
+      \zm                   & \zm                   & \cdots & [\T_{\W_{k + 1}}]_{\beta_{k + 1}}
+    \end{pmatrix}.
+  \]
+  Thus by \cref{5.4.5} we see that
+  \[
+    [\T]_{\beta} = \begin{pmatrix}
+      [\T_{\W_1}]_{\beta_1} & \zm                   & \cdots & \zm                               \\
+      \zm                   & [\T_{\W_2}]_{\beta_2} & \cdots & \zm                               \\
+      \vdots                & \vdots                &        & \vdots                            \\
+      \zm                   & \zm                   & \cdots & [\T_{\W_{k + 1}}]_{\beta_{k + 1}}
+    \end{pmatrix} = [\T_{\W_1}]_{\beta_1} \oplus \cdots \oplus [\T_{\W_{k + 1}}]_{\beta_{k + 1}}
+  \]
+  and this closes the induction.
+\end{proof}
+
 \exercisesection
 
 \setcounter{ex}{3}
@@ -1004,6 +1040,7 @@
   Thus we conclude that \(\beta\) is an ordered basis for \(\V\) over \(\F\) consist of eigenvectors of \(\T\), therefore by \cref{5.1.1} \(\T\) is diagonalizable.
 \end{proof}
 
+\setcounter{ex}{31}
 \begin{ex}\label{ex:5.4.32}
   Prove the converse to \cref{ex:5.2.9}(a):
   If the characteristic polynomial of \(\T\) splits, then there is an ordered basis \(\beta\) for \(\V\) over \(\F\) such that \([\T]_{\beta}\) is an upper triangular matrix.
@@ -1053,9 +1090,58 @@
   This closes the induction.
 \end{proof}
 
-\begin{ex}\label{ex:5.4.34}
-
+\begin{ex}\label{ex:5.4.33}
+  Let \(\T\) be a linear operator on a vector space \(\V\) over \(\F\), and let \(\seq{\W}{1,,k}\) be \(\T\)-invariant subspaces of \(\V\) over \(\F\).
+  Prove that \(\seq[+]{\W}{1,,k}\) is also a \(\T\)-invariant subspace of \(\V\) over \(\F\).
 \end{ex}
+
+\begin{proof}[\pf{ex:5.4.33}]
+  Let \(\sum_{i = 1}^k v_i \in \sum_{i = 1}^k \W_i\).
+  Since \(v_i \in \W_i\) for each \(i \in \set{1, \dots, k}\), by \cref{5.4.1} we know that \(\T(v_i) \in \W_i\).
+  Thus by \cref{2.1.2}(d) we have \(\T\pa{\sum_{i = 1} v_i} = \sum_{i = 1}^k \T(v_i) \in \sum_{i = 1}^k \W_i\).
+  By \cref{5.4.1} this means \(\sum_{i = 1}^k \W_i\) is \(\T\)-invariant.
+\end{proof}
+
+\begin{ex}\label{ex:5.4.34}
+  Give a direct proof of \cref{5.25} for the case \(k = 2\).
+  (This result is used in the proof of \cref{5.24}.)
+\end{ex}
+
+\begin{proof}[\pf{ex:5.4.34}]
+  Let \(\V\) be an \(n\)-dimensional vector space over \(\F\) and let \(\W_1, \W_2\) be nontrivial \(\T\)-invariant subspaces of \(\V\) over \(\F\) such that \(\V = \W_1 \oplus \W_2\).
+  Let \(\beta_1 = \set{\seq{v}{1,,k}}, \beta_2 = \set{\seq{v}{k+1,,n}}\) be ordered basis for \(\W_1, \W_2\) over \(\F\), respectively.
+  By \cref{5.10}(a)(d) we know that \(\beta = \beta_1 \cup \beta_2\) is an ordered basis for \(\V\) over \(\F\).
+  Then we have
+  \begin{align*}
+             & \forall i \in \set{1, \dots, k}, \T(v_i) = \T_{\W_1}(v_i)                               &  & \text{(by \cref{5.4.1})} \\
+             & = \sum_{j = 1}^k ([\T_{\W_1}]_{\beta_1})_{j i} v_j                                      &  & \text{(by \cref{2.2.4})} \\
+             & = \sum_{j = 1}^k ([\T_{\W_1}]_{\beta_1})_{j i} v_j + \sum_{j = k + 1}^n 0 v_j           &  & \text{(by \cref{1.2.1})} \\
+    \implies & \forall (i, j) \in \set{1, \dots, k} \times \set{1, \dots, n},                                                        \\
+             & ([\T]_{\beta})_{j i} = \begin{dcases}
+                                        ([\T_{\W_1}]_{\beta_1})_{j i} & \text{if } j \in \set{1, \dots, k}     \\
+                                        0                             & \text{if } j \in \set{k + 1, \dots, n}
+                                      \end{dcases}
+  \end{align*}
+  and
+  \begin{align*}
+             & \forall i \in \set{k + 1, \dots, n}, \T(v_i) = \T_{\W_2}(v_i)                         &  & \text{(by \cref{5.4.1})} \\
+             & = \sum_{j = k + 1}^n ([\T_{\W_2}]_{\beta_2})_{j i} v_j                                &  & \text{(by \cref{2.2.4})} \\
+             & = \sum_{j = 1}^k 0 v_j + \sum_{j = k + 1}^n ([\T_{\W_2}]_{\beta_2})_{j i} v_j         &  & \text{(by \cref{1.2.1})} \\
+    \implies & \forall (i, j) \in \set{k + 1, \dots, n} \times \set{1, \dots, n},                                                  \\
+             & ([\T]_{\beta})_{j i} = \begin{dcases}
+                                        0                             & \text{if } j \in \set{1, \dots, k}     \\
+                                        ([\T_{\W_1}]_{\beta_1})_{j i} & \text{if } j \in \set{k + 1, \dots, n}
+                                      \end{dcases}.
+  \end{align*}
+  Thus by \cref{5.4.5} we see that
+  \[
+    [\T]_{\beta} = \begin{pmatrix}
+      [\T_{\W_1}]_{\beta_1} & \zm_1                 \\
+      \zm_2                 & [\T_{\W_2}]_{\beta_2}
+    \end{pmatrix}
+  \]
+  where \(\zm_1 \in \ms{k}{(n - k)}{\F}\) and \(\zm_2 \in \ms{(n - k)}{k}{\F}\) are zero matrices.
+\end{proof}
 
 \begin{ex}\label{ex:5.4.36}
 
