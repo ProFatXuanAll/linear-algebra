@@ -1143,6 +1143,46 @@
   where \(\zm_1 \in \ms{k}{(n - k)}{\F}\) and \(\zm_2 \in \ms{(n - k)}{k}{\F}\) are zero matrices.
 \end{proof}
 
+\setcounter{ex}{35}
 \begin{ex}\label{ex:5.4.36}
-
+  Let \(\T\) be a linear operator on a finite-dimensional vector space \(\V\) over \(\F\).
+  Prove that \(\T\) is diagonalizable iff \(\V\) is the direct sum of one-dimensional \(\T\)-invariant subspaces.
 \end{ex}
+
+\begin{proof}[\pf{ex:5.4.36}]
+  First suppose that \(\T\) is diagonalizable.
+  By \cref{5.1.1} there exists an ordered basis \(\beta\) for \(\V\) over \(\F\) such that \([\T]_{\beta}\) is a diagonal matrix.
+  For each \(v \in \beta\), we know that \(\spn{\set{v}}\) is a one-dimensional \(\T\)-invariant subspace of \(\V\) over \(\F\).
+  Thus by \cref{5.10}(a)(d) we know that \(\V\) is a direct sum of one-dimensional \(\T\)-invariant subspaces.
+
+  Now suppose that \(\V\) is the direct sum of one-dimensional \(\T\)-invariant subspaces.
+  Let \(\seq{\W}{1,,n}\) be \(\T\)-invariant subspaces of \(\V\) over \(\F\) such that \(\V = \seq[\oplus]{\W}{1,,n}\).
+  If we let \(\beta_i\) be an ordered basis for \(\W_i\) over \(\F\) for each \(i \in \set{1, \dots, n}\), then by \cref{5.10}(a)(d) we know that \(\beta = \bigcup_{i = 1}^n \beta_i\) is an ordered basis for \(\V\) over \(\F\).
+  By \cref{5.25} we have \([\T]_{\beta} = [\T_{\W_1}]_{\beta_1} \oplus \cdots \oplus [\T_{\W_n}]_{\beta_n}\).
+  Therefore by \cref{5.4.5} \([\T]_{\beta}\) is a diagonal matrix and by \cref{5.1.1} \(\T\) is diagonalizable.
+\end{proof}
+
+\begin{ex}\label{ex:5.4.37}
+  Let \(\T\) be a linear operator on a finite-dimensional vector space \(\V\) over \(\F\), and let \(\seq{\W}{1,,k}\) be \(\T\)-invariant subspaces of \(\V\) such that \(\V = \seq[\oplus]{\W}{1,,k}\).
+  Prove that
+  \[
+    \det(\T) = \det(\T_{\W_1}) \cdots \det(\T_{\W_k}).
+  \]
+\end{ex}
+
+\begin{proof}[\pf{ex:5.4.37}]
+  For each \(i \in \set{1, \dots, k}\), let \(\beta_i\) be an ordered basis for \(\W_i\) over \(\F\).
+  Let \(\beta = \bigcup_{i = 1}^k \beta_i\).
+  Then we have
+  \begin{align*}
+    \det(\T) & = \det([\T]_{\beta})                                                                            &  & \text{(by \cref{ex:5.1.7})}  \\
+             & = \det\begin{pmatrix}
+                       [\T_{\W_1}]_{\beta_1} & \zm                   & \cdots & \zm                   \\
+                       \zm                   & [\T_{\W_2}]_{\beta_2} & \cdots & \zm                   \\
+                       \vdots                & \vdots                &        & \vdots                \\
+                       \zm                   & \zm                   & \cdots & [\T_{\W_k}]_{\beta_k}
+                     \end{pmatrix} &  & \text{(by \cref{5.25})}                                \\
+             & = \det([\T_{\W_1}]_{\beta_1}) \cdots \det([\T_{\W_k}]_{\beta_k})                                &  & \text{(by \cref{ex:4.3.21})} \\
+             & = \det(\T_{\W_1}) \cdot \det(\T_{\W_k}).                                                        &  & \text{(by \cref{ex:5.1.7})}
+  \end{align*}
+\end{proof}
