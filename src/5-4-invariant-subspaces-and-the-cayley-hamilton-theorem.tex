@@ -1235,3 +1235,189 @@
   By \cref{5.25} this means \([\U]_{\beta}\) is a diagonal matrix for all \(\U \in \mathcal{C}\).
   Thus every \(\T \in \mathcal{C}\) are simultaneously diagonalizable, and this closes the induction.
 \end{proof}
+
+\begin{ex}\label{ex:5.4.40}
+  Let \(\seq{B}{1,,k}\) be square matrices with entries in the same field, and let \(A = \seq[\oplus]{B}{1,,k}\).
+  Prove that the characteristic polynomial of \(A\) is the product of the characteristic polynomials of the \(B_i\)'s.
+\end{ex}
+
+\begin{proof}[\pf{ex:5.4.40}]
+  We have
+  \begin{align*}
+    \det(A - t I) & = \det\begin{pmatrix}
+                            B_1 - t I & \zm       & \cdots & \zm       \\
+                            \zm       & B_2 - t I & \cdots & \zm       \\
+                            \vdots    & \vdots    &        & \vdots    \\
+                            \zm       & \zm       & \cdots & B_k - t I
+                          \end{pmatrix} &  & \text{(by \cref{5.4.5})}                               \\
+                  & = \prod_{i = 1}^k \det(B_i - t I).            &  & \text{(by \cref{ex:4.3.21})}
+  \end{align*}
+\end{proof}
+
+\begin{ex}\label{ex:5.4.41}
+  Let
+  \[
+    A = \begin{pmatrix}
+      1           & 2           & \cdots & n      \\
+      n + 1       & n + 2       & \cdots & 2n     \\
+      \vdots      & \vdots      &        & \vdots \\
+      n^2 - n + 1 & n^2 - n + 2 & \cdots & n^2
+    \end{pmatrix}.
+  \]
+  Find the characteristic polynomial of \(A\).
+\end{ex}
+
+\begin{proof}[\pf{ex:5.4.41}]
+  Let \(B\) be the matrix obtained from \(A\) by subtracting the first row of \(A\) from each non-first row of \(A\), i.e.,
+  \begin{align*}
+    B & = \begin{pmatrix}
+            1               & 2               & \cdots & n       \\
+            n + 1 - 1       & n + 2 - 2       & \cdots & 2n - n  \\
+            \vdots          & \vdots          &        & \vdots  \\
+            n^2 - n + 1 - 1 & n^2 - n + 2 - 2 & \cdots & n^2 - n
+          \end{pmatrix} \\
+      & = \begin{pmatrix}
+            1       & 2       & \cdots & n       \\
+            n       & n       & \cdots & n       \\
+            \vdots  & \vdots  &        & \vdots  \\
+            n^2 - n & n^2 - n & \cdots & n^2 - n
+          \end{pmatrix}.
+  \end{align*}
+  Let \(C\) be the matrix obtained from \(B\) by dividing each row of \(B\) by the first entry of each row, i.e.,
+  \[
+    C = \begin{pmatrix}
+      \frac{1}{1}             & \frac{2}{1}             & \cdots & \frac{n}{1}             \\
+      \frac{n}{n}             & \frac{n}{n}             & \cdots & \frac{n}{n}             \\
+      \vdots                  & \vdots                  &        & \vdots                  \\
+      \frac{n^2 - n}{n^2 - n} & \frac{n^2 - n}{n^2 - n} & \cdots & \frac{n^2 - n}{n^2 - n}
+    \end{pmatrix} = \begin{pmatrix}
+      1      & 2      & \cdots & n      \\
+      1      & 1      & \cdots & 1      \\
+      \vdots & \vdots &        & \vdots \\
+      1      & 1      & \cdots & 1
+    \end{pmatrix}.
+  \]
+  By \cref{3.2.5}(b) we see that \(\rk{C} = 2\).
+  Since \(C\) is obtained from \(A\) be elementary row operations, by \cref{3.2.3} we see that \(\rk{A} = \rk{C} = 2\).
+  By \cref{2.3} we see that
+  \[
+    \dim(\ns{\L_A - 0 \IT[\V]}) = \nt{\L_A} = \dim(\vs{F}^n) - \rk{\L_A} = n - \rk{A} = n - 2.
+  \]
+  If we can show that \(\rg{\L_A} \cap \ns{\L_A} = \set{\zv}\), then by \cref{ex:2.1.35}(a) we have \(\V = \rg{\L_A} \oplus \ns{\L_A}\).
+  Observe that
+  \begin{align*}
+     & A \begin{pmatrix}
+           1      \\
+           1      \\
+           \vdots \\
+           1
+         \end{pmatrix} = \begin{pmatrix}
+                           \sum_{i = 1}^n i       \\
+                           n^2 + \sum_{i = 1}^n i \\
+                           \vdots                 \\
+                           (n^2 - n) n + \sum_{i = 1}^n i
+                         \end{pmatrix} = \begin{pmatrix}
+                                           \frac{n(n + 1)}{2}       \\
+                                           n^2 + \frac{n(n + 1)}{2} \\
+                                           \vdots                   \\
+                                           (n^2 - n) n + \frac{n(n + 1)}{2}
+                                         \end{pmatrix}                  \\
+     & = \begin{pmatrix}
+           n^2 + \frac{n(n + 1)}{2} - n^2  \\
+           2n^2 + \frac{n(n + 1)}{2} - n^2 \\
+           \vdots                          \\
+           n^3 + \frac{n(n + 1)}{2} - n^2
+         \end{pmatrix} = n^2 \begin{pmatrix}
+                               1      \\
+                               2      \\
+                               \vdots \\
+                               n
+                             \end{pmatrix} + \pa{\frac{n(n + 1)}{2} - n^2} \begin{pmatrix}
+                                                                             1      \\
+                                                                             1      \\
+                                                                             \vdots \\
+                                                                             1
+                                                                           \end{pmatrix}
+  \end{align*}
+  and
+  \begin{align*}
+     & A \begin{pmatrix}
+           1      \\
+           2      \\
+           \vdots \\
+           n
+         \end{pmatrix} = \begin{pmatrix}
+                           \sum_{i = 1}^n i^2                     \\
+                           \sum_{i = 1}^n in + \sum_{i = 1}^n i^2 \\
+                           \vdots                                 \\
+                           \sum_{i = 1}^n i(n^2 - n) + \sum_{i = 1}^n i^2
+                         \end{pmatrix} = \begin{pmatrix}
+                                           \frac{n(n + 1)(2n + 1)}{6}                             \\
+                                           n \pa{\frac{n(n + 1)}{2}} + \frac{n(n + 1)(2n + 1)}{6} \\
+                                           \vdots                                                 \\
+                                           (n^2 - n) \pa{\frac{n(n + 1)}{2}} + \frac{n(n + 1)(2n + 1)}{6}
+                                         \end{pmatrix}         \\
+     & = \begin{pmatrix}
+           \frac{n^2(n + 1)}{2} + \frac{n(n + 1)(2n + 1)}{6} - \frac{n^2(n + 1)}{2}        \\
+           2 \pa{\frac{n^2(n + 1)}{2}} + \frac{n(n + 1)(2n + 1)}{6} - \frac{n^2(n + 1)}{2} \\
+           \vdots                                                                          \\
+           n \pa{\frac{n^2(n + 1)}{2}} + \frac{n(n + 1)(2n + 1)}{6} - \frac{n^2(n + 1)}{2}
+         \end{pmatrix}                         \\
+     & = \frac{n^2(n + 1)}{2} \begin{pmatrix}
+                                1      \\
+                                2      \\
+                                \vdots \\
+                                n
+                              \end{pmatrix} + \pa{\frac{n(n + 1)(2n + 1)}{6} - \frac{n^2(n + 1)}{2}} \begin{pmatrix}
+                                                                                                       1      \\
+                                                                                                       1      \\
+                                                                                                       \vdots \\
+                                                                                                       1
+                                                                                                     \end{pmatrix}.
+  \end{align*}
+  If we let
+  \[
+    \W = \spn{\begin{pmatrix}
+        1      \\
+        1      \\
+        \vdots \\
+        1
+      \end{pmatrix}, \begin{pmatrix}
+        1      \\
+        2      \\
+        \vdots \\
+        n
+      \end{pmatrix}},
+  \]
+  then from the observation above we know that \(\W\) is \(\L_A\)-invariant and \(\dim(\L_A(\W)) = 2\).
+  Since \(\L_A(\W) \subseteq \W \subseteq \rg{\L_A}\) and \(\dim(\L_A(\W)) = 2 = \rk{\L_A}\), by \cref{1.11} we know that \(\W = \rg{\L_A}\).
+  Clearly we have \(\W \cap \ns{\L_A} = \set{\zv}\), thus by \cref{ex:2.1.35} we have \(\V = \rg{\L_A} \oplus \ns{\L_A}\).
+  Since \(\rg{\L_A}\) and \(\ns{\L_A}\) are \(\L_A\)-invariant (from the observation above and \cref{5.4.2}(d)), we have
+  \begin{align*}
+     & \det(A - t I_n)                                                                                                                                      \\
+     & = \det(\L_A - t \IT[\V])                                                                                         &  & \text{(by \cref{ex:5.1.7}(a))} \\
+     & = \det((\L_A)_{\rg{\L_A}} - t \IT[\rg{\L_A}]) \cdot \det((\L_A)_{\ns{\L_A}} - t \IT[\ns{\L_A}])                  &  & \text{(by \cref{ex:5.4.37})}   \\
+     & = \det\begin{pmatrix}
+               \frac{n(n + 1)}{2} - n^2 - t & \frac{n(n + 1)(2n + 1)}{6} - \frac{n^2 (n + 1)}{2} \\
+               n^2                          & \frac{n^2 (n + 1)}{2} - t
+             \end{pmatrix}                             &  & \text{(by the observation)}                                                              \\
+     & \quad \cdot (-1)^{n - 2} t^{n - 2}                                                                               &  & \text{(by \cref{5.3}(a))}      \\
+     & = \bigg(\frac{n^3 (n + 1)^2}{4} - \frac{n(n + 1)}{2} t - \frac{n^4 (n + 1)}{2} + n^2 t - \frac{n^2 (n + 1)}{2} t                                     \\
+     & \quad + t^2 - \frac{n^3 (n + 1)(2n + 1)}{6} + \frac{n^4 (n + 1)}{2}\bigg) \cdot (-1)^{n - 2} t^{n - 2}                                               \\
+     & = (-1)^{n - 2} t^{n - 2} \pa{\frac{-n^5 + n^3}{12} + \frac{-n^3 - n}{2} t + t^2}.
+  \end{align*}
+\end{proof}
+
+\begin{ex}\label{ex:5.4.42}
+  Let \(A \in \ms{n}{n}{\R}\) be the matrix defined by \(A_{i j} = 1\) for all \(i, j \in \set{1, \dots, n}\).
+  Find the characteristic polynomial of \(A\).
+\end{ex}
+
+\begin{proof}[\pf{ex:5.4.42}]
+  Since \(\rk{A} = 1\), by \cref{2.3} we know that
+  \[
+    \nt{\L_A} = \dim(\vs{F}^n) - \rk{\L_A} = n - \rk{A} = n - 1.
+  \]
+  Since the sum of columns of \(A - n I_n\) is \(\zv\), we know that \(\rk{A - n I_n} < n\) and by \cref{4.3.1} \(\det(A - n I_n) = 0\).
+  Thus by \cref{5.7} we have \(\det(A - t I_n) = (-1)^n t^{n - 1} (t - n)\).
+\end{proof}
