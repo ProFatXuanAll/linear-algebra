@@ -1186,3 +1186,52 @@
              & = \det(\T_{\W_1}) \cdot \det(\T_{\W_k}).                                                        &  & \text{(by \cref{ex:5.1.7})}
   \end{align*}
 \end{proof}
+
+\begin{ex}\label{ex:5.4.38}
+  Let \(\T\) be a linear operator on a finite-dimensional vector space \(\V\) over \(\F\), and let \(\seq{\W}{1,,k}\) be \(\T\)-invariant subspaces of \(\V\) over \(\F\) such that \(\V = \seq[\oplus]{\W}{1,,k}\).
+  Prove that \(\T\) is diagonalizable iff \(\T_{\W_i}\) is diagonalizable for all \(i \in \set{1, \dots, k}\).
+\end{ex}
+
+\begin{proof}[\pf{ex:5.4.38}]
+  If \(\T\) is diagonalizable, then by \cref{ex:5.4.24} \(\T_{\W_i}\) is diagonalizable for all \(i \in \set{1, \dots, k}\).
+  So suppose that \(\T_{\W_i}\) is diagonalizable for all \(i \in \set{1, \dots, k}\).
+  By \cref{5.1.1}, for each \(i \in \set{1, \dots, k}\), there exists an ordered basis \(\beta_i\) for \(\W_i\) over \(\F\) such that \([\T_{\W_i}]_{\beta_i}\) is an diagonal matrix.
+  By \cref{5.10}(a)(d) we know that \(\beta = \bigcup_{i = 1}^k \beta_i\) is an ordered basis for \(\V\) over \(\F\).
+  Thus by \cref{5.25} we see that \([\T]_{\beta}\) is a diagonal matrix and by \cref{5.1.1} \(\T\) is diagonalizable.
+\end{proof}
+
+\begin{ex}\label{ex:5.4.39}
+  Let \(\mathcal{C}\) be a collection of diagonalizable linear operators on a finite-dimensional vector space \(\V\).
+  Prove that there is an ordered basis \(\beta\) such that \([\T]_{\beta}\) is a diagonal matrix for all \(\T \in \mathcal{C}\) iff the operators of \(\mathcal{C}\) commute under composition.
+  (This is an extension of \cref{ex:5.4.25}.)
+\end{ex}
+
+\begin{proof}[\pf{ex:5.4.39}]
+  First suppose that every \(\T \in \mathcal{C}\) are simultaneously diagonalizable.
+  Then by \cref{ex:5.2.18}(a) we see that operators of \(\mathcal{C}\) commute under composition.
+
+  Now suppose that operators of \(\mathcal{C}\) commute under composition.
+  Let \(k = \dim(\V)\).
+  We use induction on \(k\) to show that every \(\T \in \mathcal{C}\) are simultaneously diagonalizable.
+  For \(k = 1\), for any ordered basis \(\beta\) for \(\V\) over \(\F\), \([\T]_{\beta}\) is a diagonal matrix for every \(\T \in \mathcal{C}\).
+  Thus the base case holds.
+  Suppose inductively that the statement is true for some \(k \geq 1\).
+  We need to show that it is true for \(k + 1\).
+  Let \(\V\) be a vector space over \(\F\) such that \(\dim(\V) = k + 1\).
+  Let \(\mathcal{C}\) be a collection of diagonalizable linear operators on \(\V\).
+  By \cref{5.11} we know that \(\V\) is a direct sum of eigenspaces of any \(\T \in \mathcal{C}\).
+  If every \(\T \in \mathcal{C}\) has only one eigenvalue, then every \(\T \in \mathcal{C}\) are simultaneously diagonalizable with any ordered basis for \(\V\) over \(\F\) and we are done.
+  So suppose that there exists a \(\T \in \mathcal{C}\) which has at least two eigenvalues.
+  Fix one such \(\T\) and let \(\seq{\W}{1,,m}\) be eigenspaces of \(\T\) such that \(m \geq 2\) and \(\V = \seq[\oplus]{\W}{1,,m}\).
+  We define
+  \[
+    \forall i \in \set{1, \dots, m}, \mathcal{C}_i = \set{\U_{\W_i} : \U \in \mathcal{C}}.
+  \]
+  Clearly \(\T_{\W_i} \in \mathcal{C}_i\) and \(\U_{\W_i} \T_{\W_i} = \T_{\W_i} \U_{\W_i}\) for all \(i \in \set{1, \dots, m}\) and \(\U_{\W_i} \in \mathcal{C}_i\).
+  By \cref{5.4.2}(e) we know that \(\W_i\) is a \(\T\)-invariant subspace of \(\V\) over \(\F\) for all \(i \in \set{1, \dots, m}\), thus by \cref{ex:5.4.25}(a) we know that every \(\U_{\W_i} \in \mathcal{C}_i\) is diagonalizable for all \(i \in \set{1, \dots, m}\).
+  Since \(m \geq 2\), by \cref{5.7} we know that \(\dim(\W_i) \leq k\) for all \(i \in \set{1, \dots, m}\).
+  Thus by induction hypothesis we know that for each \(i \in \set{1, \dots, m}\), there exists an ordered basis for \(\W_i\) over \(\F\) such that \([\U_{\W_i}]_{\beta_i}\) is a diagonal matrix for all \(\U_{\W_i} \in \mathcal{C}_i\).
+  Since \(\V = \seq[\oplus]{\W}{1,,m}\), by \cref{5.10}(a)(d) we know that \(\beta = \bigcup_{i = 1}^m \beta_i\) is an ordered basis for \(\V\).
+  By \cref{5.25} this means \([\U]_{\beta}\) is a diagonal matrix for all \(\U \in \mathcal{C}\).
+  Thus every \(\T \in \mathcal{C}\) are simultaneously diagonalizable, and this closes the induction.
+\end{proof}
