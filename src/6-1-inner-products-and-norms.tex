@@ -1,5 +1,93 @@
 \section{Inner Products and Norms}\label{sec:6.1}
 
+\begin{defn}\label{6.1.1}
+  Let \(\V\) be a vector space over \(\F\).
+  An \textbf{inner product} on \(\V\) over \(\F\) is a function that assigns, to every ordered pair of vectors \(x\) and \(y\) in \(\V\), a scalar in \(\F\), denoted \(\inn{x, y}\), such that for all \(x\), \(y\), and \(z\) in \(\V\) and all \(c\) in \(\F\), the following hold:
+  \begin{enumerate}
+    \item \(\inn{x + z, y} = \inn{x, y} + \inn{z, y}\).
+    \item \(\inn{cx, y} = c \inn{x, y}\).
+    \item \(\conj{\inn{x, y}} = \inn{y, x}\), where the bar denotes complex conjugation.
+    \item \(\inn{x, x} > 0\) if \(x \neq \zv\).
+  \end{enumerate}
+\end{defn}
+
+\begin{note}
+  Note that \cref{6.1.1}(c) reduces to \(\inn{x, y} = \inn{y, x}\) if \(\F = \R\).
+  \cref{6.1.1}(a)(b) simply require that the inner product be linear in the first component.
+  It is easily shown that if \(\seq{a}{1,,n} \in \F\) and \(y, \seq{v}{1,,n} \in \V\), then
+  \[
+    \inn{\sum_{i = 1}^n a_i v_i, y} = \sum_{i = 1}^n a_i \inn{v_i, y}.
+  \]
+\end{note}
+
+\begin{eg}\label{6.1.2}
+  For \(x = \tuple{a}{1,,n}\) and \(y = \tuple{b}{1,,n}\) in \(\vs{F}^n\), define
+  \[
+    \inn{x, y} = \sum_{i = 1}^n a_i \conj{b_i}.
+  \]
+  The inner product defined above is called the \textbf{standard inner product} on \(\vs{F}^n\).
+  When \(\F = \R\) the conjugations are not needed, and in early courses this standard inner product is usually called the \emph{dot product} and is denoted by \(x \cdot y\) instead of \(\inn{x, y}\).
+\end{eg}
+
+\begin{proof}[\pf{6.1.2}]
+  Let \(x, y, z \in \vs{F}^n\) and let \(c \in \F\).
+  Since
+  \begin{align*}
+    \inn{x + y, z}    & = \sum_{i = 1}^n (x + y)_i \conj{z_i}                           &  & \text{(by \cref{6.1.2})}        \\
+                      & = \sum_{i = 1}^n x_i \conj{z_i} + \sum_{i = 1}^n y_i \conj{z_i} &  & \text{(by \cref{c.0.1})}        \\
+                      & = \inn{x, z} + \inn{y, z}                                       &  & \text{(by \cref{6.1.2})}        \\
+    \inn{cx, y}       & = \sum_{i = 1}^n (cx)_i \conj{y_i}                              &  & \text{(by \cref{6.1.2})}        \\
+                      & = c \sum_{i = 1}^n x_i \conj{y_i}                               &  & \text{(by \cref{c.0.1})}        \\
+                      & = c \inn{x, y}                                                  &  & \text{(by \cref{6.1.2})}        \\
+    \conj{\inn{x, y}} & = \conj{\sum_{i = 1}^n x_i \conj{y_i}}                          &  & \text{(by \cref{6.1.2})}        \\
+                      & = \sum_{i = 1}^n \conj{x_i} y_i                                 &  & \text{(by \cref{d.2}(a)(b)(c))} \\
+                      & = \sum_{i = 1}^n y_i \conj{x_i}                                 &  & \text{(by \cref{c.0.1})}        \\
+                      & = \inn{y, x}                                                    &  & \text{(by \cref{6.1.2})}
+  \end{align*}
+  and
+  \begin{align*}
+             & x \neq \zv                                                                                       \\
+    \implies & \exists i \in \set{1, \dots, n} : x_i \neq 0                                                     \\
+    \implies & \exists i \in \set{1, \dots, n} : \abs{x_i}^2 = x_i \conj{x_i} > 0 &  & \text{(by \cref{d.0.5})} \\
+    \implies & \inn{x, x} = \sum_{i = 1}^n x_i \conj{x_i} > 0,                    &  & \text{(by \cref{6.1.2})}
+  \end{align*}
+  by \cref{6.1.1} we know that \(\inn{\cdot, \cdot}\) is an inner product on \(\vs{F}^n\) over \(\F\).
+\end{proof}
+
+\begin{eg}\label{6.1.3}
+  If \(\inn{x, y}\) is any inner product on a vector space \(\V\) over \(\F\) and \(r > 0\), we may define another inner product by the rule \(\inn{x, y}' = r \inn{x, y}\).
+  If \(r \leq 0\), then \cref{6.1.1}(d) would not hold.
+\end{eg}
+
+\begin{proof}[\pf{6.1.3}]
+  Let \(x, y, z \in \V\), let \(c \in \F\) and let \(r \in \R^+\).
+  Since
+  \begin{align*}
+    \inn{x + y, z}'    & = r\inn{x + y, z}             &  & \text{(by \cref{6.1.3})}    \\
+                       & = r (\inn{x, z} + \inn{y, z}) &  & \text{(by \cref{6.1.1}(a))} \\
+                       & = r \inn{x, z} + r \inn{y, z} &  & \text{(by \cref{c.0.1})}    \\
+                       & = \inn{x, z}' + \inn{y, z}'   &  & \text{(by \cref{6.1.3})}    \\
+    \inn{cx, y}'       & = r \inn{cx, y}               &  & \text{(by \cref{6.1.3})}    \\
+                       & = rc \inn{x, y}               &  & \text{(by \cref{6.1.1}(b))} \\
+                       & = cr \inn{x, y}               &  & \text{(by \cref{c.0.1})}    \\
+                       & = c \inn{x, y}'               &  & \text{(by \cref{6.1.3})}    \\
+    \conj{\inn{x, y}'} & = \conj{r \inn{x, y}}         &  & \text{(by \cref{6.1.3})}    \\
+                       & = \conj{r} \conj{\inn{x, y}}  &  & \text{(by \cref{d.2}(c))}   \\
+                       & = \conj{r} \inn{y, x}         &  & \text{(by \cref{6.1.1}(c))} \\
+                       & = r \inn{y, x}                &  & (r \in \R^+)                \\
+                       & = \inn{y, x}'                 &  & \text{(by \cref{6.1.3})}
+  \end{align*}
+  and
+  \begin{align*}
+             & \begin{dcases}
+                 x \neq \zv \\
+                 r > 0
+               \end{dcases}                                                    \\
+    \implies & \inn{x, x}' = r \inn{x, x} > 0, &  & \text{(by \cref{6.1.1}(d))}
+  \end{align*}
+  by \cref{6.1.1} we see that \(\inn{\cdot, \cdot}'\) is an inner product on \(\V\) over \(\F\).
+\end{proof}
+
 \exercisesection
 
 \begin{ex}\label{ex:6.1.15}
