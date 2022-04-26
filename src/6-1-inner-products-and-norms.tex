@@ -473,6 +473,129 @@
   Thus we see that the sum of the square of the length of the \(4\) sides of a parallelogram equal to the sum of the square of the length of diagonal lines of the same parallelogram.
 \end{proof}
 
-\begin{ex}\label{ex:6.1.15}
-
+\begin{ex}\label{ex:6.1.12}
+  Let \(\set{\seq{v}{1,,k}}\) be an orthogonal set in \(\V\) over \(\F\), and let \(\seq{a}{1,,k} \in \F\).
+  Prove that
+  \[
+    \norm{\sum_{i = 1}^k a_i v_i}^2 = \sum_{i = 1}^k \abs{a_i}^2 \norm{v_i}^2.
+  \]
 \end{ex}
+
+\begin{proof}[\pf{ex:6.1.12}]
+  We have
+  \begin{align*}
+    \norm{\sum_{i = 1}^k a_i v_i}^2 & = \sum_{i = 1}^k \norm{a_i v_i}^2          &  & \text{(by \cref{ex:6.1.10})} \\
+                                    & = \sum_{i = 1}^k \abs{a_i}^2 \norm{v_i}^2. &  & \text{(by \cref{6.2}(a))}
+  \end{align*}
+\end{proof}
+
+\begin{ex}\label{ex:6.1.13}
+  Suppose that \(\inn{\cdot, \cdot}_1\) and \(\inn{\cdot, \cdot}_2\) are two inner products on a vector space \(\V\) over \(\F\).
+  Prove that \(\inn{\cdot, \cdot} = \inn{\cdot, \cdot}_1 + \inn{\cdot, \cdot}_2\) is another inner product on \(\V\) over \(\F\).
+\end{ex}
+
+\begin{proof}[\pf{ex:6.1.13}]
+  Let \(x, y, z \in \V\) and let \(c \in \F\).
+  Then we have
+  \begin{align*}
+    \inn{x + y, z}    & = \inn{x + y, z}_1 + \inn{x + y, z}_2                       &  & \text{(by \cref{ex:6.1.13})} \\
+                      & = \inn{x, z}_1 + \inn{y, z}_1 + \inn{x, z}_2 + \inn{y, z}_2 &  & \text{(by \cref{6.1.1}(a))}  \\
+                      & = \inn{x, z} + \inn{y, z}                                   &  & \text{(by \cref{ex:6.1.13})} \\
+    \inn{cx, y}       & = \inn{cx, y}_1 + \inn{cx, y}_2                             &  & \text{(by \cref{ex:6.1.13})} \\
+                      & = c \inn{x, y}_1 + c \inn{x, y}_2                           &  & \text{(by \cref{6.1.1}(b))}  \\
+                      & = c \inn{x, y}                                              &  & \text{(by \cref{ex:6.1.13})} \\
+    \conj{\inn{x, y}} & = \conj{\inn{x, y}_1 + \inn{x, y}_2}                        &  & \text{(by \cref{ex:6.1.13})} \\
+                      & = \conj{\inn{x, y}_1} + \conj{\inn{x, y}_2}                 &  & \text{(by \cref{d.2}(b))}    \\
+                      & = \inn{y, x}_1 + \inn{y, x}_2                               &  & \text{(by \cref{6.1.1}(c))}  \\
+                      & = \inn{y, x}.                                               &  & \text{(by \cref{ex:6.1.13})}
+  \end{align*}
+  If \(x \neq \zv\), then we have
+  \begin{align*}
+    \inn{x, x} & = \inn{x, x}_1 + \inn{x, x}_2 &  & \text{(by \cref{ex:6.1.13})} \\
+               & > 0 + 0                       &  & \text{(by \cref{6.1.1}(d))}  \\
+               & = 0.
+  \end{align*}
+  Thus by \cref{6.1.1} \(\inn{\cdot, \cdot}\) is an inner product on \(\V\) over \(\F\).
+\end{proof}
+
+\begin{ex}\label{ex:6.1.14}
+  Let \(A, B \in \ms{n}{n}{\F}\) and let \(c \in \F\).
+  Prove that \((A + cB)^* = A^* + \conj{c} B^*\).
+\end{ex}
+
+\begin{proof}[\pf{ex:6.1.14}]
+  We have
+  \begin{align*}
+    \forall i, j \in \set{1, \dots, n}, ((A + cB)^*)_{i j} & = \conj{(A + cB)_{j i}}                    &  & \text{(by \cref{6.1.5})}     \\
+                                                           & = \conj{A_{j i} + c B_{j i}}               &  & \text{(by \cref{1.2.9})}     \\
+                                                           & = \conj{A_{j i}} + \conj{c} \conj{B_{j i}} &  & \text{(by \cref{d.2}(b)(c))} \\
+                                                           & = (A^*)_{i j} + \conj{c} (B^*)_{i j}       &  & \text{(by \cref{6.1.5})}     \\
+                                                           & = (A^* + \conj{c} B^*)_{i j}               &  & \text{(by \cref{1.2.9})}
+  \end{align*}
+  and thus by \cref{1.2.8} \((A + cB)^* = A^* + \conj{c} B^*\).
+\end{proof}
+
+\begin{ex}\label{ex:6.1.15}
+  \begin{enumerate}
+    \item Prove that if \(\V\) is an inner product space over \(\F\), then \(\abs{\inn{x, y}} = \norm{x} \cdot \norm{y}\) iff one of the vectors \(x\) or \(y\) is a multiple of the other.
+    \item Derive a similar result for the equality \(\norm{x + y} = \norm{x} + \norm{y}\), and generalize it to the case of \(n\) vectors.
+  \end{enumerate}
+\end{ex}
+
+\begin{proof}[\pf{ex:6.1.15}(a)]
+  If \(y = \zv\) then
+  \begin{align*}
+         & \abs{\inn{x, \zv}} = \abs{0} = 0 = \norm{x} \norm{\zv} &  & \text{(by \cref{6.1}(c))} \\
+    \iff & y = 0x = \zv.                                          &  & \text{(by \cref{1.2}(a))}
+  \end{align*}
+  So suppose that \(y \neq \zv\).
+
+  First suppose that \(\abs{\inn{x, y}} = \norm{x} \norm{y}\).
+  Define
+  \[
+    a = \frac{\inn{x, y}}{\norm{y}^2} \quad \text{and} \quad z = x - ay.
+  \]
+  Then we have
+  \begin{align*}
+    \inn{z, y} & = \inn{x - \frac{\inn{x, y}}{\norm{y}^2} y, y}                                              \\
+               & = \inn{x, y} - \frac{\inn{x, y}}{\norm{y}^2} \inn{y, y} &  & \text{(by \cref{6.1.1}(a)(b))} \\
+               & = \inn{x, y} - \frac{\inn{x, y}}{\inn{y, y}} \inn{y, y} &  & \text{(by \cref{6.1.9})}       \\
+               & = 0                                                     &  & (\inn{y, y} > 0)
+  \end{align*}
+  and thus by \cref{6.1.12} we see that \(y, z\) are orthogonal.
+  Since
+  \begin{align*}
+             & \abs{\inn{x, y}} = \norm{x} \norm{y}                                                                     \\
+    \implies & \abs{a} = \abs{\frac{\inn{x, y}}{\norm{y}^2}} = \frac{\norm{x}}{\norm{y}}                                \\
+    \implies & \abs{a} \norm{y} = \norm{ay} = \norm{x}                                   &  & \text{(by \cref{6.2}(a))} \\
+  \end{align*}
+  we have
+  \begin{align*}
+             & \begin{dcases}
+                 z \bot y \\
+                 x = z + ay
+               \end{dcases}                                          &  & \text{(from the proof above)}   \\
+    \implies & \norm{x}^2 = \norm{z + ay}^2 = \norm{z}^2 + \norm{ay}^2 &  & \text{(by \cref{ex:6.1.10})}  \\
+    \implies & \norm{x}^2 = \norm{z}^2 + \norm{x}^2                    &  & \text{(from the proof above)} \\
+    \implies & \norm{z}^2 = 0                                                                             \\
+    \implies & \inn{z, z} = 0                                          &  & \text{(by \cref{6.1.9})}      \\
+    \implies & x - ay = z = \zv                                        &  & \text{(by \cref{6.1}(d))}     \\
+    \implies & x = ay.
+  \end{align*}
+
+  Now suppose that there exists an \(a \in \F\) such that \(x = ay\).
+  Then we have
+  \begin{align*}
+    \norm{x} \norm{y} & = \norm{ay} \norm{y}                                        \\
+                      & = \abs{a} \norm{y}^2       &  & \text{(by \cref{6.2}(a))}   \\
+                      & = \abs{a} \inn{y, y}       &  & \text{(by \cref{6.1.9})}    \\
+                      & = \abs{a} \abs{\inn{y, y}} &  & \text{(by \cref{6.2}(b))}   \\
+                      & = \abs{a \inn{y, y}}       &  & \text{(by \cref{d.3}(a))}   \\
+                      & = \abs{\inn{ay, y}}        &  & \text{(by \cref{6.1.1}(b))} \\
+                      & = \abs{\inn{x, y}}.
+  \end{align*}
+\end{proof}
+
+\begin{proof}[\pf{ex:6.1.15}(b)]
+
+\end{proof}
