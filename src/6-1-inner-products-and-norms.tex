@@ -156,6 +156,225 @@
   Likewise, \(\ms{n}{n}{\F}\) denotes the inner product space with the Frobenius inner product as defined in \cref{6.1.6}.
 \end{note}
 
+\begin{eg}\label{6.1.8}
+  Let \(\vs{H} = \cfs([0, 2\pi], \C)\).
+  For \(f, g \in \vs{H}\), define
+  \[
+    \inn{f, g} = \frac{1}{2\pi} \int_0^{2\pi} f(t) \conj{g(t)} \; dt.
+  \]
+  This inner product space, which arises often in the context of physical situations, is examined more closely in later sections.
+\end{eg}
+
+\begin{proof}
+  Let \(f, g, h \in \vs{H}\) and let \(c \in \C\).
+  Then
+  \begin{align*}
+    \inn{f + g, h}    & = \frac{1}{2\pi} \int_0^{2\pi} (f + g)(t) \conj{h(t)} \; dt                                                 &  & \text{(by \cref{6.1.8})}  \\
+                      & = \frac{1}{2\pi} \int_0^{2\pi} f(t) \conj{h(t)} \; dt + \frac{1}{2\pi} \int_0^{2\pi} g(t) \conj{h(t)} \; dt                                \\
+                      & = \inn{f, h} + \inn{g, h}                                                                                   &  & \text{(by \cref{6.1.8})}  \\
+    \inn{cf, g}       & = \frac{1}{2\pi} \int_0^{2\pi} (cf)(t) \conj{g(t)} \; dt                                                    &  & \text{(by \cref{6.1.8})}  \\
+                      & = \frac{c}{2\pi} \int_0^{2\pi} f(t) \conj{g(t)} \; dt                                                                                      \\
+                      & = c \inn{f, g}                                                                                                                             \\
+    \conj{\inn{f, g}} & = \conj{\frac{1}{2\pi} \int_0^{2\pi} f(t) \conj{g(t)} \; dt}                                                &  & \text{(by \cref{6.1.8})}  \\
+                      & = \frac{1}{2\pi} \int_0^{2\pi} \conj{f(t)} g(t) \; dt                                                       &  & \text{(by \cref{d.2}(c))} \\
+                      & = \inn{g, f}.                                                                                               &  & \text{(by \cref{6.1.8})}
+  \end{align*}
+  Also, if \(f \neq \zv\), then we have
+  \begin{align*}
+    \inn{f, f} & = \frac{1}{2\pi} \int_0^{2\pi} f(t) \conj{f(t)} \; dt &  & \text{(by \cref{6.1.8})} \\
+               & = \frac{1}{2\pi} \int_0^{2\pi} \abs{f(t)}^2 \; dt     &  & \text{(by \cref{d.0.5})} \\
+               & > 0.                                                  &  & (f \neq \zv)
+  \end{align*}
+  Thus by \cref{6.1.1} \(\inn{\cdot, \cdot}\) is an inner product on \(\vs{H}\).
+\end{proof}
+
+\begin{thm}\label{6.1}
+  Let \(\V\) be an inner product space over \(\F\).
+  Then for \(x, y, z \in \V\) and \(c \in \F\), the following statements are true.
+  \begin{enumerate}
+    \item \(\inn{x, y + z} = \inn{x, y} + \inn{x, z}\).
+    \item \(\inn{x, cy} = \conj{c} \inn{x, y}\).
+    \item \(\inn{x, \zv} = \inn{\zv, x} = 0\).
+    \item \(\inn{x, x} = 0\) iff \(x = \zv\).
+    \item If \(\inn{x, y} = \inn{x, z}\) for all \(x \in \V\), then \(y = z\).
+  \end{enumerate}
+\end{thm}
+
+\begin{proof}[\pf{6.1}(a)]
+  We have
+  \begin{align*}
+    \inn{x, y + z} & = \conj{\inn{y + z, x}}                 &  & \text{(by \cref{6.1.1}(c))} \\
+                   & = \conj{\inn{y, x} + \inn{z, x}}        &  & \text{(by \cref{6.1.1}(a))} \\
+                   & = \conj{\inn{y, x}} + \conj{\inn{z, x}} &  & \text{(by \cref{d.2}(b))}   \\
+                   & = \inn{x, y} + \inn{x, z}.              &  & \text{(by \cref{6.1.1}(c))}
+  \end{align*}
+\end{proof}
+
+\begin{proof}[\pf{6.1}(b)]
+  We have
+  \begin{align*}
+    \inn{x, cy} & = \conj{\inn{cy, x}}         &  & \text{(by \cref{6.1.1}(c))} \\
+                & = \conj{c \inn{y, x}}        &  & \text{(by \cref{6.1.1}(b))} \\
+                & = \conj{c} \conj{\inn{y, x}} &  & \text{(by \cref{d.2}(c))}   \\
+                & = \conj{c} \inn{x, y}        &  & \text{(by \cref{6.1.1}(c))}
+  \end{align*}
+\end{proof}
+
+\begin{proof}[\pf{6.1}(c)]
+  We have
+  \begin{align*}
+    \inn{x, \zv} & = \inn{x, \zv + \zv}          &  & \text{(by \cref{1.2.1})}    \\
+                 & = \inn{x, \zv} + \inn{x, \zv} &  & \text{(by \cref{6.1}(a))}   \\
+    \inn{\zv, x} & = \inn{\zv + \zv, x}          &  & \text{(by \cref{1.2.1})}    \\
+                 & = \inn{\zv, x} + \inn{\zv, x} &  & \text{(by \cref{6.1.1}(a))}
+  \end{align*}
+  and thus \(\inn{x, \zv} = \inn{\zv, x} = 0\).
+\end{proof}
+
+\begin{proof}[\pf{6.1}(d)]
+  By \cref{6.1.1}(d) and \cref{6.1}(c) we have \(\inn{x, x} = 0 \iff x = \zv\).
+\end{proof}
+
+\begin{proof}[\pf{6.1}(e)]
+  Since
+  \begin{align*}
+    \inn{y - z, y - z} & = \inn{y, y - z} - \inn{z, y - z}                   &  & \text{(by \cref{6.1.1}(a)(b))}              \\
+                       & = \inn{y, y} - \inn{y, z} - \inn{z, y} + \inn{z, z} &  & \text{(by \cref{6.1}(a)(b))}                \\
+                       & = \inn{z, y} - \inn{y, z} - \inn{z, y} + \inn{y, z} &  & (\forall x \in \V, \inn{x, y} = \inn{x, z}) \\
+                       & = 0,
+  \end{align*}
+  by \cref{6.1}(d) we know that \(y - z = \zv\), thus \(y = z\).
+\end{proof}
+
+\begin{note}
+  The reader should observe that \cref{6.1}(a)(b) show that the inner product is \textbf{conjugate linear} in the second component.
+\end{note}
+
+\begin{defn}\label{6.1.9}
+  Let \(\V\) be an inner product space over \(\F\).
+  For \(x \in \V\), we define the \textbf{norm} or \textbf{length} of \(x\) by \(\norm{x} = \sqrt{\inn{x, x}}\).
+\end{defn}
+
+\begin{eg}\label{6.1.10}
+  Let \(\V = \vs{F}^n\).
+  If \(x = \tuple{a}{1,,n}\), then
+  \[
+    \norm{x} = \norm{\tuple{a}{1,,n}} = \pa{\sum_{i = 1}^n \abs{a_i}^2}^{\frac{1}{2}}
+  \]
+  is the Euclidean definition of length.
+  Note that if \(n = 1\), we have \(\norm{a} = \abs{a}\).
+\end{eg}
+
+\begin{thm}\label{6.2}
+  Let \(\V\) be an inner product space over \(\F\).
+  Then for all \(x, y \in \V\) and \(c \in \F\), the following statements are true.
+  \begin{enumerate}
+    \item \(\norm{cx} = \abs{c} \cdot \norm{x}\).
+    \item \(\norm{x} = 0\) iff \(x = \zv\).
+          In any case \(\norm{x} \geq 0\).
+    \item (Cauchy--Schwarz Inequality)
+          \(\abs{\inn{x, y}} \leq \norm{x} \cdot \norm{y}\).
+    \item (Triangle Inequality)
+          \(\norm{x + y} \leq \norm{x} + \norm{y}\).
+  \end{enumerate}
+\end{thm}
+
+\begin{proof}[\pf{6.2}(a)]
+  We have
+  \begin{align*}
+    \norm{cx} & = \sqrt{\inn{cx, cx}}          &  & \text{(by \cref{6.1.9})}    \\
+              & = \sqrt{c \inn{x, cx}}         &  & \text{(by \cref{6.1.1}(b))} \\
+              & = \sqrt{c \conj{c} \inn{x, x}} &  & \text{(by \cref{6.1}(b))}   \\
+              & = \sqrt{\abs{c}^2 \inn{x, x}}  &  & \text{(by \cref{d.0.5})}    \\
+              & = \abs{c} \sqrt{\inn{x, x}}                                     \\
+              & = \abs{c} \norm{x}.            &  & \text{(by \cref{6.1.9})}
+  \end{align*}
+\end{proof}
+
+\begin{proof}[\pf{6.2}(b)]
+  We have
+  \begin{align*}
+         & x = \zv                                              \\
+    \iff & \inn{x, x} = 0        &  & \text{(by \cref{6.1}(d))} \\
+    \iff & \sqrt{\inn{x, x}} = 0                                \\
+    \iff & \norm{x} = 0          &  & \text{(by \cref{6.1.9})}
+  \end{align*}
+  and
+  \begin{align*}
+             & \forall x \in \V, \begin{dcases}
+                                   \inn{x, x} = 0 & \text{if } x = \zv    \\
+                                   \inn{x, x} > 0 & \text{if } x \neq \zv
+                                 \end{dcases}  &  & \text{(by \cref{6.1.1}(d) and \cref{6.1}(d))} \\
+    \implies & \forall x \in \V, \inn{x, x} \geq 0                                                \\
+    \implies & \forall x \in \V, \sqrt{\inn{x, x}} \geq 0                                         \\
+    \implies & \forall x \in \V, \norm{x} \geq 0.         &  & \text{(by \cref{6.1.9})}
+  \end{align*}
+\end{proof}
+
+\begin{proof}[\pf{6.2}(c)]
+  If \(y = \zv\), then the result is immediate.
+  So assume that \(y \neq \zv\).
+  For any \(c \in \F\), we have
+  \begin{align*}
+    0 & \leq \norm{x - cy}^2                                                       &  & \text{(by \cref{6.2}(b))}      \\
+      & = \inn{x - cy, x - cy}                                                     &  & \text{(by \cref{6.1.9})}       \\
+      & = \inn{x, x - cy} - c \inn{y, x - cy}                                      &  & \text{(by \cref{6.1.1}(a)(b))} \\
+      & = \inn{x, x} - \conj{c} \inn{x, y} - c \inn{y, x} + c \conj{c} \inn{y, y}. &  & \text{(by \cref{6.1}(a)(b))}
+  \end{align*}
+  In particular, if we set
+  \[
+    c = \frac{\inn{x, y}}{\inn{y, y}},
+  \]
+  the inequality becomes
+  \[
+    0 \leq \inn{x, x} - \frac{\abs{\inn{x, y}}^2}{\inn{y, y}} = \norm{x}^2 - \frac{\abs{\inn{x, y}}^2}{\norm{y}^2},
+  \]
+  from which (c) follows.
+\end{proof}
+
+\begin{proof}[\pf{6.2}(d)]
+  We have
+  \begin{align*}
+     & \norm{x + y}^2                                                                                         \\
+     & = \inn{x + y, x + y}                                &  & \text{(by \cref{6.1.9})}                      \\
+     & = \inn{x, x} + \inn{y, x} + \inn{x, y} + \inn{y, y} &  & \text{(by \cref{6.1.1}(a) and \cref{6.1}(a))} \\
+     & = \norm{x}^2 + 2 \Re(\inn{x, y}) + \norm{y}^2       &  & \text{(by \cref{6.1.1}(d) and \cref{6.1.9})}  \\
+     & \leq \norm{x}^2 + 2 \abs{\inn{x, y}} + \norm{y}^2   &  & \text{(by \cref{d.0.5})}                      \\
+     & \leq \norm{x}^2 + 2 \norm{x} \norm{y} + \norm{y}^2  &  & \text{(by \cref{6.2}(c))}                     \\
+     & = \pa{\norm{x} + \norm{y}}^2,
+  \end{align*}
+  where \(\Re(\inn{x, y})\) denotes the real part of the complex number \(\inn{x, y}\).
+\end{proof}
+
+\begin{eg}\label{6.1.11}
+  For \(\vs{F}^n\), we may apply \cref{6.2}(c)(d) to the standard inner product to obtain the following well-known inequalities:
+  \[
+    \abs{\sum_{i = 1}^n a_i \conj{b_i}} \leq \pa{\sum_{i = 1}^n \abs{a_i}^2}^{\frac{1}{2}} \pa{\sum_{i = 1}^n \abs{b_i}^2}^{\frac{1}{2}}
+  \]
+  and
+  \[
+    \pa{\sum_{i = 1}^n \abs{a_i + b_i}^2}^{\frac{1}{2}} \leq \pa{\sum_{i = 1}^n \abs{a_i}^2}^{\frac{1}{2}} + \pa{\sum_{i = 1}^n \abs{b_i}^2}^{\frac{1}{2}}.
+  \]
+\end{eg}
+
+\begin{note}
+  The reader may recall from earlier courses that, for \(x\) and \(y\) in \(\R^3\) or \(\R^2\), we have that \(\inn{x, y} = \norm{x} \cdot \norm{y} \cos \theta\), where \(\theta \in [0, \pi]\) denotes the angle between \(x\) and \(y\).
+  This equation implies \cref{6.2}(c) immediately since \(\abs{\cos \theta} \leq 1\).
+  Notice also that nonzero vectors \(x\) and \(y\) are perpendicular iff \(\cos \theta = 0\), that is, iff \(\inn{x, y} = 0\).
+\end{note}
+
+\begin{defn}\label{6.1.12}
+  Let \(\V\) be an inner product space over \(\F\).
+  Vectors \(x\) and \(y\) in \(\V\) are \textbf{orthogonal} (\textbf{perpendicular}) if \(\inn{x, y} = 0\).
+  A subset \(S\) of \(\V\) is \textbf{orthogonal} if any two distinct vectors in \(S\) are orthogonal.
+  A vector \(x\) in \(\V\) is a \textbf{unit vector} if \(\norm{x} = 1\).
+  Finally, a subset \(S\) of \(\V\) is \textbf{orthonormal} if \(S\) is orthogonal and consists entirely of unit vectors.
+
+  Note that if \(S = \set{\seq{v}{1,2,}}\), then \(S\) is orthonormal iff \(\inn{v_i, v_j} = \delta_{i j}\), where \(\delta_{i j}\) denotes the Kronecker delta.
+  Also, observe that multiplying vectors by nonzero scalars does not affect their orthogonality and that if \(x\) is any nonzero vector, then \((1 / \norm{x}) x\) is a unit vector.
+  The process of multiplying a nonzero vector by the reciprocal of its length is called \textbf{normalizing}.
+\end{defn}
+
 \exercisesection
 
 \begin{ex}\label{ex:6.1.15}
