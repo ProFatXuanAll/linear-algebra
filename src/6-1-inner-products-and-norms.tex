@@ -375,7 +375,103 @@
   The process of multiplying a nonzero vector by the reciprocal of its length is called \textbf{normalizing}.
 \end{defn}
 
+\begin{eg}\label{6.1.13}
+  Recall the inner product space \(\vs{H}\) (defined in \cref{6.1.8}).
+  We introduce an important orthonormal subset \(S\) of \(\vs{H}\).
+  For what follows, \(i\) is the imaginary number such that \(i^2 = -1\).
+  For any integer \(n\), let \(f_n(t) = e^{int}\), where \(0 \leq t \leq 2\pi\).
+  (Recall that \(e^{int} = \cos(nt) + i \sin(nt)\).)
+  Now define \(S = \set{f_n : n \in \Z}\).
+  Clearly \(S\) is a subset of \(\vs{H}\).
+  Using the property that \(\conj{e^{it}} = e^{-it}\) for every real number \(t\), we have, for \(m \neq n\),
+  \begin{align*}
+    \inn{f_m, f_n} & = \frac{1}{2\pi} \int_0^{2\pi} e^{imt} \conj{e^{int}} \; dt &  & \text{(by \cref{6.1.8})} \\
+                   & = \frac{1}{2\pi} \int_0^{2\pi} e^{i(m - n)t} \; dt                                        \\
+                   & = \eval{\frac{1}{2\pi i(m - n)} e^{i(m - n)t}}_0^{2\pi}                                   \\
+                   & = 0.
+  \end{align*}
+  Also,
+  \begin{align*}
+    \inn{f_n, f_n} & = \frac{1}{2\pi} \int_0^{2\pi} e^{i(n - n)t} \; dt &  & \text{(by \cref{6.1.8})} \\
+                   & = \frac{1}{2\pi} \int_0^{2\pi} 1 \; dt                                           \\
+                   & = 1.
+  \end{align*}
+  In other words, \(\inn{f_m, f_n} = \delta_{m n}\).
+\end{eg}
+
 \exercisesection
+
+\setcounter{ex}{8}
+\begin{ex}\label{ex:6.1.9}
+  Let \(\beta\) be a basis for a \(n\)-dimensional inner product space \(\V\) over \(\F\).
+  \begin{enumerate}
+    \item Prove that if \(x \in \V\) and \(\inn{x, z} = 0\) for all \(z \in \beta\), then \(x = \zv\).
+    \item Prove that if \(x \in \V\) and \(\inn{x, z} = \inn{y, z}\) for all \(z \in \beta\), then \(x = y\).
+  \end{enumerate}
+\end{ex}
+
+\begin{proof}[\pf{ex:6.1.9}(a)]
+  Let \(\beta = \set{\seq{v}{1,,n}}\).
+  Then we have
+  \begin{align*}
+             & x \in \V = \spn{\beta}                                                                                                  \\
+    \implies & \exists \seq{a}{1,,n} \in \F : x = \sum_{i = 1}^n a_i v_i                             &  & \text{(by \cref{1.6.1})}     \\
+    \implies & \inn{x, x} = \inn{x, \sum_{i = 1}^n a_i v_i} = \sum_{i = 1}^n \conj{a_i} \inn{x, v_i} &  & \text{(by \cref{6.1}(a)(b))} \\
+             & = \sum_{i = 1}^n \conj{a_i} 0 = 0                                                     &  & \text{(by hypothesis)}       \\
+    \implies & x = \zv.                                                                              &  & \text{(by \cref{6.1}(d))}
+  \end{align*}
+\end{proof}
+
+\begin{proof}[\pf{ex:6.1.9}(b)]
+  We have
+  \begin{align*}
+             & \forall z \in \beta, \inn{x, z} = \inn{y, z}                                              \\
+    \implies & \forall v \in \V = \spn{\beta}, \inn{x, v} = \inn{y, v} &  & \text{(by \cref{6.1}(a)(b))} \\
+    \implies & \forall v \in \V = \spn{\beta}, \inn{v, x} = \inn{v, y} &  & \text{(by \cref{6.1.1}(c))}  \\
+    \implies & x = y.                                                  &  & \text{(by \cref{6.1}(e))}
+  \end{align*}
+\end{proof}
+
+\begin{ex}\label{ex:6.1.10}
+  Let \(\V\) be an inner product space over \(\F\), and suppose that \(x\) and \(y\) are orthogonal vectors in \(\V\).
+  Prove that \(\norm{x + y}^2 = \norm{x}^2 + \norm{y}^2\).
+  Deduce the Pythagorean theorem in \(\R^2\).
+\end{ex}
+
+\begin{proof}[\pf{ex:6.1.10}]
+  We have
+  \begin{align*}
+     & \norm{x + y}^2                                                                                         \\
+     & = \inn{x + y, x + y}                                &  & \text{(by \cref{6.1.9})}                      \\
+     & = \inn{x, x} + \inn{y, x} + \inn{x, y} + \inn{y, y} &  & \text{(by \cref{6.1.1}(a) and \cref{6.1}(a))} \\
+     & = \inn{x, x} + \inn{y, y}                           &  & \text{(by \cref{6.1.12})}                     \\
+     & = \norm{x}^2 + \norm{y}^2.                          &  & \text{(by \cref{6.1.9})}
+  \end{align*}
+  By setting \(\V = \R^2\) and define \(\inn{\cdot, \cdot}\) as in \cref{6.1.2} we see that the Pythagorean theorem is true.
+\end{proof}
+
+\begin{ex}\label{ex:6.1.11}
+  Prove the \emph{parallelogram law} on an inner product space \(\V\) over \(\F\);
+  that is, show that
+  \[
+    \norm{x + y}^2 + \norm{x - y}^2 = 2 \norm{x}^2 + 2 \norm{y}^2 \quad \text{for all } x, y \in \V.
+  \]
+  What does this equation state about parallelograms in \(\R^2\)?
+\end{ex}
+
+\begin{proof}[\pf{ex:6.1.11}]
+  We have
+  \begin{align*}
+     & \norm{x + y}^2 + \norm{x - y}^2                                                                         \\
+     & = \inn{x + y, x + y} + \inn{x - y, x - y}                           &  & \text{(by \cref{6.1.9})}       \\
+     & = \inn{x, x + y} + \inn{y, x + y} + \inn{x, x - y} - \inn{y, x - y} &  & \text{(by \cref{6.1.1}(a)(b))} \\
+     & = \inn{x, 2x} + \inn{y, 2y}                                         &  & \text{(by \cref{6.1}(a)(b))}   \\
+     & = 2 \inn{x, x} + 2 \inn{y, y}                                       &  & \text{(by \cref{6.1}(b))}      \\
+     & = 2 \norm{x}^2 + 2 \norm{y}^2.                                      &  & \text{(by \cref{6.1.9})}
+  \end{align*}
+  On \(\R^2\) we see that if \(x, y\) are the two vectors forming a parallelogram, then \(x + y\) and \(x - y\) are the two diagonal vectors of the parallelogram.
+  Thus we see that the sum of the square of the length of the \(4\) sides of a parallelogram equal to the sum of the square of the length of diagonal lines of the same parallelogram.
+\end{proof}
 
 \begin{ex}\label{ex:6.1.15}
 
