@@ -597,5 +597,44 @@
 \end{proof}
 
 \begin{proof}[\pf{ex:6.1.15}(b)]
-
+  We claim that \(\norm{x + y} = \norm{x} + \norm{y}\) iff there exists a nonnegative scalar \(c \in \F\) such that \(x = cy\) or \(y = cx\).
+  If \(y = \zv\), then we have
+  \begin{align*}
+         & \norm{x + \zv} = \norm{x} + \norm{\zv} = \norm{x} &  & \text{(by \cref{6.1}(c))} \\
+    \iff & \zv = 0x.                                         &  & \text{(by \cref{1.2}(a))}
+  \end{align*}
+  So suppose that \(y \neq \zv\).
+  As in the proof of \cref{6.2}(d), we see that
+  \[
+    \norm{x + y}^2 = \norm{x}^2 + 2 \Re(\inn{x, y}) + \norm{y}^2.
+  \]
+  Thus we have
+  \begin{align*}
+             & \norm{x + y} = \norm{x} + \norm{y}                                                                            \\
+    \implies & \norm{x + y}^2 = \norm{x}^2 + 2 \norm{x} \norm{y} + \norm{y}^2                                                \\
+    \implies & \norm{x} \norm{y} = \Re(\inn{x, y})                                                                           \\
+    \implies & \abs{\inn{x, y}} \leq \norm{x} \norm{y} = \Re(\inn{x, y})                &  & \text{(by \cref{6.2}(d))}       \\
+             & \leq \sqrt{(\Re(\inn{x, y}))^2 + (\Im(\inn{x, y}))^2} = \abs{\inn{x, y}} &  & \text{(by \cref{d.0.5})}        \\
+    \implies & \abs{\inn{x, y}} = \norm{x} \norm{y}                                                                          \\
+    \implies & \exists c \in \F : (x = cy) \lor (y = cx)                                &  & \text{(by \cref{ex:6.1.15}(a))}
+  \end{align*}
+  and
+  \begin{align*}
+             & \exists c \in \F : \begin{dcases}
+                                    c > 0 \\
+                                    x = cy
+                                  \end{dcases}                                                             \\
+    \implies & \norm{x} + \norm{y} = \norm{cy} + \norm{y} = (c + 1) \norm{y} &  & \text{(by \cref{6.2}(a))} \\
+             & = \norm{(c + 1) y} = \norm{x + y}.                            &  & \text{(by \cref{6.2}(a))}
+  \end{align*}
+  In general we see that
+  \[
+    \norm{\sum_{i = 1}^n x_i} = \sum_{i = 1}^n \norm{x_i} \iff \begin{dcases}
+      \exists \seq{c}{1,,n} \in \F \\
+      \exists j \in \set{1, \dots, n}
+    \end{dcases} : \forall i \in \set{1, \dots, n}, \begin{dcases}
+      c_i > 0 \\
+      x_i = c_i x_j
+    \end{dcases}.
+  \]
 \end{proof}
