@@ -868,3 +868,155 @@
                \end{dcases}.                            &  & \text{(by \cref{1.2.9})}
   \end{align*}
 \end{proof}
+
+\begin{ex}\label{ex:6.1.22}
+  Let \(\V\) be a vector space over \(\F\) (possibly infinite-dimensional) where \(\F = \R\) or \(\F = \C\), and let \(\beta\) be a basis for \(\V\) over \(\F\).
+  For \(x, y \in \V\) there exist \(\seq{v}{1,,n} \in \beta\) such that
+  \[
+    \sum_{i = 1}^n a_i v_i \quad \text{and} \quad y = \sum_{i = 1}^n b_i v_i.
+  \]
+  Define
+  \[
+    \inn{x, y} = \sum_{i = 1}^n a_i \conj{b_i}.
+  \]
+  \begin{enumerate}
+    \item Prove that \(\inn{\cdot, \cdot}\) is an inner product on \(\V\) over \(\F\) and that \(\beta\) is an orthonormal basis for \(\V\) over \(\F\).
+          Thus every real or complex vector space may be regarded as an inner product space.
+    \item Prove that if \(\V = \R^n\) or \(\V = \C^n\) and \(\beta\) is the standard ordered basis for \(\V\) over \(\F\), then the inner product defined above is the standard inner product.
+  \end{enumerate}
+\end{ex}
+
+\begin{proof}[\pf{ex:6.1.22}(a)]
+  Let \(x, y, z \in \V\) and let \(k \in \F\).
+  Then
+  \[
+    \begin{dcases}
+      \exists \seq{a}{1,,n} \in \F \\
+      \exists \seq{b}{1,,n} \in \F \\
+      \exists \seq{c}{1,,n} \in \F \\
+      \exists \seq{v}{1,,n} \in \F
+    \end{dcases} : \begin{dcases}
+      x = \sum_{i = 1}^n a_i v_i \\
+      y = \sum_{i = 1}^n b_i v_i \\
+      z = \sum_{i = 1}^n c_i v_i
+    \end{dcases}.
+  \]
+  Thus we have
+  \begin{align*}
+    \inn{x + y, z}    & = \inn{\sum_{i = 1}^n (a_i + b_i) v_i, \sum_{i = 1}^n c_i v_i}  &  & \text{(by \cref{1.2.1})}        \\
+                      & = \sum_{i = 1}^n (a_i + b_i) \conj{c_i}                         &  & \text{(by \cref{ex:6.1.22})}    \\
+                      & = \sum_{i = 1}^n a_i \conj{c_i} + \sum_{i = 1}^n b_i \conj{c_i}                                      \\
+                      & = \inn{x, z} + \inn{y, z}                                       &  & \text{(by \cref{ex:6.1.22})}    \\
+    \inn{kx, y}       & = \inn{\sum_{i = 1}^n k a_i v_i, \sum_{i = 1}^n b_i v_i}        &  & \text{(by \cref{1.2.1})}        \\
+                      & = \sum_{i = 1}^n (k a_i) \conj{b_j}                             &  & \text{(by \cref{ex:6.1.22})}    \\
+                      & = k \sum_{i = 1}^n a_i \conj{b_i}                                                                    \\
+                      & = k \inn{x, y}                                                  &  & \text{(by \cref{ex:6.1.22})}    \\
+    \conj{\inn{x, y}} & = \conj{\sum_{i = 1}^n a_i \conj{b_i}}                          &  & \text{(by \cref{ex:6.1.22})}    \\
+                      & = \sum_{i = 1}^n \conj{a_i} b_i                                 &  & \text{(by \cref{d.2}(a)(b)(c))} \\
+                      & = \inn{y, x}.                                                   &  & \text{(by \cref{ex:6.1.22})}
+  \end{align*}
+  If \(x \neq \zv\), then we have
+  \begin{align*}
+             & \exists i \in \set{1, \dots, n} : a_i \neq 0                       &  & \text{(by \cref{1.5.3})}     \\
+    \implies & \exists i \in \set{1, \dots, n} : a_i \conj{a_i} = \abs{a_i}^2 > 0 &  & \text{(by \cref{d.0.5})}     \\
+    \implies & \sum_{i = 1}^n a_i \conj{a_i} = \sum_{i = 1}^n \abs{a_i}^2 > 0                                       \\
+    \implies & \inn{x, x} > 0.                                                    &  & \text{(by \cref{ex:6.1.22})}
+  \end{align*}
+  Thus by \cref{6.1.1} \(\inn{\cdot, \cdot}\) is an inner product on \(\V\) over \(\F\).
+
+  Now we show that \(\beta\) is orthonormal.
+  Since
+  \begin{align*}
+             & \forall v_i, v_j \in \beta, \exists \seq{v}{1,,n} \in \beta : \begin{dcases}
+                                                                               n = \max(i, j)                        \\
+                                                                               v_i = \sum_{k = 1}^n \delta_{k i} v_k \\
+                                                                               v_j = \sum_{k = 1}^n \delta_{k j} v_k
+                                                                             \end{dcases}                 &  & \text{(by \cref{1.8})}         \\
+    \implies & \inn{v_i, v_j} = \inn{\sum_{k = 1}^n \delta_{k i} v_k, \sum_{k = 1}^n \delta_{k j} v_k}                                        \\
+             & = \sum_{k = 1}^n \delta_{k i} \conj{\delta_{k j}} = \sum_{k = 1}^n \delta_{k i} \delta_{k j} &  & \text{(by \cref{ex:6.1.22})} \\
+             & = \begin{dcases}
+                   \delta_{i i} \delta_{i j} + \delta_{j i} \delta_{j j} = 0 & \text{if } i \neq j \\
+                   \delta_{i i} = 1                                          & \text{if } i = j
+                 \end{dcases}           &  & \text{(by \cref{2.3.4})}                                              \\
+             & = \delta_{i j},                                                                              &  & \text{(by \cref{2.3.4})}
+  \end{align*}
+  by \cref{6.1.12} we know that \(\beta\) is orthonormal.
+\end{proof}
+
+\begin{proof}[\pf{ex:6.1.22}(b)]
+  Since
+  \[
+    \forall x, y \in \V, \inn{x, y} = \inn{\sum_{i = 1}^n x_i e_i, \sum_{i = 1}^n y_i e_i} = \sum_{i = 1}^n x_i \conj{y_i},
+  \]
+  by \cref{6.1.2} we see that \(\inn{\cdot, \cdot}\) is the standard inner product on \(\V\) over \(\F\).
+\end{proof}
+
+\begin{ex}\label{ex:6.1.23}
+  Let \(\inn{\cdot, \cdot}\) be the standard inner product on \(\vs{F}^n\) over \(\F\), and let \(A \in \ms{n}{n}{\F}\).
+  \begin{enumerate}
+    \item Prove that \(\inn{x, Ay} = \inn{A^* x, y}\) for all \(x, y \in \vs{F}^n\).
+    \item Suppose that for some \(B \in \ms{n}{n}{\F}\), we have \(\inn{x, Ay} = \inn{Bx, y}\) for all \(x, y \in \vs{F}^n\).
+          Prove that \(B = A^*\).
+    \item Let \(\alpha\) be the standard ordered basis for \(\vs{F}^n\) over \(\F\).
+          For any orthonormal basis \(\beta\) for \(\vs{F}^n\) over \(\F\), let \(Q \in \ms{n}{n}{\F}\) whose columns are the vectors in \(\beta\).
+          Prove that \(Q^* = Q^{-1}\).
+    \item Define \(\T, \U \in \ls(\vs{F}^n)\) by \(\T(x) = Ax\) and \(\U(x) = A^* x\).
+          Show that \([\U]_{\beta} = [\T]_{\beta}^*\) for any orthonormal basis \(\beta\) for \(\vs{F}^n\) over \(\F\).
+  \end{enumerate}
+\end{ex}
+
+\begin{proof}[\pf{ex:6.1.23}(a)]
+  We have
+  \begin{align*}
+    \inn{x, Ay} & = \sum_{i = 1}^n x_i \conj{(Ay)_i}                                 &  & \text{(by \cref{6.1.2})}     \\
+                & = \sum_{i = 1}^n x_i \conj{\pa{\sum_{j = 1}^n A_{i j} y_j}}        &  & \text{(by \cref{2.3.1})}     \\
+                & = \sum_{i = 1}^n x_i \pa{\sum_{j = 1}^n \conj{A_{i j}} \conj{y_j}} &  & \text{(by \cref{d.2}(b)(c))} \\
+                & = \sum_{j = 1}^n \conj{y_j} \sum_{i = 1}^n \conj{A_{i j}} x_i                                        \\
+                & = \sum_{j = 1}^n \conj{y_j} \sum_{i = 1}^n (A^*)_{j i} x_i         &  & \text{(by \cref{6.1.5})}     \\
+                & = \sum_{j = 1}^n \conj{y_j} (A^* x)_j                              &  & \text{(by \cref{2.3.1})}     \\
+                & = \inn{A^* x, y}.                                                  &  & \text{(by \cref{6.1.2})}
+  \end{align*}
+\end{proof}
+
+\begin{proof}[\pf{ex:6.1.23}(b)]
+  We have
+  \begin{align*}
+             & \forall x, y \in \vs{F}^n, \inn{x, Ay} = \inn{A^* x, y} = \inn{Bx, y} &  & \text{(by \cref{ex:6.1.23}(a))} \\
+    \implies & \forall x, y \in \vs{F}^n, \inn{y, A^* x} = \inn{y, Bx}               &  & \text{(by \cref{6.1.1}(c))}     \\
+    \implies & \forall x \in \vs{F}^n, A^* x = Bx                                    &  & \text{(by \cref{6.1}(e))}       \\
+    \implies & A^* = B.                                                              &  & \text{(by \cref{2.1.13})}
+  \end{align*}
+\end{proof}
+
+\begin{proof}[\pf{ex:6.1.23}(c)]
+  For each \(i \in \set{1, \dots, n}\), define \(v_i\) be the \(i\)th column of \(Q\).
+  Then we have
+  \begin{align*}
+             & Q = [\IT[\vs{F}^n]]_{\beta}^{\alpha}                                                   &  & \text{(by \cref{2.5.1})}        \\
+    \implies & \forall i, j \in \set{1, \dots, n}, (Q^* Q)_{i j} = \sum_{k = 1}^n (Q^*)_{i k} Q_{k j} &  & \text{(by \cref{2.3.1})}        \\
+             & = \sum_{k = 1}^n \conj{Q_{k i}} Q_{k j}                                                &  & \text{(by \cref{6.1.5})}        \\
+             & = \inn{v_i, v_j}                                                                       &  & \text{(by \cref{2.5.1})}        \\
+             & = \delta_{i j}                                                                         &  & \text{(by \cref{6.1.12})}       \\
+    \implies & Q^* Q = I_n                                                                            &  & \text{(by \cref{2.3.4})}        \\
+    \implies & Q^{-1} = Q^*.                                                                          &  & \text{(by \cref{ex:2.4.10}(b))}
+  \end{align*}
+\end{proof}
+
+\begin{proof}[\pf{ex:6.1.23}(d)]
+  Let \(\alpha\) be the standard ordered basis for \(\vs{F}^n\) over \(\F\).
+  Then we have
+  \begin{align*}
+    [\T]_{\beta}^* & = ([\IT[\vs{F}^n]]_{\alpha}^{\beta} \cdot [\T]_{\alpha} \cdot [\IT[\vs{F}^n]]_{\beta}^{\alpha})^*                         &  & \text{(by \cref{2.23})}         \\
+                   & = ([\IT[\vs{F}^n]]_{\alpha}^{\beta} \cdot A \cdot [\IT[\vs{F}^n]]_{\beta}^{\alpha})^*                                     &  & \text{(by \cref{2.15}(a))}      \\
+                   & = \conj{\tp{([\IT[\vs{F}^n]]_{\alpha}^{\beta} \cdot A \cdot [\IT[\vs{F}^n]]_{\beta}^{\alpha})}}                           &  & \text{(by \cref{6.1.5})}        \\
+                   & = \conj{\tp{([\IT[\vs{F}^n]]_{\beta}^{\alpha})} \cdot \tp{A} \cdot \tp{([\IT[\vs{F}^n]]_{\alpha}^{\beta})}}               &  & \text{(by \cref{2.3.2})}        \\
+                   & = \conj{\tp{([\IT[\vs{F}^n]]_{\beta}^{\alpha})}} \cdot \conj{\tp{A}} \cdot \conj{\tp{([\IT[\vs{F}^n]]_{\alpha}^{\beta})}} &  & \text{(by \cref{ex:4.3.13})}    \\
+                   & = ([\IT[\vs{F}^n]]_{\beta}^{\alpha})^* \cdot A^* \cdot ([\IT[\vs{F}^n]]_{\alpha}^{\beta})^*                               &  & \text{(by \cref{6.1.5})}        \\
+                   & = ([\IT[\vs{F}^n]]_{\beta}^{\alpha})^{-1} \cdot A^* \cdot ([\IT[\vs{F}^n]]_{\alpha}^{\beta})^*                            &  & \text{(by \cref{ex:6.1.23}(c))} \\
+                   & = [\IT[\vs{F}^n]]_{\alpha}^{\beta} \cdot A^* \cdot (([\IT[\vs{F}^n]]_{\beta}^{\alpha})^{-1})^*                            &  & \text{(by \cref{2.23})}         \\
+                   & = [\IT[\vs{F}^n]]_{\alpha}^{\beta} \cdot A^* \cdot (([\IT[\vs{F}^n]]_{\beta}^{\alpha})^*)^*                               &  & \text{(by \cref{ex:6.1.23})}    \\
+                   & = [\IT[\vs{F}^n]]_{\alpha}^{\beta} \cdot A^* \cdot [\IT[\vs{F}^n]]_{\beta}^{\alpha}                                       &  & \text{(by \cref{6.1.5})}        \\
+                   & = [\IT[\vs{F}^n]]_{\alpha}^{\beta} \cdot [\U]_{\alpha} \cdot [\IT[\vs{F}^n]]_{\beta}^{\alpha}                             &  & \text{(by \cref{2.15}(a))}      \\
+                   & = [\U]_{\beta}.                                                                                                           &  & \text{(by \cref{2.23})}
+  \end{align*}
+\end{proof}
