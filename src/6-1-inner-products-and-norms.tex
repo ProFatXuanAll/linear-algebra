@@ -732,3 +732,139 @@
   \end{align*}
   Thus \(\abs{\norm{x} - \norm{y}} \leq \norm{x - y}\).
 \end{proof}
+
+\begin{ex}\label{ex:6.1.20}
+  Let \(\V\) be an inner product space over \(\F\).
+  Prove the \emph{polar identities}:
+  For all \(x, y \in \V\),
+  \begin{enumerate}
+    \item \(\inn{x, y} = \frac{1}{4} \norm{x + y}^2 - \frac{1}{4} \norm{x - y}^2\) if \(\F = \R\);
+    \item \(\inn{x, y} = \frac{1}{4} \sum_{k = 1}^4 i^k \norm{x + i^k y}^2\) if \(\F = \C\), where \(i^2 = -1\).
+  \end{enumerate}
+\end{ex}
+
+\begin{proof}[\pf{ex:6.1.20}(a)]
+  We have
+  \begin{align*}
+    \frac{1}{4} \norm{x + y}^2 - \frac{1}{4} \norm{x - y}^2 & = \Re(\inn{x, y}) &  & \text{(by \cref{ex:6.1.19}(a))} \\
+                                                            & = \inn{x, y}.     &  & (\F = \R)
+  \end{align*}
+\end{proof}
+
+\begin{proof}[\pf{ex:6.1.20}(b)]
+  We have
+  \begin{align*}
+     & \frac{1}{4} \sum_{k = 1}^4 i^k \norm{x + i^k y}^2                                                                                         \\
+     & = \frac{1}{4} \sum_{k = 1}^4 i^k \pa{\norm{x}^2 + 2 \Re(\inn{x, i^k y}) + \norm{i^k y}^2}            &  & \text{(by \cref{ex:6.1.19}(a))} \\
+     & = \frac{1}{4} \sum_{k = 1}^4 i^k \pa{\norm{x}^2 + 2 \Re((-i)^k \inn{x, y}) + \norm{i^k y}^2}         &  & \text{(by \cref{6.1}(b))}       \\
+     & = \frac{1}{4} \sum_{k = 1}^4 i^k \pa{\norm{x}^2 + 2 \Re((-i)^k \inn{x, y}) + \abs{i^k}^2 \norm{y}^2} &  & \text{(by \cref{6.2}(a))}       \\
+     & = \frac{1}{4} \sum_{k = 1}^4 i^k \pa{\norm{x}^2 + 2 \Re((-i)^k \inn{x, y}) + \norm{y}^2}             &  & (\abs{i} = 1)                   \\
+     & = \frac{1}{4} \sum_{k = 1}^4 i^k 2 \Re((-i)^k \inn{x, y})                                            &  & (i + (-1) + (-i) + 1 = 0)       \\
+     & = \frac{1}{2} \pa{i \Re(-i \inn{x, y}) - \Re(-\inn{x, y}) - i \Re(i \inn{x, y}) + \Re(\inn{x, y})}                                        \\
+     & = \Re(\inn{x, y}) - i \Re(i \inn{x, y})                                                                                                   \\
+     & = \Re(\inn{x, y}) - i \Im(-\inn{x, y})                                                                                                    \\
+     & = \Re(\inn{x, y}) + i \Im(\inn{x, y})                                                                                                     \\
+     & = \inn{x, y}.
+  \end{align*}
+\end{proof}
+
+\begin{ex}\label{ex:6.1.21}
+  Let \(A \in \ms{n}{n}{\F}\).
+  Define
+  \[
+    A_1 = \frac{1}{2} (A + A^*) \quad \text{and} \quad A_2 = \frac{1}{2i} (A - A^*).
+  \]
+  \begin{enumerate}
+    \item Prove that \(A_1^* = A_1\), \(A_2^* = A_2\), and \(A = A_1 + i A_2\).
+          Would it be reasonable to define \(A_1\) and \(A_2\) to be the real and imaginary parts, respectively, of the matrix \(A\)?
+    \item Prove that the representation in (a) is unique.
+          That is, prove that if \(A = B_1 + i B_2\), where \(B_1^* = B_1\) and \(B_2^* = B_2\), then \(B_1 = A_1\) and \(B_2 = A_2\).
+  \end{enumerate}
+\end{ex}
+
+\begin{proof}[\pf{ex:6.1.21}(a)]
+  We have
+  \begin{align*}
+    \forall i, j \in \set{1, \dots, n}, (A_1^*)_{i j} & = \conj{(A_1)_{j i}}                                  &  & \text{(by \cref{6.1.5})}     \\
+                                                      & = \conj{\pa{\frac{1}{2} (A + A^*)}_{j i}}             &  & \text{(by \cref{ex:6.1.21})} \\
+                                                      & = \conj{\frac{1}{2} (A_{j i} + (A^*)_{j i})}          &  & \text{(by \cref{1.2.9})}     \\
+                                                      & = \frac{1}{2} (\conj{A_{j i}} + \conj{(A^*)_{j i}})   &  & \text{(by \cref{d.2}(b)(c))} \\
+                                                      & = \frac{1}{2} ((A^*)_{i j} + \conj{\conj{A_{i j}}})   &  & \text{(by \cref{6.1.5})}     \\
+                                                      & = \frac{1}{2} ((A^*)_{i j} + A_{i j})                 &  & \text{(by \cref{d.2}(a))}    \\
+                                                      & = \pa{\frac{1}{2} (A^* + A)}_{i j}                    &  & \text{(by \cref{1.2.9})}     \\
+                                                      & = \pa{\frac{1}{2} (A + A^*)}_{i j}                    &  & \text{(by \cref{1.2.9})}     \\
+                                                      & = (A_1)_{i j}                                         &  & \text{(by \cref{ex:6.1.21})} \\
+    \forall i, j \in \set{1, \dots, n}, (A_2^*)_{i j} & = \conj{(A_2)_{j i}}                                  &  & \text{(by \cref{6.1.5})}     \\
+                                                      & = \conj{\pa{\frac{1}{2i} (A - A^*)}_{j i}}            &  & \text{(by \cref{ex:6.1.21})} \\
+                                                      & = \conj{\frac{1}{2i} (A_{j i} - (A^*)_{j i})}         &  & \text{(by \cref{1.2.9})}     \\
+                                                      & = \frac{-1}{2i} (\conj{A_{j i}} - \conj{(A^*)_{j i}}) &  & \text{(by \cref{d.2}(b)(c))} \\
+                                                      & = \frac{-1}{2i} ((A^*)_{i j} - \conj{\conj{A_{i j}}}) &  & \text{(by \cref{6.1.5})}     \\
+                                                      & = \frac{-1}{2i} ((A^*)_{i j} - A_{i j})               &  & \text{(by \cref{d.2}(a))}    \\
+                                                      & = \pa{\frac{-1}{2i} (A^* - A)}_{i j}                  &  & \text{(by \cref{1.2.9})}     \\
+                                                      & = \pa{\frac{1}{2i} (A - A^*)}_{i j}                   &  & \text{(by \cref{1.2.9})}     \\
+                                                      & = (A_2)_{i j}                                         &  & \text{(by \cref{ex:6.1.21})}
+  \end{align*}
+  and thus by \cref{1.2.8} \(A_1^* = A_1\) and \(A_2^* = A_2\).
+  Observe that
+  \begin{align*}
+    A_1 + i A_2 & = \frac{1}{2} (A + A^*) + \frac{i}{2i} (A - A^*) &  & \text{(by \cref{ex:6.1.21})} \\
+                & = A.                                             &  & \text{(by \cref{1.2.9})}
+  \end{align*}
+  If we let \(A \in \ms{2}{2}{\C}\) where \(A = \begin{pmatrix}
+    1 & -i \\
+    i & 1
+  \end{pmatrix}\), then we have
+  \begin{align*}
+    A_1          & = \frac{1}{2} (A + A^*)           &  & \text{(by \cref{ex:6.1.21})}            \\
+                 & = \frac{1}{2} \pa{\begin{pmatrix}
+                                         1 & -i \\
+                                         i & 1
+                                       \end{pmatrix} + \begin{pmatrix}
+                                                         1 & -i \\
+                                                         i & 1
+                                                       \end{pmatrix}} &  & \text{(by \cref{6.1.5})} \\
+                 & = A                                                                            \\
+    A_2          & = \frac{1}{2} (A - A^*)           &  & \text{(by \cref{ex:6.1.21})}            \\
+                 & = \frac{1}{2} \pa{\begin{pmatrix}
+                                         1 & -i \\
+                                         i & 1
+                                       \end{pmatrix} - \begin{pmatrix}
+                                                         1 & -i \\
+                                                         i & 1
+                                                       \end{pmatrix}} &  & \text{(by \cref{6.1.5})} \\
+                 & = \zm                                                                          \\
+    A + \conj{A} & = \begin{pmatrix}
+                       1 & -i \\
+                       i & 1
+                     \end{pmatrix} + \begin{pmatrix}
+                                       1  & i \\
+                                       -i & 1
+                                     \end{pmatrix}   &  & \text{(by \cref{ex:4.3.13})}            \\
+                 & = \begin{pmatrix}
+                       2 & 0 \\
+                       0 & 2
+                     \end{pmatrix}                                                               \\
+                 & \neq 2 A_1.
+  \end{align*}
+  Thus it does not make sense to define \(A_1\) as the real part of \(A\) and \(A_2\) as the imaginary part of \(A\).
+\end{proof}
+
+\begin{proof}[\pf{ex:6.1.21}(b)]
+  We have
+  \begin{align*}
+             & A = B_1 + i B_2 = A_1 + i A_2                                                  \\
+    \implies & (A_1 - B_1) + i (A_2 - B_2) = \zm         &  & \text{(by \cref{1.2.9})}        \\
+    \implies & ((A_1 - B_1) + i (A_2 - B_2))^* = \zm     &  & \text{(by \cref{6.1.5})}        \\
+    \implies & (A_1 - B_1)^* - i (A_2 - B_2)^* = \zm     &  & \text{(by \cref{ex:6.1.14})}    \\
+    \implies & (A_1^* - B_1^*) - i (A_2^* - B_2^*) = \zm &  & \text{(by \cref{ex:6.1.14})}    \\
+    \implies & (A_1 - B_1) - i (A_2 - B_2) = \zm         &  & \text{(by \cref{ex:6.1.21}(a))} \\
+    \implies & \begin{dcases}
+                 (A_1 - B_1) + i (A_2 - B_2) = \zm \\
+                 (A_1 - B_1) - i (A_2 - B_2) = \zm
+               \end{dcases}                                              \\
+    \implies & \begin{dcases}
+                 A_1 = B_1 \\
+                 A_2 = B_2
+               \end{dcases}.                            &  & \text{(by \cref{1.2.9})}
+  \end{align*}
+\end{proof}
