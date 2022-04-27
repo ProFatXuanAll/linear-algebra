@@ -1020,3 +1020,203 @@
                    & = [\U]_{\beta}.                                                                                                           &  & \text{(by \cref{2.23})}
   \end{align*}
 \end{proof}
+
+\begin{defn}\label{6.1.14}
+  Let \(\V\) be a vector space over \(\F\), where \(\F\) is either \(\R\) or \(\C\).
+  Regardless of whether \(\V\) is or is not an inner product space, we may still define a norm \(\norm{\cdot}\) as a real-valued function on \(\V\) satisfying the following three conditions for all \(x, y \in \V\) and \(a \in \F\):
+  \begin{enumerate}
+    \item \(\norm{x} \geq 0\), and \(\norm{x} = 0\) iff \(x = \zv\).
+    \item \(\norm{ax} = \abs{a} \norm{x}\).
+    \item \(\norm{x + y} \leq \norm{x} + \norm{y}\).
+  \end{enumerate}
+\end{defn}
+
+\begin{ex}\label{ex:6.1.24}
+  Let \(\F = \R\) or \(\F = \C\).
+  Prove that the following are norms on the given vector spaces.
+  \begin{enumerate}
+    \item \(\norm{A} = \max_{1 \leq i \leq m, 1 \leq j \leq n} \abs{A_{i j}}\) for all \(A \in \MS\).
+    \item \(\norm{f} = \max_{t \in [0, 1]} \abs{f(t)}\) for all \(f \in \cfs([0, 1], \F)\).
+    \item \(\norm{f} = \int_0^1 \abs{f(t)} \; dt\) for all \(f \in \cfs([0, 1], \F)\).
+    \item \(\norm{(a, b)} = \max\set{\abs{a}, \abs{b}}\) for all \((a, b) \in \F^2\).
+  \end{enumerate}
+\end{ex}
+
+\begin{proof}[\pf{ex:6.1.24}(a)]
+  \begin{description}
+    \item[For \cref{6.1.14}(a):]
+      Let \(A \in \MS\).
+      Then we have
+      \begin{align*}
+                 & \forall (i, j) \in \set{1, \dots, m} \times \set{1, \dots, n}, \abs{A_{i j}} \geq 0 &  & \text{(by \cref{d.0.5})} \\
+        \implies & \norm{A} = \max_{1 \leq i \leq m, 1 \leq j \leq n} \abs{A_{i j}} \geq 0
+      \end{align*}
+      and
+      \begin{align*}
+             & \norm{A} = \max_{1 \leq i \leq m, 1 \leq n \leq n} \abs{A_{i j}} = 0                                           \\
+        \iff & \forall (i, j) \in \set{1, \dots, m} \times \set{1, \dots, n}, \abs{A_{i j}} = 0                               \\
+        \iff & \forall (i, j) \in \set{1, \dots, m} \times \set{1, \dots, n}, A_{i j} = 0       &  & \text{(by \cref{d.0.5})} \\
+        \iff & A = \zm.
+      \end{align*}
+    \item[For \cref{6.1.14}(b):]
+      Let \(A \in \MS\) and let \(a \in \F\).
+      Then we have
+      \begin{align*}
+        \norm{a A} & = \max_{1 \leq i \leq m, 1 \leq j \leq n} \abs{(a A)_{i j}}                                   \\
+                   & = \max_{1 \leq i \leq m, 1 \leq j \leq n} \abs{a A_{i j}}       &  & \text{(by \cref{1.2.9})} \\
+                   & = \max_{1 \leq i \leq m, 1 \leq j \leq n} \abs{a} \abs{A_{i j}}                               \\
+                   & = \abs{a} \max_{1 \leq i \leq m, 1 \leq j \leq n} \abs{A_{i j}}                               \\
+                   & = \abs{a} \norm{A}.
+      \end{align*}
+    \item[For \cref{6.1.14}(c):]
+      Let \(A, B \in \MS\).
+      Then we have
+      \begin{align*}
+        \norm{A + B} & = \max_{1 \leq i \leq m, 1 \leq j \leq n} \abs{(A + B)_{i j}}                                                                                  \\
+                     & = \max_{1 \leq i \leq m, 1 \leq j \leq n} \abs{A_{i j} + B_{i j}}                                               &  & \text{(by \cref{1.2.9})}  \\
+                     & \leq \max_{1 \leq i \leq m, 1 \leq j \leq n} \abs{A_{i j}} + \abs{B_{i j}}                                      &  & \text{(by \cref{d.3}(c))} \\
+                     & = \max_{1 \leq i \leq m, 1 \leq j \leq n} \abs{A_{i j}} + \max_{1 \leq i \leq m, 1 \leq j \leq n} \abs{B_{i j}}                                \\
+                     & = \norm{A} + \norm{B}.
+      \end{align*}
+  \end{description}
+  From all proofs above we conclude by \cref{6.1.14} that \(\norm{\cdot}\) is a norm on \(\MS\) over \(\F\).
+\end{proof}
+
+\begin{proof}[\pf{ex:6.1.24}(b)]
+  \begin{description}
+    \item[For \cref{6.1.14}(a):]
+      Let \(f \in \cfs([0, 1], \F)\).
+      Then we have
+      \begin{align*}
+                 & \forall t \in [0, 1], \abs{f(t)} \geq 0          &  & \text{(by \cref{d.0.5})} \\
+        \implies & \norm{f} = \max_{t \in [0, 1]} \abs{f(t)} \geq 0
+      \end{align*}
+      and
+      \begin{align*}
+             & \norm{f} = \max_{t \in [0, 1]} \abs{f(t)} = 0                               \\
+        \iff & \forall t \in [0, 1], \abs{f(t)} = 0                                        \\
+        \iff & \forall t \in [0, 1], f(t) = 0                &  & \text{(by \cref{d.0.5})} \\
+        \iff & f = \zv.
+      \end{align*}
+    \item[For \cref{6.1.14}(b):]
+      Let \(f \in \cfs([0, 1], \F)\) and let \(c \in \F\).
+      Then we have
+      \begin{align*}
+        \norm{cf} & = \max_{t \in [0, 1]} \abs{(cf)(t)}      \\
+                  & = \max_{t \in [0, 1]} \abs{cf(t)}        \\
+                  & = \max_{t \in [0, 1]} \abs{c} \abs{f(t)} \\
+                  & = \abs{c} \max_{t \in [0, 1]} \abs{f(t)} \\
+                  & = \abs{c} \norm{f}.
+      \end{align*}
+    \item[For \cref{6.1.14}(c):]
+      Let \(f, g \in \cfs([0, 1], \F)\).
+      Then we have
+      \begin{align*}
+        \norm{f + g} & = \max_{t \in [0, 1]} \abs{(f + g)(t)}                            \\
+                     & = \max_{t \in [0, 1]} \abs{f(t) + g(t)}                           \\
+                     & \leq \max_{t \in [0, 1]} \abs{f(t)} + \abs{g(t)}                  \\
+                     & = \max_{t \in [0, 1]} \abs{f(t)} + \max_{t \in [0, 1]} \abs{g(t)} \\
+                     & = \norm{f} + \norm{g}.
+      \end{align*}
+  \end{description}
+  From all proofs above we conclude by \cref{6.1.14} that \(\norm{\cdot}\) is a norm on \(\cfs([0, 1], \F)\) over \(\F\).
+\end{proof}
+
+\begin{proof}[\pf{ex:6.1.24}(c)]
+  \begin{description}
+    \item[For \cref{6.1.14}(a):]
+      Let \(f \in \cfs([0, 1], \F)\).
+      Then we have
+      \begin{align*}
+                 & \forall t \in [0, 1], \abs{f(t)} \geq 0     &  & \text{(by \cref{d.0.5})} \\
+        \implies & \norm{f} = \int_0^1 \abs{f(t)} \; dt \geq 0
+      \end{align*}
+      and
+      \begin{align*}
+             & \norm{f} = \int_0^1 \abs{f(t)} \; dt = 0                               \\
+        \iff & \forall t \in [0, 1], \abs{f(t)} = 0                                   \\
+        \iff & \forall t \in [0, 1], f(t) = 0           &  & \text{(by \cref{d.0.5})} \\
+        \iff & f = \zv.
+      \end{align*}
+    \item[For \cref{6.1.14}(b):]
+      Let \(f \in \cfs([0, 1], \F)\) and let \(c \in \F\).
+      Then we have
+      \begin{align*}
+        \norm{cf} & = \int_0^1 \abs{(cf)(t)} \; dt      \\
+                  & = \int_0^1 \abs{cf(t)} \; dt        \\
+                  & = \int_0^1 \abs{c} \abs{f(t)} \; dt \\
+                  & = \abs{c} \int_0^1 \abs{f(t)} \; dt \\
+                  & = \abs{c} \norm{f}.
+      \end{align*}
+    \item[For \cref{6.1.14}(c):]
+      Let \(f, g \in \cfs([0, 1], \F)\).
+      Then we have
+      \begin{align*}
+        \norm{f + g} & = \int_0^1 \abs{(f + g)(t)} \; dt                       \\
+                     & = \int_0^1 \abs{f(t) + g(t)} \; dt                      \\
+                     & \leq \int_0^1 \abs{f(t)} + \abs{g(t)} \; dt             \\
+                     & = \int_0^1 \abs{f(t)} \; dt + \int_0^1 \abs{g(t)} \; dt \\
+                     & = \norm{f} + \norm{g}.
+      \end{align*}
+  \end{description}
+  From all proofs above we conclude by \cref{6.1.14} that \(\norm{\cdot}\) is a norm on \(\cfs([0, 1], \F)\) over \(\F\).
+\end{proof}
+
+\begin{proof}[\pf{ex:6.1.24}(d)]
+  This is the special case of \cref{ex:6.1.24}(a) where \(m = 2\) and \(n = 1\).
+\end{proof}
+
+\begin{ex}\label{ex:6.1.25}
+  Use \cref{ex:6.1.20} to show that there is no inner product \(\inn{\cdot, \cdot}\) on \(\R^2\) such that \(\norm{x}^2 = \inn{x, x}\) for all \(x \in \R^2\) if the norm is defined as in \cref{ex:6.1.24}(d).
+\end{ex}
+
+\begin{proof}[\pf{ex:6.1.25}]
+  Suppose for sake of contradiction that there exist an inner product \(\inn{\cdot, \cdot}\) on \(\R^2\) over \(\R\) such that \(\inn{x, x} = \norm{x}^2 = \max\set{\abs{x_1}, \abs{x_2}}\) for all \(x \in \R^2\).
+  But then we have
+  \begin{align*}
+    \inn{x, x} & = \frac{1}{4} \norm{x + x} - \frac{1}{4} \norm{x - x}                                   &  & \text{(by \cref{ex:6.1.20}(a))} \\
+               & = \frac{1}{4} \max\set{\abs{2x_1}, \abs{2x_2}} - \frac{1}{4} \max\set{\abs{0}, \abs{0}} &  & \text{(by \cref{ex:6.1.24}(d))} \\
+               & = \frac{1}{2} \max\set{\abs{x_1}, \abs{x_2}}                                            &  & \text{(by \cref{6.1.14}(b))}    \\
+               & \neq \max\set{\abs{x_1}, \abs{x_2}},
+  \end{align*}
+  a contradiction.
+  Thus there does not exist an inner product on \(\R^2\) such that \(\inn{x, x} = \norm{x}^2 = \max\set{\abs{x_1}, \abs{x_2}}\) for all \(x \in \R^2\).
+\end{proof}
+
+\begin{ex}\label{ex:6.1.26}
+  Let \(\norm{\cdot}\) be a norm on a vector space \(\V\) over \(\F\), and define, for each ordered pair of vectors, the scalar \(d(x, y) = \norm{x - y}\), called the \textbf{distance} between \(x\) and \(y\).
+  Prove the following results for all \(x, y, z \in \V\).
+  \begin{enumerate}
+    \item \(d(x, y) \geq 0\).
+    \item \(d(x, y) = d(y, x)\).
+    \item \(d(x, y) \leq d(x, z) + d(z, y)\).
+    \item \(d(x, x) = 0\).
+    \item \(d(x, y) \neq 0\) if \(x \neq y\).
+  \end{enumerate}
+\end{ex}
+
+\begin{proof}[\pf{ex:6.1.26}]
+  We have
+  \begin{align*}
+    d(x, y) & = \norm{x - y}                   &  & \text{(by \cref{ex:6.1.26})} \\
+            & \geq 0                           &  & \text{(by \cref{6.1.14}(a))} \\
+    d(x, y) & = \norm{x - y}                   &  & \text{(by \cref{ex:6.1.26})} \\
+            & = \norm{(-1)(y - x)}             &  & \text{(by \cref{1.2.1})}     \\
+            & = \abs{-1} \norm{y - x}          &  & \text{(by \cref{6.1.14}(b))} \\
+            & = \norm{y - x}                                                     \\
+            & = d(y, x)                        &  & \text{(by \cref{ex:6.1.26})} \\
+    d(x, y) & = \norm{x - y}                   &  & \text{(by \cref{ex:6.1.26})} \\
+            & = \norm{x - z + z - y}                                             \\
+            & \leq \norm{x - z} + \norm{z - y} &  & \text{(by \cref{6.1.14}(c))} \\
+    d(x, x) & = \norm{x - x}                   &  & \text{(by \cref{ex:6.1.26})} \\
+            & = \norm{\zv}                                                       \\
+            & = 0                              &  & \text{(by \cref{6.1.14}(a))}
+  \end{align*}
+  and
+  \begin{align*}
+             & x \neq y                                              \\
+    \implies & x - y \neq \zv                                        \\
+    \implies & \norm{x - y} \neq 0 &  & \text{(by \cref{6.1.14}(a))} \\
+    \implies & d(x, y) \neq 0.     &  & \text{(by \cref{ex:6.1.26})}
+  \end{align*}
+\end{proof}
