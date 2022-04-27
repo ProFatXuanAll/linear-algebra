@@ -638,3 +638,97 @@
     \end{dcases}.
   \]
 \end{proof}
+
+\setcounter{ex}{16}
+\begin{ex}\label{ex:6.1.17}
+  Let \(\T\) be a linear operator on an inner product space \(\V\) over \(\F\), and suppose that \(\norm{\T(x)} = \norm{x}\) for all \(x \in \V\).
+  Prove that \(\T\) is one-to-one.
+\end{ex}
+
+\begin{proof}[\pf{ex:6.1.17}]
+  We have
+  \begin{align*}
+             & \norm{x} = \norm{\T(x)} = 0                                \\
+    \implies & x = \T(x) = \zv             &  & \text{(by \cref{6.2}(b))} \\
+    \implies & \T \text{ is one-to-one}.   &  & \text{(by \cref{2.4})}
+  \end{align*}
+\end{proof}
+
+\begin{ex}\label{ex:6.1.18}
+  Let \(\V\) be a vector space over \(\F\), where \(\F = \R\) or \(\F = \C\), and let \(\W\) be an inner product space over \(\F\) with inner product \(\inn{\cdot, \cdot}\).
+  If \(\T \in \ls(\V, \W)\), prove that \(\inn{x, y}' = \inn{\T(x), \T(y)}\) defines an inner product on \(\V\) over \(\F\) iff \(\T\) is one-to-one.
+\end{ex}
+
+\begin{proof}[\pf{ex:6.1.18}]
+  First suppose that \(\inn{\cdot, \cdot}'\) is an inner product on \(\V\) over \(\F\).
+  Then we have
+  \begin{align*}
+             & \forall x \in \V, \inn{x, x}' = \inn{\T(x), \T(x)} = 0                             \\
+    \implies & \begin{dcases}
+                 x = \zv_{\V} \\
+                 \T(x) = \zv_{\W}
+               \end{dcases}                                       &  & \text{(by \cref{6.1}(d))}  \\
+    \implies & \T \text{ is one-to-one}.                              &  & \text{(by \cref{2.4})}
+  \end{align*}
+
+  Now suppose that \(\T\) is one-to-one.
+  Let \(x, y, z \in \V\) and let \(c \in \F\).
+  Then we have
+  \begin{align*}
+    \inn{x + y, z}'    & = \inn{\T(x + y), \T(z)}                                                   \\
+                       & = \inn{\T(x) + \T(y), \T(z)}              &  & \text{(by \cref{2.1.1}(a))} \\
+                       & = \inn{\T(x), \T(z)} + \inn{\T(y), \T(z)} &  & \text{(by \cref{6.1.1}(a))} \\
+                       & = \inn{x, z}' + \inn{y, z}'                                                \\
+    \inn{cx, y}'       & = \inn{\T(cx), \T(y)}                                                      \\
+                       & = \inn{c \T(x), \T(y)}                    &  & \text{(by \cref{2.1.1}(b))} \\
+                       & = c \inn{\T(x), \T(y)}                    &  & \text{(by \cref{6.1.1}(b))} \\
+                       & = c \inn{x, y}'                                                            \\
+    \conj{\inn{x, y}'} & = \conj{\inn{\T(x), \T(y)}}                                                \\
+                       & = \inn{\T(y), \T(x)}                      &  & \text{(by \cref{6.1.1}(c))} \\
+                       & = \inn{y, x}'.
+  \end{align*}
+  If \(x \neq \zv_{\V}\), then we have
+  \begin{align*}
+             & \T(x) \neq \zv_{\W}       &  & \text{(by \cref{2.4})}      \\
+    \implies & \inn{\T(x), \T(x)} \neq 0 &  & \text{(by \cref{6.1.1}(d))} \\
+    \implies & \inn{x, x}' \neq 0.
+  \end{align*}
+  Thus by \cref{6.1.1} \(\inn{\cdot, \cdot}'\) is an inner product on \(\V\) over \(\F\).
+\end{proof}
+
+\begin{ex}\label{ex:6.1.19}
+  Let \(\V\) be an inner product space over \(\F\).
+  Prove that
+  \begin{enumerate}
+    \item \(\norm{x \pm y}^2 = \norm{x}^2 \pm 2 \Re(\inn{x, y}) + \norm{y}^2\) for all \(x, y \in \V\).
+    \item \(\abs{\norm{x} - \norm{y}} \leq \norm{x - y}\) for all \(x, y \in \V\).
+  \end{enumerate}
+\end{ex}
+
+\begin{proof}[\pf{ex:6.1.19}(a)]
+  We have
+  \begin{align*}
+     & \norm{x \pm y}^2                                                                          \\
+     & = \inn{x \pm y, x \pm y}                                &  & \text{(by \cref{6.1.9})}     \\
+     & = \begin{dcases}
+           \inn{x, x + y} + \inn{y, x + y} \\
+           \inn{x, x - y} - \inn{y, x - y}
+         \end{dcases}                      &  & \text{(by \cref{6.1.1}(a)(b))}                   \\
+     & = \inn{x, x} \pm (\inn{x, y} + \inn{y, x}) + \inn{y, y} &  & \text{(by \cref{6.1}(a)(b))} \\
+     & = \norm{x}^2 \pm 2 \Re(\inn{x, y}) + \norm{y}^2.        &  & \text{(by \cref{6.1.9})}
+  \end{align*}
+\end{proof}
+
+\begin{proof}[\pf{ex:6.1.19}(b)]
+  We have
+  \begin{align*}
+             & \norm{x} = \norm{x - y + y} \leq \norm{x - y} + \norm{y} &  & \text{(by \cref{6.2}(d))} \\
+    \implies & \norm{x} - \norm{y} \leq \norm{x - y}
+  \end{align*}
+  and
+  \begin{align*}
+             & \norm{y} = \norm{y - x + x} \leq \norm{y - x} + \norm{x}                   &  & \text{(by \cref{6.2}(d))} \\
+    \implies & \norm{y} - \norm{x} \leq \norm{y - x} = \norm{(-1)(x - y)} = \norm{x - y}. &  & \text{(by \cref{6.2}(a))}
+  \end{align*}
+  Thus \(\abs{\norm{x} - \norm{y}} \leq \norm{x - y}\).
+\end{proof}
