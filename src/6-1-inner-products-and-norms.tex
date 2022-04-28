@@ -1373,3 +1373,133 @@
   \end{align*}
   We conclude by \cref{6.1.1} that \(\inn{\cdot, \cdot}\) is an inner product on \(\V\) over \(\R\).
 \end{proof}
+
+\begin{ex}\label{ex:6.1.28}
+  Let \(\V\) be an inner product space over \(\C\) with an inner product \(\inn{\cdot, \cdot}\).
+  Let \([\cdot, \cdot]\) be the real-valued function such that \([x, y]\) is the real part of the complex number \(\inn{x, y}\) for all \(x, y \in \V\).
+  Prove that \([\cdot, \cdot]\) is an inner product for \(\V\) over \(\R\) (instead of \(\C\)).
+  Prove, furthermore, that \([x, ix] = 0\) for all \(x \in \V\).
+\end{ex}
+
+\begin{proof}[\pf{ex:6.1.28}]
+  Let \(x, y, z \in \V\) and let \(c \in \R\).
+  Then we have
+  \begin{align*}
+    [x + y, z]    & = \Re(\inn{x + y, z})               &  & \text{(by \cref{ex:6.1.28})} \\
+                  & = \Re(\inn{x, z} + \inn{y, z})      &  & \text{(by \cref{6.1.1}(a))}  \\
+                  & = \Re(\inn{x, z}) + \Re(\inn{y, z}) &  & \text{(by \cref{d.0.1})}     \\
+                  & = [x, z] + [y, z]                   &  & \text{(by \cref{ex:6.1.28})} \\
+    [cx, y]       & = \Re(\inn{cx, y})                  &  & \text{(by \cref{ex:6.1.28})} \\
+                  & = \Re(c \inn{x, y})                 &  & \text{(by \cref{6.1.1}(b))}  \\
+                  & = c \Re(\inn{x, y})                 &  & \text{(by \cref{d.0.1})}     \\
+                  & = c [x, y]                          &  & \text{(by \cref{ex:6.1.28})} \\
+    \conj{[x, y]} & = \conj{\Re(\inn{x, y})}            &  & \text{(by \cref{ex:6.1.28})} \\
+                  & = \Re(\conj{\inn{x, y}})            &  & \text{(by \cref{d.0.4})}     \\
+                  & = \Re(\inn{y, x})                   &  & \text{(by \cref{6.1.1}(c))}  \\
+                  & = [y, x].                           &  & \text{(by \cref{ex:6.1.28})}
+  \end{align*}
+  If \(x \neq \zv\), then we have
+  \begin{align*}
+             & \inn{x, x} > 0                             &  & \text{(by \cref{6.1.1}(d))}             \\
+    \implies & \inn{x, x} \in \R                          &  & \text{(\(\C\) is not an ordered field)} \\
+    \implies & [x, x] = \Re(\inn{x, x}) = \inn{x, x} > 0. &  & \text{(by \cref{ex:6.1.28})}
+  \end{align*}
+  Thus by \cref{6.1.1} \([\cdot, \cdot]\) is an inner product on \(\V\) over \(\R\).
+
+  Now we show that \([x, ix] = 0\) for all \(x \in \V\).
+  This is true since
+  \begin{align*}
+    \forall x \in \V, [x, ix] & = \Re(\inn{x, ix})   &  & \text{(by \cref{ex:6.1.28})} \\
+                              & = \Re(-i \inn{x, x}) &  & \text{(by \cref{6.1}(b))}    \\
+                              & = 0.                 &  & (\inn{x, x} \in \R)
+  \end{align*}
+\end{proof}
+
+\begin{ex}\label{ex:6.1.29}
+  Let \(\V\) be a vector space over \(\C\), and suppose that \([\cdot, \cdot]\) is an inner product on \(\V\) over \(\R\) (instead of \(\C\)), such that \([x, ix] = 0\) for all \(x \in \V\).
+  Let \(\inn{\cdot, \cdot}\) be the complex-valued function defined by
+  \[
+    \inn{x, y} = [x, y] + i[x, iy] \quad \text{for } x, y \in \V.
+  \]
+  Prove that \(\inn{\cdot, \cdot}\) is an inner product on \(\V\) over \(\C\).
+\end{ex}
+
+\begin{proof}[\pf{ex:6.1.29}]
+  Let \(x, y, z \in \V\) and let \(c \in \C\).
+  First observe that
+  \begin{align*}
+    0 & = [x + iy, i(x + iy)]                   &  & \text{(by hypothesis)}       \\
+      & = [x + iy, ix - y]                                                        \\
+      & = [x, ix - y] + [iy, ix - y]            &  & \text{(by \cref{6.1.1}(a))}  \\
+      & = [x, ix] - [x, y] + [iy, ix] - [iy, y] &  & \text{(by \cref{6.1}(a)(b))} \\
+      & = [x, ix] - [x, y] + [ix, iy] - [y, iy] &  & \text{(by \cref{6.1.1}(c))}  \\
+      & = [ix, iy] - [x, y].                    &  & \text{(by hypothesis)}
+  \end{align*}
+  Thus \([x, y] = [ix, iy]\) and
+  \begin{align*}
+    [ix, y] & = [i(ix), iy]                                  \\
+            & = [-x, iy]                                     \\
+            & = -[x, iy].   &  & \text{(by \cref{6.1.1}(a))}
+  \end{align*}
+  Then we have
+  \begin{align*}
+    \inn{x + y, z}    & = [x + y, z] + i[x + y, iz]                                 &  & \text{(by \cref{ex:6.1.29})}   \\
+                      & = [x, z] + [y, z] + i[x, iz] + i[y, iz]                     &  & \text{(by \cref{6.1.1}(a))}    \\
+                      & = \inn{x, z} + \inn{y, z}                                   &  & \text{(by \cref{ex:6.1.29})}   \\
+    \inn{ix, y}       & = [ix, y] + i[ix, iy]                                       &  & \text{(by \cref{ex:6.1.29})}   \\
+                      & = [ix, y] + i[x, y]                                         &  & \text{(from the proof above)}  \\
+                      & = i([x, y] - i[ix, y])                                                                          \\
+    \inn{cx, y}       & = [cx, y] + i[cx, iy]                                       &  & \text{(by \cref{ex:6.1.29})}   \\
+                      & = [(\Re(c) + i \Im(c)) x, y] + i[(\Re(c) + i \Im(c)) x, iy]                                     \\
+                      & = \Re(c) [x, y] + \Im(c) [ix, y]                            &  & \text{(by \cref{6.1.1}(a)(b))} \\
+                      & \quad + i \Re(c) [x, iy] + i \Im(c) [ix, iy]                &  & \text{(by \cref{6.1.1}(a)(b))} \\
+                      & = \Re(c) ([x, y] + i[x, iy])                                                                    \\
+                      & \quad + i \Im(c) ([ix, iy] - i[ix, y])                                                          \\
+                      & = \Re(c) ([x, y] + i[x, iy])                                                                    \\
+                      & \quad + i \Im(c) ([x, y] + i[x, iy])                        &  & \text{(from the proof above)}  \\
+                      & = c \inn{x, y}                                              &  & \text{(by \cref{ex:6.1.29})}   \\
+    \conj{\inn{x, y}} & = \conj{[x, y] + i[x, iy]}                                  &  & \text{(by \cref{ex:6.1.29})}   \\
+                      & = [x, y] - i[x, iy]                                         &  & \text{(by \cref{d.0.4})}       \\
+                      & = [y, x] - i[iy, x]                                         &  & \text{(by \cref{6.1.1}(c))}    \\
+                      & = [y, x] + i[y, ix]                                         &  & \text{(from the proof above)}  \\
+                      & = \inn{y, x}.                                               &  & \text{(by \cref{ex:6.1.29})}
+  \end{align*}
+  If \(x \neq \zv\), then we have
+  \begin{align*}
+             & [x, x] > 0                                   &  & \text{(by \cref{6.1.1}(d))}  \\
+    \implies & \inn{x, x} = [x, x] + i[x, ix] = [x, x] > 0. &  & \text{(by \cref{ex:6.1.29})}
+  \end{align*}
+  Thus by \cref{6.1.1} \(\inn{\cdot, \cdot}\) is an inner product on \(V\) over \(\C\).
+\end{proof}
+
+\begin{ex}\label{ex:6.1.30}
+  Let \(\norm{\cdot}\) be a norm (as in \cref{6.1.14}) on a vector space \(\V\) over \(\C\) satisfying the parallelogram law given in \cref{ex:6.1.11}.
+  Prove that there is an inner product \(\inn{\cdot, \cdot}\) on \(\V\) over \(\C\) such that \(\norm{x}^2 = \inn{x, x}\) for all \(x \in \V\).
+\end{ex}
+
+\begin{proof}[\pf{ex:6.1.30}]
+  First we define a real-valued function \([\cdot, \cdot]\) as follow:
+  \[
+    \forall x, y \in \V, [x, y] = \frac{1}{4} \pa{\norm{x + y}^2 - \norm{x - y}^2}.
+  \]
+  By \cref{ex:6.1.27} we see that \([x, y]\) is an inner product on \(\V\) over \(\R\).
+  Observe that
+  \begin{align*}
+    [x, ix] & = \frac{1}{4} \pa{\norm{x + ix}^2 - \norm{x - ix}^2}                                       \\
+            & = \frac{1}{4} \pa{\norm{x + ix}^2 - \norm{(-i) (x + ix)}^2}                                \\
+            & = \frac{1}{4} \pa{\norm{x + ix}^2 - \norm{x + ix}^2}        &  & \text{(by \cref{6.2}(a))} \\
+            & = 0.
+  \end{align*}
+  Now we define a complex-valued function \(\inn{\cdot, \cdot}\) as follow:
+  \[
+    \forall x, y \in \V, \inn{x, y} = [x, y] + i[x, iy].
+  \]
+  By \cref{ex:6.1.29} we see that \(\inn{\cdot, \cdot}\) is an inner product on \(\V\) over \(\C\).
+  Then we have
+  \begin{align*}
+    \forall x \in \V, \norm{x}^2 & = [x, x]            &  & \text{(by \cref{ex:6.1.27})}  \\
+                                 & = [x, x] + 0                                           \\
+                                 & = [x, x] + i[x, ix] &  & \text{(from the proof above)} \\
+                                 & = \inn{x, x}.       &  & \text{(by \cref{ex:6.1.29})}
+  \end{align*}
+\end{proof}
