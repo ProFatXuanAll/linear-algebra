@@ -329,13 +329,77 @@
 
 \exercisesection
 
-\begin{ex}\label{ex:6.2.7}
-
+\setcounter{ex}{5}
+\begin{ex}\label{ex:6.2.6}
+  Let \(\V\) be an inner product space over \(\F\), and let \(\W\) be a finite-dimensional subspace of \(\V\) over \(\F\).
+  If \(x \notin \W\), prove that there exists \(y \in \V\) such that \(y \in \W^{\perp}\), but \(\inn{x, y} \neq 0\).
 \end{ex}
+
+\begin{proof}[\pf{ex:6.2.6}]
+  Since \(x \in \V\), by \cref{6.6} there exist a \((u, v) \in \W \times \W^{\perp}\) such that \(x = u + v\).
+  Then we have
+  \begin{align*}
+             & \begin{dcases}
+                 x \notin \W \\
+                 \zv \in \W
+               \end{dcases} &  & \text{(by \cref{1.3}(c))} \\
+    \implies & x \neq \zv                                  \\
+    \implies & v \neq \zv     &  & (x \notin \W)
+  \end{align*}
+  and
+  \begin{align*}
+    \inn{x, v} & = \inn{u + v, v}                                           \\
+               & = \inn{u, v} + \inn{v, v} &  & \text{(by \cref{6.1.1}(a))} \\
+               & = \inn{v, v}              &  & \text{(by \cref{6.2.9})}    \\
+               & > 0.                      &  & \text{(by \cref{6.1.1}(d))}
+  \end{align*}
+  By setting \(y = v\) we are done.
+\end{proof}
+
+\begin{ex}\label{ex:6.2.7}
+  Let \(\beta\) be a basis for a subspace \(\W\) of an inner product space \(\V\) over \(\F\), and let \(z \in \V\).
+  Prove that \(z \in \W^{\perp}\) iff \(\inn{z, v} = 0\) for every \(v \in \beta\).
+\end{ex}
+
+\begin{proof}[\pf{ex:6.2.7}]
+  We have
+  \begin{align*}
+             & z \in \W^{\perp}                                                  \\
+    \implies & \forall w \in \W, \inn{z, w} = 0    &  & \text{(by \cref{6.2.9})} \\
+    \implies & \forall v \in \beta, \inn{z, v} = 0 &  & (\beta \subseteq \W)
+  \end{align*}
+  and
+  \begin{align*}
+             & \forall v \in \beta, \inn{z, v} = 0                                                                                         \\
+    \implies & \forall w \in \W, \begin{dcases}
+                                   \exists \seq{v}{1,,k} \in \beta \\
+                                   \exists \seq{a}{1,,k} \in \F
+                                 \end{dcases} :                                                                           \\
+             & \inn{z, w} = \inn{z, \sum_{i = 1}^k a_i v_i} = \sum_{i = 1}^k \conj{a_i} \inn{z, v_i} = 0 &  & \text{(by \cref{6.1}(a)(b))} \\
+    \implies & z \in \W^{\perp}.                                                                         &  & \text{(by \cref{6.2.9})}
+  \end{align*}
+\end{proof}
 
 \begin{ex}\label{ex:6.2.8}
-
+  Prove that if \(\set{\seq{w}{1,,n}}\) is an orthogonal set of nonzero vectors, then the vectors \(\seq{v}{1,,n}\) derived from the Gram--Schmidt process satisfy \(v_i = w_i\) for \(i \in \set{1, \dots, n}\).
 \end{ex}
+
+\begin{proof}[\pf{ex:6.2.8}]
+  We use induction on \(n\).
+  For \(n = 1\) we see by \cref{6.4} that \(v_1 = w_1\).
+  Thus the base case holds.
+  Suppose inductively that the statement is true for some \(n \geq 1\).
+  We need to show that for \(n + 1\) the statement is still true.
+  Let \(\set{\seq{w}{1,,n+1}}\) be an orthogonal set of nonzero vectors and let \(\set{\seq{v}{1,,n+1}}\) derived from the Gram--Schmidt process.
+  By induction hypothesis we see that \(\set{\seq{v}{1,,n+1}} = \set{\seq{w}{1,,n}, v_{n + 1}}\).
+  Thus we have
+  \begin{align*}
+    v_{n + 1} & = w_{n + 1} + \sum_{i = 1}^n \frac{\inn{w_{n + 1}, v_i}}{\norm{v_i}^2} v_i &  & \text{(by \cref{6.4})}           \\
+              & = w_{n + 1} + \sum_{i = 1}^n \frac{\inn{w_{n + 1}, w_i}}{\norm{w_i}^2} w_i &  & \text{(by induction hypothesis)} \\
+              & = w_{n + 1}                                                                &  & \text{(by \cref{6.1.12})}
+  \end{align*}
+  and this closes the induction.
+\end{proof}
 
 \begin{ex}\label{ex:6.2.16}
 
