@@ -1,1 +1,197 @@
 \section{The Gram-Schmidt Orthogonalization Process and Orthogonal Complements}\label{sec:6.2}
+
+\begin{defn}\label{6.2.1}
+  Let \(\V\) be an inner product space over \(\F\).
+  A subset of \(\V\) is an \textbf{orthonormal basis} for \(\V\) over \(\F\) if it is an ordered basis that is orthonormal.
+\end{defn}
+
+\begin{eg}\label{6.2.2}
+  The standard ordered basis for \(\vs{F}^n\) over \(\F\) is an orthonormal basis for \(\vs{F}^n\) over \(\F\).
+\end{eg}
+
+\begin{thm}\label{6.3}
+  Let \(\V\) be an inner product space over \(\F\) and \(S = \set{\seq{v}{1,,k}}\) be an orthogonal subset of \(\V\) consisting of nonzero vectors.
+  If \(y \in \spn{S}\), then
+  \[
+    y = \sum_{i = 1}^k \frac{\inn{y, v_i}}{\norm{v_i}^2} v_i.
+  \]
+\end{thm}
+
+\begin{proof}[\pf{6.3}]
+  Write \(y = \sum_{i = 1}^k a_i v_i\), where \(\seq{a}{1,,k} \in \F\).
+  Then, for \(j \in \set{1, \dots, k}\), we have
+  \begin{align*}
+    \inn{y, v_j} & = \inn{\sum_{i = 1}^k a_i v_i, v_j}                                     \\
+                 & = \sum_{i = 1}^k a_i \inn{v_i, v_j} &  & \text{(by \cref{6.1.1}(a)(b))} \\
+                 & = a_j \inn{v_j, v_j}                &  & \text{(by \cref{6.1.12})}      \\
+                 & = a_j \norm{v_j}^2.                 &  & \text{(by \cref{6.1.9})}
+  \end{align*}
+  So \(a_j = \frac{\inn{y, v_j}}{\norm{v_j}^2}\), and the result follows.
+\end{proof}
+
+\begin{cor}\label{6.2.3}
+  If, in addition to the hypotheses of \cref{6.3}, \(S\) is orthonormal and \(y \in \spn{S}\), then
+  \[
+    y = \sum_{i = 1}^k \inn{y, v_i} v_i.
+  \]
+\end{cor}
+
+\begin{proof}[\pf{6.2.3}]
+  We have
+  \begin{align*}
+    y & = \sum_{i = 1}^k \frac{\inn{y, v_i}}{\norm{v_i}^2} v_i &  & \text{(by \cref{6.3})}    \\
+      & = \sum_{i = 1}^k \inn{y, v_i} v_i.                     &  & \text{(by \cref{6.1.12})}
+  \end{align*}
+\end{proof}
+
+\begin{note}
+  If \(\V\) possesses a finite orthonormal basis, then \cref{6.2.3} allows us to compute the coefficients in a linear combination very easily.
+\end{note}
+
+\begin{cor}\label{6.2.4}
+  Let \(\V\) be an inner product space over \(\F\), and let \(S\) be an orthogonal subset of \(\V\) consisting of nonzero vectors.
+  Then \(S\) is linearly independent.
+\end{cor}
+
+\begin{proof}[\pf{6.2.4}]
+  Suppose that \(\seq{v}{1,,k} \in \S\) and
+  \[
+    \sum_{i = 1}^k a_i v_i = \zv.
+  \]
+  As in the proof of \cref{6.3} with \(y = \zv\), we have \(a_j = \inn{\zv, v_j} / \norm{v_j}^2 = 0\) for all \(j \in \set{1, \dots, k}\).
+  So \(S\) is linearly independent.
+\end{proof}
+
+\begin{note}
+  \cref{6.2.4} tells us that the vector space \(\vs{H}\) in \cref{6.1.13} contains an infinite linearly independent set, and hence \(\vs{H}\) is not a finite-dimensional vector space.
+\end{note}
+
+\begin{thm}\label{6.4}
+  Let \(\V\) be an inner product space over \(\F\) and \(S = \set{\seq{w}{1,,n}}\) be a linearly independent subset of \(\V\).
+  Define \(S' = \set{\seq{v}{1,,n}}\), where \(v_1 = w_1\) and
+  \begin{equation}\label{eq:6.2.1}
+    v_k = w_k - \sum_{j = 1}^{k - 1} \frac{\inn{w_k, v_j}}{\norm{v_j}^2} v_j \quad \text{for } k \in \set{2, \dots, n}.
+  \end{equation}
+  Then \(S'\) is an orthogonal set of nonzero vectors such that \(\spn{S'} = \spn{S}\).
+  The construction of \(\set{\seq{v}{1,,n}}\) is called the \textbf{Gram--Schmidt process}.
+\end{thm}
+
+\begin{proof}[\pf{6.4}]
+  The proof is by mathematical induction on \(n\), the number of vectors in \(S\).
+  For \(k \in \set{1, \dots, n}\), let \(S_k = \set{\seq{w}{1,,k}}\).
+  If \(n = 1\), then the theorem is proved by taking \(S_1' = S_1\);
+  i.e., \(v_1 = w_1 \neq \zv\).
+  Assume then that the set \(S_n' = \set{\seq{v}{1,,n}}\) with the desired properties has been constructed by the repeated use of \cref{eq:6.2.1}.
+  We show that the set \(S_{n + 1}' = \set{\seq{v}{1,,n+1}}\) also has the desired properties, where \(v_{n + 1}\) is obtained from \(S_n'\) by \cref{eq:6.2.1}.
+  If \(v_{n + 1} = \zv\), then \cref{eq:6.2.1} implies that \(w_{n + 1} \in \spn{S_n'} = \spn{S_n}\), which contradicts the assumption that \(S_{n + 1}\) is linearly independent.
+  For \(i \in \set{1, \dots, n}\), it follows from \cref{eq:6.2.1} that
+  \begin{align*}
+    \inn{v_{n + 1}, v_i} & = \inn{w_{n + 1}, v_i} - \sum_{j = 1}^n \frac{\inn{w_{n + 1}, v_j}}{\norm{v_j}^2} \inn{v_j, v_i} &  & \text{(by \cref{6.1.1}(a)(b))}   \\
+                         & = \inn{w_{n + 1}, v_i} - \frac{\inn{w_{n + 1}, v_i}}{\norm{v_i}^2} \norm{v_i}^2                  &  & \text{(by induction hypotheses)} \\
+                         & = 0,
+  \end{align*}
+  since \(\inn{v_j, v_i} = 0\) if \(i \neq j\) by the induction assumption that \(S_n'\) is orthogonal.
+  Hence \(S_{n + 1}'\) is an orthogonal set of nonzero vectors.
+  Now, by \cref{eq:6.2.1}, we have that \(\spn{S_{n + 1}'} \subseteq \spn{S_{n + 1}}\).
+  But by \cref{6.2.4}, \(S_{n + 1}'\) is linearly independent;
+  so \(\dim(\spn{S_{n + 1}'}) = \dim(\spn{S_{n + 1}}) = n + 1\).
+  Therefore by \cref{1.11} we have \(\spn{S_{n + 1}'} = \spn{S_{n + 1}}\) and this closes the induction.
+\end{proof}
+
+\begin{defn}\label{6.2.5}
+  If we continue applying the Gram--Schmidt orthogonalization process to the basis \(\set{1, x, x^2, \dots}\) for \(\ps{\R}\), we obtain an orthogonal basis whose elements are called the \emph{Legendre polynomials}.
+\end{defn}
+
+\begin{thm}\label{6.5}
+  Let \(\V\) be a nonzero finite-dimensional inner product space over \(\F\).
+  Then \(\V\) has an orthonormal basis \(\beta\).
+  Furthermore, if \(\beta = \set{\seq{v}{1,,n}}\) and \(x \in \V\), then
+  \[
+    x = \sum_{i = 1}^n \inn{x, v_i} v_i.
+  \]
+\end{thm}
+
+\begin{proof}[\pf{6.5}]
+  Let \(\beta_0\) be an ordered basis for \(\V\) over \(\F\).
+  Apply \cref{6.4} to obtain an orthogonal set \(\beta'\) of nonzero vectors with \(\spn{\beta'} = \spn{\beta_0} = \V\).
+  By normalizing each vector in \(\beta'\), we obtain an orthonormal set \(\beta\) that generates \(\V\).
+  By \cref{6.2.4}, \(\beta\) is linearly independent;
+  therefore \(\beta\) is an orthonormal basis for \(\V\) over \(\F\).
+  The remainder of the theorem follows from \cref{6.2.3}.
+\end{proof}
+
+\begin{cor}\label{6.2.6}
+  Let \(\V\) be a finite-dimensional inner product space over \(\F\) with an orthonormal basis \(\beta = \set{\seq{v}{1,,n}}\).
+  Let \(\T \in \ls(\V)\), and let \(A = [\T]_{\beta}\).
+  Then for any \(i, j \in \set{1, \dots, n}\), \(A_{i j} = \inn{\T(v_j), v_i}\).
+\end{cor}
+
+\begin{proof}[\pf{6.2.6}]
+  From \cref{6.5}, we have
+  \[
+    \T(v_j) = \sum_{i = 1}^n \inn{\T(v_j), v_i} v_i.
+  \]
+  Hence by \cref{2.2.4} \(A_{i j} = \inn{\T(v_j), v_i}\).
+\end{proof}
+
+\begin{defn}\label{6.2.7}
+  Let \(\beta\) be an orthonormal subset (possibly infinite) of an inner product space \(\V\) over \(\F\), and let \(x \in \V\).
+  We define the \textbf{Fourier coefficients} of \(x\) relative to \(\beta\) to be the scalars \(\inn{x, y}\), where \(y \in \beta\).
+
+  In the first half of the 19th century, the French mathematician Jean Baptiste Fourier was associated with the study of the scalars
+  \[
+    \int_0^{2\pi} f(t) \sin(nt) \; dt \quad \text{and} \quad \int_0^{2\pi} f(t) \cos(nt) \; dt,
+  \]
+  or more generally,
+  \[
+    c_n = \frac{1}{2\pi} \int_0^{2\pi} f(t) e^{-int} \; dt,
+  \]
+  for a function \(f\).
+  In the context of \cref{6.1.8}, we see that \(c_n = \inn{f, f_n}\), where \(f_n(t) = e^{int}\);
+  that is, \(c_n\) is the \(n\)th Fourier coefficient for a continuous function \(f \in \V\) relative to \(S\).
+  These coefficients are the ``classical'' Fourier coefficients of a function, and the literature concerning the behavior of these coefficients is extensive.
+\end{defn}
+
+\begin{eg}\label{6.2.8}
+  Let \(S = \set{e^{int} : n \text{ is an integer}}\).
+  In \cref{6.1.13}, \(S\) was shown to be an orthonormal set in \(\vs{H}\).
+  We compute the Fourier coefficients of \(f(t) = t\) relative to \(S\).
+  Using integration by parts, we have, for \(n \neq 0\),
+  \begin{align*}
+    \inn{f, f_n} & = \frac{1}{2\pi} \int_0^{2\pi} t \conj{e^{int}} \; dt                                         \\
+                 & = \frac{1}{2\pi} \int_0^{2\pi} t e^{-int} \; dt                                               \\
+                 & = \frac{1}{2\pi} \pa{\eval{\frac{-1}{in} t e^{-int}}_0^{2\pi} - \int_0^{2\pi} e^{-int} \; dt} \\
+                 & = \frac{1}{2\pi} \pa{\frac{-2\pi}{in} - \frac{-1}{in} \eval{e^{-int}}_0^{2\pi}}               \\
+                 & = \frac{-1}{in},
+  \end{align*}
+  and, for \(n = 0\),
+  \[
+    \inn{f, 1} = \frac{1}{2\pi} \int_0^{2\pi} t(1) \; dt = \pi.
+  \]
+  As a result of these computations, and using \cref{ex:6.2.16}, we obtain an upper bound for the sum of a special infinite series as follows:
+  \begin{align*}
+    \norm{f}^2 & \geq \sum_{n = -k}^{-1} \abs{\inn{f, f_n}}^2 + \abs{\inn{f, 1}}^2 + \sum_{i = 1}^k \abs{\inn{f, f_n}}^2 \\
+               & = \sum_{n = -k}^1 \frac{1}{n^2} + \pi^2 + \sum_{n = 1}^k \frac{1}{n^2}                                  \\
+               & = 2 \sum_{n = 1}^k \frac{1}{n^2} + \pi^2
+  \end{align*}
+  for every \(k \in \Z^+\).
+  Now, using the fact that \(\norm{f}^2 = \frac{4}{3} \pi^2\), we obtain
+  \[
+    \frac{4}{3} \pi^2 \geq 2 \sum_{n = 1}^k \frac{1}{n^2} + \pi^2,
+  \]
+  or
+  \[
+    \frac{\pi^2}{6} \geq \sum_{n = 1}^k \frac{1}{n^2}.
+  \]
+  Because this inequality holds for all \(k \in \Z^+\), we may let \(k \to \infty\) to obtain
+  \[
+    \frac{\pi^2}{6} \geq \sum_{n = 1}^\infty \frac{1}{n^2}.
+  \]
+  Additional results may be produced by replacing \(f\) by other functions.
+\end{eg}
+
+\exercisesection
+
+\begin{ex}\label{ex:6.2.16}
+
+\end{ex}
