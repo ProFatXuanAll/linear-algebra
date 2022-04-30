@@ -401,6 +401,137 @@
   and this closes the induction.
 \end{proof}
 
+\setcounter{ex}{9}
+\begin{ex}\label{ex:6.2.10}
+  Let \(\W\) be a finite-dimensional subspace of an inner product space \(\V\) over \(\F\).
+  Prove that there exists a projection \(\T\) on \(\W\) along \(\W^{\perp}\) that satisfies \(\ns{\T} = \W^{\perp}\).
+  In addition, prove that \(\norm{\T(x)} \leq \norm{x}\) for all \(x \in \V\).
+  (Projections are defined in \cref{2.1.14}.)
+\end{ex}
+
+\begin{proof}[\pf{ex:6.2.10}]
+  By \cref{ex:1.3.23,6.2.10,6.6} we see that \(\V = \W + \W^{\perp}\).
+  Since \(\W \cap \W^{\perp} = \set{\zv}\), by \cref{5.2.7} we see that \(\V = \W \oplus \W^{\perp}\).
+  Now we define a function \(\T : \V \to \V\) as follow:
+  \[
+    \forall x \in \V, \T(x) = \T(x_1 + x_2) = x_1
+  \]
+  where \((x_1, x_2) \in \W \times \W^{\perp}\) and \(x = x_1 + x_2\).
+  The existence and uniqueness of \((x_1, x_2)\) are asserted by \cref{6.6}, thus \(\T\) is well-defined.
+  By \cref{2.1.14} \(\T\) is a projection on \(\W\) along \(\W^{\perp}\).
+  By \cref{ex:2.1.26}(a)(b) we see that \(\T \in \ls(\V)\) and \(\ns{\T} = \W^{\perp}\).
+  Then we have
+  \begin{align*}
+    \forall x \in \V, \norm{\T(x)} & = \norm{x_1}                 &  & \text{(by \cref{2.1.14})}    \\
+                                   & \leq \norm{x_1} + \norm{x_2} &  & \text{(by \cref{6.2}(b))}    \\
+                                   & = \norm{x_1 + x_2}           &  & \text{(by \cref{ex:6.1.10})} \\
+                                   & = \norm{x}.
+  \end{align*}
+\end{proof}
+
+\begin{ex}\label{ex:6.2.11}
+  Let \(A \in \ms{n}{n}{\C}\).
+  Prove that \(AA^* = I_n\) iff the rows of \(A\) form an orthonormal basis for \(\C^n\) over \(\C\).
+\end{ex}
+
+\begin{proof}[\pf{ex:6.2.11}]
+  For each \(i \in \set{1, \dots, n}\), let \(a_i\) be the \(i\)th row of \(A\).
+  Then we have
+  \begin{align*}
+         & AA^* = I_n                                                                                                             \\
+    \iff & \forall i, j \in \set{1, \dots, n}, (AA^*)_{i j} = \delta_{i j}                          &  & \text{(by \cref{2.3.4})} \\
+    \iff & \forall i, j \in \set{1, \dots, n}, \sum_{k = 1}^n A_{i k} (A^*)_{k j} = \delta_{i j}    &  & \text{(by \cref{2.3.1})} \\
+    \iff & \forall i, j \in \set{1, \dots, n}, \sum_{k = 1}^n A_{i k} \conj{A_{j k}} = \delta_{i j} &  & \text{(by \cref{6.1.5})} \\
+    \iff & \forall i, j \in \set{1, \dots, n}, \inn{a_i, a_j} = \delta_{i j}                        &  & \text{(by \cref{6.1.2})} \\
+    \iff & \text{rows of } A \text{ form an orthonormal basis for } \C^n \text{ over } \C.          &  & \text{(by \cref{6.2.4})}
+  \end{align*}
+\end{proof}
+
+\begin{ex}\label{ex:6.2.12}
+  Prove that for any matrix \(A \in \MS\), \((\rg{\L_{A^*}})^{\perp} = \ns{\L_A}\).
+\end{ex}
+
+\begin{proof}[\pf{ex:6.2.12}]
+  Let \(x \in \vs{F}^n\) and \(y \in \vs{F}^m\).
+  Denote the standard inner product on \(\vs{F}^m\) and \(\vs{F}^n\) over \(\F\) as \(\inn{\cdot, \cdot}_m\) and \(\inn{\cdot, \cdot}_n\), respectively.
+  Observe that
+  \begin{align*}
+    \inn{x, \L_{A^*}(y)}_n & = \inn{x, A^* y}_n                                                 &  & \text{(by \cref{2.3.8})}        \\
+                           & = \sum_{i = 1}^n x_i \conj{(A^* y)_i}                              &  & \text{(by \cref{6.1.2})}        \\
+                           & = \sum_{i = 1}^n x_i \conj{\pa{\sum_{j = 1}^m (A^*)_{i j} y_j}}    &  & \text{(by \cref{2.3.1})}        \\
+                           & = \sum_{i = 1}^n x_i \conj{\pa{\sum_{j = 1}^m \conj{A_{j i}} y_j}} &  & \text{(by \cref{6.1.5})}        \\
+                           & = \sum_{i = 1}^n x_i \pa{\sum_{j = 1}^m A_{j i} \conj{y_j}}        &  & \text{(by \cref{d.2}(a)(b)(c))} \\
+                           & = \sum_{j = 1}^m \pa{\sum_{i = 1}^n A_{j i} x_i} \conj{y_j}                                             \\
+                           & = \sum_{j = 1}^m (Ax)_j \conj{y_j}                                 &  & \text{(by \cref{2.3.1})}        \\
+                           & = \inn{Ax, y}_m                                                    &  & \text{(by \cref{6.1.2})}        \\
+                           & = \inn{\L_A(x), y}_m.                                              &  & \text{(by \cref{2.3.8})}
+  \end{align*}
+  Then we have
+  \begin{align*}
+         & v \in (\rg{\L_{A^*}})^{\perp}                                                          \\
+    \iff & \forall y \in \rg{\L_{A^*}}, \inn{v, y}_n = 0       &  & \text{(by \cref{6.2.9})}      \\
+    \iff & \forall x \in \vs{F}^m : \inn{v, \L_{A^*}(x)}_n = 0 &  & \text{(by \cref{2.1.10})}     \\
+    \iff & \forall x \in \vs{F}^m : \inn{\L_A(v), x}_m = 0     &  & \text{(from the proof above)} \\
+    \iff & \forall x \in \vs{F}^m : \inn{x, \L_A(v)}_m = 0     &  & \text{(by \cref{6.1.1}(c))}   \\
+    \iff & \L_A(v) = \zv_{\vs{F}^m}                            &  & \text{(by \cref{6.1}(c)(e))}  \\
+    \iff & v \in \ns{\L_A}                                     &  & \text{(by \cref{2.1.10})}
+  \end{align*}
+  and thus \((\rg{\L_{A^*}})^{\perp} = \ns{\L_A}\).
+\end{proof}
+
+\begin{ex}\label{ex:6.2.13}
+  Let \(\V\) be an inner product space over \(\F\), \(S\) and \(S_0\) be subsets of \(\V\), and \(\W\) be a finite-dimensional subspace of \(\V\) over \(\F\).
+  Prove the following results.
+  \begin{enumerate}
+    \item \(S_0 \subseteq S \implies S^{\perp} \subseteq S_0^{\perp}\).
+    \item \(S \subseteq (S^{\perp})^{\perp}\);
+          so \(\spn{S} \subseteq (S^{\perp})^{\perp}\).
+    \item \(\W = (\W^{\perp})^{\perp}\).
+    \item \(\V = \W \oplus \W^{\perp}\).
+  \end{enumerate}
+\end{ex}
+
+\begin{proof}[\pf{ex:6.2.13}(a)]
+  We have
+  \begin{align*}
+             & v \in S^{\perp}                                                 \\
+    \implies & \forall y \in S, \inn{v, y} = 0   &  & \text{(by \cref{6.2.9})} \\
+    \implies & \forall y \in S_0, \inn{v, y} = 0 &  & (S_0 \subseteq S)        \\
+    \implies & v \in S_0^{\perp}                 &  & \text{(by \cref{6.2.9})}
+  \end{align*}
+  and thus \(S^{\perp} \subseteq S_0^{\perp}\).
+\end{proof}
+
+\begin{proof}[\pf{ex:6.2.13}(b)]
+  We have
+  \begin{align*}
+             & y \in S                                                               \\
+    \implies & \forall v \in S^{\perp}, \inn{v, y} = 0 &  & \text{(by \cref{6.2.9})} \\
+    \implies & y \in (S^{\perp})^{\perp}               &  & \text{(by \cref{6.2.9})}
+  \end{align*}
+  and thus \(S \subseteq (S^{\perp})^{\perp}\).
+  By \cref{6.2.10} we know that \((S^{\perp})^{\perp}\) is a subspace of \(\V\) over \(\F\), thus by \cref{1.5} we have \(\spn{S} \subseteq (S^{\perp})^{\perp}\).
+\end{proof}
+
+\begin{proof}[\pf{ex:6.2.13}(c)]
+  By \cref{ex:6.2.13}(b) we have \(\W \subseteq (\W^{\perp})^{\perp}\), thus we only need to show that \((\W^{\perp})^{\perp} \subseteq \W\).
+  Suppose for sake of contradiction that there exists a \(x \in (\W^{\perp})^{\perp} \setminus \W\).
+  By \cref{ex:6.2.6} there exists a \(y \in \W^{\perp}\) such that \(\inn{x, y} \neq 0\).
+  But then we have
+  \begin{align*}
+             & x \in (\W^{\perp})^{\perp}                                             \\
+    \implies & \forall v \in \W^{\perp}, \inn{x, v} = 0 &  & \text{(by \cref{6.2.9})} \\
+    \implies & \inn{y, v} = 0,                          &  & (y \in \W^{\perp})
+  \end{align*}
+  a contradiction.
+  Thus such \(x\) does not exist and \((\W^{\perp})^{\perp} \subseteq \W\).
+\end{proof}
+
+\begin{proof}[\pf{ex:6.2.13}(d)]
+  By \cref{ex:1.3.23,6.2.10,6.6} we have \(\V = \W \oplus \W^{\perp}\).
+  Since \(\W \cap \W^{\perp} = \set{\zv}\), by \cref{5.2.7} we have \(\V = \W \oplus \W^{\perp}\).
+\end{proof}
+
 \begin{ex}\label{ex:6.2.16}
 
 \end{ex}
