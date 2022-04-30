@@ -532,6 +532,110 @@
   Since \(\W \cap \W^{\perp} = \set{\zv}\), by \cref{5.2.7} we have \(\V = \W \oplus \W^{\perp}\).
 \end{proof}
 
-\begin{ex}\label{ex:6.2.16}
-
+\begin{ex}\label{ex:6.2.14}
+  Let \(\W_1\) and \(\W_2\) be subspaces of a finite-dimensional inner product space \(\V\) over \(\F\).
+  Prove that \((\W_1 + \W_2)^{\perp} = \W_1^{\perp} \cap \W_2^{\perp}\) and \((\W_1 \cap \W_2)^{\perp} = \W_1^{\perp} + \W_2^{\perp}\).
 \end{ex}
+
+\begin{proof}[\pf{ex:6.2.14}]
+  We have
+  \begin{align*}
+         & v \in (\W_1 + \W_2)^{\perp}                                                                             \\
+    \iff & \forall x_1 + x_2 \in \W_1 + \W_2, \inn{v, x_1 + x_2} = 0                &  & \text{(by \cref{6.2.9})}  \\
+    \iff & \forall x_1 + x_2 \in \W_1 + \W_2, \inn{v, x_1} + \inn{v, x_2} = 0       &  & \text{(by \cref{6.1}(a))} \\
+    \iff & \forall (x_1, x_2) \in \W_1 \times \W_2, \inn{v, x_1} = \inn{v, x_2} = 0 &  & (\zv \in \W_1 \cap \W_2)  \\
+    \iff & v \in \W_1^{\perp} \cap \W_2^{\perp}.                                    &  & \text{(by \cref{6.2.9})}
+  \end{align*}
+  and thus \((\W_1 + \W_2)^{\perp} = \W_1^{\perp} \cap \W_2^{\perp}\).
+  This means
+  \begin{align*}
+    (\W_1 \cap \W_2)^{\perp} & = \pa{\pa{\W_1^{\perp}}^{\perp} \cap \pa{\W_2^{\perp}}^{\perp}}^{\perp} &  & \text{(by \cref{ex:6.2.13}(c))} \\
+                             & = \pa{\pa{\W_1^{\perp} + \W_2^{\perp}}^{\perp}}^{\perp}                 &  & \text{(from the proof above)}   \\
+                             & = \W_1^{\perp} + \W_2^{\perp}.                                          &  & \text{(by \cref{ex:6.2.13}(c))}
+  \end{align*}
+\end{proof}
+
+\begin{ex}\label{ex:6.2.15}
+  Let \(\V\) be a finite-dimensional inner product space over \(\F\).
+  \begin{enumerate}
+    \item (\emph{Parseval's Identity}.)
+          Let \(\set{\seq{v}{1,,n}}\) be an orthonormal basis for \(\V\) over \(\F\).
+          For any \(x, y \in \V\) prove that
+          \[
+            \inn{x, y} = \sum_{i = 1}^n \inn{x, v_i} \conj{\inn{y, v_i}}.
+          \]
+    \item Use (a) to prove that if \(\beta\) is an orthonormal basis for \(\V\) over \(\F\) with inner product \(\inn{\cdot, \cdot}\), then for any \(x, y \in \V\)
+          \[
+            \inn{\phi_{\beta}(x), \phi_{\beta}(y)}' = \inn{[x]_{\beta}, [y]_{\beta}}' = \inn{x, y},
+          \]
+          where \(\inn{\cdot, \cdot}'\) is the standard inner product on \(\vs{F}^n\).
+  \end{enumerate}
+\end{ex}
+
+\begin{proof}[\pf{ex:6.2.15}(a)]
+  We have
+  \begin{align*}
+    \inn{x, y} & = \inn{\sum_{i = 1}^n \inn{x, v_i} v_i, \sum_{j = 1}^n \inn{y, v_j} v_j}                  &  & \text{(by \cref{6.5})}         \\
+               & = \sum_{i = 1}^n \pa{\inn{x, v_i} \pa{\inn{v_i, \sum_{j = 1}^n \inn{y, v_j} v_j}}}        &  & \text{(by \cref{6.1.1}(a)(b))} \\
+               & = \sum_{i = 1}^n \pa{\inn{x, v_i} \pa{\sum_{j = 1}^n \conj{\inn{y, v_j}} \inn{v_i, v_j}}} &  & \text{(by \cref{6.1}(a)(b))}   \\
+               & = \sum_{i = 1}^n \sum_{j = 1}^n \pa{\inn{x, v_i} \conj{\inn{y, v_j}} \inn{v_i, v_j}}                                          \\
+               & = \sum_{i = 1}^n \inn{x, v_i} \conj{\inn{y, v_i}}.                                        &  & \text{(by \cref{6.1.12})}
+  \end{align*}
+\end{proof}
+
+\begin{proof}[\pf{ex:6.2.15}(b)]
+  Let \(\beta = \set{\seq{v}{1,,n}}\).
+  Then we have
+  \begin{align*}
+    \inn{\phi_{\beta}(x), \phi_{\beta}(y)}' & = \inn{[x]_{\beta}, [y]_{\beta}}'                       &  & \text{(by \cref{2.4.11})}       \\
+                                            & = \sum_{i = 1}^n ([x]_{\beta})_i \conj{([y]_{\beta})_i} &  & \text{(by \cref{6.1.2})}        \\
+                                            & = \sum_{i = 1}^n \inn{x, v_i} \conj{\inn{y, v_i}}       &  & \text{(by \cref{6.5})}          \\
+                                            & = \inn{x, y}.                                           &  & \text{(by \cref{ex:6.2.15}(a))}
+  \end{align*}
+\end{proof}
+
+\begin{ex}\label{ex:6.2.16}
+  \begin{enumerate}
+    \item \emph{Bessel's Inequality}.
+          Let \(\V\) be an inner product space over \(\F\), and let \(S = \set{\seq{v}{1,,n}}\) be an orthonormal subset of \(\V\).
+          Prove that for any \(x \in \V\) we have
+          \[
+            \norm{x}^2 \geq \sum_{i = 1}^n \abs{\inn{x, v_i}}^2.
+          \]
+    \item In the context of (a), prove that Bessel's inequality is an equality iff \(x \in \spn{S}\).
+  \end{enumerate}
+\end{ex}
+
+\begin{proof}[\pf{ex:6.2.16}(a)]
+  Let \(\W = \spn{S}\).
+  Since \(S\) is finite, we know that \(\W\) is a finite-dimensional subspace of \(\V\) over \(\F\) and by \cref{6.6} we have
+  \[
+    \forall x \in \V, \exists (x_1, x_2) \in \W \times \W^{\perp} : x = x_1 + x_2.
+  \]
+  Thus
+  \begin{align*}
+    \forall x \in \V, \norm{x}^2 & = \norm{x_1 + x_2}^2                               &  & \text{(by \cref{6.6})}       \\
+                                 & = \norm{x_1}^2 + \norm{x_2}^2                      &  & \text{(by \cref{ex:6.1.10})} \\
+                                 & \geq \norm{x_1}^2                                  &  & \text{(by \cref{6.2}(b))}    \\
+                                 & = \norm{\sum_{i = 1}^n \inn{x, v_i} v_i}^2         &  & \text{(by \cref{6.6})}       \\
+                                 & = \sum_{i = 1}^n \norm{\inn{x, v_i} v_i}^2         &  & \text{(by \cref{ex:6.1.10})} \\
+                                 & = \sum_{i = 1}^n \abs{\inn{x, v_i}}^2 \norm{v_i}^2 &  & \text{(by \cref{6.2}(a))}    \\
+                                 & = \sum_{i = 1}^n \abs{\inn{x, v_i}}^2.             &  & \text{(by \cref{6.1.12})}
+  \end{align*}
+\end{proof}
+
+\begin{proof}[\pf{ex:6.2.16}(b)]
+  First suppose that \(\norm{x}^2 = \sum_{i = 1}^n \abs{\inn{x, v_i}}^2\).
+  In the proof of \cref{ex:6.2.16}(a) we see that \(\norm{x}^2 = \norm{x_1}^2\).
+  This implies \(\norm{x_2} = 0\) and by \cref{6.2}(b) we have \(x_2 = \zv\).
+  Thus \(x = x_1\) and \(x \in \spn{S}\).
+
+  Now suppose that \(x \in \spn{S}\).
+  Then we have
+  \begin{align*}
+    \norm{x}^2 & = \norm{\sum_{i = 1}^n \inn{x, v_i} v_i}^2         &  & \text{(by \cref{6.5})}       \\
+               & = \sum_{i = 1}^n \norm{\inn{x, v_i} v_i}^2         &  & \text{(by \cref{ex:6.1.10})} \\
+               & = \sum_{i = 1}^n \abs{\inn{x, v_i}}^2 \norm{v_i}^2 &  & \text{(by \cref{6.2}(a))}    \\
+               & = \sum_{i = 1}^n \abs{\inn{x, v_i}}^2.             &  & \text{(by \cref{6.1.12})}
+  \end{align*}
+\end{proof}
