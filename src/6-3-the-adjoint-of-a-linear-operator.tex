@@ -1,1 +1,266 @@
 \section{The Adjoint of a Linear Operator}\label{sec:6.3}
+
+\begin{thm}\label{6.8}
+  Let \(\V\) be a finite-dimensional inner product space over \(\F\), and let \(g \in \ls(\V, \F)\) be a linear transformation.
+  Then there exists a unique vector \(y \in \V\) such that \(g(x) = \inn{x, y}\) for all \(x \in \V\).
+\end{thm}
+
+\begin{proof}[\pf{6.8}]
+  Let \(\beta = \set{\seq{v}{1,,n}}\) be an orthonormal basis for \(\V\) over \(\F\), and let
+  \[
+    y = \sum_{i = 1}^n \conj{g(v_i)} v_i.
+  \]
+  Define \(h : \V \to \F\) by \(h(x) = \inn{x, y}\), which is clearly linear (by \cref{6.1.1}(a)(b)).
+  Furthermore, for \(j \in \set{1, \dots, n}\) we have
+  \begin{align*}
+    h(v_j) & = \inn{v_j, y}                                                                  \\
+           & = \inn{v_j, \sum_{i = 1}^n \conj{g(v_i)} v_i}                                   \\
+           & = \sum_{i = 1}^n g(v_i) \inn{v_j, v_i}        &  & \text{(by \cref{6.1}(a)(b))} \\
+           & = \sum_{i = 1}^n g(v_i) \delta_{j i}          &  & \text{(by \cref{6.1.12})}    \\
+           & = g(v_j).
+  \end{align*}
+  Since \(g\) and \(h\) both agree on \(\beta\), we have that \(g = h\) by \cref{2.1.13}.
+  To show that \(y\) is unique, suppose that \(g(x) = \inn{x, y'}\) for all \(x \in \V\).
+  Then \(\inn{x, y} = \inn{x, y'}\) for all \(x \in \V\);
+  so by \cref{6.1}(e), we have \(y = y'\).
+\end{proof}
+
+\begin{thm}\label{6.9}
+  Let \(\V\) be a finite-dimensional inner product space over \(\F\), and let \(\T \in \ls(\V)\).
+  Then there exists a unique function \(\T^* : \V \to \V\) such that \(\inn{\T(x), y} = \inn{x, \T^*(y)}\) for all \(x, y \in \V\).
+  Furthermore, \(\T^*\) is linear.
+  \(\T^*\) is called the \textbf{adjoint} of the operator \(\T\).
+  The symbol \(\T^*\) is read ``\(\T\) star.''
+\end{thm}
+
+\begin{proof}[\pf{6.9}]
+  Let \(y \in \V\).
+  Define \(g : \V \to \F\) by \(g(x) = \inn{\T(x), y}\) for all \(x \in \V\).
+  We first show that \(g\) is linear.
+  Let \(x_1, x_2 \in \V\) and \(c \in \F\).
+  Then
+  \begin{align*}
+    g(c x_1 + x_2) & = \inn{\T(c x_1 + x_2), y}                                                  \\
+                   & = \inn{c \T(x_1) + \T(x_2), y}          &  & \text{(by \cref{2.1.2}(b))}    \\
+                   & = c \inn{\T(x_1), y} + \inn{\T(x_2), y} &  & \text{(by \cref{6.1.1}(a)(b))} \\
+                   & = c g(x_1) + g(x_2).
+  \end{align*}
+  Hence by \cref{2.1.2}(b) \(g \in \ls(\V, \F)\).
+
+  We now apply \cref{6.8} to obtain a unique vector \(y' \in \V\) such that \(g(x) = \inn{x, y'}\);
+  that is, \(\inn{\T(x), y} = \inn{x, y'}\) for all \(x \in \V\).
+  Defining \(\T^* : \V \to \V\) by \(\T^*(y) = y'\), we have \(\inn{\T(x), y} = \inn{x, \T^*(y)}\).
+
+  To show that \(\T^*\) is linear, let \(y_1, y_2 \in \V\) and \(c \in \F\).
+  Then for any \(x \in \V\),
+  we have
+  \begin{align*}
+    \inn{x, \T^*(c y_1 + y_2)} & = \inn{\T(x), c y_1 + y_2}                                                           \\
+                               & = \conj{c} \inn{\T(x), y_1} + \inn{\T(x), y_2}     &  & \text{(by \cref{6.1}(a)(b))} \\
+                               & = \conj{c} \inn{x, \T^*(y_1)} + \inn{x, \T^*(y_2)}                                   \\
+                               & = \inn{x, c \T^*(y_1) + \T^*(y_2)}.                &  & \text{(by \cref{6.1}(a)(b))}
+  \end{align*}
+  Since \(x\) is arbitrary, \(\T^*(c y_1 + y_2) = c \T^*(y_1) + \T^*(y_2)\) by \cref{6.1}(e).
+
+  Finally, we need to show that \(\T^*\) is unique. Suppose that \(\U \in \ls(\V)\) and that it satisfies \(\inn{\T(x), y} = \inn{x, \U(y)}\) for all \(x, y \in \V\).
+  Then \(\inn{x, \T^*(y)} = \inn{x, \U(y)}\) for all \(x, y \in \V\), so \(\T^* = \U\).
+\end{proof}
+
+\begin{note}
+  Thus by \cref{6.9} \(\T^*\) is the unique operator on \(\V\) satisfying \(\inn{\T(x), y} = \inn{x, \T^*(y)}\) for all \(x, y \in \V\).
+  Note that we also have
+  \begin{align*}
+    \inn{x, \T(y)} & = \conj{\inn{\T(y), x}}   &  & \text{(by \cref{6.1.1}(c))} \\
+                   & = \conj{\inn{y, \T^*(x)}} &  & \text{(by \cref{6.9})}      \\
+                   & = \inn{\T^*(x), y};       &  & \text{(by \cref{6.1.1}(c))}
+  \end{align*}
+  so \(\inn{x, \T(y)} = \inn{\T^*(x), y}\) for all \(x, y \in \V\).
+  We may view these equations symbolically as adding a \(*\) to \(\T\) when shifting its position inside the inner product symbol.
+\end{note}
+
+\begin{note}
+  For an infinite-dimensional inner product space, the adjoint of a linear operator \(\T\) may be defined to be the function \(\T^*\) such that \(\inn{\T(x), y} = \inn{x, \T^*(y)}\) for all \(x, y \in \V\), provided it exists.
+  Although the uniqueness and linearity of \(\T^*\) follow as before, the existence of the adjoint is not guaranteed (see \cref{ex:6.3.24}).
+  The reader should observe the necessity of the hypothesis of finite-dimensionality in the proof of \cref{6.8}.
+  Many of the theorems we prove about adjoints, nevertheless, do not depend on \(\V\) being finite-dimensional.
+  \emph{Thus, unless stated otherwise, for the remainder of this chapter we adopt the convention that a reference to the adjoint of a linear operator on an infinite-dimensional inner product space assumes its existence}.
+\end{note}
+
+\begin{thm}\label{6.10}
+  Let \(\V\) be a finite-dimensional inner product space over \(\F\), and let \(\beta\) be an orthonormal basis for \(\V\) over \(\F\).
+  If \(\T \in \ls(\V)\), then
+  \[
+    [\T^*]_{\beta} = [\T]_{\beta}^*.
+  \]
+\end{thm}
+
+\begin{proof}[\pf{6.10}]
+  Let \(A = [\T]_{\beta}\), \(B = [\T^*]_{\beta}\), and \(\beta = \set{\seq{v}{1,,n}}\).
+  Then we have
+  \begin{align*}
+    \forall i, j \in \set{1, \dots, n}, B_{i j} & = \inn{\T^*(v_j), v_i}        &  & \text{(by \cref{6.2.6})}    \\
+                                                & = \conj{\inn{v_i, \T^*(v_j)}} &  & \text{(by \cref{6.1.1}(c))} \\
+                                                & = \conj{\inn{\T(v_i), v_j}}   &  & \text{(by \cref{6.9})}      \\
+                                                & = \conj{A_{j i}}              &  & \text{(by \cref{6.2.6})}    \\
+                                                & = (A^*)_{i j}.                &  & \text{(by \cref{6.1.5})}
+  \end{align*}
+  Hence \(B = A^*\).
+\end{proof}
+
+\begin{cor}\label{6.3.1}
+  Let \(A \in \ms{n}{n}{\F}\).
+  Then \(\L_{A^*} = (\L_A)^*\).
+\end{cor}
+
+\begin{proof}[\pf{6.3.1}]
+  If \(\beta\) is the standard ordered basis for \(\vs{F}^n\), then, by \cref{2.15}(a), we have \([\L_A]_{\beta} = A\).
+  Hence \([(\L_A)^*]_{\beta} = [\L_A]_{\beta}^* = A^* = [\L_{A^*}]_{\beta}\), and so \((\L_A)^* = \L_{A^*}\).
+\end{proof}
+
+\begin{thm}\label{6.11}
+  Let \(\V\) be an inner product space over \(\F\) and let \(\T, \U \in \ls(\V)\).
+  Then
+  \begin{enumerate}
+    \item \((\T + \U)^* = \T^* + \U^*\);
+    \item \((c \T)^* = \conj{c} \T^*\) for any \(c \in \F\);
+    \item \((\T \U)^* = \U^* \T^*\);
+    \item \(\T^{**} = \T\);
+    \item \(\IT[\V]^* = \IT[\V]\).
+  \end{enumerate}
+\end{thm}
+
+\begin{proof}[\pf{6.11}(a)]
+  Since
+  \begin{align*}
+    \forall x, y \in \V, \inn{x, (\T + \U)^*(y)} & = \inn{(\T + \U)(x), y}               &  & \text{(by \cref{6.9})}      \\
+                                                 & = \inn{\T(x) + \U(x), y}              &  & \text{(by \cref{2.2.5})}    \\
+                                                 & = \inn{\T(x), y} + \inn{\U(x), y}     &  & \text{(by \cref{6.1.1}(a))} \\
+                                                 & = \inn{x, \T^*(y)} + \inn{x, \U^*(y)} &  & \text{(by \cref{6.9})}      \\
+                                                 & = \inn{x, \T^*(y) + \U^*(y)}          &  & \text{(by \cref{6.1}(a))}   \\
+                                                 & = \inn{x, (\T^* + \U^*)(y)},          &  & \text{(by \cref{2.2.5})}
+  \end{align*}
+  by \cref{6.1}(e) we know that \(\T^* + \U^* = (\T + \U)^*\).
+\end{proof}
+
+\begin{proof}[\pf{6.11}(b)]
+  Since
+  \begin{align*}
+    \forall x, y \in \V, \inn{x, (c \T)^*(y)} & = \inn{(c \T)(x), y}           &  & \text{(by \cref{6.9})}      \\
+                                              & = \inn{c \T(x), y}             &  & \text{(by \cref{2.2.5})}    \\
+                                              & = c \inn{\T(x), y}             &  & \text{(by \cref{6.1.1}(b))} \\
+                                              & = c \inn{x, \T^*(y)}           &  & \text{(by \cref{6.9})}      \\
+                                              & = \inn{x, \conj{c} \T^*(y)}    &  & \text{(by \cref{6.1}(b))}   \\
+                                              & = \inn{x, (\conj{c} \T^*)(y)}, &  & \text{(by \cref{2.2.5})}
+  \end{align*}
+  by \cref{6.1}(e) we know that \((c \T)^* = \conj{c} \T^*\).
+\end{proof}
+
+\begin{proof}[\pf{6.11}(c)]
+  Since
+  \begin{align*}
+    \forall x, y \in \V, \inn{x, (\T \U)^*(y)} & = \inn{(\T \U)(x), y}      &  & \text{(by \cref{6.9})} \\
+                                               & = \inn{\T(\U(x)), y}                                   \\
+                                               & = \inn{\U(x), \T^*(y)}     &  & \text{(by \cref{6.9})} \\
+                                               & = \inn{x, \U^*(\T^*(y))}   &  & \text{(by \cref{6.9})} \\
+                                               & = \inn{x, (\U^* \T^*)(y)},
+  \end{align*}
+  by \cref{6.1}(e) we know that \((\T \U)^* = \U^* \T^*\).
+\end{proof}
+
+\begin{proof}[\pf{6.11}(d)]
+  Since
+  \begin{align*}
+    \forall x, y \in \V, \inn{x, \T(y)} & = \inn{\T^*(x), y}     &  & \text{(by \cref{6.9})} \\
+                                        & = \inn{x, \T^{**}(y)}, &  & \text{(by \cref{6.9})}
+  \end{align*}
+  by \cref{6.1}(e) we know that \(\T^{**} = \T\).
+\end{proof}
+
+\begin{proof}[\pf{6.11}(e)]
+  Since
+  \begin{align*}
+    \forall x, y \in \V, \inn{x, \IT[\V](y)} & = \inn{x, y}             &  & \text{(by \cref{2.1.9})} \\
+                                             & = \inn{\IT[\V](x), y}    &  & \text{(by \cref{2.1.9})} \\
+                                             & = \inn{x, \IT[\V]^*(y)}, &  & \text{(by \cref{6.9})}
+  \end{align*}
+  by \cref{6.1}(e) we know that \(\IT[\V]^* = \IT[\V]\).
+\end{proof}
+
+\begin{note}
+  The same proof works for \cref{6.11} in the infinite-dimensional case, provided that the existence of \(\T^*\) and \(\U^*\) is assumed.
+\end{note}
+
+\begin{cor}\label{6.3.2}
+  Let \(A, B \in \ms{n}{n}{\F}\).
+  Then
+  \begin{enumerate}
+    \item \((A + B)^* = A^* + B^*\);
+    \item \((cA)^* = \conj{c} A^*\) for all \(c \in \F\).
+    \item \((AB)^* = B^* A^*\);
+    \item \(A^{**} = A\);
+    \item \(I_n^* = I_n\).
+  \end{enumerate}
+\end{cor}
+
+\begin{proof}[\pf{6.3.2}(a)]
+  Since
+  \begin{align*}
+    \L_{(A + B)^*} & = (\L_{A + B})^*      &  & \text{(by \cref{6.3.1})}   \\
+                   & = (\L_A + \L_B)^*     &  & \text{(by \cref{2.15}(c))} \\
+                   & = (\L_A)^* + (\L_B)^* &  & \text{(by \cref{6.11}(a))} \\
+                   & = \L_{A^*} + \L_{B^*} &  & \text{(by \cref{6.3.1})}   \\
+                   & = \L_{A^* + B^*},     &  & \text{(by \cref{2.15}(c))}
+  \end{align*}
+  by \cref{2.15}(b) we have \((A + B)^* = A^* + B^*\).
+\end{proof}
+
+\begin{proof}[\pf{6.3.2}(b)]
+  Since
+  \begin{align*}
+    \L_{(cA)^*} & = (\L_{cA})^*        &  & \text{(by \cref{6.3.1})}   \\
+                & = (c \L_A)^*         &  & \text{(by \cref{2.15}(c))} \\
+                & = \conj{c} (\L_A)^*  &  & \text{(by \cref{6.11}(b))} \\
+                & = \conj{c} \L_{A^*}  &  & \text{(by \cref{6.3.1})}   \\
+                & = \L_{\conj{c} A^*}, &  & \text{(by \cref{2.15}(c))}
+  \end{align*}
+  by \cref{2.15}(b) we have \((cA)^* = \conj{c} A^*\).
+\end{proof}
+
+\begin{proof}[\pf{6.3.2}(c)]
+  Since
+  \begin{align*}
+    \L_{(AB)^*} & = (\L_{AB})^*       &  & \text{(by \cref{6.3.1})}   \\
+                & = (\L_A \L_B)^*     &  & \text{(by \cref{2.15}(e))} \\
+                & = (\L_B)^* (\L_A)^* &  & \text{(by \cref{6.11}(c))} \\
+                & = \L_{B^*} \L_{A^*} &  & \text{(by \cref{6.3.1})}   \\
+                & = \L_{B^* A^*},     &  & \text{(by \cref{2.15}(e))}
+  \end{align*}
+  by \cref{2.15}(b) we have \((AB)^* = B^* A^*\).
+\end{proof}
+
+\begin{proof}[\pf{6.3.2}(d)]
+  Since
+  \begin{align*}
+    \L_A & = (\L_A)^{**}  &  & \text{(by \cref{6.11}(d))} \\
+         & = (\L_{A^*})^* &  & \text{(by \cref{6.3.1})}   \\
+         & = \L_{A^{**}}, &  & \text{(by \cref{6.3.1})}
+  \end{align*}
+  by \cref{2.15}(b) we have \(A = A^{**}\).
+\end{proof}
+
+\begin{proof}[\pf{6.3.2}(e)]
+  Since
+  \begin{align*}
+    \L_{I_n} & = \IT[\vs{F}^n]   &  & \text{(by \cref{2.15}(f))} \\
+             & = \IT[\vs{F}^n]^* &  & \text{(by \cref{6.11}(e))} \\
+             & = (\L_{I_n})^*    &  & \text{(by \cref{2.15}(f))} \\
+             & = \L_{I_n^*},     &  & \text{(by \cref{6.3.1})}
+  \end{align*}
+  by \cref{2.15}(b) we have \(I_n = I_n^*\).
+\end{proof}
+
+\exercisesection
+
+\begin{ex}\label{ex:6.3.24}
+
+\end{ex}
