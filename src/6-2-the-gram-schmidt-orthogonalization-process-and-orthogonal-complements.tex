@@ -737,3 +737,82 @@
   \end{align*}
   Thus we have \(\W_e^{\perp} = \W_o\).
 \end{proof}
+
+\setcounter{ex}{22}
+\begin{ex}\label{ex:6.2.23}
+  Let \(\V\) be the vector space defined \cref{1.2.13}, the space of all sequences \(\sigma\) in \(\F\) (where \(\F = \R\) or \(\F = \C\)) such that \(\sigma(n) \neq 0\) for only finitely many positive integers \(n\).
+  For \(\sigma, \mu \in \V\), we define \(\inn{\sigma, \mu} = \sum_{n = 1}^\infty \sigma(n) \conj{\mu(n)}\).
+  Since all but a finite number of terms of the series are zero, the series converges.
+  \begin{enumerate}
+    \item Prove that \(\inn{\cdot, \cdot}\) is an inner product on \(\V\) over \(\F\), and hence \(\V\) is an inner product space over \(\F\).
+    \item For each positive integer \(n\), let \(e_n\) be the sequence defined by \(e_n(k) = \delta_{n k}\), where \(\delta_{n k}\) is the Kronecker delta.
+          Prove that \(\set{\seq{e}{1,2,}}\) is an orthonormal basis for \(\V\) over \(\F\).
+    \item Let \(\sigma_n = e_1 + e_n\) and \(\W = \spn{\set{\sigma_n : n \geq 2}}\).
+          \begin{enumerate}
+            \item Prove that \(e_1 \notin \W\), so \(\W \neq \V\).
+            \item Prove that \(\W^{\perp} = \set{\zv}\), and conclude that \(\W \neq (\W^{\perp})^{\perp}\).
+          \end{enumerate}
+          Thus the assumption in \cref{ex:6.2.13}(c) that \(\W\) is finite-dimensional is essential.
+  \end{enumerate}
+\end{ex}
+
+\begin{proof}[\pf{ex:6.2.23}(a)]
+  Let \(a, b, c \in \V\) and let \(k \in \F\).
+  Then we have
+  \begin{align*}
+    \inn{a + b, c}    & = \sum_{n = 1}^\infty (a(n) + b(n)) \conj{c(n)}                               &  & \text{(by \cref{ex:6.2.23})}    \\
+                      & = \sum_{n = 1}^\infty a(n) \conj{c(n)} + \sum_{n = 1}^\infty b(n) \conj{c(n)}                                      \\
+                      & = \inn{a, c} + \inn{b, c}                                                     &  & \text{(by \cref{ex:6.2.23})}    \\
+    \inn{ka, b}       & = \sum_{n = 1}^\infty (ka)(n) \conj{b(n)}                                     &  & \text{(by \cref{ex:6.2.23})}    \\
+                      & = k \sum_{n = 1}^\infty a(n) \conj{b(n)}                                                                           \\
+                      & = k \inn{a, b}                                                                &  & \text{(by \cref{ex:6.2.23})}    \\
+    \conj{\inn{a, b}} & = \conj{\sum_{n = 1}^\infty a(n) \conj{b(n)}}                                 &  & \text{(by \cref{ex:6.2.23})}    \\
+                      & = \sum_{n = 1}^\infty \conj{a(n)} b(n)                                        &  & \text{(by \cref{d.2}(a)(b)(c))} \\
+                      & = \inn{b, a}.                                                                 &  & \text{(by \cref{ex:6.2.23})}
+  \end{align*}
+  If \(a \neq \zv\), then we have
+  \begin{align*}
+             & \exists n \in \Z^+ : a(n) \neq 0                                                           \\
+    \implies & \exists n \in \Z^+ : a(n) \conj{a(n)} = \abs{a(n)}^2 > 0 &  & \text{(by \cref{d.0.5})}     \\
+    \implies & \inn{a, a} = \sum_{n = 1}^\infty a(n) \conj{a(n)} > 0.   &  & \text{(by \cref{ex:6.2.23})}
+  \end{align*}
+  Thus by \cref{6.1.1} \(\inn{\cdot, \cdot}\) is an inner product on \(\V\) over \(\F\).
+\end{proof}
+
+\begin{proof}[\pf{ex:6.2.23}(b)]
+  We have
+  \begin{align*}
+    \forall p, q \in \Z^+, \inn{e_p, e_q} & = \sum_{n = 1}^\infty \delta_{p n} \conj{\delta_{q n}} &  & \text{(by \cref{ex:6.2.23})} \\
+                                          & = \sum_{n = 1}^\infty \delta_{p n} \delta_{q n}        &  & (\delta_{q n} \in \R)        \\
+                                          & = \delta_{p q}.                                        &  & \text{(by \cref{2.3.4})}
+  \end{align*}
+  Thus by \cref{ex:1.6.18,6.1.12,6.2.1} \(\set{\seq{e}{1,2,}}\) is an orthonormal basis for \(\V\) over \(\F\).
+\end{proof}
+
+\begin{proof}[\pf{ex:6.2.23}(c)]
+  First we show that \(e_1 \notin \W\) and \(\V \neq \W\).
+  This is true since
+  \begin{align*}
+             & \forall n \geq 2, \sigma_n = e_1 + e_n                             \\
+    \implies & \forall \seq{a}{2,,n} \in \F, e_1 \neq \sum_{k = 2}^n a_k \sigma_k \\
+    \implies & e_1 \notin \spn{\set{\sigma_n : n \geq 2}} = \W                    \\
+    \implies & e_1 \in \V \setminus \W                                            \\
+    \implies & \V \neq \W.
+  \end{align*}
+
+  Now we show that \(\W^{\perp} = \set{\zv}\) and \(\W \neq (\W^{\perp})^{\perp}\).
+  Since
+  \begin{align*}
+             & \mu \in \W^{\perp}                                                                                                          \\
+    \implies & \forall x \in \W, \inn{\mu, x} = 0                                                        &  & \text{(by \cref{6.2.9})}     \\
+    \implies & \forall n \geq 2, 0 = \inn{\sigma_n, \mu} = \sum_{k = 1}^\infty \sigma_n(k) \conj{\mu(k)} &  & \text{(by \cref{ex:6.2.23})} \\
+             & = \sum_{k = 1}^\infty e_1(k) \conj{\mu(k)} + \sum_{k = 1}^\infty e_n(k) \conj{\mu(k)}                                       \\
+             & = \conj{\mu(1)} + \conj{\mu(n)}                                                                                             \\
+    \implies & \conj{\mu(1)} = 0                                                                         &  & (\mu \in \V)                 \\
+    \implies & \mu(1) = 0                                                                                                                  \\
+    \implies & \forall n \geq 1, \mu(n) = 0                                                                                                \\
+    \implies & \mu = \zv,
+  \end{align*}
+  by \cref{6.2.10} we have \(\W^{\perp} = \set{\zv}\).
+  Thus \(\W \neq (\W^{\perp})^{\perp}\).
+\end{proof}
