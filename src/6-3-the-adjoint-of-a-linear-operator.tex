@@ -259,7 +259,141 @@
   by \cref{2.15}(b) we have \(I_n = I_n^*\).
 \end{proof}
 
+\begin{defn}\label{6.3.3}
+  For \(x, y \in \vs{F}^n\), let \(\inn{x, y}_n\) denote the standard inner product of \(x\) and \(y\) in \(\vs{F}^n\).
+  Recall that if \(x\) and \(y\) are regarded as column vectors, then \(\inn{x, y}_n = y^* x\).
+\end{defn}
+
+\begin{lem}\label{6.3.4}
+  Let \(A \in \MS\), \(x \in \vs{F}^n\), and \(y \in \vs{F}^m\).
+  Then
+  \[
+    \inn{Ax, y}_m = \inn{x, A^* y}_n.
+  \]
+\end{lem}
+
+\begin{proof}[\pf{6.3.4}]
+  We have
+  \begin{align*}
+    \inn{Ax, y}_m & = y^* (Ax)          &  & \text{(by \cref{6.3.3})}          \\
+                  & = (y^* A) x         &  & \text{(by \cref{2.16})}           \\
+                  & = (A^* y)^* x       &  & \text{(by \cref{ex:6.3.5}(c)(d))} \\
+                  & = \inn{x, A^* y}_n. &  & \text{(by \cref{6.3.3})}
+  \end{align*}
+\end{proof}
+
+\begin{lem}\label{6.3.5}
+  Let \(A \in \MS\).
+  Then \(\rk{A^* A} = \rk{A}\).
+\end{lem}
+
+\begin{proof}[\pf{6.3.5}]
+  By the dimension theorem (\cref{2.3}), we need only show that, for \(x \in \vs{F}^n\), we have \(A^* Ax = \zv\) iff \(Ax = \zv\).
+  Clearly, \(Ax = \zv\) implies that \(A^* Ax = \zv\).
+  So assume that \(A^* Ax = \zv\).
+  Then
+  \begin{align*}
+    0 & = \inn{A^* Ax, x}_n    &  & \text{(by \cref{6.1}(c))}      \\
+      & = \inn{Ax, A^{**} x}_m &  & \text{(by \cref{6.3.4})}       \\
+      & = \inn{Ax, Ax}_m,      &  & \text{(by \cref{ex:6.3.5}(d))}
+  \end{align*}
+  so that \(Ax = \zv\) by \cref{6.1}(d).
+\end{proof}
+
+\begin{cor}\label{6.3.6}
+  If \(A \in \MS\) such that \(\rk{A} = n\), then \(A^* A\) is invertible.
+\end{cor}
+
+\begin{proof}[\pf{6.3.6}]
+  By \cref{6.3.5} we have \(n = \rk{A} = \rk{A^* A}\).
+  Since \(A^* A \in \ms{n}{n}{\F}\), by \cref{3.2.2} we know that \(A^* A\) is invertible.
+\end{proof}
+
+\begin{thm}\label{6.12}
+  Let \(A \in \MS\) and \(y \in \vs{F}^m\).
+  Then there exists \(x_0 \in \vs{F}^n\) such that \((A^* A) x_0 = A^* y\) and \(\norm{A x_0 - y} \leq \norm{Ax - y}\) for all \(x \in \vs{F}^n\).
+  Furthermore, if \(\rk{A} = n\), then \(x_0 = (A^* A)^{-1} A^* y\).
+\end{thm}
+
+\begin{proof}[\pf{6.12}]
+  Define \(\W = \set{Ax : x \in \vs{F}^n}\);
+  that is, \(\W = \rg{\L_A}\).
+  By \cref{6.2.12}, there exists a unique vector in \(\W\) that is closest to \(y\).
+  Call this vector \(A x_0\), where \(x_0 \in \vs{F}^n\).
+  Then \(\norm{A x_0 - y} \leq \norm{Ax - y}\) for all \(x \in \vs{F}^n\);
+  so \(x_0\) has the property that \(E = \norm{A x_0 - y}\) is minimal, as desired.
+
+  To develop a practical method for finding such an \(x_0\), we note from \cref{6.6,6.2.12} that \(A x_0 - y \in \W^{\perp}\);
+  so \(\inn{Ax, A x_0 - y}_m = 0\) for all \(x \in \vs{F}^n\).
+  Thus, by \cref{6.3.4}, we have that \(\inn{x, A^* (A x_0 - y)}_n = 0\) for all \(x \in \vs{F}^n\).
+  By \cref{6.1}(e) we have \(A^* (A x_0 - y) = 0\).
+  So we need only find a solution \(x_0\) to \(A^* Ax = A^* y\).
+  If, in addition, we assume that \(\rk{A} = n\), then by \cref{6.3.5} we have \(x_0 = (A^* A)^{-1} A^* y\).
+\end{proof}
+
 \exercisesection
+
+\setcounter{ex}{4}
+\begin{ex}\label{ex:6.3.5}
+  Let \(A, B \in \MS\) and let \(C \in \ms{n}{p}{\F}\).
+  Then
+  \begin{enumerate}
+    \item \((A + B)^* = A^* + B^*\);
+    \item \((cA)^* = \conj{c} A^*\) for all \(c \in \F\).
+    \item \((AC)^* = C^* A^*\);
+    \item \(A^{**} = A\);
+  \end{enumerate}
+\end{ex}
+
+\begin{proof}[\pf{ex:6.3.5}(a)]
+  We have
+  \begin{align*}
+    ((A + B)^*)_{i j} & = \conj{(A + B)_{j i}}            &  & \text{(by \cref{6.1.5})}  \\
+                      & = \conj{A_{j i} + B_{j i}}        &  & \text{(by \cref{1.2.9})}  \\
+                      & = \conj{A_{j i}} + \conj{B_{j i}} &  & \text{(by \cref{d.2}(b))} \\
+                      & = (A^*)_{i j} + (B^*)_{i j}       &  & \text{(by \cref{6.1.5})}  \\
+                      & = (A^* + B^*)_{i j}               &  & \text{(by \cref{1.2.9})}
+  \end{align*}
+  where \(i \in \set{1, \dots, n}\) and \(j \in \set{1, \dots, m}\).
+  Thus by \cref{1.2.8} \((A + B)^* = A^* + B^*\).
+\end{proof}
+
+\begin{proof}[\pf{ex:6.3.5}(b)]
+  We have
+  \begin{align*}
+    ((cA)^*)_{i j} & = \conj{(cA)_{j i}}       &  & \text{(by \cref{6.1.5})}  \\
+                   & = \conj{c A_{j i}}        &  & \text{(by \cref{1.2.9})}  \\
+                   & = \conj{c} \conj{A_{j i}} &  & \text{(by \cref{d.2}(c))} \\
+                   & = \conj{c} (A^*)_{i j}    &  & \text{(by \cref{6.1.5})}  \\
+                   & = (\conj{c} A^*)_{i j}    &  & \text{(by \cref{1.2.9})}
+  \end{align*}
+  where \(i \in \set{1, \dots, n}\) and \(j \in \set{1, \dots, m}\).
+  Thus by \cref{1.2.8} \((cA)^* = \conj{c} A^*\).
+\end{proof}
+
+\begin{proof}[\pf{ex:6.3.5}(c)]
+  We have
+  \begin{align*}
+    ((AC)^*)_{i j} & = \conj{(AC)_{j i}}                            &  & \text{(by \cref{6.1.5})}     \\
+                   & = \conj{\sum_{k = 1}^n A_{j k} C_{k i}}        &  & \text{(by \cref{2.3.1})}     \\
+                   & = \sum_{k = 1}^n \conj{A_{j k}} \conj{C_{k i}} &  & \text{(by \cref{d.2}(b)(c))} \\
+                   & = \sum_{k = 1}^n (A^*)_{k j} (C^*)_{i k}       &  & \text{(by \cref{6.1.5})}     \\
+                   & = (C^* A^*)_{i j}                              &  & \text{(by \cref{2.3.1})}
+  \end{align*}
+  where \(i \in \set{1, \dots, n}\) and \(j \in \set{1, \dots, m}\).
+  Thus by \cref{1.2.8} \((AC)^* = C^* A^*\).
+\end{proof}
+
+\begin{proof}[\pf{ex:6.3.5}(d)]
+  We have
+  \begin{align*}
+    (A^{**})_{i j} & = \conj{(A^*)_{j i}}    &  & \text{(by \cref{6.1.5})}  \\
+                   & = \conj{\conj{A_{i j}}} &  & \text{(by \cref{6.1.5})}  \\
+                   & = A_{i j}               &  & \text{(by \cref{d.2}(a))}
+  \end{align*}
+  where \(i \in \set{1, \dots, m}\) and \(j \in \set{1, \dots, n}\).
+  Thus by \cref{1.2.8} \(A = A^{**}\).
+\end{proof}
 
 \begin{ex}\label{ex:6.3.24}
 
