@@ -331,6 +331,121 @@
   If, in addition, we assume that \(\rk{A} = n\), then by \cref{6.3.5} we have \(x_0 = (A^* A)^{-1} A^* y\).
 \end{proof}
 
+\begin{note}
+  Consider the following problem:
+  An experimenter collects data by taking measurements \(\seq{y}{1,,m}\) at times \(\seq{t}{1,,m}\), respectively.
+  Suppose that the data \((t_1, y_1), \dots, (t_m, y_m)\) are plotted as points in the plane.
+  From this plot, the experimenter feels that there exists an essentially linear relationship between \(y\) and \(t\), say \(y = ct + d\), and would like to find the constants \(c\) and \(d\) so that the line \(y = ct + d\) represents the best possible fit to the data collected.
+  One such estimate of fit is to calculate the error \(E\) that represents the sum of the squares of the vertical distances from the points to the line;
+  that is,
+  \[
+    E = \sum_{i = 1}^m (y_i - (c t_i + d))^2.
+  \]
+  Thus the problem is reduced to finding the constants \(c\) and \(d\) that minimize \(E\).
+  (For this reason the line \(y = ct + d\) is called the \textbf{least squares line}.)
+  If we let
+  \[
+    A = \begin{pmatrix}
+      t_1    & 1      \\
+      \vdots & \vdots \\
+      t_m    & 1
+    \end{pmatrix}, x = \begin{pmatrix}
+      c \\
+      d
+    \end{pmatrix}, y = \begin{pmatrix}
+      y_1    \\
+      \vdots \\
+      y_m
+    \end{pmatrix},
+  \]
+  then it follows that \(E = \norm{y - Ax}^2\).
+
+  \cref{6.12} develop a general method for finding an explicit vector \(x_0 \in \vs{F}^n\) that minimizes \(E\);
+  that is, given \(A \in \MS\), we find \(x_0 \in \vs{F}^n\) such that \(\norm{y - A x_0} \leq \norm{y - Ax}\) for all vectors \(x \in \vs{F}^n\).
+  This method not only allows us to find the linear function that best fits the data, but also, for any positive integer \(n\), the best fit using a polynomial of degree at most \(n\).
+
+  Suppose that the experimenter chose the times \(t_i\) for \(i \in \set{1, \dots, m}\) to satisfy
+  \[
+    \sum_{i = 1}^m t_i = 0.
+  \]
+  Then the two columns of \(A\) would be orthogonal, so \(A^* A\) would be a diagonal matrix (see \cref{ex:6.3.19}).
+  In this case, the computations are greatly simplified.
+
+  In practice, the \(m \times 2\) matrix \(A\) in our least squares application has rank equal to two, and hence \(A^* A\) is invertible by \cref{6.3.6}.
+  For, otherwise, the first column of \(A\) is a multiple of the second column, which consists only of ones.
+  But this would occur only if the experimenter collects all the data at exactly one time.
+
+  Finally, the method in \cref{6.12} may also be applied if, for some \(k\), the experimenter wants to fit a polynomial of degree at most \(k\) to the data.
+  For instance, if a polynomial \(y = a_0 + a_1 t + \cdots + a_k t^k\) of degree at most \(k\) is desired, the appropriate model is
+  \[
+    A = \begin{pmatrix}
+      t_1^k  & \cdots & t_1    & 1      \\
+      \vdots &        & \vdots & \vdots \\
+      t_m^k  & \cdots & t_m    & 1
+    \end{pmatrix}, x = \begin{pmatrix}
+      a_k    \\
+      \vdots \\
+      a_0
+    \end{pmatrix}, y = \begin{pmatrix}
+      y_1    \\
+      \vdots \\
+      y_m
+    \end{pmatrix}.
+  \]
+\end{note}
+
+\begin{defn}\label{6.3.7}
+  A solution \(s\) to \(Ax = b\) is called a \textbf{minimal solution} if \(\norm{s} \leq \norm{u}\) for all other solutions \(u\).
+\end{defn}
+
+\begin{thm}\label{6.13}
+  Let \(A \in \MS\) and \(b \in \vs{F}^m\).
+  Suppose that \(Ax = b\) is consistent.
+  Then the following statements are true.
+  \begin{enumerate}
+    \item There exists exactly one minimal solution \(s\) of \(Ax = b\), and \(s \in \rg{\L_{A^*}}\).
+    \item The vector \(s\) is the only solution to \(Ax = b\) that lies in \(\rg{\L_{A^*}}\);
+          that is, if \(u\) satisfies \((A A^*) u = b\), then \(s = A^* u\).
+  \end{enumerate}
+\end{thm}
+
+\begin{proof}[\pf{6.13}(a)]
+  For simplicity of notation, we let \(\W = \rg{\L_{A^*}}\) and \(\W' = \ns{\L_A}\).
+  Let \(x\) be any solution to \(Ax = b\).
+  By \cref{6.6}, \(x = s + y\) for some \(s \in \W\) and \(y \in \W^{\perp}\).
+  But \(\W^{\perp} = \W'\) by \cref{ex:6.3.12}, and therefore \(b = Ax = As + Ay = As\).
+  So \(s\) is a solution to \(Ax = b\) that lies in \(\W\).
+  To prove (a), we need only show that \(s\) is the unique minimal solution.
+  Let \(v\) be any solution to \(Ax = b\).
+  By \cref{3.9}, we have that \(v = s + u\), where \(u \in \W'\).
+  Since \(s \in \W\), which equals \(\W'\) by \cref{ex:6.3.12}, we have
+  \[
+    \norm{v}^2 = \norm{s + u}^2 = \norm{s}^2 + \norm{u}^2 \geq \norm{s}^2
+  \]
+  by \cref{ex:6.1.10}.
+  Thus \(s\) is a minimal solution.
+  We can also see from the preceding calculation that if \(\norm{v} = \norm{s}\), then \(u = \zv\);
+  hence \(v = s\).
+  Therefore \(s\) is the unique minimal solution to \(Ax = b\), proving (a).
+\end{proof}
+
+\begin{proof}[\pf{6.13}(b)]
+  Assume that \(v\) is also a solution to \(Ax = b\) that lies in \(\W\).
+  Then
+  \[
+    v - s \in \W \cap \W' = \W \cap \W^{\perp} = \set{\zv};
+  \]
+  so \(v = s\).
+
+  Finally, suppose that \((A A^*) u = b\), and let \(v = A^* u\).
+  Then \(v \in \W\) and \(Av = b\).
+  Therefore \(s = v = A^* u\) by the discussion above.
+\end{proof}
+
+\begin{note}
+  \cref{6.13} assures that every consistent system of linear equations has a unique minimal solution and provides a method for computing it.
+\end{note}
+
 \exercisesection
 
 \setcounter{ex}{4}
@@ -394,6 +509,14 @@
   where \(i \in \set{1, \dots, m}\) and \(j \in \set{1, \dots, n}\).
   Thus by \cref{1.2.8} \(A = A^{**}\).
 \end{proof}
+
+\begin{ex}\label{ex:6.3.12}
+
+\end{ex}
+
+\begin{ex}\label{ex:6.3.19}
+
+\end{ex}
 
 \begin{ex}\label{ex:6.3.24}
 
