@@ -590,6 +590,29 @@
   \end{align*}
 \end{proof}
 
+\begin{ex}\label{ex:6.3.10}
+  Let \(\T\) be a linear operator on an inner product space \(\V\) over \(\F\).
+  Prove that \(\norm{\T(x)} = \norm{x}\) for all \(x \in \V\) iff \(\inn{\T(x), \T(y)} = \inn{x,y}\) for all \(x, y \in \V\).
+\end{ex}
+
+\begin{proof}[\pf{ex:6.3.10}]
+  First suppose that \(\norm{\T(x)} = \norm{x}\) for all \(x \in \V\).
+  Then we have
+  \begin{align*}
+    \forall x, y \in \V, \inn{\T(x), \T(y)} & = \frac{1}{4} \sum_{k = 1}^4 i^k \norm{\T(x) + i^k \T(y)}^2 &  & \text{(by \cref{ex:6.1.20})} \\
+                                            & = \frac{1}{4} \sum_{k = 1}^4 i^k \norm{\T(x + i^k y)}^2     &  & \text{(by \cref{2.1.2}(b))}  \\
+                                            & = \frac{1}{4} \sum_{k = 1}^4 i^k \norm{x + i^k y}^2         &  & \text{(by hypothesis)}       \\
+                                            & = \inn{x, y}.                                               &  & \text{(by \cref{ex:6.1.20})}
+  \end{align*}
+
+  Now suppose that \(\inn{\T(x), \T(y)} = \inn{x, y}\) for all \(x, y \in \V\).
+  Then we have
+  \begin{align*}
+             & \forall x \in \V, \norm{\T(x)}^2 = \inn{\T(x), \T(x)} = \inn{x, x} = \norm{x}^2 &  & \text{(by \cref{6.1.9})}  \\
+    \implies & \forall x \in \V, \norm{\T(x)} = \norm{x}.                                      &  & \text{(by \cref{6.2}(b))}
+  \end{align*}
+\end{proof}
+
 \begin{ex}\label{ex:6.3.12}
 
 \end{ex}
