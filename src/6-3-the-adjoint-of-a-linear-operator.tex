@@ -508,6 +508,88 @@
   Thus by \cref{1.2.8} \(A = A^{**}\).
 \end{proof}
 
+\begin{ex}\label{ex:6.3.6}
+  Let \(\T\) be a linear operator on an inner product space \(\V\) over \(\F\).
+  Let \(\U_1 = \T + \T^*\) and \(\U_2 = \T \T^*\).
+  Prove that \(\U_1 = \U_1^*\) and \(\U_2 = \U_2^*\).
+\end{ex}
+
+\begin{proof}[\pf{ex:6.3.6}]
+  We have
+  \begin{align*}
+    \U_1^* & = (\T + \T^*)^*                                  \\
+           & = \T^* + \T^{**} &  & \text{(by \cref{6.11}(a))} \\
+           & = \T^* + \T      &  & \text{(by \cref{6.11}(d))} \\
+           & = \U_1
+  \end{align*}
+  and
+  \begin{align*}
+    \U_2^* & = (\T \T^*)^*                                  \\
+           & = \T^{**} \T^* &  & \text{(by \cref{6.11}(c))} \\
+           & = \T \T^*      &  & \text{(by \cref{6.11}(d))} \\
+           & = \U_2.
+  \end{align*}
+\end{proof}
+
+\begin{ex}\label{ex:6.3.7}
+  Give an example of a linear operator \(\T\) on an inner product space \(\V\) over \(\F\) such that \(\ns{\T} \neq \ns{\T^*}\).
+\end{ex}
+
+\begin{proof}[\pf{ex:6.3.7}]
+  Let \(A = \begin{pmatrix}
+    0 & 0 \\
+    1 & 0
+  \end{pmatrix}\).
+  Then we have
+  \[
+    A^* = \begin{pmatrix}
+      0 & 1 \\
+      0 & 0
+    \end{pmatrix}
+  \]
+  and by \cref{6.3.1}
+  \[
+    \ns{\L_A} = \spn{e_2} \neq \spn{e_1} = \ns{\L_{A^*}} = \ns{(\L_A)^*}.
+  \]
+\end{proof}
+
+\begin{ex}\label{ex:6.3.8}
+  Let \(\V\) be a finite-dimensional inner product space over \(\F\), and let \(\T \in \ls(\V)\).
+  Prove that if \(\T\) is invertible, then \(\T^*\) is invertible and \((\T^*)^{-1} = (\T^{-1})^*\).
+\end{ex}
+
+\begin{proof}[\pf{ex:6.3.8}]
+  We have
+  \begin{align*}
+    \IT[\V] & = \IT[\V]^*        &  & \text{(by \cref{6.11}(e))} \\
+            & = (\T \T^{-1})^*                                   \\
+            & = (\T^{-1})^* \T^* &  & \text{(by \cref{6.11}(c))} \\
+            & = (\T^{-1} \T)^*                                   \\
+            & = \T^* (\T^{-1})^*
+  \end{align*}
+  and thus \((\T^*)^{-1} = (\T^{-1})^*\).
+\end{proof}
+
+\begin{ex}\label{ex:6.3.9}
+  Prove that if \(\V = \W \oplus \W^{\perp}\) and \(\T\) is the projection on \(\W\) along \(\W^{\perp}\), then \(\T = \T^*\).
+\end{ex}
+
+\begin{proof}[\pf{ex:6.3.9}]
+  We have
+  \begin{align*}
+             & \V = \W \oplus \W^{\perp}                                                                                      \\
+    \implies & \forall x \in \V, \exists (x_1, x_2) \in \W \times \W^{\perp} : x = x_1 + x_2 &  & \text{(by \cref{5.2.7})}    \\
+    \implies & \forall x, y \in \V, \inn{x, \T^*(y)} = \inn{\T(x), y}                        &  & \text{(by \cref{6.9})}      \\
+             & = \inn{x_1, y}                                                                &  & \text{(by \cref{2.1.14})}   \\
+             & = \inn{x_1, y_1 + y_2} = \inn{x_1, y_1} + \inn{x_1, y_2}                      &  & \text{(by \cref{6.1}(a))}   \\
+             & = \inn{x_1, y_1}                                                              &  & \text{(by \cref{6.2.9})}    \\
+             & = \inn{x_1, y_1} + \inn{x_2, y_1}                                             &  & \text{(by \cref{6.2.9})}    \\
+             & = \inn{x_1 + x_2, y_1}                                                        &  & \text{(by \cref{6.1.1}(a))} \\
+             & = \inn{x, \T(y)}                                                              &  & \text{(by \cref{2.1.14})}   \\
+    \implies & \T = \T^*.                                                                    &  & \text{(by \cref{6.1}(e))}
+  \end{align*}
+\end{proof}
+
 \begin{ex}\label{ex:6.3.12}
 
 \end{ex}
