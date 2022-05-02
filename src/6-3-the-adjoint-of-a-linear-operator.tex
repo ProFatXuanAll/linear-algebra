@@ -1,7 +1,7 @@
 \section{The Adjoint of a Linear Operator}\label{sec:6.3}
 
 \begin{thm}\label{6.8}
-  Let \(\V\) be a finite-dimensional inner product space over \(\F\), and let \(g \in \ls(\V, \F)\) be a linear transformation.
+  Let \(\V\) be a finite-dimensional inner product space over \(\F\), and let \(g \in \ls(\V, \F)\).
   Then there exists a unique vector \(y \in \V\) such that \(g(x) = \inn{x, y}\) for all \(x \in \V\).
 \end{thm}
 
@@ -27,8 +27,7 @@
 
 \begin{thm}\label{6.9}
   Let \(\V\) be a finite-dimensional inner product space over \(\F\), and let \(\T \in \ls(\V)\).
-  Then there exists a unique function \(\T^* : \V \to \V\) such that \(\inn{\T(x), y} = \inn{x, \T^*(y)}\) for all \(x, y \in \V\).
-  Furthermore, \(\T^*\) is linear.
+  Then there exists a unique \(\T^* \in \ls(\V)\) such that \(\inn{\T(x), y} = \inn{x, \T^*(y)}\) for all \(x, y \in \V\).
   \(\T^*\) is called the \textbf{adjoint} of the operator \(\T\).
   The symbol \(\T^*\) is read ``\(\T\) star.''
 \end{thm}
@@ -320,8 +319,7 @@
   that is, \(\W = \rg{\L_A}\).
   By \cref{6.2.12}, there exists a unique vector in \(\W\) that is closest to \(y\).
   Call this vector \(A x_0\), where \(x_0 \in \vs{F}^n\).
-  Then \(\norm{A x_0 - y} \leq \norm{Ax - y}\) for all \(x \in \vs{F}^n\);
-  so \(x_0\) has the property that \(E = \norm{A x_0 - y}\) is minimal, as desired.
+  Then \(\norm{A x_0 - y} \leq \norm{Ax - y}\) for all \(x \in \vs{F}^n\).
 
   To develop a practical method for finding such an \(x_0\), we note from \cref{6.6,6.2.12} that \(A x_0 - y \in \W^{\perp}\);
   so \(\inn{Ax, A x_0 - y}_m = 0\) for all \(x \in \vs{F}^n\).
@@ -418,7 +416,7 @@
   To prove (a), we need only show that \(s\) is the unique minimal solution.
   Let \(v\) be any solution to \(Ax = b\).
   By \cref{3.9}, we have that \(v = s + u\), where \(u \in \W'\).
-  Since \(s \in \W\), which equals \(\W'\) by \cref{ex:6.3.12}, we have
+  Since \(s \in \W\), which equals \((\W')^{\perp}\) by \cref{ex:6.3.12}, we have
   \[
     \norm{v}^2 = \norm{s + u}^2 = \norm{s}^2 + \norm{u}^2 \geq \norm{s}^2
   \]
