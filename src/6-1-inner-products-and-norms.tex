@@ -995,8 +995,8 @@
              & Q = [\IT[\vs{F}^n]]_{\beta}^{\alpha}                                                   &  & \text{(by \cref{2.5.1})}        \\
     \implies & \forall i, j \in \set{1, \dots, n}, (Q^* Q)_{i j} = \sum_{k = 1}^n (Q^*)_{i k} Q_{k j} &  & \text{(by \cref{2.3.1})}        \\
              & = \sum_{k = 1}^n \conj{Q_{k i}} Q_{k j}                                                &  & \text{(by \cref{6.1.5})}        \\
-             & = \inn{v_i, v_j}                                                                       &  & \text{(by \cref{2.5.1})}        \\
-             & = \delta_{i j}                                                                         &  & \text{(by \cref{6.1.12})}       \\
+             & = \inn{v_j, v_i}                                                                       &  & \text{(by \cref{2.5.1})}        \\
+             & = \delta_{j i}                                                                         &  & \text{(by \cref{6.1.12})}       \\
     \implies & Q^* Q = I_n                                                                            &  & \text{(by \cref{2.3.4})}        \\
     \implies & Q^{-1} = Q^*.                                                                          &  & \text{(by \cref{ex:2.4.10}(b))}
   \end{align*}
@@ -1171,13 +1171,16 @@
 \end{ex}
 
 \begin{proof}[\pf{ex:6.1.25}]
-  Suppose for sake of contradiction that there exist an inner product \(\inn{\cdot, \cdot}\) on \(\R^2\) over \(\R\) such that \(\inn{x, x} = \norm{x}^2 = \max\set{\abs{x_1}, \abs{x_2}}\) for all \(x \in \R^2\).
+  Suppose for sake of contradiction that there exist an inner product \(\inn{\cdot, \cdot}\) on \(\R^2\) over \(\R\) such that \(\inn{x, x} = \norm{x}^2 = (\max\set{\abs{x_1}, \abs{x_2}})^2\) for all \(x \in \R^2\).
   But then we have
   \begin{align*}
-    \inn{x, x} & = \frac{1}{4} \norm{x + x} - \frac{1}{4} \norm{x - x}                                   &  & \text{(by \cref{ex:6.1.20}(a))} \\
-               & = \frac{1}{4} \max\set{\abs{2x_1}, \abs{2x_2}} - \frac{1}{4} \max\set{\abs{0}, \abs{0}} &  & \text{(by \cref{ex:6.1.24}(d))} \\
-               & = \frac{1}{2} \max\set{\abs{x_1}, \abs{x_2}}                                            &  & \text{(by \cref{6.1.14}(b))}    \\
-               & \neq \max\set{\abs{x_1}, \abs{x_2}},
+    \inn{(2, 0), (1, 1)}   & = \frac{1}{4} \norm{(3, 1)}^2 - \frac{1}{4} \norm{(1, -1)}^2        &  & \text{(by \cref{ex:6.1.20}(a))} \\
+                           & = \frac{9}{4} - \frac{1}{4}                                         &  & \text{(by \cref{ex:6.1.24}(d))} \\
+                           & = 2                                                                                                      \\
+    2 \inn{(1, 0), (1, 1)} & = 2 \pa{\frac{1}{4} \norm{(2, 1)}^2 - \frac{1}{4} \norm{(0, -1)}^2} &  & \text{(by \cref{ex:6.1.20}(a))} \\
+                           & = 2 \pa{\frac{4}{4} - \frac{1}{4}}                                  &  & \text{(by \cref{ex:6.1.24}(d))} \\
+                           & = \frac{3}{2}                                                                                            \\
+                           & \neq \inn{(2, 0), (1, 1)},
   \end{align*}
   a contradiction.
   Thus there does not exist an inner product on \(\R^2\) such that \(\inn{x, x} = \norm{x}^2 = \max\set{\abs{x_1}, \abs{x_2}}\) for all \(x \in \R^2\).
@@ -1446,9 +1449,6 @@
     \inn{x + y, z}    & = [x + y, z] + i[x + y, iz]                                 &  & \text{(by \cref{ex:6.1.29})}   \\
                       & = [x, z] + [y, z] + i[x, iz] + i[y, iz]                     &  & \text{(by \cref{6.1.1}(a))}    \\
                       & = \inn{x, z} + \inn{y, z}                                   &  & \text{(by \cref{ex:6.1.29})}   \\
-    \inn{ix, y}       & = [ix, y] + i[ix, iy]                                       &  & \text{(by \cref{ex:6.1.29})}   \\
-                      & = [ix, y] + i[x, y]                                         &  & \text{(from the proof above)}  \\
-                      & = i([x, y] - i[ix, y])                                                                          \\
     \inn{cx, y}       & = [cx, y] + i[cx, iy]                                       &  & \text{(by \cref{ex:6.1.29})}   \\
                       & = [(\Re(c) + i \Im(c)) x, y] + i[(\Re(c) + i \Im(c)) x, iy]                                     \\
                       & = \Re(c) [x, y] + \Im(c) [ix, y]                            &  & \text{(by \cref{6.1.1}(a)(b))} \\
