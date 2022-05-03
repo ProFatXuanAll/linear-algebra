@@ -703,8 +703,7 @@
   We have
   \begin{align*}
          & v \in \ns{\T^* \T}                                                           \\
-    \iff & (\T^* \T)(v) = \zv                         &  & \text{(by \cref{2.1.10})}    \\
-    \iff & \T^*(\T(v)) = \zv                                                            \\
+    \iff & (\T^* \T)(v) = \T^*(\T(v)) = \zv           &  & \text{(by \cref{2.1.10})}    \\
     \iff & \forall x \in \V, \inn{x, \T^*(\T(v))} = 0 &  & \text{(by \cref{6.1}(c)(d))} \\
     \iff & \forall x \in \V, \inn{\T(x), \T(v)} = 0   &  & \text{(by \cref{6.9})}       \\
     \iff & \T(v) = \zv                                &  & \text{(by \cref{6.1}(c)(d))} \\
@@ -785,6 +784,199 @@
                        & = \inn{x_1, \U(x_2)},
   \end{align*}
   by \cref{6.9} we see that \(\T^*\) exists and \(\T^* = \U\).
+\end{proof}
+
+\begin{defn}\label{6.3.8}
+  Let \(\T \in \ls(\V, \W)\), where \(\V\) and \(\W\) are finite-dimensional inner product spaces over \(\F\) with inner products \(\inn{\cdot, \cdot}_1\) and \(\inn{\cdot, \cdot}_2\), respectively.
+  A function \(\T^* : \W \to \V\) is called an \textbf{adjoint} of \(\T\) if \(\inn{\T(x), y}_2 = \inn{x, \T^*(y)}_1\) for all \(x \in \V\) and \(y \in \W\).
+\end{defn}
+
+\begin{ex}\label{ex:6.3.15}
+  Let \(\T \in \ls(\V, \W)\), where \(\V\) and \(\W\) are finite-dimensional inner product spaces over \(\F\) with inner products \(\inn{\cdot, \cdot}_1\) and \(\inn{\cdot, \cdot}_2\), respectively.
+  Prove the following results.
+  \begin{enumerate}
+    \item There is a unique adjoint \(\T^*\) of \(\T\), and \(\T^* \in \ls(\W, \V)\).
+    \item If \(\beta\) and \(\gamma\) are orthonormal bases for \(\V\) and \(\W\) over \(\F\), respectively, then \([\T^*]_{\gamma}^{\beta} = ([\T]_{\beta}^{\gamma})^*\).
+    \item \(\rk{\T^*} = \rk{\T}\).
+    \item \(\inn{\T^*(x), y}_1 = \inn{x, \T(y)}_2\) for all \(x \in \W\) and \(y \in \V\).
+    \item For all \(x \in \V\), \(\T^* \T(x) = \zv\) iff \(\T(x) = \zv\).
+  \end{enumerate}
+\end{ex}
+
+\begin{proof}[\pf{ex:6.3.15}(a)]
+  Let \(y \in \W\).
+  Define \(g : \V \to \F\) by \(g(x) = \inn{\T(x), y}_2\) for all \(x \in \V\).
+  We first show that \(g \in \ls(\V, \F)\).
+  Let \(x_1, x_2 \in \V\) and let \(c \in \F\).
+  Then
+  \begin{align*}
+    g(c x_1 + x_2) & = \inn{\T(c x_1 + x_2), y}_2                                                    \\
+                   & = \inn{c \T(x_1) + \T(x_2), y}_2            &  & \text{(by \cref{2.1.2}(b))}    \\
+                   & = c \inn{\T(x_1), y}_2 + \inn{\T(x_2), y}_2 &  & \text{(by \cref{6.1.1}(a)(b))} \\
+                   & = c g(x_1) + g(x_2).
+  \end{align*}
+  Hence by \cref{2.1.2}(b) we see that \(g \in \ls(\V, \F)\).
+
+  We now apply \cref{6.8} to obtain a unique vector \(y' \in \V\) such that \(g(x) = \inn{x, y'}_1\);
+  that is, \(\inn{\T(x), y}_2 = \inn{x, y'}_1\) for all \(x \in \V\).
+  Defining \(\T^* : \W \to \V\) by \(\T^*(y) = y'\), we have \(\inn{\T(x), y}_2 = \inn{x, \T^*(y)}_1\).
+
+  To show that \(\T^*\) is linear, let \(y_1, y_2 \in \W\) and \(c \in \F\).
+  Then for any \(x \in \V\),
+  we have
+  \begin{align*}
+    \inn{x, \T^*(c y_1 + y_2)}_1 & = \inn{\T(x), c y_1 + y_2}_2                                                             \\
+                                 & = \conj{c} \inn{\T(x), y_1}_2 + \inn{\T(x), y_2}_2     &  & \text{(by \cref{6.1}(a)(b))} \\
+                                 & = \conj{c} \inn{x, \T^*(y_1)}_1 + \inn{x, \T^*(y_2)}_1                                   \\
+                                 & = \inn{x, c \T^*(y_1) + \T^*(y_2)}_1.                  &  & \text{(by \cref{6.1}(a)(b))}
+  \end{align*}
+  Since \(x\) is arbitrary, \(\T^*(c y_1 + y_2) = c \T^*(y_1) + \T^*(y_2)\) by \cref{6.1}(e).
+
+  Finally, we need to show that \(\T^*\) is unique. Suppose that \(\U \in \ls(\W, \V)\) and that it satisfies \(\inn{\T(x), y}_2 = \inn{x, \U(y)}_1\) for all \((x, y) \in \V \times \W\).
+  Then \(\inn{x, \T^*(y)}_1 = \inn{x, \U(y)}_1\) for all \((x, y) \in \V \times \W\), so \(\T^* = \U\).
+\end{proof}
+
+\begin{proof}[\pf{ex:6.3.15}(b)]
+  Let \(i \in \set{1, \dots, m}\) and let \(j \in \set{1, \dots, n}\).
+  Then we have
+  \begin{align*}
+    ([\T^*]_{\gamma}^{\beta})_{i j} & = \inn{\T^*(w_j), v_i}_1               &  & \text{(by \cref{6.5})}      \\
+                                    & = \conj{\inn{v_i, \T^*(w_j)}_1}        &  & \text{(by \cref{6.1.1}(c))} \\
+                                    & = \conj{\inn{\T(v_i), w_j}_2}          &  & \text{(by \cref{6.3.8})}    \\
+                                    & = \conj{([\T]_{\beta}^{\gamma})_{j i}} &  & \text{(by \cref{6.5})}      \\
+                                    & = (([\T]_{\beta}^{\gamma})^*)_{i j}.   &  & \text{(by \cref{6.1.5})}
+  \end{align*}
+  Hence \([\T^*]_{\gamma}^{\beta} = ([\T]_{\beta}^{\gamma})^*\).
+\end{proof}
+
+\begin{proof}[\pf{ex:6.3.15}(c)]
+  First we show that \(\ns{\T} = \rg{\T^*}^{\perp}\).
+  This is true since
+  \begin{align*}
+    \iff & v \in \ns{\T}                                                               \\
+    \iff & \T(v) = \zv_{\W}                          &  & \text{(by \cref{2.1.10})}    \\
+    \iff & \forall y \in \W, \inn{y, \T(v)}_2 = 0    &  & \text{(by \cref{6.1}(c)(d))} \\
+    \iff & \forall y \in \W, \inn{\T(v), y}_2 = 0    &  & \text{(by \cref{6.1.1}(c))}  \\
+    \iff & \forall y \in \W, \inn{v, \T^*(y)}_1 = 0  &  & \text{(by \cref{6.3.8})}     \\
+    \iff & \forall x \in \rg{\T^*}, \inn{v, x}_1 = 0                                   \\
+    \iff & v \in \rg{\T^*}^{\perp}.                  &  & \text{(by \cref{6.2.9})}
+  \end{align*}
+
+  Now we show that \(\rk{\T^*} = \rk{\T}\).
+  This is true since
+  \begin{align*}
+    \rk{\T} & = \dim(\V) - \nt{\T}                 &  & \text{(by \cref{2.3})}          \\
+            & = \dim(\V) - \dim(\ns{\T})           &  & \text{(by \cref{2.1.12})}       \\
+            & = \dim(\V) - \dim(\rg{\T^*}^{\perp}) &  & \text{(from the proof above)}   \\
+            & = \dim(\rg{\T^*})                    &  & \text{(by \cref{ex:6.2.13}(d))} \\
+            & = \rk{\T^*}.                         &  & \text{(by \cref{2.1.12})}
+  \end{align*}
+\end{proof}
+
+\begin{proof}[\pf{ex:6.3.15}(d)]
+  We have
+  \begin{align*}
+    \inn{\T^*(x), y}_1 & = \conj{\inn{y, \T^*(x)}_1} &  & \text{(by \cref{6.1.1}(c))} \\
+                       & = \conj{\inn{\T(y), x}_2}   &  & \text{(by \cref{6.3.8})}    \\
+                       & = \inn{x, \T(y)}_2.         &  & \text{(by \cref{6.1.1}(c))}
+  \end{align*}
+\end{proof}
+
+\begin{proof}[\pf{ex:6.3.15}(e)]
+  We have
+  \begin{align*}
+         & v \in \ns{\T^* \T}                                                             \\
+    \iff & (\T^* \T)(v) = \T^*(\T(v)) = \zv_{\V}        &  & \text{(by \cref{2.1.10})}    \\
+    \iff & \forall x \in \V, \inn{x, \T^*(\T(v))}_1 = 0 &  & \text{(by \cref{6.1}(c)(d))} \\
+    \iff & \forall x \in \V, \inn{\T(x), \T(v)}_2 = 0   &  & \text{(by \cref{6.3.8})}     \\
+    \iff & \T(v) = \zv_{\W}                             &  & \text{(by \cref{6.1}(c)(d))} \\
+    \iff & v \in \ns{\T}                                &  & \text{(by \cref{2.1.10})}
+  \end{align*}
+  and thus \(\ns{\T^* \T} = \ns{\T}\).
+\end{proof}
+
+\begin{ex}\label{ex:6.3.16}
+  Let \(\V, \W, \vs{X}\) be finite-dimensional inner product spaces over \(\F\).
+  Let \(\seq{\inn{\cdot, \cdot}}{1,2,3}\) be inner products on \(\V, \W, \vs{X}\) over \(\F\), respectively.
+  Let \(\T, \U \in \ls(\V, \W)\) and let \(\lt{S} \in \ls(\W, \vs{X})\).
+  Then
+  \begin{enumerate}
+    \item \((\T + \U)^* = \T^* + \U^*\);
+    \item \((c \T)^* = \conj{c} \T^*\) for any \(c \in \F\);
+    \item \((\lt{S} \T)^* = \T^* \lt{S}^*\);
+    \item \(\T^{**} = \T\);
+  \end{enumerate}
+\end{ex}
+
+\begin{proof}[\pf{ex:6.3.16}(a)]
+  Since
+  \begin{align*}
+     & \forall (x, y) \in \V \times \W, \inn{x, (\T + \U)^*(y)}_1                                  \\
+     & = \inn{(\T + \U)(x), y}_2                                  &  & \text{(by \cref{6.3.8})}    \\
+     & = \inn{\T(x) + \U(x), y}_2                                 &  & \text{(by \cref{2.2.5})}    \\
+     & = \inn{\T(x), y}_2 + \inn{\U(x), y}_2                      &  & \text{(by \cref{6.1.1}(a))} \\
+     & = \inn{x, \T^*(y)}_1 + \inn{x, \U^*(y)}_1                  &  & \text{(by \cref{6.3.8})}    \\
+     & = \inn{x, \T^*(y) + \U^*(y)}_1                             &  & \text{(by \cref{6.1}(a))}   \\
+     & = \inn{x, (\T^* + \U^*)(y)}_1,                             &  & \text{(by \cref{2.2.5})}
+  \end{align*}
+  by \cref{6.1}(e) we know that \(\T^* + \U^* = (\T + \U)^*\).
+\end{proof}
+
+\begin{proof}[\pf{ex:6.3.16}(b)]
+  Since
+  \begin{align*}
+    \forall (x, y) \in \V \times \W, \inn{x, (c \T)^*(y)}_1 & = \inn{(c \T)(x), y}_2           &  & \text{(by \cref{6.3.8})}    \\
+                                                            & = \inn{c \T(x), y}_2             &  & \text{(by \cref{2.2.5})}    \\
+                                                            & = c \inn{\T(x), y}_2             &  & \text{(by \cref{6.1.1}(b))} \\
+                                                            & = c \inn{x, \T^*(y)}_1           &  & \text{(by \cref{6.3.8})}    \\
+                                                            & = \inn{x, \conj{c} \T^*(y)}_1    &  & \text{(by \cref{6.1}(b))}   \\
+                                                            & = \inn{x, (\conj{c} \T^*)(y)}_1, &  & \text{(by \cref{2.2.5})}
+  \end{align*}
+  by \cref{6.1}(e) we know that \((c \T)^* = \conj{c} \T^*\).
+\end{proof}
+
+\begin{proof}[\pf{ex:6.3.16}(c)]
+  Since
+  \begin{align*}
+    \forall (x, y) \in \V \times \vs{X}, \inn{x, (\lt{S} \T)^*(y)}_1 & = \inn{(\lt{S} \T)(x), y}_3      &  & \text{(by \cref{6.3.8})} \\
+                                                                     & = \inn{\lt{S}(\T(x)), y}_3                                     \\
+                                                                     & = \inn{\T(x), \lt{S}^*(y)}_2     &  & \text{(by \cref{6.3.8})} \\
+                                                                     & = \inn{x, \T^*(\lt{S}^*(y))}_1   &  & \text{(by \cref{6.3.8})} \\
+                                                                     & = \inn{x, (\T^* \lt{S}^*)(y)}_1,
+  \end{align*}
+  by \cref{6.1}(e) we know that \((\lt{S} \T)^* = \T^* \lt{S}^*\).
+\end{proof}
+
+\begin{proof}[\pf{ex:6.3.16}(d)]
+  Since
+  \begin{align*}
+    \forall (x, y) \in \V \times \W, \inn{x, \T(y)}_1 & = \inn{\T^*(x), y}_2     &  & \text{(by \cref{ex:6.3.15}(d))} \\
+                                                      & = \inn{x, \T^{**}(y)}_1, &  & \text{(by \cref{6.3.8})}
+  \end{align*}
+  by \cref{6.1}(e) we know that \(\T^{**} = \T\).
+\end{proof}
+
+\begin{ex}\label{ex:6.3.17}
+  Let \(T \in \ls(\V, \W\), where \(\V\) and \(\W\) are finite-dimensional inner product spaces over \(\F\).
+  Prove that \(\rg{\T^*}^{\perp} = \ns{\T}\), using \cref{6.3.8}.
+\end{ex}
+
+\begin{proof}[\pf{ex:6.3.17}]
+  See proof of \cref{ex:6.3.15}(c).
+\end{proof}
+
+\begin{ex}\label{ex:6.3.18}
+  Let \(A \in \ms{n}{n}{\F}\).
+  Prove that \(\det(A^*) = \conj{\det(A)}\).
+\end{ex}
+
+\begin{proof}[\pf{ex:6.3.18}]
+  We have
+  \begin{align*}
+    \det(A^*) & = \det(\conj{\tp{A}}) &  & \text{(by \cref{6.1.5})}        \\
+              & = \conj{\det(\tp{A})} &  & \text{(by \cref{ex:4.3.13}(a))} \\
+              & = \conj{\det(A)}.     &  & \text{(by \cref{4.8})}
+  \end{align*}
 \end{proof}
 
 \begin{ex}\label{ex:6.3.19}
