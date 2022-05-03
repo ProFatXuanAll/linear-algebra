@@ -597,13 +597,22 @@
 
 \begin{proof}[\pf{ex:6.3.10}]
   First suppose that \(\norm{\T(x)} = \norm{x}\) for all \(x \in \V\).
-  Then we have
+  If \(\F = \C\), then we have
   \begin{align*}
-    \forall x, y \in \V, \inn{\T(x), \T(y)} & = \frac{1}{4} \sum_{k = 1}^4 i^k \norm{\T(x) + i^k \T(y)}^2 &  & \text{(by \cref{ex:6.1.20})} \\
-                                            & = \frac{1}{4} \sum_{k = 1}^4 i^k \norm{\T(x + i^k y)}^2     &  & \text{(by \cref{2.1.2}(b))}  \\
-                                            & = \frac{1}{4} \sum_{k = 1}^4 i^k \norm{x + i^k y}^2         &  & \text{(by hypothesis)}       \\
-                                            & = \inn{x, y}.                                               &  & \text{(by \cref{ex:6.1.20})}
+    \forall x, y \in \V, \inn{\T(x), \T(y)} & = \frac{1}{4} \sum_{k = 1}^4 i^k \norm{\T(x) + i^k \T(y)}^2 &  & \text{(by \cref{ex:6.1.20}(b))} \\
+                                            & = \frac{1}{4} \sum_{k = 1}^4 i^k \norm{\T(x + i^k y)}^2     &  & \text{(by \cref{2.1.2}(b))}     \\
+                                            & = \frac{1}{4} \sum_{k = 1}^4 i^k \norm{x + i^k y}^2         &  & \text{(by hypothesis)}          \\
+                                            & = \inn{x, y}.                                               &  & \text{(by \cref{ex:6.1.20}(b))}
   \end{align*}
+  If \(\F = \R\), then we have
+  \begin{align*}
+     & \forall x, y \in \V, \inn{\T(x), \T(y)}                                                                 \\
+     & = \frac{1}{4} \pa{\norm{\T(x) + \T(y)}^2 - \norm{\T(x) - \T(y)}^2} &  & \text{(by \cref{ex:6.1.20}(a))} \\
+     & = \frac{1}{4} \pa{\norm{\T(x + y)}^2 - \norm{\T(x - y)}^2}         &  & \text{(by \cref{2.1.2}(b))}     \\
+     & = \frac{1}{4} \pa{\norm{x + y}^2 - \norm{x - y}^2}                 &  & \text{(by hypothesis)}          \\
+     & = \inn{x, y}.                                                      &  & \text{(by \cref{ex:6.1.20}(a))}
+  \end{align*}
+  In either cases we have \(\inn{\T(x), \T(y)} = \inn{x, y}\) for all \(x, y \in \V\).
 
   Now suppose that \(\inn{\T(x), \T(y)} = \inn{x, y}\) for all \(x, y \in \V\).
   Then we have
@@ -613,9 +622,70 @@
   \end{align*}
 \end{proof}
 
-\begin{ex}\label{ex:6.3.12}
-
+\begin{ex}\label{ex:6.3.11}
+  For a linear operator \(\T\) on an inner product space \(\V\) over \(\F\), prove that \(\T^* \T = \zT\) implies \(\T = \zT\).
+  Is the same result true if we assume that \(\T \T^* = \zT\)?
 \end{ex}
+
+\begin{proof}[\pf{ex:6.3.11}]
+  First we show that \(\T^* \T = \zT \implies \T = \zT\).
+  This is true since
+  \begin{align*}
+             & \T^* \T = \zT                                                                                \\
+    \implies & \forall x, y \in \V, 0 = \inn{\zv, y} = \inn{(\T^* \T)(x), y} &  & \text{(by \cref{6.1}(c))} \\
+             & = \inn{\T^*(\T(x)), \T(y)} = \inn{\T(x), \T(y)}               &  & \text{(by \cref{6.9})}    \\
+    \implies & \forall x \in \V, \norm{\T(x)}^2 = \inn{\T(x), \T(x)} = 0     &  & \text{(by \cref{6.1.9})}  \\
+    \implies & \forall x \in \V, \T(x) = \zv                                 &  & \text{(by \cref{6.2}(b))} \\
+    \implies & \T = \zT.
+  \end{align*}
+
+  Now we show that \(\T \T^* = \zT \implies \T = \zT\).
+  Since
+  \begin{align*}
+             & \forall x, y \in \V, 0 = \inn{\zv, y} = \inn{\zT(x), y}            &  & \text{(by \cref{6.1}(c))} \\
+             & = \inn{x, \zT^*(y)}                                                &  & \text{(by \cref{6.9})}    \\
+    \implies & \forall x \in \V, \norm{\zT^*(x)}^2 = \inn{\zT^*(x), \zT^*(x)} = 0 &  & \text{(by \cref{6.1.9})}  \\
+    \implies & \forall x \in \V, \zT^*(x) = \zv                                   &  & \text{(by \cref{6.2}(b))} \\
+    \implies & \zT^* = \zT,                                                       &  & \text{(by \cref{2.1.9})}
+  \end{align*}
+  we have
+  \begin{align*}
+             & \T^{**} \T^* = \T \T^* = \zT &  & \text{(by \cref{6.11}(d))}    \\
+    \implies & \T^* = \zT                   &  & \text{(from the proof above)} \\
+    \implies & \T = \T^{**} = \zT^* = \zT.  &  & \text{(from the proof above)}
+  \end{align*}
+\end{proof}
+
+\begin{ex}\label{ex:6.3.12}
+  Let \(\V\) be an inner product space over \(\F\), and let \(\T \in \ls(\V)\).
+  Prove the following results.
+  \begin{enumerate}
+    \item \(\rg{\T^*}^{\perp} = \ns{\T}\).
+    \item If \(\V\) is finite-dimensional, then \(\rg{\T^*} = \ns{\T}^{\perp}\).
+  \end{enumerate}
+\end{ex}
+
+\begin{proof}[\pf{ex:6.3.12}(a)]
+  We have
+  \begin{align*}
+         & v \in \rg{\T^*}^{\perp}                                                   \\
+    \iff & \forall y \in \rg{\T^*}, \inn{v, y} = 0 &  & \text{(by \cref{6.2.9})}     \\
+    \iff & \forall x \in \V, \inn{v, \T^*(x)} = 0  &  & \text{(by \cref{2.1.10})}    \\
+    \iff & \forall x \in \V, \inn{\T(v), x} = 0    &  & \text{(by \cref{6.9})}       \\
+    \iff & \forall x \in \V, \inn{x, \T(v)} = 0    &  & \text{(by \cref{6.1.1}(c))}  \\
+    \iff & \T(v) = \zv                             &  & \text{(by \cref{6.1}(c)(e))} \\
+    \iff & v \in \ns{\T}                           &  & \text{(by \cref{2.1.10})}
+  \end{align*}
+  and thus \(\rg{\T^*}^{\perp} = \ns{\T}\).
+\end{proof}
+
+\begin{proof}[\pf{ex:6.3.12}(b)]
+  We have
+  \begin{align*}
+    \rg{\T^*} & = (\rg{\T^*}^{\perp})^{\perp} &  & \text{(by \cref{ex:6.2.13}(c))} \\
+              & = \ns{\T}^{\perp}.            &  & \text{(by \cref{ex:6.3.12}(a))}
+  \end{align*}
+\end{proof}
 
 \begin{ex}\label{ex:6.3.19}
 
