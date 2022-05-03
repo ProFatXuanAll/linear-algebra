@@ -634,19 +634,19 @@
              & \T^* \T = \zT                                                                                \\
     \implies & \forall x, y \in \V, 0 = \inn{\zv, y} = \inn{(\T^* \T)(x), y} &  & \text{(by \cref{6.1}(c))} \\
              & = \inn{\T^*(\T(x)), \T(y)} = \inn{\T(x), \T(y)}               &  & \text{(by \cref{6.9})}    \\
-    \implies & \forall x \in \V, \norm{\T(x)}^2 = \inn{\T(x), \T(x)} = 0     &  & \text{(by \cref{6.1.9})}  \\
-    \implies & \forall x \in \V, \T(x) = \zv                                 &  & \text{(by \cref{6.2}(b))} \\
+    \implies & \forall x \in \V, \inn{\T(x), \T(x)} = 0                                                     \\
+    \implies & \forall x \in \V, \T(x) = \zv                                 &  & \text{(by \cref{6.1}(d))} \\
     \implies & \T = \zT.
   \end{align*}
 
   Now we show that \(\T \T^* = \zT \implies \T = \zT\).
   Since
   \begin{align*}
-             & \forall x, y \in \V, 0 = \inn{\zv, y} = \inn{\zT(x), y}            &  & \text{(by \cref{6.1}(c))} \\
-             & = \inn{x, \zT^*(y)}                                                &  & \text{(by \cref{6.9})}    \\
-    \implies & \forall x \in \V, \norm{\zT^*(x)}^2 = \inn{\zT^*(x), \zT^*(x)} = 0 &  & \text{(by \cref{6.1.9})}  \\
-    \implies & \forall x \in \V, \zT^*(x) = \zv                                   &  & \text{(by \cref{6.2}(b))} \\
-    \implies & \zT^* = \zT,                                                       &  & \text{(by \cref{2.1.9})}
+             & \forall x, y \in \V, 0 = \inn{\zv, y} = \inn{\zT(x), y} &  & \text{(by \cref{6.1}(c))} \\
+             & = \inn{x, \zT^*(y)}                                     &  & \text{(by \cref{6.9})}    \\
+    \implies & \forall x \in \V, \inn{\zT^*(x), \zT^*(x)} = 0          &  & (\zT^*(x) \in \V)         \\
+    \implies & \forall x \in \V, \zT^*(x) = \zv                        &  & \text{(by \cref{6.1}(d))} \\
+    \implies & \zT^* = \zT,                                            &  & \text{(by \cref{2.1.9})}
   \end{align*}
   we have
   \begin{align*}
@@ -685,6 +685,106 @@
     \rg{\T^*} & = (\rg{\T^*}^{\perp})^{\perp} &  & \text{(by \cref{ex:6.2.13}(c))} \\
               & = \ns{\T}^{\perp}.            &  & \text{(by \cref{ex:6.3.12}(a))}
   \end{align*}
+\end{proof}
+
+\begin{ex}\label{ex:6.3.13}
+  Let \(\T\) be a linear operator on a finite-dimensional vector space \(\V\) over \(\F\).
+  Prove the following results.
+  \begin{enumerate}
+    \item \(\ns{\T^* \T} = \ns{\T}\).
+          Deduce that \(\rk{\T^* \T} = \rk{\T}\).
+    \item \(\rk{\T} = \rk{\T^*}\).
+          Deduce from (a) that \(\rk{\T \T^*} = \rk{\T}\).
+    \item For any \(A \in \ms{n}{n}{\F}\), \(\rk{A^* A} = \rk{A A^*} = \rk{A}\).
+  \end{enumerate}
+\end{ex}
+
+\begin{proof}[\pf{ex:6.3.13}(a)]
+  We have
+  \begin{align*}
+         & v \in \ns{\T^* \T}                                                           \\
+    \iff & (\T^* \T)(v) = \zv                         &  & \text{(by \cref{2.1.10})}    \\
+    \iff & \T^*(\T(v)) = \zv                                                            \\
+    \iff & \forall x \in \V, \inn{x, \T^*(\T(v))} = 0 &  & \text{(by \cref{6.1}(c)(d))} \\
+    \iff & \forall x \in \V, \inn{\T(x), \T(v)} = 0   &  & \text{(by \cref{6.9})}       \\
+    \iff & \T(v) = \zv                                &  & \text{(by \cref{6.1}(c)(d))} \\
+    \iff & v \in \ns{\T}                              &  & \text{(by \cref{2.1.10})}
+  \end{align*}
+  and thus \(\ns{\T^* \T} = \ns{\T}\).
+  Since \(\V\) is finite-dimensional, we have
+  \begin{align*}
+             & \dim(\V) = \begin{dcases}
+                            \rk{\T^* \T} + \nt{\T^* \T} \\
+                            \rk{\T} + \nt{\T}
+                          \end{dcases}                  &  & \text{(by \cref{2.3})}               \\
+    \implies & \rk{\T^* \T} = \rk{\T} + \nt{\T} - \nt{\T^* \T}                                    \\
+             & = \rk{\T}.                                      &  & \text{(from the proof above)}
+  \end{align*}
+\end{proof}
+
+\begin{proof}[\pf{ex:6.3.13}(b)]
+  Since
+  \begin{align*}
+    \rg{\T^* \T} & = \rg{(\T^* \T)^*}     &  & \text{(by \cref{6.11}(c)(d))}   \\
+                 & = \ns{\T^* \T}^{\perp} &  & \text{(by \cref{ex:6.3.12}(b))} \\
+                 & = \ns{\T}^{\perp}      &  & \text{(by \cref{ex:6.3.13}(a))} \\
+                 & = \rg{\T^*},           &  & \text{(by \cref{ex:6.3.12}(b))}
+  \end{align*}
+  by \cref{ex:6.3.13}(a) we have \(\rk{\T^* \T} = \rk{\T^*} = \rk{\T}\).
+  Thus
+  \begin{align*}
+             & \rk{(\T^*)^* \T^*} = \rk{(\T^*)^*} &  & \text{(from the proof above)} \\
+    \implies & \rk{\T \T^*} = \rk{\T}.            &  & \text{(by \cref{6.11}(d))}
+  \end{align*}
+\end{proof}
+
+\begin{proof}[\pf{ex:6.3.13}(c)]
+  We have
+  \begin{align*}
+    \rk{A^* A} & = \rk{\L_{A^* A}}    &  & \text{(by \cref{3.2.1})}        \\
+               & = \rk{\L_{A^*} \L_A} &  & \text{(by \cref{2.15}(e))}      \\
+               & = \rk{(\L_A)^* \L_A} &  & \text{(by \cref{6.3.1})}        \\
+               & = \rk{\L_A}          &  & \text{(by \cref{ex:6.3.13}(a))} \\
+               & = \rk{A}             &  & \text{(by \cref{3.2.1})}        \\
+               & = \rk{\L_A (\L_A)^*} &  & \text{(by \cref{ex:6.3.13}(b))} \\
+               & = \rk{\L_A \L_{A^*}} &  & \text{(by \cref{6.3.1})}        \\
+               & = \rk{\L_{A A^*}}    &  & \text{(by \cref{2.15}(e))}      \\
+               & = \rk{A A^*}.        &  & \text{(by \cref{3.2.1})}
+  \end{align*}
+\end{proof}
+
+\begin{ex}\label{ex:6.3.14}
+  Let \(\V\) be an inner product space over \(\F\), and let \(y, z \in \V\).
+  Define \(\T : \V \to \V\) by \(\T(x) = \inn{x, y} z\) for all \(x \in \V\).
+  First prove that \(\T \in \ls(\V)\).
+  Then show that \(\T^*\) exists, and find an explicit expression for it.
+\end{ex}
+
+\begin{proof}[\pf{ex:6.3.14}]
+  Let \(x_1, x_2 \in \V\) and let \(c \in \F\).
+  Since
+  \begin{align*}
+    \T(c x_1 + x_2) & = \inn{c x_1 + x_2, y} z            &  & \text{(by \cref{ex:6.3.14})}   \\
+                    & = (c \inn{x_1, y} + \inn{x_2, y}) z &  & \text{(by \cref{6.1.1}(a)(b))} \\
+                    & = c \inn{x_1, y} z + \inn{x_2, y} z &  & \text{(by \cref{1.2.1})}       \\
+                    & = c \T(x_1) + \T(x_2),              &  & \text{(by \cref{ex:6.3.14})}
+  \end{align*}
+  by \cref{2.1.2}(b) we see that \(\T \in \ls(\V)\).
+  Now we define \(\U : \V \to \V\) as follow:
+  \[
+    \forall x \in \V, \U(x) = \inn{x, z} y.
+  \]
+  Since
+  \begin{align*}
+    \inn{\T(x_1), x_2} & = \inn{\inn{x_1, y} z, x_2}               &  & \text{(by \cref{ex:6.3.14})} \\
+                       & = \conj{\inn{x_2, \inn{x_1, y} z}}        &  & \text{(by \cref{6.1.1}(c))}  \\
+                       & = \conj{\conj{\inn{x_1, y}} \inn{x_2, z}} &  & \text{(by \cref{6.1}(b))}    \\
+                       & = \inn{x_1, y} \conj{\inn{x_2, z}}        &  & \text{(by \cref{d.2}(a)(c))} \\
+                       & = \conj{\inn{x_2, z}} \inn{x_1, y}                                          \\
+                       & = \inn{x_1, \inn{x_2, z} y}               &  & \text{(by \cref{6.1}(b))}    \\
+                       & = \inn{x_1, \U(x_2)},
+  \end{align*}
+  by \cref{6.9} we see that \(\T^*\) exists and \(\T^* = \U\).
 \end{proof}
 
 \begin{ex}\label{ex:6.3.19}
