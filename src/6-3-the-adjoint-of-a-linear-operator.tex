@@ -980,9 +980,155 @@
 \end{proof}
 
 \begin{ex}\label{ex:6.3.19}
-
+  Suppose that \(A \in \MS\) and no two columns of \(A\) are identical.
+  Prove that \(A^* A\) is a diagonal matrix iff every pair of columns of \(A\) is orthogonal.
 \end{ex}
+
+\begin{proof}[\pf{ex:6.3.19}]
+  For each \(i \in \set{1, \dots, n}\), let \(a_i\) be the \(i\)th column of \(A\).
+  Then we have
+  \begin{align*}
+         & A^* A \text{ is diagonal}                                                                                                                \\
+    \iff & \forall i, j \in \set{1, \dots, n}, (A^* A)_{i j} = (A^* A)_{i j} \delta_{i j}                         &  & \text{(by \cref{ex:2.3.10})} \\
+    \iff & \forall i, j \in \set{1, \dots, n}, \sum_{k = 1}^m (A^*)_{i k} A_{k j} = (A^* A)_{i j} \delta_{i j}    &  & \text{(by \cref{2.3.1})}     \\
+    \iff & \forall i, j \in \set{1, \dots, n}, \sum_{k = 1}^m \conj{A_{k i}} A_{k j} = (A^* A)_{i j} \delta_{i j} &  & \text{(by \cref{6.1.5})}     \\
+    \iff & \forall i, j \in \set{1, \dots, n}, \inn{a_j, a_i} = (A^* A)_{i j} \delta_{i j}                        &  & \text{(by \cref{6.1.2})}     \\
+    \iff & \text{the set of columns of } A \text{ is orthogonal}.                                                 &  & \text{(by \cref{6.1.12})}
+  \end{align*}
+\end{proof}
+
+\setcounter{ex}{22}
+\begin{ex}\label{ex:6.3.23}
+  Consider the problem of finding the least squares line \(y = ct + d\) corresponding to the \(m\) observations \((t_1, y_1), \dots, (t_m, y_m)\).
+  \begin{enumerate}
+    \item Show that the equation \((A^* A) x_0 = A^* y\) of \cref{6.12} takes the form of the \emph{normal equations}:
+          \[
+            \pa{\sum_{i = 1}^m t_i^2} c + \pa{\sum_{i = 1}^m t_i} d = \sum_{i = 1}^m t_i y_i
+          \]
+          and
+          \[
+            \pa{\sum_{i = 1}^m t_i} c + md = \sum_{i = 1}^m y_i.
+          \]
+          These equations may also be obtained from the error \(E\) by setting the partial derivatives of \(E\) with respect to both \(c\) and \(d\) equal to zero.
+    \item Use the second normal equation of (a) to show that the least squares line must pass through the \emph{center of mass}, \((\overline{t}, \overline{y})\), where
+          \[
+            \overline{t} = \frac{1}{m} \sum_{i = 1}^m t_i \quad \text{and} \quad \overline{y} = \frac{1}{m} \sum_{i = 1}^m y_i.
+          \]
+  \end{enumerate}
+\end{ex}
+
+\begin{proof}[\pf{ex:6.3.23}(a)]
+  Since
+  \begin{align*}
+    A         & = \begin{pmatrix}
+                    t_1    & 1      \\
+                    \vdots & \vdots \\
+                    t_m    & 1
+                  \end{pmatrix}                                                               &  & \text{(by \cref{6.12})}    \\
+    A^*       & = \begin{pmatrix}
+                    t_1 & \cdots & t_m \\
+                    1   & \cdots & 1
+                  \end{pmatrix}                                                            &  & \text{(by \cref{6.1.5})}      \\
+    A^* A     & = \begin{pmatrix}
+                    \sum_{i = 1}^m t_i^2 & \sum_{i = 1}^m t_i \\
+                    \sum_{i = 1}^m t_i   & m
+                  \end{pmatrix}                                     &  & \text{(by \cref{2.3.1})}                             \\
+    A^* A x_0 & = \begin{pmatrix}
+                    \sum_{i = 1}^m t_i^2 & \sum_{i = 1}^m t_i \\
+                    \sum_{i = 1}^m t_i   & m
+                  \end{pmatrix} \begin{pmatrix}
+                                  c \\
+                                  d
+                                \end{pmatrix}                                     &  & \text{(by \cref{6.12})}                \\
+              & = \begin{pmatrix}
+                    \pa{\sum_{i = 1}^m t_i^2} c + \pa{\sum_{i = 1}^m t_i} d \\
+                    \pa{\sum_{i = 1}^m t_i} c + md
+                  \end{pmatrix} &  & \text{(by \cref{2.3.1})}                               \\
+    A^* y     & = \begin{pmatrix}
+                    t_1 & \cdots & t_m \\
+                    1   & \cdots & 1
+                  \end{pmatrix} \begin{pmatrix}
+                                  y_1    \\
+                                  \vdots \\
+                                  y_m
+                                \end{pmatrix}                                                    &  & \text{(by \cref{6.12})} \\
+              & = \begin{pmatrix}
+                    \sum_{i = 1}^m t_i y_i \\
+                    \sum_{i = 1}^m y_i
+                  \end{pmatrix},                                                        &  & \text{(by \cref{2.3.1})}
+  \end{align*}
+  we have
+  \begin{align*}
+             & A^* A x_0 = A^* y                                                                                         &  & \text{(by \cref{6.12})} \\
+    \implies & \begin{dcases}
+                 \pa{\sum_{i = 1}^m t_i^2} c + \pa{\sum_{i = 1}^m t_i} d = \sum_{i = 1}^m t_i y_i \\
+                 \pa{\sum_{i = 1}^m t_i} c + md = \sum_{i = 1}^m y_i
+               \end{dcases}.
+  \end{align*}
+\end{proof}
+
+\begin{proof}[\pf{ex:6.3.23}(b)]
+  We have
+  \begin{align*}
+             & \frac{1}{m} \pa{\pa{\sum_{i = 1}^m t_i} c + md} = \frac{1}{m} \pa{\sum_{i = 1}^m y_i} &  & \text{(by \cref{ex:6.3.23}(a))} \\
+    \implies & \overline{t} c + d = \overline{y}                                                                                          \\
+    \implies & (\overline{t}, \overline{y}) \text{ pass through } y = ct + d.                        &  & \text{(by \cref{6.12})}
+  \end{align*}
+\end{proof}
 
 \begin{ex}\label{ex:6.3.24}
-
+  Let \(\V\) and \(\set{\seq{e}{1,2,}}\) be defined as in \cref{ex:6.2.23}.
+  Define \(\T : \V \to \V\) by
+  \[
+    \T(\sigma)(k) = \sum_{i = k}^\infty \sigma(i) \quad \text{for } k \in \Z^+.
+  \]
+  Notice that the infinite series in the definition of \(\T\) converges because \(\sigma(i) \neq 0\) for only finitely many \(i\).
+  \begin{enumerate}
+    \item Prove that \(\T \in \ls(\V)\).
+    \item Prove that for any positive integer \(n\), \(\T(e_n) = \sum_{i = 1}^n e_i\).
+    \item Prove that \(\T\) has no adjoint
+  \end{enumerate}
 \end{ex}
+
+\begin{proof}[\pf{ex:6.3.24}(a)]
+  Let \(a, b \in \V\) and let \(c \in \F\).
+  Since
+  \begin{align*}
+    \forall k \in \Z^+, \T(ca + b)(k) & = \sum_{i = k}^\infty (ca + b)(i)                       &  & \text{(by \cref{ex:6.3.24})} \\
+                                      & = c \sum_{i = k}^\infty a(i) + \sum_{i = k}^\infty b(i)                                   \\
+                                      & = c \T(a)(k) + \T(b)(k)                                 &  & \text{(by \cref{ex:6.3.24})} \\
+                                      & = (c \T(a) + \T(b))(k),
+  \end{align*}
+  by \cref{1.2.13} and \cref{2.1.2}(b) we see that \(\T \in \ls(\V)\).
+\end{proof}
+
+\begin{proof}[\pf{ex:6.3.24}(b)]
+  Let \(n \in \Z^+\).
+  Then we have
+  \begin{align*}
+    \forall k \in \Z^+, \T(e_n) & = \sum_{i = k}^\infty e_n(i)       &  & \text{(by \cref{ex:6.3.24})}    \\
+                                & = \sum_{i = k}^\infty \delta_{n i} &  & \text{(by \cref{ex:6.2.23}(b))} \\
+                                & = \begin{dcases}
+                                      1 & \text{if } k \leq n \\
+                                      0 & \text{if } k > n
+                                    \end{dcases}         &  & \text{(by \cref{2.3.4})}                    \\
+                                & = \sum_{i = 1}^n e_i.              &  & \text{(by \cref{ex:6.2.23}(b))}
+  \end{align*}
+\end{proof}
+
+\begin{proof}[\pf{ex:6.3.24}(c)]
+  Suppose for sake of contradiction that \(\T^* \in \ls(\V)\) exists.
+  Then we have
+  \begin{align*}
+    \forall k \in \Z^+, \T^*(e_1)(k) & = \conj{\conj{\T^*(e_1)(k)}}                                  &  & \text{(by \cref{d.2}(a))}       \\
+                                     & = \conj{\delta_{k k} \cdot \conj{\T^*(e_1)(k)}}               &  & \text{(by \cref{2.3.4})}        \\
+                                     & = \conj{\sum_{i = 1}^\infty e_k(i) \cdot \conj{\T^*(e_1)(i)}} &  & \text{(by \cref{ex:6.2.23}(b))} \\
+                                     & = \conj{\inn{e_k, \T^*(e_1)}}                                 &  & \text{(by \cref{ex:6.2.23})}    \\
+                                     & = \conj{\inn{\T(e_k), e_1}}                                   &  & \text{(by \cref{6.9})}          \\
+                                     & = \conj{\inn{\sum_{i = 1}^k e_k, e_1}}                        &  & \text{(by \cref{ex:6.3.24}(b))} \\
+                                     & = \conj{\sum_{i = 1}^k \inn{e_k, e_1}}                        &  & \text{(by \cref{6.1.1}(a))}     \\
+                                     & = \conj{1} = 1.                                               &  & \text{(by \cref{ex:6.2.23}(b))}
+  \end{align*}
+  But \(\T^*(e_1) \in \V\) implies there are only finite number of nonzeros in \(\T^*(e_1)\), a contradiction.
+  Thus \(\T^*\) does not exist.
+\end{proof}
