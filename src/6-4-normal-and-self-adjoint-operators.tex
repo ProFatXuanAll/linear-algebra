@@ -1,1 +1,81 @@
 \section{Normal and Self-Adjoint Operators}\label{sec:6.4}
+
+\begin{lem}\label{6.4.1}
+  Let \(\T\) be a linear operator on a finite-dimensional inner product space \(\V\) over \(\F\).
+  If \(\T\) has an eigenvector, then so does \(\T^*\).
+\end{lem}
+
+\begin{proof}[\pf{6.4.1}]
+  Suppose that \(v\) is an eigenvector of \(\T\) with corresponding eigenvalue \(\lambda\).
+  Then for any \(x \in \V\),
+  \begin{align*}
+    0 & = \inn{\zv, x}                                 &  & \text{(by \cref{6.1}(c))}        \\
+      & = \inn{(\T - \lambda \IT[\V])(v), x}           &  & \text{(by \cref{5.2.4})}         \\
+      & = \inn{v, (\T - \lambda \IT[\V])^*(x)}         &  & \text{(by \cref{6.9})}           \\
+      & = \inn{v, (\T^* - \conj{\lambda} \IT[\V])(x)}, &  & \text{(by \cref{6.11}(a)(b)(e))}
+  \end{align*}
+  and hence \(v\) is orthogonal to the range of \(\T^* - \conj{\lambda} \IT[\V]\).
+  So \(\T^* - \conj{\lambda} \IT[\V]\) is not onto (\(v \notin \rg{\T^* - \conj{\lambda} \IT[\V]}\)) and hence is not one-to-one (by \cref{2.5}).
+  Thus \(\T^* - \conj{\lambda} \IT[\V]\) has a nonzero null space, and any nonzero vector in this null space is an eigenvector of \(\T^*\) with corresponding eigenvalue \(\conj{\lambda}\).
+\end{proof}
+
+\begin{thm}[Schur's theorem]\label{6.14}
+  Let \(\T\) be a linear operator on a finite-dimensional inner product space \(\V\) over \(\F\).
+  Suppose that the characteristic polynomial of \(\T\) splits.
+  Then there exists an orthonormal basis \(\beta\) for \(\V\) over \(\F\) such that the matrix \([\T]_{\beta}\) is upper triangular.
+\end{thm}
+
+\begin{proof}[\pf{6.14}]
+  The proof is by mathematical induction on the dimension \(n\) of \(\V\).
+  The result is immediate if \(n = 1\).
+  So suppose that the result is true for linear operators on \(n\)-dimensional inner product spaces whose characteristic polynomials split.
+  By \cref{6.4.1}, we can assume that \(\T^*\) has a unit eigenvector \(z\).
+  Suppose that \(\T^*(z) = \lambda z\) and that \(\W = \spn{\set{z}}\).
+  We show that \(\W^{\perp}\) is \(\T\)-invariant.
+  If \(y \in \W^{\perp}\) and \(x = cz \in \W\), then
+  \begin{align*}
+    \inn{\T(y), x} & = \inn{\T(y), cz}                                              \\
+                   & = \inn{y, \T^*(cz)}           &  & \text{(by \cref{6.9})}      \\
+                   & = \inn{y, c \T^*(z)}          &  & \text{(by \cref{2.1.1}(b))} \\
+                   & = \inn{y, c \lambda z}        &  & \text{(by \cref{5.1.2})}    \\
+                   & = \conj{c \lambda} \inn{y, z} &  & \text{(by \cref{6.1}(b))}   \\
+                   & = \conj{c \lambda} (0)        &  & \text{(by \cref{6.2.9})}    \\
+                   & = 0.
+  \end{align*}
+  So \(\T(y) \in \W^{\perp}\).
+  It is easy to show (see \cref{5.21}, or as a consequence of \cref{ex:4.4.6}) that the characteristic polynomial of \(\T_{\W^{\perp}}\) divides the characteristic polynomial of \(\T\) and hence splits.
+  By \cref{6.7}(c), \(\dim(\W^{\perp}) = n\), so we may apply the induction hypothesis to \(\T_{\W^{\perp}}\) and obtain an orthonormal basis \(\gamma\) for \(\W^{\perp}\) over \(\F\) such that \([\T_{\W^{\perp}}]_{\gamma}\) is upper triangular.
+  Clearly, \(\beta = \gamma \cup \set{z}\) is an orthonormal basis for \(\V\) over \(\F\) (by \cref{1.6.15,6.2.4}) such that \([\T]_{\beta}\) is upper triangular.
+\end{proof}
+
+\begin{cor}\label{6.4.2}
+  Let \(\V\) be a finite-dimensional inner product space over \(\F\) and let \(\T \in \ls(\V)\).
+  Suppose that there exists an orthonormal basis of eigenvectors of \(\T\).
+  Then \(\T \T^* = \T^* \T\).
+\end{cor}
+
+\begin{proof}[\pf{6.4.2}]
+  If such an orthonormal basis \(\beta\) exists, then \([\T]_{\beta}\) is a diagonal matrix, and hence \([\T^*]_{\beta} = [\T]_{\beta}^*\) is also a diagonal matrix.
+  Because diagonal matrices commute, we conclude that \(\T\) and \(\T^*\) commute.
+\end{proof}
+
+\begin{defn}\label{6.4.3}
+  Let \(\V\) be an inner product space over \(\F\), and let \(\T \in \ls(\V)\).
+  We say that \(\T\) is \textbf{normal} if \(\T \T^* = \T^* \T\).
+  An \(n \times n\) real or complex matrix \(A\) is \textbf{normal} if \(A A^* = A^* A\).
+\end{defn}
+
+\begin{cor}\label{6.4.4}
+  Let \(\V\) be an inner product space over \(\F\), and let \(\T \in \ls(\V)\).
+  \(\T\) is normal iff \([\T]_{\beta}\) is normal, where \(\beta\) is an orthonormal basis.
+\end{cor}
+
+\begin{proof}[\pf{6.4.4}]
+  We have
+  \begin{align*}
+         & \T \text{ is normal}                                                                    \\
+    \iff & \T \T^* = \T^* \T                                         &  & \text{(by \cref{6.4.3})} \\
+    \iff & [\T]_{\beta} [\T]_{\beta}^* = [\T]_{\beta}^* [\T]_{\beta} &  & \text{(by \cref{6.10})}  \\
+    \iff & [\T]_{\beta} \text{ is normal}.                           &  & \text{(by \cref{6.4.3})}
+  \end{align*}
+\end{proof}
