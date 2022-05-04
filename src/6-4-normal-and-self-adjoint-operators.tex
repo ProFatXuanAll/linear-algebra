@@ -333,3 +333,89 @@
   \cref{6.17} is used extensively in many areas of mathematics and statistics.
   We restate this theorem in matrix form in \cref{sec:6.5}.
 \end{note}
+
+\exercisesection
+
+\setcounter{ex}{3}
+\begin{ex}\label{ex:6.4.4}
+  Let \(\T\) and \(\U\) be self-adjoint operators on an inner product space \(\V\) over \(\F\).
+  Prove that \(\T \U\) is self-adjoint iff \(\T \U = \U \T\).
+\end{ex}
+
+\begin{proof}[\pf{ex:6.4.4}]
+  We have
+  \begin{align*}
+         & \T \U \text{ is self-adjoint}                                 \\
+    \iff & \T \U = (\T \U)^*             &  & \text{(by \cref{6.4.8})}   \\
+         & = \U^* \T^*                   &  & \text{(by \cref{6.11}(c))} \\
+         & = \U \T.                      &  & \text{(by \cref{6.4.8})}
+  \end{align*}
+\end{proof}
+
+\setcounter{ex}{5}
+\begin{ex}\label{ex:6.4.6}
+  Let \(\V\) be a complex inner product space, and let \(\T \in \ls(\V)\).
+  Define
+  \[
+    \T_1 = \frac{1}{2} (\T + \T^*) \quad \text{and} \quad \T_2 = \frac{1}{2i} (\T - \T^*).
+  \]
+  \begin{enumerate}
+    \item Prove that \(\T_1\) and \(\T_2\) are self-adjoint and that \(\T = \T_1 + i \T_2\).
+    \item Suppose also that \(\T = \U_1 + i \U_2\), where \(\U_1\) and \(\U_2\) are self-adjoint.
+          Prove that \(\U_1 = \T_1\) and \(\U_2 = \T_2\).
+    \item Prove that \(\T\) is normal iff \(\T_1 \T_2 =  \T_2 \T_1\).
+  \end{enumerate}
+\end{ex}
+
+\begin{proof}[\pf{ex:6.4.6}(a)]
+  We have
+  \begin{align*}
+    \T_1^* & = \pa{\frac{1}{2} (\T + \T^*)}^*                                        \\
+           & = \frac{1}{2} (\T^* + \T)         &  & \text{(by \cref{6.11}(a)(b)(d))} \\
+           & = \T_1                                                                  \\
+    \T_2^* & = \pa{\frac{1}{2i} (\T - \T^*)}^*                                       \\
+           & = \frac{-1}{2i} (\T^* - \T)       &  & \text{(by \cref{6.11}(a)(b)(d))} \\
+           & = \frac{1}{2i} (\T - \T^*)                                              \\
+           & = \T_2.
+  \end{align*}
+  Thus by \cref{6.4.8} \(\T_1, \T_2\) are self-adjoint.
+  By definition we have
+  \begin{align*}
+    \T_1 + i \T_2 & = \frac{1}{2} (\T + \T^*) + \frac{i}{2i} (\T - \T^*) \\
+                  & = \T.
+  \end{align*}
+\end{proof}
+
+\begin{proof}[\pf{ex:6.4.6}(b)]
+  We have
+  \begin{align*}
+             & \T = \begin{dcases}
+                      \T_1 + i \T_2 \\
+                      \U_1 + i \U_2
+                    \end{dcases}                      &  & \text{(by \cref{ex:6.4.6}(a))} \\
+    \implies & \T^* = \begin{dcases}
+                        \T_1^* - i \T_2^* \\
+                        \U_1^* - i \U_2^*
+                      \end{dcases}                    &  & \text{(by \cref{6.11}(a)(b))}  \\
+             & = \begin{dcases}
+                   \T_1 - i \T_2 \\
+                   \U_1 - i \U_2
+                 \end{dcases}                         &  & \text{(by \cref{6.4.8})}       \\
+    \implies & \begin{dcases}
+                 \T_1 = \frac{1}{2} (\T + \T^*) = \U_1 \\
+                 \T_2 = \frac{1}{2i} (\T - \T^*) = \U_2
+               \end{dcases}.
+  \end{align*}
+\end{proof}
+
+\begin{proof}[\pf{ex:6.4.6}(c)]
+  We have
+  \begin{align*}
+         & \T \text{ is normal}                                                                          \\
+    \iff & \T \T^* = \T^* \T                                               &  & \text{(by \cref{6.4.3})} \\
+    \iff & (\T + \T^*) (\T - \T^*) = \T^2 - \T \T^* + \T^* \T - (\T^*)^2                                 \\
+         & = \T^2 + \T \T^* - \T^* \T - (\T^*)^2 = (\T - \T^*) (\T + \T^*) &  & \text{(by \cref{2.10})}  \\
+    \iff & \T_1 \T_2 = \frac{1}{4i} (\T + \T^*) (\T - \T^*)                                              \\
+         & = \frac{1}{4i} (\T - \T^*) (\T + \T^*) = \T_2 \T_1.
+  \end{align*}
+\end{proof}
