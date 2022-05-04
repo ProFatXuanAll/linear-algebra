@@ -79,3 +79,257 @@
     \iff & [\T]_{\beta} \text{ is normal}.                           &  & \text{(by \cref{6.4.3})}
   \end{align*}
 \end{proof}
+
+\begin{eg}\label{6.4.5}
+  Let \(\T : \R^2 \to \R^2\) be rotation by \(\theta\), where \(0 < \theta < \pi\).
+  The matrix representation of \(\T\) in the standard ordered basis is given by
+  \[
+    A = \begin{pmatrix}
+      \cos\theta & -\sin\theta \\
+      \sin\theta & \cos\theta
+    \end{pmatrix}.
+  \]
+  Note that \(A A^* = I_2 = A^* A\);
+  so \(A\), and hence \(\T\), is normal.
+\end{eg}
+
+\begin{eg}\label{6.4.6}
+  Suppose that \(A\) is a real skew-symmetric matrix;
+  that is, \(\tp{A} = -A\).
+  Then \(A\) is normal because both \(A \tp{A}\) and \(\tp{A} A\) are equal to \(-A^2\).
+\end{eg}
+
+\begin{note}
+  Clearly, the operator \(\T\) in \cref{6.4.5} does not even possess one eigenvector.
+  So in the case of a real inner product space, we see that normality is not sufficient to guarantee an orthonormal basis of eigenvectors.
+  All is not lost, however.
+  We show that normality suffices if \(\V\) is a complex inner product space.
+\end{note}
+
+\begin{thm}\label{6.15}
+  Let \(\V\) be an inner product space over \(\F\), and let \(\T\) be a normal operator on \(\V\).
+  Then the following statements are true.
+  \begin{enumerate}
+    \item \(\norm{\T(x)} = \norm{\T^*(x)}\) for all \(x \in \V\).
+    \item \(\T - c \IT[\V]\) is normal for every \(c \in \F\).
+    \item If \(x\) s an eigenvector of \(\T\), then \(x\) is also an eigenvector of \(\T^*\).
+          In fact, if \(\T(x) = \lambda x\), then \(\T^*(x) = \conj{\lambda} x\).
+    \item If \(\lambda_1\) and \(\lambda_2\) are distinct eigenvalues of \(\T\) with corresponding eigenvectors \(x_1\) and \(x_2\), then \(x_1\) and \(x_2\) are orthogonal.
+  \end{enumerate}
+\end{thm}
+
+\begin{proof}[\pf{6.15}(a)]
+  For any \(x \in \V\), we have
+  \begin{align*}
+    \norm{\T(x)}^2 & = \inn{\T(x), \T(x)}     &  & \text{(by \cref{6.1.9})} \\
+                   & = \inn{\T^* \T(x), x}    &  & \text{(by \cref{6.9})}   \\
+                   & = \inn{\T \T^*(x), x}    &  & \text{(by \cref{6.4.3})} \\
+                   & = \inn{\T^*(x), \T^*(x)} &  & \text{(by \cref{6.9})}   \\
+                   & = \norm{\T^*(x)}^2.      &  & \text{(by \cref{6.1.9})}
+  \end{align*}
+\end{proof}
+
+\begin{proof}[\pf{6.15}(b)]
+  We have
+  \begin{align*}
+    (\T - c \IT[\V]) (\T - c \IT[\V])^* & = (\T - c \IT[\V]) (\T^* - \conj{c} \IT[\V])                                  &  & \text{(by \cref{6.11}(a)(b)(e))} \\
+                                        & = \T \T^* - \conj{c} \T \IT[\V] - c \IT[\V] \T^* + c \conj{c} \IT[\V] \IT[\V] &  & \text{(by \cref{2.10})}          \\
+                                        & = \T^* \T - \conj{c} \IT[\V] \T - c \T^* \IT[\V] + c \conj{c} \IT[\V] \IT[\V] &  & \text{(by \cref{6.4.3})}         \\
+                                        & = (\T^* - \conj{c} \IT[\V]) (\T - c \IT[\V])                                  &  & \text{(by \cref{2.10})}          \\
+                                        & = (\T - c \IT[\V])^* (\T - c \IT[\V])                                         &  & \text{(by \cref{6.11}(a)(b)(e))}
+  \end{align*}
+  and thus by \cref{6.4.3} \(\T - c \IT[\V]\) is normal for all \(c \in \F\).
+\end{proof}
+
+\begin{proof}[\pf{6.15}(c)]
+  Suppose that \(\T(x) = \lambda x\) for some \(x \in \V\).
+  Let \(\U = \T - \lambda \IT[\V]\).
+  Then \(\U(x) = \zv\), and \(\U\) is normal by (b).
+  Thus (a) implies that
+  \begin{align*}
+    0 & = \norm{\U(x)}                              &  & \text{(by \cref{6.2}(b))}        \\
+      & = \norm{\U^*(x)}                            &  & \text{(by \cref{6.15}(a))}       \\
+      & = \norm{(\T^* - \conj{\lambda} \IT[\V])(x)} &  & \text{(by \cref{6.11}(a)(b)(e))} \\
+      & = \norm{\T^*(x) - \conj{\lambda} x}.        &  & \text{(by \cref{2.2.5})}
+  \end{align*}
+  Hence by \cref{6.2}(b) \(\T^*(x) = \conj{\lambda} x\).
+  So \(x\) is an eigenvector of \(\T^*\).
+\end{proof}
+
+\begin{proof}[\pf{6.15}(d)]
+  Let \(\lambda_1\) and \(\lambda_2\) be distinct eigenvalues of \(\T\) with corresponding eigenvectors \(x_1\) and \(x_2\).
+  Then, using (c), we have
+  \begin{align*}
+    \lambda_1 \inn{x_1, x_2} & = \inn{\lambda_1 x_1, x_2}        &  & \text{(by \cref{6.1.1}(b))} \\
+                             & = \inn{\T(x_1), x_2}              &  & \text{(by \cref{5.1.2})}    \\
+                             & = \inn{x_1, \T^*(x_2)}            &  & \text{(by \cref{6.9})}      \\
+                             & = \inn{x_1, \conj{\lambda_2} x_2} &  & \text{(by \cref{6.15}(c))}  \\
+                             & = \lambda_2 \inn{x_1, x_2}.       &  & \text{(by \cref{6.1}(b))}
+  \end{align*}
+  Since \(\lambda_1 \neq \lambda_2\), we conclude that \(\inn{x_1, x_2} = 0\).
+\end{proof}
+
+\begin{thm}\label{6.16}
+  Let \(\T\) be a linear operator on a finite-dimensional complex inner product space \(\V\).
+  Then \(\T\) is normal iff there exists an orthonormal basis for \(\V\) consisting of eigenvectors of \(\T\).
+\end{thm}
+
+\begin{proof}[\pf{6.16}]
+  Suppose that \(\T\) is normal.
+  By the fundamental theorem of algebra (\cref{d.4}), the characteristic polynomial of \(\T\) splits.
+  So we may apply Schur's theorem (\cref{6.14}) to obtain an orthonormal basis \(\beta = \set{\seq{v}{1,,n}}\) for \(\V\) over \(\F\) such that \([\T]_{\beta} = A\) is upper triangular.
+  We know that \(v_1\) is an eigenvector of \(\T\) because \(A\) is upper triangular.
+  Assume that \(\seq{v}{1,,k-1}\) are eigenvectors of \(\T\).
+  We claim that \(v_k\) is also an eigenvector of \(\T\).
+  It then follows by mathematical induction on \(k\) that all of the \(v_i\)'s are eigenvectors of \(\T\).
+  Consider any \(j < k\), and let \(\lambda_j\) denote the eigenvalue of \(\T\) corresponding to \(v_j\).
+  By \cref{6.15}(c), \(\T^*(v_j) = \conj{\lambda_j} v_j\).
+  Since \(A\) is upper triangular, by \cref{2.2.4} we have
+  \[
+    \T(v_k) = A_{1 k} v_1 + \cdots + A_{j k} v_j + \cdots + A_{k k} v_k.
+  \]
+  Furthermore,
+  \begin{align*}
+    A_{j k} & = \inn{\T(v_k), v_j}              &  & \text{(by \cref{6.2.6})}   \\
+            & = \inn{v_k, \T^*(v_j)}            &  & \text{(by \cref{6.9})}     \\
+            & = \inn{v_k, \conj{\lambda_j} v_j} &  & \text{(by \cref{6.15}(c))} \\
+            & = \lambda_j \inn{v_k, v_j}        &  & \text{(by \cref{6.1}(b))}  \\
+            & = 0.                              &  & \text{(by \cref{6.1.12})}
+  \end{align*}
+  It follows that \(\T(v_k) = A_{k k} v_k\), and hence \(v_k\) is an eigenvector of \(\T\).
+  So by induction, all the vectors in \(\beta\) are eigenvectors of \(\T\).
+
+  The converse was already proved by \cref{6.4.2}.
+\end{proof}
+
+\begin{note}
+  Interestingly, as \cref{6.4.7} shows, \cref{6.16} does not extend to infinite-dimensional complex inner product spaces.
+\end{note}
+
+\begin{eg}\label{6.4.7}
+  Consider the inner product space \(\vs{H}\) with the orthonormal set \(S\) from \cref{6.1.13}.
+  Let \(\V = \spn{S}\), and let \(\T, \U \in \ls(\V)\) defined by \(\T(f) = f_1 f\) and \(\U(f) = f_{-1} f\).
+  Then
+  \[
+    \T(f_n) = f_{n + 1} \quad \text{and} \quad \U(f_n) = f_{n - 1}
+  \]
+  for all integers \(n\).
+  Thus
+  \begin{align*}
+    \inn{\T(f_m), f_n} & = \inn{f_{m + 1}, f_n}                                \\
+                       & = \delta_{(m + 1), n}  &  & \text{(by \cref{6.1.13})} \\
+                       & = \delta_{m, (n - 1)}                                 \\
+                       & = \inn{f_m, f_{n - 1}} &  & \text{(by \cref{6.1.13})} \\
+                       & = \inn{f_m, \U(f_n)}.
+  \end{align*}
+  It follows that \(\U = \T^*\).
+  Furthermore, \(\T \T^* = \IT[\V] = \T^* \T\);
+  so \(\T\) is normal.
+
+  We show that \(\T\) has no eigenvectors.
+  Suppose that \(f\) is an eigenvector of \(\T\), say, \(\T(f) = \lambda f\) for some \(\lambda\).
+  Since \(\V\) equals the span of \(S\), we may write
+  \[
+    f = \sum_{i = n}^m a_i f_i, \quad \text{where } a_m \neq 0.
+  \]
+  Hence
+  \[
+    \sum_{i = n}^m a_i f_{i + 1} = \T(f) = \lambda f = \sum_{i = n}^m \lambda a_i f_i.
+  \]
+  Since \(a_m \neq 0\), we can write \(f_{m + 1}\) as a linear combination of \(\seq{f}{n,n+1,,m}\).
+  But this is a contradiction because \(S\) is linearly independent.
+\end{eg}
+
+\begin{note}
+  \cref{6.4.5} illustrates that normality is not sufficient to guarantee the existence of an orthonormal basis of eigenvectors for real inner product spaces.
+  For real inner product spaces, we must replace normality by the stronger condition that \(\T = \T^*\) in order to guarantee such a basis.
+\end{note}
+
+\begin{defn}\label{6.4.8}
+  Let \(\T\) be a linear operator on an inner product space \(\V\) over \(\F\).
+  We say that \(\T\) is \textbf{self-adjoint} (\textbf{Hermitian}) if \(\T = \T^*\).
+  An \(n \times n\) real or complex matrix \(A\) is \textbf{self-adjoint} (\textbf{Hermitian}) if \(A = A^*\).
+\end{defn}
+
+\begin{cor}\label{6.4.9}
+  If \(\beta\) is an orthonormal basis, then \(\T\) is self-adjoint iff \([\T]_{\beta}\) is self-adjoint.
+  For real matrices, this condition reduces to the requirement that \(A\) be symmetric.
+\end{cor}
+
+\begin{proof}[\pf{6.4.9}]
+  We have
+  \begin{align*}
+         & \T \text{ is self-adjoint}                                                   \\
+    \iff & \T = \T^*                                      &  & \text{(by \cref{6.4.8})} \\
+    \iff & [\T]_{\beta} = [\T^*]_{\beta} = [\T]_{\beta}^* &  & \text{(by \cref{6.10})}  \\
+    \iff & [\T]_{\beta} \text{ is self-adjoint}.          &  & \text{(by \cref{6.4.8})}
+  \end{align*}
+\end{proof}
+
+\begin{lem}\label{6.4.10}
+  Let \(\T\) be a self-adjoint operator on a finite-dimensional inner product space \(\V\) over \(\F\).
+  Then
+  \begin{enumerate}
+    \item Every eigenvalue of \(\T\) is real.
+    \item Suppose that \(\V\) is a real inner product space.
+          Then the characteristic polynomial of \(\T\) splits.
+  \end{enumerate}
+\end{lem}
+
+\begin{proof}[\pf{6.4.10}(a)]
+  Suppose that \(\T(x) = \lambda x\) for \(x \neq \zv\).
+  Because a self-adjoint operator is also normal, we have
+  \begin{align*}
+    \lambda x & = \T(x)             &  & \text{(by \cref{5.1.2})}   \\
+              & = \T^*(x)           &  & \text{(by \cref{6.4.8})}   \\
+              & = \conj{\lambda} x. &  & \text{(by \cref{6.15}(c))}
+  \end{align*}
+  So \(\lambda = \conj{\lambda}\);
+  that is, \(\lambda\) is real.
+\end{proof}
+
+\begin{proof}[\pf{6.4.10}(b)]
+  Let \(n = \dim(\V)\), \(\beta\) be an orthonormal basis for \(\V\) over \(\R\), and \(A = [\T]_{\beta}\).
+  Then \(A\) is self-adjoint by \cref{6.4.9}.
+  Let \(\T_A\) be the linear operator on \(\C^n\) defined by \(\T_A(x) = Ax\) for all \(x \in \C^n\).
+  Note that \(\T_A\) is self-adjoint because \([\T_A]_{\gamma} = A\), where \(\gamma\) is the standard ordered (orthonormal) basis for \(\C^n\) over \(\C\) (see \cref{2.15}(a)).
+  So, by (a), the eigenvalues of \(\T_A\) are real.
+  By the fundamental theorem of algebra (\cref{d.4}), the characteristic polynomial of \(\T_A\) splits into factors of the form \(t - \lambda\).
+  Since each \(\lambda\) is real, the characteristic polynomial splits over \(\R\).
+  But \(\T_A\) has the same characteristic polynomial as \(A\), which has the same characteristic polynomial as \(\T\) (see \cref{5.1.6}).
+  Therefore the characteristic polynomial of \(\T\) splits.
+\end{proof}
+
+\begin{thm}\label{6.17}
+  Let \(\T\) be a linear operator on a finite-dimensional real inner product space \(\V\).
+  Then \(\T\) is self-adjoint iff there exists an orthonormal basis \(\beta\) for \(\V\) over \(\R\) consisting of eigenvectors of \(\T\).
+\end{thm}
+
+\begin{proof}[\pf{6.17}]
+  Suppose that \(\T\) is self-adjoint.
+  By \cref{6.4.10}(b), we may apply Schur's theorem (\cref{6.14}) to obtain an orthonormal basis \(\beta\) for \(\V\) over \(\R\) such that the matrix \(A = [\T]_{\beta}\) is upper triangular.
+  But
+  \begin{align*}
+    A^* & = [\T]_{\beta}^*                               \\
+        & = [\T^*]_{\beta} &  & \text{(by \cref{6.10})}  \\
+        & = [\T]_{\beta}   &  & \text{(by \cref{6.4.8})} \\
+        & = A.
+  \end{align*}
+  So \(A\) and \(A^*\) are both upper triangular, and therefore \(A\) is a diagonal matrix.
+  Thus \(\beta\) must consist of eigenvectors of \(\T\).
+
+  Now suppose that there exists an orthonormal basis \(\beta\) for \(\V\) over \(\R\) consisting of eigenvectors of \(\T\).
+  By \cref{5.1.1} we know that \([\T]_{\beta}\) is a diagonal matrix.
+  Since \(\V\) is over \(\R\), we have
+  \begin{align*}
+    [\T^*]_{\beta} & = [\T]_{\beta}^*      &  & \text{(by \cref{6.10})}                        \\
+                   & = \tp{([\T]_{\beta})} &  & \text{(\(\V\) is over \(\R\))}                 \\
+                   & = [\T]_{\beta}.       &  & \text{(\([\T]_{\beta}\) is a diagonal matrix)}
+  \end{align*}
+  Thus by \cref{6.4.8} \([\T]_{\beta}\) is self-adjoint and by \cref{6.4.9} \(\T\) is self-adjoint.
+\end{proof}
+
+\begin{note}
+  \cref{6.17} is used extensively in many areas of mathematics and statistics.
+  We restate this theorem in matrix form in \cref{sec:6.5}.
+\end{note}
