@@ -112,7 +112,7 @@
   \begin{enumerate}
     \item \(\norm{\T(x)} = \norm{\T^*(x)}\) for all \(x \in \V\).
     \item \(\T - c \IT[\V]\) is normal for every \(c \in \F\).
-    \item If \(x\) s an eigenvector of \(\T\), then \(x\) is also an eigenvector of \(\T^*\).
+    \item If \(x\) is an eigenvector of \(\T\), then \(x\) is also an eigenvector of \(\T^*\).
           In fact, if \(\T(x) = \lambda x\), then \(\T^*(x) = \conj{\lambda} x\).
     \item If \(\lambda_1\) and \(\lambda_2\) are distinct eigenvalues of \(\T\) with corresponding eigenvectors \(x_1\) and \(x_2\), then \(x_1\) and \(x_2\) are orthogonal.
   \end{enumerate}
@@ -418,4 +418,158 @@
     \iff & \T_1 \T_2 = \frac{1}{4i} (\T + \T^*) (\T - \T^*)                                              \\
          & = \frac{1}{4i} (\T - \T^*) (\T + \T^*) = \T_2 \T_1.
   \end{align*}
+\end{proof}
+
+\begin{ex}\label{ex:6.4.7}
+  Let \(\T\) be a linear operator on an inner product space \(\V\) over \(\F\), and let \(\W\) be a \(\T\)-invariant subspace of \(\V\) over \(\F\).
+  Prove the following results.
+  \begin{enumerate}
+    \item If \(\T\) is self-adjoint, then \(\T_{\W}\) is self-adjoint.
+    \item \(\W^{\perp}\) is \(\T^*\)-invariant.
+    \item If \(\W\) is both \(\T\)- and \(\T^*\)-invariant, then \((\T_{\W})^* = (\T^*)_{\W}\).
+    \item If \(\W\) is both \(\T\)- and \(\T^*\)-invariant and \(\T\) is normal, then \(\T_{\W}\) is normal.
+  \end{enumerate}
+\end{ex}
+
+\begin{proof}[\pf{ex:6.4.7}(a)]
+  We have
+  \begin{align*}
+    \forall x, y \in \W, \inn{x, (\T_{\W})^*(y)} & = \inn{\T_{\W}(x), y} &  & \text{(by \cref{6.9})}   \\
+                                                 & = \inn{\T(x), y}      &  & \text{(by \cref{5.4.1})} \\
+                                                 & = \inn{x, \T^*(y)}    &  & \text{(by \cref{6.9})}   \\
+                                                 & = \inn{x, \T(y)}      &  & \text{(by \cref{6.4.8})} \\
+                                                 & = \inn{x, \T_{\W}(y)} &  & \text{(by \cref{5.4.1})}
+  \end{align*}
+  and thus by \cref{6.1}(e) \(\T_{\W} = (\T_{\W})^*\).
+  By \cref{6.4.8} this means \(\T_{\W}\) is self-adjoint.
+\end{proof}
+
+\begin{proof}[\pf{ex:6.4.7}(b)]
+  Since
+  \begin{align*}
+             & v \in \W^{\perp}                                                     \\
+    \implies & \forall x \in \W, \inn{v, x} = 0       &  & \text{(by \cref{6.2.9})} \\
+    \implies & \forall x \in \W, \inn{v, \T(x)} = 0   &  & \text{(by \cref{5.4.1})} \\
+    \implies & \forall x \in \W, \inn{\T^*(v), x} = 0 &  & \text{(by \cref{6.9})}   \\
+    \implies & \T^*(v) \in \W^{\perp},                &  & \text{(by \cref{6.2.9})}
+  \end{align*}
+  by \cref{5.4.1} we see that \(\W^{\perp}\) is \(\T^*\)-invariant.
+\end{proof}
+
+\begin{proof}[\pf{ex:6.4.7}(c)]
+  Since
+  \begin{align*}
+    \forall x, y \in \W, \inn{x, (\T^*)_{\W}(y)} & = \inn{x, \T^*(y)}         &  & \text{(by \cref{5.4.1})} \\
+                                                 & = \inn{\T(x), y}           &  & \text{(by \cref{6.9})}   \\
+                                                 & = \inn{\T_{\W}(x), y}      &  & \text{(by \cref{5.4.1})} \\
+                                                 & = \inn{x, (\T_{\W})^*(y)}, &  & \text{(by \cref{6.9})}
+  \end{align*}
+  by \cref{6.1}(e) we see that \((\T^*)_{\W} = (\T_{\W})^*\).
+\end{proof}
+
+\begin{proof}[\pf{ex:6.4.7}(d)]
+  We have
+  \begin{align*}
+    \forall x \in \W, (\T_{\W} (\T_{\W})^*)(x) & = (\T_{\W} (\T^*)_{\W})(x) &  & \text{(by \cref{ex:6.4.7}(c))} \\
+                                               & = (\T \T^*)(x)             &  & \text{(by \cref{5.4.1})}       \\
+                                               & = (\T^* \T)(x)             &  & \text{(by \cref{6.4.5})}       \\
+                                               & = ((\T^*)_{\W} \T_{\W})(x) &  & \text{(by \cref{5.4.1})}       \\
+                                               & = ((\T_{\W})^* \T_{\W})(x) &  & \text{(by \cref{ex:6.4.7}(c))}
+  \end{align*}
+  and thus \(\T_{\W} (\T_{\W})^* = (\T_{\W})^* \T_{\W}\).
+  By \cref{6.4.5} this means \(\T_{\W}\) is normal.
+\end{proof}
+
+\begin{ex}\label{ex:6.4.8}
+  Let \(\T\) be a normal operator on a finite-dimensional complex inner product space \(\V\), and let \(\W\) be a subspace of \(\V\) over \(\C\).
+  Prove that if \(\W\) is \(\T\)-invariant, then \(\W\) is also \(\T^*\)-invariant.
+\end{ex}
+
+\begin{proof}[\pf{ex:6.4.8}]
+  If \(\W = \set{\zv}\), then by \cref{2.1.2}(a) we have \(\T^*(\set{\zv}) = \set{\zv}\) (this is true since \(\T^* \in \ls(\V)\) by \cref{6.9}).
+  Thus \(\W\) is \(\T^*\)-invariant in this case.
+
+  Now suppose that \(\W \neq \set{\zv}\).
+  Since \(\T\) is normal and \(\V\) is over \(\C\), by \cref{6.16} there exists an orthonormal basis \(\beta\) for \(\V\) over \(\C\) consisting of eigenvectors of \(\T\).
+  By \cref{ex:5.4.24} this means \(\T_{\W}\) is diagonalizable.
+  If we let \(\beta_{\W} = \beta \cap \W\), then by \cref{ex:5.4.24} we know that \(\beta_{\W}\) is an orthonormal basis for \(\W\) over \(\C\) consisting of eigenvectors of \(\T_{\W}\).
+  By \cref{6.15}(c) we know that \(\beta_{\W}\) is a set of eigenvectors of \(\T^*\).
+  Thus by \cref{5.4.2}(e) we see that \(\W\) is \(\T^*\)-invariant.
+\end{proof}
+
+\begin{ex}\label{ex:6.4.9}
+  Let \(\T\) be a normal operator on a finite-dimensional inner product space \(\V\) over \(\F\).
+  Prove that \(\ns{\T} = \ns{\T^*}\) and \(\rg{\T} = \rg{\T^*}\).
+\end{ex}
+
+\begin{proof}[\pf{ex:6.4.9}]
+  Since
+  \begin{align*}
+         & x \in \ns{\T}                                      \\
+    \iff & \T(x) = \zv        &  & \text{(by \cref{2.1.10})}  \\
+    \iff & \norm{\T(x)} = 0   &  & \text{(by \cref{6.2}(b))}  \\
+    \iff & \norm{\T^*(x)} = 0 &  & \text{(by \cref{6.15}(a))} \\
+    \iff & \T^*(x) = \zv      &  & \text{(by \cref{6.2}(b))}  \\
+    \iff & x \in \ns{\T^*},   &  & \text{(by \cref{2.1.10})}
+  \end{align*}
+  we have \(\ns{\T} = \ns{\T^*}\).
+  Thus
+  \begin{align*}
+    \rg{\T^*} & = \ns{\T}^{\perp}   &  & \text{(by \cref{ex:6.3.12}(b))} \\
+              & = \ns{\T^*}^{\perp} &  & \text{(from the proof above)}   \\
+              & = \rg{\T^{**}}      &  & \text{(by \cref{ex:6.3.12}(b))} \\
+              & = \rg{\T}.          &  & \text{(by \cref{6.11}(d))}
+  \end{align*}
+\end{proof}
+
+\begin{ex}\label{ex:6.4.10}
+  Let \(\T\) be a self-adjoint operator on a finite-dimensional inner product space \(\V\) over \(\F\).
+  Prove that for all \(x \in \V\)
+  \[
+    \norm{\T(x) \pm ix}^2 = \norm{\T(x)}^2 + \norm{x}^2.
+  \]
+  Deduce that \(\T - i \IT[\V]\) is invertible and that \(\pa{(\T - i \IT[\V])^{-1}}^* = (\T + i \IT[\V])^{-1}\).
+\end{ex}
+
+\begin{proof}[\pf{ex:6.4.10}]
+  Since
+  \begin{align*}
+    \inn{\T(x), x} & = \inn{\T^*(x), x}       &  & \text{(by \cref{6.4.8})}    \\
+                   & = \inn{x, \T(x)}         &  & \text{(by \cref{6.9})}      \\
+                   & = \conj{\inn{\T(x), x}}, &  & \text{(by \cref{6.1.1}(c))}
+  \end{align*}
+  we know that \(\inn{\T(x), x} \in \R\) for all \(x \in \V\).
+  Thus
+  \begin{align*}
+    \norm{\T(x) \pm ix}^2 & = \norm{\T(x)}^2 \pm 2 \Re(\inn{\T(x), ix}) + \norm{ix}^2   &  & \text{(by \cref{ex:6.1.19}(a))} \\
+                          & = \norm{\T(x)}^2 \pm 2 \Re(-i \inn{\T(x), x}) + \norm{ix}^2 &  & \text{(by \cref{6.1}(b))}       \\
+                          & = \norm{\T(x)}^2 + \norm{ix}^2                              &  & \text{(from the proof above)}   \\
+                          & = \norm{\T(x)}^2 + \norm{x}^2.                              &  & \text{(by \cref{6.2}(a))}
+  \end{align*}
+
+  Next we show that \(\T - i \IT[\V]\) is invertible.
+  Observe that
+  \begin{align*}
+             & x \in \ns{\T - i \IT[\V]}                                          \\
+    \implies & \T(x) - ix = \zv                &  & \text{(by \cref{2.1.10})}     \\
+    \implies & \norm{\T(x) - ix} = 0           &  & \text{(by \cref{6.2}(b))}     \\
+    \implies & \norm{\T(x)}^2 + \norm{x}^2 = 0 &  & \text{(from the proof above)} \\
+    \implies & \norm{\T(x)}^2 = \norm{x}^2 = 0 &  & \text{(by \cref{6.2}(b))}     \\
+    \implies & x = 0.                          &  & \text{(by \cref{6.2}(b))}
+  \end{align*}
+  Thus by \cref{2.5} \(\T - i \IT[\V]\) is invertible.
+
+  Finally we show that \(\pa{(\T - i \IT[\V])^{-1}}^* = (\T + i \IT[\V])^{-1}\).
+  Since
+  \begin{align*}
+    \forall x, y \in \V, & \inn{x, \pa{\pa{(\T - i \IT[\V])^{-1}}^* (\T + i \IT[\V])}(y)}                                       \\
+                         & = \inn{(\T - i \IT[\V])^{-1}(x), (\T + i \IT[\V])(y)}          &  & \text{(by \cref{6.9})}           \\
+                         & = \inn{(\T - i \IT[\V])^{-1}(x), (\T^* + i \IT[\V])(y)}        &  & \text{(by \cref{6.4.8})}         \\
+                         & = \inn{(\T - i \IT[\V])^{-1}(x), (\T - i \IT[\V])^*(y)}        &  & \text{(by \cref{6.11}(a)(b)(e))} \\
+                         & = \inn{\pa{(\T - i \IT[\V]) (\T - i \IT[\V])^{-1}}(x), y}      &  & \text{(by \cref{6.9})}           \\
+                         & = \inn{x, y}                                                                                         \\
+                         & = \inn{x, \IT[\V](y)},
+  \end{align*}
+  by \cref{6.1}(e) we have \(\pa{(\T - i \IT[\V])^{-1}}^* (\T + i \IT[\V]) = \IT[\V]\).
+  Thus \(\pa{(\T - i \IT[\V])^{-1}}^* = (\T + i \IT[\V])^{-1}\).
 \end{proof}
