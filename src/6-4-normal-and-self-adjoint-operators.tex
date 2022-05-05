@@ -573,3 +573,108 @@
   by \cref{6.1}(e) we have \(\pa{(\T - i \IT[\V])^{-1}}^* (\T + i \IT[\V]) = \IT[\V]\).
   Thus \(\pa{(\T - i \IT[\V])^{-1}}^* = (\T + i \IT[\V])^{-1}\).
 \end{proof}
+
+\begin{ex}\label{ex:6.4.11}
+  Assume that \(\T\) is a linear operator on a complex (not necessarily finite-dimensional) inner product space \(\V\) with an adjoint \(\T^*\).
+  Prove the following results.
+  \begin{enumerate}
+    \item If \(\T\) is self-adjoint, then \(\inn{\T(x), x}\) is real for all \(x \in \V\).
+    \item If \(\T\) satisfies \(\inn{\T(x), x} = 0\) for all \(x \in \V\), then \(\T = \zT\).
+    \item If \(\inn{\T(x), x}\) is real for all \(x \in \V\), then \(\T = \T^*\).
+  \end{enumerate}
+\end{ex}
+
+\begin{proof}[\pf{ex:6.4.11}(a)]
+  Since
+  \begin{align*}
+    \forall x \in \V, \inn{\T(x), x} & = \inn{\T^*(x), x}       &  & \text{(by \cref{6.4.8})}    \\
+                                     & = \inn{x, \T(x)}         &  & \text{(by \cref{6.9})}      \\
+                                     & = \conj{\inn{\T(x), x}}, &  & \text{(by \cref{6.1.1}(c))}
+  \end{align*}
+  we see that \(\inn{\T(x), x} \in \R\) for all \(x \in \V\).
+\end{proof}
+
+\begin{proof}[\pf{ex:6.4.11}(b)]
+  Let \(x, y \in \V\).
+  Since
+  \begin{align*}
+    0 & = \inn{\T(x + y), x + y}                                                                             \\
+      & = \inn{\T(x) + \T(y), x + y}                                        &  & \text{(by \cref{2.1.1}(a))} \\
+      & = \inn{\T(x), x + y} + \inn{\T(y), x + y}                           &  & \text{(by \cref{6.1.1}(a))} \\
+      & = \inn{\T(x), x} + \inn{\T(x), y} + \inn{\T(y), x} + \inn{\T(y), y} &  & \text{(by \cref{6.1}(a))}   \\
+      & = \inn{\T(x), y} + \inn{\T(y), x},
+  \end{align*}
+  we have \(\inn{\T(x), y} = - \inn{\T(y), x}\).
+  Since
+  \begin{align*}
+    0 & = \inn{\T(x + iy), x + iy}                                                                                  \\
+      & = \inn{\T(x) + i \T(y), x + iy}                                         &  & \text{(by \cref{2.1.2}(b))}    \\
+      & = \inn{\T(x), x + iy} + i \inn{\T(y), x + iy}                           &  & \text{(by \cref{6.1.1}(a)(b))} \\
+      & = \inn{\T(x), x} - i \inn{\T(x), y} + i \inn{\T(y), x} + \inn{\T(y), y} &  & \text{(by \cref{6.1}(a)(b))}   \\
+      & = -i \inn{\T(x), y} + i \inn{\T(y), x},
+  \end{align*}
+  we have \(\inn{\T(x), y} = \inn{\T(y), x}\).
+  Thus
+  \begin{align*}
+             & \forall x, y \in \V, \begin{dcases}
+                                      \inn{\T(x), y} = - \inn{\T(y), x} \\
+                                      \inn{\T(x), y} = \inn{\T(y), x}
+                                    \end{dcases}                                  \\
+    \implies & \forall x, y \in \V, \inn{\T(x), y} = \inn{\T(y), x} = 0                                \\
+    \implies & \T = \zT.                                                &  & \text{(by \cref{6.1}(e))}
+  \end{align*}
+\end{proof}
+
+\begin{proof}[\pf{ex:6.4.11}(c)]
+  We have
+  \begin{align*}
+    \forall x \in \V, \inn{x, \T(x)} & = \conj{\inn{\T(x), x}} &  & \text{(by \cref{6.1.1}(c))} \\
+                                     & = \inn{\T(x), x}        &  & (\inn{\T(x), x} \in \R)     \\
+                                     & = \inn{x, \T^*(x)}      &  & \text{(by \cref{6.9})}
+  \end{align*}
+  and
+  \begin{align*}
+    \forall x \in \V, 0 & = \inn{x, \T(x)} - \inn{x, \T^*(x)} &  & \text{(from the proof above)} \\
+                        & = \inn{x, \T(x) - \T^*(x)}          &  & \text{(by \cref{6.1}(a)(b))}  \\
+                        & = \inn{x, (\T - \T^*)(x)}           &  & \text{(by \cref{2.10})}       \\
+                        & = \inn{(\T - \T^*)(x), x}.          &  & \text{(by \cref{6.1.1}(c))}
+  \end{align*}
+  Thus
+  \begin{align*}
+             & \T - \T^* = \zT &  & \text{(by \cref{ex:6.4.11}(b))} \\
+    \implies & \T = \T^*.
+  \end{align*}
+\end{proof}
+
+\begin{ex}\label{ex:6.4.12}
+  Let \(\T\) be a normal operator on a finite-dimensional real inner product space \(\V\) whose characteristic polynomial splits.
+  Prove that \(\V\) has an orthonormal basis of eigenvectors of \(\T\).
+  Hence prove that \(\T\) is self-adjoint.
+\end{ex}
+
+\begin{proof}[\pf{ex:6.4.12}]
+  By \cref{6.14} we know that there exists an orthonormal basis \(\beta = \set{\seq{v}{1,,n}}\) for \(\V\) over \(\F\) such that \([\T]_{\beta}\) is upper triangular.
+  We claim that for all \(k \in \set{1, \dots, n}\), the set \(\set{\seq{v}{1,,k}} \subseteq \beta\) is consist of eigenvectors of \(\T\).
+  We use induction on \(k\) to proof the claim.
+  For \(k = 1\), since \([\T]_{\beta}\) is upper triangular, by \cref{2.2.4} this means \(v_1\) is an eigenvector of \(\T\).
+  Thus the base case holds.
+  Suppose inductively that \(\set{\seq{v}{1,,k}}\) is consist of eigenvectors of \(\T\) for some \(k \geq 1\).
+  We show that the claim is true for \(k + 1\).
+  By induction hypothesis we know that \(\seq{v}{1,,k}\) are eigenvectors of \(\T\) corresponding to eigenvalues \(\seq{\lambda}{1,,k} \in \R\).
+  Since \(\T\) is normal, by \cref{6.15}(c) we know that \(\T^*(v_i) = \conj{\lambda_i} v_i\) for all \(i \in \set{1, \dots, k}\).
+  Then we have
+  \begin{align*}
+    \T(v_{k + 1}) & = \sum_{j = 1}^n \inn{\T(v_{k + 1}), v_j} v_j                                                           &  & \text{(by \cref{6.2.6})}         \\
+                  & = \sum_{j = 1}^{k + 1} \inn{\T(v_{k + 1}), v_j} v_j                                                     &  & \text{(by \cref{6.14})}          \\
+                  & = \sum_{j = 1}^{k + 1} \inn{v_{k + 1}, \T^*(v_j)} v_j                                                   &  & \text{(by \cref{6.9})}           \\
+                  & = \inn{v_{k + 1}, \T^*(v_{k + 1})} v_{k + 1} + \sum_{j = 1}^k \inn{v_{k + 1}, \T^*(v_j)} v_j                                                  \\
+                  & = \inn{v_{k + 1}, \T^*(v_{k + 1})} v_{k + 1} + \sum_{j = 1}^k \inn{v_{k + 1}, \conj{\lambda_j} v_j} v_j &  & \text{(by induction hypothesis)} \\
+                  & = \inn{v_{k + 1}, \T^*(v_{k + 1})} v_{k + 1} + \sum_{j = 1}^k \lambda_j \inn{v_{k + 1}, v_j} v_j        &  & \text{(by \cref{6.1}(b))}        \\
+                  & = \inn{v_{k + 1}, \T^*(v_{k + 1})} v_{k + 1}                                                            &  & \text{(by \cref{6.1.12})}
+  \end{align*}
+  and thus \(v_{k + 1}\) is an eigenvector of \(\T\).
+  This closes the induction.
+  Hence \(\beta\) is consist of eigenvectors of \(\T\).
+  By \cref{5.1.1} this means \([\T]_{\beta}\) is a diagonal matrix.
+  Thus \([\T]_{\beta}^* = [\T]_{\beta}\) and by \cref{6.4.9} \(\T\) is self-adjoint.
+\end{proof}
