@@ -678,3 +678,66 @@
   By \cref{5.1.1} this means \([\T]_{\beta}\) is a diagonal matrix.
   Thus \([\T]_{\beta}^* = [\T]_{\beta}\) and by \cref{6.4.9} \(\T\) is self-adjoint.
 \end{proof}
+
+\begin{ex}\label{ex:6.4.13}
+  An \(A \in \ms{n}{n}{\R}\) is said to be a \textbf{Gramian} matrix if there exists a \(B \in \ms{n}{n}{\R}\) such that \(A = \tp{B} B\).
+  Prove that \(A\) is a Gramian matrix iff \(A\) is symmetric and all of its eigenvalues are nonnegative.
+\end{ex}
+
+\begin{proof}[\pf{ex:6.4.13}]
+  First suppose that \(A\) is Gramian.
+  By \cref{ex:6.4.13} there exists a \(B \in \ms{n}{n}{\R}\) such that \(A = \tp{B} B\).
+  Then we have
+  \begin{align*}
+    \tp{A} & = \tp{(\tp{B} B)}                                       \\
+           & = \tp{B} \tp{(\tp{B})} &  & \text{(by \cref{2.3.2})}    \\
+           & = \tp{B} B             &  & \text{(by \cref{ex:1.3.4})} \\
+           & = A.
+  \end{align*}
+  Thus by \cref{1.3.4} \(A\) is symmetric.
+  If \(\lambda\) is an eigenvalue of \(A\) and \(x\) is an eigenvector corresponding to \(\lambda\) with unit length, then we have
+  \begin{align*}
+    \lambda & = \lambda \norm{x}^2  &  & \text{(by \cref{6.1.12})}   \\
+            & = \lambda \inn{x, x}  &  & \text{(by \cref{6.1.9})}    \\
+            & = \inn{\lambda x, x}  &  & \text{(by \cref{6.1.1}(b))} \\
+            & = \inn{Ax, x}         &  & \text{(by \cref{5.1.2})}    \\
+            & = \inn{\tp{B} B x, x}                                  \\
+            & = \inn{B^* B x, x}    &  & \text{(by \cref{6.1.5})}    \\
+            & = \inn{Bx, Bx}        &  & \text{(by \cref{6.9})}      \\
+            & = \norm{Bx}^2         &  & \text{(by \cref{6.1.9})}    \\
+            & \geq 0.               &  & \text{(by \cref{6.2}(b))}
+  \end{align*}
+  Thus all eigenvalues of \(A\) are nonnegative.
+
+  Now suppose that \(A\) is symmetric and all eigenvalues of \(A\) are nonnegative.
+  Since
+  \begin{align*}
+    A & = \tp{A} &  & \text{(by \cref{1.3.4})} \\
+      & = A^*,   &  & \text{(by \cref{6.1.5})}
+  \end{align*}
+  by \cref{6.4.8} we know that \(A\) is self-adjoint.
+  By \cref{6.17} there exists an orthonormal basis \(\beta = \set{\seq{v}{1,,n}}\) for \(\vs{\R}^n\) over \(\R\) consisting of eigenvectors of \(A\).
+  For each \(i \in \set{1, \dots, n}\), let \(\lambda_i\) be an eigenvalue of \(A\) such that \(A v_i = \lambda v_i\).
+  By \cref{2.6} we can define an \(\U \in \ls(\vs{\R}^n)\) such that \(\U(v_i) = \sqrt{v_i} v_i\) for all \(i \in \set{1, \dots, n}\).
+  Then we have
+  \begin{align*}
+             & [\U]_{\beta} = \begin{pmatrix}
+                                \sqrt{v_1} & 0          & \cdots & 0          \\
+                                0          & \sqrt{v_2} & \cdots & 0          \\
+                                \vdots     & \vdots     &        & \vdots     \\
+                                0          & 0          & \cdots & \sqrt{v_n}
+                              \end{pmatrix}                      &  & \text{(by \cref{2.2.4})}                     \\
+    \implies & [\U]_{\beta}^* = \tp{([\U]_{\beta})} = [\U]_{\beta}                   &  & \text{(by \cref{6.1.5})} \\
+    \implies & \tp{([\U]_{\beta})} [\U]_{\beta} = ([\U]_{\beta})^2 = [\L_A]_{\beta}. &  & \text{(by \cref{2.2.4})}
+  \end{align*}
+  If \(\gamma\) is the standard ordered basis for \(\vs{\R}^n\) over \(\R\) (which is orthonormal), then we have
+  \begin{align*}
+    A & = [\L_A]_{\gamma}                                                                                              &  & \text{(by \cref{2.15}(a))}      \\
+      & = \pa{[\IT[\vs{F}^n]]_{\gamma}^{\beta}}^{-1} [\L_A]_{\beta} [\IT[\vs{F}^n]]_{\gamma}^{\beta}                   &  & \text{(by \cref{2.23})}         \\
+      & = \pa{[\IT[\vs{F}^n]]_{\gamma}^{\beta}}^{-1} \tp{([\U]_{\beta})} [\U]_{\beta} [\IT[\vs{F}^n]]_{\gamma}^{\beta} &  & \text{(from the proof above)}   \\
+      & = \pa{[\IT[\vs{F}^n]]_{\gamma}^{\beta}}^* \tp{([\U]_{\beta})} [\U]_{\beta} [\IT[\vs{F}^n]]_{\gamma}^{\beta}    &  & \text{(by \cref{ex:6.1.23}(c))} \\
+      & = \tp{\pa{[\IT[\vs{F}^n]]_{\gamma}^{\beta}}} \tp{([\U]_{\beta})} [\U]_{\beta} [\IT[\vs{F}^n]]_{\gamma}^{\beta} &  & \text{(by \cref{6.1.5})}        \\
+      & = \tp{\pa{[\U]_{\beta} [\IT[\vs{F}^n]]_{\gamma}^{\beta}}} [\U]_{\beta} [\IT[\vs{F}^n]]_{\gamma}^{\beta}.       &  & \text{(by \cref{2.3.2})}
+  \end{align*}
+  Thus \(A\) is Gramian.
+\end{proof}
