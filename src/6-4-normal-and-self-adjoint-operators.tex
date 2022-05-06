@@ -783,3 +783,77 @@
   \end{itemize}
   From all cases above the induction is closed.
 \end{proof}
+
+\begin{ex}\label{ex:6.4.15}
+  Let \(A, B \in \ms{n}{n}{\R}\) be symmetric such that \(AB = BA\).
+  Use \cref{ex:6.4.14} to prove that there exists an orthogonal matrix \(P\) such that \(\tp{P} A P\) and \(\tp{P} B P\) are both diagonal matrices.
+\end{ex}
+
+\begin{proof}[\pf{ex:6.4.15}]
+  Since
+  \begin{align*}
+    A & = \tp{A} &  & \text{(by \cref{1.3.4})} \\
+      & = A^*    &  & \text{(by \cref{6.1.5})} \\
+    B & = \tp{B} &  & \text{(by \cref{1.3.4})} \\
+      & = B^*    &  & \text{(by \cref{6.1.5})}
+  \end{align*}
+  and
+  \begin{align*}
+    \L_A \L_B & = \L_{AB}    &  & \text{(by \cref{2.15}(e))} \\
+              & = \L_{BA}                                    \\
+              & = \L_B \L_A, &  & \text{(by \cref{2.15}(e))}
+  \end{align*}
+  by \cref{ex:6.4.14} there exists an orthonormal basis \(\gamma\) for \(\vs{R}^n\) over \(\R\) such that \([\L_A]_{\gamma}, [\L_B]_{\gamma}\) are diagonal matrices.
+  If we let \(\beta\) be the standard ordered basis for \(\vs{R}^n\) over \(\R\) (which is orthonormal), then we have
+  \begin{align*}
+    [\L_A]_{\gamma} & = \pa{[\IT[\vs{F}^n]]_{\gamma}^{\beta}}^{-1} [\L_A]_{\beta} [\IT[\vs{F}^n]]_{\gamma}^{\beta} &  & \text{(by \cref{2.23})}         \\
+                    & = \pa{[\IT[\vs{F}^n]]_{\gamma}^{\beta}}^{-1} A [\IT[\vs{F}^n]]_{\gamma}^{\beta}              &  & \text{(by \cref{2.15}(a))}      \\
+                    & = \pa{[\IT[\vs{F}^n]]_{\gamma}^{\beta}}^* A [\IT[\vs{F}^n]]_{\gamma}^{\beta}                 &  & \text{(by \cref{ex:6.1.23}(c))} \\
+                    & = \tp{\pa{[\IT[\vs{F}^n]]_{\gamma}^{\beta}}} A [\IT[\vs{F}^n]]_{\gamma}^{\beta}.             &  & \text{(by \cref{6.1.5})}
+  \end{align*}
+  Similarly we have \([\L_A]_{\gamma} = \tp{\pa{[\IT[\vs{F}^n]]_{\gamma}^{\beta}}} A [\IT[\vs{F}^n]]_{\gamma}^{\beta}\).
+  By setting \(P = [\IT[\vs{F}^n]]_{\gamma}^{\beta}\) we are done.
+\end{proof}
+
+\begin{ex}\label{ex:6.4.16}
+  Prove the \emph{Cayley--Hamilton theorem} for a complex \(n \times n\) matrix \(A\).
+  That is, if \(f\) is the characteristic polynomial of \(A\), prove that \(f(A) = \zm\).
+  (The general case is proved in \cref{5.23}.)
+\end{ex}
+
+\begin{proof}[\pf{ex:6.4.16}]
+  Since \(A \in \ms{n}{n}{\C}\), by \cref{d.4} we know that \(\det(A - t I_n)\) splits.
+  By \cref{6.14} there exists an orthonormal basis \(\gamma\) for \(\vs{C}^n\) over \(\C\) such that \([\L_A]_{\gamma}\) is upper triangular.
+  By \cref{ex:4.2.23} we have
+  \[
+    \forall t \in \C, f(t) = \prod_{i = 1}^n (([\L_A]_{\gamma})_{i i} - t)
+  \]
+  and thus by \cref{e.0.7}
+  \[
+    f([\L_A]_{\gamma}) = \prod_{i = 1}^n (([\L_A]_{\gamma})_{i i} I_n - [\L_A]_{\gamma}).
+  \]
+  Observe that for each \(j \in \set{1, \dots, n}\), we have
+  \begin{align*}
+     & f([\L_A]_{\gamma})(e_j)                                       \\
+     & = \pa{\prod_{\substack{i = 1                                  \\ i \neq j}}^n (([\L_A]_{\gamma})_{i i} I_n - [\L_A]_{\gamma})} \cdot (([\L_A]_{\gamma})_{j j} I_n - [\L_A]_{\gamma} e_j))         \\
+     & = \pa{\prod_{\substack{i = 1                                  \\ i \neq j}}^n (([\L_A]_{\gamma})_{i i} I_n - [\L_A]_{\gamma})} \cdot (([\L_A]_{\gamma})_{j j} e_j - ([\L_A]_{\gamma})_{j j} e_j)) && \text{(\([\L_A]_{\gamma}\) is diagonal)} \\
+     & = \pa{\prod_{\substack{i = 1                                  \\ i \neq j}}^n (([\L_A]_{\gamma})_{i i} I_n - [\L_A]_{\gamma})} \cdot \zv \\
+     & = \zv.                       &  & \text{(by \cref{2.1.2}(a))}
+  \end{align*}
+  Thus
+  \begin{align*}
+             & \forall j \in \set{1, \dots, n}, f([\L_A]_{\gamma})(e_j) = \zv                                \\
+    \implies & f([\L_A]_{\gamma}) = \zm.                                      &  & \text{(by \cref{2.1.13})}
+  \end{align*}
+  If we let \(\beta\) be the standard ordered basis for \(\C^n\) over \(\C\), then we have
+  \begin{align*}
+    f(A) & = f([\L_A]_{\beta})                                                                                                                                                               &  & \text{(by \cref{2.15}(a))}    \\
+         & = f([\IT[\C^n]]_{\gamma}^{\beta} [\L_A]_{\gamma} [\IT[\C^n]]_{\beta}^{\gamma})                                                                                                    &  & \text{(by \cref{2.23})}       \\
+         & = \prod_{i = 1}^n (([\L_A]_{\gamma})_{i i} I_n - [\IT[\C^n]]_{\gamma}^{\beta} [\L_A]_{\gamma} [\IT[\C^n]]_{\beta}^{\gamma})                                                                                          \\
+         & = \prod_{i = 1}^n (([\L_A]_{\gamma})_{i i} [\IT[\C^n]]_{\gamma}^{\beta} [\IT[\C^n]]_{\beta}^{\gamma} - [\IT[\C^n]]_{\gamma}^{\beta} [\L_A]_{\gamma} [\IT[\C^n]]_{\beta}^{\gamma}) &  & \text{(by \cref{2.23})}       \\
+         & = \prod_{i = 1}^n [\IT[\C^n]]_{\gamma}^{\beta} (([\L_A]_{\gamma})_{i i} I_n - [\L_A]_{\gamma}) [\IT[\C^n]]_{\beta}^{\gamma}                                                                                          \\
+         & = [\IT[\C^n]]_{\gamma}^{\beta} \pa{\prod_{i = 1}^n (([\L_A]_{\gamma})_{i i} I_n - [\L_A]_{\gamma})} [\IT[\C^n]]_{\beta}^{\gamma}                                                                                     \\
+         & = [\IT[\C^n]]_{\gamma}^{\beta} f([\L_A]_{\gamma}) [\IT[\C^n]]_{\beta}^{\gamma}                                                                                                                                       \\
+         & = \zm.                                                                                                                                                                            &  & \text{(from the proof above)}
+  \end{align*}
+\end{proof}
