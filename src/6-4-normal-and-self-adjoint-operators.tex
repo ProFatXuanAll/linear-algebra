@@ -741,3 +741,45 @@
   \end{align*}
   Thus \(A\) is Gramian.
 \end{proof}
+
+\begin{ex}[Simultaneous Diagonalization]\label{ex:6.4.14}
+  Let \(\V\) be a finite-dimensional real inner product space, and let \(\U\) and \(\T\) be self-adjoint linear operators on \(\V\) such that \(\U \T = \T \U\).
+  Prove that there exists an orthonormal basis for \(\V\) over \(\R\) consisting of vectors that are eigenvectors of both \(\U\) and \(\T\).
+  (The complex version of this result appears as \cref{ex:6.6.10}.)
+\end{ex}
+
+\begin{proof}[\pf{ex:6.4.14}]
+  Let \(n = \dim(\V)\).
+  We use induction on \(n\).
+  For \(n = 1\), any orthonormal basis for \(\V\) over \(\R\) makes \([\T]_{\beta}\) and \([\U]_{\beta}\) diagonal matrices.
+  Thus by \cref{5.2.8} \(\T, \U\) are simultaneously diagonalizable by some orthonormal bases and the base case holds.
+  Suppose inductively that for some \(n \geq 1\), self-adjoint linear operators on \(\V\) which commute are simultaneously diagonalizable by some orthonormal bases.
+  We need to show that this is true for \(n + 1\).
+  Let \(\dim(\V) = n + 1\), let \(\T, \U \in \ls(\V)\) such that \(\T^* = \T\), \(\U^* = \U\) and \(\U \T = \T \U\).
+  Since \(\T\) is self-adjoint, by \cref{6.17} there exists an orthonormal basis \(\beta\) for \(\V\) over \(\R\) consisting of eigenvectors of \(\T\).
+  Let \(\lambda \in \R\) be an eigenvalue of \(\T\) and let \(E_{\lambda}\) be the eigenspace of \(\lambda\).
+  Now we split into two cases:
+  \begin{itemize}
+    \item If \(E_{\lambda} = \V\), then any basis for \(\V\) over \(\R\) is consist of eigenvectors of \(\T\).
+          Since \(\U\) is self-adjoint, by \cref{6.17} we know that there exists an orthonormal basis for \(\V\) over \(\R\) consist of eigenvectors of \(\U\).
+          Thus by \cref{5.2.8} \(\T, \U\) are simultaneously diagonalizable by some orthonormal bases for \(\V\) over \(\R\).
+    \item If \(E_{\lambda} \neq \V\), then by \cref{5.7} we have \(1 \leq \dim(E_{\lambda}) < n + 1\).
+          By \cref{5.4.2}(e) we know that \(E_{\lambda}\) is \(\T\)-invariant.
+          we claim that \(E_{\lambda}\) is \(\U\)-invariant.
+          Since
+          \begin{align*}
+                     & \forall v \in E_{\lambda}, \T(v) = \lambda v             &  & \text{(by \cref{5.2.4})}    \\
+            \implies & \forall v \in E_{\lambda}, \lambda \U(v) = \U(\lambda v) &  & \text{(by \cref{2.1.1}(b))} \\
+                     & = \U(\T(v)) = \T(\U(v))                                  &  & \text{(by \cref{5.1.2})}    \\
+            \implies & \forall v \in E_{\lambda}, \U(v) \in E_{\lambda}         &  & \text{(by \cref{5.1.2})}    \\
+            \implies & \U(E_{\lambda}) \subseteq E_{\lambda},
+          \end{align*}
+          by \cref{5.4.1} we know that \(E_{\lambda}\) is \(\U\)-invariant.
+          Since \(\T, \U\) are self-adjoint, by \cref{ex:6.4.7}(b) we know that \(E_{\lambda}^{\perp}\) is both \(\T\)- and \(\U\)-invariant.
+          By \cref{6.7}(c) we know that \(\dim(E_{\lambda}^{\perp}) < n + 1\).
+          Thus by induction hypothesis we can find some orthonormal bases \(\beta_1\) and \(\beta_2\) for \(E_{\lambda}\) and \(E_{\lambda}^{\perp}\) over \(\R\), respectively, consist of eigenvectors of both \(\T\) and \(\U\).
+          By \cref{5.10}(d) and \cref{6.7}(c) we know that \(\beta = \beta_1 \cup \beta_2\) is an orthonormal basis for \(\V\) over \(\R\) consist of eigenvectors of both \(\T\) and \(\U\).
+          Thus by \cref{5.2.8} \(\T, \U\) are simultaneously diagonalizable by some orthonormal bases for \(\V\) over \(\R\).
+  \end{itemize}
+  From all cases above the induction is closed.
+\end{proof}
