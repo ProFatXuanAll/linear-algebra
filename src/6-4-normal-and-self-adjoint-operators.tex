@@ -857,3 +857,153 @@
          & = \zm.                                                                                                                                                                            &  & \text{(from the proof above)}
   \end{align*}
 \end{proof}
+
+\begin{defn}\label{6.4.11}
+  A linear operator \(\T\) on a finite-dimensional inner product space is called \textbf{positive definite} (\textbf{positive semidefinite}) if \(\T\) is self-adjoint and \(\inn{\T(x), x} > 0\) (\(\inn{\T(x), x} \geq 0\)) for all \(x \neq \zv\).
+
+  An \(n \times n\) matrix \(A\) with entries from \(\R\) or \(\C\) is called \textbf{positive definite} (\textbf{positive semidefinite}) if \(\L_A\) is positive definite (positive semidefinite).
+\end{defn}
+
+\begin{ex}\label{ex:6.4.17}
+  Let \(\T\) and \(\U\) be a self-adjoint linear operators on an \(n\)-dimensional inner product space \(\V\) over \(\F\), and let \(A = [\T]_{\beta}\), where \(\beta\) is an orthonormal basis for \(\V\) over \(\F\).
+  Prove the following results.
+  \begin{enumerate}
+    \item \(\T\) is positive definite (semidefinite) iff all of its eigenvalues are positive (nonnegative).
+    \item \(\T\) is positive definite iff
+          \[
+            \sum_{i = 1}^n \sum_{j = 1}^n A_{i j} a_j \conj{a_i} > 0 \text{ for all nonzero } n\text{-tuples } \tuple{a}{1,,n}.
+          \]
+    \item \(\T\) is positive semidefinite iff \(A = B^* B\) for some square matrix \(B\).
+    \item If \(\T\) and \(\U\) are positive semidefinite operators such that \(\T^2 = \U^2\), then \(\T = \U\).
+    \item If \(\T\) and \(\U\) are positive definite operators such that \(\T \U = \U \T\), then \(\T \U\) is positive definite.
+    \item \(\T\) is positive definite (semidefinite) iff \(A\) is positive definite (semidefinite).
+  \end{enumerate}
+  Because of (f), results analogous to items (a) through (d) hold for matrices as well as operators.
+\end{ex}
+
+\begin{proof}[\pf{ex:6.4.17}(a)]
+  First suppose that \(\T\) is positive definite (semidefinite).
+  Suppose that \(\lambda \in \F\) is an eigenvalue of \(\T\) and \(v\) is an eigenvector of \(\T\) corresponding to \(\lambda\).
+  Then we have
+  \begin{align*}
+    \lambda & = \lambda \frac{\norm{v}^2}{\norm{v}^2}                &  & (v \neq \zv)                \\
+            & = \frac{\lambda \inn{v, v}}{\norm{v}^2}                &  & \text{(by \cref{6.1.9})}    \\
+            & = \frac{\inn{\lambda v, v}}{\norm{v}^2}                &  & \text{(by \cref{6.1.1}(b))} \\
+            & = \frac{\inn{\T(v), v}}{\norm{v}^2}                    &  & \text{(by \cref{5.1.2})}    \\
+            & \begin{dcases}
+                > 0    & \text{if } \T \text{ is positive definite} \\
+                \geq 0 & \text{if } \T \text{ is semidefinite}
+              \end{dcases}. &  & \text{(by \cref{6.2}(b) and \cref{6.4.11})}
+  \end{align*}
+
+  Now suppose that eigenvalues of \(\T\) are positive (nonnegative).
+  Since \(\T\) is self-adjoint (by hypothesis), by \cref{6.4.8} we have \(\T = \T^*\).
+  Thus we have \(\T^* \T = \T^2 = \T \T^*\) and by \cref{6.4.3} \(\T\) is normal.
+  By \cref{6.16} we know that there exists an orthonormal basis \(\gamma = \set{\seq{v}{1,,n}}\) for \(\V\) over \(\F\) consist of eigenvectors of \(\T\).
+  For each \(i \in \set{1, \dots, n}\), let \(\lambda_i\) be the eigenvalue of \(\T\) correspond to \(v_i\).
+  Then we have
+  \begin{align*}
+     & \forall x \in \V \setminus \set{\zv}, \inn{\T(x), x}                                                                   \\
+     & = \inn{\T\pa{\sum_{i = 1}^n \inn{x, v_i} v_i}, \sum_{j = 1}^n \inn{x, v_j} v_j}    &  & \text{(by \cref{6.5})}         \\
+     & = \inn{\sum_{i = 1}^n \inn{x, v_i} \T(v_i), \sum_{j = 1}^n \inn{x, v_j} v_j}       &  & \text{(by \cref{2.1.2}(d))}    \\
+     & = \inn{\sum_{i = 1}^n \inn{x, v_i} \lambda_i v_i, \sum_{j = 1}^n \inn{x, v_j} v_j} &  & \text{(by \cref{5.1.2})}       \\
+     & = \sum_{i = 1}^n \inn{x, v_i} \lambda_i \inn{v_i, \sum_{j = 1}^n \inn{x, v_j} v_j} &  & \text{(by \cref{6.1.1}(a)(b))} \\
+     & = \sum_{i = 1}^n \inn{x, v_i} \lambda_i \inn{v_i, \inn{x, v_i} v_i}                &  & \text{(by \cref{6.1.12})}      \\
+     & = \sum_{i = 1}^n \abs{\inn{x, v_i}}^2 \lambda_i \inn{v_i, v_i}                     &  & \text{(by \cref{6.1}(b))}      \\
+     & = \sum_{i = 1}^n \abs{\inn{x, v_i}}^2 \lambda_i \norm{v_i}^2                       &  & \text{(by \cref{6.1.9})}       \\
+     & = \sum_{i = 1}^n \abs{\inn{x, v_i}}^2 \lambda_i                                    &  & \text{(by \cref{6.1.12})}      \\
+     & \begin{dcases}
+         > 0    & \text{if } \lambda_i > 0 \text{ for all } i \in \set{1, \dots, n}    \\
+         \geq 0 & \text{if } \lambda_i \geq 0 \text{ for all } i \in \set{1, \dots, n}
+       \end{dcases}.   &  & (x \neq \zv)
+  \end{align*}
+  Thus by \cref{6.4.11} \(\T\) is positive definite (semidefinite).
+  We conclude that \(\T\) is positive definite (semidefinite) iff all of its eigenvalues are positive (nonnegative).
+\end{proof}
+
+\begin{proof}[\pf{ex:6.4.17}(b)]
+  Let \(\beta = \set{\seq{v}{1,,n}}\).
+  Observe that
+  \begin{align*}
+     & \inn{\T\pa{\sum_{j = 1}^n a_j v_j}, \sum_{k = 1}^n a_k v_k}                                                            \\
+     & = \inn{\sum_{j = 1}^n a_j \T(v_j), \sum_{k = 1}^n a_k v_k}                         &  & \text{(by \cref{2.1.2}(d))}    \\
+     & = \inn{\sum_{j = 1}^n a_j \pa{\sum_{i = 1}^n A_{i j} v_i}, \sum_{k = 1}^n a_k v_k} &  & \text{(by \cref{2.2.4})}       \\
+     & = \sum_{j = 1}^n \sum_{i = 1}^n a_j A_{i j} \inn{v_i, \sum_{k = 1}^n a_k v_k}      &  & \text{(by \cref{6.1.1}(a)(b))} \\
+     & = \sum_{j = 1}^n \sum_{i = 1}^n a_j A_{i j} \inn{v_i, a_i v_i}                     &  & \text{(by \cref{6.1.12})}      \\
+     & = \sum_{j = 1}^n \sum_{i = 1}^n a_j A_{i j} \conj{a_i} \inn{v_i, v_i}              &  & \text{(by \cref{6.1}(b))}      \\
+     & = \sum_{j = 1}^n \sum_{i = 1}^n a_j A_{i j} \conj{a_i}.                            &  & \text{(by \cref{6.1.12})}
+  \end{align*}
+  Thus we have
+  \begin{align*}
+         & \T \text{ is positive definite}                                                                                                          \\
+    \iff & \forall x \in \V \setminus \set{\zv}, 0 < \inn{\T(x), x}                                              &  & \text{(by \cref{6.4.11})}     \\
+         & = \inn{\T\pa{\sum_{j = 1}^n \inn{x, v_j} v_j}, \sum_{k = 1}^n \inn{x, v_k} v_k}                       &  & \text{(by \cref{6.5})}        \\
+         & = \sum_{j = 1}^n \sum_{i = 1}^n \inn{x, v_j} A_{i j} \conj{\inn{x, v_i}}                              &  & \text{(from the proof above)} \\
+    \iff & \forall a \in \vs{F}^n \setminus \set{\zv}, \sum_{i = 1}^n \sum_{j = 1}^n A_{i j} a_j \conj{a_i} > 0.
+  \end{align*}
+\end{proof}
+
+\begin{proof}[\pf{ex:6.4.17}(c)]
+  First suppose that \(\T\) is positive semidefinite.
+  As in the proof of \cref{ex:6.4.17}(a), \(\T\) is self-adjoint implies there exists an orthonormal basis \(\gamma = \set{\seq{v}{1,,n}}\) for \(\V\) over \(\F\) consist of eigenvectors of \(\T\).
+  For each \(i \in \set{1, \dots, n}\), let \(\lambda_i\) be the eigenvalue of \(\T\) corresponding to \(v_i\).
+  By \cref{ex:6.4.17}(a) we know that \(\lambda_i \geq 0\) for all \(i \in \set{1, \dots, n}\).
+  If we let \(\alpha\) be the standard ordered basis for \(\vs{F}^n\) over \(\F\) and
+  \[
+    C = \begin{pmatrix}
+      \sqrt{\lambda_1} & 0                & \cdots & 0                \\
+      0                & \sqrt{\lambda_2} & \cdots & 0                \\
+      \vdots           & \vdots           &        & \vdots           \\
+      0                & 0                & \cdots & \sqrt{\lambda_n}
+    \end{pmatrix},
+  \]
+  then we have
+  \begin{align*}
+             & C^* = \tp{C} = C                                                                                                                          &  & \text{(by \cref{6.1.5})}      \\
+    \implies & [\T]_{\gamma} = C^* C                                                                                                                     &  & \text{(by \cref{5.1.1})}      \\
+    \implies & A = [\T]_{\beta} = \pa{[\IT[\V]]_{\beta}^{\gamma}}^{-1} [\T]_{\gamma} [\IT[\V]]_{\beta}^{\gamma}                                          &  & \text{(by \cref{2.23})}       \\
+             & = \pa{[\IT[\V]]_{\beta}^{\gamma}}^{-1} C^* C [\IT[\V]]_{\beta}^{\gamma}                                                                   &  & \text{(from the proof above)} \\
+             & = \pa{[\IT[\V]]_{\alpha}^{\gamma} [\IT[\V]]_{\beta}^{\alpha}}^{-1} C^* C [\IT[\V]]_{\alpha}^{\gamma} [\IT[\V]]_{\beta}^{\alpha}           &  & \text{(by \cref{2.11})}       \\
+             & = \pa{[\IT[\V]]_{\beta}^{\alpha}}^{-1} \pa{[\IT[\V]]_{\alpha}^{\gamma}}^{-1} C^* C [\IT[\V]]_{\alpha}^{\gamma} [\IT[\V]]_{\beta}^{\alpha} &  & \text{(by \cref{ex:2.4.4})}   \\
+             & = \pa{[\IT[\V]]_{\beta}^{\alpha}}^* \pa{[\IT[\V]]_{\alpha}^{\gamma}}^* C^* C [\IT[\V]]_{\alpha}^{\gamma} [\IT[\V]]_{\beta}^{\alpha}       &  & \text{(by \cref{ex:6.1.23})}  \\
+             & = (C [\IT[\V]]_{\alpha}^{\gamma} [\IT[\V]]_{\beta}^{\alpha})^* C [\IT[\V]]_{\alpha}^{\gamma} [\IT[\V]]_{\beta}^{\alpha}.                  &  & \text{(by \cref{6.3.2}(c))}
+  \end{align*}
+  By setting \(B = C [\IT[\V]]_{\alpha}^{\gamma} [\IT[\V]]_{\beta}^{\alpha}\) we see that \(A = B^* B\).
+
+  Now suppose that there exists a \(B \in \ms{n}{n}{\F}\) such that \(A = B^* B\).
+  Let \(\beta = \set{\seq{v}{1,,n}}\) and let \([\cdot, \cdot]\) be the standard inner product on \(\vs{F}^n\) over \(\F\) as defined in \cref{6.1.2}.
+  For each \(i \in \set{1, \dots, n}\), let \(b_i\) denote the \(i\)th column of \(B\).
+  Then we have
+  \begin{align*}
+     & \forall x \in \V \setminus \set{\zv}, \inn{\T(x), x}                                                                                       \\
+     & = \inn{\T\pa{\sum_{j = 1}^n \inn{x, v_j} v_j}, \sum_{k = 1}^n \inn{x, v_k} v_k}                        &  & \text{(by \cref{6.5})}         \\
+     & = \inn{\sum_{j = 1}^n \inn{x, v_j} \T(v_j), \sum_{k = 1}^n \inn{x, v_k} v_k}                           &  & \text{(by \cref{2.1.2}(d))}    \\
+     & = \inn{\sum_{j = 1}^n \inn{x, v_j} \pa{\sum_{i = 1}^n A_{i j} v_i}, \sum_{k = 1}^n \inn{x, v_k} v_k}   &  & \text{(by \cref{2.2.4})}       \\
+     & = \sum_{i = 1}^n \sum_{j = 1}^n \inn{x, v_j} A_{i j} \inn{v_i, \sum_{k = 1}^n \inn{x, v_k} v_k}        &  & \text{(by \cref{6.1.1}(a)(b))} \\
+     & = \sum_{i = 1}^n \sum_{j = 1}^n \inn{x, v_j} A_{i j} \inn{v_i, \inn{x, v_i} v_i}                       &  & \text{(by \cref{6.1.12})}      \\
+     & = \sum_{i = 1}^n \sum_{j = 1}^n \inn{x, v_j} A_{i j} \conj{\inn{x, v_i}} \inn{v_i, v_i}                &  & \text{(by \cref{6.1}(b))}      \\
+     & = \sum_{i = 1}^n \sum_{j = 1}^n \inn{x, v_j} A_{i j} \conj{\inn{x, v_i}}                               &  & \text{(by \cref{6.1.12})}      \\
+     & = \sum_{i = 1}^n \sum_{j = 1}^n \inn{x, v_j} (B^* B)_{i j} \conj{\inn{x, v_i}}                         &  & \text{(by hypothesis)}         \\
+     & = \sum_{i = 1}^n \sum_{j = 1}^n \sum_{k = 1}^n \inn{x, v_j} (B^*)_{i k} B_{k j} \conj{\inn{x, v_i}}    &  & \text{(by \cref{2.3.1})}       \\
+     & = \sum_{i = 1}^n \sum_{j = 1}^n \sum_{k = 1}^n \inn{x, v_j} \conj{B_{k i}} B_{k j} \conj{\inn{x, v_i}} &  & \text{(by \cref{6.1.5})}       \\
+     & = \sum_{i = 1}^n \sum_{j = 1}^n \sum_{k = 1}^n \inn{x, v_j} B_{k j} \conj{\inn{x, v_i} B_{k i}}        &  & \text{(by \cref{d.2}(c))}      \\
+     & = \sum_{i = 1}^n \sum_{j = 1}^n [\inn{x, v_j} b_j, \inn{x, v_i} b_i]                                   &  & \text{(by \cref{6.1.2})}       \\
+     & = \sum_{i = 1}^n \br{\sum_{j = 1}^n \inn{x, v_j} b_j, \inn{x, v_i} b_i}                                &  & \text{(by \cref{6.1.1}(a))}    \\
+     & = \br{\sum_{j = 1}^n \inn{x, v_j} b_j, \sum_{i = 1}^n \inn{x, v_i} b_i}                                &  & \text{(by \cref{6.1}(a))}      \\
+     & = \norm{\sum_{i = 1}^n \inn{x, v_i} b_i}^2                                                             &  & \text{(by \cref{6.1.9})}       \\
+     & \geq 0.                                                                                                &  & \text{(by \cref{6.2}(b))}
+  \end{align*}
+  Thus by \cref{6.4.11} \(\T\) is positive semidefinite.
+\end{proof}
+
+\begin{proof}[\pf{ex:6.4.17}(d)]
+
+\end{proof}
+
+\begin{proof}[\pf{ex:6.4.17}(e)]
+
+\end{proof}
+
+\begin{proof}[\pf{ex:6.4.17}(f)]
+
+\end{proof}
