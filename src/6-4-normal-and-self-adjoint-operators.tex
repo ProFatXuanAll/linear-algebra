@@ -1250,3 +1250,84 @@
   Thus by \cref{6.4.8} \(\T \U\) is self-adjoint with respect to \(\inn{\cdot, \cdot}''\), and by \cref{6.16,6.17} we know that \(\T \U\) is diagonalizable.
   By \cref{6.4.10}(a) this means \(\T \U\) has only real eigenvalues.
 \end{proof}
+
+\begin{ex}\label{ex:6.4.22}
+  This exercise provides a converse to \cref{ex:6.4.20}.
+  Let \(\V\) be a finite-dimensional inner product space over \(\F\) with inner product \(\inn{\cdot, \cdot}\) on \(\V\) over \(\F\), and let \(\inn{\cdot, \cdot}'\) be any other inner product on \(\V\) over \(\F\).
+  \begin{enumerate}
+    \item Prove that there exists a unique \(\T \in \ls(\V)\) such that \(\inn{x, y}' = \inn{\T(x), y}\) for all \(x, y \in \V\).
+    \item Prove that the operator \(\T\) of (a) is positive definite with respect to both inner products.
+  \end{enumerate}
+\end{ex}
+
+\begin{proof}[\pf{ex:6.4.22}(a)]
+  Let \(\beta = \set{\seq{v}{1,,n}}\) be an orthonormal basis for \(\V\) over \(\F\) with respect to \(\inn{\cdot, \cdot}\).
+  Define \(A \in \ms{n}{n}{\F}\) by setting \(A_{i j} = \inn{v_j, v_i}'\) for all \(i, j \in \set{1, \dots, n}\).
+  Let \(\T \in \ls(\V)\) such that \([\T]_{\beta} = A\).
+  Now we show that \(\inn{x, y}' = \inn{\T(x), y}\) for all \(x, y \in \V\).
+  This is true since
+  \begin{align*}
+    \forall x, y \in \V, \inn{\T(x), y} & = \inn{\T\pa{\sum_{j = 1}^n \inn{x, v_j} v_j}, y}                              &  & \text{(by \cref{6.5})}         \\
+                                        & = \inn{\sum_{j = 1}^n \inn{x, v_j} \T(v_j), y}                                 &  & \text{(by \cref{2.1.2}(d))}    \\
+                                        & = \inn{\sum_{j = 1}^n \inn{x, v_j} \pa{\sum_{i = 1}^n A_{i j} v_i}, y}         &  & \text{(by \cref{2.2.4})}       \\
+                                        & = \sum_{i = 1}^n \sum_{j = 1}^n A_{i j} \inn{x, v_j} \inn{v_i, y}              &  & \text{(by \cref{6.1.1}(a)(b))} \\
+                                        & = \sum_{i = 1}^n \sum_{j = 1}^n \inn{v_j, v_i}' \inn{x, v_j} \inn{v_i, y}                                          \\
+                                        & = \sum_{i = 1}^n \pa{\inn{\sum_{j = 1}^n \inn{x, v_j} v_j, v_i}'} \inn{v_i, y} &  & \text{(by \cref{6.1.1}(a)(b))} \\
+                                        & = \sum_{i = 1}^n \inn{x, v_i}' \inn{v_i, y}                                    &  & \text{(by \cref{6.5})}         \\
+                                        & = \inn{x, \sum_{i = 1}^n \conj{\inn{v_i, y}} v_i}'                             &  & \text{(by \cref{6.1}(a)(b))}   \\
+                                        & = \inn{x, \sum_{i = 1}^n \inn{y, v_i} v_i}'                                    &  & \text{(by \cref{6.1.1}(c))}    \\
+                                        & = \inn{x, y}'.                                                                 &  & \text{(by \cref{6.5})}
+  \end{align*}
+
+  Now we show that \(\T\) is unique.
+  Suppose that there exists another \(\U \in \ls(\V)\) such that \(\inn{x, y}' = \inn{\U(x), y}\) for all \(x, y \in \V\).
+  Then we have
+  \begin{align*}
+             & \forall x, y \in \V, \inn{x, y}' = \inn{\T(x), y} = \inn{\U(x), y}                                     \\
+    \implies & \forall x, y \in \V, \inn{\T(x) - \U(x), y} = 0                    &  & \text{(by \cref{6.1.1}(a)(b))} \\
+    \implies & \forall x \in \V, \T(x) - \U(x) = 0                                &  & \text{(by \cref{6.1}(d))}      \\
+    \implies & \T = \U.
+  \end{align*}
+  Thus \(\T\) is unique.
+\end{proof}
+
+\begin{proof}[\pf{ex:6.4.22}(b)]
+  For each \(\U \in \ls(\V)\), we denote the self-adjoint of \(\U\) with respect to \(\inn{\cdot, \cdot}\) as \(\U^*\), and denote the self-adjoint of \(\U\) with respect to \(\inn{\cdot, \cdot}'\) as \(\U^{\dag}\).
+  First we show that \(\T\) is self-adjoint with respect to \(\inn{\cdot, \cdot}\).
+  Since
+  \begin{align*}
+    \forall x, y \in \V, \inn{x, \T^*(y)} & = \inn{\T(x), y}        &  & \text{(by \cref{6.9})}      \\
+                                          & = \inn{x, y}'                                            \\
+                                          & = \conj{\inn{y, x}'}    &  & \text{(by \cref{6.1.1}(c))} \\
+                                          & = \conj{\inn{\T(y), x}}                                  \\
+                                          & = \inn{x, \T(y)},       &  & \text{(by \cref{6.1.1}(c))}
+  \end{align*}
+  by \cref{6.1}(e) we know that \(\T^* = \T\).
+  Thus by \cref{6.4.8} \(\T\) is self-adjoint with respect to \(\inn{\cdot, \cdot}\).
+
+  Next we show that \(\T\) is positive definite with respect to \(\inn{\cdot, \cdot}\).
+  This is true since
+  \begin{align*}
+             & \forall x \in \V \setminus \set{\zv}, \inn{\T(x), x} = \inn{x, x}' > 0 &  & \text{(by \cref{6.1.1}(d))} \\
+    \implies & \T \text{ is positive definite with respect to } \inn{\cdot, \cdot}.   &  & \text{(by \cref{6.4.11})}
+  \end{align*}
+
+  Finally we show that \(\T\) is positive definite with respect to \(\inn{\cdot, \cdot}'\).
+  Since \(\T\) is positive definite with respect to \(\inn{\cdot, \cdot}\), by \cref{ex:6.4.17}(a) we know that \(\T\) is invertible.
+  Thus we have
+  \begin{align*}
+    \forall x, y \in \V, \inn{x, (\T^{-1})^{\dag}(y)}' & = \inn{\T^{-1}(x), y}'        &  & \text{(by \cref{6.9})}      \\
+                                                       & = \inn{x, y}                                                   \\
+                                                       & = \conj{\inn{y, x}}           &  & \text{(by \cref{6.1.1}(c))} \\
+                                                       & = \conj{\inn{\T^{-1}(y), x}'}                                  \\
+                                                       & = \inn{x, \T^{-1}(y)}'        &  & \text{(by \cref{6.1.1}(c))}
+  \end{align*}
+  and by \cref{6.1}(e) we have \(\T^{-1} = (\T^{-1})^{\dag}\).
+  By \cref{6.4.8} this means \(\T^{-1}\) is self-adjoint with respect to \(\inn{\cdot, \cdot}'\).
+  Then we have
+  \begin{align*}
+             & \forall x \in \V \setminus \set{\zv}, \inn{\T^{-1}(x), x}' = \inn{x, x} > 0            &  & \text{(by \cref{6.1.1}(d))}     \\
+    \implies & \T^{-1} \text{ is positive definite with respect to } \inn{\cdot, \cdot}'              &  & \text{(by \cref{6.4.11})}       \\
+    \implies & \T = (\T^{-1})^{-1} \text{ is positive definite with respect to } \inn{\cdot, \cdot}'. &  & \text{(by \cref{ex:6.4.19}(c))}
+  \end{align*}
+\end{proof}
