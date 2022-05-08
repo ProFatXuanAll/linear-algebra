@@ -997,13 +997,68 @@
 \end{proof}
 
 \begin{proof}[\pf{ex:6.4.17}(d)]
-
+  As in the proof of \cref{ex:6.4.17}(a), \(\T\) is self-adjoint implies there exists an orthonormal basis \(\gamma\) for \(\V\) over \(\F\) consist of eigenvectors of \(\T\).
+  Let \(v \in \gamma\) and let \(\lambda \in \F\) be an eigenvalue of \(\T\) corresponding to \(v\).
+  By \cref{ex:6.4.17}(a) we know that \(\lambda \geq 0\).
+  Now we split into two cases:
+  \begin{itemize}
+    \item If \(\lambda = 0\), then we have
+          \begin{align*}
+                     & \T(v) = 0v = \zv                  &  & \text{(by \cref{5.1.2})}    \\
+            \implies & \U^2(v) = \T^2(v) = \T(\zv) = \zv &  & \text{(by \cref{2.1.2}(a))} \\
+            \implies & 0 = \inn{\U^2(v), v}              &  & \text{(by \cref{6.1}(c))}   \\
+                     & = \inn{(\U^* \U)(v), v}           &  & \text{(by \cref{6.4.8})}    \\
+                     & = \inn{\U(v), \U(v)}              &  & \text{(by \cref{6.9})}      \\
+            \implies & \U(v) = \zv = \T(v).              &  & \text{(by \cref{6.1}(d))}
+          \end{align*}
+    \item If \(\lambda > 0\), then we have
+          \begin{align*}
+                     & \U^2(v) = \T^2(v) = \lambda^2 v                                                                           &  & \text{(by \cref{5.1.2})} \\
+            \implies & \zv = \U^2(v) - \lambda^2 v = ((\U + \lambda \IT[\V]) (\U - \lambda \IT[\V]))(v)                          &  & \text{(by \cref{2.10})}  \\
+            \implies & \begin{dcases}
+                         \ns{\U - (-\lambda) \IT[\V]} = \ns{\U + \lambda \IT[\V]} = \set{\zv} \\
+                         (\U - \lambda \IT[\V])(v) \in \ns{\U + \lambda \IT[\V]}
+                       \end{dcases} &  & \text{(by \cref{ex:6.4.17}(a))}                                  \\
+            \implies & (\U - \lambda \IT[\V])(v) = \zv                                                                                                         \\
+            \implies & \U(v) = \lambda v = \T(v).
+          \end{align*}
+  \end{itemize}
+  From all cases above we see that \(\U(v) = \T(v)\).
+  Since \(v\) is arbitrary, we see that \(\T, \U\) argee on \(\gamma\).
+  Thus by \cref{2.1.13} we have \(\T = \U\).
 \end{proof}
 
 \begin{proof}[\pf{ex:6.4.17}(e)]
-
+  Since \(\T, \U\) are self-adjoint and \(\T \U = \U \T\), by \cref{ex:6.4.14} there exists an orthonormal basis \(\gamma\) for \(\V\) over \(\F\) consist of eigenvectors of \(\T\) and \(\U\).
+  Let \(v \in \gamma\) and let \(\lambda_{\T}, \lambda_{\U} \in \F\) be eigenvalues of \(\T\) and \(\U\) corresponding to \(v\), respectively.
+  Since
+  \begin{align*}
+    \U(\T(v)) & = \U(\lambda_{\T} v)           &  & \text{(by \cref{5.1.2})}    \\
+              & = \lambda_{\T} \U(v)           &  & \text{(by \cref{2.1.1}(b))} \\
+              & = \lambda_{\T} \lambda_{\U} v, &  & \text{(by \cref{5.1.2})}
+  \end{align*}
+  we know that \(v\) is an eigenvector of \(\U \T\) corresponding to eigenvalue \(\lambda_{\T} \lambda_{\U}\).
+  By \cref{ex:6.4.17}(a) we know that \(\lambda_{\T} > 0\) and \(\lambda_{\U} > 0\), thus \(\lambda_{\T} \lambda_{\U} > 0\).
+  Since \(v\) is arbitrary, we know that \(\gamma\) is consist of eigenvectors of \(\U \T\) and all eigenvalues of \(\U \T\) are positive.
+  Since
+  \begin{align*}
+    (\U \T)^* & = \T^* \U^* &  & \text{(by \cref{6.11}(c))} \\
+              & = \T \U     &  & \text{(by \cref{6.4.8})}   \\
+              & = \U \T,
+  \end{align*}
+  by \cref{6.4.8} we know that \(\U \T\) is self-adjoint.
+  Thus by \cref{ex:6.4.17}(a) \(\U \T = \T \U\) is positive definite.
 \end{proof}
 
 \begin{proof}[\pf{ex:6.4.17}(f)]
-
+  Let \([\cdot, \cdot]\) be the standard inner product on \(\vs{F}^n\) over \(\F\).
+  Then we have
+  \begin{align*}
+         & \T \text{ is positive definite}                                                                                       \\
+    \iff & \forall x \in \V, \inn{\T(x), x} > 0                                             &  & \text{(by \cref{6.4.11})}       \\
+    \iff & \forall x \in \vs{F}^n, \sum_{i = 1}^n \sum_{j = 1}^n A_{i j} x_j \conj{x_i} > 0 &  & \text{(by \cref{ex:6.4.17}(b))} \\
+    \iff & \forall x \in \vs{F}^n, [Ax, x] > 0                                              &  & \text{(by \cref{6.1.2})}        \\
+    \iff & \forall x \in \vs{F}^n, [\L_A(x), x] > 0                                         &  & \text{(by \cref{2.3.8})}        \\
+    \iff & A \text{ is positive definite}.                                                  &  & \text{(by \cref{6.4.11})}
+  \end{align*}
 \end{proof}
