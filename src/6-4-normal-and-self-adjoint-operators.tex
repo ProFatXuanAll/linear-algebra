@@ -1198,3 +1198,55 @@
   \end{align*}
   Thus by \cref{6.1.1} \(\inn{\cdot, \cdot}'\) is an inner product on \(\V\) over \(\F\).
 \end{proof}
+
+\begin{ex}\label{ex:6.4.21}
+  Let \(\V\) be a finite-dimensional inner product space over \(\F\), and let \(\T\) and \(\U\) be self-adjoint operators on \(\V\) such that \(\T\) is positive definite.
+  Prove that both \(\T \U\) and \(\U \T\) are diagonalizable linear operators that have only real eigenvalues.
+\end{ex}
+
+\begin{proof}[\pf{ex:6.4.21}]
+  Let \(\inn{\cdot, \cdot}\) be an inner product on \(\V\) over \(\F\).
+  For each \(\lt{S} \in \ls(\V)\), we denote the adjoint of \(\lt{S}\) with respect to \(\inn{\cdot, \cdot}\) as \(\vs{S}^*\).
+  Suppose that \(\T, \U\) are self-adjoint with respect to \(\inn{\cdot, \cdot}\) and \(\T\) is positive definite with respect to \(\inn{\cdot, \cdot}\).
+
+  Define inner product \(\inn{\cdot, \cdot}'\) on \(\V\) over \(\F\) by setting \(\inn{x, y}' = \inn{\T(x), y}\) for all \(x, y \in \V\).
+  By \cref{ex:6.4.20} we see that \(\inn{\cdot, \cdot}'\) is indeed an inner product on \(\V\) over \(\F\).
+  For each \(\lt{S} \in \ls(\V)\), we denote the adjoint of \(\lt{S}\) with respect to \(\inn{\cdot, \cdot}'\) as \(\vs{S}^{\dag}\).
+  These adjoint operators are well-defined thanks to \cref{6.9}.
+  Now we show that \(\U \T\) is self-adjoint with respect to \(\inn{\cdot, \cdot}'\).
+  Since
+  \begin{align*}
+    \forall x, y \in \V, \inn{x, (\U \T)^{\dag}(y)}' & = \inn{(\U \T)(x), y}'       &  & \text{(by \cref{6.9})}   \\
+                                                     & = \inn{\T(\U(\T(x))), y}                                   \\
+                                                     & = \inn{\T(x), \U^*(\T^*(y))} &  & \text{(by \cref{6.9})}   \\
+                                                     & = \inn{\T(x), \U(\T(y))}     &  & \text{(by \cref{6.4.8})} \\
+                                                     & = \inn{x, (\U \T)(y)}',
+  \end{align*}
+  by \cref{6.1}(e) we have \((\U \T)^{\dag} = \U \T\).
+  Thus by \cref{6.4.8} \(\U \T\) is self-adjoint with respect to \(\inn{\cdot, \cdot}'\), and by \cref{6.16,6.17} we know that \(\U \T\) is diagonalizable.
+  By \cref{6.4.10}(a) this means \(\U \T\) has only real eigenvalues.
+
+  Since \(\T\) is self-adjoint with respect to \(\inn{\cdot, \cdot}\), by \cref{6.16,6.17} we know that there exists an orthonormal basis for \(\V\) over \(\F\) consist of eigenvectors of \(\T\).
+  Since \(\T\) is positive definite with respect to \(\inn{\cdot, \cdot}\), by \cref{ex:6.4.17}(a) we know that every eigenvalue of \(\T\) is positive.
+  Thus \(\T\) is invertible, and we can define inner product \(\inn{x, y}'' = \inn{\T^{-1}(x), y}\) for all \(x, y\).
+  By \cref{ex:6.4.19}(c) we know that \(\T^{-1}\) is positive definite with respect to \(\inn{\cdot, \cdot}\), thus by \cref{ex:6.4.20} \(\inn{\cdot, \cdot}''\) is indeed an inner product on \(\V\) over \(\F\).
+  For each \(\lt{S} \in \ls(\V)\), we denote the adjoint of \(\lt{S}\) with respect to \(\inn{\cdot, \cdot}''\) as \(\vs{S}^{\ddag}\).
+  These adjoint operators are well-defined thanks to \cref{6.9}.
+  Now we show that \(\T \U\) is self-adjoint with respect to \(\inn{\cdot, \cdot}''\).
+  Since
+  \begin{align*}
+    \forall x, y \in \V, \inn{x, (\T \U)^{\ddag}(y)}'' & = \inn{(\T \U)(x), y}''           &  & \text{(by \cref{6.9})}      \\
+                                                       & = \inn{\T^{-1}(\T(\U(x))), y}                                      \\
+                                                       & = \inn{\U(x), y}                                                   \\
+                                                       & = \inn{x, \U^*(y)}                &  & \text{(by \cref{6.9})}      \\
+                                                       & = \inn{x, \U(y)}                  &  & \text{(by \cref{6.4.8})}    \\
+                                                       & = \inn{x, \T^{-1}(\T(\U(y)))}                                      \\
+                                                       & = \inn{(\T^{-1})^*(x), \T(\U(y))} &  & \text{(by \cref{6.9})}      \\
+                                                       & = \inn{(\T^*)^{-1}(x), \T(\U(y))} &  & \text{(by \cref{ex:6.3.8})} \\
+                                                       & = \inn{\T^{-1}(x), \T(\U(y))}     &  & \text{(by \cref{6.4.8})}    \\
+                                                       & = \inn{x, (\T \U)(y)}'',
+  \end{align*}
+  by \cref{6.1}(e) we have \((\T \U)^{\ddag} = \T \U\).
+  Thus by \cref{6.4.8} \(\T \U\) is self-adjoint with respect to \(\inn{\cdot, \cdot}''\), and by \cref{6.16,6.17} we know that \(\T \U\) is diagonalizable.
+  By \cref{6.4.10}(a) this means \(\T \U\) has only real eigenvalues.
+\end{proof}
