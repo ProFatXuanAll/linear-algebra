@@ -1331,3 +1331,75 @@
     \implies & \T = (\T^{-1})^{-1} \text{ is positive definite with respect to } \inn{\cdot, \cdot}'. &  & \text{(by \cref{ex:6.4.19}(c))}
   \end{align*}
 \end{proof}
+
+\begin{ex}\label{ex:6.4.23}
+  Let \(\U\) be a diagonalizable linear operator on a finite-dimensional inner product space \(\V\) over \(\F\) such that all of the eigenvalues of \(\U\) are real.
+  Prove that there exist positive definite linear operators \(\T_1\) and \(\T_1'\) and self-adjoint linear operators \(\T_2\) and \(\T_2'\) such that \(\U = \T_2 \T_1 = \T_1' \T_2'\).
+\end{ex}
+
+\begin{proof}[\pf{ex:6.4.23}]
+  Let \(\inn{\cdot, \cdot}, \inn{\cdot, \cdot}'\) be inner products on \(\V\) over \(\F\).
+  For each \(\lt{S} \in \ls(\V)\), we denote the adjoint of \(\lt{S}\) with respect to \(\inn{\cdot, \cdot}\) as \(\lt{S}^*\), and denote the adjoint of \(\lt{S}\) with respect to \(\inn{\cdot, \cdot}'\) as \(\lt{S}^{\dag}\).
+
+  Since \(\U\) is diagonalizable, by \cref{5.1.1} there exists an ordered basis \(\beta'\) for \(\V\) over \(\F\) such that \([\U]_{\beta'}\) is a diagonal matrix.
+  In particular, we can normalize \(\beta'\) by \(\inn{\cdot, \cdot}'\) to get \(\beta\) so that \(\beta\) is orthonormal with respect to \(\inn{\cdot, \cdot}'\).
+  Since all eigenvalues of \(\U\) are real, we have
+  \begin{align*}
+    [\U]_{\beta} & = [\U]_{\beta}^{\dag}  &  & \text{(by \cref{6.1.5})} \\
+                 & = [\U^{\dag}]_{\beta}. &  & \text{(by \cref{6.10})}
+  \end{align*}
+  Thus by \cref{2.1.13} we have \(\U^{\dag} = \U\) and by \cref{6.4.8} \(\U\) is self-adjoint with respect to \(\inn{\cdot, \cdot}'\).
+
+  By \cref{ex:6.4.22}(a) there exists a unique \(\T_1 \in \ls(\V)\) such that \(\inn{x, y}' = \inn{\T_1(x), y}\) for all \(x, y \in \V\).
+  By \cref{ex:6.4.22}(b) we also know that \(\T_1\) is positive definite with respect to both \(\inn{\cdot, \cdot}\) and \(\inn{\cdot, \cdot}'\).
+  Since \(\T_1\) is positive definite, by \cref{ex:6.4.17}(a) we know that \(\T_1\) is invertible.
+  Now we show that \(\U = \T_1^{-1} \U^* \T_1\).
+  Since
+  \begin{align*}
+    \forall x, y \in \V, \inn{x, \U(y)}' & = \inn{x, \U^{\dag}(y)}'                      &  & \text{(by \cref{6.4.8})}        \\
+                                         & = \inn{\U(x), y}'                             &  & \text{(by \cref{6.9})}          \\
+                                         & = \inn{\T_1(\U(x)), y}                        &  & \text{(by \cref{ex:6.4.22}(a))} \\
+                                         & = \inn{x, \U^*(\T_1^*(y))}                    &  & \text{(by \cref{6.9})}          \\
+                                         & = \inn{x, \U^*(\T_1(y))}                      &  & \text{(by \cref{6.4.11})}       \\
+                                         & = \inn{\T_1^{-1}(\T(x)), \U^*(\T_1(y))}                                            \\
+                                         & = \inn{\T_1(x), (\T_1^{-1})^*(\U^*(\T_1(y)))} &  & \text{(by \cref{6.9})}          \\
+                                         & = \inn{\T_1(x), (\T_1^*)^{-1}(\U^*(\T_1(y)))} &  & \text{(by \cref{ex:6.3.8})}     \\
+                                         & = \inn{\T_1(x), \T_1^{-1}(\U^*(\T_1(y)))}     &  & \text{(by \cref{6.4.11})}       \\
+                                         & = \inn{x, \T_1^{-1}(\U^*(\T_1(y)))}'          &  & \text{(by \cref{ex:6.4.22}(a))}
+  \end{align*}
+  by \cref{6.1}(e) we know that \(\U = \T_1^{-1} \U^* \T_1\).
+
+  Define \(\T_2 = \T_1^{-1} \U^*\).
+  Then we have \(\U = \T_2 \T_1\).
+  By \cref{2.9,2.17,6.9} we know that \(\T_2 \in \ls(\V)\).
+  Now we show that \(\T_2\) is self-adjoint with respect to \(\inn{\cdot, \cdot}\).
+  Since
+  \begin{align*}
+    \forall x, y \in \V, \inn{x, \T_2^*(y)} & = \inn{\T_2(x), y}                            &  & \text{(by \cref{6.9})}        \\
+                                            & = \inn{(\T_1^{-1} \U^*)(x), y}                                                   \\
+                                            & = \inn{x, (\U (\T_1^{-1})^*)(y)}              &  & \text{(by \cref{6.11}(c))}    \\
+                                            & = \inn{x, (\U (\T_1^*)^{-1})(y)}              &  & \text{(by \cref{ex:6.3.8})}   \\
+                                            & = \inn{x, (\U \T_1^{-1})(y)}                  &  & \text{(by \cref{6.4.11})}     \\
+                                            & = \inn{x, (\T_1^{-1} \U^* \T_1 \T_1^{-1})(y)} &  & \text{(from the proof above)} \\
+                                            & = \inn{x, (\T_1^{-1} \U^*)(y)}                                                   \\
+                                            & = \inn{x, \T_2(y)},
+  \end{align*}
+  by \cref{6.1}(e) we have \(\T_2^* = \T_2\).
+  Thus by \cref{6.4.8} \(\T_2\) is self-adjoint with respect to \(\inn{\cdot, \cdot}\).
+
+  Now we define \(\T_1' = \T_1^{-1}\) and \(\T_2' = \U^* \T_1\).
+  Clearly we have \(\U = \T_1' \T_2'\).
+  By \cref{ex:6.4.19}(c) we know that \(\T_1'\) is positive definite with respect to both \(\inn{\cdot, \cdot}\) and \(\inn{\cdot, \cdot}'\).
+  So we are left to show that \(\T_2'\) is self-adjoint with respect to \(\inn{\cdot, \cdot}\).
+  Since
+  \begin{align*}
+    \forall x, y \in \V, \inn{x, (\T_2')^*(y)} & = \inn{x, (\U^* \T_1)^*(y)}                                                 \\
+                                               & = \inn{x, (\T_1^* \U)(y)}                &  & \text{(by \cref{6.11}(c)(d))} \\
+                                               & = \inn{x, (\T_1 \U)(y)}                  &  & \text{(by \cref{6.4.11})}     \\
+                                               & = \inn{x, (\T_1 \T_1^{-1} \U^* \T_1)(y)} &  & \text{(from the proof above)} \\
+                                               & = \inn{x, (\U^* \T_1)(y)}                                                   \\
+                                               & = \inn{x, (\T_2')(y)},
+  \end{align*}
+  by \cref{6.1}(e) we see that \((\T_2')^* = \T_2'\).
+  Thus by \cref{6.4.8} \(\T_2'\) is self-adjoint with respect to \(\inn{\cdot, \cdot}\).
+\end{proof}
