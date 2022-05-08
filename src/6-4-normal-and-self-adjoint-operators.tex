@@ -869,9 +869,9 @@
   Prove the following results.
   \begin{enumerate}
     \item \(\T\) is positive definite (semidefinite) iff all of its eigenvalues are positive (nonnegative).
-    \item \(\T\) is positive definite iff
+    \item \(\T\) is positive definite (semidefinite) iff
           \[
-            \sum_{i = 1}^n \sum_{j = 1}^n A_{i j} a_j \conj{a_i} > 0 \text{ for all nonzero } n\text{-tuples } \tuple{a}{1,,n}.
+            \sum_{i = 1}^n \sum_{j = 1}^n A_{i j} a_j \conj{a_i} > 0 \; (\geq 0) \text{ for all nonzero } n\text{-tuples } \tuple{a}{1,,n}.
           \]
     \item \(\T\) is positive semidefinite iff \(A = B^* B\) for some square matrix \(B\).
     \item If \(\T\) and \(\U\) are positive semidefinite operators such that \(\T^2 = \U^2\), then \(\T = \U\).
@@ -935,11 +935,11 @@
   \end{align*}
   Thus we have
   \begin{align*}
-         & \T \text{ is positive definite}                                                                                                          \\
-    \iff & \forall x \in \V \setminus \set{\zv}, 0 < \inn{\T(x), x}                                              &  & \text{(by \cref{6.4.11})}     \\
-         & = \inn{\T\pa{\sum_{j = 1}^n \inn{x, v_j} v_j}, \sum_{k = 1}^n \inn{x, v_k} v_k}                       &  & \text{(by \cref{6.5})}        \\
-         & = \sum_{j = 1}^n \sum_{i = 1}^n \inn{x, v_j} A_{i j} \conj{\inn{x, v_i}}                              &  & \text{(from the proof above)} \\
-    \iff & \forall a \in \vs{F}^n \setminus \set{\zv}, \sum_{i = 1}^n \sum_{j = 1}^n A_{i j} a_j \conj{a_i} > 0.
+         & \T \text{ is positive definite (semidefinite)}                                                                                                  \\
+    \iff & \forall x \in \V \setminus \set{\zv}, 0 < (\leq) \inn{\T(x), x}                                              &  & \text{(by \cref{6.4.11})}     \\
+         & = \inn{\T\pa{\sum_{j = 1}^n \inn{x, v_j} v_j}, \sum_{k = 1}^n \inn{x, v_k} v_k}                              &  & \text{(by \cref{6.5})}        \\
+         & = \sum_{j = 1}^n \sum_{i = 1}^n \inn{x, v_j} A_{i j} \conj{\inn{x, v_i}}                                     &  & \text{(from the proof above)} \\
+    \iff & \forall a \in \vs{F}^n \setminus \set{\zv}, \sum_{i = 1}^n \sum_{j = 1}^n A_{i j} a_j \conj{a_i} > (\geq) 0.
   \end{align*}
 \end{proof}
 
@@ -1054,11 +1054,103 @@
   Let \([\cdot, \cdot]\) be the standard inner product on \(\vs{F}^n\) over \(\F\).
   Then we have
   \begin{align*}
-         & \T \text{ is positive definite}                                                                                       \\
-    \iff & \forall x \in \V, \inn{\T(x), x} > 0                                             &  & \text{(by \cref{6.4.11})}       \\
-    \iff & \forall x \in \vs{F}^n, \sum_{i = 1}^n \sum_{j = 1}^n A_{i j} x_j \conj{x_i} > 0 &  & \text{(by \cref{ex:6.4.17}(b))} \\
-    \iff & \forall x \in \vs{F}^n, [Ax, x] > 0                                              &  & \text{(by \cref{6.1.2})}        \\
-    \iff & \forall x \in \vs{F}^n, [\L_A(x), x] > 0                                         &  & \text{(by \cref{2.3.8})}        \\
-    \iff & A \text{ is positive definite}.                                                  &  & \text{(by \cref{6.4.11})}
+         & \T \text{ is positive definite (semidefinite)}                                                                               \\
+    \iff & \forall x \in \V, \inn{\T(x), x} > (\geq) 0                                             &  & \text{(by \cref{6.4.11})}       \\
+    \iff & \forall x \in \vs{F}^n, \sum_{i = 1}^n \sum_{j = 1}^n A_{i j} x_j \conj{x_i} > (\geq) 0 &  & \text{(by \cref{ex:6.4.17}(b))} \\
+    \iff & \forall x \in \vs{F}^n, [Ax, x] > (\geq) 0                                              &  & \text{(by \cref{6.1.2})}        \\
+    \iff & \forall x \in \vs{F}^n, [\L_A(x), x] > (\geq) 0                                         &  & \text{(by \cref{2.3.8})}        \\
+    \iff & A \text{ is positive definite (semidefinite)}.                                          &  & \text{(by \cref{6.4.11})}
   \end{align*}
+\end{proof}
+
+\begin{ex}\label{ex:6.4.18}
+  Let \(\T \in \ls(\V, \W)\) where \(\V\) and \(\W\) are finite-dimensional inner product spaces.
+  Prove the following results.
+  \begin{enumerate}
+    \item \(\T^* \T\) and \(\T \T^*\) are positive semidefinite.
+    \item \(\rk{\T^* \T} = \rk{\T \T^*} = \rk{\T}\).
+  \end{enumerate}
+\end{ex}
+
+\begin{proof}[\pf{ex:6.4.18}(a)]
+  Since
+  \begin{align*}
+    (\T^* \T)^* & = \T^* \T^{**} &  & \text{(by \cref{ex:6.3.16}(c))} \\
+                & = \T^* \T      &  & \text{(by \cref{ex:6.3.16}(d))} \\
+    (\T \T^*)^* & = \T^{**} \T^* &  & \text{(by \cref{ex:6.3.16}(c))} \\
+                & = \T \T^*      &  & \text{(by \cref{ex:6.3.16}(d))}
+  \end{align*}
+  and
+  \begin{align*}
+    \forall x \in \V \setminus \set{\zv}, \inn{(\T^* \T)(x), x} & = \inn{\T^*(\T(x)), x}                                        \\
+                                                                & = \inn{\T(x), \T(x)}     &  & \text{(by \cref{ex:6.3.15}(a))} \\
+                                                                & \geq 0                   &  & \text{(by \cref{6.1}(d))}       \\
+    \forall x \in \V \setminus \set{\zv}, \inn{(\T \T^*)(x), x} & = \inn{\T(\T^*(x)), x}                                        \\
+                                                                & = \inn{\T^*(x), \T^*(x)} &  & \text{(by \cref{ex:6.3.15}(a))} \\
+                                                                & \geq 0,                  &  & \text{(by \cref{6.1}(d))}
+  \end{align*}
+  by \cref{6.4.11} we know that \(\T^* \T\) and \(\T \T^*\) are positive semidefinite.
+\end{proof}
+
+\begin{proof}[\pf{ex:6.4.18}(b)]
+  By \cref{ex:6.3.15}(e) we have \(\ns{\T^* \T} = \ns{\T}\).
+  Since
+  \begin{align*}
+             & \dim(\V) = \begin{dcases}
+                            \rk{\T} + \nt{\T} \\
+                            \rk{\T^* \T} + \nt{\T^* \T}
+                          \end{dcases} &  & \text{(by \cref{2.3})}            \\
+    \implies & \rk{\T} = \rk{\T^* \T},     &  & \text{(from the proof above)}
+  \end{align*}
+  we have
+  \begin{align*}
+    \rk{\T \T^*} & = \rk{\T^{**} \T^*} &  & \text{(by \cref{ex:6.3.16}(d))} \\
+                 & = \rk{\T^*}         &  & \text{(from the proof above)}   \\
+                 & = \rk{\T}.          &  & \text{(by \cref{ex:6.3.15}(c))}
+  \end{align*}
+\end{proof}
+
+\begin{ex}\label{ex:6.4.19}
+  Let \(\T\) and \(\U\) be positive definite operators on an inner product space \(\V\) over \(\F\).
+  Prove the following results.
+  \begin{enumerate}
+    \item \(\T + \U\) is positive definite.
+    \item If \(c > 0\), then \(c \T\) is positive definite.
+    \item \(\T^{-1}\) is positive definite.
+  \end{enumerate}
+\end{ex}
+
+\begin{proof}[\pf{ex:6.4.19}(a)]
+  We have
+  \begin{align*}
+    (\T + \U)^* & = \T^* + \U^* &  & \text{(by \cref{6.11}(a))} \\
+                & = \T + \U     &  & \text{(by \cref{6.4.11})}
+  \end{align*}
+  and
+  \begin{align*}
+    \forall x \in \V \setminus \set{\zv}, \inn{(\T + \U)(x), x} & = \inn{\T(x) + \U(x), x}                                           \\
+                                                                & = \inn{\T(x), x} + \inn{\U(x), x} &  & \text{(by \cref{6.1.1}(a))} \\
+                                                                & > 0.                              &  & \text{(by \cref{6.4.11})}
+  \end{align*}
+  Thus by \cref{6.4.11} \(\T + \U\) is positive definite.
+\end{proof}
+
+\begin{proof}[\pf{ex:6.4.19}(b)]
+  We have
+  \begin{align*}
+    (c\T)^* & = \conj{c} \T^* &  & \text{(by \cref{6.11}(b))} \\
+            & = \conj{c} \T   &  & \text{(by \cref{6.4.11})}  \\
+            & = c \T          &  & (c > 0)
+  \end{align*}
+  and
+  \begin{align*}
+    \forall x \in \V \setminus \set{\zv}, \inn{(c \T)(x), x} & = \inn{c \T(x), x}                                  \\
+                                                             & = c \inn{\T(x), x} &  & \text{(by \cref{6.1.1}(b))} \\
+                                                             & > 0.               &  & \text{(by \cref{6.4.11})}
+  \end{align*}
+  Thus by \cref{6.4.11} \(c \T\) is positive definite.
+\end{proof}
+
+\begin{proof}[\pf{ex:6.4.19}(c)]
+
 \end{proof}
