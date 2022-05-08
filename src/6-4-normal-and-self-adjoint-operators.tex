@@ -1073,6 +1073,7 @@
 \end{ex}
 
 \begin{proof}[\pf{ex:6.4.18}(a)]
+  Let \(\inn{\cdot, \cdot}_1, \inn{\cdot, \cdot}_2\) be inner products on \(\V\) and \(\W\) over \(\F\), respectively.
   Since
   \begin{align*}
     (\T^* \T)^* & = \T^* \T^{**} &  & \text{(by \cref{ex:6.3.16}(c))} \\
@@ -1082,12 +1083,12 @@
   \end{align*}
   and
   \begin{align*}
-    \forall x \in \V \setminus \set{\zv}, \inn{(\T^* \T)(x), x} & = \inn{\T^*(\T(x)), x}                                        \\
-                                                                & = \inn{\T(x), \T(x)}     &  & \text{(by \cref{ex:6.3.15}(a))} \\
-                                                                & \geq 0                   &  & \text{(by \cref{6.1}(d))}       \\
-    \forall x \in \V \setminus \set{\zv}, \inn{(\T \T^*)(x), x} & = \inn{\T(\T^*(x)), x}                                        \\
-                                                                & = \inn{\T^*(x), \T^*(x)} &  & \text{(by \cref{ex:6.3.15}(a))} \\
-                                                                & \geq 0,                  &  & \text{(by \cref{6.1}(d))}
+    \forall x \in \V \setminus \set{\zv}, \inn{(\T^* \T)(x), x}_1 & = \inn{\T^*(\T(x)), x}_1                                        \\
+                                                                  & = \inn{\T(x), \T(x)}_2     &  & \text{(by \cref{ex:6.3.15}(a))} \\
+                                                                  & \geq 0                     &  & \text{(by \cref{6.1}(d))}       \\
+    \forall y \in \W \setminus \set{\zv}, \inn{(\T \T^*)(y), y}_2 & = \inn{\T(\T^*(y)), y}_2                                        \\
+                                                                  & = \inn{\T^*(y), \T^*(y)}_1 &  & \text{(by \cref{ex:6.3.15}(a))} \\
+                                                                  & \geq 0,                    &  & \text{(by \cref{6.1}(d))}
   \end{align*}
   by \cref{6.4.11} we know that \(\T^* \T\) and \(\T \T^*\) are positive semidefinite.
 \end{proof}
@@ -1152,5 +1153,48 @@
 \end{proof}
 
 \begin{proof}[\pf{ex:6.4.19}(c)]
+  We have
+  \begin{align*}
+    (\T^{-1})^* & = (\T^*)^{-1} &  & \text{(by \cref{ex:6.3.8})} \\
+                & = \T^{-1}     &  & \text{(by \cref{6.4.11})}
+  \end{align*}
+  and
+  \begin{align*}
+             & \lambda \in \F \text{ is an eigenvalue of } \T^{-1}                                      \\
+    \implies & \lambda^{-1} \in \F \text{ is an eigenvalue of } \T &  & \text{(by \cref{ex:5.1.8}(b))}  \\
+    \implies & \lambda^{-1} > 0                                    &  & \text{(by \cref{ex:6.4.17}(a))} \\
+    \implies & \lambda > 0.
+  \end{align*}
+  Thus by \cref{ex:6.4.17}(a) \(\T^{-1}\) is positive definite.
+\end{proof}
 
+\begin{ex}\label{ex:6.4.20}
+  Let \(\V\) be an inner product space over \(\F\) with inner product \(\inn{\cdot, \cdot}\), and let \(\T\) be a positive definite linear operator on \(\V\).
+  Prove that \(\inn{x, y}' = \inn{\T(x), y}\) defines another inner product on \(\V\) over \(\F\).
+\end{ex}
+
+\begin{proof}[\pf{ex:6.4.20}]
+  Let \(x, y, z \in \V\) and let \(c \in \F\).
+  Then we have
+  \begin{align*}
+    \inn{x + y, z}'    & = \inn{\T(x + y), z}              &  & \text{(by \cref{ex:6.4.20})} \\
+                       & = \inn{\T(x) + \T(y), z}          &  & \text{(by \cref{2.1.1}(a))}  \\
+                       & = \inn{\T(x), z} + \inn{\T(y), z} &  & \text{(by \cref{6.1.1}(a))}  \\
+                       & = \inn{x, z}' + \inn{y, z}'       &  & \text{(by \cref{ex:6.4.20})} \\
+    \inn{cx, y}'       & = \inn{\T(cx), y}                 &  & \text{(by \cref{ex:6.4.20})} \\
+                       & = \inn{c \T(x), y}                &  & \text{(by \cref{2.1.1}(b))}  \\
+                       & = c \inn{\T(x), y}                &  & \text{(by \cref{6.1.1}(b))}  \\
+                       & = c \inn{x, y}'                   &  & \text{(by \cref{ex:6.4.20})} \\
+    \conj{\inn{x, y}'} & = \conj{\inn{\T(x), y}}           &  & \text{(by \cref{ex:6.4.20})} \\
+                       & = \inn{y, \T(x)}                  &  & \text{(by \cref{6.1.1}(c))}  \\
+                       & = \inn{\T^*(y), x}                &  & \text{(by \cref{6.9})}       \\
+                       & = \inn{\T(y), x}                  &  & \text{(by \cref{6.4.11})}    \\
+                       & = \inn{y, x}'.                    &  & \text{(by \cref{ex:6.4.20})}
+  \end{align*}
+  If \(x \neq \zv\), then we have
+  \begin{align*}
+    \inn{x, x}' & = \inn{\T(x), x} &  & \text{(by \cref{ex:6.4.20})} \\
+                & > 0.             &  & \text{(by \cref{6.4.11})}
+  \end{align*}
+  Thus by \cref{6.1.1} \(\inn{\cdot, \cdot}'\) is an inner product on \(\V\) over \(\F\).
 \end{proof}
