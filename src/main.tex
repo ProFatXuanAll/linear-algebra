@@ -114,7 +114,9 @@
 \crefname{thm}{Thm.}{Thm.}
 
 % Proof environments reference text.
-\newcommand{\pf}[1]{Proof of \cref{#1}}
+\NewDocumentCommand{\pf}{m}{%
+	Proof of \cref{#1}%
+}
 % Proof statements reference text.
 \NewDocumentCommand{\by}{mo}{%
 	\IfNoValueTF{#2}{%
@@ -142,80 +144,78 @@
 
 % Absolute value.
 \DeclarePairedDelimiter{\absTmp}{\lvert}{\rvert}
-\newcommand{\abs}[1]{\absTmp*{#1}}
+\NewDocumentCommand{\abs}{m}{\absTmp*{#1}}
 % Ceiling.
 \DeclarePairedDelimiter{\ceilTmp}{\lceil}{\rceil}
-\newcommand{\ceil}[1]{\ceilTmp*{#1}}
+\NewDocumentCommand{\ceil}{m}{\ceilTmp*{#1}}
 % Floor.
 \DeclarePairedDelimiter{\floorTmp}{\lfloor}{\rfloor}
-\newcommand{\floor}[1]{\floorTmp*{#1}}
+\NewDocumentCommand{\floor}{m}{\floorTmp*{#1}}
 % Evaluate.
 \DeclarePairedDelimiter{\evalTmp}{.}{\rvert}
-\newcommand{\eval}[1]{\evalTmp*{#1}}
+\NewDocumentCommand{\eval}{m}{\evalTmp*{#1}}
 % Inner product.
 \DeclarePairedDelimiter{\innTmp}{\langle}{\rangle}
-\newcommand{\inn}[1]{\innTmp*{#1}}
+\NewDocumentCommand{\inn}{m}{\innTmp*{#1}}
 % Norm.
 \DeclarePairedDelimiter{\normTmp}{\lVert}{\rVert}
-\newcommand{\norm}[1]{\normTmp*{#1}}
+\NewDocumentCommand{\norm}{m}{\normTmp*{#1}}
 % Parenthese.
 \DeclarePairedDelimiter{\paTmp}{\lparen}{\rparen}
-\newcommand{\pa}[1]{\paTmp*{#1}}
+\NewDocumentCommand{\pa}{m}{\paTmp*{#1}}
 % Bracket.
 \DeclarePairedDelimiter{\brTmp}{\lbrack}{\rbrack}
-\newcommand{\br}[1]{\brTmp*{#1}}
+\NewDocumentCommand{\br}{m}{\brTmp*{#1}}
 % Brace.
 \DeclarePairedDelimiter{\BTmp}{\lbrace}{\rbrace}
-\newcommand{\B}[1]{\BTmp*{#1}}
+\NewDocumentCommand{\B}{m}{\BTmp*{#1}}
 % Set.
-\newcommand{\set}[1]{\B{#1}}
+\NewDocumentCommand{\set}{m}{\B{#1}}
 
 % Define common symbols.  See `amsmath' section 9.2 for details.
 
 % Fields.
-\newcommand{\field}[1]{\mathit{#1}}
+\NewDocumentCommand{\field}{m}{\mathit{#1}}
 % General field.
-\newcommand{\F}{\field{F}}
+\NewDocumentCommand{\F}{}{\field{F}}
 % Complex number field.
-\newcommand{\C}{\mathbb{C}}
+\NewDocumentCommand{\C}{}{\mathbb{C}}
 % Natural number field.
-\newcommand{\N}{\mathbb{N}}
+\NewDocumentCommand{\N}{}{\mathbb{N}}
 % Rational number field.
-\newcommand{\Q}{\mathbb{Q}}
+\NewDocumentCommand{\Q}{}{\mathbb{Q}}
 % Real number field.
-\newcommand{\R}{\mathbb{R}}
+\NewDocumentCommand{\R}{}{\mathbb{R}}
 % Integer number field.
-\newcommand{\Z}{\mathbb{Z}}
+\NewDocumentCommand{\Z}{}{\mathbb{Z}}
 
 % Complex conjugate.
-\newcommand{\conj}[1]{\overline{#1}}
+\NewDocumentCommand{\conj}{m}{\overline{#1}}
 
 % Vector space.
-\newcommand{\vs}[1]{\mathsf{#1}}
+\NewDocumentCommand{\vs}{m}{\mathsf{#1}}
 % General vector space.
-\newcommand{\V}{\vs{V}}
-\newcommand{\W}{\vs{W}}
+\NewDocumentCommand{\V}{}{\vs{V}}
+\NewDocumentCommand{\W}{}{\vs{W}}
 % Collection of vector space.
-\newcommand{\cvs}{\mathcal{C}}
+\NewDocumentCommand{\cvs}{}{\mathcal{C}}
 
 % Metric space with shape #1 x #2 over field #3.
-\newcommand{\ms}[3]{\vs{M}_{{#1} \times #2}({#3})}
+\NewDocumentCommand{\ms}{O{m}O{n}O{\F}}{\vs{M}_{{#1} \times {#2}}\pa{#3}}
 % General metric space.
-\newcommand{\MS}{\ms{m}{n}{\F}}
+\NewDocumentCommand{\MS}{}{\ms}
 
 % Function space.
-\newcommand{\fs}{\mathcal{F}}
+\NewDocumentCommand{\fs}{}{\mathcal{F}}
 % General function space.
-\newcommand{\FS}{\fs(S, \F)}
+\NewDocumentCommand{\FS}{}{\fs(S, \F)}
 
 % Continuous function space with continuous #1-th derivative.
-\newcommand{\cfs}[1][]{%
-	\ifthenelse{%
-		\equal{#1}{}%
+\NewDocumentCommand{\cfs}{o}{%
+	\IfNoValueTF{#1}{%
+		\vs{C}%
 	}{%
-	\vs{C}%
-	}{%
-	\vs{C}^{#1}%
+		\vs{C}^{#1}%
 	}%
 }
 
@@ -232,20 +232,16 @@
 %
 %    \vs{P}_{n}(\F)
 %
-\newcommand{\ps}[2][]{%
-\ifthenelse{%
-	\equal{#1}{}%
-}%
-{%
-	\vs{P}\pa{#2}%
-}%
-{%
-	\vs{P}_{#1}\pa{#2}%
-}%
+\NewDocumentCommand{\ps}{om}{%
+	\IfNoValueTF{#1}{%
+		\vs{P}\pa{#2}%
+	}{%
+		\vs{P}_{#1}\pa{#2}%
+	}%
 }
 
 % Derivative operation.
-\newcommand{\Dop}{\mathsf{D}}
+\NewDocumentCommand{\Dop}{}{\mathsf{D}}
 
 % Sequence.
 % #1 is a join operator (defaults to comma).
@@ -301,68 +297,64 @@
 \newcommand{\tuple}[2]{\pa{\seq{#1}{#2}}}
 
 % 0 vector.
-\newcommand{\zv}{\mathit{0}}
+\NewDocumentCommand{\zv}{}{\mathit{0}}
 % 0 metric.
-\newcommand{\zm}{\mathit{O}}
+\NewDocumentCommand{\zm}{}{\mathit{O}}
 
 % Transpose of matrix #1.
-\newcommand{\tp}[1]{{#1}^{t}}
+\NewDocumentCommand{\tp}{m}{{#1}^{t}}
 
 % Trace of matrix #1.
-\newcommand{\tr}[1][]{%
-	\ifthenelse{%
-	\equal{#1}{}%
-}{%
-\operatorname{tr}%
-}{%
-\operatorname{tr}\pa{#1}%
-}%
+\NewDocumentCommand{\tr}{o}{%
+	\IfNoValueTF{#1}{%
+		\operatorname{tr}%
+	}{%
+		\operatorname{tr}\pa{#1}%
+	}%
 }
 
 % Span of a set.
 % We cannot use `\span' since it is a tex primitive.
-\newcommand{\spn}[1]{\operatorname{span}\pa{#1}}
+\NewDocumentCommand{\spn}{m}{\operatorname{span}\pa{#1}}
 
 % Linear transformation.
-\newcommand{\lt}[1]{\mathsf{#1}}
+\NewDocumentCommand{\lt}{m}{\mathsf{#1}}
 % Linear transformation T.
-\newcommand{\T}{\lt{T}}
+\NewDocumentCommand{\T}{}{\lt{T}}
 % Linear transformation U.
-\newcommand{\U}{\lt{U}}
+\NewDocumentCommand{\U}{}{\lt{U}}
 % Identity transformation I.
-\newcommand{\IT}[1][]{%
-\ifthenelse{%
-	\equal{#1}{}%
-}{%
-\lt{I}%
-}{%
-\lt{I}_{#1}%
-}%
+\NewDocumentCommand{\IT}{o}{%
+	\IfNoValueTF{#1}{%
+		\lt{I}%
+	}{%
+		\lt{I}_{#1}%
+	}%
 }
 % Zero transformation T_0.
-\newcommand{\zT}{\T_0}
+\NewDocumentCommand{\zT}{}{\T_0}
 % Left-multiplication transformation L_A.
-\renewcommand{\L}{\lt{L}}
+\RenewDocumentCommand{\L}{}{\lt{L}}
 
 % Null space N(T).
-\newcommand{\ns}[1]{\mathsf{N}\pa{#1}}
+\NewDocumentCommand{\ns}{m}{\mathsf{N}\pa{#1}}
 
 % Range R(T).
-\newcommand{\rg}[1]{\mathsf{R}\pa{#1}}
+\NewDocumentCommand{\rg}{m}{\mathsf{R}\pa{#1}}
 
 % Nullity nullity(T).
-\newcommand{\nt}[1]{\operatorname{nullity}\pa{#1}}
+\NewDocumentCommand{\nt}{m}{\operatorname{nullity}\pa{#1}}
 
 % Rank rank(T).
-\newcommand{\rk}[1]{\operatorname{rank}\pa{#1}}
+\NewDocumentCommand{\rk}{m}{\operatorname{rank}\pa{#1}}
 
 % Vector spaces of linear transformations.
 % For example:
 % 	\ls(\V) or \ls(\V, \W)
-\newcommand{\ls}{\mathcal{L}}
+\NewDocumentCommand{\ls}{}{\mathcal{L}}
 
 % Formatting exercises section.
-\newcommand{\exercisesection}{
+\NewDocumentCommand{\exercisesection}{}{
 	\begin{center}
 		\textbf{EXERCISES}
 	\end{center}

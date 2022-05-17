@@ -50,7 +50,7 @@
 \end{defn}
 
 \begin{eg}\label{1.3.5}
-	The set \(\W\) of all symmetric matrices in \(\ms{n}{n}{\F}\) is a subspace of \(\ms{n}{n}{\F}\) over \(\F\).
+	The set \(\W\) of all symmetric matrices in \(\ms[n][n][\F]\) is a subspace of \(\ms[n][n][\F]\) over \(\F\).
 \end{eg}
 
 \begin{proof}[\pf{1.3.5}]
@@ -63,7 +63,7 @@
 		      So for any \(a \in \F\), we have \(\tp{(aA)} = a\tp{A} = aA\) by \cref{ex:1.3.3}
 		      Thus \(aA \in W\).
 	\end{itemize}
-	Thus by \cref{1.3} \(\W\) is a subspace of \(\ms{n}{n}{\F}\) over \(\F\).
+	Thus by \cref{1.3} \(\W\) is a subspace of \(\ms[n][n][\F]\) over \(\F\).
 \end{proof}
 
 \begin{eg}\label{1.3.6}
@@ -93,7 +93,7 @@
 
 \begin{eg}\label{1.3.8}
 	An \(n \times n\) matrix \(M\) is called a \textbf{diagonal matrix} if \(M_{i j} = 0\) whenever \(i \neq j\), that is, if all its nondiagonal entries are zero.
-	Then the set of diagonal matrices is a subspace of \(\ms{n}{n}{\F}\) over \(\F\).
+	Then the set of diagonal matrices is a subspace of \(\ms[n][n][\F]\) over \(\F\).
 \end{eg}
 
 \begin{proof}[\pf{1.3.8}]
@@ -104,7 +104,7 @@
 	\]
 	for any scalar \(c \in \F\).
 	Hence \(A + B\) and \(cA\) are diagonal matrices for any scalar \(c \in \F\).
-	Therefore the set of diagonal matrices is a subspace of \(\ms{n}{n}{\F}\) over \(\F\) by \cref{1.3}.
+	Therefore the set of diagonal matrices is a subspace of \(\ms[n][n][\F]\) over \(\F\) by \cref{1.3}.
 \end{proof}
 
 \begin{eg}\label{1.3.9}
@@ -113,11 +113,11 @@
 	\[
 		\tr[M] = M_{1 1} + M_{2 2} + \dots + M_{n n}.
 	\]
-	The set \(\W\) of \(n \times n\) matrices having trace equal to \(0\) is a subspace of \(\ms{n}{n}{\F}\) over \(\F\).
+	The set \(\W\) of \(n \times n\) matrices having trace equal to \(0\) is a subspace of \(\ms[n][n][\F]\) over \(\F\).
 \end{eg}
 
 \begin{proof}[\pf{1.3.9}]
-	Clearly we have \(\W \subseteq \ms{n}{n}{\F}\), \(\tr[\zm] = 0\) and \(\zm \in \W\).
+	Clearly we have \(\W \subseteq \ms[n][n][\F]\), \(\tr[\zm] = 0\) and \(\zm \in \W\).
 	Moreover, if \(A, B \in \W\), then
 	\begin{align*}
 		\tr[A + B] & = \sum_{i = 1}^n (A + B)_{i i}                    &  & \by{1.3.9}                \\
@@ -134,7 +134,7 @@
 		        & = 0                         &  & (c \in \F)
 	\end{align*}
 	for any scalar \(c \in \F\).
-	Therefore \(\W\) is a subspace of \(\ms{n}{n}{\F}\) over \(\F\) by \cref{1.3}.
+	Therefore \(\W\) is a subspace of \(\ms[n][n][\F]\) over \(\F\) by \cref{1.3}.
 \end{proof}
 
 \begin{thm}\label{1.4}
@@ -154,7 +154,7 @@
 
 \setcounter{ex}{2}
 \begin{ex}\label{ex:1.3.3}
-	Prove that \(\tp{(aA + bB)} = a\tp{A} + b\tp{B}\) for any \(A, B \in \ms{m}{n}{\F}\) and any \(a, b \in \F\).
+	Prove that \(\tp{(aA + bB)} = a\tp{A} + b\tp{B}\) for any \(A, B \in \ms[m][n][\F]\) and any \(a, b \in \F\).
 \end{ex}
 
 \begin{proof}[\pf{ex:1.3.3}]
@@ -185,7 +185,7 @@
 \end{proof}
 
 \begin{ex}\label{ex:1.3.5}
-	Prove that \(A + \tp{A}\) is symmetric for any square matrix \(A \in \ms{n}{n}{\F}\).
+	Prove that \(A + \tp{A}\) is symmetric for any square matrix \(A \in \ms[n][n][\F]\).
 \end{ex}
 
 \begin{proof}[\pf{ex:1.3.5}]
@@ -199,7 +199,7 @@
 \end{proof}
 
 \begin{ex}\label{ex:1.3.6}
-	Prove that \(\tr[aA + bB] = a\tr[A] + b\tr[B]\) for any \(A, B \in \ms{n}{n}{\F}\).
+	Prove that \(\tr[aA + bB] = a\tr[A] + b\tr[B]\) for any \(A, B \in \ms[n][n][\F]\).
 \end{ex}
 
 \begin{proof}[\pf{ex:1.3.6}]
@@ -217,7 +217,7 @@
 \end{ex}
 
 \begin{proof}[\pf{ex:1.3.7}]
-	Let \(A \in \ms{n}{n}{\F}\) be a diagonal matrices and let \(i, j = 1, \dots, n\).
+	Let \(A \in \ms[n][n][\F]\) be a diagonal matrices and let \(i, j = 1, \dots, n\).
 	Then we have
 	\begin{align*}
 		         & \begin{dcases}
@@ -830,13 +830,13 @@
 	A matrix \(M\) is called \textbf{skew-symmetric} if \(\tp{M} = -M\).
 	Clearly, a skew-symmetric matrix is square.
 	Let \(\F\) be a field.
-	Prove that the set \(\W_1\) of all skew-symmetric \(n \times n\) matrices with entries from \(\F\) is a subspace of \(\ms{n}{n}{\F}\) over \(\F\).
-	Now assume that \(\F\) is not of characteristic \(2\) (see Appendix C), and let \(\W_2\) be the subspace of \(\ms{n}{n}{\F}\) consisting of all symmetric \(n \times n\) matrices.
-	Prove that \(\ms{n}{n}{\F} = \W_1 \oplus \W_2\).
+	Prove that the set \(\W_1\) of all skew-symmetric \(n \times n\) matrices with entries from \(\F\) is a subspace of \(\ms[n][n][\F]\) over \(\F\).
+	Now assume that \(\F\) is not of characteristic \(2\) (see Appendix C), and let \(\W_2\) be the subspace of \(\ms[n][n][\F]\) consisting of all symmetric \(n \times n\) matrices.
+	Prove that \(\ms[n][n][\F] = \W_1 \oplus \W_2\).
 \end{ex}
 
 \begin{proof}[\pf{ex:1.3.28}]
-	First we show that \(\W_1\) is a subspace of \(\ms{n}{n}{\F}\) over \(\F\).
+	First we show that \(\W_1\) is a subspace of \(\ms[n][n][\F]\) over \(\F\).
 	Since \(\tp{\zm} = \zm = -\zm\), we know that \(\zm \in \W_1\).
 	Let \(A, B \in \W_1\) and let \(c \in \F\).
 	Since
@@ -852,10 +852,10 @@
 		          & = -(cA),   &  & \by{1.2.9}
 	\end{align*}
 	we know that \(A + B, cA \in \W_1\).
-	Thus by \cref{1.3} \(\W_1\) is a subspace of \(\ms{n}{n}{\F}\) over \(\F\).
+	Thus by \cref{1.3} \(\W_1\) is a subspace of \(\ms[n][n][\F]\) over \(\F\).
 
-	Now we show that \(\W_1 \oplus \W_2 = \ms{n}{n}{\F}\).
-	By \cref{1.3.5} we know that \(\W_2\) is a subspace of \(\ms{n}{n}{\F}\) over \(\F\).
+	Now we show that \(\W_1 \oplus \W_2 = \ms[n][n][\F]\).
+	By \cref{1.3.5} we know that \(\W_2\) is a subspace of \(\ms[n][n][\F]\) over \(\F\).
 	Since
 	\begin{align*}
 		         & \forall A \in \W_1 \cap \W_2, \begin{dcases}
@@ -869,29 +869,29 @@
 	\end{align*}
 	and
 	\begin{align*}
-		         & \forall A \in \ms{n}{n}{\F}, \exists (B, C) \in \W_1 \times \W_2 :                                                                                                                                     \\
+		         & \forall A \in \ms[n][n][\F], \exists (B, C) \in \W_1 \times \W_2 :                                                                                                                                     \\
 		         & \begin{dcases}
 			           B_{i j} = \frac{A_{i j} - A_{j i}}{2} = - \frac{A_{j i} - A_{i j}}{2} = -B_{j i} \\
 			           C_{i j} = \frac{A_{i j} + A_{j i}}{2} = \frac{A_{j i} + A_{i j}}{2} = C_{j i}    \\
 			           A_{i j} = B_{i j} + C_{i j}
 		           \end{dcases}                           \\
-		\implies & \forall A \in \ms{n}{n}{\F}, \exists (B, C) \in \W_1 \times \W_2 : A = B + C                                                                                                    &  & \by{1.2.8}        \\
-		\implies & \forall A \in \ms{n}{n}{\F}, A \in \W_1 + \W_2                                                                                                                                                         \\
-		\implies & \ms{n}{n}{\F} \subseteq \W_1 + \W_2                                                                                                                                                                    \\
-		\implies & \ms{n}{n}{\F} = \W_1 + \W_2,                                                                                                                                                    &  & \by{ex:1.3.23}[a]
+		\implies & \forall A \in \ms[n][n][\F], \exists (B, C) \in \W_1 \times \W_2 : A = B + C                                                                                                    &  & \by{1.2.8}        \\
+		\implies & \forall A \in \ms[n][n][\F], A \in \W_1 + \W_2                                                                                                                                                         \\
+		\implies & \ms[n][n][\F] \subseteq \W_1 + \W_2                                                                                                                                                                    \\
+		\implies & \ms[n][n][\F] = \W_1 + \W_2,                                                                                                                                                    &  & \by{ex:1.3.23}[a]
 	\end{align*}
-	by \cref{1.3.11} we know that \(\W_1 \oplus \W_2 = \ms{n}{n}{\F}\).
+	by \cref{1.3.11} we know that \(\W_1 \oplus \W_2 = \ms[n][n][\F]\).
 \end{proof}
 
 \begin{ex}\label{ex:1.3.29}
 	Let \(\F\) be a field that is not of characteristic \(2\).
 	Define
 	\[
-		\W_1 = \set{A \in \ms{n}{n}{\F} : A_{i j} = 0 \text{ whenever } i \leq j}
+		\W_1 = \set{A \in \ms[n][n][\F] : A_{i j} = 0 \text{ whenever } i \leq j}
 	\]
 	and \(\W_2\) to be the set of all symmetric \(n \times n\) matrices with entries from \(\F\).
-	Both \(\W_1\) and \(\W_2\) are subspaces of \(\ms{n}{n}{\F}\).
-	Prove that \(\ms{n}{n}{\F} = \W_1 \oplus \W_2\).
+	Both \(\W_1\) and \(\W_2\) are subspaces of \(\ms[n][n][\F]\).
+	Prove that \(\ms[n][n][\F] = \W_1 \oplus \W_2\).
 	Compare this exercise with \cref{ex:1.3.28}.
 \end{ex}
 
@@ -908,7 +908,7 @@
 	\end{align*}
 	and
 	\begin{align*}
-		         & \forall A \in \ms{n}{n}{\F}, \exists (B, C) \in \W_1 \times \W_2 :                                  \\
+		         & \forall A \in \ms[n][n][\F], \exists (B, C) \in \W_1 \times \W_2 :                                  \\
 		         & \begin{dcases}
 			           C_{i j} = A_{i j} \text{ whenever } i \leq j        \\
 			           C_{i j} = C_{j i} \text{ whenever } i > j           \\
@@ -916,12 +916,12 @@
 			           B_{i j} = A_{i j} - C_{i j} \text{ whenever } i > j \\
 			           A_{i j} = B_{i j} + C_{i j}
 		           \end{dcases}                                                 \\
-		\implies & \forall A \in \ms{n}{n}{\F}, \exists (B, C) \in \W_1 \times \W_2 : A = B + C &  & \by{1.2.8}        \\
-		\implies & \forall A \in \ms{n}{n}{\F}, A \in \W_1 + \W_2                                                      \\
-		\implies & \ms{n}{n}{\F} \subseteq \W_1 + \W_2                                                                 \\
-		\implies & \ms{n}{n}{\F} = \W_1 + \W_2,                                                 &  & \by{ex:1.3.23}[a]
+		\implies & \forall A \in \ms[n][n][\F], \exists (B, C) \in \W_1 \times \W_2 : A = B + C &  & \by{1.2.8}        \\
+		\implies & \forall A \in \ms[n][n][\F], A \in \W_1 + \W_2                                                      \\
+		\implies & \ms[n][n][\F] \subseteq \W_1 + \W_2                                                                 \\
+		\implies & \ms[n][n][\F] = \W_1 + \W_2,                                                 &  & \by{ex:1.3.23}[a]
 	\end{align*}
-	by \cref{1.3.11} we know that \(\W_1 \oplus \W_2 = \ms{n}{n}{\F}\).
+	by \cref{1.3.11} we know that \(\W_1 \oplus \W_2 = \ms[n][n][\F]\).
 \end{proof}
 
 \begin{ex}\label{ex:1.3.30}

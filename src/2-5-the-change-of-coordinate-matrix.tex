@@ -80,8 +80,8 @@
 \end{proof}
 
 \begin{cor}\label{2.5.3}
-	Let \(A \in \ms{n}{n}{\F}\), and let \(\gamma\) be an ordered basis for \(\vs{F}^n\) over \(\F\).
-	Then \([\L_A]_{\gamma} = Q^{-1} A Q\), where \(Q \in \ms{n}{n}{\F}\) and the \(j\)th column of \(Q\) is the \(j\)th vector of \(\gamma\).
+	Let \(A \in \ms[n][n][\F]\), and let \(\gamma\) be an ordered basis for \(\vs{F}^n\) over \(\F\).
+	Then \([\L_A]_{\gamma} = Q^{-1} A Q\), where \(Q \in \ms[n][n][\F]\) and the \(j\)th column of \(Q\) is the \(j\)th vector of \(\gamma\).
 \end{cor}
 
 \begin{proof}[\pf{2.5.3}]
@@ -100,7 +100,7 @@
 \end{proof}
 
 \begin{defn}\label{2.5.4}
-	Let \(A, B \in \ms{n}{n}{\F}\).
+	Let \(A, B \in \ms[n][n][\F]\).
 	We say that \(B\) is \textbf{similar} to \(A\) if there exists an invertible matrix \(Q\) such that \(B = Q^{-1} A Q\).
 \end{defn}
 
@@ -150,11 +150,11 @@
 \end{proof}
 
 \begin{ex}\label{ex:2.5.9}
-	Prove that ``is similar to'' is an equivalence relation on \(\ms{n}{n}{\F}\).
+	Prove that ``is similar to'' is an equivalence relation on \(\ms[n][n][\F]\).
 \end{ex}
 
 \begin{proof}[\pf{ex:2.5.9}]
-	Let \(A, B, C \in \ms{n}{n}{\F}\).
+	Let \(A, B, C \in \ms[n][n][\F]\).
 	\begin{description}
 		\item[For reflexive:]
 			We have
@@ -179,15 +179,15 @@
 				  & = (QP)^{-1} A (QP).   &  & \by{ex:2.4.4}
 			\end{align*}
 	\end{description}
-	From all cases above we see that ``is similar to'' defined in \cref{2.5.4} is an equivalence relation on \(\ms{n}{n}{\F}\).
+	From all cases above we see that ``is similar to'' defined in \cref{2.5.4} is an equivalence relation on \(\ms[n][n][\F]\).
 \end{proof}
 
 \begin{ex}\label{ex:2.5.10}
-	Prove that if \(A, B \in \ms{n}{n}{\F}\) and \(A, B\) are similar, then \(\tr[A] = \tr[B]\).
+	Prove that if \(A, B \in \ms[n][n][\F]\) and \(A, B\) are similar, then \(\tr[A] = \tr[B]\).
 \end{ex}
 
 \begin{proof}[\pf{ex:2.5.10}]
-	By \cref{2.5.4} we know that there exists a \(Q \in \ms{n}{n}{\F}\) such that \(B = Q^{-1} A Q\).
+	By \cref{2.5.4} we know that there exists a \(Q \in \ms[n][n][\F]\) such that \(B = Q^{-1} A Q\).
 	Thus we have
 	\begin{align*}
 		\tr[B] & = \tr[Q^{-1} A Q]                       \\
@@ -229,7 +229,7 @@
 \setcounter{ex}{12}
 \begin{ex}\label{ex:2.5.13}
 	Let \(\V\) be a finite-dimensional vector space over a field \(\F\), and let \(\beta = \set{\seq{x}{1,2,,n}}\) be an ordered basis for \(\V\) over \(\F\).
-	Let \(Q \in \ms{n}{n}{\F}\) and \(Q\) is invertible.
+	Let \(Q \in \ms[n][n][\F]\) and \(Q\) is invertible.
 	Define
 	\[
 		x_j' = \sum_{i = 1}^n Q_{i j} x_i \quad \text{for } 1 \leq j \leq n,
@@ -266,7 +266,7 @@
 
 \begin{ex}\label{ex:2.5.14}
 	Prove the converse of \cref{ex:2.5.8}:
-	If \(A, B \in \MS\), and if there exist invertible matrices \(P \in \ms{m}{m}{\F}\) and \(Q \in \ms{n}{n}{\F}\) such that \(B = P^{-1} A Q\), then there exist an \(n\)-dimensional vector space \(\V\) and an \(m\)-dimensional vector space \(\W\) (both over \(\F\)), ordered bases \(\beta, \beta'\) for \(\V\) and \(\gamma, \gamma'\) for \(\W\) (all over \(\F\)), and a \(\T \in \ls(\V, \W)\) such that
+	If \(A, B \in \MS\), and if there exist invertible matrices \(P \in \ms[m][m][\F]\) and \(Q \in \ms[n][n][\F]\) such that \(B = P^{-1} A Q\), then there exist an \(n\)-dimensional vector space \(\V\) and an \(m\)-dimensional vector space \(\W\) (both over \(\F\)), ordered bases \(\beta, \beta'\) for \(\V\) and \(\gamma, \gamma'\) for \(\W\) (all over \(\F\)), and a \(\T \in \ls(\V, \W)\) such that
 	\[
 		A = [\T]_{\beta}^{\gamma} \quad \text{and} \quad B = [\T]_{\beta'}^{\gamma'}.
 	\]

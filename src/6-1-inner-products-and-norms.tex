@@ -107,7 +107,7 @@
 \end{note}
 
 \begin{eg}\label{6.1.6}
-	Let \(\V = \ms{n}{n}{\F}\), and define \(\inn{A, B} = \tr(B^* A)\) for \(A, B \in \V\).
+	Let \(\V = \ms[n][n][\F]\), and define \(\inn{A, B} = \tr(B^* A)\) for \(A, B \in \V\).
 	Then \(\inn{\cdot, \cdot}\) is called the \textbf{Frobenius inner product} and is an inner product on \(\V\).
 \end{eg}
 
@@ -153,7 +153,7 @@
 
 \begin{note}
 	For the remainder of \cref{ch:6}, \(\vs{F}^n\) denotes the inner product space with the standard inner product as defined in \cref{6.1.2}.
-	Likewise, \(\ms{n}{n}{\F}\) denotes the inner product space with the Frobenius inner product as defined in \cref{6.1.6}.
+	Likewise, \(\ms[n][n][\F]\) denotes the inner product space with the Frobenius inner product as defined in \cref{6.1.6}.
 \end{note}
 
 \begin{eg}\label{6.1.8}
@@ -519,7 +519,7 @@
 \end{proof}
 
 \begin{ex}\label{ex:6.1.14}
-	Let \(A, B \in \ms{n}{n}{\F}\) and let \(c \in \F\).
+	Let \(A, B \in \ms[n][n][\F]\) and let \(c \in \F\).
 	Prove that \((A + cB)^* = A^* + \conj{c} B^*\).
 \end{ex}
 
@@ -769,7 +769,7 @@
 \end{proof}
 
 \begin{ex}\label{ex:6.1.21}
-	Let \(A \in \ms{n}{n}{\F}\).
+	Let \(A \in \ms[n][n][\F]\).
 	Define
 	\[
 		A_1 = \frac{1}{2} (A + A^*) \quad \text{and} \quad A_2 = \frac{1}{2i} (A - A^*).
@@ -810,7 +810,7 @@
 		A_1 + i A_2 & = \frac{1}{2} (A + A^*) + \frac{i}{2i} (A - A^*) &  & \by{ex:6.1.21} \\
 		            & = A.                                             &  & \by{1.2.9}
 	\end{align*}
-	If we let \(A \in \ms{2}{2}{\C}\) where \(A = \begin{pmatrix}
+	If we let \(A \in \ms[2][2][\C]\) where \(A = \begin{pmatrix}
 		1 & -i \\
 		i & 1
 	\end{pmatrix}\), then we have
@@ -952,13 +952,13 @@
 \end{proof}
 
 \begin{ex}\label{ex:6.1.23}
-	Let \(\inn{\cdot, \cdot}\) be the standard inner product on \(\vs{F}^n\) over \(\F\), and let \(A \in \ms{n}{n}{\F}\).
+	Let \(\inn{\cdot, \cdot}\) be the standard inner product on \(\vs{F}^n\) over \(\F\), and let \(A \in \ms[n][n][\F]\).
 	\begin{enumerate}
 		\item Prove that \(\inn{x, Ay} = \inn{A^* x, y}\) for all \(x, y \in \vs{F}^n\).
-		\item Suppose that for some \(B \in \ms{n}{n}{\F}\), we have \(\inn{x, Ay} = \inn{Bx, y}\) for all \(x, y \in \vs{F}^n\).
+		\item Suppose that for some \(B \in \ms[n][n][\F]\), we have \(\inn{x, Ay} = \inn{Bx, y}\) for all \(x, y \in \vs{F}^n\).
 		      Prove that \(B = A^*\).
 		\item Let \(\alpha\) be the standard ordered basis for \(\vs{F}^n\) over \(\F\).
-		      For any orthonormal basis \(\beta\) for \(\vs{F}^n\) over \(\F\), let \(Q \in \ms{n}{n}{\F}\) whose columns are the vectors in \(\beta\).
+		      For any orthonormal basis \(\beta\) for \(\vs{F}^n\) over \(\F\), let \(Q \in \ms[n][n][\F]\) whose columns are the vectors in \(\beta\).
 		      Prove that \(Q^* = Q^{-1}\).
 		\item Define \(\T, \U \in \ls(\vs{F}^n)\) by \(\T(x) = Ax\) and \(\U(x) = A^* x\).
 		      Show that \([\U]_{\beta} = [\T]_{\beta}^*\) for any orthonormal basis \(\beta\) for \(\vs{F}^n\) over \(\F\).

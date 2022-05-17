@@ -401,13 +401,13 @@
 \setcounter{ex}{3}
 \begin{ex}\label{ex:5.2.4}
 	Prove the matrix version of \cref{5.2.1}:
-	If \(A \in \ms{n}{n}{\F}\) has \(n\) distinct eigenvalues, then \(A\) is diagonalizable.
+	If \(A \in \ms[n][n][\F]\) has \(n\) distinct eigenvalues, then \(A\) is diagonalizable.
 \end{ex}
 
 \begin{proof}[\pf{ex:5.2.4}]
 	We have
 	\begin{align*}
-		         & A \in \ms{n}{n}{\F} \text{ has } n \text{ distinct  eigenvalues}                 \\
+		         & A \in \ms[n][n][\F] \text{ has } n \text{ distinct  eigenvalues}                 \\
 		\implies & \L_A \text{ has } n \text{ distinct  eigenvalues}                &  & \by{5.1.2} \\
 		\implies & \L_A \text{ is diagonalizable}                                   &  & \by{5.2.1} \\
 		\implies & A \text{ is diagonalizable}.                                     &  & \by{5.1.1}
@@ -431,7 +431,7 @@
 
 \setcounter{ex}{7}
 \begin{ex}\label{ex:5.2.8}
-	Suppose that \(A \in \ms{n}{n}{\F}\) has two distinct eigenvalues, \(\lambda_1\) and \(\lambda_2\), and that \(\dim(E_{\lambda_1}) = n - 1\).
+	Suppose that \(A \in \ms[n][n][\F]\) has two distinct eigenvalues, \(\lambda_1\) and \(\lambda_2\), and that \(\dim(E_{\lambda_1}) = n - 1\).
 	Prove that \(A\) is diagonalizable.
 \end{ex}
 
@@ -472,7 +472,7 @@
 \end{proof}
 
 \begin{proof}[\pf{ex:5.2.9}(b)]
-	Let \(A \in \ms{n}{n}{\F}\) be an upper triangular matrix.
+	Let \(A \in \ms[n][n][\F]\) be an upper triangular matrix.
 	We claim that the characteristic polynomial for \(A\) splits.
 	Let \(\beta\) be the standard ordered basis for \(\vs{F}^n\).
 	By \cref{2.15}(a) we have \(A = [\L_A]_{\beta}\), thus by \cref{ex:5.2.9}(a) and \cref{5.1.6} the characteristic polynomial for \(A\) splits.
@@ -493,7 +493,7 @@
 \end{proof}
 
 \begin{ex}\label{ex:5.2.11}
-	Let \(A \in \ms{n}{n}{\F}\) such that \(A\) is similar to an upper triangular matrix and has the distinct eigenvalues \(\seq{\lambda}{1,,k}\) with corresponding multiplicities \(\seq{m}{1,,k}\).
+	Let \(A \in \ms[n][n][\F]\) such that \(A\) is similar to an upper triangular matrix and has the distinct eigenvalues \(\seq{\lambda}{1,,k}\) with corresponding multiplicities \(\seq{m}{1,,k}\).
 	Prove the following statements.
 	\begin{enumerate}
 		\item \(\tr(A) = \sum_{i = 1}^k m_i \lambda_i\).
@@ -502,7 +502,7 @@
 \end{ex}
 
 \begin{proof}[\pf{ex:5.2.11}]
-	By \cref{2.5.4} there exists a \(Q \in \ms{n}{n}{\F}\) such that \(Q^{-1} A Q\) is an upper triangular matrix.
+	By \cref{2.5.4} there exists a \(Q \in \ms[n][n][\F]\) such that \(Q^{-1} A Q\) is an upper triangular matrix.
 	If we let \(D = Q^{-1} A Q\), then by \cref{ex:5.1.12} we know that \(D\) and \(A\) have the same eigenvalues.
 	Now let \(\beta\) be the standard ordered basis for \(\vs{F}^n\) over \(\F\).
 	By \cref{2.15}(a) we know that \(D = [\L_D]_{\beta}\) is an upper triangular matrix, thus by \cref{ex:5.2.10} the diagonal entries of \(D\) are \(\seq{\lambda}{1,,k}\) and that each \(\lambda_i\) occurs \(m_i\) times for all \(i \in \set{1, \dots, k}\).
@@ -552,7 +552,7 @@
 \end{proof}
 
 \begin{ex}\label{ex:5.2.13}
-	Let \(A \in \ms{n}{n}{\F}\).
+	Let \(A \in \ms[n][n][\F]\).
 	Recall from \cref{ex:5.1.14} that \(A\) and \(\tp{A}\) have the same characteristic polynomial and hence share the same eigenvalues with the same multiplicities.
 	For any eigenvalue \(\lambda\) of \(A\) and \(\tp{A}\), let \(E_{\lambda}\) and \(E_{\lambda}'\) denote the corresponding eigenspaces for \(A\) and \(\tp{A}\), respectively.
 	\begin{enumerate}
@@ -566,7 +566,7 @@
 	Let \(A = \begin{pmatrix}
 		1 & -2 \\
 		1 & 0
-	\end{pmatrix} \in \ms{2}{2}{\R}\).
+	\end{pmatrix} \in \ms[2][2][\R]\).
 	Since
 	\begin{align*}
 		         & \det(A - t I_2) = \det\begin{pmatrix}
@@ -642,7 +642,7 @@
 			a_{2 1} & a_{2 2} & \cdots & a_{2 n} \\
 			\vdots  & \vdots  &        & \vdots  \\
 			a_{n 1} & a_{n 2} & \cdots & a_{n n}
-		\end{pmatrix} \in \ms{n}{n}{\R}
+		\end{pmatrix} \in \ms[n][n][\R]
 	\]
 	be the coefficient matrix of the system of differential equations
 	\begin{align*}
@@ -724,7 +724,7 @@
 \end{proof}
 
 \begin{ex}\label{ex:5.2.16}
-	Let \(C \in \ms{m}{n}{\R}\), and let \(Y\) be an \(n \times p\) matrix of differentiable functions.
+	Let \(C \in \ms[m][n][\R]\), and let \(Y\) be an \(n \times p\) matrix of differentiable functions.
 	Prove \((CY)' = C Y'\), where \((Y')_{i j} = (Y_{i j})'\) for all \(i \in \set{1, \dots, n}\) and \(j \in \set{1, \dots, p}\).
 \end{ex}
 
@@ -743,7 +743,7 @@
 
 \begin{defn}\label{5.2.8}
 	Two linear operators \(\T\) and \(\U\) on a finite-dimensional vector space \(\V\) over \(\F\) are called \textbf{simultaneously diagonalizable} if there exists an ordered basis \(\beta\) for \(\V\) over \(\F\) such that both \([\T]_{\beta}\) and \([\U]_{\beta}\) are diagonal matrices.
-	Similarly, \(A, B \in \ms{n}{n}{\F}\) are called \textbf{simultaneously diagonalizable} if there exists an invertible matrix \(Q \in \ms{n}{n}{\F}\) such that both \(Q^{-1} A Q\) and \(Q^{-1} B Q\) are diagonal matrices.
+	Similarly, \(A, B \in \ms[n][n][\F]\) are called \textbf{simultaneously diagonalizable} if there exists an invertible matrix \(Q \in \ms[n][n][\F]\) such that both \(Q^{-1} A Q\) and \(Q^{-1} B Q\) are diagonal matrices.
 \end{defn}
 
 \begin{ex}\label{ex:5.2.17}
@@ -772,12 +772,12 @@
 \end{proof}
 
 \begin{proof}[\pf{ex:5.2.17}(b)]
-	Let \(A, B \in \ms{n}{n}{\F}\) and let \(\beta\) be the standard ordered basis for \(\vs{F}^n\) over \(\F\).
+	Let \(A, B \in \ms[n][n][\F]\) and let \(\beta\) be the standard ordered basis for \(\vs{F}^n\) over \(\F\).
 	Then we have
 	\begin{align*}
 		         & A, B \text{ are simultaneously diagonalizable}                                                       \\
-		\implies & \exists Q \in \ms{n}{n}{\F} : Q^{-1} A Q, Q^{-1} B Q \text{ are diagonal matrices} &  & \by{5.2.8}   \\
-		\implies & \exists Q \in \ms{n}{n}{\F} :                                                                        \\
+		\implies & \exists Q \in \ms[n][n][\F] : Q^{-1} A Q, Q^{-1} B Q \text{ are diagonal matrices} &  & \by{5.2.8}   \\
+		\implies & \exists Q \in \ms[n][n][\F] :                                                                        \\
 		         & Q^{-1} [\L_A]_{\beta} Q, Q^{-1} [\L_B]_{\beta} Q \text{ are diagonal matrices}.    &  & \by{2.15}[a]
 	\end{align*}
 	Fix one such \(Q\).
@@ -790,7 +790,7 @@
 \begin{ex}\label{ex:5.2.18}
 	\begin{enumerate}
 		\item Prove that if \(\T\) and \(\U\) are simultaneously diagonalizable operators on a finite dimensional vector space \(\V\) over \(\F\), then \(\T\) and \(\U\) commute (i.e., \(\T \U = \U \T\)).
-		\item Show that if \(A, B \in \ms{n}{n}{\F}\) are simultaneously diagonalizable matrices, then \(A\) and \(B\) commute.
+		\item Show that if \(A, B \in \ms[n][n][\F]\) are simultaneously diagonalizable matrices, then \(A\) and \(B\) commute.
 	\end{enumerate}
 	The converses of (a) and (b) are established in \cref{ex:5.4.25}.
 \end{ex}

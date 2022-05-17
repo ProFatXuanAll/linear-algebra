@@ -680,13 +680,13 @@
 \end{proof}
 
 \begin{ex}\label{ex:6.4.13}
-	An \(A \in \ms{n}{n}{\R}\) is said to be a \textbf{Gramian} matrix if there exists a \(B \in \ms{n}{n}{\R}\) such that \(A = \tp{B} B\).
+	An \(A \in \ms[n][n][\R]\) is said to be a \textbf{Gramian} matrix if there exists a \(B \in \ms[n][n][\R]\) such that \(A = \tp{B} B\).
 	Prove that \(A\) is a Gramian matrix iff \(A\) is symmetric and all of its eigenvalues are nonnegative.
 \end{ex}
 
 \begin{proof}[\pf{ex:6.4.13}]
 	First suppose that \(A\) is Gramian.
-	By \cref{ex:6.4.13} there exists a \(B \in \ms{n}{n}{\R}\) such that \(A = \tp{B} B\).
+	By \cref{ex:6.4.13} there exists a \(B \in \ms[n][n][\R]\) such that \(A = \tp{B} B\).
 	Then we have
 	\begin{align*}
 		\tp{A} & = \tp{(\tp{B} B)}                         \\
@@ -785,7 +785,7 @@
 \end{proof}
 
 \begin{ex}\label{ex:6.4.15}
-	Let \(A, B \in \ms{n}{n}{\R}\) be symmetric such that \(AB = BA\).
+	Let \(A, B \in \ms[n][n][\R]\) be symmetric such that \(AB = BA\).
 	Use \cref{ex:6.4.14} to prove that there exists an orthogonal matrix \(P\) such that \(\tp{P} A P\) and \(\tp{P} B P\) are both diagonal matrices.
 \end{ex}
 
@@ -822,7 +822,7 @@
 \end{ex}
 
 \begin{proof}[\pf{ex:6.4.16}]
-	Since \(A \in \ms{n}{n}{\C}\), by \cref{d.4} we know that \(\det(A - t I_n)\) splits.
+	Since \(A \in \ms[n][n][\C]\), by \cref{d.4} we know that \(\det(A - t I_n)\) splits.
 	By \cref{6.14} there exists an orthonormal basis \(\gamma\) for \(\vs{C}^n\) over \(\C\) such that \([\L_A]_{\gamma}\) is upper triangular.
 	By \cref{ex:4.2.23} we have
 	\[
@@ -970,7 +970,7 @@
 	\end{align*}
 	By setting \(B = C [\IT[\V]]_{\alpha}^{\gamma} [\IT[\V]]_{\beta}^{\alpha}\) we see that \(A = B^* B\).
 
-	Now suppose that there exists a \(B \in \ms{n}{n}{\F}\) such that \(A = B^* B\).
+	Now suppose that there exists a \(B \in \ms[n][n][\F]\) such that \(A = B^* B\).
 	Let \(\beta = \set{\seq{v}{1,,n}}\) and let \([\cdot, \cdot]\) be the standard inner product on \(\vs{F}^n\) over \(\F\) as defined in \cref{6.1.2}.
 	For each \(i \in \set{1, \dots, n}\), let \(b_i\) denote the \(i\)th column of \(B\).
 	Then we have
@@ -1262,7 +1262,7 @@
 
 \begin{proof}[\pf{ex:6.4.22}(a)]
 	Let \(\beta = \set{\seq{v}{1,,n}}\) be an orthonormal basis for \(\V\) over \(\F\) with respect to \(\inn{\cdot, \cdot}\).
-	Define \(A \in \ms{n}{n}{\F}\) by setting \(A_{i j} = \inn{v_j, v_i}'\) for all \(i, j \in \set{1, \dots, n}\).
+	Define \(A \in \ms[n][n][\F]\) by setting \(A_{i j} = \inn{v_j, v_i}'\) for all \(i, j \in \set{1, \dots, n}\).
 	Let \(\T \in \ls(\V)\) such that \([\T]_{\beta} = A\).
 	Now we show that \(\inn{x, y}' = \inn{\T(x), y}\) for all \(x, y \in \V\).
 	This is true since

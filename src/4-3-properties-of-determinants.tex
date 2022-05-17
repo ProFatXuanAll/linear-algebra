@@ -1,7 +1,7 @@
 \section{Properties of Determinants}\label{sec:4.3}
 
 \begin{thm}\label{4.7}
-	For any \(A, B \in \ms{n}{n}{\F}\), \(\det(AB) = \det(A) \cdot \det(B)\).
+	For any \(A, B \in \ms[n][n][\F]\), \(\det(AB) = \det(A) \cdot \det(B)\).
 \end{thm}
 
 \begin{proof}[\pf{4.7}]
@@ -33,14 +33,14 @@
 \end{note}
 
 \begin{cor}\label{4.3.1}
-	A matrix \(A \in \ms{n}{n}{\F}\) is invertible iff \(\det(A) \neq 0\).
+	A matrix \(A \in \ms[n][n][\F]\) is invertible iff \(\det(A) \neq 0\).
 	Furthermore, if \(A\) is invertible, then \(\det(A^{-1}) = \frac{1}{\det(A)}\).
 \end{cor}
 
 \begin{proof}[\pf{4.3.1}]
-	If \(A \in \ms{n}{n}{\F}\) is not invertible, then by \cref{3.2.2} the rank of \(A\) is less than \(n\).
+	If \(A \in \ms[n][n][\F]\) is not invertible, then by \cref{3.2.2} the rank of \(A\) is less than \(n\).
 	So \(\det(A) = 0\) by \cref{4.2.7}.
-	On the other hand, if \(A \in \ms{n}{n}{\F}\) is invertible, then
+	On the other hand, if \(A \in \ms[n][n][\F]\) is invertible, then
 	\[
 		\det(A) \cdot \det(A^{-1}) = \det(A A^{-1}) = \det(I_n) = 1
 	\]
@@ -49,7 +49,7 @@
 \end{proof}
 
 \begin{thm}\label{4.8}
-	For any \(A \in \ms{n}{n}{\F}\), \(\det(\tp{A}) = \det(A)\).
+	For any \(A \in \ms[n][n][\F]\), \(\det(\tp{A}) = \det(A)\).
 \end{thm}
 
 \begin{proof}[\pf{4.8}]
@@ -83,7 +83,7 @@
 	\[
 		x_k = \frac{\det(M_k)}{\det(A)},
 	\]
-	where \(M_k \in \ms{n}{n}{\F}\) is obtained from \(A\) by replacing column \(k\) of \(A\) by \(b\).
+	where \(M_k \in \ms[n][n][\F]\) is obtained from \(A\) by replacing column \(k\) of \(A\) by \(b\).
 \end{thm}
 
 \begin{proof}[\pf{4.9}]
@@ -117,7 +117,7 @@
 \end{note}
 
 \begin{note}
-	As in \cref{sec:4.1}, it is possible to interpret the determinant of a matrix \(A \in \ms{n}{n}{\F}\) geometrically.
+	As in \cref{sec:4.1}, it is possible to interpret the determinant of a matrix \(A \in \ms[n][n][\F]\) geometrically.
 	If the rows of \(A\) are \(\seq{a}{1,,n}\), respectively, then \(\abs{\det(A)}\) is the \textbf{\(n\)-dimensional volume} (the generalization of area in \(\R^2\) and volume in \(\R^3\)) of the parallelepiped having the vectors \(\seq{a}{1,,n}\) as adjacent sides.
 \end{note}
 
@@ -137,7 +137,7 @@
 \end{ex}
 
 \begin{proof}[\pf{ex:4.3.8}]
-	Let \(A \in \ms{n}{n}{\F}\) and let \(\seq{a}{1,,n}\) be columns of \(A\).
+	Let \(A \in \ms[n][n][\F]\) and let \(\seq{a}{1,,n}\) be columns of \(A\).
 	Let \(u, v \in \vs{F}^n\) and let \(k \in \F\).
 	If \(a_r = u + kv\) for some \(r \in \set{1, \dots, n}\), then we have
 	\begin{align*}
@@ -180,7 +180,7 @@
 \end{proof}
 
 \begin{ex}\label{ex:4.3.9}
-	Prove that an upper triangular matrix \(A \in \ms{n}{n}{\F}\) is invertible iff all its diagonal entries are nonzero.
+	Prove that an upper triangular matrix \(A \in \ms[n][n][\F]\) is invertible iff all its diagonal entries are nonzero.
 \end{ex}
 
 \begin{proof}[\pf{ex:4.3.9}]
@@ -194,7 +194,7 @@
 \end{proof}
 
 \begin{ex}\label{ex:4.3.10}
-	A matrix \(M \in \ms{n}{n}{\C}\) is called \textbf{nilpotent} if, for some positive integer \(k\), \(M^k = \zm\), where \(\zm\) is the \(n \times n\) zero matrix.
+	A matrix \(M \in \ms[n][n][\C]\) is called \textbf{nilpotent} if, for some positive integer \(k\), \(M^k = \zm\), where \(\zm\) is the \(n \times n\) zero matrix.
 	Prove that if \(M\) is nilpotent, then \(\det(M) = 0\).
 \end{ex}
 
@@ -212,7 +212,7 @@
 \end{proof}
 
 \begin{ex}\label{ex:4.3.11}
-	A matrix \(M \in \ms{n}{n}{\C}\) is called \textbf{skew-symmetric} if \(\tp{M} = -M\).
+	A matrix \(M \in \ms[n][n][\C]\) is called \textbf{skew-symmetric} if \(\tp{M} = -M\).
 	Prove that if \(M\) is skew-symmetric and \(n\) is odd, then \(M\) is not invertible.
 	What happens if \(n\) is even?
 \end{ex}
@@ -235,7 +235,7 @@
 \end{proof}
 
 \begin{ex}\label{ex:4.3.12}
-	A matrix \(Q \in \ms{n}{n}{\R}\) is called \textbf{orthogonal} if \(Q \tp{Q} = I_n\).
+	A matrix \(Q \in \ms[n][n][\R]\) is called \textbf{orthogonal} if \(Q \tp{Q} = I_n\).
 	Prove that if \(Q\) is orthogonal, then \(\det(Q) = \pm 1\).
 \end{ex}
 
@@ -251,10 +251,10 @@
 \end{proof}
 
 \begin{ex}\label{ex:4.3.13}
-	For \(M \in \ms{n}{n}{\C}\), let \(\conj{M}\) be the matrix such that \((\conj{M})_{i j} = \conj{M_{i j}}\) for all \(i, j \in \set{1, \dots, n}\), where \(\conj{M_{i j}}\) is the complex conjugate of \(M_{i j}\).
+	For \(M \in \ms[n][n][\C]\), let \(\conj{M}\) be the matrix such that \((\conj{M})_{i j} = \conj{M_{i j}}\) for all \(i, j \in \set{1, \dots, n}\), where \(\conj{M_{i j}}\) is the complex conjugate of \(M_{i j}\).
 	\begin{enumerate}
 		\item Prove that \(\det(\conj{M}) = \conj{\det(M)}\).
-		\item A matrix \(Q \in \ms{n}{n}{\C}\) is called \textbf{unitary} if \(Q Q^* = I_n\), where \(Q^* = \conj{\tp{Q}}\).
+		\item A matrix \(Q \in \ms[n][n][\C]\) is called \textbf{unitary} if \(Q Q^* = I_n\), where \(Q^* = \conj{\tp{Q}}\).
 		      Prove that if \(Q\) is a unitary matrix, then \(\abs{\det(Q)} = 1\).
 	\end{enumerate}
 \end{ex}
@@ -268,9 +268,9 @@
 		               & = \conj{\det(M)}   &  & \by{4.2.2}
 	\end{align*}
 	and thus the base case holds.
-	Suppose inductively that for some \(n \geq 1\), we have \(\det(\conj{M}) = \conj{\det(M)}\) for all \(M \in \ms{n}{n}{\C}\).
-	We need to show that \(\det(\conj{M}) = \conj{\det(M)}\) for all \(M \in \ms{(n + 1)}{(n + 1)}{\C}\).
-	Let \(M \in \ms{(n + 1)}{(n + 1)}{\C}\).
+	Suppose inductively that for some \(n \geq 1\), we have \(\det(\conj{M}) = \conj{\det(M)}\) for all \(M \in \ms[n][n][\C]\).
+	We need to show that \(\det(\conj{M}) = \conj{\det(M)}\) for all \(M \in \ms[(n + 1)][(n + 1)][\C]\).
+	Let \(M \in \ms[(n + 1)][(n + 1)][\C]\).
 	Then we have
 	\begin{align*}
 		\conj{\det(M)} & = \conj{\sum_{j = 1}^{n + 1} (-1)^{1 + j} M_{1 j} \cdot \det(\tilde{M}_{1 j})}          &  & \by{4.2.2}                       \\
@@ -298,7 +298,7 @@
 \end{proof}
 
 \begin{ex}\label{ex:4.3.14}
-	Let \(\beta = \set{\seq{u}{1,,n}}\) be a subset of \(\vs{F}^n\) containing \(n\) distinct vectors, and let \(B \in \ms{n}{n}{\F}\) having \(u_j\) as column \(j\).
+	Let \(\beta = \set{\seq{u}{1,,n}}\) be a subset of \(\vs{F}^n\) containing \(n\) distinct vectors, and let \(B \in \ms[n][n][\F]\) having \(u_j\) as column \(j\).
 	Prove that \(\beta\) is a basis for \(\vs{F}^n\) over \(\F\) iff \(\det(B) \neq 0\).
 \end{ex}
 
@@ -314,11 +314,11 @@
 \end{proof}
 
 \begin{ex}\label{ex:4.3.15}
-	Prove that if \(A, B \in \ms{n}{n}{\F}\) are similar, then \(\det(A) = \det(B)\).
+	Prove that if \(A, B \in \ms[n][n][\F]\) are similar, then \(\det(A) = \det(B)\).
 \end{ex}
 
 \begin{proof}[\pf{ex:4.3.15}]
-	Since \(A, B\) are similar, by \cref{2.5.4} we know that there exists a \(Q \in \ms{n}{n}{\F}\) such that \(A = Q^{-1} B Q\).
+	Since \(A, B\) are similar, by \cref{2.5.4} we know that there exists a \(Q \in \ms[n][n][\F]\) such that \(A = Q^{-1} B Q\).
 	Then we have
 	\begin{align*}
 		\det(A) & = \det(Q^{-1} B Q)                             \\
@@ -330,7 +330,7 @@
 \end{proof}
 
 \begin{ex}\label{ex:4.3.16}
-	Use determinants to prove that if \(A, B \in \ms{n}{n}{\F}\) are such that \(AB = I_n\), then \(A\) is invertible
+	Use determinants to prove that if \(A, B \in \ms[n][n][\F]\) are such that \(AB = I_n\), then \(A\) is invertible
 	(and hence \(B = A^{-1}\)).
 \end{ex}
 
@@ -345,7 +345,7 @@
 \end{proof}
 
 \begin{ex}\label{ex:4.3.17}
-	Let \(A, B \in \ms{n}{n}{\F}\) be such that \(AB = -BA\).
+	Let \(A, B \in \ms[n][n][\F]\) be such that \(AB = -BA\).
 	Prove that if \(n\) is odd and \(\F\) is not a field of characteristic two, then \(A\) or \(B\) is not invertible.
 \end{ex}
 
@@ -368,7 +368,7 @@
 \end{proof}
 
 \begin{ex}\label{ex:4.3.18}
-	If \(A, B \in \ms{n}{n}{\F}\) and \(A\) is an elementary matrix, then \(\det(AB) = \det(A) \cdot \det(B)\).
+	If \(A, B \in \ms[n][n][\F]\) and \(A\) is an elementary matrix, then \(\det(AB) = \det(A) \cdot \det(B)\).
 \end{ex}
 
 \begin{proof}[\pf{ex:4.3.18}]
@@ -400,13 +400,13 @@
 \end{proof}
 
 \begin{ex}\label{ex:4.3.19}
-	A matrix \(A \in \ms{n}{n}{\F}\) is called \textbf{lower triangular} if \(A_{i j} = 0\) for \(1 \leq i < j \leq n\).
+	A matrix \(A \in \ms[n][n][\F]\) is called \textbf{lower triangular} if \(A_{i j} = 0\) for \(1 \leq i < j \leq n\).
 	Suppose that \(A\) is a lower triangular matrix.
 	Describe \(\det(A)\) in terms of the entries of \(A\).
 \end{ex}
 
 \begin{proof}[\pf{ex:4.3.19}]
-	First we claim that \(A \in \ms{n}{n}{\F}\) is lower triangular iff \(\tp{A}\) is upper triangular.
+	First we claim that \(A \in \ms[n][n][\F]\) is lower triangular iff \(\tp{A}\) is upper triangular.
 	This is true since
 	\begin{align*}
 		     & A \text{ is lower triangular}                            \\
@@ -414,7 +414,7 @@
 		\iff & (\tp{A})_{j i} = 0 \text{ if } i < j &  & \by{1.3.3}     \\
 		\iff & \tp{A} \text{ is upper triangular}.  &  & \by{ex:1.3.12}
 	\end{align*}
-	Now we claim that if \(A \in \ms{n}{n}{\F}\) is lower triangular, then \(\det(A) = \prod_{j = 1}^n A_{j j}\).
+	Now we claim that if \(A \in \ms[n][n][\F]\) is lower triangular, then \(\det(A) = \prod_{j = 1}^n A_{j j}\).
 	This is true since
 	\begin{align*}
 		\det(A) & = \det(\tp{A})                   &  & \by{4.8}       \\
@@ -424,14 +424,14 @@
 \end{proof}
 
 \begin{ex}\label{ex:4.3.20}
-	Suppose that \(M \in \ms{n}{n}{\F}\) can be written in the form
+	Suppose that \(M \in \ms[n][n][\F]\) can be written in the form
 	\[
 		M = \begin{pmatrix}
 			A   & B         \\
 			\zm & I_{n - m}
 		\end{pmatrix},
 	\]
-	where \(A \in \ms{m}{m}{\F}\) for some \(m \in \set{1, \dots, n - 1}\).
+	where \(A \in \ms[m][m][\F]\) for some \(m \in \set{1, \dots, n - 1}\).
 	Prove that \(\det(M) = \det(A)\).
 \end{ex}
 
@@ -463,7 +463,7 @@
 \end{proof}
 
 \begin{ex}\label{ex:4.3.21}
-	Prove that if \(M \in \ms{n}{n}{\F}\) can be written in the form
+	Prove that if \(M \in \ms[n][n][\F]\) can be written in the form
 	\[
 		M = \begin{pmatrix}
 			A   & B \\
@@ -474,7 +474,7 @@
 \end{ex}
 
 \begin{proof}[\pf{ex:4.3.21}]
-	Let \(m \in \set{1, \dots, n - 1}\) such that \(A \in \ms{m}{m}{\F}\) and \(C \in \ms{(n - m)}{(n - m)}{\F}\).
+	Let \(m \in \set{1, \dots, n - 1}\) such that \(A \in \ms[m][m][\F]\) and \(C \in \ms[(n - m)][(n - m)][\F]\).
 	We split into two cases:
 	\begin{itemize}
 		\item If \(C\) is not invertible, then by \cref{3.2.2} and \cref{3.2.5}(b) we know that \(\rk{\zm | C} = \rk{C} < n - m\).
@@ -504,7 +504,7 @@
 			                                        \end{pmatrix}         &  & \by{2.4.3}       \\
 			                                & = \det(A)                     &  & \by{ex:4.3.20}
 		      \end{align*}
-		      where \(\zm_1 \in \ms{m}{(n - m)}{\F}\) and \(\zm_2 \in \ms{(n - m)}{m}{\F}\) are zero matrices.
+		      where \(\zm_1 \in \ms[m][(n - m)][\F]\) and \(\zm_2 \in \ms[(n - m)][m][\F]\) are zero matrices.
 		      Thus \(\det(M) = \det(A) \det(C)\).
 	\end{itemize}
 	From all cases above we conclude that \(\det(M) = \det(A) \det(C)\).
@@ -621,7 +621,7 @@
 \end{proof}
 
 \begin{ex}\label{ex:4.3.23}
-	Let \(A \in \ms{n}{n}{\F} \setminus \set{\zm}\).
+	Let \(A \in \ms[n][n][\F] \setminus \set{\zm}\).
 	For any \(m \in \set{1, \dots, n}\), an \(m \times m\) \textbf{submatrix} is obtained by deleting any \(n - m\) rows and any \(n - m\) columns of \(A\).
 	\begin{enumerate}
 		\item Let \(k \in \set{1, \dots, n}\) denote the largest integer such that some \(k \times k\) submatrix has a nonzero determinant.
@@ -633,11 +633,11 @@
 
 \begin{proof}[\pf{ex:4.3.23}(a)]
 	We use induction on \(n\).
-	For \(n = 1\), we have \(\det(A) \neq 0\) for any \(A \in \ms{1}{1}{\F} \setminus \set{\zm}\).
+	For \(n = 1\), we have \(\det(A) \neq 0\) for any \(A \in \ms[1][1][\F] \setminus \set{\zm}\).
 	Thus the largest submatrix of \(A\) with nonzero determinant is \(A\) itself and therefore \(\rk{A} = 1\).
 	Suppose inductively that for some \(n \geq 1\) the statement is true.
 	We need to show that for \(n + 1\) the statement is also true.
-	Let \(A \in \ms{(n + 1)}{(n + 1)}{\F} \setminus \set{\zm}\) and let \(k\) be the largest integer such that some \(k \times k\) submatrix of \(A\) have nonzero determinant.
+	Let \(A \in \ms[(n + 1)][(n + 1)][\F] \setminus \set{\zm}\) and let \(k\) be the largest integer such that some \(k \times k\) submatrix of \(A\) have nonzero determinant.
 	If \(k = n + 1\), then we have \(\det(A) \neq 0\) and by \cref{4.3.1,3.2.2} we have \(\rk{A} = n + 1\).
 	So suppose that \(k < n + 1\).
 
@@ -683,7 +683,7 @@
 \end{proof}
 
 \begin{ex}\label{ex:4.2.24}
-	Let \(A \in \ms{n}{n}{\F}\) have the form
+	Let \(A \in \ms[n][n][\F]\) have the form
 	\[
 		A = \begin{pmatrix}
 			0      & 0      & 0      & \cdots & 0      & a_0       \\
@@ -761,7 +761,7 @@
 \end{proof}
 
 \begin{ex}\label{ex:4.3.25}
-	Let \(c_{j k}\) denote the cofactor of the row \(j\), column \(k\) entry of the matrix \(A \in \ms{n}{n}{\F}\).
+	Let \(c_{j k}\) denote the cofactor of the row \(j\), column \(k\) entry of the matrix \(A \in \ms[n][n][\F]\).
 	\begin{enumerate}
 		\item Prove that if \(B\) is the matrix obtained from \(A\) by replacing column \(k\) by \(e_j\), then \(\det(B) = c_{j k}\).
 		\item Show that for \(j \in \set{1, \dots, n}\), we have
@@ -773,7 +773,7 @@
 				      c_{j n}
 			      \end{pmatrix} = \det(A) \cdot e_j.
 		      \]
-		\item Deduce that if \(C \in \ms{n}{n}{\F}\) such that \(C_{i j} = c_{j i}\), then \(AC = \det(A) I_n\).
+		\item Deduce that if \(C \in \ms[n][n][\F]\) such that \(C_{i j} = c_{j i}\), then \(AC = \det(A) I_n\).
 		\item Show that if \(\det(A) \neq 0\), then \(A^{-1} = (\det(A))^{-1} C\).
 	\end{enumerate}
 \end{ex}
@@ -862,7 +862,7 @@
 
 \setcounter{ex}{26}
 \begin{ex}\label{ex:4.3.27}
-	Let \(C\) be the classical adjoint of \(A \in \ms{n}{n}{\F}\).
+	Let \(C\) be the classical adjoint of \(A \in \ms[n][n][\F]\).
 	Prove the following statements.
 	\begin{enumerate}
 		\item \(\det(C) = (\det(A))^{n - 1}\).

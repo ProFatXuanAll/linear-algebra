@@ -32,7 +32,7 @@
 	A nonzero vector \(v \in \V\) is called an \textbf{eigenvector} of \(\T\) if there exists a scalar \(\lambda\) such that \(\T(v) = \lambda v\).
 	The scalar \(\lambda\) is called the \textbf{eigenvalue} corresponding to the eigenvector \(v\).
 
-	Let \(A \in \ms{n}{n}{\F}\).
+	Let \(A \in \ms[n][n][\F]\).
 	A nonzero vector \(v \in \vs{F}^n\) is called an \textbf{eigenvector} of \(A\) if \(v\) is an eigenvector of \(\L_A\);
 	that is, if \(Av = \lambda v\) for some scalar \(\lambda\).
 	The scalar \(\lambda\) is called the \textbf{eigenvalue} of \(A\) corresponding to the eigenvector \(v\).
@@ -81,7 +81,7 @@
 \end{eg}
 
 \begin{thm}\label{5.2}
-	Let \(A \in \ms{n}{n}{\F}\).
+	Let \(A \in \ms[n][n][\F]\).
 	Then \(\lambda \in \F\) is an eigenvalue of \(A\) iff \(\det(A - \lambda I_n) = 0\).
 \end{thm}
 
@@ -92,7 +92,7 @@
 \end{proof}
 
 \begin{defn}\label{5.1.5}
-	Let \(A \in \ms{n}{n}{\F}\).
+	Let \(A \in \ms[n][n][\F]\).
 	The polynomial \(f(t) = \det(A - t I_n)\) is called the \textbf{characteristic polynomial} of \(A\).
 \end{defn}
 
@@ -158,7 +158,7 @@
 \end{proof}
 
 \begin{thm}\label{5.3}
-	Let \(A \in \ms{n}{n}{\F}\).
+	Let \(A \in \ms[n][n][\F]\).
 	\begin{enumerate}
 		\item The characteristic polynomial of \(A\) is a polynomial of degree \(n\) with leading coefficient \((-1)^n\).
 		\item \(A\) has at most \(n\) distinct eigenvalues.
@@ -174,7 +174,7 @@
 	Thus the base case holds.
 	Suppose inductively that \cref{5.3}(a) is true for some \(n \geq 1\).
 	We need to show that \cref{5.3}(a) is true for \(n + 1\).
-	Let \(A \in \ms{(n + 1)}{(n + 1)}{\F}\) and let \(B = A - t I_{n + 1}\).
+	Let \(A \in \ms[(n + 1)][(n + 1)][\F]\) and let \(B = A - t I_{n + 1}\).
 	Observe that
 	\begin{align*}
 		\det(B) & = \sum_{j = 1}^{n + 1} (-1)^{1 + j} B_{1 j} \det(\tilde{B}_{1 j})                                          &  & \by{4.2.2} \\
@@ -387,7 +387,7 @@
 \end{proof}
 
 \begin{proof}[\pf{ex:5.1.8}(c)]
-	First we claim that if \(A \in \ms{n}{n}{\F}\), then \(A\) is invertible iff \(0\) is not an eigenvalue of \(A\).
+	First we claim that if \(A \in \ms[n][n][\F]\), then \(A\) is invertible iff \(0\) is not an eigenvalue of \(A\).
 	This is true since
 	\begin{align*}
 		     & A \text{ is invertible}                                       \\
@@ -396,7 +396,7 @@
 		\iff & 0 \text{ is not an eigenvalue of } A.   &  & \by{5.1.2}
 	\end{align*}
 
-	Now we claim that if \(A \in \ms{n}{n}{\F}\), then \(\lambda\) is an eigenvalue of \(A\) iff \(\lambda^{-1}\) is an eigenvalue of \(A^{-1}\).
+	Now we claim that if \(A \in \ms[n][n][\F]\), then \(\lambda\) is an eigenvalue of \(A\) iff \(\lambda^{-1}\) is an eigenvalue of \(A^{-1}\).
 	This is true since
 	\begin{align*}
 		     & \lambda \text{ is an eigenvalue of } A                                      \\
@@ -408,7 +408,7 @@
 \end{proof}
 
 \begin{ex}\label{ex:5.1.9}
-	Prove that the eigenvalues of an upper triangular matrix \(M \in \ms{n}{n}{\F}\) are the diagonal entries of \(M\).
+	Prove that the eigenvalues of an upper triangular matrix \(M \in \ms[n][n][\F]\) are the diagonal entries of \(M\).
 \end{ex}
 
 \begin{proof}[\pf{ex:5.1.9}]
@@ -456,7 +456,7 @@
 	A \textbf{scalar matrix} is a square matrix of the form \(\lambda I_n\) for some \(\lambda \in \F\);
 	that is, a scalar matrix is a diagonal matrix in which all the diagonal entries are equal.
 	\begin{enumerate}
-		\item Prove that if \(A \in \ms{n}{n}{\F}\) is similar to a scalar matrix \(\lambda I_n\), then \(A = \lambda I_n\).
+		\item Prove that if \(A \in \ms[n][n][\F]\) is similar to a scalar matrix \(\lambda I_n\), then \(A = \lambda I_n\).
 		\item Show that a diagonalizable matrix having only one eigenvalue is a scalar matrix.
 		\item Prove that \(\begin{pmatrix}
 			      1 & 1 \\
@@ -468,14 +468,14 @@
 \begin{proof}[\pf{ex:5.1.11}(a)]
 	We have
 	\begin{align*}
-		         & \exists Q \in \ms{n}{n}{\F} : \lambda I_n = Q^{-1} A Q                  &  & \by{2.5.4} \\
-		\implies & \exists Q \in \ms{n}{n}{\F} : A = Q (\lambda I_n) Q^{-1}                                \\
-		\implies & \exists Q \in \ms{n}{n}{\F} : A = \lambda (Q I_n Q^{-1}) = \lambda I_n. &  & \by{2.3.5}
+		         & \exists Q \in \ms[n][n][\F] : \lambda I_n = Q^{-1} A Q                  &  & \by{2.5.4} \\
+		\implies & \exists Q \in \ms[n][n][\F] : A = Q (\lambda I_n) Q^{-1}                                \\
+		\implies & \exists Q \in \ms[n][n][\F] : A = \lambda (Q I_n Q^{-1}) = \lambda I_n. &  & \by{2.3.5}
 	\end{align*}
 \end{proof}
 
 \begin{proof}[\pf{ex:5.1.11}(b)]
-	Let \(A \in \ms{n}{n}{\F}\) be a diagonalizable matrix having only one eigenvalue \(\lambda \in \F\).
+	Let \(A \in \ms[n][n][\F]\) be a diagonalizable matrix having only one eigenvalue \(\lambda \in \F\).
 	By \cref{5.1.1,5.1.2} there exists an ordered basis \(\beta\) for \(\vs{F}^n\) over \(\F\) such that \(Av = \lambda v = \lambda I_n v\) for all \(v \in \beta\).
 	By \cref{2.1.13} we see that \(A = \lambda I_n\).
 \end{proof}
@@ -492,7 +492,7 @@
 			                                 0     & 1 - t
 		                                 \end{pmatrix} = (1 - t)^2                                             &  & \by{4.1.1}         \\
 		\implies & 1 \text{ is the only eigenvalue of } A                                            &  & \by{5.2}                     \\
-		\implies & \ns{\L_A - 1 \cdot \IT[\ms{2}{2}{\F}]} = \set{v \in \vs{F}^2 : (A - I_2) v = \zv}                                   \\
+		\implies & \ns{\L_A - 1 \cdot \IT[\ms[2][2][\F]]} = \set{v \in \vs{F}^2 : (A - I_2) v = \zv}                                   \\
 		         & = \set{v \in \vs{F}^2 : \begin{pmatrix}
 				                                   0 & 1 \\
 				                                   0 & 0
@@ -514,8 +514,8 @@
 \end{ex}
 
 \begin{proof}[\pf{ex:5.1.12}(a)]
-	Let \(A, B \in \ms{n}{n}{\F}\) such that \(A, B\) are similar.
-	By \cref{2.5.4} there exists some \(Q \in \ms{n}{n}{\F}\) such that \(B = Q^{-1} A Q\).
+	Let \(A, B \in \ms[n][n][\F]\) such that \(A, B\) are similar.
+	By \cref{2.5.4} there exists some \(Q \in \ms[n][n][\F]\) such that \(B = Q^{-1} A Q\).
 	Then we have
 	\begin{align*}
 		\det(A - t I_n) & = \det(I_n) \det(A - t I_n)            &  & \by{4.2.3} \\
@@ -578,7 +578,7 @@
 \end{proof}
 
 \begin{ex}\label{ex:5.1.14}
-	For any square matrix \(A \in \ms{n}{n}{\F}\), prove that \(A\) and \(\tp{A}\) have the same characteristic polynomial (and hence the same eigenvalues).
+	For any square matrix \(A \in \ms[n][n][\F]\), prove that \(A\) and \(\tp{A}\) have the same characteristic polynomial (and hence the same eigenvalues).
 \end{ex}
 
 \begin{proof}[\pf{ex:5.1.14}]
@@ -613,7 +613,7 @@
 \end{proof}
 
 \begin{proof}[\pf{ex:5.1.15}(b)]
-	We claim that if \(x \in \vs{F}^n\) is an eigenvector of \(A \in \ms{n}{n}{\F}\) corresponding to the eigenvalue \(\lambda \in \F\), then for any positive integer \(m\), \(x\) is an eigenvalue of \(A^m\) corresponding to the eigenvalue \(\lambda^m\).
+	We claim that if \(x \in \vs{F}^n\) is an eigenvector of \(A \in \ms[n][n][\F]\) corresponding to the eigenvalue \(\lambda \in \F\), then for any positive integer \(m\), \(x\) is an eigenvalue of \(A^m\) corresponding to the eigenvalue \(\lambda^m\).
 	This is true since
 	\begin{align*}
 		A^m x & = A^{m - 1} Ax                &  & \by{2.3.6}                   \\
@@ -633,8 +633,8 @@
 \end{ex}
 
 \begin{proof}[\pf{ex:5.1.16}(a)]
-	Let \(A, B \in \ms{n}{n}{\F}\) such that \(A, B\) are similar.
-	By \cref{2.5.4} there exists some \(Q \in \ms{n}{n}{\F}\) such that \(B = Q^{-1} A Q\).
+	Let \(A, B \in \ms[n][n][\F]\) such that \(A, B\) are similar.
+	By \cref{2.5.4} there exists some \(Q \in \ms[n][n][\F]\) such that \(B = Q^{-1} A Q\).
 	Then we have
 	\begin{align*}
 		\tr(B) & = \tr(Q^{-1} A Q)                     \\
@@ -651,17 +651,17 @@
 \end{proof}
 
 \begin{ex}\label{ex:5.1.17}
-	Let \(\T \in \ls(\ms{n}{n}{\R})\) defined by \(\T(A) = \tp{A}\).
+	Let \(\T \in \ls(\ms[n][n][\R])\) defined by \(\T(A) = \tp{A}\).
 	\begin{enumerate}
 		\item Show that \(\pm 1\) are the only eigenvalues of \(\T\).
 		\item Describe the eigenvectors corresponding to each eigenvalue of \(\T\).
-		\item Find an ordered basis \(\beta\) for \(\ms{2}{2}{\R}\) such that \([\T]_{\beta}\) is a diagonal matrix.
-		\item Find an ordered basis \(\beta\) for \(\ms{n}{n}{\R}\) such that \([\T]_{\beta}\) is a diagonal matrix for \(n > 2\).
+		\item Find an ordered basis \(\beta\) for \(\ms[2][2][\R]\) such that \([\T]_{\beta}\) is a diagonal matrix.
+		\item Find an ordered basis \(\beta\) for \(\ms[n][n][\R]\) such that \([\T]_{\beta}\) is a diagonal matrix for \(n > 2\).
 	\end{enumerate}
 \end{ex}
 
 \begin{proof}[\pf{ex:5.1.17}(a)]
-	Let \(A \in \ms{n}{n}{\R}\) be an eigenvector of \(\T\) corresponding to eigenvalue \(\lambda \in \R\).
+	Let \(A \in \ms[n][n][\R]\) be an eigenvector of \(\T\) corresponding to eigenvalue \(\lambda \in \R\).
 	Then we have
 	\begin{align*}
 		         & \tp{A} = \T(A) = \lambda A                                                                &  & \by{5.1.2}                   \\
@@ -671,7 +671,7 @@
 		\implies & \lambda = \pm 1.                                                                          &  & (\lambda \in \R)
 	\end{align*}
 	Thus by \cref{5.1.2} \(\pm 1\) are eigenvalues of \(\T\).
-	Suppose for sake of contradiction that there exists another \(\lambda \in \R \setminus \set{\pm 1}\) such that \(\T(B) = \lambda B\) for some \(B \in \ms{n}{n}{\F}\).
+	Suppose for sake of contradiction that there exists another \(\lambda \in \R \setminus \set{\pm 1}\) such that \(\T(B) = \lambda B\) for some \(B \in \ms[n][n][\F]\).
 	Then we have
 	\begin{align*}
 		         & \forall i, j \in \set{1, \dots, n}, \begin{dcases}
@@ -696,14 +696,14 @@
 \begin{proof}[\pf{ex:5.1.17}(b)]
 	We have
 	\begin{align*}
-		         & A \in \ns{\T - \IT[\ms{n}{n}{\R}]} &  & \by{5.4}    \\
+		         & A \in \ns{\T - \IT[\ms[n][n][\R]]} &  & \by{5.4}    \\
 		\implies & \T(A) - A = \zm                    &  & \by{2.1.10} \\
 		\implies & \tp{A} = \T(A) = A                                  \\
 		\implies & A \text{ is symmetric}             &  & \by{1.3.4}
 	\end{align*}
 	and
 	\begin{align*}
-		         & A \in \ns{\T + \IT[\ms{n}{n}{\R}]} &  & \by{5.4}       \\
+		         & A \in \ns{\T + \IT[\ms[n][n][\R]]} &  & \by{5.4}       \\
 		\implies & \T(A) + A = \zm                    &  & \by{2.1.10}    \\
 		\implies & \tp{A} = \T(A) = -A                                    \\
 		\implies & A \text{ is skew-symmetric}.       &  & \by{ex:1.3.28}
@@ -727,7 +727,7 @@
 				-1 & 0
 			\end{pmatrix}}.
 	\]
-	Clearly \(\beta\) is an ordered basis for \(\ms{2}{2}{\R}\).
+	Clearly \(\beta\) is an ordered basis for \(\ms[2][2][\R]\).
 	Observe that the first three matrices in \(\beta\) are symmetric and the last matrix in \(\beta\) is skew-symmetric.
 	Thus by \cref{ex:5.1.17}(b) we can diagonalize \(\T\) with \(\beta\) to get
 	\[
@@ -741,17 +741,17 @@
 \end{proof}
 
 \begin{proof}[\pf{ex:5.1.17}(d)]
-	By \cref{1.6.18} we can find a set of \(\frac{n(n + 1)}{2}\) linearly independent symmetric matrices in \(\ms{n}{n}{\R}\), called it \(\beta\).
-	By \cref{ex:1.6.17} we can find a set of \(\frac{n(n - 1)}{2}\) linearly independent skew-symmetric matrices in \(\ms{n}{n}{\R}\), called it \(\gamma\).
-	Since \(\#(\beta \cup \gamma) = n^2\), by \cref{1.6.11} and \cref{1.6.15}(b) we know that \(\beta \cup \gamma\) is a basis for \(\ms{n}{n}{\R}\) over \(\R\).
-	By \cref{ex:5.1.17}(b) we see that \(\beta \cup \gamma\) is an ordered basis for \(\ms{n}{n}{\R}\) over \(\R\) which diagonalize \(\T\).
+	By \cref{1.6.18} we can find a set of \(\frac{n(n + 1)}{2}\) linearly independent symmetric matrices in \(\ms[n][n][\R]\), called it \(\beta\).
+	By \cref{ex:1.6.17} we can find a set of \(\frac{n(n - 1)}{2}\) linearly independent skew-symmetric matrices in \(\ms[n][n][\R]\), called it \(\gamma\).
+	Since \(\#(\beta \cup \gamma) = n^2\), by \cref{1.6.11} and \cref{1.6.15}(b) we know that \(\beta \cup \gamma\) is a basis for \(\ms[n][n][\R]\) over \(\R\).
+	By \cref{ex:5.1.17}(b) we see that \(\beta \cup \gamma\) is an ordered basis for \(\ms[n][n][\R]\) over \(\R\) which diagonalize \(\T\).
 \end{proof}
 
 \begin{ex}\label{ex:5.1.18}
-	Let \(A, B \in \ms{n}{n}{\C}\).
+	Let \(A, B \in \ms[n][n][\C]\).
 	\begin{enumerate}
 		\item Prove that if \(B\) is invertible, then there exists a scalar \(c \in \C\) such that \(A + cB\) is not invertible.
-		\item Find \(A, B \in \ms{2}{2}{\C} \setminus \set{\zm}\) such that both \(A\) and \(A + cB\) are invertible for all \(c \in \C\).
+		\item Find \(A, B \in \ms[2][2][\C] \setminus \set{\zm}\) such that both \(A\) and \(A + cB\) are invertible for all \(c \in \C\).
 	\end{enumerate}
 \end{ex}
 
@@ -789,12 +789,12 @@
 \end{proof}
 
 \begin{ex}\label{ex:5.1.19}
-	Let \(A, B \in \ms{n}{n}{\F}\) be similar.
+	Let \(A, B \in \ms[n][n][\F]\) be similar.
 	Prove that there exists an \(n\)-dimensional vector space \(\V\) over \(\F\), a linear operator \(\T \in \ls(\V)\), and ordered bases \(\beta\) and \(\gamma\) for \(\V\) over \(\F\) such that \(A = [\T]_{\beta}\) and \(B = [\T]_{\gamma}\).
 \end{ex}
 
 \begin{proof}[\pf{ex:5.1.19}]
-	Since \(A, B\) are similar, by \cref{2.5.4} there exists an \(Q \in \ms{n}{n}{\F}\) such that \(B = Q^{-1} A Q\).
+	Since \(A, B\) are similar, by \cref{2.5.4} there exists an \(Q \in \ms[n][n][\F]\) such that \(B = Q^{-1} A Q\).
 	Fix such \(Q\).
 	Let \(\beta\) be the standard ordered bases for \(\vs{F}^n\) over \(\F\).
 	We define \(\gamma\) as follow:
@@ -814,7 +814,7 @@
 \end{proof}
 
 \begin{ex}\label{ex:5.1.20}
-	Let \(A \in \ms{n}{n}{\F}\) with characteristic polynomial
+	Let \(A \in \ms[n][n][\F]\) with characteristic polynomial
 	\[
 		f(t) = (-1)^n t^n + a_{n - 1} t^{n - 1} + \cdots + a_1 t + a_0.
 	\]
@@ -852,7 +852,7 @@
 	Thus the base case holds.
 	Suppose inductively that \cref{ex:5.1.21}(a) is true for some \(n \geq 1\).
 	We need to show that for \(n + 1\) it is still true.
-	Let \(A \in \ms{(n + 1)}{(n + 1)}{\F}\) and let \(B = A - t I_{n + 1}\).
+	Let \(A \in \ms[(n + 1)][(n + 1)][\F]\) and let \(B = A - t I_{n + 1}\).
 	Observe that
 	\begin{align*}
 		\det(B) & = \sum_{j = 1}^{n + 1} (-1)^{1 + j} B_{1 j} \det(\tilde{B}_{1 j})                                          &  & \by{4.2.2} \\
@@ -922,7 +922,7 @@
 \end{proof}
 
 \begin{proof}[\pf{ex:5.1.22}(b)]
-	Let \(A \in \ms{n}{n}{\F}\) and let \(g \in \ps[m]{\F}\).
+	Let \(A \in \ms[n][n][\F]\) and let \(g \in \ps[m]{\F}\).
 	We claim that if \(x \in \vs{F}^n \setminus \set{\zv}\) such that \(Ax = \lambda x\) for some \(\lambda \in \F\), then \(g(A)(x) = g(\lambda) x\).
 	Let \(\seq{a}{0,,m} \in \F\) such that
 	\[
@@ -957,11 +957,11 @@
 
 \setcounter{ex}{25}
 \begin{ex}\label{ex:5.1.26}
-	Determine the number of distinct characteristic polynomials of matrices in \(\ms{2}{2}{\Z_2}\).
+	Determine the number of distinct characteristic polynomials of matrices in \(\ms[2][2][\Z_2]\).
 \end{ex}
 
 \begin{proof}[\pf{ex:5.1.26}]
-	Let \(A \in \ms{2}{2}{\Z_2}\).
+	Let \(A \in \ms[2][2][\Z_2]\).
 	Then we have
 	\begin{align*}
 		\det(A - t I_2) & = \det\begin{pmatrix}
@@ -972,7 +972,7 @@
 		                & = t^2 - (A_{1 1} + A_{2 2}) t + A_{1 1} A_{2 2} - A_{1 2} A_{2 1}.
 	\end{align*}
 	Rewriting \(-(A_{1 1} + A_{2 2}) = a\) and \(A_{1 1} A_{2 2} - A_{1 2} A_{2 1} = b\) we have \(\det(A - t I_2) = t^2 + at + b\).
-	Since \(a, b \in \Z_2\), we see that there are \(4\) different characteristic polynomials of matrices in \(\ms{2}{2}{\F}\), i.e.,
+	Since \(a, b \in \Z_2\), we see that there are \(4\) different characteristic polynomials of matrices in \(\ms[2][2][\F]\), i.e.,
 	\begin{align*}
 		 & t^2 + 0t + 0 = t^2          \\
 		 & t^2 + 0t + 1 = t^2 + 1      \\

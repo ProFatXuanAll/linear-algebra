@@ -46,8 +46,8 @@
 \end{proof}
 
 \begin{defn}\label{2.4.3}
-	Let \(A \in \ms{n}{n}{\F}\).
-	Then \(A\) is \textbf{invertible} if there exists an \(B \in \ms{n}{n}{\F}\) such that \(AB = BA = I_n\).
+	Let \(A \in \ms[n][n][\F]\).
+	Then \(A\) is \textbf{invertible} if there exists an \(B \in \ms[n][n][\F]\) such that \(AB = BA = I_n\).
 \end{defn}
 
 \begin{cor}\label{2.4.4}
@@ -95,7 +95,7 @@
 	Suppose that \(\T\) is invertible.
 	By \cref{2.4.5}, we have \(\dim(\V) = \dim(\W)\).
 	Let \(n = \dim(\V)\).
-	So \([\T]_{\beta}^{\gamma} \in \ms{n}{n}{\F}\).
+	So \([\T]_{\beta}^{\gamma} \in \ms[n][n][\F]\).
 	Now \(\T^{-1} : \W \to \V\) satisfies \(\T \T^{-1} = \IT[\W]\) and \(\T^{-1} \T = \IT[\V]\).
 	Thus
 	\[
@@ -105,7 +105,7 @@
 	So \([\T]_{\beta}^{\gamma}\) is invertible and \(\pa{[\T]_{\beta}^{\gamma}}^{-1} = [\T^{-1}]_{\gamma}^{\beta}\).
 
 	Now suppose that \(A = [\T]_{\beta}^{\gamma}\) is invertible.
-	Then there exists an \(B \in \ms{n}{n}{\F}\) such that \(AB = BA = I_n\).
+	Then there exists an \(B \in \ms[n][n][\F]\) such that \(AB = BA = I_n\).
 	By \cref{2.6} there exists \(U \in \ls(\W, \V)\) such that
 	\[
 		\U(w_j) = \sum_{i = 1}^n B_{i j} v_i \quad \text{for } j \in \set{1, \dots, n},
@@ -131,7 +131,7 @@
 \end{proof}
 
 \begin{cor}\label{2.4.7}
-	Let \(A \in \ms{n}{n}{\F}\).
+	Let \(A \in \ms[n][n][\F]\).
 	Then \(A\) is invertible iff \(\L_A\) is invertible.
 	Furthermore, \((\L_A)^{-1} = \L_{A^{-1}}\).
 \end{cor}
@@ -285,7 +285,7 @@
 
 \setcounter{ex}{3}
 \begin{ex}\label{ex:2.4.4}
-	Let \(A, B \in \ms{n}{n}{\F}\) be invertible.
+	Let \(A, B \in \ms[n][n][\F]\) be invertible.
 	Prove that \(AB\) is invertible and \((AB)^{-1} = B^{-1} A^{-1}\).
 \end{ex}
 
@@ -342,11 +342,11 @@
 \end{proof}
 
 \begin{ex}\label{ex:2.4.7}
-	Let \(A \in \ms{n}{n}{\F}\).
+	Let \(A \in \ms[n][n][\F]\).
 	\begin{enumerate}
 		\item Suppose that \(A^2 = \zm\).
 		      Prove that \(A\) is not invertible.
-		\item Suppose that \(AB = \zm\) for some \(B \in \ms{n}{n}{\F} \setminus \set{\zm}\).
+		\item Suppose that \(AB = \zm\) for some \(B \in \ms[n][n][\F] \setminus \set{\zm}\).
 		      Could \(A\) be invertible?
 		      Explain.
 	\end{enumerate}
@@ -361,7 +361,7 @@
 		\implies & (A^{-1} A) A = \zm            &  & \by{2.16}  \\
 		\implies & I_n A = A = \zm.              &  & \by{2.3.4}
 	\end{align*}
-	But we know that \(\zm\) is not invertible since \(B \zm = \zm B = \zm \neq I_n\) for all \(B \in \ms{n}{n}{\F}\).
+	But we know that \(\zm\) is not invertible since \(B \zm = \zm B = \zm \neq I_n\) for all \(B \in \ms[n][n][\F]\).
 	Thus \(A\) is not invertible.
 \end{proof}
 
@@ -371,13 +371,13 @@
 
 \setcounter{ex}{8}
 \begin{ex}\label{ex:2.4.9}
-	Let \(A, B \in \ms{n}{n}{\F}\) such that \(AB\) is invertible.
+	Let \(A, B \in \ms[n][n][\F]\) such that \(AB\) is invertible.
 	Prove that \(A\) and \(B\) are invertible.
 	Give an example to show that arbitrary matrices \(A\) and \(B\) need not be invertible if \(AB\) is invertible.
 \end{ex}
 
 \begin{proof}[\pf{ex:2.4.9}]
-	First we show that if \(A, B \in \ms{n}{n}{\F}\) and \(AB\) is invertible, then \(A, B\) are invertible.
+	First we show that if \(A, B \in \ms[n][n][\F]\) and \(AB\) is invertible, then \(A, B\) are invertible.
 	This is true since
 	\begin{align*}
 		         & AB \text{ is invertible}                                               \\
@@ -388,7 +388,7 @@
 		\implies & A, B \text{ are invertible}.                         &  & \by{2.4.7}
 	\end{align*}
 
-	Now we show that if \(A \in \ms{n}{m}{\F}\) and \(B \in \MS\), then \(AB\) can be invertible.
+	Now we show that if \(A \in \ms[n][m][\F]\) and \(B \in \MS\), then \(AB\) can be invertible.
 	We define \(A, B\) as follow:
 	\[
 		A = \begin{pmatrix}
@@ -404,7 +404,7 @@
 \end{proof}
 
 \begin{ex}\label{ex:2.4.10}
-	Let \(A, B \in \ms{n}{n}{\F}\) such that \(AB = I_n\).
+	Let \(A, B \in \ms[n][n][\F]\) such that \(AB = I_n\).
 	\begin{enumerate}
 		\item Use \cref{ex:2.4.9} to conclude that \(A\) and \(B\) are invertible.
 		\item Prove \(A = B^{-1}\) (and hence \(B = A^{-1}\)).
@@ -499,14 +499,14 @@
 \end{proof}
 
 \begin{ex}\label{ex:2.4.16}
-	Let \(B \in \ms{n}{n}{\F}\) be invertible.
-	Define \(\Phi : \ms{n}{n}{\F} \to \ms{n}{n}{\F}\) by \(\Phi(A) = B^{-1} AB\).
+	Let \(B \in \ms[n][n][\F]\) be invertible.
+	Define \(\Phi : \ms[n][n][\F] \to \ms[n][n][\F]\) by \(\Phi(A) = B^{-1} AB\).
 	Prove that \(\Phi\) is an isomorphism.
 \end{ex}
 
 \begin{proof}[\pf{ex:2.4.16}]
 	First we show that \(\Phi\) is linear.
-	Let \(A, C \in \ms{n}{n}{\F}\) and let \(c \in \F\).
+	Let \(A, C \in \ms[n][n][\F]\) and let \(c \in \F\).
 	Since
 	\begin{align*}
 		\Phi(cA + C) & = B^{-1} (cA + C) B                                 \\
@@ -521,13 +521,13 @@
 	by \cref{2.1.2}(b) we see that \(\Phi\) is linear.
 
 	Now we show that \(\Phi\) is invertible.
-	We define \(\phi : \ms{n}{n}{\F} \to \ms{n}{n}{\F}\) as follow:
+	We define \(\phi : \ms[n][n][\F] \to \ms[n][n][\F]\) as follow:
 	\[
-		\forall A \in \ms{n}{n}{\F}, \phi(A) = BAB^{-1}.
+		\forall A \in \ms[n][n][\F], \phi(A) = BAB^{-1}.
 	\]
 	Since
 	\begin{align*}
-		\forall A \in \ms{n}{n}{\F}, (\phi \Phi)(A) & = \phi(\Phi(A))                             \\
+		\forall A \in \ms[n][n][\F], (\phi \Phi)(A) & = \phi(\Phi(A))                             \\
 		                                            & = \phi(B^{-1} AB)                           \\
 		                                            & = B(B^{-1} AB) B^{-1}                       \\
 		                                            & = (BB^{-1}) A (BB^{-1})   &  & \by{2.16}    \\
@@ -539,7 +539,7 @@
 		                                            & = \Phi(\phi(A))                             \\
 		                                            & = (\Phi \phi)(A),
 	\end{align*}
-	we know that \(\Phi^{-1} = \phi\) and thus by \cref{2.4.8} \(\Phi\) is an isomorphism from \(\ms{n}{n}{\F}\) onto \(\ms{n}{n}{\F}\).
+	we know that \(\Phi^{-1} = \phi\) and thus by \cref{2.4.8} \(\Phi\) is an isomorphism from \(\ms[n][n][\F]\) onto \(\ms[n][n][\F]\).
 \end{proof}
 
 \begin{ex}\label{ex:2.4.17}

@@ -11,7 +11,7 @@
 \begin{proof}[\pf{3.2.2}]
 	We have
 	\begin{align*}
-		     & A \in \ms{n}{n}{\F} \text{ is invertible}                 \\
+		     & A \in \ms[n][n][\F] \text{ is invertible}                 \\
 		\iff & \L_A \text{ is invertible}                &  & \by{2.4.7} \\
 		\iff & \rk{\L_A} = \dim(\vs{F}^n) = n            &  & \by{2.4.2} \\
 		\iff & \rk{A} = n.                               &  & \by{3.2.1}
@@ -40,7 +40,7 @@
 
 \begin{thm}\label{3.4}
 	Let \(A \in \MS\).
-	If \(P \in \ms{m}{m}{\F}\) and \(Q \in \ms{n}{n}{\F}\) are invertible, then
+	If \(P \in \ms[m][m][\F]\) and \(Q \in \ms[n][n][\F]\) are invertible, then
 	\begin{enumerate}
 		\item \(\rk{AQ} = \rk{A}\).
 		\item \(\rk{PA} = \rk{A}\).
@@ -182,7 +182,7 @@
 				0      &   &        &
 			\end{array}},
 	\]
-	where \(B' \in \ms{(m - 1)}{(n - 1)}{\F}\).
+	where \(B' \in \ms[(m - 1)][(n - 1)][\F]\).
 
 	By \cref{ex:3.2.11}, \(B'\) has rank one less than \(B\).
 	Since \(\rk{A} = \rk{B} = r\), \(\rk{B'} = r - 1\).
@@ -219,7 +219,7 @@
 
 \begin{cor}\label{3.2.4}
 	Let \(A \in \MS\) be of rank \(r\).
-	Then there exist invertible matrices \(B \in \ms{m}{m}{\F}\) and \(C \in \ms{n}{n}{\F}\) such that \(D = BAC\), where
+	Then there exist invertible matrices \(B \in \ms[m][m][\F]\) and \(C \in \ms[n][n][\F]\) such that \(D = BAC\), where
 	\[
 		D = \begin{pmatrix}
 			I_r   & \zm_1 \\
@@ -264,7 +264,7 @@
 		\rk{\tp{A}} = \rk{\tp{C} \tp{A} \tp{B}} = \rk{\tp{D}}.
 	\]
 	Suppose that \(r = \rk{A}\).
-	Then \(\tp{D} \in \ms{n}{m}{\F}\) with the form of the matrix \(D\) in \cref{3.2.4}, and hence \(\rk{\tp{D}} = r\) by \cref{3.5}.
+	Then \(\tp{D} \in \ms[n][m][\F]\) with the form of the matrix \(D\) in \cref{3.2.4}, and hence \(\rk{\tp{D}} = r\) by \cref{3.5}.
 	Thus
 	\[
 		\rk{\tp{A}} = \rk{\tp{D}} = r = \rk{A}.
@@ -290,7 +290,7 @@
 \end{cor}
 
 \begin{proof}[\pf{3.2.6}]
-	If \(A \in \ms{n}{n}{\F}\) is invertible, then \(\rk{A} = n\).
+	If \(A \in \ms[n][n][\F]\) is invertible, then \(\rk{A} = n\).
 	Hence the matrix \(D\) in \cref{3.2.4} equals \(I_n\), and there exist invertible matrices \(B\) and \(C\) such that \(I_n = BAC\).
 
 	As in the proof of \cref{3.2.4}, note that \(B = E_p E_{p - 1} \cdots E_1\) and \(C = G_1 G_2 \cdots G_q\), where the \(E_i\)'s and \(G_i\)'s are elementary matrices.
@@ -365,16 +365,16 @@
 \end{note}
 
 \begin{defn}\label{3.2.7}
-	Let \(A \in \MS\) and \(B \in \ms{m}{p}{\F}\).
+	Let \(A \in \MS\) and \(B \in \ms[m][p][\F]\).
 	By the \textbf{augmented matrix} \((A | B)\), we mean the \(m \times (n + p)\) matrix whose first \(n\) columns are the columns of \(A\), and whose last \(p\) columns are the columns of \(B\).
 \end{defn}
 
 \begin{cor}\label{3.2.8}
-	If \(A \in \ms{n}{n}{\F}\) is invertible, then it is possible to transform the matrix \((A | I_n)\) into the matrix \((I_n | A^{-1})\) by means of a finite number of elementary row operations.
+	If \(A \in \ms[n][n][\F]\) is invertible, then it is possible to transform the matrix \((A | I_n)\) into the matrix \((I_n | A^{-1})\) by means of a finite number of elementary row operations.
 \end{cor}
 
 \begin{proof}[\pf{3.2.8}]
-	Let \(A \in \ms{n}{n}{\F}\) be invertible, and consider the \(n \times 2n\) augmented matrix \(C = (A | I_n)\).
+	Let \(A \in \ms[n][n][\F]\) be invertible, and consider the \(n \times 2n\) augmented matrix \(C = (A | I_n)\).
 	By \cref{ex:3.2.15} we have
 	\[
 		A^{-1} C = (A^{-1} A | A^{-1} I_n) = (I_n | A^{-1}).
@@ -388,11 +388,11 @@
 \end{proof}
 
 \begin{cor}\label{3.2.9}
-	If \(A \in \ms{n}{n}{\F}\) is invertible, and the matrix \((A | I_n)\) is transformed into a matrix of the form \((I_n | B)\) by means of a finite number of elementary row operations, then \(B = A^{-1}\).
+	If \(A \in \ms[n][n][\F]\) is invertible, and the matrix \((A | I_n)\) is transformed into a matrix of the form \((I_n | B)\) by means of a finite number of elementary row operations, then \(B = A^{-1}\).
 \end{cor}
 
 \begin{proof}[\pf{3.2.9}]
-	Suppose that \(A\) is invertible and that, for some \(B \in \ms{n}{n}{\F}\), the matrix \((A | I_n)\) can be transformed into the matrix \((I_n | B)\) by a finite number of elementary row operations.
+	Suppose that \(A\) is invertible and that, for some \(B \in \ms[n][n][\F]\), the matrix \((A | I_n)\) can be transformed into the matrix \((I_n | B)\) by a finite number of elementary row operations.
 	Let \(\seq{E}{1,,p}\) be the elementary matrices associated with these elementary row operations as in \cref{3.1};
 	then
 	\[
@@ -409,11 +409,11 @@
 \end{proof}
 
 \begin{cor}\label{3.2.10}
-	If \(A \in \ms{n}{n}{\F}\) is not invertible, then any attempt to transform \((A | I_n)\) into a matrix of the form \((I_n | B)\) produces a row whose first \(n\) entries are zeros.
+	If \(A \in \ms[n][n][\F]\) is not invertible, then any attempt to transform \((A | I_n)\) into a matrix of the form \((I_n | B)\) produces a row whose first \(n\) entries are zeros.
 \end{cor}
 
 \begin{proof}[\pf{3.2.10}]
-	Let \(A \in \ms{n}{n}{\F}\) be non-invertible.
+	Let \(A \in \ms[n][n][\F]\) be non-invertible.
 	Then \(\rk{A} < n\).
 	Hence any attempt to transform \((A | I_n)\) into a matrix of the form \((I_n | B)\) by means of elementary row operations must fail because otherwise \(A\) can be transformed into \(I_n\) using the same row operations.
 	This is impossible, however, because elementary row operations preserve rank
@@ -452,7 +452,7 @@
 \end{ex}
 
 \begin{proof}[\pf{ex:3.2.8}]
-	For each \(i \in \set{1, \dots, m}\), we define \(E_i \in \ms{m}{m}{\F}\) to be the elementary row operation of type 2 such that the \(i\)th row of \(E_i\) is multiplied by \(c\).
+	For each \(i \in \set{1, \dots, m}\), we define \(E_i \in \ms[m][m][\F]\) to be the elementary row operation of type 2 such that the \(i\)th row of \(E_i\) is multiplied by \(c\).
 	Then we have
 	\begin{align*}
 		cA & = c I_m A                            &  & \by{2.12}[c] \\
@@ -469,7 +469,7 @@
 
 \setcounter{ex}{9}
 \begin{ex}\label{ex:3.2.10}
-	Prove \cref{3.6} for the case that \(A \in \ms{m}{1}{\F}\).
+	Prove \cref{3.6} for the case that \(A \in \ms[m][1][\F]\).
 \end{ex}
 
 \begin{proof}[\pf{ex:3.2.10}]
@@ -485,7 +485,7 @@
 	\]
 	Note that there is one linearly independent row in \(D\).
 	So \(\rk{D} = \rk{A} = 1\) by \cref{3.2.3} and by \cref{3.5}.
-	Thus \cref{3.6} is established for \(A \in \ms{m}{1}{\F}\).
+	Thus \cref{3.6} is established for \(A \in \ms[m][1][\F]\).
 \end{proof}
 
 \begin{ex}\label{ex:3.2.11}
@@ -572,7 +572,7 @@
 \end{proof}
 
 \begin{ex}\label{ex:3.2.12}
-	Let \(B', D' \in \MS\), and let \(B, D \in \ms{(m + 1)}{(n + 1)}{\F}\) defined by
+	Let \(B', D' \in \MS\), and let \(B, D \in \ms[(m + 1)][(n + 1)][\F]\) defined by
 	\[
 		B = \pa{\begin{array}{c|ccc}
 				1      & 0 & \cdots & 0 \\
@@ -593,11 +593,11 @@
 
 \begin{proof}[\pf{ex:3.2.12}]
 	First suppose that \(D'\) can be obtained from \(B'\) by a elementary row operation.
-	By \cref{3.1} there exists an elementary matrix \(E' \in \ms{m}{m}{\F}\) such that
+	By \cref{3.1} there exists an elementary matrix \(E' \in \ms[m][m][\F]\) such that
 	\[
 		D' = E' B'.
 	\]
-	If we define \(E \in \ms{(m + 1)}{(m + 1)}{\F}\) such that
+	If we define \(E \in \ms[(m + 1)][(m + 1)][\F]\) such that
 	\[
 		E = \pa{\begin{array}{c|ccc}
 				1      & 0 & \cdots & 0 \\
@@ -691,7 +691,7 @@
 \end{proof}
 
 \begin{ex}\label{ex:3.2.15}
-	Suppose that \(A \in \ms{n}{p}{\F}\) and \(B \in \ms{n}{q}{\F}\).
+	Suppose that \(A \in \ms[n][p][\F]\) and \(B \in \ms[n][q][\F]\).
 	Prove that \(M (A | B) = (MA | MB)\) for any \(M \in \MS\).
 \end{ex}
 
@@ -715,12 +715,12 @@
 
 \setcounter{ex}{17}
 \begin{ex}\label{ex:3.2.18}
-	Let \(A \in \MS\) and \(B \in \ms{n}{p}{\F}\).
+	Let \(A \in \MS\) and \(B \in \ms[n][p][\F]\).
 	Prove that \(AB\) can be written as a sum of \(n\) matrices of rank at most one.
 \end{ex}
 
 \begin{proof}[\pf{ex:3.2.18}]
-	For each \(k \in \set{1, \dots, n}\), we define \(C_k \in \ms{m}{p}{\F}\) by setting \(C_{i j} = A_{i k} B_{k j}\).
+	For each \(k \in \set{1, \dots, n}\), we define \(C_k \in \ms[m][p][\F]\) by setting \(C_{i j} = A_{i k} B_{k j}\).
 	By \cref{2.3.1} we have
 	\[
 		\forall (i, j) \in \set{1, \dots, m} \times \set{1, \dots, p}, (AB)_{i j} = \sum_{k = 1}^n A_{i k} B_{k j} = \sum_{k = 1}^n (C_k)_{i j}.
@@ -742,7 +742,7 @@
 \end{proof}
 
 \begin{ex}\label{ex:3.2.19}
-	Let \(A \in \MS\) with rank \(m\) and \(B \in \ms{n}{p}{\F}\) with rank \(n\).
+	Let \(A \in \MS\) with rank \(m\) and \(B \in \ms[n][p][\F]\) with rank \(n\).
 	Determine the rank of \(AB\).
 	Justify your answer.
 \end{ex}
@@ -760,14 +760,14 @@
 \setcounter{ex}{20}
 \begin{ex}\label{ex:3.2.21}
 	Let \(A \in \MS\) with rank \(m\).
-	Prove that there exists an \(B \in \ms{n}{m}{\F}\) such that \(AB = I_m\).
+	Prove that there exists an \(B \in \ms[n][m][\F]\) such that \(AB = I_m\).
 \end{ex}
 
 \begin{proof}[\pf{ex:3.2.21}]
 	By \cref{3.6} we know that \(m \leq n\).
 	By \cref{3.5} we can use at most \(n - m\) elementary column operations of type 1 on \(A\) such that the first \(m\) columns of the resulting matrix, called it \(C\), is linearly independent.
-	By \cref{3.1} there exist elementary column matrices \(\seq{E}{1,,p} \in \ms{n}{n}{\F}\) such that \(C = A \seq[]{E}{1,,p}\).
-	Let \(D \in \ms{n}{m}{\F}\) be the matrix
+	By \cref{3.1} there exist elementary column matrices \(\seq{E}{1,,p} \in \ms[n][n][\F]\) such that \(C = A \seq[]{E}{1,,p}\).
+	Let \(D \in \ms[n][m][\F]\) be the matrix
 	\[
 		D = \begin{pmatrix}
 			I_m   & \zm_1 \\
@@ -783,7 +783,7 @@
 		                                            & = \sum_{k = 1}^m C_{i k} \delta_{k j} &  & \by{2.3.4}                                         \\
 		                                            & = C_{i j}.                            &  & \by{2.3.4}
 	\end{align*}
-	Since the first \(m\) columns of \(C\) is linearly independent and \(CD \in \ms{m}{m}{\F}\), by \cref{3.5} we know that \(\rk{CD} = m\) and thus by \cref{3.2.2} \(CD\) is invertible.
+	Since the first \(m\) columns of \(C\) is linearly independent and \(CD \in \ms[m][m][\F]\), by \cref{3.5} we know that \(\rk{CD} = m\) and thus by \cref{3.2.2} \(CD\) is invertible.
 	Then we have
 	\[
 		(A \seq[]{E}{1,,p} D) (CD)^{-1} = (CD) (CD)^{-1} = I_m.
@@ -792,15 +792,15 @@
 \end{proof}
 
 \begin{ex}\label{ex:3.2.22}
-	Let \(B \in \ms{n}{m}{\F}\) with rank \(m\).
+	Let \(B \in \ms[n][m][\F]\) with rank \(m\).
 	Prove that there exists an \(A \in \MS\) such that \(AB = I_m\).
 \end{ex}
 
 \begin{proof}[\pf{ex:3.2.22}]
 	By \cref{3.6} we know that \(m \leq n\).
 	By \cref{3.5} we can use at most \(n - m\) elementary row operations of type 1 on \(B\) such that the first \(m\) rows of the resulting matrix, called it \(C\), is linearly independent.
-	By \cref{3.1} there exist elementary row matrices \(\seq{E}{1,,p} \in \ms{n}{n}{\F}\) such that \(C = \seq[]{E}{p,,1} B\).
-	Let \(D \in \ms{m}{n}{\F}\) be the matrix
+	By \cref{3.1} there exist elementary row matrices \(\seq{E}{1,,p} \in \ms[n][n][\F]\) such that \(C = \seq[]{E}{p,,1} B\).
+	Let \(D \in \ms[m][n][\F]\) be the matrix
 	\[
 		D = \begin{pmatrix}
 			I_m   & \zm_1 \\
@@ -816,7 +816,7 @@
 		                                            & = \sum_{k = 1}^m \delta_{i k} C_{k j} &  & \by{2.3.4}                                         \\
 		                                            & = C_{i j}.                            &  & \by{2.3.4}
 	\end{align*}
-	Since the first \(m\) rows of \(C\) is linearly independent and \(DC \in \ms{m}{m}{\F}\), by \cref{3.5} we know that \(\rk{DC} = m\) and thus by \cref{3.2.2} \(DC\) is invertible.
+	Since the first \(m\) rows of \(C\) is linearly independent and \(DC \in \ms[m][m][\F]\), by \cref{3.5} we know that \(\rk{DC} = m\) and thus by \cref{3.2.2} \(DC\) is invertible.
 	Then we have
 	\[
 		(DC)^{-1} (D \seq[]{E}{p,,1} B) = (DC)^{-1} (DC) = I_m.

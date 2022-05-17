@@ -5,7 +5,7 @@
 \end{defn}
 
 \begin{thm}\label{3.13}
-	Let \(Ax = b\) be a system of \(m\) linear equations in \(n\) unknowns, and let \(C \in \ms{m}{m}{\F}\) be invertible.
+	Let \(Ax = b\) be a system of \(m\) linear equations in \(n\) unknowns, and let \(C \in \ms[m][m][\F]\) be invertible.
 	Then the system \((CA)x = Cb\) is equivalent to \(Ax = b\).
 \end{thm}
 
@@ -161,7 +161,7 @@
 	\[
 		c_1 a_{j_1} + \cdots + c_r a_{j_r} = \zv.
 	\]
-	Because \(B\) can be obtained from \(A\) by a sequence of elementary row operations, there exists (as in the proof of \cref{3.4.2}) an invertible matrix \(M \in \ms{m}{m}{\F}\) such that \(MA = B\).
+	Because \(B\) can be obtained from \(A\) by a sequence of elementary row operations, there exists (as in the proof of \cref{3.4.2}) an invertible matrix \(M \in \ms[m][m][\F]\) such that \(MA = B\).
 	Multiplying the preceding equation by \(M\) yields
 	\[
 		c_1 M a_{j_1} + \cdots + c_r M a_{j_r} = \zv.
@@ -210,15 +210,15 @@
 			0
 		\end{pmatrix} = e_1 \in \vs{F}^m.
 	\]
-	(if \(C \in \ms{m}{1}{\F}\) and \(C \neq e_1\), then \(C\) is not in reduced row echelon form.)
+	(if \(C \in \ms[m][1][\F]\) and \(C \neq e_1\), then \(C\) is not in reduced row echelon form.)
 	Thus the base case holds.
 	Suppose inductively that for some \(n \geq 1\), any matrix \(A \in \MS\) has unique reduced row echelon form.
-	Then we need to show that any matrix \(A \in \ms{m}{(n + 1)}{\F}\) has unique reduced row echelon form.
-	So let \(A \in \ms{m}{(n + 1)}{\F}\).
+	Then we need to show that any matrix \(A \in \ms[m][(n + 1)][\F]\) has unique reduced row echelon form.
+	So let \(A \in \ms[m][(n + 1)][\F]\).
 	Let \(B, C\) be reduced row echelon forms of \(A\).
 	We denote the \(j\)th column of \(A, B, C\) as \(a_j, b_j, c_j\), respectively.
 	Then we have \(A = (a_1, \dots, a_n | a_{n + 1})\), \(B = (b_1, \dots, b_n | b_{n + 1})\) and \(C = (c_1, \dots, c_n | c_{n + 1})\).
-	Because \(B, C\) can be obtained from \(A\) by sequences of elementary row operations, there exists (as in the proof of \cref{3.4.2}) invertible matrices \(E, F \in \ms{m}{m}{\F}\) such that \(EA = B\) and \(FA = C\).
+	Because \(B, C\) can be obtained from \(A\) by sequences of elementary row operations, there exists (as in the proof of \cref{3.4.2}) invertible matrices \(E, F \in \ms[m][m][\F]\) such that \(EA = B\) and \(FA = C\).
 	By \cref{ex:3.2.15} we have \(EA = (E (\seq{a}{1,,n}) | E a_{n + 1})\) and \(FA = (F (\seq{a}{1,,n}) | F a_{n + 1})\).
 	Since \(EA, FA\) are in reduced row echelon forms, we know that \(E (\seq{a}{1,,n}), F (\seq{a}{1,,n})\) are reduced row echelon forms of \((\seq{a}{1,,n})\).
 	Thus we have

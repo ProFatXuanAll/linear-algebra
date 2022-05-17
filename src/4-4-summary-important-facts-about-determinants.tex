@@ -1,88 +1,88 @@
 \section{Summary --- Important Facts about Determinants}\label{sec:4.4}
 
 \begin{note}
-  The \textbf{determinant} of \(A \in \ms{n}{n}{\F}\) is a scalar in \(\F\), denoted by \(\det(A)\) or \(\abs{A}\), and can be computed in the following manner:
-  \begin{itemize}
-    \item If \(A \in \ms{1}{1}{\F}\), then \(\det(A) = A_{1 1}\), the single entry of \(A\).
-    \item If \(A \in \ms{2}{2}{\F}\), then \(\det(A) = A_{1 1} A_{2 2} - A_{1 2} A_{2 1}\).
-    \item If \(A \in \ms{n}{n}{\F}\) for \(n > 2\), then
-          \[
-            \det(A) = \sum_{j = 1}^n (-1)^{i + j} A_{i j} \cdot \det(\tilde{A}_{i j})
-          \]
-          (if the determinant is evaluated by the entries of row \(i\) of \(A\)) or
-          \[
-            \det(A) = \sum_{i = 1}^n (-1)^{i + j} A_{i j} \cdot \det(\tilde{A}_{i j})
-          \]
-          (if the determinant is evaluated by the entries of column \(j\) of \(A\)), where \(\tilde{A}_{i j}\) is the \((n - 1) \times (n - 1)\) matrix obtained by deleting row \(i\) and column \(j\) from \(A\).
-  \end{itemize}
-  In the formulas above, the scalar \((-1)^{i + j} \det(\tilde{A}_{i j})\) is called the \textbf{cofactor} of the row \(i\) column \(j\) entry of \(A\).
-  In this language, the determinant of \(A\) is evaluated as the sum of terms obtained by multiplying each entry of some row or column of \(A\) by the cofactor of that entry.
-  Thus \(\det(A)\) is expressed in terms of \(n\) determinants of \((n - 1) \times (n - 1)\) matrices.
-  These determinants are then evaluated in terms of determinants of \((n - 2) \times (n - 2)\) matrices, and so forth, until \(2 \times 2\) matrices are obtained.
-  The determinants of the \(2 \times 2\) matrices are then evaluated as in item 2.
+	The \textbf{determinant} of \(A \in \ms[n][n][\F]\) is a scalar in \(\F\), denoted by \(\det(A)\) or \(\abs{A}\), and can be computed in the following manner:
+	\begin{itemize}
+		\item If \(A \in \ms[1][1][\F]\), then \(\det(A) = A_{1 1}\), the single entry of \(A\).
+		\item If \(A \in \ms[2][2][\F]\), then \(\det(A) = A_{1 1} A_{2 2} - A_{1 2} A_{2 1}\).
+		\item If \(A \in \ms[n][n][\F]\) for \(n > 2\), then
+		      \[
+			      \det(A) = \sum_{j = 1}^n (-1)^{i + j} A_{i j} \cdot \det(\tilde{A}_{i j})
+		      \]
+		      (if the determinant is evaluated by the entries of row \(i\) of \(A\)) or
+		      \[
+			      \det(A) = \sum_{i = 1}^n (-1)^{i + j} A_{i j} \cdot \det(\tilde{A}_{i j})
+		      \]
+		      (if the determinant is evaluated by the entries of column \(j\) of \(A\)), where \(\tilde{A}_{i j}\) is the \((n - 1) \times (n - 1)\) matrix obtained by deleting row \(i\) and column \(j\) from \(A\).
+	\end{itemize}
+	In the formulas above, the scalar \((-1)^{i + j} \det(\tilde{A}_{i j})\) is called the \textbf{cofactor} of the row \(i\) column \(j\) entry of \(A\).
+	In this language, the determinant of \(A\) is evaluated as the sum of terms obtained by multiplying each entry of some row or column of \(A\) by the cofactor of that entry.
+	Thus \(\det(A)\) is expressed in terms of \(n\) determinants of \((n - 1) \times (n - 1)\) matrices.
+	These determinants are then evaluated in terms of determinants of \((n - 2) \times (n - 2)\) matrices, and so forth, until \(2 \times 2\) matrices are obtained.
+	The determinants of the \(2 \times 2\) matrices are then evaluated as in item 2.
 \end{note}
 
 \begin{note}
-  It is beneficial to evaluate the determinant of a matrix by expanding along a row or column of the matrix that contains the largest number of zero entries.
-  In fact, it is often helpful to introduce zeros into the matrix by means of elementary row operations before computing the determinant.
-  This technique utilizes the first three properties of the determinant.
-  \begin{itemize}
-    \item If \(B\) is a matrix obtained by interchanging any two rows or interchanging any two columns of \(A \in \ms{n}{n}{\F}\), then \(\det(B) = -\det(A)\).
-    \item If \(B\) is a matrix obtained by multiplying each entry of some row or column of \(A \in \ms{n}{n}{\F}\) by a scalar \(k\), then \(\det(B) = k \cdot \det(A)\).
-    \item If \(B\) is a matrix obtained from \(A \in \ms{n}{n}{\F}\) by adding a multiple of row \(i\) to row \(j\) or a multiple of column \(i\) to column \(j\) for \(i \neq j\), then \(\det(B) = \det(A)\).
-  \end{itemize}
-  In the chapters that follow, we often have to evaluate the determinant of matrices having special forms.
-  The next two properties of the determinant are useful in this regard:
-  \begin{itemize}
-    \item The determinant of an upper triangular matrix is the product of its diagonal entries.
-          In particular, \(\det(I_n) = 1\).
-    \item If two rows (or columns) of a matrix are identical, then the determinant of the matrix is zero.
-  \end{itemize}
-  The next three properties of the determinant are used frequently in later chapters.
-  Indeed, perhaps the most significant property of the determinant is that it provides a simple characterization of invertible matrices.
-  \begin{itemize}
-    \item For any \(A, B \in \ms{n}{n}{\F}\), \(\det(AB) = \det(A) \cdot \det(B)\).
-    \item \(A \in \ms{n}{n}{\F}\) is invertible iff \(\det(A) \neq 0\).
-          Furthermore, if \(A\) is invertible, then \(\det(A^{-1}) = \frac{1}{\det(A)}\).
-    \item For any \(A \in \ms{n}{n}{\F}\), \(\det(A) = \det(\tp{A})\).
-  \end{itemize}
-  The final property, stated as \cref{ex:4.3.15}, is used in \cref{ch:5}.
-  It is a simple consequence of previous properties.
-  \begin{itemize}
-    \item If \(A\) and \(B\) are similar matrices, then \(\det(A) = \det(B)\).
-  \end{itemize}
+	It is beneficial to evaluate the determinant of a matrix by expanding along a row or column of the matrix that contains the largest number of zero entries.
+	In fact, it is often helpful to introduce zeros into the matrix by means of elementary row operations before computing the determinant.
+	This technique utilizes the first three properties of the determinant.
+	\begin{itemize}
+		\item If \(B\) is a matrix obtained by interchanging any two rows or interchanging any two columns of \(A \in \ms[n][n][\F]\), then \(\det(B) = -\det(A)\).
+		\item If \(B\) is a matrix obtained by multiplying each entry of some row or column of \(A \in \ms[n][n][\F]\) by a scalar \(k\), then \(\det(B) = k \cdot \det(A)\).
+		\item If \(B\) is a matrix obtained from \(A \in \ms[n][n][\F]\) by adding a multiple of row \(i\) to row \(j\) or a multiple of column \(i\) to column \(j\) for \(i \neq j\), then \(\det(B) = \det(A)\).
+	\end{itemize}
+	In the chapters that follow, we often have to evaluate the determinant of matrices having special forms.
+	The next two properties of the determinant are useful in this regard:
+	\begin{itemize}
+		\item The determinant of an upper triangular matrix is the product of its diagonal entries.
+		      In particular, \(\det(I_n) = 1\).
+		\item If two rows (or columns) of a matrix are identical, then the determinant of the matrix is zero.
+	\end{itemize}
+	The next three properties of the determinant are used frequently in later chapters.
+	Indeed, perhaps the most significant property of the determinant is that it provides a simple characterization of invertible matrices.
+	\begin{itemize}
+		\item For any \(A, B \in \ms[n][n][\F]\), \(\det(AB) = \det(A) \cdot \det(B)\).
+		\item \(A \in \ms[n][n][\F]\) is invertible iff \(\det(A) \neq 0\).
+		      Furthermore, if \(A\) is invertible, then \(\det(A^{-1}) = \frac{1}{\det(A)}\).
+		\item For any \(A \in \ms[n][n][\F]\), \(\det(A) = \det(\tp{A})\).
+	\end{itemize}
+	The final property, stated as \cref{ex:4.3.15}, is used in \cref{ch:5}.
+	It is a simple consequence of previous properties.
+	\begin{itemize}
+		\item If \(A\) and \(B\) are similar matrices, then \(\det(A) = \det(B)\).
+	\end{itemize}
 \end{note}
 
 \exercisesection
 
 \setcounter{ex}{4}
 \begin{ex}\label{ex:4.4.5}
-  Suppose that \(M \in \ms{n}{n}{\F}\) can be written in the form
-  \[
-    M = \begin{pmatrix}
-      A   & B         \\
-      \zm & I_{n - m}
-    \end{pmatrix},
-  \]
-  where \(A \in \ms{m}{m}{\F}\) for some \(m \in \set{1, \dots, n - 1}\).
-  Prove that \(\det(M) = \det(A)\).
+	Suppose that \(M \in \ms[n][n][\F]\) can be written in the form
+	\[
+		M = \begin{pmatrix}
+			A   & B         \\
+			\zm & I_{n - m}
+		\end{pmatrix},
+	\]
+	where \(A \in \ms[m][m][\F]\) for some \(m \in \set{1, \dots, n - 1}\).
+	Prove that \(\det(M) = \det(A)\).
 \end{ex}
 
 \begin{proof}[\pf{ex:4.4.5}]
-  See \cref{ex:4.3.20}.
+	See \cref{ex:4.3.20}.
 \end{proof}
 
 \begin{ex}\label{ex:4.4.6}
-  Prove that if \(M \in \ms{n}{n}{\F}\) can be written in the form
-  \[
-    M = \begin{pmatrix}
-      A   & B \\
-      \zm & C
-    \end{pmatrix},
-  \]
-  where \(A\) and \(C\) are square matrices, then \(\det(M) = \det(A) \cdot \det(C)\).
+	Prove that if \(M \in \ms[n][n][\F]\) can be written in the form
+	\[
+		M = \begin{pmatrix}
+			A   & B \\
+			\zm & C
+		\end{pmatrix},
+	\]
+	where \(A\) and \(C\) are square matrices, then \(\det(M) = \det(A) \cdot \det(C)\).
 \end{ex}
 
 \begin{proof}[\pf{ex:4.4.5}]
-  See \cref{ex:4.3.21}.
+	See \cref{ex:4.3.21}.
 \end{proof}

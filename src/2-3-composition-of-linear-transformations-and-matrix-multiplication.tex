@@ -89,7 +89,7 @@
 \end{proof}
 
 \begin{defn}\label{2.3.1}
-	Let \(A \in \MS\) matrix and \(B \in \ms{n}{p}{\F}\).
+	Let \(A \in \MS\) matrix and \(B \in \ms[n][p][\F]\).
 	We define the \textbf{product} of \(A\) and \(B\), denoted \(AB\), to be the \(m \times p\) matrix such that
 	\[
 		(AB)_{i j} = \sum_{k = 1}^n A_{i k} B_{k j} \quad \text{for } 1 \leq i \leq m, 1 \leq j \leq p.
@@ -131,7 +131,7 @@
 \end{note}
 
 \begin{eg}\label{2.3.2}
-	If \(A \in \MS\) and \(B \in \ms{n}{p}{\F}\), then \(\tp{(AB)} = \tp{B} \tp{A}\).
+	If \(A \in \MS\) and \(B \in \ms[n][p][\F]\), then \(\tp{(AB)} = \tp{B} \tp{A}\).
 \end{eg}
 
 \begin{proof}[\pf{2.3.2}]
@@ -200,7 +200,7 @@
 \end{defn}
 
 \begin{thm}\label{2.12}
-	Let \(A \in \MS\), let \(B, C \in \ms{n}{p}{\F}\) and let \(D, E \in \ms{q}{m}{\F}\).
+	Let \(A \in \MS\), let \(B, C \in \ms[n][p][\F]\) and let \(D, E \in \ms[q][m][\F]\).
 	Then
 	\begin{enumerate}
 		\item \(A (B + C) = AB + AC\) and \((D + E) A = DA + EA\).
@@ -274,7 +274,7 @@
 \begin{note}
 	\cref{2.12} provides analogs of (a), (c), and (d) of \cref{2.10}.
 	\cref{2.10}(b) has its analog in \cref{2.16}.
-	Observe also that part (c) of \cref{2.12} illustrates that the identity matrix acts as a multiplicative identity in \(\ms{n}{n}{\F}\).
+	Observe also that part (c) of \cref{2.12} illustrates that the identity matrix acts as a multiplicative identity in \(\ms[n][n][\F]\).
 	When the context is clear, we sometimes omit the subscript \(n\) from \(I_n\).
 \end{note}
 
@@ -282,8 +282,8 @@
 	Let
 	\begin{align*}
 		A               & \in \MS;           \\
-		\seq{B}{1,2,,k} & \in \ms{n}{p}{\F}; \\
-		\seq{C}{1,2,,k} & \in \ms{q}{m}{\F}; \\
+		\seq{B}{1,2,,k} & \in \ms[n][p][\F]; \\
+		\seq{C}{1,2,,k} & \in \ms[q][m][\F]; \\
 		\seq{a}{1,2,,k} & \in \F.
 	\end{align*}
 	Then
@@ -303,7 +303,7 @@
 \end{proof}
 
 \begin{defn}\label{2.3.6}
-	For an \(A \in \ms{n}{n}{\F}\), we define \(A^1 = A\), \(A^2 = AA\), \(A^3 = A^2 A\), and, in general, \(A^k = A^{k - 1} A\) for \(k = 2, 3, \dots\).
+	For an \(A \in \ms[n][n][\F]\), we define \(A^1 = A\), \(A^2 = AA\), \(A^3 = A^2 A\), and, in general, \(A^k = A^{k - 1} A\) for \(k = 2, 3, \dots\).
 	We define \(A^0 = I_n\).
 \end{defn}
 
@@ -322,7 +322,7 @@
 \end{eg}
 
 \begin{thm}\label{2.13}
-	Let \(A \in \MS\) and \(B \in \ms{n}{p}{\F}\).
+	Let \(A \in \MS\) and \(B \in \ms[n][p][\F]\).
 	For each \(j\) (\(1 \leq j \leq p\)) let \(u_j\) and \(v_j\) denote the \(j\)th columns of \(AB\) and \(B\), respectively.
 	Then
 	\begin{enumerate}
@@ -412,7 +412,7 @@
 \end{proof}
 
 \begin{defn}\label{2.3.8}
-	Let \(A \in \ms{m}{n}{\F}\).
+	Let \(A \in \ms[m][n][\F]\).
 	We denote by \(\L_A\) the mapping \(\L_A : \vs{F}^n \to \vs{F}^m\) defined by \(\L_A(x) = Ax\) (the matrix product of \(A\) and \(x\)) for each column vector \(x \in \vs{F}^n\).
 	We call \(\L_A\) a \textbf{left-multiplication transformation}.
 \end{defn}
@@ -427,7 +427,7 @@
 		\item \(\L_{A + B} = \L_A + \L_B\) and \(\L_{aA} = a \L_A\) for all \(a \in \F\).
 		\item If \(\T : \vs{F}^n \to \vs{F}^m\) is linear, then there exists a unique \(C \in \MS\) such that \(\T = \L_C\).
 		      In fact, \(C = [\T]_{\beta}^{\gamma}\).
-		\item If \(E \in \ms{n}{p}{\F}\), then \(\L_{AE} = \L_A \L_E\).
+		\item If \(E \in \ms[n][p][\F]\), then \(\L_{AE} = \L_A \L_E\).
 		\item If \(m = n\), then \(\L_{I_n} = \IT[\vs{F}^n]\).
 	\end{enumerate}
 \end{thm}
@@ -497,20 +497,20 @@
 \end{thm}
 
 \begin{proof}[\pf{2.16}]
-	Since \(A (BC)\) is defined, by \cref{2.3.1} we can let \(A \in \MS\) and \(BC \in \ms{n}{p}{\F}\) such that \(A (BC) \in \ms{m}{p}{\F}\).
-	Since \(BC\) is also defined, by \cref{2.3.1} again we can let \(B \in \ms{n}{k}{\F}\) and \(C \in \ms{k}{p}{\F}\).
+	Since \(A (BC)\) is defined, by \cref{2.3.1} we can let \(A \in \MS\) and \(BC \in \ms[n][p][\F]\) such that \(A (BC) \in \ms[m][p][\F]\).
+	Since \(BC\) is also defined, by \cref{2.3.1} again we can let \(B \in \ms[n][k][\F]\) and \(C \in \ms[k][p][\F]\).
 	Then we have
 	\begin{align*}
 		         & \begin{dcases}
 			           A \in \MS           \\
-			           B \in \ms{n}{k}{\F} \\
-			           C \in \ms{k}{p}{\F}
+			           B \in \ms[n][k][\F] \\
+			           C \in \ms[k][p][\F]
 		           \end{dcases}                      \\
 		\implies & \begin{dcases}
-			           AB \in \ms{m}{k}{\F} \\
-			           C \in \ms{k}{p}{\F}
+			           AB \in \ms[m][k][\F] \\
+			           C \in \ms[k][p][\F]
 		           \end{dcases}  &  & \by{2.3.1}            \\
-		\implies & (AB) C \in \ms{m}{p}{\F} &  & \by{2.3.1}
+		\implies & (AB) C \in \ms[m][p][\F] &  & \by{2.3.1}
 	\end{align*}
 	and thus \((AB) C\) is defined.
 
@@ -533,7 +533,7 @@
 \end{eg}
 
 \begin{proof}[\pf{2.3.10}]
-	Suppose that \(B \in \ms{n}{n}{\F}\).
+	Suppose that \(B \in \ms[n][n][\F]\).
 	We know that person \(i\) belongs to a clique iff there exists at least two other people \(j, k\) such that \(i\) can send to \(j\), \(j\) can send to \(k\) and \(k\) can send back to \(i\).
 	In other words \(B_{i j} = B_{j k} = B_{k i} = 1\).
 	Thus we have
@@ -555,7 +555,7 @@
 \end{eg}
 
 \begin{proof}[\pf{2.3.11}]
-	Let \(A \in \ms{n}{n}{\F}\).
+	Let \(A \in \ms[n][n][\F]\).
 	First observe that
 	\begin{align*}
 		(A + A^2)_{i j} & = A_{i j} + (A^2)_{i j}                     &  & \by{1.2.9} \\
@@ -617,7 +617,7 @@
 
 \setcounter{ex}{9}
 \begin{ex}\label{ex:2.3.10}
-	Let \(A \in \ms{n}{n}{\F}\).
+	Let \(A \in \ms[n][n][\F]\).
 	Prove that \(A\) is a diagonal matrix iff \(A_{i j} = \delta_{i j} A_{i j}\) for all \(i\) and \(j\).
 \end{ex}
 
@@ -706,7 +706,7 @@
 \end{proof}
 
 \begin{ex}\label{ex:2.3.13}
-	Let \(A, B \in \ms{n}{n}{\F}\).
+	Let \(A, B \in \ms[n][n][\F]\).
 	Prove that \(\tr[AB] = \tr[BA]\) and \(\tr[A] = \tr[\tp{A}]\).
 \end{ex}
 
@@ -816,7 +816,7 @@
 \end{ex}
 
 \begin{proof}[\pf{ex:2.3.15}]
-	Let \(M \in \MS\) and let \(A \in \ms{n}{p}{\F}\).
+	Let \(M \in \MS\) and let \(A \in \ms[n][p][\F]\).
 	For all \(i \in \set{1, 2, \dots, p}\) we define \(v_i\) to be the \(i\)th column of \(A\).
 	By hypothesis we know that
 	\[
@@ -939,7 +939,7 @@
 \end{ex}
 
 \begin{proof}[\pf{ex:2.3.18}]
-	Let \(A \in \MS\), \(B \in \ms{n}{p}{\F}\) and \(C \in \ms{p}{q}{\F}\).
+	Let \(A \in \MS\), \(B \in \ms[n][p][\F]\) and \(C \in \ms[p][q][\F]\).
 	Then we have
 	\begin{align*}
 		((AB) C)_{i j} & = \sum_{k_2 = 1}^p (AB)_{i k_2} C_{k_2 j}                                     &  & \by{2.3.1} \\
@@ -956,7 +956,7 @@
 
 \setcounter{ex}{22}
 \begin{ex}\label{ex:2.3.23}
-	Let \(A \in \ms{n}{n}{\F}\) be an incidence matrix that corresponds to a dominance relation.
+	Let \(A \in \ms[n][n][\F]\) be an incidence matrix that corresponds to a dominance relation.
 	Determine the number of nonzero entries of \(A\).
 \end{ex}
 

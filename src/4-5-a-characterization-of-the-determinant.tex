@@ -1,7 +1,7 @@
 \section{A Characterization of the Determinant}\label{sec:4.5}
 
 \begin{defn}\label{4.5.1}
-	A function \(\delta : \ms{n}{n}{\F} \to \F\) is called an \textbf{\(n\)-linear function} if it is a linear function of each row of an \(n \times n\) matrix when the remaining \(n - 1\) rows are held fixed, that is, \(\delta\) is \(n\)-linear if, for every \(r \in \set{1, \dots, n}\), we have
+	A function \(\delta : \ms[n][n][\F] \to \F\) is called an \textbf{\(n\)-linear function} if it is a linear function of each row of an \(n \times n\) matrix when the remaining \(n - 1\) rows are held fixed, that is, \(\delta\) is \(n\)-linear if, for every \(r \in \set{1, \dots, n}\), we have
 	\[
 		\delta\begin{pmatrix}
 			a_1       \\
@@ -33,7 +33,7 @@
 \end{defn}
 
 \begin{eg}\label{4.5.2}
-	The function \(\delta : \ms{n}{n}{\F} \to \F\) defined by \(\delta(A) = 0\) for each \(A \in \ms{n}{n}{\F}\) is an \(n\)-linear function.
+	The function \(\delta : \ms[n][n][\F] \to \F\) defined by \(\delta(A) = 0\) for each \(A \in \ms[n][n][\F]\) is an \(n\)-linear function.
 \end{eg}
 
 \begin{proof}[\pf{4.5.2}]
@@ -70,13 +70,13 @@
 \end{proof}
 
 \begin{eg}\label{4.5.3}
-	For \(j \in \set{1, \dots, n}\), define \(\delta_j : \ms{n}{n}{\F} \to \F\) by \(\delta_j(A) = \prod_{i = 1}^n A_{i j}\) for each \(A \in \ms{n}{n}{\F}\);
+	For \(j \in \set{1, \dots, n}\), define \(\delta_j : \ms[n][n][\F] \to \F\) by \(\delta_j(A) = \prod_{i = 1}^n A_{i j}\) for each \(A \in \ms[n][n][\F]\);
 	that is, \(\delta_j(A)\) equals the product of the entries of column \(j\) of \(A\).
 	Then each \(\delta_j\) is an \(n\)-linear function.
 \end{eg}
 
 \begin{proof}[\pf{4.5.3}]
-	Let \(A \in \ms{n}{n}{\F}\), \(a_i = (A_{i 1}, \dots, A_{i n})\), and \(v = \tuple{b}{1,,n} \in \vs{F}^n\).
+	Let \(A \in \ms[n][n][\F]\), \(a_i = (A_{i 1}, \dots, A_{i n})\), and \(v = \tuple{b}{1,,n} \in \vs{F}^n\).
 	For any \(k \in \F\), we have
 	\begin{align*}
 		\delta_j\begin{pmatrix}
@@ -111,11 +111,11 @@
 \end{proof}
 
 \begin{eg}\label{4.5.4}
-	The function \(\delta : \ms{n}{n}{\F} \to \F\) defined for each \(A \in \ms{n}{n}{\F}\) by \(\delta(A) = \prod_{i = 1}^n A_{i i}\) (i.e., \(\delta(A)\) equals the product of the diagonal entries of \(A\)) is an \(n\)-linear function.
+	The function \(\delta : \ms[n][n][\F] \to \F\) defined for each \(A \in \ms[n][n][\F]\) by \(\delta(A) = \prod_{i = 1}^n A_{i i}\) (i.e., \(\delta(A)\) equals the product of the diagonal entries of \(A\)) is an \(n\)-linear function.
 \end{eg}
 
 \begin{proof}[\pf{4.5.4}]
-	Let \(A \in \ms{n}{n}{\F}\), \(a_i = (A_{i 1}, \dots, A_{i n})\), and \(v = \tuple{b}{1,,n} \in \vs{F}^n\).
+	Let \(A \in \ms[n][n][\F]\), \(a_i = (A_{i 1}, \dots, A_{i n})\), and \(v = \tuple{b}{1,,n} \in \vs{F}^n\).
 	For any \(k \in \F\), we have
 	\begin{align*}
 		\delta\begin{pmatrix}
@@ -154,21 +154,21 @@
 \end{note}
 
 \begin{defn}\label{4.5.5}
-	An \(n\)-linear function \(\delta : \ms{n}{n}{\F} \to \F\) is called \textbf{alternating} if, for each \(A \in \ms{n}{n}{\F}\), we have \(\delta(A) = 0\) whenever two adjacent rows of \(A\) are identical.
+	An \(n\)-linear function \(\delta : \ms[n][n][\F] \to \F\) is called \textbf{alternating} if, for each \(A \in \ms[n][n][\F]\), we have \(\delta(A) = 0\) whenever two adjacent rows of \(A\) are identical.
 \end{defn}
 
 \begin{thm}\label{4.10}
-	Let \(\delta : \ms{n}{n}{\F} \to \F\) be an alternating \(n\)-linear function.
+	Let \(\delta : \ms[n][n][\F] \to \F\) be an alternating \(n\)-linear function.
 	\begin{enumerate}
-		\item If \(A \in \ms{n}{n}{\F}\) and \(B\) is a matrix obtained from \(A\) by interchanging any two rows of \(A\), then \(\delta(B) = -\delta(A)\).
-		\item If \(A \in \ms{n}{n}{\F}\) has two identical rows, then \(\delta(A) = 0\).
+		\item If \(A \in \ms[n][n][\F]\) and \(B\) is a matrix obtained from \(A\) by interchanging any two rows of \(A\), then \(\delta(B) = -\delta(A)\).
+		\item If \(A \in \ms[n][n][\F]\) has two identical rows, then \(\delta(A) = 0\).
 	\end{enumerate}
 \end{thm}
 
 \begin{proof}[\pf{4.10}(a)]
-	Let \(A \in \ms{n}{n}{\F}\), and let \(B\) be the matrix obtained from \(A\) by interchanging rows \(r\) and \(s\), where \(r < s\).
+	Let \(A \in \ms[n][n][\F]\), and let \(B\) be the matrix obtained from \(A\) by interchanging rows \(r\) and \(s\), where \(r < s\).
 	We first establish the result in the case that \(s = r + 1\).
-	Because \(\delta : \ms{n}{n}{\F} \to \F\) is an \(n\)-linear function that is alternating, we have
+	Because \(\delta : \ms[n][n][\F] \to \F\) is an \(n\)-linear function that is alternating, we have
 	\begin{align*}
 		0 & = \delta\begin{pmatrix}
 			            a_1             \\
@@ -244,7 +244,7 @@
 \end{proof}
 
 \begin{proof}[\pf{4.10}(b)]
-	Suppose that rows \(r\) and \(s\) of \(A \in \ms{n}{n}{\F}\) are identical, where \(r < s\).
+	Suppose that rows \(r\) and \(s\) of \(A \in \ms[n][n][\F]\) are identical, where \(r < s\).
 	If \(s = r + 1\), then \(\delta(A) = 0\) because \(\delta\) is alternating and two adjacent rows of \(A\) are identical.
 	If \(s > r + 1\), let \(B\) be the matrix obtained from \(A\) by interchanging rows \(r + 1\) and \(s\).
 	Then \(\delta(B) = 0\) because two adjacent rows of \(B\) are identical.
@@ -253,12 +253,12 @@
 \end{proof}
 
 \begin{cor}\label{4.5.6}
-	Let \(\delta : \ms{n}{n}{\F} \to \F\) be an alternating \(n\)-linear function.
-	If \(B\) is a matrix obtained from \(A \in \ms{n}{n}{\F}\) by adding a multiple of some row of \(A\) to another row, then \(\delta(B) = \delta(A)\).
+	Let \(\delta : \ms[n][n][\F] \to \F\) be an alternating \(n\)-linear function.
+	If \(B\) is a matrix obtained from \(A \in \ms[n][n][\F]\) by adding a multiple of some row of \(A\) to another row, then \(\delta(B) = \delta(A)\).
 \end{cor}
 
 \begin{proof}[\pf{4.5.6}]
-	Let \(B\) be obtained from \(A \in \ms{n}{n}{\F}\) by adding \(k\) times row \(i\) of \(A\) to row \(j\), where \(j \neq i\), and let \(C\) be obtained from \(A\) by replacing row \(j\) of \(A\) by row \(i\) of \(A\).
+	Let \(B\) be obtained from \(A \in \ms[n][n][\F]\) by adding \(k\) times row \(i\) of \(A\) to row \(j\), where \(j \neq i\), and let \(C\) be obtained from \(A\) by replacing row \(j\) of \(A\) by row \(i\) of \(A\).
 	Then the rows of \(A\), \(B\), and \(C\) are identical except for row \(j\).
 	Moreover, row \(j\) of \(B\) is the sum of row \(j\) of \(A\) and \(k\) times row \(j\) of \(C\).
 	Since \(\delta\) is an \(n\)-linear function and \(C\) has two identical rows, it follows that
@@ -268,8 +268,8 @@
 \end{proof}
 
 \begin{cor}\label{4.5.7}
-	Let \(\delta : \ms{n}{n}{\F} \to \F\) be an alternating \(n\)-linear function.
-	If \(M \in \ms{n}{n}{\F}\) has rank less than \(n\), then \(\delta(M) = 0\).
+	Let \(\delta : \ms[n][n][\F] \to \F\) be an alternating \(n\)-linear function.
+	If \(M \in \ms[n][n][\F]\) has rank less than \(n\), then \(\delta(M) = 0\).
 \end{cor}
 
 \begin{proof}[\pf{4.5.7}]
@@ -287,7 +287,7 @@
 \end{proof}
 
 \begin{cor}\label{4.5.8}
-	Let \(\delta : \ms{n}{n}{\F} \to \F\) be an alternating \(n\)-linear function, and let \(\seq{E}{1,2,3} \in \ms{n}{n}{\F}\) be elementary matrices of types 1, 2, and 3, respectively.
+	Let \(\delta : \ms[n][n][\F] \to \F\) be an alternating \(n\)-linear function, and let \(\seq{E}{1,2,3} \in \ms[n][n][\F]\) be elementary matrices of types 1, 2, and 3, respectively.
 	Suppose that \(E_2\) is obtained by multiplying some row of \(I_n\) by the nonzero scalar \(k\).
 	Then \(\delta(E_1) = -\delta(I_n)\), \(\delta(E_2) = k \cdot \delta(I_n)\), and \(\delta(E_3) = \delta(I_n)\).
 \end{cor}
@@ -299,8 +299,8 @@
 \end{proof}
 
 \begin{thm}\label{4.11}
-	Let \(\delta : \ms{n}{n}{\F} \to \F\) be an alternating \(n\)-linear function such that \(\delta(I_n) = 1\).
-	For any \(A, B \in \ms{n}{n}{\F}\), we have \(\delta(AB) = \delta(A) \cdot \delta(B)\).
+	Let \(\delta : \ms[n][n][\F] \to \F\) be an alternating \(n\)-linear function such that \(\delta(I_n) = 1\).
+	For any \(A, B \in \ms[n][n][\F]\), we have \(\delta(AB) = \delta(A) \cdot \delta(B)\).
 \end{thm}
 
 \begin{proof}[\pf{4.11}]
@@ -333,11 +333,11 @@
 \end{proof}
 
 \begin{thm}\label{4.12}
-	If \(\delta : \ms{n}{n}{\F} \to \F\) is an alternating \(n\)-linear function such that \(\delta(I_n) = 1\), then \(\delta(A) = \det(A)\) for every \(A \in \ms{n}{n}{\F}\).
+	If \(\delta : \ms[n][n][\F] \to \F\) is an alternating \(n\)-linear function such that \(\delta(I_n) = 1\), then \(\delta(A) = \det(A)\) for every \(A \in \ms[n][n][\F]\).
 \end{thm}
 
 \begin{proof}[\pf{4.12}]
-	Let \(\delta : \ms{n}{n}{\F} \to \F\) be an alternating \(n\)-linear function such that \(\delta(I_n) = 1\), and let \(A \in \ms{n}{n}{\F}\).
+	Let \(\delta : \ms[n][n][\F] \to \F\) be an alternating \(n\)-linear function such that \(\delta(I_n) = 1\), and let \(A \in \ms[n][n][\F]\).
 	If \(A\) has rank less than \(n\), then by \cref{4.5.7}, \(\delta(A) = 0\).
 	Since \cref{4.2.7} gives \(\det(A) = 0\), we have \(\delta(A) = \det(A)\) in this case.
 	If, on the other hand, \(A\) has rank \(n\), then \(A\) is invertible and hence is the product of elementary matrices (\cref{3.2.6}), say \(A = \seq[]{E}{m,,1}\).
@@ -354,31 +354,31 @@
 
 \begin{note}
 	\cref{4.12} provides the desired characterization of the determinant:
-	It is the unique function \(\delta : \ms{n}{n}{\F} \to \F\) that is \(n\)-linear, is alternating, and has the property that \(\delta(I_n) = 1\).
+	It is the unique function \(\delta : \ms[n][n][\F] \to \F\) that is \(n\)-linear, is alternating, and has the property that \(\delta(I_n) = 1\).
 \end{note}
 
 \exercisesection
 
 \setcounter{ex}{1}
 \begin{ex}\label{ex:4.5.2}
-	Determine all the \(1\)-linear functions \(\delta : \ms{1}{1}{\F} \to \F\).
+	Determine all the \(1\)-linear functions \(\delta : \ms[1][1][\F] \to \F\).
 \end{ex}
 
 \begin{proof}[\pf{ex:4.5.2}]
-	We claim that the set of all \(1\)-linear functions, denoted as \(S\), is \(\ls(\ms{1}{1}{\F}, \F)\).
+	We claim that the set of all \(1\)-linear functions, denoted as \(S\), is \(\ls(\ms[1][1][\F], \F)\).
 	Since
 	\begin{align*}
-		     & f \in \ls(\ms{1}{1}{\F}, \F)                                                     \\
-		\iff & \forall x, y \in \ms{1}{1}{\F} \text{ and } \forall c \in \F,                    \\
+		     & f \in \ls(\ms[1][1][\F], \F)                                                     \\
+		\iff & \forall x, y \in \ms[1][1][\F] \text{ and } \forall c \in \F,                    \\
 		     & f(cx + y) = cf(x) + f(y)                                      &  & \by{2.1.2}[b] \\
 		\iff & f \in S,                                                      &  & \by{4.5.1}
 	\end{align*}
-	we see that \(S = \ls(\ms{1}{1}{\F}, \F)\).
+	we see that \(S = \ls(\ms[1][1][\F], \F)\).
 \end{proof}
 
 \setcounter{ex}{12}
 \begin{ex}\label{ex:4.5.13}
-	Prove that \(\det : \ms{2}{2}{\F} \to \F\) is a \(2\)-linear function of the columns of a matrix.
+	Prove that \(\det : \ms[2][2][\F] \to \F\) is a \(2\)-linear function of the columns of a matrix.
 \end{ex}
 
 \begin{proof}[\pf{ex:4.5.13}]
@@ -387,7 +387,7 @@
 
 \begin{ex}\label{ex:4.5.14}
 	Let \(a, b, c, d \in \F\).
-	Prove that the function \(\delta : \ms{2}{2}{\F} \to \F\) defined by \(\delta(A) = A_{1 1} A_{2 2} a + A_{1 1} A_{2 1} b + A_{1 2} A_{2 2} c + A_{1 2} A_{2 1} d\) is a \(2\)-linear function.
+	Prove that the function \(\delta : \ms[2][2][\F] \to \F\) defined by \(\delta(A) = A_{1 1} A_{2 2} a + A_{1 1} A_{2 1} b + A_{1 2} A_{2 2} c + A_{1 2} A_{2 1} d\) is a \(2\)-linear function.
 \end{ex}
 
 \begin{proof}[\pf{ex:4.5.14}]
@@ -430,7 +430,7 @@
 \end{proof}
 
 \begin{ex}\label{ex:4.5.15}
-	Prove that \(\delta : \ms{2}{2}{\F} \to \F\) is a \(2\)-linear function iff it has the form
+	Prove that \(\delta : \ms[2][2][\F] \to \F\) is a \(2\)-linear function iff it has the form
 	\[
 		\delta(A) = A_{1 1} A_{2 2} a + A_{1 1} A_{2 1} b + A_{1 2} A_{2 2} c + A_{1 2} A_{2 1} d
 	\]
@@ -440,7 +440,7 @@
 \begin{proof}[\pf{ex:4.5.15}]
 	Thanks to \cref{ex:4.5.14}, we only need to prove that if \(\delta\) is a \(2\)-linear function, then
 	\[
-		\exists a, b, c, d \in \F : \forall A \in \ms{2}{2}{\F}, \delta(A) = A_{1 1} A_{2 2} a + A_{1 1} A_{2 1} b + A_{1 2} A_{2 2} c + A_{1 2} A_{2 1} d.
+		\exists a, b, c, d \in \F : \forall A \in \ms[2][2][\F], \delta(A) = A_{1 1} A_{2 2} a + A_{1 1} A_{2 1} b + A_{1 2} A_{2 2} c + A_{1 2} A_{2 1} d.
 	\]
 	Define \(a, b, c, d \in \F\) such that
 	\[
@@ -458,7 +458,7 @@
 			1 & 0
 		\end{pmatrix}.
 	\]
-	Let \(A \in \ms{2}{2}{\F}\).
+	Let \(A \in \ms[2][2][\F]\).
 	Then we have
 	\begin{align*}
 		\delta\begin{pmatrix}
@@ -490,18 +490,18 @@
 \end{proof}
 
 \begin{ex}\label{ex:4.5.16}
-	Prove that if \(\delta : \ms{n}{n}{\F} \to \F\) is an alternating \(n\)-linear function, then there exists a scalar \(k\) such that \(\delta(A) = k \det(A)\) for all \(A \in \ms{n}{n}{\F}\).
+	Prove that if \(\delta : \ms[n][n][\F] \to \F\) is an alternating \(n\)-linear function, then there exists a scalar \(k\) such that \(\delta(A) = k \det(A)\) for all \(A \in \ms[n][n][\F]\).
 \end{ex}
 
 \begin{proof}[\pf{ex:4.5.16}]
-	First we claim that for any elementary matrix \(E \in \ms{n}{n}{\F}\), we have \(\delta(EA) = \det(E) \delta(A)\) for all \(A \in \ms{n}{n}{\F}\).
+	First we claim that for any elementary matrix \(E \in \ms[n][n][\F]\), we have \(\delta(EA) = \det(E) \delta(A)\) for all \(A \in \ms[n][n][\F]\).
 	\begin{itemize}
 		\item If \(E\) is an elementary matrix of type 1, then by \cref{3.1,4.10}(a) we have \(\delta(EA) = -\delta(A) = \det(E) \cdot \delta(A)\).
 		\item If \(E\) is an elementary matrix of type 2, then by \cref{3.1,4.5.1} we have \(\delta(EA) = \det(E) \delta(A)\).
 		\item If \(E\) is an elementary matrix of type 3, then by \cref{3.1,4.5.6} we have \(\delta(EA) = \delta(A) = \det(E) \delta(A)\).
 	\end{itemize}
 
-	Now we claim that \(\delta(A) = \delta(I_n) \det(A)\) for all \(A \in \ms{n}{n}{\F}\).
+	Now we claim that \(\delta(A) = \delta(I_n) \det(A)\) for all \(A \in \ms[n][n][\F]\).
 	If \(\rk{A} < n\), then by \cref{4.5.7,4.3.1} we have \(\delta(A) = 0 = \delta(I_n) 0 = \delta(I_n) \det(A)\).
 	If \(\rk{A} = n\), then \(A\) is invertible and hence is the product of elementary matrices (\cref{3.2.6}), say, \(A = \seq[]{E}{m,,1}\).
 	Thus we have
@@ -608,16 +608,16 @@
 \end{ex}
 
 \begin{proof}[\pf{ex:4.5.18}]
-	By \cref{4.5.2,ex:4.5.17,1.3} we see that the set of all \(n\)-linear functions over a field \(\F\) is a subspace of \(\fs(\ms{n}{n}{\F}, \F)\) over \(\F\) and thus a vector space over \(\F\).
+	By \cref{4.5.2,ex:4.5.17,1.3} we see that the set of all \(n\)-linear functions over a field \(\F\) is a subspace of \(\fs(\ms[n][n][\F], \F)\) over \(\F\) and thus a vector space over \(\F\).
 \end{proof}
 
 \begin{ex}\label{ex:4.5.19}
-	Let \(\delta : \ms{n}{n}{\F} \to \F\) be an \(n\)-linear function and \(\F\) a field that does not have characteristic two.
-	Prove that if \(\delta(B) = -\delta(A)\) whenever \(B\) is obtained from \(A \in \ms{n}{n}{\F}\) by interchanging any two rows of \(A\), then \(\delta(M) = 0\) whenever \(M \in \ms{n}{n}{\F}\) has two identical rows.
+	Let \(\delta : \ms[n][n][\F] \to \F\) be an \(n\)-linear function and \(\F\) a field that does not have characteristic two.
+	Prove that if \(\delta(B) = -\delta(A)\) whenever \(B\) is obtained from \(A \in \ms[n][n][\F]\) by interchanging any two rows of \(A\), then \(\delta(M) = 0\) whenever \(M \in \ms[n][n][\F]\) has two identical rows.
 \end{ex}
 
 \begin{proof}[\pf{ex:4.5.19}]
-	Let \(M \in \ms{n}{n}{\F}\) such that row \(i\) and row \(j\) of \(M\) are identical and \(i < j\).
+	Let \(M \in \ms[n][n][\F]\) such that row \(i\) and row \(j\) of \(M\) are identical and \(i < j\).
 	To interchange row \(i\) and \(j\) of \(M\), we need to swap \(2(j - i) - 1\) times as calculated in \cref{4.10}.
 	Since the swapping result is the same as \(M\), we have
 	\begin{align*}
@@ -633,7 +633,7 @@
 \end{ex}
 
 \begin{proof}[\pf{ex:4.5.20}]
-	Let \(\delta : \ms{2}{2}{\Z_2} \to \Z_2\) be as in \cref{ex:4.5.15} with \(a = b = c = d = 1\).
+	Let \(\delta : \ms[2][2][\Z_2] \to \Z_2\) be as in \cref{ex:4.5.15} with \(a = b = c = d = 1\).
 	Then we have
 	\begin{align*}
 		\delta\begin{pmatrix}

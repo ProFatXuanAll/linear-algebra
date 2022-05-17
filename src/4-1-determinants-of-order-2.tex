@@ -12,11 +12,11 @@
 \end{defn}
 
 \begin{note}
-	There exist \(A, B \in \ms{2}{2}{\F}\) such that \(\det(A + B) \neq \det(A) + \det(B)\), the function \(\det : \ms{2}{2}{\F} \to \F\) is \emph{not} a linear transformation.
+	There exist \(A, B \in \ms[2][2][\F]\) such that \(\det(A + B) \neq \det(A) + \det(B)\), the function \(\det : \ms[2][2][\F] \to \F\) is \emph{not} a linear transformation.
 \end{note}
 
 \begin{thm}\label{4.1}
-	The function \(\det : \ms{2}{2}{\F} \to \F\) is a linear function of each row of a \(2 \times 2\) matrix when the other row is held fixed.
+	The function \(\det : \ms[2][2][\F] \to \F\) is a linear function of each row of a \(2 \times 2\) matrix when the other row is held fixed.
 	That is, if \(u, v, w \in \vs{F}^2\) and \(k \in \F\), then
 	\[
 		\det\begin{pmatrix}
@@ -89,7 +89,7 @@
 \end{proof}
 
 \begin{thm}\label{4.2}
-	Let \(A \in \ms{2}{2}{\F}\).
+	Let \(A \in \ms[2][2][\F]\).
 	Then the determinant of \(A\) is nonzero iff \(A\) is invertible.
 	Moreover, if \(A\) is invertible, then
 	\[
@@ -507,7 +507,7 @@
 
 \setcounter{ex}{4}
 \begin{ex}\label{ex:4.1.5}
-	Prove that if \(B\) is the matrix obtained by interchanging the rows of \(A \in \ms{2}{2}{\F}\), then \(\det(B) = -\det(A)\).
+	Prove that if \(B\) is the matrix obtained by interchanging the rows of \(A \in \ms[2][2][\F]\), then \(\det(B) = -\det(A)\).
 \end{ex}
 
 \begin{proof}[\pf{ex:4.1.5}]
@@ -524,7 +524,7 @@
 \end{proof}
 
 \begin{ex}\label{ex:4.1.6}
-	Prove that if the two columns of \(A \in \ms{2}{2}{\F}\) are identical, then \(\det(A) = 0\).
+	Prove that if the two columns of \(A \in \ms[2][2][\F]\) are identical, then \(\det(A) = 0\).
 \end{ex}
 
 \begin{proof}[\pf{ex:4.1.6}]
@@ -536,7 +536,7 @@
 \end{proof}
 
 \begin{ex}\label{ex:4.1.7}
-	Prove that \(\det(\tp{A}) = \det(A)\) for any \(A \in \ms{2}{2}{\F}\).
+	Prove that \(\det(\tp{A}) = \det(A)\) for any \(A \in \ms[2][2][\F]\).
 \end{ex}
 
 \begin{proof}[\pf{ex:4.1.7}]
@@ -553,7 +553,7 @@
 \end{proof}
 
 \begin{ex}\label{ex:4.1.8}
-	Prove that if \(A \in \ms{2}{2}{\F}\) is upper triangular, then \(\det(A)\) equals the product of the diagonal entries of \(A\).
+	Prove that if \(A \in \ms[2][2][\F]\) is upper triangular, then \(\det(A)\) equals the product of the diagonal entries of \(A\).
 \end{ex}
 
 \begin{proof}[\pf{ex:4.1.8}]
@@ -565,7 +565,7 @@
 \end{proof}
 
 \begin{ex}\label{ex:4.1.9}
-	Prove that \(\det(AB) = \det(A) \cdot \det(B)\) for any \(A, B \in \ms{2}{2}{\F}\).
+	Prove that \(\det(AB) = \det(A) \cdot \det(B)\) for any \(A, B \in \ms[2][2][\F]\).
 \end{ex}
 
 \begin{proof}[\pf{ex:4.1.9}]
@@ -585,7 +585,7 @@
 \end{proof}
 
 \begin{ex}\label{ex:4.1.10}
-	The \textbf{classical adjoint} of a matrix \(A \in \ms{2}{2}{\F}\) is the matrix
+	The \textbf{classical adjoint} of a matrix \(A \in \ms[2][2][\F]\) is the matrix
 	\[
 		C = \begin{pmatrix}
 			A_{2 2}  & -A_{1 2} \\
@@ -673,17 +673,17 @@
 \end{proof}
 
 \begin{ex}\label{ex:4.1.11}
-	Let \(\delta : \ms{2}{2}{\F} \to \F\) be a function with the following three properties.
+	Let \(\delta : \ms[2][2][\F] \to \F\) be a function with the following three properties.
 	\begin{enumerate}
 		\item \(\delta\) is a linear function of each row of the matrix when the other row is held fixed.
-		\item If the two rows of \(A \in \ms{2}{2}{\F}\) are identical, then \(\delta(A) = 0\).
+		\item If the two rows of \(A \in \ms[2][2][\F]\) are identical, then \(\delta(A) = 0\).
 		\item \(\delta(I_2) = 1\).
 	\end{enumerate}
-	Prove that \(\delta(A) = \det(A)\) for all \(A \in \ms{2}{2}{\F}\).
+	Prove that \(\delta(A) = \det(A)\) for all \(A \in \ms[2][2][\F]\).
 \end{ex}
 
 \begin{proof}[\pf{ex:4.1.11}]
-	Let \(A \in \ms{n}{n}{\F}\), let \(e_1 = (1, 0)\) and let \(e_2 = (0, 1)\).
+	Let \(A \in \ms[n][n][\F]\), let \(e_1 = (1, 0)\) and let \(e_2 = (0, 1)\).
 	Since
 	\begin{align*}
 		0 & = \delta\begin{pmatrix}

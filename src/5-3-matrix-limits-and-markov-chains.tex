@@ -15,7 +15,7 @@
 
 \begin{thm}\label{5.12}
 	Let \(\seq{A}{1,2,}\) be a sequence of \(n \times p\) matrices with complex entries that converges to the matrix \(L\).
-	Then for any \(P \in \ms{r}{n}{\C}\) and \(Q \in \ms{p}{s}{\C}\),
+	Then for any \(P \in \ms[r][n][\C]\) and \(Q \in \ms[p][s][\C]\),
 	\[
 		\lim_{m \to \infty} P A_m = PL \quad \text{and} \quad \lim_{m \to \infty} A_m Q = LQ.
 	\]
@@ -34,8 +34,8 @@
 \end{proof}
 
 \begin{cor}\label{5.3.2}
-	Let \(A \in \ms{n}{n}{\C}\) be such that \(\lim_{m \to \infty} A^m = L\).
-	Then for any invertible matrix \(Q \in \ms{n}{n}{\C}\),
+	Let \(A \in \ms[n][n][\C]\) be such that \(\lim_{m \to \infty} A^m = L\).
+	Then for any invertible matrix \(Q \in \ms[n][n][\C]\),
 	\[
 		\lim_{m \to \infty} (Q A Q^{-1})^m = Q L Q^{-1}.
 	\]
@@ -91,7 +91,7 @@
 \end{proof}
 
 \begin{thm}\label{5.14}
-	Let \(A \in \ms{n}{n}{\C}\) satisfy the following two conditions.
+	Let \(A \in \ms[n][n][\C]\) satisfy the following two conditions.
 	\begin{enumerate}
 		\item Every eigenvalue of \(A\) is contained in \(S\).
 		\item \(A\) is diagonalizable.
@@ -146,7 +146,7 @@
 \end{defn}
 
 \begin{thm}\label{5.15}
-	Let \(M \in \ms{n}{n}{\R}\) having real nonnegative entries, let \(v \in \R^n\) having nonnegative coordinates, and let \(u \in \R^n\) be the column vector in which each coordinate equals \(1\).
+	Let \(M \in \ms[n][n][\R]\) having real nonnegative entries, let \(v \in \R^n\) having nonnegative coordinates, and let \(u \in \R^n\) be the column vector in which each coordinate equals \(1\).
 	Then
 	\begin{enumerate}
 		\item \(M\) is a transition matrix iff \(\tp{M} u = u\);
@@ -182,7 +182,7 @@
 \end{cor}
 
 \begin{proof}[\pf{5.3.5}]
-	Let \(A, B \in \ms{n}{n}{\R}\) be transition matrices, let \(v \in \R^n\) be a probability vector and let \(u \in \R^n\) such that \(u_i = 1\) for all \(i \in \set{1, \dots, n}\).
+	Let \(A, B \in \ms[n][n][\R]\) be transition matrices, let \(v \in \R^n\) be a probability vector and let \(u \in \R^n\) such that \(u_i = 1\) for all \(i \in \set{1, \dots, n}\).
 	Since
 	\begin{align*}
 		\tp{(AB)} u & = (\tp{B} \tp{A}) u &  & \by{2.3.2}   \\
@@ -227,7 +227,7 @@
 \end{defn}
 
 \begin{defn}\label{5.3.8}
-	Let \(A \in \ms{n}{n}{\C}\).
+	Let \(A \in \ms[n][n][\C]\).
 	For \(i, j \in \set{1, \dots, n}\), define \(\rho_i(A)\) to be the sum of the absolute values of the entries of row \(i\) of \(A\), and define \(\nu_j(A)\) to be equal to the sum of the absolute values of the entries of column \(j\) of \(A\).
 	Thus
 	\[
@@ -244,7 +244,7 @@
 \end{defn}
 
 \begin{defn}\label{5.3.9}
-	For \(A \in \ms{n}{n}{\C}\), we define the \(i\)th \textbf{Gerschgorin disk} \(C_i\) to be the disk in the complex plane with center \(A_{i i}\) and radius \(r_i = \rho_i(A) - \abs{A_{i i}}\);
+	For \(A \in \ms[n][n][\C]\), we define the \(i\)th \textbf{Gerschgorin disk} \(C_i\) to be the disk in the complex plane with center \(A_{i i}\) and radius \(r_i = \rho_i(A) - \abs{A_{i i}}\);
 	that is,
 	\[
 		C_i = \set{z \in \C : \abs{z - A_{i i}} \leq r_i}
@@ -252,7 +252,7 @@
 \end{defn}
 
 \begin{thm}[Gerschgorin's Disk Theorem]\label{5.16}
-	Let \(A \in \ms{n}{n}{\C}\).
+	Let \(A \in \ms[n][n][\C]\).
 	Then every eigenvalue of \(A\) is contained in a Gerschgorin disk.
 \end{thm}
 
@@ -294,7 +294,7 @@
 \end{proof}
 
 \begin{cor}\label{5.3.10}
-	Let \(\lambda\) be any eigenvalue of \(A \in \ms{n}{n}{\C}\).
+	Let \(\lambda\) be any eigenvalue of \(A \in \ms[n][n][\C]\).
 	Then \(\abs{\lambda} \leq \rho(A)\).
 \end{cor}
 
@@ -311,7 +311,7 @@
 \end{proof}
 
 \begin{cor}\label{5.3.11}
-	Let \(\lambda\) be any eigenvalue of \(A \in \ms{n}{n}{\C}\).
+	Let \(\lambda\) be any eigenvalue of \(A \in \ms[n][n][\C]\).
 	Then
 	\[
 		\abs{\lambda} \leq \min\set{\rho(A), \nu(A)}.
@@ -339,7 +339,7 @@
 \end{thm}
 
 \begin{proof}[\pf{5.17}]
-	Let \(A \in \ms{n}{n}{\R}\) be a transition matrix, and let \(u \in \R^n\) be the column vector in which each coordinate is \(1\).
+	Let \(A \in \ms[n][n][\R]\) be a transition matrix, and let \(u \in \R^n\) be the column vector in which each coordinate is \(1\).
 	Then \(\tp{A} u = u\) by \cref{5.15}, and hence \(u\) is an eigenvector of \(\tp{A}\) corresponding to the eigenvalue \(1\).
 	But since \(A\) and \(\tp{A}\) have the same eigenvalues (\cref{ex:5.1.14}), it follows that \(1\) is also an eigenvalue of \(A\).
 \end{proof}
@@ -353,7 +353,7 @@
 \end{note}
 
 \begin{thm}\label{5.18}
-	Let \(A \in \ms{n}{n}{\C}\) be a matrix in which each entry is positive, and let \(\lambda\) be an eigenvalue of \(A\) such that \(\abs{\lambda} = \rho(A)\).
+	Let \(A \in \ms[n][n][\C]\) be a matrix in which each entry is positive, and let \(\lambda\) be an eigenvalue of \(A\) such that \(\abs{\lambda} = \rho(A)\).
 	Then \(\lambda = \rho(A)\) and \(\set{u}\) is a basis for \(E_{\lambda}\) over \(\C\), where \(u \in \C^n\) is the column vector in which each coordinate equals \(1\).
 \end{thm}
 
@@ -415,7 +415,7 @@
 \end{proof}
 
 \begin{cor}\label{5.3.13}
-	Let \(A \in \ms{n}{n}{\C}\) be a matrix in which each entry is positive, and let \(\lambda\) be an eigenvalue of \(A\) such that \(\abs{\lambda} = \nu(A)\).
+	Let \(A \in \ms[n][n][\C]\) be a matrix in which each entry is positive, and let \(\lambda\) be an eigenvalue of \(A\) such that \(\abs{\lambda} = \nu(A)\).
 	Then \(\lambda = \nu(A)\), and the dimension of \(E_{\lambda} = 1\).
 \end{cor}
 
@@ -439,7 +439,7 @@
 \end{proof}
 
 \begin{cor}\label{5.3.14}
-	Let \(A \in \ms{n}{n}{\C}\) be a transition matrix in which each entry is positive, and let \(\lambda\) be any eigenvalue of \(A\) other than \(1\).
+	Let \(A \in \ms[n][n][\C]\) be a transition matrix in which each entry is positive, and let \(\lambda\) be any eigenvalue of \(A\) other than \(1\).
 	Then \(\abs{\lambda} < 1\).
 	Moreover, the eigenspace corresponding to the eigenvalue \(1\) has dimension \(1\).
 \end{cor}
@@ -495,7 +495,7 @@
 \end{note}
 
 \begin{thm}\label{5.20}
-	Let \(A \in \ms{n}{n}{\C}\) be a regular transition matrix.
+	Let \(A \in \ms[n][n][\C]\) be a regular transition matrix.
 	Then
 	\begin{enumerate}
 		\item The multiplicity of \(1\) as an eigenvalue of \(A\) is \(1\).
@@ -586,11 +586,11 @@
 \end{proof}
 
 \begin{ex}\label{ex:5.3.4}
-	Prove that if \(A \in \ms{n}{n}{\C}\) is diagonalizable and \(L = \lim_{m \to \infty} A^m\) exists, then either \(L = I_n\) or \(\rk{L} < n\).
+	Prove that if \(A \in \ms[n][n][\C]\) is diagonalizable and \(L = \lim_{m \to \infty} A^m\) exists, then either \(L = I_n\) or \(\rk{L} < n\).
 \end{ex}
 
 \begin{proof}[\pf{ex:5.3.4}]
-	Since \(A\) is diagonalizable, there exists some \(Q \in \ms{n}{n}{\C}\) such that \(D = Q^{-1} A Q\) is a diagonal matrix.
+	Since \(A\) is diagonalizable, there exists some \(Q \in \ms[n][n][\C]\) such that \(D = Q^{-1} A Q\) is a diagonal matrix.
 	Then we have
 	\begin{align*}
 		L & = \lim_{m \to \infty} A^m                                                                     \\
@@ -622,11 +622,11 @@
 \end{proof}
 
 \begin{ex}\label{ex:5.3.5}
-	Find \(A, B \in \ms{2}{2}{\R}\) such that
+	Find \(A, B \in \ms[2][2][\R]\) such that
 	\begin{align*}
-		 & \lim_{m \to \infty} A^m \in \ms{2}{2}{\R}    \\
-		 & \lim_{m \to \infty} B^m \in \ms{2}{2}{\R}    \\
-		 & \lim_{m \to \infty} (AB)^m \in \ms{2}{2}{\R}
+		 & \lim_{m \to \infty} A^m \in \ms[2][2][\R]    \\
+		 & \lim_{m \to \infty} B^m \in \ms[2][2][\R]    \\
+		 & \lim_{m \to \infty} (AB)^m \in \ms[2][2][\R]
 	\end{align*}
 	but
 	\[
@@ -695,7 +695,7 @@
 
 \setcounter{ex}{18}
 \begin{ex}\label{ex:5.3.19}
-	Suppose that \(M, M' \in \ms{n}{n}{\R}\) are transition matrices.
+	Suppose that \(M, M' \in \ms[n][n][\R]\) are transition matrices.
 	\begin{enumerate}
 		\item Prove that if \(M\) is regular, \(N\) is any \(n \times n\) transition matrix, and \(c\) is a real number such that \(0 < c \leq 1\), then \(cM + (1 - c)N\) is a regular transition matrix.
 		\item Suppose that for all \(i, j \in \set{1, \dots, n}\), we have that \(M_{i j}' > 0\) whenever \(M_{i j} > 0\).
@@ -722,7 +722,7 @@
 	\[
 		(cM + (1 - c)N)^m = (cM)^m + P
 	\]
-	where \(P \in \ms{n}{n}{\R}\) and \(P\) has nonnegative entries.
+	where \(P \in \ms[n][n][\R]\) and \(P\) has nonnegative entries.
 	Since
 	\begin{align*}
 		         & \begin{dcases}
@@ -767,7 +767,7 @@
 \end{proof}
 
 \begin{defn}\label{5.3.18}
-	For \(A \in \ms{n}{n}{\C}\), define \(e^A = \lim_{m \to \infty} B_m\), where
+	For \(A \in \ms[n][n][\C]\), define \(e^A = \lim_{m \to \infty} B_m\), where
 	\[
 		B_m = I_n + A + \frac{A^2}{2!} + \cdots + \frac{A^m}{m!}.
 	\]
@@ -784,7 +784,7 @@
 \end{defn}
 
 \begin{ex}\label{ex:5.3.20}
-	Compute \(e^{\zm}\) and \(e^{I_n}\), where \(\zm\) and \(I_n\) are zero and identity matrices in \(\ms{n}{n}{\C}\), respectively.
+	Compute \(e^{\zm}\) and \(e^{I_n}\), where \(\zm\) and \(I_n\) are zero and identity matrices in \(\ms[n][n][\C]\), respectively.
 \end{ex}
 
 \begin{proof}[\pf{ex:5.3.20}]
@@ -835,7 +835,7 @@
 \end{ex}
 
 \begin{proof}[\pf{ex:5.3.21}]
-	Let \(A \in \ms{n}{n}{\C}\).
+	Let \(A \in \ms[n][n][\C]\).
 	Since
 	\begin{align*}
 		e^D & = \sum_{m = 0}^\infty \frac{D^m}{m!}                                                                                                                     &  & \by{5.3.18} \\
@@ -869,18 +869,18 @@
 \end{proof}
 
 \begin{ex}\label{ex:5.3.22}
-	Let \(A \in \ms{n}{n}{\C}\) be diagonalizable.
+	Let \(A \in \ms[n][n][\C]\) be diagonalizable.
 	Use the result of \cref{ex:5.3.21} to show that \(e^A\) exists.
-	(\cref{ex:7.2.21} shows that \(e^A\) exists for every \(A \in \ms{n}{n}{\C}\).)
+	(\cref{ex:7.2.21} shows that \(e^A\) exists for every \(A \in \ms[n][n][\C]\).)
 \end{ex}
 
 \begin{proof}[\pf{ex:5.3.22}]
-	Since \(A\) is diagonalizable, by \cref{5.1.1} there exists some \(Q \in \ms{n}{n}{\C}\) such that \(D = Q^{-1} A Q\) is a diagonal matrix.
+	Since \(A\) is diagonalizable, by \cref{5.1.1} there exists some \(Q \in \ms[n][n][\C]\) such that \(D = Q^{-1} A Q\) is a diagonal matrix.
 	Then by \cref{ex:5.3.21} we have \(e^A = Q e^D Q^{-1}\).
 \end{proof}
 
 \begin{ex}\label{ex:5.3.23}
-	Find \(A, B \in \ms{2}{2}{\R}\) such that \(e^A e^B \neq e^{A + B}\).
+	Find \(A, B \in \ms[2][2][\R]\) such that \(e^A e^B \neq e^{A + B}\).
 \end{ex}
 
 \begin{proof}[\pf{ex:5.3.23}]
@@ -921,7 +921,7 @@
 
 \begin{proof}[\pf{ex:5.3.24}]
 	Let \(\seq{\lambda}{1,,k} \in \R\) be distinct eigenvalues of \(A\) and let \(\seq{m}{1,,k}\) be multiplicities of \(\seq{\lambda}{1,,k}\).
-	Since \(A\) is diagonalizable, by \cref{5.1.1} there exists some \(Q \in \ms{n}{n}{\R}\) such that \(D = Q^{-1} A Q\).
+	Since \(A\) is diagonalizable, by \cref{5.1.1} there exists some \(Q \in \ms[n][n][\R]\) such that \(D = Q^{-1} A Q\).
 	We can ordered \(Q\) and \(D\) in the way that the \((1 + \sum_{i = 1}^{j - 1} m_i)\)-th column to the \((\sum_{i = 1}^j m_i)\)-th column of \(Q\) and \(D\) are eigenvectors of \(\lambda_j\) and eigenvalue \(\lambda_j\), respectively.
 	By \cref{ex:5.2.15} we know that \(x\) is a solution to \(Ax = x'\) iff
 	\[
