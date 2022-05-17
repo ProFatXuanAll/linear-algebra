@@ -1,968 +1,968 @@
 \section{Composition of Linear Transformations and Matrix Multiplication}\label{sec:2.3}
 
 \begin{note}
-  We use the more convenient notation of \(\U \T\) rather than \(\U \circ \T\) for the composite of linear transformations \(\U\) and \(\T\).
+	We use the more convenient notation of \(\U \T\) rather than \(\U \circ \T\) for the composite of linear transformations \(\U\) and \(\T\).
 \end{note}
 
 \begin{thm}\label{2.9}
-  Let \(\V\), \(\W\), and \(\vs{Z}\) be vector spaces over the same field \(\F\), and let \(\T \in \ls(\V, \W)\) and \(\U \in \ls(\W, \vs{Z})\).
-  Then \(\U \T \in \ls(\V, \vs{Z})\).
+	Let \(\V\), \(\W\), and \(\vs{Z}\) be vector spaces over the same field \(\F\), and let \(\T \in \ls(\V, \W)\) and \(\U \in \ls(\W, \vs{Z})\).
+	Then \(\U \T \in \ls(\V, \vs{Z})\).
 \end{thm}
 
 \begin{proof}[\pf{2.9}]
-  Let \(x, y \in \V\) and \(a \in \F\).
-  Then
-  \begin{align*}
-    \U \T(ax + y) & = \U(\T(ax + y))                                            \\
-                  & = \U(a \T(x) + \T(y))      &  & \text{(by \cref{2.1.2}(b))} \\
-                  & = a \U(\T(x)) + \U(\T(y))  &  & \text{(by \cref{2.1.2}(b))} \\
-                  & = a (\U \T)(x) + \U \T(y).
-  \end{align*}
+	Let \(x, y \in \V\) and \(a \in \F\).
+	Then
+	\begin{align*}
+		\U \T(ax + y) & = \U(\T(ax + y))                              \\
+		              & = \U(a \T(x) + \T(y))      &  & \by{2.1.2}[b] \\
+		              & = a \U(\T(x)) + \U(\T(y))  &  & \by{2.1.2}[b] \\
+		              & = a (\U \T)(x) + \U \T(y).
+	\end{align*}
 \end{proof}
 
 \begin{thm}\label{2.10}
-  Let \(\V, \W, \vs{X}, \vs{Y}\) be vector spaces over \(\F\).
-  Let \(\lt{S}, \lt{S}_1, \lt{S}_2 \in \ls(\vs{X}, \vs{Y})\), let \(\T \in \ls(\W, \vs{X})\) and let \(\U, \U_1, \U_2 \in \ls(\V, \W)\).
-  Then
-  \begin{enumerate}
-    \item \(\T(\U_1 + \U_2) = \T \U_1 + \T \U_2\) and \((\lt{S}_1 + \lt{S}_2) \T = \lt{S}_1 \T + \lt{S}_2 \T\).
-    \item \(\lt{S} (\T \U) = (\lt{S} \T) \U\).
-    \item \(\T \IT[\W] = \IT[\vs{X}] \T = \T\).
-    \item \(a(\T \U) = (a \T) \U = \T (a \U)\) for all scalars \(a \in \F\).
-  \end{enumerate}
+	Let \(\V, \W, \vs{X}, \vs{Y}\) be vector spaces over \(\F\).
+	Let \(\lt{S}, \lt{S}_1, \lt{S}_2 \in \ls(\vs{X}, \vs{Y})\), let \(\T \in \ls(\W, \vs{X})\) and let \(\U, \U_1, \U_2 \in \ls(\V, \W)\).
+	Then
+	\begin{enumerate}
+		\item \(\T(\U_1 + \U_2) = \T \U_1 + \T \U_2\) and \((\lt{S}_1 + \lt{S}_2) \T = \lt{S}_1 \T + \lt{S}_2 \T\).
+		\item \(\lt{S} (\T \U) = (\lt{S} \T) \U\).
+		\item \(\T \IT[\W] = \IT[\vs{X}] \T = \T\).
+		\item \(a(\T \U) = (a \T) \U = \T (a \U)\) for all scalars \(a \in \F\).
+	\end{enumerate}
 \end{thm}
 
 \begin{proof}[\pf{2.10}(a)]
-  For all \(x \in \V\), we have
-  \begin{align*}
-    (\T(\U_1 + \U_2))(x) & = \T((\U_1 + \U_2)(x))                                      \\
-                         & = \T(\U_1(x) + \U_2(x))       &  & \text{(by \cref{2.2.5})} \\
-                         & = \T(\U_1(x)) + \T(\U_2(x))   &  & \text{(by \cref{2.1.1})} \\
-                         & = (\T \U_1)(x) + (\T \U_2)(x)                               \\
-                         & = (\T \U_1 + \T \U_2)(x).     &  & \text{(by \cref{2.2.5})}
-  \end{align*}
-  Thus \(\T(\U_1 + \U_2) = \T \U_1 + \T \U_2\).
-  For all \(x \in \W\), we have
-  \begin{align*}
-    ((\vs{S}_1 + \vs{S}_2) \T)(x) & = (\vs{S}_1 + \vs{S}_2)(\T(x))                                      \\
-                                  & = \vs{S}_1(\T(x)) + \vs{S}_2(\T(x))   &  & \text{(by \cref{2.2.5})} \\
-                                  & = (\vs{S}_1 \T)(x) + (\vs{S}_2 \T)(x)                               \\
-                                  & = (\vs{S}_1 \T + \vs{S}_2 \T)(x).     &  & \text{(by \cref{2.2.5})}
-  \end{align*}
-  Thus \((\vs{S}_1 + \vs{S}_2) \T = \vs{S}_1 \T + \vs{S}_2 \T\).
+	For all \(x \in \V\), we have
+	\begin{align*}
+		(\T(\U_1 + \U_2))(x) & = \T((\U_1 + \U_2)(x))                        \\
+		                     & = \T(\U_1(x) + \U_2(x))       &  & \by{2.2.5} \\
+		                     & = \T(\U_1(x)) + \T(\U_2(x))   &  & \by{2.1.1} \\
+		                     & = (\T \U_1)(x) + (\T \U_2)(x)                 \\
+		                     & = (\T \U_1 + \T \U_2)(x).     &  & \by{2.2.5}
+	\end{align*}
+	Thus \(\T(\U_1 + \U_2) = \T \U_1 + \T \U_2\).
+	For all \(x \in \W\), we have
+	\begin{align*}
+		((\vs{S}_1 + \vs{S}_2) \T)(x) & = (\vs{S}_1 + \vs{S}_2)(\T(x))                        \\
+		                              & = \vs{S}_1(\T(x)) + \vs{S}_2(\T(x))   &  & \by{2.2.5} \\
+		                              & = (\vs{S}_1 \T)(x) + (\vs{S}_2 \T)(x)                 \\
+		                              & = (\vs{S}_1 \T + \vs{S}_2 \T)(x).     &  & \by{2.2.5}
+	\end{align*}
+	Thus \((\vs{S}_1 + \vs{S}_2) \T = \vs{S}_1 \T + \vs{S}_2 \T\).
 \end{proof}
 
 \begin{proof}[\pf{2.10}(b)]
-  For all \(x \in \V\), we have
-  \begin{align*}
-    (\lt{S} (\T \U))(x) & = \lt{S}((\T \U)(x))  \\
-                        & = \lt{S}(\T(\U(x)))   \\
-                        & = (\lt{S} \T)(\U(x))  \\
-                        & = ((\lt{S} \T) \U)(x)
-  \end{align*}
-  and thus \(\lt{S} (\T \U) = (\lt{S} \T) \U\).
+	For all \(x \in \V\), we have
+	\begin{align*}
+		(\lt{S} (\T \U))(x) & = \lt{S}((\T \U)(x))  \\
+		                    & = \lt{S}(\T(\U(x)))   \\
+		                    & = (\lt{S} \T)(\U(x))  \\
+		                    & = ((\lt{S} \T) \U)(x)
+	\end{align*}
+	and thus \(\lt{S} (\T \U) = (\lt{S} \T) \U\).
 \end{proof}
 
 \begin{proof}[\pf{2.10}(c)]
-  For all \(x \in \V\), we have
-  \begin{align*}
-    (\T \IT[\W])(x) & = \T(\IT[\W](x))                                    \\
-                    & = \T(x)               &  & \text{(by \cref{2.1.9})} \\
-                    & = \IT[\vs{X}](\T(x))  &  & \text{(by \cref{2.1.9})} \\
-                    & = (\IT[\vs{X}] \T)(x)
-  \end{align*}
-  and thus \(\T \IT[\W] = \T = \IT[\vs{X}] \T\).
+	For all \(x \in \V\), we have
+	\begin{align*}
+		(\T \IT[\W])(x) & = \T(\IT[\W](x))                      \\
+		                & = \T(x)               &  & \by{2.1.9} \\
+		                & = \IT[\vs{X}](\T(x))  &  & \by{2.1.9} \\
+		                & = (\IT[\vs{X}] \T)(x)
+	\end{align*}
+	and thus \(\T \IT[\W] = \T = \IT[\vs{X}] \T\).
 \end{proof}
 
 \begin{proof}[\pf{2.10}(d)]
-  For all \(x \in \V\), we have
-  \begin{align*}
-    (a (\T \U))(x) & = a (\T \U)(x)                                 \\
-                   & = a \T(\U(x))                                  \\
-                   & = (a \T)(\U(x))  &  & \text{(by \cref{2.2.5})} \\
-                   & = ((a \T) \U)(x)                               \\
-                   & = \T(a \U(x))    &  & \text{(by \cref{2.1.1})} \\
-                   & = \T((a \U)(x))                                \\
-                   & = (\T (a \U))(x)
-  \end{align*}
-  and thus \(a (\T \U) = (a \T) \U = \T (a \U)\).
+	For all \(x \in \V\), we have
+	\begin{align*}
+		(a (\T \U))(x) & = a (\T \U)(x)                   \\
+		               & = a \T(\U(x))                    \\
+		               & = (a \T)(\U(x))  &  & \by{2.2.5} \\
+		               & = ((a \T) \U)(x)                 \\
+		               & = \T(a \U(x))    &  & \by{2.1.1} \\
+		               & = \T((a \U)(x))                  \\
+		               & = (\T (a \U))(x)
+	\end{align*}
+	and thus \(a (\T \U) = (a \T) \U = \T (a \U)\).
 \end{proof}
 
 \begin{defn}\label{2.3.1}
-  Let \(A \in \MS\) matrix and \(B \in \ms{n}{p}{\F}\).
-  We define the \textbf{product} of \(A\) and \(B\), denoted \(AB\), to be the \(m \times p\) matrix such that
-  \[
-    (AB)_{i j} = \sum_{k = 1}^n A_{i k} B_{k j} \quad \text{for } 1 \leq i \leq m, 1 \leq j \leq p.
-  \]
-  Note that \((AB)_{i j}\) is the sum of products of corresponding entries from the \(i\)th row of \(A\) and the \(j\)th column of \(B\).
+	Let \(A \in \MS\) matrix and \(B \in \ms{n}{p}{\F}\).
+	We define the \textbf{product} of \(A\) and \(B\), denoted \(AB\), to be the \(m \times p\) matrix such that
+	\[
+		(AB)_{i j} = \sum_{k = 1}^n A_{i k} B_{k j} \quad \text{for } 1 \leq i \leq m, 1 \leq j \leq p.
+	\]
+	Note that \((AB)_{i j}\) is the sum of products of corresponding entries from the \(i\)th row of \(A\) and the \(j\)th column of \(B\).
 \end{defn}
 
 \begin{note}
-  The reader should observe that in order for the product \(AB\) to be defined, there are restrictions regarding the relative sizes of \(A\) and \(B\).
-  The following mnemonic device is helpful:
-  ``\((m \times n) \cdot (n \times p) = (m \times p)\)'';
-  that is, in order for the product \(AB\) to be defined, the two ``inner'' dimensions must be equal, and the two ``outer'' dimensions yield the size of the product.
+	The reader should observe that in order for the product \(AB\) to be defined, there are restrictions regarding the relative sizes of \(A\) and \(B\).
+	The following mnemonic device is helpful:
+	``\((m \times n) \cdot (n \times p) = (m \times p)\)'';
+	that is, in order for the product \(AB\) to be defined, the two ``inner'' dimensions must be equal, and the two ``outer'' dimensions yield the size of the product.
 \end{note}
 
 \begin{note}
-  As in the case with composition of functions, we have that matrix multiplication is not commutative. Consider the following two products:
-  \[
-    \begin{pmatrix}
-      1 & 1 \\
-      0 & 0
-    \end{pmatrix} \begin{pmatrix}
-      0 & 1 \\
-      1 & 0
-    \end{pmatrix} = \begin{pmatrix}
-      1 & 1 \\
-      0 & 0
-    \end{pmatrix} \quad \text{and} \quad \begin{pmatrix}
-      0 & 1 \\
-      1 & 0
-    \end{pmatrix} \begin{pmatrix}
-      1 & 1 \\
-      0 & 0
-    \end{pmatrix} = \begin{pmatrix}
-      0 & 0 \\
-      1 & 1
-    \end{pmatrix}.
-  \]
-  Hence we see that even if both of the matrix products \(AB\) and \(BA\) are defined, it need not be true that \(AB = BA\).
+	As in the case with composition of functions, we have that matrix multiplication is not commutative. Consider the following two products:
+	\[
+		\begin{pmatrix}
+			1 & 1 \\
+			0 & 0
+		\end{pmatrix} \begin{pmatrix}
+			0 & 1 \\
+			1 & 0
+		\end{pmatrix} = \begin{pmatrix}
+			1 & 1 \\
+			0 & 0
+		\end{pmatrix} \quad \text{and} \quad \begin{pmatrix}
+			0 & 1 \\
+			1 & 0
+		\end{pmatrix} \begin{pmatrix}
+			1 & 1 \\
+			0 & 0
+		\end{pmatrix} = \begin{pmatrix}
+			0 & 0 \\
+			1 & 1
+		\end{pmatrix}.
+	\]
+	Hence we see that even if both of the matrix products \(AB\) and \(BA\) are defined, it need not be true that \(AB = BA\).
 \end{note}
 
 \begin{eg}\label{2.3.2}
-  If \(A \in \MS\) and \(B \in \ms{n}{p}{\F}\), then \(\tp{(AB)} = \tp{B} \tp{A}\).
+	If \(A \in \MS\) and \(B \in \ms{n}{p}{\F}\), then \(\tp{(AB)} = \tp{B} \tp{A}\).
 \end{eg}
 
 \begin{proof}[\pf{2.3.2}]
-  Since
-  \[
-    \tp{(AB)}_{i j} = (AB)_{j i} = \sum_{k = 1}^n A_{j k} B_{k i}
-  \]
-  and
-  \[
-    (\tp{B} \tp{A})_{i j} = \sum_{k = 1}^n \tp{B}_{i k} \tp{A}_{k j} = \sum_{k = 1}^n B_{k i} A_{j k},
-  \]
-  we are finished.
-  Therefore the transpose of a product is the product of the transposes in the \emph{opposite order}.
+	Since
+	\[
+		\tp{(AB)}_{i j} = (AB)_{j i} = \sum_{k = 1}^n A_{j k} B_{k i}
+	\]
+	and
+	\[
+		(\tp{B} \tp{A})_{i j} = \sum_{k = 1}^n \tp{B}_{i k} \tp{A}_{k j} = \sum_{k = 1}^n B_{k i} A_{j k},
+	\]
+	we are finished.
+	Therefore the transpose of a product is the product of the transposes in the \emph{opposite order}.
 \end{proof}
 
 \begin{thm}\label{2.11}
-  Let \(\V\), \(\W\), and \(\vs{Z}\) be finite-dimensional vector spaces over \(\F\) with ordered bases \(\alpha\), \(\beta\), and \(\gamma\) over \(\F\), respectively.
-  Let \(\T \in \ls(\V, \W)\) and \(\U \in \ls(\W, \vs{Z})\).
-  Then
-  \[
-    [\U \T]_{\alpha}^{\gamma} = [\U]_{\beta}^{\gamma} [\T]_{\alpha}^{\beta}.
-  \]
+	Let \(\V\), \(\W\), and \(\vs{Z}\) be finite-dimensional vector spaces over \(\F\) with ordered bases \(\alpha\), \(\beta\), and \(\gamma\) over \(\F\), respectively.
+	Let \(\T \in \ls(\V, \W)\) and \(\U \in \ls(\W, \vs{Z})\).
+	Then
+	\[
+		[\U \T]_{\alpha}^{\gamma} = [\U]_{\beta}^{\gamma} [\T]_{\alpha}^{\beta}.
+	\]
 \end{thm}
 
 \begin{proof}[\pf{2.11}]
-  Define
-  \begin{align*}
-    \alpha & = \set{\seq{v}{1,2,,n}}; \\
-    \beta  & = \set{\seq{w}{1,2,,m}}; \\
-    \gamma & = \set{\seq{z}{1,2,,p}}.
-  \end{align*}
-  For \(1 \leq j \leq n\), we have
-  \begin{align*}
-    (\U \T)(v_j) & = \sum_{i = 1}^p ([\U \T]_{\alpha}^{\gamma})_{i j} \cdot z_i                                                      &  & \text{(by \cref{2.2.4})}    \\
-                 & = \U(\T(v_j))                                                                                                                                      \\
-                 & = \U\pa{\sum_{k = 1}^m ([\T]_{\alpha}^{\beta})_{k j} \cdot w_k}                                                   &  & \text{(by \cref{2.2.4})}    \\
-                 & = \sum_{k = 1}^m ([\T]_{\alpha}^{\beta})_{k j} \cdot \U(w_k)                                                      &  & \text{(by \cref{2.1.2}(d))} \\
-                 & = \sum_{k = 1}^m ([\T]_{\alpha}^{\beta})_{k j} \cdot \pa{\sum_{i = 1}^p ([\U]_{\beta}^{\gamma})_{i k} \cdot z_i}  &  & \text{(by \cref{2.2.4})}    \\
-                 & = \sum_{k = 1}^m \sum_{i = 1}^p \pa{([\T]_{\alpha}^{\beta})_{k j}  \cdot ([\U]_{\beta}^{\gamma})_{i k} \cdot z_i} &  & \text{(by \cref{1.2.1})}    \\
-                 & = \sum_{k = 1}^m \sum_{i = 1}^p \pa{([\U]_{\beta}^{\gamma})_{i k} \cdot ([\T]_{\alpha}^{\beta})_{k j} \cdot z_i}  &  & \text{(by \cref{1.2.1})}    \\
-                 & = \sum_{i = 1}^p \sum_{k = 1}^m \pa{([\U]_{\beta}^{\gamma})_{i k} \cdot ([\T]_{\alpha}^{\beta})_{k j} \cdot z_i}  &  & \text{(by \cref{1.2.1})}    \\
-                 & = \sum_{i = 1}^p \pa{\sum_{k = 1}^m ([\U]_{\beta}^{\gamma})_{i k} \cdot ([\T]_{\alpha}^{\beta})_{k j}} \cdot z_i  &  & \text{(by \cref{1.2.1})}    \\
-                 & = \sum_{i = 1}^p \pa{\pa{[\U]_{\beta}^{\gamma} [\T]_{\alpha}^{\beta}}_{i j} \cdot z_i}.                           &  & \text{(by \cref{2.3.1})}
-  \end{align*}
-  Thus by \cref{1.8} we see that \([\U \T]_{\alpha}^{\gamma} = [\U]_{\beta}^{\gamma} [\T]_{\alpha}^{\beta}\).
+	Define
+	\begin{align*}
+		\alpha & = \set{\seq{v}{1,2,,n}}; \\
+		\beta  & = \set{\seq{w}{1,2,,m}}; \\
+		\gamma & = \set{\seq{z}{1,2,,p}}.
+	\end{align*}
+	For \(1 \leq j \leq n\), we have
+	\begin{align*}
+		(\U \T)(v_j) & = \sum_{i = 1}^p ([\U \T]_{\alpha}^{\gamma})_{i j} \cdot z_i                                                      &  & \by{2.2.4}    \\
+		             & = \U(\T(v_j))                                                                                                                        \\
+		             & = \U\pa{\sum_{k = 1}^m ([\T]_{\alpha}^{\beta})_{k j} \cdot w_k}                                                   &  & \by{2.2.4}    \\
+		             & = \sum_{k = 1}^m ([\T]_{\alpha}^{\beta})_{k j} \cdot \U(w_k)                                                      &  & \by{2.1.2}[d] \\
+		             & = \sum_{k = 1}^m ([\T]_{\alpha}^{\beta})_{k j} \cdot \pa{\sum_{i = 1}^p ([\U]_{\beta}^{\gamma})_{i k} \cdot z_i}  &  & \by{2.2.4}    \\
+		             & = \sum_{k = 1}^m \sum_{i = 1}^p \pa{([\T]_{\alpha}^{\beta})_{k j}  \cdot ([\U]_{\beta}^{\gamma})_{i k} \cdot z_i} &  & \by{1.2.1}    \\
+		             & = \sum_{k = 1}^m \sum_{i = 1}^p \pa{([\U]_{\beta}^{\gamma})_{i k} \cdot ([\T]_{\alpha}^{\beta})_{k j} \cdot z_i}  &  & \by{1.2.1}    \\
+		             & = \sum_{i = 1}^p \sum_{k = 1}^m \pa{([\U]_{\beta}^{\gamma})_{i k} \cdot ([\T]_{\alpha}^{\beta})_{k j} \cdot z_i}  &  & \by{1.2.1}    \\
+		             & = \sum_{i = 1}^p \pa{\sum_{k = 1}^m ([\U]_{\beta}^{\gamma})_{i k} \cdot ([\T]_{\alpha}^{\beta})_{k j}} \cdot z_i  &  & \by{1.2.1}    \\
+		             & = \sum_{i = 1}^p \pa{\pa{[\U]_{\beta}^{\gamma} [\T]_{\alpha}^{\beta}}_{i j} \cdot z_i}.                           &  & \by{2.3.1}
+	\end{align*}
+	Thus by \cref{1.8} we see that \([\U \T]_{\alpha}^{\gamma} = [\U]_{\beta}^{\gamma} [\T]_{\alpha}^{\beta}\).
 \end{proof}
 
 \begin{cor}\label{2.3.3}
-  Let \(\V\) be a finite-dimensional vector space over \(\F\) with an ordered basis \(\beta\).
-  Let \(\T, \U \in \ls(\V)\).
-  Then \([\U \T]_{\beta} = [\U]_{\beta} [\T]_{\beta}\).
+	Let \(\V\) be a finite-dimensional vector space over \(\F\) with an ordered basis \(\beta\).
+	Let \(\T, \U \in \ls(\V)\).
+	Then \([\U \T]_{\beta} = [\U]_{\beta} [\T]_{\beta}\).
 \end{cor}
 
 \begin{proof}[\pf{2.3.3}]
-  We have
-  \begin{align*}
-    [\U \T]_{\beta} & = [\U \T]_{\beta}^{\beta}                   &  & \text{(by \cref{2.2.4})} \\
-                    & = [\U]_{\beta}^{\beta} [\T]_{\beta}^{\beta} &  & \text{(by \cref{2.11})}  \\
-                    & = [\U]_{\beta} [\T]_{\beta}.                &  & \text{(by \cref{2.2.4})}
-  \end{align*}
+	We have
+	\begin{align*}
+		[\U \T]_{\beta} & = [\U \T]_{\beta}^{\beta}                   &  & \by{2.2.4} \\
+		                & = [\U]_{\beta}^{\beta} [\T]_{\beta}^{\beta} &  & \by{2.11}  \\
+		                & = [\U]_{\beta} [\T]_{\beta}.                &  & \by{2.2.4}
+	\end{align*}
 \end{proof}
 
 \begin{defn}\label{2.3.4}
-  We define the \textbf{Kronecker delta} \(\delta_{i j}\) by \(\delta_{i j} = 1\) if \(i = j\) and \(\delta_{i j} = 0\) if \(i \neq j\).
-  The \(n \times n\) \textbf{identity matrix} \(I_n\) is defined by \((I_n)_{i j} = \delta_{i j}\).
+	We define the \textbf{Kronecker delta} \(\delta_{i j}\) by \(\delta_{i j} = 1\) if \(i = j\) and \(\delta_{i j} = 0\) if \(i \neq j\).
+	The \(n \times n\) \textbf{identity matrix} \(I_n\) is defined by \((I_n)_{i j} = \delta_{i j}\).
 \end{defn}
 
 \begin{thm}\label{2.12}
-  Let \(A \in \MS\), let \(B, C \in \ms{n}{p}{\F}\) and let \(D, E \in \ms{q}{m}{\F}\).
-  Then
-  \begin{enumerate}
-    \item \(A (B + C) = AB + AC\) and \((D + E) A = DA + EA\).
-    \item \(a (AB) = (aA) B = A (aB)\) for any \(a \in \F\).
-    \item \(I_m A = A = A I_n\).
-    \item If \(\V\) is an \(n\)-dimensional vector space over \(\F\) with an ordered basis \(\beta\), then \([\IT[\V]]_{\beta} = I_n\).
-  \end{enumerate}
+	Let \(A \in \MS\), let \(B, C \in \ms{n}{p}{\F}\) and let \(D, E \in \ms{q}{m}{\F}\).
+	Then
+	\begin{enumerate}
+		\item \(A (B + C) = AB + AC\) and \((D + E) A = DA + EA\).
+		\item \(a (AB) = (aA) B = A (aB)\) for any \(a \in \F\).
+		\item \(I_m A = A = A I_n\).
+		\item If \(\V\) is an \(n\)-dimensional vector space over \(\F\) with an ordered basis \(\beta\), then \([\IT[\V]]_{\beta} = I_n\).
+	\end{enumerate}
 \end{thm}
 
 \begin{proof}[\pf{2.12}(a)]
-  We have
-  \begin{align*}
-    (A (B + C))_{i j} & = \sum_{k = 1}^n A_{i k} (B + C)_{k j}                            &  & \text{(by \cref{2.3.1})}           \\
-                      & = \sum_{k = 1}^n A_{i k} (B_{k j} + C_{k j})                      &  & \text{(by \cref{1.2.9})}           \\
-                      & = \sum_{k = 1}^n (A_{i k} B_{k j} + A_{i k} C_{k j})              &  & (A_{i k}, B_{k j}, C_{k j} \in \F) \\
-                      & = \sum_{k = 1}^n A_{i k} B_{k j} + \sum_{k = 1}^n A_{i k} C_{k j} &  & (A_{i k}, B_{k j}, C_{k j} \in \F) \\
-                      & = (AB)_{i j} + (AC)_{i j}                                         &  & \text{(by \cref{2.3.1})}           \\
-                      & = (AB + AC)_{i j}                                                 &  & \text{(by \cref{1.2.9})}
-  \end{align*}
-  and
-  \begin{align*}
-    ((D + E) A)_{i j} & = \sum_{k = 1}^m (D + E)_{i k} A_{k j}                            &  & \text{(by \cref{2.3.1})}           \\
-                      & = \sum_{k = 1}^m (D_{i k} + E_{i k}) A_{k j}                      &  & \text{(by \cref{1.2.9})}           \\
-                      & = \sum_{k = 1}^m (D_{i k} A_{k j} + E_{i k} A_{k j})              &  & (A_{k j}, D_{i k}, E_{i k} \in \F) \\
-                      & = \sum_{k = 1}^m D_{i k} A_{k j} + \sum_{k = 1}^m E_{i k} A_{k j} &  & (A_{k j}, D_{i k}, E_{i k} \in \F) \\
-                      & = (DA)_{i j} + (EA)_{i j}                                         &  & \text{(by \cref{2.3.1})}           \\
-                      & = (DA + EA)_{i j}.                                                &  & \text{(by \cref{1.2.9})}
-  \end{align*}
-  Thus by \cref{1.2.8} \(A (B + C) = AB + AC\) and \((D + E) A = DA + EA\).
+	We have
+	\begin{align*}
+		(A (B + C))_{i j} & = \sum_{k = 1}^n A_{i k} (B + C)_{k j}                            &  & \by{2.3.1}                         \\
+		                  & = \sum_{k = 1}^n A_{i k} (B_{k j} + C_{k j})                      &  & \by{1.2.9}                         \\
+		                  & = \sum_{k = 1}^n (A_{i k} B_{k j} + A_{i k} C_{k j})              &  & (A_{i k}, B_{k j}, C_{k j} \in \F) \\
+		                  & = \sum_{k = 1}^n A_{i k} B_{k j} + \sum_{k = 1}^n A_{i k} C_{k j} &  & (A_{i k}, B_{k j}, C_{k j} \in \F) \\
+		                  & = (AB)_{i j} + (AC)_{i j}                                         &  & \by{2.3.1}                         \\
+		                  & = (AB + AC)_{i j}                                                 &  & \by{1.2.9}
+	\end{align*}
+	and
+	\begin{align*}
+		((D + E) A)_{i j} & = \sum_{k = 1}^m (D + E)_{i k} A_{k j}                            &  & \by{2.3.1}                         \\
+		                  & = \sum_{k = 1}^m (D_{i k} + E_{i k}) A_{k j}                      &  & \by{1.2.9}                         \\
+		                  & = \sum_{k = 1}^m (D_{i k} A_{k j} + E_{i k} A_{k j})              &  & (A_{k j}, D_{i k}, E_{i k} \in \F) \\
+		                  & = \sum_{k = 1}^m D_{i k} A_{k j} + \sum_{k = 1}^m E_{i k} A_{k j} &  & (A_{k j}, D_{i k}, E_{i k} \in \F) \\
+		                  & = (DA)_{i j} + (EA)_{i j}                                         &  & \by{2.3.1}                         \\
+		                  & = (DA + EA)_{i j}.                                                &  & \by{1.2.9}
+	\end{align*}
+	Thus by \cref{1.2.8} \(A (B + C) = AB + AC\) and \((D + E) A = DA + EA\).
 \end{proof}
 
 \begin{proof}[\pf{2.12}(b)]
-  We have
-  \begin{align*}
-    (a (AB))_{i j} & = a (AB)_{i j}                          &  & \text{(by \cref{1.2.9})} \\
-                   & = a \pa{\sum_{k = 1}^n A_{i k} B_{k j}} &  & \text{(by \cref{2.3.1})} \\
-                   & = \sum_{k = 1}^n (a A_{i k}) B_{k j}    &  & \text{(by \cref{1.2.9})} \\
-                   & = \sum_{k = 1}^n (a A)_{i k} B_{k j}    &  & \text{(by \cref{1.2.9})} \\
-                   & = ((aA) B)_{i j}                        &  & \text{(by \cref{2.3.1})} \\
-                   & = \sum_{k = 1}^n A_{i k} (a B_{k j})    &  & \text{(by \cref{1.2.9})} \\
-                   & = \sum_{k = 1}^n A_{i k} (a B)_{k j}    &  & \text{(by \cref{1.2.9})} \\
-                   & = (A (aB))_{i j}                        &  & \text{(by \cref{2.3.1})}
-  \end{align*}
-  thus by \cref{1.2.8} \(a (AB) = (aA) B = A (aB)\).
+	We have
+	\begin{align*}
+		(a (AB))_{i j} & = a (AB)_{i j}                          &  & \by{1.2.9} \\
+		               & = a \pa{\sum_{k = 1}^n A_{i k} B_{k j}} &  & \by{2.3.1} \\
+		               & = \sum_{k = 1}^n (a A_{i k}) B_{k j}    &  & \by{1.2.9} \\
+		               & = \sum_{k = 1}^n (a A)_{i k} B_{k j}    &  & \by{1.2.9} \\
+		               & = ((aA) B)_{i j}                        &  & \by{2.3.1} \\
+		               & = \sum_{k = 1}^n A_{i k} (a B_{k j})    &  & \by{1.2.9} \\
+		               & = \sum_{k = 1}^n A_{i k} (a B)_{k j}    &  & \by{1.2.9} \\
+		               & = (A (aB))_{i j}                        &  & \by{2.3.1}
+	\end{align*}
+	thus by \cref{1.2.8} \(a (AB) = (aA) B = A (aB)\).
 \end{proof}
 
 \begin{proof}[\pf{2.12}(c)]
-  We have
-  \begin{align*}
-    (I_m A)_{i j} & = \sum_{k = 1}^m (I_m)_{i k} A_{k j}  &  & \text{(by \cref{2.3.1})} \\
-                  & = \sum_{k = 1}^m \delta_{i k} A_{k j} &  & \text{(by \cref{2.3.4})} \\
-                  & = A_{i j}                             &  & \text{(by \cref{2.3.4})} \\
-                  & = \sum_{k = 1}^n A_{i k} \delta_{k j} &  & \text{(by \cref{2.3.4})} \\
-                  & = \sum_{k = 1}^n A_{i k} (I_n)_{k j}  &  & \text{(by \cref{2.3.4})} \\
-                  & = (A I_n)_{i j}                       &  & \text{(by \cref{2.3.1})}
-  \end{align*}
-  thus by \cref{1.2.8} \(I_m A = A = A I_n\).
+	We have
+	\begin{align*}
+		(I_m A)_{i j} & = \sum_{k = 1}^m (I_m)_{i k} A_{k j}  &  & \by{2.3.1} \\
+		              & = \sum_{k = 1}^m \delta_{i k} A_{k j} &  & \by{2.3.4} \\
+		              & = A_{i j}                             &  & \by{2.3.4} \\
+		              & = \sum_{k = 1}^n A_{i k} \delta_{k j} &  & \by{2.3.4} \\
+		              & = \sum_{k = 1}^n A_{i k} (I_n)_{k j}  &  & \by{2.3.4} \\
+		              & = (A I_n)_{i j}                       &  & \by{2.3.1}
+	\end{align*}
+	thus by \cref{1.2.8} \(I_m A = A = A I_n\).
 \end{proof}
 
 \begin{proof}[\pf{2.12}(d)]
-  Let \(\beta = \set{\seq{v}{1,2,,n}}\).
-  For all \(j \in \set{1, 2, \dots, n}\), we have
-  \begin{align*}
-             & \IT[\V](v_j) = v_j                                                                          &  & \text{(by \cref{2.1.9})} \\
-             & = \sum_{i = 1}^n ([\IT[\V]]_{\beta})_{i j} v_i                                              &  & \text{(by \cref{2.2.4})} \\
-    \implies & \forall i \in \set{1, 2, \dots, n}, ([\IT[\V]]_{\beta})_{i j} = \delta_{i j} = (I_n)_{i j}. &  & \text{(by \cref{2.3.4})}
-  \end{align*}
-  Thus by \cref{1.2.8} \([\IT[\V]]_{\beta} = I_n\).
+	Let \(\beta = \set{\seq{v}{1,2,,n}}\).
+	For all \(j \in \set{1, 2, \dots, n}\), we have
+	\begin{align*}
+		         & \IT[\V](v_j) = v_j                                                                          &  & \by{2.1.9} \\
+		         & = \sum_{i = 1}^n ([\IT[\V]]_{\beta})_{i j} v_i                                              &  & \by{2.2.4} \\
+		\implies & \forall i \in \set{1, 2, \dots, n}, ([\IT[\V]]_{\beta})_{i j} = \delta_{i j} = (I_n)_{i j}. &  & \by{2.3.4}
+	\end{align*}
+	Thus by \cref{1.2.8} \([\IT[\V]]_{\beta} = I_n\).
 \end{proof}
 
 \begin{note}
-  \cref{2.12} provides analogs of (a), (c), and (d) of \cref{2.10}.
-  \cref{2.10}(b) has its analog in \cref{2.16}.
-  Observe also that part (c) of \cref{2.12} illustrates that the identity matrix acts as a multiplicative identity in \(\ms{n}{n}{\F}\).
-  When the context is clear, we sometimes omit the subscript \(n\) from \(I_n\).
+	\cref{2.12} provides analogs of (a), (c), and (d) of \cref{2.10}.
+	\cref{2.10}(b) has its analog in \cref{2.16}.
+	Observe also that part (c) of \cref{2.12} illustrates that the identity matrix acts as a multiplicative identity in \(\ms{n}{n}{\F}\).
+	When the context is clear, we sometimes omit the subscript \(n\) from \(I_n\).
 \end{note}
 
 \begin{cor}\label{2.3.5}
-  Let
-  \begin{align*}
-    A               & \in \MS;           \\
-    \seq{B}{1,2,,k} & \in \ms{n}{p}{\F}; \\
-    \seq{C}{1,2,,k} & \in \ms{q}{m}{\F}; \\
-    \seq{a}{1,2,,k} & \in \F.
-  \end{align*}
-  Then
-  \begin{align*}
-    A \pa{\sum_{i = 1}^k a_i B_i} & = \sum_{i = 1}^k a_i A B_i, \\
-    \pa{\sum_{i = 1}^k a_i C_i} A & = \sum_{i = 1}^k a_i C_i A.
-  \end{align*}
+	Let
+	\begin{align*}
+		A               & \in \MS;           \\
+		\seq{B}{1,2,,k} & \in \ms{n}{p}{\F}; \\
+		\seq{C}{1,2,,k} & \in \ms{q}{m}{\F}; \\
+		\seq{a}{1,2,,k} & \in \F.
+	\end{align*}
+	Then
+	\begin{align*}
+		A \pa{\sum_{i = 1}^k a_i B_i} & = \sum_{i = 1}^k a_i A B_i, \\
+		\pa{\sum_{i = 1}^k a_i C_i} A & = \sum_{i = 1}^k a_i C_i A.
+	\end{align*}
 \end{cor}
 
 \begin{proof}[\pf{2.3.5}]
-  We have
-  \begin{align*}
-    A \pa{\sum_{i = 1}^k a_i B_i} & = \sum_{i = 1}^k (A a_i B_i)  &  & \text{(by \cref{2.12}(a))} \\
-                                  & = \sum_{i = 1}^k (a_i A B_i), &  & \text{(by \cref{2.12}(b))} \\
-    \pa{\sum_{i = 1}^k a_i C_i} A & = \sum_{i = 1}^k (a_i C_i A). &  & \text{(by \cref{2.12}(a))}
-  \end{align*}
+	We have
+	\begin{align*}
+		A \pa{\sum_{i = 1}^k a_i B_i} & = \sum_{i = 1}^k (A a_i B_i)  &  & \by{2.12}[a] \\
+		                              & = \sum_{i = 1}^k (a_i A B_i), &  & \by{2.12}[b] \\
+		\pa{\sum_{i = 1}^k a_i C_i} A & = \sum_{i = 1}^k (a_i C_i A). &  & \by{2.12}[a]
+	\end{align*}
 \end{proof}
 
 \begin{defn}\label{2.3.6}
-  For an \(A \in \ms{n}{n}{\F}\), we define \(A^1 = A\), \(A^2 = AA\), \(A^3 = A^2 A\), and, in general, \(A^k = A^{k - 1} A\) for \(k = 2, 3, \dots\).
-  We define \(A^0 = I_n\).
+	For an \(A \in \ms{n}{n}{\F}\), we define \(A^1 = A\), \(A^2 = AA\), \(A^3 = A^2 A\), and, in general, \(A^k = A^{k - 1} A\) for \(k = 2, 3, \dots\).
+	We define \(A^0 = I_n\).
 \end{defn}
 
 \begin{eg}\label{2.3.7}
-  If
-  \[
-    A = \begin{pmatrix}
-      0 & 0 \\
-      1 & 0
-    \end{pmatrix},
-  \]
-  then \(A^2 = \zm\) (the zero matrix) even though \(A \neq \zm\).
-  Thus the cancellation property for multiplication in fields is not valid for matrices.
-  To see why, assume that the cancellation law is valid.
-  Then, from \(A \cdot A = A^2 = \zm = A \cdot \zm\), we would conclude that \(A = \zm\), which is false.
+	If
+	\[
+		A = \begin{pmatrix}
+			0 & 0 \\
+			1 & 0
+		\end{pmatrix},
+	\]
+	then \(A^2 = \zm\) (the zero matrix) even though \(A \neq \zm\).
+	Thus the cancellation property for multiplication in fields is not valid for matrices.
+	To see why, assume that the cancellation law is valid.
+	Then, from \(A \cdot A = A^2 = \zm = A \cdot \zm\), we would conclude that \(A = \zm\), which is false.
 \end{eg}
 
 \begin{thm}\label{2.13}
-  Let \(A \in \MS\) and \(B \in \ms{n}{p}{\F}\).
-  For each \(j\) (\(1 \leq j \leq p\)) let \(u_j\) and \(v_j\) denote the \(j\)th columns of \(AB\) and \(B\), respectively.
-  Then
-  \begin{enumerate}
-    \item \(u_j = A v_j\).
-    \item \(v_j = B e_j\), where \(e_j\) is the \(j\)th standard vector of \(\vs{F}^p\).
-  \end{enumerate}
+	Let \(A \in \MS\) and \(B \in \ms{n}{p}{\F}\).
+	For each \(j\) (\(1 \leq j \leq p\)) let \(u_j\) and \(v_j\) denote the \(j\)th columns of \(AB\) and \(B\), respectively.
+	Then
+	\begin{enumerate}
+		\item \(u_j = A v_j\).
+		\item \(v_j = B e_j\), where \(e_j\) is the \(j\)th standard vector of \(\vs{F}^p\).
+	\end{enumerate}
 \end{thm}
 
 \begin{proof}[\pf{2.13}(a)]
-  We have
-  \begin{align*}
-    u_j & = \begin{pmatrix}
-              (AB)_{1 j} \\
-              (AB)_{2 j} \\
-              \vdots     \\
-              (AB)_{m j}
-            \end{pmatrix}                 &  & \text{(by \cref{2.2.4})}   \\
-        & = \begin{pmatrix}
-              \sum_{k = 1}^n A_{1 k} B_{k j} \\
-              \sum_{k = 1}^n A_{2 k} B_{k j} \\
-              \vdots                         \\
-              \sum_{k = 1}^n A_{m k} B_{k j}
-            \end{pmatrix} &  & \text{(by \cref{2.3.1})}                   \\
-        & = A \begin{pmatrix}
-                B_{1 j} \\
-                B_{2 j} \\
-                \vdots  \\
-                B_{n j}
-              \end{pmatrix}               &  & \text{(by \cref{2.3.1})}   \\
-        & = A v_j.                          &  & \text{(by \cref{2.2.4})}
-  \end{align*}
+	We have
+	\begin{align*}
+		u_j & = \begin{pmatrix}
+			        (AB)_{1 j} \\
+			        (AB)_{2 j} \\
+			        \vdots     \\
+			        (AB)_{m j}
+		        \end{pmatrix}                 &  & \by{2.2.4}   \\
+		    & = \begin{pmatrix}
+			        \sum_{k = 1}^n A_{1 k} B_{k j} \\
+			        \sum_{k = 1}^n A_{2 k} B_{k j} \\
+			        \vdots                         \\
+			        \sum_{k = 1}^n A_{m k} B_{k j}
+		        \end{pmatrix} &  & \by{2.3.1}                  \\
+		    & = A \begin{pmatrix}
+			          B_{1 j} \\
+			          B_{2 j} \\
+			          \vdots  \\
+			          B_{n j}
+		          \end{pmatrix}               &  & \by{2.3.1}   \\
+		    & = A v_j.                          &  & \by{2.2.4}
+	\end{align*}
 \end{proof}
 
 \begin{proof}[\pf{2.13}(b)]
-  We have
-  \begin{align*}
-    v_j & = \begin{pmatrix}
-              B_{1 j} \\
-              B_{2 j} \\
-              \vdots  \\
-              B_{m j}
-            \end{pmatrix}                     &  & \text{(by \cref{2.2.4})}   \\
-        & = \begin{pmatrix}
-              (B I_p)_{1 j} \\
-              (B I_p)_{2 j} \\
-              \vdots        \\
-              (B I_p)_{m j}
-            \end{pmatrix}                     &  & \text{(by \cref{2.12}(c))} \\
-        & = \begin{pmatrix}
-              \sum_{k = 1}^p B_{1 k} (I_p)_{k j} \\
-              \sum_{k = 1}^p B_{2 k} (I_p)_{k j} \\
-              \vdots                             \\
-              \sum_{k = 1}^p B_{m k} (I_p)_{k j}
-            \end{pmatrix} &  & \text{(by \cref{2.3.1})}                       \\
-        & = B \begin{pmatrix}
-                (I_p)_{1 j} \\
-                (I_p)_{2 j} \\
-                \vdots      \\
-                (I_p)_{p j}
-              \end{pmatrix}                   &  & \text{(by \cref{2.3.1})}   \\
-        & = B e_j.                              &  & \text{(by \cref{2.3.4})}
-  \end{align*}
+	We have
+	\begin{align*}
+		v_j & = \begin{pmatrix}
+			        B_{1 j} \\
+			        B_{2 j} \\
+			        \vdots  \\
+			        B_{m j}
+		        \end{pmatrix}                     &  & \by{2.2.4}   \\
+		    & = \begin{pmatrix}
+			        (B I_p)_{1 j} \\
+			        (B I_p)_{2 j} \\
+			        \vdots        \\
+			        (B I_p)_{m j}
+		        \end{pmatrix}                     &  & \by{2.12}[c] \\
+		    & = \begin{pmatrix}
+			        \sum_{k = 1}^p B_{1 k} (I_p)_{k j} \\
+			        \sum_{k = 1}^p B_{2 k} (I_p)_{k j} \\
+			        \vdots                             \\
+			        \sum_{k = 1}^p B_{m k} (I_p)_{k j}
+		        \end{pmatrix} &  & \by{2.3.1}                  \\
+		    & = B \begin{pmatrix}
+			          (I_p)_{1 j} \\
+			          (I_p)_{2 j} \\
+			          \vdots      \\
+			          (I_p)_{p j}
+		          \end{pmatrix}                   &  & \by{2.3.1}   \\
+		    & = B e_j.                              &  & \by{2.3.4}
+	\end{align*}
 \end{proof}
 
 \begin{note}
-  It follows (see \cref{ex:2.3.14}) from \cref{2.13} that column \(j\) of \(AB\) is a linear combination of the columns of \(A\) with the coefficients in the linear combination being the entries of column \(j\) of \(B\).
-  An analogous result holds for rows;
-  that is, row \(i\) of \(AB\) is a linear combination of the rows of \(B\) with the coefficients in the linear combination being the entries of row \(i\) of \(A\).
+	It follows (see \cref{ex:2.3.14}) from \cref{2.13} that column \(j\) of \(AB\) is a linear combination of the columns of \(A\) with the coefficients in the linear combination being the entries of column \(j\) of \(B\).
+	An analogous result holds for rows;
+	that is, row \(i\) of \(AB\) is a linear combination of the rows of \(B\) with the coefficients in the linear combination being the entries of row \(i\) of \(A\).
 \end{note}
 
 \begin{thm}\label{2.14}
-  Let \(\V\) and \(\W\) be finite-dimensional vector spaces over \(\F\) having ordered bases \(\beta\) and \(\gamma\) over \(\F\), respectively, and let \(\T \in \ls(\V, \W)\).
-  Then, for each \(u \in \V\), we have
-  \[
-    [\T(u)]_{\gamma} = [\T]_{\beta}^{\gamma} [u]_{\beta}.
-  \]
+	Let \(\V\) and \(\W\) be finite-dimensional vector spaces over \(\F\) having ordered bases \(\beta\) and \(\gamma\) over \(\F\), respectively, and let \(\T \in \ls(\V, \W)\).
+	Then, for each \(u \in \V\), we have
+	\[
+		[\T(u)]_{\gamma} = [\T]_{\beta}^{\gamma} [u]_{\beta}.
+	\]
 \end{thm}
 
 \begin{proof}[\pf{2.14}]
-  Fix \(u \in \V\), and define the linear transformations \(f : \F \to \V\) by \(f(a) = au\) and \(g : \F \to \W\) by \(g(a) = a \T(u)\) for all \(a \in \F\).
-  Let \(\alpha = \set{1}\) be the standard ordered basis for \(\F\).
-  Notice that \(g = \T f\).
-  Identifying column vectors as matrices and using \cref{2.11}, we obtain
-  \[
-    [\T(u)]_{\gamma} = [g(1)]_{\gamma} = [g]_{\alpha}^{\gamma} = [\T f]_{\alpha}^{\gamma} = [\T]_{\beta}^{\gamma} [f]_{\alpha}^{\beta} = [\T]_{\beta}^{\gamma} [f(1)]_{\beta} = [\T]_{\beta}^{\gamma} [u]_{\beta}.
-  \]
+	Fix \(u \in \V\), and define the linear transformations \(f : \F \to \V\) by \(f(a) = au\) and \(g : \F \to \W\) by \(g(a) = a \T(u)\) for all \(a \in \F\).
+	Let \(\alpha = \set{1}\) be the standard ordered basis for \(\F\).
+	Notice that \(g = \T f\).
+	Identifying column vectors as matrices and using \cref{2.11}, we obtain
+	\[
+		[\T(u)]_{\gamma} = [g(1)]_{\gamma} = [g]_{\alpha}^{\gamma} = [\T f]_{\alpha}^{\gamma} = [\T]_{\beta}^{\gamma} [f]_{\alpha}^{\beta} = [\T]_{\beta}^{\gamma} [f(1)]_{\beta} = [\T]_{\beta}^{\gamma} [u]_{\beta}.
+	\]
 \end{proof}
 
 \begin{defn}\label{2.3.8}
-  Let \(A \in \ms{m}{n}{\F}\).
-  We denote by \(\L_A\) the mapping \(\L_A : \vs{F}^n \to \vs{F}^m\) defined by \(\L_A(x) = Ax\) (the matrix product of \(A\) and \(x\)) for each column vector \(x \in \vs{F}^n\).
-  We call \(\L_A\) a \textbf{left-multiplication transformation}.
+	Let \(A \in \ms{m}{n}{\F}\).
+	We denote by \(\L_A\) the mapping \(\L_A : \vs{F}^n \to \vs{F}^m\) defined by \(\L_A(x) = Ax\) (the matrix product of \(A\) and \(x\)) for each column vector \(x \in \vs{F}^n\).
+	We call \(\L_A\) a \textbf{left-multiplication transformation}.
 \end{defn}
 
 \begin{thm}\label{2.15}
-  Let \(A \in \MS\).
-  Then the left-multiplication transformation \(\L_A : \vs{F}^n \to \vs{F}^m\) is linear.
-  Furthermore, if \(B \in \MS\) and \(\beta\) and \(\gamma\) are the standard ordered bases for \(\vs{F}^n\) and \(\vs{F}^m\) over \(\F\), respectively, then we have the following properties.
-  \begin{enumerate}
-    \item \([\L_A]_{\beta}^{\gamma} = A\).
-    \item \(\L_A = \L_B\) iff \(A = B\).
-    \item \(\L_{A + B} = \L_A + \L_B\) and \(\L_{aA} = a \L_A\) for all \(a \in \F\).
-    \item If \(\T : \vs{F}^n \to \vs{F}^m\) is linear, then there exists a unique \(C \in \MS\) such that \(\T = \L_C\).
-          In fact, \(C = [\T]_{\beta}^{\gamma}\).
-    \item If \(E \in \ms{n}{p}{\F}\), then \(\L_{AE} = \L_A \L_E\).
-    \item If \(m = n\), then \(\L_{I_n} = \IT[\vs{F}^n]\).
-  \end{enumerate}
+	Let \(A \in \MS\).
+	Then the left-multiplication transformation \(\L_A : \vs{F}^n \to \vs{F}^m\) is linear.
+	Furthermore, if \(B \in \MS\) and \(\beta\) and \(\gamma\) are the standard ordered bases for \(\vs{F}^n\) and \(\vs{F}^m\) over \(\F\), respectively, then we have the following properties.
+	\begin{enumerate}
+		\item \([\L_A]_{\beta}^{\gamma} = A\).
+		\item \(\L_A = \L_B\) iff \(A = B\).
+		\item \(\L_{A + B} = \L_A + \L_B\) and \(\L_{aA} = a \L_A\) for all \(a \in \F\).
+		\item If \(\T : \vs{F}^n \to \vs{F}^m\) is linear, then there exists a unique \(C \in \MS\) such that \(\T = \L_C\).
+		      In fact, \(C = [\T]_{\beta}^{\gamma}\).
+		\item If \(E \in \ms{n}{p}{\F}\), then \(\L_{AE} = \L_A \L_E\).
+		\item If \(m = n\), then \(\L_{I_n} = \IT[\vs{F}^n]\).
+	\end{enumerate}
 \end{thm}
 
 \begin{proof}[\pf{2.15}(a)]
-  The fact that \(\L_A\) is linear follows immediately from \cref{2.12}(a)(b).
-  By \cref{2.2.4} the \(j\)th column of \([\L_A]_{\beta}^{\gamma}\) is equal to \(\L_A(e_j)\).
-  However by \cref{2.3.8} we have \(\L_A(e_j) = A e_j\), which is also the \(j\)th column of \(A\) by \cref{2.13}(b).
-  So \([\L_A]_{\beta}^{\gamma} = A\).
+	The fact that \(\L_A\) is linear follows immediately from \cref{2.12}(a)(b).
+	By \cref{2.2.4} the \(j\)th column of \([\L_A]_{\beta}^{\gamma}\) is equal to \(\L_A(e_j)\).
+	However by \cref{2.3.8} we have \(\L_A(e_j) = A e_j\), which is also the \(j\)th column of \(A\) by \cref{2.13}(b).
+	So \([\L_A]_{\beta}^{\gamma} = A\).
 \end{proof}
 
 \begin{proof}[\pf{2.15}(b)]
-  If \(\L_A = \L_B\), then we may use \cref{2.15}(a) to write \(A = [\L_A]_{\beta}^{\gamma} = [\L_B]_{\beta}^{\gamma} = B\).
-  Hence \(A = B\).
-  The proof of the converse is trivial.
+	If \(\L_A = \L_B\), then we may use \cref{2.15}(a) to write \(A = [\L_A]_{\beta}^{\gamma} = [\L_B]_{\beta}^{\gamma} = B\).
+	Hence \(A = B\).
+	The proof of the converse is trivial.
 \end{proof}
 
 \begin{proof}[\pf{2.15}(c)]
-  For all \(x \in \vs{F}^n\), we have
-  \begin{align*}
-    \L_{A + B}(x) & = (A + B) x         &  & \text{(by \cref{2.3.8})}   \\
-                  & = Ax + Bx           &  & \text{(by \cref{2.12}(a))} \\
-                  & = \L_A(x) + \L_B(x) &  & \text{(by \cref{2.3.8})}   \\
-                  & = (\L_A + \L_B)(x)  &  & \text{(by \cref{2.2.5})}
-  \end{align*}
-  and
-  \begin{align*}
-    \L_{aA}(x) & = (aA) x       &  & \text{(by \cref{2.3.8})}   \\
-               & = a (Ax)       &  & \text{(by \cref{2.12}(b))} \\
-               & = a \L_A(x)    &  & \text{(by \cref{2.3.8})}   \\
-               & = (a \L_A)(x). &  & \text{(by \cref{2.2.5})}
-  \end{align*}
-  Thus \(\L_{A + B} = \L_A + \L_B\) and \(\L_{aA} = a \L_A\).
+	For all \(x \in \vs{F}^n\), we have
+	\begin{align*}
+		\L_{A + B}(x) & = (A + B) x         &  & \by{2.3.8}   \\
+		              & = Ax + Bx           &  & \by{2.12}[a] \\
+		              & = \L_A(x) + \L_B(x) &  & \by{2.3.8}   \\
+		              & = (\L_A + \L_B)(x)  &  & \by{2.2.5}
+	\end{align*}
+	and
+	\begin{align*}
+		\L_{aA}(x) & = (aA) x       &  & \by{2.3.8}   \\
+		           & = a (Ax)       &  & \by{2.12}[b] \\
+		           & = a \L_A(x)    &  & \by{2.3.8}   \\
+		           & = (a \L_A)(x). &  & \by{2.2.5}
+	\end{align*}
+	Thus \(\L_{A + B} = \L_A + \L_B\) and \(\L_{aA} = a \L_A\).
 \end{proof}
 
 \begin{proof}[\pf{2.15}(d)]
-  Let \(C = [\T]_{\beta}^{\gamma}\).
-  By \cref{2.14} we have \([\T(x)]_{\gamma} = [\T]_{\beta}^{\gamma} [x]_{\beta}\), or \(\T(x) = Cx = \L_C(x)\) for all \(x \in \vs{F}^n\).
-  So \(\T = \L_C\).
-  The uniqueness of \(C\) follows from \cref{2.15}(b).
+	Let \(C = [\T]_{\beta}^{\gamma}\).
+	By \cref{2.14} we have \([\T(x)]_{\gamma} = [\T]_{\beta}^{\gamma} [x]_{\beta}\), or \(\T(x) = Cx = \L_C(x)\) for all \(x \in \vs{F}^n\).
+	So \(\T = \L_C\).
+	The uniqueness of \(C\) follows from \cref{2.15}(b).
 \end{proof}
 
 \begin{proof}[\pf{2.15}(e)]
-  For any \(j\) (\(1 \leq j \leq p\)), we may apply \cref{2.13} several times to note that \((AE) e_j\) is the \(j\)th column of \(AE\) and that the \(j\)th column of \(AE\) is also equal to \(A (E e_j)\).
-  So \((AE) e_j = A (Ee_j)\).
-  Thus
-  \[
-    \L_{AE}(e_j) = (AE) e_j = A (E e_j) = \L_A(E e_j) = \L_A(L_E(e_j)).
-  \]
-  Hence \(\L_{AE} = \L_A \L_E\) by \cref{2.1.13}.
+	For any \(j\) (\(1 \leq j \leq p\)), we may apply \cref{2.13} several times to note that \((AE) e_j\) is the \(j\)th column of \(AE\) and that the \(j\)th column of \(AE\) is also equal to \(A (E e_j)\).
+	So \((AE) e_j = A (Ee_j)\).
+	Thus
+	\[
+		\L_{AE}(e_j) = (AE) e_j = A (E e_j) = \L_A(E e_j) = \L_A(L_E(e_j)).
+	\]
+	Hence \(\L_{AE} = \L_A \L_E\) by \cref{2.1.13}.
 \end{proof}
 
 \begin{proof}[\pf{2.15}(f)]
-  For all \(x \in \vs{F}^n\), we have
-  \begin{align*}
-    \L_{I_n}(x) & = I_n x              &  & \text{(by \cref{2.3.8})}   \\
-                & = x                  &  & \text{(by \cref{2.12}(c))} \\
-                & = \IT_{\vs{F}^n}(x). &  & \text{(by \cref{2.1.9})}
-  \end{align*}
-  Thus \(\L_{I_n} = \IT_{\vs{F}^n}\).
+	For all \(x \in \vs{F}^n\), we have
+	\begin{align*}
+		\L_{I_n}(x) & = I_n x              &  & \by{2.3.8}   \\
+		            & = x                  &  & \by{2.12}[c] \\
+		            & = \IT_{\vs{F}^n}(x). &  & \by{2.1.9}
+	\end{align*}
+	Thus \(\L_{I_n} = \IT_{\vs{F}^n}\).
 \end{proof}
 
 \begin{thm}\label{2.16}
-  Let \(A\), \(B\), and \(C\) be matrices such that \(A (BC)\) is defined.
-  Then \((AB) C\) is also defined and \(A (BC) = (AB) C\);
-  that is, matrix multiplication is associative.
+	Let \(A\), \(B\), and \(C\) be matrices such that \(A (BC)\) is defined.
+	Then \((AB) C\) is also defined and \(A (BC) = (AB) C\);
+	that is, matrix multiplication is associative.
 \end{thm}
 
 \begin{proof}[\pf{2.16}]
-  Since \(A (BC)\) is defined, by \cref{2.3.1} we can let \(A \in \MS\) and \(BC \in \ms{n}{p}{\F}\) such that \(A (BC) \in \ms{m}{p}{\F}\).
-  Since \(BC\) is also defined, by \cref{2.3.1} again we can let \(B \in \ms{n}{k}{\F}\) and \(C \in \ms{k}{p}{\F}\).
-  Then we have
-  \begin{align*}
-             & \begin{dcases}
-                 A \in \MS           \\
-                 B \in \ms{n}{k}{\F} \\
-                 C \in \ms{k}{p}{\F}
-               \end{dcases}                                    \\
-    \implies & \begin{dcases}
-                 AB \in \ms{m}{k}{\F} \\
-                 C \in \ms{k}{p}{\F}
-               \end{dcases}  &  & \text{(by \cref{2.3.1})}            \\
-    \implies & (AB) C \in \ms{m}{p}{\F} &  & \text{(by \cref{2.3.1})}
-  \end{align*}
-  and thus \((AB) C\) is defined.
+	Since \(A (BC)\) is defined, by \cref{2.3.1} we can let \(A \in \MS\) and \(BC \in \ms{n}{p}{\F}\) such that \(A (BC) \in \ms{m}{p}{\F}\).
+	Since \(BC\) is also defined, by \cref{2.3.1} again we can let \(B \in \ms{n}{k}{\F}\) and \(C \in \ms{k}{p}{\F}\).
+	Then we have
+	\begin{align*}
+		         & \begin{dcases}
+			           A \in \MS           \\
+			           B \in \ms{n}{k}{\F} \\
+			           C \in \ms{k}{p}{\F}
+		           \end{dcases}                      \\
+		\implies & \begin{dcases}
+			           AB \in \ms{m}{k}{\F} \\
+			           C \in \ms{k}{p}{\F}
+		           \end{dcases}  &  & \by{2.3.1}            \\
+		\implies & (AB) C \in \ms{m}{p}{\F} &  & \by{2.3.1}
+	\end{align*}
+	and thus \((AB) C\) is defined.
 
-  Using \cref{2.15}(e) and the associativity of functional composition, we have
-  \[
-    \L_{A (BC)} = \L_A \L_{BC} = \L_A (\L_B \L_C) = (\L_A \L_B) \L_C = \L_{AB} \L_C = \L_{(AB) C}.
-  \]
-  So by \cref{2.15}(b), it follows that \(A (BC) = (AB) C\).
+	Using \cref{2.15}(e) and the associativity of functional composition, we have
+	\[
+		\L_{A (BC)} = \L_A \L_{BC} = \L_A (\L_B \L_C) = (\L_A \L_B) \L_C = \L_{AB} \L_C = \L_{(AB) C}.
+	\]
+	So by \cref{2.15}(b), it follows that \(A (BC) = (AB) C\).
 \end{proof}
 
 \begin{defn}\label{2.3.9}
-  An \textbf{incidence matrix} is a square matrix in which all the entries are either zero or one and, for convenience, all the diagonal entries are zero.
-  If we have a relationship on a set of \(n\) objects that we denote by \(1, 2, \dots, n\), then we define the associated incidence matrix \(A\) by \(A_{i j} = 1\) if \(i\) is related to \(j\), and \(A_{i j} = 0\) otherwise.
+	An \textbf{incidence matrix} is a square matrix in which all the entries are either zero or one and, for convenience, all the diagonal entries are zero.
+	If we have a relationship on a set of \(n\) objects that we denote by \(1, 2, \dots, n\), then we define the associated incidence matrix \(A\) by \(A_{i j} = 1\) if \(i\) is related to \(j\), and \(A_{i j} = 0\) otherwise.
 \end{defn}
 
 \begin{eg}\label{2.3.10}
-  A maximal collection of three or more people with the property that any two can send to each other is called a \textbf{clique}.
-  The problem of determining cliques is difficult, but there is a simple method for determining if someone belongs to a clique.
-  If we define a new matrix \(B\) by \(B_{i j} = 1\) if \(i\) and \(j\) can send to each other, and \(B_{i j} = 0\) otherwise, then person \(i\) belongs to a clique iff \((B^3)_{i i} > 0\).
+	A maximal collection of three or more people with the property that any two can send to each other is called a \textbf{clique}.
+	The problem of determining cliques is difficult, but there is a simple method for determining if someone belongs to a clique.
+	If we define a new matrix \(B\) by \(B_{i j} = 1\) if \(i\) and \(j\) can send to each other, and \(B_{i j} = 0\) otherwise, then person \(i\) belongs to a clique iff \((B^3)_{i i} > 0\).
 \end{eg}
 
 \begin{proof}[\pf{2.3.10}]
-  Suppose that \(B \in \ms{n}{n}{\F}\).
-  We know that person \(i\) belongs to a clique iff there exists at least two other people \(j, k\) such that \(i\) can send to \(j\), \(j\) can send to \(k\) and \(k\) can send back to \(i\).
-  In other words \(B_{i j} = B_{j k} = B_{k i} = 1\).
-  Thus we have
-  \begin{align*}
-         & \exists j, k \in \set{1, \dots, n} \setminus \set{i} : B_{i j} = B_{j k} = B_{k i} = 1           &  & \text{(by \cref{2.3.10})} \\
-    \iff & \exists j, k \in \set{1, \dots, n} \setminus \set{i} : B_{i j} B_{j k} B_{k i} = 1                                              \\
-    \iff & (B^3)_{i i} = (BBB)_{i i}                                                                        &  & \text{(by \cref{2.3.6})}  \\
-         & = \sum_{j = 1}^n B_{i j} (BB)_{j i} = \sum_{j = 1}^n B_{i j} \pa{\sum_{k = 1}^n B_{j k} B_{k i}} &  & \text{(by \cref{2.3.1})}  \\
-         & = \sum_{j = 1}^n \sum_{k = 1}^n (B_{i j} B_{j k} B_{k i}) > 0.                                   &  & \text{(by \cref{1.2.1})}
-  \end{align*}
+	Suppose that \(B \in \ms{n}{n}{\F}\).
+	We know that person \(i\) belongs to a clique iff there exists at least two other people \(j, k\) such that \(i\) can send to \(j\), \(j\) can send to \(k\) and \(k\) can send back to \(i\).
+	In other words \(B_{i j} = B_{j k} = B_{k i} = 1\).
+	Thus we have
+	\begin{align*}
+		     & \exists j, k \in \set{1, \dots, n} \setminus \set{i} : B_{i j} = B_{j k} = B_{k i} = 1           &  & \by{2.3.10} \\
+		\iff & \exists j, k \in \set{1, \dots, n} \setminus \set{i} : B_{i j} B_{j k} B_{k i} = 1                                \\
+		\iff & (B^3)_{i i} = (BBB)_{i i}                                                                        &  & \by{2.3.6}  \\
+		     & = \sum_{j = 1}^n B_{i j} (BB)_{j i} = \sum_{j = 1}^n B_{i j} \pa{\sum_{k = 1}^n B_{j k} B_{k i}} &  & \by{2.3.1}  \\
+		     & = \sum_{j = 1}^n \sum_{k = 1}^n (B_{i j} B_{j k} B_{k i}) > 0.                                   &  & \by{1.2.1}
+	\end{align*}
 \end{proof}
 
 \begin{eg}\label{2.3.11}
-  A relation among a group of people is called a \textbf{dominance relation} if the associated incidence matrix \(A\) has the property that for all distinct pairs \(i\) and \(j\), \(A_{i j} = 1\) iff \(A_{j i} = 0\), that is, given any two people, exactly one of them dominates the other.
-  Since \(A\) is an incidence matrix, \(A_{i i} = 0\) for all \(i\).
-  For such a relation, it can be shown that the matrix \(A + A^2\) has a row [column] in which each entry is positive except for the diagonal entry.
-  In other words, there is at least one person who dominates [is dominated by] all others in one or two stages.
-  In fact, it can be shown that any person who dominates [is dominated by] the greatest number of people in the first stage has this property.
+	A relation among a group of people is called a \textbf{dominance relation} if the associated incidence matrix \(A\) has the property that for all distinct pairs \(i\) and \(j\), \(A_{i j} = 1\) iff \(A_{j i} = 0\), that is, given any two people, exactly one of them dominates the other.
+	Since \(A\) is an incidence matrix, \(A_{i i} = 0\) for all \(i\).
+	For such a relation, it can be shown that the matrix \(A + A^2\) has a row [column] in which each entry is positive except for the diagonal entry.
+	In other words, there is at least one person who dominates [is dominated by] all others in one or two stages.
+	In fact, it can be shown that any person who dominates [is dominated by] the greatest number of people in the first stage has this property.
 \end{eg}
 
 \begin{proof}[\pf{2.3.11}]
-  Let \(A \in \ms{n}{n}{\F}\).
-  First observe that
-  \begin{align*}
-    (A + A^2)_{i j} & = A_{i j} + (A^2)_{i j}                     &  & \text{(by \cref{1.2.9})} \\
-                    & = A_{i j} + (AA)_{i j}                      &  & \text{(by \cref{2.3.6})} \\
-                    & = A_{i j} + \sum_{k = 1}^n A_{i k} A_{k j}. &  & \text{(by \cref{2.3.1})}
-  \end{align*}
-  We see that all diagonal entries of \(A + A^2\) is \(0\) since
-  \begin{align*}
-             & \forall (i, j) \in \set{1, \dots, n}^2, (A_{i j} = 0) \lor (A_{j i} = 0)      &  & \text{(by \cref{2.3.11})}     \\
-    \implies & \forall (i, j) \in \set{1, \dots, n}^2, A_{i j} A_{j i} = 0                                                      \\
-    \implies & \forall i \in \set{1, \dots, n}, \sum_{j = 1}^n A_{i j} A_{j i} = 0                                              \\
-    \implies & \forall i \in \set{1, \dots, n}, A_{i i} + \sum_{j = 1}^n A_{i j} A_{j i} = 0 &  & \text{(by \cref{2.3.9})}      \\
-    \implies & \forall i \in \set{1, \dots, n}, (A + A^2)_{i i} = 0.                         &  & \text{(from the proof above)}
-  \end{align*}
+	Let \(A \in \ms{n}{n}{\F}\).
+	First observe that
+	\begin{align*}
+		(A + A^2)_{i j} & = A_{i j} + (A^2)_{i j}                     &  & \by{1.2.9} \\
+		                & = A_{i j} + (AA)_{i j}                      &  & \by{2.3.6} \\
+		                & = A_{i j} + \sum_{k = 1}^n A_{i k} A_{k j}. &  & \by{2.3.1}
+	\end{align*}
+	We see that all diagonal entries of \(A + A^2\) is \(0\) since
+	\begin{align*}
+		         & \forall (i, j) \in \set{1, \dots, n}^2, (A_{i j} = 0) \lor (A_{j i} = 0)      &  & \by{2.3.11}                   \\
+		\implies & \forall (i, j) \in \set{1, \dots, n}^2, A_{i j} A_{j i} = 0                                                      \\
+		\implies & \forall i \in \set{1, \dots, n}, \sum_{j = 1}^n A_{i j} A_{j i} = 0                                              \\
+		\implies & \forall i \in \set{1, \dots, n}, A_{i i} + \sum_{j = 1}^n A_{i j} A_{j i} = 0 &  & \by{2.3.9}                    \\
+		\implies & \forall i \in \set{1, \dots, n}, (A + A^2)_{i i} = 0.                         &  & \text{(from the proof above)}
+	\end{align*}
 
-  Next we show that there exists an \(i \in \set{1, \dots, n}\) such that each entry in the \(i\)-th row of \(A + A^2\) is positive except for the diagonal entry.
-  Let \(v_1 \in \set{1, \dots, n}\).
-  If each entry in the \(v_1\)-th row of \(A + A^2\) is positive except for the diagonal entry, then we are done.
-  If not, then there exists a \(v_2 \in \set{1, \dots, n} \setminus \set{v_1}\) such that \((A + A^2)_{v_1 v_2} = 0\).
-  From the proof above we see that \(A_{v_1 v_2} = 0\) and thus by \cref{2.3.11} we must have \(A_{v_2 v_1} = 1\).
-  We claim that if \(k \in \set{1, \dots, n} \setminus \set{v_1, v_2}\) such that \(A_{v_1 k} = 1\), then \(A_{v_2 k} = 1\).
-  Otherwise we would have
-  \begin{align*}
-             & A_{v_2 k} = 0                                               \\
-    \implies & A_{k v_2} = 1            &  & \text{(by \cref{2.3.11})}     \\
-    \implies & A_{v_1 k} A_{k v_2} = 1                                     \\
-    \implies & (A + A^2)_{v_1 v_2} > 0, &  & \text{(from the proof above)}
-  \end{align*}
-  a contradiction.
-  From the claim above we see that the \(v_2\)-th row of \(A + A^2\) has greater number of positive entries than the \(v_1\)-th row of \(A + A^2\) (at least larger than one since \(A_{v_2 v_1} = 1\)).
-  Now we can ask if each entry in the \(v_2\)-th row of \(A + A^2\) is positive except for the diagonal entry.
-  If yes, then we are done.
-  If not, we can find a \(v_3 \in \set{1, \dots, n} \setminus \set{v_1, v_2}\) such that \((A + A^2)_{v_2 v_3} = 0\).
-  Using similar arguments as above we see that the \(v_3\)-th row of \(A + A^2\) has greater number of positive entries than the \(v_2\)-th row of \(A + A^2\) (at least larger than one since \(A_{v_3 v_2} = 1\)).
-  Since there are only finitely many rows in \(A + A^2\), we see that by continuing the above process we can find an \(i \in \set{1, \dots, n}\) such that each entry in the \(i\)-th row of \(A + A^2\) is positive except for the diagonal entry.
+	Next we show that there exists an \(i \in \set{1, \dots, n}\) such that each entry in the \(i\)-th row of \(A + A^2\) is positive except for the diagonal entry.
+	Let \(v_1 \in \set{1, \dots, n}\).
+	If each entry in the \(v_1\)-th row of \(A + A^2\) is positive except for the diagonal entry, then we are done.
+	If not, then there exists a \(v_2 \in \set{1, \dots, n} \setminus \set{v_1}\) such that \((A + A^2)_{v_1 v_2} = 0\).
+	From the proof above we see that \(A_{v_1 v_2} = 0\) and thus by \cref{2.3.11} we must have \(A_{v_2 v_1} = 1\).
+	We claim that if \(k \in \set{1, \dots, n} \setminus \set{v_1, v_2}\) such that \(A_{v_1 k} = 1\), then \(A_{v_2 k} = 1\).
+	Otherwise we would have
+	\begin{align*}
+		         & A_{v_2 k} = 0                                               \\
+		\implies & A_{k v_2} = 1            &  & \by{2.3.11}                   \\
+		\implies & A_{v_1 k} A_{k v_2} = 1                                     \\
+		\implies & (A + A^2)_{v_1 v_2} > 0, &  & \text{(from the proof above)}
+	\end{align*}
+	a contradiction.
+	From the claim above we see that the \(v_2\)-th row of \(A + A^2\) has greater number of positive entries than the \(v_1\)-th row of \(A + A^2\) (at least larger than one since \(A_{v_2 v_1} = 1\)).
+	Now we can ask if each entry in the \(v_2\)-th row of \(A + A^2\) is positive except for the diagonal entry.
+	If yes, then we are done.
+	If not, we can find a \(v_3 \in \set{1, \dots, n} \setminus \set{v_1, v_2}\) such that \((A + A^2)_{v_2 v_3} = 0\).
+	Using similar arguments as above we see that the \(v_3\)-th row of \(A + A^2\) has greater number of positive entries than the \(v_2\)-th row of \(A + A^2\) (at least larger than one since \(A_{v_3 v_2} = 1\)).
+	Since there are only finitely many rows in \(A + A^2\), we see that by continuing the above process we can find an \(i \in \set{1, \dots, n}\) such that each entry in the \(i\)-th row of \(A + A^2\) is positive except for the diagonal entry.
 
-  Finally we show that if \(i\) is the person who dominates the most in \(A\), then each entry in the \(i\)-th row of \(A + A^2\) is positive except for the diagonal entry.
-  Suppose for sake of contradiction that there exists a \(j \in \set{1, \dots, n} \setminus \set{i}\) such that \((A + A^2)_{i j} = 0\).
-  This means
-  \begin{align*}
-             & A_{i j} + \sum_{k = 1}^n A_{i k} A_{k j} = 0                                                            \\
-    \implies & \begin{dcases}
-                 A_{i j} = 0 \\
-                 \sum_{k = 1}^n A_{i k} A_{k j} = 0
-               \end{dcases}                                       &  & \text{(by \cref{2.3.11})}                       \\
-    \implies & \forall k \in \set{1, \dots, n},                                                                        \\
-             & (A_{i k} = 0 \land A_{k j} = 1) \lor (A_{i k} = 1 \land A_{k j} = 0)     &  & \text{(by \cref{2.3.9})}  \\
-    \implies & \forall k \in \set{1, \dots, n},                                                                        \\
-             & (A_{i k} = 0 \land A_{k j} = 1 \land A_{k i} = 1 \land A_{j k} = 0)                                     \\
-             & \lor (A_{i k} = 1 \land A_{k j} = 0 \land A_{k i} = 0 \land A_{j k} = 1) &  & \text{(by \cref{2.3.11})} \\
-    \implies & \sum_{k = 1}^n A_{i k} = \sum_{k = 1}^n A_{j k} > 0.                     &  & \text{(by \cref{2.3.11})}
-  \end{align*}
-  But this contradicts to the fact that \(i\) is the person who dominates the most in \(A\).
-  Thus such \(j\) does not exist and each entry in the \(i\)-th row of \(A + A^2\) is positive except for the diagonal entry.
-  One can replace the role of \(i\)-th row with \(j\)-th column and derive similar arguments.
+	Finally we show that if \(i\) is the person who dominates the most in \(A\), then each entry in the \(i\)-th row of \(A + A^2\) is positive except for the diagonal entry.
+	Suppose for sake of contradiction that there exists a \(j \in \set{1, \dots, n} \setminus \set{i}\) such that \((A + A^2)_{i j} = 0\).
+	This means
+	\begin{align*}
+		         & A_{i j} + \sum_{k = 1}^n A_{i k} A_{k j} = 0                                              \\
+		\implies & \begin{dcases}
+			           A_{i j} = 0 \\
+			           \sum_{k = 1}^n A_{i k} A_{k j} = 0
+		           \end{dcases}                                       &  & \by{2.3.11}                       \\
+		\implies & \forall k \in \set{1, \dots, n},                                                          \\
+		         & (A_{i k} = 0 \land A_{k j} = 1) \lor (A_{i k} = 1 \land A_{k j} = 0)     &  & \by{2.3.9}  \\
+		\implies & \forall k \in \set{1, \dots, n},                                                          \\
+		         & (A_{i k} = 0 \land A_{k j} = 1 \land A_{k i} = 1 \land A_{j k} = 0)                       \\
+		         & \lor (A_{i k} = 1 \land A_{k j} = 0 \land A_{k i} = 0 \land A_{j k} = 1) &  & \by{2.3.11} \\
+		\implies & \sum_{k = 1}^n A_{i k} = \sum_{k = 1}^n A_{j k} > 0.                     &  & \by{2.3.11}
+	\end{align*}
+	But this contradicts to the fact that \(i\) is the person who dominates the most in \(A\).
+	Thus such \(j\) does not exist and each entry in the \(i\)-th row of \(A + A^2\) is positive except for the diagonal entry.
+	One can replace the role of \(i\)-th row with \(j\)-th column and derive similar arguments.
 \end{proof}
 
 \exercisesection
 
 \setcounter{ex}{9}
 \begin{ex}\label{ex:2.3.10}
-  Let \(A \in \ms{n}{n}{\F}\).
-  Prove that \(A\) is a diagonal matrix iff \(A_{i j} = \delta_{i j} A_{i j}\) for all \(i\) and \(j\).
+	Let \(A \in \ms{n}{n}{\F}\).
+	Prove that \(A\) is a diagonal matrix iff \(A_{i j} = \delta_{i j} A_{i j}\) for all \(i\) and \(j\).
 \end{ex}
 
 \begin{proof}[\pf{ex:2.3.10}]
-  We have
-  \begin{align*}
-         & A \text{ is diagonal matrix}                                                                                              \\
-    \iff & A_{i j} = 0 \text{ for all } i, j \in \set{1, 2, \dots, n} \text{ and } i \neq j            &  & \text{(by \cref{1.3.8})} \\
-    \iff & A_{i j} = \delta_{i j} \text{ for all } i, j \in \set{1, 2, \dots, n} \text{ and } i \neq j &  & \text{(by \cref{2.3.4})} \\
-    \iff & A_{i j} = \delta_{i j} A_{i j} \text{ for all } i, j \in \set{1, 2, \dots, n}.              &  & \text{(by \cref{2.3.4})}
-  \end{align*}
+	We have
+	\begin{align*}
+		     & A \text{ is diagonal matrix}                                                                                \\
+		\iff & A_{i j} = 0 \text{ for all } i, j \in \set{1, 2, \dots, n} \text{ and } i \neq j            &  & \by{1.3.8} \\
+		\iff & A_{i j} = \delta_{i j} \text{ for all } i, j \in \set{1, 2, \dots, n} \text{ and } i \neq j &  & \by{2.3.4} \\
+		\iff & A_{i j} = \delta_{i j} A_{i j} \text{ for all } i, j \in \set{1, 2, \dots, n}.              &  & \by{2.3.4}
+	\end{align*}
 \end{proof}
 
 \begin{ex}\label{ex:2.3.11}
-  Let \(\V\) be a vector space over \(\F\), and let \(\T : \V \to \V\) be linear.
-  Prove that \(\T^2 = \zT\) iff \(\rg{\T} \subseteq \ns{\T}\).
+	Let \(\V\) be a vector space over \(\F\), and let \(\T : \V \to \V\) be linear.
+	Prove that \(\T^2 = \zT\) iff \(\rg{\T} \subseteq \ns{\T}\).
 \end{ex}
 
 \begin{proof}[\pf{ex:2.3.11}]
-  We have
-  \begin{align*}
-         & \T^2 = \zT                                                                \\
-    \iff & \forall x \in \V, \T(\T(x)) = \zT(x) = \zv &  & \text{(by \cref{2.1.9})}  \\
-    \iff & \forall x \in \V, \T(x) \in \ns{\T}        &  & \text{(by \cref{2.1.10})} \\
-    \iff & \rg{\T} \subseteq \ns{\T}.                 &  & \text{(by \cref{2.1.10})}
-  \end{align*}
+	We have
+	\begin{align*}
+		     & \T^2 = \zT                                                  \\
+		\iff & \forall x \in \V, \T(\T(x)) = \zT(x) = \zv &  & \by{2.1.9}  \\
+		\iff & \forall x \in \V, \T(x) \in \ns{\T}        &  & \by{2.1.10} \\
+		\iff & \rg{\T} \subseteq \ns{\T}.                 &  & \by{2.1.10}
+	\end{align*}
 \end{proof}
 
 \begin{ex}\label{ex:2.3.12}
-  Let \(\V\), \(\W\), and \(\vs{Z}\) be vector spaces over \(\F\), and let \(\T \in \ls(\V, \W)\) and \(\U \in \ls(\W, \vs{Z})\).
-  \begin{enumerate}
-    \item Prove that if \(\U \T\) is one-to-one, then \(\T\) is one-to-one.
-          Must \(\U\) also be one-to-one?
-    \item Prove that if \(\U \T\) is onto, then \(\U\) is onto.
-          Must \(\T\) also be onto?
-    \item Prove that if \(\U\) and \(\T\) are one-to-one and onto, then \(\U \T\) is also.
-  \end{enumerate}
+	Let \(\V\), \(\W\), and \(\vs{Z}\) be vector spaces over \(\F\), and let \(\T \in \ls(\V, \W)\) and \(\U \in \ls(\W, \vs{Z})\).
+	\begin{enumerate}
+		\item Prove that if \(\U \T\) is one-to-one, then \(\T\) is one-to-one.
+		      Must \(\U\) also be one-to-one?
+		\item Prove that if \(\U \T\) is onto, then \(\U\) is onto.
+		      Must \(\T\) also be onto?
+		\item Prove that if \(\U\) and \(\T\) are one-to-one and onto, then \(\U \T\) is also.
+	\end{enumerate}
 \end{ex}
 
 \begin{proof}[\pf{ex:2.3.12}(a)]
-  Let \(x, y \in \V\) such that \(x \neq y\).
-  Then we have
-  \begin{align*}
-             & (\U \T)(x) \neq (\U \T)(y) &  & \text{(\(\U \T\) is one-to-one)}            \\
-    \implies & \U(\T(x)) \neq \U(\T(y))                                                    \\
-    \implies & \T(x) \neq \T(y)           &  & \text{(this is the definition of function)} \\
-    \implies & \T \text{ is one-to-one}.
-  \end{align*}
-  From the proof above we see that is doesn't matter whether \(\U\) is one-to-one or not.
+	Let \(x, y \in \V\) such that \(x \neq y\).
+	Then we have
+	\begin{align*}
+		         & (\U \T)(x) \neq (\U \T)(y) &  & \text{(\(\U \T\) is one-to-one)}            \\
+		\implies & \U(\T(x)) \neq \U(\T(y))                                                    \\
+		\implies & \T(x) \neq \T(y)           &  & \text{(this is the definition of function)} \\
+		\implies & \T \text{ is one-to-one}.
+	\end{align*}
+	From the proof above we see that is doesn't matter whether \(\U\) is one-to-one or not.
 \end{proof}
 
 \begin{proof}[\pf{ex:2.3.12}(b)]
-  Let \(z \in \vs{Z}\).
-  Then we have
-  \begin{align*}
-             & \exists x \in \V : (\U \T)(x) = z                &  & \text{(\(\U \T\) is onto)} \\
-    \implies & \exists (x, y) \in \V \times \W : \begin{dcases}
-                                                   \T(x) = y \\
-                                                   \U(\T(x)) = \U(y) = z
-                                                 \end{dcases} &  & \text{(\(\U \T\) is onto)}   \\
-    \implies & \U \text{ is onto}.
-  \end{align*}
-  From the proof above we see that is doesn't matter whether \(\T\) is onto or not.
+	Let \(z \in \vs{Z}\).
+	Then we have
+	\begin{align*}
+		         & \exists x \in \V : (\U \T)(x) = z                &  & \text{(\(\U \T\) is onto)} \\
+		\implies & \exists (x, y) \in \V \times \W : \begin{dcases}
+			                                             \T(x) = y \\
+			                                             \U(\T(x)) = \U(y) = z
+		                                             \end{dcases} &  & \text{(\(\U \T\) is onto)}   \\
+		\implies & \U \text{ is onto}.
+	\end{align*}
+	From the proof above we see that is doesn't matter whether \(\T\) is onto or not.
 \end{proof}
 
 \begin{proof}[\pf{ex:2.3.12}(c)]
-  First we show that \(\U \T\) is one-to-one.
-  Let \(x, y \in \V\) such that \(x \neq y\).
-  Then we have
-  \begin{align*}
-             & \T(x) \neq \T(y)             &  & \text{(\(\T\) is one-to-one)} \\
-    \implies & \U(\T(x)) \neq \U(\T(y))     &  & \text{(\(\U\) is one-to-one)} \\
-    \implies & \U \T \text{ is one-to-one}.
-  \end{align*}
+	First we show that \(\U \T\) is one-to-one.
+	Let \(x, y \in \V\) such that \(x \neq y\).
+	Then we have
+	\begin{align*}
+		         & \T(x) \neq \T(y)             &  & \text{(\(\T\) is one-to-one)} \\
+		\implies & \U(\T(x)) \neq \U(\T(y))     &  & \text{(\(\U\) is one-to-one)} \\
+		\implies & \U \T \text{ is one-to-one}.
+	\end{align*}
 
-  Now we show that \(\U \T\) is onto.
-  This is true since
-  \begin{align*}
-             & \begin{dcases}
-                 \forall y \in \W, \exists x \in \V : \T(x) = y \\
-                 \forall z \in \vs{Z}, \exists y \in \W : \U(y) = z
-               \end{dcases}     &  & \text{(\(\U, \T\) are onto)}     \\
-    \implies & \forall z \in \vs{Z}, \exists x \in \V : \U(\T(x)) = z \\
-    \implies & \U \T \text{ is onto}.
-  \end{align*}
+	Now we show that \(\U \T\) is onto.
+	This is true since
+	\begin{align*}
+		         & \begin{dcases}
+			           \forall y \in \W, \exists x \in \V : \T(x) = y \\
+			           \forall z \in \vs{Z}, \exists y \in \W : \U(y) = z
+		           \end{dcases}     &  & \text{(\(\U, \T\) are onto)}     \\
+		\implies & \forall z \in \vs{Z}, \exists x \in \V : \U(\T(x)) = z \\
+		\implies & \U \T \text{ is onto}.
+	\end{align*}
 \end{proof}
 
 \begin{ex}\label{ex:2.3.13}
-  Let \(A, B \in \ms{n}{n}{\F}\).
-  Prove that \(\tr[AB] = \tr[BA]\) and \(\tr[A] = \tr[\tp{A}]\).
+	Let \(A, B \in \ms{n}{n}{\F}\).
+	Prove that \(\tr[AB] = \tr[BA]\) and \(\tr[A] = \tr[\tp{A}]\).
 \end{ex}
 
 \begin{proof}[\pf{ex:2.3.13}]
-  We have
-  \begin{align*}
-    \tr[AB] & = \sum_{i = 1}^n (AB)_{i i}                          &  & \text{(by \cref{1.3.9})} \\
-            & = \sum_{i = 1}^n \pa{\sum_{k = 1}^n A_{i k} B_{k i}} &  & \text{(by \cref{2.3.1})} \\
-            & = \sum_{i = 1}^n \pa{\sum_{k = 1}^n B_{k i} A_{i k}} &  & \text{(by \cref{1.2.1})} \\
-            & = \sum_{k = 1}^n \pa{\sum_{i = 1}^n B_{k i} A_{i k}} &  & \text{(by \cref{1.2.1})} \\
-            & = \sum_{k = 1}^n (BA)_{k k}                          &  & \text{(by \cref{2.3.1})} \\
-            & = \tr[BA]                                            &  & \text{(by \cref{1.3.9})}
-  \end{align*}
-  and
-  \begin{align*}
-    \tr[A] & = \sum_{i = 1}^n A_{i i}        &  & \text{(by \cref{1.3.9})} \\
-           & = \sum_{i = 1}^n (\tp{A})_{i i} &  & \text{(by \cref{1.3.3})} \\
-           & = \tr[\tp{A}].                  &  & \text{(by \cref{1.3.9})}
-  \end{align*}
+	We have
+	\begin{align*}
+		\tr[AB] & = \sum_{i = 1}^n (AB)_{i i}                          &  & \by{1.3.9} \\
+		        & = \sum_{i = 1}^n \pa{\sum_{k = 1}^n A_{i k} B_{k i}} &  & \by{2.3.1} \\
+		        & = \sum_{i = 1}^n \pa{\sum_{k = 1}^n B_{k i} A_{i k}} &  & \by{1.2.1} \\
+		        & = \sum_{k = 1}^n \pa{\sum_{i = 1}^n B_{k i} A_{i k}} &  & \by{1.2.1} \\
+		        & = \sum_{k = 1}^n (BA)_{k k}                          &  & \by{2.3.1} \\
+		        & = \tr[BA]                                            &  & \by{1.3.9}
+	\end{align*}
+	and
+	\begin{align*}
+		\tr[A] & = \sum_{i = 1}^n A_{i i}        &  & \by{1.3.9} \\
+		       & = \sum_{i = 1}^n (\tp{A})_{i i} &  & \by{1.3.3} \\
+		       & = \tr[\tp{A}].                  &  & \by{1.3.9}
+	\end{align*}
 \end{proof}
 
 \begin{ex}\label{ex:2.3.14}
-  Assume the notation in \cref{2.13}.
-  \begin{enumerate}
-    \item Suppose that \(z\) is a (column) vector in \(\vs{F}^p\).
-          Use \cref{2.13}(b) to prove that \(Bz\) is a linear combination of the columns of \(B\).
-          In particular, if \(z = \tp{\tuple{a}{1,2,,p}}\), then show that
-          \[
-            Bz = \sum_{j = 1}^p a_j v_j.
-          \]
-    \item Extend (a) to prove that column \(j\) of \(AB\) is a linear combination of the columns of \(A\) with the coefficients in the linear combination being the entries of column \(j\) of \(B\).
-    \item For any row vector \(w \in \vs{F}^m\), prove that \(wA\) is a linear combination of the rows of \(A\) with the coefficients in the linear combination being the coordinates of \(w\).
-    \item Prove the analogous result to (b) about rows:
-          Row \(i\) of \(AB\) is a linear combination of the rows of \(B\) with the coefficients in the linear combination being the entries of row \(i\) of \(A\).
-  \end{enumerate}
+	Assume the notation in \cref{2.13}.
+	\begin{enumerate}
+		\item Suppose that \(z\) is a (column) vector in \(\vs{F}^p\).
+		      Use \cref{2.13}(b) to prove that \(Bz\) is a linear combination of the columns of \(B\).
+		      In particular, if \(z = \tp{\tuple{a}{1,2,,p}}\), then show that
+		      \[
+			      Bz = \sum_{j = 1}^p a_j v_j.
+		      \]
+		\item Extend (a) to prove that column \(j\) of \(AB\) is a linear combination of the columns of \(A\) with the coefficients in the linear combination being the entries of column \(j\) of \(B\).
+		\item For any row vector \(w \in \vs{F}^m\), prove that \(wA\) is a linear combination of the rows of \(A\) with the coefficients in the linear combination being the coordinates of \(w\).
+		\item Prove the analogous result to (b) about rows:
+		      Row \(i\) of \(AB\) is a linear combination of the rows of \(B\) with the coefficients in the linear combination being the entries of row \(i\) of \(A\).
+	\end{enumerate}
 \end{ex}
 
 \begin{proof}[\pf{ex:2.3.14}(a)]
-  We have
-  \begin{align*}
-    Bz & = B \pa{\sum_{j = 1}^p a_j e_j} &  & \text{(by \cref{1.6.3})} \\
-       & = \sum_{j = 1}^p (a_j B e_j)    &  & \text{(by \cref{2.3.5})} \\
-       & = \sum_{j = 1}^p a_j v_j.       &  & \text{(by \cref{2.13})}
-  \end{align*}
+	We have
+	\begin{align*}
+		Bz & = B \pa{\sum_{j = 1}^p a_j e_j} &  & \by{1.6.3} \\
+		   & = \sum_{j = 1}^p (a_j B e_j)    &  & \by{2.3.5} \\
+		   & = \sum_{j = 1}^p a_j v_j.       &  & \by{2.13}
+	\end{align*}
 \end{proof}
 
 \begin{proof}[\pf{ex:2.3.14}(b)]
-  We have
-  \begin{align*}
-    u_j & = A v_j = A \begin{pmatrix}
-                        B_{1 j} \\
-                        B_{2 j} \\
-                        \vdots  \\
-                        B_{n j}
-                      \end{pmatrix}              &  & \text{(by \cref{2.13}(a))}       \\
-        & = \sum_{k = 1}^n B_{k j} \begin{pmatrix}
-                                     A_{1 k} \\
-                                     A_{2 k} \\
-                                     \vdots  \\
-                                     A_{n k}
-                                   \end{pmatrix}. &  & \text{(by \cref{ex:2.3.14}(a))}
-  \end{align*}
+	We have
+	\begin{align*}
+		u_j & = A v_j = A \begin{pmatrix}
+			                  B_{1 j} \\
+			                  B_{2 j} \\
+			                  \vdots  \\
+			                  B_{n j}
+		                  \end{pmatrix}              &  & \by{2.13}[a]       \\
+		    & = \sum_{k = 1}^n B_{k j} \begin{pmatrix}
+			                               A_{1 k} \\
+			                               A_{2 k} \\
+			                               \vdots  \\
+			                               A_{n k}
+		                               \end{pmatrix}. &  & \by{ex:2.3.14}[a]
+	\end{align*}
 \end{proof}
 
 \begin{proof}[\pf{ex:2.3.14}(c)]
-  We have
-  \begin{align*}
-    wA & = \begin{pmatrix}
-             (wA)_{1 1} & (wA)_{1 2} & \cdots & (wA)_{1 n}
-           \end{pmatrix}                                                             &  & \text{(by \cref{2.3.1})}                                \\
-       & = \begin{pmatrix}
-             \sum_{k = 1}^m w_{1 k} A_{k 1} & \sum_{k = 1}^m w_{1 k} A_{k 2} & \cdots & \sum_{k = 1}^m w_{1 k} A_{k n}
-           \end{pmatrix} &  & \text{(by \cref{2.3.1})}                              \\
-       & = \sum_{k = 1}^m \begin{pmatrix}
-                            w_{1 k} A_{k 1} & w_{1 k} A_{k 2} & \cdots & w_{1 k} A_{k n}
-                          \end{pmatrix}                                              &  & \text{(by \cref{1.2.9})}                                \\
-       & = \sum_{k = 1}^m \begin{pmatrix}
-                            w_k A_{k 1} & w_k A_{k 2} & \cdots & w_k A_{k n}
-                          \end{pmatrix}                                                          &  & \text{(by \cref{2.3.1})}                    \\
-       & = \sum_{k = 1}^m \pa{w_k \begin{pmatrix}
-                                      A_{k 1} & A_{k 2} & \cdots & A_{k n}
-                                    \end{pmatrix}}.                                                                   &  & \text{(by \cref{1.2.9})} \\
-  \end{align*}
+	We have
+	\begin{align*}
+		wA & = \begin{pmatrix}
+			       (wA)_{1 1} & (wA)_{1 2} & \cdots & (wA)_{1 n}
+		       \end{pmatrix}                                                             &  & \by{2.3.1}                                \\
+		   & = \begin{pmatrix}
+			       \sum_{k = 1}^m w_{1 k} A_{k 1} & \sum_{k = 1}^m w_{1 k} A_{k 2} & \cdots & \sum_{k = 1}^m w_{1 k} A_{k n}
+		       \end{pmatrix} &  & \by{2.3.1}                \\
+		   & = \sum_{k = 1}^m \begin{pmatrix}
+			                      w_{1 k} A_{k 1} & w_{1 k} A_{k 2} & \cdots & w_{1 k} A_{k n}
+		                      \end{pmatrix}                                              &  & \by{1.2.9}                                \\
+		   & = \sum_{k = 1}^m \begin{pmatrix}
+			                      w_k A_{k 1} & w_k A_{k 2} & \cdots & w_k A_{k n}
+		                      \end{pmatrix}                                                          &  & \by{2.3.1}                    \\
+		   & = \sum_{k = 1}^m \pa{w_k \begin{pmatrix}
+				                              A_{k 1} & A_{k 2} & \cdots & A_{k n}
+			                              \end{pmatrix}}.                                                                   &  & \by{1.2.9} \\
+	\end{align*}
 \end{proof}
 
 \begin{proof}[\pf{ex:2.3.14}(d)]
-  We have
-  \begin{align*}
-     & \begin{pmatrix}
-         (AB)_{i 1} & (AB)_{i 2} & \cdots & (AB)_{i p}
-       \end{pmatrix}                                                                                            \\
-     & = \begin{pmatrix}
-           \sum_{k = 1}^n A_{i k} B_{k 1} & \sum_{k = 1}^n A_{i k} B_{k 2} & \cdots & \sum_{k = 1}^n A_{i k} B_{k p}
-         \end{pmatrix} &  & \text{(by \cref{2.3.1})}                              \\
-     & = \sum_{k = 1}^n \begin{pmatrix}
-                          A_{i k} B_{k 1} & A_{i k} B_{k 2} & \cdots & A_{i k} B_{k p}
-                        \end{pmatrix}                                              &  & \text{(by \cref{1.2.9})}                                \\
-     & = \sum_{k = 1}^n \pa{A_{i k} \begin{pmatrix}
-                                        B_{k 1} & B_{k 2} & \cdots & B_{k p}
-                                      \end{pmatrix}}.                                                               &  & \text{(by \cref{1.2.9})}
-  \end{align*}
+	We have
+	\begin{align*}
+		 & \begin{pmatrix}
+			   (AB)_{i 1} & (AB)_{i 2} & \cdots & (AB)_{i p}
+		   \end{pmatrix}                                                                              \\
+		 & = \begin{pmatrix}
+			     \sum_{k = 1}^n A_{i k} B_{k 1} & \sum_{k = 1}^n A_{i k} B_{k 2} & \cdots & \sum_{k = 1}^n A_{i k} B_{k p}
+		     \end{pmatrix} &  & \by{2.3.1}                \\
+		 & = \sum_{k = 1}^n \begin{pmatrix}
+			                    A_{i k} B_{k 1} & A_{i k} B_{k 2} & \cdots & A_{i k} B_{k p}
+		                    \end{pmatrix}                                              &  & \by{1.2.9}                                \\
+		 & = \sum_{k = 1}^n \pa{A_{i k} \begin{pmatrix}
+				                                B_{k 1} & B_{k 2} & \cdots & B_{k p}
+			                                \end{pmatrix}}.                                                               &  & \by{1.2.9}
+	\end{align*}
 \end{proof}
 
 \begin{ex}\label{ex:2.3.15}
-  Let \(M\) and \(A\) be matrices for which the product matrix \(MA\) is defined.
-  If the \(j\)th column of \(A\) is a linear combination of a set of columns of \(A\), prove that the \(j\)th column of \(MA\) is a linear combination of the corresponding columns of \(MA\) with the same corresponding coefficients.
+	Let \(M\) and \(A\) be matrices for which the product matrix \(MA\) is defined.
+	If the \(j\)th column of \(A\) is a linear combination of a set of columns of \(A\), prove that the \(j\)th column of \(MA\) is a linear combination of the corresponding columns of \(MA\) with the same corresponding coefficients.
 \end{ex}
 
 \begin{proof}[\pf{ex:2.3.15}]
-  Let \(M \in \MS\) and let \(A \in \ms{n}{p}{\F}\).
-  For all \(i \in \set{1, 2, \dots, p}\) we define \(v_i\) to be the \(i\)th column of \(A\).
-  By hypothesis we know that
-  \[
-    \exists \seq{c}{1,2,,p} \in \F : v_j = \sum_{i = 1}^p c_i v_i.
-  \]
-  Then we have
-  \begin{align*}
-    \begin{pmatrix}
-      (MA)_{1 j} \\
-      (MA)_{2 j} \\
-      \vdots     \\
-      (MA)_{p j}
-    \end{pmatrix} & = M v_j = M \pa{\sum_{i = 1}^p c_i v_i} &  & \text{(by \cref{2.13}(a))}  \\
-                    & = \sum_{i = 1}^p c_i (M v_i)            &  & \text{(by \cref{2.3.5})}  \\
-                    & = \sum_{i = 1}^p c_i \begin{pmatrix}
-                                             (MA)_{1 i} \\
-                                             (MA)_{2 i} \\
-                                             \vdots     \\
-                                             (MA)_{p i}
-                                           \end{pmatrix}.    &  & \text{(by \cref{2.13}(a))}
-  \end{align*}
+	Let \(M \in \MS\) and let \(A \in \ms{n}{p}{\F}\).
+	For all \(i \in \set{1, 2, \dots, p}\) we define \(v_i\) to be the \(i\)th column of \(A\).
+	By hypothesis we know that
+	\[
+		\exists \seq{c}{1,2,,p} \in \F : v_j = \sum_{i = 1}^p c_i v_i.
+	\]
+	Then we have
+	\begin{align*}
+		\begin{pmatrix}
+			(MA)_{1 j} \\
+			(MA)_{2 j} \\
+			\vdots     \\
+			(MA)_{p j}
+		\end{pmatrix} & = M v_j = M \pa{\sum_{i = 1}^p c_i v_i} &  & \by{2.13}[a]  \\
+		                & = \sum_{i = 1}^p c_i (M v_i)            &  & \by{2.3.5}  \\
+		                & = \sum_{i = 1}^p c_i \begin{pmatrix}
+			                                       (MA)_{1 i} \\
+			                                       (MA)_{2 i} \\
+			                                       \vdots     \\
+			                                       (MA)_{p i}
+		                                       \end{pmatrix}.    &  & \by{2.13}[a]
+	\end{align*}
 \end{proof}
 
 \begin{ex}\label{ex:2.3.16}
-  Let \(V\) be a finite-dimensional vector space over \(\F\), and let \(\T \in \ls(\V, \V)\).
-  \begin{enumerate}
-    \item If \(\rk{\T} = \rk{\T^2}\), prove that \(\rg{\T} \cap \ns{\T} = \set{\zv}\).
-          Deduce that \(\V = \rg{\T} \oplus \ns{\T}\).
-    \item Prove that \(\V = \rg{\T^k} \oplus \ns{\T^k}\) for some positive integer \(k\).
-  \end{enumerate}
+	Let \(V\) be a finite-dimensional vector space over \(\F\), and let \(\T \in \ls(\V, \V)\).
+	\begin{enumerate}
+		\item If \(\rk{\T} = \rk{\T^2}\), prove that \(\rg{\T} \cap \ns{\T} = \set{\zv}\).
+		      Deduce that \(\V = \rg{\T} \oplus \ns{\T}\).
+		\item Prove that \(\V = \rg{\T^k} \oplus \ns{\T^k}\) for some positive integer \(k\).
+	\end{enumerate}
 \end{ex}
 
 \begin{proof}[\pf{ex:2.3.16}(a)]
-  First observe that
-  \begin{align*}
-             & \begin{dcases}
-                 \T(\V) \subseteq \V \\
-                 \rk{\T^2} = \rk{\T}
-               \end{dcases}                                                                                             \\
-    \implies & \begin{dcases}
-                 \rg{\T^2} = \T^{2}(\V) = \T(\T(\V)) \subseteq \T(\V) = \rg{\T} \\
-                 \rk{\T^2} = \rk{\T}
-               \end{dcases} &  & \text{(by \cref{2.1.10})}                                 \\
-    \implies & \rg{\T^2} = \rg{\T}.                                                               &  & \text{(by \cref{1.11})}
-  \end{align*}
-  Let \(\beta = \set{\seq{v}{1,2,,n}}\) be a basis for \(\rg{\T}\) over \(\F\).
-  Since \(\rg{\T^2} = \rg{\T}\), by \cref{2.2} we know that \(\T(\beta)\) is also a basis for \(\rg{\T}\) over \(\F\).
-  Let \(x \in \rg{\T} \cap \ns{\T}\).
-  Since \(x \in \rg{\T}\), by \cref{1.6.1} we know that
-  \[
-    \exists \seq{a}{1,2,,n} \in \F : x = \sum_{i = 1}^n a_i v_i.
-  \]
-  By fixing \(\seq{a}{1,2,,n}\) we see that
-  \begin{align*}
-             & x \in \ns{\T}                                                                                     \\
-    \implies & \T(x) = \zv                                                      &  & \text{(by \cref{2.1.10})}   \\
-    \implies & \T\pa{\sum_{i = 1}^n a_i v_i} = \sum_{i = 1}^n a_i \T(v_i) = \zv &  & \text{(by \cref{2.1.2}(d))} \\
-    \implies & \seq[=]{a}{1,2,,n} = 0                                           &  & \text{(by \cref{1.5.3})}    \\
-    \implies & x = \zv.                                                         &  & \text{(by \cref{1.2}(a))}
-  \end{align*}
-  Since \(x\) is arbitrary, we conclude that \(\rg{\T} \cap \ns{\T} = \set{\zv}\).
-  Since
-  \begin{align*}
-     & \dim(\rg{\T} + \ns{\T})                                                                        \\
-     & = \dim(\rg{\T}) + \dim(\ns{\T}) - \dim(\rg{\T} \cap \ns{\T}) &  & \text{(by \cref{ex:1.6.29})} \\
-     & = \dim(\rg{\T}) + \dim(\ns{\T})                              &  & \text{(by \cref{1.6.9})}     \\
-     & = \rk{\T} + \nt{\T} = \dim(\V)                               &  & \text{(by \cref{2.3})}
-  \end{align*}
-  and by \cref{ex:1.3.23}(a) \(\rg{\T} + \ns{\T}\) is a subspace of \(\V\) over \(\F\), by \cref{1.11} we know that \(\V = \rg{\T} + \ns{\T}\).
-  Thus by \cref{1.3.11} we know that \(\V = \rg{\T} \oplus \ns{\T}\).
+	First observe that
+	\begin{align*}
+		         & \begin{dcases}
+			           \T(\V) \subseteq \V \\
+			           \rk{\T^2} = \rk{\T}
+		           \end{dcases}                                                                               \\
+		\implies & \begin{dcases}
+			           \rg{\T^2} = \T^{2}(\V) = \T(\T(\V)) \subseteq \T(\V) = \rg{\T} \\
+			           \rk{\T^2} = \rk{\T}
+		           \end{dcases} &  & \by{2.1.10}                   \\
+		\implies & \rg{\T^2} = \rg{\T}.                                                               &  & \by{1.11}
+	\end{align*}
+	Let \(\beta = \set{\seq{v}{1,2,,n}}\) be a basis for \(\rg{\T}\) over \(\F\).
+	Since \(\rg{\T^2} = \rg{\T}\), by \cref{2.2} we know that \(\T(\beta)\) is also a basis for \(\rg{\T}\) over \(\F\).
+	Let \(x \in \rg{\T} \cap \ns{\T}\).
+	Since \(x \in \rg{\T}\), by \cref{1.6.1} we know that
+	\[
+		\exists \seq{a}{1,2,,n} \in \F : x = \sum_{i = 1}^n a_i v_i.
+	\]
+	By fixing \(\seq{a}{1,2,,n}\) we see that
+	\begin{align*}
+		         & x \in \ns{\T}                                                                       \\
+		\implies & \T(x) = \zv                                                      &  & \by{2.1.10}   \\
+		\implies & \T\pa{\sum_{i = 1}^n a_i v_i} = \sum_{i = 1}^n a_i \T(v_i) = \zv &  & \by{2.1.2}[d] \\
+		\implies & \seq[=]{a}{1,2,,n} = 0                                           &  & \by{1.5.3}    \\
+		\implies & x = \zv.                                                         &  & \by{1.2}[a]
+	\end{align*}
+	Since \(x\) is arbitrary, we conclude that \(\rg{\T} \cap \ns{\T} = \set{\zv}\).
+	Since
+	\begin{align*}
+		 & \dim(\rg{\T} + \ns{\T})                                                          \\
+		 & = \dim(\rg{\T}) + \dim(\ns{\T}) - \dim(\rg{\T} \cap \ns{\T}) &  & \by{ex:1.6.29} \\
+		 & = \dim(\rg{\T}) + \dim(\ns{\T})                              &  & \by{1.6.9}     \\
+		 & = \rk{\T} + \nt{\T} = \dim(\V)                               &  & \by{2.3}
+	\end{align*}
+	and by \cref{ex:1.3.23}(a) \(\rg{\T} + \ns{\T}\) is a subspace of \(\V\) over \(\F\), by \cref{1.11} we know that \(\V = \rg{\T} + \ns{\T}\).
+	Thus by \cref{1.3.11} we know that \(\V = \rg{\T} \oplus \ns{\T}\).
 \end{proof}
 
 \begin{proof}[\pf{ex:2.3.16}(b)]
-  First observe that
-  \begin{align*}
-             & \forall k \in \Z^+, \rg{\T^{k + 1}} = \T^{k + 1}(\V) \subseteq \T^k(\V) = \rg{\T^k} &  & \text{(by \cref{2.1.10})}   \\
-    \implies & \forall k \in \Z^+, 0 \leq \rk{\T^{k + 1}} \leq \rk{\T^k} \leq \dim(\V).            &  & \text{(by \cref{1.11,2.3})}
-  \end{align*}
-  Since \(\V\) is finite-dimensional, we know that there must exists a \(k \in \Z^+\) such that \(\rk{\T^{k + 1}} = \rk{\T^k}\).
-  By \cref{ex:2.3.16}(a) we see that \(\rg{\T^k} \cap \ns{\T^k} = \set{\zv}\) and \(\V = \rg{\T^k} \oplus \ns{\T^k}\).
+	First observe that
+	\begin{align*}
+		         & \forall k \in \Z^+, \rg{\T^{k + 1}} = \T^{k + 1}(\V) \subseteq \T^k(\V) = \rg{\T^k} &  & \by{2.1.10}   \\
+		\implies & \forall k \in \Z^+, 0 \leq \rk{\T^{k + 1}} \leq \rk{\T^k} \leq \dim(\V).            &  & \by{1.11,2.3}
+	\end{align*}
+	Since \(\V\) is finite-dimensional, we know that there must exists a \(k \in \Z^+\) such that \(\rk{\T^{k + 1}} = \rk{\T^k}\).
+	By \cref{ex:2.3.16}(a) we see that \(\rg{\T^k} \cap \ns{\T^k} = \set{\zv}\) and \(\V = \rg{\T^k} \oplus \ns{\T^k}\).
 \end{proof}
 
 \begin{ex}\label{ex:2.3.17}
-  Let \(\V\) be a vector space over \(\F\).
-  Determine all linear transformations \(\T : \V \to \V\) such that \(\T = \T^2\).
+	Let \(\V\) be a vector space over \(\F\).
+	Determine all linear transformations \(\T : \V \to \V\) such that \(\T = \T^2\).
 \end{ex}
 
 \begin{proof}[\pf{ex:2.3.17}]
-  First observe that
-  \[
-    \forall x \in \V, x = \T(x) + (x - \T(x)).
-  \]
-  Suppose that \(\T = \T^2\).
-  Then we have
-  \begin{align*}
-             & \forall x \in \V, \T(x) = \T(\T(x))                                                      \\
-    \implies & \forall x \in \V, \T(x - \T(x)) = \T(x) - \T(\T(x)) &  & \text{(by \cref{2.1.2}(c))}     \\
-             & = \T(x) - \T(x) = \zv                                                                    \\
-    \implies & \forall x \in \V, \begin{dcases}
-                                   \T(x) \in \set{y \in \V : \T(y) = y} \\
-                                   x - \T(x) \in \ns{\T}
-                                 \end{dcases}             &  & \text{(by \cref{2.1.10})}                \\
-    \implies & \V \subseteq \set{y \in \V : \T(y) = y} + \ns{\T}   &  & \text{(by \cref{1.3.10})}       \\
-    \implies & \V = \set{y \in \V : \T(y) = y} + \ns{\T}.          &  & \text{(by \cref{ex:1.3.23}(a))}
-  \end{align*}
-  Thus
-  \begin{align*}
-             & \forall x \in \set{y \in \V : \T(y) = y} \cap \ns{\T}, \begin{dcases}
-                                                                        \T(x) = x \\
-                                                                        \T(x) = \zv
-                                                                      \end{dcases} &  & \text{(by \cref{2.1.10})}         \\
-    \implies & \forall x \in \set{y \in \V : \T(y) = y} \cap \ns{\T}, x = \zv                                             \\
-    \implies & \set{y \in \V : \T(y) = y} \cap \ns{\T} = \set{\zv}                                                        \\
-    \implies & \V = \set{y \in \V : \T(y) = y} \oplus \ns{\T}.                       &  & \text{(by \cref{ex:2.3.16}(a))}
-  \end{align*}
+	First observe that
+	\[
+		\forall x \in \V, x = \T(x) + (x - \T(x)).
+	\]
+	Suppose that \(\T = \T^2\).
+	Then we have
+	\begin{align*}
+		         & \forall x \in \V, \T(x) = \T(\T(x))                                        \\
+		\implies & \forall x \in \V, \T(x - \T(x)) = \T(x) - \T(\T(x)) &  & \by{2.1.2}[c]     \\
+		         & = \T(x) - \T(x) = \zv                                                      \\
+		\implies & \forall x \in \V, \begin{dcases}
+			                             \T(x) \in \set{y \in \V : \T(y) = y} \\
+			                             x - \T(x) \in \ns{\T}
+		                             \end{dcases}             &  & \by{2.1.10}                \\
+		\implies & \V \subseteq \set{y \in \V : \T(y) = y} + \ns{\T}   &  & \by{1.3.10}       \\
+		\implies & \V = \set{y \in \V : \T(y) = y} + \ns{\T}.          &  & \by{ex:1.3.23}[a]
+	\end{align*}
+	Thus
+	\begin{align*}
+		         & \forall x \in \set{y \in \V : \T(y) = y} \cap \ns{\T}, \begin{dcases}
+			                                                                  \T(x) = x \\
+			                                                                  \T(x) = \zv
+		                                                                  \end{dcases} &  & \by{2.1.10}         \\
+		\implies & \forall x \in \set{y \in \V : \T(y) = y} \cap \ns{\T}, x = \zv                               \\
+		\implies & \set{y \in \V : \T(y) = y} \cap \ns{\T} = \set{\zv}                                          \\
+		\implies & \V = \set{y \in \V : \T(y) = y} \oplus \ns{\T}.                       &  & \by{ex:2.3.16}[a]
+	\end{align*}
 \end{proof}
 
 \begin{ex}\label{ex:2.3.18}
-  Using only the definition of matrix multiplication, prove that multipli- cation of matrices is associative.
+	Using only the definition of matrix multiplication, prove that multipli- cation of matrices is associative.
 \end{ex}
 
 \begin{proof}[\pf{ex:2.3.18}]
-  Let \(A \in \MS\), \(B \in \ms{n}{p}{\F}\) and \(C \in \ms{p}{q}{\F}\).
-  Then we have
-  \begin{align*}
-    ((AB) C)_{i j} & = \sum_{k_2 = 1}^p (AB)_{i k_2} C_{k_2 j}                                     &  & \text{(by \cref{2.3.1})} \\
-                   & = \sum_{k_2 = 1}^p \pa{\pa{\sum_{k_1 = 1}^n A_{i k_1} B_{k_1 k_2}} C_{k_2 j}} &  & \text{(by \cref{2.3.1})} \\
-                   & = \sum_{k_2 = 1}^p \pa{\sum_{k_1 = 1}^n (A_{i k_1} B_{k_1 k_2}) C_{k_2 j}}    &  & \text{(by \cref{1.2.1})} \\
-                   & = \sum_{k_2 = 1}^p \pa{\sum_{k_1 = 1}^n A_{i k_1} (B_{k_1 k_2} C_{k_2 j})}    &  & \text{(by \cref{1.2.1})} \\
-                   & = \sum_{k_1 = 1}^n \pa{\sum_{k_2 = 1}^p A_{i k_1} (B_{k_1 k_2} C_{k_2 j})}    &  & \text{(by \cref{1.2.1})} \\
-                   & = \sum_{k_1 = 1}^n \pa{A_{i k_1} \pa{\sum_{k_2 = 1}^p B_{k_1 k_2} C_{k_2 j}}} &  & \text{(by \cref{1.2.1})} \\
-                   & = \sum_{k_1 = 1}^n A_{i k_1} (BC)_{k_1 j}                                     &  & \text{(by \cref{2.3.1})} \\
-                   & = (A (BC))_{i j}                                                              &  & \text{(by \cref{2.3.1})}
-  \end{align*}
-  and thus by \cref{1.2.9} \((AB) C = A (BC)\).
+	Let \(A \in \MS\), \(B \in \ms{n}{p}{\F}\) and \(C \in \ms{p}{q}{\F}\).
+	Then we have
+	\begin{align*}
+		((AB) C)_{i j} & = \sum_{k_2 = 1}^p (AB)_{i k_2} C_{k_2 j}                                     &  & \by{2.3.1} \\
+		               & = \sum_{k_2 = 1}^p \pa{\pa{\sum_{k_1 = 1}^n A_{i k_1} B_{k_1 k_2}} C_{k_2 j}} &  & \by{2.3.1} \\
+		               & = \sum_{k_2 = 1}^p \pa{\sum_{k_1 = 1}^n (A_{i k_1} B_{k_1 k_2}) C_{k_2 j}}    &  & \by{1.2.1} \\
+		               & = \sum_{k_2 = 1}^p \pa{\sum_{k_1 = 1}^n A_{i k_1} (B_{k_1 k_2} C_{k_2 j})}    &  & \by{1.2.1} \\
+		               & = \sum_{k_1 = 1}^n \pa{\sum_{k_2 = 1}^p A_{i k_1} (B_{k_1 k_2} C_{k_2 j})}    &  & \by{1.2.1} \\
+		               & = \sum_{k_1 = 1}^n \pa{A_{i k_1} \pa{\sum_{k_2 = 1}^p B_{k_1 k_2} C_{k_2 j}}} &  & \by{1.2.1} \\
+		               & = \sum_{k_1 = 1}^n A_{i k_1} (BC)_{k_1 j}                                     &  & \by{2.3.1} \\
+		               & = (A (BC))_{i j}                                                              &  & \by{2.3.1}
+	\end{align*}
+	and thus by \cref{1.2.9} \((AB) C = A (BC)\).
 \end{proof}
 
 \setcounter{ex}{22}
 \begin{ex}\label{ex:2.3.23}
-  Let \(A \in \ms{n}{n}{\F}\) be an incidence matrix that corresponds to a dominance relation.
-  Determine the number of nonzero entries of \(A\).
+	Let \(A \in \ms{n}{n}{\F}\) be an incidence matrix that corresponds to a dominance relation.
+	Determine the number of nonzero entries of \(A\).
 \end{ex}
 
 \begin{proof}[\pf{ex:2.3.23}]
-  By \cref{2.3.11} we see that the number of nonzero entries is
-  \[
-    \frac{n (n + 1)}{2} - n = \frac{n (n - 1)}{2}.
-  \]
+	By \cref{2.3.11} we see that the number of nonzero entries is
+	\[
+		\frac{n (n + 1)}{2} - n = \frac{n (n - 1)}{2}.
+	\]
 \end{proof}

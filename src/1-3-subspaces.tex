@@ -1,1158 +1,1158 @@
 \section{Subspaces}\label{sec:1.3}
 
 \begin{defn}\label{1.3.1}
-  A subset \(\W\) of a vector space \(\V\) over a field \(\F\) is called a \textbf{subspace} of \(\V\) over \(\F\) if \(\W\) is a vector space over \(\F\) with the operations of addition and scalar multiplication defined on \(\V\).
+	A subset \(\W\) of a vector space \(\V\) over a field \(\F\) is called a \textbf{subspace} of \(\V\) over \(\F\) if \(\W\) is a vector space over \(\F\) with the operations of addition and scalar multiplication defined on \(\V\).
 \end{defn}
 
 \begin{eg}\label{1.3.2}
-  In any vector space \(\V\) over \(\F\), note that \(\V\) and \(\set{\zv}\) are subspaces.
-  The latter is called the \textbf{zero subspace} of \(\V\) over \(\F\).
+	In any vector space \(\V\) over \(\F\), note that \(\V\) and \(\set{\zv}\) are subspaces.
+	The latter is called the \textbf{zero subspace} of \(\V\) over \(\F\).
 \end{eg}
 
 \begin{proof}[\pf{1.3.2}]
-  Since \(\V \subseteq \V\) and \(\V\) is a vector space over \(\F\) with the operations of addition and scalar multiplication defined on \(\V\), by \cref{1.3.1} we know that \(\V\) is a subspace of \(\V\) over \(\F\).
-  Since \(\zv \in \V\) (by \ref{vs3}), we know that \(\set{\zv} \subseteq \V\).
-  Thus by \cref{ex:1.2.11} and \cref{1.3.1} \(\set{\zv}\) is a subspace of \(\V\) over \(\F\).
+	Since \(\V \subseteq \V\) and \(\V\) is a vector space over \(\F\) with the operations of addition and scalar multiplication defined on \(\V\), by \cref{1.3.1} we know that \(\V\) is a subspace of \(\V\) over \(\F\).
+	Since \(\zv \in \V\) (by \ref{vs3}), we know that \(\set{\zv} \subseteq \V\).
+	Thus by \cref{ex:1.2.11} and \cref{1.3.1} \(\set{\zv}\) is a subspace of \(\V\) over \(\F\).
 \end{proof}
 
 \begin{thm}\label{1.3}
-  Let \(\V\) be a vector space over \(\F\) and \(\W\) a subset of \(\V\).
-  Then \(\W\) is a subspace of \(\V\) over \(\F\) iff the following three conditions hold for the operations defined in \(\V\).
-  \begin{enumerate}
-    \item \(\zv \in \W\).
-    \item (\(\W\) is \textbf{closed under addition}.)
-          \(x + y \in \W\) whenever \(x \in \W\) and \(y \in \W\).
-    \item (\(\W\) is \textbf{closed under scalar multiplication}.)
-          \(cx \in \W\) whenever \(c \in \F\) and \(x \in \W\).
-  \end{enumerate}
+	Let \(\V\) be a vector space over \(\F\) and \(\W\) a subset of \(\V\).
+	Then \(\W\) is a subspace of \(\V\) over \(\F\) iff the following three conditions hold for the operations defined in \(\V\).
+	\begin{enumerate}
+		\item \(\zv \in \W\).
+		\item (\(\W\) is \textbf{closed under addition}.)
+		      \(x + y \in \W\) whenever \(x \in \W\) and \(y \in \W\).
+		\item (\(\W\) is \textbf{closed under scalar multiplication}.)
+		      \(cx \in \W\) whenever \(c \in \F\) and \(x \in \W\).
+	\end{enumerate}
 \end{thm}
 
 \begin{proof}[\pf{1.3}]
-  If \(\W\) is a subspace of \(\V\) over \(\F\), then \(\W\) is a vector space over \(\F\) with the operations of addition and scalar multiplication defined on \(\V\).
-  Hence conditions (b) and (c) hold, and there exists a vector \(\zv' \in \W\) such that \(x + \zv' = x\) for each \(x \in \W\).
-  But also \(x + \zv = x\), and thus \(\zv' = \zv\) by \cref{1.1}.
-  So condition (a) holds.
+	If \(\W\) is a subspace of \(\V\) over \(\F\), then \(\W\) is a vector space over \(\F\) with the operations of addition and scalar multiplication defined on \(\V\).
+	Hence conditions (b) and (c) hold, and there exists a vector \(\zv' \in \W\) such that \(x + \zv' = x\) for each \(x \in \W\).
+	But also \(x + \zv = x\), and thus \(\zv' = \zv\) by \cref{1.1}.
+	So condition (a) holds.
 
-  Since properties \ref{vs1}, \ref{vs2}, \ref{vs5}, \ref{vs6}, \ref{vs7}, and \ref{vs8} hold for all vectors in the vector space, these properties automatically hold for the vectors in any subset.
-  Thus if conditions (a), (b), and (c) hold, then \(\W\) is a subspace of \(\V\) over \(\F\) if the additive inverse of each vector in \(\W\) lies in \(\W\).
-  But if \(x \in W\), then \((-1) x \in \W\) by condition (c), and \(-x = (-1) x\) by \cref{1.2}.
-  Hence \(\W\) is a subspace of \(\V\) over \(\F\).
+	Since properties \ref{vs1}, \ref{vs2}, \ref{vs5}, \ref{vs6}, \ref{vs7}, and \ref{vs8} hold for all vectors in the vector space, these properties automatically hold for the vectors in any subset.
+	Thus if conditions (a), (b), and (c) hold, then \(\W\) is a subspace of \(\V\) over \(\F\) if the additive inverse of each vector in \(\W\) lies in \(\W\).
+	But if \(x \in W\), then \((-1) x \in \W\) by condition (c), and \(-x = (-1) x\) by \cref{1.2}.
+	Hence \(\W\) is a subspace of \(\V\) over \(\F\).
 \end{proof}
 
 \begin{defn}\label{1.3.3}
-  The \textbf{transpose} \(\tp{A}\) of an \(m \times n\) matrix \(A\) is the \(n \times m\) matrix obtained from \(A\) by interchanging the rows with the columns;
-  that is, \((\tp{A})_{i j} = A_{j i}\).
+	The \textbf{transpose} \(\tp{A}\) of an \(m \times n\) matrix \(A\) is the \(n \times m\) matrix obtained from \(A\) by interchanging the rows with the columns;
+	that is, \((\tp{A})_{i j} = A_{j i}\).
 \end{defn}
 
 \begin{defn}\label{1.3.4}
-  A \textbf{symmetric matrix} is a matrix \(A\) such that \(\tp{A} = A\).
-  Clearly, a symmetric matrix must be square.
+	A \textbf{symmetric matrix} is a matrix \(A\) such that \(\tp{A} = A\).
+	Clearly, a symmetric matrix must be square.
 \end{defn}
 
 \begin{eg}\label{1.3.5}
-  The set \(\W\) of all symmetric matrices in \(\ms{n}{n}{\F}\) is a subspace of \(\ms{n}{n}{\F}\) over \(\F\).
+	The set \(\W\) of all symmetric matrices in \(\ms{n}{n}{\F}\) is a subspace of \(\ms{n}{n}{\F}\) over \(\F\).
 \end{eg}
 
 \begin{proof}[\pf{1.3.5}]
-  Observe that
-  \begin{itemize}
-    \item The zero matrix is equal to its transpose and hence belongs to \(\W\).
-    \item If \(A \in \W\) and \(B \in \W\), then \(\tp{A} = A\) and \(\tp{B} = B\).
-          Thus by \cref{ex:1.3.3} \(\tp{(A + B)} = \tp{A} + \tp{B} = A + B\), so that \(A + B \in \W\).
-    \item If \(A \in \W\), then \(\tp{A} = A\).
-          So for any \(a \in \F\), we have \(\tp{(aA)} = a\tp{A} = aA\) by \cref{ex:1.3.3}
-          Thus \(aA \in W\).
-  \end{itemize}
-  Thus by \cref{1.3} \(\W\) is a subspace of \(\ms{n}{n}{\F}\) over \(\F\).
+	Observe that
+	\begin{itemize}
+		\item The zero matrix is equal to its transpose and hence belongs to \(\W\).
+		\item If \(A \in \W\) and \(B \in \W\), then \(\tp{A} = A\) and \(\tp{B} = B\).
+		      Thus by \cref{ex:1.3.3} \(\tp{(A + B)} = \tp{A} + \tp{B} = A + B\), so that \(A + B \in \W\).
+		\item If \(A \in \W\), then \(\tp{A} = A\).
+		      So for any \(a \in \F\), we have \(\tp{(aA)} = a\tp{A} = aA\) by \cref{ex:1.3.3}
+		      Thus \(aA \in W\).
+	\end{itemize}
+	Thus by \cref{1.3} \(\W\) is a subspace of \(\ms{n}{n}{\F}\) over \(\F\).
 \end{proof}
 
 \begin{eg}\label{1.3.6}
-  Let \(n\) be a nonnegative integer, and let \(\ps[n]{\F}\) consist of all polynomials in \(\ps{\F}\) having degree less than or equal to \(n\).
-  Then \(\ps[n]{\F}\) is a subspace of \(\ps{\F}\) over \(\F\).
+	Let \(n\) be a nonnegative integer, and let \(\ps[n]{\F}\) consist of all polynomials in \(\ps{\F}\) having degree less than or equal to \(n\).
+	Then \(\ps[n]{\F}\) is a subspace of \(\ps{\F}\) over \(\F\).
 \end{eg}
 
 \begin{proof}[\pf{1.3.6}]
-  Since the zero polynomial has degree \(-1\), it is in \(\ps[n]{\F}\).
-  Moreover, the sum of two polynomials with degrees less than or equal to \(n\) is another polynomial of degree less than or equal to \(n\), and the product of a scalar and a polynomial of degree less than or equal to \(n\) is a polynomial of degree less than or equal to \(n\).
-  So \(\ps[n]{\F}\) is closed under addition and scalar multiplication.
-  It therefore follows from \cref{1.3} that \(\ps[n]{\F}\) is a subspace of \(\ps{\F}\) over \(\F\).
+	Since the zero polynomial has degree \(-1\), it is in \(\ps[n]{\F}\).
+	Moreover, the sum of two polynomials with degrees less than or equal to \(n\) is another polynomial of degree less than or equal to \(n\), and the product of a scalar and a polynomial of degree less than or equal to \(n\) is a polynomial of degree less than or equal to \(n\).
+	So \(\ps[n]{\F}\) is closed under addition and scalar multiplication.
+	It therefore follows from \cref{1.3} that \(\ps[n]{\F}\) is a subspace of \(\ps{\F}\) over \(\F\).
 \end{proof}
 
 \begin{eg}\label{1.3.7}
-  Let \(\cfs(\R)\) denote the set of all continuous real-valued functions defined on \(\R\).
-  Clearly \(\cfs(\R)\) is a subset of the vector space \(\fs(\R, \R)\) defined in \cref{1.2.10} of \cref{sec:1.2}.
-  We claim that \(\cfs(\R)\) is a subspace of \(\fs(\R, \R)\) over \(\R\).
+	Let \(\cfs(\R)\) denote the set of all continuous real-valued functions defined on \(\R\).
+	Clearly \(\cfs(\R)\) is a subset of the vector space \(\fs(\R, \R)\) defined in \cref{1.2.10} of \cref{sec:1.2}.
+	We claim that \(\cfs(\R)\) is a subspace of \(\fs(\R, \R)\) over \(\R\).
 \end{eg}
 
 \begin{proof}[\pf{1.3.7}]
-  First note that the zero of \(\fs(\R, \R)\) is the constant function defined by \(f(t) = 0\) for all \(t \in \R\).
-  Since constant functions are continuous, we have \(f \in \cfs(\R)\).
-  Moreover, the sum of two continuous functions is continuous, and the product of a real number and a continuous function is continuous.
-  So \(\cfs(\R)\) is closed under addition and scalar multiplication and hence is a subspace of \(\fs(\R, \R)\) over \(\R\) by \cref{1.3}.
+	First note that the zero of \(\fs(\R, \R)\) is the constant function defined by \(f(t) = 0\) for all \(t \in \R\).
+	Since constant functions are continuous, we have \(f \in \cfs(\R)\).
+	Moreover, the sum of two continuous functions is continuous, and the product of a real number and a continuous function is continuous.
+	So \(\cfs(\R)\) is closed under addition and scalar multiplication and hence is a subspace of \(\fs(\R, \R)\) over \(\R\) by \cref{1.3}.
 \end{proof}
 
 \begin{eg}\label{1.3.8}
-  An \(n \times n\) matrix \(M\) is called a \textbf{diagonal matrix} if \(M_{i j} = 0\) whenever \(i \neq j\), that is, if all its nondiagonal entries are zero.
-  Then the set of diagonal matrices is a subspace of \(\ms{n}{n}{\F}\) over \(\F\).
+	An \(n \times n\) matrix \(M\) is called a \textbf{diagonal matrix} if \(M_{i j} = 0\) whenever \(i \neq j\), that is, if all its nondiagonal entries are zero.
+	Then the set of diagonal matrices is a subspace of \(\ms{n}{n}{\F}\) over \(\F\).
 \end{eg}
 
 \begin{proof}[\pf{1.3.8}]
-  Clearly the zero matrix is a diagonal matrix because all of its entries are \(0\).
-  Moreover, if \(A\) and \(B\) are diagonal \(n \times n\) matrices, then whenever \(i \neq j\),
-  \[
-    (A + B)_{i j} = A_{i j} + B_{i j} = 0 + 0 = 0 \quad \text{and} \quad (cA)_{i j} = cA_{i j} = c0 = 0
-  \]
-  for any scalar \(c \in \F\).
-  Hence \(A + B\) and \(cA\) are diagonal matrices for any scalar \(c \in \F\).
-  Therefore the set of diagonal matrices is a subspace of \(\ms{n}{n}{\F}\) over \(\F\) by \cref{1.3}.
+	Clearly the zero matrix is a diagonal matrix because all of its entries are \(0\).
+	Moreover, if \(A\) and \(B\) are diagonal \(n \times n\) matrices, then whenever \(i \neq j\),
+	\[
+		(A + B)_{i j} = A_{i j} + B_{i j} = 0 + 0 = 0 \quad \text{and} \quad (cA)_{i j} = cA_{i j} = c0 = 0
+	\]
+	for any scalar \(c \in \F\).
+	Hence \(A + B\) and \(cA\) are diagonal matrices for any scalar \(c \in \F\).
+	Therefore the set of diagonal matrices is a subspace of \(\ms{n}{n}{\F}\) over \(\F\) by \cref{1.3}.
 \end{proof}
 
 \begin{eg}\label{1.3.9}
-  The \textbf{trace} of an \(n \times n\) matrix \(M\), denoted \(\tr[M]\), is the sum of the diagonal entries of \(M\);
-  that is,
-  \[
-    \tr[M] = M_{1 1} + M_{2 2} + \dots + M_{n n}.
-  \]
-  The set \(\W\) of \(n \times n\) matrices having trace equal to \(0\) is a subspace of \(\ms{n}{n}{\F}\) over \(\F\).
+	The \textbf{trace} of an \(n \times n\) matrix \(M\), denoted \(\tr[M]\), is the sum of the diagonal entries of \(M\);
+	that is,
+	\[
+		\tr[M] = M_{1 1} + M_{2 2} + \dots + M_{n n}.
+	\]
+	The set \(\W\) of \(n \times n\) matrices having trace equal to \(0\) is a subspace of \(\ms{n}{n}{\F}\) over \(\F\).
 \end{eg}
 
 \begin{proof}[\pf{1.3.9}]
-  Clearly we have \(\W \subseteq \ms{n}{n}{\F}\), \(\tr[\zm] = 0\) and \(\zm \in \W\).
-  Moreover, if \(A, B \in \W\), then
-  \begin{align*}
-    \tr[A + B] & = \sum_{i = 1}^n (A + B)_{i i}                    &  & \text{(by \cref{1.3.9})}  \\
-               & = \sum_{i = 1}^n (A_{i i} + B_{i i})              &  & \text{(by \cref{1.2.9})}  \\
-               & = \sum_{i = 1}^n A_{i i} + \sum_{i = 1}^n B_{i i} &  & (A_{i i}, B_{i i} \in \F) \\
-               & = 0                                               &  & (A, B \in \W)
-  \end{align*}
-  and
-  \begin{align*}
-    \tr[cA] & = \sum_{i = 1}^n (cA)_{i i} &  & \text{(by \cref{1.3.9})} \\
-            & = \sum_{i = 1}^n cA_{i i}   &  & \text{(by \cref{1.2.9})} \\
-            & = c \sum_{i = 1}^n A_{i i}  &  & (c, A_{i i} \in \F)      \\
-            & = c0                        &  & (A \in \W)               \\
-            & = 0                         &  & (c \in \F)
-  \end{align*}
-  for any scalar \(c \in \F\).
-  Therefore \(\W\) is a subspace of \(\ms{n}{n}{\F}\) over \(\F\) by \cref{1.3}.
+	Clearly we have \(\W \subseteq \ms{n}{n}{\F}\), \(\tr[\zm] = 0\) and \(\zm \in \W\).
+	Moreover, if \(A, B \in \W\), then
+	\begin{align*}
+		\tr[A + B] & = \sum_{i = 1}^n (A + B)_{i i}                    &  & \by{1.3.9}                \\
+		           & = \sum_{i = 1}^n (A_{i i} + B_{i i})              &  & \by{1.2.9}                \\
+		           & = \sum_{i = 1}^n A_{i i} + \sum_{i = 1}^n B_{i i} &  & (A_{i i}, B_{i i} \in \F) \\
+		           & = 0                                               &  & (A, B \in \W)
+	\end{align*}
+	and
+	\begin{align*}
+		\tr[cA] & = \sum_{i = 1}^n (cA)_{i i} &  & \by{1.3.9}          \\
+		        & = \sum_{i = 1}^n cA_{i i}   &  & \by{1.2.9}          \\
+		        & = c \sum_{i = 1}^n A_{i i}  &  & (c, A_{i i} \in \F) \\
+		        & = c0                        &  & (A \in \W)          \\
+		        & = 0                         &  & (c \in \F)
+	\end{align*}
+	for any scalar \(c \in \F\).
+	Therefore \(\W\) is a subspace of \(\ms{n}{n}{\F}\) over \(\F\) by \cref{1.3}.
 \end{proof}
 
 \begin{thm}\label{1.4}
-  Any intersection of subspaces of a vector space \(\V\) is a subspace of \(\V\).
+	Any intersection of subspaces of a vector space \(\V\) is a subspace of \(\V\).
 \end{thm}
 
 \begin{proof}[\pf{1.4}]
-  Let \(\cvs\) be a collection of subspaces of \(\V\) over \(\F\), and let \(\W\) denote the intersection of the subspaces in \(\cvs\).
-  Since every subspace contains the zero vector, \(\zv \in \W\).
-  Let \(a \in \F\) and \(x, y \in \W\).
-  Then \(x\) and \(y\) are contained in each subspace in \(\cvs\).
-  Because each subspace in \(\cvs\) is closed under addition and scalar multiplication, it follows that \(x + y\) and \(ax\) are contained in each subspace in \(\cvs\).
-  Hence \(x + y\) and \(ax\) are also contained in \(\W\), so that \(\W\) is a subspace of \(\V\) over \(\F\) by \cref{1.3}.
+	Let \(\cvs\) be a collection of subspaces of \(\V\) over \(\F\), and let \(\W\) denote the intersection of the subspaces in \(\cvs\).
+	Since every subspace contains the zero vector, \(\zv \in \W\).
+	Let \(a \in \F\) and \(x, y \in \W\).
+	Then \(x\) and \(y\) are contained in each subspace in \(\cvs\).
+	Because each subspace in \(\cvs\) is closed under addition and scalar multiplication, it follows that \(x + y\) and \(ax\) are contained in each subspace in \(\cvs\).
+	Hence \(x + y\) and \(ax\) are also contained in \(\W\), so that \(\W\) is a subspace of \(\V\) over \(\F\) by \cref{1.3}.
 \end{proof}
 
 \exercisesection
 
 \setcounter{ex}{2}
 \begin{ex}\label{ex:1.3.3}
-  Prove that \(\tp{(aA + bB)} = a\tp{A} + b\tp{B}\) for any \(A, B \in \ms{m}{n}{\F}\) and any \(a, b \in \F\).
+	Prove that \(\tp{(aA + bB)} = a\tp{A} + b\tp{B}\) for any \(A, B \in \ms{m}{n}{\F}\) and any \(a, b \in \F\).
 \end{ex}
 
 \begin{proof}[\pf{ex:1.3.3}]
-  Let \(i = 1, \dots, n\) and \(j = 1, \dots, m\).
-  Since
-  \begin{align*}
-    (a\tp{A} + b\tp{B})_{i j} & = a(\tp{A})_{i j} + b(\tp{B})_{i j} &  & \text{(by \cref{1.2.9})} \\
-                              & = aA_{j i} + bB_{j i}               &  & \text{(by \cref{1.3.3})} \\
-                              & = (aA)_{j i} + (bB)_{j i}           &  & \text{(by \cref{1.2.9})} \\
-                              & = (aA + bB)_{j i}                   &  & \text{(by \cref{1.2.9})} \\
-                              & = \tp{(aA + bB)}_{i j},             &  & \text{(by \cref{1.3.3})}
-  \end{align*}
-  by \cref{1.2.7} we know that \(\tp{(aA + bB)} = a\tp{A} + b\tp{B}\).
+	Let \(i = 1, \dots, n\) and \(j = 1, \dots, m\).
+	Since
+	\begin{align*}
+		(a\tp{A} + b\tp{B})_{i j} & = a(\tp{A})_{i j} + b(\tp{B})_{i j} &  & \by{1.2.9} \\
+		                          & = aA_{j i} + bB_{j i}               &  & \by{1.3.3} \\
+		                          & = (aA)_{j i} + (bB)_{j i}           &  & \by{1.2.9} \\
+		                          & = (aA + bB)_{j i}                   &  & \by{1.2.9} \\
+		                          & = \tp{(aA + bB)}_{i j},             &  & \by{1.3.3}
+	\end{align*}
+	by \cref{1.2.7} we know that \(\tp{(aA + bB)} = a\tp{A} + b\tp{B}\).
 \end{proof}
 
 \begin{ex}\label{ex:1.3.4}
-  Prove that \(\tp{(\tp{A})} = A\) for each \(A \in \MS\).
+	Prove that \(\tp{(\tp{A})} = A\) for each \(A \in \MS\).
 \end{ex}
 
 \begin{proof}[\pf{ex:1.3.4}]
-  Let \(i = 1, \dots, m\) and \(j = 1, \dots, n\).
-  Since
-  \begin{align*}
-    A_{i j} & = (\tp{A})_{j i}         &  & \text{(by \cref{1.3.3})} \\
-            & = (\tp{(\tp{A})})_{i j}, &  & \text{(by \cref{1.3.3})}
-  \end{align*}
-  by \cref{1.2.8} we know that \(\tp{(\tp{A})} = A\).
+	Let \(i = 1, \dots, m\) and \(j = 1, \dots, n\).
+	Since
+	\begin{align*}
+		A_{i j} & = (\tp{A})_{j i}         &  & \by{1.3.3} \\
+		        & = (\tp{(\tp{A})})_{i j}, &  & \by{1.3.3}
+	\end{align*}
+	by \cref{1.2.8} we know that \(\tp{(\tp{A})} = A\).
 \end{proof}
 
 \begin{ex}\label{ex:1.3.5}
-  Prove that \(A + \tp{A}\) is symmetric for any square matrix \(A \in \ms{n}{n}{\F}\).
+	Prove that \(A + \tp{A}\) is symmetric for any square matrix \(A \in \ms{n}{n}{\F}\).
 \end{ex}
 
 \begin{proof}[\pf{ex:1.3.5}]
-  Since
-  \begin{align*}
-    A + \tp{A} & = \tp{(\tp{A})} + \tp{A} &  & \text{(by \cref{ex:1.3.4})} \\
-               & = \tp{(\tp{A} + A)}      &  & \text{(by \cref{ex:1.3.3})} \\
-               & = \tp{(A + \tp{A})},     &  & \text{(by \cref{1.2.9})}
-  \end{align*}
-  by \cref{1.3.4} \(A + \tp{A}\) is symmetric.
+	Since
+	\begin{align*}
+		A + \tp{A} & = \tp{(\tp{A})} + \tp{A} &  & \by{ex:1.3.4} \\
+		           & = \tp{(\tp{A} + A)}      &  & \by{ex:1.3.3} \\
+		           & = \tp{(A + \tp{A})},     &  & \by{1.2.9}
+	\end{align*}
+	by \cref{1.3.4} \(A + \tp{A}\) is symmetric.
 \end{proof}
 
 \begin{ex}\label{ex:1.3.6}
-  Prove that \(\tr[aA + bB] = a\tr[A] + b\tr[B]\) for any \(A, B \in \ms{n}{n}{\F}\).
+	Prove that \(\tr[aA + bB] = a\tr[A] + b\tr[B]\) for any \(A, B \in \ms{n}{n}{\F}\).
 \end{ex}
 
 \begin{proof}[\pf{ex:1.3.6}]
-  We have
-  \begin{align*}
-    \tr[aA + bB] & = \sum_{i = 1}^n (aA + bB)_{i i}                      &  & \text{(by \cref{1.3.9})}    \\
-                 & = \sum_{i = 1}^n (aA_{i i} + bB_{i i})                &  & \text{(by \cref{1.2.9})}    \\
-                 & = a \sum_{i = 1}^n A_{i i} + b \sum_{i = 1}^n B_{i i} &  & (aA_{i i}, bB_{i i} \in \F) \\
-                 & = a\tr[A] + b\tr[B].                                  &  & \text{(by \cref{1.3.9})}
-  \end{align*}
+	We have
+	\begin{align*}
+		\tr[aA + bB] & = \sum_{i = 1}^n (aA + bB)_{i i}                      &  & \by{1.3.9}                  \\
+		             & = \sum_{i = 1}^n (aA_{i i} + bB_{i i})                &  & \by{1.2.9}                  \\
+		             & = a \sum_{i = 1}^n A_{i i} + b \sum_{i = 1}^n B_{i i} &  & (aA_{i i}, bB_{i i} \in \F) \\
+		             & = a\tr[A] + b\tr[B].                                  &  & \by{1.3.9}
+	\end{align*}
 \end{proof}
 
 \begin{ex}\label{ex:1.3.7}
-  Prove that diagonal matrices are symmetric matrices.
+	Prove that diagonal matrices are symmetric matrices.
 \end{ex}
 
 \begin{proof}[\pf{ex:1.3.7}]
-  Let \(A \in \ms{n}{n}{\F}\) be a diagonal matrices and let \(i, j = 1, \dots, n\).
-  Then we have
-  \begin{align*}
-             & \begin{dcases}
-                 A_{i j} = A_{j i} = 0 & \text{if } i \neq j \\
-                 A_{i i} = A_{i i}     & \text{otherwise}
-               \end{dcases} &  & \text{(by \cref{1.3.8})}                                  \\
-    \implies & A_{i j} = A_{j i} = (\tp{A})_{i j}             &  & \text{(by \cref{1.3.3})} \\
-    \implies & A = \tp{A}                                     &  & \text{(by \cref{1.2.8})}
-  \end{align*}
-  and thus by \cref{1.3.4} diagonal matrices are symmetric.
+	Let \(A \in \ms{n}{n}{\F}\) be a diagonal matrices and let \(i, j = 1, \dots, n\).
+	Then we have
+	\begin{align*}
+		         & \begin{dcases}
+			           A_{i j} = A_{j i} = 0 & \text{if } i \neq j \\
+			           A_{i i} = A_{i i}     & \text{otherwise}
+		           \end{dcases} &  & \by{1.3.8}                    \\
+		\implies & A_{i j} = A_{j i} = (\tp{A})_{i j}             &  & \by{1.3.3} \\
+		\implies & A = \tp{A}                                     &  & \by{1.2.8}
+	\end{align*}
+	and thus by \cref{1.3.4} diagonal matrices are symmetric.
 \end{proof}
 
 \setcounter{ex}{11}
 \begin{ex}\label{ex:1.3.12}
-  An \(m \times n\) matrix \(A\) is called \textbf{upper triangular} if all entries lying below the diagonal entries are zero, that is, if \(A_{i j} = 0\) whenever \(i > j\).
-  Prove that the upper triangular matrices form a subspace of \(\MS\) over \(\F\).
+	An \(m \times n\) matrix \(A\) is called \textbf{upper triangular} if all entries lying below the diagonal entries are zero, that is, if \(A_{i j} = 0\) whenever \(i > j\).
+	Prove that the upper triangular matrices form a subspace of \(\MS\) over \(\F\).
 \end{ex}
 
 \begin{proof}[\pf{ex:1.3.12}]
-  Clearly the zero matrix is a upper triangular matrix because all of its entries are \(0\).
-  Moreover, if \(A\) and \(B\) are upper triangular \(m \times n\) matrices, then whenever \(i > j\),
-  \[
-    (A + B)_{i j} = A_{i j} + B_{i j} = 0 + 0 = 0 \quad \text{and} \quad (cA)_{i j} = cA_{i j} = c0 = 0
-  \]
-  for any scalar \(c \in \F\).
-  Hence \(A + B\) and \(cA\) are upper triangular matrices for any scalar \(c \in \F\).
-  Therefore the set of upper triangular matrices is a subspace of \(\MS\) over \(\F\) by \cref{1.3}.
+	Clearly the zero matrix is a upper triangular matrix because all of its entries are \(0\).
+	Moreover, if \(A\) and \(B\) are upper triangular \(m \times n\) matrices, then whenever \(i > j\),
+	\[
+		(A + B)_{i j} = A_{i j} + B_{i j} = 0 + 0 = 0 \quad \text{and} \quad (cA)_{i j} = cA_{i j} = c0 = 0
+	\]
+	for any scalar \(c \in \F\).
+	Hence \(A + B\) and \(cA\) are upper triangular matrices for any scalar \(c \in \F\).
+	Therefore the set of upper triangular matrices is a subspace of \(\MS\) over \(\F\) by \cref{1.3}.
 \end{proof}
 
 \begin{ex}\label{ex:1.3.13}
-  Let \(S\) be a nonempty set and \(\F\) a field.
-  Prove that for any \(s_0 \in S\), \(\W = \set{f \in \FS : f(s_0) = 0}\), is a subspace of \(\FS\) over \(\F\).
+	Let \(S\) be a nonempty set and \(\F\) a field.
+	Prove that for any \(s_0 \in S\), \(\W = \set{f \in \FS : f(s_0) = 0}\), is a subspace of \(\FS\) over \(\F\).
 \end{ex}
 
 \begin{proof}[\pf{ex:1.3.13}]
-  Clearly we have \(\W \subseteq \FS\) and the zero function \(\zv \in \W\) because \(\zv(s_0) = 0\).
-  Moreover, if \(f, g \in \W\), then
-  \begin{align*}
-    (f + g)(s_0) & = f(s_0) + g(s_0) &  & \text{(by \cref{1.2.10})} \\
-                 & = 0 + 0           &  & (f, g \in \W)             \\
-                 & = 0
-  \end{align*}
-  and
-  \begin{align*}
-    (cf)(s_0) & = cf(s_0) &  & \text{(by \cref{1.2.10})} \\
-              & = c0      &  & (f \in \W)                \\
-              & = 0       &  & (c \in \F)
-  \end{align*}
-  for any scalar \(c \in \F\).
-  Hence \(f + g, cf \in \W\) for any scalar \(c \in \F\).
-  Therefore \(\W\) is a subspace of \(\FS\) over \(\F\) by \cref{1.3}.
+	Clearly we have \(\W \subseteq \FS\) and the zero function \(\zv \in \W\) because \(\zv(s_0) = 0\).
+	Moreover, if \(f, g \in \W\), then
+	\begin{align*}
+		(f + g)(s_0) & = f(s_0) + g(s_0) &  & \by{1.2.10}   \\
+		             & = 0 + 0           &  & (f, g \in \W) \\
+		             & = 0
+	\end{align*}
+	and
+	\begin{align*}
+		(cf)(s_0) & = cf(s_0) &  & \by{1.2.10} \\
+		          & = c0      &  & (f \in \W)  \\
+		          & = 0       &  & (c \in \F)
+	\end{align*}
+	for any scalar \(c \in \F\).
+	Hence \(f + g, cf \in \W\) for any scalar \(c \in \F\).
+	Therefore \(\W\) is a subspace of \(\FS\) over \(\F\) by \cref{1.3}.
 \end{proof}
 
 \begin{ex}\label{ex:1.3.14}
-  Let \(S\) be a nonempty set and \(\F\) a field.
-  Let \(\cvs(S, \F)\) denote the set of all functions \(f \in \FS\) such that \(f(s) = 0\) for all but a finite number of elements of \(S\).
-  Prove that \(\cvs(S, \F)\) is a subspace of \(\FS\).
+	Let \(S\) be a nonempty set and \(\F\) a field.
+	Let \(\cvs(S, \F)\) denote the set of all functions \(f \in \FS\) such that \(f(s) = 0\) for all but a finite number of elements of \(S\).
+	Prove that \(\cvs(S, \F)\) is a subspace of \(\FS\).
 \end{ex}
 
 \begin{proof}[\pf{ex:1.3.14}]
-  Let \(f, g \in \cvs(S, \F)\) and let \(c \in \F\).
-  Let \(S_f, S_g\) be the subsets of \(S\) such that
-  \begin{align*}
-     & f(S_f) \cap \set{0} = \varnothing = g(S_g) \cap \set{0}; \\
-     & f(S \setminus S_f) = \set{0} = g(S \setminus S_g).
-  \end{align*}
-  By hypothesis we know that \(S_f, S_g\) are finite.
+	Let \(f, g \in \cvs(S, \F)\) and let \(c \in \F\).
+	Let \(S_f, S_g\) be the subsets of \(S\) such that
+	\begin{align*}
+		 & f(S_f) \cap \set{0} = \varnothing = g(S_g) \cap \set{0}; \\
+		 & f(S \setminus S_f) = \set{0} = g(S \setminus S_g).
+	\end{align*}
+	By hypothesis we know that \(S_f, S_g\) are finite.
 
-  First we claim that the set
-  \[
-    S_{f + g} = \set{s \in S : (f + g)(s) \neq 0}
-  \]
-  is a subset of \(S_f \cup S_g\) and is thus finite.
-  Suppose for sake of contradiction that there exists an \(s \in S \setminus (S_f \cup S_g)\) such that \((f + g)(s) \neq 0\).
-  But then we have
-  \begin{align*}
-             & s \in S \setminus (S_f \cup S_g) \\
-    \implies & \begin{dcases}
-                 s \notin S_f \\
-                 s \notin S_g
-               \end{dcases}                    \\
-    \implies & \begin{dcases}
-                 f(s) = 0 \\
-                 g(s) = 0
-               \end{dcases}                    \\
-    \implies & (f + g)(s) = f(s) + g(s) = 0,
-  \end{align*}
-  a contradiction.
-  Thus we see that \(f + g \in \cvs(S, \F)\).
+	First we claim that the set
+	\[
+		S_{f + g} = \set{s \in S : (f + g)(s) \neq 0}
+	\]
+	is a subset of \(S_f \cup S_g\) and is thus finite.
+	Suppose for sake of contradiction that there exists an \(s \in S \setminus (S_f \cup S_g)\) such that \((f + g)(s) \neq 0\).
+	But then we have
+	\begin{align*}
+		         & s \in S \setminus (S_f \cup S_g) \\
+		\implies & \begin{dcases}
+			           s \notin S_f \\
+			           s \notin S_g
+		           \end{dcases}                    \\
+		\implies & \begin{dcases}
+			           f(s) = 0 \\
+			           g(s) = 0
+		           \end{dcases}                    \\
+		\implies & (f + g)(s) = f(s) + g(s) = 0,
+	\end{align*}
+	a contradiction.
+	Thus we see that \(f + g \in \cvs(S, \F)\).
 
-  Next we claim that the set
-  \[
-    S_{cf} = \set{s \in S : (cf)(s) \neq 0}
-  \]
-  is a subset of \(S_f\) and is thus finite.
-  We split into two cases:
-  \begin{itemize}
-    \item  If \(c = 0\), then we have \(S_{cf} = \varnothing \subseteq S_f\).
-    \item If \(c \neq 0\), then we have
-          \begin{align*}
-                 & s \in S_{cf}   \\
-            \iff & (cf)(s) \neq 0 \\
-            \iff & c f(s) \neq 0  \\
-            \iff & f(s) \neq 0    \\
-            \iff & s \in S_f
-          \end{align*}
-          and thus \(S_{cf} = S_f\).
-  \end{itemize}
-  From all cases above we conclude that \(S_{cf} \subseteq S_f\).
-  Hence \(cf \in \cvs(S, \F)\).
+	Next we claim that the set
+	\[
+		S_{cf} = \set{s \in S : (cf)(s) \neq 0}
+	\]
+	is a subset of \(S_f\) and is thus finite.
+	We split into two cases:
+	\begin{itemize}
+		\item  If \(c = 0\), then we have \(S_{cf} = \varnothing \subseteq S_f\).
+		\item If \(c \neq 0\), then we have
+		      \begin{align*}
+			           & s \in S_{cf}   \\
+			      \iff & (cf)(s) \neq 0 \\
+			      \iff & c f(s) \neq 0  \\
+			      \iff & f(s) \neq 0    \\
+			      \iff & s \in S_f
+		      \end{align*}
+		      and thus \(S_{cf} = S_f\).
+	\end{itemize}
+	From all cases above we conclude that \(S_{cf} \subseteq S_f\).
+	Hence \(cf \in \cvs(S, \F)\).
 
-  Obviously the zero function of \(\FS\) is also an element of \(\cvs(S, \F)\).
-  Thus from all proofs above we conclude by \cref{1.3} that \(\cvs(S, \F)\) is a subspace of \(\FS\) over \(\F\).
+	Obviously the zero function of \(\FS\) is also an element of \(\cvs(S, \F)\).
+	Thus from all proofs above we conclude by \cref{1.3} that \(\cvs(S, \F)\) is a subspace of \(\FS\) over \(\F\).
 \end{proof}
 
 \setcounter{ex}{15}
 \begin{ex}\label{ex:1.3.16}
-  Let \(\cfs[n](\R)\) denote the set of all real-valued functions defined on the real line that have a continuous \(n\)th derivative.
-  Prove that \(\cfs[n](\R)\) is a subspace of \(\fs(\R, \R)\).
+	Let \(\cfs[n](\R)\) denote the set of all real-valued functions defined on the real line that have a continuous \(n\)th derivative.
+	Prove that \(\cfs[n](\R)\) is a subspace of \(\fs(\R, \R)\).
 \end{ex}
 
 \begin{proof}[\pf{ex:1.3.16}]
-  First note that the zero of \(\fs(\R, \R)\) is the constant function defined by \(\zv(x) = 0\) for all \(x \in \R\).
-  Since constant functions has continuous \(n\)th derivative, we have \(\zv \in \cfs[n](\R)\).
-  Moreover, if \(f, g \in \W\), then
-  \[
-    f^{(n)} + g^{(n)} = (f + g)^{(n)} \quad \text{and} \quad cf^{(n)} = (cf)^{(n)}
-  \]
-  for any scalar \(c \in \F\).
-  Hence \(f + g, cf \in \cfs[n](\R)\) for any scalar \(c \in \F\).
-  Therefore \(\cfs[n](\R)\) is a subspace of \(\fs(\R, \R)\) over \(\R\) by \cref{1.3}.
+	First note that the zero of \(\fs(\R, \R)\) is the constant function defined by \(\zv(x) = 0\) for all \(x \in \R\).
+	Since constant functions has continuous \(n\)th derivative, we have \(\zv \in \cfs[n](\R)\).
+	Moreover, if \(f, g \in \W\), then
+	\[
+		f^{(n)} + g^{(n)} = (f + g)^{(n)} \quad \text{and} \quad cf^{(n)} = (cf)^{(n)}
+	\]
+	for any scalar \(c \in \F\).
+	Hence \(f + g, cf \in \cfs[n](\R)\) for any scalar \(c \in \F\).
+	Therefore \(\cfs[n](\R)\) is a subspace of \(\fs(\R, \R)\) over \(\R\) by \cref{1.3}.
 \end{proof}
 
 \begin{ex}\label{ex:1.3.17}
-  Prove that a subset \(\W\) of a vector space \(\V\) is a subspace of \(\V\) iff \(\W \neq \varnothing\), and, whenever \(a \in \F\) and \(x, y \in \W\), then \(ax \in \W\) and \(x + y \in \W\).
+	Prove that a subset \(\W\) of a vector space \(\V\) is a subspace of \(\V\) iff \(\W \neq \varnothing\), and, whenever \(a \in \F\) and \(x, y \in \W\), then \(ax \in \W\) and \(x + y \in \W\).
 \end{ex}
 
 \begin{proof}[\pf{ex:1.3.17}]
-  Since
-  \begin{align*}
-             & \begin{dcases}
-                 \W \neq \varnothing               \\
-                 \forall x, y \in \W, x + y \in \W \\
-                 \forall (x, a) \in \W \times \F, ax \in \W
-               \end{dcases}    \\
-    \implies & \begin{dcases}
-                 \exists x \in \W                  \\
-                 \forall x, y \in \W, x + y \in \W \\
-                 \forall (x, a) \in \W \times \F, ax \in \W
-               \end{dcases}    \\
-    \implies & \begin{dcases}
-                 0x = \zv \in \W                   \\
-                 \forall x, y \in \W, x + y \in \W \\
-                 \forall (x, a) \in \W \times \F, ax \in \W
-               \end{dcases}, &  & \text{(by \cref{1.2}(a))}
-  \end{align*}
-  by \cref{1.3} we know that
-  \[
-    \begin{dcases}
-      \zv \in \W                        \\
-      \forall x, y \in \W, x + y \in \W \\
-      \forall (x, a) \in \W \times \F, ax \in \W
-    \end{dcases} \iff \begin{dcases}
-      W \neq \varnothing                \\
-      \forall x, y \in \W, x + y \in \W \\
-      \forall (x, a) \in \W \times \F, ax \in \W
-    \end{dcases}.
-  \]
+	Since
+	\begin{align*}
+		         & \begin{dcases}
+			           \W \neq \varnothing               \\
+			           \forall x, y \in \W, x + y \in \W \\
+			           \forall (x, a) \in \W \times \F, ax \in \W
+		           \end{dcases} \\
+		\implies & \begin{dcases}
+			           \exists x \in \W                  \\
+			           \forall x, y \in \W, x + y \in \W \\
+			           \forall (x, a) \in \W \times \F, ax \in \W
+		           \end{dcases} \\
+		\implies & \begin{dcases}
+			           0x = \zv \in \W                   \\
+			           \forall x, y \in \W, x + y \in \W \\
+			           \forall (x, a) \in \W \times \F, ax \in \W
+		           \end{dcases}, &  & \by{1.2}[a]
+	\end{align*}
+	by \cref{1.3} we know that
+	\[
+		\begin{dcases}
+			\zv \in \W                        \\
+			\forall x, y \in \W, x + y \in \W \\
+			\forall (x, a) \in \W \times \F, ax \in \W
+		\end{dcases} \iff \begin{dcases}
+			W \neq \varnothing                \\
+			\forall x, y \in \W, x + y \in \W \\
+			\forall (x, a) \in \W \times \F, ax \in \W
+		\end{dcases}.
+	\]
 \end{proof}
 
 \begin{ex}\label{ex:1.3.18}
-  Prove that a subset \(\W\) of a vector space \(\V\) is a subspace of \(\V\) iff \(0 \in \W\) and \(ax + y \in \W\) whenever \(a \in \F\) and \(x, y \in \W\).
+	Prove that a subset \(\W\) of a vector space \(\V\) is a subspace of \(\V\) iff \(0 \in \W\) and \(ax + y \in \W\) whenever \(a \in \F\) and \(x, y \in \W\).
 \end{ex}
 
 \begin{proof}[\pf{ex:1.3.18}]
-  Since
-  \[
-    \begin{dcases}
-      \zv \in \W                        \\
-      \forall x, y \in \W, x + y \in \W \\
-      \forall (x, a) \in \W \times \F, ax \in \W
-    \end{dcases} \implies \begin{dcases}
-      \zv \in \W \\
-      \begin{dcases}
-        \forall x, y \in \W \\
-        \forall a \in \F
-      \end{dcases}, ax + y \in \W
-    \end{dcases}
-  \]
-  and
-  \[
-    \begin{dcases}
-      \zv \in \W \\
-      \begin{dcases}
-        \forall x, y \in \W \\
-        \forall a \in \F
-      \end{dcases}, ax + y \in \W
-    \end{dcases} \implies \begin{dcases}
-      \zv \in \W                                                      \\
-      \forall x, y \in \W, x + y \in \W          & \text{if } a = 1   \\
-      \forall (x, a) \in \W \times \F, ax \in \W & \text{if } y = \zv
-    \end{dcases},
-  \]
-  by \cref{1.3} we know that \cref{ex:1.3.18} is true.
+	Since
+	\[
+		\begin{dcases}
+			\zv \in \W                        \\
+			\forall x, y \in \W, x + y \in \W \\
+			\forall (x, a) \in \W \times \F, ax \in \W
+		\end{dcases} \implies \begin{dcases}
+			\zv \in \W \\
+			\begin{dcases}
+				\forall x, y \in \W \\
+				\forall a \in \F
+			\end{dcases}, ax + y \in \W
+		\end{dcases}
+	\]
+	and
+	\[
+		\begin{dcases}
+			\zv \in \W \\
+			\begin{dcases}
+				\forall x, y \in \W \\
+				\forall a \in \F
+			\end{dcases}, ax + y \in \W
+		\end{dcases} \implies \begin{dcases}
+			\zv \in \W                                                      \\
+			\forall x, y \in \W, x + y \in \W          & \text{if } a = 1   \\
+			\forall (x, a) \in \W \times \F, ax \in \W & \text{if } y = \zv
+		\end{dcases},
+	\]
+	by \cref{1.3} we know that \cref{ex:1.3.18} is true.
 \end{proof}
 
 \begin{ex}\label{ex:1.3.19}
-  Let \(\W_1\) and \(\W_2\) be subspaces of a vector space \(\V\) over \(\F\).
-  Prove that \(\W_1 \cup \W_2\) is a subspace of \(\V\) over \(\F\) iff \(\W_1 \subseteq \W_2\) or \(\W_2 \subseteq \W_1\).
+	Let \(\W_1\) and \(\W_2\) be subspaces of a vector space \(\V\) over \(\F\).
+	Prove that \(\W_1 \cup \W_2\) is a subspace of \(\V\) over \(\F\) iff \(\W_1 \subseteq \W_2\) or \(\W_2 \subseteq \W_1\).
 \end{ex}
 
 \begin{proof}[\pf{ex:1.3.19}]
-  First suppose that \(\W_1 \cup \W_2\) is a subspace of \(\V\) over \(\F\).
-  Let \(x \in \W_1\) and \(y \in \W_2\).
-  Then we have
-  \begin{align*}
-             & \begin{dcases}
-                 \W_1 \subseteq \W_1 \cup \W_2 \\
-                 \W_2 \subseteq \W_1 \cup \W_2
-               \end{dcases}                                                          \\
-    \implies & x + y \in \W_1 \cup \W_2                             &  & \text{(by \cref{1.3}(b))}    \\
-    \implies & (x + y \in \W_1) \lor (x + y \in \W_2)                                                 \\
-    \implies & ((-x) + x + y \in \W_1) \lor (x + y + (-y) \in \W_2) &  & \text{(by \cref{1.3}(b)(c))} \\
-    \implies & (y \in \W_1) \lor (x \in \W_2)                       &  & \text{(by \ref{vs4})}        \\
-    \implies & (\W_2 \subseteq \W_1) \lor (\W_1 \subseteq \W_2).
-  \end{align*}
+	First suppose that \(\W_1 \cup \W_2\) is a subspace of \(\V\) over \(\F\).
+	Let \(x \in \W_1\) and \(y \in \W_2\).
+	Then we have
+	\begin{align*}
+		         & \begin{dcases}
+			           \W_1 \subseteq \W_1 \cup \W_2 \\
+			           \W_2 \subseteq \W_1 \cup \W_2
+		           \end{dcases}                                                   \\
+		\implies & x + y \in \W_1 \cup \W_2                             &  & \by{1.3}[b]           \\
+		\implies & (x + y \in \W_1) \lor (x + y \in \W_2)                                          \\
+		\implies & ((-x) + x + y \in \W_1) \lor (x + y + (-y) \in \W_2) &  & \by{1.3}[bc]          \\
+		\implies & (y \in \W_1) \lor (x \in \W_2)                       &  & \text{(by \ref{vs4})} \\
+		\implies & (\W_2 \subseteq \W_1) \lor (\W_1 \subseteq \W_2).
+	\end{align*}
 
-  Now suppose that \(\W_1 \subseteq \W_2\) or \(\W_2 \subseteq \W_1\).
-  Then we have
-  \begin{align*}
-             & (\W_2 \subseteq \W_1) \lor (\W_1 \subseteq \W_2)      \\
-    \implies & (\W_1 \cup \W_2 = \W_1) \lor (\W_1 \cup \W_2 = \W_2).
-  \end{align*}
-  Thus \cref{ex:1.3.19} is true.
+	Now suppose that \(\W_1 \subseteq \W_2\) or \(\W_2 \subseteq \W_1\).
+	Then we have
+	\begin{align*}
+		         & (\W_2 \subseteq \W_1) \lor (\W_1 \subseteq \W_2)      \\
+		\implies & (\W_1 \cup \W_2 = \W_1) \lor (\W_1 \cup \W_2 = \W_2).
+	\end{align*}
+	Thus \cref{ex:1.3.19} is true.
 \end{proof}
 
 \begin{ex}\label{ex:1.3.20}
-  Prove that if \(\W\) is a subspace of a vector space \(\V\) over \(\F\) and \(\seq{w}{1,2,,n} \in \W\), then \(\seq[+]{a,w}{1,2,,n} \in \W\) for any \(\seq{a}{1,2,,n} \in \F\).
+	Prove that if \(\W\) is a subspace of a vector space \(\V\) over \(\F\) and \(\seq{w}{1,2,,n} \in \W\), then \(\seq[+]{a,w}{1,2,,n} \in \W\) for any \(\seq{a}{1,2,,n} \in \F\).
 \end{ex}
 
 \begin{proof}[\pf{ex:1.3.20}]
-  We use induction on \(n\).
-  For \(n = 1\), we have \(\seq{a,w}{1} \in \W\) by \cref{1.3}(c).
-  Thus the base case holds.
-  Suppose inductively that \(\seq[+]{a,w}{1,2,,n} = \sum_{i = 1}^n a_i w_i \in \W\) for some \(n \geq 1\).
-  Then for \(n + 1\), we have
-  \begin{align*}
-             & \begin{dcases}
-                 \sum_{i = 1}^n a_i w_i \in \W \\
-                 w_{n + 1} \in \W              \\
-                 a_{n + 1} \in \F
-               \end{dcases}                             &  & \text{(by induction hypothesis)}              \\
-             & \begin{dcases}
-                 \sum_{i = 1}^n a_i w_i \in \W \\
-                 a_{n + 1} w_{n + 1} \in \W
-               \end{dcases}                             &  & \text{(by \cref{1.3}(c))}                     \\
-    \implies & \seq[+]{a,w}{1,2,,n,n + 1}                                                                  \\
-             & = \pa{\sum_{i = 1}^n a_i w_i} + (a_{n + 1} w_{n + 1}) \in \W &  & \text{(by \cref{1.3}(b))}
-  \end{align*}
-  and this closes the induction.
+	We use induction on \(n\).
+	For \(n = 1\), we have \(\seq{a,w}{1} \in \W\) by \cref{1.3}(c).
+	Thus the base case holds.
+	Suppose inductively that \(\seq[+]{a,w}{1,2,,n} = \sum_{i = 1}^n a_i w_i \in \W\) for some \(n \geq 1\).
+	Then for \(n + 1\), we have
+	\begin{align*}
+		         & \begin{dcases}
+			           \sum_{i = 1}^n a_i w_i \in \W \\
+			           w_{n + 1} \in \W              \\
+			           a_{n + 1} \in \F
+		           \end{dcases}                             &  & \text{(by induction hypothesis)} \\
+		         & \begin{dcases}
+			           \sum_{i = 1}^n a_i w_i \in \W \\
+			           a_{n + 1} w_{n + 1} \in \W
+		           \end{dcases}                             &  & \by{1.3}[c]                      \\
+		\implies & \seq[+]{a,w}{1,2,,n,n + 1}                                                     \\
+		         & = \pa{\sum_{i = 1}^n a_i w_i} + (a_{n + 1} w_{n + 1}) \in \W &  & \by{1.3}[b]
+	\end{align*}
+	and this closes the induction.
 \end{proof}
 
 \begin{ex}\label{ex:1.3.21}
-  Show that the set of convergent sequences \(\set{a_n}\) (i.e., those for which \(\lim_{n \to \infty} a_n\) exists) is a subspace of the vector space \(\V\) over \(\F\) in \cref{1.2.13} of \cref{sec:1.2}.
+	Show that the set of convergent sequences \(\set{a_n}\) (i.e., those for which \(\lim_{n \to \infty} a_n\) exists) is a subspace of the vector space \(\V\) over \(\F\) in \cref{1.2.13} of \cref{sec:1.2}.
 \end{ex}
 
 \begin{proof}[\pf{ex:1.3.21}]
-  Clearly the zero sequence converges to \(0\) because all of its entries are \(0\).
-  Moreover, if \(\set{a_n}, \set{b_n}\) are convergent sequences, then
-  \[
-    \lim_{n \to \infty} a_n + b_n = \lim_{n \to \infty} a_n + \lim_{n \to \infty} b_n \quad \text{and} \quad \lim_{n \to \infty} ca_n = c \pa{\lim_{n \to \infty} a_n}
-  \]
-  for any scalar \(c \in \F\).
-  Hence \(\set{a_n} + \set{b_n}\) and \(c\set{a_n}\) are convergent sequences for any scalar \(c \in \F\).
-  Therefore the set of convergent sequences is a subspace of \(\V\) over \(\F\) by \cref{1.3}.
+	Clearly the zero sequence converges to \(0\) because all of its entries are \(0\).
+	Moreover, if \(\set{a_n}, \set{b_n}\) are convergent sequences, then
+	\[
+		\lim_{n \to \infty} a_n + b_n = \lim_{n \to \infty} a_n + \lim_{n \to \infty} b_n \quad \text{and} \quad \lim_{n \to \infty} ca_n = c \pa{\lim_{n \to \infty} a_n}
+	\]
+	for any scalar \(c \in \F\).
+	Hence \(\set{a_n} + \set{b_n}\) and \(c\set{a_n}\) are convergent sequences for any scalar \(c \in \F\).
+	Therefore the set of convergent sequences is a subspace of \(\V\) over \(\F\) by \cref{1.3}.
 \end{proof}
 
 \begin{ex}\label{ex:1.3.22}
-  Let \(\F_1\) and \(\F_2\) be fields.
-  A function \(g \in \fs(\F_1, \F_2)\) is called an \textbf{even function} if \(g(-t) = g(t)\) for each \(t \in \F_1\) and is called an \textbf{odd function} if \(g(-t) = -g(t)\) for each \(t \in \F_1\).
-  Prove that the set of all even functions in \(\fs(\F_1, \F_2)\) and the set of all odd functions in \(\fs(\F_1, \F_2)\) are subspaces of \(\fs(\F_1, \F_2)\) over \(\F_2\).
+	Let \(\F_1\) and \(\F_2\) be fields.
+	A function \(g \in \fs(\F_1, \F_2)\) is called an \textbf{even function} if \(g(-t) = g(t)\) for each \(t \in \F_1\) and is called an \textbf{odd function} if \(g(-t) = -g(t)\) for each \(t \in \F_1\).
+	Prove that the set of all even functions in \(\fs(\F_1, \F_2)\) and the set of all odd functions in \(\fs(\F_1, \F_2)\) are subspaces of \(\fs(\F_1, \F_2)\) over \(\F_2\).
 \end{ex}
 
 \begin{proof}[\pf{ex:1.3.22}]
-  First note that the zero of \(\fs(\F_1, \F_2)\) is the constant function defined by \(\zv(t) = 0\) for all \(t \in \F_1\).
-  Since
-  \[
-    \forall t \in \F_1, \begin{dcases}
-      \zv(t) = 0 = \zv(-t) \\
-      \zv(t) = 0 = -0 = -\zv(t)
-    \end{dcases},
-  \]
-  we know that \(\zv\) is both an even and odd function.
-  Moreover, if \(f, g \in \fs(\F_1, \F_2)\) are even functions, then
-  \begin{align*}
-    \forall t \in \F_1, (f + g)(t) & = f(t) + g(t)   &  & \text{(by \cref{1.2.10})}    \\
-                                   & = f(-t) + g(-t) &  & \text{(by \cref{ex:1.3.22})} \\
-                                   & = (f + g)(-t)   &  & \text{(by \cref{1.2.10})}
-  \end{align*}
-  and
-  \begin{align*}
-    \forall t \in \F_1, (cf)(t) & = cf(t)    &  & \text{(by \cref{1.2.10})}    \\
-                                & = cf(-t)   &  & \text{(by \cref{ex:1.3.22})} \\
-                                & = (cf)(-t) &  & \text{(by \cref{1.2.10})}
-  \end{align*}
-  for any scalar \(c \in \F\).
-  Hence \(f + g, cf\) are even functions in \(\fs(\F_1, \F_2)\) for any scalar \(c \in \F\).
-  Similarly if \(f, g \in \fs(\F_1, \F_2)\) are odd functions, then
-  \begin{align*}
-    \forall t \in \F_1, (f + g)(t) & = f(t) + g(t)    &  & \text{(by \cref{1.2.10})}    \\
-                                   & = -f(t) + -g(t)  &  & \text{(by \cref{ex:1.3.22})} \\
-                                   & = -(f(t) + g(t)) &  & (-f(t), -g(t) \in \F_2)      \\
-                                   & = -((f + g)(t))  &  & \text{(by \cref{1.2.10})}    \\
-                                   & = -(f + g)(t)    &  & \text{(by \cref{1.2.10})}
-  \end{align*}
-  and
-  \begin{align*}
-    \forall t \in \F_1, (cf)(t) & = cf(t)      &  & \text{(by \cref{1.2.10})}    \\
-                                & = c(-f(t))   &  & \text{(by \cref{ex:1.3.22})} \\
-                                & = -(cf(t))   &  & (c, -f(t) \in \F_2)          \\
-                                & = -((cf)(t)) &  & \text{(by \cref{1.2.10})}    \\
-                                & = -(cf)(t)   &  & \text{(by \cref{1.2.10})}
-  \end{align*}
-  for any scalar \(c \in \F\).
-  Hence \(f + g, cf\) are odd functions in \(\fs(\F_1, \F_2)\) for any scalar \(c \in \F\).
-  Therefore the sets of even and odd functions in \(\fs(\F_1, \F_2)\) are subspaces of \(\fs(\F_1, \F_2)\) over \(\F_2\) by \cref{1.3}.
+	First note that the zero of \(\fs(\F_1, \F_2)\) is the constant function defined by \(\zv(t) = 0\) for all \(t \in \F_1\).
+	Since
+	\[
+		\forall t \in \F_1, \begin{dcases}
+			\zv(t) = 0 = \zv(-t) \\
+			\zv(t) = 0 = -0 = -\zv(t)
+		\end{dcases},
+	\]
+	we know that \(\zv\) is both an even and odd function.
+	Moreover, if \(f, g \in \fs(\F_1, \F_2)\) are even functions, then
+	\begin{align*}
+		\forall t \in \F_1, (f + g)(t) & = f(t) + g(t)   &  & \by{1.2.10}    \\
+		                               & = f(-t) + g(-t) &  & \by{ex:1.3.22} \\
+		                               & = (f + g)(-t)   &  & \by{1.2.10}
+	\end{align*}
+	and
+	\begin{align*}
+		\forall t \in \F_1, (cf)(t) & = cf(t)    &  & \by{1.2.10}    \\
+		                            & = cf(-t)   &  & \by{ex:1.3.22} \\
+		                            & = (cf)(-t) &  & \by{1.2.10}
+	\end{align*}
+	for any scalar \(c \in \F\).
+	Hence \(f + g, cf\) are even functions in \(\fs(\F_1, \F_2)\) for any scalar \(c \in \F\).
+	Similarly if \(f, g \in \fs(\F_1, \F_2)\) are odd functions, then
+	\begin{align*}
+		\forall t \in \F_1, (f + g)(t) & = f(t) + g(t)    &  & \by{1.2.10}             \\
+		                               & = -f(t) + -g(t)  &  & \by{ex:1.3.22}          \\
+		                               & = -(f(t) + g(t)) &  & (-f(t), -g(t) \in \F_2) \\
+		                               & = -((f + g)(t))  &  & \by{1.2.10}             \\
+		                               & = -(f + g)(t)    &  & \by{1.2.10}
+	\end{align*}
+	and
+	\begin{align*}
+		\forall t \in \F_1, (cf)(t) & = cf(t)      &  & \by{1.2.10}         \\
+		                            & = c(-f(t))   &  & \by{ex:1.3.22}      \\
+		                            & = -(cf(t))   &  & (c, -f(t) \in \F_2) \\
+		                            & = -((cf)(t)) &  & \by{1.2.10}         \\
+		                            & = -(cf)(t)   &  & \by{1.2.10}
+	\end{align*}
+	for any scalar \(c \in \F\).
+	Hence \(f + g, cf\) are odd functions in \(\fs(\F_1, \F_2)\) for any scalar \(c \in \F\).
+	Therefore the sets of even and odd functions in \(\fs(\F_1, \F_2)\) are subspaces of \(\fs(\F_1, \F_2)\) over \(\F_2\) by \cref{1.3}.
 \end{proof}
 
 \begin{defn}\label{1.3.10}
-  If \(S_1\) and \(S_2\) are nonempty subsets of a vector space \(\V\) over \(\F\), then the \textbf{sum} of \(S_1\) and \(S_2\), denoted \(S_1 + S_2\), is the set \(\set{x + y : x \in S_1 \text{ and } y \in S_2}\).
+	If \(S_1\) and \(S_2\) are nonempty subsets of a vector space \(\V\) over \(\F\), then the \textbf{sum} of \(S_1\) and \(S_2\), denoted \(S_1 + S_2\), is the set \(\set{x + y : x \in S_1 \text{ and } y \in S_2}\).
 \end{defn}
 
 \begin{defn}\label{1.3.11}
-  A vector space \(\V\) over \(\F\) is called the \textbf{direct sum} of \(\W_1\) and \(\W_2\) if \(\W_1\) and \(\W_2\) are subspaces of \(\V\) over \(\F\) such that \(\W_1 \cap \W_2 = \set{\zv}\) and \(\W_1 + \W_2 = \V\).
-  We denote that \(\V\) is the direct sum of \(\W_1\) and \(\W_2\) by writing \(\V = \W_1 \oplus \W_2\).
+	A vector space \(\V\) over \(\F\) is called the \textbf{direct sum} of \(\W_1\) and \(\W_2\) if \(\W_1\) and \(\W_2\) are subspaces of \(\V\) over \(\F\) such that \(\W_1 \cap \W_2 = \set{\zv}\) and \(\W_1 + \W_2 = \V\).
+	We denote that \(\V\) is the direct sum of \(\W_1\) and \(\W_2\) by writing \(\V = \W_1 \oplus \W_2\).
 \end{defn}
 
 \begin{ex}\label{ex:1.3.23}
-  Let \(\W_1\) and \(\W_2\) be subspaces of a vector space \(\V\) over \(\F\).
-  \begin{enumerate}
-    \item Prove that \(\W_1 + \W_2\) is a subspace of \(\V\) over \(\F\) that contains both \(\W_1\) and \(\W_2\).
-    \item Prove that any subspace of \(\V\) over \(\F\) that contains both \(\W_1\) and \(\W_2\) must also contain \(\W_1 + \W_2\).
-  \end{enumerate}
+	Let \(\W_1\) and \(\W_2\) be subspaces of a vector space \(\V\) over \(\F\).
+	\begin{enumerate}
+		\item Prove that \(\W_1 + \W_2\) is a subspace of \(\V\) over \(\F\) that contains both \(\W_1\) and \(\W_2\).
+		\item Prove that any subspace of \(\V\) over \(\F\) that contains both \(\W_1\) and \(\W_2\) must also contain \(\W_1 + \W_2\).
+	\end{enumerate}
 \end{ex}
 
 \begin{proof}[\pf{ex:1.3.23}(a)]
-  We know the zero vector \(\zv \in \V\) is also in \(\W_1 + \W_2\) since
-  \begin{align*}
-             & \W_1, \W_2 \text{ are subspaces of } \V \text{ over } \F                                \\
-    \implies & \begin{dcases}
-                 \zv \in \W_1 \\
-                 \zv \in \W_2
-               \end{dcases}                                          &  & \text{(by \cref{1.3})}       \\
-    \implies & \zv = \zv + \zv \in \W_1 + \W_2.                         &  & \text{(by \cref{1.3.10})}
-  \end{align*}
-  Moreover, if \(z_1, z_2 \in \W_1 + \W_2\), then
-  \begin{align*}
-             & \begin{dcases}
-                 \exists (x_1, y_1) \in \W_1 \times \W_2 : z_1 = x_1 + y_1 \\
-                 \exists (x_2, y_2) \in \W_1 \times \W_2 : z_2 = x_2 + y_2
-               \end{dcases} &  & \text{(by \cref{1.3.10})}                                   \\
-    \implies & z_1 + z_2 = (x_1 + y_1) + (x_2 + y_2)                                                       \\
-             & = (x_1 + x_2) + (y_1 + y_2) \in \W_1 + \W_2                  &  & \text{(by \cref{1.3.10})}
-  \end{align*}
-  and
-  \begin{align*}
-             & \exists (x_1, y_1) \in \W_1 \times \W_2 : z_1 = x_1 + y_1 &  & \text{(by \cref{1.3.10})} \\
-    \implies & cz_1 = c(x_1 + y_1) = cx_1 + cy_1 \in \W_1 + \W_2         &  & \text{(by \cref{1.3.10})}
-  \end{align*}
-  for any scalar \(c \in \F\).
-  Therefore \(\W_1 + \W_2\) is a subspace of \(\V\) over \(\F\) by \cref{1.3}.
+	We know the zero vector \(\zv \in \V\) is also in \(\W_1 + \W_2\) since
+	\begin{align*}
+		         & \W_1, \W_2 \text{ are subspaces of } \V \text{ over } \F                  \\
+		\implies & \begin{dcases}
+			           \zv \in \W_1 \\
+			           \zv \in \W_2
+		           \end{dcases}                                          &  & \by{1.3}       \\
+		\implies & \zv = \zv + \zv \in \W_1 + \W_2.                         &  & \by{1.3.10}
+	\end{align*}
+	Moreover, if \(z_1, z_2 \in \W_1 + \W_2\), then
+	\begin{align*}
+		         & \begin{dcases}
+			           \exists (x_1, y_1) \in \W_1 \times \W_2 : z_1 = x_1 + y_1 \\
+			           \exists (x_2, y_2) \in \W_1 \times \W_2 : z_2 = x_2 + y_2
+		           \end{dcases} &  & \by{1.3.10}                     \\
+		\implies & z_1 + z_2 = (x_1 + y_1) + (x_2 + y_2)                                         \\
+		         & = (x_1 + x_2) + (y_1 + y_2) \in \W_1 + \W_2                  &  & \by{1.3.10}
+	\end{align*}
+	and
+	\begin{align*}
+		         & \exists (x_1, y_1) \in \W_1 \times \W_2 : z_1 = x_1 + y_1 &  & \by{1.3.10} \\
+		\implies & cz_1 = c(x_1 + y_1) = cx_1 + cy_1 \in \W_1 + \W_2         &  & \by{1.3.10}
+	\end{align*}
+	for any scalar \(c \in \F\).
+	Therefore \(\W_1 + \W_2\) is a subspace of \(\V\) over \(\F\) by \cref{1.3}.
 
-  Now we show that \(\W_1 + \W_2\) contains \(\W_1\) and \(\W_2\).
-  Since \(\zv \in \W_2\), we know that
-  \begin{align*}
-             & \forall x \in \W_1, x + \zv = x       &  & \text{(by \ref{vs3})}     \\
-    \implies & \forall x \in \W_1, x \in \W_1 + \W_2 &  & \text{(by \cref{1.3.10})} \\
-    \implies & \W_1 \subseteq \W_1 + \W_2.
-  \end{align*}
-  Using similar argument we can show that \(\W_2 \subseteq \W_1 + \W_2\).
+	Now we show that \(\W_1 + \W_2\) contains \(\W_1\) and \(\W_2\).
+	Since \(\zv \in \W_2\), we know that
+	\begin{align*}
+		         & \forall x \in \W_1, x + \zv = x       &  & \text{(by \ref{vs3})} \\
+		\implies & \forall x \in \W_1, x \in \W_1 + \W_2 &  & \by{1.3.10}           \\
+		\implies & \W_1 \subseteq \W_1 + \W_2.
+	\end{align*}
+	Using similar argument we can show that \(\W_2 \subseteq \W_1 + \W_2\).
 \end{proof}
 
 \begin{proof}[\pf{ex:1.3.23}(b)]
-  Let \(\W\) be a subspace of \(\V\) over \(\F\) which contains \(\W_1\) and \(\W_2\).
-  Then we have
-  \begin{align*}
-             & \begin{dcases}
-                 \forall x \in \W_1, x \in \W \\
-                 \forall y \in \W_2, y \in \W
-               \end{dcases} &  & (\W_1 \cup \W_2 \subseteq \W)                \\
-    \implies & \begin{dcases}
-                 \forall x \in \W_1 \\
-                 \forall y \in \W_2
-               \end{dcases}, x + y \in \W      &  & \text{(by \cref{1.3}(b))} \\
-    \implies & \W_1 + \W_2 \subseteq \W.       &  & \text{(by \cref{1.3.10})}
-  \end{align*}
+	Let \(\W\) be a subspace of \(\V\) over \(\F\) which contains \(\W_1\) and \(\W_2\).
+	Then we have
+	\begin{align*}
+		         & \begin{dcases}
+			           \forall x \in \W_1, x \in \W \\
+			           \forall y \in \W_2, y \in \W
+		           \end{dcases} &  & (\W_1 \cup \W_2 \subseteq \W)  \\
+		\implies & \begin{dcases}
+			           \forall x \in \W_1 \\
+			           \forall y \in \W_2
+		           \end{dcases}, x + y \in \W      &  & \by{1.3}[b] \\
+		\implies & \W_1 + \W_2 \subseteq \W.       &  & \by{1.3.10}
+	\end{align*}
 \end{proof}
 
 \begin{ex}\label{ex:1.3.24}
-  Show that \(\vs{F}^n\) is the direct sum of the subspaces
-  \[
-    \W_1 = \set{\tuple{a}{1,2,,n} \in \vs{F}^n : a_n = 0}
-  \]
-  and
-  \[
-    \W_2 = \set{\tuple{a}{1,2,,n} \in \vs{F}^n : \seq[=]{a}{1,2,,n - 1} = 0}.
-  \]
+	Show that \(\vs{F}^n\) is the direct sum of the subspaces
+	\[
+		\W_1 = \set{\tuple{a}{1,2,,n} \in \vs{F}^n : a_n = 0}
+	\]
+	and
+	\[
+		\W_2 = \set{\tuple{a}{1,2,,n} \in \vs{F}^n : \seq[=]{a}{1,2,,n - 1} = 0}.
+	\]
 \end{ex}
 
 \begin{proof}[\pf{ex:1.3.24}]
-  Obviously \(\W_1, \W_2\) are subspaces of \(\vs{F}^n\) over \(\F\).
-  Since
-  \begin{align*}
-             & \forall a \in \W_1 \cap \W_2, \begin{cases}
-                                               a_n = 0 \\
-                                               \seq[=]{a}{1,2,,n - 1} = 0
-                                             \end{cases} \\
-    \implies & \forall a \in \W_1 \cap \W_2, a = \zv                   \\
-    \implies & \W_1 \cap \W_2 = \set{\zv}
-  \end{align*}
-  and
-  \begin{align*}
-             & \forall a \in \vs{F}^n, \begin{dcases}
-                                         a = (\seq{a}{1,2,,n - 1}, 0) + (0, \dots, 0, a_n) \\
-                                         (0, \dots, 0, a_n) \in \W_1                       \\
-                                         (\seq{a}{1,2,,n - 1}, 0) \in \W_2
-                                       \end{dcases}                 \\
-    \implies & \forall a \in \vs{F}^n, a \in \W_1 + \W_2            &  & \text{(by \cref{1.3.11})}       \\
-    \implies & \vs{F}^n \subseteq \W_1 + \W_2                                                            \\
-    \implies & \vs{F}^n = \W_1 + \W_2,                              &  & \text{(by \cref{ex:1.3.23}(a))}
-  \end{align*}
-  By \cref{1.3.11} we know that \(\W_1 \oplus \W_2 = \vs{F}^n\).
+	Obviously \(\W_1, \W_2\) are subspaces of \(\vs{F}^n\) over \(\F\).
+	Since
+	\begin{align*}
+		         & \forall a \in \W_1 \cap \W_2, \begin{cases}
+			                                         a_n = 0 \\
+			                                         \seq[=]{a}{1,2,,n - 1} = 0
+		                                         \end{cases} \\
+		\implies & \forall a \in \W_1 \cap \W_2, a = \zv                   \\
+		\implies & \W_1 \cap \W_2 = \set{\zv}
+	\end{align*}
+	and
+	\begin{align*}
+		         & \forall a \in \vs{F}^n, \begin{dcases}
+			                                   a = (\seq{a}{1,2,,n - 1}, 0) + (0, \dots, 0, a_n) \\
+			                                   (0, \dots, 0, a_n) \in \W_1                       \\
+			                                   (\seq{a}{1,2,,n - 1}, 0) \in \W_2
+		                                   \end{dcases}   \\
+		\implies & \forall a \in \vs{F}^n, a \in \W_1 + \W_2            &  & \by{1.3.11}       \\
+		\implies & \vs{F}^n \subseteq \W_1 + \W_2                                              \\
+		\implies & \vs{F}^n = \W_1 + \W_2,                              &  & \by{ex:1.3.23}[a]
+	\end{align*}
+	By \cref{1.3.11} we know that \(\W_1 \oplus \W_2 = \vs{F}^n\).
 \end{proof}
 
 \begin{ex}\label{ex:1.3.25}
-  Let \(\W_1\) denote the set of all polynomials \(f(x)\) in \(\ps{\F}\) such that in the representation
-  \[
-    f(x) = a_n x^n + a_{n - 1} x^{n - 1} + \cdots + a_1 x + a_0,
-  \]
-  we have \(a_i = 0\) whenever \(i\) is even.
-  Likewise let \(\W_2\) denote the set of all polynomials \(g(x)\) in \(\ps{\F}\) such that in the representation
-  \[
-    g(x) = b_m x^m + b_{m - 1} x^{m - 1} + \cdots + b_1 x + b_0,
-  \]
-  we have \(b_i = 0\) whenever \(i\) is odd.
-  Prove that \(\ps{\F} = \W_1 \oplus \W_2\).
+	Let \(\W_1\) denote the set of all polynomials \(f(x)\) in \(\ps{\F}\) such that in the representation
+	\[
+		f(x) = a_n x^n + a_{n - 1} x^{n - 1} + \cdots + a_1 x + a_0,
+	\]
+	we have \(a_i = 0\) whenever \(i\) is even.
+	Likewise let \(\W_2\) denote the set of all polynomials \(g(x)\) in \(\ps{\F}\) such that in the representation
+	\[
+		g(x) = b_m x^m + b_{m - 1} x^{m - 1} + \cdots + b_1 x + b_0,
+	\]
+	we have \(b_i = 0\) whenever \(i\) is odd.
+	Prove that \(\ps{\F} = \W_1 \oplus \W_2\).
 \end{ex}
 
 \begin{proof}[\pf{ex:1.3.25}]
-  First we show that \(\W_1\) is a subspace of \(\ps{\F}\) over \(\F\).
-  Obviously the zero function \(\zv \in \W_1\).
-  Since
-  \begin{align*}
-             & \forall f, g \in \W_1, \begin{dcases}
-                                        f(x) = a_n x^n + a_{n - 1} x^n + \cdots + a_1 x + a_0 \\
-                                        a_i = 0 \text{ if } i \text{ is even}                 \\
-                                        g(x) = b_m x^m + b_{m - 1} x^m + \cdots + b_1 x + b_0 \\
-                                        b_i = 0 \text{ if } i \text{ is even}
-                                      \end{dcases}    \\
-    \implies & \forall f, g \in \W_1, \begin{dcases}
-                                        (f + g)(x) = c_p x^p + c_{p - 1} x^{p - 1} + c_1 x + c_0 \\
-                                        p \leq \max(n, m)                                        \\
-                                        p_i = 0 \text{ if } i \text{ is even}
-                                      \end{dcases} \\
-    \implies & \forall f, g \in \W_1, f + g \in \W_1
-  \end{align*}
-  and
-  \begin{align*}
-             & \forall f \in \W_1, \begin{dcases}
-                                     f(x) = a_n x^n + a_{n - 1} x^n + \cdots + a_1 x + a_0 \\
-                                     a_i = 0 \text{ if } i \text{ is even}
-                                   \end{dcases}                       \\
-    \implies & \forall (c, f) \in \F \times \W_1, \begin{dcases}
-                                                    (cf)(x) = ca_n x^n + ca_{n - 1} x^n + \cdots + ca_1 x + ca_0 \\
-                                                    ca_i = 0 \text{ if } i \text{ is even}
-                                                  \end{dcases} \\
-    \implies & \forall (c, f) \in \F \times \W_1, cf \in \W_1,
-  \end{align*}
-  by \cref{1.3} we know that \(\W_1\) is a subspace of \(\ps{\F}\) over \(\F\).
-  Using similar argument we can show that \(\W_2\) is a subspace of \(\ps{\F}\) over \(\F\).
+	First we show that \(\W_1\) is a subspace of \(\ps{\F}\) over \(\F\).
+	Obviously the zero function \(\zv \in \W_1\).
+	Since
+	\begin{align*}
+		         & \forall f, g \in \W_1, \begin{dcases}
+			                                  f(x) = a_n x^n + a_{n - 1} x^n + \cdots + a_1 x + a_0 \\
+			                                  a_i = 0 \text{ if } i \text{ is even}                 \\
+			                                  g(x) = b_m x^m + b_{m - 1} x^m + \cdots + b_1 x + b_0 \\
+			                                  b_i = 0 \text{ if } i \text{ is even}
+		                                  \end{dcases}    \\
+		\implies & \forall f, g \in \W_1, \begin{dcases}
+			                                  (f + g)(x) = c_p x^p + c_{p - 1} x^{p - 1} + c_1 x + c_0 \\
+			                                  p \leq \max(n, m)                                        \\
+			                                  p_i = 0 \text{ if } i \text{ is even}
+		                                  \end{dcases} \\
+		\implies & \forall f, g \in \W_1, f + g \in \W_1
+	\end{align*}
+	and
+	\begin{align*}
+		         & \forall f \in \W_1, \begin{dcases}
+			                               f(x) = a_n x^n + a_{n - 1} x^n + \cdots + a_1 x + a_0 \\
+			                               a_i = 0 \text{ if } i \text{ is even}
+		                               \end{dcases}                       \\
+		\implies & \forall (c, f) \in \F \times \W_1, \begin{dcases}
+			                                              (cf)(x) = ca_n x^n + ca_{n - 1} x^n + \cdots + ca_1 x + ca_0 \\
+			                                              ca_i = 0 \text{ if } i \text{ is even}
+		                                              \end{dcases} \\
+		\implies & \forall (c, f) \in \F \times \W_1, cf \in \W_1,
+	\end{align*}
+	by \cref{1.3} we know that \(\W_1\) is a subspace of \(\ps{\F}\) over \(\F\).
+	Using similar argument we can show that \(\W_2\) is a subspace of \(\ps{\F}\) over \(\F\).
 
-  Now we show that \(\W_1 \oplus \W_2 = \ps{\F}\).
-  Since
-  \begin{align*}
-             & \forall f \in \W_1 \cap \W_2, \begin{dcases}
-                                               f(x) = a_n x^n + a_{n - 1} x^n + \cdots + a_1 x + a_0 \\
-                                               a_i = 0 \text{ if } i \text{ is even}                 \\
-                                               a_i = 0 \text{ if } i \text{ is odd}
-                                             \end{dcases} \\
-    \implies & \forall f \in \W_1 \cap \W_2, f = \zv                                               \\
-    \implies & \W_1 \cap \W_2 = \set{\zv}
-  \end{align*}
-  and
-  \begin{align*}
-             & \forall f \in \ps{\F}, \exists (g_1, g_2) \in \W_1 \times \W_2 :                                               \\
-             & \begin{dcases}
-                 f(x) = a_n x^n + a_{n - 1} x^n + \cdots + a_1 x + a_0              \\
-                 g_1(x) = \sum_{i \in \N : i \text{ is odd and } i \leq n} a_i x^i  \\
-                 g_2(x) = \sum_{i \in \N : i \text{ is even and } i \leq n} a_i x^i \\
-                 f = g_1 + g_2
-               \end{dcases}                                         \\
-    \implies & \forall f \in \ps{\F}, f \in \W_1 + \W_2                                                                       \\
-    \implies & \ps{\F} \subseteq \W_1 + \W_2                                                                                  \\
-    \implies & \ps{\F} = \W_1 + \W_2,                                                    &  & \text{(by \cref{ex:1.3.23}(a))}
-  \end{align*}
-  by \cref{1.3.11} we know that \(\W_1 \oplus \W_2 = \ps{\F}\).
+	Now we show that \(\W_1 \oplus \W_2 = \ps{\F}\).
+	Since
+	\begin{align*}
+		         & \forall f \in \W_1 \cap \W_2, \begin{dcases}
+			                                         f(x) = a_n x^n + a_{n - 1} x^n + \cdots + a_1 x + a_0 \\
+			                                         a_i = 0 \text{ if } i \text{ is even}                 \\
+			                                         a_i = 0 \text{ if } i \text{ is odd}
+		                                         \end{dcases} \\
+		\implies & \forall f \in \W_1 \cap \W_2, f = \zv                                               \\
+		\implies & \W_1 \cap \W_2 = \set{\zv}
+	\end{align*}
+	and
+	\begin{align*}
+		         & \forall f \in \ps{\F}, \exists (g_1, g_2) \in \W_1 \times \W_2 :                                 \\
+		         & \begin{dcases}
+			           f(x) = a_n x^n + a_{n - 1} x^n + \cdots + a_1 x + a_0              \\
+			           g_1(x) = \sum_{i \in \N : i \text{ is odd and } i \leq n} a_i x^i  \\
+			           g_2(x) = \sum_{i \in \N : i \text{ is even and } i \leq n} a_i x^i \\
+			           f = g_1 + g_2
+		           \end{dcases}                           \\
+		\implies & \forall f \in \ps{\F}, f \in \W_1 + \W_2                                                         \\
+		\implies & \ps{\F} \subseteq \W_1 + \W_2                                                                    \\
+		\implies & \ps{\F} = \W_1 + \W_2,                                                    &  & \by{ex:1.3.23}[a]
+	\end{align*}
+	by \cref{1.3.11} we know that \(\W_1 \oplus \W_2 = \ps{\F}\).
 \end{proof}
 
 \begin{ex}\label{ex:1.3.26}
-  In \(\MS\) define \(\W_1 = \set{A \in \MS : A_{i j} = 0 \text{ whenever } i > j}\) and \(\W_2 = \set{A \in \MS : A_{i j} = 0 \text{ whenever } i \leq j}\).
-  (\(\W_1\) is the set of all upper triangular matrices defined in Exercise \cref{ex:1.3.12}.)
-  Show that \(\MS = \W_1 \oplus \W_2\).
+	In \(\MS\) define \(\W_1 = \set{A \in \MS : A_{i j} = 0 \text{ whenever } i > j}\) and \(\W_2 = \set{A \in \MS : A_{i j} = 0 \text{ whenever } i \leq j}\).
+	(\(\W_1\) is the set of all upper triangular matrices defined in Exercise \cref{ex:1.3.12}.)
+	Show that \(\MS = \W_1 \oplus \W_2\).
 \end{ex}
 
 \begin{proof}[\pf{ex:1.3.26}]
-  From \cref{ex:1.3.12} we know that \(\W_1\) is a subspace of \(\MS\) over \(\F\).
-  Using similar argument in \cref{ex:1.3.12} we know that \(\W_2\) is a subspace of \(\MS\) over \(\F\).
-  Since
-  \begin{align*}
-             & \forall A \in \W_1 \cap \W_2, \begin{dcases}
-                                               A_{i j} = 0 & \text{if } i > j    \\
-                                               A_{i j} = 0 & \text{if } i \leq j
-                                             \end{dcases} \\
-    \implies & \forall A \in \W_1 \cap \W_2, A = \zm                           \\
-    \implies & \W_1 \cap \W_2 = \set{\zm}
-  \end{align*}
-  and
-  \begin{align*}
-             & \forall A \in \MS, \exists (B, C) \in \W_1 \times \W_2 :                                      \\
-             & \begin{dcases}
-                 B_{i j} = A_{i j} & \text{if } i \leq j \\
-                 B_{i j} = 0       & \text{if } i > j    \\
-                 C_{i j} = A_{i j} & \text{if } i > j    \\
-                 C_{i j} = 0       & \text{if } i \leq j \\
-                 A = B + C
-               \end{dcases}                                                       \\
-    \implies & \forall A \in \MS, A \in \W_1 + \W_2                                                          \\
-    \implies & \MS \subseteq \W_1 + \W_2                                                                     \\
-    \implies & \MS = \W_1 + \W_2,                                       &  & \text{(by \cref{ex:1.3.23}(a))}
-  \end{align*}
-  by \cref{1.3.11} we know that \(\W_1 \oplus \W_2 = \MS\).
+	From \cref{ex:1.3.12} we know that \(\W_1\) is a subspace of \(\MS\) over \(\F\).
+	Using similar argument in \cref{ex:1.3.12} we know that \(\W_2\) is a subspace of \(\MS\) over \(\F\).
+	Since
+	\begin{align*}
+		         & \forall A \in \W_1 \cap \W_2, \begin{dcases}
+			                                         A_{i j} = 0 & \text{if } i > j    \\
+			                                         A_{i j} = 0 & \text{if } i \leq j
+		                                         \end{dcases} \\
+		\implies & \forall A \in \W_1 \cap \W_2, A = \zm                           \\
+		\implies & \W_1 \cap \W_2 = \set{\zm}
+	\end{align*}
+	and
+	\begin{align*}
+		         & \forall A \in \MS, \exists (B, C) \in \W_1 \times \W_2 :                        \\
+		         & \begin{dcases}
+			           B_{i j} = A_{i j} & \text{if } i \leq j \\
+			           B_{i j} = 0       & \text{if } i > j    \\
+			           C_{i j} = A_{i j} & \text{if } i > j    \\
+			           C_{i j} = 0       & \text{if } i \leq j \\
+			           A = B + C
+		           \end{dcases}                                         \\
+		\implies & \forall A \in \MS, A \in \W_1 + \W_2                                            \\
+		\implies & \MS \subseteq \W_1 + \W_2                                                       \\
+		\implies & \MS = \W_1 + \W_2,                                       &  & \by{ex:1.3.23}[a]
+	\end{align*}
+	by \cref{1.3.11} we know that \(\W_1 \oplus \W_2 = \MS\).
 \end{proof}
 
 \begin{ex}\label{ex:1.3.27}
-  Let \(\V\) denote the vector space over \(\F\) consisting of all upper triangular \(n \times n\) matrices (as defined in Exercise \cref{ex:1.3.12}), and let \(\W_1\) denote the subspace of \(\V\) over \(\F\) consisting of all diagonal matrices.
-  Show that \(\V = \W_1 \oplus \W_2\), where \(\W_2 = \set{A \in \V : A_{i j} = 0 \text{ whenever } i \geq j}\).
+	Let \(\V\) denote the vector space over \(\F\) consisting of all upper triangular \(n \times n\) matrices (as defined in Exercise \cref{ex:1.3.12}), and let \(\W_1\) denote the subspace of \(\V\) over \(\F\) consisting of all diagonal matrices.
+	Show that \(\V = \W_1 \oplus \W_2\), where \(\W_2 = \set{A \in \V : A_{i j} = 0 \text{ whenever } i \geq j}\).
 \end{ex}
 
 \begin{proof}[\pf{ex:1.3.27}]
-  First we show that \(\W_1\) is a subspace of \(\V\) over \(\F\).
-  Obviously \(\W_1 \subseteq \V\) and \(\zm \in \W_1\).
-  Since
-  \begin{align*}
-             & \forall A, B \in \W_1, A_{i j} = B_{i j} = 0 \text{ whenever } i \neq j \\
-    \implies & \forall A, B \in \W_1, A_{i j} + B_{i j} = 0 \text{ whenever } i \neq j \\
-    \implies & \forall A, B \in \W_1, A + B \in \W_1
-  \end{align*}
-  and
-  \begin{align*}
-             & \forall A \in \W_1, A_{i j} = 0 \text{ whenever } i \neq j                 \\
-    \implies & \forall (c, A) \in \F \times \W_1, cA_{i j} = 0 \text{ whenever } i \neq j \\
-    \implies & \forall (c, A) \in \F \times \W_1, cA \in \W_1,
-  \end{align*}
-  by \cref{1.3} we know that \(\W_1\) is a subspace of \(\V\) over \(\F\).
+	First we show that \(\W_1\) is a subspace of \(\V\) over \(\F\).
+	Obviously \(\W_1 \subseteq \V\) and \(\zm \in \W_1\).
+	Since
+	\begin{align*}
+		         & \forall A, B \in \W_1, A_{i j} = B_{i j} = 0 \text{ whenever } i \neq j \\
+		\implies & \forall A, B \in \W_1, A_{i j} + B_{i j} = 0 \text{ whenever } i \neq j \\
+		\implies & \forall A, B \in \W_1, A + B \in \W_1
+	\end{align*}
+	and
+	\begin{align*}
+		         & \forall A \in \W_1, A_{i j} = 0 \text{ whenever } i \neq j                 \\
+		\implies & \forall (c, A) \in \F \times \W_1, cA_{i j} = 0 \text{ whenever } i \neq j \\
+		\implies & \forall (c, A) \in \F \times \W_1, cA \in \W_1,
+	\end{align*}
+	by \cref{1.3} we know that \(\W_1\) is a subspace of \(\V\) over \(\F\).
 
-  Next we show that \(\W_2\) is a subspace of \(\V\) over \(\F\).
-  Obviously \(\W_2 \subseteq \V\) and \(\zm \in \W_2\).
-  Since
-  \begin{align*}
-             & \forall A, B \in \W_2, A_{i j} = B_{i j} = 0 \text{ whenever } i \geq j \\
-    \implies & \forall A, B \in \W_2, A_{i j} + B_{i j} = 0 \text{ whenever } i \geq j \\
-    \implies & \forall A, B \in \W_2, A + B \in \W_2
-  \end{align*}
-  and
-  \begin{align*}
-             & \forall A \in \W_2, A_{i j} = 0 \text{ whenever } i \geq j                 \\
-    \implies & \forall (c, A) \in \F \times \W_2, cA_{i j} = 0 \text{ whenever } i \geq j \\
-    \implies & \forall (c, A) \in \F \times \W_2, cA \in \W_2,
-  \end{align*}
-  by \cref{1.3} we know that \(\W_2\) is a subspace of \(\V\) over \(\F\).
+	Next we show that \(\W_2\) is a subspace of \(\V\) over \(\F\).
+	Obviously \(\W_2 \subseteq \V\) and \(\zm \in \W_2\).
+	Since
+	\begin{align*}
+		         & \forall A, B \in \W_2, A_{i j} = B_{i j} = 0 \text{ whenever } i \geq j \\
+		\implies & \forall A, B \in \W_2, A_{i j} + B_{i j} = 0 \text{ whenever } i \geq j \\
+		\implies & \forall A, B \in \W_2, A + B \in \W_2
+	\end{align*}
+	and
+	\begin{align*}
+		         & \forall A \in \W_2, A_{i j} = 0 \text{ whenever } i \geq j                 \\
+		\implies & \forall (c, A) \in \F \times \W_2, cA_{i j} = 0 \text{ whenever } i \geq j \\
+		\implies & \forall (c, A) \in \F \times \W_2, cA \in \W_2,
+	\end{align*}
+	by \cref{1.3} we know that \(\W_2\) is a subspace of \(\V\) over \(\F\).
 
-  Now we show that \(\W_1 \oplus \W_2 = \V\).
-  Since
-  \begin{align*}
-             & \forall A \in \W_1 \cap \W_2, \begin{dcases}
-                                               A_{i j} = 0 & \text{if } i \neq j \\
-                                               A_{i j} = 0 & \text{if } i \geq j
-                                             \end{dcases} &  & \text{(by \cref{1.3.8})} \\
-    \implies & \forall A \in \W_1 \cap \W_2, A = \zm                                    \\
-    \implies & \W_1 \cap \W_2 = \set{\zm}
-  \end{align*}
-  and
-  \begin{align*}
-             & \forall A \in \V, \exists (B, C) \in \W_1 \times \W_2 :                                      \\
-             & \begin{dcases}
-                 B_{i j} = A_{i j} & \text{if } i = j    \\
-                 B_{i j} = 0       & \text{if } i \neq j \\
-                 C_{i j} = A_{i j} & \text{if } i < j    \\
-                 C_{i j} = 0       & \text{if } i \geq j \\
-                 A = B + C
-               \end{dcases}                                                      \\
-    \implies & \forall A \in \V, A \in \W_1 + \W_2                                                          \\
-    \implies & \V \subseteq \W_1 + \W_2                                                                     \\
-    \implies & \V = \W_1 + \W_2,                                       &  & \text{(by \cref{ex:1.3.23}(a))}
-  \end{align*}
-  by \cref{1.3.11} we know that \(\W_1 \oplus \W_2 = \V\).
+	Now we show that \(\W_1 \oplus \W_2 = \V\).
+	Since
+	\begin{align*}
+		         & \forall A \in \W_1 \cap \W_2, \begin{dcases}
+			                                         A_{i j} = 0 & \text{if } i \neq j \\
+			                                         A_{i j} = 0 & \text{if } i \geq j
+		                                         \end{dcases} &  & \by{1.3.8} \\
+		\implies & \forall A \in \W_1 \cap \W_2, A = \zm                           \\
+		\implies & \W_1 \cap \W_2 = \set{\zm}
+	\end{align*}
+	and
+	\begin{align*}
+		         & \forall A \in \V, \exists (B, C) \in \W_1 \times \W_2 :                        \\
+		         & \begin{dcases}
+			           B_{i j} = A_{i j} & \text{if } i = j    \\
+			           B_{i j} = 0       & \text{if } i \neq j \\
+			           C_{i j} = A_{i j} & \text{if } i < j    \\
+			           C_{i j} = 0       & \text{if } i \geq j \\
+			           A = B + C
+		           \end{dcases}                                        \\
+		\implies & \forall A \in \V, A \in \W_1 + \W_2                                            \\
+		\implies & \V \subseteq \W_1 + \W_2                                                       \\
+		\implies & \V = \W_1 + \W_2,                                       &  & \by{ex:1.3.23}[a]
+	\end{align*}
+	by \cref{1.3.11} we know that \(\W_1 \oplus \W_2 = \V\).
 \end{proof}
 
 \begin{ex}\label{ex:1.3.28}
-  A matrix \(M\) is called \textbf{skew-symmetric} if \(\tp{M} = -M\).
-  Clearly, a skew-symmetric matrix is square.
-  Let \(\F\) be a field.
-  Prove that the set \(\W_1\) of all skew-symmetric \(n \times n\) matrices with entries from \(\F\) is a subspace of \(\ms{n}{n}{\F}\) over \(\F\).
-  Now assume that \(\F\) is not of characteristic \(2\) (see Appendix C), and let \(\W_2\) be the subspace of \(\ms{n}{n}{\F}\) consisting of all symmetric \(n \times n\) matrices.
-  Prove that \(\ms{n}{n}{\F} = \W_1 \oplus \W_2\).
+	A matrix \(M\) is called \textbf{skew-symmetric} if \(\tp{M} = -M\).
+	Clearly, a skew-symmetric matrix is square.
+	Let \(\F\) be a field.
+	Prove that the set \(\W_1\) of all skew-symmetric \(n \times n\) matrices with entries from \(\F\) is a subspace of \(\ms{n}{n}{\F}\) over \(\F\).
+	Now assume that \(\F\) is not of characteristic \(2\) (see Appendix C), and let \(\W_2\) be the subspace of \(\ms{n}{n}{\F}\) consisting of all symmetric \(n \times n\) matrices.
+	Prove that \(\ms{n}{n}{\F} = \W_1 \oplus \W_2\).
 \end{ex}
 
 \begin{proof}[\pf{ex:1.3.28}]
-  First we show that \(\W_1\) is a subspace of \(\ms{n}{n}{\F}\) over \(\F\).
-  Since \(\tp{\zm} = \zm = -\zm\), we know that \(\zm \in \W_1\).
-  Let \(A, B \in \W_1\) and let \(c \in \F\).
-  Since
-  \begin{align*}
-    \tp{(A + B)} & = \tp{A} + \tp{B} &  & \text{(by \cref{ex:1.3.3})} \\
-                 & = (-A) + (-B)     &  & (A, B \in \W_1)             \\
-                 & = -(A + B)        &  & \text{(by \cref{1.2.9})}
-  \end{align*}
-  and
-  \begin{align*}
-    \tp{(cA)} & = c \tp{A} &  & \text{(by \cref{ex:1.3.3})} \\
-              & = c (-A)   &  & (A \in \W_1)                \\
-              & = -(cA),   &  & \text{(by \cref{1.2.9})}
-  \end{align*}
-  we know that \(A + B, cA \in \W_1\).
-  Thus by \cref{1.3} \(\W_1\) is a subspace of \(\ms{n}{n}{\F}\) over \(\F\).
+	First we show that \(\W_1\) is a subspace of \(\ms{n}{n}{\F}\) over \(\F\).
+	Since \(\tp{\zm} = \zm = -\zm\), we know that \(\zm \in \W_1\).
+	Let \(A, B \in \W_1\) and let \(c \in \F\).
+	Since
+	\begin{align*}
+		\tp{(A + B)} & = \tp{A} + \tp{B} &  & \by{ex:1.3.3}   \\
+		             & = (-A) + (-B)     &  & (A, B \in \W_1) \\
+		             & = -(A + B)        &  & \by{1.2.9}
+	\end{align*}
+	and
+	\begin{align*}
+		\tp{(cA)} & = c \tp{A} &  & \by{ex:1.3.3} \\
+		          & = c (-A)   &  & (A \in \W_1)  \\
+		          & = -(cA),   &  & \by{1.2.9}
+	\end{align*}
+	we know that \(A + B, cA \in \W_1\).
+	Thus by \cref{1.3} \(\W_1\) is a subspace of \(\ms{n}{n}{\F}\) over \(\F\).
 
-  Now we show that \(\W_1 \oplus \W_2 = \ms{n}{n}{\F}\).
-  By \cref{1.3.5} we know that \(\W_2\) is a subspace of \(\ms{n}{n}{\F}\) over \(\F\).
-  Since
-  \begin{align*}
-             & \forall A \in \W_1 \cap \W_2, \begin{dcases}
-                                               \tp{A} = -A \\
-                                               \tp{A} = A
-                                             \end{dcases} &  & \text{(by \cref{1.3.5})}                         \\
-    \implies & \forall A \in \W_1 \cap \W_2, A = -A                                                             \\
-    \implies & \forall A \in \W_1 \cap \W_2, 2A = \zm                                                           \\
-    \implies & \forall A \in \W_1 \cap \W_2, A = \zm        &  & \text{(\(\F\) is not of characteristic \(2\))} \\
-    \implies & \W_1 \cap \W_2 = \set{\zm}
-  \end{align*}
-  and
-  \begin{align*}
-             & \forall A \in \ms{n}{n}{\F}, \exists (B, C) \in \W_1 \times \W_2 :                                                                                                                                                   \\
-             & \begin{dcases}
-                 B_{i j} = \frac{A_{i j} - A_{j i}}{2} = - \frac{A_{j i} - A_{i j}}{2} = -B_{j i} \\
-                 C_{i j} = \frac{A_{i j} + A_{j i}}{2} = \frac{A_{j i} + A_{i j}}{2} = C_{j i}    \\
-                 A_{i j} = B_{i j} + C_{i j}
-               \end{dcases}                                         \\
-    \implies & \forall A \in \ms{n}{n}{\F}, \exists (B, C) \in \W_1 \times \W_2 : A = B + C                                                                                                    &  & \text{(by \cref{1.2.8})}        \\
-    \implies & \forall A \in \ms{n}{n}{\F}, A \in \W_1 + \W_2                                                                                                                                                                       \\
-    \implies & \ms{n}{n}{\F} \subseteq \W_1 + \W_2                                                                                                                                                                                  \\
-    \implies & \ms{n}{n}{\F} = \W_1 + \W_2,                                                                                                                                                    &  & \text{(by \cref{ex:1.3.23}(a))}
-  \end{align*}
-  by \cref{1.3.11} we know that \(\W_1 \oplus \W_2 = \ms{n}{n}{\F}\).
+	Now we show that \(\W_1 \oplus \W_2 = \ms{n}{n}{\F}\).
+	By \cref{1.3.5} we know that \(\W_2\) is a subspace of \(\ms{n}{n}{\F}\) over \(\F\).
+	Since
+	\begin{align*}
+		         & \forall A \in \W_1 \cap \W_2, \begin{dcases}
+			                                         \tp{A} = -A \\
+			                                         \tp{A} = A
+		                                         \end{dcases} &  & \by{1.3.5}                                       \\
+		\implies & \forall A \in \W_1 \cap \W_2, A = -A                                                             \\
+		\implies & \forall A \in \W_1 \cap \W_2, 2A = \zm                                                           \\
+		\implies & \forall A \in \W_1 \cap \W_2, A = \zm        &  & \text{(\(\F\) is not of characteristic \(2\))} \\
+		\implies & \W_1 \cap \W_2 = \set{\zm}
+	\end{align*}
+	and
+	\begin{align*}
+		         & \forall A \in \ms{n}{n}{\F}, \exists (B, C) \in \W_1 \times \W_2 :                                                                                                                                     \\
+		         & \begin{dcases}
+			           B_{i j} = \frac{A_{i j} - A_{j i}}{2} = - \frac{A_{j i} - A_{i j}}{2} = -B_{j i} \\
+			           C_{i j} = \frac{A_{i j} + A_{j i}}{2} = \frac{A_{j i} + A_{i j}}{2} = C_{j i}    \\
+			           A_{i j} = B_{i j} + C_{i j}
+		           \end{dcases}                           \\
+		\implies & \forall A \in \ms{n}{n}{\F}, \exists (B, C) \in \W_1 \times \W_2 : A = B + C                                                                                                    &  & \by{1.2.8}        \\
+		\implies & \forall A \in \ms{n}{n}{\F}, A \in \W_1 + \W_2                                                                                                                                                         \\
+		\implies & \ms{n}{n}{\F} \subseteq \W_1 + \W_2                                                                                                                                                                    \\
+		\implies & \ms{n}{n}{\F} = \W_1 + \W_2,                                                                                                                                                    &  & \by{ex:1.3.23}[a]
+	\end{align*}
+	by \cref{1.3.11} we know that \(\W_1 \oplus \W_2 = \ms{n}{n}{\F}\).
 \end{proof}
 
 \begin{ex}\label{ex:1.3.29}
-  Let \(\F\) be a field that is not of characteristic \(2\).
-  Define
-  \[
-    \W_1 = \set{A \in \ms{n}{n}{\F} : A_{i j} = 0 \text{ whenever } i \leq j}
-  \]
-  and \(\W_2\) to be the set of all symmetric \(n \times n\) matrices with entries from \(\F\).
-  Both \(\W_1\) and \(\W_2\) are subspaces of \(\ms{n}{n}{\F}\).
-  Prove that \(\ms{n}{n}{\F} = \W_1 \oplus \W_2\).
-  Compare this exercise with \cref{ex:1.3.28}.
+	Let \(\F\) be a field that is not of characteristic \(2\).
+	Define
+	\[
+		\W_1 = \set{A \in \ms{n}{n}{\F} : A_{i j} = 0 \text{ whenever } i \leq j}
+	\]
+	and \(\W_2\) to be the set of all symmetric \(n \times n\) matrices with entries from \(\F\).
+	Both \(\W_1\) and \(\W_2\) are subspaces of \(\ms{n}{n}{\F}\).
+	Prove that \(\ms{n}{n}{\F} = \W_1 \oplus \W_2\).
+	Compare this exercise with \cref{ex:1.3.28}.
 \end{ex}
 
 \begin{proof}[\pf{ex:1.3.29}]
-  Since
-  \begin{align*}
-             & \forall A \in \W_1 \cap \W_2, \begin{dcases}
-                                               A_{i j} = 0 \text{ whenever } i \leq j \\
-                                               A_{i j} = A_{j i}
-                                             \end{dcases} &  & \text{(by \cref{1.3.5})} \\
-    \implies & \forall A \in \W_1 \cap \W_2, A_{i j} = 0                                \\
-    \implies & \forall A \in \W_1 \cap \W_2, A = \zm                                    \\
-    \implies & \W_1 \cap \W_2 = \set{\zm}
-  \end{align*}
-  and
-  \begin{align*}
-             & \forall A \in \ms{n}{n}{\F}, \exists (B, C) \in \W_1 \times \W_2 :                                                \\
-             & \begin{dcases}
-                 C_{i j} = A_{i j} \text{ whenever } i \leq j        \\
-                 C_{i j} = C_{j i} \text{ whenever } i > j           \\
-                 B_{i j} = 0 \text{ whenever } i \leq j              \\
-                 B_{i j} = A_{i j} - C_{i j} \text{ whenever } i > j \\
-                 A_{i j} = B_{i j} + C_{i j}
-               \end{dcases}                                                               \\
-    \implies & \forall A \in \ms{n}{n}{\F}, \exists (B, C) \in \W_1 \times \W_2 : A = B + C &  & \text{(by \cref{1.2.8})}        \\
-    \implies & \forall A \in \ms{n}{n}{\F}, A \in \W_1 + \W_2                                                                    \\
-    \implies & \ms{n}{n}{\F} \subseteq \W_1 + \W_2                                                                               \\
-    \implies & \ms{n}{n}{\F} = \W_1 + \W_2,                                                 &  & \text{(by \cref{ex:1.3.23}(a))}
-  \end{align*}
-  by \cref{1.3.11} we know that \(\W_1 \oplus \W_2 = \ms{n}{n}{\F}\).
+	Since
+	\begin{align*}
+		         & \forall A \in \W_1 \cap \W_2, \begin{dcases}
+			                                         A_{i j} = 0 \text{ whenever } i \leq j \\
+			                                         A_{i j} = A_{j i}
+		                                         \end{dcases} &  & \by{1.3.5} \\
+		\implies & \forall A \in \W_1 \cap \W_2, A_{i j} = 0                            \\
+		\implies & \forall A \in \W_1 \cap \W_2, A = \zm                                \\
+		\implies & \W_1 \cap \W_2 = \set{\zm}
+	\end{align*}
+	and
+	\begin{align*}
+		         & \forall A \in \ms{n}{n}{\F}, \exists (B, C) \in \W_1 \times \W_2 :                                  \\
+		         & \begin{dcases}
+			           C_{i j} = A_{i j} \text{ whenever } i \leq j        \\
+			           C_{i j} = C_{j i} \text{ whenever } i > j           \\
+			           B_{i j} = 0 \text{ whenever } i \leq j              \\
+			           B_{i j} = A_{i j} - C_{i j} \text{ whenever } i > j \\
+			           A_{i j} = B_{i j} + C_{i j}
+		           \end{dcases}                                                 \\
+		\implies & \forall A \in \ms{n}{n}{\F}, \exists (B, C) \in \W_1 \times \W_2 : A = B + C &  & \by{1.2.8}        \\
+		\implies & \forall A \in \ms{n}{n}{\F}, A \in \W_1 + \W_2                                                      \\
+		\implies & \ms{n}{n}{\F} \subseteq \W_1 + \W_2                                                                 \\
+		\implies & \ms{n}{n}{\F} = \W_1 + \W_2,                                                 &  & \by{ex:1.3.23}[a]
+	\end{align*}
+	by \cref{1.3.11} we know that \(\W_1 \oplus \W_2 = \ms{n}{n}{\F}\).
 \end{proof}
 
 \begin{ex}\label{ex:1.3.30}
-  Let \(\W_1\) and \(\W_2\) be subspaces of a vector space \(\V\) over \(\F\).
-  Prove that \(\V\) is the direct sum of \(\W_1\) and \(\W_2\) iff each vector in \(\V\) can be \emph{uniquely} written as \(x_1 + x_2\), where \(x_1 \in \W_1\) and \(x_2 \in \W_2\).
+	Let \(\W_1\) and \(\W_2\) be subspaces of a vector space \(\V\) over \(\F\).
+	Prove that \(\V\) is the direct sum of \(\W_1\) and \(\W_2\) iff each vector in \(\V\) can be \emph{uniquely} written as \(x_1 + x_2\), where \(x_1 \in \W_1\) and \(x_2 \in \W_2\).
 \end{ex}
 
 \begin{proof}[\pf{ex:1.3.30}]
-  First suppose that \(\W_1 \oplus \W_2 = \V\).
-  Let \(y \in \V\).
-  Suppose for sake of contradiction that
-  \[
-    \exists (x_1, x_2), (x_1', x_2') \in \W_1 \times \W_2 : \begin{dcases}
-      (x_1, x_2) \neq (x_1', x_2') \\
-      x_1 + x_2 = y = x_1' + x_2'
-    \end{dcases}.
-  \]
-  Since
-  \begin{align*}
-             & x_1 + x_2 = x_1' + x_2'                                       \\
-    \implies & x_1 - x_1' + x_2 = x_2' \in \W_2  &  & \text{(by \cref{1.1})} \\
-    \implies & x_1 - x_1' = x_2' - x_2 \in \W_2, &  & \text{(by \cref{1.1})}
-  \end{align*}
-  we know that \(x_1 - x_1' \in \W_2\).
-  Then we have
-  \begin{align*}
-             & \begin{dcases}
-                 \W_1 \cap \W_2 = \set{\zv} \\
-                 x_1 - x_1' \in \W_1        \\
-                 x_1 - x_1' \in \W_2
-               \end{dcases} &  & \text{(by \cref{1.3.11})}               \\
-    \implies & x_1 - x_1' = \zv                                          \\
-    \implies & x_1 = x_1'                    &  & \text{(by \cref{1.1})}
-  \end{align*}
-  and similar argument show that \(x_2 = x_2'\).
-  But this means \((x_1, x_2) = (x_1', x_2')\), a contradiction.
-  Thus we must have
-  \[
-    \exists! (x_1, x_2) \in \W_1 \times \W_2 : y = x_1 + x_2.
-  \]
+	First suppose that \(\W_1 \oplus \W_2 = \V\).
+	Let \(y \in \V\).
+	Suppose for sake of contradiction that
+	\[
+		\exists (x_1, x_2), (x_1', x_2') \in \W_1 \times \W_2 : \begin{dcases}
+			(x_1, x_2) \neq (x_1', x_2') \\
+			x_1 + x_2 = y = x_1' + x_2'
+		\end{dcases}.
+	\]
+	Since
+	\begin{align*}
+		         & x_1 + x_2 = x_1' + x_2'                         \\
+		\implies & x_1 - x_1' + x_2 = x_2' \in \W_2  &  & \by{1.1} \\
+		\implies & x_1 - x_1' = x_2' - x_2 \in \W_2, &  & \by{1.1}
+	\end{align*}
+	we know that \(x_1 - x_1' \in \W_2\).
+	Then we have
+	\begin{align*}
+		         & \begin{dcases}
+			           \W_1 \cap \W_2 = \set{\zv} \\
+			           x_1 - x_1' \in \W_1        \\
+			           x_1 - x_1' \in \W_2
+		           \end{dcases} &  & \by{1.3.11}               \\
+		\implies & x_1 - x_1' = \zv                            \\
+		\implies & x_1 = x_1'                    &  & \by{1.1}
+	\end{align*}
+	and similar argument show that \(x_2 = x_2'\).
+	But this means \((x_1, x_2) = (x_1', x_2')\), a contradiction.
+	Thus we must have
+	\[
+		\exists! (x_1, x_2) \in \W_1 \times \W_2 : y = x_1 + x_2.
+	\]
 
-  Now suppose that
-  \[
-    \forall y \in \V, \exists! (x_1, x_2) \in \W_1 \times \W_2 : y = x_1 + x_2.
-  \]
-  By hypothesis we know that \(\W_1, \W_2\) are subspaces of \(\V\) over \(\F\).
-  Thue by \cref{1.3.11} we only need to show that \(\W_1 \cap \W_2 = \set{\zv}\).
-  So suppose for sake of contradiction that
-  \[
-    \exists y \in \W_1 \cap \W_2 : y \neq \zv.
-  \]
-  Since \(\W_1, \W_2\) are subspaces of \(\V\) over \(\F\), we know that \(\zv \in \W_1 \cap \W_2\).
-  But
-  \begin{align*}
-             & y \in \W_1 \cap \W_2                                     \\
-    \implies & \begin{dcases}
-                 y = y + \zv \text{ where } (y, \zv) \in \W_1 \times \W_2 \\
-                 y = \zv + y \text{ where } (\zv, y) \in \W_1 \times \W_2
-               \end{dcases}
-  \end{align*}
-  contradicts to the fact that \(y\) can be uniquely written as \(x_1 + x_2\) where \((x_1, x_2) \in \W_1 \times \W_2\).
-  Thus we must have \(\W_1 \cap \W_2 = \set{\zv}\).
+	Now suppose that
+	\[
+		\forall y \in \V, \exists! (x_1, x_2) \in \W_1 \times \W_2 : y = x_1 + x_2.
+	\]
+	By hypothesis we know that \(\W_1, \W_2\) are subspaces of \(\V\) over \(\F\).
+	Thue by \cref{1.3.11} we only need to show that \(\W_1 \cap \W_2 = \set{\zv}\).
+	So suppose for sake of contradiction that
+	\[
+		\exists y \in \W_1 \cap \W_2 : y \neq \zv.
+	\]
+	Since \(\W_1, \W_2\) are subspaces of \(\V\) over \(\F\), we know that \(\zv \in \W_1 \cap \W_2\).
+	But
+	\begin{align*}
+		         & y \in \W_1 \cap \W_2                                     \\
+		\implies & \begin{dcases}
+			           y = y + \zv \text{ where } (y, \zv) \in \W_1 \times \W_2 \\
+			           y = \zv + y \text{ where } (\zv, y) \in \W_1 \times \W_2
+		           \end{dcases}
+	\end{align*}
+	contradicts to the fact that \(y\) can be uniquely written as \(x_1 + x_2\) where \((x_1, x_2) \in \W_1 \times \W_2\).
+	Thus we must have \(\W_1 \cap \W_2 = \set{\zv}\).
 \end{proof}
 
 \begin{ex}\label{ex:1.3.31}
-  Let \(\W\) be a subspace of a vector space \(\V\) over a field \(\F\).
-  For any \(v \in \V\) the set \(\set{v} + \W = \set{v + w : w \in \W}\) is called the \textbf{coset} of \(\W\) \textbf{containing} \(v\).
-  It is customary to denote this coset by \(v + \W\) rather than \(\set{v} + \W\).
-  \begin{enumerate}
-    \item Prove that \(v + \W\) is a subspace of \(\V\) over \(\F\) iff \(v \in \W\).
-    \item Prove that \(v_1 + \W = v_2 + \W\) iff \(v_1 - v_2 \in \W\).
-  \end{enumerate}
-  Addition and scalar multiplication by scalars of \(\F\) can be defined in the collection \(S = \set{v + \W : v \in \V}\) of all cosets of \(\W\) as follows:
-  \[
-    (v_1 + \W) + (v_2 + \W) = (v_1 + v_2) + \W
-  \]
-  for all \(v_1, v_2 \in \V\) and
-  \[
-    a(v + \W) = av + \W
-  \]
-  for all \(v \in \V\) and \(a \in \F\).
-  \begin{enumerate}[resume]
-    \item Prove that the preceding operations are well defined;
-          that is, show that if \(v_1 + \W = v_1' + \W\) and \(v_2 + \W = v_2' + \W\), then
-          \[
-            (v_1 + \W) + (v_2 + \W) = (v_1' + \W) + (v_2' + \W)
-          \]
-          and
-          \[
-            a(v_1 + \W) = a(v_1' + \W)
-          \]
-          for all \(a \in \F\).
-    \item Prove that the set \(S\) is a vector space over \(\F\) with the operations defined in (c).
-          This vector space is called the \textbf{quotient space of \(\V\) modulo \(\W\)} and is denoted by \(\V / \W\).
-  \end{enumerate}
+	Let \(\W\) be a subspace of a vector space \(\V\) over a field \(\F\).
+	For any \(v \in \V\) the set \(\set{v} + \W = \set{v + w : w \in \W}\) is called the \textbf{coset} of \(\W\) \textbf{containing} \(v\).
+	It is customary to denote this coset by \(v + \W\) rather than \(\set{v} + \W\).
+	\begin{enumerate}
+		\item Prove that \(v + \W\) is a subspace of \(\V\) over \(\F\) iff \(v \in \W\).
+		\item Prove that \(v_1 + \W = v_2 + \W\) iff \(v_1 - v_2 \in \W\).
+	\end{enumerate}
+	Addition and scalar multiplication by scalars of \(\F\) can be defined in the collection \(S = \set{v + \W : v \in \V}\) of all cosets of \(\W\) as follows:
+	\[
+		(v_1 + \W) + (v_2 + \W) = (v_1 + v_2) + \W
+	\]
+	for all \(v_1, v_2 \in \V\) and
+	\[
+		a(v + \W) = av + \W
+	\]
+	for all \(v \in \V\) and \(a \in \F\).
+	\begin{enumerate}[resume]
+		\item Prove that the preceding operations are well defined;
+		      that is, show that if \(v_1 + \W = v_1' + \W\) and \(v_2 + \W = v_2' + \W\), then
+		      \[
+			      (v_1 + \W) + (v_2 + \W) = (v_1' + \W) + (v_2' + \W)
+		      \]
+		      and
+		      \[
+			      a(v_1 + \W) = a(v_1' + \W)
+		      \]
+		      for all \(a \in \F\).
+		\item Prove that the set \(S\) is a vector space over \(\F\) with the operations defined in (c).
+		      This vector space is called the \textbf{quotient space of \(\V\) modulo \(\W\)} and is denoted by \(\V / \W\).
+	\end{enumerate}
 \end{ex}
 
 \begin{proof}[\pf{ex:1.3.31}(a)]
-  We have
-  \begin{align*}
-             & \begin{dcases}
-                 \W \text{ is a subspace of } \V \text{ over } \F \\
-                 v \in \W
-               \end{dcases}                                       \\
-    \implies & v + \W = \set{v + w : w \in \W} = \W                 &  & \text{(by \cref{ex:1.3.31})} \\
-    \implies & v + \W \text{ is a subspace of } \V \text{ over } \F
-  \end{align*}
-  and
-  \begin{align*}
-             & v + \W \text{ is a subspace of } \V \text{ over } \F                                          \\
-    \implies & v \in v + \W                                         &  & \text{(by \cref{ex:1.3.31})}        \\
-    \implies & v + (-v) = \zv \in v + \W                            &  & \text{(by \ref{vs3} and \ref{vs4})} \\
-    \implies & -v \in \W                                            &  & \text{(by \cref{ex:1.3.31})}        \\
-    \implies & v \in \W.                                            &  & \text{(by \cref{1.2.1})}
-  \end{align*}
+	We have
+	\begin{align*}
+		         & \begin{dcases}
+			           \W \text{ is a subspace of } \V \text{ over } \F \\
+			           v \in \W
+		           \end{dcases}                         \\
+		\implies & v + \W = \set{v + w : w \in \W} = \W                 &  & \by{ex:1.3.31} \\
+		\implies & v + \W \text{ is a subspace of } \V \text{ over } \F
+	\end{align*}
+	and
+	\begin{align*}
+		         & v + \W \text{ is a subspace of } \V \text{ over } \F                                          \\
+		\implies & v \in v + \W                                         &  & \by{ex:1.3.31}                      \\
+		\implies & v + (-v) = \zv \in v + \W                            &  & \text{(by \ref{vs3} and \ref{vs4})} \\
+		\implies & -v \in \W                                            &  & \by{ex:1.3.31}                      \\
+		\implies & v \in \W.                                            &  & \by{1.2.1}
+	\end{align*}
 \end{proof}
 
 \begin{proof}[\pf{ex:1.3.31}(b)]
-  We have
-  \begin{align*}
-         & v_1 + \W = v_2 + \W                                                                                     \\
-    \iff & (-v_1) + (v_1 + \W) = (-v_1) + (v_2 + \W)                             &  & \text{(by \cref{ex:1.3.31})} \\
-    \iff & \set{(-v_1) + v_1 + w : w \in \W} = \set{(-v_1) + v_2 + w : w \in \W} &  & \text{(by \cref{ex:1.3.31})} \\
-    \iff & \W = \set{(-v_1) + v_2 + w : w \in \W}                                                                  \\
-    \iff & (-v_1) + v_2 \in \W                                                                                     \\
-    \iff & v_1 - v_2 \in \W.                                                     &  & \text{(by \cref{1.2}(b))}
-  \end{align*}
+	We have
+	\begin{align*}
+		     & v_1 + \W = v_2 + \W                                                                       \\
+		\iff & (-v_1) + (v_1 + \W) = (-v_1) + (v_2 + \W)                             &  & \by{ex:1.3.31} \\
+		\iff & \set{(-v_1) + v_1 + w : w \in \W} = \set{(-v_1) + v_2 + w : w \in \W} &  & \by{ex:1.3.31} \\
+		\iff & \W = \set{(-v_1) + v_2 + w : w \in \W}                                                    \\
+		\iff & (-v_1) + v_2 \in \W                                                                       \\
+		\iff & v_1 - v_2 \in \W.                                                     &  & \by{1.2}[b]
+	\end{align*}
 \end{proof}
 
 \begin{proof}[\pf{ex:1.3.31}(c)]
-  We have
-  \begin{align*}
-             & \begin{dcases}
-                 v_1 + \W = v_1' + \W \\
-                 v_2 + \W = v_2' + \W
-               \end{dcases}                                                                     \\
-    \implies & \begin{dcases}
-                 v_1 - v_1' \in \W \\
-                 v_2 - v_2' \in \W
-               \end{dcases}                                &  & \text{(by \cref{ex:1.3.31}(b))}         \\
-    \implies & (v_1 + v_2) - (v_1' + v_2') \in \W                  &  & \text{(by \cref{1.2.1})}        \\
-    \implies & (v_1 + v_2) + \W = (v_1' + v_2') + \W               &  & \text{(by \cref{ex:1.3.31}(b))} \\
-    \implies & (v_1 + \W) + (v_2 + \W) = (v_1' + \W) + (v_2' + \W) &  & \text{(by \cref{ex:1.3.31})}
-  \end{align*}
-  and
-  \begin{align*}
-             & v_1 + \W = v_1' + \W                                             \\
-    \implies & v_1 - v_1' \in \W           &  & \text{(by \cref{ex:1.3.31}(b))} \\
-    \implies & a(v_1 - v_1') \in \W        &  & \text{(by \cref{1.2.1})}        \\
-    \implies & av_1 - av_1' \in \W         &  & \text{(by \ref{vs7})}           \\
-    \implies & av_1 + \W = av_1' + \W      &  & \text{(by \cref{ex:1.3.31}(b))} \\
-    \implies & a(v_1 + \W) = a(v_1' + \W). &  & \text{(by \cref{ex:1.3.31})}
-  \end{align*}
+	We have
+	\begin{align*}
+		         & \begin{dcases}
+			           v_1 + \W = v_1' + \W \\
+			           v_2 + \W = v_2' + \W
+		           \end{dcases}                                                       \\
+		\implies & \begin{dcases}
+			           v_1 - v_1' \in \W \\
+			           v_2 - v_2' \in \W
+		           \end{dcases}                                &  & \by{ex:1.3.31}[b]         \\
+		\implies & (v_1 + v_2) - (v_1' + v_2') \in \W                  &  & \by{1.2.1}        \\
+		\implies & (v_1 + v_2) + \W = (v_1' + v_2') + \W               &  & \by{ex:1.3.31}[b] \\
+		\implies & (v_1 + \W) + (v_2 + \W) = (v_1' + \W) + (v_2' + \W) &  & \by{ex:1.3.31}
+	\end{align*}
+	and
+	\begin{align*}
+		         & v_1 + \W = v_1' + \W                                   \\
+		\implies & v_1 - v_1' \in \W           &  & \by{ex:1.3.31}[b]     \\
+		\implies & a(v_1 - v_1') \in \W        &  & \by{1.2.1}            \\
+		\implies & av_1 - av_1' \in \W         &  & \text{(by \ref{vs7})} \\
+		\implies & av_1 + \W = av_1' + \W      &  & \by{ex:1.3.31}[b]     \\
+		\implies & a(v_1 + \W) = a(v_1' + \W). &  & \by{ex:1.3.31}
+	\end{align*}
 \end{proof}
 
 \begin{proof}[\pf{ex:1.3.31}(d)]
-  By \cref{ex:1.3.31} we have
-  \[
-    \forall v_1 + \W, v_2 + \W \in S, (v_1 + \W) + (v_2 + \W) = (v_1 + v_2) + \W \in S
-  \]
-  and
-  \[
-    \forall (a, v + \W) \in \F \times S, a(v + \W) = av + \W \in S.
-  \]
-  By \cref{ex:1.3.31}(c) we know that addition and scalar multiplication in \(S\) over \(\F\) are unique.
-  Thus by \cref{1.2.1} we only need to check \ref{vs1}--\ref{vs8}.
-  \begin{description}
-    \item[For \ref{vs1}:]
-      For all \(v_1 + \W, v_2 + \W \in S\), we have
-      \begin{align*}
-        (v_1 + \W) + (v_2 + \W) & = (v_1 + v_2) + \W         &  & \text{(by \cref{ex:1.3.31})}                  \\
-                                & = (v_2 + v_1) + \W         &  & \text{(\(\V\) is a vector space over \(\F\))} \\
-                                & = (v_2 + \W) + (v_1 + \W). &  & \text{(by \cref{ex:1.3.31})}
-      \end{align*}
-    \item[For \ref{vs2}:]
-      For all \(v_1 + \W, v_2 + \W, v_3 + \W \in S\), we have
-      \begin{align*}
-         & ((v_1 + \W) + (v_2 + \W)) + (v_3 + \W)                                                       \\
-         & = ((v_1 + v_2) + \W) + (v_3 + \W)         &  & \text{(by \cref{ex:1.3.31})}                  \\
-         & = ((v_1 + v_2) + v_3) + \W                &  & \text{(by \cref{ex:1.3.31})}                  \\
-         & = (v_1 + (v_2 + v_3)) + \W                &  & \text{(\(\V\) is a vector space over \(\F\))} \\
-         & = (v_1 + \W) + ((v_2 + v_3) + \W)         &  & \text{(by \cref{ex:1.3.31})}                  \\
-         & = (v_1 + \W) + ((v_2 + \W) + (v_3 + \W)). &  & \text{(by \cref{ex:1.3.31})}
-      \end{align*}
-    \item[For \ref{vs3}:]
-      Since \(\V\) is a vector space over \(\F\), we know that \(0 \in \V\).
-      Thus \(\zv + \W \in S\) and for all \(v + \W \in S\), we have
-      \begin{align*}
-        (v + \W) + (\zv + \W) & = (v + \zv) + \W &  & \text{(by \cref{ex:1.3.31})}                  \\
-                              & = v + \W.        &  & \text{(\(\V\) is a vector space over \(\F\))}
-      \end{align*}
-    \item[For \ref{vs4}:]
-      For all \(v + \W \in S\), we have
-      \begin{align*}
-                 & \exists v' \in \V : v + v' = 0       &  & \text{(\(\V\) is a vector space over \(\F\))} \\
-        \implies & \exists v' + \W \in S :              &  & \text{(by \cref{ex:1.3.31})}                  \\
-                 & (v + \W) + (v' + \W) = (v + v') + \W &  & \text{(by \cref{ex:1.3.31})}                  \\
-                 & = \zv + \W.                          &  & \text{(from the proof above)}
-      \end{align*}
-    \item[For \ref{vs5}:]
-      Since \(\V\) is a vector space over \(\F\), we know that \(1 \in \F\).
-      Then for all \(v + \W \in S\), we have
-      \begin{align*}
-        1(v + \W) & = 1v + \W &  & \text{(by \cref{ex:1.3.31})}                  \\
-                  & = v + \W. &  & \text{(\(\V\) is a vector space over \(\F\))}
-      \end{align*}
-    \item[For \ref{vs6}:]
-      For all \(a, b \in \F\), \(v + \W \in S\), we have
-      \begin{align*}
-        (ab) (v + \W) & = (ab)v + \W    &  & \text{(by \cref{ex:1.3.31})}                  \\
-                      & = a(bv) + \W    &  & \text{(\(\V\) is a vector space over \(\F\))} \\
-                      & = a(bv + \W)    &  & \text{(by \cref{ex:1.3.31})}                  \\
-                      & = a(b(v + \W)). &  & \text{(by \cref{ex:1.3.31})}
-      \end{align*}
-    \item[For \ref{vs7}:]
-      For all \(a \in \F\), \(v_1 + \W, v_2 + \W \in S\), we have
-      \begin{align*}
-        a((v_1 + \W) + (v_2 + \W)) & = a((v_1 + v_2) + \W)        &  & \text{(by \cref{ex:1.3.31})}                  \\
-                                   & = a(v_1 + v_2) + \W          &  & \text{(by \cref{ex:1.3.31})}                  \\
-                                   & = (av_1 + av_2) + \W         &  & \text{(\(\V\) is a vector space over \(\F\))} \\
-                                   & = (av_1 + \W) + (av_2 + \W)  &  & \text{(by \cref{ex:1.3.31})}                  \\
-                                   & = a(v_1 + \W) + a(v_2 + \W). &  & \text{(by \cref{ex:1.3.31})}
-      \end{align*}
-    \item[For \ref{vs8}:]
-      For all \(a, b \in \F\), \(v + \W \in S\), we have
-      \begin{align*}
-        (a + b) (v_1 + \W) & = (a + b) v_1 + \W           &  & \text{(by \cref{ex:1.3.31})}                  \\
-                           & = (av_1 + bv_1) + \W         &  & \text{(\(\V\) is a vector space over \(\F\))} \\
-                           & = (av_1 + \W) + (bv_1 + \W)  &  & \text{(by \cref{ex:1.3.31})}                  \\
-                           & = a(v_1 + \W) + b(v_1 + \W). &  & \text{(by \cref{ex:1.3.31})}
-      \end{align*}
-  \end{description}
-  From all proofs above we conclude by \cref{1.2.1} that \cref{ex:1.3.31} is indeed a vector space over \(\F\).
+	By \cref{ex:1.3.31} we have
+	\[
+		\forall v_1 + \W, v_2 + \W \in S, (v_1 + \W) + (v_2 + \W) = (v_1 + v_2) + \W \in S
+	\]
+	and
+	\[
+		\forall (a, v + \W) \in \F \times S, a(v + \W) = av + \W \in S.
+	\]
+	By \cref{ex:1.3.31}(c) we know that addition and scalar multiplication in \(S\) over \(\F\) are unique.
+	Thus by \cref{1.2.1} we only need to check \ref{vs1}--\ref{vs8}.
+	\begin{description}
+		\item[For \ref{vs1}:]
+			For all \(v_1 + \W, v_2 + \W \in S\), we have
+			\begin{align*}
+				(v_1 + \W) + (v_2 + \W) & = (v_1 + v_2) + \W         &  & \by{ex:1.3.31}                                \\
+				                        & = (v_2 + v_1) + \W         &  & \text{(\(\V\) is a vector space over \(\F\))} \\
+				                        & = (v_2 + \W) + (v_1 + \W). &  & \by{ex:1.3.31}
+			\end{align*}
+		\item[For \ref{vs2}:]
+			For all \(v_1 + \W, v_2 + \W, v_3 + \W \in S\), we have
+			\begin{align*}
+				 & ((v_1 + \W) + (v_2 + \W)) + (v_3 + \W)                                                       \\
+				 & = ((v_1 + v_2) + \W) + (v_3 + \W)         &  & \by{ex:1.3.31}                                \\
+				 & = ((v_1 + v_2) + v_3) + \W                &  & \by{ex:1.3.31}                                \\
+				 & = (v_1 + (v_2 + v_3)) + \W                &  & \text{(\(\V\) is a vector space over \(\F\))} \\
+				 & = (v_1 + \W) + ((v_2 + v_3) + \W)         &  & \by{ex:1.3.31}                                \\
+				 & = (v_1 + \W) + ((v_2 + \W) + (v_3 + \W)). &  & \by{ex:1.3.31}
+			\end{align*}
+		\item[For \ref{vs3}:]
+			Since \(\V\) is a vector space over \(\F\), we know that \(0 \in \V\).
+			Thus \(\zv + \W \in S\) and for all \(v + \W \in S\), we have
+			\begin{align*}
+				(v + \W) + (\zv + \W) & = (v + \zv) + \W &  & \by{ex:1.3.31}                                \\
+				                      & = v + \W.        &  & \text{(\(\V\) is a vector space over \(\F\))}
+			\end{align*}
+		\item[For \ref{vs4}:]
+			For all \(v + \W \in S\), we have
+			\begin{align*}
+				         & \exists v' \in \V : v + v' = 0       &  & \text{(\(\V\) is a vector space over \(\F\))} \\
+				\implies & \exists v' + \W \in S :              &  & \by{ex:1.3.31}                                \\
+				         & (v + \W) + (v' + \W) = (v + v') + \W &  & \by{ex:1.3.31}                                \\
+				         & = \zv + \W.                          &  & \text{(from the proof above)}
+			\end{align*}
+		\item[For \ref{vs5}:]
+			Since \(\V\) is a vector space over \(\F\), we know that \(1 \in \F\).
+			Then for all \(v + \W \in S\), we have
+			\begin{align*}
+				1(v + \W) & = 1v + \W &  & \by{ex:1.3.31}                                \\
+				          & = v + \W. &  & \text{(\(\V\) is a vector space over \(\F\))}
+			\end{align*}
+		\item[For \ref{vs6}:]
+			For all \(a, b \in \F\), \(v + \W \in S\), we have
+			\begin{align*}
+				(ab) (v + \W) & = (ab)v + \W    &  & \by{ex:1.3.31}                                \\
+				              & = a(bv) + \W    &  & \text{(\(\V\) is a vector space over \(\F\))} \\
+				              & = a(bv + \W)    &  & \by{ex:1.3.31}                                \\
+				              & = a(b(v + \W)). &  & \by{ex:1.3.31}
+			\end{align*}
+		\item[For \ref{vs7}:]
+			For all \(a \in \F\), \(v_1 + \W, v_2 + \W \in S\), we have
+			\begin{align*}
+				a((v_1 + \W) + (v_2 + \W)) & = a((v_1 + v_2) + \W)        &  & \by{ex:1.3.31}                                \\
+				                           & = a(v_1 + v_2) + \W          &  & \by{ex:1.3.31}                                \\
+				                           & = (av_1 + av_2) + \W         &  & \text{(\(\V\) is a vector space over \(\F\))} \\
+				                           & = (av_1 + \W) + (av_2 + \W)  &  & \by{ex:1.3.31}                                \\
+				                           & = a(v_1 + \W) + a(v_2 + \W). &  & \by{ex:1.3.31}
+			\end{align*}
+		\item[For \ref{vs8}:]
+			For all \(a, b \in \F\), \(v + \W \in S\), we have
+			\begin{align*}
+				(a + b) (v_1 + \W) & = (a + b) v_1 + \W           &  & \by{ex:1.3.31}                                \\
+				                   & = (av_1 + bv_1) + \W         &  & \text{(\(\V\) is a vector space over \(\F\))} \\
+				                   & = (av_1 + \W) + (bv_1 + \W)  &  & \by{ex:1.3.31}                                \\
+				                   & = a(v_1 + \W) + b(v_1 + \W). &  & \by{ex:1.3.31}
+			\end{align*}
+	\end{description}
+	From all proofs above we conclude by \cref{1.2.1} that \cref{ex:1.3.31} is indeed a vector space over \(\F\).
 \end{proof}

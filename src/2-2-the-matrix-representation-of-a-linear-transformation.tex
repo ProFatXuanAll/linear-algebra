@@ -1,566 +1,566 @@
 \section{The Matrix Representation of a Linear Transformation}\label{sec:2.2}
 
 \begin{note}
-  In \cref{sec:2.2}, we embark on one of the most useful approaches to the analysis of a linear transformation on a finite-dimensional vector space:
-  the representation of a linear transformation by a matrix.
-  In fact, we develop a one-to-one correspondence between matrices and linear transformations that allows us to utilize properties of one to study properties of the other.
+	In \cref{sec:2.2}, we embark on one of the most useful approaches to the analysis of a linear transformation on a finite-dimensional vector space:
+	the representation of a linear transformation by a matrix.
+	In fact, we develop a one-to-one correspondence between matrices and linear transformations that allows us to utilize properties of one to study properties of the other.
 \end{note}
 
 \begin{defn}\label{2.2.1}
-  Let \(\V\) be a finite-dimensional vector space over \(\F\).
-  An \textbf{ordered basis} for \(\V\) over \(\F\) is a basis for \(\V\) over \(\F\) endowed with a specific order;
-  that is, an ordered basis for \(\V\) over \(\F\) is a finite sequence of linearly independent vectors in \(\V\) that generates \(\V\).
+	Let \(\V\) be a finite-dimensional vector space over \(\F\).
+	An \textbf{ordered basis} for \(\V\) over \(\F\) is a basis for \(\V\) over \(\F\) endowed with a specific order;
+	that is, an ordered basis for \(\V\) over \(\F\) is a finite sequence of linearly independent vectors in \(\V\) that generates \(\V\).
 \end{defn}
 
 \begin{defn}\label{2.2.2}
-  For the vector space \(\vs{F}^n\), we call \(\set{\seq{e}{1,2,,n}}\) the \textbf{standard ordered basis} for \(\vs{F}^n\) over \(\F\).
-  Similarly, for the vector space \(\ps[n]{\F}\), we call \(\set{1, x, \dots, x^n}\) the \textbf{standard ordered basis} for \(\ps[n]{\F}\) over \(\F\).
+	For the vector space \(\vs{F}^n\), we call \(\set{\seq{e}{1,2,,n}}\) the \textbf{standard ordered basis} for \(\vs{F}^n\) over \(\F\).
+	Similarly, for the vector space \(\ps[n]{\F}\), we call \(\set{1, x, \dots, x^n}\) the \textbf{standard ordered basis} for \(\ps[n]{\F}\) over \(\F\).
 \end{defn}
 
 \begin{defn}\label{2.2.3}
-  Let \(\beta = \set{\seq{u}{1,2,,n}}\) be an ordered basis for a finite-dimensional vector space \(\V\) over \(\F\).
-  For \(x \in \V\), let \(\seq{a}{1,2,,n} \in \F\) be the unique scalars such that
-  \[
-    x = \sum_{i = 1}^n a_i u_i.
-  \]
-  We define the \textbf{coordinate vector of \(x\) relative to \(\beta\)}, denoted \([x]_{\beta}\), by
-  \[
-    [x]_{\beta} = \begin{pmatrix}
-      a_1    \\
-      a_2    \\
-      \vdots \\
-      a_n
-    \end{pmatrix}.
-  \]
+	Let \(\beta = \set{\seq{u}{1,2,,n}}\) be an ordered basis for a finite-dimensional vector space \(\V\) over \(\F\).
+	For \(x \in \V\), let \(\seq{a}{1,2,,n} \in \F\) be the unique scalars such that
+	\[
+		x = \sum_{i = 1}^n a_i u_i.
+	\]
+	We define the \textbf{coordinate vector of \(x\) relative to \(\beta\)}, denoted \([x]_{\beta}\), by
+	\[
+		[x]_{\beta} = \begin{pmatrix}
+			a_1    \\
+			a_2    \\
+			\vdots \\
+			a_n
+		\end{pmatrix}.
+	\]
 \end{defn}
 
 \begin{defn}\label{2.2.4}
-  Suppose that \(\V\) and \(\W\) are finite-dimensional vector spaces over \(\F\) with ordered bases \(\beta = \set{\seq{v}{1,2,,n}}\) and \(\gamma = \set{\seq{w}{1,2,,m}}\) over \(\F\), respectively.
-  Let \(\T : \V \to \W\) be linear.
-  Then for each \(j\), \(1 \leq j \leq n\), there exist unique scalars \(a_{i j} \in \F\), \(1 \leq i \leq m\), such that
-  \[
-    \T(v_j) = \sum_{i = 1}^m a_{i j} w_i \quad \text{for } 1 \leq j \leq n.
-  \]
-  We call the \(m \times n\) matrix \(A\) defined by \(A_{i j} = a_{i j}\) the \textbf{matrix representation of \(\T\) in the ordered bases \(\beta\) and \(\gamma\)} and write \(A = [\T]_{\beta}^{\gamma}\).
-  If \(\V = \W\) and \(\beta = \gamma\), then we write \(A = [\T]_{\beta}\).
+	Suppose that \(\V\) and \(\W\) are finite-dimensional vector spaces over \(\F\) with ordered bases \(\beta = \set{\seq{v}{1,2,,n}}\) and \(\gamma = \set{\seq{w}{1,2,,m}}\) over \(\F\), respectively.
+	Let \(\T : \V \to \W\) be linear.
+	Then for each \(j\), \(1 \leq j \leq n\), there exist unique scalars \(a_{i j} \in \F\), \(1 \leq i \leq m\), such that
+	\[
+		\T(v_j) = \sum_{i = 1}^m a_{i j} w_i \quad \text{for } 1 \leq j \leq n.
+	\]
+	We call the \(m \times n\) matrix \(A\) defined by \(A_{i j} = a_{i j}\) the \textbf{matrix representation of \(\T\) in the ordered bases \(\beta\) and \(\gamma\)} and write \(A = [\T]_{\beta}^{\gamma}\).
+	If \(\V = \W\) and \(\beta = \gamma\), then we write \(A = [\T]_{\beta}\).
 \end{defn}
 
 \begin{note}
-  The \(j\)th column of \(A\) is simply \([\T(v_j)]_{\gamma}\).
-  Also observe that if \(\U : \V \to \W\) is a linear transformation such that \([\U]_{\beta}^{\gamma} = [\T]_{\beta}^{\gamma}\), then \(\U = \T\) by \cref{2.1.13}.
+	The \(j\)th column of \(A\) is simply \([\T(v_j)]_{\gamma}\).
+	Also observe that if \(\U : \V \to \W\) is a linear transformation such that \([\U]_{\beta}^{\gamma} = [\T]_{\beta}^{\gamma}\), then \(\U = \T\) by \cref{2.1.13}.
 \end{note}
 
 \begin{defn}\label{2.2.5}
-  Let \(\T, \U : \V \to \W\) be arbitrary functions, where \(\V\) and \(\W\) are vector spaces over \(\F\), and let \(a \in \F\).
-  We define \(\T + \U : \V \to \W\) by \((\T + \U)(x) = \T(x) + \U(x)\) for all \(x \in \V\), and \(a \T: \V \to \W\) by \((a \T)(x) = a \T(x)\) for all \(x \in \V\).
+	Let \(\T, \U : \V \to \W\) be arbitrary functions, where \(\V\) and \(\W\) are vector spaces over \(\F\), and let \(a \in \F\).
+	We define \(\T + \U : \V \to \W\) by \((\T + \U)(x) = \T(x) + \U(x)\) for all \(x \in \V\), and \(a \T: \V \to \W\) by \((a \T)(x) = a \T(x)\) for all \(x \in \V\).
 \end{defn}
 
 \begin{thm}\label{2.7}
-  Let \(\V\) and \(\W\) be vector spaces over a field \(\F\), and let \(\T, \U : \V \to \W\) be linear.
-  \begin{enumerate}
-    \item For all \(a \in \F\), \(a \T + \U\) is linear.
-    \item Using the operations of addition and scalar multiplication in \cref{2.2.5}, the collection of all linear transformations from \(\V\) to \(\W\) is a vector space over \(\F\).
-  \end{enumerate}
+	Let \(\V\) and \(\W\) be vector spaces over a field \(\F\), and let \(\T, \U : \V \to \W\) be linear.
+	\begin{enumerate}
+		\item For all \(a \in \F\), \(a \T + \U\) is linear.
+		\item Using the operations of addition and scalar multiplication in \cref{2.2.5}, the collection of all linear transformations from \(\V\) to \(\W\) is a vector space over \(\F\).
+	\end{enumerate}
 \end{thm}
 
 \begin{proof}[\pf{2.7}(a)]
-  Let \(x, y \in \V\) and \(c \in \F\).
-  Then
-  \begin{align*}
-    (a \T + \U)(cx + y) & = a \T(cx + y) + \U(cx + y)            &  & \text{(by \cref{2.2.5})}    \\
-                        & = a(\T(cx + y)) + c \U(x) + \U(y)      &  & \text{(by \cref{2.1.2}(b))} \\
-                        & = a(c \T(x) + \T(y)) + c \U(x) + \U(y) &  & \text{(by \cref{2.1.2}(b))} \\
-                        & = ac \T(x) + c \U(x) + a \T(y) + \U(y) &  & \text{(by \cref{1.2.1})}    \\
-                        & = c (a \T + \U)(x) + (a \T + \U)(y).   &  & \text{(by \cref{2.2.5})}
-  \end{align*}
-  So \(a \T + \U\) is linear.
+	Let \(x, y \in \V\) and \(c \in \F\).
+	Then
+	\begin{align*}
+		(a \T + \U)(cx + y) & = a \T(cx + y) + \U(cx + y)            &  & \by{2.2.5}    \\
+		                    & = a(\T(cx + y)) + c \U(x) + \U(y)      &  & \by{2.1.2}[b] \\
+		                    & = a(c \T(x) + \T(y)) + c \U(x) + \U(y) &  & \by{2.1.2}[b] \\
+		                    & = ac \T(x) + c \U(x) + a \T(y) + \U(y) &  & \by{1.2.1}    \\
+		                    & = c (a \T + \U)(x) + (a \T + \U)(y).   &  & \by{2.2.5}
+	\end{align*}
+	So \(a \T + \U\) is linear.
 \end{proof}
 
 \begin{proof}[\pf{2.7}(b)]
-  Let \(\ls(\V, \W)\) be the set of all linear transformation from \(\V\) to \(\W\).
-  First we show that \ref{vs1}--\ref{vs8} is true.
-  Let \(f, g, h \in \ls(\V, \W)\) and let \(a, b \in \F\).
-  Now we split into eight cases:
-  \begin{description}
-    \item[For \ref{vs1}:] We have
-      \begin{align*}
-        \forall x \in \V, (f + g)(x) & = f(x) + g(x) &  & \text{(by \cref{2.2.5})} \\
-                                     & = g(x) + f(x) &  & \text{(by \ref{vs1})}    \\
-                                     & = (g + f)(x)  &  & \text{(by \cref{2.2.5})}
-      \end{align*}
-      and thus \(f + g = g + f\).
-    \item[For \ref{vs2}:] We have
-      \begin{align*}
-        \forall x \in \V, ((f + g) + h)(x) & = (f + g)(x) + h(x)    &  & \text{(by \cref{2.2.5})} \\
-                                           & = (f(x) + g(x)) + h(x) &  & \text{(by \cref{2.2.5})} \\
-                                           & = f(x) + (g(x) + h(x)) &  & \text{(by \ref{vs2})}    \\
-                                           & = f(x) + (g + h)(x)    &  & \text{(by \cref{2.2.5})} \\
-                                           & = (f + (g + h))(x)     &  & \text{(by \cref{2.2.5})}
-      \end{align*}
-      and thus \((f + g) + h = f + (g + h)\).
-    \item[For \ref{vs3}:] We have
-      \begin{align*}
-        \forall x \in \V, (f + \zT)(x) & = f(x) + \zT(x)   &  & \text{(by \cref{2.2.5})} \\
-                                       & = f(x) + \zv_{\W} &  & \text{(by \cref{2.1.9})} \\
-                                       & = f(x)            &  & \text{(by \ref{vs3})}
-      \end{align*}
-      and thus \(f + \zT = f\).
-    \item[For \ref{vs4}:] We have
-      \begin{align*}
-        \forall x \in \V, (f + ((-1)f))(x) & = f(x) + ((-1)f)(x) &  & \text{(by \cref{2.2.5})} \\
-                                           & = f(x) + (-1)f(x)   &  & \text{(by \cref{2.2.5})} \\
-                                           & = \zv_{\W}          &  & \text{(by \ref{vs4})}    \\
-                                           & = \zT(x)            &  & \text{(by \cref{2.1.9})}
-      \end{align*}
-      and thus \(f + (-1)f = \zT\).
-    \item[For \ref{vs5}:] We have
-      \begin{align*}
-        \forall x \in \V, (1f)(x) & = 1f(x) &  & \text{(by \cref{2.2.5})} \\
-                                  & = f(x)  &  & \text{(by \ref{vs5})}
-      \end{align*}
-      and thus \(1f = f\).
-    \item[For \ref{vs6}:] We have
-      \begin{align*}
-        \forall x \in \V, ((ab)f)(x) & = (ab) f(x)   &  & \text{(by \cref{2.2.5})} \\
-                                     & = a (bf(x))   &  & \text{(by \ref{vs6})}    \\
-                                     & = a ((bf)(x)) &  & \text{(by \cref{2.2.5})} \\
-                                     & = (a (bf))(x) &  & \text{(by \cref{2.2.5})}
-      \end{align*}
-      and thus \((ab)f = a (bf)\).
-    \item[For \ref{vs7}:] We have
-      \begin{align*}
-        \forall x \in \V, (a(f + g))(x) & = a((f + g)(x))     &  & \text{(by \cref{2.2.5})} \\
-                                        & = a(f(x) + g(x))    &  & \text{(by \cref{2.2.5})} \\
-                                        & = af(x) + ag(x)     &  & \text{(by \ref{vs7})}    \\
-                                        & = (af)(x) + (ag)(x) &  & \text{(by \cref{2.2.5})} \\
-                                        & = (af + ag)(x)      &  & \text{(by \cref{2.2.5})}
-      \end{align*}
-      and thus \(a(f + g) = af + ag\).
-    \item[For \ref{vs8}:] We have
-      \begin{align*}
-        \forall x \in \V, ((a + b)f)(x) & = (a + b) f(x)      &  & \text{(by \cref{2.2.5})} \\
-                                        & = af(x) + bf(x)     &  & \text{(by \ref{vs8})}    \\
-                                        & = (af)(x) + (bf)(x) &  & \text{(by \cref{2.2.5})} \\
-                                        & = (af + bf)(x)      &  & \text{(by \cref{2.2.5})}
-      \end{align*}
-      and thus \((a + b)f = af + bf\).
-  \end{description}
-  From the proofs above we see that \ref{vs1}--\ref{vs8} is true.
+	Let \(\ls(\V, \W)\) be the set of all linear transformation from \(\V\) to \(\W\).
+	First we show that \ref{vs1}--\ref{vs8} is true.
+	Let \(f, g, h \in \ls(\V, \W)\) and let \(a, b \in \F\).
+	Now we split into eight cases:
+	\begin{description}
+		\item[For \ref{vs1}:] We have
+			\begin{align*}
+				\forall x \in \V, (f + g)(x) & = f(x) + g(x) &  & \by{2.2.5}            \\
+				                             & = g(x) + f(x) &  & \text{(by \ref{vs1})} \\
+				                             & = (g + f)(x)  &  & \by{2.2.5}
+			\end{align*}
+			and thus \(f + g = g + f\).
+		\item[For \ref{vs2}:] We have
+			\begin{align*}
+				\forall x \in \V, ((f + g) + h)(x) & = (f + g)(x) + h(x)    &  & \by{2.2.5}            \\
+				                                   & = (f(x) + g(x)) + h(x) &  & \by{2.2.5}            \\
+				                                   & = f(x) + (g(x) + h(x)) &  & \text{(by \ref{vs2})} \\
+				                                   & = f(x) + (g + h)(x)    &  & \by{2.2.5}            \\
+				                                   & = (f + (g + h))(x)     &  & \by{2.2.5}
+			\end{align*}
+			and thus \((f + g) + h = f + (g + h)\).
+		\item[For \ref{vs3}:] We have
+			\begin{align*}
+				\forall x \in \V, (f + \zT)(x) & = f(x) + \zT(x)   &  & \by{2.2.5}            \\
+				                               & = f(x) + \zv_{\W} &  & \by{2.1.9}            \\
+				                               & = f(x)            &  & \text{(by \ref{vs3})}
+			\end{align*}
+			and thus \(f + \zT = f\).
+		\item[For \ref{vs4}:] We have
+			\begin{align*}
+				\forall x \in \V, (f + ((-1)f))(x) & = f(x) + ((-1)f)(x) &  & \by{2.2.5}            \\
+				                                   & = f(x) + (-1)f(x)   &  & \by{2.2.5}            \\
+				                                   & = \zv_{\W}          &  & \text{(by \ref{vs4})} \\
+				                                   & = \zT(x)            &  & \by{2.1.9}
+			\end{align*}
+			and thus \(f + (-1)f = \zT\).
+		\item[For \ref{vs5}:] We have
+			\begin{align*}
+				\forall x \in \V, (1f)(x) & = 1f(x) &  & \by{2.2.5}            \\
+				                          & = f(x)  &  & \text{(by \ref{vs5})}
+			\end{align*}
+			and thus \(1f = f\).
+		\item[For \ref{vs6}:] We have
+			\begin{align*}
+				\forall x \in \V, ((ab)f)(x) & = (ab) f(x)   &  & \by{2.2.5}            \\
+				                             & = a (bf(x))   &  & \text{(by \ref{vs6})} \\
+				                             & = a ((bf)(x)) &  & \by{2.2.5}            \\
+				                             & = (a (bf))(x) &  & \by{2.2.5}
+			\end{align*}
+			and thus \((ab)f = a (bf)\).
+		\item[For \ref{vs7}:] We have
+			\begin{align*}
+				\forall x \in \V, (a(f + g))(x) & = a((f + g)(x))     &  & \by{2.2.5}            \\
+				                                & = a(f(x) + g(x))    &  & \by{2.2.5}            \\
+				                                & = af(x) + ag(x)     &  & \text{(by \ref{vs7})} \\
+				                                & = (af)(x) + (ag)(x) &  & \by{2.2.5}            \\
+				                                & = (af + ag)(x)      &  & \by{2.2.5}
+			\end{align*}
+			and thus \(a(f + g) = af + ag\).
+		\item[For \ref{vs8}:] We have
+			\begin{align*}
+				\forall x \in \V, ((a + b)f)(x) & = (a + b) f(x)      &  & \by{2.2.5}            \\
+				                                & = af(x) + bf(x)     &  & \text{(by \ref{vs8})} \\
+				                                & = (af)(x) + (bf)(x) &  & \by{2.2.5}            \\
+				                                & = (af + bf)(x)      &  & \by{2.2.5}
+			\end{align*}
+			and thus \((a + b)f = af + bf\).
+	\end{description}
+	From the proofs above we see that \ref{vs1}--\ref{vs8} is true.
 
-  By \cref{2.7}(a) and the proofs above we see that
-  \[
-    \forall \T, \U \in \ls(\V, \W), \T + \U = 1 \T + \U \in \ls(\V, \W)
-  \]
-  and
-  \[
-    \forall (c, \T) \in \F \times \ls(\V, \W), c \T = c \T + \zT \in \ls(\V, \W).
-  \]
-  Thus by \cref{1.2.1} \(\ls(\V, \W)\) is a vector space over \(\F\).
+	By \cref{2.7}(a) and the proofs above we see that
+	\[
+		\forall \T, \U \in \ls(\V, \W), \T + \U = 1 \T + \U \in \ls(\V, \W)
+	\]
+	and
+	\[
+		\forall (c, \T) \in \F \times \ls(\V, \W), c \T = c \T + \zT \in \ls(\V, \W).
+	\]
+	Thus by \cref{1.2.1} \(\ls(\V, \W)\) is a vector space over \(\F\).
 \end{proof}
 
 \begin{defn}\label{2.2.6}
-  Let \(\V\) and \(\W\) be vector spaces over \(\F\).
-  We denote the vector space of all linear transformations from \(\V\) into \(\W\) by \(\ls(\V, \W)\).
-  In the case that \(\V = \W\), we write \(\ls(\V)\) instead of \(\ls(\V, \W)\).
+	Let \(\V\) and \(\W\) be vector spaces over \(\F\).
+	We denote the vector space of all linear transformations from \(\V\) into \(\W\) by \(\ls(\V, \W)\).
+	In the case that \(\V = \W\), we write \(\ls(\V)\) instead of \(\ls(\V, \W)\).
 \end{defn}
 
 \begin{thm}\label{2.8}
-  Let \(\V\) and \(\W\) be finite-dimensional vector spaces over \(\F\) with ordered bases \(\beta\) and \(\gamma\) over \(\F\), respectively, and let \(\T, \U : \V \to \W\) be linear transformations.
-  Then
-  \begin{enumerate}
-    \item \([\T + \U]_{\beta}^{\gamma} = [\T]_{\beta}^{\gamma} + [\U]_{\beta}^{\gamma}\) and
-    \item \([c \T]_{\beta}^{\gamma} = c [\T]_{\beta}^{\gamma}\) for all scalars \(c \in \F\).
-  \end{enumerate}
+	Let \(\V\) and \(\W\) be finite-dimensional vector spaces over \(\F\) with ordered bases \(\beta\) and \(\gamma\) over \(\F\), respectively, and let \(\T, \U : \V \to \W\) be linear transformations.
+	Then
+	\begin{enumerate}
+		\item \([\T + \U]_{\beta}^{\gamma} = [\T]_{\beta}^{\gamma} + [\U]_{\beta}^{\gamma}\) and
+		\item \([c \T]_{\beta}^{\gamma} = c [\T]_{\beta}^{\gamma}\) for all scalars \(c \in \F\).
+	\end{enumerate}
 \end{thm}
 
 \begin{proof}[\pf{2.8}]
-  Let \(\beta = \set{\seq{v}{1,2,,n}}\) and \(\gamma = \set{\seq{w}{1,2,,m}}\).
-  There exist unique scalars \(a_{i j}\) and \(b_{i j}\) (\(1 \leq i \leq m\), \(1 \leq j \leq n\)) such that
-  \[
-    \T(v_j) = \sum_{i = 1}^m a_{i j} w_i \quad \text{and} \quad \U(v_j) = \sum_{i = 1}^m b_{i j} w_i \quad \text{for } 1 \leq j \leq n.
-  \]
-  Hence
-  \begin{align*}
-    (\T + \U)(v_j) & = \sum_{i = 1}^m (a_{i j} + b_{i j}) w_i \\
-    (c \T)(v_j)    & = \sum_{i = 1}^m (c a_{i j}) w_i.
-  \end{align*}
-  Thus
-  \begin{align*}
-    ([\T + \U]_{\beta}^{\gamma})_{i j} & = a_{i j} + b_{i j} = ([\T]_{\beta}^{\gamma} + [\U]_{\beta}^{\gamma})_{i j} \\
-    ([c \T]_{\beta}^{\gamma})_{i j}    & = c a_{i j} = c ([\T]_{\beta}^{\gamma})_{i j}.
-  \end{align*}
+	Let \(\beta = \set{\seq{v}{1,2,,n}}\) and \(\gamma = \set{\seq{w}{1,2,,m}}\).
+	There exist unique scalars \(a_{i j}\) and \(b_{i j}\) (\(1 \leq i \leq m\), \(1 \leq j \leq n\)) such that
+	\[
+		\T(v_j) = \sum_{i = 1}^m a_{i j} w_i \quad \text{and} \quad \U(v_j) = \sum_{i = 1}^m b_{i j} w_i \quad \text{for } 1 \leq j \leq n.
+	\]
+	Hence
+	\begin{align*}
+		(\T + \U)(v_j) & = \sum_{i = 1}^m (a_{i j} + b_{i j}) w_i \\
+		(c \T)(v_j)    & = \sum_{i = 1}^m (c a_{i j}) w_i.
+	\end{align*}
+	Thus
+	\begin{align*}
+		([\T + \U]_{\beta}^{\gamma})_{i j} & = a_{i j} + b_{i j} = ([\T]_{\beta}^{\gamma} + [\U]_{\beta}^{\gamma})_{i j} \\
+		([c \T]_{\beta}^{\gamma})_{i j}    & = c a_{i j} = c ([\T]_{\beta}^{\gamma})_{i j}.
+	\end{align*}
 \end{proof}
 
 \exercisesection
 
 \setcounter{ex}{7}
 \begin{ex}\label{ex:2.2.8}
-  Let \(\V\) be an \(n\)-dimensional vector space over \(\F\) with an ordered basis \(\beta\) over \(\F\).
-  Define \(\T : \V \to \vs{F}^n\) by \(\T(x) = [x]_{\beta}\).
-  Prove that \(\T\) is linear.
+	Let \(\V\) be an \(n\)-dimensional vector space over \(\F\) with an ordered basis \(\beta\) over \(\F\).
+	Define \(\T : \V \to \vs{F}^n\) by \(\T(x) = [x]_{\beta}\).
+	Prove that \(\T\) is linear.
 \end{ex}
 
 \begin{proof}[\pf{ex:2.2.8}]
-  Let \(\beta = \set{\seq{v}{1,2,,n}}\), let \(x, y \in \V\) and let \(c \in \F\).
-  Since
-  \begin{align*}
-             & \exists \seq{a}{1,2,,n}, \seq{b}{1,2,,n} \in \F : \begin{dcases}
-                                                                   x = \sum_{i = 1}^n a_i v_i \\
-                                                                   y = \sum_{i = 1}^n b_i v_i
-                                                                 \end{dcases} &  & \text{(by \cref{1.8})}       \\
-    \implies & cx + y = \sum_{i = 1}^n (ca_i + b_i) v_i                         &  & \text{(by \cref{1.2.1})}   \\
-    \implies & \T(cx + y) = [cx + y]_{\beta} = \begin{pmatrix}
-                                                 ca_1 + b_1 \\
-                                                 \vdots     \\
-                                                 ca_n + b_n
-                                               \end{pmatrix}                  &  & \text{(by \cref{2.2.3})}     \\
-             & = c \begin{pmatrix}
-                     a_1    \\
-                     \vdots \\
-                     a_n
-                   \end{pmatrix} + \begin{pmatrix}
-                                     b_1    \\
-                                     \vdots \\
-                                     b_n
-                                   \end{pmatrix}                                  &  & \text{(by \cref{1.2.9})} \\
-             & = c [x]_{\beta} + [y]_{\beta} = c \T(x) + \T(y),                 &  & \text{(by \cref{2.2.3})}
-  \end{align*}
-  by \cref{2.1.2}(b) we know that \(\T\) is linear.
+	Let \(\beta = \set{\seq{v}{1,2,,n}}\), let \(x, y \in \V\) and let \(c \in \F\).
+	Since
+	\begin{align*}
+		         & \exists \seq{a}{1,2,,n}, \seq{b}{1,2,,n} \in \F : \begin{dcases}
+			                                                             x = \sum_{i = 1}^n a_i v_i \\
+			                                                             y = \sum_{i = 1}^n b_i v_i
+		                                                             \end{dcases} &  & \by{1.8}       \\
+		\implies & cx + y = \sum_{i = 1}^n (ca_i + b_i) v_i                         &  & \by{1.2.1}   \\
+		\implies & \T(cx + y) = [cx + y]_{\beta} = \begin{pmatrix}
+			                                           ca_1 + b_1 \\
+			                                           \vdots     \\
+			                                           ca_n + b_n
+		                                           \end{pmatrix}                  &  & \by{2.2.3}     \\
+		         & = c \begin{pmatrix}
+			               a_1    \\
+			               \vdots \\
+			               a_n
+		               \end{pmatrix} + \begin{pmatrix}
+			                               b_1    \\
+			                               \vdots \\
+			                               b_n
+		                               \end{pmatrix}                                  &  & \by{1.2.9} \\
+		         & = c [x]_{\beta} + [y]_{\beta} = c \T(x) + \T(y),                 &  & \by{2.2.3}
+	\end{align*}
+	by \cref{2.1.2}(b) we know that \(\T\) is linear.
 \end{proof}
 
 \begin{ex}\label{ex:2.2.9}
-  Let \(\V\) be the vector space of complex numbers \(\C\) over the field \(\R\).
-  Define \(\T : \V \to \V\) by \(\T(z) = \conj{z}\), where \(\conj{z}\) is the complex conjugate of \(z\).
-  Prove that \(\T\) is linear, and compute \([\T]_{\beta}\), where \(\beta = \set{1, i}\).
-  (Recall by \cref{ex:2.1.38} that \(\T\) is not linear if \(\V\) is regarded as a vector space over the field \(\C\).)
+	Let \(\V\) be the vector space of complex numbers \(\C\) over the field \(\R\).
+	Define \(\T : \V \to \V\) by \(\T(z) = \conj{z}\), where \(\conj{z}\) is the complex conjugate of \(z\).
+	Prove that \(\T\) is linear, and compute \([\T]_{\beta}\), where \(\beta = \set{1, i}\).
+	(Recall by \cref{ex:2.1.38} that \(\T\) is not linear if \(\V\) is regarded as a vector space over the field \(\C\).)
 \end{ex}
 
 \begin{proof}[\pf{ex:2.2.9}]
-  Let \(x, y \in \C\) and let \(c \in \R\).
-  Since
-  \begin{align*}
-    \T(cx + y) & = \conj{cx + y}                      \\
-               & = \conj{cx} + \conj{y}               \\
-               & = \conj{c} \cdot \conj{x} + \conj{y} \\
-               & = c \conj{x} + \conj{y}              \\
-               & = c \T(x) + \T(y),
-  \end{align*}
-  by \cref{2.1.2}(b) we know that \(\T\) is linear.
-  Since
-  \begin{align*}
-    \T(1) & = 1 = 1 \cdot 1 + 0 \cdot i,     \\
-    \T(i) & = -i = 0 \cdot 1 + (-1) \cdot i,
-  \end{align*}
-  by \cref{2.2.4} we know that
-  \[
-    [\T]_{\beta} = \begin{pmatrix}
-      1 & 0  \\
-      0 & -1
-    \end{pmatrix}.
-  \]
+	Let \(x, y \in \C\) and let \(c \in \R\).
+	Since
+	\begin{align*}
+		\T(cx + y) & = \conj{cx + y}                      \\
+		           & = \conj{cx} + \conj{y}               \\
+		           & = \conj{c} \cdot \conj{x} + \conj{y} \\
+		           & = c \conj{x} + \conj{y}              \\
+		           & = c \T(x) + \T(y),
+	\end{align*}
+	by \cref{2.1.2}(b) we know that \(\T\) is linear.
+	Since
+	\begin{align*}
+		\T(1) & = 1 = 1 \cdot 1 + 0 \cdot i,     \\
+		\T(i) & = -i = 0 \cdot 1 + (-1) \cdot i,
+	\end{align*}
+	by \cref{2.2.4} we know that
+	\[
+		[\T]_{\beta} = \begin{pmatrix}
+			1 & 0  \\
+			0 & -1
+		\end{pmatrix}.
+	\]
 \end{proof}
 
 \begin{ex}\label{ex:2.2.10}
-  Let \(\V\) be a vector space over \(\F\) with the ordered basis \(\beta = \set{\seq{v}{1,2,,n}}\) over \(\F\).
-  Define \(v_0 = 0\).
-  By \cref{2.6} there exists a \(\T \in \ls(\V)\) such that \(\T(v_j) = v_j + v_{j - 1}\) for \(j = 1, 2, \dots, n\).
-  Compute \([\T]_{\beta}\).
+	Let \(\V\) be a vector space over \(\F\) with the ordered basis \(\beta = \set{\seq{v}{1,2,,n}}\) over \(\F\).
+	Define \(v_0 = 0\).
+	By \cref{2.6} there exists a \(\T \in \ls(\V)\) such that \(\T(v_j) = v_j + v_{j - 1}\) for \(j = 1, 2, \dots, n\).
+	Compute \([\T]_{\beta}\).
 \end{ex}
 
 \begin{proof}[\pf{ex:2.2.10}]
-  By \cref{2.2.4,ex:1.5.6} we have
-  \[
-    [\T]_{\beta} = \begin{pmatrix}
-      1      & 1      & 0      & \cdots & 0      & 0      & 0      \\
-      0      & 1      & 1      & \cdots & 0      & 0      & 0      \\
-      0      & 0      & 1      & \cdots & 0      & 0      & 0      \\
-      \vdots & \vdots & \vdots & \ddots & \vdots & \vdots & \vdots \\
-      0      & 0      & 0      & \cdots & 1      & 1      & 0      \\
-      0      & 0      & 0      & \cdots & 0      & 1      & 1      \\
-      0      & 0      & 0      & \cdots & 0      & 0      & 1
-    \end{pmatrix} = \sum_{i = 1}^n E^{i i} + \sum_{i = 2}^n E^{(i - 1) i}.
-  \]
+	By \cref{2.2.4,ex:1.5.6} we have
+	\[
+		[\T]_{\beta} = \begin{pmatrix}
+			1      & 1      & 0      & \cdots & 0      & 0      & 0      \\
+			0      & 1      & 1      & \cdots & 0      & 0      & 0      \\
+			0      & 0      & 1      & \cdots & 0      & 0      & 0      \\
+			\vdots & \vdots & \vdots & \ddots & \vdots & \vdots & \vdots \\
+			0      & 0      & 0      & \cdots & 1      & 1      & 0      \\
+			0      & 0      & 0      & \cdots & 0      & 1      & 1      \\
+			0      & 0      & 0      & \cdots & 0      & 0      & 1
+		\end{pmatrix} = \sum_{i = 1}^n E^{i i} + \sum_{i = 2}^n E^{(i - 1) i}.
+	\]
 \end{proof}
 
 \begin{ex}\label{ex:2.2.11}
-  Let \(\V\) be an \(n\)-dimensional vector space over \(\F\), and let \(\T \in \ls(\V)\).
-  Suppose that \(\W\) is a \(\T\)-invariant subspace of \(\V\) over \(\F\) (See \cref{2.1.15}) having dimension \(k\).
-  Show that there is a basis \(\beta\) for \(\V\) over \(\F\) such that \([\T]_{\beta}\) has the form
-  \[
-    \begin{pmatrix}
-      A   & B \\
-      \zm & C
-    \end{pmatrix},
-  \]
-  where \(A\) is a \(k \times k\) matrix and \(\zm\) is the \((n - k) \times k\) zero matrix.
+	Let \(\V\) be an \(n\)-dimensional vector space over \(\F\), and let \(\T \in \ls(\V)\).
+	Suppose that \(\W\) is a \(\T\)-invariant subspace of \(\V\) over \(\F\) (See \cref{2.1.15}) having dimension \(k\).
+	Show that there is a basis \(\beta\) for \(\V\) over \(\F\) such that \([\T]_{\beta}\) has the form
+	\[
+		\begin{pmatrix}
+			A   & B \\
+			\zm & C
+		\end{pmatrix},
+	\]
+	where \(A\) is a \(k \times k\) matrix and \(\zm\) is the \((n - k) \times k\) zero matrix.
 \end{ex}
 
 \begin{proof}[\pf{ex:2.2.11}]
-  Let \(\beta_{\W} = \set{\seq{v}{1,2,,k}}\) be a basis for \(\W\) over \(\F\).
-  By \cref{1.6.19} we can extend \(\beta_{\W}\) to \(\beta = \set{\seq{v}{1,2,,n}}\) such that \(\beta\) is a basis for \(\V\) over \(\F\).
-  Since \(\W\) is \(\T\)-invariant, we know that
-  \begin{align*}
-             & \T(\W) \subseteq \W                                                                                               &  & \text{(by \cref{2.1.15})} \\
-    \implies & \forall v_j \in \beta_{\W}, \T(v_j) \in \W = \spn{\beta_{\W}}                                                     &  & \text{(by \cref{1.6.1})}  \\
-    \implies & \forall v_j \in \beta_{\W}, \exists a_{1 j}, a_{2 j}, \dots, a_{k j} \in \F :                                                                    \\
-             & \T(v_j) = \sum_{i = 1}^k a_{i j} v_i = \sum_{i = 1}^k a_{i j} v_i + \sum_{i = k + 1}^n 0 v_i                      &  & \text{(by \cref{1.2}(a))} \\
-    \implies & \forall v_j \in \beta_{\W}, \exists a_{1 j}, a_{2 j}, \dots, a_{k j} \in \F : [\T(v_j)]_{\beta} = \begin{pmatrix}
-                                                                                                                   a_{1 j} \\
-                                                                                                                   \vdots  \\
-                                                                                                                   a_{k j} \\
-                                                                                                                   0       \\
-                                                                                                                   \vdots  \\
-                                                                                                                   0
-                                                                                                                 \end{pmatrix}. &  & \text{(by \cref{2.2.3})}
-  \end{align*}
-  By setting
-  \begin{align*}
-    A & = \begin{pmatrix}
-            a_{1 1} & \cdots & a_{1 k} \\
-            \vdots  & \ddots & \vdots  \\
-            a_{k 1} & \cdots & a_{k k}
-          \end{pmatrix} \in \ms{k}{k}{\F}                                                                    \\
-    B & = \begin{pmatrix}
-            ([\T(v_{k + 1})]_{\beta})_1 & \cdots & ([\T(v_n)]_{\beta})_1 \\
-            \vdots                      & \ddots & \vdots                \\
-            ([\T(v_{k + 1})]_{\beta})_k & \cdots & ([\T(v_n)]_{\beta})_k
-          \end{pmatrix} \in \ms{k}{(n - k)}{\F}             \\
-    C & = \begin{pmatrix}
-            ([\T(v_{k + 1})]_{\beta})_{k + 1} & \cdots & ([\T(v_n)]_{\beta})_{k + 1} \\
-            \vdots                            & \ddots & \vdots                      \\
-            ([\T(v_{k + 1})]_{\beta})_n       & \cdots & ([\T(v_n)]_{\beta})_n
-          \end{pmatrix} \in \ms{(n - k)}{(n - k)}{\F}
-  \end{align*}
-  we have
-  \begin{align*}
-    [\T]_{\beta} & = \begin{pmatrix}
-                       ([\T(v_1)]_{\beta})_1 & \cdots & ([\T(v_n)]_{\beta})_1   \\
-                       \vdots                & \ddots & \vdots                  \\
-                       ([\T(v_1)]_{\beta})_n & \cdots & ([\T(v_n)]_{\beta})_{n}
-                     \end{pmatrix}                                        &  & \text{(by \cref{2.2.4})}                                        \\
-                 & = \begin{pmatrix}
-                       a_{1 1} & \cdots & a_{1 k} & ([\T(v_{k + 1})]_{\beta})_1       & \cdots & ([\T(v_n)]_{\beta})_1       \\
-                       \vdots  & \ddots & \vdots  & \vdots                            & \ddots & \vdots                      \\
-                       a_{k 1} & \cdots & a_{k k} & ([\T(v_{k + 1})]_{\beta})_k       & \cdots & ([\T(v_n)]_{\beta})_k       \\
-                       0       & \cdots & 0       & ([\T(v_{k + 1})]_{\beta})_{k + 1} & \cdots & ([\T(v_n)]_{\beta})_{k + 1} \\
-                       \vdots  & \ddots & \vdots  & \vdots                            & \ddots & \vdots                      \\
-                       0       & \cdots & 0       & ([\T(v_{k + 1})]_{\beta})_{n}     & \cdots & ([\T(v_n)]_{\beta})_{n}
-                     \end{pmatrix} \\
-                 & = \begin{pmatrix}
-                       A   & B \\
-                       \zm & C
-                     \end{pmatrix}.
-  \end{align*}
+	Let \(\beta_{\W} = \set{\seq{v}{1,2,,k}}\) be a basis for \(\W\) over \(\F\).
+	By \cref{1.6.19} we can extend \(\beta_{\W}\) to \(\beta = \set{\seq{v}{1,2,,n}}\) such that \(\beta\) is a basis for \(\V\) over \(\F\).
+	Since \(\W\) is \(\T\)-invariant, we know that
+	\begin{align*}
+		         & \T(\W) \subseteq \W                                                                                               &  & \by{2.1.15} \\
+		\implies & \forall v_j \in \beta_{\W}, \T(v_j) \in \W = \spn{\beta_{\W}}                                                     &  & \by{1.6.1}  \\
+		\implies & \forall v_j \in \beta_{\W}, \exists a_{1 j}, a_{2 j}, \dots, a_{k j} \in \F :                                                      \\
+		         & \T(v_j) = \sum_{i = 1}^k a_{i j} v_i = \sum_{i = 1}^k a_{i j} v_i + \sum_{i = k + 1}^n 0 v_i                      &  & \by{1.2}[a] \\
+		\implies & \forall v_j \in \beta_{\W}, \exists a_{1 j}, a_{2 j}, \dots, a_{k j} \in \F : [\T(v_j)]_{\beta} = \begin{pmatrix}
+			                                                                                                             a_{1 j} \\
+			                                                                                                             \vdots  \\
+			                                                                                                             a_{k j} \\
+			                                                                                                             0       \\
+			                                                                                                             \vdots  \\
+			                                                                                                             0
+		                                                                                                             \end{pmatrix}. &  & \by{2.2.3}
+	\end{align*}
+	By setting
+	\begin{align*}
+		A & = \begin{pmatrix}
+			      a_{1 1} & \cdots & a_{1 k} \\
+			      \vdots  & \ddots & \vdots  \\
+			      a_{k 1} & \cdots & a_{k k}
+		      \end{pmatrix} \in \ms{k}{k}{\F}                                                                    \\
+		B & = \begin{pmatrix}
+			      ([\T(v_{k + 1})]_{\beta})_1 & \cdots & ([\T(v_n)]_{\beta})_1 \\
+			      \vdots                      & \ddots & \vdots                \\
+			      ([\T(v_{k + 1})]_{\beta})_k & \cdots & ([\T(v_n)]_{\beta})_k
+		      \end{pmatrix} \in \ms{k}{(n - k)}{\F}             \\
+		C & = \begin{pmatrix}
+			      ([\T(v_{k + 1})]_{\beta})_{k + 1} & \cdots & ([\T(v_n)]_{\beta})_{k + 1} \\
+			      \vdots                            & \ddots & \vdots                      \\
+			      ([\T(v_{k + 1})]_{\beta})_n       & \cdots & ([\T(v_n)]_{\beta})_n
+		      \end{pmatrix} \in \ms{(n - k)}{(n - k)}{\F}
+	\end{align*}
+	we have
+	\begin{align*}
+		[\T]_{\beta} & = \begin{pmatrix}
+			                 ([\T(v_1)]_{\beta})_1 & \cdots & ([\T(v_n)]_{\beta})_1   \\
+			                 \vdots                & \ddots & \vdots                  \\
+			                 ([\T(v_1)]_{\beta})_n & \cdots & ([\T(v_n)]_{\beta})_{n}
+		                 \end{pmatrix}                                        &  & \by{2.2.4}                                        \\
+		             & = \begin{pmatrix}
+			                 a_{1 1} & \cdots & a_{1 k} & ([\T(v_{k + 1})]_{\beta})_1       & \cdots & ([\T(v_n)]_{\beta})_1       \\
+			                 \vdots  & \ddots & \vdots  & \vdots                            & \ddots & \vdots                      \\
+			                 a_{k 1} & \cdots & a_{k k} & ([\T(v_{k + 1})]_{\beta})_k       & \cdots & ([\T(v_n)]_{\beta})_k       \\
+			                 0       & \cdots & 0       & ([\T(v_{k + 1})]_{\beta})_{k + 1} & \cdots & ([\T(v_n)]_{\beta})_{k + 1} \\
+			                 \vdots  & \ddots & \vdots  & \vdots                            & \ddots & \vdots                      \\
+			                 0       & \cdots & 0       & ([\T(v_{k + 1})]_{\beta})_{n}     & \cdots & ([\T(v_n)]_{\beta})_{n}
+		                 \end{pmatrix} \\
+		             & = \begin{pmatrix}
+			                 A   & B \\
+			                 \zm & C
+		                 \end{pmatrix}.
+	\end{align*}
 \end{proof}
 
 \begin{ex}\label{ex:2.2.12}
-  Let \(\V\) be a finite-dimensional vector space over \(\F\) and \(\T\) be the projection on \(\W\) along \(\W'\), where \(\W\) and \(\W'\) are subspaces of \(\V\) over \(\F\).
-  (See \cref{2.1.14}.)
-  Find an ordered basis \(\beta\) for \(\V\) over \(\F\) such that \([\T]_{\beta}\) is a diagonal matrix.
+	Let \(\V\) be a finite-dimensional vector space over \(\F\) and \(\T\) be the projection on \(\W\) along \(\W'\), where \(\W\) and \(\W'\) are subspaces of \(\V\) over \(\F\).
+	(See \cref{2.1.14}.)
+	Find an ordered basis \(\beta\) for \(\V\) over \(\F\) such that \([\T]_{\beta}\) is a diagonal matrix.
 \end{ex}
 
 \begin{proof}[\pf{ex:2.2.12}]
-  Let \(\beta_{\W} = \set{\seq{v}{1,2,,k}}\) be a basis for \(\W\) over \(\F\).
-  By \cref{1.6.19} we can extend \(\beta_{\W}\) to \(\beta = \set{\seq{v}{1,2,,n}}\) such that \(\beta\) is a basis for \(\V\) over \(\F\).
-  Since
-  \begin{align*}
-             & \begin{dcases}
-                 \forall v_j \in \beta_{\W}, v_j = v_j + \zv \in \W + \W' \\
-                 \forall v_j \in \beta \setminus \beta_{\W}, v_j = \zv + v_j \in \W + \W'
-               \end{dcases}                         &  & \text{(by \cref{1.3.10})}                         \\
-    \implies & \begin{dcases}
-                 \forall v_j \in \beta_{\W}, \T(v_j) = v_j \\
-                 \forall v_j \in \beta \setminus \beta_{\W}, \T(v_j) = \zv
-               \end{dcases}                                        &  & \text{(by \cref{2.1.14})}              \\
-    \implies & \begin{dcases}
-                 \forall v_j \in \beta_{\W}, [\T(v_j)]_{\beta} = e_j \in \vs{F}^n \\
-                 \forall v_j \in \beta \setminus \beta_{\W}, [\T(v_j)]_{\beta} = \zv \in \vs{F}^n
-               \end{dcases} &  & \text{(by \cref{2.2.2})} \\
-    \implies & [\T]_{\beta} = \begin{pmatrix}
-                                e_1 & \cdots & e_k & \zv & \cdots & \zv
-                              \end{pmatrix}                                          \\
-             & = \begin{pmatrix}
-                   1      & 0      & \cdots & 0      & 0      & \cdots & 0      \\
-                   0      & 1      & \cdots & 0      & 0      & \cdots & 0      \\
-                   \vdots & \vdots & \ddots & \vdots & 0      & \cdots & 0      \\
-                   0      & 0      & \cdots & 1      & 0      & \cdots & 0      \\
-                   0      & 0      & \cdots & 0      & 0      & \cdots & 0      \\
-                   \vdots & \vdots & \ddots & \vdots & \vdots & \ddots & \vdots \\
-                   0      & 0      & \cdots & 0      & 0      & \cdots & 0
-                 \end{pmatrix},
-  \end{align*}
-  by \cref{1.3.8} we know that \([\T]_{\beta}\) is a diagonal matrix.
+	Let \(\beta_{\W} = \set{\seq{v}{1,2,,k}}\) be a basis for \(\W\) over \(\F\).
+	By \cref{1.6.19} we can extend \(\beta_{\W}\) to \(\beta = \set{\seq{v}{1,2,,n}}\) such that \(\beta\) is a basis for \(\V\) over \(\F\).
+	Since
+	\begin{align*}
+		         & \begin{dcases}
+			           \forall v_j \in \beta_{\W}, v_j = v_j + \zv \in \W + \W' \\
+			           \forall v_j \in \beta \setminus \beta_{\W}, v_j = \zv + v_j \in \W + \W'
+		           \end{dcases}                         &  & \by{1.3.10}                         \\
+		\implies & \begin{dcases}
+			           \forall v_j \in \beta_{\W}, \T(v_j) = v_j \\
+			           \forall v_j \in \beta \setminus \beta_{\W}, \T(v_j) = \zv
+		           \end{dcases}                                        &  & \by{2.1.14}                            \\
+		\implies & \begin{dcases}
+			           \forall v_j \in \beta_{\W}, [\T(v_j)]_{\beta} = e_j \in \vs{F}^n \\
+			           \forall v_j \in \beta \setminus \beta_{\W}, [\T(v_j)]_{\beta} = \zv \in \vs{F}^n
+		           \end{dcases} &  & \by{2.2.2} \\
+		\implies & [\T]_{\beta} = \begin{pmatrix}
+			                          e_1 & \cdots & e_k & \zv & \cdots & \zv
+		                          \end{pmatrix}                                          \\
+		         & = \begin{pmatrix}
+			             1      & 0      & \cdots & 0      & 0      & \cdots & 0      \\
+			             0      & 1      & \cdots & 0      & 0      & \cdots & 0      \\
+			             \vdots & \vdots & \ddots & \vdots & 0      & \cdots & 0      \\
+			             0      & 0      & \cdots & 1      & 0      & \cdots & 0      \\
+			             0      & 0      & \cdots & 0      & 0      & \cdots & 0      \\
+			             \vdots & \vdots & \ddots & \vdots & \vdots & \ddots & \vdots \\
+			             0      & 0      & \cdots & 0      & 0      & \cdots & 0
+		             \end{pmatrix},
+	\end{align*}
+	by \cref{1.3.8} we know that \([\T]_{\beta}\) is a diagonal matrix.
 \end{proof}
 
 \begin{ex}\label{ex:2.2.13}
-  Let \(\V\) and \(\W\) be vector spaces over \(\F\), and let \(\T\) and \(\U\) be nonzero linear transformations from \(\V\) into \(\W\).
-  If \(\rg{\T} \cap \rg{\U} = \set{\zv}\), prove that \(\set{\T, \U}\) is a linearly independent subset of \(\ls(\V, \W)\).
+	Let \(\V\) and \(\W\) be vector spaces over \(\F\), and let \(\T\) and \(\U\) be nonzero linear transformations from \(\V\) into \(\W\).
+	If \(\rg{\T} \cap \rg{\U} = \set{\zv}\), prove that \(\set{\T, \U}\) is a linearly independent subset of \(\ls(\V, \W)\).
 \end{ex}
 
 \begin{proof}[\pf{ex:2.2.13}]
-  Let \(\zT : \V \to \W\) be the zero transformation in \(\ls(\V, \W)\).
-  Suppose for sake of contradiction that \(\set{\T, \U}\) is linearly dependent.
-  Since
-  \begin{align*}
-             & \set{\T} \text{ is linearly independent}        &  & \text{(by \cref{1.5.4}(b))} \\
-    \implies & \U \in \spn{\set{\T}}                           &  & \text{(by \cref{1.7})}      \\
-    \implies & \exists c \in \F \setminus \set{0} : \U = c \T, &  & \text{(by \cref{1.4.3})}
-  \end{align*}
-  by fixing such \(c\) we know that
-  \begin{align*}
-             & \T \neq \zT                                                                             \\
-    \implies & \exists x \in \V : \T(x) \neq \zv_{\W}                                                  \\
-    \implies & \exists x \in \V : \U(\frac{1}{c} x) = \frac{1}{c} \U(x) &  & \text{(by \cref{2.1.1})}  \\
-             & = \frac{1}{c} (c \T(x)) = \T(x) \neq \zv_{\W}                                           \\
-    \implies & \rg{\U} \cap \rg{\T} \neq \set{\zv}.                     &  & \text{(by \cref{2.1.10})}
-  \end{align*}
-  But this contradicts to the fact that \(\rg{\U} \cap \rg{\T} = \set{\zv}\).
-  Thus \(\set{\T, \U}\) is linearly independent.
+	Let \(\zT : \V \to \W\) be the zero transformation in \(\ls(\V, \W)\).
+	Suppose for sake of contradiction that \(\set{\T, \U}\) is linearly dependent.
+	Since
+	\begin{align*}
+		         & \set{\T} \text{ is linearly independent}        &  & \by{1.5.4}[b] \\
+		\implies & \U \in \spn{\set{\T}}                           &  & \by{1.7}      \\
+		\implies & \exists c \in \F \setminus \set{0} : \U = c \T, &  & \by{1.4.3}
+	\end{align*}
+	by fixing such \(c\) we know that
+	\begin{align*}
+		         & \T \neq \zT                                                               \\
+		\implies & \exists x \in \V : \T(x) \neq \zv_{\W}                                    \\
+		\implies & \exists x \in \V : \U(\frac{1}{c} x) = \frac{1}{c} \U(x) &  & \by{2.1.1}  \\
+		         & = \frac{1}{c} (c \T(x)) = \T(x) \neq \zv_{\W}                             \\
+		\implies & \rg{\U} \cap \rg{\T} \neq \set{\zv}.                     &  & \by{2.1.10}
+	\end{align*}
+	But this contradicts to the fact that \(\rg{\U} \cap \rg{\T} = \set{\zv}\).
+	Thus \(\set{\T, \U}\) is linearly independent.
 \end{proof}
 
 \begin{ex}\label{ex:2.2.14}
-  Let \(f \in \ps{\R}\), and for \(j \geq 1\) define \(\T_j(f) = f^{(j)}\), where \(f^{(j)}\) is the \(j\)th derivative of \(f\).
-  Prove that the set \(\set{\seq{\T}{1,2,,n}}\) is a linearly independent subset of \(\ls(\ps{\R})\) for any positive integer \(n\).
+	Let \(f \in \ps{\R}\), and for \(j \geq 1\) define \(\T_j(f) = f^{(j)}\), where \(f^{(j)}\) is the \(j\)th derivative of \(f\).
+	Prove that the set \(\set{\seq{\T}{1,2,,n}}\) is a linearly independent subset of \(\ls(\ps{\R})\) for any positive integer \(n\).
 \end{ex}
 
 \begin{proof}[\pf{ex:2.2.14}]
-  First we show that \(\T_i \in \ls(\ps{\R})\) for all \(i \in \Z^+\).
-  Let \(f, g \in \ps{\R}\) and let \(c \in \R\).
-  Since
-  \[
-    \forall i \in \Z^+, \begin{dcases}
-      \rg{\T_i} \subseteq \ps{\R} \\
-      \T_i(cf + g) = (cf + g)^{(i)} = c f^{(i)} + g^{(i)} = c \T_i(f) + \T_i(g)
-    \end{dcases},
-  \]
-  by \cref{2.1.2}(b) we know that \(\T_i \in \ls(\ps{\R})\) for all \(i \in \Z^+\).
+	First we show that \(\T_i \in \ls(\ps{\R})\) for all \(i \in \Z^+\).
+	Let \(f, g \in \ps{\R}\) and let \(c \in \R\).
+	Since
+	\[
+		\forall i \in \Z^+, \begin{dcases}
+			\rg{\T_i} \subseteq \ps{\R} \\
+			\T_i(cf + g) = (cf + g)^{(i)} = c f^{(i)} + g^{(i)} = c \T_i(f) + \T_i(g)
+		\end{dcases},
+	\]
+	by \cref{2.1.2}(b) we know that \(\T_i \in \ls(\ps{\R})\) for all \(i \in \Z^+\).
 
-  Now we show that \(\set{\seq{\T}{1,2,,n}}\) is linearly independent.
-  Let \(\seq{b}{1,2,,n} \in \R\) such that
-  \[
-    \sum_{i = 1}^n b_i \T_i = \zT
-  \]
-  where \(\zT\) is the zero transformation of \(\ls(\ps{\R})\).
-  Since
-  \begin{align*}
-             & \sum_{i = 1}^n b_i \T_i(x^n) = \sum_{i = 1}^n \pa{b_i \cdot \pa{\prod_{k = 0}^{i - 1} (n - k)} x^{n - i}} = 0                               \\
-    \implies & \forall i \in \set{1, \dots, n}, b_i \cdot \prod_{k = 0}^{i - 1} (n - k) = 0                                  &  & \text{(by \cref{1.6.5})} \\
-    \implies & b_i = 0,                                                                                                      &  & (n - k > 0)
-  \end{align*}
-  by \cref{1.5.3} we know that \(\set{\seq{\T}{1,2,,n}}\) is linearly independent.
+	Now we show that \(\set{\seq{\T}{1,2,,n}}\) is linearly independent.
+	Let \(\seq{b}{1,2,,n} \in \R\) such that
+	\[
+		\sum_{i = 1}^n b_i \T_i = \zT
+	\]
+	where \(\zT\) is the zero transformation of \(\ls(\ps{\R})\).
+	Since
+	\begin{align*}
+		         & \sum_{i = 1}^n b_i \T_i(x^n) = \sum_{i = 1}^n \pa{b_i \cdot \pa{\prod_{k = 0}^{i - 1} (n - k)} x^{n - i}} = 0                  \\
+		\implies & \forall i \in \set{1, \dots, n}, b_i \cdot \prod_{k = 0}^{i - 1} (n - k) = 0                                  &  & \by{1.6.5}  \\
+		\implies & b_i = 0,                                                                                                      &  & (n - k > 0)
+	\end{align*}
+	by \cref{1.5.3} we know that \(\set{\seq{\T}{1,2,,n}}\) is linearly independent.
 \end{proof}
 
 \begin{ex}\label{ex:2.2.15}
-  Let \(\V\) and \(\W\) be vector spaces over \(\F\), and let \(S\) be a subset of \(\V\).
-  Define \(S^0 = \set{\T \in \ls(\V, \W) : \T(x) = 0 \text{ for all } x \in S}\).
-  Prove the following statements.
-  \begin{enumerate}
-    \item \(S^0\) is a subspace of \(\ls(\V, \W)\) over \(\F\).
-    \item If \(S_1\) and \(S_2\) are subsets of \(V\) and \(S_1 \subseteq S_2\), then \(S_2^0 \subseteq S_1^0\).
-    \item If \(\V_1\) and \(\V_2\) are subspaces of \(\V\) over \(\F\), then \((\V_1 + \V_2)^0 = \V_1^0 \cap \V_2^0\).
-  \end{enumerate}
+	Let \(\V\) and \(\W\) be vector spaces over \(\F\), and let \(S\) be a subset of \(\V\).
+	Define \(S^0 = \set{\T \in \ls(\V, \W) : \T(x) = 0 \text{ for all } x \in S}\).
+	Prove the following statements.
+	\begin{enumerate}
+		\item \(S^0\) is a subspace of \(\ls(\V, \W)\) over \(\F\).
+		\item If \(S_1\) and \(S_2\) are subsets of \(V\) and \(S_1 \subseteq S_2\), then \(S_2^0 \subseteq S_1^0\).
+		\item If \(\V_1\) and \(\V_2\) are subspaces of \(\V\) over \(\F\), then \((\V_1 + \V_2)^0 = \V_1^0 \cap \V_2^0\).
+	\end{enumerate}
 \end{ex}
 
 \begin{proof}[\pf{ex:2.2.15}(a)]
-  Let \(\zT : \V \to \W\) be the zero transformation in \(\ls(\V, \W)\).
-  Since
-  \begin{align*}
-             & \forall x \in \V, \zT(x) = \zv_{\W} &  & \text{(by \cref{2.1.9})}     \\
-    \implies & \forall x \in S, \zT(x) = \zv_{\W}                                    \\
-    \implies & \zT \in S^0                         &  & \text{(by \cref{ex:2.2.15})}
-  \end{align*}
-  and
-  \begin{align*}
-             & \begin{dcases}
-                 \forall \T, \U \in S^0 \\
-                 \forall c \in \F       \\
-                 \forall x \in S
-               \end{dcases}, (c\T + \U)(x) = c \T(x) + \U(x) = \zv_{\W} &  & \text{(by \cref{2.2.5})}     \\
-    \implies & \begin{dcases}
-                 \forall \T, \U \in S^0 \\
-                 \forall c \in \F
-               \end{dcases}, c\T + \U \in S^0,                          &  & \text{(by \cref{ex:2.2.15})}
-  \end{align*}
-  by \cref{ex:1.3.18} we know that \(S^0\) is a subspace of \(\ls(\V, \W)\) over \(\F\).
+	Let \(\zT : \V \to \W\) be the zero transformation in \(\ls(\V, \W)\).
+	Since
+	\begin{align*}
+		         & \forall x \in \V, \zT(x) = \zv_{\W} &  & \by{2.1.9}     \\
+		\implies & \forall x \in S, \zT(x) = \zv_{\W}                      \\
+		\implies & \zT \in S^0                         &  & \by{ex:2.2.15}
+	\end{align*}
+	and
+	\begin{align*}
+		         & \begin{dcases}
+			           \forall \T, \U \in S^0 \\
+			           \forall c \in \F       \\
+			           \forall x \in S
+		           \end{dcases}, (c\T + \U)(x) = c \T(x) + \U(x) = \zv_{\W} &  & \by{2.2.5}     \\
+		\implies & \begin{dcases}
+			           \forall \T, \U \in S^0 \\
+			           \forall c \in \F
+		           \end{dcases}, c\T + \U \in S^0,                          &  & \by{ex:2.2.15}
+	\end{align*}
+	by \cref{ex:1.3.18} we know that \(S^0\) is a subspace of \(\ls(\V, \W)\) over \(\F\).
 \end{proof}
 
 \begin{proof}[\pf{ex:2.2.15}(b)]
-  Let \(\T \in S_2^0\).
-  Since
-  \begin{align*}
-             & \T \in S_2^0                                                          \\
-    \implies & \forall x \in S_2, \T(x) = \zv_{\W} &  & \text{(by \cref{ex:2.2.15})} \\
-    \implies & \forall x \in S_1, \T(x) = \zv_{\W} &  & (S_1 \subseteq S_2)          \\
-    \implies & \T \in S_1^0                        &  & \text{(by \cref{ex:2.2.15})}
-  \end{align*}
-  and \(\T\) is arbitrary, we know that \(S_2^0 \subseteq S_1^0\).
+	Let \(\T \in S_2^0\).
+	Since
+	\begin{align*}
+		         & \T \in S_2^0                                                 \\
+		\implies & \forall x \in S_2, \T(x) = \zv_{\W} &  & \by{ex:2.2.15}      \\
+		\implies & \forall x \in S_1, \T(x) = \zv_{\W} &  & (S_1 \subseteq S_2) \\
+		\implies & \T \in S_1^0                        &  & \by{ex:2.2.15}
+	\end{align*}
+	and \(\T\) is arbitrary, we know that \(S_2^0 \subseteq S_1^0\).
 \end{proof}
 
 \begin{proof}[\pf{ex:2.2.15}(c)]
-  Since
-  \begin{align*}
-         & \T \in (\V_1 + \V_2)^0                                                                    \\
-    \iff & \forall x \in \V_1 + \V_2, \T(x) = \zv_{\W}             &  & \text{(by \cref{ex:2.2.15})} \\
-    \iff & \forall (x_1, x_2) \in \V_1 \times \V_2, \begin{dcases}
-                                                      x_1 + \zv_{\V} \in \V_1 + \V_2 \\
-                                                      \zv_{\V} + x_2 \in \V_1 + \V_2 \\
-                                                      x_1 + x_2 \in \V_1 + \V_2      \\
-                                                      \T(x_1) = \T(x_2) = \T(x_1 + x_2) = \zv_{\W}
-                                                    \end{dcases} &  & \text{(by \cref{1.3.10})}      \\
-    \iff & \begin{dcases}
-             \T \in \V_1^0 \\
-             \T \in \V_2^0
-           \end{dcases}                                        &  & \text{(by \cref{ex:2.2.15})}     \\
-    \iff & \T \in \V_1^0 \cap \V_2^0,
-  \end{align*}
-  we know that \((\V_1 + \V_2)^0 = \V_1^0 \cap \V_2^0\).
+	Since
+	\begin{align*}
+		     & \T \in (\V_1 + \V_2)^0                                                               \\
+		\iff & \forall x \in \V_1 + \V_2, \T(x) = \zv_{\W}             &  & \by{ex:2.2.15}          \\
+		\iff & \forall (x_1, x_2) \in \V_1 \times \V_2, \begin{dcases}
+			                                                x_1 + \zv_{\V} \in \V_1 + \V_2 \\
+			                                                \zv_{\V} + x_2 \in \V_1 + \V_2 \\
+			                                                x_1 + x_2 \in \V_1 + \V_2      \\
+			                                                \T(x_1) = \T(x_2) = \T(x_1 + x_2) = \zv_{\W}
+		                                                \end{dcases} &  & \by{1.3.10} \\
+		\iff & \begin{dcases}
+			       \T \in \V_1^0 \\
+			       \T \in \V_2^0
+		       \end{dcases}                                        &  & \by{ex:2.2.15}              \\
+		\iff & \T \in \V_1^0 \cap \V_2^0,
+	\end{align*}
+	we know that \((\V_1 + \V_2)^0 = \V_1^0 \cap \V_2^0\).
 \end{proof}
 
 \begin{ex}\label{ex:2.2.16}
-  Let \(\V\) and \(\W\) be vector spaces over \(\F\) such that \(\dim(\V) = \dim(\W)\), and let \(\T \in \ls(\V, \W)\).
-  Show that there exist ordered bases \(\beta\) and \(\gamma\) for \(\V\) and \(\W\) over \(\F\), respectively, such that \([\T]_{\beta}^{\gamma}\) is a diagonal matrix.
+	Let \(\V\) and \(\W\) be vector spaces over \(\F\) such that \(\dim(\V) = \dim(\W)\), and let \(\T \in \ls(\V, \W)\).
+	Show that there exist ordered bases \(\beta\) and \(\gamma\) for \(\V\) and \(\W\) over \(\F\), respectively, such that \([\T]_{\beta}^{\gamma}\) is a diagonal matrix.
 \end{ex}
 
 \begin{proof}[\pf{ex:2.2.16}]
-  If \(\T\) is the zero transformation, then for arbitrary bases \(\beta\) and \(\gamma\) for \(\V\) and \(\W\) over \(\F\), respectively, we have
-  \[
-    [\T]_{\beta}^{\gamma} = \zm
-  \]
-  which by \cref{1.3.8} is a diagonal matrix.
-  So suppose that \(\T\) is not the zero transformation.
-  Let \(\beta\) be a basis for \(\V\) over \(\F\).
-  By \cref{2.2} we know that \(\spn{\T(\beta)} = \rg{\T}\).
-  Since \(\T\) is not the zero transformation, we know that
-  \begin{align*}
-             & \exists x \in \V : \T(x) \neq \zv_{\W}                &  & \text{(by \cref{2.1.9})}  \\
-    \implies & 1 \leq \rk{\T} \leq \dim(\W)                          &  & \text{(by \cref{2.1.12})} \\
-    \implies & \exists \gamma_1 \subseteq \T(\beta) : \begin{dcases}
-                                                        \gamma_1 \text{ is linearly independent} \\
-                                                        \spn{\gamma_1} = \rg{\T}
-                                                      \end{dcases}. &  & \text{(by \cref{1.6.8})}
-  \end{align*}
-  Fix such \(\gamma_1\).
-  By \cref{2.3} we know that \(\#(\gamma_1) \leq \#(\beta_1)\) for all \(\beta_1 \subseteq \beta\) and \(\T(\beta_1) = \gamma_1\).
-  Thus we can define \(\beta_1 \subseteq \beta\) such that \(\T(\beta_1) = \gamma_1\) and \(\#(\beta_1) = \#(\gamma_1)\).
-  Let \(k = \#(\beta_1)\) and we can write \(\beta_1 = \set{\seq{v}{1,2,,k}}\) and \(\gamma_1 = \set{\seq{w}{1,2,,k}}\) such that
-  \[
-    \forall i \in \set{1, \dots, k}, \T(v_i) = w_i.
-  \]
-  If we let \(\beta\) follow this ordered and we extend \(\gamma_1\) to a basis \(\gamma\) for \(\W\) over \(\F\) (this can be done by \cref{1.6.19}), then we see that (by setting \(n = \dim(\V)\) and \(\beta = \set{\seq{v}{1,2,,n}}\))
-  \begin{align*}
-             & \forall v_i \in \beta, [\T(v_i)]_{\gamma} = \begin{dcases}
-                                                             \zv_{\W}           & \text{if } i \notin \set{1, \dots, k} \\
-                                                             e_i \in \vs{F}^{n} & \text{if } i \in \set{1, \dots, k}
-                                                           \end{dcases}   &  & \text{(by \cref{2.2.3})} \\
-    \implies & [\T]_{\beta}^{\gamma} = \begin{pmatrix}
-                                         1      & 0      & \cdots & 0      & 0      & \cdots & 0      \\
-                                         0      & 1      & \cdots & 0      & 0      & \cdots & 0      \\
-                                         \vdots & \vdots & \ddots & \vdots & \vdots & \ddots & \vdots \\
-                                         0      & 0      & \cdots & 1      & 0      & \cdots & 0      \\
-                                         0      & 0      & \cdots & 0      & 0      & \cdots & 0      \\
-                                         \vdots & \vdots & \ddots & \vdots & \vdots & \ddots & 0      \\
-                                         0      & 0      & \cdots & 0      & 0      & \cdots & 0
-                                       \end{pmatrix} &  & \text{(by \cref{2.2.4})}
-  \end{align*}
-  and by \cref{1.3.8} \([\T]_{\beta}^{\gamma}\) is a diagonal matrix.
+	If \(\T\) is the zero transformation, then for arbitrary bases \(\beta\) and \(\gamma\) for \(\V\) and \(\W\) over \(\F\), respectively, we have
+	\[
+		[\T]_{\beta}^{\gamma} = \zm
+	\]
+	which by \cref{1.3.8} is a diagonal matrix.
+	So suppose that \(\T\) is not the zero transformation.
+	Let \(\beta\) be a basis for \(\V\) over \(\F\).
+	By \cref{2.2} we know that \(\spn{\T(\beta)} = \rg{\T}\).
+	Since \(\T\) is not the zero transformation, we know that
+	\begin{align*}
+		         & \exists x \in \V : \T(x) \neq \zv_{\W}                &  & \by{2.1.9}           \\
+		\implies & 1 \leq \rk{\T} \leq \dim(\W)                          &  & \by{2.1.12}          \\
+		\implies & \exists \gamma_1 \subseteq \T(\beta) : \begin{dcases}
+			                                                  \gamma_1 \text{ is linearly independent} \\
+			                                                  \spn{\gamma_1} = \rg{\T}
+		                                                  \end{dcases}. &  & \by{1.6.8}
+	\end{align*}
+	Fix such \(\gamma_1\).
+	By \cref{2.3} we know that \(\#(\gamma_1) \leq \#(\beta_1)\) for all \(\beta_1 \subseteq \beta\) and \(\T(\beta_1) = \gamma_1\).
+	Thus we can define \(\beta_1 \subseteq \beta\) such that \(\T(\beta_1) = \gamma_1\) and \(\#(\beta_1) = \#(\gamma_1)\).
+	Let \(k = \#(\beta_1)\) and we can write \(\beta_1 = \set{\seq{v}{1,2,,k}}\) and \(\gamma_1 = \set{\seq{w}{1,2,,k}}\) such that
+	\[
+		\forall i \in \set{1, \dots, k}, \T(v_i) = w_i.
+	\]
+	If we let \(\beta\) follow this ordered and we extend \(\gamma_1\) to a basis \(\gamma\) for \(\W\) over \(\F\) (this can be done by \cref{1.6.19}), then we see that (by setting \(n = \dim(\V)\) and \(\beta = \set{\seq{v}{1,2,,n}}\))
+	\begin{align*}
+		         & \forall v_i \in \beta, [\T(v_i)]_{\gamma} = \begin{dcases}
+			                                                       \zv_{\W}           & \text{if } i \notin \set{1, \dots, k} \\
+			                                                       e_i \in \vs{F}^{n} & \text{if } i \in \set{1, \dots, k}
+		                                                       \end{dcases}   &  & \by{2.2.3} \\
+		\implies & [\T]_{\beta}^{\gamma} = \begin{pmatrix}
+			                                   1      & 0      & \cdots & 0      & 0      & \cdots & 0      \\
+			                                   0      & 1      & \cdots & 0      & 0      & \cdots & 0      \\
+			                                   \vdots & \vdots & \ddots & \vdots & \vdots & \ddots & \vdots \\
+			                                   0      & 0      & \cdots & 1      & 0      & \cdots & 0      \\
+			                                   0      & 0      & \cdots & 0      & 0      & \cdots & 0      \\
+			                                   \vdots & \vdots & \ddots & \vdots & \vdots & \ddots & 0      \\
+			                                   0      & 0      & \cdots & 0      & 0      & \cdots & 0
+		                                   \end{pmatrix} &  & \by{2.2.4}
+	\end{align*}
+	and by \cref{1.3.8} \([\T]_{\beta}^{\gamma}\) is a diagonal matrix.
 \end{proof}

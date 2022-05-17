@@ -1,170 +1,170 @@
 \chapter{Fields}\label{ch:c}
 
 \begin{defn}\label{c.0.1}
-  A field \(\F\) is a set on which two operations \(+\) and \(\cdot\) (called \textbf{addition} and \textbf{multiplication}, respectively) are defined so that, for each pair of elements \(x, y\) in \(F\), there are unique elements \(x + y\) and \(x \cdot y\) in \(\F\) for which the following conditions hold for all elements \(a, b, c\) in \(\F\).
-  \begin{enumerate}[label=(F \arabic*), ref=F \arabic*]
-    \item\label{f1} \(a + b = b + a\) and \(a \cdot b = b \cdot a\)
-    (commutativity of addition and multiplication).
-    \item\label{f2} \((a + b) + c = a + (b + c)\) and \((a \cdot b) \cdot c = a \cdot (b \cdot c)\)
-    (associativity of addition and multiplication).
-    \item\label{f3} There exist distinct elements \(0\) and \(1\) in \(\F\) such that
-    \[
-      0 + a = a \quad \text{and} \quad 1 \cdot a = a
-    \]
-    (existence of identity elements for addition and multiplication).
-    \item\label{f4} For each element \(a\) in \(F\) and each nonzero element \(b\) in \(\F\), there exist elements \(c\) and \(d\) in \(\F\) such that
-    \[
-      a + c = 0 \quad \text{and} \quad b \cdot d = 1
-    \]
-    (existence of inverses for addition and multiplication).
-    \item\label{f5} \(a \cdot (b + c) = a \cdot b + a \cdot c\)
-    (distributivity of multiplication over addition).
-  \end{enumerate}
-  The elements \(x + y\) and \(x \cdot y\) are called the \textbf{sum} and \textbf{product}, respectively, of \(x\) and \(y\).
-  The elements \(0\) (read ``zero'') and \(1\) (read ``one'') mentioned in \ref{f3} are called \textbf{identity elements} for addition and multiplication, respectively, and the elements \(c\) and \(d\) referred to in \ref{f4} are called an \textbf{additive inverse} for \(a\) and a \textbf{multiplicative inverse} for \(b\), respectively.
+	A field \(\F\) is a set on which two operations \(+\) and \(\cdot\) (called \textbf{addition} and \textbf{multiplication}, respectively) are defined so that, for each pair of elements \(x, y\) in \(F\), there are unique elements \(x + y\) and \(x \cdot y\) in \(\F\) for which the following conditions hold for all elements \(a, b, c\) in \(\F\).
+	\begin{enumerate}[label=(F \arabic*), ref=F \arabic*]
+		\item\label{f1} \(a + b = b + a\) and \(a \cdot b = b \cdot a\)
+		(commutativity of addition and multiplication).
+		\item\label{f2} \((a + b) + c = a + (b + c)\) and \((a \cdot b) \cdot c = a \cdot (b \cdot c)\)
+		(associativity of addition and multiplication).
+		\item\label{f3} There exist distinct elements \(0\) and \(1\) in \(\F\) such that
+		\[
+			0 + a = a \quad \text{and} \quad 1 \cdot a = a
+		\]
+		(existence of identity elements for addition and multiplication).
+		\item\label{f4} For each element \(a\) in \(F\) and each nonzero element \(b\) in \(\F\), there exist elements \(c\) and \(d\) in \(\F\) such that
+		\[
+			a + c = 0 \quad \text{and} \quad b \cdot d = 1
+		\]
+		(existence of inverses for addition and multiplication).
+		\item\label{f5} \(a \cdot (b + c) = a \cdot b + a \cdot c\)
+		(distributivity of multiplication over addition).
+	\end{enumerate}
+	The elements \(x + y\) and \(x \cdot y\) are called the \textbf{sum} and \textbf{product}, respectively, of \(x\) and \(y\).
+	The elements \(0\) (read ``zero'') and \(1\) (read ``one'') mentioned in \ref{f3} are called \textbf{identity elements} for addition and multiplication, respectively, and the elements \(c\) and \(d\) referred to in \ref{f4} are called an \textbf{additive inverse} for \(a\) and a \textbf{multiplicative inverse} for \(b\), respectively.
 \end{defn}
 
 \begin{eg}\label{c.0.2}
-  The set of real numbers \(\R\) with the usual definitions of addition and multiplication is a field.
+	The set of real numbers \(\R\) with the usual definitions of addition and multiplication is a field.
 \end{eg}
 
 \begin{eg}\label{c.0.3}
-  The set of rational numbers \(\Q\) with the usual definitions of addition and multiplication is a field.
+	The set of rational numbers \(\Q\) with the usual definitions of addition and multiplication is a field.
 \end{eg}
 
 \begin{eg}\label{c.0.4}
-  The field \(\Z_2\) consists of two elements \(0\) and \(1\) with the operations of addition and multiplication defined by the equations
-  \begin{align*}
-    0 + 0     & = 0             \\
-    0 + 1     & = 1 + 0 = 1     \\
-    1 + 1     & = 0             \\
-    0 \cdot 0 & = 0             \\
-    0 \cdot 1 & = 1 \cdot 0 = 0 \\
-    1 \cdot 1 & = 1.
-  \end{align*}
+	The field \(\Z_2\) consists of two elements \(0\) and \(1\) with the operations of addition and multiplication defined by the equations
+	\begin{align*}
+		0 + 0     & = 0             \\
+		0 + 1     & = 1 + 0 = 1     \\
+		1 + 1     & = 0             \\
+		0 \cdot 0 & = 0             \\
+		0 \cdot 1 & = 1 \cdot 0 = 0 \\
+		1 \cdot 1 & = 1.
+	\end{align*}
 \end{eg}
 
 \begin{thm}[Cancellation Laws]\label{c.1}
-  For arbitrary elements \(a\), \(b\), and \(c\) in a field, the following statements are true.
-  \begin{enumerate}
-    \item If \(a + b = c + b\), then \(a = c\).
-    \item If \(a \cdot b = c \cdot b\) and \(b \neq 0\), then \(a = c\).
-  \end{enumerate}
+	For arbitrary elements \(a\), \(b\), and \(c\) in a field, the following statements are true.
+	\begin{enumerate}
+		\item If \(a + b = c + b\), then \(a = c\).
+		\item If \(a \cdot b = c \cdot b\) and \(b \neq 0\), then \(a = c\).
+	\end{enumerate}
 \end{thm}
 
 \begin{proof}[\pf{c.1}(a)]
-  We have
-  \begin{align*}
-             & \exists d \in \F : b + d = 0 &  & \text{(by \ref{f4})}     \\
-    \implies & (a + b) + d = (c + b) + d    &  & \text{(by \cref{c.0.1})} \\
-    \implies & a + (b + d) = c + (b + d)    &  & \text{(by \ref{f2})}     \\
-    \implies & a + 0 = c + 0                &  & \text{(by \ref{f4})}     \\
-    \implies & a = c.                       &  & \text{(by \ref{f3})}
-  \end{align*}
+	We have
+	\begin{align*}
+		         & \exists d \in \F : b + d = 0 &  & \text{(by \ref{f4})} \\
+		\implies & (a + b) + d = (c + b) + d    &  & \by{c.0.1}           \\
+		\implies & a + (b + d) = c + (b + d)    &  & \text{(by \ref{f2})} \\
+		\implies & a + 0 = c + 0                &  & \text{(by \ref{f4})} \\
+		\implies & a = c.                       &  & \text{(by \ref{f3})}
+	\end{align*}
 \end{proof}
 
 \begin{proof}[\pf{c.1}(b)]
-  If \(b \neq 0\), then \ref{f4} guarantees the existence of an element \(d\) in the field such that \(b \cdot d = 1\).
-  Multiply both sides of the equality \(a \cdot b = c \cdot b\) by \(d\) to obtain \((a \cdot b) \cdot d = (c \cdot b) \cdot d\).
-  Consider the left side of this equality:
-  By \ref{f2} and \ref{f3}, we have
-  \[
-    (a \cdot b) \cdot d = a \cdot (b \cdot d) = a \cdot 1 = a.
-  \]
-  Similarly, the right side of the equality reduces to \(c\).
-  Thus \(a = c\).
+	If \(b \neq 0\), then \ref{f4} guarantees the existence of an element \(d\) in the field such that \(b \cdot d = 1\).
+	Multiply both sides of the equality \(a \cdot b = c \cdot b\) by \(d\) to obtain \((a \cdot b) \cdot d = (c \cdot b) \cdot d\).
+	Consider the left side of this equality:
+	By \ref{f2} and \ref{f3}, we have
+	\[
+		(a \cdot b) \cdot d = a \cdot (b \cdot d) = a \cdot 1 = a.
+	\]
+	Similarly, the right side of the equality reduces to \(c\).
+	Thus \(a = c\).
 \end{proof}
 
 \begin{cor}\label{c.0.5}
-  The elements \(0\) and \(1\) mentioned in \ref{f3}, and the elements \(c\) and \(d\) mentioned in \ref{f4}, are unique.
+	The elements \(0\) and \(1\) mentioned in \ref{f3}, and the elements \(c\) and \(d\) mentioned in \ref{f4}, are unique.
 \end{cor}
 
 \begin{proof}[\pf{c.0.5}]
-  Suppose that \(0' \in \F\) satisfies \(0' + a = a\) for each \(a \in \F\).
-  Since \(0 + a = a\) for each \(a \in \F\) , we have \(0' + a = 0 + a\) for each \(a \in \F\).
-  Thus \(0' = 0\) by \cref{c.1}.
-  The proofs of the remaining parts are similar.
+	Suppose that \(0' \in \F\) satisfies \(0' + a = a\) for each \(a \in \F\).
+	Since \(0 + a = a\) for each \(a \in \F\) , we have \(0' + a = 0 + a\) for each \(a \in \F\).
+	Thus \(0' = 0\) by \cref{c.1}.
+	The proofs of the remaining parts are similar.
 \end{proof}
 
 \begin{defn}\label{c.0.6}
-  The additive inverse and the multiplicative inverse of \(b\) are denoted by \(-b\) and \(b^{-1}\), respectively.
-  Note that \(-(-b) = b\) and \((b^{-1})^{-1} = b\).
+	The additive inverse and the multiplicative inverse of \(b\) are denoted by \(-b\) and \(b^{-1}\), respectively.
+	Note that \(-(-b) = b\) and \((b^{-1})^{-1} = b\).
 \end{defn}
 
 \begin{defn}\label{c.0.7}
-  \textbf{Subtraction} and \textbf{division} can be defined in terms of addition and multiplication by using the additive and multiplicative inverses.
-  Specifically, subtraction of \(b\) is defined to be addition of \(-b\) and division by \(b \neq 0\) is defined to be multiplication by \(b^{-1}\);
-  that is,
-  \[
-    a - b = a + (-b) \quad \text{and} \quad \frac{a}{b} = a \cdot b^{-1}.
-  \]
-  In particular, the symbol \(\frac{1}{b}\) denotes \(b^{-1}\).
-  Division by zero is undefined, but, with this exception, the sum, product, difference, and quotient of any two elements of a field are defined.
+	\textbf{Subtraction} and \textbf{division} can be defined in terms of addition and multiplication by using the additive and multiplicative inverses.
+	Specifically, subtraction of \(b\) is defined to be addition of \(-b\) and division by \(b \neq 0\) is defined to be multiplication by \(b^{-1}\);
+	that is,
+	\[
+		a - b = a + (-b) \quad \text{and} \quad \frac{a}{b} = a \cdot b^{-1}.
+	\]
+	In particular, the symbol \(\frac{1}{b}\) denotes \(b^{-1}\).
+	Division by zero is undefined, but, with this exception, the sum, product, difference, and quotient of any two elements of a field are defined.
 \end{defn}
 
 \begin{thm}\label{c.2}
-  Let \(a\) and \(b\) be arbitrary elements of a field.
-  Then each of the following statements are true.
-  \begin{enumerate}
-    \item \(a \cdot 0 = 0\).
-    \item \((-a) \cdot b = a \cdot (-b) = -(a \cdot b)\).
-    \item \((-a) \cdot (-b) = a \cdot b\).
-  \end{enumerate}
+	Let \(a\) and \(b\) be arbitrary elements of a field.
+	Then each of the following statements are true.
+	\begin{enumerate}
+		\item \(a \cdot 0 = 0\).
+		\item \((-a) \cdot b = a \cdot (-b) = -(a \cdot b)\).
+		\item \((-a) \cdot (-b) = a \cdot b\).
+	\end{enumerate}
 \end{thm}
 
 \begin{proof}[\pf{c.2}(a)]
-  Since \(0 + 0 = 0\), \ref{f5} shows that
-  \[
-    0 + a \cdot 0 = a \cdot 0 = a \cdot (0 + 0) = a \cdot 0 + a \cdot 0.
-  \]
-  Thus \(0 = a \cdot 0\) by \cref{c.1}.
+	Since \(0 + 0 = 0\), \ref{f5} shows that
+	\[
+		0 + a \cdot 0 = a \cdot 0 = a \cdot (0 + 0) = a \cdot 0 + a \cdot 0.
+	\]
+	Thus \(0 = a \cdot 0\) by \cref{c.1}.
 \end{proof}
 
 \begin{proof}[\pf{c.2}(b)]
-  By definition, \(-(a \cdot b)\) is the unique element of \(\F\) with the property \(a \cdot b + [-(a \cdot b)] = 0\).
-  So in order to prove that \((-a) \cdot b = -(a \cdot b)\), it suffices to show that \(a \cdot b + (-a) \cdot b = 0\).
-  But \(-a\) is the element of \(\F\) such that \(a + (-a) = 0\);
-  so
-  \[
-    a \cdot b + (-a) \cdot b = [a + (-a)] \cdot b = 0 \cdot b = b  \cdot 0 = 0
-  \]
-  by \ref{f5} and \cref{c.2}(a).
-  Thus \((-a) \cdot b = -(a \cdot b)\).
-  The proof that \(a \cdot (-b) = -(a \cdot b)\) is similar.
+	By definition, \(-(a \cdot b)\) is the unique element of \(\F\) with the property \(a \cdot b + [-(a \cdot b)] = 0\).
+	So in order to prove that \((-a) \cdot b = -(a \cdot b)\), it suffices to show that \(a \cdot b + (-a) \cdot b = 0\).
+	But \(-a\) is the element of \(\F\) such that \(a + (-a) = 0\);
+	so
+	\[
+		a \cdot b + (-a) \cdot b = [a + (-a)] \cdot b = 0 \cdot b = b  \cdot 0 = 0
+	\]
+	by \ref{f5} and \cref{c.2}(a).
+	Thus \((-a) \cdot b = -(a \cdot b)\).
+	The proof that \(a \cdot (-b) = -(a \cdot b)\) is similar.
 \end{proof}
 
 \begin{proof}[\pf{c.2}(c)]
-  By applying \cref{c.2}(b) twice, we find that
-  \[
-    (-a) \cdot (-b) = -[a \cdot (-b)] = -[-(a \cdot b)] = a \cdot b.
-  \]
+	By applying \cref{c.2}(b) twice, we find that
+	\[
+		(-a) \cdot (-b) = -[a \cdot (-b)] = -[-(a \cdot b)] = a \cdot b.
+	\]
 \end{proof}
 
 \begin{cor}\label{c.0.8}
-  The additive identity of a field has no multiplicative inverse.
+	The additive identity of a field has no multiplicative inverse.
 \end{cor}
 
 \begin{proof}[\pf{c.0.8}]
-  Suppose for sake of contradiction that \(0^{-1}\) exists.
-  But then we have
-  \begin{align*}
-    \forall a \in \F \setminus \set{1}, a & = a \cdot 1                &  & \text{(by \ref{f3})}      \\
-                                          & = a \cdot (0 \cdot 0^{-1}) &  & \text{(by \ref{f4})}      \\
-                                          & = (a \cdot 0) \cdot 0^{-1} &  & \text{(by \ref{f2})}      \\
-                                          & = 0 \cdot 0^{-1}           &  & \text{(by \cref{c.2}(a))} \\
-                                          & = 1,                       &  & \text{(by \ref{f4})}
-  \end{align*}
-  a contradiction.
-  Thus \(0^{-1}\) does not exist.
+	Suppose for sake of contradiction that \(0^{-1}\) exists.
+	But then we have
+	\begin{align*}
+		\forall a \in \F \setminus \set{1}, a & = a \cdot 1                &  & \text{(by \ref{f3})} \\
+		                                      & = a \cdot (0 \cdot 0^{-1}) &  & \text{(by \ref{f4})} \\
+		                                      & = (a \cdot 0) \cdot 0^{-1} &  & \text{(by \ref{f2})} \\
+		                                      & = 0 \cdot 0^{-1}           &  & \by{c.2}[a]          \\
+		                                      & = 1,                       &  & \text{(by \ref{f4})}
+	\end{align*}
+	a contradiction.
+	Thus \(0^{-1}\) does not exist.
 \end{proof}
 
 \begin{defn}\label{c.0.9}
-  In an arbitrary field \(\F\), it may happen that a sum \(1 + 1 + \cdots + 1\) (\(p\) summands) equals \(0\) for some positive integer \(p\).
-  For example, in the field \(\Z_2\) (defined in \cref{c.0.4}), \(1 + 1 = 0\).
-  In this case, the smallest positive integer \(p\) for which a sum of \(p\) \(1\)'s equals \(0\) is called the \textbf{characteristic} of \(\F\);
-  if no such positive integer exists, then \(\F\) is said to have \textbf{characteristic zero}.
-  Thus \(\Z_2\) has characteristic two, and \(\R\) has characteristic zero.
-  Observe that if \(\F\) is a field of characteristic \(p \neq 0\), then \(x + x + \cdots + x\) (\(p\) summands) equals \(0\) for all \(x \in \F\).
-  In a field having nonzero characteristic (especially characteristic two), many unnatural problems arise.
-  For this reason, some of the results about vector spaces stated in this book require that the field over which the vector space is defined be of characteristic zero (or, at least, of some characteristic other than two).
+	In an arbitrary field \(\F\), it may happen that a sum \(1 + 1 + \cdots + 1\) (\(p\) summands) equals \(0\) for some positive integer \(p\).
+	For example, in the field \(\Z_2\) (defined in \cref{c.0.4}), \(1 + 1 = 0\).
+	In this case, the smallest positive integer \(p\) for which a sum of \(p\) \(1\)'s equals \(0\) is called the \textbf{characteristic} of \(\F\);
+	if no such positive integer exists, then \(\F\) is said to have \textbf{characteristic zero}.
+	Thus \(\Z_2\) has characteristic two, and \(\R\) has characteristic zero.
+	Observe that if \(\F\) is a field of characteristic \(p \neq 0\), then \(x + x + \cdots + x\) (\(p\) summands) equals \(0\) for all \(x \in \F\).
+	In a field having nonzero characteristic (especially characteristic two), many unnatural problems arise.
+	For this reason, some of the results about vector spaces stated in this book require that the field over which the vector space is defined be of characteristic zero (or, at least, of some characteristic other than two).
 \end{defn}

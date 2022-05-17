@@ -1,1134 +1,1134 @@
 \section{The Adjoint of a Linear Operator}\label{sec:6.3}
 
 \begin{thm}\label{6.8}
-  Let \(\V\) be a finite-dimensional inner product space over \(\F\), and let \(g \in \ls(\V, \F)\).
-  Then there exists a unique vector \(y \in \V\) such that \(g(x) = \inn{x, y}\) for all \(x \in \V\).
+	Let \(\V\) be a finite-dimensional inner product space over \(\F\), and let \(g \in \ls(\V, \F)\).
+	Then there exists a unique vector \(y \in \V\) such that \(g(x) = \inn{x, y}\) for all \(x \in \V\).
 \end{thm}
 
 \begin{proof}[\pf{6.8}]
-  Let \(\beta = \set{\seq{v}{1,,n}}\) be an orthonormal basis for \(\V\) over \(\F\), and let
-  \[
-    y = \sum_{i = 1}^n \conj{g(v_i)} v_i.
-  \]
-  Define \(h : \V \to \F\) by \(h(x) = \inn{x, y}\), which is clearly linear (by \cref{6.1.1}(a)(b)).
-  Furthermore, for \(j \in \set{1, \dots, n}\) we have
-  \begin{align*}
-    h(v_j) & = \inn{v_j, y}                                                                  \\
-           & = \inn{v_j, \sum_{i = 1}^n \conj{g(v_i)} v_i}                                   \\
-           & = \sum_{i = 1}^n g(v_i) \inn{v_j, v_i}        &  & \text{(by \cref{6.1}(a)(b))} \\
-           & = \sum_{i = 1}^n g(v_i) \delta_{j i}          &  & \text{(by \cref{6.1.12})}    \\
-           & = g(v_j).
-  \end{align*}
-  Since \(g\) and \(h\) both agree on \(\beta\), we have that \(g = h\) by \cref{2.1.13}.
-  To show that \(y\) is unique, suppose that \(g(x) = \inn{x, y'}\) for all \(x \in \V\).
-  Then \(\inn{x, y} = \inn{x, y'}\) for all \(x \in \V\);
-  so by \cref{6.1}(e), we have \(y = y'\).
+	Let \(\beta = \set{\seq{v}{1,,n}}\) be an orthonormal basis for \(\V\) over \(\F\), and let
+	\[
+		y = \sum_{i = 1}^n \conj{g(v_i)} v_i.
+	\]
+	Define \(h : \V \to \F\) by \(h(x) = \inn{x, y}\), which is clearly linear (by \cref{6.1.1}(a)(b)).
+	Furthermore, for \(j \in \set{1, \dots, n}\) we have
+	\begin{align*}
+		h(v_j) & = \inn{v_j, y}                                                  \\
+		       & = \inn{v_j, \sum_{i = 1}^n \conj{g(v_i)} v_i}                   \\
+		       & = \sum_{i = 1}^n g(v_i) \inn{v_j, v_i}        &  & \by{6.1}[ab] \\
+		       & = \sum_{i = 1}^n g(v_i) \delta_{j i}          &  & \by{6.1.12}  \\
+		       & = g(v_j).
+	\end{align*}
+	Since \(g\) and \(h\) both agree on \(\beta\), we have that \(g = h\) by \cref{2.1.13}.
+	To show that \(y\) is unique, suppose that \(g(x) = \inn{x, y'}\) for all \(x \in \V\).
+	Then \(\inn{x, y} = \inn{x, y'}\) for all \(x \in \V\);
+	so by \cref{6.1}(e), we have \(y = y'\).
 \end{proof}
 
 \begin{thm}\label{6.9}
-  Let \(\V\) be a finite-dimensional inner product space over \(\F\), and let \(\T \in \ls(\V)\).
-  Then there exists a unique \(\T^* \in \ls(\V)\) such that \(\inn{\T(x), y} = \inn{x, \T^*(y)}\) for all \(x, y \in \V\).
-  \(\T^*\) is called the \textbf{adjoint} of the operator \(\T\).
-  The symbol \(\T^*\) is read ``\(\T\) star.''
+	Let \(\V\) be a finite-dimensional inner product space over \(\F\), and let \(\T \in \ls(\V)\).
+	Then there exists a unique \(\T^* \in \ls(\V)\) such that \(\inn{\T(x), y} = \inn{x, \T^*(y)}\) for all \(x, y \in \V\).
+	\(\T^*\) is called the \textbf{adjoint} of the operator \(\T\).
+	The symbol \(\T^*\) is read ``\(\T\) star.''
 \end{thm}
 
 \begin{proof}[\pf{6.9}]
-  Let \(y \in \V\).
-  Define \(g : \V \to \F\) by \(g(x) = \inn{\T(x), y}\) for all \(x \in \V\).
-  We first show that \(g\) is linear.
-  Let \(x_1, x_2 \in \V\) and \(c \in \F\).
-  Then
-  \begin{align*}
-    g(c x_1 + x_2) & = \inn{\T(c x_1 + x_2), y}                                                  \\
-                   & = \inn{c \T(x_1) + \T(x_2), y}          &  & \text{(by \cref{2.1.2}(b))}    \\
-                   & = c \inn{\T(x_1), y} + \inn{\T(x_2), y} &  & \text{(by \cref{6.1.1}(a)(b))} \\
-                   & = c g(x_1) + g(x_2).
-  \end{align*}
-  Hence by \cref{2.1.2}(b) \(g \in \ls(\V, \F)\).
+	Let \(y \in \V\).
+	Define \(g : \V \to \F\) by \(g(x) = \inn{\T(x), y}\) for all \(x \in \V\).
+	We first show that \(g\) is linear.
+	Let \(x_1, x_2 \in \V\) and \(c \in \F\).
+	Then
+	\begin{align*}
+		g(c x_1 + x_2) & = \inn{\T(c x_1 + x_2), y}                                  \\
+		               & = \inn{c \T(x_1) + \T(x_2), y}          &  & \by{2.1.2}[b]  \\
+		               & = c \inn{\T(x_1), y} + \inn{\T(x_2), y} &  & \by{6.1.1}[ab] \\
+		               & = c g(x_1) + g(x_2).
+	\end{align*}
+	Hence by \cref{2.1.2}(b) \(g \in \ls(\V, \F)\).
 
-  We now apply \cref{6.8} to obtain a unique vector \(y' \in \V\) such that \(g(x) = \inn{x, y'}\);
-  that is, \(\inn{\T(x), y} = \inn{x, y'}\) for all \(x \in \V\).
-  Defining \(\T^* : \V \to \V\) by \(\T^*(y) = y'\), we have \(\inn{\T(x), y} = \inn{x, \T^*(y)}\).
+	We now apply \cref{6.8} to obtain a unique vector \(y' \in \V\) such that \(g(x) = \inn{x, y'}\);
+	that is, \(\inn{\T(x), y} = \inn{x, y'}\) for all \(x \in \V\).
+	Defining \(\T^* : \V \to \V\) by \(\T^*(y) = y'\), we have \(\inn{\T(x), y} = \inn{x, \T^*(y)}\).
 
-  To show that \(\T^*\) is linear, let \(y_1, y_2 \in \V\) and \(c \in \F\).
-  Then for any \(x \in \V\),
-  we have
-  \begin{align*}
-    \inn{x, \T^*(c y_1 + y_2)} & = \inn{\T(x), c y_1 + y_2}                                                           \\
-                               & = \conj{c} \inn{\T(x), y_1} + \inn{\T(x), y_2}     &  & \text{(by \cref{6.1}(a)(b))} \\
-                               & = \conj{c} \inn{x, \T^*(y_1)} + \inn{x, \T^*(y_2)}                                   \\
-                               & = \inn{x, c \T^*(y_1) + \T^*(y_2)}.                &  & \text{(by \cref{6.1}(a)(b))}
-  \end{align*}
-  Since \(x\) is arbitrary, \(\T^*(c y_1 + y_2) = c \T^*(y_1) + \T^*(y_2)\) by \cref{6.1}(e).
+	To show that \(\T^*\) is linear, let \(y_1, y_2 \in \V\) and \(c \in \F\).
+	Then for any \(x \in \V\),
+	we have
+	\begin{align*}
+		\inn{x, \T^*(c y_1 + y_2)} & = \inn{\T(x), c y_1 + y_2}                                           \\
+		                           & = \conj{c} \inn{\T(x), y_1} + \inn{\T(x), y_2}     &  & \by{6.1}[ab] \\
+		                           & = \conj{c} \inn{x, \T^*(y_1)} + \inn{x, \T^*(y_2)}                   \\
+		                           & = \inn{x, c \T^*(y_1) + \T^*(y_2)}.                &  & \by{6.1}[ab]
+	\end{align*}
+	Since \(x\) is arbitrary, \(\T^*(c y_1 + y_2) = c \T^*(y_1) + \T^*(y_2)\) by \cref{6.1}(e).
 
-  Finally, we need to show that \(\T^*\) is unique. Suppose that \(\U \in \ls(\V)\) and that it satisfies \(\inn{\T(x), y} = \inn{x, \U(y)}\) for all \(x, y \in \V\).
-  Then \(\inn{x, \T^*(y)} = \inn{x, \U(y)}\) for all \(x, y \in \V\), so \(\T^* = \U\).
+	Finally, we need to show that \(\T^*\) is unique. Suppose that \(\U \in \ls(\V)\) and that it satisfies \(\inn{\T(x), y} = \inn{x, \U(y)}\) for all \(x, y \in \V\).
+	Then \(\inn{x, \T^*(y)} = \inn{x, \U(y)}\) for all \(x, y \in \V\), so \(\T^* = \U\).
 \end{proof}
 
 \begin{note}
-  Thus by \cref{6.9} \(\T^*\) is the unique operator on \(\V\) satisfying \(\inn{\T(x), y} = \inn{x, \T^*(y)}\) for all \(x, y \in \V\).
-  Note that we also have
-  \begin{align*}
-    \inn{x, \T(y)} & = \conj{\inn{\T(y), x}}   &  & \text{(by \cref{6.1.1}(c))} \\
-                   & = \conj{\inn{y, \T^*(x)}} &  & \text{(by \cref{6.9})}      \\
-                   & = \inn{\T^*(x), y};       &  & \text{(by \cref{6.1.1}(c))}
-  \end{align*}
-  so \(\inn{x, \T(y)} = \inn{\T^*(x), y}\) for all \(x, y \in \V\).
-  We may view these equations symbolically as adding a \(*\) to \(\T\) when shifting its position inside the inner product symbol.
+	Thus by \cref{6.9} \(\T^*\) is the unique operator on \(\V\) satisfying \(\inn{\T(x), y} = \inn{x, \T^*(y)}\) for all \(x, y \in \V\).
+	Note that we also have
+	\begin{align*}
+		\inn{x, \T(y)} & = \conj{\inn{\T(y), x}}   &  & \by{6.1.1}[c] \\
+		               & = \conj{\inn{y, \T^*(x)}} &  & \by{6.9}      \\
+		               & = \inn{\T^*(x), y};       &  & \by{6.1.1}[c]
+	\end{align*}
+	so \(\inn{x, \T(y)} = \inn{\T^*(x), y}\) for all \(x, y \in \V\).
+	We may view these equations symbolically as adding a \(*\) to \(\T\) when shifting its position inside the inner product symbol.
 \end{note}
 
 \begin{note}
-  For an infinite-dimensional inner product space, the adjoint of a linear operator \(\T\) may be defined to be the function \(\T^*\) such that \(\inn{\T(x), y} = \inn{x, \T^*(y)}\) for all \(x, y \in \V\), provided it exists.
-  Although the uniqueness and linearity of \(\T^*\) follow as before, the existence of the adjoint is not guaranteed (see \cref{ex:6.3.24}).
-  The reader should observe the necessity of the hypothesis of finite-dimensionality in the proof of \cref{6.8}.
-  Many of the theorems we prove about adjoints, nevertheless, do not depend on \(\V\) being finite-dimensional.
-  \emph{Thus, unless stated otherwise, for the remainder of this chapter we adopt the convention that a reference to the adjoint of a linear operator on an infinite-dimensional inner product space assumes its existence}.
+	For an infinite-dimensional inner product space, the adjoint of a linear operator \(\T\) may be defined to be the function \(\T^*\) such that \(\inn{\T(x), y} = \inn{x, \T^*(y)}\) for all \(x, y \in \V\), provided it exists.
+	Although the uniqueness and linearity of \(\T^*\) follow as before, the existence of the adjoint is not guaranteed (see \cref{ex:6.3.24}).
+	The reader should observe the necessity of the hypothesis of finite-dimensionality in the proof of \cref{6.8}.
+	Many of the theorems we prove about adjoints, nevertheless, do not depend on \(\V\) being finite-dimensional.
+	\emph{Thus, unless stated otherwise, for the remainder of this chapter we adopt the convention that a reference to the adjoint of a linear operator on an infinite-dimensional inner product space assumes its existence}.
 \end{note}
 
 \begin{thm}\label{6.10}
-  Let \(\V\) be a finite-dimensional inner product space over \(\F\), and let \(\beta\) be an orthonormal basis for \(\V\) over \(\F\).
-  If \(\T \in \ls(\V)\), then
-  \[
-    [\T^*]_{\beta} = [\T]_{\beta}^*.
-  \]
+	Let \(\V\) be a finite-dimensional inner product space over \(\F\), and let \(\beta\) be an orthonormal basis for \(\V\) over \(\F\).
+	If \(\T \in \ls(\V)\), then
+	\[
+		[\T^*]_{\beta} = [\T]_{\beta}^*.
+	\]
 \end{thm}
 
 \begin{proof}[\pf{6.10}]
-  Let \(A = [\T]_{\beta}\), \(B = [\T^*]_{\beta}\), and \(\beta = \set{\seq{v}{1,,n}}\).
-  Then we have
-  \begin{align*}
-    \forall i, j \in \set{1, \dots, n}, B_{i j} & = \inn{\T^*(v_j), v_i}        &  & \text{(by \cref{6.2.6})}    \\
-                                                & = \conj{\inn{v_i, \T^*(v_j)}} &  & \text{(by \cref{6.1.1}(c))} \\
-                                                & = \conj{\inn{\T(v_i), v_j}}   &  & \text{(by \cref{6.9})}      \\
-                                                & = \conj{A_{j i}}              &  & \text{(by \cref{6.2.6})}    \\
-                                                & = (A^*)_{i j}.                &  & \text{(by \cref{6.1.5})}
-  \end{align*}
-  Hence \(B = A^*\).
+	Let \(A = [\T]_{\beta}\), \(B = [\T^*]_{\beta}\), and \(\beta = \set{\seq{v}{1,,n}}\).
+	Then we have
+	\begin{align*}
+		\forall i, j \in \set{1, \dots, n}, B_{i j} & = \inn{\T^*(v_j), v_i}        &  & \by{6.2.6}    \\
+		                                            & = \conj{\inn{v_i, \T^*(v_j)}} &  & \by{6.1.1}[c] \\
+		                                            & = \conj{\inn{\T(v_i), v_j}}   &  & \by{6.9}      \\
+		                                            & = \conj{A_{j i}}              &  & \by{6.2.6}    \\
+		                                            & = (A^*)_{i j}.                &  & \by{6.1.5}
+	\end{align*}
+	Hence \(B = A^*\).
 \end{proof}
 
 \begin{cor}\label{6.3.1}
-  Let \(A \in \ms{n}{n}{\F}\).
-  Then \(\L_{A^*} = (\L_A)^*\).
+	Let \(A \in \ms{n}{n}{\F}\).
+	Then \(\L_{A^*} = (\L_A)^*\).
 \end{cor}
 
 \begin{proof}[\pf{6.3.1}]
-  If \(\beta\) is the standard ordered basis for \(\vs{F}^n\), then, by \cref{2.15}(a), we have \([\L_A]_{\beta} = A\).
-  Hence \([(\L_A)^*]_{\beta} = [\L_A]_{\beta}^* = A^* = [\L_{A^*}]_{\beta}\), and so \((\L_A)^* = \L_{A^*}\).
+	If \(\beta\) is the standard ordered basis for \(\vs{F}^n\), then, by \cref{2.15}(a), we have \([\L_A]_{\beta} = A\).
+	Hence \([(\L_A)^*]_{\beta} = [\L_A]_{\beta}^* = A^* = [\L_{A^*}]_{\beta}\), and so \((\L_A)^* = \L_{A^*}\).
 \end{proof}
 
 \begin{thm}\label{6.11}
-  Let \(\V\) be an inner product space over \(\F\) and let \(\T, \U \in \ls(\V)\).
-  Then
-  \begin{enumerate}
-    \item \((\T + \U)^* = \T^* + \U^*\);
-    \item \((c \T)^* = \conj{c} \T^*\) for any \(c \in \F\);
-    \item \((\T \U)^* = \U^* \T^*\);
-    \item \(\T^{**} = \T\);
-    \item \(\IT[\V]^* = \IT[\V]\).
-  \end{enumerate}
+	Let \(\V\) be an inner product space over \(\F\) and let \(\T, \U \in \ls(\V)\).
+	Then
+	\begin{enumerate}
+		\item \((\T + \U)^* = \T^* + \U^*\);
+		\item \((c \T)^* = \conj{c} \T^*\) for any \(c \in \F\);
+		\item \((\T \U)^* = \U^* \T^*\);
+		\item \(\T^{**} = \T\);
+		\item \(\IT[\V]^* = \IT[\V]\).
+	\end{enumerate}
 \end{thm}
 
 \begin{proof}[\pf{6.11}(a)]
-  Since
-  \begin{align*}
-    \forall x, y \in \V, \inn{x, (\T + \U)^*(y)} & = \inn{(\T + \U)(x), y}               &  & \text{(by \cref{6.9})}      \\
-                                                 & = \inn{\T(x) + \U(x), y}              &  & \text{(by \cref{2.2.5})}    \\
-                                                 & = \inn{\T(x), y} + \inn{\U(x), y}     &  & \text{(by \cref{6.1.1}(a))} \\
-                                                 & = \inn{x, \T^*(y)} + \inn{x, \U^*(y)} &  & \text{(by \cref{6.9})}      \\
-                                                 & = \inn{x, \T^*(y) + \U^*(y)}          &  & \text{(by \cref{6.1}(a))}   \\
-                                                 & = \inn{x, (\T^* + \U^*)(y)},          &  & \text{(by \cref{2.2.5})}
-  \end{align*}
-  by \cref{6.1}(e) we know that \(\T^* + \U^* = (\T + \U)^*\).
+	Since
+	\begin{align*}
+		\forall x, y \in \V, \inn{x, (\T + \U)^*(y)} & = \inn{(\T + \U)(x), y}               &  & \by{6.9}      \\
+		                                             & = \inn{\T(x) + \U(x), y}              &  & \by{2.2.5}    \\
+		                                             & = \inn{\T(x), y} + \inn{\U(x), y}     &  & \by{6.1.1}[a] \\
+		                                             & = \inn{x, \T^*(y)} + \inn{x, \U^*(y)} &  & \by{6.9}      \\
+		                                             & = \inn{x, \T^*(y) + \U^*(y)}          &  & \by{6.1}[a]   \\
+		                                             & = \inn{x, (\T^* + \U^*)(y)},          &  & \by{2.2.5}
+	\end{align*}
+	by \cref{6.1}(e) we know that \(\T^* + \U^* = (\T + \U)^*\).
 \end{proof}
 
 \begin{proof}[\pf{6.11}(b)]
-  Since
-  \begin{align*}
-    \forall x, y \in \V, \inn{x, (c \T)^*(y)} & = \inn{(c \T)(x), y}           &  & \text{(by \cref{6.9})}      \\
-                                              & = \inn{c \T(x), y}             &  & \text{(by \cref{2.2.5})}    \\
-                                              & = c \inn{\T(x), y}             &  & \text{(by \cref{6.1.1}(b))} \\
-                                              & = c \inn{x, \T^*(y)}           &  & \text{(by \cref{6.9})}      \\
-                                              & = \inn{x, \conj{c} \T^*(y)}    &  & \text{(by \cref{6.1}(b))}   \\
-                                              & = \inn{x, (\conj{c} \T^*)(y)}, &  & \text{(by \cref{2.2.5})}
-  \end{align*}
-  by \cref{6.1}(e) we know that \((c \T)^* = \conj{c} \T^*\).
+	Since
+	\begin{align*}
+		\forall x, y \in \V, \inn{x, (c \T)^*(y)} & = \inn{(c \T)(x), y}           &  & \by{6.9}      \\
+		                                          & = \inn{c \T(x), y}             &  & \by{2.2.5}    \\
+		                                          & = c \inn{\T(x), y}             &  & \by{6.1.1}[b] \\
+		                                          & = c \inn{x, \T^*(y)}           &  & \by{6.9}      \\
+		                                          & = \inn{x, \conj{c} \T^*(y)}    &  & \by{6.1}[b]   \\
+		                                          & = \inn{x, (\conj{c} \T^*)(y)}, &  & \by{2.2.5}
+	\end{align*}
+	by \cref{6.1}(e) we know that \((c \T)^* = \conj{c} \T^*\).
 \end{proof}
 
 \begin{proof}[\pf{6.11}(c)]
-  Since
-  \begin{align*}
-    \forall x, y \in \V, \inn{x, (\T \U)^*(y)} & = \inn{(\T \U)(x), y}      &  & \text{(by \cref{6.9})} \\
-                                               & = \inn{\T(\U(x)), y}                                   \\
-                                               & = \inn{\U(x), \T^*(y)}     &  & \text{(by \cref{6.9})} \\
-                                               & = \inn{x, \U^*(\T^*(y))}   &  & \text{(by \cref{6.9})} \\
-                                               & = \inn{x, (\U^* \T^*)(y)},
-  \end{align*}
-  by \cref{6.1}(e) we know that \((\T \U)^* = \U^* \T^*\).
+	Since
+	\begin{align*}
+		\forall x, y \in \V, \inn{x, (\T \U)^*(y)} & = \inn{(\T \U)(x), y}      &  & \by{6.9} \\
+		                                           & = \inn{\T(\U(x)), y}                     \\
+		                                           & = \inn{\U(x), \T^*(y)}     &  & \by{6.9} \\
+		                                           & = \inn{x, \U^*(\T^*(y))}   &  & \by{6.9} \\
+		                                           & = \inn{x, (\U^* \T^*)(y)},
+	\end{align*}
+	by \cref{6.1}(e) we know that \((\T \U)^* = \U^* \T^*\).
 \end{proof}
 
 \begin{proof}[\pf{6.11}(d)]
-  Since
-  \begin{align*}
-    \forall x, y \in \V, \inn{x, \T(y)} & = \inn{\T^*(x), y}     &  & \text{(by \cref{6.9})} \\
-                                        & = \inn{x, \T^{**}(y)}, &  & \text{(by \cref{6.9})}
-  \end{align*}
-  by \cref{6.1}(e) we know that \(\T^{**} = \T\).
+	Since
+	\begin{align*}
+		\forall x, y \in \V, \inn{x, \T(y)} & = \inn{\T^*(x), y}     &  & \by{6.9} \\
+		                                    & = \inn{x, \T^{**}(y)}, &  & \by{6.9}
+	\end{align*}
+	by \cref{6.1}(e) we know that \(\T^{**} = \T\).
 \end{proof}
 
 \begin{proof}[\pf{6.11}(e)]
-  Since
-  \begin{align*}
-    \forall x, y \in \V, \inn{x, \IT[\V](y)} & = \inn{x, y}             &  & \text{(by \cref{2.1.9})} \\
-                                             & = \inn{\IT[\V](x), y}    &  & \text{(by \cref{2.1.9})} \\
-                                             & = \inn{x, \IT[\V]^*(y)}, &  & \text{(by \cref{6.9})}
-  \end{align*}
-  by \cref{6.1}(e) we know that \(\IT[\V]^* = \IT[\V]\).
+	Since
+	\begin{align*}
+		\forall x, y \in \V, \inn{x, \IT[\V](y)} & = \inn{x, y}             &  & \by{2.1.9} \\
+		                                         & = \inn{\IT[\V](x), y}    &  & \by{2.1.9} \\
+		                                         & = \inn{x, \IT[\V]^*(y)}, &  & \by{6.9}
+	\end{align*}
+	by \cref{6.1}(e) we know that \(\IT[\V]^* = \IT[\V]\).
 \end{proof}
 
 \begin{note}
-  The same proof works for \cref{6.11} in the infinite-dimensional case, provided that the existence of \(\T^*\) and \(\U^*\) is assumed.
+	The same proof works for \cref{6.11} in the infinite-dimensional case, provided that the existence of \(\T^*\) and \(\U^*\) is assumed.
 \end{note}
 
 \begin{cor}\label{6.3.2}
-  Let \(A, B \in \ms{n}{n}{\F}\).
-  Then
-  \begin{enumerate}
-    \item \((A + B)^* = A^* + B^*\);
-    \item \((cA)^* = \conj{c} A^*\) for all \(c \in \F\).
-    \item \((AB)^* = B^* A^*\);
-    \item \(A^{**} = A\);
-    \item \(I_n^* = I_n\).
-  \end{enumerate}
+	Let \(A, B \in \ms{n}{n}{\F}\).
+	Then
+	\begin{enumerate}
+		\item \((A + B)^* = A^* + B^*\);
+		\item \((cA)^* = \conj{c} A^*\) for all \(c \in \F\).
+		\item \((AB)^* = B^* A^*\);
+		\item \(A^{**} = A\);
+		\item \(I_n^* = I_n\).
+	\end{enumerate}
 \end{cor}
 
 \begin{proof}[\pf{6.3.2}(a)]
-  Since
-  \begin{align*}
-    \L_{(A + B)^*} & = (\L_{A + B})^*      &  & \text{(by \cref{6.3.1})}   \\
-                   & = (\L_A + \L_B)^*     &  & \text{(by \cref{2.15}(c))} \\
-                   & = (\L_A)^* + (\L_B)^* &  & \text{(by \cref{6.11}(a))} \\
-                   & = \L_{A^*} + \L_{B^*} &  & \text{(by \cref{6.3.1})}   \\
-                   & = \L_{A^* + B^*},     &  & \text{(by \cref{2.15}(c))}
-  \end{align*}
-  by \cref{2.15}(b) we have \((A + B)^* = A^* + B^*\).
+	Since
+	\begin{align*}
+		\L_{(A + B)^*} & = (\L_{A + B})^*      &  & \by{6.3.1}   \\
+		               & = (\L_A + \L_B)^*     &  & \by{2.15}[c] \\
+		               & = (\L_A)^* + (\L_B)^* &  & \by{6.11}[a] \\
+		               & = \L_{A^*} + \L_{B^*} &  & \by{6.3.1}   \\
+		               & = \L_{A^* + B^*},     &  & \by{2.15}[c]
+	\end{align*}
+	by \cref{2.15}(b) we have \((A + B)^* = A^* + B^*\).
 \end{proof}
 
 \begin{proof}[\pf{6.3.2}(b)]
-  Since
-  \begin{align*}
-    \L_{(cA)^*} & = (\L_{cA})^*        &  & \text{(by \cref{6.3.1})}   \\
-                & = (c \L_A)^*         &  & \text{(by \cref{2.15}(c))} \\
-                & = \conj{c} (\L_A)^*  &  & \text{(by \cref{6.11}(b))} \\
-                & = \conj{c} \L_{A^*}  &  & \text{(by \cref{6.3.1})}   \\
-                & = \L_{\conj{c} A^*}, &  & \text{(by \cref{2.15}(c))}
-  \end{align*}
-  by \cref{2.15}(b) we have \((cA)^* = \conj{c} A^*\).
+	Since
+	\begin{align*}
+		\L_{(cA)^*} & = (\L_{cA})^*        &  & \by{6.3.1}   \\
+		            & = (c \L_A)^*         &  & \by{2.15}[c] \\
+		            & = \conj{c} (\L_A)^*  &  & \by{6.11}[b] \\
+		            & = \conj{c} \L_{A^*}  &  & \by{6.3.1}   \\
+		            & = \L_{\conj{c} A^*}, &  & \by{2.15}[c]
+	\end{align*}
+	by \cref{2.15}(b) we have \((cA)^* = \conj{c} A^*\).
 \end{proof}
 
 \begin{proof}[\pf{6.3.2}(c)]
-  Since
-  \begin{align*}
-    \L_{(AB)^*} & = (\L_{AB})^*       &  & \text{(by \cref{6.3.1})}   \\
-                & = (\L_A \L_B)^*     &  & \text{(by \cref{2.15}(e))} \\
-                & = (\L_B)^* (\L_A)^* &  & \text{(by \cref{6.11}(c))} \\
-                & = \L_{B^*} \L_{A^*} &  & \text{(by \cref{6.3.1})}   \\
-                & = \L_{B^* A^*},     &  & \text{(by \cref{2.15}(e))}
-  \end{align*}
-  by \cref{2.15}(b) we have \((AB)^* = B^* A^*\).
+	Since
+	\begin{align*}
+		\L_{(AB)^*} & = (\L_{AB})^*       &  & \by{6.3.1}   \\
+		            & = (\L_A \L_B)^*     &  & \by{2.15}[e] \\
+		            & = (\L_B)^* (\L_A)^* &  & \by{6.11}[c] \\
+		            & = \L_{B^*} \L_{A^*} &  & \by{6.3.1}   \\
+		            & = \L_{B^* A^*},     &  & \by{2.15}[e]
+	\end{align*}
+	by \cref{2.15}(b) we have \((AB)^* = B^* A^*\).
 \end{proof}
 
 \begin{proof}[\pf{6.3.2}(d)]
-  Since
-  \begin{align*}
-    \L_A & = (\L_A)^{**}  &  & \text{(by \cref{6.11}(d))} \\
-         & = (\L_{A^*})^* &  & \text{(by \cref{6.3.1})}   \\
-         & = \L_{A^{**}}, &  & \text{(by \cref{6.3.1})}
-  \end{align*}
-  by \cref{2.15}(b) we have \(A = A^{**}\).
+	Since
+	\begin{align*}
+		\L_A & = (\L_A)^{**}  &  & \by{6.11}[d] \\
+		     & = (\L_{A^*})^* &  & \by{6.3.1}   \\
+		     & = \L_{A^{**}}, &  & \by{6.3.1}
+	\end{align*}
+	by \cref{2.15}(b) we have \(A = A^{**}\).
 \end{proof}
 
 \begin{proof}[\pf{6.3.2}(e)]
-  Since
-  \begin{align*}
-    \L_{I_n} & = \IT[\vs{F}^n]   &  & \text{(by \cref{2.15}(f))} \\
-             & = \IT[\vs{F}^n]^* &  & \text{(by \cref{6.11}(e))} \\
-             & = (\L_{I_n})^*    &  & \text{(by \cref{2.15}(f))} \\
-             & = \L_{I_n^*},     &  & \text{(by \cref{6.3.1})}
-  \end{align*}
-  by \cref{2.15}(b) we have \(I_n = I_n^*\).
+	Since
+	\begin{align*}
+		\L_{I_n} & = \IT[\vs{F}^n]   &  & \by{2.15}[f] \\
+		         & = \IT[\vs{F}^n]^* &  & \by{6.11}[e] \\
+		         & = (\L_{I_n})^*    &  & \by{2.15}[f] \\
+		         & = \L_{I_n^*},     &  & \by{6.3.1}
+	\end{align*}
+	by \cref{2.15}(b) we have \(I_n = I_n^*\).
 \end{proof}
 
 \begin{defn}\label{6.3.3}
-  For \(x, y \in \vs{F}^n\), let \(\inn{x, y}_n\) denote the standard inner product of \(x\) and \(y\) in \(\vs{F}^n\).
-  Recall that if \(x\) and \(y\) are regarded as column vectors, then \(\inn{x, y}_n = y^* x\).
+	For \(x, y \in \vs{F}^n\), let \(\inn{x, y}_n\) denote the standard inner product of \(x\) and \(y\) in \(\vs{F}^n\).
+	Recall that if \(x\) and \(y\) are regarded as column vectors, then \(\inn{x, y}_n = y^* x\).
 \end{defn}
 
 \begin{lem}\label{6.3.4}
-  Let \(A \in \MS\), \(x \in \vs{F}^n\), and \(y \in \vs{F}^m\).
-  Then
-  \[
-    \inn{Ax, y}_m = \inn{x, A^* y}_n.
-  \]
+	Let \(A \in \MS\), \(x \in \vs{F}^n\), and \(y \in \vs{F}^m\).
+	Then
+	\[
+		\inn{Ax, y}_m = \inn{x, A^* y}_n.
+	\]
 \end{lem}
 
 \begin{proof}[\pf{6.3.4}]
-  We have
-  \begin{align*}
-    \inn{Ax, y}_m & = y^* (Ax)          &  & \text{(by \cref{6.3.3})}          \\
-                  & = (y^* A) x         &  & \text{(by \cref{2.16})}           \\
-                  & = (A^* y)^* x       &  & \text{(by \cref{ex:6.3.5}(c)(d))} \\
-                  & = \inn{x, A^* y}_n. &  & \text{(by \cref{6.3.3})}
-  \end{align*}
+	We have
+	\begin{align*}
+		\inn{Ax, y}_m & = y^* (Ax)          &  & \by{6.3.3}        \\
+		              & = (y^* A) x         &  & \by{2.16}         \\
+		              & = (A^* y)^* x       &  & \by{ex:6.3.5}[cd] \\
+		              & = \inn{x, A^* y}_n. &  & \by{6.3.3}
+	\end{align*}
 \end{proof}
 
 \begin{lem}\label{6.3.5}
-  Let \(A \in \MS\).
-  Then \(\rk{A^* A} = \rk{A}\).
+	Let \(A \in \MS\).
+	Then \(\rk{A^* A} = \rk{A}\).
 \end{lem}
 
 \begin{proof}[\pf{6.3.5}]
-  By the dimension theorem (\cref{2.3}), we need only show that, for \(x \in \vs{F}^n\), we have \(A^* Ax = \zv\) iff \(Ax = \zv\).
-  Clearly, \(Ax = \zv\) implies that \(A^* Ax = \zv\).
-  So assume that \(A^* Ax = \zv\).
-  Then
-  \begin{align*}
-    0 & = \inn{A^* Ax, x}_n    &  & \text{(by \cref{6.1}(c))}      \\
-      & = \inn{Ax, A^{**} x}_m &  & \text{(by \cref{6.3.4})}       \\
-      & = \inn{Ax, Ax}_m,      &  & \text{(by \cref{ex:6.3.5}(d))}
-  \end{align*}
-  so that \(Ax = \zv\) by \cref{6.1}(d).
+	By the dimension theorem (\cref{2.3}), we need only show that, for \(x \in \vs{F}^n\), we have \(A^* Ax = \zv\) iff \(Ax = \zv\).
+	Clearly, \(Ax = \zv\) implies that \(A^* Ax = \zv\).
+	So assume that \(A^* Ax = \zv\).
+	Then
+	\begin{align*}
+		0 & = \inn{A^* Ax, x}_n    &  & \by{6.1}[c]      \\
+		  & = \inn{Ax, A^{**} x}_m &  & \by{6.3.4}       \\
+		  & = \inn{Ax, Ax}_m,      &  & \by{ex:6.3.5}[d]
+	\end{align*}
+	so that \(Ax = \zv\) by \cref{6.1}(d).
 \end{proof}
 
 \begin{cor}\label{6.3.6}
-  If \(A \in \MS\) such that \(\rk{A} = n\), then \(A^* A\) is invertible.
+	If \(A \in \MS\) such that \(\rk{A} = n\), then \(A^* A\) is invertible.
 \end{cor}
 
 \begin{proof}[\pf{6.3.6}]
-  By \cref{6.3.5} we have \(n = \rk{A} = \rk{A^* A}\).
-  Since \(A^* A \in \ms{n}{n}{\F}\), by \cref{3.2.2} we know that \(A^* A\) is invertible.
+	By \cref{6.3.5} we have \(n = \rk{A} = \rk{A^* A}\).
+	Since \(A^* A \in \ms{n}{n}{\F}\), by \cref{3.2.2} we know that \(A^* A\) is invertible.
 \end{proof}
 
 \begin{thm}\label{6.12}
-  Let \(A \in \MS\) and \(y \in \vs{F}^m\).
-  Then there exists \(x_0 \in \vs{F}^n\) such that \((A^* A) x_0 = A^* y\) and \(\norm{A x_0 - y} \leq \norm{Ax - y}\) for all \(x \in \vs{F}^n\).
-  Furthermore, if \(\rk{A} = n\), then \(x_0 = (A^* A)^{-1} A^* y\).
+	Let \(A \in \MS\) and \(y \in \vs{F}^m\).
+	Then there exists \(x_0 \in \vs{F}^n\) such that \((A^* A) x_0 = A^* y\) and \(\norm{A x_0 - y} \leq \norm{Ax - y}\) for all \(x \in \vs{F}^n\).
+	Furthermore, if \(\rk{A} = n\), then \(x_0 = (A^* A)^{-1} A^* y\).
 \end{thm}
 
 \begin{proof}[\pf{6.12}]
-  Define \(\W = \set{Ax : x \in \vs{F}^n}\);
-  that is, \(\W = \rg{\L_A}\).
-  By \cref{6.2.12}, there exists a unique vector in \(\W\) that is closest to \(y\).
-  Call this vector \(A x_0\), where \(x_0 \in \vs{F}^n\).
-  Then \(\norm{A x_0 - y} \leq \norm{Ax - y}\) for all \(x \in \vs{F}^n\).
+	Define \(\W = \set{Ax : x \in \vs{F}^n}\);
+	that is, \(\W = \rg{\L_A}\).
+	By \cref{6.2.12}, there exists a unique vector in \(\W\) that is closest to \(y\).
+	Call this vector \(A x_0\), where \(x_0 \in \vs{F}^n\).
+	Then \(\norm{A x_0 - y} \leq \norm{Ax - y}\) for all \(x \in \vs{F}^n\).
 
-  To develop a practical method for finding such an \(x_0\), we note from \cref{6.6,6.2.12} that \(A x_0 - y \in \W^{\perp}\);
-  so \(\inn{Ax, A x_0 - y}_m = 0\) for all \(x \in \vs{F}^n\).
-  Thus, by \cref{6.3.4}, we have that \(\inn{x, A^* (A x_0 - y)}_n = 0\) for all \(x \in \vs{F}^n\).
-  By \cref{6.1}(e) we have \(A^* (A x_0 - y) = 0\).
-  So we need only find a solution \(x_0\) to \(A^* Ax = A^* y\).
-  If, in addition, we assume that \(\rk{A} = n\), then by \cref{6.3.5} we have \(x_0 = (A^* A)^{-1} A^* y\).
+	To develop a practical method for finding such an \(x_0\), we note from \cref{6.6,6.2.12} that \(A x_0 - y \in \W^{\perp}\);
+	so \(\inn{Ax, A x_0 - y}_m = 0\) for all \(x \in \vs{F}^n\).
+	Thus, by \cref{6.3.4}, we have that \(\inn{x, A^* (A x_0 - y)}_n = 0\) for all \(x \in \vs{F}^n\).
+	By \cref{6.1}(e) we have \(A^* (A x_0 - y) = 0\).
+	So we need only find a solution \(x_0\) to \(A^* Ax = A^* y\).
+	If, in addition, we assume that \(\rk{A} = n\), then by \cref{6.3.5} we have \(x_0 = (A^* A)^{-1} A^* y\).
 \end{proof}
 
 \begin{note}
-  Consider the following problem:
-  An experimenter collects data by taking measurements \(\seq{y}{1,,m}\) at times \(\seq{t}{1,,m}\), respectively.
-  Suppose that the data \((t_1, y_1), \dots, (t_m, y_m)\) are plotted as points in the plane.
-  From this plot, the experimenter feels that there exists an essentially linear relationship between \(y\) and \(t\), say \(y = ct + d\), and would like to find the constants \(c\) and \(d\) so that the line \(y = ct + d\) represents the best possible fit to the data collected.
-  One such estimate of fit is to calculate the error \(E\) that represents the sum of the squares of the vertical distances from the points to the line;
-  that is,
-  \[
-    E = \sum_{i = 1}^m (y_i - (c t_i + d))^2.
-  \]
-  Thus the problem is reduced to finding the constants \(c\) and \(d\) that minimize \(E\).
-  (For this reason the line \(y = ct + d\) is called the \textbf{least squares line}.)
-  If we let
-  \[
-    A = \begin{pmatrix}
-      t_1    & 1      \\
-      \vdots & \vdots \\
-      t_m    & 1
-    \end{pmatrix}, x = \begin{pmatrix}
-      c \\
-      d
-    \end{pmatrix}, y = \begin{pmatrix}
-      y_1    \\
-      \vdots \\
-      y_m
-    \end{pmatrix},
-  \]
-  then it follows that \(E = \norm{y - Ax}^2\).
+	Consider the following problem:
+	An experimenter collects data by taking measurements \(\seq{y}{1,,m}\) at times \(\seq{t}{1,,m}\), respectively.
+	Suppose that the data \((t_1, y_1), \dots, (t_m, y_m)\) are plotted as points in the plane.
+	From this plot, the experimenter feels that there exists an essentially linear relationship between \(y\) and \(t\), say \(y = ct + d\), and would like to find the constants \(c\) and \(d\) so that the line \(y = ct + d\) represents the best possible fit to the data collected.
+	One such estimate of fit is to calculate the error \(E\) that represents the sum of the squares of the vertical distances from the points to the line;
+	that is,
+	\[
+		E = \sum_{i = 1}^m (y_i - (c t_i + d))^2.
+	\]
+	Thus the problem is reduced to finding the constants \(c\) and \(d\) that minimize \(E\).
+	(For this reason the line \(y = ct + d\) is called the \textbf{least squares line}.)
+	If we let
+	\[
+		A = \begin{pmatrix}
+			t_1    & 1      \\
+			\vdots & \vdots \\
+			t_m    & 1
+		\end{pmatrix}, x = \begin{pmatrix}
+			c \\
+			d
+		\end{pmatrix}, y = \begin{pmatrix}
+			y_1    \\
+			\vdots \\
+			y_m
+		\end{pmatrix},
+	\]
+	then it follows that \(E = \norm{y - Ax}^2\).
 
-  \cref{6.12} develop a general method for finding an explicit vector \(x_0 \in \vs{F}^n\) that minimizes \(E\);
-  that is, given \(A \in \MS\), we find \(x_0 \in \vs{F}^n\) such that \(\norm{y - A x_0} \leq \norm{y - Ax}\) for all vectors \(x \in \vs{F}^n\).
-  This method not only allows us to find the linear function that best fits the data, but also, for any positive integer \(n\), the best fit using a polynomial of degree at most \(n\).
+	\cref{6.12} develop a general method for finding an explicit vector \(x_0 \in \vs{F}^n\) that minimizes \(E\);
+	that is, given \(A \in \MS\), we find \(x_0 \in \vs{F}^n\) such that \(\norm{y - A x_0} \leq \norm{y - Ax}\) for all vectors \(x \in \vs{F}^n\).
+	This method not only allows us to find the linear function that best fits the data, but also, for any positive integer \(n\), the best fit using a polynomial of degree at most \(n\).
 
-  Suppose that the experimenter chose the times \(t_i\) for \(i \in \set{1, \dots, m}\) to satisfy
-  \[
-    \sum_{i = 1}^m t_i = 0.
-  \]
-  Then the two columns of \(A\) would be orthogonal, so \(A^* A\) would be a diagonal matrix (see \cref{ex:6.3.19}).
-  In this case, the computations are greatly simplified.
+	Suppose that the experimenter chose the times \(t_i\) for \(i \in \set{1, \dots, m}\) to satisfy
+	\[
+		\sum_{i = 1}^m t_i = 0.
+	\]
+	Then the two columns of \(A\) would be orthogonal, so \(A^* A\) would be a diagonal matrix (see \cref{ex:6.3.19}).
+	In this case, the computations are greatly simplified.
 
-  In practice, the \(m \times 2\) matrix \(A\) in our least squares application has rank equal to two, and hence \(A^* A\) is invertible by \cref{6.3.6}.
-  For, otherwise, the first column of \(A\) is a multiple of the second column, which consists only of ones.
-  But this would occur only if the experimenter collects all the data at exactly one time.
+	In practice, the \(m \times 2\) matrix \(A\) in our least squares application has rank equal to two, and hence \(A^* A\) is invertible by \cref{6.3.6}.
+	For, otherwise, the first column of \(A\) is a multiple of the second column, which consists only of ones.
+	But this would occur only if the experimenter collects all the data at exactly one time.
 
-  Finally, the method in \cref{6.12} may also be applied if, for some \(k\), the experimenter wants to fit a polynomial of degree at most \(k\) to the data.
-  For instance, if a polynomial \(y = a_0 + a_1 t + \cdots + a_k t^k\) of degree at most \(k\) is desired, the appropriate model is
-  \[
-    A = \begin{pmatrix}
-      t_1^k  & \cdots & t_1    & 1      \\
-      \vdots &        & \vdots & \vdots \\
-      t_m^k  & \cdots & t_m    & 1
-    \end{pmatrix}, x = \begin{pmatrix}
-      a_k    \\
-      \vdots \\
-      a_0
-    \end{pmatrix}, y = \begin{pmatrix}
-      y_1    \\
-      \vdots \\
-      y_m
-    \end{pmatrix}.
-  \]
+	Finally, the method in \cref{6.12} may also be applied if, for some \(k\), the experimenter wants to fit a polynomial of degree at most \(k\) to the data.
+	For instance, if a polynomial \(y = a_0 + a_1 t + \cdots + a_k t^k\) of degree at most \(k\) is desired, the appropriate model is
+	\[
+		A = \begin{pmatrix}
+			t_1^k  & \cdots & t_1    & 1      \\
+			\vdots &        & \vdots & \vdots \\
+			t_m^k  & \cdots & t_m    & 1
+		\end{pmatrix}, x = \begin{pmatrix}
+			a_k    \\
+			\vdots \\
+			a_0
+		\end{pmatrix}, y = \begin{pmatrix}
+			y_1    \\
+			\vdots \\
+			y_m
+		\end{pmatrix}.
+	\]
 \end{note}
 
 \begin{defn}\label{6.3.7}
-  A solution \(s\) to \(Ax = b\) is called a \textbf{minimal solution} if \(\norm{s} \leq \norm{u}\) for all other solutions \(u\).
+	A solution \(s\) to \(Ax = b\) is called a \textbf{minimal solution} if \(\norm{s} \leq \norm{u}\) for all other solutions \(u\).
 \end{defn}
 
 \begin{thm}\label{6.13}
-  Let \(A \in \MS\) and \(b \in \vs{F}^m\).
-  Suppose that \(Ax = b\) is consistent.
-  Then the following statements are true.
-  \begin{enumerate}
-    \item There exists exactly one minimal solution \(s\) of \(Ax = b\), and \(s \in \rg{\L_{A^*}}\).
-    \item The vector \(s\) is the only solution to \(Ax = b\) that lies in \(\rg{\L_{A^*}}\);
-          that is, if \(u\) satisfies \((A A^*) u = b\), then \(s = A^* u\).
-  \end{enumerate}
+	Let \(A \in \MS\) and \(b \in \vs{F}^m\).
+	Suppose that \(Ax = b\) is consistent.
+	Then the following statements are true.
+	\begin{enumerate}
+		\item There exists exactly one minimal solution \(s\) of \(Ax = b\), and \(s \in \rg{\L_{A^*}}\).
+		\item The vector \(s\) is the only solution to \(Ax = b\) that lies in \(\rg{\L_{A^*}}\);
+		      that is, if \(u\) satisfies \((A A^*) u = b\), then \(s = A^* u\).
+	\end{enumerate}
 \end{thm}
 
 \begin{proof}[\pf{6.13}(a)]
-  For simplicity of notation, we let \(\W = \rg{\L_{A^*}}\) and \(\W' = \ns{\L_A}\).
-  Let \(x\) be any solution to \(Ax = b\).
-  By \cref{6.6}, \(x = s + y\) for some \(s \in \W\) and \(y \in \W^{\perp}\).
-  But \(\W^{\perp} = \W'\) by \cref{ex:6.3.12}, and therefore \(b = Ax = As + Ay = As\).
-  So \(s\) is a solution to \(Ax = b\) that lies in \(\W\).
-  To prove (a), we need only show that \(s\) is the unique minimal solution.
-  Let \(v\) be any solution to \(Ax = b\).
-  By \cref{3.9}, we have that \(v = s + u\), where \(u \in \W'\).
-  Since \(s \in \W\), which equals \((\W')^{\perp}\) by \cref{ex:6.3.12}, we have
-  \[
-    \norm{v}^2 = \norm{s + u}^2 = \norm{s}^2 + \norm{u}^2 \geq \norm{s}^2
-  \]
-  by \cref{ex:6.1.10}.
-  Thus \(s\) is a minimal solution.
-  We can also see from the preceding calculation that if \(\norm{v} = \norm{s}\), then \(u = \zv\);
-  hence \(v = s\).
-  Therefore \(s\) is the unique minimal solution to \(Ax = b\), proving (a).
+	For simplicity of notation, we let \(\W = \rg{\L_{A^*}}\) and \(\W' = \ns{\L_A}\).
+	Let \(x\) be any solution to \(Ax = b\).
+	By \cref{6.6}, \(x = s + y\) for some \(s \in \W\) and \(y \in \W^{\perp}\).
+	But \(\W^{\perp} = \W'\) by \cref{ex:6.3.12}, and therefore \(b = Ax = As + Ay = As\).
+	So \(s\) is a solution to \(Ax = b\) that lies in \(\W\).
+	To prove (a), we need only show that \(s\) is the unique minimal solution.
+	Let \(v\) be any solution to \(Ax = b\).
+	By \cref{3.9}, we have that \(v = s + u\), where \(u \in \W'\).
+	Since \(s \in \W\), which equals \((\W')^{\perp}\) by \cref{ex:6.3.12}, we have
+	\[
+		\norm{v}^2 = \norm{s + u}^2 = \norm{s}^2 + \norm{u}^2 \geq \norm{s}^2
+	\]
+	by \cref{ex:6.1.10}.
+	Thus \(s\) is a minimal solution.
+	We can also see from the preceding calculation that if \(\norm{v} = \norm{s}\), then \(u = \zv\);
+	hence \(v = s\).
+	Therefore \(s\) is the unique minimal solution to \(Ax = b\), proving (a).
 \end{proof}
 
 \begin{proof}[\pf{6.13}(b)]
-  Assume that \(v\) is also a solution to \(Ax = b\) that lies in \(\W\).
-  Then
-  \[
-    v - s \in \W \cap \W' = \W \cap \W^{\perp} = \set{\zv};
-  \]
-  so \(v = s\).
+	Assume that \(v\) is also a solution to \(Ax = b\) that lies in \(\W\).
+	Then
+	\[
+		v - s \in \W \cap \W' = \W \cap \W^{\perp} = \set{\zv};
+	\]
+	so \(v = s\).
 
-  Finally, suppose that \((A A^*) u = b\), and let \(v = A^* u\).
-  Then \(v \in \W\) and \(Av = b\).
-  Therefore \(s = v = A^* u\) by the discussion above.
+	Finally, suppose that \((A A^*) u = b\), and let \(v = A^* u\).
+	Then \(v \in \W\) and \(Av = b\).
+	Therefore \(s = v = A^* u\) by the discussion above.
 \end{proof}
 
 \begin{note}
-  \cref{6.13} assures that every consistent system of linear equations has a unique minimal solution and provides a method for computing it.
+	\cref{6.13} assures that every consistent system of linear equations has a unique minimal solution and provides a method for computing it.
 \end{note}
 
 \exercisesection
 
 \setcounter{ex}{4}
 \begin{ex}\label{ex:6.3.5}
-  Let \(A, B \in \MS\) and let \(C \in \ms{n}{p}{\F}\).
-  Then
-  \begin{enumerate}
-    \item \((A + B)^* = A^* + B^*\);
-    \item \((cA)^* = \conj{c} A^*\) for all \(c \in \F\).
-    \item \((AC)^* = C^* A^*\);
-    \item \(A^{**} = A\);
-  \end{enumerate}
+	Let \(A, B \in \MS\) and let \(C \in \ms{n}{p}{\F}\).
+	Then
+	\begin{enumerate}
+		\item \((A + B)^* = A^* + B^*\);
+		\item \((cA)^* = \conj{c} A^*\) for all \(c \in \F\).
+		\item \((AC)^* = C^* A^*\);
+		\item \(A^{**} = A\);
+	\end{enumerate}
 \end{ex}
 
 \begin{proof}[\pf{ex:6.3.5}(a)]
-  We have
-  \begin{align*}
-    ((A + B)^*)_{i j} & = \conj{(A + B)_{j i}}            &  & \text{(by \cref{6.1.5})}  \\
-                      & = \conj{A_{j i} + B_{j i}}        &  & \text{(by \cref{1.2.9})}  \\
-                      & = \conj{A_{j i}} + \conj{B_{j i}} &  & \text{(by \cref{d.2}(b))} \\
-                      & = (A^*)_{i j} + (B^*)_{i j}       &  & \text{(by \cref{6.1.5})}  \\
-                      & = (A^* + B^*)_{i j}               &  & \text{(by \cref{1.2.9})}
-  \end{align*}
-  where \(i \in \set{1, \dots, n}\) and \(j \in \set{1, \dots, m}\).
-  Thus by \cref{1.2.8} \((A + B)^* = A^* + B^*\).
+	We have
+	\begin{align*}
+		((A + B)^*)_{i j} & = \conj{(A + B)_{j i}}            &  & \by{6.1.5}  \\
+		                  & = \conj{A_{j i} + B_{j i}}        &  & \by{1.2.9}  \\
+		                  & = \conj{A_{j i}} + \conj{B_{j i}} &  & \by{d.2}[b] \\
+		                  & = (A^*)_{i j} + (B^*)_{i j}       &  & \by{6.1.5}  \\
+		                  & = (A^* + B^*)_{i j}               &  & \by{1.2.9}
+	\end{align*}
+	where \(i \in \set{1, \dots, n}\) and \(j \in \set{1, \dots, m}\).
+	Thus by \cref{1.2.8} \((A + B)^* = A^* + B^*\).
 \end{proof}
 
 \begin{proof}[\pf{ex:6.3.5}(b)]
-  We have
-  \begin{align*}
-    ((cA)^*)_{i j} & = \conj{(cA)_{j i}}       &  & \text{(by \cref{6.1.5})}  \\
-                   & = \conj{c A_{j i}}        &  & \text{(by \cref{1.2.9})}  \\
-                   & = \conj{c} \conj{A_{j i}} &  & \text{(by \cref{d.2}(c))} \\
-                   & = \conj{c} (A^*)_{i j}    &  & \text{(by \cref{6.1.5})}  \\
-                   & = (\conj{c} A^*)_{i j}    &  & \text{(by \cref{1.2.9})}
-  \end{align*}
-  where \(i \in \set{1, \dots, n}\) and \(j \in \set{1, \dots, m}\).
-  Thus by \cref{1.2.8} \((cA)^* = \conj{c} A^*\).
+	We have
+	\begin{align*}
+		((cA)^*)_{i j} & = \conj{(cA)_{j i}}       &  & \by{6.1.5}  \\
+		               & = \conj{c A_{j i}}        &  & \by{1.2.9}  \\
+		               & = \conj{c} \conj{A_{j i}} &  & \by{d.2}[c] \\
+		               & = \conj{c} (A^*)_{i j}    &  & \by{6.1.5}  \\
+		               & = (\conj{c} A^*)_{i j}    &  & \by{1.2.9}
+	\end{align*}
+	where \(i \in \set{1, \dots, n}\) and \(j \in \set{1, \dots, m}\).
+	Thus by \cref{1.2.8} \((cA)^* = \conj{c} A^*\).
 \end{proof}
 
 \begin{proof}[\pf{ex:6.3.5}(c)]
-  We have
-  \begin{align*}
-    ((AC)^*)_{i j} & = \conj{(AC)_{j i}}                            &  & \text{(by \cref{6.1.5})}     \\
-                   & = \conj{\sum_{k = 1}^n A_{j k} C_{k i}}        &  & \text{(by \cref{2.3.1})}     \\
-                   & = \sum_{k = 1}^n \conj{A_{j k}} \conj{C_{k i}} &  & \text{(by \cref{d.2}(b)(c))} \\
-                   & = \sum_{k = 1}^n (A^*)_{k j} (C^*)_{i k}       &  & \text{(by \cref{6.1.5})}     \\
-                   & = (C^* A^*)_{i j}                              &  & \text{(by \cref{2.3.1})}
-  \end{align*}
-  where \(i \in \set{1, \dots, n}\) and \(j \in \set{1, \dots, m}\).
-  Thus by \cref{1.2.8} \((AC)^* = C^* A^*\).
+	We have
+	\begin{align*}
+		((AC)^*)_{i j} & = \conj{(AC)_{j i}}                            &  & \by{6.1.5}   \\
+		               & = \conj{\sum_{k = 1}^n A_{j k} C_{k i}}        &  & \by{2.3.1}   \\
+		               & = \sum_{k = 1}^n \conj{A_{j k}} \conj{C_{k i}} &  & \by{d.2}[bc] \\
+		               & = \sum_{k = 1}^n (A^*)_{k j} (C^*)_{i k}       &  & \by{6.1.5}   \\
+		               & = (C^* A^*)_{i j}                              &  & \by{2.3.1}
+	\end{align*}
+	where \(i \in \set{1, \dots, n}\) and \(j \in \set{1, \dots, m}\).
+	Thus by \cref{1.2.8} \((AC)^* = C^* A^*\).
 \end{proof}
 
 \begin{proof}[\pf{ex:6.3.5}(d)]
-  We have
-  \begin{align*}
-    (A^{**})_{i j} & = \conj{(A^*)_{j i}}    &  & \text{(by \cref{6.1.5})}  \\
-                   & = \conj{\conj{A_{i j}}} &  & \text{(by \cref{6.1.5})}  \\
-                   & = A_{i j}               &  & \text{(by \cref{d.2}(a))}
-  \end{align*}
-  where \(i \in \set{1, \dots, m}\) and \(j \in \set{1, \dots, n}\).
-  Thus by \cref{1.2.8} \(A = A^{**}\).
+	We have
+	\begin{align*}
+		(A^{**})_{i j} & = \conj{(A^*)_{j i}}    &  & \by{6.1.5}  \\
+		               & = \conj{\conj{A_{i j}}} &  & \by{6.1.5}  \\
+		               & = A_{i j}               &  & \by{d.2}[a]
+	\end{align*}
+	where \(i \in \set{1, \dots, m}\) and \(j \in \set{1, \dots, n}\).
+	Thus by \cref{1.2.8} \(A = A^{**}\).
 \end{proof}
 
 \begin{ex}\label{ex:6.3.6}
-  Let \(\T\) be a linear operator on an inner product space \(\V\) over \(\F\).
-  Let \(\U_1 = \T + \T^*\) and \(\U_2 = \T \T^*\).
-  Prove that \(\U_1 = \U_1^*\) and \(\U_2 = \U_2^*\).
+	Let \(\T\) be a linear operator on an inner product space \(\V\) over \(\F\).
+	Let \(\U_1 = \T + \T^*\) and \(\U_2 = \T \T^*\).
+	Prove that \(\U_1 = \U_1^*\) and \(\U_2 = \U_2^*\).
 \end{ex}
 
 \begin{proof}[\pf{ex:6.3.6}]
-  We have
-  \begin{align*}
-    \U_1^* & = (\T + \T^*)^*                                  \\
-           & = \T^* + \T^{**} &  & \text{(by \cref{6.11}(a))} \\
-           & = \T^* + \T      &  & \text{(by \cref{6.11}(d))} \\
-           & = \U_1
-  \end{align*}
-  and
-  \begin{align*}
-    \U_2^* & = (\T \T^*)^*                                  \\
-           & = \T^{**} \T^* &  & \text{(by \cref{6.11}(c))} \\
-           & = \T \T^*      &  & \text{(by \cref{6.11}(d))} \\
-           & = \U_2.
-  \end{align*}
+	We have
+	\begin{align*}
+		\U_1^* & = (\T + \T^*)^*                    \\
+		       & = \T^* + \T^{**} &  & \by{6.11}[a] \\
+		       & = \T^* + \T      &  & \by{6.11}[d] \\
+		       & = \U_1
+	\end{align*}
+	and
+	\begin{align*}
+		\U_2^* & = (\T \T^*)^*                    \\
+		       & = \T^{**} \T^* &  & \by{6.11}[c] \\
+		       & = \T \T^*      &  & \by{6.11}[d] \\
+		       & = \U_2.
+	\end{align*}
 \end{proof}
 
 \begin{ex}\label{ex:6.3.7}
-  Give an example of a linear operator \(\T\) on an inner product space \(\V\) over \(\F\) such that \(\ns{\T} \neq \ns{\T^*}\).
+	Give an example of a linear operator \(\T\) on an inner product space \(\V\) over \(\F\) such that \(\ns{\T} \neq \ns{\T^*}\).
 \end{ex}
 
 \begin{proof}[\pf{ex:6.3.7}]
-  Let \(A = \begin{pmatrix}
-    0 & 0 \\
-    1 & 0
-  \end{pmatrix}\).
-  Then we have
-  \[
-    A^* = \begin{pmatrix}
-      0 & 1 \\
-      0 & 0
-    \end{pmatrix}
-  \]
-  and by \cref{6.3.1}
-  \[
-    \ns{\L_A} = \spn{e_2} \neq \spn{e_1} = \ns{\L_{A^*}} = \ns{(\L_A)^*}.
-  \]
+	Let \(A = \begin{pmatrix}
+		0 & 0 \\
+		1 & 0
+	\end{pmatrix}\).
+	Then we have
+	\[
+		A^* = \begin{pmatrix}
+			0 & 1 \\
+			0 & 0
+		\end{pmatrix}
+	\]
+	and by \cref{6.3.1}
+	\[
+		\ns{\L_A} = \spn{e_2} \neq \spn{e_1} = \ns{\L_{A^*}} = \ns{(\L_A)^*}.
+	\]
 \end{proof}
 
 \begin{ex}\label{ex:6.3.8}
-  Let \(\V\) be a finite-dimensional inner product space over \(\F\), and let \(\T \in \ls(\V)\).
-  Prove that if \(\T\) is invertible, then \(\T^*\) is invertible and \((\T^*)^{-1} = (\T^{-1})^*\).
+	Let \(\V\) be a finite-dimensional inner product space over \(\F\), and let \(\T \in \ls(\V)\).
+	Prove that if \(\T\) is invertible, then \(\T^*\) is invertible and \((\T^*)^{-1} = (\T^{-1})^*\).
 \end{ex}
 
 \begin{proof}[\pf{ex:6.3.8}]
-  We have
-  \begin{align*}
-    \IT[\V] & = \IT[\V]^*        &  & \text{(by \cref{6.11}(e))} \\
-            & = (\T \T^{-1})^*                                   \\
-            & = (\T^{-1})^* \T^* &  & \text{(by \cref{6.11}(c))} \\
-            & = (\T^{-1} \T)^*                                   \\
-            & = \T^* (\T^{-1})^*
-  \end{align*}
-  and thus \((\T^*)^{-1} = (\T^{-1})^*\).
+	We have
+	\begin{align*}
+		\IT[\V] & = \IT[\V]^*        &  & \by{6.11}[e] \\
+		        & = (\T \T^{-1})^*                     \\
+		        & = (\T^{-1})^* \T^* &  & \by{6.11}[c] \\
+		        & = (\T^{-1} \T)^*                     \\
+		        & = \T^* (\T^{-1})^*
+	\end{align*}
+	and thus \((\T^*)^{-1} = (\T^{-1})^*\).
 \end{proof}
 
 \begin{ex}\label{ex:6.3.9}
-  Prove that if \(\V = \W \oplus \W^{\perp}\) and \(\T\) is the projection on \(\W\) along \(\W^{\perp}\), then \(\T = \T^*\).
+	Prove that if \(\V = \W \oplus \W^{\perp}\) and \(\T\) is the projection on \(\W\) along \(\W^{\perp}\), then \(\T = \T^*\).
 \end{ex}
 
 \begin{proof}[\pf{ex:6.3.9}]
-  We have
-  \begin{align*}
-             & \V = \W \oplus \W^{\perp}                                                                                      \\
-    \implies & \forall x \in \V, \exists (x_1, x_2) \in \W \times \W^{\perp} : x = x_1 + x_2 &  & \text{(by \cref{5.2.7})}    \\
-    \implies & \forall x, y \in \V, \inn{x, \T^*(y)} = \inn{\T(x), y}                        &  & \text{(by \cref{6.9})}      \\
-             & = \inn{x_1, y}                                                                &  & \text{(by \cref{2.1.14})}   \\
-             & = \inn{x_1, y_1 + y_2} = \inn{x_1, y_1} + \inn{x_1, y_2}                      &  & \text{(by \cref{6.1}(a))}   \\
-             & = \inn{x_1, y_1}                                                              &  & \text{(by \cref{6.2.9})}    \\
-             & = \inn{x_1, y_1} + \inn{x_2, y_1}                                             &  & \text{(by \cref{6.2.9})}    \\
-             & = \inn{x_1 + x_2, y_1}                                                        &  & \text{(by \cref{6.1.1}(a))} \\
-             & = \inn{x, \T(y)}                                                              &  & \text{(by \cref{2.1.14})}   \\
-    \implies & \T = \T^*.                                                                    &  & \text{(by \cref{6.1}(e))}
-  \end{align*}
+	We have
+	\begin{align*}
+		         & \V = \W \oplus \W^{\perp}                                                                        \\
+		\implies & \forall x \in \V, \exists (x_1, x_2) \in \W \times \W^{\perp} : x = x_1 + x_2 &  & \by{5.2.7}    \\
+		\implies & \forall x, y \in \V, \inn{x, \T^*(y)} = \inn{\T(x), y}                        &  & \by{6.9}      \\
+		         & = \inn{x_1, y}                                                                &  & \by{2.1.14}   \\
+		         & = \inn{x_1, y_1 + y_2} = \inn{x_1, y_1} + \inn{x_1, y_2}                      &  & \by{6.1}[a]   \\
+		         & = \inn{x_1, y_1}                                                              &  & \by{6.2.9}    \\
+		         & = \inn{x_1, y_1} + \inn{x_2, y_1}                                             &  & \by{6.2.9}    \\
+		         & = \inn{x_1 + x_2, y_1}                                                        &  & \by{6.1.1}[a] \\
+		         & = \inn{x, \T(y)}                                                              &  & \by{2.1.14}   \\
+		\implies & \T = \T^*.                                                                    &  & \by{6.1}[e]
+	\end{align*}
 \end{proof}
 
 \begin{ex}\label{ex:6.3.10}
-  Let \(\T\) be a linear operator on an inner product space \(\V\) over \(\F\).
-  Prove that \(\norm{\T(x)} = \norm{x}\) for all \(x \in \V\) iff \(\inn{\T(x), \T(y)} = \inn{x,y}\) for all \(x, y \in \V\).
+	Let \(\T\) be a linear operator on an inner product space \(\V\) over \(\F\).
+	Prove that \(\norm{\T(x)} = \norm{x}\) for all \(x \in \V\) iff \(\inn{\T(x), \T(y)} = \inn{x,y}\) for all \(x, y \in \V\).
 \end{ex}
 
 \begin{proof}[\pf{ex:6.3.10}]
-  First suppose that \(\norm{\T(x)} = \norm{x}\) for all \(x \in \V\).
-  If \(\F = \C\), then we have
-  \begin{align*}
-    \forall x, y \in \V, \inn{\T(x), \T(y)} & = \frac{1}{4} \sum_{k = 1}^4 i^k \norm{\T(x) + i^k \T(y)}^2 &  & \text{(by \cref{ex:6.1.20}(b))} \\
-                                            & = \frac{1}{4} \sum_{k = 1}^4 i^k \norm{\T(x + i^k y)}^2     &  & \text{(by \cref{2.1.2}(b))}     \\
-                                            & = \frac{1}{4} \sum_{k = 1}^4 i^k \norm{x + i^k y}^2         &  & \text{(by hypothesis)}          \\
-                                            & = \inn{x, y}.                                               &  & \text{(by \cref{ex:6.1.20}(b))}
-  \end{align*}
-  If \(\F = \R\), then we have
-  \begin{align*}
-     & \forall x, y \in \V, \inn{\T(x), \T(y)}                                                                 \\
-     & = \frac{1}{4} \pa{\norm{\T(x) + \T(y)}^2 - \norm{\T(x) - \T(y)}^2} &  & \text{(by \cref{ex:6.1.20}(a))} \\
-     & = \frac{1}{4} \pa{\norm{\T(x + y)}^2 - \norm{\T(x - y)}^2}         &  & \text{(by \cref{2.1.2}(b))}     \\
-     & = \frac{1}{4} \pa{\norm{x + y}^2 - \norm{x - y}^2}                 &  & \text{(by hypothesis)}          \\
-     & = \inn{x, y}.                                                      &  & \text{(by \cref{ex:6.1.20}(a))}
-  \end{align*}
-  In either cases we have \(\inn{\T(x), \T(y)} = \inn{x, y}\) for all \(x, y \in \V\).
+	First suppose that \(\norm{\T(x)} = \norm{x}\) for all \(x \in \V\).
+	If \(\F = \C\), then we have
+	\begin{align*}
+		\forall x, y \in \V, \inn{\T(x), \T(y)} & = \frac{1}{4} \sum_{k = 1}^4 i^k \norm{\T(x) + i^k \T(y)}^2 &  & \by{ex:6.1.20}[b]      \\
+		                                        & = \frac{1}{4} \sum_{k = 1}^4 i^k \norm{\T(x + i^k y)}^2     &  & \by{2.1.2}[b]          \\
+		                                        & = \frac{1}{4} \sum_{k = 1}^4 i^k \norm{x + i^k y}^2         &  & \text{(by hypothesis)} \\
+		                                        & = \inn{x, y}.                                               &  & \by{ex:6.1.20}[b]
+	\end{align*}
+	If \(\F = \R\), then we have
+	\begin{align*}
+		 & \forall x, y \in \V, \inn{\T(x), \T(y)}                                                        \\
+		 & = \frac{1}{4} \pa{\norm{\T(x) + \T(y)}^2 - \norm{\T(x) - \T(y)}^2} &  & \by{ex:6.1.20}[a]      \\
+		 & = \frac{1}{4} \pa{\norm{\T(x + y)}^2 - \norm{\T(x - y)}^2}         &  & \by{2.1.2}[b]          \\
+		 & = \frac{1}{4} \pa{\norm{x + y}^2 - \norm{x - y}^2}                 &  & \text{(by hypothesis)} \\
+		 & = \inn{x, y}.                                                      &  & \by{ex:6.1.20}[a]
+	\end{align*}
+	In either cases we have \(\inn{\T(x), \T(y)} = \inn{x, y}\) for all \(x, y \in \V\).
 
-  Now suppose that \(\inn{\T(x), \T(y)} = \inn{x, y}\) for all \(x, y \in \V\).
-  Then we have
-  \begin{align*}
-             & \forall x \in \V, \norm{\T(x)}^2 = \inn{\T(x), \T(x)} = \inn{x, x} = \norm{x}^2 &  & \text{(by \cref{6.1.9})}  \\
-    \implies & \forall x \in \V, \norm{\T(x)} = \norm{x}.                                      &  & \text{(by \cref{6.2}(b))}
-  \end{align*}
+	Now suppose that \(\inn{\T(x), \T(y)} = \inn{x, y}\) for all \(x, y \in \V\).
+	Then we have
+	\begin{align*}
+		         & \forall x \in \V, \norm{\T(x)}^2 = \inn{\T(x), \T(x)} = \inn{x, x} = \norm{x}^2 &  & \by{6.1.9}  \\
+		\implies & \forall x \in \V, \norm{\T(x)} = \norm{x}.                                      &  & \by{6.2}[b]
+	\end{align*}
 \end{proof}
 
 \begin{ex}\label{ex:6.3.11}
-  For a linear operator \(\T\) on an inner product space \(\V\) over \(\F\), prove that \(\T^* \T = \zT\) implies \(\T = \zT\).
-  Is the same result true if we assume that \(\T \T^* = \zT\)?
+	For a linear operator \(\T\) on an inner product space \(\V\) over \(\F\), prove that \(\T^* \T = \zT\) implies \(\T = \zT\).
+	Is the same result true if we assume that \(\T \T^* = \zT\)?
 \end{ex}
 
 \begin{proof}[\pf{ex:6.3.11}]
-  First we show that \(\T^* \T = \zT \implies \T = \zT\).
-  This is true since
-  \begin{align*}
-             & \T^* \T = \zT                                                                                \\
-    \implies & \forall x, y \in \V, 0 = \inn{\zv, y} = \inn{(\T^* \T)(x), y} &  & \text{(by \cref{6.1}(c))} \\
-             & = \inn{\T^*(\T(x)), \T(y)} = \inn{\T(x), \T(y)}               &  & \text{(by \cref{6.9})}    \\
-    \implies & \forall x \in \V, \inn{\T(x), \T(x)} = 0                                                     \\
-    \implies & \forall x \in \V, \T(x) = \zv                                 &  & \text{(by \cref{6.1}(d))} \\
-    \implies & \T = \zT.
-  \end{align*}
+	First we show that \(\T^* \T = \zT \implies \T = \zT\).
+	This is true since
+	\begin{align*}
+		         & \T^* \T = \zT                                                                  \\
+		\implies & \forall x, y \in \V, 0 = \inn{\zv, y} = \inn{(\T^* \T)(x), y} &  & \by{6.1}[c] \\
+		         & = \inn{\T^*(\T(x)), \T(y)} = \inn{\T(x), \T(y)}               &  & \by{6.9}    \\
+		\implies & \forall x \in \V, \inn{\T(x), \T(x)} = 0                                       \\
+		\implies & \forall x \in \V, \T(x) = \zv                                 &  & \by{6.1}[d] \\
+		\implies & \T = \zT.
+	\end{align*}
 
-  Now we show that \(\T \T^* = \zT \implies \T = \zT\).
-  Since
-  \begin{align*}
-             & \forall x, y \in \V, 0 = \inn{\zv, y} = \inn{\zT(x), y} &  & \text{(by \cref{6.1}(c))} \\
-             & = \inn{x, \zT^*(y)}                                     &  & \text{(by \cref{6.9})}    \\
-    \implies & \forall x \in \V, \inn{\zT^*(x), \zT^*(x)} = 0          &  & (\zT^*(x) \in \V)         \\
-    \implies & \forall x \in \V, \zT^*(x) = \zv                        &  & \text{(by \cref{6.1}(d))} \\
-    \implies & \zT^* = \zT,                                            &  & \text{(by \cref{2.1.9})}
-  \end{align*}
-  we have
-  \begin{align*}
-             & \T^{**} \T^* = \T \T^* = \zT &  & \text{(by \cref{6.11}(d))}    \\
-    \implies & \T^* = \zT                   &  & \text{(from the proof above)} \\
-    \implies & \T = \T^{**} = \zT^* = \zT.  &  & \text{(from the proof above)}
-  \end{align*}
+	Now we show that \(\T \T^* = \zT \implies \T = \zT\).
+	Since
+	\begin{align*}
+		         & \forall x, y \in \V, 0 = \inn{\zv, y} = \inn{\zT(x), y} &  & \by{6.1}[c]       \\
+		         & = \inn{x, \zT^*(y)}                                     &  & \by{6.9}          \\
+		\implies & \forall x \in \V, \inn{\zT^*(x), \zT^*(x)} = 0          &  & (\zT^*(x) \in \V) \\
+		\implies & \forall x \in \V, \zT^*(x) = \zv                        &  & \by{6.1}[d]       \\
+		\implies & \zT^* = \zT,                                            &  & \by{2.1.9}
+	\end{align*}
+	we have
+	\begin{align*}
+		         & \T^{**} \T^* = \T \T^* = \zT &  & \by{6.11}[d]                  \\
+		\implies & \T^* = \zT                   &  & \text{(from the proof above)} \\
+		\implies & \T = \T^{**} = \zT^* = \zT.  &  & \text{(from the proof above)}
+	\end{align*}
 \end{proof}
 
 \begin{ex}\label{ex:6.3.12}
-  Let \(\V\) be an inner product space over \(\F\), and let \(\T \in \ls(\V)\).
-  Prove the following results.
-  \begin{enumerate}
-    \item \(\rg{\T^*}^{\perp} = \ns{\T}\).
-    \item If \(\V\) is finite-dimensional, then \(\rg{\T^*} = \ns{\T}^{\perp}\).
-  \end{enumerate}
+	Let \(\V\) be an inner product space over \(\F\), and let \(\T \in \ls(\V)\).
+	Prove the following results.
+	\begin{enumerate}
+		\item \(\rg{\T^*}^{\perp} = \ns{\T}\).
+		\item If \(\V\) is finite-dimensional, then \(\rg{\T^*} = \ns{\T}^{\perp}\).
+	\end{enumerate}
 \end{ex}
 
 \begin{proof}[\pf{ex:6.3.12}(a)]
-  We have
-  \begin{align*}
-         & v \in \rg{\T^*}^{\perp}                                                   \\
-    \iff & \forall y \in \rg{\T^*}, \inn{v, y} = 0 &  & \text{(by \cref{6.2.9})}     \\
-    \iff & \forall x \in \V, \inn{v, \T^*(x)} = 0  &  & \text{(by \cref{2.1.10})}    \\
-    \iff & \forall x \in \V, \inn{\T(v), x} = 0    &  & \text{(by \cref{6.9})}       \\
-    \iff & \forall x \in \V, \inn{x, \T(v)} = 0    &  & \text{(by \cref{6.1.1}(c))}  \\
-    \iff & \T(v) = \zv                             &  & \text{(by \cref{6.1}(c)(e))} \\
-    \iff & v \in \ns{\T}                           &  & \text{(by \cref{2.1.10})}
-  \end{align*}
-  and thus \(\rg{\T^*}^{\perp} = \ns{\T}\).
+	We have
+	\begin{align*}
+		     & v \in \rg{\T^*}^{\perp}                                    \\
+		\iff & \forall y \in \rg{\T^*}, \inn{v, y} = 0 &  & \by{6.2.9}    \\
+		\iff & \forall x \in \V, \inn{v, \T^*(x)} = 0  &  & \by{2.1.10}   \\
+		\iff & \forall x \in \V, \inn{\T(v), x} = 0    &  & \by{6.9}      \\
+		\iff & \forall x \in \V, \inn{x, \T(v)} = 0    &  & \by{6.1.1}[c] \\
+		\iff & \T(v) = \zv                             &  & \by{6.1}[ce]  \\
+		\iff & v \in \ns{\T}                           &  & \by{2.1.10}
+	\end{align*}
+	and thus \(\rg{\T^*}^{\perp} = \ns{\T}\).
 \end{proof}
 
 \begin{proof}[\pf{ex:6.3.12}(b)]
-  We have
-  \begin{align*}
-    \rg{\T^*} & = (\rg{\T^*}^{\perp})^{\perp} &  & \text{(by \cref{ex:6.2.13}(c))} \\
-              & = \ns{\T}^{\perp}.            &  & \text{(by \cref{ex:6.3.12}(a))}
-  \end{align*}
+	We have
+	\begin{align*}
+		\rg{\T^*} & = (\rg{\T^*}^{\perp})^{\perp} &  & \by{ex:6.2.13}[c] \\
+		          & = \ns{\T}^{\perp}.            &  & \by{ex:6.3.12}[a]
+	\end{align*}
 \end{proof}
 
 \begin{ex}\label{ex:6.3.13}
-  Let \(\T\) be a linear operator on a finite-dimensional inner product space \(\V\) over \(\F\).
-  Prove the following results.
-  \begin{enumerate}
-    \item \(\ns{\T^* \T} = \ns{\T}\).
-          Deduce that \(\rk{\T^* \T} = \rk{\T}\).
-    \item \(\rk{\T} = \rk{\T^*}\).
-          Deduce from (a) that \(\rk{\T \T^*} = \rk{\T}\).
-    \item For any \(A \in \ms{n}{n}{\F}\), \(\rk{A^* A} = \rk{A A^*} = \rk{A}\).
-  \end{enumerate}
+	Let \(\T\) be a linear operator on a finite-dimensional inner product space \(\V\) over \(\F\).
+	Prove the following results.
+	\begin{enumerate}
+		\item \(\ns{\T^* \T} = \ns{\T}\).
+		      Deduce that \(\rk{\T^* \T} = \rk{\T}\).
+		\item \(\rk{\T} = \rk{\T^*}\).
+		      Deduce from (a) that \(\rk{\T \T^*} = \rk{\T}\).
+		\item For any \(A \in \ms{n}{n}{\F}\), \(\rk{A^* A} = \rk{A A^*} = \rk{A}\).
+	\end{enumerate}
 \end{ex}
 
 \begin{proof}[\pf{ex:6.3.13}(a)]
-  We have
-  \begin{align*}
-         & v \in \ns{\T^* \T}                                                           \\
-    \iff & (\T^* \T)(v) = \T^*(\T(v)) = \zv           &  & \text{(by \cref{2.1.10})}    \\
-    \iff & \forall x \in \V, \inn{x, \T^*(\T(v))} = 0 &  & \text{(by \cref{6.1}(c)(d))} \\
-    \iff & \forall x \in \V, \inn{\T(x), \T(v)} = 0   &  & \text{(by \cref{6.9})}       \\
-    \iff & \T(v) = \zv                                &  & \text{(by \cref{6.1}(c)(d))} \\
-    \iff & v \in \ns{\T}                              &  & \text{(by \cref{2.1.10})}
-  \end{align*}
-  and thus \(\ns{\T^* \T} = \ns{\T}\).
-  Since \(\V\) is finite-dimensional, we have
-  \begin{align*}
-             & \dim(\V) = \begin{dcases}
-                            \rk{\T^* \T} + \nt{\T^* \T} \\
-                            \rk{\T} + \nt{\T}
-                          \end{dcases}                  &  & \text{(by \cref{2.3})}               \\
-    \implies & \rk{\T^* \T} = \rk{\T} + \nt{\T} - \nt{\T^* \T}                                    \\
-             & = \rk{\T}.                                      &  & \text{(from the proof above)}
-  \end{align*}
+	We have
+	\begin{align*}
+		     & v \in \ns{\T^* \T}                                           \\
+		\iff & (\T^* \T)(v) = \T^*(\T(v)) = \zv           &  & \by{2.1.10}  \\
+		\iff & \forall x \in \V, \inn{x, \T^*(\T(v))} = 0 &  & \by{6.1}[cd] \\
+		\iff & \forall x \in \V, \inn{\T(x), \T(v)} = 0   &  & \by{6.9}     \\
+		\iff & \T(v) = \zv                                &  & \by{6.1}[cd] \\
+		\iff & v \in \ns{\T}                              &  & \by{2.1.10}
+	\end{align*}
+	and thus \(\ns{\T^* \T} = \ns{\T}\).
+	Since \(\V\) is finite-dimensional, we have
+	\begin{align*}
+		         & \dim(\V) = \begin{dcases}
+			                      \rk{\T^* \T} + \nt{\T^* \T} \\
+			                      \rk{\T} + \nt{\T}
+		                      \end{dcases}                  &  & \by{2.3}                             \\
+		\implies & \rk{\T^* \T} = \rk{\T} + \nt{\T} - \nt{\T^* \T}                                    \\
+		         & = \rk{\T}.                                      &  & \text{(from the proof above)}
+	\end{align*}
 \end{proof}
 
 \begin{proof}[\pf{ex:6.3.13}(b)]
-  Since
-  \begin{align*}
-    \rg{\T^* \T} & = \rg{(\T^* \T)^*}     &  & \text{(by \cref{6.11}(c)(d))}   \\
-                 & = \ns{\T^* \T}^{\perp} &  & \text{(by \cref{ex:6.3.12}(b))} \\
-                 & = \ns{\T}^{\perp}      &  & \text{(by \cref{ex:6.3.13}(a))} \\
-                 & = \rg{\T^*},           &  & \text{(by \cref{ex:6.3.12}(b))}
-  \end{align*}
-  by \cref{ex:6.3.13}(a) we have \(\rk{\T^* \T} = \rk{\T^*} = \rk{\T}\).
-  Thus
-  \begin{align*}
-             & \rk{(\T^*)^* \T^*} = \rk{(\T^*)^*} &  & \text{(from the proof above)} \\
-    \implies & \rk{\T \T^*} = \rk{\T}.            &  & \text{(by \cref{6.11}(d))}
-  \end{align*}
+	Since
+	\begin{align*}
+		\rg{\T^* \T} & = \rg{(\T^* \T)^*}     &  & \by{6.11}[cd]     \\
+		             & = \ns{\T^* \T}^{\perp} &  & \by{ex:6.3.12}[b] \\
+		             & = \ns{\T}^{\perp}      &  & \by{ex:6.3.13}[a] \\
+		             & = \rg{\T^*},           &  & \by{ex:6.3.12}[b]
+	\end{align*}
+	by \cref{ex:6.3.13}(a) we have \(\rk{\T^* \T} = \rk{\T^*} = \rk{\T}\).
+	Thus
+	\begin{align*}
+		         & \rk{(\T^*)^* \T^*} = \rk{(\T^*)^*} &  & \text{(from the proof above)} \\
+		\implies & \rk{\T \T^*} = \rk{\T}.            &  & \by{6.11}[d]
+	\end{align*}
 \end{proof}
 
 \begin{proof}[\pf{ex:6.3.13}(c)]
-  We have
-  \begin{align*}
-    \rk{A^* A} & = \rk{\L_{A^* A}}    &  & \text{(by \cref{3.2.1})}        \\
-               & = \rk{\L_{A^*} \L_A} &  & \text{(by \cref{2.15}(e))}      \\
-               & = \rk{(\L_A)^* \L_A} &  & \text{(by \cref{6.3.1})}        \\
-               & = \rk{\L_A}          &  & \text{(by \cref{ex:6.3.13}(a))} \\
-               & = \rk{A}             &  & \text{(by \cref{3.2.1})}        \\
-               & = \rk{\L_A (\L_A)^*} &  & \text{(by \cref{ex:6.3.13}(b))} \\
-               & = \rk{\L_A \L_{A^*}} &  & \text{(by \cref{6.3.1})}        \\
-               & = \rk{\L_{A A^*}}    &  & \text{(by \cref{2.15}(e))}      \\
-               & = \rk{A A^*}.        &  & \text{(by \cref{3.2.1})}
-  \end{align*}
+	We have
+	\begin{align*}
+		\rk{A^* A} & = \rk{\L_{A^* A}}    &  & \by{3.2.1}        \\
+		           & = \rk{\L_{A^*} \L_A} &  & \by{2.15}[e]      \\
+		           & = \rk{(\L_A)^* \L_A} &  & \by{6.3.1}        \\
+		           & = \rk{\L_A}          &  & \by{ex:6.3.13}[a] \\
+		           & = \rk{A}             &  & \by{3.2.1}        \\
+		           & = \rk{\L_A (\L_A)^*} &  & \by{ex:6.3.13}[b] \\
+		           & = \rk{\L_A \L_{A^*}} &  & \by{6.3.1}        \\
+		           & = \rk{\L_{A A^*}}    &  & \by{2.15}[e]      \\
+		           & = \rk{A A^*}.        &  & \by{3.2.1}
+	\end{align*}
 \end{proof}
 
 \begin{ex}\label{ex:6.3.14}
-  Let \(\V\) be an inner product space over \(\F\), and let \(y, z \in \V\).
-  Define \(\T : \V \to \V\) by \(\T(x) = \inn{x, y} z\) for all \(x \in \V\).
-  First prove that \(\T \in \ls(\V)\).
-  Then show that \(\T^*\) exists, and find an explicit expression for it.
+	Let \(\V\) be an inner product space over \(\F\), and let \(y, z \in \V\).
+	Define \(\T : \V \to \V\) by \(\T(x) = \inn{x, y} z\) for all \(x \in \V\).
+	First prove that \(\T \in \ls(\V)\).
+	Then show that \(\T^*\) exists, and find an explicit expression for it.
 \end{ex}
 
 \begin{proof}[\pf{ex:6.3.14}]
-  Let \(x_1, x_2 \in \V\) and let \(c \in \F\).
-  Since
-  \begin{align*}
-    \T(c x_1 + x_2) & = \inn{c x_1 + x_2, y} z            &  & \text{(by \cref{ex:6.3.14})}   \\
-                    & = (c \inn{x_1, y} + \inn{x_2, y}) z &  & \text{(by \cref{6.1.1}(a)(b))} \\
-                    & = c \inn{x_1, y} z + \inn{x_2, y} z &  & \text{(by \cref{1.2.1})}       \\
-                    & = c \T(x_1) + \T(x_2),              &  & \text{(by \cref{ex:6.3.14})}
-  \end{align*}
-  by \cref{2.1.2}(b) we see that \(\T \in \ls(\V)\).
-  Now we define \(\U : \V \to \V\) as follow:
-  \[
-    \forall x \in \V, \U(x) = \inn{x, z} y.
-  \]
-  Since
-  \begin{align*}
-    \inn{\T(x_1), x_2} & = \inn{\inn{x_1, y} z, x_2}               &  & \text{(by \cref{ex:6.3.14})} \\
-                       & = \conj{\inn{x_2, \inn{x_1, y} z}}        &  & \text{(by \cref{6.1.1}(c))}  \\
-                       & = \conj{\conj{\inn{x_1, y}} \inn{x_2, z}} &  & \text{(by \cref{6.1}(b))}    \\
-                       & = \inn{x_1, y} \conj{\inn{x_2, z}}        &  & \text{(by \cref{d.2}(a)(c))} \\
-                       & = \conj{\inn{x_2, z}} \inn{x_1, y}                                          \\
-                       & = \inn{x_1, \inn{x_2, z} y}               &  & \text{(by \cref{6.1}(b))}    \\
-                       & = \inn{x_1, \U(x_2)},
-  \end{align*}
-  by \cref{6.9} we see that \(\T^*\) exists and \(\T^* = \U\).
+	Let \(x_1, x_2 \in \V\) and let \(c \in \F\).
+	Since
+	\begin{align*}
+		\T(c x_1 + x_2) & = \inn{c x_1 + x_2, y} z            &  & \by{ex:6.3.14} \\
+		                & = (c \inn{x_1, y} + \inn{x_2, y}) z &  & \by{6.1.1}[ab] \\
+		                & = c \inn{x_1, y} z + \inn{x_2, y} z &  & \by{1.2.1}     \\
+		                & = c \T(x_1) + \T(x_2),              &  & \by{ex:6.3.14}
+	\end{align*}
+	by \cref{2.1.2}(b) we see that \(\T \in \ls(\V)\).
+	Now we define \(\U : \V \to \V\) as follow:
+	\[
+		\forall x \in \V, \U(x) = \inn{x, z} y.
+	\]
+	Since
+	\begin{align*}
+		\inn{\T(x_1), x_2} & = \inn{\inn{x_1, y} z, x_2}               &  & \by{ex:6.3.14} \\
+		                   & = \conj{\inn{x_2, \inn{x_1, y} z}}        &  & \by{6.1.1}[c]  \\
+		                   & = \conj{\conj{\inn{x_1, y}} \inn{x_2, z}} &  & \by{6.1}[b]    \\
+		                   & = \inn{x_1, y} \conj{\inn{x_2, z}}        &  & \by{d.2}[ac]   \\
+		                   & = \conj{\inn{x_2, z}} \inn{x_1, y}                            \\
+		                   & = \inn{x_1, \inn{x_2, z} y}               &  & \by{6.1}[b]    \\
+		                   & = \inn{x_1, \U(x_2)},
+	\end{align*}
+	by \cref{6.9} we see that \(\T^*\) exists and \(\T^* = \U\).
 \end{proof}
 
 \begin{defn}\label{6.3.8}
-  Let \(\T \in \ls(\V, \W)\), where \(\V\) and \(\W\) are finite-dimensional inner product spaces over \(\F\) with inner products \(\inn{\cdot, \cdot}_1\) and \(\inn{\cdot, \cdot}_2\), respectively.
-  A function \(\T^* : \W \to \V\) is called an \textbf{adjoint} of \(\T\) if \(\inn{\T(x), y}_2 = \inn{x, \T^*(y)}_1\) for all \(x \in \V\) and \(y \in \W\).
+	Let \(\T \in \ls(\V, \W)\), where \(\V\) and \(\W\) are finite-dimensional inner product spaces over \(\F\) with inner products \(\inn{\cdot, \cdot}_1\) and \(\inn{\cdot, \cdot}_2\), respectively.
+	A function \(\T^* : \W \to \V\) is called an \textbf{adjoint} of \(\T\) if \(\inn{\T(x), y}_2 = \inn{x, \T^*(y)}_1\) for all \(x \in \V\) and \(y \in \W\).
 \end{defn}
 
 \begin{ex}\label{ex:6.3.15}
-  Let \(\T \in \ls(\V, \W)\), where \(\V\) and \(\W\) are finite-dimensional inner product spaces over \(\F\) with inner products \(\inn{\cdot, \cdot}_1\) and \(\inn{\cdot, \cdot}_2\), respectively.
-  Prove the following results.
-  \begin{enumerate}
-    \item There is a unique adjoint \(\T^*\) of \(\T\), and \(\T^* \in \ls(\W, \V)\).
-    \item If \(\beta\) and \(\gamma\) are orthonormal bases for \(\V\) and \(\W\) over \(\F\), respectively, then \([\T^*]_{\gamma}^{\beta} = ([\T]_{\beta}^{\gamma})^*\).
-    \item \(\rk{\T^*} = \rk{\T}\).
-    \item \(\inn{\T^*(x), y}_1 = \inn{x, \T(y)}_2\) for all \(x \in \W\) and \(y \in \V\).
-    \item For all \(x \in \V\), \(\T^* \T(x) = \zv\) iff \(\T(x) = \zv\).
-  \end{enumerate}
+	Let \(\T \in \ls(\V, \W)\), where \(\V\) and \(\W\) are finite-dimensional inner product spaces over \(\F\) with inner products \(\inn{\cdot, \cdot}_1\) and \(\inn{\cdot, \cdot}_2\), respectively.
+	Prove the following results.
+	\begin{enumerate}
+		\item There is a unique adjoint \(\T^*\) of \(\T\), and \(\T^* \in \ls(\W, \V)\).
+		\item If \(\beta\) and \(\gamma\) are orthonormal bases for \(\V\) and \(\W\) over \(\F\), respectively, then \([\T^*]_{\gamma}^{\beta} = ([\T]_{\beta}^{\gamma})^*\).
+		\item \(\rk{\T^*} = \rk{\T}\).
+		\item \(\inn{\T^*(x), y}_1 = \inn{x, \T(y)}_2\) for all \(x \in \W\) and \(y \in \V\).
+		\item For all \(x \in \V\), \(\T^* \T(x) = \zv\) iff \(\T(x) = \zv\).
+	\end{enumerate}
 \end{ex}
 
 \begin{proof}[\pf{ex:6.3.15}(a)]
-  Let \(y \in \W\).
-  Define \(g : \V \to \F\) by \(g(x) = \inn{\T(x), y}_2\) for all \(x \in \V\).
-  We first show that \(g \in \ls(\V, \F)\).
-  Let \(x_1, x_2 \in \V\) and let \(c \in \F\).
-  Then
-  \begin{align*}
-    g(c x_1 + x_2) & = \inn{\T(c x_1 + x_2), y}_2                                                    \\
-                   & = \inn{c \T(x_1) + \T(x_2), y}_2            &  & \text{(by \cref{2.1.2}(b))}    \\
-                   & = c \inn{\T(x_1), y}_2 + \inn{\T(x_2), y}_2 &  & \text{(by \cref{6.1.1}(a)(b))} \\
-                   & = c g(x_1) + g(x_2).
-  \end{align*}
-  Hence by \cref{2.1.2}(b) we see that \(g \in \ls(\V, \F)\).
+	Let \(y \in \W\).
+	Define \(g : \V \to \F\) by \(g(x) = \inn{\T(x), y}_2\) for all \(x \in \V\).
+	We first show that \(g \in \ls(\V, \F)\).
+	Let \(x_1, x_2 \in \V\) and let \(c \in \F\).
+	Then
+	\begin{align*}
+		g(c x_1 + x_2) & = \inn{\T(c x_1 + x_2), y}_2                                    \\
+		               & = \inn{c \T(x_1) + \T(x_2), y}_2            &  & \by{2.1.2}[b]  \\
+		               & = c \inn{\T(x_1), y}_2 + \inn{\T(x_2), y}_2 &  & \by{6.1.1}[ab] \\
+		               & = c g(x_1) + g(x_2).
+	\end{align*}
+	Hence by \cref{2.1.2}(b) we see that \(g \in \ls(\V, \F)\).
 
-  We now apply \cref{6.8} to obtain a unique vector \(y' \in \V\) such that \(g(x) = \inn{x, y'}_1\);
-  that is, \(\inn{\T(x), y}_2 = \inn{x, y'}_1\) for all \(x \in \V\).
-  Defining \(\T^* : \W \to \V\) by \(\T^*(y) = y'\), we have \(\inn{\T(x), y}_2 = \inn{x, \T^*(y)}_1\).
+	We now apply \cref{6.8} to obtain a unique vector \(y' \in \V\) such that \(g(x) = \inn{x, y'}_1\);
+	that is, \(\inn{\T(x), y}_2 = \inn{x, y'}_1\) for all \(x \in \V\).
+	Defining \(\T^* : \W \to \V\) by \(\T^*(y) = y'\), we have \(\inn{\T(x), y}_2 = \inn{x, \T^*(y)}_1\).
 
-  To show that \(\T^*\) is linear, let \(y_1, y_2 \in \W\) and \(c \in \F\).
-  Then for any \(x \in \V\),
-  we have
-  \begin{align*}
-    \inn{x, \T^*(c y_1 + y_2)}_1 & = \inn{\T(x), c y_1 + y_2}_2                                                             \\
-                                 & = \conj{c} \inn{\T(x), y_1}_2 + \inn{\T(x), y_2}_2     &  & \text{(by \cref{6.1}(a)(b))} \\
-                                 & = \conj{c} \inn{x, \T^*(y_1)}_1 + \inn{x, \T^*(y_2)}_1                                   \\
-                                 & = \inn{x, c \T^*(y_1) + \T^*(y_2)}_1.                  &  & \text{(by \cref{6.1}(a)(b))}
-  \end{align*}
-  Since \(x\) is arbitrary, \(\T^*(c y_1 + y_2) = c \T^*(y_1) + \T^*(y_2)\) by \cref{6.1}(e).
+	To show that \(\T^*\) is linear, let \(y_1, y_2 \in \W\) and \(c \in \F\).
+	Then for any \(x \in \V\),
+	we have
+	\begin{align*}
+		\inn{x, \T^*(c y_1 + y_2)}_1 & = \inn{\T(x), c y_1 + y_2}_2                                             \\
+		                             & = \conj{c} \inn{\T(x), y_1}_2 + \inn{\T(x), y_2}_2     &  & \by{6.1}[ab] \\
+		                             & = \conj{c} \inn{x, \T^*(y_1)}_1 + \inn{x, \T^*(y_2)}_1                   \\
+		                             & = \inn{x, c \T^*(y_1) + \T^*(y_2)}_1.                  &  & \by{6.1}[ab]
+	\end{align*}
+	Since \(x\) is arbitrary, \(\T^*(c y_1 + y_2) = c \T^*(y_1) + \T^*(y_2)\) by \cref{6.1}(e).
 
-  Finally, we need to show that \(\T^*\) is unique. Suppose that \(\U \in \ls(\W, \V)\) and that it satisfies \(\inn{\T(x), y}_2 = \inn{x, \U(y)}_1\) for all \((x, y) \in \V \times \W\).
-  Then \(\inn{x, \T^*(y)}_1 = \inn{x, \U(y)}_1\) for all \((x, y) \in \V \times \W\), so \(\T^* = \U\).
+	Finally, we need to show that \(\T^*\) is unique. Suppose that \(\U \in \ls(\W, \V)\) and that it satisfies \(\inn{\T(x), y}_2 = \inn{x, \U(y)}_1\) for all \((x, y) \in \V \times \W\).
+	Then \(\inn{x, \T^*(y)}_1 = \inn{x, \U(y)}_1\) for all \((x, y) \in \V \times \W\), so \(\T^* = \U\).
 \end{proof}
 
 \begin{proof}[\pf{ex:6.3.15}(b)]
-  Let \(i \in \set{1, \dots, m}\) and let \(j \in \set{1, \dots, n}\).
-  Then we have
-  \begin{align*}
-    ([\T^*]_{\gamma}^{\beta})_{i j} & = \inn{\T^*(w_j), v_i}_1               &  & \text{(by \cref{6.5})}      \\
-                                    & = \conj{\inn{v_i, \T^*(w_j)}_1}        &  & \text{(by \cref{6.1.1}(c))} \\
-                                    & = \conj{\inn{\T(v_i), w_j}_2}          &  & \text{(by \cref{6.3.8})}    \\
-                                    & = \conj{([\T]_{\beta}^{\gamma})_{j i}} &  & \text{(by \cref{6.5})}      \\
-                                    & = (([\T]_{\beta}^{\gamma})^*)_{i j}.   &  & \text{(by \cref{6.1.5})}
-  \end{align*}
-  Hence \([\T^*]_{\gamma}^{\beta} = ([\T]_{\beta}^{\gamma})^*\).
+	Let \(i \in \set{1, \dots, m}\) and let \(j \in \set{1, \dots, n}\).
+	Then we have
+	\begin{align*}
+		([\T^*]_{\gamma}^{\beta})_{i j} & = \inn{\T^*(w_j), v_i}_1               &  & \by{6.5}      \\
+		                                & = \conj{\inn{v_i, \T^*(w_j)}_1}        &  & \by{6.1.1}[c] \\
+		                                & = \conj{\inn{\T(v_i), w_j}_2}          &  & \by{6.3.8}    \\
+		                                & = \conj{([\T]_{\beta}^{\gamma})_{j i}} &  & \by{6.5}      \\
+		                                & = (([\T]_{\beta}^{\gamma})^*)_{i j}.   &  & \by{6.1.5}
+	\end{align*}
+	Hence \([\T^*]_{\gamma}^{\beta} = ([\T]_{\beta}^{\gamma})^*\).
 \end{proof}
 
 \begin{proof}[\pf{ex:6.3.15}(c)]
-  First we show that \(\ns{\T} = \rg{\T^*}^{\perp}\).
-  This is true since
-  \begin{align*}
-    \iff & v \in \ns{\T}                                                               \\
-    \iff & \T(v) = \zv_{\W}                          &  & \text{(by \cref{2.1.10})}    \\
-    \iff & \forall y \in \W, \inn{y, \T(v)}_2 = 0    &  & \text{(by \cref{6.1}(c)(d))} \\
-    \iff & \forall y \in \W, \inn{\T(v), y}_2 = 0    &  & \text{(by \cref{6.1.1}(c))}  \\
-    \iff & \forall y \in \W, \inn{v, \T^*(y)}_1 = 0  &  & \text{(by \cref{6.3.8})}     \\
-    \iff & \forall x \in \rg{\T^*}, \inn{v, x}_1 = 0                                   \\
-    \iff & v \in \rg{\T^*}^{\perp}.                  &  & \text{(by \cref{6.2.9})}
-  \end{align*}
+	First we show that \(\ns{\T} = \rg{\T^*}^{\perp}\).
+	This is true since
+	\begin{align*}
+		\iff & v \in \ns{\T}                                                \\
+		\iff & \T(v) = \zv_{\W}                          &  & \by{2.1.10}   \\
+		\iff & \forall y \in \W, \inn{y, \T(v)}_2 = 0    &  & \by{6.1}[cd]  \\
+		\iff & \forall y \in \W, \inn{\T(v), y}_2 = 0    &  & \by{6.1.1}[c] \\
+		\iff & \forall y \in \W, \inn{v, \T^*(y)}_1 = 0  &  & \by{6.3.8}    \\
+		\iff & \forall x \in \rg{\T^*}, \inn{v, x}_1 = 0                    \\
+		\iff & v \in \rg{\T^*}^{\perp}.                  &  & \by{6.2.9}
+	\end{align*}
 
-  Now we show that \(\rk{\T^*} = \rk{\T}\).
-  This is true since
-  \begin{align*}
-    \rk{\T} & = \dim(\V) - \nt{\T}                 &  & \text{(by \cref{2.3})}          \\
-            & = \dim(\V) - \dim(\ns{\T})           &  & \text{(by \cref{2.1.12})}       \\
-            & = \dim(\V) - \dim(\rg{\T^*}^{\perp}) &  & \text{(from the proof above)}   \\
-            & = \dim(\rg{\T^*})                    &  & \text{(by \cref{ex:6.2.13}(d))} \\
-            & = \rk{\T^*}.                         &  & \text{(by \cref{2.1.12})}
-  \end{align*}
+	Now we show that \(\rk{\T^*} = \rk{\T}\).
+	This is true since
+	\begin{align*}
+		\rk{\T} & = \dim(\V) - \nt{\T}                 &  & \by{2.3}                      \\
+		        & = \dim(\V) - \dim(\ns{\T})           &  & \by{2.1.12}                   \\
+		        & = \dim(\V) - \dim(\rg{\T^*}^{\perp}) &  & \text{(from the proof above)} \\
+		        & = \dim(\rg{\T^*})                    &  & \by{ex:6.2.13}[d]             \\
+		        & = \rk{\T^*}.                         &  & \by{2.1.12}
+	\end{align*}
 \end{proof}
 
 \begin{proof}[\pf{ex:6.3.15}(d)]
-  We have
-  \begin{align*}
-    \inn{\T^*(x), y}_1 & = \conj{\inn{y, \T^*(x)}_1} &  & \text{(by \cref{6.1.1}(c))} \\
-                       & = \conj{\inn{\T(y), x}_2}   &  & \text{(by \cref{6.3.8})}    \\
-                       & = \inn{x, \T(y)}_2.         &  & \text{(by \cref{6.1.1}(c))}
-  \end{align*}
+	We have
+	\begin{align*}
+		\inn{\T^*(x), y}_1 & = \conj{\inn{y, \T^*(x)}_1} &  & \by{6.1.1}[c] \\
+		                   & = \conj{\inn{\T(y), x}_2}   &  & \by{6.3.8}    \\
+		                   & = \inn{x, \T(y)}_2.         &  & \by{6.1.1}[c]
+	\end{align*}
 \end{proof}
 
 \begin{proof}[\pf{ex:6.3.15}(e)]
-  We have
-  \begin{align*}
-         & v \in \ns{\T^* \T}                                                             \\
-    \iff & (\T^* \T)(v) = \T^*(\T(v)) = \zv_{\V}        &  & \text{(by \cref{2.1.10})}    \\
-    \iff & \forall x \in \V, \inn{x, \T^*(\T(v))}_1 = 0 &  & \text{(by \cref{6.1}(c)(d))} \\
-    \iff & \forall x \in \V, \inn{\T(x), \T(v)}_2 = 0   &  & \text{(by \cref{6.3.8})}     \\
-    \iff & \T(v) = \zv_{\W}                             &  & \text{(by \cref{6.1}(c)(d))} \\
-    \iff & v \in \ns{\T}                                &  & \text{(by \cref{2.1.10})}
-  \end{align*}
-  and thus \(\ns{\T^* \T} = \ns{\T}\).
+	We have
+	\begin{align*}
+		     & v \in \ns{\T^* \T}                                             \\
+		\iff & (\T^* \T)(v) = \T^*(\T(v)) = \zv_{\V}        &  & \by{2.1.10}  \\
+		\iff & \forall x \in \V, \inn{x, \T^*(\T(v))}_1 = 0 &  & \by{6.1}[cd] \\
+		\iff & \forall x \in \V, \inn{\T(x), \T(v)}_2 = 0   &  & \by{6.3.8}   \\
+		\iff & \T(v) = \zv_{\W}                             &  & \by{6.1}[cd] \\
+		\iff & v \in \ns{\T}                                &  & \by{2.1.10}
+	\end{align*}
+	and thus \(\ns{\T^* \T} = \ns{\T}\).
 \end{proof}
 
 \begin{ex}\label{ex:6.3.16}
-  Let \(\V, \W, \vs{X}\) be finite-dimensional inner product spaces over \(\F\).
-  Let \(\seq{\inn{\cdot, \cdot}}{1,2,3}\) be inner products on \(\V, \W, \vs{X}\) over \(\F\), respectively.
-  Let \(\T, \U \in \ls(\V, \W)\) and let \(\lt{S} \in \ls(\W, \vs{X})\).
-  Then
-  \begin{enumerate}
-    \item \((\T + \U)^* = \T^* + \U^*\);
-    \item \((c \T)^* = \conj{c} \T^*\) for any \(c \in \F\);
-    \item \((\lt{S} \T)^* = \T^* \lt{S}^*\);
-    \item \(\T^{**} = \T\);
-  \end{enumerate}
+	Let \(\V, \W, \vs{X}\) be finite-dimensional inner product spaces over \(\F\).
+	Let \(\seq{\inn{\cdot, \cdot}}{1,2,3}\) be inner products on \(\V, \W, \vs{X}\) over \(\F\), respectively.
+	Let \(\T, \U \in \ls(\V, \W)\) and let \(\lt{S} \in \ls(\W, \vs{X})\).
+	Then
+	\begin{enumerate}
+		\item \((\T + \U)^* = \T^* + \U^*\);
+		\item \((c \T)^* = \conj{c} \T^*\) for any \(c \in \F\);
+		\item \((\lt{S} \T)^* = \T^* \lt{S}^*\);
+		\item \(\T^{**} = \T\);
+	\end{enumerate}
 \end{ex}
 
 \begin{proof}[\pf{ex:6.3.16}(a)]
-  Since
-  \begin{align*}
-     & \forall (x, y) \in \V \times \W, \inn{x, (\T + \U)^*(y)}_1                                  \\
-     & = \inn{(\T + \U)(x), y}_2                                  &  & \text{(by \cref{6.3.8})}    \\
-     & = \inn{\T(x) + \U(x), y}_2                                 &  & \text{(by \cref{2.2.5})}    \\
-     & = \inn{\T(x), y}_2 + \inn{\U(x), y}_2                      &  & \text{(by \cref{6.1.1}(a))} \\
-     & = \inn{x, \T^*(y)}_1 + \inn{x, \U^*(y)}_1                  &  & \text{(by \cref{6.3.8})}    \\
-     & = \inn{x, \T^*(y) + \U^*(y)}_1                             &  & \text{(by \cref{6.1}(a))}   \\
-     & = \inn{x, (\T^* + \U^*)(y)}_1,                             &  & \text{(by \cref{2.2.5})}
-  \end{align*}
-  by \cref{6.1}(e) we know that \(\T^* + \U^* = (\T + \U)^*\).
+	Since
+	\begin{align*}
+		 & \forall (x, y) \in \V \times \W, \inn{x, (\T + \U)^*(y)}_1                    \\
+		 & = \inn{(\T + \U)(x), y}_2                                  &  & \by{6.3.8}    \\
+		 & = \inn{\T(x) + \U(x), y}_2                                 &  & \by{2.2.5}    \\
+		 & = \inn{\T(x), y}_2 + \inn{\U(x), y}_2                      &  & \by{6.1.1}[a] \\
+		 & = \inn{x, \T^*(y)}_1 + \inn{x, \U^*(y)}_1                  &  & \by{6.3.8}    \\
+		 & = \inn{x, \T^*(y) + \U^*(y)}_1                             &  & \by{6.1}[a]   \\
+		 & = \inn{x, (\T^* + \U^*)(y)}_1,                             &  & \by{2.2.5}
+	\end{align*}
+	by \cref{6.1}(e) we know that \(\T^* + \U^* = (\T + \U)^*\).
 \end{proof}
 
 \begin{proof}[\pf{ex:6.3.16}(b)]
-  Since
-  \begin{align*}
-    \forall (x, y) \in \V \times \W, \inn{x, (c \T)^*(y)}_1 & = \inn{(c \T)(x), y}_2           &  & \text{(by \cref{6.3.8})}    \\
-                                                            & = \inn{c \T(x), y}_2             &  & \text{(by \cref{2.2.5})}    \\
-                                                            & = c \inn{\T(x), y}_2             &  & \text{(by \cref{6.1.1}(b))} \\
-                                                            & = c \inn{x, \T^*(y)}_1           &  & \text{(by \cref{6.3.8})}    \\
-                                                            & = \inn{x, \conj{c} \T^*(y)}_1    &  & \text{(by \cref{6.1}(b))}   \\
-                                                            & = \inn{x, (\conj{c} \T^*)(y)}_1, &  & \text{(by \cref{2.2.5})}
-  \end{align*}
-  by \cref{6.1}(e) we know that \((c \T)^* = \conj{c} \T^*\).
+	Since
+	\begin{align*}
+		\forall (x, y) \in \V \times \W, \inn{x, (c \T)^*(y)}_1 & = \inn{(c \T)(x), y}_2           &  & \by{6.3.8}    \\
+		                                                        & = \inn{c \T(x), y}_2             &  & \by{2.2.5}    \\
+		                                                        & = c \inn{\T(x), y}_2             &  & \by{6.1.1}[b] \\
+		                                                        & = c \inn{x, \T^*(y)}_1           &  & \by{6.3.8}    \\
+		                                                        & = \inn{x, \conj{c} \T^*(y)}_1    &  & \by{6.1}[b]   \\
+		                                                        & = \inn{x, (\conj{c} \T^*)(y)}_1, &  & \by{2.2.5}
+	\end{align*}
+	by \cref{6.1}(e) we know that \((c \T)^* = \conj{c} \T^*\).
 \end{proof}
 
 \begin{proof}[\pf{ex:6.3.16}(c)]
-  Since
-  \begin{align*}
-    \forall (x, y) \in \V \times \vs{X}, \inn{x, (\lt{S} \T)^*(y)}_1 & = \inn{(\lt{S} \T)(x), y}_3      &  & \text{(by \cref{6.3.8})} \\
-                                                                     & = \inn{\lt{S}(\T(x)), y}_3                                     \\
-                                                                     & = \inn{\T(x), \lt{S}^*(y)}_2     &  & \text{(by \cref{6.3.8})} \\
-                                                                     & = \inn{x, \T^*(\lt{S}^*(y))}_1   &  & \text{(by \cref{6.3.8})} \\
-                                                                     & = \inn{x, (\T^* \lt{S}^*)(y)}_1,
-  \end{align*}
-  by \cref{6.1}(e) we know that \((\lt{S} \T)^* = \T^* \lt{S}^*\).
+	Since
+	\begin{align*}
+		\forall (x, y) \in \V \times \vs{X}, \inn{x, (\lt{S} \T)^*(y)}_1 & = \inn{(\lt{S} \T)(x), y}_3      &  & \by{6.3.8} \\
+		                                                                 & = \inn{\lt{S}(\T(x)), y}_3                       \\
+		                                                                 & = \inn{\T(x), \lt{S}^*(y)}_2     &  & \by{6.3.8} \\
+		                                                                 & = \inn{x, \T^*(\lt{S}^*(y))}_1   &  & \by{6.3.8} \\
+		                                                                 & = \inn{x, (\T^* \lt{S}^*)(y)}_1,
+	\end{align*}
+	by \cref{6.1}(e) we know that \((\lt{S} \T)^* = \T^* \lt{S}^*\).
 \end{proof}
 
 \begin{proof}[\pf{ex:6.3.16}(d)]
-  Since
-  \begin{align*}
-    \forall (x, y) \in \V \times \W, \inn{x, \T(y)}_1 & = \inn{\T^*(x), y}_2     &  & \text{(by \cref{ex:6.3.15}(d))} \\
-                                                      & = \inn{x, \T^{**}(y)}_1, &  & \text{(by \cref{6.3.8})}
-  \end{align*}
-  by \cref{6.1}(e) we know that \(\T^{**} = \T\).
+	Since
+	\begin{align*}
+		\forall (x, y) \in \V \times \W, \inn{x, \T(y)}_1 & = \inn{\T^*(x), y}_2     &  & \by{ex:6.3.15}[d] \\
+		                                                  & = \inn{x, \T^{**}(y)}_1, &  & \by{6.3.8}
+	\end{align*}
+	by \cref{6.1}(e) we know that \(\T^{**} = \T\).
 \end{proof}
 
 \begin{ex}\label{ex:6.3.17}
-  Let \(T \in \ls(\V, \W\), where \(\V\) and \(\W\) are finite-dimensional inner product spaces over \(\F\).
-  Prove that \(\rg{\T^*}^{\perp} = \ns{\T}\), using \cref{6.3.8}.
+	Let \(T \in \ls(\V, \W\), where \(\V\) and \(\W\) are finite-dimensional inner product spaces over \(\F\).
+	Prove that \(\rg{\T^*}^{\perp} = \ns{\T}\), using \cref{6.3.8}.
 \end{ex}
 
 \begin{proof}[\pf{ex:6.3.17}]
-  See proof of \cref{ex:6.3.15}(c).
+	See proof of \cref{ex:6.3.15}(c).
 \end{proof}
 
 \begin{ex}\label{ex:6.3.18}
-  Let \(A \in \ms{n}{n}{\F}\).
-  Prove that \(\det(A^*) = \conj{\det(A)}\).
+	Let \(A \in \ms{n}{n}{\F}\).
+	Prove that \(\det(A^*) = \conj{\det(A)}\).
 \end{ex}
 
 \begin{proof}[\pf{ex:6.3.18}]
-  We have
-  \begin{align*}
-    \det(A^*) & = \det(\conj{\tp{A}}) &  & \text{(by \cref{6.1.5})}        \\
-              & = \conj{\det(\tp{A})} &  & \text{(by \cref{ex:4.3.13}(a))} \\
-              & = \conj{\det(A)}.     &  & \text{(by \cref{4.8})}
-  \end{align*}
+	We have
+	\begin{align*}
+		\det(A^*) & = \det(\conj{\tp{A}}) &  & \by{6.1.5}        \\
+		          & = \conj{\det(\tp{A})} &  & \by{ex:4.3.13}[a] \\
+		          & = \conj{\det(A)}.     &  & \by{4.8}
+	\end{align*}
 \end{proof}
 
 \begin{ex}\label{ex:6.3.19}
-  Suppose that \(A \in \MS\) and no two columns of \(A\) are identical.
-  Prove that \(A^* A\) is a diagonal matrix iff every pair of columns of \(A\) is orthogonal.
+	Suppose that \(A \in \MS\) and no two columns of \(A\) are identical.
+	Prove that \(A^* A\) is a diagonal matrix iff every pair of columns of \(A\) is orthogonal.
 \end{ex}
 
 \begin{proof}[\pf{ex:6.3.19}]
-  For each \(i \in \set{1, \dots, n}\), let \(a_i\) be the \(i\)th column of \(A\).
-  Then we have
-  \begin{align*}
-         & A^* A \text{ is diagonal}                                                                                                                \\
-    \iff & \forall i, j \in \set{1, \dots, n}, (A^* A)_{i j} = (A^* A)_{i j} \delta_{i j}                         &  & \text{(by \cref{ex:2.3.10})} \\
-    \iff & \forall i, j \in \set{1, \dots, n}, \sum_{k = 1}^m (A^*)_{i k} A_{k j} = (A^* A)_{i j} \delta_{i j}    &  & \text{(by \cref{2.3.1})}     \\
-    \iff & \forall i, j \in \set{1, \dots, n}, \sum_{k = 1}^m \conj{A_{k i}} A_{k j} = (A^* A)_{i j} \delta_{i j} &  & \text{(by \cref{6.1.5})}     \\
-    \iff & \forall i, j \in \set{1, \dots, n}, \inn{a_j, a_i} = (A^* A)_{i j} \delta_{i j}                        &  & \text{(by \cref{6.1.2})}     \\
-    \iff & \text{the set of columns of } A \text{ is orthogonal}.                                                 &  & \text{(by \cref{6.1.12})}
-  \end{align*}
+	For each \(i \in \set{1, \dots, n}\), let \(a_i\) be the \(i\)th column of \(A\).
+	Then we have
+	\begin{align*}
+		     & A^* A \text{ is diagonal}                                                                                                  \\
+		\iff & \forall i, j \in \set{1, \dots, n}, (A^* A)_{i j} = (A^* A)_{i j} \delta_{i j}                         &  & \by{ex:2.3.10} \\
+		\iff & \forall i, j \in \set{1, \dots, n}, \sum_{k = 1}^m (A^*)_{i k} A_{k j} = (A^* A)_{i j} \delta_{i j}    &  & \by{2.3.1}     \\
+		\iff & \forall i, j \in \set{1, \dots, n}, \sum_{k = 1}^m \conj{A_{k i}} A_{k j} = (A^* A)_{i j} \delta_{i j} &  & \by{6.1.5}     \\
+		\iff & \forall i, j \in \set{1, \dots, n}, \inn{a_j, a_i} = (A^* A)_{i j} \delta_{i j}                        &  & \by{6.1.2}     \\
+		\iff & \text{the set of columns of } A \text{ is orthogonal}.                                                 &  & \by{6.1.12}
+	\end{align*}
 \end{proof}
 
 \setcounter{ex}{22}
 \begin{ex}\label{ex:6.3.23}
-  Consider the problem of finding the least squares line \(y = ct + d\) corresponding to the \(m\) observations \((t_1, y_1), \dots, (t_m, y_m)\).
-  \begin{enumerate}
-    \item Show that the equation \((A^* A) x_0 = A^* y\) of \cref{6.12} takes the form of the \emph{normal equations}:
-          \[
-            \pa{\sum_{i = 1}^m t_i^2} c + \pa{\sum_{i = 1}^m t_i} d = \sum_{i = 1}^m t_i y_i
-          \]
-          and
-          \[
-            \pa{\sum_{i = 1}^m t_i} c + md = \sum_{i = 1}^m y_i.
-          \]
-          These equations may also be obtained from the error \(E\) by setting the partial derivatives of \(E\) with respect to both \(c\) and \(d\) equal to zero.
-    \item Use the second normal equation of (a) to show that the least squares line must pass through the \emph{center of mass}, \((\overline{t}, \overline{y})\), where
-          \[
-            \overline{t} = \frac{1}{m} \sum_{i = 1}^m t_i \quad \text{and} \quad \overline{y} = \frac{1}{m} \sum_{i = 1}^m y_i.
-          \]
-  \end{enumerate}
+	Consider the problem of finding the least squares line \(y = ct + d\) corresponding to the \(m\) observations \((t_1, y_1), \dots, (t_m, y_m)\).
+	\begin{enumerate}
+		\item Show that the equation \((A^* A) x_0 = A^* y\) of \cref{6.12} takes the form of the \emph{normal equations}:
+		      \[
+			      \pa{\sum_{i = 1}^m t_i^2} c + \pa{\sum_{i = 1}^m t_i} d = \sum_{i = 1}^m t_i y_i
+		      \]
+		      and
+		      \[
+			      \pa{\sum_{i = 1}^m t_i} c + md = \sum_{i = 1}^m y_i.
+		      \]
+		      These equations may also be obtained from the error \(E\) by setting the partial derivatives of \(E\) with respect to both \(c\) and \(d\) equal to zero.
+		\item Use the second normal equation of (a) to show that the least squares line must pass through the \emph{center of mass}, \((\overline{t}, \overline{y})\), where
+		      \[
+			      \overline{t} = \frac{1}{m} \sum_{i = 1}^m t_i \quad \text{and} \quad \overline{y} = \frac{1}{m} \sum_{i = 1}^m y_i.
+		      \]
+	\end{enumerate}
 \end{ex}
 
 \begin{proof}[\pf{ex:6.3.23}(a)]
-  Since
-  \begin{align*}
-    A         & = \begin{pmatrix}
-                    t_1    & 1      \\
-                    \vdots & \vdots \\
-                    t_m    & 1
-                  \end{pmatrix}                                                               &  & \text{(by \cref{6.12})}    \\
-    A^*       & = \begin{pmatrix}
-                    t_1 & \cdots & t_m \\
-                    1   & \cdots & 1
-                  \end{pmatrix}                                                            &  & \text{(by \cref{6.1.5})}      \\
-    A^* A     & = \begin{pmatrix}
-                    \sum_{i = 1}^m t_i^2 & \sum_{i = 1}^m t_i \\
-                    \sum_{i = 1}^m t_i   & m
-                  \end{pmatrix}                                     &  & \text{(by \cref{2.3.1})}                             \\
-    A^* A x_0 & = \begin{pmatrix}
-                    \sum_{i = 1}^m t_i^2 & \sum_{i = 1}^m t_i \\
-                    \sum_{i = 1}^m t_i   & m
-                  \end{pmatrix} \begin{pmatrix}
-                                  c \\
-                                  d
-                                \end{pmatrix}                                     &  & \text{(by \cref{6.12})}                \\
-              & = \begin{pmatrix}
-                    \pa{\sum_{i = 1}^m t_i^2} c + \pa{\sum_{i = 1}^m t_i} d \\
-                    \pa{\sum_{i = 1}^m t_i} c + md
-                  \end{pmatrix} &  & \text{(by \cref{2.3.1})}                               \\
-    A^* y     & = \begin{pmatrix}
-                    t_1 & \cdots & t_m \\
-                    1   & \cdots & 1
-                  \end{pmatrix} \begin{pmatrix}
-                                  y_1    \\
-                                  \vdots \\
-                                  y_m
-                                \end{pmatrix}                                                    &  & \text{(by \cref{6.12})} \\
-              & = \begin{pmatrix}
-                    \sum_{i = 1}^m t_i y_i \\
-                    \sum_{i = 1}^m y_i
-                  \end{pmatrix},                                                        &  & \text{(by \cref{2.3.1})}
-  \end{align*}
-  we have
-  \begin{align*}
-             & A^* A x_0 = A^* y                                                                                         &  & \text{(by \cref{6.12})} \\
-    \implies & \begin{dcases}
-                 \pa{\sum_{i = 1}^m t_i^2} c + \pa{\sum_{i = 1}^m t_i} d = \sum_{i = 1}^m t_i y_i \\
-                 \pa{\sum_{i = 1}^m t_i} c + md = \sum_{i = 1}^m y_i
-               \end{dcases}.
-  \end{align*}
+	Since
+	\begin{align*}
+		A         & = \begin{pmatrix}
+			              t_1    & 1      \\
+			              \vdots & \vdots \\
+			              t_m    & 1
+		              \end{pmatrix}                                                               &  & \by{6.12}    \\
+		A^*       & = \begin{pmatrix}
+			              t_1 & \cdots & t_m \\
+			              1   & \cdots & 1
+		              \end{pmatrix}                                                            &  & \by{6.1.5}      \\
+		A^* A     & = \begin{pmatrix}
+			              \sum_{i = 1}^m t_i^2 & \sum_{i = 1}^m t_i \\
+			              \sum_{i = 1}^m t_i   & m
+		              \end{pmatrix}                                     &  & \by{2.3.1}                             \\
+		A^* A x_0 & = \begin{pmatrix}
+			              \sum_{i = 1}^m t_i^2 & \sum_{i = 1}^m t_i \\
+			              \sum_{i = 1}^m t_i   & m
+		              \end{pmatrix} \begin{pmatrix}
+			                            c \\
+			                            d
+		                            \end{pmatrix}                                     &  & \by{6.12}                \\
+		          & = \begin{pmatrix}
+			              \pa{\sum_{i = 1}^m t_i^2} c + \pa{\sum_{i = 1}^m t_i} d \\
+			              \pa{\sum_{i = 1}^m t_i} c + md
+		              \end{pmatrix} &  & \by{2.3.1}                 \\
+		A^* y     & = \begin{pmatrix}
+			              t_1 & \cdots & t_m \\
+			              1   & \cdots & 1
+		              \end{pmatrix} \begin{pmatrix}
+			                            y_1    \\
+			                            \vdots \\
+			                            y_m
+		                            \end{pmatrix}                                                    &  & \by{6.12} \\
+		          & = \begin{pmatrix}
+			              \sum_{i = 1}^m t_i y_i \\
+			              \sum_{i = 1}^m y_i
+		              \end{pmatrix},                                                        &  & \by{2.3.1}
+	\end{align*}
+	we have
+	\begin{align*}
+		         & A^* A x_0 = A^* y                                                                                         &  & \by{6.12} \\
+		\implies & \begin{dcases}
+			           \pa{\sum_{i = 1}^m t_i^2} c + \pa{\sum_{i = 1}^m t_i} d = \sum_{i = 1}^m t_i y_i \\
+			           \pa{\sum_{i = 1}^m t_i} c + md = \sum_{i = 1}^m y_i
+		           \end{dcases}.
+	\end{align*}
 \end{proof}
 
 \begin{proof}[\pf{ex:6.3.23}(b)]
-  We have
-  \begin{align*}
-             & \frac{1}{m} \pa{\pa{\sum_{i = 1}^m t_i} c + md} = \frac{1}{m} \pa{\sum_{i = 1}^m y_i} &  & \text{(by \cref{ex:6.3.23}(a))} \\
-    \implies & \overline{t} c + d = \overline{y}                                                                                          \\
-    \implies & (\overline{t}, \overline{y}) \text{ pass through } y = ct + d.                        &  & \text{(by \cref{6.12})}
-  \end{align*}
+	We have
+	\begin{align*}
+		         & \frac{1}{m} \pa{\pa{\sum_{i = 1}^m t_i} c + md} = \frac{1}{m} \pa{\sum_{i = 1}^m y_i} &  & \by{ex:6.3.23}[a] \\
+		\implies & \overline{t} c + d = \overline{y}                                                                            \\
+		\implies & (\overline{t}, \overline{y}) \text{ pass through } y = ct + d.                        &  & \by{6.12}
+	\end{align*}
 \end{proof}
 
 \begin{ex}\label{ex:6.3.24}
-  Let \(\V\) and \(\set{\seq{e}{1,2,}}\) be defined as in \cref{ex:6.2.23}.
-  Define \(\T : \V \to \V\) by
-  \[
-    \T(\sigma)(k) = \sum_{i = k}^\infty \sigma(i) \quad \text{for } k \in \Z^+.
-  \]
-  Notice that the infinite series in the definition of \(\T\) converges because \(\sigma(i) \neq 0\) for only finitely many \(i\).
-  \begin{enumerate}
-    \item Prove that \(\T \in \ls(\V)\).
-    \item Prove that for any positive integer \(n\), \(\T(e_n) = \sum_{i = 1}^n e_i\).
-    \item Prove that \(\T\) has no adjoint
-  \end{enumerate}
+	Let \(\V\) and \(\set{\seq{e}{1,2,}}\) be defined as in \cref{ex:6.2.23}.
+	Define \(\T : \V \to \V\) by
+	\[
+		\T(\sigma)(k) = \sum_{i = k}^\infty \sigma(i) \quad \text{for } k \in \Z^+.
+	\]
+	Notice that the infinite series in the definition of \(\T\) converges because \(\sigma(i) \neq 0\) for only finitely many \(i\).
+	\begin{enumerate}
+		\item Prove that \(\T \in \ls(\V)\).
+		\item Prove that for any positive integer \(n\), \(\T(e_n) = \sum_{i = 1}^n e_i\).
+		\item Prove that \(\T\) has no adjoint
+	\end{enumerate}
 \end{ex}
 
 \begin{proof}[\pf{ex:6.3.24}(a)]
-  Let \(a, b \in \V\) and let \(c \in \F\).
-  Since
-  \begin{align*}
-    \forall k \in \Z^+, \T(ca + b)(k) & = \sum_{i = k}^\infty (ca + b)(i)                       &  & \text{(by \cref{ex:6.3.24})} \\
-                                      & = c \sum_{i = k}^\infty a(i) + \sum_{i = k}^\infty b(i)                                   \\
-                                      & = c \T(a)(k) + \T(b)(k)                                 &  & \text{(by \cref{ex:6.3.24})} \\
-                                      & = (c \T(a) + \T(b))(k),
-  \end{align*}
-  by \cref{1.2.13} and \cref{2.1.2}(b) we see that \(\T \in \ls(\V)\).
+	Let \(a, b \in \V\) and let \(c \in \F\).
+	Since
+	\begin{align*}
+		\forall k \in \Z^+, \T(ca + b)(k) & = \sum_{i = k}^\infty (ca + b)(i)                       &  & \by{ex:6.3.24} \\
+		                                  & = c \sum_{i = k}^\infty a(i) + \sum_{i = k}^\infty b(i)                     \\
+		                                  & = c \T(a)(k) + \T(b)(k)                                 &  & \by{ex:6.3.24} \\
+		                                  & = (c \T(a) + \T(b))(k),
+	\end{align*}
+	by \cref{1.2.13} and \cref{2.1.2}(b) we see that \(\T \in \ls(\V)\).
 \end{proof}
 
 \begin{proof}[\pf{ex:6.3.24}(b)]
-  Let \(n \in \Z^+\).
-  Then we have
-  \begin{align*}
-    \forall k \in \Z^+, \T(e_n) & = \sum_{i = k}^\infty e_n(i)       &  & \text{(by \cref{ex:6.3.24})}    \\
-                                & = \sum_{i = k}^\infty \delta_{n i} &  & \text{(by \cref{ex:6.2.23}(b))} \\
-                                & = \begin{dcases}
-                                      1 & \text{if } k \leq n \\
-                                      0 & \text{if } k > n
-                                    \end{dcases}         &  & \text{(by \cref{2.3.4})}                    \\
-                                & = \sum_{i = 1}^n e_i.              &  & \text{(by \cref{ex:6.2.23}(b))}
-  \end{align*}
+	Let \(n \in \Z^+\).
+	Then we have
+	\begin{align*}
+		\forall k \in \Z^+, \T(e_n) & = \sum_{i = k}^\infty e_n(i)       &  & \by{ex:6.3.24}    \\
+		                            & = \sum_{i = k}^\infty \delta_{n i} &  & \by{ex:6.2.23}[b] \\
+		                            & = \begin{dcases}
+			                                1 & \text{if } k \leq n \\
+			                                0 & \text{if } k > n
+		                                \end{dcases}         &  & \by{2.3.4}                    \\
+		                            & = \sum_{i = 1}^n e_i.              &  & \by{ex:6.2.23}[b]
+	\end{align*}
 \end{proof}
 
 \begin{proof}[\pf{ex:6.3.24}(c)]
-  Suppose for sake of contradiction that \(\T^* \in \ls(\V)\) exists.
-  Then we have
-  \begin{align*}
-    \forall k \in \Z^+, \T^*(e_1)(k) & = \conj{\conj{\T^*(e_1)(k)}}                                  &  & \text{(by \cref{d.2}(a))}       \\
-                                     & = \conj{\delta_{k k} \cdot \conj{\T^*(e_1)(k)}}               &  & \text{(by \cref{2.3.4})}        \\
-                                     & = \conj{\sum_{i = 1}^\infty e_k(i) \cdot \conj{\T^*(e_1)(i)}} &  & \text{(by \cref{ex:6.2.23}(b))} \\
-                                     & = \conj{\inn{e_k, \T^*(e_1)}}                                 &  & \text{(by \cref{ex:6.2.23})}    \\
-                                     & = \conj{\inn{\T(e_k), e_1}}                                   &  & \text{(by \cref{6.9})}          \\
-                                     & = \conj{\inn{\sum_{i = 1}^k e_k, e_1}}                        &  & \text{(by \cref{ex:6.3.24}(b))} \\
-                                     & = \conj{\sum_{i = 1}^k \inn{e_k, e_1}}                        &  & \text{(by \cref{6.1.1}(a))}     \\
-                                     & = \conj{1} = 1.                                               &  & \text{(by \cref{ex:6.2.23}(b))}
-  \end{align*}
-  But \(\T^*(e_1) \in \V\) implies there are only finite number of nonzeros in \(\T^*(e_1)\), a contradiction.
-  Thus \(\T^*\) does not exist.
+	Suppose for sake of contradiction that \(\T^* \in \ls(\V)\) exists.
+	Then we have
+	\begin{align*}
+		\forall k \in \Z^+, \T^*(e_1)(k) & = \conj{\conj{\T^*(e_1)(k)}}                                  &  & \by{d.2}[a]       \\
+		                                 & = \conj{\delta_{k k} \cdot \conj{\T^*(e_1)(k)}}               &  & \by{2.3.4}        \\
+		                                 & = \conj{\sum_{i = 1}^\infty e_k(i) \cdot \conj{\T^*(e_1)(i)}} &  & \by{ex:6.2.23}[b] \\
+		                                 & = \conj{\inn{e_k, \T^*(e_1)}}                                 &  & \by{ex:6.2.23}    \\
+		                                 & = \conj{\inn{\T(e_k), e_1}}                                   &  & \by{6.9}          \\
+		                                 & = \conj{\inn{\sum_{i = 1}^k e_k, e_1}}                        &  & \by{ex:6.3.24}[b] \\
+		                                 & = \conj{\sum_{i = 1}^k \inn{e_k, e_1}}                        &  & \by{6.1.1}[a]     \\
+		                                 & = \conj{1} = 1.                                               &  & \by{ex:6.2.23}[b]
+	\end{align*}
+	But \(\T^*(e_1) \in \V\) implies there are only finite number of nonzeros in \(\T^*(e_1)\), a contradiction.
+	Thus \(\T^*\) does not exist.
 \end{proof}

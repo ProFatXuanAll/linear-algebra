@@ -1,982 +1,982 @@
 \section{Eigenvalues and Eigenvectors}\label{sec:5.1}
 
 \begin{defn}\label{5.1.1}
-  A linear operator \(\T\) on a finite-dimensional vector space \(\V\) over \(\F\) is called \textbf{diagonalizable} if there is an ordered basis \(\beta\) for \(\V\) over \(\F\) such that \([\T]_{\beta}\) is a diagonal matrix.
-  A square matrix \(A\) is called \textbf{diagonalizable} if \(\L_A\) is diagonalizable.
+	A linear operator \(\T\) on a finite-dimensional vector space \(\V\) over \(\F\) is called \textbf{diagonalizable} if there is an ordered basis \(\beta\) for \(\V\) over \(\F\) such that \([\T]_{\beta}\) is a diagonal matrix.
+	A square matrix \(A\) is called \textbf{diagonalizable} if \(\L_A\) is diagonalizable.
 \end{defn}
 
 \begin{note}
-  We want to determine when a linear operator \(\T\) on a finite-dimensional vector space \(\V\) over \(\F\) is diagonalizable and, if so, how to obtain an ordered basis \(\beta = \set{\seq{v}{1,,n}}\) for \(\V\) over \(\F\) such that \([\T]_{\beta}\) is a diagonal matrix.
-  Note that, if \(D = [\T]_{\beta}\) is a diagonal matrix, then for each vector \(v_j \in \beta\), we have
-  \[
-    \T(v_j) = \sum_{i = 1}^n D_{i j} v_i = D_{j j} v_j = \lambda_j v_j,
-  \]
-  where \(\lambda_j = D_{j j}\).
+	We want to determine when a linear operator \(\T\) on a finite-dimensional vector space \(\V\) over \(\F\) is diagonalizable and, if so, how to obtain an ordered basis \(\beta = \set{\seq{v}{1,,n}}\) for \(\V\) over \(\F\) such that \([\T]_{\beta}\) is a diagonal matrix.
+	Note that, if \(D = [\T]_{\beta}\) is a diagonal matrix, then for each vector \(v_j \in \beta\), we have
+	\[
+		\T(v_j) = \sum_{i = 1}^n D_{i j} v_i = D_{j j} v_j = \lambda_j v_j,
+	\]
+	where \(\lambda_j = D_{j j}\).
 
-  Conversely, if \(\beta = \set{\seq{v}{1,,n}}\) is an ordered basis for \(\V\) over \(\F\) such that \(\T(v_j) = \lambda_j v_j\) for some scalars \(\seq{\lambda}{1,,n}\), then clearly
-  \[
-    [\T]_{\beta} = \begin{pmatrix}
-      \lambda_1 & 0         & \cdots & 0         \\
-      0         & \lambda_2 & \cdots & 0         \\
-      \vdots    & \vdots    &        & \vdots    \\
-      0         & 0         & \cdots & \lambda_n
-    \end{pmatrix}.
-  \]
-  In the preceding paragraph, each vector \(v\) in the basis \(\beta\) satisfies the condition that \(\T(v) = \lambda v\) for some scalar \(\lambda\).
-  Moreover, because \(v\) lies in a basis, \(v\) is nonzero.
-  These computations motivate \cref{5.1.2}.
+	Conversely, if \(\beta = \set{\seq{v}{1,,n}}\) is an ordered basis for \(\V\) over \(\F\) such that \(\T(v_j) = \lambda_j v_j\) for some scalars \(\seq{\lambda}{1,,n}\), then clearly
+	\[
+		[\T]_{\beta} = \begin{pmatrix}
+			\lambda_1 & 0         & \cdots & 0         \\
+			0         & \lambda_2 & \cdots & 0         \\
+			\vdots    & \vdots    &        & \vdots    \\
+			0         & 0         & \cdots & \lambda_n
+		\end{pmatrix}.
+	\]
+	In the preceding paragraph, each vector \(v\) in the basis \(\beta\) satisfies the condition that \(\T(v) = \lambda v\) for some scalar \(\lambda\).
+	Moreover, because \(v\) lies in a basis, \(v\) is nonzero.
+	These computations motivate \cref{5.1.2}.
 \end{note}
 
 \begin{defn}\label{5.1.2}
-  Let \(\T\) be a linear operator on a vector space \(\V\) over \(\F\).
-  A nonzero vector \(v \in \V\) is called an \textbf{eigenvector} of \(\T\) if there exists a scalar \(\lambda\) such that \(\T(v) = \lambda v\).
-  The scalar \(\lambda\) is called the \textbf{eigenvalue} corresponding to the eigenvector \(v\).
+	Let \(\T\) be a linear operator on a vector space \(\V\) over \(\F\).
+	A nonzero vector \(v \in \V\) is called an \textbf{eigenvector} of \(\T\) if there exists a scalar \(\lambda\) such that \(\T(v) = \lambda v\).
+	The scalar \(\lambda\) is called the \textbf{eigenvalue} corresponding to the eigenvector \(v\).
 
-  Let \(A \in \ms{n}{n}{\F}\).
-  A nonzero vector \(v \in \vs{F}^n\) is called an \textbf{eigenvector} of \(A\) if \(v\) is an eigenvector of \(\L_A\);
-  that is, if \(Av = \lambda v\) for some scalar \(\lambda\).
-  The scalar \(\lambda\) is called the \textbf{eigenvalue} of \(A\) corresponding to the eigenvector \(v\).
+	Let \(A \in \ms{n}{n}{\F}\).
+	A nonzero vector \(v \in \vs{F}^n\) is called an \textbf{eigenvector} of \(A\) if \(v\) is an eigenvector of \(\L_A\);
+	that is, if \(Av = \lambda v\) for some scalar \(\lambda\).
+	The scalar \(\lambda\) is called the \textbf{eigenvalue} of \(A\) corresponding to the eigenvector \(v\).
 \end{defn}
 
 \begin{note}
-  The words \emph{characteristic vector} and \emph{proper vector} are also used in place of eigenvector.
-  The corresponding terms for eigenvalue are \emph{characteristic value} and \emph{proper value}.
+	The words \emph{characteristic vector} and \emph{proper vector} are also used in place of eigenvector.
+	The corresponding terms for eigenvalue are \emph{characteristic value} and \emph{proper value}.
 \end{note}
 
 \begin{thm}\label{5.1}
-  A linear operator \(\T\) on a finite-dimensional vector space \(\V\) over \(\F\) is diagonalizable iff there exists an ordered basis \(\beta\) for \(\V\) over \(\F\) consisting of eigenvectors of \(\T\).
-  Furthermore, if \(\T\) is diagonalizable, \(\beta = \set{\seq{v}{1,,n}}\) is an ordered basis of eigenvectors of \(\T\), and \(D = [\T]_{\beta}\), then \(D\) is a diagonal matrix and \(D_{j j}\) is the eigenvalue corresponding to \(v_j\) for \(j \in \set{1, \dots, n}\).
+	A linear operator \(\T\) on a finite-dimensional vector space \(\V\) over \(\F\) is diagonalizable iff there exists an ordered basis \(\beta\) for \(\V\) over \(\F\) consisting of eigenvectors of \(\T\).
+	Furthermore, if \(\T\) is diagonalizable, \(\beta = \set{\seq{v}{1,,n}}\) is an ordered basis of eigenvectors of \(\T\), and \(D = [\T]_{\beta}\), then \(D\) is a diagonal matrix and \(D_{j j}\) is the eigenvalue corresponding to \(v_j\) for \(j \in \set{1, \dots, n}\).
 \end{thm}
 
 \begin{proof}[\pf{5.1}]
-  This is simply a restatement of \cref{5.1.1,5.1.2}.
+	This is simply a restatement of \cref{5.1.1,5.1.2}.
 \end{proof}
 
 \begin{note}
-  To \emph{diagonalize} a matrix or a linear operator is to find a basis of eigenvectors and the corresponding eigenvalues.
+	To \emph{diagonalize} a matrix or a linear operator is to find a basis of eigenvectors and the corresponding eigenvalues.
 \end{note}
 
 \begin{eg}\label{5.1.3}
-  Let \(\T\) be the linear operator on \(\R^2\) that rotates each vector in the plane through an angle of \(\pi / 2\).
-  It is clear geometrically that for any nonzero vector \(v\), the vectors \(v\) and \(\T(v)\) are not collinear;
-  hence \(\T(v)\) is not a multiple of \(v\).
-  Therefore \(\T\) has no eigenvectors and, consequently, no eigenvalues.
-  Thus there exist operators (and matrices) with no eigenvalues or eigenvectors.
-  Of course, such operators and matrices are not diagonalizable.
+	Let \(\T\) be the linear operator on \(\R^2\) that rotates each vector in the plane through an angle of \(\pi / 2\).
+	It is clear geometrically that for any nonzero vector \(v\), the vectors \(v\) and \(\T(v)\) are not collinear;
+	hence \(\T(v)\) is not a multiple of \(v\).
+	Therefore \(\T\) has no eigenvectors and, consequently, no eigenvalues.
+	Thus there exist operators (and matrices) with no eigenvalues or eigenvectors.
+	Of course, such operators and matrices are not diagonalizable.
 \end{eg}
 
 \begin{eg}\label{5.1.4}
-  Let \(\cfs[\infty](\R)\) denote the set of all functions \(f : \R \to \R\) having derivatives of all orders.
-  (Thus \(\cfs[\infty](\R)\) includes the polynomial functions, the sine and cosine functions, the exponential functions, etc.)
-  Clearly, \(\cfs[\infty](\R)\) is a subspace of the vector space \(\fs(\R, \R)\) of all functions from \(\R\) to \(\R\) as defined in \cref{1.2.10}.
-  Let \(\T : \cfs[\infty](\R) \to \cfs[\infty](\R)\) be the function defined by \(\T(f) = f'\), the derivative of \(f\).
-  It is easily verified that \(\T\) is a linear operator on \(\cfs[\infty](\R)\) (\cref{ex:2.7.6}).
-  We determine the eigenvalues and eigenvectors of \(\T\).
+	Let \(\cfs[\infty](\R)\) denote the set of all functions \(f : \R \to \R\) having derivatives of all orders.
+	(Thus \(\cfs[\infty](\R)\) includes the polynomial functions, the sine and cosine functions, the exponential functions, etc.)
+	Clearly, \(\cfs[\infty](\R)\) is a subspace of the vector space \(\fs(\R, \R)\) of all functions from \(\R\) to \(\R\) as defined in \cref{1.2.10}.
+	Let \(\T : \cfs[\infty](\R) \to \cfs[\infty](\R)\) be the function defined by \(\T(f) = f'\), the derivative of \(f\).
+	It is easily verified that \(\T\) is a linear operator on \(\cfs[\infty](\R)\) (\cref{ex:2.7.6}).
+	We determine the eigenvalues and eigenvectors of \(\T\).
 
-  Suppose that \(f\) is an eigenvector of \(\T\) with corresponding eigenvalue \(\lambda\).
-  Then \(f' = T(f) = \lambda f\).
-  This is a first-order differential equation whose solutions are of the form \(f(t) = ce^{\lambda t}\) for some constant \(c\) (\cref{2.30}).
-  Consequently, every real number \(\lambda\) is an eigenvalue of \(\T\), and \(\lambda\) corresponds to eigenvectors of the form \(ce^{\lambda t}\) for \(c \neq 0\).
-  Note that for \(\lambda = 0\), the eigenvectors are the nonzero constant functions.
+	Suppose that \(f\) is an eigenvector of \(\T\) with corresponding eigenvalue \(\lambda\).
+	Then \(f' = T(f) = \lambda f\).
+	This is a first-order differential equation whose solutions are of the form \(f(t) = ce^{\lambda t}\) for some constant \(c\) (\cref{2.30}).
+	Consequently, every real number \(\lambda\) is an eigenvalue of \(\T\), and \(\lambda\) corresponds to eigenvectors of the form \(ce^{\lambda t}\) for \(c \neq 0\).
+	Note that for \(\lambda = 0\), the eigenvectors are the nonzero constant functions.
 \end{eg}
 
 \begin{thm}\label{5.2}
-  Let \(A \in \ms{n}{n}{\F}\).
-  Then \(\lambda \in \F\) is an eigenvalue of \(A\) iff \(\det(A - \lambda I_n) = 0\).
+	Let \(A \in \ms{n}{n}{\F}\).
+	Then \(\lambda \in \F\) is an eigenvalue of \(A\) iff \(\det(A - \lambda I_n) = 0\).
 \end{thm}
 
 \begin{proof}[\pf{5.2}]
-  A scalar \(\lambda \in \F\) is an eigenvalue of \(A\) iff there exists a nonzero vector \(v \in \vs{F}^n\) such that \(Av = \lambda v\), that is, \((A - \lambda I_n)(v) = 0\).
-  By \cref{2.5}, this is true iff \(A - \lambda I_n\) is not invertible.
-  However, by \cref{4.3.1} this result is equivalent to the statement that \(\det(A - \lambda I_n) = 0\).
+	A scalar \(\lambda \in \F\) is an eigenvalue of \(A\) iff there exists a nonzero vector \(v \in \vs{F}^n\) such that \(Av = \lambda v\), that is, \((A - \lambda I_n)(v) = 0\).
+	By \cref{2.5}, this is true iff \(A - \lambda I_n\) is not invertible.
+	However, by \cref{4.3.1} this result is equivalent to the statement that \(\det(A - \lambda I_n) = 0\).
 \end{proof}
 
 \begin{defn}\label{5.1.5}
-  Let \(A \in \ms{n}{n}{\F}\).
-  The polynomial \(f(t) = \det(A - t I_n)\) is called the \textbf{characteristic polynomial} of \(A\).
+	Let \(A \in \ms{n}{n}{\F}\).
+	The polynomial \(f(t) = \det(A - t I_n)\) is called the \textbf{characteristic polynomial} of \(A\).
 \end{defn}
 
 \begin{note}
-  The entries of the matrix \(A - t I_n\) are not scalars in the field \(\F\).
-  They are, however, scalars in another field \(F(t)\), the field of quotients of polynomials in \(t\) with coefficients from \(\F\).
-  Consequently, any results proved about determinants in \cref{ch:4} remain valid in this context.
+	The entries of the matrix \(A - t I_n\) are not scalars in the field \(\F\).
+	They are, however, scalars in another field \(F(t)\), the field of quotients of polynomials in \(t\) with coefficients from \(\F\).
+	Consequently, any results proved about determinants in \cref{ch:4} remain valid in this context.
 \end{note}
 
 \begin{note}
-  \cref{5.2} states that the eigenvalues of a matrix are the zeros of its characteristic polynomial.
-  When determining the eigenvalues of a matrix or a linear operator, we normally compute its characteristic polynomial.
+	\cref{5.2} states that the eigenvalues of a matrix are the zeros of its characteristic polynomial.
+	When determining the eigenvalues of a matrix or a linear operator, we normally compute its characteristic polynomial.
 \end{note}
 
 \begin{note}
-  It is easily shown that similar matrices have the same characteristic polynomial (see \cref{ex:5.1.12}).
-  This fact enables us to define the characteristic polynomial of a linear operator as in \cref{5.1.6}.
+	It is easily shown that similar matrices have the same characteristic polynomial (see \cref{ex:5.1.12}).
+	This fact enables us to define the characteristic polynomial of a linear operator as in \cref{5.1.6}.
 \end{note}
 
 \begin{defn}\label{5.1.6}
-  Let \(\T\) be a linear operator on an \(n\)-dimensional vector space \(\V\) over \(\F\) with ordered basis \(\beta\).
-  We define the \textbf{characteristic polynomial} \(f\) of \(\T\) to be the characteristic polynomial of \(A = [\T]_{\beta}\).
-  That is,
-  \[
-    f(t) = \det(A - t I_n).
-  \]
+	Let \(\T\) be a linear operator on an \(n\)-dimensional vector space \(\V\) over \(\F\) with ordered basis \(\beta\).
+	We define the \textbf{characteristic polynomial} \(f\) of \(\T\) to be the characteristic polynomial of \(A = [\T]_{\beta}\).
+	That is,
+	\[
+		f(t) = \det(A - t I_n).
+	\]
 \end{defn}
 
 \begin{note}
-  \cref{ex:5.1.12} shows that \cref{5.1.6} is independent of the choice of ordered basis \(\beta\).
-  Thus if \(\T\) is a linear operator on a finite-dimensional vector space \(\V\) over \(\F\) and \(\beta\) is an ordered basis for \(\V\) over \(\F\), then \(\lambda\) is an eigenvalue of \(\T\) iff \(\lambda\) is an eigenvalue of \([\T]_{\beta}\).
-  We often denote the characteristic polynomial of an operator \(\T\) by \(\det(\T - tI)\).
+	\cref{ex:5.1.12} shows that \cref{5.1.6} is independent of the choice of ordered basis \(\beta\).
+	Thus if \(\T\) is a linear operator on a finite-dimensional vector space \(\V\) over \(\F\) and \(\beta\) is an ordered basis for \(\V\) over \(\F\), then \(\lambda\) is an eigenvalue of \(\T\) iff \(\lambda\) is an eigenvalue of \([\T]_{\beta}\).
+	We often denote the characteristic polynomial of an operator \(\T\) by \(\det(\T - tI)\).
 \end{note}
 
 \begin{lem}\label{5.1.7}
-  If \(B\) is an \(n \times n\) matrix such that the entries of \(B\) are polynomial of degree at most \(1\), then \(\det(B)\) is a polynomial of degree at most \(n\).
+	If \(B\) is an \(n \times n\) matrix such that the entries of \(B\) are polynomial of degree at most \(1\), then \(\det(B)\) is a polynomial of degree at most \(n\).
 \end{lem}
 
 \begin{proof}[\pf{5.1.7}]
-  To be precise, we want to prove the following statement:
-  \[
-    \forall i, j \in \set{1, \dots, n}, B_{i j} \in \ps[1]{\F} \implies \det(B) \in \ps[n]{\F}.
-  \]
-  We use induction on \(n\) to prove the claim.
-  For \(n = 1\), we have
-  \begin{align*}
-             & \exists \seq{a}{0,1} \in \F : B = \begin{pmatrix}
-                                                   a_0 + a_1 t
-                                                 \end{pmatrix}                                                 \\
-    \implies & \exists \seq{a}{0,1} \in \F : \det(B) = a_0 + a_1 t \in \ps[1]{\F} &  & \text{(by \cref{4.2.2})}
-  \end{align*}
-  and thus the base case holds.
-  Suppose inductively that the claim is true for some \(n \geq 1\).
-  Then we need to show that for \(n + 1\) the claim is also true.
-  Let \(B\) be an \((n + 1) \times (n + 1)\) matrix with entries lies in \(\ps[1]{\F}\).
-  By \cref{4.2.2} we have
-  \[
-    \det(B) = \sum_{j = 1}^{n + 1} (-1)^{1 + j} B_{1 j} \det(\tilde{B}_{1 j}).
-  \]
-  Since \(\tilde{B}_{1 j}\) is an \(n \times n\) matrix with entries lies in \(\ps[1]{\F}\), by induction hypothesis we know that \(\det(\tilde{B}_{1 j}) \in \ps[n]{\F}\).
-  Since \(B_{1 j} \in \ps[1]{\F}\), we know that \((-1)^{1 + j} B_{1 j} \det(\tilde{B}_{1 j}) \in \ps[n + 1]{\F}\).
-  Thus \(\det(B) \in \ps[n + 1]{\F}\) and this closes the induction.
+	To be precise, we want to prove the following statement:
+	\[
+		\forall i, j \in \set{1, \dots, n}, B_{i j} \in \ps[1]{\F} \implies \det(B) \in \ps[n]{\F}.
+	\]
+	We use induction on \(n\) to prove the claim.
+	For \(n = 1\), we have
+	\begin{align*}
+		         & \exists \seq{a}{0,1} \in \F : B = \begin{pmatrix}
+			                                             a_0 + a_1 t
+		                                             \end{pmatrix}                                   \\
+		\implies & \exists \seq{a}{0,1} \in \F : \det(B) = a_0 + a_1 t \in \ps[1]{\F} &  & \by{4.2.2}
+	\end{align*}
+	and thus the base case holds.
+	Suppose inductively that the claim is true for some \(n \geq 1\).
+	Then we need to show that for \(n + 1\) the claim is also true.
+	Let \(B\) be an \((n + 1) \times (n + 1)\) matrix with entries lies in \(\ps[1]{\F}\).
+	By \cref{4.2.2} we have
+	\[
+		\det(B) = \sum_{j = 1}^{n + 1} (-1)^{1 + j} B_{1 j} \det(\tilde{B}_{1 j}).
+	\]
+	Since \(\tilde{B}_{1 j}\) is an \(n \times n\) matrix with entries lies in \(\ps[1]{\F}\), by induction hypothesis we know that \(\det(\tilde{B}_{1 j}) \in \ps[n]{\F}\).
+	Since \(B_{1 j} \in \ps[1]{\F}\), we know that \((-1)^{1 + j} B_{1 j} \det(\tilde{B}_{1 j}) \in \ps[n + 1]{\F}\).
+	Thus \(\det(B) \in \ps[n + 1]{\F}\) and this closes the induction.
 \end{proof}
 
 \begin{thm}\label{5.3}
-  Let \(A \in \ms{n}{n}{\F}\).
-  \begin{enumerate}
-    \item The characteristic polynomial of \(A\) is a polynomial of degree \(n\) with leading coefficient \((-1)^n\).
-    \item \(A\) has at most \(n\) distinct eigenvalues.
-  \end{enumerate}
+	Let \(A \in \ms{n}{n}{\F}\).
+	\begin{enumerate}
+		\item The characteristic polynomial of \(A\) is a polynomial of degree \(n\) with leading coefficient \((-1)^n\).
+		\item \(A\) has at most \(n\) distinct eigenvalues.
+	\end{enumerate}
 \end{thm}
 
 \begin{proof}[\pf{5.3}(a)]
-  We use induction on \(n\).
-  For \(n = 1\), by \cref{4.2.2} we have
-  \[
-    \det(A - t I_1) = A_{1 1} - t = (-1)^1 t + A_{1 1} \in \ps[1]{\F}.
-  \]
-  Thus the base case holds.
-  Suppose inductively that \cref{5.3}(a) is true for some \(n \geq 1\).
-  We need to show that \cref{5.3}(a) is true for \(n + 1\).
-  Let \(A \in \ms{(n + 1)}{(n + 1)}{\F}\) and let \(B = A - t I_{n + 1}\).
-  Observe that
-  \begin{align*}
-    \det(B) & = \sum_{j = 1}^{n + 1} (-1)^{1 + j} B_{1 j} \det(\tilde{B}_{1 j})                                          &  & \text{(by \cref{4.2.2})} \\
-            & = (-1)^{2} B_{1 1} \det(\tilde{B}_{1 1}) + \sum_{j = 2}^{n + 1} (-1)^{1 + j} B_{1 j} \det(\tilde{B}_{1 j})                               \\
-            & = (A_{1 1} - t) \det(\tilde{B}_{1 1}) + \sum_{j = 2}^{n + 1} (-1)^{1 + j} A_{1 j} \det(\tilde{B}_{1 j}).
-  \end{align*}
-  Since \(\tilde{B}_{1 1}\) is an \(n \times n\) matrix with the form \(C - t I_n\) where \(C_{i j} = A_{(i + 1) (j + 1)}\) for all \(i, j \in \set{1, \dots, n}\), by induction hypothesis we know that \(\det(\tilde{B}_{1 1})\) is a polynomial of degree \(n\) with leading coefficient \((-1)^n\).
-  Let \(\det(\tilde{B}_{1 1}) = (-1)^n t^n + c_{n - 1} t^{n - 1} + \cdots + c_1 t + c_0\) for some \(\seq{c}{0,1,,n-1} \in \F\).
-  Then we have
-  \begin{align*}
-    \det(B) & = (A_{1 1} - t) ((-1)^{n} t^n + c_{n - 1} t^{n - 1} + \cdots + c_1 t + c_0) + \sum_{j = 2}^{n + 1} (-1)^{1 + j} A_{1 j} \det(\tilde{B}_{1 j}) \\
-            & = (-1)^{n + 1} t^{n + 1} - c_{n - 1} t^n - \cdots - c_1 t^2 - c_0 t                                                                           \\
-            & \quad + (-1)^n A_{1 1} t^n + c_{n - 1} A_{1 1} t^{n - 1} + \cdots + c_1 A_{1 1} t + c_0 A_{1 1}                                               \\
-            & \quad + \sum_{j = 2}^{n + 1} (-1)^{1 + j} A_{1 j} \det(\tilde{B}_{1 j}).
-  \end{align*}
-  Thus if we can show that \(\sum_{j = 2}^{n + 1} (-1)^{1 + j} A_{1 j} \det(\tilde{B}_{1 j})\) is a polynomial of degree at most \(n\), then the induction is closed.
-  But this can be seen by \cref{5.1.7}.
+	We use induction on \(n\).
+	For \(n = 1\), by \cref{4.2.2} we have
+	\[
+		\det(A - t I_1) = A_{1 1} - t = (-1)^1 t + A_{1 1} \in \ps[1]{\F}.
+	\]
+	Thus the base case holds.
+	Suppose inductively that \cref{5.3}(a) is true for some \(n \geq 1\).
+	We need to show that \cref{5.3}(a) is true for \(n + 1\).
+	Let \(A \in \ms{(n + 1)}{(n + 1)}{\F}\) and let \(B = A - t I_{n + 1}\).
+	Observe that
+	\begin{align*}
+		\det(B) & = \sum_{j = 1}^{n + 1} (-1)^{1 + j} B_{1 j} \det(\tilde{B}_{1 j})                                          &  & \by{4.2.2} \\
+		        & = (-1)^{2} B_{1 1} \det(\tilde{B}_{1 1}) + \sum_{j = 2}^{n + 1} (-1)^{1 + j} B_{1 j} \det(\tilde{B}_{1 j})                 \\
+		        & = (A_{1 1} - t) \det(\tilde{B}_{1 1}) + \sum_{j = 2}^{n + 1} (-1)^{1 + j} A_{1 j} \det(\tilde{B}_{1 j}).
+	\end{align*}
+	Since \(\tilde{B}_{1 1}\) is an \(n \times n\) matrix with the form \(C - t I_n\) where \(C_{i j} = A_{(i + 1) (j + 1)}\) for all \(i, j \in \set{1, \dots, n}\), by induction hypothesis we know that \(\det(\tilde{B}_{1 1})\) is a polynomial of degree \(n\) with leading coefficient \((-1)^n\).
+	Let \(\det(\tilde{B}_{1 1}) = (-1)^n t^n + c_{n - 1} t^{n - 1} + \cdots + c_1 t + c_0\) for some \(\seq{c}{0,1,,n-1} \in \F\).
+	Then we have
+	\begin{align*}
+		\det(B) & = (A_{1 1} - t) ((-1)^{n} t^n + c_{n - 1} t^{n - 1} + \cdots + c_1 t + c_0) + \sum_{j = 2}^{n + 1} (-1)^{1 + j} A_{1 j} \det(\tilde{B}_{1 j}) \\
+		        & = (-1)^{n + 1} t^{n + 1} - c_{n - 1} t^n - \cdots - c_1 t^2 - c_0 t                                                                           \\
+		        & \quad + (-1)^n A_{1 1} t^n + c_{n - 1} A_{1 1} t^{n - 1} + \cdots + c_1 A_{1 1} t + c_0 A_{1 1}                                               \\
+		        & \quad + \sum_{j = 2}^{n + 1} (-1)^{1 + j} A_{1 j} \det(\tilde{B}_{1 j}).
+	\end{align*}
+	Thus if we can show that \(\sum_{j = 2}^{n + 1} (-1)^{1 + j} A_{1 j} \det(\tilde{B}_{1 j})\) is a polynomial of degree at most \(n\), then the induction is closed.
+	But this can be seen by \cref{5.1.7}.
 \end{proof}
 
 \begin{proof}[\pf{5.3}(b)]
-  By \cref{5.3} we see that \(\det(A - t I_n)\) is of degree \(n\).
-  Thus \(\det(A - t I_n)\) can have at most \(n\) distinct roots.
-  By \cref{5.2} this means \(A\) can have at most \(n\) distinct eigenvalues.
+	By \cref{5.3} we see that \(\det(A - t I_n)\) is of degree \(n\).
+	Thus \(\det(A - t I_n)\) can have at most \(n\) distinct roots.
+	By \cref{5.2} this means \(A\) can have at most \(n\) distinct eigenvalues.
 \end{proof}
 
 \begin{thm}\label{5.4}
-  Let \(\T\) be a linear operator on a vector space \(\V\) over \(\F\), and let \(\lambda\) be an eigenvalue of \(\T\).
-  A vector \(v \in \V\) is an eigenvector of \(\T\) corresponding to \(\lambda\) iff \(v \neq 0\) and \(v \in \ns{\T - \lambda \IT[\V]}\).
+	Let \(\T\) be a linear operator on a vector space \(\V\) over \(\F\), and let \(\lambda\) be an eigenvalue of \(\T\).
+	A vector \(v \in \V\) is an eigenvector of \(\T\) corresponding to \(\lambda\) iff \(v \neq 0\) and \(v \in \ns{\T - \lambda \IT[\V]}\).
 \end{thm}
 
 \begin{proof}[\pf{5.4}]
-  We have
-  \begin{align*}
-         & v \text{ is an eigenvector of } \T \text{ corresponds to eigenvalue } \lambda                             \\
-    \iff & \begin{dcases}
-             v \neq 0 \\
-             \T(v) = \lambda v
-           \end{dcases}                                                                &  & \text{(by \cref{5.1.2})} \\
-    \iff & \begin{dcases}
-             v \neq 0 \\
-             (\T - \lambda \IT[\V])(v) = \T(v) - \lambda \IT[\V](v) = \T(v) - \lambda v = \zv
-           \end{dcases} &  & \text{(by \cref{2.1.9})}                           \\
-    \iff & \begin{dcases}
-             v \neq 0 \\
-             v \in \ns{\T - \lambda \IT[\V]}
-           \end{dcases}.                                   &  & \text{(by \cref{2.1.10})}
-  \end{align*}
+	We have
+	\begin{align*}
+		     & v \text{ is an eigenvector of } \T \text{ corresponds to eigenvalue } \lambda               \\
+		\iff & \begin{dcases}
+			       v \neq 0 \\
+			       \T(v) = \lambda v
+		       \end{dcases}                                                                &  & \by{5.1.2} \\
+		\iff & \begin{dcases}
+			       v \neq 0 \\
+			       (\T - \lambda \IT[\V])(v) = \T(v) - \lambda \IT[\V](v) = \T(v) - \lambda v = \zv
+		       \end{dcases} &  & \by{2.1.9}             \\
+		\iff & \begin{dcases}
+			       v \neq 0 \\
+			       v \in \ns{\T - \lambda \IT[\V]}
+		       \end{dcases}.                                   &  & \by{2.1.10}
+	\end{align*}
 \end{proof}
 
 \begin{note}
-  Suppose that \(\beta\) is a basis for \(\vs{F}^n\) over \(\F\) consisting of eigenvectors of \(A\).
-  \cref{2.5.3} assures us that if \(Q\) is the \(n \times n\) matrix whose columns are the vectors in \(\beta\), then \(Q^{-1} A Q\) is a diagonal matrix.
+	Suppose that \(\beta\) is a basis for \(\vs{F}^n\) over \(\F\) consisting of eigenvectors of \(A\).
+	\cref{2.5.3} assures us that if \(Q\) is the \(n \times n\) matrix whose columns are the vectors in \(\beta\), then \(Q^{-1} A Q\) is a diagonal matrix.
 
-  To find the eigenvectors of a linear operator \(\T\) on an \(n\)-dimensional vector space \(\V\) over \(\F\), select an ordered basis \(\beta\) for \(\V\) over \(\F\) and let \(A = [\T]_{\beta}\).
-  Recall from \cref{2.4.11} that for \(v \in \V\), \(\phi_{\beta}(v) = [v]_{\beta}\), the coordinate vector of \(v\) relative to \(\beta\).
-  We show that \(v \in \V\) is an eigenvector of \(\T\) corresponding to \(\lambda\) iff \(\phi_{\beta}(v)\) is an eigenvector of \(A\) corresponding to \(\lambda\).
-  Suppose that \(v\) is an eigenvector of \(\T\) corresponding to \(\lambda\).
-  Then \(\T(v) = \lambda v\).
-  Hence
-  \[
-    A \phi_{\beta}(v) = \L_A \phi_{\beta}(v) = \phi_{\beta} \T(v) = \phi_{\beta}(\lambda v) = \lambda \phi_{\beta}(v).
-  \]
-  Now \(\phi_{\beta}(v) \neq \zv\), since \(\phi_{\beta}\) is an isomorphism;
-  hence \(\phi_{\beta}(v)\) is an eigenvector of \(A\).
-  This argument is reversible, and so we can establish that if \(\phi_{\beta}(v)\) is an eigenvector of \(A\) corresponding to \(\lambda\), then \(v\) is an eigenvector of \(\T\) corresponding to \(\lambda\).
-  (See \cref{ex:5.1.13}.)
+	To find the eigenvectors of a linear operator \(\T\) on an \(n\)-dimensional vector space \(\V\) over \(\F\), select an ordered basis \(\beta\) for \(\V\) over \(\F\) and let \(A = [\T]_{\beta}\).
+	Recall from \cref{2.4.11} that for \(v \in \V\), \(\phi_{\beta}(v) = [v]_{\beta}\), the coordinate vector of \(v\) relative to \(\beta\).
+	We show that \(v \in \V\) is an eigenvector of \(\T\) corresponding to \(\lambda\) iff \(\phi_{\beta}(v)\) is an eigenvector of \(A\) corresponding to \(\lambda\).
+	Suppose that \(v\) is an eigenvector of \(\T\) corresponding to \(\lambda\).
+	Then \(\T(v) = \lambda v\).
+	Hence
+	\[
+		A \phi_{\beta}(v) = \L_A \phi_{\beta}(v) = \phi_{\beta} \T(v) = \phi_{\beta}(\lambda v) = \lambda \phi_{\beta}(v).
+	\]
+	Now \(\phi_{\beta}(v) \neq \zv\), since \(\phi_{\beta}\) is an isomorphism;
+	hence \(\phi_{\beta}(v)\) is an eigenvector of \(A\).
+	This argument is reversible, and so we can establish that if \(\phi_{\beta}(v)\) is an eigenvector of \(A\) corresponding to \(\lambda\), then \(v\) is an eigenvector of \(\T\) corresponding to \(\lambda\).
+	(See \cref{ex:5.1.13}.)
 
-  An equivalent formulation of the result discussed in the preceding paragraph is that for an eigenvalue \(\lambda\) of \(A\) (and hence of \(\T\)), a vector \(y \in \vs{F}^n\) is an eigenvector of \(A\) corresponding to \(\lambda\) iff \(\phi_{\beta}^{-1}(y)\) is an eigenvector of \(\T\) corresponding to \(\lambda\).
+	An equivalent formulation of the result discussed in the preceding paragraph is that for an eigenvalue \(\lambda\) of \(A\) (and hence of \(\T\)), a vector \(y \in \vs{F}^n\) is an eigenvector of \(A\) corresponding to \(\lambda\) iff \(\phi_{\beta}^{-1}(y)\) is an eigenvector of \(\T\) corresponding to \(\lambda\).
 
-  Thus we have reduced the problem of finding the eigenvectors of a linear operator on a finite-dimensional vector space to the problem of finding the eigenvectors of a matrix.
+	Thus we have reduced the problem of finding the eigenvectors of a linear operator on a finite-dimensional vector space to the problem of finding the eigenvectors of a matrix.
 \end{note}
 
 \begin{note}
-  We give a geometric description of how a linear operator \(\T\) acts on an eigenvector in the context of a vector space \(\V\) over \(\R\).
-  Let \(v\) be an eigenvector of \(\T\) and \(\lambda\) be the corresponding eigenvalue.
-  We can think of \(\W = \spn{\set{v}}\), the one-dimensional subspace of \(\V\) over \(\F\) spanned by \(v\), as a line in \(\V\) that passes through \(\zv\) and \(v\).
-  For any \(w \in \W\), \(w = cv\) for some scalar \(c \in \R\), and hence
-  \[
-    \T(w) = \T(cv) = c \T(v) = c \lambda v = \lambda w;
-  \]
-  so \(\T\) acts on the vectors in \(\W\) by multiplying each such vector by \(\lambda\).
-  There are several possible ways for \(\T\) to act on the vectors in \(\W\), depending on the value of \(\lambda\).
-  We consider several cases.
-  \begin{itemize}
-    \item If \(\lambda > 1\), then \(\T\) moves vectors in \(\W\) farther from \(\zv\) by a factor of \(\lambda\).
-    \item If \(\lambda = 1\), then \(\T\) acts as the identity operator on \(\W\).
-    \item If \(0 < \lambda < 1\), then \(\T\) moves vectors in \(\W\) closer to \(\zv\) by a factor of \(\lambda\).
-    \item If \(\lambda = 0\), then \(\T\) acts as the zero transformation on \(\W\).
-    \item If \(\lambda < 0\), then \(\T\) reverses the orientation of \(\W\);
-          that is, \(\T\) moves vectors in \(\W\) from one side of \(\zv\) to the other.
-  \end{itemize}
+	We give a geometric description of how a linear operator \(\T\) acts on an eigenvector in the context of a vector space \(\V\) over \(\R\).
+	Let \(v\) be an eigenvector of \(\T\) and \(\lambda\) be the corresponding eigenvalue.
+	We can think of \(\W = \spn{\set{v}}\), the one-dimensional subspace of \(\V\) over \(\F\) spanned by \(v\), as a line in \(\V\) that passes through \(\zv\) and \(v\).
+	For any \(w \in \W\), \(w = cv\) for some scalar \(c \in \R\), and hence
+	\[
+		\T(w) = \T(cv) = c \T(v) = c \lambda v = \lambda w;
+	\]
+	so \(\T\) acts on the vectors in \(\W\) by multiplying each such vector by \(\lambda\).
+	There are several possible ways for \(\T\) to act on the vectors in \(\W\), depending on the value of \(\lambda\).
+	We consider several cases.
+	\begin{itemize}
+		\item If \(\lambda > 1\), then \(\T\) moves vectors in \(\W\) farther from \(\zv\) by a factor of \(\lambda\).
+		\item If \(\lambda = 1\), then \(\T\) acts as the identity operator on \(\W\).
+		\item If \(0 < \lambda < 1\), then \(\T\) moves vectors in \(\W\) closer to \(\zv\) by a factor of \(\lambda\).
+		\item If \(\lambda = 0\), then \(\T\) acts as the zero transformation on \(\W\).
+		\item If \(\lambda < 0\), then \(\T\) reverses the orientation of \(\W\);
+		      that is, \(\T\) moves vectors in \(\W\) from one side of \(\zv\) to the other.
+	\end{itemize}
 \end{note}
 
 \exercisesection
 
 \setcounter{ex}{5}
 \begin{ex}\label{ex:5.1.6}
-  Let \(\T\) be a linear operator on a finite-dimensional vector space \(\V\) over \(\F\), and let \(\beta\) be an ordered basis for \(\V\) over \(\F\).
-  Prove that \(\lambda\) is an eigenvalue of \(\T\) iff \(\lambda\) is an eigenvalue of \([\T]_{\beta}\).
+	Let \(\T\) be a linear operator on a finite-dimensional vector space \(\V\) over \(\F\), and let \(\beta\) be an ordered basis for \(\V\) over \(\F\).
+	Prove that \(\lambda\) is an eigenvalue of \(\T\) iff \(\lambda\) is an eigenvalue of \([\T]_{\beta}\).
 \end{ex}
 
 \begin{proof}[\pf{ex:5.1.6}]
-  We have
-  \begin{align*}
-         & \lambda \text{ is an eigenvalue of } \T                                                                             \\
-    \iff & \exists v \in \V \setminus \set{\zv} : \T(v) = \lambda v                              &  & \text{(by \cref{5.1.2})} \\
-    \iff & \exists v \in \V \setminus \set{\zv} : [\T(v)]_{\beta} = [\lambda v]_{\beta}          &  & \text{(by \cref{2.21})}  \\
-    \iff & \exists v \in \V \setminus \set{\zv} : [\T]_{\beta} [v]_{\beta} = \lambda [v]_{\beta} &  & \text{(by \cref{2.14})}  \\
-    \iff & \lambda \text{ is an eigenvalue of } [\T]_{\beta}.                                    &  & \text{(by \cref{5.1.2})}
-  \end{align*}
+	We have
+	\begin{align*}
+		     & \lambda \text{ is an eigenvalue of } \T                                                               \\
+		\iff & \exists v \in \V \setminus \set{\zv} : \T(v) = \lambda v                              &  & \by{5.1.2} \\
+		\iff & \exists v \in \V \setminus \set{\zv} : [\T(v)]_{\beta} = [\lambda v]_{\beta}          &  & \by{2.21}  \\
+		\iff & \exists v \in \V \setminus \set{\zv} : [\T]_{\beta} [v]_{\beta} = \lambda [v]_{\beta} &  & \by{2.14}  \\
+		\iff & \lambda \text{ is an eigenvalue of } [\T]_{\beta}.                                    &  & \by{5.1.2}
+	\end{align*}
 \end{proof}
 
 \begin{ex}\label{ex:5.1.7}
-  Let \(\T\) be a linear operator on a finite-dimensional vector space \(\V\) over \(\F\).
-  Let \(\dim(\V) = n\).
-  We define the \textbf{determinant} of \(\T\), denoted \(\det(\T)\), as follows:
-  Choose any ordered basis \(\beta\) for \(\V\) over \(\F\), and define \(\det(\T) = \det([\T]_{\beta})\).
-  \begin{enumerate}
-    \item Prove that the preceding definition is independent of the choice of an ordered basis for \(\V\) over \(\F\).
-          That is, prove that if \(\beta\) and \(\gamma\) are two ordered bases for \(\V\) over \(\F\), then \(\det([\T]_{\beta}) = \det([\T]_{\gamma})\).
-    \item Prove that \(\T\) is invertible iff \(\det(\T) \neq 0\).
-    \item Prove that if \(\T\) is invertible, then \(\det(\T^{-1}) = [\det(\T)]^{-1}\).
-    \item Prove that if \(\U\) is also a linear operator on \(\V\), then \(\det(\T \U) = \det(\T) \cdot \det(\U)\).
-    \item Prove that \(\det(\T - \lambda \IT[\V]) = \det([\T]_{\beta} - \lambda I_n)\) for any scalar \(\lambda\) and any ordered basis \(\beta\) for \(\V\).
-  \end{enumerate}
+	Let \(\T\) be a linear operator on a finite-dimensional vector space \(\V\) over \(\F\).
+	Let \(\dim(\V) = n\).
+	We define the \textbf{determinant} of \(\T\), denoted \(\det(\T)\), as follows:
+	Choose any ordered basis \(\beta\) for \(\V\) over \(\F\), and define \(\det(\T) = \det([\T]_{\beta})\).
+	\begin{enumerate}
+		\item Prove that the preceding definition is independent of the choice of an ordered basis for \(\V\) over \(\F\).
+		      That is, prove that if \(\beta\) and \(\gamma\) are two ordered bases for \(\V\) over \(\F\), then \(\det([\T]_{\beta}) = \det([\T]_{\gamma})\).
+		\item Prove that \(\T\) is invertible iff \(\det(\T) \neq 0\).
+		\item Prove that if \(\T\) is invertible, then \(\det(\T^{-1}) = [\det(\T)]^{-1}\).
+		\item Prove that if \(\U\) is also a linear operator on \(\V\), then \(\det(\T \U) = \det(\T) \cdot \det(\U)\).
+		\item Prove that \(\det(\T - \lambda \IT[\V]) = \det([\T]_{\beta} - \lambda I_n)\) for any scalar \(\lambda\) and any ordered basis \(\beta\) for \(\V\).
+	\end{enumerate}
 \end{ex}
 
 \begin{proof}[\pf{ex:5.1.7}(a)]
-  We have
-  \begin{align*}
-    \det([\T]_{\beta}) & = \det([\IT[\V]]_{\gamma}^{\beta} [\T]_{\gamma} [\IT[\V]]_{\beta}^{\gamma})             &  & \text{(by \cref{2.23})}         \\
-                       & = \det([\IT[\V]]_{\gamma}^{\beta}) \det([\T]_{\gamma}) \det([\IT[\V]]_{\beta}^{\gamma}) &  & \text{(by \cref{4.7})}          \\
-                       & = \det([\IT[\V]]_{\gamma}^{\beta}) \det([\IT[\V]]_{\beta}^{\gamma}) \det([\T]_{\gamma})                                      \\
-                       & = \det([\IT[\V]]_{\gamma}^{\beta} [\IT[\V]]_{\beta}^{\gamma}) \det([\T]_{\gamma})       &  & \text{(by \cref{4.7})}          \\
-                       & = \det(I_n) \det([\T]_{\gamma})                                                         &  & \text{(by \cref{ex:2.5.11}(b))} \\
-                       & = \det([\T]_{\gamma}).                                                                  &  & \text{(by \cref{4.2.3})}
-  \end{align*}
+	We have
+	\begin{align*}
+		\det([\T]_{\beta}) & = \det([\IT[\V]]_{\gamma}^{\beta} [\T]_{\gamma} [\IT[\V]]_{\beta}^{\gamma})             &  & \by{2.23}         \\
+		                   & = \det([\IT[\V]]_{\gamma}^{\beta}) \det([\T]_{\gamma}) \det([\IT[\V]]_{\beta}^{\gamma}) &  & \by{4.7}          \\
+		                   & = \det([\IT[\V]]_{\gamma}^{\beta}) \det([\IT[\V]]_{\beta}^{\gamma}) \det([\T]_{\gamma})                        \\
+		                   & = \det([\IT[\V]]_{\gamma}^{\beta} [\IT[\V]]_{\beta}^{\gamma}) \det([\T]_{\gamma})       &  & \by{4.7}          \\
+		                   & = \det(I_n) \det([\T]_{\gamma})                                                         &  & \by{ex:2.5.11}[b] \\
+		                   & = \det([\T]_{\gamma}).                                                                  &  & \by{4.2.3}
+	\end{align*}
 \end{proof}
 
 \begin{proof}[\pf{ex:5.1.7}(b)]
-  We have
-  \begin{align*}
-         & \T \text{ is invertible}                                            \\
-    \iff & [\T]_{\beta} \text{ is invertible} &  & \text{(by \cref{2.4.6})}    \\
-    \iff & \det([\T]_{\beta}) \neq 0          &  & \text{(by \cref{4.3.1})}    \\
-    \iff & \det(\T) \neq 0.                   &  & \text{(by \cref{ex:5.1.7})}
-  \end{align*}
+	We have
+	\begin{align*}
+		     & \T \text{ is invertible}                              \\
+		\iff & [\T]_{\beta} \text{ is invertible} &  & \by{2.4.6}    \\
+		\iff & \det([\T]_{\beta}) \neq 0          &  & \by{4.3.1}    \\
+		\iff & \det(\T) \neq 0.                   &  & \by{ex:5.1.7}
+	\end{align*}
 \end{proof}
 
 \begin{proof}[\pf{ex:5.1.7}(c)]
-  We have
-  \begin{align*}
-             & \T \text{ is invertible}                                                                     \\
-    \implies & \det(\T) \neq 0                                          &  & \text{(by \cref{ex:5.1.7}(b))} \\
-    \implies & \det([\T]_{\beta}) \neq 0                                &  & \text{(by \cref{ex:5.1.7})}    \\
-    \implies & \det(([\T]_{\beta})^{-1}) = \frac{1}{\det([\T]_{\beta})} &  & \text{(by \cref{4.3.1})}       \\
-    \implies & \det([\T^{-1}]_{\beta}) = \frac{1}{\det([\T]_{\beta})}   &  & \text{(by \cref{2.4.6})}       \\
-    \implies & \det(\T^{-1}) = \frac{1}{\det(\T)}.                      &  & \text{(by \cref{ex:5.1.7})}
-  \end{align*}
+	We have
+	\begin{align*}
+		         & \T \text{ is invertible}                                                       \\
+		\implies & \det(\T) \neq 0                                          &  & \by{ex:5.1.7}[b] \\
+		\implies & \det([\T]_{\beta}) \neq 0                                &  & \by{ex:5.1.7}    \\
+		\implies & \det(([\T]_{\beta})^{-1}) = \frac{1}{\det([\T]_{\beta})} &  & \by{4.3.1}       \\
+		\implies & \det([\T^{-1}]_{\beta}) = \frac{1}{\det([\T]_{\beta})}   &  & \by{2.4.6}       \\
+		\implies & \det(\T^{-1}) = \frac{1}{\det(\T)}.                      &  & \by{ex:5.1.7}
+	\end{align*}
 \end{proof}
 
 \begin{proof}[\pf{ex:5.1.7}(d)]
-  We have
-  \begin{align*}
-    \det(\T \U) & = \det([\T \U]_{\beta})                 &  & \text{(by \cref{ex:5.1.7})} \\
-                & = \det([\T]_{\beta} [\U]_{\beta})       &  & \text{(by \cref{2.3.3})}    \\
-                & = \det([\T]_{\beta}) \det([\U]_{\beta}) &  & \text{(by \cref{4.7})}      \\
-                & = \det(\T) \det(\U).                    &  & \text{(by \cref{ex:5.1.7})}
-  \end{align*}
+	We have
+	\begin{align*}
+		\det(\T \U) & = \det([\T \U]_{\beta})                 &  & \by{ex:5.1.7} \\
+		            & = \det([\T]_{\beta} [\U]_{\beta})       &  & \by{2.3.3}    \\
+		            & = \det([\T]_{\beta}) \det([\U]_{\beta}) &  & \by{4.7}      \\
+		            & = \det(\T) \det(\U).                    &  & \by{ex:5.1.7}
+	\end{align*}
 \end{proof}
 
 \begin{proof}[\pf{ex:5.1.7}(e)]
-  We have
-  \begin{align*}
-    \det(\T - \lambda \IT[\V]) & = \det([\T - \lambda \IT[\V]]_{\beta})           &  & \text{(by \cref{ex:5.1.7})} \\
-                               & = \det([\T]_{\beta} - \lambda [\IT[\V]]_{\beta}) &  & \text{(by \cref{2.8})}      \\
-                               & = \det([\T]_{\beta} - \lambda I_n).              &  & \text{(by \cref{2.12}(d))}
-  \end{align*}
+	We have
+	\begin{align*}
+		\det(\T - \lambda \IT[\V]) & = \det([\T - \lambda \IT[\V]]_{\beta})           &  & \by{ex:5.1.7} \\
+		                           & = \det([\T]_{\beta} - \lambda [\IT[\V]]_{\beta}) &  & \by{2.8}      \\
+		                           & = \det([\T]_{\beta} - \lambda I_n).              &  & \by{2.12}[d]
+	\end{align*}
 \end{proof}
 
 \begin{ex}\label{ex:5.1.8}
-  \begin{enumerate}
-    \item Prove that a linear operator \(\T\) on a finite-dimensional vector space \(\V\) over \(\F\) is invertible iff zero is not an eigenvalue of \(\T\).
-    \item Let \(\T\) be an invertible linear operator.
-          Prove that a scalar \(\lambda\) is an eigenvalue of \(\T\) iff \(\lambda^{-1}\) is an eigenvalue of \(\T^{-1}\).
-    \item State and prove results analogous to (a) and (b) for matrices.
-  \end{enumerate}
+	\begin{enumerate}
+		\item Prove that a linear operator \(\T\) on a finite-dimensional vector space \(\V\) over \(\F\) is invertible iff zero is not an eigenvalue of \(\T\).
+		\item Let \(\T\) be an invertible linear operator.
+		      Prove that a scalar \(\lambda\) is an eigenvalue of \(\T\) iff \(\lambda^{-1}\) is an eigenvalue of \(\T^{-1}\).
+		\item State and prove results analogous to (a) and (b) for matrices.
+	\end{enumerate}
 \end{ex}
 
 \begin{proof}[\pf{ex:5.1.8}(a)]
-  We have
-  \begin{align*}
-         & \T \text{ is invertible}                                               \\
-    \iff & \ns{\T} = \set{\zv}                    &  & \text{(by \cref{2.4,2.5})} \\
-    \iff & \ns{\T - 0 \IT[\V]} = \set{\zv}        &  & \text{(by \cref{2.1.9})}   \\
-    \iff & 0 \text{ is not an eigenvalue of } \T. &  & \text{(by \cref{5.4})}
-  \end{align*}
+	We have
+	\begin{align*}
+		     & \T \text{ is invertible}                                 \\
+		\iff & \ns{\T} = \set{\zv}                    &  & \by{2.4,2.5} \\
+		\iff & \ns{\T - 0 \IT[\V]} = \set{\zv}        &  & \by{2.1.9}   \\
+		\iff & 0 \text{ is not an eigenvalue of } \T. &  & \by{5.4}
+	\end{align*}
 \end{proof}
 
 \begin{proof}[\pf{ex:5.1.8}(b)]
-  We have
-  \begin{align*}
-         & \lambda \text{ is an eigenvalue of } \T                                                    \\
-    \iff & \exists v \in \V : \T(v) = \lambda v                   &  & \text{(by \cref{5.1.2})}       \\
-    \iff & \exists v \in \V : \T^{-1}(\T(v)) = \T^{-1}(\lambda v)                                     \\
-    \iff & \exists v \in \V : v = \lambda \T^{-1}(v)              &  & \text{(by \cref{2.17})}        \\
-    \iff & \exists v \in \V : \T^{-1}(v) = \lambda^{-1} v         &  & \text{(by \cref{ex:5.1.8}(a))} \\
-    \iff & \lambda^{-1} \text{ is an eigenvalue of } \T^{-1}.     &  & \text{(by \cref{5.1.2})}
-  \end{align*}
+	We have
+	\begin{align*}
+		     & \lambda \text{ is an eigenvalue of } \T                                      \\
+		\iff & \exists v \in \V : \T(v) = \lambda v                   &  & \by{5.1.2}       \\
+		\iff & \exists v \in \V : \T^{-1}(\T(v)) = \T^{-1}(\lambda v)                       \\
+		\iff & \exists v \in \V : v = \lambda \T^{-1}(v)              &  & \by{2.17}        \\
+		\iff & \exists v \in \V : \T^{-1}(v) = \lambda^{-1} v         &  & \by{ex:5.1.8}[a] \\
+		\iff & \lambda^{-1} \text{ is an eigenvalue of } \T^{-1}.     &  & \by{5.1.2}
+	\end{align*}
 \end{proof}
 
 \begin{proof}[\pf{ex:5.1.8}(c)]
-  First we claim that if \(A \in \ms{n}{n}{\F}\), then \(A\) is invertible iff \(0\) is not an eigenvalue of \(A\).
-  This is true since
-  \begin{align*}
-         & A \text{ is invertible}                                                     \\
-    \iff & \L_A \text{ is invertible}              &  & \text{(by \cref{2.4.7})}       \\
-    \iff & 0 \text{ is not an eigenvalue of } \L_A &  & \text{(by \cref{ex:5.1.8}(a))} \\
-    \iff & 0 \text{ is not an eigenvalue of } A.   &  & \text{(by \cref{5.1.2})}
-  \end{align*}
+	First we claim that if \(A \in \ms{n}{n}{\F}\), then \(A\) is invertible iff \(0\) is not an eigenvalue of \(A\).
+	This is true since
+	\begin{align*}
+		     & A \text{ is invertible}                                       \\
+		\iff & \L_A \text{ is invertible}              &  & \by{2.4.7}       \\
+		\iff & 0 \text{ is not an eigenvalue of } \L_A &  & \by{ex:5.1.8}[a] \\
+		\iff & 0 \text{ is not an eigenvalue of } A.   &  & \by{5.1.2}
+	\end{align*}
 
-  Now we claim that if \(A \in \ms{n}{n}{\F}\), then \(\lambda\) is an eigenvalue of \(A\) iff \(\lambda^{-1}\) is an eigenvalue of \(A^{-1}\).
-  This is true since
-  \begin{align*}
-         & \lambda \text{ is an eigenvalue of } A                                                    \\
-    \iff & \lambda \text{ is an eigenvalue of } \L_A             &  & \text{(by \cref{5.1.2})}       \\
-    \iff & \lambda^{-1} \text{ is an eigenvalue of } \L_A^{-1}   &  & \text{(by \cref{ex:5.1.8}(b))} \\
-    \iff & \lambda^{-1} \text{ is an eigenvalue of } \L_{A^{-1}} &  & \text{(by \cref{2.4.7})}       \\
-    \iff & \lambda^{-1} \text{ is an eigenvalue of } A^{-1}.     &  & \text{(by \cref{5.1.2})}
-  \end{align*}
+	Now we claim that if \(A \in \ms{n}{n}{\F}\), then \(\lambda\) is an eigenvalue of \(A\) iff \(\lambda^{-1}\) is an eigenvalue of \(A^{-1}\).
+	This is true since
+	\begin{align*}
+		     & \lambda \text{ is an eigenvalue of } A                                      \\
+		\iff & \lambda \text{ is an eigenvalue of } \L_A             &  & \by{5.1.2}       \\
+		\iff & \lambda^{-1} \text{ is an eigenvalue of } \L_A^{-1}   &  & \by{ex:5.1.8}[b] \\
+		\iff & \lambda^{-1} \text{ is an eigenvalue of } \L_{A^{-1}} &  & \by{2.4.7}       \\
+		\iff & \lambda^{-1} \text{ is an eigenvalue of } A^{-1}.     &  & \by{5.1.2}
+	\end{align*}
 \end{proof}
 
 \begin{ex}\label{ex:5.1.9}
-  Prove that the eigenvalues of an upper triangular matrix \(M \in \ms{n}{n}{\F}\) are the diagonal entries of \(M\).
+	Prove that the eigenvalues of an upper triangular matrix \(M \in \ms{n}{n}{\F}\) are the diagonal entries of \(M\).
 \end{ex}
 
 \begin{proof}[\pf{ex:5.1.9}]
-  Since
-  \[
-    \forall i \in \set{1, \dots, n}, M e_i = M_{i i} e_i,
-  \]
-  by \cref{5.1.2} we see that the diagonal entries of \(M\) are eigenvalues of \(M\) and the standard ordered basis of \(\vs{F}^n\) over \(\F\) is consist of eigenvectors of \(M\).
+	Since
+	\[
+		\forall i \in \set{1, \dots, n}, M e_i = M_{i i} e_i,
+	\]
+	by \cref{5.1.2} we see that the diagonal entries of \(M\) are eigenvalues of \(M\) and the standard ordered basis of \(\vs{F}^n\) over \(\F\) is consist of eigenvectors of \(M\).
 \end{proof}
 
 \begin{ex}\label{ex:5.1.10}
-  Let \(\V\) be a \(n\)-dimensional vector space over \(\F\), and let \(\lambda \in \F\).
-  \begin{enumerate}
-    \item For any ordered basis \(\beta\) for \(\V\) over \(\F\), prove that \([\lambda \IT[\V]]_{\beta} = \lambda I_n\).
-    \item Compute the characteristic polynomial of \(\lambda \IT[\V]\).
-    \item Show that \(\lambda \IT[\V]\) is diagonalizable and has only one eigenvalue.
-  \end{enumerate}
+	Let \(\V\) be a \(n\)-dimensional vector space over \(\F\), and let \(\lambda \in \F\).
+	\begin{enumerate}
+		\item For any ordered basis \(\beta\) for \(\V\) over \(\F\), prove that \([\lambda \IT[\V]]_{\beta} = \lambda I_n\).
+		\item Compute the characteristic polynomial of \(\lambda \IT[\V]\).
+		\item Show that \(\lambda \IT[\V]\) is diagonalizable and has only one eigenvalue.
+	\end{enumerate}
 \end{ex}
 
 \begin{proof}[\pf{ex:5.1.10}(a)]
-  We have
-  \begin{align*}
-    [\lambda \IT[\V]]_{\beta} & = \lambda [\IT[\V]]_{\beta} &  & \text{(by \cref{2.8})}     \\
-                              & = \lambda I_n.              &  & \text{(by \cref{2.12}(d))}
-  \end{align*}
+	We have
+	\begin{align*}
+		[\lambda \IT[\V]]_{\beta} & = \lambda [\IT[\V]]_{\beta} &  & \by{2.8}     \\
+		                          & = \lambda I_n.              &  & \by{2.12}[d]
+	\end{align*}
 \end{proof}
 
 \begin{proof}[\pf{ex:5.1.10}(b)]
-  Let \(\beta\) be an ordered basis for \(\V\) over \(\F\).
-  By \cref{5.1.6} we have
-  \begin{align*}
-    \det([\lambda \IT[\V]]_{\beta} - t I_n) & = \det(\lambda I_n - t I_n) &  & \text{(by \cref{ex:5.1.10}(a))} \\
-                                            & = \det((\lambda - t) I_n)   &  & \text{(by \cref{1.2.9})}        \\
-                                            & = (\lambda - t)^n \det(I_n) &  & \text{(by \cref{ex:4.2.25})}    \\
-                                            & = (\lambda - t)^n.          &  & \text{(by \cref{4.2.3})}
-  \end{align*}
+	Let \(\beta\) be an ordered basis for \(\V\) over \(\F\).
+	By \cref{5.1.6} we have
+	\begin{align*}
+		\det([\lambda \IT[\V]]_{\beta} - t I_n) & = \det(\lambda I_n - t I_n) &  & \by{ex:5.1.10}[a] \\
+		                                        & = \det((\lambda - t) I_n)   &  & \by{1.2.9}        \\
+		                                        & = (\lambda - t)^n \det(I_n) &  & \by{ex:4.2.25}    \\
+		                                        & = (\lambda - t)^n.          &  & \by{4.2.3}
+	\end{align*}
 \end{proof}
 
 \begin{proof}[\pf{ex:5.1.10}(c)]
-  By \cref{5.1.1} and \cref{ex:5.1.10}(a) we see that \(\lambda \IT[\V]\) is diagonalizable.
-  By \cref{5.2} and \cref{ex:5.1.10}(b) we see that the only eigenvalue of \(\lambda \IT[\V]\) is \(\lambda\).
+	By \cref{5.1.1} and \cref{ex:5.1.10}(a) we see that \(\lambda \IT[\V]\) is diagonalizable.
+	By \cref{5.2} and \cref{ex:5.1.10}(b) we see that the only eigenvalue of \(\lambda \IT[\V]\) is \(\lambda\).
 \end{proof}
 
 \begin{ex}\label{ex:5.1.11}
-  A \textbf{scalar matrix} is a square matrix of the form \(\lambda I_n\) for some \(\lambda \in \F\);
-  that is, a scalar matrix is a diagonal matrix in which all the diagonal entries are equal.
-  \begin{enumerate}
-    \item Prove that if \(A \in \ms{n}{n}{\F}\) is similar to a scalar matrix \(\lambda I_n\), then \(A = \lambda I_n\).
-    \item Show that a diagonalizable matrix having only one eigenvalue is a scalar matrix.
-    \item Prove that \(\begin{pmatrix}
-            1 & 1 \\
-            0 & 1
-          \end{pmatrix}\) is not diagonalizable.
-  \end{enumerate}
+	A \textbf{scalar matrix} is a square matrix of the form \(\lambda I_n\) for some \(\lambda \in \F\);
+	that is, a scalar matrix is a diagonal matrix in which all the diagonal entries are equal.
+	\begin{enumerate}
+		\item Prove that if \(A \in \ms{n}{n}{\F}\) is similar to a scalar matrix \(\lambda I_n\), then \(A = \lambda I_n\).
+		\item Show that a diagonalizable matrix having only one eigenvalue is a scalar matrix.
+		\item Prove that \(\begin{pmatrix}
+			      1 & 1 \\
+			      0 & 1
+		      \end{pmatrix}\) is not diagonalizable.
+	\end{enumerate}
 \end{ex}
 
 \begin{proof}[\pf{ex:5.1.11}(a)]
-  We have
-  \begin{align*}
-             & \exists Q \in \ms{n}{n}{\F} : \lambda I_n = Q^{-1} A Q                  &  & \text{(by \cref{2.5.4})} \\
-    \implies & \exists Q \in \ms{n}{n}{\F} : A = Q (\lambda I_n) Q^{-1}                                              \\
-    \implies & \exists Q \in \ms{n}{n}{\F} : A = \lambda (Q I_n Q^{-1}) = \lambda I_n. &  & \text{(by \cref{2.3.5})}
-  \end{align*}
+	We have
+	\begin{align*}
+		         & \exists Q \in \ms{n}{n}{\F} : \lambda I_n = Q^{-1} A Q                  &  & \by{2.5.4} \\
+		\implies & \exists Q \in \ms{n}{n}{\F} : A = Q (\lambda I_n) Q^{-1}                                \\
+		\implies & \exists Q \in \ms{n}{n}{\F} : A = \lambda (Q I_n Q^{-1}) = \lambda I_n. &  & \by{2.3.5}
+	\end{align*}
 \end{proof}
 
 \begin{proof}[\pf{ex:5.1.11}(b)]
-  Let \(A \in \ms{n}{n}{\F}\) be a diagonalizable matrix having only one eigenvalue \(\lambda \in \F\).
-  By \cref{5.1.1,5.1.2} there exists an ordered basis \(\beta\) for \(\vs{F}^n\) over \(\F\) such that \(Av = \lambda v = \lambda I_n v\) for all \(v \in \beta\).
-  By \cref{2.1.13} we see that \(A = \lambda I_n\).
+	Let \(A \in \ms{n}{n}{\F}\) be a diagonalizable matrix having only one eigenvalue \(\lambda \in \F\).
+	By \cref{5.1.1,5.1.2} there exists an ordered basis \(\beta\) for \(\vs{F}^n\) over \(\F\) such that \(Av = \lambda v = \lambda I_n v\) for all \(v \in \beta\).
+	By \cref{2.1.13} we see that \(A = \lambda I_n\).
 \end{proof}
 
 \begin{proof}[\pf{ex:5.1.11}(c)]
-  Let \(A = \begin{pmatrix}
-    1 & 1 \\
-    0 & 1
-  \end{pmatrix}\).
-  Then we have
-  \begin{align*}
-             & \det(A - t I_2) = \det\begin{pmatrix}
-                                       1 - t & 1     \\
-                                       0     & 1 - t
-                                     \end{pmatrix} = (1 - t)^2                                             &  & \text{(by \cref{4.1.1})}         \\
-    \implies & 1 \text{ is the only eigenvalue of } A                                            &  & \text{(by \cref{5.2})}                     \\
-    \implies & \ns{\L_A - 1 \cdot \IT[\ms{2}{2}{\F}]} = \set{v \in \vs{F}^2 : (A - I_2) v = \zv}                                                 \\
-             & = \set{v \in \vs{F}^2 : \begin{pmatrix}
-                                           0 & 1 \\
-                                           0 & 0
-                                         \end{pmatrix} v = \zv}                                           &  & \text{(by \cref{2.1.10})}           \\
-    \implies & \text{If } v \text{ is an eigenvalue of } A,                                                                                      \\
-             & \text{ then } v = t \begin{pmatrix}
-                                     1 \\
-                                     0
-                                   \end{pmatrix} \text{ for any } t \in \F \setminus \set{0}                         &  & \text{(by \cref{5.4})} \\
-    \implies & A \text{ is not diagonalizable}.                                                  &  & \text{(by \cref{5.1.1})}
-  \end{align*}
+	Let \(A = \begin{pmatrix}
+		1 & 1 \\
+		0 & 1
+	\end{pmatrix}\).
+	Then we have
+	\begin{align*}
+		         & \det(A - t I_2) = \det\begin{pmatrix}
+			                                 1 - t & 1     \\
+			                                 0     & 1 - t
+		                                 \end{pmatrix} = (1 - t)^2                                             &  & \by{4.1.1}         \\
+		\implies & 1 \text{ is the only eigenvalue of } A                                            &  & \by{5.2}                     \\
+		\implies & \ns{\L_A - 1 \cdot \IT[\ms{2}{2}{\F}]} = \set{v \in \vs{F}^2 : (A - I_2) v = \zv}                                   \\
+		         & = \set{v \in \vs{F}^2 : \begin{pmatrix}
+				                                   0 & 1 \\
+				                                   0 & 0
+			                                   \end{pmatrix} v = \zv}                                           &  & \by{2.1.10}           \\
+		\implies & \text{If } v \text{ is an eigenvalue of } A,                                                                        \\
+		         & \text{ then } v = t \begin{pmatrix}
+			                               1 \\
+			                               0
+		                               \end{pmatrix} \text{ for any } t \in \F \setminus \set{0}                         &  & \by{5.4} \\
+		\implies & A \text{ is not diagonalizable}.                                                  &  & \by{5.1.1}
+	\end{align*}
 \end{proof}
 
 \begin{ex}\label{ex:5.1.12}
-  \begin{enumerate}
-    \item Prove that similar matrices have the same characteristic polynomial.
-    \item Show that the definition of the characteristic polynomial of a linear operator on a finite-dimensional vector space \(\V\) over \(\F\) is independent of the choice of basis for \(\V\) over \(\F\).
-  \end{enumerate}
+	\begin{enumerate}
+		\item Prove that similar matrices have the same characteristic polynomial.
+		\item Show that the definition of the characteristic polynomial of a linear operator on a finite-dimensional vector space \(\V\) over \(\F\) is independent of the choice of basis for \(\V\) over \(\F\).
+	\end{enumerate}
 \end{ex}
 
 \begin{proof}[\pf{ex:5.1.12}(a)]
-  Let \(A, B \in \ms{n}{n}{\F}\) such that \(A, B\) are similar.
-  By \cref{2.5.4} there exists some \(Q \in \ms{n}{n}{\F}\) such that \(B = Q^{-1} A Q\).
-  Then we have
-  \begin{align*}
-    \det(A - t I_n) & = \det(I_n) \det(A - t I_n)            &  & \text{(by \cref{4.2.3})} \\
-                    & = \det(Q^{-1} Q) \det(A - t I_n)       &  & \text{(by \cref{2.4.3})} \\
-                    & = \det(Q^{-1}) \det(Q) \det(A - t I_n) &  & \text{(by \cref{4.7})}   \\
-                    & = \det(Q^{-1}) \det(A - t I_n) \det(Q)                               \\
-                    & = \det(Q^{-1} (A - t I_n) Q)           &  & \text{(by \cref{4.7})}   \\
-                    & = \det(Q^{-1} A Q - t Q^{-1} I_n Q)    &  & \text{(by \cref{2.3.5})} \\
-                    & = \det(B - t I_n).                     &  & \text{(by \cref{2.4.3})}
-  \end{align*}
+	Let \(A, B \in \ms{n}{n}{\F}\) such that \(A, B\) are similar.
+	By \cref{2.5.4} there exists some \(Q \in \ms{n}{n}{\F}\) such that \(B = Q^{-1} A Q\).
+	Then we have
+	\begin{align*}
+		\det(A - t I_n) & = \det(I_n) \det(A - t I_n)            &  & \by{4.2.3} \\
+		                & = \det(Q^{-1} Q) \det(A - t I_n)       &  & \by{2.4.3} \\
+		                & = \det(Q^{-1}) \det(Q) \det(A - t I_n) &  & \by{4.7}   \\
+		                & = \det(Q^{-1}) \det(A - t I_n) \det(Q)                 \\
+		                & = \det(Q^{-1} (A - t I_n) Q)           &  & \by{4.7}   \\
+		                & = \det(Q^{-1} A Q - t Q^{-1} I_n Q)    &  & \by{2.3.5} \\
+		                & = \det(B - t I_n).                     &  & \by{2.4.3}
+	\end{align*}
 \end{proof}
 
 \begin{proof}[\pf{ex:5.1.12}(b)]
-  Let \(\beta, \beta'\) be ordered basis for \(\V\) over \(\F\).
-  By \cref{2.23} we know that \([\T]_{\beta}\) and \([\T]_{\beta'}\) are similar.
-  Thus by \cref{ex:5.1.12}(a) we have \(\det([\T]_{\beta} - t I_n) = \det([\T]_{\beta'} - t I_n)\).
-  We conclude that the definition of the characteristic polynomial of a linear operator on a finite-dimensional vector space \(\V\) over \(\F\) is independent of the choice of basis for \(\V\) over \(\F\).
+	Let \(\beta, \beta'\) be ordered basis for \(\V\) over \(\F\).
+	By \cref{2.23} we know that \([\T]_{\beta}\) and \([\T]_{\beta'}\) are similar.
+	Thus by \cref{ex:5.1.12}(a) we have \(\det([\T]_{\beta} - t I_n) = \det([\T]_{\beta'} - t I_n)\).
+	We conclude that the definition of the characteristic polynomial of a linear operator on a finite-dimensional vector space \(\V\) over \(\F\) is independent of the choice of basis for \(\V\) over \(\F\).
 \end{proof}
 
 \begin{ex}\label{ex:5.1.13}
-  Let \(\T\) be a linear operator on a finite-dimensional vector space \(\V\) over a field \(\F\) , let \(\beta\) be an ordered basis for \(\V\) over \(\F\), and let \(A = [\T]_{\beta}\).
-  Prove the following.
-  \begin{enumerate}
-    \item If \(\lambda\) is an eigenvalue of \(A\), then \(v \in \V\) is an eigenvector of \(\T\) corresponding to \(\lambda\) iff \(\phi_{\beta}(v)\) is an eigenvector of \(A\) corresponding to \(\lambda\).
-    \item If \(\lambda\) is an eigenvalue of \(A\) (and hence of \(\T\)), then a vector \(y \in \vs{F}^n\) is an eigenvector of \(A\) corresponding to \(\lambda\) iff \(\phi_{\beta}^{-1}(y)\) is an eigenvector of \(\T\) corresponding to \(\lambda\).
-  \end{enumerate}
+	Let \(\T\) be a linear operator on a finite-dimensional vector space \(\V\) over a field \(\F\) , let \(\beta\) be an ordered basis for \(\V\) over \(\F\), and let \(A = [\T]_{\beta}\).
+	Prove the following.
+	\begin{enumerate}
+		\item If \(\lambda\) is an eigenvalue of \(A\), then \(v \in \V\) is an eigenvector of \(\T\) corresponding to \(\lambda\) iff \(\phi_{\beta}(v)\) is an eigenvector of \(A\) corresponding to \(\lambda\).
+		\item If \(\lambda\) is an eigenvalue of \(A\) (and hence of \(\T\)), then a vector \(y \in \vs{F}^n\) is an eigenvector of \(A\) corresponding to \(\lambda\) iff \(\phi_{\beta}^{-1}(y)\) is an eigenvector of \(\T\) corresponding to \(\lambda\).
+	\end{enumerate}
 \end{ex}
 
 \begin{proof}[\pf{ex:5.1.13}(a)]
-  By \cref{2.4.12} we have \(\L_A \phi_{\beta} = \phi_{\beta} \T\).
-  By \cref{2.4,2.21} we know that \(v \neq \zv \iff \phi_{\beta}(v) \neq \zv\).
-  Thus we have
-  \begin{align*}
-         & v \in \V \setminus \set{\zv} \text{ is an eigenvector of } \T \text{ corresponding to } \lambda                                \\
-    \iff & \T(v) = \lambda v                                                                               &  & \text{(by \cref{5.1.2})}  \\
-    \iff & (\phi_{\beta} \T)(v) = \phi_{\beta}(\T(v)) = \phi_{\beta}(\lambda v)                            &  & \text{(by \cref{2.21})}   \\
-    \iff & (\L_A \phi_{\beta})(v) = \L_A(\phi_{\beta}(v)) = \phi_{\beta}(\lambda v)                        &  & \text{(by \cref{2.4.12})} \\
-    \iff & \L_A(\phi_{\beta}(v)) = \lambda \phi_{\beta}(v)                                                 &  & \text{(by \cref{2.21})}   \\
-    \iff & A \phi_{\beta}(v) = \lambda \phi_{\beta}(v)                                                     &  & \text{(by \cref{2.3.8})}  \\
-    \iff & \phi_{\beta}(v) \in \vs{F}^n \setminus \set{\zv} \text{ is an eigenvector of } A                                               \\
-         & \text{corresponding to } \lambda.                                                               &  & \text{(by \cref{5.1.2})}
-  \end{align*}
+	By \cref{2.4.12} we have \(\L_A \phi_{\beta} = \phi_{\beta} \T\).
+	By \cref{2.4,2.21} we know that \(v \neq \zv \iff \phi_{\beta}(v) \neq \zv\).
+	Thus we have
+	\begin{align*}
+		     & v \in \V \setminus \set{\zv} \text{ is an eigenvector of } \T \text{ corresponding to } \lambda                  \\
+		\iff & \T(v) = \lambda v                                                                               &  & \by{5.1.2}  \\
+		\iff & (\phi_{\beta} \T)(v) = \phi_{\beta}(\T(v)) = \phi_{\beta}(\lambda v)                            &  & \by{2.21}   \\
+		\iff & (\L_A \phi_{\beta})(v) = \L_A(\phi_{\beta}(v)) = \phi_{\beta}(\lambda v)                        &  & \by{2.4.12} \\
+		\iff & \L_A(\phi_{\beta}(v)) = \lambda \phi_{\beta}(v)                                                 &  & \by{2.21}   \\
+		\iff & A \phi_{\beta}(v) = \lambda \phi_{\beta}(v)                                                     &  & \by{2.3.8}  \\
+		\iff & \phi_{\beta}(v) \in \vs{F}^n \setminus \set{\zv} \text{ is an eigenvector of } A                                 \\
+		     & \text{corresponding to } \lambda.                                                               &  & \by{5.1.2}
+	\end{align*}
 \end{proof}
 
 \begin{proof}[\pf{ex:5.1.13}(b)]
-  By \cref{5.1.2} we know that \(y \neq \zv\), thus by \cref{2.4,2.21} we know that \(\phi_{\beta}^{-1}(v) \neq \zv\).
-  Then we have
-  \begin{align*}
-         & A y = \lambda y                                                                          &  & \text{(by \cref{5.1.2})} \\
-    \iff & \exists x \in \V : \begin{dcases}
-                                x = \phi_{\beta}^{-1}(y) \\
-                                A \phi_{\beta}(x) = \lambda \phi_{\beta}(x)
-                              \end{dcases}                                              &  & \text{(by \cref{2.21})}              \\
-    \iff & \exists x \in \V : \begin{dcases}
-                                x = \phi_{\beta}^{-1}(y) \\
-                                x \text{ is an eigenvector of } \T \text{ corresponding to } \lambda
-                              \end{dcases}                     &  & \text{(by \cref{ex:5.1.13}(a))}                               \\
-    \iff & \phi_{\beta}^{-1}(y) \text{ is an eigenvector of } \T \text{ corresponding to } \lambda. &  & \text{(by \cref{2.21})}
-  \end{align*}
+	By \cref{5.1.2} we know that \(y \neq \zv\), thus by \cref{2.4,2.21} we know that \(\phi_{\beta}^{-1}(v) \neq \zv\).
+	Then we have
+	\begin{align*}
+		     & A y = \lambda y                                                                          &  & \by{5.1.2} \\
+		\iff & \exists x \in \V : \begin{dcases}
+			                          x = \phi_{\beta}^{-1}(y) \\
+			                          A \phi_{\beta}(x) = \lambda \phi_{\beta}(x)
+		                          \end{dcases}                                              &  & \by{2.21}              \\
+		\iff & \exists x \in \V : \begin{dcases}
+			                          x = \phi_{\beta}^{-1}(y) \\
+			                          x \text{ is an eigenvector of } \T \text{ corresponding to } \lambda
+		                          \end{dcases}                     &  & \by{ex:5.1.13}[a]                   \\
+		\iff & \phi_{\beta}^{-1}(y) \text{ is an eigenvector of } \T \text{ corresponding to } \lambda. &  & \by{2.21}
+	\end{align*}
 \end{proof}
 
 \begin{ex}\label{ex:5.1.14}
-  For any square matrix \(A \in \ms{n}{n}{\F}\), prove that \(A\) and \(\tp{A}\) have the same characteristic polynomial (and hence the same eigenvalues).
+	For any square matrix \(A \in \ms{n}{n}{\F}\), prove that \(A\) and \(\tp{A}\) have the same characteristic polynomial (and hence the same eigenvalues).
 \end{ex}
 
 \begin{proof}[\pf{ex:5.1.14}]
-  Since
-  \begin{align*}
-    \det(A - k I_n) & = \det(\tp{(A - k I_n)})    &  & \text{(by \cref{4.8})}      \\
-                    & = \det(\tp{A} - k \tp{I_n}) &  & \text{(by \cref{ex:1.3.3})} \\
-                    & = \det(\tp{A} - k I_n),
-  \end{align*}
-  by \cref{5.1.5} we see that \(A\) and \(\tp{A}\) have the same characteristic polynomial.
+	Since
+	\begin{align*}
+		\det(A - k I_n) & = \det(\tp{(A - k I_n)})    &  & \by{4.8}      \\
+		                & = \det(\tp{A} - k \tp{I_n}) &  & \by{ex:1.3.3} \\
+		                & = \det(\tp{A} - k I_n),
+	\end{align*}
+	by \cref{5.1.5} we see that \(A\) and \(\tp{A}\) have the same characteristic polynomial.
 \end{proof}
 
 \begin{ex}\label{ex:5.1.15}
-  Let \(\T\) be a linear operator on a vector space \(\V\) over \(\F\), and let \(x\) be an eigenvector of \(\T\) corresponding to the eigenvalue \(\lambda\).
-  For any positive integer \(m\), we define \(\T^m = \T\) if \(m = 1\) and \(\T^m = \T^{m - 1} \circ \T\) if \(m > 1\).
-  \begin{enumerate}
-    \item For any positive integer \(m\), prove that \(x\) is an eigenvector of \(\T^m\) corresponding to the eigenvalue \(\lambda^m\).
-    \item State and prove the analogous result for matrices.
-  \end{enumerate}
+	Let \(\T\) be a linear operator on a vector space \(\V\) over \(\F\), and let \(x\) be an eigenvector of \(\T\) corresponding to the eigenvalue \(\lambda\).
+	For any positive integer \(m\), we define \(\T^m = \T\) if \(m = 1\) and \(\T^m = \T^{m - 1} \circ \T\) if \(m > 1\).
+	\begin{enumerate}
+		\item For any positive integer \(m\), prove that \(x\) is an eigenvector of \(\T^m\) corresponding to the eigenvalue \(\lambda^m\).
+		\item State and prove the analogous result for matrices.
+	\end{enumerate}
 \end{ex}
 
 \begin{proof}[\pf{ex:5.1.15}(a)]
-  Since
-  \begin{align*}
-    \T^m(x) & = \T^{m - 1}(\T(x))           &  & \text{(by \cref{2.3.1})}     \\
-            & = \T^{m - 1}(\lambda x)       &  & \text{(by \cref{5.1.2})}     \\
-            & = \lambda \T^{m - 1}(x)       &  & \text{(by \cref{2.9})}       \\
-            & = \lambda (\lambda^{m - 1} x) &  & \text{(recursive structure)} \\
-            & = \lambda^m x,
-  \end{align*}
-  by \cref{5.1.2} we see that \(x\) is an eigenvector of \(\T^m\) corresponding to the eigenvalue \(\lambda^m\).
+	Since
+	\begin{align*}
+		\T^m(x) & = \T^{m - 1}(\T(x))           &  & \by{2.3.1}                   \\
+		        & = \T^{m - 1}(\lambda x)       &  & \by{5.1.2}                   \\
+		        & = \lambda \T^{m - 1}(x)       &  & \by{2.9}                     \\
+		        & = \lambda (\lambda^{m - 1} x) &  & \text{(recursive structure)} \\
+		        & = \lambda^m x,
+	\end{align*}
+	by \cref{5.1.2} we see that \(x\) is an eigenvector of \(\T^m\) corresponding to the eigenvalue \(\lambda^m\).
 \end{proof}
 
 \begin{proof}[\pf{ex:5.1.15}(b)]
-  We claim that if \(x \in \vs{F}^n\) is an eigenvector of \(A \in \ms{n}{n}{\F}\) corresponding to the eigenvalue \(\lambda \in \F\), then for any positive integer \(m\), \(x\) is an eigenvalue of \(A^m\) corresponding to the eigenvalue \(\lambda^m\).
-  This is true since
-  \begin{align*}
-    A^m x & = A^{m - 1} Ax                &  & \text{(by \cref{2.3.6})}     \\
-          & = A^{m - 1}(\lambda x)        &  & \text{(by \cref{5.1.2})}     \\
-          & = \lambda A^{m - 1} x         &  & \text{(by \cref{2.12}(b))}   \\
-          & = \lambda (\lambda^{m - 1} x) &  & \text{(recursive structure)} \\
-          & = \lambda^m x.
-  \end{align*}
+	We claim that if \(x \in \vs{F}^n\) is an eigenvector of \(A \in \ms{n}{n}{\F}\) corresponding to the eigenvalue \(\lambda \in \F\), then for any positive integer \(m\), \(x\) is an eigenvalue of \(A^m\) corresponding to the eigenvalue \(\lambda^m\).
+	This is true since
+	\begin{align*}
+		A^m x & = A^{m - 1} Ax                &  & \by{2.3.6}                   \\
+		      & = A^{m - 1}(\lambda x)        &  & \by{5.1.2}                   \\
+		      & = \lambda A^{m - 1} x         &  & \by{2.12}[b]                 \\
+		      & = \lambda (\lambda^{m - 1} x) &  & \text{(recursive structure)} \\
+		      & = \lambda^m x.
+	\end{align*}
 \end{proof}
 
 \begin{ex}\label{ex:5.1.16}
-  \begin{enumerate}
-    \item Prove that similar matrices have the same trace.
-    \item How would you define the trace of a linear operator on a finite-dimensional vector space?
-          Justify that your definition is well-defined.
-  \end{enumerate}
+	\begin{enumerate}
+		\item Prove that similar matrices have the same trace.
+		\item How would you define the trace of a linear operator on a finite-dimensional vector space?
+		      Justify that your definition is well-defined.
+	\end{enumerate}
 \end{ex}
 
 \begin{proof}[\pf{ex:5.1.16}(a)]
-  Let \(A, B \in \ms{n}{n}{\F}\) such that \(A, B\) are similar.
-  By \cref{2.5.4} there exists some \(Q \in \ms{n}{n}{\F}\) such that \(B = Q^{-1} A Q\).
-  Then we have
-  \begin{align*}
-    \tr(B) & = \tr(Q^{-1} A Q)                                   \\
-           & = \tr(A Q^{-1} Q) &  & \text{(by \cref{ex:2.3.13})} \\
-           & = \tr(A).         &  & \text{(by \cref{2.4.3})}
-  \end{align*}
+	Let \(A, B \in \ms{n}{n}{\F}\) such that \(A, B\) are similar.
+	By \cref{2.5.4} there exists some \(Q \in \ms{n}{n}{\F}\) such that \(B = Q^{-1} A Q\).
+	Then we have
+	\begin{align*}
+		\tr(B) & = \tr(Q^{-1} A Q)                     \\
+		       & = \tr(A Q^{-1} Q) &  & \by{ex:2.3.13} \\
+		       & = \tr(A).         &  & \by{2.4.3}
+	\end{align*}
 \end{proof}
 
 \begin{proof}[\pf{ex:5.1.16}(b)]
-  Let \(\V\) be an \(n\)-dimensional vector space over \(\F\) and let \(\T \in \ls(\V)\).
-  We define \(\tr(\T) = \tr([\T]_{\beta})\) where \(\beta\) is an ordered basis for \(\V\) over \(\F\).
-  To prove our definition is well-defined, we claim that if \(\beta'\) is another ordered basis for \(\V\) over \(\F\), then \(\tr([\T]_{\beta'}) = \tr([\T]_{\beta})\).
-  By \cref{2.23} we know that \([\T]_{\beta}\) and \([\T]_{\beta'}\) are similar, thus by \cref{ex:5.1.16}(a) we see that \(\tr([\T]_{\beta}) = \tr([\T]_{\beta'})\).
+	Let \(\V\) be an \(n\)-dimensional vector space over \(\F\) and let \(\T \in \ls(\V)\).
+	We define \(\tr(\T) = \tr([\T]_{\beta})\) where \(\beta\) is an ordered basis for \(\V\) over \(\F\).
+	To prove our definition is well-defined, we claim that if \(\beta'\) is another ordered basis for \(\V\) over \(\F\), then \(\tr([\T]_{\beta'}) = \tr([\T]_{\beta})\).
+	By \cref{2.23} we know that \([\T]_{\beta}\) and \([\T]_{\beta'}\) are similar, thus by \cref{ex:5.1.16}(a) we see that \(\tr([\T]_{\beta}) = \tr([\T]_{\beta'})\).
 \end{proof}
 
 \begin{ex}\label{ex:5.1.17}
-  Let \(\T \in \ls(\ms{n}{n}{\R})\) defined by \(\T(A) = \tp{A}\).
-  \begin{enumerate}
-    \item Show that \(\pm 1\) are the only eigenvalues of \(\T\).
-    \item Describe the eigenvectors corresponding to each eigenvalue of \(\T\).
-    \item Find an ordered basis \(\beta\) for \(\ms{2}{2}{\R}\) such that \([\T]_{\beta}\) is a diagonal matrix.
-    \item Find an ordered basis \(\beta\) for \(\ms{n}{n}{\R}\) such that \([\T]_{\beta}\) is a diagonal matrix for \(n > 2\).
-  \end{enumerate}
+	Let \(\T \in \ls(\ms{n}{n}{\R})\) defined by \(\T(A) = \tp{A}\).
+	\begin{enumerate}
+		\item Show that \(\pm 1\) are the only eigenvalues of \(\T\).
+		\item Describe the eigenvectors corresponding to each eigenvalue of \(\T\).
+		\item Find an ordered basis \(\beta\) for \(\ms{2}{2}{\R}\) such that \([\T]_{\beta}\) is a diagonal matrix.
+		\item Find an ordered basis \(\beta\) for \(\ms{n}{n}{\R}\) such that \([\T]_{\beta}\) is a diagonal matrix for \(n > 2\).
+	\end{enumerate}
 \end{ex}
 
 \begin{proof}[\pf{ex:5.1.17}(a)]
-  Let \(A \in \ms{n}{n}{\R}\) be an eigenvector of \(\T\) corresponding to eigenvalue \(\lambda \in \R\).
-  Then we have
-  \begin{align*}
-             & \tp{A} = \T(A) = \lambda A                                                                &  & \text{(by \cref{5.1.2})}     \\
-    \implies & \forall i, j \in \set{1, \dots, n}, A_{j i} = (\tp{A})_{i j} = \lambda A_{i j}            &  & \text{(by \cref{1.3.3})}     \\
-    \implies & \forall i, j \in \set{1, \dots, n}, A_{i j} = \lambda A_{j i} = \lambda (\lambda A_{i j}) &  & \text{(recursive structure)} \\
-    \implies & A = \lambda^2 A                                                                                                             \\
-    \implies & \lambda = \pm 1.                                                                          &  & (\lambda \in \R)
-  \end{align*}
-  Thus by \cref{5.1.2} \(\pm 1\) are eigenvalues of \(\T\).
-  Suppose for sake of contradiction that there exists another \(\lambda \in \R \setminus \set{\pm 1}\) such that \(\T(B) = \lambda B\) for some \(B \in \ms{n}{n}{\F}\).
-  Then we have
-  \begin{align*}
-             & \forall i, j \in \set{1, \dots, n}, \begin{dcases}
-                                                     (\T(B))_{i i} = (\tp{B})_{i i} = B_{i i} = \lambda B_{i i} \\
-                                                     (\T(B))_{j i} = (\tp{B})_{j i} = B_{i j} = \lambda B_{j i}
-                                                   \end{dcases} &  & \text{(by \cref{1.3.3})} \\
-    \implies & \forall i, j \in \set{1, \dots, n}, \begin{dcases}
-                                                     (1 - \lambda) B_{i i} = 0 \\
-                                                     B_{i j} = \lambda^2 B_{i j}
-                                                   \end{dcases}            &  & \text{(recursive structure)}  \\
-    \implies & \forall i, j \in \set{1, \dots, n}, \begin{dcases}
-                                                     (1 - \lambda) B_{i i} = 0 \\
-                                                     (1 - \lambda^2) B_{i j} = 0
-                                                   \end{dcases}                                 \\
-    \implies & \forall i, j \in \set{1, \dots, n}, B_{i j} = 0               &  & (\lambda \neq \pm 1)        \\
-    \implies & B = \zm.
-  \end{align*}
-  But by \cref{5.1.2} \(B \neq \zm\), a contradiction.
-  Thus \(\pm 1\) are the only eigenvalues of \(\T\).
+	Let \(A \in \ms{n}{n}{\R}\) be an eigenvector of \(\T\) corresponding to eigenvalue \(\lambda \in \R\).
+	Then we have
+	\begin{align*}
+		         & \tp{A} = \T(A) = \lambda A                                                                &  & \by{5.1.2}                   \\
+		\implies & \forall i, j \in \set{1, \dots, n}, A_{j i} = (\tp{A})_{i j} = \lambda A_{i j}            &  & \by{1.3.3}                   \\
+		\implies & \forall i, j \in \set{1, \dots, n}, A_{i j} = \lambda A_{j i} = \lambda (\lambda A_{i j}) &  & \text{(recursive structure)} \\
+		\implies & A = \lambda^2 A                                                                                                             \\
+		\implies & \lambda = \pm 1.                                                                          &  & (\lambda \in \R)
+	\end{align*}
+	Thus by \cref{5.1.2} \(\pm 1\) are eigenvalues of \(\T\).
+	Suppose for sake of contradiction that there exists another \(\lambda \in \R \setminus \set{\pm 1}\) such that \(\T(B) = \lambda B\) for some \(B \in \ms{n}{n}{\F}\).
+	Then we have
+	\begin{align*}
+		         & \forall i, j \in \set{1, \dots, n}, \begin{dcases}
+			                                               (\T(B))_{i i} = (\tp{B})_{i i} = B_{i i} = \lambda B_{i i} \\
+			                                               (\T(B))_{j i} = (\tp{B})_{j i} = B_{i j} = \lambda B_{j i}
+		                                               \end{dcases} &  & \by{1.3.3} \\
+		\implies & \forall i, j \in \set{1, \dots, n}, \begin{dcases}
+			                                               (1 - \lambda) B_{i i} = 0 \\
+			                                               B_{i j} = \lambda^2 B_{i j}
+		                                               \end{dcases}            &  & \text{(recursive structure)}  \\
+		\implies & \forall i, j \in \set{1, \dots, n}, \begin{dcases}
+			                                               (1 - \lambda) B_{i i} = 0 \\
+			                                               (1 - \lambda^2) B_{i j} = 0
+		                                               \end{dcases}                                 \\
+		\implies & \forall i, j \in \set{1, \dots, n}, B_{i j} = 0               &  & (\lambda \neq \pm 1)        \\
+		\implies & B = \zm.
+	\end{align*}
+	But by \cref{5.1.2} \(B \neq \zm\), a contradiction.
+	Thus \(\pm 1\) are the only eigenvalues of \(\T\).
 \end{proof}
 
 \begin{proof}[\pf{ex:5.1.17}(b)]
-  We have
-  \begin{align*}
-             & A \in \ns{\T - \IT[\ms{n}{n}{\R}]} &  & \text{(by \cref{5.4})}    \\
-    \implies & \T(A) - A = \zm                    &  & \text{(by \cref{2.1.10})} \\
-    \implies & \tp{A} = \T(A) = A                                                \\
-    \implies & A \text{ is symmetric}             &  & \text{(by \cref{1.3.4})}
-  \end{align*}
-  and
-  \begin{align*}
-             & A \in \ns{\T + \IT[\ms{n}{n}{\R}]} &  & \text{(by \cref{5.4})}       \\
-    \implies & \T(A) + A = \zm                    &  & \text{(by \cref{2.1.10})}    \\
-    \implies & \tp{A} = \T(A) = -A                                                  \\
-    \implies & A \text{ is skew-symmetric}.       &  & \text{(by \cref{ex:1.3.28})}
-  \end{align*}
+	We have
+	\begin{align*}
+		         & A \in \ns{\T - \IT[\ms{n}{n}{\R}]} &  & \by{5.4}    \\
+		\implies & \T(A) - A = \zm                    &  & \by{2.1.10} \\
+		\implies & \tp{A} = \T(A) = A                                  \\
+		\implies & A \text{ is symmetric}             &  & \by{1.3.4}
+	\end{align*}
+	and
+	\begin{align*}
+		         & A \in \ns{\T + \IT[\ms{n}{n}{\R}]} &  & \by{5.4}       \\
+		\implies & \T(A) + A = \zm                    &  & \by{2.1.10}    \\
+		\implies & \tp{A} = \T(A) = -A                                    \\
+		\implies & A \text{ is skew-symmetric}.       &  & \by{ex:1.3.28}
+	\end{align*}
 \end{proof}
 
 \begin{proof}[\pf{ex:5.1.17}(c)]
-  Let \(\beta\) be the set
-  \[
-    \beta = \set{\begin{pmatrix}
-        1 & 0 \\
-        0 & 0
-      \end{pmatrix}, \begin{pmatrix}
-        0 & 0 \\
-        0 & 1
-      \end{pmatrix}, \begin{pmatrix}
-        0 & 1 \\
-        1 & 0
-      \end{pmatrix}, \begin{pmatrix}
-        0  & 1 \\
-        -1 & 0
-      \end{pmatrix}}.
-  \]
-  Clearly \(\beta\) is an ordered basis for \(\ms{2}{2}{\R}\).
-  Observe that the first three matrices in \(\beta\) are symmetric and the last matrix in \(\beta\) is skew-symmetric.
-  Thus by \cref{ex:5.1.17}(b) we can diagonalize \(\T\) with \(\beta\) to get
-  \[
-    [\T]_{\beta} = \begin{pmatrix}
-      1 & 0 & 0 & 0  \\
-      0 & 1 & 0 & 0  \\
-      0 & 0 & 1 & 0  \\
-      0 & 0 & 0 & -1
-    \end{pmatrix}.
-  \]
+	Let \(\beta\) be the set
+	\[
+		\beta = \set{\begin{pmatrix}
+				1 & 0 \\
+				0 & 0
+			\end{pmatrix}, \begin{pmatrix}
+				0 & 0 \\
+				0 & 1
+			\end{pmatrix}, \begin{pmatrix}
+				0 & 1 \\
+				1 & 0
+			\end{pmatrix}, \begin{pmatrix}
+				0  & 1 \\
+				-1 & 0
+			\end{pmatrix}}.
+	\]
+	Clearly \(\beta\) is an ordered basis for \(\ms{2}{2}{\R}\).
+	Observe that the first three matrices in \(\beta\) are symmetric and the last matrix in \(\beta\) is skew-symmetric.
+	Thus by \cref{ex:5.1.17}(b) we can diagonalize \(\T\) with \(\beta\) to get
+	\[
+		[\T]_{\beta} = \begin{pmatrix}
+			1 & 0 & 0 & 0  \\
+			0 & 1 & 0 & 0  \\
+			0 & 0 & 1 & 0  \\
+			0 & 0 & 0 & -1
+		\end{pmatrix}.
+	\]
 \end{proof}
 
 \begin{proof}[\pf{ex:5.1.17}(d)]
-  By \cref{1.6.18} we can find a set of \(\frac{n(n + 1)}{2}\) linearly independent symmetric matrices in \(\ms{n}{n}{\R}\), called it \(\beta\).
-  By \cref{ex:1.6.17} we can find a set of \(\frac{n(n - 1)}{2}\) linearly independent skew-symmetric matrices in \(\ms{n}{n}{\R}\), called it \(\gamma\).
-  Since \(\#(\beta \cup \gamma) = n^2\), by \cref{1.6.11} and \cref{1.6.15}(b) we know that \(\beta \cup \gamma\) is a basis for \(\ms{n}{n}{\R}\) over \(\R\).
-  By \cref{ex:5.1.17}(b) we see that \(\beta \cup \gamma\) is an ordered basis for \(\ms{n}{n}{\R}\) over \(\R\) which diagonalize \(\T\).
+	By \cref{1.6.18} we can find a set of \(\frac{n(n + 1)}{2}\) linearly independent symmetric matrices in \(\ms{n}{n}{\R}\), called it \(\beta\).
+	By \cref{ex:1.6.17} we can find a set of \(\frac{n(n - 1)}{2}\) linearly independent skew-symmetric matrices in \(\ms{n}{n}{\R}\), called it \(\gamma\).
+	Since \(\#(\beta \cup \gamma) = n^2\), by \cref{1.6.11} and \cref{1.6.15}(b) we know that \(\beta \cup \gamma\) is a basis for \(\ms{n}{n}{\R}\) over \(\R\).
+	By \cref{ex:5.1.17}(b) we see that \(\beta \cup \gamma\) is an ordered basis for \(\ms{n}{n}{\R}\) over \(\R\) which diagonalize \(\T\).
 \end{proof}
 
 \begin{ex}\label{ex:5.1.18}
-  Let \(A, B \in \ms{n}{n}{\C}\).
-  \begin{enumerate}
-    \item Prove that if \(B\) is invertible, then there exists a scalar \(c \in \C\) such that \(A + cB\) is not invertible.
-    \item Find \(A, B \in \ms{2}{2}{\C} \setminus \set{\zm}\) such that both \(A\) and \(A + cB\) are invertible for all \(c \in \C\).
-  \end{enumerate}
+	Let \(A, B \in \ms{n}{n}{\C}\).
+	\begin{enumerate}
+		\item Prove that if \(B\) is invertible, then there exists a scalar \(c \in \C\) such that \(A + cB\) is not invertible.
+		\item Find \(A, B \in \ms{2}{2}{\C} \setminus \set{\zm}\) such that both \(A\) and \(A + cB\) are invertible for all \(c \in \C\).
+	\end{enumerate}
 \end{ex}
 
 \begin{proof}[\pf{ex:5.1.18}(a)]
-  Since
-  \begin{align*}
-             & \det(B) \neq 0                                   &  & \text{(by \cref{4.3.1})} \\
-    \implies & \det(A - tB) = \det(B) \det(B^{-1} A - t I_n)    &  & \text{(by \cref{4.7})}   \\
-    \implies & \det(A - tB) = 0 \iff \det(B^{-1} A - t I_n) = 0 &  & (\det(B) \neq 0)
-  \end{align*}
-  and \(\det(B^{-1} A - t I_n)\) is a polynomial of degree \(n\) by \cref{5.3}, we know that there exists a root in \(t \in \C\) such that \(\det(B^{-1} A - t I_n) = 0\) by \cref{d.4}.
-  Therefore \(\det(A - tB)\) has a root \(t \in \C\).
-  By setting \(c = -t\) we are done.
+	Since
+	\begin{align*}
+		         & \det(B) \neq 0                                   &  & \by{4.3.1}       \\
+		\implies & \det(A - tB) = \det(B) \det(B^{-1} A - t I_n)    &  & \by{4.7}         \\
+		\implies & \det(A - tB) = 0 \iff \det(B^{-1} A - t I_n) = 0 &  & (\det(B) \neq 0)
+	\end{align*}
+	and \(\det(B^{-1} A - t I_n)\) is a polynomial of degree \(n\) by \cref{5.3}, we know that there exists a root in \(t \in \C\) such that \(\det(B^{-1} A - t I_n) = 0\) by \cref{d.4}.
+	Therefore \(\det(A - tB)\) has a root \(t \in \C\).
+	By setting \(c = -t\) we are done.
 \end{proof}
 
 \begin{proof}[\pf{ex:5.1.18}(b)]
-  Let
-  \[
-    A = \begin{pmatrix}
-      1 & 0 \\
-      0 & 1
-    \end{pmatrix} \quad \text{and} \quad B = \begin{pmatrix}
-      1 & 1  \\
-      1 & -1
-    \end{pmatrix}.
-  \]
-  Then we have
-  \begin{align*}
-             & \forall c \in \C, \det(A + cB) = \det\begin{pmatrix}
-                                                      1 + c & -c    \\
-                                                      c     & 1 - c
-                                                    \end{pmatrix} = 1 \neq 0 &  & \text{(by \cref{4.1.1})} \\
-    \implies & \forall c \in \C, A + cB \text{ is invertible}.      &  & \text{(by \cref{4.3.1})}
-  \end{align*}
+	Let
+	\[
+		A = \begin{pmatrix}
+			1 & 0 \\
+			0 & 1
+		\end{pmatrix} \quad \text{and} \quad B = \begin{pmatrix}
+			1 & 1  \\
+			1 & -1
+		\end{pmatrix}.
+	\]
+	Then we have
+	\begin{align*}
+		         & \forall c \in \C, \det(A + cB) = \det\begin{pmatrix}
+			                                                1 + c & -c    \\
+			                                                c     & 1 - c
+		                                                \end{pmatrix} = 1 \neq 0 &  & \by{4.1.1} \\
+		\implies & \forall c \in \C, A + cB \text{ is invertible}.      &  & \by{4.3.1}
+	\end{align*}
 \end{proof}
 
 \begin{ex}\label{ex:5.1.19}
-  Let \(A, B \in \ms{n}{n}{\F}\) be similar.
-  Prove that there exists an \(n\)-dimensional vector space \(\V\) over \(\F\), a linear operator \(\T \in \ls(\V)\), and ordered bases \(\beta\) and \(\gamma\) for \(\V\) over \(\F\) such that \(A = [\T]_{\beta}\) and \(B = [\T]_{\gamma}\).
+	Let \(A, B \in \ms{n}{n}{\F}\) be similar.
+	Prove that there exists an \(n\)-dimensional vector space \(\V\) over \(\F\), a linear operator \(\T \in \ls(\V)\), and ordered bases \(\beta\) and \(\gamma\) for \(\V\) over \(\F\) such that \(A = [\T]_{\beta}\) and \(B = [\T]_{\gamma}\).
 \end{ex}
 
 \begin{proof}[\pf{ex:5.1.19}]
-  Since \(A, B\) are similar, by \cref{2.5.4} there exists an \(Q \in \ms{n}{n}{\F}\) such that \(B = Q^{-1} A Q\).
-  Fix such \(Q\).
-  Let \(\beta\) be the standard ordered bases for \(\vs{F}^n\) over \(\F\).
-  We define \(\gamma\) as follow:
-  \[
-    \gamma = \set{\sum_{i = 1}^n Q_{i j} e_i : (j \in \set{1, \dots, n}) \land (e_i \in \beta)}.
-  \]
-  By \cref{ex:2.5.13} we see that \(\gamma\) is an ordered basis for \(\vs{F}^n\) over \(\F\) and \(Q\) changes \(\gamma\)-coordinates into \(\beta\)-coordinates.
-  If we set \(\V = \vs{F}^n\) and \(\T = \L_A\), then we have
-  \begin{align*}
-    B & = Q^{-1} A Q                                                                                                         \\
-      & = [\IT[\vs{F}^n]]_{\beta}^{\gamma} A [\IT[\vs{F}^n]]_{\gamma}^{\beta}              &  & \text{(by \cref{ex:2.5.11})} \\
-      & = [\IT[\vs{F}^n]]_{\beta}^{\gamma} [\L_A]_{\beta} [\IT[\vs{F}^n]]_{\gamma}^{\beta} &  & \text{(by \cref{2.15}(a))}   \\
-      & = [\IT[\vs{F}^n]]_{\beta}^{\gamma} [\T]_{\beta} [\IT[\vs{F}^n]]_{\gamma}^{\beta}                                     \\
-      & = [\IT[\vs{F}^n] \T \IT[\vs{F}^n]]_{\gamma}                                        &  & \text{(by \cref{2.11})}      \\
-      & = [\T]_{\gamma}.                                                                   &  & \text{(by \cref{2.1.9})}
-  \end{align*}
+	Since \(A, B\) are similar, by \cref{2.5.4} there exists an \(Q \in \ms{n}{n}{\F}\) such that \(B = Q^{-1} A Q\).
+	Fix such \(Q\).
+	Let \(\beta\) be the standard ordered bases for \(\vs{F}^n\) over \(\F\).
+	We define \(\gamma\) as follow:
+	\[
+		\gamma = \set{\sum_{i = 1}^n Q_{i j} e_i : (j \in \set{1, \dots, n}) \land (e_i \in \beta)}.
+	\]
+	By \cref{ex:2.5.13} we see that \(\gamma\) is an ordered basis for \(\vs{F}^n\) over \(\F\) and \(Q\) changes \(\gamma\)-coordinates into \(\beta\)-coordinates.
+	If we set \(\V = \vs{F}^n\) and \(\T = \L_A\), then we have
+	\begin{align*}
+		B & = Q^{-1} A Q                                                                                           \\
+		  & = [\IT[\vs{F}^n]]_{\beta}^{\gamma} A [\IT[\vs{F}^n]]_{\gamma}^{\beta}              &  & \by{ex:2.5.11} \\
+		  & = [\IT[\vs{F}^n]]_{\beta}^{\gamma} [\L_A]_{\beta} [\IT[\vs{F}^n]]_{\gamma}^{\beta} &  & \by{2.15}[a]   \\
+		  & = [\IT[\vs{F}^n]]_{\beta}^{\gamma} [\T]_{\beta} [\IT[\vs{F}^n]]_{\gamma}^{\beta}                       \\
+		  & = [\IT[\vs{F}^n] \T \IT[\vs{F}^n]]_{\gamma}                                        &  & \by{2.11}      \\
+		  & = [\T]_{\gamma}.                                                                   &  & \by{2.1.9}
+	\end{align*}
 \end{proof}
 
 \begin{ex}\label{ex:5.1.20}
-  Let \(A \in \ms{n}{n}{\F}\) with characteristic polynomial
-  \[
-    f(t) = (-1)^n t^n + a_{n - 1} t^{n - 1} + \cdots + a_1 t + a_0.
-  \]
-  Prove that \(f(0) = a_0 = \det(A)\).
-  Deduce that \(A\) is invertible iff \(a_0 \neq 0\).
+	Let \(A \in \ms{n}{n}{\F}\) with characteristic polynomial
+	\[
+		f(t) = (-1)^n t^n + a_{n - 1} t^{n - 1} + \cdots + a_1 t + a_0.
+	\]
+	Prove that \(f(0) = a_0 = \det(A)\).
+	Deduce that \(A\) is invertible iff \(a_0 \neq 0\).
 \end{ex}
 
 \begin{proof}[\pf{ex:5.1.20}]
-  We have
-  \begin{align*}
-             & \det(A - t I_n) = f(t) = (-1)^n t^n + a_{n - 1} t^{n - 1} + \cdots + a_1 t + a_0 &  & \text{(by \cref{5.1.5})} \\
-    \implies & \det(A - 0 I_n) = \det(A) = f(0) = a_0                                                                         \\
-    \implies & A \text{ is invertible } \iff a_0 \neq 0.                                        &  & \text{(by \cref{4.3.1})}
-  \end{align*}
+	We have
+	\begin{align*}
+		         & \det(A - t I_n) = f(t) = (-1)^n t^n + a_{n - 1} t^{n - 1} + \cdots + a_1 t + a_0 &  & \by{5.1.5} \\
+		\implies & \det(A - 0 I_n) = \det(A) = f(0) = a_0                                                           \\
+		\implies & A \text{ is invertible } \iff a_0 \neq 0.                                        &  & \by{4.3.1}
+	\end{align*}
 \end{proof}
 
 \begin{ex}\label{ex:5.1.21}
-  Let \(A\) and \(f(t)\) be as in \cref{ex:5.1.20}.
-  \begin{enumerate}
-    \item Prove that \(f(t) = (A_{1 1} - t)(A_{2 2} - t) \cdots (A_{n n} - t) + q(t)\), where \(q\) is a polynomial of degree at most \(n - 2\).
-    \item Show that \(\tr(A) = (-1)^{n - 1} a_{n - 1}\).
-  \end{enumerate}
+	Let \(A\) and \(f(t)\) be as in \cref{ex:5.1.20}.
+	\begin{enumerate}
+		\item Prove that \(f(t) = (A_{1 1} - t)(A_{2 2} - t) \cdots (A_{n n} - t) + q(t)\), where \(q\) is a polynomial of degree at most \(n - 2\).
+		\item Show that \(\tr(A) = (-1)^{n - 1} a_{n - 1}\).
+	\end{enumerate}
 \end{ex}
 
 \begin{proof}[\pf{ex:5.1.21}(a)]
-  We use induction on \(n\).
-  For \(n = 1\), we have
-  \begin{align*}
-             & \det(A - t I_1) = f(t) = -t + a_0                         &  & \text{(by \cref{ex:5.1.20})} \\
-    \implies & A_{1 1} = \det(A)                                         &  & \text{(by \cref{4.2.2})}     \\
-             & = \det(A - 0 I_1) = f(0) = a_0                            &  & \text{(by \cref{ex:5.1.20})} \\
-    \implies & \det(A - t I_1) = f(t) = A_{1 1} - t = A_{1 1} - t + q(t)
-  \end{align*}
-  where \(q\) is the zero polynomial.
-  Thus the base case holds.
-  Suppose inductively that \cref{ex:5.1.21}(a) is true for some \(n \geq 1\).
-  We need to show that for \(n + 1\) it is still true.
-  Let \(A \in \ms{(n + 1)}{(n + 1)}{\F}\) and let \(B = A - t I_{n + 1}\).
-  Observe that
-  \begin{align*}
-    \det(B) & = \sum_{j = 1}^{n + 1} (-1)^{1 + j} B_{1 j} \det(\tilde{B}_{1 j})                                          &  & \text{(by \cref{4.2.2})} \\
-            & = (-1)^{2} B_{1 1} \det(\tilde{B}_{1 1}) + \sum_{j = 2}^{n + 1} (-1)^{1 + j} B_{1 j} \det(\tilde{B}_{1 j})                               \\
-            & = (A_{1 1} - t) \det(\tilde{B}_{1 1}) + \sum_{j = 2}^{n + 1} (-1)^{1 + j} A_{1 j} \det(\tilde{B}_{1 j}).
-  \end{align*}
-  Since \(\tilde{B}_{1 1}\) is in the form \(C - t I_n\) where \(C_{i j} = A_{(i + 1) (j + 1)}\) for all \(i, j \in \set{1, \dots, n}\), by induction hypothesis we know that
-  \[
-    \det(\tilde{B}_{1 1}) = (A_{2 2} - t) \cdots (A_{(n + 1) (n + 1)} - t) + q_1(t)
-  \]
-  where \(q_1\) is a polynomial of degree at most \(n - 2\).
-  Thus we have
-  \begin{align*}
-    \det(B) & = (A_{1 1} - t) (A_{2 2} - t) \cdots (A_{(n + 1) (n + 1)} - t) + q_1(t) (A_{1 1} - t) \\
-            & \quad + \sum_{j = 2}^{n + 1} (-1)^{1 + j} A_{1 j} \det(\tilde{B}_{1 j}).
-  \end{align*}
-  Since \(q_1(t) (A_{1 1} - t)\) is a polynomial of degree at most \(n - 1\),  to close the induction we only need to show that \(\sum_{j = 2}^{n + 1} (-1)^{1 + j} A_{1 j} \det(\tilde{B}_{1 j})\) is a polynomial of degree at most \(n - 1\).
-  Observe that for each \(j \in \set{2, \dots, n - 1}\), all entries in the first column of \(\tilde{B}_{1 j}\) are values in \(\F\).
-  Thus by \cref{4.2.2} \(\det(\tilde{B}_{1 j})\) can be written as the sum of the determinant of \((n - 1) \times (n - 1)\) matrices.
-  Since entries in the \((n - 1) \times (n - 1)\) matrices are in \(\ps[1]{\F}\), by \cref{5.1.7} we see that the determinant are polynomials of degree at most \(n - 1\).
-  Thus \(\det(\tilde{B}_{1 j})\) is a polynomial of degree at most \(n - 1\) and so does \(\sum_{j = 2}^{n + 1} (-1)^{1 + j} A_{1 j} \det(\tilde{B}_{1 j})\).
-  Now let \(q\) be the polynomial
-  \[
-    q(t) = q_1(t) (A_{1 1} - t) + \sum_{j = 2}^{n + 1} (-1)^{1 + j} A_{1 j} \det(\tilde{B}_{1 j}).
-  \]
-  Then the degree of \(q\) is at most \(n - 1\) and this closes the induction.
+	We use induction on \(n\).
+	For \(n = 1\), we have
+	\begin{align*}
+		         & \det(A - t I_1) = f(t) = -t + a_0                         &  & \by{ex:5.1.20} \\
+		\implies & A_{1 1} = \det(A)                                         &  & \by{4.2.2}     \\
+		         & = \det(A - 0 I_1) = f(0) = a_0                            &  & \by{ex:5.1.20} \\
+		\implies & \det(A - t I_1) = f(t) = A_{1 1} - t = A_{1 1} - t + q(t)
+	\end{align*}
+	where \(q\) is the zero polynomial.
+	Thus the base case holds.
+	Suppose inductively that \cref{ex:5.1.21}(a) is true for some \(n \geq 1\).
+	We need to show that for \(n + 1\) it is still true.
+	Let \(A \in \ms{(n + 1)}{(n + 1)}{\F}\) and let \(B = A - t I_{n + 1}\).
+	Observe that
+	\begin{align*}
+		\det(B) & = \sum_{j = 1}^{n + 1} (-1)^{1 + j} B_{1 j} \det(\tilde{B}_{1 j})                                          &  & \by{4.2.2} \\
+		        & = (-1)^{2} B_{1 1} \det(\tilde{B}_{1 1}) + \sum_{j = 2}^{n + 1} (-1)^{1 + j} B_{1 j} \det(\tilde{B}_{1 j})                 \\
+		        & = (A_{1 1} - t) \det(\tilde{B}_{1 1}) + \sum_{j = 2}^{n + 1} (-1)^{1 + j} A_{1 j} \det(\tilde{B}_{1 j}).
+	\end{align*}
+	Since \(\tilde{B}_{1 1}\) is in the form \(C - t I_n\) where \(C_{i j} = A_{(i + 1) (j + 1)}\) for all \(i, j \in \set{1, \dots, n}\), by induction hypothesis we know that
+	\[
+		\det(\tilde{B}_{1 1}) = (A_{2 2} - t) \cdots (A_{(n + 1) (n + 1)} - t) + q_1(t)
+	\]
+	where \(q_1\) is a polynomial of degree at most \(n - 2\).
+	Thus we have
+	\begin{align*}
+		\det(B) & = (A_{1 1} - t) (A_{2 2} - t) \cdots (A_{(n + 1) (n + 1)} - t) + q_1(t) (A_{1 1} - t) \\
+		        & \quad + \sum_{j = 2}^{n + 1} (-1)^{1 + j} A_{1 j} \det(\tilde{B}_{1 j}).
+	\end{align*}
+	Since \(q_1(t) (A_{1 1} - t)\) is a polynomial of degree at most \(n - 1\),  to close the induction we only need to show that \(\sum_{j = 2}^{n + 1} (-1)^{1 + j} A_{1 j} \det(\tilde{B}_{1 j})\) is a polynomial of degree at most \(n - 1\).
+	Observe that for each \(j \in \set{2, \dots, n - 1}\), all entries in the first column of \(\tilde{B}_{1 j}\) are values in \(\F\).
+	Thus by \cref{4.2.2} \(\det(\tilde{B}_{1 j})\) can be written as the sum of the determinant of \((n - 1) \times (n - 1)\) matrices.
+	Since entries in the \((n - 1) \times (n - 1)\) matrices are in \(\ps[1]{\F}\), by \cref{5.1.7} we see that the determinant are polynomials of degree at most \(n - 1\).
+	Thus \(\det(\tilde{B}_{1 j})\) is a polynomial of degree at most \(n - 1\) and so does \(\sum_{j = 2}^{n + 1} (-1)^{1 + j} A_{1 j} \det(\tilde{B}_{1 j})\).
+	Now let \(q\) be the polynomial
+	\[
+		q(t) = q_1(t) (A_{1 1} - t) + \sum_{j = 2}^{n + 1} (-1)^{1 + j} A_{1 j} \det(\tilde{B}_{1 j}).
+	\]
+	Then the degree of \(q\) is at most \(n - 1\) and this closes the induction.
 \end{proof}
 
 \begin{proof}[\pf{ex:5.1.21}(b)]
-  By \cref{ex:5.1.21}(a) we have
-  \begin{align*}
-     & \det(A - t I_n)                                                                                             \\
-     & = (A_{1 1} - t) (A_{2 2} - t) \cdots (A_{n n} - t) + q(t)                                                   \\
-     & = ((-1^1 t^1 + (-1)^0 A_{1 1})) (A_{2 2} - t) \cdots (A_{n n} - t) + q(t)                                   \\
-     & = ((-1)^2 t^2 + (-1)^1 (A_{1 1} + A_{2 2}) t + A_{1 1} A_{2 2}) (A_{3 3} - t) \cdots (A_{n n} - t) + q(t)   \\
-     & = ((-1)^3 t^3 + (-1)^2 (A_{1 1} + A_{2 2} + A_{3 3}) t^2 + \dots) (A_{4 4} - t) \cdots (A_{n n} - t) + q(t) \\
-     & = (-1)^n t^n + (-1)^{n - 1} (A_{1 1} + \cdots + A_{n n}) t^{n - 1} + \cdots + q(t)                          \\
-     & = (-1)^n t^n + (-1)^{n - 1} \tr(A) t^{n - 1} + \cdots + q(t)
-  \end{align*}
-  where \(q \in \ps[n - 2]{\F}\).
-  Thus by \cref{ex:5.1.20} we have \(a_{n - 1} = (-1)^{n - 1} \tr(A)\) and \(\tr(A) = (-1)^{n - 1} a_{n - 1}\).
+	By \cref{ex:5.1.21}(a) we have
+	\begin{align*}
+		 & \det(A - t I_n)                                                                                             \\
+		 & = (A_{1 1} - t) (A_{2 2} - t) \cdots (A_{n n} - t) + q(t)                                                   \\
+		 & = ((-1^1 t^1 + (-1)^0 A_{1 1})) (A_{2 2} - t) \cdots (A_{n n} - t) + q(t)                                   \\
+		 & = ((-1)^2 t^2 + (-1)^1 (A_{1 1} + A_{2 2}) t + A_{1 1} A_{2 2}) (A_{3 3} - t) \cdots (A_{n n} - t) + q(t)   \\
+		 & = ((-1)^3 t^3 + (-1)^2 (A_{1 1} + A_{2 2} + A_{3 3}) t^2 + \dots) (A_{4 4} - t) \cdots (A_{n n} - t) + q(t) \\
+		 & = (-1)^n t^n + (-1)^{n - 1} (A_{1 1} + \cdots + A_{n n}) t^{n - 1} + \cdots + q(t)                          \\
+		 & = (-1)^n t^n + (-1)^{n - 1} \tr(A) t^{n - 1} + \cdots + q(t)
+	\end{align*}
+	where \(q \in \ps[n - 2]{\F}\).
+	Thus by \cref{ex:5.1.20} we have \(a_{n - 1} = (-1)^{n - 1} \tr(A)\) and \(\tr(A) = (-1)^{n - 1} a_{n - 1}\).
 \end{proof}
 
 \begin{ex}\label{ex:5.1.22}
-  \begin{enumerate}
-    \item Let \(\T\) be a linear operator on a vector space \(\V\) over the field \(\F\), and let \(g\) be a polynomial with coefficients from \(\F\).
-          Prove that if \(x\) is an eigenvector of \(\T\) with corresponding eigenvalue \(\lambda\), then \(g(\T)(x) = g(\lambda) x\).
-          That is, \(x\) is an eigenvector of \(g(\T)\) with corresponding eigenvalue \(g(\lambda)\).
-    \item State and prove a comparable result for matrices.
-  \end{enumerate}
+	\begin{enumerate}
+		\item Let \(\T\) be a linear operator on a vector space \(\V\) over the field \(\F\), and let \(g\) be a polynomial with coefficients from \(\F\).
+		      Prove that if \(x\) is an eigenvector of \(\T\) with corresponding eigenvalue \(\lambda\), then \(g(\T)(x) = g(\lambda) x\).
+		      That is, \(x\) is an eigenvector of \(g(\T)\) with corresponding eigenvalue \(g(\lambda)\).
+		\item State and prove a comparable result for matrices.
+	\end{enumerate}
 \end{ex}
 
 \begin{proof}[\pf{ex:5.1.22}(a)]
-  Let \(\seq{a}{0,,n} \in \F\) such that
-  \[
-    \forall t \in \F, g(t) = a_0 + a_1 t + \cdots + a_n t^n.
-  \]
-  Then we have
-  \begin{align*}
-             & \T(x) = \lambda x                                            &  & \text{(by \cref{5.1.2})}        \\
-    \implies & g(\T)(x) = a_0 \IT[\V](x) + a_1 \T(x) + \cdots + a_n \T^n(x) &  & \text{(by \cref{e.0.7})}        \\
-             & = a_0 x + a_1 \lambda x + \cdots + a_n \lambda^n x           &  & \text{(by \cref{ex:5.1.15}(a))} \\
-             & = (a_0 + a_1 \lambda + \cdots + a_n \lambda^n) x                                                  \\
-             & = g(\lambda) x.
-  \end{align*}
-  Thus by \cref{5.1.2} \(x\) is an eigenvalue of \(g(\T)\) with corresponding eigenvalue \(g(\lambda)\).
+	Let \(\seq{a}{0,,n} \in \F\) such that
+	\[
+		\forall t \in \F, g(t) = a_0 + a_1 t + \cdots + a_n t^n.
+	\]
+	Then we have
+	\begin{align*}
+		         & \T(x) = \lambda x                                            &  & \by{5.1.2}        \\
+		\implies & g(\T)(x) = a_0 \IT[\V](x) + a_1 \T(x) + \cdots + a_n \T^n(x) &  & \by{e.0.7}        \\
+		         & = a_0 x + a_1 \lambda x + \cdots + a_n \lambda^n x           &  & \by{ex:5.1.15}[a] \\
+		         & = (a_0 + a_1 \lambda + \cdots + a_n \lambda^n) x                                    \\
+		         & = g(\lambda) x.
+	\end{align*}
+	Thus by \cref{5.1.2} \(x\) is an eigenvalue of \(g(\T)\) with corresponding eigenvalue \(g(\lambda)\).
 \end{proof}
 
 \begin{proof}[\pf{ex:5.1.22}(b)]
-  Let \(A \in \ms{n}{n}{\F}\) and let \(g \in \ps[m]{\F}\).
-  We claim that if \(x \in \vs{F}^n \setminus \set{\zv}\) such that \(Ax = \lambda x\) for some \(\lambda \in \F\), then \(g(A)(x) = g(\lambda) x\).
-  Let \(\seq{a}{0,,m} \in \F\) such that
-  \[
-    \forall t \in \F, g(t) = a_0 + a_1 t + \cdots + a_m t^m.
-  \]
-  Then we have
-  \begin{align*}
-             & Ax = \lambda x                                     &  & \text{(by \cref{5.1.2})}        \\
-    \implies & g(A)(x) = a_0 I_n x + a_1 A x + \cdots + a_m A^m x &  & \text{(by \cref{e.0.7})}        \\
-             & = a_0 x + a_1 \lambda x + \cdots + a_m \lambda^m x &  & \text{(by \cref{ex:5.1.15}(b))} \\
-             & = (a_0 + a_1 \lambda + \cdots + a_m \lambda^m) x                                        \\
-             & = g(\lambda) x.
-  \end{align*}
+	Let \(A \in \ms{n}{n}{\F}\) and let \(g \in \ps[m]{\F}\).
+	We claim that if \(x \in \vs{F}^n \setminus \set{\zv}\) such that \(Ax = \lambda x\) for some \(\lambda \in \F\), then \(g(A)(x) = g(\lambda) x\).
+	Let \(\seq{a}{0,,m} \in \F\) such that
+	\[
+		\forall t \in \F, g(t) = a_0 + a_1 t + \cdots + a_m t^m.
+	\]
+	Then we have
+	\begin{align*}
+		         & Ax = \lambda x                                     &  & \by{5.1.2}        \\
+		\implies & g(A)(x) = a_0 I_n x + a_1 A x + \cdots + a_m A^m x &  & \by{e.0.7}        \\
+		         & = a_0 x + a_1 \lambda x + \cdots + a_m \lambda^m x &  & \by{ex:5.1.15}[b] \\
+		         & = (a_0 + a_1 \lambda + \cdots + a_m \lambda^m) x                          \\
+		         & = g(\lambda) x.
+	\end{align*}
 \end{proof}
 
 \begin{ex}\label{ex:5.1.23}
-  Let \(\V\) be a vector space over \(\F\).
-  Use \cref{ex:5.1.22} to prove that if \(f\) is the characteristic polynomial of a diagonalizable linear operator \(\T \in \ls(\V)\), then \(f(\T) = \zT\), the zero operator.
-  (In \cref{sec:5.4} we prove that this result does not depend on the diagonalizability of \(\T\).)
+	Let \(\V\) be a vector space over \(\F\).
+	Use \cref{ex:5.1.22} to prove that if \(f\) is the characteristic polynomial of a diagonalizable linear operator \(\T \in \ls(\V)\), then \(f(\T) = \zT\), the zero operator.
+	(In \cref{sec:5.4} we prove that this result does not depend on the diagonalizability of \(\T\).)
 \end{ex}
 
 \begin{proof}[\pf{ex:5.1.23}]
-  By \cref{5.1.1} there exists an ordered basis \(\beta\) such that \([\T]_{\beta}\) is diagonal matrix.
-  Then we have
-  \begin{align*}
-             & \forall v \in \beta, \exists \lambda \in \F : \T(v) = \lambda v        &  & \text{(by \cref{5.1.2})}        \\
-    \implies & \forall v \in \beta, \exists \lambda \in \F : f(\T)(v) = f(\lambda)(v) &  & \text{(by \cref{ex:5.1.22}(a))} \\
-             & = 0v = \zv = \zT(v)                                                    &  & \text{(by \cref{5.2})}          \\
-    \implies & f(\T) = \zT.                                                           &  & \text{(by \cref{2.1.13})}
-  \end{align*}
+	By \cref{5.1.1} there exists an ordered basis \(\beta\) such that \([\T]_{\beta}\) is diagonal matrix.
+	Then we have
+	\begin{align*}
+		         & \forall v \in \beta, \exists \lambda \in \F : \T(v) = \lambda v        &  & \by{5.1.2}        \\
+		\implies & \forall v \in \beta, \exists \lambda \in \F : f(\T)(v) = f(\lambda)(v) &  & \by{ex:5.1.22}[a] \\
+		         & = 0v = \zv = \zT(v)                                                    &  & \by{5.2}          \\
+		\implies & f(\T) = \zT.                                                           &  & \by{2.1.13}
+	\end{align*}
 \end{proof}
 
 \setcounter{ex}{25}
 \begin{ex}\label{ex:5.1.26}
-  Determine the number of distinct characteristic polynomials of matrices in \(\ms{2}{2}{\Z_2}\).
+	Determine the number of distinct characteristic polynomials of matrices in \(\ms{2}{2}{\Z_2}\).
 \end{ex}
 
 \begin{proof}[\pf{ex:5.1.26}]
-  Let \(A \in \ms{2}{2}{\Z_2}\).
-  Then we have
-  \begin{align*}
-    \det(A - t I_2) & = \det\begin{pmatrix}
-                              A_{1 1} - t & A_{1 2}     \\
-                              A_{2 1}     & A_{2 2} - t
-                            \end{pmatrix}                                                                  \\
-                    & = (A_{1 1} - t) (A_{2 2} - t) - A_{1 2} A_{2 1}                    &  & \text{(by \cref{4.1.1})} \\
-                    & = t^2 - (A_{1 1} + A_{2 2}) t + A_{1 1} A_{2 2} - A_{1 2} A_{2 1}.
-  \end{align*}
-  Rewriting \(-(A_{1 1} + A_{2 2}) = a\) and \(A_{1 1} A_{2 2} - A_{1 2} A_{2 1} = b\) we have \(\det(A - t I_2) = t^2 + at + b\).
-  Since \(a, b \in \Z_2\), we see that there are \(4\) different characteristic polynomials of matrices in \(\ms{2}{2}{\F}\), i.e.,
-  \begin{align*}
-     & t^2 + 0t + 0 = t^2          \\
-     & t^2 + 0t + 1 = t^2 + 1      \\
-     & t^2 + 1t + 0 = t^2 + t      \\
-     & t^2 + 1t + 1 = t^2 + t + 1.
-  \end{align*}
+	Let \(A \in \ms{2}{2}{\Z_2}\).
+	Then we have
+	\begin{align*}
+		\det(A - t I_2) & = \det\begin{pmatrix}
+			                        A_{1 1} - t & A_{1 2}     \\
+			                        A_{2 1}     & A_{2 2} - t
+		                        \end{pmatrix}                                                    \\
+		                & = (A_{1 1} - t) (A_{2 2} - t) - A_{1 2} A_{2 1}                    &  & \by{4.1.1} \\
+		                & = t^2 - (A_{1 1} + A_{2 2}) t + A_{1 1} A_{2 2} - A_{1 2} A_{2 1}.
+	\end{align*}
+	Rewriting \(-(A_{1 1} + A_{2 2}) = a\) and \(A_{1 1} A_{2 2} - A_{1 2} A_{2 1} = b\) we have \(\det(A - t I_2) = t^2 + at + b\).
+	Since \(a, b \in \Z_2\), we see that there are \(4\) different characteristic polynomials of matrices in \(\ms{2}{2}{\F}\), i.e.,
+	\begin{align*}
+		 & t^2 + 0t + 0 = t^2          \\
+		 & t^2 + 0t + 1 = t^2 + 1      \\
+		 & t^2 + 1t + 0 = t^2 + t      \\
+		 & t^2 + 1t + 1 = t^2 + t + 1.
+	\end{align*}
 \end{proof}

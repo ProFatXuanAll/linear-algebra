@@ -1,976 +1,976 @@
 \section{Diagonalizability}\label{sec:5.2}
 
 \begin{thm}\label{5.5}
-  Let \(\T\) be a linear operator on a vector space \(\V\) over \(\F\), and let \(\seq{\lambda}{1,,k}\) be distinct eigenvalues of \(\T\).
-  If \(\seq{v}{1,,k}\) are eigenvectors of \(\T\) such that \(\lambda_i\) corresponds to \(v_i\) for all \(i \in \set{1, \dots, k}\), then \(\set{\seq{v}{1,,k}}\) is linearly independent.
+	Let \(\T\) be a linear operator on a vector space \(\V\) over \(\F\), and let \(\seq{\lambda}{1,,k}\) be distinct eigenvalues of \(\T\).
+	If \(\seq{v}{1,,k}\) are eigenvectors of \(\T\) such that \(\lambda_i\) corresponds to \(v_i\) for all \(i \in \set{1, \dots, k}\), then \(\set{\seq{v}{1,,k}}\) is linearly independent.
 \end{thm}
 
 \begin{proof}[\pf{5.5}]
-  The proof is by mathematical induction on \(k\).
-  Suppose that \(k = 1\).
-  Then \(v_1 \neq \zv\) since \(v_1\) is an eigenvector, and hence \(\set{v_1}\) is linearly independent.
-  Now assume that the theorem holds for \(k\) distinct eigenvalues, where \(k \geq 1\), and that we have \(k + 1\) eigenvectors \(\seq{v}{1,,k+1}\) corresponding to the distinct eigenvalues \(\seq{\lambda}{1,,k+1}\).
-  We wish to show that \(\set{\seq{v}{1,,k+1}}\) is linearly independent.
-  Suppose that \(\seq{a}{1,,k+1} \in \F\) such that
-  \[
-    \seq[+]{a,v}{1,2,,k+1} = \zv.
-  \]
-  Applying \(\T - \lambda_{k + 1} \IT[\V]\) to both sides of the above equation, we obtain
-  \[
-    a_1 (\lambda_1 - \lambda_{k + 1}) v_1 + a_2 (\lambda_2 - \lambda_{k + 1}) v_2 + \cdots + a_k (\lambda_k - \lambda_{k + 1}) v_k = \zv.
-  \]
-  By the induction hypothesis \(\set{\seq{v}{1,,k}}\) is linearly independent, and
-  hence
-  \[
-    a_1 (\lambda_1 - \lambda_{k + 1}) = a_2 (\lambda_2 - \lambda_{k + 1}) = \cdots = a_k (\lambda_k - \lambda_{k + 1}) = 0.
-  \]
-  Since \(\seq{\lambda}{1,,k+1}\) are distinct, it follows that \(\lambda_i - \lambda_{k + 1} \neq 0\) for \(i \in \set{1, \dots, k}\).
-  So \(\seq[=]{a}{1,,k} = 0\), and therefore \(\seq[+]{a,v}{1,,k+1} = \zv\) reduces to \(a_{k + 1} v_{k + 1} = \zv\).
-  But \(v_{k + 1} \neq \zv\) and therefore \(a_{k + 1} = 0\).
-  Consequently \(\seq[=]{a}{1,,k+1} = 0\), and it follows that \(\set{\seq{v}{1,,k+1}}\) is linearly independent.
+	The proof is by mathematical induction on \(k\).
+	Suppose that \(k = 1\).
+	Then \(v_1 \neq \zv\) since \(v_1\) is an eigenvector, and hence \(\set{v_1}\) is linearly independent.
+	Now assume that the theorem holds for \(k\) distinct eigenvalues, where \(k \geq 1\), and that we have \(k + 1\) eigenvectors \(\seq{v}{1,,k+1}\) corresponding to the distinct eigenvalues \(\seq{\lambda}{1,,k+1}\).
+	We wish to show that \(\set{\seq{v}{1,,k+1}}\) is linearly independent.
+	Suppose that \(\seq{a}{1,,k+1} \in \F\) such that
+	\[
+		\seq[+]{a,v}{1,2,,k+1} = \zv.
+	\]
+	Applying \(\T - \lambda_{k + 1} \IT[\V]\) to both sides of the above equation, we obtain
+	\[
+		a_1 (\lambda_1 - \lambda_{k + 1}) v_1 + a_2 (\lambda_2 - \lambda_{k + 1}) v_2 + \cdots + a_k (\lambda_k - \lambda_{k + 1}) v_k = \zv.
+	\]
+	By the induction hypothesis \(\set{\seq{v}{1,,k}}\) is linearly independent, and
+	hence
+	\[
+		a_1 (\lambda_1 - \lambda_{k + 1}) = a_2 (\lambda_2 - \lambda_{k + 1}) = \cdots = a_k (\lambda_k - \lambda_{k + 1}) = 0.
+	\]
+	Since \(\seq{\lambda}{1,,k+1}\) are distinct, it follows that \(\lambda_i - \lambda_{k + 1} \neq 0\) for \(i \in \set{1, \dots, k}\).
+	So \(\seq[=]{a}{1,,k} = 0\), and therefore \(\seq[+]{a,v}{1,,k+1} = \zv\) reduces to \(a_{k + 1} v_{k + 1} = \zv\).
+	But \(v_{k + 1} \neq \zv\) and therefore \(a_{k + 1} = 0\).
+	Consequently \(\seq[=]{a}{1,,k+1} = 0\), and it follows that \(\set{\seq{v}{1,,k+1}}\) is linearly independent.
 \end{proof}
 
 \begin{cor}\label{5.2.1}
-  Let \(\T\) be a linear operator on an \(n\)-dimensional vector space \(\V\) over \(\F\).
-  If \(\T\) has \(n\) distinct eigenvalues, then \(\T\) is diagonalizable.
+	Let \(\T\) be a linear operator on an \(n\)-dimensional vector space \(\V\) over \(\F\).
+	If \(\T\) has \(n\) distinct eigenvalues, then \(\T\) is diagonalizable.
 \end{cor}
 
 \begin{proof}[\pf{5.2.1}]
-  Suppose that \(\T\) has \(n\) distinct eigenvalues \(\seq{\lambda}{1,,n}\).
-  For each \(i \in \set{1, \dots, n}\) choose an eigenvector \(v_i\) corresponding to \(\lambda_i\).
-  By \cref{5.5}, \(\set{\seq{v}{1,,n}}\) is linearly independent, and since \(\dim(\V) = n\), this set is a basis for \(\V\) over \(\F\).
-  Thus by \cref{5.1} \(\T\) is diagonalizable.
+	Suppose that \(\T\) has \(n\) distinct eigenvalues \(\seq{\lambda}{1,,n}\).
+	For each \(i \in \set{1, \dots, n}\) choose an eigenvector \(v_i\) corresponding to \(\lambda_i\).
+	By \cref{5.5}, \(\set{\seq{v}{1,,n}}\) is linearly independent, and since \(\dim(\V) = n\), this set is a basis for \(\V\) over \(\F\).
+	Thus by \cref{5.1} \(\T\) is diagonalizable.
 \end{proof}
 
 \begin{note}
-  The converse of \cref{5.5} is false.
-  That is, it is not true that if \(\T\) is diagonalizable, then it has \(n\) distinct eigenvalues.
-  For example, the identity operator is diagonalizable even though it has only one eigenvalue, namely, \(\lambda = 1\).
+	The converse of \cref{5.5} is false.
+	That is, it is not true that if \(\T\) is diagonalizable, then it has \(n\) distinct eigenvalues.
+	For example, the identity operator is diagonalizable even though it has only one eigenvalue, namely, \(\lambda = 1\).
 \end{note}
 
 \begin{defn}\label{5.2.2}
-  A polynomial \(f\) in \(\ps{\F}\) \textbf{splits over} \(\F\) if there are scalars \(c, \seq{a}{1,,n}\) (not necessarily distinct) in \(\F\) such that
-  \[
-    f(t) = c (t - a_1) (t - a_2) \cdots (t - a_n).
-  \]
-  If \(f\) is the characteristic polynomial of a linear operator or a matrix over a field \(\F\), then the statement that \(f\) splits is understood to mean that it splits over \(\F\).
+	A polynomial \(f\) in \(\ps{\F}\) \textbf{splits over} \(\F\) if there are scalars \(c, \seq{a}{1,,n}\) (not necessarily distinct) in \(\F\) such that
+	\[
+		f(t) = c (t - a_1) (t - a_2) \cdots (t - a_n).
+	\]
+	If \(f\) is the characteristic polynomial of a linear operator or a matrix over a field \(\F\), then the statement that \(f\) splits is understood to mean that it splits over \(\F\).
 \end{defn}
 
 \begin{thm}\label{5.6}
-  The characteristic polynomial of any diagonalizable linear operator splits.
+	The characteristic polynomial of any diagonalizable linear operator splits.
 \end{thm}
 
 \begin{proof}[\pf{5.6}]
-  Let \(\T\) be a diagonalizable linear operator on the \(n\)-dimensional vector space \(\V\) over \(\F\), and let \(\beta\) be an ordered basis for \(\V\) over \(\F\) such that \([\T]_{\beta} = D\) is a diagonal matrix.
-  Suppose that
-  \[
-    D = \begin{pmatrix}
-      \lambda_1 & 0         & \cdots & 0         \\
-      0         & \lambda_2 & \cdots & 0         \\
-      \vdots    & \vdots    &        & \vdots    \\
-      0         & 0         & \cdots & \lambda_n
-    \end{pmatrix},
-  \]
-  and let \(f\) be the characteristic polynomial of \(\T\).
-  Then
-  \begin{align*}
-    f(t) & = \det(D - t I_n)                                                &  & \text{(by \cref{5.1.6})}     \\
-         & = \det\begin{pmatrix}
-                   \lambda_1 - t & 0             & \cdots & 0             \\
-                   0             & \lambda_2 - t & \cdots & 0             \\
-                   \vdots        & \vdots        &        & \vdots        \\
-                   0             & 0             & \cdots & \lambda_n - t
-                 \end{pmatrix}                                       \\
-         & = (\lambda_1 - t) (\lambda_2 - t) \cdots (\lambda_n - t)         &  & \text{(by \cref{ex:4.2.23})} \\
-         & = (-1)^n (t - \lambda_1) (t - \lambda_2) \cdots (t - \lambda_n).
-  \end{align*}
+	Let \(\T\) be a diagonalizable linear operator on the \(n\)-dimensional vector space \(\V\) over \(\F\), and let \(\beta\) be an ordered basis for \(\V\) over \(\F\) such that \([\T]_{\beta} = D\) is a diagonal matrix.
+	Suppose that
+	\[
+		D = \begin{pmatrix}
+			\lambda_1 & 0         & \cdots & 0         \\
+			0         & \lambda_2 & \cdots & 0         \\
+			\vdots    & \vdots    &        & \vdots    \\
+			0         & 0         & \cdots & \lambda_n
+		\end{pmatrix},
+	\]
+	and let \(f\) be the characteristic polynomial of \(\T\).
+	Then
+	\begin{align*}
+		f(t) & = \det(D - t I_n)                                                &  & \by{5.1.6}     \\
+		     & = \det\begin{pmatrix}
+			             \lambda_1 - t & 0             & \cdots & 0             \\
+			             0             & \lambda_2 - t & \cdots & 0             \\
+			             \vdots        & \vdots        &        & \vdots        \\
+			             0             & 0             & \cdots & \lambda_n - t
+		             \end{pmatrix}                         \\
+		     & = (\lambda_1 - t) (\lambda_2 - t) \cdots (\lambda_n - t)         &  & \by{ex:4.2.23} \\
+		     & = (-1)^n (t - \lambda_1) (t - \lambda_2) \cdots (t - \lambda_n).
+	\end{align*}
 \end{proof}
 
 \begin{note}
-  From \cref{5.6}, it is clear that if \(\T\) is a diagonalizable linear operator on an \(n\)-dimensional vector space that fails to have distinct eigenvalues, then the characteristic polynomial of \(\T\) must have repeated zeros.
+	From \cref{5.6}, it is clear that if \(\T\) is a diagonalizable linear operator on an \(n\)-dimensional vector space that fails to have distinct eigenvalues, then the characteristic polynomial of \(\T\) must have repeated zeros.
 
-  The converse of \cref{5.6} is false;
-  that is, the characteristic polynomial of \(\T\) may split, but \(\T\) need not be diagonalizable.
+	The converse of \cref{5.6} is false;
+	that is, the characteristic polynomial of \(\T\) may split, but \(\T\) need not be diagonalizable.
 \end{note}
 
 \begin{defn}\label{5.2.3}
-  Let \(\lambda\) be an eigenvalue of a linear operator or matrix with characteristic polynomial \(f\).
-  The \textbf{(algebraic) multiplicity} of \(\lambda\) is the largest positive integer \(k\) for which \((t - \lambda)^k\) is a factor of \(f\).
+	Let \(\lambda\) be an eigenvalue of a linear operator or matrix with characteristic polynomial \(f\).
+	The \textbf{(algebraic) multiplicity} of \(\lambda\) is the largest positive integer \(k\) for which \((t - \lambda)^k\) is a factor of \(f\).
 \end{defn}
 
 \begin{note}
-  If \(\T\) is a diagonalizable linear operator on a \(n\)-dimensional vector space \(\V\) over \(\F\), then there is an ordered basis \(\beta\) for \(\V\) over \(\F\) consisting of eigenvectors of \(\T\).
-  We know from \cref{5.1} that \([\T]_{\beta}\) is a diagonal matrix in which the diagonal entries are the eigenvalues of \(\T\).
-  Since the characteristic polynomial of \(\T\) is \(\det([\T]_{\beta} - t I_n)\), it is easily seen that each eigenvalue of \(\T\) must occur as a diagonal entry of \([\T]_{\beta}\) exactly as many times as its multiplicity.
-  Hence \(\beta\) contains as many (linearly independent) eigenvectors corresponding to an eigenvalue as the multiplicity of that eigenvalue.
-  So the number of linearly independent eigenvectors corresponding to a given eigenvalue is of interest in determining whether an operator can be diagonalized.
-  Recalling from \cref{5.4} that the eigenvectors of \(\T\) corresponding to the eigenvalue \(\lambda\) are the nonzero vectors in the null space of \(\T - \lambda \IT[\V]\), we are led naturally to the study of this set.
+	If \(\T\) is a diagonalizable linear operator on a \(n\)-dimensional vector space \(\V\) over \(\F\), then there is an ordered basis \(\beta\) for \(\V\) over \(\F\) consisting of eigenvectors of \(\T\).
+	We know from \cref{5.1} that \([\T]_{\beta}\) is a diagonal matrix in which the diagonal entries are the eigenvalues of \(\T\).
+	Since the characteristic polynomial of \(\T\) is \(\det([\T]_{\beta} - t I_n)\), it is easily seen that each eigenvalue of \(\T\) must occur as a diagonal entry of \([\T]_{\beta}\) exactly as many times as its multiplicity.
+	Hence \(\beta\) contains as many (linearly independent) eigenvectors corresponding to an eigenvalue as the multiplicity of that eigenvalue.
+	So the number of linearly independent eigenvectors corresponding to a given eigenvalue is of interest in determining whether an operator can be diagonalized.
+	Recalling from \cref{5.4} that the eigenvectors of \(\T\) corresponding to the eigenvalue \(\lambda\) are the nonzero vectors in the null space of \(\T - \lambda \IT[\V]\), we are led naturally to the study of this set.
 \end{note}
 
 \begin{defn}\label{5.2.4}
-  Let \(\T\) be a linear operator on a vector space \(\V\) over \(\F\), and let \(\lambda\) be an eigenvalue of \(\T\).
-  Define \(E_\lambda = \set{x \in \V : \T(x) = \lambda x} = \ns{\T - \lambda \IT[\V]}\).
-  The set \(E_\lambda\) is called the \textbf{eigenspace} of \(\T\) corresponding to the eigenvalue \(\lambda\).
-  Analogously, we define the \textbf{eigenspace} of a square matrix \(A\) to be the eigenspace of \(\L_A\).
+	Let \(\T\) be a linear operator on a vector space \(\V\) over \(\F\), and let \(\lambda\) be an eigenvalue of \(\T\).
+	Define \(E_\lambda = \set{x \in \V : \T(x) = \lambda x} = \ns{\T - \lambda \IT[\V]}\).
+	The set \(E_\lambda\) is called the \textbf{eigenspace} of \(\T\) corresponding to the eigenvalue \(\lambda\).
+	Analogously, we define the \textbf{eigenspace} of a square matrix \(A\) to be the eigenspace of \(\L_A\).
 \end{defn}
 
 \begin{note}
-  Clearly, \(E_{\lambda}\) is a subspace of \(\V\) over \(\F\) consisting of the zero vector and the eigenvectors of \(\T\) corresponding to the eigenvalue \(\lambda\).
-  The maximum number of linearly independent eigenvectors of \(\T\) corresponding to the eigenvalue \(\lambda\) is therefore the dimension of \(E_{\lambda}\).
-  \cref{5.7} relates this dimension to the multiplicity of \(\lambda\).
+	Clearly, \(E_{\lambda}\) is a subspace of \(\V\) over \(\F\) consisting of the zero vector and the eigenvectors of \(\T\) corresponding to the eigenvalue \(\lambda\).
+	The maximum number of linearly independent eigenvectors of \(\T\) corresponding to the eigenvalue \(\lambda\) is therefore the dimension of \(E_{\lambda}\).
+	\cref{5.7} relates this dimension to the multiplicity of \(\lambda\).
 \end{note}
 
 \begin{thm}\label{5.7}
-  Let \(\T\) be a linear operator on a finite-dimensional vector space \(\V\) over \(\F\), and let \(\lambda\) be an eigenvalue of \(\T\) having multiplicity \(m\).
-  Then \(1 \leq \dim(E_{\lambda}) \leq m\).
+	Let \(\T\) be a linear operator on a finite-dimensional vector space \(\V\) over \(\F\), and let \(\lambda\) be an eigenvalue of \(\T\) having multiplicity \(m\).
+	Then \(1 \leq \dim(E_{\lambda}) \leq m\).
 \end{thm}
 
 \begin{proof}[\pf{5.7}]
-  Choose an ordered basis \(\set{\seq{v}{1,,p}}\) for \(E_{\lambda}\), extend it to an ordered basis \(\beta = \set{\seq{v}{1,,p,p+1,,n}}\) for \(\V\) over \(\F\), and let \(A = [\T]_{\beta}\).
-  Observe that for each \(i \in \set{1, \dots p}\), \(v_i\) is an eigenvector of \(\T\) corresponding to \(\lambda\), and therefore
-  \[
-    A = \begin{pmatrix}
-      \lambda I_p & B \\
-      \zm         & C
-    \end{pmatrix}.
-  \]
-  By \cref{ex:4.3.21}, the characteristic polynomial of \(\T\) is
-  \begin{align*}
-    f(t) & = \det(A - t I_n)                               &  & \text{(by \cref{5.1.6})}     \\
-         & = \det\begin{pmatrix}
-                   (\lambda - t) I_p & B               \\
-                   \zm               & C - t I_{n - p}
-                 \end{pmatrix}                                         \\
-         & = \det((\lambda - t) I_p) \det(C - t I_{n - p}) &  & \text{(by \cref{ex:4.3.21})} \\
-         & = (\lambda - t)^p g(t),                         &  & \text{(by \cref{ex:4.2.23})}
-  \end{align*}
-  where \(g\) is a polynomial.
-  Thus \((\lambda - t)^p\) is a factor of \(f\), and hence the multiplicity of \(\lambda\) is at least \(p\).
-  But \(\dim(E_{\lambda}) = p\), and so \(\dim(E_{\lambda}) \leq m\).
+	Choose an ordered basis \(\set{\seq{v}{1,,p}}\) for \(E_{\lambda}\), extend it to an ordered basis \(\beta = \set{\seq{v}{1,,p,p+1,,n}}\) for \(\V\) over \(\F\), and let \(A = [\T]_{\beta}\).
+	Observe that for each \(i \in \set{1, \dots p}\), \(v_i\) is an eigenvector of \(\T\) corresponding to \(\lambda\), and therefore
+	\[
+		A = \begin{pmatrix}
+			\lambda I_p & B \\
+			\zm         & C
+		\end{pmatrix}.
+	\]
+	By \cref{ex:4.3.21}, the characteristic polynomial of \(\T\) is
+	\begin{align*}
+		f(t) & = \det(A - t I_n)                               &  & \by{5.1.6}     \\
+		     & = \det\begin{pmatrix}
+			             (\lambda - t) I_p & B               \\
+			             \zm               & C - t I_{n - p}
+		             \end{pmatrix}                           \\
+		     & = \det((\lambda - t) I_p) \det(C - t I_{n - p}) &  & \by{ex:4.3.21} \\
+		     & = (\lambda - t)^p g(t),                         &  & \by{ex:4.2.23}
+	\end{align*}
+	where \(g\) is a polynomial.
+	Thus \((\lambda - t)^p\) is a factor of \(f\), and hence the multiplicity of \(\lambda\) is at least \(p\).
+	But \(\dim(E_{\lambda}) = p\), and so \(\dim(E_{\lambda}) \leq m\).
 \end{proof}
 
 \begin{lem}\label{5.2.5}
-  Let \(\T\) be a linear operator, and let \(\seq{\lambda}{1,,k}\) be distinct eigenvalues of \(\T\).
-  For each \(i \in \set{1, \dots, k}\), let \(v_i \in E_{\lambda_i}\), the eigenspace corresponding to \(\lambda_i\).
-  If
-  \[
-    \seq[+]{v}{1,,k} = \zv,
-  \]
-  then \(v_i = \zv\) for all \(i \in \set{1, \dots, k}\).
+	Let \(\T\) be a linear operator, and let \(\seq{\lambda}{1,,k}\) be distinct eigenvalues of \(\T\).
+	For each \(i \in \set{1, \dots, k}\), let \(v_i \in E_{\lambda_i}\), the eigenspace corresponding to \(\lambda_i\).
+	If
+	\[
+		\seq[+]{v}{1,,k} = \zv,
+	\]
+	then \(v_i = \zv\) for all \(i \in \set{1, \dots, k}\).
 \end{lem}
 
 \begin{proof}[\pf{5.2.5}]
-  Suppose otherwise.
-  By renumbering if necessary, suppose that, for \(m \in \set{1, \dots, k}\), we have \(v_i \neq \zv\) for \(i \in \set{1, \dots, m}\), and \(v_i = \zv\) for \(i \in \set{m + 1, \dots, k}\).
-  Then, for each \(i \leq m\), \(v_i\) is an eigenvector of \(\T\) corresponding to \(\lambda_i\) and
-  \[
-    \seq[+]{v}{1,,m} = \zv.
-  \]
-  But this contradicts \cref{5.5}, which states that these \(v_i\)'s are linearly independent.
-  We conclude, therefore, that \(v_i = \zv\) for all \(i \in \set{1, \dots, k}\).
+	Suppose otherwise.
+	By renumbering if necessary, suppose that, for \(m \in \set{1, \dots, k}\), we have \(v_i \neq \zv\) for \(i \in \set{1, \dots, m}\), and \(v_i = \zv\) for \(i \in \set{m + 1, \dots, k}\).
+	Then, for each \(i \leq m\), \(v_i\) is an eigenvector of \(\T\) corresponding to \(\lambda_i\) and
+	\[
+		\seq[+]{v}{1,,m} = \zv.
+	\]
+	But this contradicts \cref{5.5}, which states that these \(v_i\)'s are linearly independent.
+	We conclude, therefore, that \(v_i = \zv\) for all \(i \in \set{1, \dots, k}\).
 \end{proof}
 
 \begin{thm}\label{5.8}
-  Let \(\T\) be a linear operator on a vector space \(\V\) over \(\F\), and let \(\seq{\lambda}{1,,k}\) be distinct eigenvalues of \(\T\).
-  For each \(i \in \set{1, \dots, k}\), let \(S_i\) be a finite linearly independent subset of the eigenspace \(E_{\lambda_i}\).
-  Then \(S = \bigcup_{i = 1}^k S_i\) is a linearly independent subset of \(\V\).
+	Let \(\T\) be a linear operator on a vector space \(\V\) over \(\F\), and let \(\seq{\lambda}{1,,k}\) be distinct eigenvalues of \(\T\).
+	For each \(i \in \set{1, \dots, k}\), let \(S_i\) be a finite linearly independent subset of the eigenspace \(E_{\lambda_i}\).
+	Then \(S = \bigcup_{i = 1}^k S_i\) is a linearly independent subset of \(\V\).
 \end{thm}
 
 \begin{proof}[\pf{5.8}]
-  Suppose that for each \(i \in \set{1, \dots, k}\)
-  \[
-    S_i = \set{v_{i 1}, v_{i 2}, \dots v_{i n_i}}.
-  \]
-  Then \(S = \set{v_{i j} : (1 \leq j \leq n_i) \land (1 \leq i \leq k)}\).
-  Consider any scalars \(\set{a_{i j}} \subseteq \F\) such that
-  \[
-    \sum_{i = 1}^k \sum_{j = 1}^{n_i} a_{i j} v_{i j} = \zv.
-  \]
-  For each \(i \in \set{1, \dots, k}\), let
-  \[
-    w_i = \sum_{j = 1}^{n_i} a_{i j} v_{i j}.
-  \]
-  Then \(w_i \in E_{\lambda_i}\) for each \(i \in \set{1, \dots, k}\), and \(\seq[+]{w}{1,,k} = \zv\).
-  Therefore, by \cref{5.2.5}, \(w_i = \zv\) for all \(i \in \set{1, \dots, k}\).
-  But each \(S_i\) is linearly independent, and hence \(a_{i j} = 0\) for all \(j \in \set{1, \dots, n_i}\).
-  We conclude that \(S\) is linearly independent.
+	Suppose that for each \(i \in \set{1, \dots, k}\)
+	\[
+		S_i = \set{v_{i 1}, v_{i 2}, \dots v_{i n_i}}.
+	\]
+	Then \(S = \set{v_{i j} : (1 \leq j \leq n_i) \land (1 \leq i \leq k)}\).
+	Consider any scalars \(\set{a_{i j}} \subseteq \F\) such that
+	\[
+		\sum_{i = 1}^k \sum_{j = 1}^{n_i} a_{i j} v_{i j} = \zv.
+	\]
+	For each \(i \in \set{1, \dots, k}\), let
+	\[
+		w_i = \sum_{j = 1}^{n_i} a_{i j} v_{i j}.
+	\]
+	Then \(w_i \in E_{\lambda_i}\) for each \(i \in \set{1, \dots, k}\), and \(\seq[+]{w}{1,,k} = \zv\).
+	Therefore, by \cref{5.2.5}, \(w_i = \zv\) for all \(i \in \set{1, \dots, k}\).
+	But each \(S_i\) is linearly independent, and hence \(a_{i j} = 0\) for all \(j \in \set{1, \dots, n_i}\).
+	We conclude that \(S\) is linearly independent.
 \end{proof}
 
 \begin{thm}\label{5.9}
-  Let \(\T\) be a linear operator on a finite-dimensional vector space \(\V\) over \(\F\) such that the characteristic polynomial of \(\T\) splits.
-  Let \(\seq{\lambda}{1,,k}\) be the distinct eigenvalues of \(\T\).
-  Then
-  \begin{enumerate}
-    \item \(\T\) is diagonalizable iff the multiplicity of \(\lambda_i\) is equal to \(\dim(E_{\lambda_i})\) for all \(i \in \set{1, \dots, k}\).
-    \item If \(\T\) is diagonalizable and \(\beta_i\) is an ordered basis for \(E_{\lambda_i}\) over \(\F\) for each \(i \in \set{1, \dots, k}\), then \(\beta = \bigcup_{i = 1}^k \beta_i\) is an ordered basis for \(\V\) over \(\F\) consisting of eigenvectors of \(\T\).
-  \end{enumerate}
+	Let \(\T\) be a linear operator on a finite-dimensional vector space \(\V\) over \(\F\) such that the characteristic polynomial of \(\T\) splits.
+	Let \(\seq{\lambda}{1,,k}\) be the distinct eigenvalues of \(\T\).
+	Then
+	\begin{enumerate}
+		\item \(\T\) is diagonalizable iff the multiplicity of \(\lambda_i\) is equal to \(\dim(E_{\lambda_i})\) for all \(i \in \set{1, \dots, k}\).
+		\item If \(\T\) is diagonalizable and \(\beta_i\) is an ordered basis for \(E_{\lambda_i}\) over \(\F\) for each \(i \in \set{1, \dots, k}\), then \(\beta = \bigcup_{i = 1}^k \beta_i\) is an ordered basis for \(\V\) over \(\F\) consisting of eigenvectors of \(\T\).
+	\end{enumerate}
 \end{thm}
 
 \begin{proof}[\pf{5.9}]
-  For each \(i \in \set{1, \dots, k}\), let \(m_i\) denote the multiplicity of \(\lambda_i\), \(d_i = \dim(E_{\lambda_i})\), and \(n = \dim(\V)\).
+	For each \(i \in \set{1, \dots, k}\), let \(m_i\) denote the multiplicity of \(\lambda_i\), \(d_i = \dim(E_{\lambda_i})\), and \(n = \dim(\V)\).
 
-  First, suppose that \(\T\) is diagonalizable.
-  Let \(\beta\) be a basis for \(\V\) over \(\F\) consisting of eigenvectors of \(\T\).
-  For each \(i \in \set{1, \dots, k}\), let \(\beta_i = \beta \cap E_{\lambda_i}\), the set of vectors in \(\beta\) that are eigenvectors corresponding to \(\lambda_i\), and let \(n_i\) denote the number of vectors in \(\beta_i\).
-  Then \(n_i \leq d_i\) for each \(i \in \set{1, \dots, k}\) because \(\beta_i\) is a linearly independent subset of a subspace of dimension \(d_i\), and \(d_i \leq m_i\) by \cref{5.7}.
-  The \(n_i\)'s sum to \(n\) because \(\beta\) contains \(n\) vectors.
-  The \(m_i\)'s also sum to \(n\) because the degree of the characteristic polynomial of \(\T\) is equal to the sum of the multiplicities of the eigenvalues.
-  Thus
-  \[
-    n = \sum_{i = 1}^k n_i \leq \sum_{i = 1}^k d_i \leq \sum_{i = 1}^k m_i = n.
-  \]
-  It follows that
-  \[
-    \sum_{i = 1}^k (m_i - d_i) = 0.
-  \]
-  Since \((m_i - d_i) \geq 0\) for all \(i \in \set{1, \dots, k}\), we conclude that \(m_i = d_i\) for all \(i \in \set{1, \dots, k}\).
+	First, suppose that \(\T\) is diagonalizable.
+	Let \(\beta\) be a basis for \(\V\) over \(\F\) consisting of eigenvectors of \(\T\).
+	For each \(i \in \set{1, \dots, k}\), let \(\beta_i = \beta \cap E_{\lambda_i}\), the set of vectors in \(\beta\) that are eigenvectors corresponding to \(\lambda_i\), and let \(n_i\) denote the number of vectors in \(\beta_i\).
+	Then \(n_i \leq d_i\) for each \(i \in \set{1, \dots, k}\) because \(\beta_i\) is a linearly independent subset of a subspace of dimension \(d_i\), and \(d_i \leq m_i\) by \cref{5.7}.
+	The \(n_i\)'s sum to \(n\) because \(\beta\) contains \(n\) vectors.
+	The \(m_i\)'s also sum to \(n\) because the degree of the characteristic polynomial of \(\T\) is equal to the sum of the multiplicities of the eigenvalues.
+	Thus
+	\[
+		n = \sum_{i = 1}^k n_i \leq \sum_{i = 1}^k d_i \leq \sum_{i = 1}^k m_i = n.
+	\]
+	It follows that
+	\[
+		\sum_{i = 1}^k (m_i - d_i) = 0.
+	\]
+	Since \((m_i - d_i) \geq 0\) for all \(i \in \set{1, \dots, k}\), we conclude that \(m_i = d_i\) for all \(i \in \set{1, \dots, k}\).
 
-  Conversely, suppose that \(m_i = d_i\) for all \(i \in \set{1, \dots, k}\).
-  We simultaneously show that \(\T\) is diagonalizable and prove (b).
-  For each \(i \in \set{1, \dots, k}\), let \(\beta_i\) be an ordered basis for \(E_{\lambda_i}\), and let \(\beta = \bigcup_{i = 1}^k \beta_i\).
-  By \cref{5.8}, \(\beta\) is linearly independent.
-  Furthermore, since \(d_i = m_i\) for all \(i \in \set{1, \dots, k}\), \(\beta\) contains
-  \[
-    \sum_{i = 1}^k d_i = \sum_{i = 1}^k m_i = n
-  \]
-  vectors.
-  Therefore \(\beta\) is an ordered basis for \(\V\) over \(\F\) consisting of eigenvectors of \(\V\), and we conclude that \(\T\) is diagonalizable.
+	Conversely, suppose that \(m_i = d_i\) for all \(i \in \set{1, \dots, k}\).
+	We simultaneously show that \(\T\) is diagonalizable and prove (b).
+	For each \(i \in \set{1, \dots, k}\), let \(\beta_i\) be an ordered basis for \(E_{\lambda_i}\), and let \(\beta = \bigcup_{i = 1}^k \beta_i\).
+	By \cref{5.8}, \(\beta\) is linearly independent.
+	Furthermore, since \(d_i = m_i\) for all \(i \in \set{1, \dots, k}\), \(\beta\) contains
+	\[
+		\sum_{i = 1}^k d_i = \sum_{i = 1}^k m_i = n
+	\]
+	vectors.
+	Therefore \(\beta\) is an ordered basis for \(\V\) over \(\F\) consisting of eigenvectors of \(\V\), and we conclude that \(\T\) is diagonalizable.
 \end{proof}
 
 \begin{note}
-  Let \(\T\) be a linear operator on an \(n\)-dimensional vector space \(\V\) over \(\F\).
-  Then \(\T\) is diagonalizable iff both of the following conditions hold.
-  \begin{itemize}
-    \item The characteristic polynomial of \(\T\) splits.
-    \item For each eigenvalue \(\lambda\) of \(\T\), the multiplicity of \(\lambda\) equals \(n - \rk{\T - \lambda \IT[\V]}\).
-  \end{itemize}
-  These same conditions can be used to test if a square matrix \(A\) is diagonalizable because diagonalizability of \(A\) is equivalent to diagonalizability of the operator \(\L_A\).
+	Let \(\T\) be a linear operator on an \(n\)-dimensional vector space \(\V\) over \(\F\).
+	Then \(\T\) is diagonalizable iff both of the following conditions hold.
+	\begin{itemize}
+		\item The characteristic polynomial of \(\T\) splits.
+		\item For each eigenvalue \(\lambda\) of \(\T\), the multiplicity of \(\lambda\) equals \(n - \rk{\T - \lambda \IT[\V]}\).
+	\end{itemize}
+	These same conditions can be used to test if a square matrix \(A\) is diagonalizable because diagonalizability of \(A\) is equivalent to diagonalizability of the operator \(\L_A\).
 
-  If \(\T\) is a diagonalizable operator and \(\seq{\beta}{1,,k}\) are ordered bases for the eigenspaces of \(\T\), then the union \(\beta = \bigcup_{i = 1}^k \beta_i\) is an ordered basis for \(\V\) over \(\F\) consisting of eigenvectors of \(\T\), and hence \([\T]_{\beta}\) is a diagonal matrix.
+	If \(\T\) is a diagonalizable operator and \(\seq{\beta}{1,,k}\) are ordered bases for the eigenspaces of \(\T\), then the union \(\beta = \bigcup_{i = 1}^k \beta_i\) is an ordered basis for \(\V\) over \(\F\) consisting of eigenvectors of \(\T\), and hence \([\T]_{\beta}\) is a diagonal matrix.
 
-  When testing \(\T\) for diagonalizability, it is usually easiest to choose a convenient basis \(\alpha\) for \(\V\) over \(\F\) and work with \(B = [\T]_{\alpha}\).
-  If the characteristic polynomial of \(B\) splits, then use condition 2 above to check if the multiplicity of each \emph{repeated} eigenvalue of \(B\) equals \(n - \rk{B - \lambda I_n}\).
-  (By \cref{5.7}, condition 2 is automatically satisfied for eigenvalues of multiplicity \(1\).)
-  If so, then \(B\), and hence \(\T\), is diagonalizable.
+	When testing \(\T\) for diagonalizability, it is usually easiest to choose a convenient basis \(\alpha\) for \(\V\) over \(\F\) and work with \(B = [\T]_{\alpha}\).
+	If the characteristic polynomial of \(B\) splits, then use condition 2 above to check if the multiplicity of each \emph{repeated} eigenvalue of \(B\) equals \(n - \rk{B - \lambda I_n}\).
+	(By \cref{5.7}, condition 2 is automatically satisfied for eigenvalues of multiplicity \(1\).)
+	If so, then \(B\), and hence \(\T\), is diagonalizable.
 
-  If \(\T\) is diagonalizable and a basis \(\beta\) for \(\V\) over \(\F\) consisting of eigenvectors of \(\T\) is desired, then we first find a basis for each eigenspace of \(B\).
-  The union of these bases is a basis \(\gamma\) for \(\vs{F}^n\) consisting of eigenvectors of \(B\).
-  Each vector in \(\gamma\) is the coordinate vector relative to \(\alpha\) of an eigenvector of \(\T\).
-  The set consisting of these \(n\) eigenvectors of \(\T\) is the desired basis \(\beta\).
+	If \(\T\) is diagonalizable and a basis \(\beta\) for \(\V\) over \(\F\) consisting of eigenvectors of \(\T\) is desired, then we first find a basis for each eigenspace of \(B\).
+	The union of these bases is a basis \(\gamma\) for \(\vs{F}^n\) consisting of eigenvectors of \(B\).
+	Each vector in \(\gamma\) is the coordinate vector relative to \(\alpha\) of an eigenvector of \(\T\).
+	The set consisting of these \(n\) eigenvectors of \(\T\) is the desired basis \(\beta\).
 
-  Furthermore, if \(A\) is an \(n \times n\) diagonalizable matrix, we can use the \cref{2.5.3} to find an invertible \(n \times n\) matrix \(Q\) and a diagonal \(n \times n\) matrix \(D\) such that \(Q^{-1} A Q = D\).
-  The matrix \(Q\) has as its columns the vectors in a basis of eigenvectors of \(A\), and \(D\) has as its \(j\)th diagonal entry the eigenvalue of \(A\) corresponding to the \(j\)th column of \(Q\).
+	Furthermore, if \(A\) is an \(n \times n\) diagonalizable matrix, we can use the \cref{2.5.3} to find an invertible \(n \times n\) matrix \(Q\) and a diagonal \(n \times n\) matrix \(D\) such that \(Q^{-1} A Q = D\).
+	The matrix \(Q\) has as its columns the vectors in a basis of eigenvectors of \(A\), and \(D\) has as its \(j\)th diagonal entry the eigenvalue of \(A\) corresponding to the \(j\)th column of \(Q\).
 \end{note}
 
 \begin{defn}\label{5.2.6}
-  Let \(\seq{\W}{1,,k}\) be subspaces of a vector space \(\V\) over \(\F\).
-  We define the \textbf{sum} of these subspaces to be the set
-  \[
-    \set{\seq[+]{v}{1,,k} : v_i \in \W_i \text{ for } i \in \set{1, \dots, k}},
-  \]
-  which we denote by \(\seq[+]{\W}{1,,k}\) or \(\sum_{i = 1}^k \W_i\).
+	Let \(\seq{\W}{1,,k}\) be subspaces of a vector space \(\V\) over \(\F\).
+	We define the \textbf{sum} of these subspaces to be the set
+	\[
+		\set{\seq[+]{v}{1,,k} : v_i \in \W_i \text{ for } i \in \set{1, \dots, k}},
+	\]
+	which we denote by \(\seq[+]{\W}{1,,k}\) or \(\sum_{i = 1}^k \W_i\).
 \end{defn}
 
 \begin{defn}\label{5.2.7}
-  Let \(\seq{\W}{1,,k}\) be subspaces of a vector space \(\V\) over \(\F\).
-  We call \(\V\) the \textbf{direct sum} of the subspaces \(\seq{\W}{1,,k}\) and write \(\V = \seq[\oplus]{\W}{1,,k}\), if
-  \[
-    \V = \sum_{i = 1}^k \W_i
-  \]
-  and
-  \[
-    \W_j \cap \sum_{\substack{i = 1 \\ i \neq j}}^k \W_i = \set{\zv} \quad \text{for each } j \in \set{1, \dots, k}.
-  \]
+	Let \(\seq{\W}{1,,k}\) be subspaces of a vector space \(\V\) over \(\F\).
+	We call \(\V\) the \textbf{direct sum} of the subspaces \(\seq{\W}{1,,k}\) and write \(\V = \seq[\oplus]{\W}{1,,k}\), if
+	\[
+		\V = \sum_{i = 1}^k \W_i
+	\]
+	and
+	\[
+		\W_j \cap \sum_{\substack{i = 1 \\ i \neq j}}^k \W_i = \set{\zv} \quad \text{for each } j \in \set{1, \dots, k}.
+	\]
 \end{defn}
 
 \begin{thm}\label{5.10}
-  Let \(\seq{\W}{1,,k}\) be subspaces of a finite-dimensional vector space \(\V\) over \(\F\).
-  The following conditions are equivalent.
-  \begin{enumerate}
-    \item \(\V = \seq[\oplus]{\W}{1,,k}\).
-    \item \(\V = \sum_{i = 1}^k \W_i\) and, for any vectors \(\seq{v}{1,,k}\) such that \(v_i \in \W\) for \(i \in \set{1, \dots, k}\), if \(\seq[+]{v}{1,,k} = \zv\), then \(v_i = \zv\) for all \(i \in \set{1, \dots, k}\).
-    \item Each vector \(v \in \V\) can be uniquely written as \(v = \seq[+]{v}{1,,k}\), where \(v_i \in \W_i\) for all \(i \in \set{1, \dots, k}\).
-    \item For each \(i \in \set{1, \dots, k}\), if \(\gamma_i\) is an ordered basis for \(\W_i\) over \(\F\), then \(\bigcup_{i = 1}^k \gamma_i\) is an ordered basis for \(\V\) over \(\F\).
-    \item For each \(i \in \set{1, \dots, k}\), there exists an ordered basis \(\gamma_i\) for \(\W_i\) over \(\F\) such that \(\bigcup_{i = 1}^k \gamma_i\) is an ordered basis for \(\V\) over \(\F\).
-  \end{enumerate}
+	Let \(\seq{\W}{1,,k}\) be subspaces of a finite-dimensional vector space \(\V\) over \(\F\).
+	The following conditions are equivalent.
+	\begin{enumerate}
+		\item \(\V = \seq[\oplus]{\W}{1,,k}\).
+		\item \(\V = \sum_{i = 1}^k \W_i\) and, for any vectors \(\seq{v}{1,,k}\) such that \(v_i \in \W\) for \(i \in \set{1, \dots, k}\), if \(\seq[+]{v}{1,,k} = \zv\), then \(v_i = \zv\) for all \(i \in \set{1, \dots, k}\).
+		\item Each vector \(v \in \V\) can be uniquely written as \(v = \seq[+]{v}{1,,k}\), where \(v_i \in \W_i\) for all \(i \in \set{1, \dots, k}\).
+		\item For each \(i \in \set{1, \dots, k}\), if \(\gamma_i\) is an ordered basis for \(\W_i\) over \(\F\), then \(\bigcup_{i = 1}^k \gamma_i\) is an ordered basis for \(\V\) over \(\F\).
+		\item For each \(i \in \set{1, \dots, k}\), there exists an ordered basis \(\gamma_i\) for \(\W_i\) over \(\F\) such that \(\bigcup_{i = 1}^k \gamma_i\) is an ordered basis for \(\V\) over \(\F\).
+	\end{enumerate}
 \end{thm}
 
 \begin{proof}[\pf{5.10}]
-  Assume (a).
-  We prove (b).
-  Clearly
-  \[
-    \V = \sum_{i = 1}^k \W_i.
-  \]
-  Now suppose that \(\seq{v}{1,,k}\) are vectors such that \(v_i \in \W_i\) for all \(i \in \set{1, \dots, k}\) and \(\seq[+]{v}{1,,k} = \zv\).
-  Then for any \(j \in \set{1, \dots, k}\)
-  \[
-    -v_j = \sum_{\substack{i = 1 \\ i \neq j}}^k v_i \in \sum_{\substack{i = 1 \\ i \neq j}}^k \W_i.
-  \]
-  But \(-v_j \in \W_j\) and hence
-  \[
-    -v_j \in \W_j \cap \sum_{\substack{i = 1 \\ i \neq j}}^k \W_i = \set{\zv}.
-  \]
-  So \(v_j = \zv\), proving (b).
+	Assume (a).
+	We prove (b).
+	Clearly
+	\[
+		\V = \sum_{i = 1}^k \W_i.
+	\]
+	Now suppose that \(\seq{v}{1,,k}\) are vectors such that \(v_i \in \W_i\) for all \(i \in \set{1, \dots, k}\) and \(\seq[+]{v}{1,,k} = \zv\).
+	Then for any \(j \in \set{1, \dots, k}\)
+	\[
+		-v_j = \sum_{\substack{i = 1 \\ i \neq j}}^k v_i \in \sum_{\substack{i = 1 \\ i \neq j}}^k \W_i.
+	\]
+	But \(-v_j \in \W_j\) and hence
+	\[
+		-v_j \in \W_j \cap \sum_{\substack{i = 1 \\ i \neq j}}^k \W_i = \set{\zv}.
+	\]
+	So \(v_j = \zv\), proving (b).
 
-  Now assume (b).
-  We prove (c).
-  Let \(v \in \V\).
-  By (b), there exist vectors \(\seq{v}{1,,k}\) such that \(v_i \in \W_i\) for all \(i \in \set{1, \dots, k}\) and \(v = \seq[+]{v}{1,,k}\).
-  We must show that this representation is unique.
-  Suppose also that \(v = \seq[+]{w}{1,,k}\), where \(w_i \in \W_i\) for all \(i \in \set{1, \dots, k}\).
-  Then
-  \[
-    (v_1 - w_1) + \cdots + (v_k - w_k) = \zv.
-  \]
-  But \(v_i - w_i \in \W_i\) for all \(i \in \set{1, \dots, k}\), and therefore \(v_i - w_i = \zv\) for all \(i \in \set{1, \dots, k}\) by (b).
-  Thus \(v_i = w_i\) for all \(i \in \set{1, \dots, k}\), proving the uniqueness of the representation.
+	Now assume (b).
+	We prove (c).
+	Let \(v \in \V\).
+	By (b), there exist vectors \(\seq{v}{1,,k}\) such that \(v_i \in \W_i\) for all \(i \in \set{1, \dots, k}\) and \(v = \seq[+]{v}{1,,k}\).
+	We must show that this representation is unique.
+	Suppose also that \(v = \seq[+]{w}{1,,k}\), where \(w_i \in \W_i\) for all \(i \in \set{1, \dots, k}\).
+	Then
+	\[
+		(v_1 - w_1) + \cdots + (v_k - w_k) = \zv.
+	\]
+	But \(v_i - w_i \in \W_i\) for all \(i \in \set{1, \dots, k}\), and therefore \(v_i - w_i = \zv\) for all \(i \in \set{1, \dots, k}\) by (b).
+	Thus \(v_i = w_i\) for all \(i \in \set{1, \dots, k}\), proving the uniqueness of the representation.
 
-  Now assume (c).
-  We prove (d).
-  For each \(i \in \set{1, \dots, k}\), let \(\gamma_i\) be an ordered basis for \(\W_i\) over \(\F\).
-  Since
-  \[
-    \V = \sum_{i = 1}^k \W_i
-  \]
-  by (c), it follows that \(\bigcup_{i = 1}^k \gamma_i\) generates \(\V\).
-  To show that this set is linearly independent, consider vectors \(v_{i j} \in \gamma_i\) (where \(j \in \set{1, \dots, m_i}\) and \(i \in \set{1, \dots, k}\)) and scalars \(a_{i j} \in \F\) such that
-  \[
-    \sum_{i = 1}^k \sum_{j = 1}^{m_i} a_{i j} v_{i j} = \zv.
-  \]
-  For each \(i \in \set{1, \dots, k}\), set
-  \[
-    w_i = \sum_{j = 1}^{m_i} a_{i j} v_{i j}.
-  \]
-  Then for each \(i \in \set{1, \dots, k}\), \(w_i \in \spn{\gamma_i} = \W_i\) and
-  \[
-    \seq[+]{w}{1,,k} = \sum_{i = 1}^k \sum_{j = 1}^{m_i} a_{i j} v_{i j} = \zv.
-  \]
-  Since \(\zv \in \W_i\) for each \(i \in \set{1, \dots, k}\) and \(\zv + \cdots + \zv = \seq[+]{w}{1,,k}\), (c) implies that \(w_i = \zv\) for all \(i \in \set{1, \dots, k}\).
-  Thus
-  \[
-    \zv = w_i = \sum_{j = 1}^{m_i} a_{i j} v_{i j}
-  \]
-  for each \(i \in \set{1, \dots, k}\).
-  But each \(\gamma_i\) is linearly independent, and hence \(a_{i j} = 0\) for all \(i \in \set{1, \dots, k}\) and \(j \in \set{1, \dots, m_i}\).
-  Consequently \(\bigcup_{i = 1}^k \gamma_i\) is linearly independent and therefore is a basis for \(\V\) over \(\F\).
+	Now assume (c).
+	We prove (d).
+	For each \(i \in \set{1, \dots, k}\), let \(\gamma_i\) be an ordered basis for \(\W_i\) over \(\F\).
+	Since
+	\[
+		\V = \sum_{i = 1}^k \W_i
+	\]
+	by (c), it follows that \(\bigcup_{i = 1}^k \gamma_i\) generates \(\V\).
+	To show that this set is linearly independent, consider vectors \(v_{i j} \in \gamma_i\) (where \(j \in \set{1, \dots, m_i}\) and \(i \in \set{1, \dots, k}\)) and scalars \(a_{i j} \in \F\) such that
+	\[
+		\sum_{i = 1}^k \sum_{j = 1}^{m_i} a_{i j} v_{i j} = \zv.
+	\]
+	For each \(i \in \set{1, \dots, k}\), set
+	\[
+		w_i = \sum_{j = 1}^{m_i} a_{i j} v_{i j}.
+	\]
+	Then for each \(i \in \set{1, \dots, k}\), \(w_i \in \spn{\gamma_i} = \W_i\) and
+	\[
+		\seq[+]{w}{1,,k} = \sum_{i = 1}^k \sum_{j = 1}^{m_i} a_{i j} v_{i j} = \zv.
+	\]
+	Since \(\zv \in \W_i\) for each \(i \in \set{1, \dots, k}\) and \(\zv + \cdots + \zv = \seq[+]{w}{1,,k}\), (c) implies that \(w_i = \zv\) for all \(i \in \set{1, \dots, k}\).
+	Thus
+	\[
+		\zv = w_i = \sum_{j = 1}^{m_i} a_{i j} v_{i j}
+	\]
+	for each \(i \in \set{1, \dots, k}\).
+	But each \(\gamma_i\) is linearly independent, and hence \(a_{i j} = 0\) for all \(i \in \set{1, \dots, k}\) and \(j \in \set{1, \dots, m_i}\).
+	Consequently \(\bigcup_{i = 1}^k \gamma_i\) is linearly independent and therefore is a basis for \(\V\) over \(\F\).
 
-  Clearly (e) follows immediately from (d).
+	Clearly (e) follows immediately from (d).
 
-  Finally, we assume (e) and prove (a).
-  For each \(i \in \set{1, \dots, k}\), let \(\gamma_i\) be an ordered basis for \(\W_i\) over \(\F\) such that \(\bigcup_{i = 1}^k \gamma_i\) is an ordered basis for \(\V\) over \(\F\).
-  Then
-  \[
-    \V = \spn{\bigcup_{i = 1}^k \gamma_i} = \sum_{i = 1}^k \spn{\gamma_i} = \sum_{i = 1}^k \W_i
-  \]
-  by repeated applications of \cref{ex:1.4.14}.
-  Fix \(j \in \set{1, \dots, k}\), and suppose that, for some nonzero vector \(v \in \V\),
-  \[
-    v \in \W_j \cap \sum_{\substack{i = 1 \\ i \neq j}}^k \W_i.
-  \]
-  Then
-  \[
-    v \in \W_j = \spn{\gamma_j} \quad \text{and} \quad v \in \sum_{\substack{i = 1 \\ i \neq j}}^k \W_i = \spn{\bigcup_{\substack{i = 1 \\ i \neq j}}^k \gamma_i}.
-  \]
-  Hence \(v\) is a nontrivial linear combination of both \(\gamma_j\) and \(\bigcup_{i \neq j} \gamma_i\), so that \(v\) can be expressed as a linear combination of \(\bigcup_{i = 1}^k \gamma_i\) in more than one way.
-  But these representations contradict \cref{1.8}, and so we conclude that
-  \[
-    \W_j \cap \sum_{\substack{i = 1 \\ i \neq j}}^k \W_i = \set{\zv},
-  \]
-  proving (a).
+	Finally, we assume (e) and prove (a).
+	For each \(i \in \set{1, \dots, k}\), let \(\gamma_i\) be an ordered basis for \(\W_i\) over \(\F\) such that \(\bigcup_{i = 1}^k \gamma_i\) is an ordered basis for \(\V\) over \(\F\).
+	Then
+	\[
+		\V = \spn{\bigcup_{i = 1}^k \gamma_i} = \sum_{i = 1}^k \spn{\gamma_i} = \sum_{i = 1}^k \W_i
+	\]
+	by repeated applications of \cref{ex:1.4.14}.
+	Fix \(j \in \set{1, \dots, k}\), and suppose that, for some nonzero vector \(v \in \V\),
+	\[
+		v \in \W_j \cap \sum_{\substack{i = 1 \\ i \neq j}}^k \W_i.
+	\]
+	Then
+	\[
+		v \in \W_j = \spn{\gamma_j} \quad \text{and} \quad v \in \sum_{\substack{i = 1 \\ i \neq j}}^k \W_i = \spn{\bigcup_{\substack{i = 1 \\ i \neq j}}^k \gamma_i}.
+	\]
+	Hence \(v\) is a nontrivial linear combination of both \(\gamma_j\) and \(\bigcup_{i \neq j} \gamma_i\), so that \(v\) can be expressed as a linear combination of \(\bigcup_{i = 1}^k \gamma_i\) in more than one way.
+	But these representations contradict \cref{1.8}, and so we conclude that
+	\[
+		\W_j \cap \sum_{\substack{i = 1 \\ i \neq j}}^k \W_i = \set{\zv},
+	\]
+	proving (a).
 \end{proof}
 
 \begin{thm}\label{5.11}
-  A linear operator \(\T\) on a finite-dimensional vector space \(\V\) over \(\F\) is diagonalizable iff \(\V\) is the direct sum of the eigenspaces of \(\T\).
+	A linear operator \(\T\) on a finite-dimensional vector space \(\V\) over \(\F\) is diagonalizable iff \(\V\) is the direct sum of the eigenspaces of \(\T\).
 \end{thm}
 
 \begin{proof}[\pf{5.11}]
-  Let \(\seq{\lambda}{1,,k}\) be the distinct eigenvalues of \(\T\).
+	Let \(\seq{\lambda}{1,,k}\) be the distinct eigenvalues of \(\T\).
 
-  First suppose that \(\T\) is diagonalizable, and for each \(i \in \set{1, \dots, k}\) choose an ordered basis \(\gamma_i\) for the eigenspace \(E_{\lambda_i}\) over \(\F\).
-  By \cref{5.9}, \(\bigcup_{i = 1}^k \gamma_i\) is a basis for \(\V\) over \(\F\), and hence \(\V\) is a direct sum of the \(E_{\lambda_i}\)'s by \cref{5.10}.
+	First suppose that \(\T\) is diagonalizable, and for each \(i \in \set{1, \dots, k}\) choose an ordered basis \(\gamma_i\) for the eigenspace \(E_{\lambda_i}\) over \(\F\).
+	By \cref{5.9}, \(\bigcup_{i = 1}^k \gamma_i\) is a basis for \(\V\) over \(\F\), and hence \(\V\) is a direct sum of the \(E_{\lambda_i}\)'s by \cref{5.10}.
 
-  Conversely, suppose that \(\V\) is a direct sum of the eigenspaces of \(\T\).
-  For each \(i \in \set{1, \dots, k}\), choose an ordered basis \(\gamma_i\) for \(E_{\lambda_i}\) over \(\F\).
-  By \cref{5.10}, the union \(\bigcup_{i = 1}^k \gamma_i\) is a basis for \(\V\) over \(\F\).
-  Since this basis consists of eigenvectors of \(\T\), we conclude that \(\T\) is diagonalizable.
+	Conversely, suppose that \(\V\) is a direct sum of the eigenspaces of \(\T\).
+	For each \(i \in \set{1, \dots, k}\), choose an ordered basis \(\gamma_i\) for \(E_{\lambda_i}\) over \(\F\).
+	By \cref{5.10}, the union \(\bigcup_{i = 1}^k \gamma_i\) is a basis for \(\V\) over \(\F\).
+	Since this basis consists of eigenvectors of \(\T\), we conclude that \(\T\) is diagonalizable.
 \end{proof}
 
 \exercisesection
 
 \setcounter{ex}{3}
 \begin{ex}\label{ex:5.2.4}
-  Prove the matrix version of \cref{5.2.1}:
-  If \(A \in \ms{n}{n}{\F}\) has \(n\) distinct eigenvalues, then \(A\) is diagonalizable.
+	Prove the matrix version of \cref{5.2.1}:
+	If \(A \in \ms{n}{n}{\F}\) has \(n\) distinct eigenvalues, then \(A\) is diagonalizable.
 \end{ex}
 
 \begin{proof}[\pf{ex:5.2.4}]
-  We have
-  \begin{align*}
-             & A \in \ms{n}{n}{\F} \text{ has } n \text{ distinct  eigenvalues}                               \\
-    \implies & \L_A \text{ has } n \text{ distinct  eigenvalues}                &  & \text{(by \cref{5.1.2})} \\
-    \implies & \L_A \text{ is diagonalizable}                                   &  & \text{(by \cref{5.2.1})} \\
-    \implies & A \text{ is diagonalizable}.                                     &  & \text{(by \cref{5.1.1})}
-  \end{align*}
+	We have
+	\begin{align*}
+		         & A \in \ms{n}{n}{\F} \text{ has } n \text{ distinct  eigenvalues}                 \\
+		\implies & \L_A \text{ has } n \text{ distinct  eigenvalues}                &  & \by{5.1.2} \\
+		\implies & \L_A \text{ is diagonalizable}                                   &  & \by{5.2.1} \\
+		\implies & A \text{ is diagonalizable}.                                     &  & \by{5.1.1}
+	\end{align*}
 \end{proof}
 
 \begin{ex}\label{ex:5.2.5}
-  State and prove the matrix version of \cref{5.6}.
+	State and prove the matrix version of \cref{5.6}.
 \end{ex}
 
 \begin{proof}[\pf{ex:5.2.5}]
-  We claim that the characteristic polynomial of any diagonalizable matrix splits.
-  This is true since
-  \begin{align*}
-             & A \text{ is diagonalizable}                                                                 \\
-    \implies & \L_A \text{ is diagonalizable}                                &  & \text{(by \cref{5.1.1})} \\
-    \implies & \text{ the characteristic polynomial of } \L_A \text{ splits} &  & \text{(by \cref{5.6})}   \\
-    \implies & \text{ the characteristic polynomial of } A \text{ splits}.   &  & \text{(by \cref{5.1.6})}
-  \end{align*}
+	We claim that the characteristic polynomial of any diagonalizable matrix splits.
+	This is true since
+	\begin{align*}
+		         & A \text{ is diagonalizable}                                                   \\
+		\implies & \L_A \text{ is diagonalizable}                                &  & \by{5.1.1} \\
+		\implies & \text{ the characteristic polynomial of } \L_A \text{ splits} &  & \by{5.6}   \\
+		\implies & \text{ the characteristic polynomial of } A \text{ splits}.   &  & \by{5.1.6}
+	\end{align*}
 \end{proof}
 
 \setcounter{ex}{7}
 \begin{ex}\label{ex:5.2.8}
-  Suppose that \(A \in \ms{n}{n}{\F}\) has two distinct eigenvalues, \(\lambda_1\) and \(\lambda_2\), and that \(\dim(E_{\lambda_1}) = n - 1\).
-  Prove that \(A\) is diagonalizable.
+	Suppose that \(A \in \ms{n}{n}{\F}\) has two distinct eigenvalues, \(\lambda_1\) and \(\lambda_2\), and that \(\dim(E_{\lambda_1}) = n - 1\).
+	Prove that \(A\) is diagonalizable.
 \end{ex}
 
 \begin{proof}[\pf{ex:5.2.8}]
-  Let \(\beta_1, \beta_2\) be ordered bases for \(E_{\lambda_1}, E_{\lambda_2}\) over \(\F\), respectively.
-  By \cref{5.8} we know that \(\beta = \beta_1 \cup \beta_2\) is linearly independent.
-  Since
-  \begin{align*}
-             & \begin{dcases}
-                 \dim(E_{\lambda_1}) = n - 1 \\
-                 \dim(E_{\lambda_2}) \geq 1
-               \end{dcases}                                    &  & \text{(by \cref{5.7})}       \\
-    \implies & \begin{dcases}
-                 \#(\beta_1) = n - 1 \\
-                 1 \leq \#(\beta_2) \leq n
-               \end{dcases}                                         &  & \text{(by \cref{1.11})} \\
-    \implies & n = (n - 1) + 1 \leq \#(\beta_1) + \#(\beta_2) = \#(\beta) \leq n                 \\
-    \implies & \#(\beta) = n,
-  \end{align*}
-  by \cref{1.6.15}(b) we know that \(\beta\) is an ordered basis for \(\vs{F}^n\) over \(\F\).
-  Since \(\beta\) is consist of eigenvectors, by \cref{5.1.1} we know that \(A\) is diagonalizable.
+	Let \(\beta_1, \beta_2\) be ordered bases for \(E_{\lambda_1}, E_{\lambda_2}\) over \(\F\), respectively.
+	By \cref{5.8} we know that \(\beta = \beta_1 \cup \beta_2\) is linearly independent.
+	Since
+	\begin{align*}
+		         & \begin{dcases}
+			           \dim(E_{\lambda_1}) = n - 1 \\
+			           \dim(E_{\lambda_2}) \geq 1
+		           \end{dcases}                                    &  & \by{5.7}       \\
+		\implies & \begin{dcases}
+			           \#(\beta_1) = n - 1 \\
+			           1 \leq \#(\beta_2) \leq n
+		           \end{dcases}                                         &  & \by{1.11} \\
+		\implies & n = (n - 1) + 1 \leq \#(\beta_1) + \#(\beta_2) = \#(\beta) \leq n   \\
+		\implies & \#(\beta) = n,
+	\end{align*}
+	by \cref{1.6.15}(b) we know that \(\beta\) is an ordered basis for \(\vs{F}^n\) over \(\F\).
+	Since \(\beta\) is consist of eigenvectors, by \cref{5.1.1} we know that \(A\) is diagonalizable.
 \end{proof}
 
 \begin{ex}\label{ex:5.2.9}
-  Let \(\T\) be a linear operator on a \(n\)-dimensional vector space \(\V\) over \(\F\), and suppose there exists an ordered basis \(\beta\) for \(\V\) over \(\F\) such that \([\T]_{\beta}\) is an upper triangular matrix.
-  \begin{enumerate}
-    \item Prove that the characteristic polynomial for \(\T\) splits.
-    \item State and prove an analogous result for matrices.
-  \end{enumerate}
-  The converse of (a) is treated in \cref{ex:5.4.32}.
+	Let \(\T\) be a linear operator on a \(n\)-dimensional vector space \(\V\) over \(\F\), and suppose there exists an ordered basis \(\beta\) for \(\V\) over \(\F\) such that \([\T]_{\beta}\) is an upper triangular matrix.
+	\begin{enumerate}
+		\item Prove that the characteristic polynomial for \(\T\) splits.
+		\item State and prove an analogous result for matrices.
+	\end{enumerate}
+	The converse of (a) is treated in \cref{ex:5.4.32}.
 \end{ex}
 
 \begin{proof}[\pf{ex:5.2.9}(a)]
-  Let \(A = [\T]_{\beta}\).
-  Since \(A\) and \(t I_n\) are upper triangular matrices, by \cref{ex:1.3.12} we know that \(A - t I_n\) is also an upper triangular matrix.
-  Thus by \cref{ex:4.2.23} we have \(\det(A - t I_n) = \prod_{i = 1}^n (A_{i i} - t) = (-1)^n \prod_{i = 1}^n (t - A_{i i})\).
-  By \cref{5.2.2} this means the characteristic polynomial for \(\T\) splits.
+	Let \(A = [\T]_{\beta}\).
+	Since \(A\) and \(t I_n\) are upper triangular matrices, by \cref{ex:1.3.12} we know that \(A - t I_n\) is also an upper triangular matrix.
+	Thus by \cref{ex:4.2.23} we have \(\det(A - t I_n) = \prod_{i = 1}^n (A_{i i} - t) = (-1)^n \prod_{i = 1}^n (t - A_{i i})\).
+	By \cref{5.2.2} this means the characteristic polynomial for \(\T\) splits.
 \end{proof}
 
 \begin{proof}[\pf{ex:5.2.9}(b)]
-  Let \(A \in \ms{n}{n}{\F}\) be an upper triangular matrix.
-  We claim that the characteristic polynomial for \(A\) splits.
-  Let \(\beta\) be the standard ordered basis for \(\vs{F}^n\).
-  By \cref{2.15}(a) we have \(A = [\L_A]_{\beta}\), thus by \cref{ex:5.2.9}(a) and \cref{5.1.6} the characteristic polynomial for \(A\) splits.
+	Let \(A \in \ms{n}{n}{\F}\) be an upper triangular matrix.
+	We claim that the characteristic polynomial for \(A\) splits.
+	Let \(\beta\) be the standard ordered basis for \(\vs{F}^n\).
+	By \cref{2.15}(a) we have \(A = [\L_A]_{\beta}\), thus by \cref{ex:5.2.9}(a) and \cref{5.1.6} the characteristic polynomial for \(A\) splits.
 \end{proof}
 
 \begin{ex}\label{ex:5.2.10}
-  Let \(\T\) be a linear operator on a \(n\)-dimensional vector space \(\V\) over \(\F\) with the distinct eigenvalues \(\seq{\lambda}{1,,k}\) and corresponding multiplicities \(\seq{m}{1,,k}\).
-  Suppose that \(\beta\) is a basis for \(\V\) over \(\F\) such that \([\T]_{\beta}\) is an upper triangular matrix.
-  Prove that the diagonal entries of \([\T]_{\beta}\) are \(\seq{\lambda}{1,,k}\) and that each \(\lambda_i\) occurs \(m_i\) times for all \(i \in \set{1, \dots, k}\).
+	Let \(\T\) be a linear operator on a \(n\)-dimensional vector space \(\V\) over \(\F\) with the distinct eigenvalues \(\seq{\lambda}{1,,k}\) and corresponding multiplicities \(\seq{m}{1,,k}\).
+	Suppose that \(\beta\) is a basis for \(\V\) over \(\F\) such that \([\T]_{\beta}\) is an upper triangular matrix.
+	Prove that the diagonal entries of \([\T]_{\beta}\) are \(\seq{\lambda}{1,,k}\) and that each \(\lambda_i\) occurs \(m_i\) times for all \(i \in \set{1, \dots, k}\).
 \end{ex}
 
 \begin{proof}[\pf{ex:5.2.10}]
-  By \cref{ex:5.2.9}(a) we know that
-  \[
-    \det([\T]_{\beta} - t I_n) = \prod_{j = 1}^n (([\T]_{\beta})_{j j} - t).
-  \]
-  Thus by \cref{5.2} the diagonal entries of \([\T]_{\beta}\) are \(\seq{\lambda}{1,,k}\) and by \cref{5.2.3} each \(\lambda_i\) occurs \(m_i\) times for all \(i \in \set{1, \dots, k}\).
+	By \cref{ex:5.2.9}(a) we know that
+	\[
+		\det([\T]_{\beta} - t I_n) = \prod_{j = 1}^n (([\T]_{\beta})_{j j} - t).
+	\]
+	Thus by \cref{5.2} the diagonal entries of \([\T]_{\beta}\) are \(\seq{\lambda}{1,,k}\) and by \cref{5.2.3} each \(\lambda_i\) occurs \(m_i\) times for all \(i \in \set{1, \dots, k}\).
 \end{proof}
 
 \begin{ex}\label{ex:5.2.11}
-  Let \(A \in \ms{n}{n}{\F}\) such that \(A\) is similar to an upper triangular matrix and has the distinct eigenvalues \(\seq{\lambda}{1,,k}\) with corresponding multiplicities \(\seq{m}{1,,k}\).
-  Prove the following statements.
-  \begin{enumerate}
-    \item \(\tr(A) = \sum_{i = 1}^k m_i \lambda_i\).
-    \item \(\det(A) = \prod_{i = 1}^k \lambda_i^{m_i}\).
-  \end{enumerate}
+	Let \(A \in \ms{n}{n}{\F}\) such that \(A\) is similar to an upper triangular matrix and has the distinct eigenvalues \(\seq{\lambda}{1,,k}\) with corresponding multiplicities \(\seq{m}{1,,k}\).
+	Prove the following statements.
+	\begin{enumerate}
+		\item \(\tr(A) = \sum_{i = 1}^k m_i \lambda_i\).
+		\item \(\det(A) = \prod_{i = 1}^k \lambda_i^{m_i}\).
+	\end{enumerate}
 \end{ex}
 
 \begin{proof}[\pf{ex:5.2.11}]
-  By \cref{2.5.4} there exists a \(Q \in \ms{n}{n}{\F}\) such that \(Q^{-1} A Q\) is an upper triangular matrix.
-  If we let \(D = Q^{-1} A Q\), then by \cref{ex:5.1.12} we know that \(D\) and \(A\) have the same eigenvalues.
-  Now let \(\beta\) be the standard ordered basis for \(\vs{F}^n\) over \(\F\).
-  By \cref{2.15}(a) we know that \(D = [\L_D]_{\beta}\) is an upper triangular matrix, thus by \cref{ex:5.2.10} the diagonal entries of \(D\) are \(\seq{\lambda}{1,,k}\) and that each \(\lambda_i\) occurs \(m_i\) times for all \(i \in \set{1, \dots, k}\).
-  Then we have
-  \begin{align*}
-    \tr(A) & = \tr(D)                       &  & \text{(by \cref{ex:2.5.10})} \\
-           & = \sum_{i = 1}^k m_i \lambda_i &  & \text{(by \cref{ex:5.2.10})}
-  \end{align*}
-  and
-  \begin{align*}
-    \det(A) & = \det(D)                          &  & \text{(by \cref{ex:4.3.15})} \\
-            & = \prod_{i = 1}^k \lambda_i^{m_i}. &  & \text{(by \cref{ex:5.2.10})}
-  \end{align*}
+	By \cref{2.5.4} there exists a \(Q \in \ms{n}{n}{\F}\) such that \(Q^{-1} A Q\) is an upper triangular matrix.
+	If we let \(D = Q^{-1} A Q\), then by \cref{ex:5.1.12} we know that \(D\) and \(A\) have the same eigenvalues.
+	Now let \(\beta\) be the standard ordered basis for \(\vs{F}^n\) over \(\F\).
+	By \cref{2.15}(a) we know that \(D = [\L_D]_{\beta}\) is an upper triangular matrix, thus by \cref{ex:5.2.10} the diagonal entries of \(D\) are \(\seq{\lambda}{1,,k}\) and that each \(\lambda_i\) occurs \(m_i\) times for all \(i \in \set{1, \dots, k}\).
+	Then we have
+	\begin{align*}
+		\tr(A) & = \tr(D)                       &  & \by{ex:2.5.10} \\
+		       & = \sum_{i = 1}^k m_i \lambda_i &  & \by{ex:5.2.10}
+	\end{align*}
+	and
+	\begin{align*}
+		\det(A) & = \det(D)                          &  & \by{ex:4.3.15} \\
+		        & = \prod_{i = 1}^k \lambda_i^{m_i}. &  & \by{ex:5.2.10}
+	\end{align*}
 \end{proof}
 
 \begin{ex}\label{ex:5.2.12}
-  Let \(\T\) be an invertible linear operator on a finite-dimensional vector space \(\V\) over \(\F\).
-  \begin{enumerate}
-    \item Recall that for any eigenvalue \(\lambda\) of \(\T\), \(\lambda^{-1}\) is an eigenvalue of \(\T^{-1}\) (\cref{ex:5.1.8}).
-          Prove that the eigenspace of \(\T\) corresponding to \(\lambda\) is the same as the eigenspace of \(\T^{-1}\) corresponding to \(\lambda^{-1}\).
-    \item Prove that if \(\T\) is diagonalizable, then \(\T^{-1}\) is diagonalizable.
-  \end{enumerate}
+	Let \(\T\) be an invertible linear operator on a finite-dimensional vector space \(\V\) over \(\F\).
+	\begin{enumerate}
+		\item Recall that for any eigenvalue \(\lambda\) of \(\T\), \(\lambda^{-1}\) is an eigenvalue of \(\T^{-1}\) (\cref{ex:5.1.8}).
+		      Prove that the eigenspace of \(\T\) corresponding to \(\lambda\) is the same as the eigenspace of \(\T^{-1}\) corresponding to \(\lambda^{-1}\).
+		\item Prove that if \(\T\) is diagonalizable, then \(\T^{-1}\) is diagonalizable.
+	\end{enumerate}
 \end{ex}
 
 \begin{proof}[\pf{ex:5.2.12}(a)]
-  We have
-  \begin{align*}
-         & v \in \ns{\T - \lambda \IT[\V]}            &  & \text{(by \cref{5.2.4})}       \\
-    \iff & \T(v) - \lambda \IT[\V](v) = \zv           &  & \text{(by \cref{2.1.10})}      \\
-    \iff & \T(v) = \lambda v                          &  & \text{(by \cref{2.1.9})}       \\
-    \iff & \T^{-1}(v) = \lambda^{-1} v                &  & \text{(by \cref{ex:5.1.8}(b))} \\
-    \iff & \T^{-1}(v) - \lambda^{-1} \IT[\V](v) = \zv &  & \text{(by \cref{2.1.9})}       \\
-    \iff & v \in \ns{\T^{-1} - \lambda^{-1} \IT[\V]}  &  & \text{(by \cref{2.1.10})}
-  \end{align*}
-  and thus \(\ns{\T - \lambda \IT[\V]} = \ns{\T^{-1} - \lambda^{-1} \IT[\V]}\).
+	We have
+	\begin{align*}
+		     & v \in \ns{\T - \lambda \IT[\V]}            &  & \by{5.2.4}       \\
+		\iff & \T(v) - \lambda \IT[\V](v) = \zv           &  & \by{2.1.10}      \\
+		\iff & \T(v) = \lambda v                          &  & \by{2.1.9}       \\
+		\iff & \T^{-1}(v) = \lambda^{-1} v                &  & \by{ex:5.1.8}[b] \\
+		\iff & \T^{-1}(v) - \lambda^{-1} \IT[\V](v) = \zv &  & \by{2.1.9}       \\
+		\iff & v \in \ns{\T^{-1} - \lambda^{-1} \IT[\V]}  &  & \by{2.1.10}
+	\end{align*}
+	and thus \(\ns{\T - \lambda \IT[\V]} = \ns{\T^{-1} - \lambda^{-1} \IT[\V]}\).
 \end{proof}
 
 \begin{proof}[\pf{ex:5.2.12}(b)]
-  Let \(\seq{\lambda}{1,,k} \in \F\) be distinct eigenvalues of \(\T\) with corresponding multiplicities \(\seq{m}{1,,k}\).
-  Then we have
-  \begin{align*}
-         & \T \text{ is diagonalizable}                                                                                      \\
-    \iff & \forall i \in \set{1, \dots, k}, m_i = \nt{\T - \lambda_i \IT[\V]}           &  & \text{(by \cref{5.9})}          \\
-    \iff & \forall i \in \set{1, \dots, k}, m_i = \nt{\T^{-1} - \lambda_i^{-1} \IT[\V]} &  & \text{(by \cref{ex:5.2.12}(a))} \\
-    \iff & \T^{-1} \text{ is diagonalizable}.                                           &  & \text{(by \cref{5.9})}
-  \end{align*}
+	Let \(\seq{\lambda}{1,,k} \in \F\) be distinct eigenvalues of \(\T\) with corresponding multiplicities \(\seq{m}{1,,k}\).
+	Then we have
+	\begin{align*}
+		     & \T \text{ is diagonalizable}                                                                        \\
+		\iff & \forall i \in \set{1, \dots, k}, m_i = \nt{\T - \lambda_i \IT[\V]}           &  & \by{5.9}          \\
+		\iff & \forall i \in \set{1, \dots, k}, m_i = \nt{\T^{-1} - \lambda_i^{-1} \IT[\V]} &  & \by{ex:5.2.12}[a] \\
+		\iff & \T^{-1} \text{ is diagonalizable}.                                           &  & \by{5.9}
+	\end{align*}
 \end{proof}
 
 \begin{ex}\label{ex:5.2.13}
-  Let \(A \in \ms{n}{n}{\F}\).
-  Recall from \cref{ex:5.1.14} that \(A\) and \(\tp{A}\) have the same characteristic polynomial and hence share the same eigenvalues with the same multiplicities.
-  For any eigenvalue \(\lambda\) of \(A\) and \(\tp{A}\), let \(E_{\lambda}\) and \(E_{\lambda}'\) denote the corresponding eigenspaces for \(A\) and \(\tp{A}\), respectively.
-  \begin{enumerate}
-    \item Show by way of example that for a given common eigenvalue, these two eigenspaces need not be the same.
-    \item Prove that for any eigenvalue \(\lambda\), \(\dim(E_{\lambda}) = \dim(E_{\lambda}')\).
-    \item Prove that if \(A\) is diagonalizable, then \(\tp{A}\) is also diagonalizable.
-  \end{enumerate}
+	Let \(A \in \ms{n}{n}{\F}\).
+	Recall from \cref{ex:5.1.14} that \(A\) and \(\tp{A}\) have the same characteristic polynomial and hence share the same eigenvalues with the same multiplicities.
+	For any eigenvalue \(\lambda\) of \(A\) and \(\tp{A}\), let \(E_{\lambda}\) and \(E_{\lambda}'\) denote the corresponding eigenspaces for \(A\) and \(\tp{A}\), respectively.
+	\begin{enumerate}
+		\item Show by way of example that for a given common eigenvalue, these two eigenspaces need not be the same.
+		\item Prove that for any eigenvalue \(\lambda\), \(\dim(E_{\lambda}) = \dim(E_{\lambda}')\).
+		\item Prove that if \(A\) is diagonalizable, then \(\tp{A}\) is also diagonalizable.
+	\end{enumerate}
 \end{ex}
 
 \begin{proof}[\pf{ex:5.2.13}(a)]
-  Let \(A = \begin{pmatrix}
-    1 & -2 \\
-    1 & 0
-  \end{pmatrix} \in \ms{2}{2}{\R}\).
-  Since
-  \begin{align*}
-             & \det(A - t I_2) = \det\begin{pmatrix}
-                                       1 - t & -2 \\
-                                       1     & t
-                                     \end{pmatrix} = -(t - 2)(t + 1)            &  & \text{(by \cref{4.1.1})} \\
-    \implies & 2 \text{ and } -1 \text{ are eigenvalues of } A, &  & \text{(by \cref{5.2})}
-  \end{align*}
-  we see that
-  \begin{align*}
-             & A - 2I_2 = \begin{pmatrix}
-                            1 - 2 & -2 \\
-                            1     & 2
-                          \end{pmatrix} \begin{pmatrix}
-                                          a \\
-                                          b
-                                        \end{pmatrix} = \begin{pmatrix}
-                                                          0 \\
-                                                          0
-                                                        \end{pmatrix}                   \\
-    \implies & (a, b) = t(2, -1) \text{ for all } t \in \R                               \\
-    \implies & E_2 = \spn{\set{(2, -1)}}                   &  & \text{(by \cref{5.2.4})}
-  \end{align*}
-  and
-  \begin{align*}
-             & \tp{A} - 2I_2 = \begin{pmatrix}
-                                 1 - 2 & 1 \\
-                                 -2    & 2
-                               \end{pmatrix} \begin{pmatrix}
-                                               a \\
-                                               b
-                                             \end{pmatrix} = \begin{pmatrix}
-                                                               0 \\
-                                                               0
-                                                             \end{pmatrix}             \\
-    \implies & (a, b) = t(1, 1) \text{ for all } t \in \R                               \\
-    \implies & E_2' = \spn{\set{(1, 1)}}.                 &  & \text{(by \cref{5.2.4})}
-  \end{align*}
-  Clearly \(E_2 \neq E_2'\).
+	Let \(A = \begin{pmatrix}
+		1 & -2 \\
+		1 & 0
+	\end{pmatrix} \in \ms{2}{2}{\R}\).
+	Since
+	\begin{align*}
+		         & \det(A - t I_2) = \det\begin{pmatrix}
+			                                 1 - t & -2 \\
+			                                 1     & t
+		                                 \end{pmatrix} = -(t - 2)(t + 1)            &  & \by{4.1.1} \\
+		\implies & 2 \text{ and } -1 \text{ are eigenvalues of } A, &  & \by{5.2}
+	\end{align*}
+	we see that
+	\begin{align*}
+		         & A - 2I_2 = \begin{pmatrix}
+			                      1 - 2 & -2 \\
+			                      1     & 2
+		                      \end{pmatrix} \begin{pmatrix}
+			                                    a \\
+			                                    b
+		                                    \end{pmatrix} = \begin{pmatrix}
+			                                                    0 \\
+			                                                    0
+		                                                    \end{pmatrix}     \\
+		\implies & (a, b) = t(2, -1) \text{ for all } t \in \R                 \\
+		\implies & E_2 = \spn{\set{(2, -1)}}                   &  & \by{5.2.4}
+	\end{align*}
+	and
+	\begin{align*}
+		         & \tp{A} - 2I_2 = \begin{pmatrix}
+			                           1 - 2 & 1 \\
+			                           -2    & 2
+		                           \end{pmatrix} \begin{pmatrix}
+			                                         a \\
+			                                         b
+		                                         \end{pmatrix} = \begin{pmatrix}
+			                                                         0 \\
+			                                                         0
+		                                                         \end{pmatrix} \\
+		\implies & (a, b) = t(1, 1) \text{ for all } t \in \R                   \\
+		\implies & E_2' = \spn{\set{(1, 1)}}.                 &  & \by{5.2.4}
+	\end{align*}
+	Clearly \(E_2 \neq E_2'\).
 \end{proof}
 
 \begin{proof}[\pf{ex:5.2.13}(b)]
-  We have
-  \begin{align*}
-    \dim(E_{\lambda}) & = \nt{\L_A - \lambda \IT[\vs{F}^n]}            &  & \text{(by \cref{5.2.4})}    \\
-                      & = n - \rk{\L_A - \lambda \IT[\vs{F}^n]}        &  & \text{(by \cref{2.3})}      \\
-                      & = n - \rk{A - \lambda I_n}                     &  & \text{(by \cref{3.2.1})}    \\
-                      & = n - \rk{\tp{(A - \lambda I_n)}}              &  & \text{(by \cref{3.2.5}(a))} \\
-                      & = n - \rk{\tp{A} - \lambda I_n}                &  & \text{(by \cref{ex:1.3.3})} \\
-                      & = n - \rk{\L_{\tp{A}} - \lambda \IT[\vs{F}^n]} &  & \text{(by \cref{3.2.1})}    \\
-                      & = \nt{\L_{\tp{A}} - \lambda \IT[\vs{F}^n]}     &  & \text{(by \cref{2.3})}      \\
-                      & = \dim(E_{\lambda}').                          &  & \text{(by \cref{5.2.4})}
-  \end{align*}
+	We have
+	\begin{align*}
+		\dim(E_{\lambda}) & = \nt{\L_A - \lambda \IT[\vs{F}^n]}            &  & \by{5.2.4}    \\
+		                  & = n - \rk{\L_A - \lambda \IT[\vs{F}^n]}        &  & \by{2.3}      \\
+		                  & = n - \rk{A - \lambda I_n}                     &  & \by{3.2.1}    \\
+		                  & = n - \rk{\tp{(A - \lambda I_n)}}              &  & \by{3.2.5}[a] \\
+		                  & = n - \rk{\tp{A} - \lambda I_n}                &  & \by{ex:1.3.3} \\
+		                  & = n - \rk{\L_{\tp{A}} - \lambda \IT[\vs{F}^n]} &  & \by{3.2.1}    \\
+		                  & = \nt{\L_{\tp{A}} - \lambda \IT[\vs{F}^n]}     &  & \by{2.3}      \\
+		                  & = \dim(E_{\lambda}').                          &  & \by{5.2.4}
+	\end{align*}
 \end{proof}
 
 \begin{proof}[\pf{ex:5.2.13}(c)]
-  Let \(\seq{\lambda}{1,,k} \in \F\) be distinct eigenvalues of \(A\) with corresponding multiplicities \(\seq{m}{1,,k}\).
-  Then we have
-  \begin{align*}
-         & A \text{ is diagonalizable}                                                                                       \\
-    \iff & \forall i \in \set{1, \dots, k}, m_i = \dim(\ns{A - \lambda_i \IT[\V]})      &  & \text{(by \cref{5.9})}          \\
-    \iff & \forall i \in \set{1, \dots, k}, m_i = \dim(\ns{\tp{A} - \lambda_i \IT[\V]}) &  & \text{(by \cref{ex:5.2.13}(b))} \\
-    \iff & \tp{A} \text{ is diagonalizable}.                                            &  & \text{(by \cref{5.9})}
-  \end{align*}
+	Let \(\seq{\lambda}{1,,k} \in \F\) be distinct eigenvalues of \(A\) with corresponding multiplicities \(\seq{m}{1,,k}\).
+	Then we have
+	\begin{align*}
+		     & A \text{ is diagonalizable}                                                                         \\
+		\iff & \forall i \in \set{1, \dots, k}, m_i = \dim(\ns{A - \lambda_i \IT[\V]})      &  & \by{5.9}          \\
+		\iff & \forall i \in \set{1, \dots, k}, m_i = \dim(\ns{\tp{A} - \lambda_i \IT[\V]}) &  & \by{ex:5.2.13}[b] \\
+		\iff & \tp{A} \text{ is diagonalizable}.                                            &  & \by{5.9}
+	\end{align*}
 \end{proof}
 
 \setcounter{ex}{14}
 \begin{ex}\label{ex:5.2.15}
-  Let
-  \[
-    A = \begin{pmatrix}
-      a_{1 1} & a_{1 2} & \cdots & a_{1 n} \\
-      a_{2 1} & a_{2 2} & \cdots & a_{2 n} \\
-      \vdots  & \vdots  &        & \vdots  \\
-      a_{n 1} & a_{n 2} & \cdots & a_{n n}
-    \end{pmatrix} \in \ms{n}{n}{\R}
-  \]
-  be the coefficient matrix of the system of differential equations
-  \begin{align*}
-    x_1' & = a_{1 1} x_1 + a_{1 2} x_2 + \cdots + a_{1 n} x_n  \\
-    x_2' & = a_{2 1} x_1 + a_{2 2} x_2 + \cdots + a_{2 n} x_n  \\
-    x_n' & = a_{n 1} x_1 + a_{n 2} x_2 + \cdots + a_{n n} x_n.
-  \end{align*}
-  Suppose that \(A\) is diagonalizable and that the distinct eigenvalues of \(A\) are \(\seq{\lambda}{1,,k}\).
-  Prove that a differentiable function \(x : \R \to \R^n\) is a solution to the system iff \(x\) is of the form
-  \[
-    x(t) = e^{\lambda_1 t} z_1 + e^{\lambda_2 t} z_2 + \cdots + e^{\lambda_k t} z_k,
-  \]
-  where \(z_i \in E_{\lambda_i}\) for \(i \in \set{1, \dots, k}\).
-  Use this result to prove that the set of solutions to the system is an \(n\)-dimensional real vector space.
+	Let
+	\[
+		A = \begin{pmatrix}
+			a_{1 1} & a_{1 2} & \cdots & a_{1 n} \\
+			a_{2 1} & a_{2 2} & \cdots & a_{2 n} \\
+			\vdots  & \vdots  &        & \vdots  \\
+			a_{n 1} & a_{n 2} & \cdots & a_{n n}
+		\end{pmatrix} \in \ms{n}{n}{\R}
+	\]
+	be the coefficient matrix of the system of differential equations
+	\begin{align*}
+		x_1' & = a_{1 1} x_1 + a_{1 2} x_2 + \cdots + a_{1 n} x_n  \\
+		x_2' & = a_{2 1} x_1 + a_{2 2} x_2 + \cdots + a_{2 n} x_n  \\
+		x_n' & = a_{n 1} x_1 + a_{n 2} x_2 + \cdots + a_{n n} x_n.
+	\end{align*}
+	Suppose that \(A\) is diagonalizable and that the distinct eigenvalues of \(A\) are \(\seq{\lambda}{1,,k}\).
+	Prove that a differentiable function \(x : \R \to \R^n\) is a solution to the system iff \(x\) is of the form
+	\[
+		x(t) = e^{\lambda_1 t} z_1 + e^{\lambda_2 t} z_2 + \cdots + e^{\lambda_k t} z_k,
+	\]
+	where \(z_i \in E_{\lambda_i}\) for \(i \in \set{1, \dots, k}\).
+	Use this result to prove that the set of solutions to the system is an \(n\)-dimensional real vector space.
 \end{ex}
 
 \begin{proof}[\pf{ex:5.2.15}]
-  Let \(m_i\) be the multiplicity of \(\lambda_i\) for each \(i \in \set{1, \dots, k}\) and let \(\beta\) be the standard ordered basis for \(\R^n\) over \(\R\).
-  Since \(A\) is diagonalizable, by \cref{5.1.1} there exists an ordered basis \(\gamma = \set{\seq{q}{1,,n}}\) for \(\R^n\) over \(\R\) such that \([\L_A]_{\gamma}\) is a diagonal matrix.
-  Let \(D = [\L_A]_{\gamma}\) and let \(Q = [\IT[\R^n]]_{\gamma}^{\beta}\).
-  Note that we can order \(\gamma\) such that \(D_{i i} = \lambda_1\) for all \(i \in \set{1, \dots, m_i}\), \(D_{i i} = \lambda_2\) for all \(i \in \set{m_1 + 1, \dots, m_1 + m_2}\), and in general
-  \[
-    \forall j \in \set{1, \dots, k}, D_{i i} = \lambda_j \text{ if } i \in \set{\pa{\sum_{p = 1}^{j - 1} m_p} - 1, \dots, \sum_{p = 1}^j m_p}.
-  \]
-  By \cref{2.5.3} and \cref{ex:2.5.11}(b) we have \(A = Q D Q^{-1}\).
-  Observe that
-  \begin{align*}
-         & x = z \text{ is a solution of } Ax = x'                                                                       \\
-    \iff & Q D Q^{-1} z = Az = z'                                                                                        \\
-    \iff & D Q^{-1} z = Q^{-1} z'                                                   &  & \text{(by \cref{ex:2.5.11}(b))} \\
-    \iff & D Q^{-1} z = (Q^{-1} z)'                                                 &  & \text{(by \cref{ex:5.2.16})}    \\
-    \iff & y = Q^{-1} z \text{ is a solution of } D y = y'                                                               \\
-    \iff & y = Q^{-1} z \text{ is a solution of } D_{i i} y_i = y_i'                                                     \\
-         & \text{ for all } i \in \set{1, \dots, n}                                 &  & \text{(by \cref{1.3.8})}        \\
-    \iff & y = Q^{-1} z \text{ is a solution of } y_i(t) = c_i e^{D_{i i} t}                                             \\
-         & \text{for all } i \in \set{1, \dots, n} \text{ and for all } c_i \in \R. &  & \text{(by \cref{2.30})}
-  \end{align*}
-  Thus we see that \(x\) is a solution of \(Ax = x'\) iff \(x = Qy\), where \(y_i(t) = c_i e^{D_{i i} t}\) for all \(i \in \set{1, \dots, n}\) and \(c_i \in \R\).
+	Let \(m_i\) be the multiplicity of \(\lambda_i\) for each \(i \in \set{1, \dots, k}\) and let \(\beta\) be the standard ordered basis for \(\R^n\) over \(\R\).
+	Since \(A\) is diagonalizable, by \cref{5.1.1} there exists an ordered basis \(\gamma = \set{\seq{q}{1,,n}}\) for \(\R^n\) over \(\R\) such that \([\L_A]_{\gamma}\) is a diagonal matrix.
+	Let \(D = [\L_A]_{\gamma}\) and let \(Q = [\IT[\R^n]]_{\gamma}^{\beta}\).
+	Note that we can order \(\gamma\) such that \(D_{i i} = \lambda_1\) for all \(i \in \set{1, \dots, m_i}\), \(D_{i i} = \lambda_2\) for all \(i \in \set{m_1 + 1, \dots, m_1 + m_2}\), and in general
+	\[
+		\forall j \in \set{1, \dots, k}, D_{i i} = \lambda_j \text{ if } i \in \set{\pa{\sum_{p = 1}^{j - 1} m_p} - 1, \dots, \sum_{p = 1}^j m_p}.
+	\]
+	By \cref{2.5.3} and \cref{ex:2.5.11}(b) we have \(A = Q D Q^{-1}\).
+	Observe that
+	\begin{align*}
+		     & x = z \text{ is a solution of } Ax = x'                                                         \\
+		\iff & Q D Q^{-1} z = Az = z'                                                                          \\
+		\iff & D Q^{-1} z = Q^{-1} z'                                                   &  & \by{ex:2.5.11}[b] \\
+		\iff & D Q^{-1} z = (Q^{-1} z)'                                                 &  & \by{ex:5.2.16}    \\
+		\iff & y = Q^{-1} z \text{ is a solution of } D y = y'                                                 \\
+		\iff & y = Q^{-1} z \text{ is a solution of } D_{i i} y_i = y_i'                                       \\
+		     & \text{ for all } i \in \set{1, \dots, n}                                 &  & \by{1.3.8}        \\
+		\iff & y = Q^{-1} z \text{ is a solution of } y_i(t) = c_i e^{D_{i i} t}                               \\
+		     & \text{for all } i \in \set{1, \dots, n} \text{ and for all } c_i \in \R. &  & \by{2.30}
+	\end{align*}
+	Thus we see that \(x\) is a solution of \(Ax = x'\) iff \(x = Qy\), where \(y_i(t) = c_i e^{D_{i i} t}\) for all \(i \in \set{1, \dots, n}\) and \(c_i \in \R\).
 
-  By \cref{2.5.1} we see that \(q_i \in \gamma\) is the \(i\)th column of \(Q\) for all \(i \in \set{1, \dots, n}\).
-  By \cref{5.1.1} we see that \(\seq{q}{1,,m_1}\) are eigenvectors of \(A\) corresponding to \(\lambda_1\), and in general \(\seq{q}{\pa{\sum_{p = 1}^{j - 1} m_p} + 1,,\sum_{p = 1}^j m_p}\) are eigenvectors of \(A\) corresponding to \(\lambda_j\) for all \(j \in \set{1, \dots, k}\).
-  Thus a solution of \(Ax = x'\) is in the form
-  \begin{align*}
-    x(t) & = Qy(t)                                                                                                                                            \\
-         & = y_1(t) q_1 + \cdots + y_n(t) q_n                                           &  & \text{(by \cref{ex:2.3.14}(a))}                                  \\
-         & = c_1 e^{D_{1 1} t} q_1 + \cdots + c_n e^{D_{n n} t} q_n                                                                                           \\
-         & = e^{\lambda_1 t} (c_1 q_1 + \cdots + c_{m_1} q_{m_1}) + \cdots                                                                                    \\
-         & \quad + e^{\lambda_k t} (c_{n - m_k + 1} q_{n - m_k + 1} + \cdots + c_n q_n)                                                                       \\
-         & = e^{\lambda_1 t} z_1 + \cdots + e^{\lambda_k t} z_k.                        &  & (z_i \in E_{\lambda_i} \text{ for all } i \in \set{1, \dots, k})
-  \end{align*}
-  By \cref{2.33} we know that the set \(\set{e^{\lambda_1 t}, \dots, e^{\lambda_k t}}\) is linearly independent.
-  If \(\seq{a}{1,,n} \in \F\) such that
-  \[
-    a_1 e^{\lambda_1 t} q_1 + \cdots + a_{m_1} e^{\lambda_1 t} q_{m_1} + \cdots + a_{n - m_k + 1} e^{\lambda_k t} q_{n - m_k + 1} + \cdots + a_n e^{\lambda_k t} q_n = \zv,
-  \]
-  then for each \(i \in \set{1, \dots, n}\), we have
-  \begin{align*}
-    a_1 Q_{i 1} + \cdots + a_{m_1} Q_{i m_1}                   & = 0  \\
-    \vdots                                                            \\
-    a_{n - m_k + 1} Q_{i (n - m_k + 1)} + \cdots + a_n Q_{i n} & = 0.
-  \end{align*}
-  In particular, we have
-  \begin{align*}
-    a_1 q_1 + \cdots + a_{m_1} q_{m_1}                 & = \zv  \\
-    \vdots                                                      \\
-    a_{n - m_k + 1} q_{n - m_k + 1} + \cdots + a_n q_n & = \zv.
-  \end{align*}
-  Summing all the equations together we get
-  \[
-    \seq[+]{a,q}{1,,n} = \zv.
-  \]
-  But \(\gamma = \set{\seq{q}{1,,n}}\) implies \(\seq[=]{a}{1,,n} = 0\).
-  Thus the set
-  \[
-    \set{e^{\lambda_1 t} q_1, \dots, e^{\lambda_1 t} q_{m_1}, \dots, e^{\lambda_k t} q_{n - m_k + 1}, \dots, e^{\lambda_k t} q_n}
-  \]
-  is linearly independent.
-  We conclude that the set of solution to \(Ax = x'\) is an \(n\)-dimensional real vector space.
+	By \cref{2.5.1} we see that \(q_i \in \gamma\) is the \(i\)th column of \(Q\) for all \(i \in \set{1, \dots, n}\).
+	By \cref{5.1.1} we see that \(\seq{q}{1,,m_1}\) are eigenvectors of \(A\) corresponding to \(\lambda_1\), and in general \(\seq{q}{\pa{\sum_{p = 1}^{j - 1} m_p} + 1,,\sum_{p = 1}^j m_p}\) are eigenvectors of \(A\) corresponding to \(\lambda_j\) for all \(j \in \set{1, \dots, k}\).
+	Thus a solution of \(Ax = x'\) is in the form
+	\begin{align*}
+		x(t) & = Qy(t)                                                                                                                                            \\
+		     & = y_1(t) q_1 + \cdots + y_n(t) q_n                                           &  & \by{ex:2.3.14}[a]                                                \\
+		     & = c_1 e^{D_{1 1} t} q_1 + \cdots + c_n e^{D_{n n} t} q_n                                                                                           \\
+		     & = e^{\lambda_1 t} (c_1 q_1 + \cdots + c_{m_1} q_{m_1}) + \cdots                                                                                    \\
+		     & \quad + e^{\lambda_k t} (c_{n - m_k + 1} q_{n - m_k + 1} + \cdots + c_n q_n)                                                                       \\
+		     & = e^{\lambda_1 t} z_1 + \cdots + e^{\lambda_k t} z_k.                        &  & (z_i \in E_{\lambda_i} \text{ for all } i \in \set{1, \dots, k})
+	\end{align*}
+	By \cref{2.33} we know that the set \(\set{e^{\lambda_1 t}, \dots, e^{\lambda_k t}}\) is linearly independent.
+	If \(\seq{a}{1,,n} \in \F\) such that
+	\[
+		a_1 e^{\lambda_1 t} q_1 + \cdots + a_{m_1} e^{\lambda_1 t} q_{m_1} + \cdots + a_{n - m_k + 1} e^{\lambda_k t} q_{n - m_k + 1} + \cdots + a_n e^{\lambda_k t} q_n = \zv,
+	\]
+	then for each \(i \in \set{1, \dots, n}\), we have
+	\begin{align*}
+		a_1 Q_{i 1} + \cdots + a_{m_1} Q_{i m_1}                   & = 0  \\
+		\vdots                                                            \\
+		a_{n - m_k + 1} Q_{i (n - m_k + 1)} + \cdots + a_n Q_{i n} & = 0.
+	\end{align*}
+	In particular, we have
+	\begin{align*}
+		a_1 q_1 + \cdots + a_{m_1} q_{m_1}                 & = \zv  \\
+		\vdots                                                      \\
+		a_{n - m_k + 1} q_{n - m_k + 1} + \cdots + a_n q_n & = \zv.
+	\end{align*}
+	Summing all the equations together we get
+	\[
+		\seq[+]{a,q}{1,,n} = \zv.
+	\]
+	But \(\gamma = \set{\seq{q}{1,,n}}\) implies \(\seq[=]{a}{1,,n} = 0\).
+	Thus the set
+	\[
+		\set{e^{\lambda_1 t} q_1, \dots, e^{\lambda_1 t} q_{m_1}, \dots, e^{\lambda_k t} q_{n - m_k + 1}, \dots, e^{\lambda_k t} q_n}
+	\]
+	is linearly independent.
+	We conclude that the set of solution to \(Ax = x'\) is an \(n\)-dimensional real vector space.
 \end{proof}
 
 \begin{ex}\label{ex:5.2.16}
-  Let \(C \in \ms{m}{n}{\R}\), and let \(Y\) be an \(n \times p\) matrix of differentiable functions.
-  Prove \((CY)' = C Y'\), where \((Y')_{i j} = (Y_{i j})'\) for all \(i \in \set{1, \dots, n}\) and \(j \in \set{1, \dots, p}\).
+	Let \(C \in \ms{m}{n}{\R}\), and let \(Y\) be an \(n \times p\) matrix of differentiable functions.
+	Prove \((CY)' = C Y'\), where \((Y')_{i j} = (Y_{i j})'\) for all \(i \in \set{1, \dots, n}\) and \(j \in \set{1, \dots, p}\).
 \end{ex}
 
 \begin{proof}[\pf{ex:5.2.16}]
-  Let \(k \in \set{1, \dots, n}\) and let \(j \in \set{1, \dots, p}\).
-  Then we have
-  \begin{align*}
-    ((CY)')_{k j} & = ((CY)_{k j})'                        &  & \text{(by \cref{ex:5.2.16})} \\
-                  & = \pa{\sum_{i = 1}^n C_{k i} Y_{i j}}' &  & \text{(by \cref{2.3.1})}     \\
-                  & = \sum_{i = 1}^n C_{k i} (Y_{i j})'                                      \\
-                  & = \sum_{i = 1}^n C_{k i} (Y')_{i j}                                      \\
-                  & = (C Y')_{k j}                         &  & \text{(by \cref{2.3.1})}
-  \end{align*}
-  and thus by \cref{1.2.8} \((CY)' = C Y'\).
+	Let \(k \in \set{1, \dots, n}\) and let \(j \in \set{1, \dots, p}\).
+	Then we have
+	\begin{align*}
+		((CY)')_{k j} & = ((CY)_{k j})'                        &  & \by{ex:5.2.16} \\
+		              & = \pa{\sum_{i = 1}^n C_{k i} Y_{i j}}' &  & \by{2.3.1}     \\
+		              & = \sum_{i = 1}^n C_{k i} (Y_{i j})'                        \\
+		              & = \sum_{i = 1}^n C_{k i} (Y')_{i j}                        \\
+		              & = (C Y')_{k j}                         &  & \by{2.3.1}
+	\end{align*}
+	and thus by \cref{1.2.8} \((CY)' = C Y'\).
 \end{proof}
 
 \begin{defn}\label{5.2.8}
-  Two linear operators \(\T\) and \(\U\) on a finite-dimensional vector space \(\V\) over \(\F\) are called \textbf{simultaneously diagonalizable} if there exists an ordered basis \(\beta\) for \(\V\) over \(\F\) such that both \([\T]_{\beta}\) and \([\U]_{\beta}\) are diagonal matrices.
-  Similarly, \(A, B \in \ms{n}{n}{\F}\) are called \textbf{simultaneously diagonalizable} if there exists an invertible matrix \(Q \in \ms{n}{n}{\F}\) such that both \(Q^{-1} A Q\) and \(Q^{-1} B Q\) are diagonal matrices.
+	Two linear operators \(\T\) and \(\U\) on a finite-dimensional vector space \(\V\) over \(\F\) are called \textbf{simultaneously diagonalizable} if there exists an ordered basis \(\beta\) for \(\V\) over \(\F\) such that both \([\T]_{\beta}\) and \([\U]_{\beta}\) are diagonal matrices.
+	Similarly, \(A, B \in \ms{n}{n}{\F}\) are called \textbf{simultaneously diagonalizable} if there exists an invertible matrix \(Q \in \ms{n}{n}{\F}\) such that both \(Q^{-1} A Q\) and \(Q^{-1} B Q\) are diagonal matrices.
 \end{defn}
 
 \begin{ex}\label{ex:5.2.17}
-  \begin{enumerate}
-    \item Prove that if \(\T\) and \(\U\) are simultaneously diagonalizable linear operators on a finite-dimensional vector space \(\V\) over \(\F\), then the matrices \([\T]_{\beta}\) and \([\U]_{\beta}\) are simultaneously diagonalizable for any ordered basis \(\beta\).
-    \item Prove that if \(A\) and \(B\) are simultaneously diagonalizable matrices, then \(\L_A\) and \(\L_B\) are simultaneously diagonalizable linear operators.
-  \end{enumerate}
+	\begin{enumerate}
+		\item Prove that if \(\T\) and \(\U\) are simultaneously diagonalizable linear operators on a finite-dimensional vector space \(\V\) over \(\F\), then the matrices \([\T]_{\beta}\) and \([\U]_{\beta}\) are simultaneously diagonalizable for any ordered basis \(\beta\).
+		\item Prove that if \(A\) and \(B\) are simultaneously diagonalizable matrices, then \(\L_A\) and \(\L_B\) are simultaneously diagonalizable linear operators.
+	\end{enumerate}
 \end{ex}
 
 \begin{proof}[\pf{ex:5.2.17}(a)]
-  We have
-  \begin{align*}
-             & \T, \U \text{ are simultaneously diagonalizable}                                                                                                                                                                                                                \\
-    \implies & \exists \gamma \subseteq \V : \begin{dcases}
-                                               \gamma \text{ is an ordered basis for } \V \text{ over } \F \\
-                                               [\T]_{\gamma}, [\U]_{\gamma} \text{ are diagonal matrices}
-                                             \end{dcases}                                                                                                                                                                    &  & \text{(by \cref{5.2.8})}                     \\
-    \implies & \text{any ordered basis } \beta \text{ for } \V \text{ over } \F,                                                                                                                                                                                               \\
-             & \begin{dcases}
-                 [\T]_{\gamma} = [\IT[\V]]_{\beta}^{\gamma} [\T]_{\beta} [\IT[\V]]_{\gamma}^{\beta} = \pa{[\IT[\V]]_{\gamma}^{\beta}}^{-1} [\T]_{\beta} [\IT[\V]]_{\gamma}^{\beta} \\
-                 [\U]_{\gamma} = [\IT[\V]]_{\beta}^{\gamma} [\U]_{\beta} [\IT[\V]]_{\gamma}^{\beta} = \pa{[\IT[\V]]_{\gamma}^{\beta}}^{-1} [\U]_{\beta} [\IT[\V]]_{\gamma}^{\beta}
-               \end{dcases} &  & \text{(by \cref{2.23})}                                  \\
-    \implies & \text{any ordered basis } \beta \text{ for } \V \text{ over } \F,                                                                                                                                                                                               \\
-             & [\T]_{\beta}, [\U]_{\beta} \text{ are simultaneously diagonalizable}.                                                                                                                                                             &  & \text{(by \cref{5.2.8})}
-  \end{align*}
+	We have
+	\begin{align*}
+		         & \T, \U \text{ are simultaneously diagonalizable}                                                                                                                                                                                                  \\
+		\implies & \exists \gamma \subseteq \V : \begin{dcases}
+			                                         \gamma \text{ is an ordered basis for } \V \text{ over } \F \\
+			                                         [\T]_{\gamma}, [\U]_{\gamma} \text{ are diagonal matrices}
+		                                         \end{dcases}                                                                                                                                                                    &  & \by{5.2.8}                     \\
+		\implies & \text{any ordered basis } \beta \text{ for } \V \text{ over } \F,                                                                                                                                                                                 \\
+		         & \begin{dcases}
+			           [\T]_{\gamma} = [\IT[\V]]_{\beta}^{\gamma} [\T]_{\beta} [\IT[\V]]_{\gamma}^{\beta} = \pa{[\IT[\V]]_{\gamma}^{\beta}}^{-1} [\T]_{\beta} [\IT[\V]]_{\gamma}^{\beta} \\
+			           [\U]_{\gamma} = [\IT[\V]]_{\beta}^{\gamma} [\U]_{\beta} [\IT[\V]]_{\gamma}^{\beta} = \pa{[\IT[\V]]_{\gamma}^{\beta}}^{-1} [\U]_{\beta} [\IT[\V]]_{\gamma}^{\beta}
+		           \end{dcases} &  & \by{2.23}                    \\
+		\implies & \text{any ordered basis } \beta \text{ for } \V \text{ over } \F,                                                                                                                                                                                 \\
+		         & [\T]_{\beta}, [\U]_{\beta} \text{ are simultaneously diagonalizable}.                                                                                                                                                             &  & \by{5.2.8}
+	\end{align*}
 \end{proof}
 
 \begin{proof}[\pf{ex:5.2.17}(b)]
-  Let \(A, B \in \ms{n}{n}{\F}\) and let \(\beta\) be the standard ordered basis for \(\vs{F}^n\) over \(\F\).
-  Then we have
-  \begin{align*}
-             & A, B \text{ are simultaneously diagonalizable}                                                                     \\
-    \implies & \exists Q \in \ms{n}{n}{\F} : Q^{-1} A Q, Q^{-1} B Q \text{ are diagonal matrices} &  & \text{(by \cref{5.2.8})}   \\
-    \implies & \exists Q \in \ms{n}{n}{\F} :                                                                                      \\
-             & Q^{-1} [\L_A]_{\beta} Q, Q^{-1} [\L_B]_{\beta} Q \text{ are diagonal matrices}.    &  & \text{(by \cref{2.15}(a))}
-  \end{align*}
-  Fix one such \(Q\).
-  Since \(Q\) is invertible, by \cref{2.4.5} we see that \(\L_Q(\beta)\) is an ordered basis for \(\vs{F}^n\) over \(\F\).
-  If we let \(\gamma = \L_Q(\beta)\), then by \cref{2.5.1} we see that \(Q = [\IT[\vs{F}^n]]_{\gamma}^{\beta}\).
-  Thus by \cref{2.23} we have \([\L_A]_{\gamma} = Q^{-1} [\L_A]_{\beta} Q\) and \([\L_B]_{\gamma} = Q^{-1} [\L_B]_{\beta} Q\).
-  By \cref{5.2.8} this means \(\L_A\) and \(\L_B\) are simultaneously diagonalizable.
+	Let \(A, B \in \ms{n}{n}{\F}\) and let \(\beta\) be the standard ordered basis for \(\vs{F}^n\) over \(\F\).
+	Then we have
+	\begin{align*}
+		         & A, B \text{ are simultaneously diagonalizable}                                                       \\
+		\implies & \exists Q \in \ms{n}{n}{\F} : Q^{-1} A Q, Q^{-1} B Q \text{ are diagonal matrices} &  & \by{5.2.8}   \\
+		\implies & \exists Q \in \ms{n}{n}{\F} :                                                                        \\
+		         & Q^{-1} [\L_A]_{\beta} Q, Q^{-1} [\L_B]_{\beta} Q \text{ are diagonal matrices}.    &  & \by{2.15}[a]
+	\end{align*}
+	Fix one such \(Q\).
+	Since \(Q\) is invertible, by \cref{2.4.5} we see that \(\L_Q(\beta)\) is an ordered basis for \(\vs{F}^n\) over \(\F\).
+	If we let \(\gamma = \L_Q(\beta)\), then by \cref{2.5.1} we see that \(Q = [\IT[\vs{F}^n]]_{\gamma}^{\beta}\).
+	Thus by \cref{2.23} we have \([\L_A]_{\gamma} = Q^{-1} [\L_A]_{\beta} Q\) and \([\L_B]_{\gamma} = Q^{-1} [\L_B]_{\beta} Q\).
+	By \cref{5.2.8} this means \(\L_A\) and \(\L_B\) are simultaneously diagonalizable.
 \end{proof}
 
 \begin{ex}\label{ex:5.2.18}
-  \begin{enumerate}
-    \item Prove that if \(\T\) and \(\U\) are simultaneously diagonalizable operators on a finite dimensional vector space \(\V\) over \(\F\), then \(\T\) and \(\U\) commute (i.e., \(\T \U = \U \T\)).
-    \item Show that if \(A, B \in \ms{n}{n}{\F}\) are simultaneously diagonalizable matrices, then \(A\) and \(B\) commute.
-  \end{enumerate}
-  The converses of (a) and (b) are established in \cref{ex:5.4.25}.
+	\begin{enumerate}
+		\item Prove that if \(\T\) and \(\U\) are simultaneously diagonalizable operators on a finite dimensional vector space \(\V\) over \(\F\), then \(\T\) and \(\U\) commute (i.e., \(\T \U = \U \T\)).
+		\item Show that if \(A, B \in \ms{n}{n}{\F}\) are simultaneously diagonalizable matrices, then \(A\) and \(B\) commute.
+	\end{enumerate}
+	The converses of (a) and (b) are established in \cref{ex:5.4.25}.
 \end{ex}
 
 \begin{proof}[\pf{ex:5.2.18}(a)]
-  By \cref{5.2.8} there exists an ordered basis \(\beta\) for \(\V\) over \(\F\) such that \([\T]_{\beta}\) and \([\U]_{\beta}\) are diagonal matrices.
-  By \cref{5.1.1} \(\beta\) is consist of eigenvectors of \(\T\) and \(\U\).
-  If \(\lambda_{\T}\) and \(\lambda_{\U}\) are eigenvalues of \(\T\) and \(\U\) corresponding to the same eigenvector \(v \in \beta\), then
-  \begin{align*}
-    (\T \U)(v) & = \T(\U(v))                                                    \\
-               & = \T(\lambda_{\U} v)          &  & \text{(by \cref{5.1.2})}    \\
-               & = \lambda_{\U} \T(v)          &  & \text{(by \cref{2.1.1}(b))} \\
-               & = \lambda_{\U} \lambda_{\T} v &  & \text{(by \cref{5.1.2})}    \\
-               & = \lambda_{\T} \lambda_{\U} v &  & \text{(by \ref{1.2.1})}     \\
-               & = \lambda_{\T} \U(v)          &  & \text{(by \cref{5.1.2})}    \\
-               & = \U(\lambda_{\T} v)          &  & \text{(by \cref{2.1.1}(b))} \\
-               & = \U(\T(v))                   &  & \text{(by \cref{5.1.2})}    \\
-               & = (\U \T)(v).
-  \end{align*}
-  But \(\T \U\) and \(\U \T\) are linear by \cref{2.9}, thus by \cref{2.1.13} we have \(\T \U = \U \T\).
+	By \cref{5.2.8} there exists an ordered basis \(\beta\) for \(\V\) over \(\F\) such that \([\T]_{\beta}\) and \([\U]_{\beta}\) are diagonal matrices.
+	By \cref{5.1.1} \(\beta\) is consist of eigenvectors of \(\T\) and \(\U\).
+	If \(\lambda_{\T}\) and \(\lambda_{\U}\) are eigenvalues of \(\T\) and \(\U\) corresponding to the same eigenvector \(v \in \beta\), then
+	\begin{align*}
+		(\T \U)(v) & = \T(\U(v))                                      \\
+		           & = \T(\lambda_{\U} v)          &  & \by{5.1.2}    \\
+		           & = \lambda_{\U} \T(v)          &  & \by{2.1.1}[b] \\
+		           & = \lambda_{\U} \lambda_{\T} v &  & \by{5.1.2}    \\
+		           & = \lambda_{\T} \lambda_{\U} v &  & \by{1.2.1}    \\
+		           & = \lambda_{\T} \U(v)          &  & \by{5.1.2}    \\
+		           & = \U(\lambda_{\T} v)          &  & \by{2.1.1}[b] \\
+		           & = \U(\T(v))                   &  & \by{5.1.2}    \\
+		           & = (\U \T)(v).
+	\end{align*}
+	But \(\T \U\) and \(\U \T\) are linear by \cref{2.9}, thus by \cref{2.1.13} we have \(\T \U = \U \T\).
 \end{proof}
 
 \begin{proof}[\pf{ex:5.2.18}(b)]
-  We have
-  \begin{align*}
-             & A, B \text{ are simultaneously diagonalizable}                                            \\
-    \implies & \L_A, \L_B \text{ are simultaneously diagonalizable} &  & \text{(by \cref{ex:5.2.17}(b))} \\
-    \implies & \L_A \L_B = \L_B \L_A                                &  & \text{(by \cref{ex:5.2.18}(a))} \\
-    \implies & \L_{AB} = \L_{BA}                                    &  & \text{(by \cref{2.15}(e))}      \\
-    \implies & AB = BA.                                             &  & \text{(by \cref{2.15}(b))}
-  \end{align*}
+	We have
+	\begin{align*}
+		         & A, B \text{ are simultaneously diagonalizable}                              \\
+		\implies & \L_A, \L_B \text{ are simultaneously diagonalizable} &  & \by{ex:5.2.17}[b] \\
+		\implies & \L_A \L_B = \L_B \L_A                                &  & \by{ex:5.2.18}[a] \\
+		\implies & \L_{AB} = \L_{BA}                                    &  & \by{2.15}[e]      \\
+		\implies & AB = BA.                                             &  & \by{2.15}[b]
+	\end{align*}
 \end{proof}
 
 \begin{ex}\label{ex:5.2.19}
-  Let \(\T\) be a diagonalizable linear operator on a finite-dimensional vector space \(\V\) over \(\F\), and let \(m\) be any positive integer.
-  Prove that \(\T\) and \(\T^m\) are simultaneously diagonalizable.
+	Let \(\T\) be a diagonalizable linear operator on a finite-dimensional vector space \(\V\) over \(\F\), and let \(m\) be any positive integer.
+	Prove that \(\T\) and \(\T^m\) are simultaneously diagonalizable.
 \end{ex}
 
 \begin{proof}[\pf{ex:5.2.19}]
-  By \cref{5.1.1} there exists an ordered basis \(\beta\) for \(\V\) over \(\F\) such that \([\T]_{\beta}\) is a diagonal matrix.
-  Since the product of diagonal matrices is a diagonal matrix, by \cref{2.11} we see that \(([\T]_{\beta})^m = [\T^m]_{\beta}\) is a diagonal matrix for any \(m \in \Z^+\).
-  Thus by \cref{5.2.8} \(\T\) and \(\T^m\) are simultaneously diagonalizable.
+	By \cref{5.1.1} there exists an ordered basis \(\beta\) for \(\V\) over \(\F\) such that \([\T]_{\beta}\) is a diagonal matrix.
+	Since the product of diagonal matrices is a diagonal matrix, by \cref{2.11} we see that \(([\T]_{\beta})^m = [\T^m]_{\beta}\) is a diagonal matrix for any \(m \in \Z^+\).
+	Thus by \cref{5.2.8} \(\T\) and \(\T^m\) are simultaneously diagonalizable.
 \end{proof}
 
 \begin{ex}\label{ex:5.2.20}
-  Let \(\seq{\W}{1,,k}\) be subspaces of a finite-dimensional vector space \(\V\) over \(\F\) such that
-  \[
-    \sum_{i = 1}^k \W_i = \V.
-  \]
-  Prove that \(\V\) is the direct sum of \(\seq{\W}{1,,k}\) iff
-  \[
-    \dim(\V) = \sum_{i = 1}^k \dim(\W_i).
-  \]
+	Let \(\seq{\W}{1,,k}\) be subspaces of a finite-dimensional vector space \(\V\) over \(\F\) such that
+	\[
+		\sum_{i = 1}^k \W_i = \V.
+	\]
+	Prove that \(\V\) is the direct sum of \(\seq{\W}{1,,k}\) iff
+	\[
+		\dim(\V) = \sum_{i = 1}^k \dim(\W_i).
+	\]
 \end{ex}
 
 \begin{proof}[\pf{ex:5.2.20}]
-  Fisrt suppose that \(\V = \W_1 \oplus \cdots \oplus \W_k\).
-  For each \(i \in \set{1, \dots, k}\), let \(\beta_i\) be an ordered basis for \(\W_i\) over \(\F\).
-  Then we have
-  \begin{align*}
-             & \V = \W_1 \oplus \cdots \oplus \W_k                                                                &  & \text{(by \cref{5.2.7})}      \\
-    \implies & \bigcup_{i = 1}^k \beta_i \text{ is an ordered basis for } \V \text{ over } \F                     &  & \text{(by \cref{5.10}(a)(d))} \\
-    \implies & \dim(\V) = \#(\bigcup_{i = 1}^k \beta_i) = \sum_{i = 1}^k \#(\beta_i) = \sum_{i = 1}^k \dim(\W_i). &  & \text{(by \cref{1.6.8})}
-  \end{align*}
+	Fisrt suppose that \(\V = \W_1 \oplus \cdots \oplus \W_k\).
+	For each \(i \in \set{1, \dots, k}\), let \(\beta_i\) be an ordered basis for \(\W_i\) over \(\F\).
+	Then we have
+	\begin{align*}
+		         & \V = \W_1 \oplus \cdots \oplus \W_k                                                                &  & \by{5.2.7}    \\
+		\implies & \bigcup_{i = 1}^k \beta_i \text{ is an ordered basis for } \V \text{ over } \F                     &  & \by{5.10}[ad] \\
+		\implies & \dim(\V) = \#(\bigcup_{i = 1}^k \beta_i) = \sum_{i = 1}^k \#(\beta_i) = \sum_{i = 1}^k \dim(\W_i). &  & \by{1.6.8}
+	\end{align*}
 
-  Now suppose that \(\dim(\V) = \sum_{i = 1}^k \dim(\W_i)\).
-  Let \(\beta\) be an ordered basis for \(\V\) over \(\F\).
-  For each \(i \in \set{1, \dots, k}\), we define \(\beta_i = \beta \cap \W_i\), and we claim that \(\beta_i\) is an ordered basis for \(\W_i\) over \(\F\).
-  Suppose for sake of contradiction that there exists an \(j \in \set{1, \dots, k}\) such that \(\beta_j\) is not an ordered basis for \(\W_j\) over \(\F\).
-  Then there exists a \(v \in \W_j\) such that \(v \notin \spn{\beta_j}\).
-  Since \(\W_j \subseteq \V = \spn{\beta}\), we see that \(v \in \spn{\beta \setminus \beta_j}\).
-  But \((\beta \setminus \beta_j) \cap \W_j = \varnothing\) implies \(v \notin \W_j\), a contradiction.
-  Thus for each \(i \in \set{1, \dots, k}\), we know that \(\beta_i\) is an ordered basis for \(\W_i\) over \(\F\).
-  Now we claim that \(\beta = \bigcup_{i = 1}^k \beta_i\).
-  If not, then there exists a \(v \in \beta\) such that \(v \in \beta \setminus \pa{\bigcup_{i = 1}^k \beta_i}\), i.e., \(v \notin \W_i\) for all \(i \in \set{1, \dots, k}\).
-  But this contradicts to the fact that \(\V = \sum_{i = 1}^k \W_i\).
-  Thus we have
-  \begin{align*}
-             & \beta = \bigcup_{i = 1}^k \beta_i                                       \\
-    \implies & \V = \W_1 \oplus \cdots \oplus \W_k. &  & \text{(by \cref{5.10}(a)(d))}
-  \end{align*}
+	Now suppose that \(\dim(\V) = \sum_{i = 1}^k \dim(\W_i)\).
+	Let \(\beta\) be an ordered basis for \(\V\) over \(\F\).
+	For each \(i \in \set{1, \dots, k}\), we define \(\beta_i = \beta \cap \W_i\), and we claim that \(\beta_i\) is an ordered basis for \(\W_i\) over \(\F\).
+	Suppose for sake of contradiction that there exists an \(j \in \set{1, \dots, k}\) such that \(\beta_j\) is not an ordered basis for \(\W_j\) over \(\F\).
+	Then there exists a \(v \in \W_j\) such that \(v \notin \spn{\beta_j}\).
+	Since \(\W_j \subseteq \V = \spn{\beta}\), we see that \(v \in \spn{\beta \setminus \beta_j}\).
+	But \((\beta \setminus \beta_j) \cap \W_j = \varnothing\) implies \(v \notin \W_j\), a contradiction.
+	Thus for each \(i \in \set{1, \dots, k}\), we know that \(\beta_i\) is an ordered basis for \(\W_i\) over \(\F\).
+	Now we claim that \(\beta = \bigcup_{i = 1}^k \beta_i\).
+	If not, then there exists a \(v \in \beta\) such that \(v \in \beta \setminus \pa{\bigcup_{i = 1}^k \beta_i}\), i.e., \(v \notin \W_i\) for all \(i \in \set{1, \dots, k}\).
+	But this contradicts to the fact that \(\V = \sum_{i = 1}^k \W_i\).
+	Thus we have
+	\begin{align*}
+		         & \beta = \bigcup_{i = 1}^k \beta_i                       \\
+		\implies & \V = \W_1 \oplus \cdots \oplus \W_k. &  & \by{5.10}[ad]
+	\end{align*}
 \end{proof}
 
 \begin{ex}\label{ex:5.2.21}
-  Let \(\V\) be a finite-dimensional vector space with a basis \(\beta\) over \(\F\), and let \(\seq{\beta}{1,,k}\) be a partition of \(\beta\)
-  (i.e., \(\seq{\beta}{1,,k}\) are subsets of \(\beta\) such that \(\beta = \bigcup_{i = 1}^k \beta_i\) and \(\beta_i \cap \beta_j = \varnothing\) if \(i \neq j\)).
-  Prove that \(\V = \spn{\beta_1} \oplus \cdots \oplus \spn{\beta_k}\).
+	Let \(\V\) be a finite-dimensional vector space with a basis \(\beta\) over \(\F\), and let \(\seq{\beta}{1,,k}\) be a partition of \(\beta\)
+	(i.e., \(\seq{\beta}{1,,k}\) are subsets of \(\beta\) such that \(\beta = \bigcup_{i = 1}^k \beta_i\) and \(\beta_i \cap \beta_j = \varnothing\) if \(i \neq j\)).
+	Prove that \(\V = \spn{\beta_1} \oplus \cdots \oplus \spn{\beta_k}\).
 \end{ex}
 
 \begin{proof}[\pf{ex:5.2.21}]
-  By \cref{1.5} we know that \(\spn{\beta_i}\) is a subspace of \(\V\) over \(\F\) for all \(i \in \set{1, \dots, k}\).
-  By \cref{5.10}(a)(d) we see that \(\V = \spn{\beta_1} \oplus \cdots \oplus \spn{\beta_k}\).
+	By \cref{1.5} we know that \(\spn{\beta_i}\) is a subspace of \(\V\) over \(\F\) for all \(i \in \set{1, \dots, k}\).
+	By \cref{5.10}(a)(d) we see that \(\V = \spn{\beta_1} \oplus \cdots \oplus \spn{\beta_k}\).
 \end{proof}
 
 \begin{ex}\label{ex:5.2.22}
-  Let \(\T\) be a linear operator on a finite-dimensional vector space \(\V\) over \(\F\), and suppose that the distinct eigenvalues of \(\T\) are \(\seq{\lambda}{1,,k}\).
-  Prove that
-  \[
-    \spn{\set{x \in \V : x \text{ is an eigenvector of } \T}} = E_{\lambda_1} \oplus \cdots \oplus E_{\lambda_k}.
-  \]
+	Let \(\T\) be a linear operator on a finite-dimensional vector space \(\V\) over \(\F\), and suppose that the distinct eigenvalues of \(\T\) are \(\seq{\lambda}{1,,k}\).
+	Prove that
+	\[
+		\spn{\set{x \in \V : x \text{ is an eigenvector of } \T}} = E_{\lambda_1} \oplus \cdots \oplus E_{\lambda_k}.
+	\]
 \end{ex}
 
 \begin{proof}[\pf{ex:5.2.22}]
-  Let \(S = \set{x \in \V : x \text{ is an eigenvector of } \T}\).
-  Since
-  \begin{align*}
-         & v \in S                                                                             \\
-    \iff & \exists i \in \set{1, \dots, k} : \T(v) = \lambda_i v &  & \text{(by \cref{5.1.2})} \\
-    \iff & \exists i \in \set{1, \dots, k} : v \in E_{\lambda_i} &  & \text{(by \cref{5.2.4})} \\
-    \iff & v \in \bigcup_{i = 1}^k E_{\lambda_i},
-  \end{align*}
-  we know that \(S = \bigcup_{i = 1}^k E_{\lambda_i}\).
-  For each \(i \in \set{1, \dots, k}\), let \(\beta_i\) be an ordered basis for \(E_{\lambda_i}\) over \(\F\).
-  We claim that for all \(i, j \in \set{1, \dots, k}\), \(\beta_i \cap \beta_j = \varnothing\) if \(i \neq j\).
-  If not, then there exist some \(i, j \in \set{1, \dots, k}\) such that \(i \neq j\) and \(\beta_i \cap \beta_j \neq \varnothing\).
-  Let \(v \in \beta_i \cap \beta_j\).
-  Clearly \(v \neq \zv\).
-  But then we have
-  \begin{align*}
-             & \T(v) = \lambda_i v = \lambda_j v                                 \\
-    \implies & (\lambda_i - \lambda_j) v = \zv                                   \\
-    \implies & v = \zv,                          &  & (\lambda_i \neq \lambda_j)
-  \end{align*}
-  a contradiction.
-  Thus we know that for all \(i, j \in \set{1, \dots, k}\), \(\beta_i \cap \beta_j = \varnothing\) if \(i \neq j\).
-  Now let \(\beta = \bigcup_{i = 1}^k \beta_i\).
-  By \cref{ex:5.2.21} we know that \(\seq{\beta}{1,,k}\) is a partition of \(\beta\).
-  Since \(S = \bigcup_{i = 1}^k E_{\lambda_i}\), by \cref{1.8} we know that \(\beta\) is a basis for \(\spn{S}\) over \(\F\).
-  Thus by \cref{5.10}(a)(d) we have \(\spn{S} = E_{\lambda_1} \oplus \cdots \oplus E_{\lambda_k}\).
+	Let \(S = \set{x \in \V : x \text{ is an eigenvector of } \T}\).
+	Since
+	\begin{align*}
+		     & v \in S                                                               \\
+		\iff & \exists i \in \set{1, \dots, k} : \T(v) = \lambda_i v &  & \by{5.1.2} \\
+		\iff & \exists i \in \set{1, \dots, k} : v \in E_{\lambda_i} &  & \by{5.2.4} \\
+		\iff & v \in \bigcup_{i = 1}^k E_{\lambda_i},
+	\end{align*}
+	we know that \(S = \bigcup_{i = 1}^k E_{\lambda_i}\).
+	For each \(i \in \set{1, \dots, k}\), let \(\beta_i\) be an ordered basis for \(E_{\lambda_i}\) over \(\F\).
+	We claim that for all \(i, j \in \set{1, \dots, k}\), \(\beta_i \cap \beta_j = \varnothing\) if \(i \neq j\).
+	If not, then there exist some \(i, j \in \set{1, \dots, k}\) such that \(i \neq j\) and \(\beta_i \cap \beta_j \neq \varnothing\).
+	Let \(v \in \beta_i \cap \beta_j\).
+	Clearly \(v \neq \zv\).
+	But then we have
+	\begin{align*}
+		         & \T(v) = \lambda_i v = \lambda_j v                                 \\
+		\implies & (\lambda_i - \lambda_j) v = \zv                                   \\
+		\implies & v = \zv,                          &  & (\lambda_i \neq \lambda_j)
+	\end{align*}
+	a contradiction.
+	Thus we know that for all \(i, j \in \set{1, \dots, k}\), \(\beta_i \cap \beta_j = \varnothing\) if \(i \neq j\).
+	Now let \(\beta = \bigcup_{i = 1}^k \beta_i\).
+	By \cref{ex:5.2.21} we know that \(\seq{\beta}{1,,k}\) is a partition of \(\beta\).
+	Since \(S = \bigcup_{i = 1}^k E_{\lambda_i}\), by \cref{1.8} we know that \(\beta\) is a basis for \(\spn{S}\) over \(\F\).
+	Thus by \cref{5.10}(a)(d) we have \(\spn{S} = E_{\lambda_1} \oplus \cdots \oplus E_{\lambda_k}\).
 \end{proof}
 
 \begin{ex}\label{ex:5.2.23}
-  Let \(\seq{\W}{1,2}, \seq{\vs{K}}{1,,p}, \seq{\vs{M}}{1,,q}\) be subspaces of a vector space \(\V\) over \(\F\) such that \(\W_1 = \vs{K}_1 \oplus \cdots \oplus \vs{K}_p\) and \(\W_2 = \vs{M}_1 \oplus \cdots \oplus \vs{M}_q\).
-  Prove that if \(\W_1 \cap \W_2 = \set{\zv}\), then
-  \[
-    \W_1 + \W_2 = \W_1 \oplus \W_2 = \vs{K}_1 \oplus \cdots \oplus \vs{K}_p \oplus \vs{M}_1 \oplus \cdots \vs{M}_q.
-  \]
+	Let \(\seq{\W}{1,2}, \seq{\vs{K}}{1,,p}, \seq{\vs{M}}{1,,q}\) be subspaces of a vector space \(\V\) over \(\F\) such that \(\W_1 = \vs{K}_1 \oplus \cdots \oplus \vs{K}_p\) and \(\W_2 = \vs{M}_1 \oplus \cdots \oplus \vs{M}_q\).
+	Prove that if \(\W_1 \cap \W_2 = \set{\zv}\), then
+	\[
+		\W_1 + \W_2 = \W_1 \oplus \W_2 = \vs{K}_1 \oplus \cdots \oplus \vs{K}_p \oplus \vs{M}_1 \oplus \cdots \vs{M}_q.
+	\]
 \end{ex}
 
 \begin{proof}[\pf{ex:5.2.23}]
-  Observe that
-  \begin{align*}
-             & \W_1 \cap \W_2 = \varnothing                                                                                  \\
-    \implies & \W_1 + \W_2 = \W_1 \oplus \W_2                                                  &  & \text{(by \cref{5.2.7})} \\
-    \implies & \W_1 + \W_2 = (\seq[\oplus]{\vs{K}}{1,,p}) \oplus (\seq[\oplus]{\vs{M}}{1,,q}).
-  \end{align*}
-  Thus we only need to show that
-  \[
-    \W_1 \oplus \W_2 = \seq[\oplus]{\vs{K}}{1,,p} \oplus \seq[\oplus]{\vs{M}}{1,,q}.
-  \]
-  This is true since
-  \begin{align*}
-             & \begin{dcases}
-                 \W_1 = \seq[\oplus]{\vs{K}}{1,,p} \\
-                 \W_2 = \seq[\oplus]{\vs{M}}{1,,q}
-               \end{dcases}                                                                                                                          \\
-    \implies & \begin{dcases}
-                 \forall i \in \set{1, \dots, p}, \vs{K}_i \cap \sum_{\substack{j = 1 \\ j \neq i}}^p \vs{K}_j = \varnothing \\
-                 \forall i \in \set{1, \dots, q}, \vs{M}_i \cap \sum_{\substack{j = 1 \\ j \neq i}}^q \vs{M}_j = \varnothing
-               \end{dcases}                                                                      &  & \text{(by \cref{5.2.7})}                                                             \\
-    \implies & \begin{dcases}
-                 \forall i \in \set{1, \dots, p}, \vs{K}_i \cap \pa{\sum_{\substack{j = 1                           \\ j \neq i}}^p \vs{K}_j + \sum_{j = 1}^q \vs{M}_j} = \varnothing \\
-                 \forall i \in \set{1, \dots, q}, \vs{M}_i \cap \pa{\sum_{j = 1}^p \vs{K}_j + \sum_{\substack{j = 1 \\ j \neq i}}^q \vs{M}_j} = \varnothing
-               \end{dcases}, &  & (\W_1 \cap \W_2 = \varnothing)
-  \end{align*}
-  and
-  \begin{align*}
-         & v \in \W_1 \oplus \W_2                                                                                                                \\
-    \iff & v \in (\seq[\oplus]{\vs{K}}{1,,p}) \oplus (\seq[\oplus]{\vs{M}}{1,,q})                                                                \\
-    \iff & \begin{dcases}
-             \exists k \in \seq[\oplus]{\vs{K}}{1,,p} \\
-             \exists m \in \seq[\oplus]{\vs{M}}{1,,q}
-           \end{dcases} : v = k + m                                            &  & \text{(by \cref{5.2.7})}                                     \\
-    \iff & \begin{dcases}
-             \exists \seq{k}{1,,p} \in \seq[\times]{\vs{K}}{1,,p} \\
-             \exists \seq{m}{1,,q} \in \seq[\times]{\vs{M}}{1,,q}
-           \end{dcases} :                                                                 \\
-         & v = \seq[+]{k}{1,,p} + \seq[+]{m}{1,,q}                                                                 &  & \text{(by \cref{5.2.7})} \\
-    \iff & \exists \seq{k}{1,,p}, \seq{m}{1,,q} \in \seq[\times]{\vs{K}}{1,,p} \times \seq[\times]{\vs{M}}{1,,q} :                               \\
-         & v = \seq[+]{k}{1,,p} + \seq[+]{m}{1,,q}                                                                 &  & \text{(by \cref{5.2.7})} \\
-    \iff & v \in \seq[\oplus]{\vs{K}}{1,,p} \oplus \seq[\oplus]{\vs{M}}{1,,q}.                                     &  & \text{(by \cref{5.2.7})}
-  \end{align*}
+	Observe that
+	\begin{align*}
+		         & \W_1 \cap \W_2 = \varnothing                                                                    \\
+		\implies & \W_1 + \W_2 = \W_1 \oplus \W_2                                                  &  & \by{5.2.7} \\
+		\implies & \W_1 + \W_2 = (\seq[\oplus]{\vs{K}}{1,,p}) \oplus (\seq[\oplus]{\vs{M}}{1,,q}).
+	\end{align*}
+	Thus we only need to show that
+	\[
+		\W_1 \oplus \W_2 = \seq[\oplus]{\vs{K}}{1,,p} \oplus \seq[\oplus]{\vs{M}}{1,,q}.
+	\]
+	This is true since
+	\begin{align*}
+		         & \begin{dcases}
+			           \W_1 = \seq[\oplus]{\vs{K}}{1,,p} \\
+			           \W_2 = \seq[\oplus]{\vs{M}}{1,,q}
+		           \end{dcases}                                                                                                                          \\
+		\implies & \begin{dcases}
+			           \forall i \in \set{1, \dots, p}, \vs{K}_i \cap \sum_{\substack{j = 1 \\ j \neq i}}^p \vs{K}_j = \varnothing \\
+			           \forall i \in \set{1, \dots, q}, \vs{M}_i \cap \sum_{\substack{j = 1 \\ j \neq i}}^q \vs{M}_j = \varnothing
+		           \end{dcases}                                                                      &  & \by{5.2.7}                                                                      \\
+		\implies & \begin{dcases}
+			           \forall i \in \set{1, \dots, p}, \vs{K}_i \cap \pa{\sum_{\substack{j = 1                           \\ j \neq i}}^p \vs{K}_j + \sum_{j = 1}^q \vs{M}_j} = \varnothing \\
+			           \forall i \in \set{1, \dots, q}, \vs{M}_i \cap \pa{\sum_{j = 1}^p \vs{K}_j + \sum_{\substack{j = 1 \\ j \neq i}}^q \vs{M}_j} = \varnothing
+		           \end{dcases}, &  & (\W_1 \cap \W_2 = \varnothing)
+	\end{align*}
+	and
+	\begin{align*}
+		     & v \in \W_1 \oplus \W_2                                                                                                  \\
+		\iff & v \in (\seq[\oplus]{\vs{K}}{1,,p}) \oplus (\seq[\oplus]{\vs{M}}{1,,q})                                                  \\
+		\iff & \begin{dcases}
+			       \exists k \in \seq[\oplus]{\vs{K}}{1,,p} \\
+			       \exists m \in \seq[\oplus]{\vs{M}}{1,,q}
+		       \end{dcases} : v = k + m                                            &  & \by{5.2.7}                                     \\
+		\iff & \begin{dcases}
+			       \exists \seq{k}{1,,p} \in \seq[\times]{\vs{K}}{1,,p} \\
+			       \exists \seq{m}{1,,q} \in \seq[\times]{\vs{M}}{1,,q}
+		       \end{dcases} :                                                   \\
+		     & v = \seq[+]{k}{1,,p} + \seq[+]{m}{1,,q}                                                                 &  & \by{5.2.7} \\
+		\iff & \exists \seq{k}{1,,p}, \seq{m}{1,,q} \in \seq[\times]{\vs{K}}{1,,p} \times \seq[\times]{\vs{M}}{1,,q} :                 \\
+		     & v = \seq[+]{k}{1,,p} + \seq[+]{m}{1,,q}                                                                 &  & \by{5.2.7} \\
+		\iff & v \in \seq[\oplus]{\vs{K}}{1,,p} \oplus \seq[\oplus]{\vs{M}}{1,,q}.                                     &  & \by{5.2.7}
+	\end{align*}
 \end{proof}

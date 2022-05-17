@@ -1,837 +1,837 @@
 \section{Dual Spaces}\label{sec:2.6}
 
 \begin{defn}\label{2.6.1}
-  In this section, we are concerned exclusively with linear transformations from a vector space \(\V\) into its field of scalars \(\F\), which is itself a vector space of dimension \(1\) over \(\F\).
-  Such a linear transformation is called a \textbf{linear functional} on \(\V\).
+	In this section, we are concerned exclusively with linear transformations from a vector space \(\V\) into its field of scalars \(\F\), which is itself a vector space of dimension \(1\) over \(\F\).
+	Such a linear transformation is called a \textbf{linear functional} on \(\V\).
 \end{defn}
 
 \begin{eg}\label{2.6.2}
-  Let \(\V\) be the vector space of continuous real-valued functions on the interval \([0, 2 \pi]\).
-  Fix a function \(g \in \V\).
-  The function \(h : \V \to \R\) defined by
-  \[
-    h(x) = \frac{1}{2 \pi} \int_{0}^{2 \pi} x(t) g(t) \; dt
-  \]
-  is a linear functional on \(\V\).
-  In the cases that \(g(t)\) equals \(\sin(nt)\) or \(\cos(nt)\), \(h(x)\) is often called the \textbf{\(n\)th Fourier coefficient of \(x\)}.
+	Let \(\V\) be the vector space of continuous real-valued functions on the interval \([0, 2 \pi]\).
+	Fix a function \(g \in \V\).
+	The function \(h : \V \to \R\) defined by
+	\[
+		h(x) = \frac{1}{2 \pi} \int_{0}^{2 \pi} x(t) g(t) \; dt
+	\]
+	is a linear functional on \(\V\).
+	In the cases that \(g(t)\) equals \(\sin(nt)\) or \(\cos(nt)\), \(h(x)\) is often called the \textbf{\(n\)th Fourier coefficient of \(x\)}.
 \end{eg}
 
 \begin{proof}[\pf{2.6.2}]
-  Let \(f_1, f_2 \in \V\) and let \(c \in \R\).
-  Then we have
-  \begin{align*}
-    h(cf_1 + f_2) & = \frac{1}{2 \pi} \int_{0}^{2 \pi} (cf_1 + f_2)(t) g(t) \; dt                                             &  & \text{(by \cref{2.6.2})} \\
-                  & = \frac{1}{2 \pi} \int_{0}^{2 \pi} cf_1(t) g(t) + f_2(t) g(t) \; dt                                                                     \\
-                  & = \frac{c}{2 \pi} \int_{0}^{2 \pi} f_1(t) g(t) \; dt + \frac{1}{2 \pi} \int_{0}^{2 \pi} f_2(t) g(t) \; dt                               \\
-                  & = c h(f_1) + h(f_2)                                                                                       &  & \text{(by \cref{2.6.2})}
-  \end{align*}
-  and thus by \cref{2.1.2}(b) \(h \in \ls(\V, \F)\).
+	Let \(f_1, f_2 \in \V\) and let \(c \in \R\).
+	Then we have
+	\begin{align*}
+		h(cf_1 + f_2) & = \frac{1}{2 \pi} \int_{0}^{2 \pi} (cf_1 + f_2)(t) g(t) \; dt                                             &  & \by{2.6.2} \\
+		              & = \frac{1}{2 \pi} \int_{0}^{2 \pi} cf_1(t) g(t) + f_2(t) g(t) \; dt                                                       \\
+		              & = \frac{c}{2 \pi} \int_{0}^{2 \pi} f_1(t) g(t) \; dt + \frac{1}{2 \pi} \int_{0}^{2 \pi} f_2(t) g(t) \; dt                 \\
+		              & = c h(f_1) + h(f_2)                                                                                       &  & \by{2.6.2}
+	\end{align*}
+	and thus by \cref{2.1.2}(b) \(h \in \ls(\V, \F)\).
 \end{proof}
 
 \begin{eg}\label{2.6.3}
-  The trace function \(\tr : \ms{n}{n}{\F} \to \F\) is a linear functional.
+	The trace function \(\tr : \ms{n}{n}{\F} \to \F\) is a linear functional.
 \end{eg}
 
 \begin{proof}[\pf{2.6.3}]
-  By \cref{ex:1.3.6} we see that this is true.
+	By \cref{ex:1.3.6} we see that this is true.
 \end{proof}
 
 \begin{eg}\label{2.6.4}
-  Let \(\V\) be a finite-dimensional vector space over \(\F\), and let \(\beta = \set{\seq{x}{1,,n}}\) be an ordered basis for \(\V\) over \(\F\).
-  For each \(i \in \set{1, \dots, n}\), define \(f_i(x) = a_i\), where
-  \[
-    [x]_{\beta} = \begin{pmatrix}
-      a_1    \\
-      \vdots \\
-      a_n
-    \end{pmatrix}
-  \]
-  is the coordinate vector of \(x\) relative to \(\beta\).
-  Then \(f_i\) is a linear functional on \(\V\) called the \textbf{\(i\)th coordinate function with respect to the basis \(\beta\)}.
-  Note that \(f_i(x_j) = \delta_{i j}\), where \(\delta_{i j}\) is the Kronecker delta.
-  These linear functionals play an important role in the theory of dual spaces (see \cref{2.24}).
+	Let \(\V\) be a finite-dimensional vector space over \(\F\), and let \(\beta = \set{\seq{x}{1,,n}}\) be an ordered basis for \(\V\) over \(\F\).
+	For each \(i \in \set{1, \dots, n}\), define \(f_i(x) = a_i\), where
+	\[
+		[x]_{\beta} = \begin{pmatrix}
+			a_1    \\
+			\vdots \\
+			a_n
+		\end{pmatrix}
+	\]
+	is the coordinate vector of \(x\) relative to \(\beta\).
+	Then \(f_i\) is a linear functional on \(\V\) called the \textbf{\(i\)th coordinate function with respect to the basis \(\beta\)}.
+	Note that \(f_i(x_j) = \delta_{i j}\), where \(\delta_{i j}\) is the Kronecker delta.
+	These linear functionals play an important role in the theory of dual spaces (see \cref{2.24}).
 \end{eg}
 
 \begin{proof}[\pf{2.6.4}]
-  Let \(a, b \in \V\) and let \(c \in \F\).
-  By \cref{1.8} there exist some \(\seq{a}{1,,n}, \seq{b}{1,,n} \in \F\) such that
-  \[
-    a = \sum_{j = 1}^n a_j x_j \quad \text{and} \quad b = \sum_{j = 1}^n b_j x_j.
-  \]
-  Then we have
-  \begin{align*}
-    f_i(ca + b) & = f_i\pa{c \pa{\sum_{j = 1}^n a_j x_j} + \sum_{j = 1}^n b_j x_j}                               \\
-                & = f_i\pa{\sum_{j = 1}^n (c a_j + b_j) x_j}                       &  & \text{(by \cref{1.2.1})} \\
-                & = c a_i + b_i                                                    &  & \text{(by \cref{2.6.4})} \\
-                & = c f_i(a) + f_i(b)                                              &  & \text{(by \cref{2.6.4})}
-  \end{align*}
-  and thus by \cref{2.1.2}(b) \(f_i \in \ls(\V, \F)\).
+	Let \(a, b \in \V\) and let \(c \in \F\).
+	By \cref{1.8} there exist some \(\seq{a}{1,,n}, \seq{b}{1,,n} \in \F\) such that
+	\[
+		a = \sum_{j = 1}^n a_j x_j \quad \text{and} \quad b = \sum_{j = 1}^n b_j x_j.
+	\]
+	Then we have
+	\begin{align*}
+		f_i(ca + b) & = f_i\pa{c \pa{\sum_{j = 1}^n a_j x_j} + \sum_{j = 1}^n b_j x_j}                 \\
+		            & = f_i\pa{\sum_{j = 1}^n (c a_j + b_j) x_j}                       &  & \by{1.2.1} \\
+		            & = c a_i + b_i                                                    &  & \by{2.6.4} \\
+		            & = c f_i(a) + f_i(b)                                              &  & \by{2.6.4}
+	\end{align*}
+	and thus by \cref{2.1.2}(b) \(f_i \in \ls(\V, \F)\).
 \end{proof}
 
 \begin{defn}\label{2.6.5}
-  For a vector space \(\V\) over \(\F\), we define the \textbf{dual space} of \(\V\) to be the vector space \(\ls(\V, \F)\), denoted by \(\V^*\).
-  Thus \(\V^*\) is the vector space consisting of all linear functionals on \(\V\) with the operations of addition and scalar multiplication as defined in \cref{sec:2.2}.
-  Note that if \(\V\) is finite-dimensional, then by the \cref{2.4.10}
-  \[
-    \dim(\V^*) = \dim(\ls(\V, \F)) = \dim(\V) \cdot \dim(\F) = \dim(\V).
-  \]
-  Hence by \cref{2.19} \(\V\) and \(\V^*\) are isomorphic.
-  We also define the \textbf{double dual} \(\V^{**}\) of \(\V\) to be the dual of \(\V^*\).
-  In \cref{2.26}, we show, in fact, that there is a natural identification of \(\V\) and \(\V^{**}\) in the case that \(\V\) is finite-dimensional.
+	For a vector space \(\V\) over \(\F\), we define the \textbf{dual space} of \(\V\) to be the vector space \(\ls(\V, \F)\), denoted by \(\V^*\).
+	Thus \(\V^*\) is the vector space consisting of all linear functionals on \(\V\) with the operations of addition and scalar multiplication as defined in \cref{sec:2.2}.
+	Note that if \(\V\) is finite-dimensional, then by the \cref{2.4.10}
+	\[
+		\dim(\V^*) = \dim(\ls(\V, \F)) = \dim(\V) \cdot \dim(\F) = \dim(\V).
+	\]
+	Hence by \cref{2.19} \(\V\) and \(\V^*\) are isomorphic.
+	We also define the \textbf{double dual} \(\V^{**}\) of \(\V\) to be the dual of \(\V^*\).
+	In \cref{2.26}, we show, in fact, that there is a natural identification of \(\V\) and \(\V^{**}\) in the case that \(\V\) is finite-dimensional.
 \end{defn}
 
 \begin{thm}\label{2.24}
-  Suppose that \(\V\) is a finite-dimensional vector space over \(\F\) with the ordered basis \(\beta = \set{\seq{x}{1,,n}}\).
-  Let \(f_i\) (\(1 \leq i \leq n\)) be the \(i\)th coordinate function with respect to \(\beta\) as defined in \cref{2.6.4}, and let \(\beta^* = \set{\seq{f}{1,,n}}\).
-  Then \(\beta^*\) is an ordered basis for \(\V^*\), and, for any \(g \in \V^*\), we have
-  \[
-    g = \sum_{i = 1}^n g(x_i) f_i.
-  \]
+	Suppose that \(\V\) is a finite-dimensional vector space over \(\F\) with the ordered basis \(\beta = \set{\seq{x}{1,,n}}\).
+	Let \(f_i\) (\(1 \leq i \leq n\)) be the \(i\)th coordinate function with respect to \(\beta\) as defined in \cref{2.6.4}, and let \(\beta^* = \set{\seq{f}{1,,n}}\).
+	Then \(\beta^*\) is an ordered basis for \(\V^*\), and, for any \(g \in \V^*\), we have
+	\[
+		g = \sum_{i = 1}^n g(x_i) f_i.
+	\]
 \end{thm}
 
 \begin{proof}[\pf{2.24}]
-  Let \(g \in \V^*\).
-  Since \(\dim(\V^*) = n\), we need only show that
-  \[
-    g = \sum_{i = 1}^n g(x_i) f_i,
-  \]
-  from which it follows that \(\beta^*\) generates \(\V^*\), and hence is a basis by \cref{1.6.15}(a).
-  Let
-  \[
-    h = \sum_{i = 1}^n g(x_i) f_i.
-  \]
-  For \(1 \leq j \leq n\), we have
-  \begin{align*}
-    h(x_j) & = \pa{\sum_{i = 1}^n g(x_i) f_i}(x_j)                               \\
-           & = \sum_{i = 1}^n g(x_i) f_i(x_j)      &  & \text{(by \cref{2.2.5})} \\
-           & = \sum_{i = 1}^n g(x_i) \delta_{i j}  &  & \text{(by \cref{2.6.4})} \\
-           & = g(x_j).
-  \end{align*}
-  Therefore \(g = h\) by \cref{2.1.13}.
+	Let \(g \in \V^*\).
+	Since \(\dim(\V^*) = n\), we need only show that
+	\[
+		g = \sum_{i = 1}^n g(x_i) f_i,
+	\]
+	from which it follows that \(\beta^*\) generates \(\V^*\), and hence is a basis by \cref{1.6.15}(a).
+	Let
+	\[
+		h = \sum_{i = 1}^n g(x_i) f_i.
+	\]
+	For \(1 \leq j \leq n\), we have
+	\begin{align*}
+		h(x_j) & = \pa{\sum_{i = 1}^n g(x_i) f_i}(x_j)                 \\
+		       & = \sum_{i = 1}^n g(x_i) f_i(x_j)      &  & \by{2.2.5} \\
+		       & = \sum_{i = 1}^n g(x_i) \delta_{i j}  &  & \by{2.6.4} \\
+		       & = g(x_j).
+	\end{align*}
+	Therefore \(g = h\) by \cref{2.1.13}.
 \end{proof}
 
 \begin{defn}\label{2.6.6}
-  Using the notation of \cref{2.24}, we call the ordered basis \(\beta^* = \set{\seq{f}{1,,n}}\) of \(\V^*\) over \(\F\) that satisfies \(f_i(x_j) = \delta_{i j}\) (\(1 \leq i, j \leq n\)) the \textbf{dual basis} of \(\beta\).
+	Using the notation of \cref{2.24}, we call the ordered basis \(\beta^* = \set{\seq{f}{1,,n}}\) of \(\V^*\) over \(\F\) that satisfies \(f_i(x_j) = \delta_{i j}\) (\(1 \leq i, j \leq n\)) the \textbf{dual basis} of \(\beta\).
 \end{defn}
 
 \begin{note}
-  We now assume that \(\V\) and \(\W\) are finite-dimensional vector spaces over \(\F\) with ordered bases \(\beta\) and \(\gamma\) over \(\F\), respectively.
-  In \cref{sec:2.4}, we proved that there is a one-to-one correspondence between linear transformations \(\T : \V \to \W\) and \(m \times n\) matrices (over \(\F\)) via the correspondence \(\T \leftrightarrow [\T]_{\beta}^{\gamma}\).
-  For a matrix of the form \(A = [\T]_{\beta}^{\gamma}\), the question arises as to whether or not there exists a linear transformation \(\U\) associated with \(\T\) in some natural way such that \(\U\) may be represented in some basis as \(\tp{A}\).
-  Of course, if \(m \neq n\), it would be impossible for \(\U\) to be a linear transformation from \(\V\) into \(\W\).
-  We now answer this question by applying what we have already learned about dual spaces.
+	We now assume that \(\V\) and \(\W\) are finite-dimensional vector spaces over \(\F\) with ordered bases \(\beta\) and \(\gamma\) over \(\F\), respectively.
+	In \cref{sec:2.4}, we proved that there is a one-to-one correspondence between linear transformations \(\T : \V \to \W\) and \(m \times n\) matrices (over \(\F\)) via the correspondence \(\T \leftrightarrow [\T]_{\beta}^{\gamma}\).
+	For a matrix of the form \(A = [\T]_{\beta}^{\gamma}\), the question arises as to whether or not there exists a linear transformation \(\U\) associated with \(\T\) in some natural way such that \(\U\) may be represented in some basis as \(\tp{A}\).
+	Of course, if \(m \neq n\), it would be impossible for \(\U\) to be a linear transformation from \(\V\) into \(\W\).
+	We now answer this question by applying what we have already learned about dual spaces.
 \end{note}
 
 \begin{thm}\label{2.25}
-  Let \(\V\) and \(\W\) be finite-dimensional vector spaces over \(\F\) with ordered bases \(\beta\) and \(\gamma\), respectively.
-  For any \(\T \in \ls(\V, \W)\), the mapping \(\tp{\T} : \W^* \to \V^*\) defined by \(\tp{\T}(g) = g \T\) for all \(g \in \W^*\) is a linear transformation with the property that \([\tp{\T}]_{\gamma^*}^{\beta^*} = \tp{\pa{[\T]_{\beta}^{\gamma}}}\).
+	Let \(\V\) and \(\W\) be finite-dimensional vector spaces over \(\F\) with ordered bases \(\beta\) and \(\gamma\), respectively.
+	For any \(\T \in \ls(\V, \W)\), the mapping \(\tp{\T} : \W^* \to \V^*\) defined by \(\tp{\T}(g) = g \T\) for all \(g \in \W^*\) is a linear transformation with the property that \([\tp{\T}]_{\gamma^*}^{\beta^*} = \tp{\pa{[\T]_{\beta}^{\gamma}}}\).
 \end{thm}
 
 \begin{proof}[\pf{2.25}]
-  For \(g \in \W^*\), it is clear that \(\tp{\T}(g) = g \T\) is a linear functional on \(\V\) and hence is in \(\V^*\) (see \cref{2.9}).
-  Thus \(\tp{\T}\) maps \(\W^*\) into \(\V^*\).
-  Now we show that \(\tp{\T} \in \ls(\W^*, \V^*)\).
-  Let \(x, y \in \W^*\) and let \(c \in \F\).
-  Since
-  \begin{align*}
-    \tp{\T}(cx + y) & = (cx + y) \T                &  & \text{(by \cref{2.25})}  \\
-                    & = c x \T + y \T              &  & \text{(by \cref{2.2.5})} \\
-                    & = c \tp{\T}(x) + \tp{\T}(y), &  & \text{(by \cref{2.25})}
-  \end{align*}
-  by \cref{2.1.2} we see that \(\tp{\T} \in \ls(\W^*, \V^*)\).
+	For \(g \in \W^*\), it is clear that \(\tp{\T}(g) = g \T\) is a linear functional on \(\V\) and hence is in \(\V^*\) (see \cref{2.9}).
+	Thus \(\tp{\T}\) maps \(\W^*\) into \(\V^*\).
+	Now we show that \(\tp{\T} \in \ls(\W^*, \V^*)\).
+	Let \(x, y \in \W^*\) and let \(c \in \F\).
+	Since
+	\begin{align*}
+		\tp{\T}(cx + y) & = (cx + y) \T                &  & \by{2.25}  \\
+		                & = c x \T + y \T              &  & \by{2.2.5} \\
+		                & = c \tp{\T}(x) + \tp{\T}(y), &  & \by{2.25}
+	\end{align*}
+	by \cref{2.1.2} we see that \(\tp{\T} \in \ls(\W^*, \V^*)\).
 
-  To complete the proof, let \(\beta = \set{\seq{x}{1,,n}}\) and \(\gamma = \set{\seq{y}{1,,m}}\) with dual bases \(\beta^* = \set{\seq{f}{1,,n}}\) and \(\gamma^* = \set{\seq{g}{1,,m}}\), respectively.
-  For convenience, let \(A = [\T]_{\beta}^{\gamma}\).
-  To find the \(j\)th column of \([\tp{\T}]_{\gamma^*}^{\beta^*}\), we begin by expressing \(\tp{\T}(g_j)\) as a linear combination of the vectors of \(\beta^*\).
-  By \cref{2.24} we have
-  \[
-    \tp{\T}(g_j) = g_j \T = \sum_{i = 1}^n (g_j \T)(x_i) f_i.
-  \]
-  So the row \(i\), column \(j\) entry of \([\tp{\T}]_{\gamma^*}^{\beta^*}\) is
-  \begin{align*}
-    (g_j \T)(x_i) & = g_j(\T(x_i))                                                         \\
-                  & = g_j \pa{\sum_{k = 1}^m A_{k i} y_k} &  & \text{(by \cref{2.2.4})}    \\
-                  & = \sum_{k = 1}^m A_{k i} g_j(y_k)     &  & \text{(by \cref{2.1.2}(d))} \\
-                  & = \sum_{k = 1}^m A_{k i} \delta_{j k} &  & \text{(by \cref{2.6.4})}    \\
-                  & = A_{j i}.
-  \end{align*}
-  Hence \([\tp{\T}]_{\gamma^*}^{\beta^*} = \tp{A}\).
+	To complete the proof, let \(\beta = \set{\seq{x}{1,,n}}\) and \(\gamma = \set{\seq{y}{1,,m}}\) with dual bases \(\beta^* = \set{\seq{f}{1,,n}}\) and \(\gamma^* = \set{\seq{g}{1,,m}}\), respectively.
+	For convenience, let \(A = [\T]_{\beta}^{\gamma}\).
+	To find the \(j\)th column of \([\tp{\T}]_{\gamma^*}^{\beta^*}\), we begin by expressing \(\tp{\T}(g_j)\) as a linear combination of the vectors of \(\beta^*\).
+	By \cref{2.24} we have
+	\[
+		\tp{\T}(g_j) = g_j \T = \sum_{i = 1}^n (g_j \T)(x_i) f_i.
+	\]
+	So the row \(i\), column \(j\) entry of \([\tp{\T}]_{\gamma^*}^{\beta^*}\) is
+	\begin{align*}
+		(g_j \T)(x_i) & = g_j(\T(x_i))                                           \\
+		              & = g_j \pa{\sum_{k = 1}^m A_{k i} y_k} &  & \by{2.2.4}    \\
+		              & = \sum_{k = 1}^m A_{k i} g_j(y_k)     &  & \by{2.1.2}[d] \\
+		              & = \sum_{k = 1}^m A_{k i} \delta_{j k} &  & \by{2.6.4}    \\
+		              & = A_{j i}.
+	\end{align*}
+	Hence \([\tp{\T}]_{\gamma^*}^{\beta^*} = \tp{A}\).
 \end{proof}
 
 \begin{note}
-  The linear transformation \(\tp{\T}\) defined in \cref{2.25} is called the \textbf{transpose} of \(\T\).
-  It is clear that \(\tp{\T}\) is the unique linear transformation \(\U\) such that \([\U]_{\gamma^*}^{\beta^*} = \tp{\pa{[\T]_{\beta}^{\gamma}}}\)
-  (see \cref{2.1.13}).
+	The linear transformation \(\tp{\T}\) defined in \cref{2.25} is called the \textbf{transpose} of \(\T\).
+	It is clear that \(\tp{\T}\) is the unique linear transformation \(\U\) such that \([\U]_{\gamma^*}^{\beta^*} = \tp{\pa{[\T]_{\beta}^{\gamma}}}\)
+	(see \cref{2.1.13}).
 \end{note}
 
 \begin{note}
-  We now concern ourselves with demonstrating that any finite-dimensional vector space \(\V\) over \(\F\) \textbf{can be identified} in a natural way with its double dual \(\V^{**}\).
-  There is, in fact, an isomorphism between \(\V\) and \(\V^{**}\) that does not depend on any choice of bases for the two vector spaces.
+	We now concern ourselves with demonstrating that any finite-dimensional vector space \(\V\) over \(\F\) \textbf{can be identified} in a natural way with its double dual \(\V^{**}\).
+	There is, in fact, an isomorphism between \(\V\) and \(\V^{**}\) that does not depend on any choice of bases for the two vector spaces.
 \end{note}
 
 \begin{defn}\label{2.6.7}
-  For a vector \(x \in \V\), we define \(\widehat{x} : \V^* \to \F\) by \(\widehat{x}(f) = f(x)\) for every \(f \in \V^*\).
-  It is easy to verify that \(\widehat{x}\) is a linear functional on \(\V^*\), so \(\widehat{x} \in \V^{**}\).
-  The correspondence \(x \leftrightarrow \widehat{x}\) allows us to define the desired isomorphism between \(\V\) and \(\V^{**}\).
+	For a vector \(x \in \V\), we define \(\widehat{x} : \V^* \to \F\) by \(\widehat{x}(f) = f(x)\) for every \(f \in \V^*\).
+	It is easy to verify that \(\widehat{x}\) is a linear functional on \(\V^*\), so \(\widehat{x} \in \V^{**}\).
+	The correspondence \(x \leftrightarrow \widehat{x}\) allows us to define the desired isomorphism between \(\V\) and \(\V^{**}\).
 \end{defn}
 
 \begin{lem}\label{2.6.8}
-  Let \(\V\) be a finite-dimensional vector space over \(\F\), and let \(x \in \V\).
-  If \(\widehat{x}(f) = 0\) for all \(f \in \V^*\), then \(x = \zv\).
+	Let \(\V\) be a finite-dimensional vector space over \(\F\), and let \(x \in \V\).
+	If \(\widehat{x}(f) = 0\) for all \(f \in \V^*\), then \(x = \zv\).
 \end{lem}
 
 \begin{proof}[\pf{2.6.8}]
-  Let \(x \neq \zv\).
-  We show that there exists \(f \in \V^*\) such that \(\widehat{x}(f) \neq 0\).
-  Choose an ordered basis \(\beta = \set{\seq{x}{1,,n}}\) for \(\V\) over \(\F\) such that \(x_1 = x\).
-  Let \(\set{\seq{f}{1,,n}}\) be the dual basis of \(\beta\).
-  Then \(f_1(x_1) = 1 \neq 0\).
-  Let \(f = f_1\).
+	Let \(x \neq \zv\).
+	We show that there exists \(f \in \V^*\) such that \(\widehat{x}(f) \neq 0\).
+	Choose an ordered basis \(\beta = \set{\seq{x}{1,,n}}\) for \(\V\) over \(\F\) such that \(x_1 = x\).
+	Let \(\set{\seq{f}{1,,n}}\) be the dual basis of \(\beta\).
+	Then \(f_1(x_1) = 1 \neq 0\).
+	Let \(f = f_1\).
 \end{proof}
 
 \begin{thm}\label{2.26}
-  Let \(\V\) be a finite-dimensional vector space over \(\F\), and define \(\psi : \V \to \V^{**}\) by \(\psi(x) = \widehat{x}\).
-  Then \(\psi\) is an isomorphism.
+	Let \(\V\) be a finite-dimensional vector space over \(\F\), and define \(\psi : \V \to \V^{**}\) by \(\psi(x) = \widehat{x}\).
+	Then \(\psi\) is an isomorphism.
 \end{thm}
 
 \begin{proof}[\pf{2.26}]
-  \begin{description}
-    \item[\(\psi\) is linear:]
-      Let \(x, y \in \V\) and \(c \in \F\).
-      For \(f \in \V^*\), we have
-      \begin{align*}
-        \psi(cx + y)(f) & = f(cx + y)                         &  & \text{(by \cref{2.6.7})} \\
-                        & = cf(x) + f(y)                      &  & \text{(by \cref{2.6.5})} \\
-                        & = c \widehat{x}(f) + \widehat{y}(f) &  & \text{(by \cref{2.6.7})} \\
-                        & = (c \widehat{x} + \widehat{y})(f). &  & \text{(by \cref{2.2.5})}
-      \end{align*}
-      Therefore
-      \[
-        \psi(cx + y) = c \widehat{x} + \widehat{y} = c \psi(x) + \psi(y).
-      \]
-    \item[\(\psi\) is one-to-one:]
-      Suppose that \(\psi(x)\) is the zero functional on \(\V^*\) for some \(x \in \V\).
-      Then \(\widehat{x}(f) = 0\) for every \(f \in \V^*\).
-      By \cref{2.6.8} we conclude that \(x = \zv\).
-      Since \(\ns{\psi} = \set{\zv}\) and \(\psi \in \ls(\V, \V^{**})\), by \cref{2.4} we know that \(\psi\) is one-to-one.
-    \item[\(\psi\) is an isomorphism:]
-      Since \(\psi \in \ls(\V, \V^{**})\), \(\psi\) is one-to-one and \(\dim(\V) = \dim(\V^{**})\), by \cref{2.5} and \cref{2.4.8} we know that \(\psi\) is isomorphism.
-  \end{description}
+	\begin{description}
+		\item[\(\psi\) is linear:]
+			Let \(x, y \in \V\) and \(c \in \F\).
+			For \(f \in \V^*\), we have
+			\begin{align*}
+				\psi(cx + y)(f) & = f(cx + y)                         &  & \by{2.6.7} \\
+				                & = cf(x) + f(y)                      &  & \by{2.6.5} \\
+				                & = c \widehat{x}(f) + \widehat{y}(f) &  & \by{2.6.7} \\
+				                & = (c \widehat{x} + \widehat{y})(f). &  & \by{2.2.5}
+			\end{align*}
+			Therefore
+			\[
+				\psi(cx + y) = c \widehat{x} + \widehat{y} = c \psi(x) + \psi(y).
+			\]
+		\item[\(\psi\) is one-to-one:]
+			Suppose that \(\psi(x)\) is the zero functional on \(\V^*\) for some \(x \in \V\).
+			Then \(\widehat{x}(f) = 0\) for every \(f \in \V^*\).
+			By \cref{2.6.8} we conclude that \(x = \zv\).
+			Since \(\ns{\psi} = \set{\zv}\) and \(\psi \in \ls(\V, \V^{**})\), by \cref{2.4} we know that \(\psi\) is one-to-one.
+		\item[\(\psi\) is an isomorphism:]
+			Since \(\psi \in \ls(\V, \V^{**})\), \(\psi\) is one-to-one and \(\dim(\V) = \dim(\V^{**})\), by \cref{2.5} and \cref{2.4.8} we know that \(\psi\) is isomorphism.
+	\end{description}
 \end{proof}
 
 \begin{cor}\label{2.6.9}
-  Let \(\V\) be a finite-dimensional vector space over \(\F\) with dual space \(\V^*\).
-  Then every ordered basis for \(\V^*\) over \(\F\) is the dual basis for some basis for \(\V\) over \(\F\).
+	Let \(\V\) be a finite-dimensional vector space over \(\F\) with dual space \(\V^*\).
+	Then every ordered basis for \(\V^*\) over \(\F\) is the dual basis for some basis for \(\V\) over \(\F\).
 \end{cor}
 
 \begin{proof}[\pf{2.6.9}]
-  Let \(\set{\seq{f}{1,,n}}\) be an ordered basis for \(\V^*\) over \(\F\).
-  We may combine \cref{2.24,2.26} to conclude that for this basis for \(\V^*\) over \(\F\), there exists a dual basis \(\set{\seq{\widehat{x}}{1,,n}}\) in \(\V^{**}\), that is,
-  \begin{align*}
-    \delta_{i j} & = \widehat{x}_i(f_j) &  & \text{(by \cref{2.24,2.26})} \\
-                 & = f_j(x_i)           &  & \text{(by \cref{2.6.7})}
-  \end{align*}
-  for all \(i\) and \(j\).
-  Thus by \cref{2.24} \(\set{\seq{f}{1,,n}}\) is the dual basis of \(\set{\seq{x}{1,,n}}\).
+	Let \(\set{\seq{f}{1,,n}}\) be an ordered basis for \(\V^*\) over \(\F\).
+	We may combine \cref{2.24,2.26} to conclude that for this basis for \(\V^*\) over \(\F\), there exists a dual basis \(\set{\seq{\widehat{x}}{1,,n}}\) in \(\V^{**}\), that is,
+	\begin{align*}
+		\delta_{i j} & = \widehat{x}_i(f_j) &  & \by{2.24,2.26} \\
+		             & = f_j(x_i)           &  & \by{2.6.7}
+	\end{align*}
+	for all \(i\) and \(j\).
+	Thus by \cref{2.24} \(\set{\seq{f}{1,,n}}\) is the dual basis of \(\set{\seq{x}{1,,n}}\).
 \end{proof}
 
 \begin{note}
-  Although many of the ideas of \cref{sec:2.6}, (e.g., the existence of a dual space), can be extended to the case where \(\V\) is not finite-dimensional, only a finite-dimensional vector space is isomorphic to its double dual via the map \(x \mapsto \widehat{x}\).
-  In fact, for infinite-dimensional vector spaces, no two of \(\V\), \(\V^*\), and \(\V^{**}\) are isomorphic.
+	Although many of the ideas of \cref{sec:2.6}, (e.g., the existence of a dual space), can be extended to the case where \(\V\) is not finite-dimensional, only a finite-dimensional vector space is isomorphic to its double dual via the map \(x \mapsto \widehat{x}\).
+	In fact, for infinite-dimensional vector spaces, no two of \(\V\), \(\V^*\), and \(\V^{**}\) are isomorphic.
 \end{note}
 
 \exercisesection
 
 \setcounter{ex}{7}
 \begin{ex}\label{ex:2.6.8}
-  Show that every plane through the origin in \(\R^3\) may be identified with the null space of a vector in \((\R^3)^*\).
-  State an analogous result for \(\R^2\).
+	Show that every plane through the origin in \(\R^3\) may be identified with the null space of a vector in \((\R^3)^*\).
+	State an analogous result for \(\R^2\).
 \end{ex}
 
 \begin{proof}[\pf{ex:2.6.8}]
-  First we prove the statement in the case of \(\R^3\).
-  Let \((a, b, c) \in \R^3\) and let \(P\) be the following plane through the origin
-  \[
-    P = \set{(x, y, z) \in \R^3 : ax + by + cz = 0}.
-  \]
-  Let \(\T : \R^3 \to \R\) be the function \(\T(x, y, z) = ax + by + cz\).
-  Clearly \(\T \in (\R^3)^*\).
-  Then we have
-  \begin{align*}
-    \ns{\T} & = \set{(x, y, z) \in \R^3 : \T(x, y, z) = 0}       &  & \text{(by \cref{2.1.10})} \\
-            & = \set{(x, y, z) \in \R^3 : ax + by + cz = 0} = P.
-  \end{align*}
+	First we prove the statement in the case of \(\R^3\).
+	Let \((a, b, c) \in \R^3\) and let \(P\) be the following plane through the origin
+	\[
+		P = \set{(x, y, z) \in \R^3 : ax + by + cz = 0}.
+	\]
+	Let \(\T : \R^3 \to \R\) be the function \(\T(x, y, z) = ax + by + cz\).
+	Clearly \(\T \in (\R^3)^*\).
+	Then we have
+	\begin{align*}
+		\ns{\T} & = \set{(x, y, z) \in \R^3 : \T(x, y, z) = 0}       &  & \by{2.1.10} \\
+		        & = \set{(x, y, z) \in \R^3 : ax + by + cz = 0} = P.
+	\end{align*}
 
-  Now we prove the statement in the case of \(\R^2\).
-  Let \((a, b) \in \R^2\) and let \(P\) be the following plane through the origin
-  \[
-    P = \set{(x, y) \in \R^2 : ax + by = 0}.
-  \]
-  Let \(\T : \R^2 \to \R\) be the function \(\T(x, y) = ax + by\).
-  Clearly \(\T \in (\R^2)^*\).
-  Then we have
-  \begin{align*}
-    \ns{\T} & = \set{(x, y) \in \R^2 : \T(x, y) = 0}     &  & \text{(by \cref{2.1.10})} \\
-            & = \set{(x, y) \in \R^2 : ax + by = 0} = P.
-  \end{align*}
+	Now we prove the statement in the case of \(\R^2\).
+	Let \((a, b) \in \R^2\) and let \(P\) be the following plane through the origin
+	\[
+		P = \set{(x, y) \in \R^2 : ax + by = 0}.
+	\]
+	Let \(\T : \R^2 \to \R\) be the function \(\T(x, y) = ax + by\).
+	Clearly \(\T \in (\R^2)^*\).
+	Then we have
+	\begin{align*}
+		\ns{\T} & = \set{(x, y) \in \R^2 : \T(x, y) = 0}     &  & \by{2.1.10} \\
+		        & = \set{(x, y) \in \R^2 : ax + by = 0} = P.
+	\end{align*}
 \end{proof}
 
 \begin{ex}\label{ex:2.6.9}
-  Prove that a function \(\T : \vs{F}^n \to \vs{F}^m\) is linear iff there exist \(\seq{f}{1,,m} \in (\vs{F}^n)^*\) such that \(\T(x) = (f_1(x), f_2(x), \dots, f_m(x))\) for all \(x \in \vs{F}^n\).
+	Prove that a function \(\T : \vs{F}^n \to \vs{F}^m\) is linear iff there exist \(\seq{f}{1,,m} \in (\vs{F}^n)^*\) such that \(\T(x) = (f_1(x), f_2(x), \dots, f_m(x))\) for all \(x \in \vs{F}^n\).
 \end{ex}
 
 \begin{proof}[\pf{ex:2.6.9}]
-  First suppose that \(\T \in \ls(\vs{F}^n, \vs{F}^m)\).
-  Let \(\gamma\) be the standard ordered basis for \(\vs{F}^m\) over \(\F\) and let \(\set{\seq{g}{1,,m}}\) be the dual basis of \(\gamma\).
-  For each \(i \in \set{1, \dots, m}\), we define \(f_i : \vs{F}^n \to \F\) as follow:
-  \[
-    f_i = \tp{\T}(g_i) = g_i \T.
-  \]
-  By \cref{2.9,2.24} we see that \(f_i \in \ls(\vs{F}^n, \F)\).
-  Thus by \cref{2.6.1} \(f_i \in (\vs{F}^n)^*\) and we have
-  \begin{align*}
-    \forall x \in \vs{F}^n, \T(x) & = [\T(x)]_{\gamma}                &  & \text{(by \cref{2.2.3})} \\
-                                  & = \begin{pmatrix}
-                                        g_1(\T(x)) & \cdots & g_m(\T(x))
-                                      \end{pmatrix} &  & \text{(by \cref{2.6.4})}                   \\
-                                  & = \begin{pmatrix}
-                                        f_1(x) & \cdots & f_m(x)
-                                      \end{pmatrix}.
-  \end{align*}
+	First suppose that \(\T \in \ls(\vs{F}^n, \vs{F}^m)\).
+	Let \(\gamma\) be the standard ordered basis for \(\vs{F}^m\) over \(\F\) and let \(\set{\seq{g}{1,,m}}\) be the dual basis of \(\gamma\).
+	For each \(i \in \set{1, \dots, m}\), we define \(f_i : \vs{F}^n \to \F\) as follow:
+	\[
+		f_i = \tp{\T}(g_i) = g_i \T.
+	\]
+	By \cref{2.9,2.24} we see that \(f_i \in \ls(\vs{F}^n, \F)\).
+	Thus by \cref{2.6.1} \(f_i \in (\vs{F}^n)^*\) and we have
+	\begin{align*}
+		\forall x \in \vs{F}^n, \T(x) & = [\T(x)]_{\gamma}                &  & \by{2.2.3} \\
+		                              & = \begin{pmatrix}
+			                                  g_1(\T(x)) & \cdots & g_m(\T(x))
+		                                  \end{pmatrix} &  & \by{2.6.4}                \\
+		                              & = \begin{pmatrix}
+			                                  f_1(x) & \cdots & f_m(x)
+		                                  \end{pmatrix}.
+	\end{align*}
 
-  Now suppose that \(\T : \vs{F}^n \to \vs{F}^m\) is a function and there exist \(\seq{f}{1,,m} \in (\vs{F}^n)^*\) such that \(\T(x) = (f_1(x), \dots, f_m(x))\) for all \(x \in \vs{F}^n\).
-  Let \(x, y \in \vs{F}^n\) and let \(c \in \F\).
-  Then we have
-  \begin{align*}
-    \T(cx + y) & = \begin{pmatrix}
-                     f_1(cx + y) & \cdots & f_m(cx + y)
-                   \end{pmatrix}             \\
-               & = \begin{pmatrix}
-                     c f_1(x) + f_1(y) & \cdots & c f_m(x) + f_m(y)
-                   \end{pmatrix} &  & \text{(by \cref{2.1.2}(b))} \\
-               & = c \T(x) + \T(y)
-  \end{align*}
-  and thus by \cref{2.1.2}(b) \(\T \in \ls(\vs{F}^n, \vs{F}^m)\).
+	Now suppose that \(\T : \vs{F}^n \to \vs{F}^m\) is a function and there exist \(\seq{f}{1,,m} \in (\vs{F}^n)^*\) such that \(\T(x) = (f_1(x), \dots, f_m(x))\) for all \(x \in \vs{F}^n\).
+	Let \(x, y \in \vs{F}^n\) and let \(c \in \F\).
+	Then we have
+	\begin{align*}
+		\T(cx + y) & = \begin{pmatrix}
+			               f_1(cx + y) & \cdots & f_m(cx + y)
+		               \end{pmatrix}             \\
+		           & = \begin{pmatrix}
+			               c f_1(x) + f_1(y) & \cdots & c f_m(x) + f_m(y)
+		               \end{pmatrix} &  & \by{2.1.2}[b] \\
+		           & = c \T(x) + \T(y)
+	\end{align*}
+	and thus by \cref{2.1.2}(b) \(\T \in \ls(\vs{F}^n, \vs{F}^m)\).
 \end{proof}
 
 \begin{ex}\label{ex:2.6.10}
-  Let \(\seq{c}{0,,n}\) be distinct scalars in \(\F\).
-  \begin{enumerate}
-    \item For \(0 \leq i \leq n\), define \(f_i \in (\ps[n]{\F})^*\) by \(f_i(p) = p(c_i)\).
-          Prove that \(\set{\seq{f}{0,,n}}\) is a basis for \((\ps[n]{\F})^*\).
-    \item Use \cref{2.6.9} and (a) to show that there exist unique polynomials \(\seq{p}{0,,n}\) such that \(p_i(c_j) = \delta_{i j}\) for \(0 \leq i \leq n\).
-          These polynomials are the Lagrange polynomials defined in \cref{1.6.20}.
-    \item For any scalars \(\seq{a}{0,,n} \in \F\) (not necessarily distinct), deduce that there exists a unique polynomial \(q(x)\) of degree at most \(n\) such that \(q(c_i) = a_i\) for \(0 \leq i \leq n\).
-          In fact,
-          \[
-            q(x) = \sum_{i = 0}^n a_i p_i(x).
-          \]
-    \item Deduce the Lagrange interpolation formula:
-          \[
-            p(x) = \sum_{i = 0}^n p(c_i) p_i(x)
-          \]
-          for any \(p \in \ps[n]{\F}\).
-    \item Prove that
-          \[
-            \int_a^b p(t) \; dt = \sum_{i = 0}^n p(c_i) d_i,
-          \]
-          where
-          \[
-            d_i = \int_a^b p_i(t) \; dt.
-          \]
-          Suppose now that
-          \[
-            c_i = a + \frac{i (b - a)}{n} \quad \text{for } i \in \set{0, \dots, n}.
-          \]
-          For \(n = 1\), the preceding result yields the trapezoidal rule for evaluating the definite integral of a polynomial.
-          For \(n = 2\), this result yields Simpson's rule for evaluating the definite integral of a polynomial.
-  \end{enumerate}
+	Let \(\seq{c}{0,,n}\) be distinct scalars in \(\F\).
+	\begin{enumerate}
+		\item For \(0 \leq i \leq n\), define \(f_i \in (\ps[n]{\F})^*\) by \(f_i(p) = p(c_i)\).
+		      Prove that \(\set{\seq{f}{0,,n}}\) is a basis for \((\ps[n]{\F})^*\).
+		\item Use \cref{2.6.9} and (a) to show that there exist unique polynomials \(\seq{p}{0,,n}\) such that \(p_i(c_j) = \delta_{i j}\) for \(0 \leq i \leq n\).
+		      These polynomials are the Lagrange polynomials defined in \cref{1.6.20}.
+		\item For any scalars \(\seq{a}{0,,n} \in \F\) (not necessarily distinct), deduce that there exists a unique polynomial \(q(x)\) of degree at most \(n\) such that \(q(c_i) = a_i\) for \(0 \leq i \leq n\).
+		      In fact,
+		      \[
+			      q(x) = \sum_{i = 0}^n a_i p_i(x).
+		      \]
+		\item Deduce the Lagrange interpolation formula:
+		      \[
+			      p(x) = \sum_{i = 0}^n p(c_i) p_i(x)
+		      \]
+		      for any \(p \in \ps[n]{\F}\).
+		\item Prove that
+		      \[
+			      \int_a^b p(t) \; dt = \sum_{i = 0}^n p(c_i) d_i,
+		      \]
+		      where
+		      \[
+			      d_i = \int_a^b p_i(t) \; dt.
+		      \]
+		      Suppose now that
+		      \[
+			      c_i = a + \frac{i (b - a)}{n} \quad \text{for } i \in \set{0, \dots, n}.
+		      \]
+		      For \(n = 1\), the preceding result yields the trapezoidal rule for evaluating the definite integral of a polynomial.
+		      For \(n = 2\), this result yields Simpson's rule for evaluating the definite integral of a polynomial.
+	\end{enumerate}
 \end{ex}
 
 \begin{proof}[\pf{ex:2.6.10}(a)]
-  Let \(\seq{a}{0,,n} \in \F\) such that
-  \[
-    \sum_{i = 0}^n a_i f_i = \zv.
-  \]
-  For each \(j \in \set{0, \dots, n}\), we define \(p_j \in \ps[n]{\F}\) as follow:
-  \[
-    \forall x \in \F, p_j(x) = \prod_{\substack{i = 0 \\ i \neq j}}^n (x - c_i).
-  \]
-  Then we have
-  \begin{align*}
-             & p_j(c_i) \neq 0 \iff j = i                                                                                                    \\
-    \implies & \forall i \in \set{0, \dots, n}, \pa{\sum_{i = 0}^n a_i f_i}(p_j) = \sum_{i = 0}^n a_i f_i(p_j) &  & \text{(by \cref{2.2.5})} \\
-             & = \sum_{i = 0}^n a_i p_j(c_i) = a_j p_j(c_j) = 0                                                                              \\
-    \implies & \forall i \in \set{0, \dots, n}, a_j = 0.                                                       &  & (p_j(c_j) \neq 0)
-  \end{align*}
-  Thus by \cref{1.5.3} \(\set{\seq{f}{0,,n}}\) is linearly independent.
-  Since
-  \begin{align*}
-    \dim((\ps[n]{\F})^*) & = \dim(\ls(\ps[n]{\F}, \F))       &  & \text{(by \cref{2.6.5})}  \\
-                         & = \dim(\ps[n]{\F}) \cdot \dim(\F) &  & \text{(by \cref{2.4.10})} \\
-                         & = n + 1                           &  & \text{(by \cref{1.6.12})} \\
-                         & = \#(\set{\seq{f}{0,,n}}),
-  \end{align*}
-  by \cref{1.6.15}(b) we know that \(\set{\seq{f}{0,,n}}\) is a basis for \((\ps[n]{\F})^*\).
+	Let \(\seq{a}{0,,n} \in \F\) such that
+	\[
+		\sum_{i = 0}^n a_i f_i = \zv.
+	\]
+	For each \(j \in \set{0, \dots, n}\), we define \(p_j \in \ps[n]{\F}\) as follow:
+	\[
+		\forall x \in \F, p_j(x) = \prod_{\substack{i = 0 \\ i \neq j}}^n (x - c_i).
+	\]
+	Then we have
+	\begin{align*}
+		         & p_j(c_i) \neq 0 \iff j = i                                                                                             \\
+		\implies & \forall i \in \set{0, \dots, n}, \pa{\sum_{i = 0}^n a_i f_i}(p_j) = \sum_{i = 0}^n a_i f_i(p_j) &  & \by{2.2.5}        \\
+		         & = \sum_{i = 0}^n a_i p_j(c_i) = a_j p_j(c_j) = 0                                                                       \\
+		\implies & \forall i \in \set{0, \dots, n}, a_j = 0.                                                       &  & (p_j(c_j) \neq 0)
+	\end{align*}
+	Thus by \cref{1.5.3} \(\set{\seq{f}{0,,n}}\) is linearly independent.
+	Since
+	\begin{align*}
+		\dim((\ps[n]{\F})^*) & = \dim(\ls(\ps[n]{\F}, \F))       &  & \by{2.6.5}  \\
+		                     & = \dim(\ps[n]{\F}) \cdot \dim(\F) &  & \by{2.4.10} \\
+		                     & = n + 1                           &  & \by{1.6.12} \\
+		                     & = \#(\set{\seq{f}{0,,n}}),
+	\end{align*}
+	by \cref{1.6.15}(b) we know that \(\set{\seq{f}{0,,n}}\) is a basis for \((\ps[n]{\F})^*\).
 \end{proof}
 
 \begin{proof}[\pf{ex:2.6.10}(b)]
-  By \cref{2.6.9} there exists a set \(\beta = \set{\seq{p}{0,,n}}\) such that \(\beta\) is an ordered basis for \(\ps[n]{\F}\) over \(\F\) and the set \(\beta^* = \set{\seq{f}{0,,n}}\) defined in \cref{ex:2.6.10}(a) is the dual basis of \(\beta\).
-  Then we have
-  \begin{align*}
-             & \forall i, j \in \set{0, \dots, n}, f_j(p_i) = \delta_{j i} = \delta_{i j} &  & \text{(by \cref{2.6.6})}        \\
-    \implies & \forall i, j \in \set{0, \dots, n}, p_i(c_j) = \delta_{i j}.               &  & \text{(by \cref{ex:2.6.10}(a))}
-  \end{align*}
-  Now we show that \(\beta\) is unique.
-  Suppose for sake of contradiction that there exists a set \(\gamma = \set{\seq{q}{0,,n}}\) such that \(\beta \neq \gamma\), \(q_i(c_j) = \delta_{i j}\) for \(i \in \set{0, \dots, n}\), \(\gamma\) is an ordered basis for \(\ps[n]{\F}\) over \(\F\) and \(\beta^*\) is also the dual basis for \(\gamma\).
-  Since \(q_0 \in \ps[n]{\F}\), by \cref{1.6.1} we know that there exist some \(\seq{a}{0,,n} \in \F\) such that
-  \[
-    q_0 = \sum_{i = 0}^n a_i p_i.
-  \]
-  But
-  \begin{align*}
-    \forall j \in \set{0, \dots, n}, q_0(c_j) & = \delta_{0 j}                                                        \\
-                                              & = \pa{\sum_{i = 0}^n a_i p_i}(c_j) &  & \text{(by \cref{2.2.5})}      \\
-                                              & = \sum_{i = 0}^n a_i p_i(c_j)                                         \\
-                                              & = \sum_{i = 0}^n a_i \delta_{i j}  &  & \text{(from the proof above)} \\
-                                              & = a_j
-  \end{align*}
-  implies \(a_0 = 1\) and \(a_j = 0\) for all \(j \in \set{0, \dots, n} \setminus \set{0}\).
-  Thus we have \(q_0 = p_0\).
-  Using similar argument we see that \(q_i = p_i\) for all \(i \in \set{0, \dots, n}\), a contradiction.
-  Thus \(\beta\) is unique.
+	By \cref{2.6.9} there exists a set \(\beta = \set{\seq{p}{0,,n}}\) such that \(\beta\) is an ordered basis for \(\ps[n]{\F}\) over \(\F\) and the set \(\beta^* = \set{\seq{f}{0,,n}}\) defined in \cref{ex:2.6.10}(a) is the dual basis of \(\beta\).
+	Then we have
+	\begin{align*}
+		         & \forall i, j \in \set{0, \dots, n}, f_j(p_i) = \delta_{j i} = \delta_{i j} &  & \by{2.6.6}        \\
+		\implies & \forall i, j \in \set{0, \dots, n}, p_i(c_j) = \delta_{i j}.               &  & \by{ex:2.6.10}[a]
+	\end{align*}
+	Now we show that \(\beta\) is unique.
+	Suppose for sake of contradiction that there exists a set \(\gamma = \set{\seq{q}{0,,n}}\) such that \(\beta \neq \gamma\), \(q_i(c_j) = \delta_{i j}\) for \(i \in \set{0, \dots, n}\), \(\gamma\) is an ordered basis for \(\ps[n]{\F}\) over \(\F\) and \(\beta^*\) is also the dual basis for \(\gamma\).
+	Since \(q_0 \in \ps[n]{\F}\), by \cref{1.6.1} we know that there exist some \(\seq{a}{0,,n} \in \F\) such that
+	\[
+		q_0 = \sum_{i = 0}^n a_i p_i.
+	\]
+	But
+	\begin{align*}
+		\forall j \in \set{0, \dots, n}, q_0(c_j) & = \delta_{0 j}                                                        \\
+		                                          & = \pa{\sum_{i = 0}^n a_i p_i}(c_j) &  & \by{2.2.5}                    \\
+		                                          & = \sum_{i = 0}^n a_i p_i(c_j)                                         \\
+		                                          & = \sum_{i = 0}^n a_i \delta_{i j}  &  & \text{(from the proof above)} \\
+		                                          & = a_j
+	\end{align*}
+	implies \(a_0 = 1\) and \(a_j = 0\) for all \(j \in \set{0, \dots, n} \setminus \set{0}\).
+	Thus we have \(q_0 = p_0\).
+	Using similar argument we see that \(q_i = p_i\) for all \(i \in \set{0, \dots, n}\), a contradiction.
+	Thus \(\beta\) is unique.
 \end{proof}
 
 \begin{proof}[\pf{ex:2.6.10}(c)]
-  Defined \(\seq{p}{0,,n} \in \ps[n]{\F}\) as in \cref{ex:2.6.10}(b).
-  For any \(\seq{a}{0,,n} \in \F\), we can define \(q \in \ps[n]{\F}\) as follow:
-  \[
-    q = \sum_{j = 0}^n a_j p_j.
-  \]
-  Note that by \cref{ex:2.6.10}(b) \(q\) is unique.
-  Then we have
-  \[
-    \forall i \in \set{0, \dots, n}, q(c_i) = \pa{\sum_{j = 0}^n a_j p_j}(c_i) = \sum_{j = 0}^n a_j p_j(c_i) = \sum_{j = 0}^n a_j \delta_{j i} = a_i
-  \]
-  and thus
-  \[
-    q = \sum_{j = 0}^n q(c_j) p_j.
-  \]
+	Defined \(\seq{p}{0,,n} \in \ps[n]{\F}\) as in \cref{ex:2.6.10}(b).
+	For any \(\seq{a}{0,,n} \in \F\), we can define \(q \in \ps[n]{\F}\) as follow:
+	\[
+		q = \sum_{j = 0}^n a_j p_j.
+	\]
+	Note that by \cref{ex:2.6.10}(b) \(q\) is unique.
+	Then we have
+	\[
+		\forall i \in \set{0, \dots, n}, q(c_i) = \pa{\sum_{j = 0}^n a_j p_j}(c_i) = \sum_{j = 0}^n a_j p_j(c_i) = \sum_{j = 0}^n a_j \delta_{j i} = a_i
+	\]
+	and thus
+	\[
+		q = \sum_{j = 0}^n q(c_j) p_j.
+	\]
 \end{proof}
 
 \begin{proof}[\pf{ex:2.6.10}(d)]
-  By \cref{ex:2.6.10}(c) we see that
-  \[
-    \forall p \in \ps[n]{\F}, p = \sum_{i = 0}^n p(c_i) p_i.
-  \]
+	By \cref{ex:2.6.10}(c) we see that
+	\[
+		\forall p \in \ps[n]{\F}, p = \sum_{i = 0}^n p(c_i) p_i.
+	\]
 \end{proof}
 
 \begin{proof}[\pf{ex:2.6.10}(e)]
-  By \cref{ex:2.6.10}(d) we have
-  \begin{align*}
-    \forall p \in \ps[n]{\F}, \int_a^b p(t) \; dt & = \int_a^b \pa{\sum_{i = 0}^n p(c_i) p_i(t)} \; dt \\
-                                                  & = \sum_{i = 0}^n \pa{p(c_i) \int_a^b p_i(t) \; dt} \\
-                                                  & = \sum_{i = 0}^n p(c_i) d_i.
-  \end{align*}
+	By \cref{ex:2.6.10}(d) we have
+	\begin{align*}
+		\forall p \in \ps[n]{\F}, \int_a^b p(t) \; dt & = \int_a^b \pa{\sum_{i = 0}^n p(c_i) p_i(t)} \; dt \\
+		                                              & = \sum_{i = 0}^n \pa{p(c_i) \int_a^b p_i(t) \; dt} \\
+		                                              & = \sum_{i = 0}^n p(c_i) d_i.
+	\end{align*}
 \end{proof}
 
 \begin{ex}\label{ex:2.6.11}
-  Let \(\V\) and \(\W\) be finite-dimensional vector spaces over \(\F\), and let \(\psi_1\) and \(\psi_2\) be the isomorphisms between \(\V\) and \(\V^{**}\) and \(\W\) and \(\W^{**}\), respectively, as defined in \cref{2.26}.
-  Let \(\T \in \ls(\V, \W)\), and define \(\tp{\tp{\T}} = \tp{\pa{\tp{\T}}}\).
-  Prove that \(\psi_2 \T = \tp{\tp{\T}} \psi_1\).
+	Let \(\V\) and \(\W\) be finite-dimensional vector spaces over \(\F\), and let \(\psi_1\) and \(\psi_2\) be the isomorphisms between \(\V\) and \(\V^{**}\) and \(\W\) and \(\W^{**}\), respectively, as defined in \cref{2.26}.
+	Let \(\T \in \ls(\V, \W)\), and define \(\tp{\tp{\T}} = \tp{\pa{\tp{\T}}}\).
+	Prove that \(\psi_2 \T = \tp{\tp{\T}} \psi_1\).
 \end{ex}
 
 \begin{proof}[\pf{ex:2.6.11}]
-  By \cref{2.25} we see that \(\tp{\tp{\T}} \in \ls(\V^{**}, \W^{**})\).
-  Let \(x \in \V\) and let \(y \in \W^*\).
-  Then we have
-  \begin{align*}
-    \pa{\pa{\tp{\tp{\T}} \psi_1}(x)}(y) & = \pa{\tp{\tp{\T}}(\psi_1(x))}(y)                                 \\
-                                        & = \pa{\tp{\tp{\T}}(\widehat{x})}(y) &  & \text{(by \cref{2.26})}  \\
-                                        & = \pa{\widehat{x} \tp{\T}}(y)       &  & \text{(by \cref{2.25})}  \\
-                                        & = \widehat{x}\pa{\tp{\T}(y)}                                      \\
-                                        & = \widehat{x}(y \T)                 &  & \text{(by \cref{2.26})}  \\
-                                        & = (y \T)(x)                         &  & \text{(by \cref{2.6.7})} \\
-                                        & = y(\T(x))                                                        \\
-                                        & = \widehat{\T(x)}(y)                &  & \text{(by \cref{2.6.7})} \\
-                                        & = \psi_2(\T(x))(y)                  &  & \text{(by \cref{2.26})}  \\
-                                        & = ((\psi_2 \T)(x))(y).
-  \end{align*}
-  Thus \(\tp{\tp{\T}} \psi_1 = \psi_2 \T\).
+	By \cref{2.25} we see that \(\tp{\tp{\T}} \in \ls(\V^{**}, \W^{**})\).
+	Let \(x \in \V\) and let \(y \in \W^*\).
+	Then we have
+	\begin{align*}
+		\pa{\pa{\tp{\tp{\T}} \psi_1}(x)}(y) & = \pa{\tp{\tp{\T}}(\psi_1(x))}(y)                   \\
+		                                    & = \pa{\tp{\tp{\T}}(\widehat{x})}(y) &  & \by{2.26}  \\
+		                                    & = \pa{\widehat{x} \tp{\T}}(y)       &  & \by{2.25}  \\
+		                                    & = \widehat{x}\pa{\tp{\T}(y)}                        \\
+		                                    & = \widehat{x}(y \T)                 &  & \by{2.26}  \\
+		                                    & = (y \T)(x)                         &  & \by{2.6.7} \\
+		                                    & = y(\T(x))                                          \\
+		                                    & = \widehat{\T(x)}(y)                &  & \by{2.6.7} \\
+		                                    & = \psi_2(\T(x))(y)                  &  & \by{2.26}  \\
+		                                    & = ((\psi_2 \T)(x))(y).
+	\end{align*}
+	Thus \(\tp{\tp{\T}} \psi_1 = \psi_2 \T\).
 \end{proof}
 
 \begin{ex}\label{ex:2.6.12}
-  Let \(\V\) be a finite-dimensional vector space over \(\F\) with the ordered basis \(\beta\) over \(\F\).
-  Prove that \(\psi(\beta) = \beta^{**}\), where \(\psi\) is defined in \cref{2.26}.
+	Let \(\V\) be a finite-dimensional vector space over \(\F\) with the ordered basis \(\beta\) over \(\F\).
+	Prove that \(\psi(\beta) = \beta^{**}\), where \(\psi\) is defined in \cref{2.26}.
 \end{ex}
 
 \begin{proof}[\pf{ex:2.6.12}]
-  Let \(\beta = \set{\seq{x}{1,,n}}\) and let \(\beta^* = \set{\seq{f}{1,,n}}\) be the dual basis of \(\beta\).
-  By \cref{2.26} we have \(\psi(\beta) = \set{\seq{\widehat{x}}{1,,n}}\).
-  Since
-  \begin{align*}
-    \forall i, j \in \set{1, \dots, n}, \widehat{x}_i(f_j) & = f_j(x_i)      &  & \text{(by \cref{2.6.7})} \\
-                                                           & = \delta_{i j}, &  & \text{(by \cref{2.6.6})}
-  \end{align*}
-  by \cref{2.6.6} we see that \(\beta^{**} = \set{\seq{\widehat{x}}{1,,n}}\).
+	Let \(\beta = \set{\seq{x}{1,,n}}\) and let \(\beta^* = \set{\seq{f}{1,,n}}\) be the dual basis of \(\beta\).
+	By \cref{2.26} we have \(\psi(\beta) = \set{\seq{\widehat{x}}{1,,n}}\).
+	Since
+	\begin{align*}
+		\forall i, j \in \set{1, \dots, n}, \widehat{x}_i(f_j) & = f_j(x_i)      &  & \by{2.6.7} \\
+		                                                       & = \delta_{i j}, &  & \by{2.6.6}
+	\end{align*}
+	by \cref{2.6.6} we see that \(\beta^{**} = \set{\seq{\widehat{x}}{1,,n}}\).
 \end{proof}
 
 \begin{defn}\label{2.6.10}
-  Let \(\V\) denotes a finite-dimensional vector space over \(\F\).
-  For every subset \(S\) of \(\V\), define the \textbf{annihilator} \(S^0\) of \(S\) as
-  \[
-    S^0 = \set{f \in \V^* : f(x) = 0 \text{ for all } x \in S}.
-  \]
+	Let \(\V\) denotes a finite-dimensional vector space over \(\F\).
+	For every subset \(S\) of \(\V\), define the \textbf{annihilator} \(S^0\) of \(S\) as
+	\[
+		S^0 = \set{f \in \V^* : f(x) = 0 \text{ for all } x \in S}.
+	\]
 \end{defn}
 
 \begin{ex}\label{ex:2.6.13}
-  Let \(\V\) be a vector space over \(\F\) and let \(S \subseteq \V\).
-  \begin{enumerate}
-    \item Prove that \(S^0\) is a subspace of \(\V^*\) over \(\F\).
-    \item If \(\W\) is a subspace of \(\V\) over \(\F\) and \(x \notin \W\), prove that there exists \(f \in \W^0\) such that \(f(x) \neq 0\).
-    \item Prove that \((S^0)^0 = \spn{\psi(S)}\), where \(\psi\) is defined as in \cref{2.26}.
-    \item For subspaces \(\W_1\) and \(\W_2\) of \(\V\) over \(\F\), prove that \(\W_1 = \W_2\) iff \(\W_1^0 = \W_2^0\).
-    \item For subspaces \(W_1\) and \(\W_2\) of \(\V\) over \(\F\), show that \((\W_1 + \W_2)^0 = \W_1^0 \cap \W_2^0\).
-  \end{enumerate}
+	Let \(\V\) be a vector space over \(\F\) and let \(S \subseteq \V\).
+	\begin{enumerate}
+		\item Prove that \(S^0\) is a subspace of \(\V^*\) over \(\F\).
+		\item If \(\W\) is a subspace of \(\V\) over \(\F\) and \(x \notin \W\), prove that there exists \(f \in \W^0\) such that \(f(x) \neq 0\).
+		\item Prove that \((S^0)^0 = \spn{\psi(S)}\), where \(\psi\) is defined as in \cref{2.26}.
+		\item For subspaces \(\W_1\) and \(\W_2\) of \(\V\) over \(\F\), prove that \(\W_1 = \W_2\) iff \(\W_1^0 = \W_2^0\).
+		\item For subspaces \(W_1\) and \(\W_2\) of \(\V\) over \(\F\), show that \((\W_1 + \W_2)^0 = \W_1^0 \cap \W_2^0\).
+	\end{enumerate}
 \end{ex}
 
 \begin{proof}[\pf{ex:2.6.13}(a)]
-  Let \(f, g \in S^0\) and let \(c \in \F\).
-  Since
-  \begin{align*}
-    \forall x \in S, (cf + g)(x) & = cf(x) + g(x) &  & \text{(by \cref{2.2.5})}  \\
-                                 & = c0 + 0       &  & \text{(by \cref{2.6.10})} \\
-                                 & = 0,
-  \end{align*}
-  by \cref{2.6.10} we see that \(cf + g \in S^0\).
-  Let \(\zT \in \V^*\) be the zero transformation of \(\V^*\).
-  Since
-  \begin{align*}
-             & \forall x \in \V, \zT(x) = 0 &  & \text{(by \cref{2.1.9})}  \\
-    \implies & \forall x \in S, \zT(x) = 0  &  & (S \subseteq \V)          \\
-    \implies & \zT \in S^0,                 &  & \text{(by \cref{2.6.10})}
-  \end{align*}
-  by \cref{ex:1.3.18} we see that \(S^0\) is a subspace of \(\V^*\).
+	Let \(f, g \in S^0\) and let \(c \in \F\).
+	Since
+	\begin{align*}
+		\forall x \in S, (cf + g)(x) & = cf(x) + g(x) &  & \by{2.2.5}  \\
+		                             & = c0 + 0       &  & \by{2.6.10} \\
+		                             & = 0,
+	\end{align*}
+	by \cref{2.6.10} we see that \(cf + g \in S^0\).
+	Let \(\zT \in \V^*\) be the zero transformation of \(\V^*\).
+	Since
+	\begin{align*}
+		         & \forall x \in \V, \zT(x) = 0 &  & \by{2.1.9}       \\
+		\implies & \forall x \in S, \zT(x) = 0  &  & (S \subseteq \V) \\
+		\implies & \zT \in S^0,                 &  & \by{2.6.10}
+	\end{align*}
+	by \cref{ex:1.3.18} we see that \(S^0\) is a subspace of \(\V^*\).
 \end{proof}
 
 \begin{proof}[\pf{ex:2.6.13}(b)]
-  Let \(\beta_{\W}\) be a basis for \(\W\) over \(\F\).
-  Since \(x \notin \W\), by \cref{1.7} we know that \(\beta_{\W} \cup \set{x}\) is linearly independent.
-  By \cref{1.6.19} \(\beta_{\W} \cup \set{x}\) can be extended to a basis \(\beta\) for \(\V\) over \(\F\).
-  By \cref{2.6} there exists a \(f \in \V^*\) such that
-  \[
-    \forall v \in \beta, f(v) = \begin{dcases}
-      0 & \text{if } v \neq x \\
-      1 & \text{if } v = x
-    \end{dcases}.
-  \]
-  Then we have
-  \begin{align*}
-             & \W = \spn{\beta_{\W}}                          &  & \text{(by \cref{1.6.1})}  \\
-    \implies & f(\W) = \rg{f} = \spn{f(\beta_{\W})} = \set{0} &  & \text{(by \cref{2.2})}    \\
-    \implies & f \in \W^0.                                    &  & \text{(by \cref{2.6.10})}
-  \end{align*}
+	Let \(\beta_{\W}\) be a basis for \(\W\) over \(\F\).
+	Since \(x \notin \W\), by \cref{1.7} we know that \(\beta_{\W} \cup \set{x}\) is linearly independent.
+	By \cref{1.6.19} \(\beta_{\W} \cup \set{x}\) can be extended to a basis \(\beta\) for \(\V\) over \(\F\).
+	By \cref{2.6} there exists a \(f \in \V^*\) such that
+	\[
+		\forall v \in \beta, f(v) = \begin{dcases}
+			0 & \text{if } v \neq x \\
+			1 & \text{if } v = x
+		\end{dcases}.
+	\]
+	Then we have
+	\begin{align*}
+		         & \W = \spn{\beta_{\W}}                          &  & \by{1.6.1}  \\
+		\implies & f(\W) = \rg{f} = \spn{f(\beta_{\W})} = \set{0} &  & \by{2.2}    \\
+		\implies & f \in \W^0.                                    &  & \by{2.6.10}
+	\end{align*}
 \end{proof}
 
 \begin{proof}[\pf{ex:2.6.13}(c)]
-  Since
-  \begin{align*}
-         & f \in S^0                                                        \\
-    \iff & \forall x \in S, f(x) = 0       &  & \text{(by \cref{2.6.10})}   \\
-    \iff & \forall x \in \spn{S}, f(x) = 0 &  & \text{(by \cref{2.1.2}(d))} \\
-    \iff & f \in (\spn{S})^0,              &  & \text{(by \cref{2.6.10})}
-  \end{align*}
-  we have \(S^0 = (\spn{S})^0\).
-  Since \(\psi \in \ls(\V, \V^{**})\), by \cref{2.2} we know that \(\psi(\spn{S}) = \spn{\psi(S)}\).
-  Thus to prove that \((S^0)^0 = \spn{\psi(S)}\), we can instead prove that \(((\spn{S})^0)^0 = \psi(\spn{S})\).
-  By \cref{ex:2.6.13}(a) we see that \(S^0 \subseteq \V^*\), thus by \cref{2.6.10} we have
-  \[
-    (S^0)^0 = ((\spn{S})^0)^0 = \set{f \in \V^{**} : f((\spn{S})^0) = \set{0}}.
-  \]
+	Since
+	\begin{align*}
+		     & f \in S^0                                          \\
+		\iff & \forall x \in S, f(x) = 0       &  & \by{2.6.10}   \\
+		\iff & \forall x \in \spn{S}, f(x) = 0 &  & \by{2.1.2}[d] \\
+		\iff & f \in (\spn{S})^0,              &  & \by{2.6.10}
+	\end{align*}
+	we have \(S^0 = (\spn{S})^0\).
+	Since \(\psi \in \ls(\V, \V^{**})\), by \cref{2.2} we know that \(\psi(\spn{S}) = \spn{\psi(S)}\).
+	Thus to prove that \((S^0)^0 = \spn{\psi(S)}\), we can instead prove that \(((\spn{S})^0)^0 = \psi(\spn{S})\).
+	By \cref{ex:2.6.13}(a) we see that \(S^0 \subseteq \V^*\), thus by \cref{2.6.10} we have
+	\[
+		(S^0)^0 = ((\spn{S})^0)^0 = \set{f \in \V^{**} : f((\spn{S})^0) = \set{0}}.
+	\]
 
-  First we show that \(((\spn{S})^0)^0 \subseteq \psi(\spn{S})\).
-  Let \(f \in ((\spn{S})^0)^0\).
-  Since \(f \in \V^{**}\), by \cref{2.26} we know that there exists an \(s \in \V\) such that \(\psi(s) = \widehat{s} = f\).
-  Then we have
-  \begin{align*}
-             & f = \widehat{s}                                                                                  \\
-    \implies & \forall g \in (\spn{S})^0, f(g) = 0 = \widehat{s}(g) = g(s) &  & \text{(by \cref{2.6.7})}        \\
-    \implies & s \in \spn{S}                                               &  & \text{(by \cref{ex:2.6.13}(b))} \\
-    \implies & f = \widehat{s} = \psi(s) \in \psi(\spn{S}).
-  \end{align*}
-  Since \(f\) is arbitrary, we see that \(((\spn{S})^0)^0 \subseteq \psi(\spn{S})\).
+	First we show that \(((\spn{S})^0)^0 \subseteq \psi(\spn{S})\).
+	Let \(f \in ((\spn{S})^0)^0\).
+	Since \(f \in \V^{**}\), by \cref{2.26} we know that there exists an \(s \in \V\) such that \(\psi(s) = \widehat{s} = f\).
+	Then we have
+	\begin{align*}
+		         & f = \widehat{s}                                                                    \\
+		\implies & \forall g \in (\spn{S})^0, f(g) = 0 = \widehat{s}(g) = g(s) &  & \by{2.6.7}        \\
+		\implies & s \in \spn{S}                                               &  & \by{ex:2.6.13}[b] \\
+		\implies & f = \widehat{s} = \psi(s) \in \psi(\spn{S}).
+	\end{align*}
+	Since \(f\) is arbitrary, we see that \(((\spn{S})^0)^0 \subseteq \psi(\spn{S})\).
 
-  Now we show that \(\psi(\spn{S}) \subseteq ((\spn{S})^0)^0\).
-  Let \(f \in \psi(\spn{S})\).
-  By \cref{2.26} we know that there exists an \(s \in \spn{S}\) such that \(\psi(s) = \widehat{s} = f\).
-  Then we have
-  \begin{align*}
-             & f = \widehat{s}                                                                       \\
-    \implies & \forall g \in \V^*, f(g) = \widehat{s}(g) = g(s) &  & \text{(by \cref{2.6.7})}        \\
-    \implies & \forall g \in (\spn{S})^0, f(g) = g(s)           &  & \text{(by \cref{ex:2.6.13}(a))} \\
-             & = 0                                              &  & \text{(by \cref{2.6.10})}       \\
-    \implies & f = \widehat{s} = \psi(s) \in ((\spn{S})^0)^0.   &  & \text{(by \cref{2.6.10})}
-  \end{align*}
-  Since \(f\) is arbitrary, we see that \(\psi(\spn{S}) \subseteq ((\spn{S})^0)^0\).
+	Now we show that \(\psi(\spn{S}) \subseteq ((\spn{S})^0)^0\).
+	Let \(f \in \psi(\spn{S})\).
+	By \cref{2.26} we know that there exists an \(s \in \spn{S}\) such that \(\psi(s) = \widehat{s} = f\).
+	Then we have
+	\begin{align*}
+		         & f = \widehat{s}                                                         \\
+		\implies & \forall g \in \V^*, f(g) = \widehat{s}(g) = g(s) &  & \by{2.6.7}        \\
+		\implies & \forall g \in (\spn{S})^0, f(g) = g(s)           &  & \by{ex:2.6.13}[a] \\
+		         & = 0                                              &  & \by{2.6.10}       \\
+		\implies & f = \widehat{s} = \psi(s) \in ((\spn{S})^0)^0.   &  & \by{2.6.10}
+	\end{align*}
+	Since \(f\) is arbitrary, we see that \(\psi(\spn{S}) \subseteq ((\spn{S})^0)^0\).
 \end{proof}
 
 \begin{proof}[\pf{ex:2.6.13}(d)]
-  We have
-  \begin{align*}
-             & \W_1 = \W_2                                                                    \\
-    \implies & \W_1^0 = \set{f \in \V^* : f(\W_1) = \set{0}}   &  & \text{(by \cref{2.6.10})} \\
-             & = \set{f \in \V^* : f(\W_2) = \set{0}} = \W_2^0 &  & \text{(by \cref{2.6.10})} \\
-  \end{align*}
-  and
-  \begin{align*}
-             & \W_1^0 = \W_2^0                                                                                                  \\
-    \implies & \set{f \in \V^* : f(\W_1) = \set{0}} = \set{f \in \V^* : f(\W_2) = \set{0}} &  & \text{(by \cref{2.6.10})}       \\
-    \implies & \W_1 = \W_2.                                                                &  & \text{(by \cref{ex:2.6.13}(b))}
-  \end{align*}
-  Thus \(\W_1 = \W_2 \iff \W_1^0 = \W_2^0\).
+	We have
+	\begin{align*}
+		         & \W_1 = \W_2                                                      \\
+		\implies & \W_1^0 = \set{f \in \V^* : f(\W_1) = \set{0}}   &  & \by{2.6.10} \\
+		         & = \set{f \in \V^* : f(\W_2) = \set{0}} = \W_2^0 &  & \by{2.6.10} \\
+	\end{align*}
+	and
+	\begin{align*}
+		         & \W_1^0 = \W_2^0                                                                                    \\
+		\implies & \set{f \in \V^* : f(\W_1) = \set{0}} = \set{f \in \V^* : f(\W_2) = \set{0}} &  & \by{2.6.10}       \\
+		\implies & \W_1 = \W_2.                                                                &  & \by{ex:2.6.13}[b]
+	\end{align*}
+	Thus \(\W_1 = \W_2 \iff \W_1^0 = \W_2^0\).
 \end{proof}
 
 \begin{proof}[\pf{ex:2.6.13}(e)]
-  Since
-  \begin{align*}
-         & f \in (\W_1 + \W_2)^0                                                                  \\
-    \iff & \forall x \in \W_1 + \W_2, f(x) = 0                     &  & \text{(by \cref{2.6.10})} \\
-    \iff & \forall (x_1, x_2) \in \W_1 \times \W_2, \begin{dcases}
-                                                      x_1 + \zv_{\V} \in \W_1 + \W_2 \\
-                                                      \zv_{\V} + x_2 \in \W_1 + \W_2 \\
-                                                      x_1 + x_2 \in \W_1 + \W_2      \\
-                                                      f(x_1) = f(x_2) = f(x_1 + x_2) = 0
-                                                    \end{dcases} &  & \text{(by \cref{1.3.10})}   \\
-    \iff & \begin{dcases}
-             f \in \W_1^0 \\
-             f \in \W_2^0
-           \end{dcases}                                         &  & \text{(by \cref{2.6.10})}    \\
-    \iff & f \in \W_1^0 \cap \W_2^0,
-  \end{align*}
-  we know that \((\W_1 + \W_2)^0 = \W_1^0 \cap \W_2^0\).
+	Since
+	\begin{align*}
+		     & f \in (\W_1 + \W_2)^0                                                      \\
+		\iff & \forall x \in \W_1 + \W_2, f(x) = 0                     &  & \by{2.6.10}   \\
+		\iff & \forall (x_1, x_2) \in \W_1 \times \W_2, \begin{dcases}
+			                                                x_1 + \zv_{\V} \in \W_1 + \W_2 \\
+			                                                \zv_{\V} + x_2 \in \W_1 + \W_2 \\
+			                                                x_1 + x_2 \in \W_1 + \W_2      \\
+			                                                f(x_1) = f(x_2) = f(x_1 + x_2) = 0
+		                                                \end{dcases} &  & \by{1.3.10} \\
+		\iff & \begin{dcases}
+			       f \in \W_1^0 \\
+			       f \in \W_2^0
+		       \end{dcases}                                         &  & \by{2.6.10}      \\
+		\iff & f \in \W_1^0 \cap \W_2^0,
+	\end{align*}
+	we know that \((\W_1 + \W_2)^0 = \W_1^0 \cap \W_2^0\).
 \end{proof}
 
 \begin{ex}\label{ex:2.6.14}
-  Prove that if \(\V\) is a finite-dimensional vector space over \(\F\) and \(\W\) is a subspace of \(\V\) over \(\F\), then \(\dim(\W) + \dim(\W^0) = \dim(\V)\).
+	Prove that if \(\V\) is a finite-dimensional vector space over \(\F\) and \(\W\) is a subspace of \(\V\) over \(\F\), then \(\dim(\W) + \dim(\W^0) = \dim(\V)\).
 \end{ex}
 
 \begin{proof}[\pf{ex:2.6.14}]
-  Let \(\dim(\V) = n\) and let \(\beta_{\W} = \set{\seq{x}{1,,k}}\) be an ordered basis for \(\W\) over \(\F\).
-  By \cref{1.6.19} we can extend \(\beta_{\W}\) to an ordered basis \(\beta = \set{\seq{x}{1,,k,k+1,,n}}\) for \(\V\) over \(\F\).
-  By \cref{2.6.6} we denote the dual basis of \(\beta\) as \(\beta^* = \set{\seq{f}{1,,n}}\).
-  If we can show that the set \(\gamma = \set{\seq{f}{k+1,,n}}\) is a basis for \(\W^0\) over \(\F\), then we have
-  \[
-    \dim(\W) + \dim(\W^0) = k + (n - k) = n = \dim(\V).
-  \]
-  By \cref{2.24} we know that \(\beta^*\) is a basis for \(\V^*\) over \(\F\), thus \(\gamma\) is linearly independent and by \cref{1.6.1} we only need to show that \(\spn{\gamma} = \W^0\).
+	Let \(\dim(\V) = n\) and let \(\beta_{\W} = \set{\seq{x}{1,,k}}\) be an ordered basis for \(\W\) over \(\F\).
+	By \cref{1.6.19} we can extend \(\beta_{\W}\) to an ordered basis \(\beta = \set{\seq{x}{1,,k,k+1,,n}}\) for \(\V\) over \(\F\).
+	By \cref{2.6.6} we denote the dual basis of \(\beta\) as \(\beta^* = \set{\seq{f}{1,,n}}\).
+	If we can show that the set \(\gamma = \set{\seq{f}{k+1,,n}}\) is a basis for \(\W^0\) over \(\F\), then we have
+	\[
+		\dim(\W) + \dim(\W^0) = k + (n - k) = n = \dim(\V).
+	\]
+	By \cref{2.24} we know that \(\beta^*\) is a basis for \(\V^*\) over \(\F\), thus \(\gamma\) is linearly independent and by \cref{1.6.1} we only need to show that \(\spn{\gamma} = \W^0\).
 
-  First we show that \(\spn{\gamma} \subseteq \W^0\).
-  By \cref{2.24} we have \(\spn{\gamma} \subseteq \V^*\).
-  Let \(w \in \W\).
-  By \cref{1.6.1} we know that
-  \[
-    \exists \seq{a}{1,,k} \in \F : w = \sum_{j = 1}^k a_j x_j.
-  \]
-  Thus we have
-  \begin{align*}
-             & \forall g \in \spn{\gamma}, \exists \seq{b}{1,,n-k} \in \F : g = \sum_{i = 1}^{n - k} b_i f_{i + k}  &  & \text{(by \cref{1.4.3})}    \\
-    \implies & \forall g \in \spn{\gamma}, g(w) = \pa{\sum_{i = 1}^{n - k} b_i f_{i + k}}(w)                                                         \\
-             & = \sum_{i = 1}^{n - k} b_i f_{i + k}(w) = \sum_{i = 1}^{n - k} \sum_{j = 1}^k b_i a_j f_{i + k}(x_j) &  & \text{(by \cref{2.1.2}(d))} \\
-             & = 0                                                                                                  &  & \text{(by \cref{2.6.6})}    \\
-    \implies & \forall g \in \spn{\gamma}, g(\W) = \set{0}                                                                                           \\
-    \implies & \forall g \in \spn{\gamma}, g \in \W^0                                                               &  & \text{(by \cref{2.6.10})}   \\
-    \implies & \spn{\gamma} \subseteq \W^0.
-  \end{align*}
+	First we show that \(\spn{\gamma} \subseteq \W^0\).
+	By \cref{2.24} we have \(\spn{\gamma} \subseteq \V^*\).
+	Let \(w \in \W\).
+	By \cref{1.6.1} we know that
+	\[
+		\exists \seq{a}{1,,k} \in \F : w = \sum_{j = 1}^k a_j x_j.
+	\]
+	Thus we have
+	\begin{align*}
+		         & \forall g \in \spn{\gamma}, \exists \seq{b}{1,,n-k} \in \F : g = \sum_{i = 1}^{n - k} b_i f_{i + k}  &  & \by{1.4.3}    \\
+		\implies & \forall g \in \spn{\gamma}, g(w) = \pa{\sum_{i = 1}^{n - k} b_i f_{i + k}}(w)                                           \\
+		         & = \sum_{i = 1}^{n - k} b_i f_{i + k}(w) = \sum_{i = 1}^{n - k} \sum_{j = 1}^k b_i a_j f_{i + k}(x_j) &  & \by{2.1.2}[d] \\
+		         & = 0                                                                                                  &  & \by{2.6.6}    \\
+		\implies & \forall g \in \spn{\gamma}, g(\W) = \set{0}                                                                             \\
+		\implies & \forall g \in \spn{\gamma}, g \in \W^0                                                               &  & \by{2.6.10}   \\
+		\implies & \spn{\gamma} \subseteq \W^0.
+	\end{align*}
 
-  Now we show that \(\W^0 \subseteq \spn{\gamma}\).
-  This is true since
-  \begin{align*}
-             & \W^0 \subseteq \V^*                                         &  & \text{(by \cref{2.6.10})} \\
-    \implies & \W^0 \subseteq \spn{\beta^*}                                &  & \text{(by \cref{2.24})}   \\
-    \implies & \forall g \in \W^0, g = \sum_{i = 1}^n g(x_i) f_i           &  & \text{(by \cref{2.24})}   \\
-             & = \sum_{i = 1}^k g(x_i) f_i + \sum_{i = k + 1}^n g(x_i) f_i                                \\
-             & = 0 + \sum_{i = k + 1}^n g(x_i) f_i                         &  & \text{(by \cref{2.6.10})} \\
-    \implies & \forall g \in \W^0, g \in \spn{\gamma}                                                     \\
-    \implies & \W^0 \subseteq \spn{\gamma}.
-  \end{align*}
-  Thus we have \(\W^0 = \spn{\gamma}\).
+	Now we show that \(\W^0 \subseteq \spn{\gamma}\).
+	This is true since
+	\begin{align*}
+		         & \W^0 \subseteq \V^*                                         &  & \by{2.6.10} \\
+		\implies & \W^0 \subseteq \spn{\beta^*}                                &  & \by{2.24}   \\
+		\implies & \forall g \in \W^0, g = \sum_{i = 1}^n g(x_i) f_i           &  & \by{2.24}   \\
+		         & = \sum_{i = 1}^k g(x_i) f_i + \sum_{i = k + 1}^n g(x_i) f_i                  \\
+		         & = 0 + \sum_{i = k + 1}^n g(x_i) f_i                         &  & \by{2.6.10} \\
+		\implies & \forall g \in \W^0, g \in \spn{\gamma}                                       \\
+		\implies & \W^0 \subseteq \spn{\gamma}.
+	\end{align*}
+	Thus we have \(\W^0 = \spn{\gamma}\).
 \end{proof}
 
 \begin{ex}\label{ex:2.6.15}
-  Suppose that \(\V, \W\) are finite-dimensional vector spaces over \(\F\) and that \(T \in \ls(\V, \W)\).
-  Prove that \(\ns{\tp{\T}} = (\rg{\T})^0\).
+	Suppose that \(\V, \W\) are finite-dimensional vector spaces over \(\F\) and that \(T \in \ls(\V, \W)\).
+	Prove that \(\ns{\tp{\T}} = (\rg{\T})^0\).
 \end{ex}
 
 \begin{proof}[\pf{ex:2.6.15}]
-  We have
-  \begin{align*}
-         & x \in \ns{\tp{\T}}                                                           \\
-    \iff & \tp{\T}(x) = 0_{\V^*}                         &  & \text{(by \cref{2.1.10})} \\
-    \iff & x \T = 0_{\V^*}                               &  & \text{(by \cref{2.25})}   \\
-    \iff & (x \T)(\V) = x(\T(\V)) = x(\rg{\T}) = \set{0} &  & \text{(by \cref{2.1.10})} \\
-    \iff & x \in (\rg{\T})^0                             &  & \text{(by \cref{2.6.10})}
-  \end{align*}
-  and thus \(\ns{\tp{\T}} = (\rg{\T})^0\).
+	We have
+	\begin{align*}
+		     & x \in \ns{\tp{\T}}                                             \\
+		\iff & \tp{\T}(x) = 0_{\V^*}                         &  & \by{2.1.10} \\
+		\iff & x \T = 0_{\V^*}                               &  & \by{2.25}   \\
+		\iff & (x \T)(\V) = x(\T(\V)) = x(\rg{\T}) = \set{0} &  & \by{2.1.10} \\
+		\iff & x \in (\rg{\T})^0                             &  & \by{2.6.10}
+	\end{align*}
+	and thus \(\ns{\tp{\T}} = (\rg{\T})^0\).
 \end{proof}
 
 \begin{ex}\label{ex:2.6.16}
-  Use \cref{ex:2.6.14,ex:2.6.15} to deduce that \(\rk{\L_{\tp{A}}} = \rk{\L_A}\) for any \(A \in \MS\).
+	Use \cref{ex:2.6.14,ex:2.6.15} to deduce that \(\rk{\L_{\tp{A}}} = \rk{\L_A}\) for any \(A \in \MS\).
 \end{ex}
 
 \begin{proof}[\pf{ex:2.6.16}]
-  Let \(\beta\) and \(\gamma\) be ordered bases for \(\vs{F}^n\) and \(\vs{F}^m\) over \(\F\), respectively.
-  Let \(\beta^*\) and \(\gamma^*\) be the dual bases of \(\beta\) and \(\gamma\), respectively.
-  Since
-  \begin{align*}
-    [\tp{\pa{\L_A}}]_{\gamma^*}^{\beta^*} & = \tp{\pa{[\L_A]_{\beta}^{\gamma}}} &  & \text{(by \cref{2.25})}    \\
-                                          & = \tp{A}                            &  & \text{(by \cref{2.15}(a))} \\
-                                          & = [\L_{\tp{A}}]_{\gamma}^{\beta},   &  & \text{(by \cref{2.15}(a))}
-  \end{align*}
-  we have
-  \begin{align*}
-    \rk{\L_{\tp{A}}} & = \rk{\tp{\pa{\L_A}}}                                     &  & \text{(by \cref{2.15}(b))}   \\
-                     & = \dim\pa{\pa{\vs{F}^m}^*} - \nt{\tp{\pa{\L_A}}}          &  & \text{(by \cref{2.3})}       \\
-                     & = \dim\pa{\pa{\vs{F}^m}^*} - \dim\pa{\ns{\tp{\pa{\L_A}}}} &  & \text{(by \cref{2.1.12})}    \\
-                     & = \dim\pa{\vs{F}^m} - \dim\pa{\ns{\tp{\pa{\L_A}}}}        &  & \text{(by \cref{2.6.5})}     \\
-                     & = \dim\pa{\vs{F}^m} - \dim\pa{\pa{\rg{\L_A}}^0}           &  & \text{(by \cref{ex:2.6.15})} \\
-                     & = \dim\pa{\rg{\L_A}}                                      &  & \text{(by \cref{ex:2.6.14})} \\
-                     & = \rk{\L_A}.                                              &  & \text{(by \cref{2.1.12})}
-  \end{align*}
+	Let \(\beta\) and \(\gamma\) be ordered bases for \(\vs{F}^n\) and \(\vs{F}^m\) over \(\F\), respectively.
+	Let \(\beta^*\) and \(\gamma^*\) be the dual bases of \(\beta\) and \(\gamma\), respectively.
+	Since
+	\begin{align*}
+		[\tp{\pa{\L_A}}]_{\gamma^*}^{\beta^*} & = \tp{\pa{[\L_A]_{\beta}^{\gamma}}} &  & \by{2.25}    \\
+		                                      & = \tp{A}                            &  & \by{2.15}[a] \\
+		                                      & = [\L_{\tp{A}}]_{\gamma}^{\beta},   &  & \by{2.15}[a]
+	\end{align*}
+	we have
+	\begin{align*}
+		\rk{\L_{\tp{A}}} & = \rk{\tp{\pa{\L_A}}}                                     &  & \by{2.15}[b]   \\
+		                 & = \dim\pa{\pa{\vs{F}^m}^*} - \nt{\tp{\pa{\L_A}}}          &  & \by{2.3}       \\
+		                 & = \dim\pa{\pa{\vs{F}^m}^*} - \dim\pa{\ns{\tp{\pa{\L_A}}}} &  & \by{2.1.12}    \\
+		                 & = \dim\pa{\vs{F}^m} - \dim\pa{\ns{\tp{\pa{\L_A}}}}        &  & \by{2.6.5}     \\
+		                 & = \dim\pa{\vs{F}^m} - \dim\pa{\pa{\rg{\L_A}}^0}           &  & \by{ex:2.6.15} \\
+		                 & = \dim\pa{\rg{\L_A}}                                      &  & \by{ex:2.6.14} \\
+		                 & = \rk{\L_A}.                                              &  & \by{2.1.12}
+	\end{align*}
 \end{proof}
 
 \begin{ex}\label{ex:2.6.17}
-  Let \(\V\) be a vector space over \(\F\), let \(\T \in \ls(\V)\) and let \(\W\) be a subspace of \(\V\) over \(\F\).
-  Prove that \(\W\) is \(\T\)-invariant (as defined in \cref{2.1.15}) iff \(\W^0\) is \(\tp{\T}\)-invariant.
+	Let \(\V\) be a vector space over \(\F\), let \(\T \in \ls(\V)\) and let \(\W\) be a subspace of \(\V\) over \(\F\).
+	Prove that \(\W\) is \(\T\)-invariant (as defined in \cref{2.1.15}) iff \(\W^0\) is \(\tp{\T}\)-invariant.
 \end{ex}
 
 \begin{proof}[\pf{ex:2.6.17}]
-  We have
-  \begin{align*}
-         & \W^0 \text{ is } \tp{\T} \text{-invariant}                                          \\
-    \iff & \tp{\T}(\W^0) \subseteq \W^0                   &  & \text{(by \cref{2.1.15})}       \\
-    \iff & \forall f \in \W^0, \tp{\T}(f) = f \T \in \W^0 &  & \text{(by \cref{2.25})}         \\
-    \iff & \forall f \in \W^0, f(\T(\W)) = \set{0}        &  & \text{(by \cref{2.6.10})}       \\
-    \iff & \T(\W) \subseteq \W                            &  & \text{(by \cref{ex:2.6.13}(b))} \\
-    \iff & \W \text{ is } \T \text{-invariant}.           &  & \text{(by \cref{2.1.15})}
-  \end{align*}
+	We have
+	\begin{align*}
+		     & \W^0 \text{ is } \tp{\T} \text{-invariant}                            \\
+		\iff & \tp{\T}(\W^0) \subseteq \W^0                   &  & \by{2.1.15}       \\
+		\iff & \forall f \in \W^0, \tp{\T}(f) = f \T \in \W^0 &  & \by{2.25}         \\
+		\iff & \forall f \in \W^0, f(\T(\W)) = \set{0}        &  & \by{2.6.10}       \\
+		\iff & \T(\W) \subseteq \W                            &  & \by{ex:2.6.13}[b] \\
+		\iff & \W \text{ is } \T \text{-invariant}.           &  & \by{2.1.15}
+	\end{align*}
 \end{proof}
 
 \begin{ex}\label{ex:2.6.18}
-  Let \(\V\) be a nonzero vector space over a field \(\F\), and let \(S\) be a basis for \(\V\) over \(\F\).
-  (By \cref{1.7.10}, every vector space has a basis.)
-  Let \(\Phi : \V^* \to \FS\) be the mapping defined by \(\Phi(f) = f_S\), the restriction of \(f\) to \(S\).
-  Prove that \(\Phi\) is an isomorphism.
+	Let \(\V\) be a nonzero vector space over a field \(\F\), and let \(S\) be a basis for \(\V\) over \(\F\).
+	(By \cref{1.7.10}, every vector space has a basis.)
+	Let \(\Phi : \V^* \to \FS\) be the mapping defined by \(\Phi(f) = f_S\), the restriction of \(f\) to \(S\).
+	Prove that \(\Phi\) is an isomorphism.
 \end{ex}
 
 \begin{proof}[\pf{ex:2.6.18}]
-  \begin{description}
-    \item[For linearity:]
-      Let \(f, g \in \V^*\) and let \(c \in \F\).
-      Then we have
-      \[
-        \Phi(cf + g) = (cf + g)_S = c f_S + g_S = c \Phi(f) + \Phi(g)
-      \]\
-      and thus by \cref{2.1.2}(b) \(\Phi \in \ls(\V^*, \FS)\).
-    \item[For invertibility:]
-      By \cref{ex:2.1.34} we see that \(\Phi\) is one-to-one and onto.
-  \end{description}
+	\begin{description}
+		\item[For linearity:]
+			Let \(f, g \in \V^*\) and let \(c \in \F\).
+			Then we have
+			\[
+				\Phi(cf + g) = (cf + g)_S = c f_S + g_S = c \Phi(f) + \Phi(g)
+			\]\
+			and thus by \cref{2.1.2}(b) \(\Phi \in \ls(\V^*, \FS)\).
+		\item[For invertibility:]
+			By \cref{ex:2.1.34} we see that \(\Phi\) is one-to-one and onto.
+	\end{description}
 \end{proof}
 
 \begin{ex}\label{ex:2.6.19}
-  Let \(\V\) be a nonzero vector space over \(\F\), and let \(\W\) be a proper subspace of \(\V\) over \(\F\)
-  (i.e., \(\W \neq \V\)).
-  Prove that there exists a nonzero linear functional \(f \in \V^*\) such that \(f(x) = 0\) for all \(x \in \W\).
+	Let \(\V\) be a nonzero vector space over \(\F\), and let \(\W\) be a proper subspace of \(\V\) over \(\F\)
+	(i.e., \(\W \neq \V\)).
+	Prove that there exists a nonzero linear functional \(f \in \V^*\) such that \(f(x) = 0\) for all \(x \in \W\).
 \end{ex}
 
 \begin{proof}[\pf{ex:2.6.19}]
-  Let \(\beta_{\W}\) be a basis for \(\W\) over \(\F\).
-  By \cref{1.12,1.13} we can extend \(\beta_{\W}\) to a basis \(\beta\) for \(\V\) over \(\F\).
-  Then by \cref{ex:2.1.34} there exists a \(f \in \V^*\) such that
-  \[
-    \forall v \in \beta, f(v) = \begin{dcases}
-      0 & \text{if } v \in \beta_{\W}                 \\
-      1 & \text{if } v \in \beta \setminus \beta_{\W}
-    \end{dcases}.
-  \]
-  Note that \(\W \neq \V\) implies \(\beta \setminus \beta_{\W} \neq \varnothing\) and thus \(f\) is not a zero transformation.
+	Let \(\beta_{\W}\) be a basis for \(\W\) over \(\F\).
+	By \cref{1.12,1.13} we can extend \(\beta_{\W}\) to a basis \(\beta\) for \(\V\) over \(\F\).
+	Then by \cref{ex:2.1.34} there exists a \(f \in \V^*\) such that
+	\[
+		\forall v \in \beta, f(v) = \begin{dcases}
+			0 & \text{if } v \in \beta_{\W}                 \\
+			1 & \text{if } v \in \beta \setminus \beta_{\W}
+		\end{dcases}.
+	\]
+	Note that \(\W \neq \V\) implies \(\beta \setminus \beta_{\W} \neq \varnothing\) and thus \(f\) is not a zero transformation.
 \end{proof}
 
 \begin{ex}\label{ex:2.6.20}
-  Let \(\V\) and \(\W\) be nonzero vector spaces over the same field \(\F\), and let \(\T \in \ls(\V, \W)\).
-  \begin{enumerate}
-    \item Prove that \(\T\) is onto iff \(\tp{\T}\) is one-to-one.
-    \item Prove that \(\tp{\T}\) is onto iff \(\T\) is one-to-one.
-  \end{enumerate}
+	Let \(\V\) and \(\W\) be nonzero vector spaces over the same field \(\F\), and let \(\T \in \ls(\V, \W)\).
+	\begin{enumerate}
+		\item Prove that \(\T\) is onto iff \(\tp{\T}\) is one-to-one.
+		\item Prove that \(\tp{\T}\) is onto iff \(\T\) is one-to-one.
+	\end{enumerate}
 \end{ex}
 
 \begin{proof}[\pf{ex:2.6.20}(a)]
-  First suppose that \(\T\) is onto.
-  Let \(f \in \ns{\tp{\T}}\).
-  Since
-  \begin{align*}
-             & \tp{\T}(f) = 0_{\V^*}          &  & \text{(by \cref{2.1.10})} \\
-    \implies & f \T = 0_{\V^*}                &  & \text{(by \cref{2.25})}   \\
-    \implies & f(\T(\V)) = f(\W) = \set{0}    &  & \text{(\(f\) is onto)}    \\
-    \implies & f = 0_{\W^*}                   &  & \text{(by \cref{2.1.9})}  \\
-    \implies & \ns{\tp{\T}} = \set{0_{\W^*}}, &  & \text{(by \cref{2.1.10})}
-  \end{align*}
-  by \cref{2.4} we know that \(\tp{\T}\) is one-to-one.
+	First suppose that \(\T\) is onto.
+	Let \(f \in \ns{\tp{\T}}\).
+	Since
+	\begin{align*}
+		         & \tp{\T}(f) = 0_{\V^*}          &  & \by{2.1.10}            \\
+		\implies & f \T = 0_{\V^*}                &  & \by{2.25}              \\
+		\implies & f(\T(\V)) = f(\W) = \set{0}    &  & \text{(\(f\) is onto)} \\
+		\implies & f = 0_{\W^*}                   &  & \by{2.1.9}             \\
+		\implies & \ns{\tp{\T}} = \set{0_{\W^*}}, &  & \by{2.1.10}
+	\end{align*}
+	by \cref{2.4} we know that \(\tp{\T}\) is one-to-one.
 
-  Now suppose that \(\tp{\T}\) is one-to-one.
-  Suppose for sake of contradiction that \(\T\) is not onto.
-  By \cref{ex:2.1.33} we know that \(\rg{\T} \subsetneq \W\).
-  By \cref{ex:2.6.19} there exists a \(f \in \W^*\) such that \(f(\rg{\T}) = \set{0}\) and \(f(\W) \neq \set{0}\).
-  Let \(g \in \W^*\) be the zero transformation.
-  Then we have
-  \begin{align*}
-    \forall x \in \V, \pa{\tp{\T}(g)}(x) & = (g \T)(x)          &  & \text{(by \cref{2.25})} \\
-                                         & = g(\T(x))                                        \\
-                                         & = 0                                               \\
-                                         & = f(\T(x))                                        \\
-                                         & = (f \T)(x)                                       \\
-                                         & = \pa{\tp{\T}(f)}(x) &  & \text{(by \cref{2.25})}
-  \end{align*}
-  and thus \(\tp{\T}(g) = \tp{\T}(f)\).
-  But \(\tp{\T}\) is one-to-one implies \(f = g\), a contradiction.
-  Thus \(\T\) is onto.
+	Now suppose that \(\tp{\T}\) is one-to-one.
+	Suppose for sake of contradiction that \(\T\) is not onto.
+	By \cref{ex:2.1.33} we know that \(\rg{\T} \subsetneq \W\).
+	By \cref{ex:2.6.19} there exists a \(f \in \W^*\) such that \(f(\rg{\T}) = \set{0}\) and \(f(\W) \neq \set{0}\).
+	Let \(g \in \W^*\) be the zero transformation.
+	Then we have
+	\begin{align*}
+		\forall x \in \V, \pa{\tp{\T}(g)}(x) & = (g \T)(x)          &  & \by{2.25} \\
+		                                     & = g(\T(x))                          \\
+		                                     & = 0                                 \\
+		                                     & = f(\T(x))                          \\
+		                                     & = (f \T)(x)                         \\
+		                                     & = \pa{\tp{\T}(f)}(x) &  & \by{2.25}
+	\end{align*}
+	and thus \(\tp{\T}(g) = \tp{\T}(f)\).
+	But \(\tp{\T}\) is one-to-one implies \(f = g\), a contradiction.
+	Thus \(\T\) is onto.
 \end{proof}
 
 \begin{proof}[\pf{ex:2.6.20}(b)]
-  First suppose that \(\tp{\T}\) is onto.
-  Suppose for sake of contradiction that \(\T\) is not one-to-one.
-  By \cref{2.4} there exists an \(x \in \V \setminus \set{\zv_{\V}}\) such that \(\T(x) = \zv_{\W}\).
-  By \cref{ex:2.1.34} there exists a \(f \in \V^*\) such that \(f(x) \neq 0\).
-  Since \(f \in \V^*\) and \(\tp{\T}\) is onto, there exists a \(g \in \W^*\) such that \(f = \tp{\T}(g)\).
-  But this means
-  \begin{align*}
-    f(x) & = \pa{\tp{\T}(g)}(x)                                  \\
-         & = (g \T)(x)          &  & \text{(by \cref{2.25})}     \\
-         & = g(\T(x))                                            \\
-         & = g(\zv_{\W})        &  & \text{(by hypothesis)}      \\
-         & = 0,                 &  & \text{(by \cref{2.1.2}(a))}
-  \end{align*}
-  a contradiction.
-  Thus \(\T\) is one-to-one.
+	First suppose that \(\tp{\T}\) is onto.
+	Suppose for sake of contradiction that \(\T\) is not one-to-one.
+	By \cref{2.4} there exists an \(x \in \V \setminus \set{\zv_{\V}}\) such that \(\T(x) = \zv_{\W}\).
+	By \cref{ex:2.1.34} there exists a \(f \in \V^*\) such that \(f(x) \neq 0\).
+	Since \(f \in \V^*\) and \(\tp{\T}\) is onto, there exists a \(g \in \W^*\) such that \(f = \tp{\T}(g)\).
+	But this means
+	\begin{align*}
+		f(x) & = \pa{\tp{\T}(g)}(x)                             \\
+		     & = (g \T)(x)          &  & \by{2.25}              \\
+		     & = g(\T(x))                                       \\
+		     & = g(\zv_{\W})        &  & \text{(by hypothesis)} \\
+		     & = 0,                 &  & \by{2.1.2}[a]
+	\end{align*}
+	a contradiction.
+	Thus \(\T\) is one-to-one.
 
-  Now suppose that \(\T\) is one-to-one.
-  Let \(f \in \V^*\) and let \(\beta\) be a basis for \(\V\) over \(\F\).
-  Since \(\T\) is one-to-one, by \cref{ex:2.1.14}(a) we know that \(\T(\beta)\) is linearly independent.
-  By \cref{1.12,1.13} we can extend \(\T(\beta)\) to a basis \(\gamma\) for \(\W\) over \(\F\).
-  If we define \(h \in \fs(\gamma, \F)\) by setting
-  \[
-    \forall w \in \gamma, h(w) = \begin{dcases}
-      f(v) & \text{if } (w \in \T(\beta)) \land (\exists! v \in \beta : \T(v) = w) \\
-      0    & \text{if } w \in \gamma \setminus \T(\beta)
-    \end{dcases},
-  \]
-  then by \cref{ex:2.6.18} we know that there exists a \(g \in \W^*\) such that \(\Phi(g) = g_{\gamma} = h\).
-  Since
-  \begin{align*}
-    \forall v \in \beta, f(v) & = h(\T(v))            &  & \text{(by definition)}       \\
-                              & = (h \T)(v)                                             \\
-                              & = (g \T)(v)           &  & \text{(by \cref{ex:2.6.18})} \\
-                              & = \pa{\tp{\T}(g)}(v), &  & \text{(by \cref{2.25})}
-  \end{align*}
-  by \cref{ex:2.1.34} we know that \(f = \tp{\T}(g)\).
-  Since \(f\) is arbitrary, we know that \(\tp{\T}\) is onto.
+	Now suppose that \(\T\) is one-to-one.
+	Let \(f \in \V^*\) and let \(\beta\) be a basis for \(\V\) over \(\F\).
+	Since \(\T\) is one-to-one, by \cref{ex:2.1.14}(a) we know that \(\T(\beta)\) is linearly independent.
+	By \cref{1.12,1.13} we can extend \(\T(\beta)\) to a basis \(\gamma\) for \(\W\) over \(\F\).
+	If we define \(h \in \fs(\gamma, \F)\) by setting
+	\[
+		\forall w \in \gamma, h(w) = \begin{dcases}
+			f(v) & \text{if } (w \in \T(\beta)) \land (\exists! v \in \beta : \T(v) = w) \\
+			0    & \text{if } w \in \gamma \setminus \T(\beta)
+		\end{dcases},
+	\]
+	then by \cref{ex:2.6.18} we know that there exists a \(g \in \W^*\) such that \(\Phi(g) = g_{\gamma} = h\).
+	Since
+	\begin{align*}
+		\forall v \in \beta, f(v) & = h(\T(v))            &  & \text{(by definition)} \\
+		                          & = (h \T)(v)                                       \\
+		                          & = (g \T)(v)           &  & \by{ex:2.6.18}         \\
+		                          & = \pa{\tp{\T}(g)}(v), &  & \by{2.25}
+	\end{align*}
+	by \cref{ex:2.1.34} we know that \(f = \tp{\T}(g)\).
+	Since \(f\) is arbitrary, we know that \(\tp{\T}\) is onto.
 \end{proof}

@@ -1,1163 +1,1163 @@
 \section{Bases and Dimension}\label{sec:1.6}
 
 \begin{defn}\label{1.6.1}
-  A \textbf{basis} \(\beta\) for a vector space \(\V\) over \(\F\) is a linearly independent subset of \(\V\) that generates \(\V\).
-  If \(\beta\) is a basis for \(\V\) over \(\F\), we also say that the vectors of \(\beta\) form a basis for \(\V\) over \(\F\).
+	A \textbf{basis} \(\beta\) for a vector space \(\V\) over \(\F\) is a linearly independent subset of \(\V\) that generates \(\V\).
+	If \(\beta\) is a basis for \(\V\) over \(\F\), we also say that the vectors of \(\beta\) form a basis for \(\V\) over \(\F\).
 \end{defn}
 
 \begin{eg}\label{1.6.2}
-  Recalling that \(\spn{\varnothing} = \set{\zv}\) and \(\varnothing\) is linearly independent, we see that \(\varnothing\) is a basis for the zero vector space over \(\F\).
+	Recalling that \(\spn{\varnothing} = \set{\zv}\) and \(\varnothing\) is linearly independent, we see that \(\varnothing\) is a basis for the zero vector space over \(\F\).
 \end{eg}
 
 \begin{eg}\label{1.6.3}
-  In \(\vs{F}^n\), let \(e_1 = (1, 0, 0, \dots, 0)\), \(e_2 = (0, 1, 0, \dots, 0)\), \dots, \(e_n = (0, 0, \dots, 0, 1)\);
-  \(\set{\seq{e}{1,2,,n}}\) is readily seen to be a basis for \(\vs{F}^n\) over \(\F\) and is called the \textbf{standard basis} for \(\vs{F}^n\) over \(\F\).
+	In \(\vs{F}^n\), let \(e_1 = (1, 0, 0, \dots, 0)\), \(e_2 = (0, 1, 0, \dots, 0)\), \dots, \(e_n = (0, 0, \dots, 0, 1)\);
+	\(\set{\seq{e}{1,2,,n}}\) is readily seen to be a basis for \(\vs{F}^n\) over \(\F\) and is called the \textbf{standard basis} for \(\vs{F}^n\) over \(\F\).
 \end{eg}
 
 \begin{proof}[\pf{1.6.3}]
-  By \cref{ex:1.5.4} we know that \(\set{\seq{e}{1,2,,n}}\) is linearly independent.
-  By \cref{ex:1.4.7} we know that \(\vs{F}^n = \spn{\set{\seq{e}{1,2,,n}}}\).
-  Thus by \cref{1.6.1} \(\set{\seq{e}{1,2,,n}}\) is a basis for \(\vs{F}^n\) over \(\F\).
+	By \cref{ex:1.5.4} we know that \(\set{\seq{e}{1,2,,n}}\) is linearly independent.
+	By \cref{ex:1.4.7} we know that \(\vs{F}^n = \spn{\set{\seq{e}{1,2,,n}}}\).
+	Thus by \cref{1.6.1} \(\set{\seq{e}{1,2,,n}}\) is a basis for \(\vs{F}^n\) over \(\F\).
 \end{proof}
 
 \begin{eg}\label{1.6.4}
-  In \(\MS\), let \(E^{i j}\) denote the matrix whose only nonzero entry is a \(1\) in the \(i\)th row and \(j\)th column.
-  Then \(\set{E^{i j} : 1 \leq i \leq m, 1 \leq j \leq n}\) is a basis for \(\MS\) over \(\F\).
+	In \(\MS\), let \(E^{i j}\) denote the matrix whose only nonzero entry is a \(1\) in the \(i\)th row and \(j\)th column.
+	Then \(\set{E^{i j} : 1 \leq i \leq m, 1 \leq j \leq n}\) is a basis for \(\MS\) over \(\F\).
 \end{eg}
 
 \begin{proof}[\pf{1.6.4}]
-  By \cref{ex:1.5.6} we know that \(\set{E^{i j} : 1 \leq i \leq m, 1 \leq j \leq n}\) is linearly independent.
-  Since
-  \begin{align*}
-             & \forall A \in \MS, A = \begin{pmatrix}
-                                        A_{1 1} & A_{1 2} & \cdots & A_{1 n} \\
-                                        A_{2 1} & A_{2 2} & \cdots & A_{2 n} \\
-                                        \vdots  & \vdots  & \ddots & \vdots  \\
-                                        A_{m 1} & A_{m 2} & \cdots & A_{m n}
-                                      \end{pmatrix}                                                   \\
-             & = \sum_{i = 1}^m \sum_{j = 1}^n A_{i j} E^{i j}                                 &  & \text{(by \cref{1.2.9})} \\
-    \implies & \forall A \in \MS, A \in \spn{\set{E^{i j} : 1 \leq i \leq m, 1 \leq j \leq n}} &  & \text{(by \cref{1.4.3})} \\
-    \implies & \MS = \spn{\set{E^{i j} : 1 \leq i \leq m, 1 \leq j \leq n}},                   &  & \text{(by \cref{1.5})}
-  \end{align*}
-  by \cref{1.6.1} we know that \(\set{E^{i j} : 1 \leq i \leq m, 1 \leq j \leq n}\) is a basis for \(\MS\) over \(\F\).
+	By \cref{ex:1.5.6} we know that \(\set{E^{i j} : 1 \leq i \leq m, 1 \leq j \leq n}\) is linearly independent.
+	Since
+	\begin{align*}
+		         & \forall A \in \MS, A = \begin{pmatrix}
+			                                  A_{1 1} & A_{1 2} & \cdots & A_{1 n} \\
+			                                  A_{2 1} & A_{2 2} & \cdots & A_{2 n} \\
+			                                  \vdots  & \vdots  & \ddots & \vdots  \\
+			                                  A_{m 1} & A_{m 2} & \cdots & A_{m n}
+		                                  \end{pmatrix}                                     \\
+		         & = \sum_{i = 1}^m \sum_{j = 1}^n A_{i j} E^{i j}                                 &  & \by{1.2.9} \\
+		\implies & \forall A \in \MS, A \in \spn{\set{E^{i j} : 1 \leq i \leq m, 1 \leq j \leq n}} &  & \by{1.4.3} \\
+		\implies & \MS = \spn{\set{E^{i j} : 1 \leq i \leq m, 1 \leq j \leq n}},                   &  & \by{1.5}
+	\end{align*}
+	by \cref{1.6.1} we know that \(\set{E^{i j} : 1 \leq i \leq m, 1 \leq j \leq n}\) is a basis for \(\MS\) over \(\F\).
 \end{proof}
 
 \begin{eg}\label{1.6.5}
-  In \(\ps[n]{\F}\) the set \(\set{1, x, x^2, \dots, x^n}\) is a basis.
-  We call this basis the \textbf{standard basis} for \(\ps[n]{\F}\) over \(\F\).
+	In \(\ps[n]{\F}\) the set \(\set{1, x, x^2, \dots, x^n}\) is a basis.
+	We call this basis the \textbf{standard basis} for \(\ps[n]{\F}\) over \(\F\).
 \end{eg}
 
 \begin{proof}[\pf{1.6.5}]
-  By \cref{ex:1.5.5} we know that \(\set{1, x, x^2, \dots, x^n}\) is linearly independent.
-  By \cref{ex:1.4.8} we know that \(\ps[n]{\F} = \spn{\set{1, x, x^2, \dots, x^n}}\).
-  Thus by \cref{1.6.1} \(\set{1, x, x^2, \dots, x^n}\) is a basis for \(\ps[n]{\F}\) over \(\F\).
+	By \cref{ex:1.5.5} we know that \(\set{1, x, x^2, \dots, x^n}\) is linearly independent.
+	By \cref{ex:1.4.8} we know that \(\ps[n]{\F} = \spn{\set{1, x, x^2, \dots, x^n}}\).
+	Thus by \cref{1.6.1} \(\set{1, x, x^2, \dots, x^n}\) is a basis for \(\ps[n]{\F}\) over \(\F\).
 \end{proof}
 
 \begin{eg}\label{1.6.6}
-  In \(\ps{\F}\) the set \(\set{1, x, x^2, \dots}\) is a basis.
+	In \(\ps{\F}\) the set \(\set{1, x, x^2, \dots}\) is a basis.
 \end{eg}
 
 \begin{proof}[\pf{1.6.6}]
-  Suppose for sake of contradiction that \(\set{1, x, x^2, \dots}\) is not a basis for \(\ps{\F}\) over \(\F\).
-  Then by \cref{1.6.1} we can split into two cases:
-  \begin{itemize}
-    \item If \(\set{1, x, x^2, \dots}\) is linearly dependent, then by \cref{ex:1.5.14} we have
-          \[
-            \begin{dcases}
-              \exists x^n \in \set{1, x, x^2, \dots} \\
-              \exists \set{\seq{a}{0,1,2,}} \subseteq \F
-            \end{dcases} : x^n = \sum_{i \in \N : i \neq n} a_i x^i.
-          \]
-          By setting \(a_n = -1\) we have
-          \begin{align*}
-                     & \sum_{i \in \N} a_i x^i = \zv = \sum_{i \in \N} 0x^i                                \\
-            \implies & \seq[=]{a}{0,1,2,} = 0.                              &  & \text{(by \cref{1.2.11})}
-          \end{align*}
-          But this means \(a_n = 0\), a contradiction.
-    \item If \(\ps{\F} \neq \spn{\set{1, x, x^2, \dots}}\), then by \cref{1.4.3} we have
-          \[
-            \exists f \in \ps{\F} : \forall \set{\seq{a}{0,1,2,}} \subseteq \F, f(x) \neq \sum_{i \in \N} a_i x^i.
-          \]
-          Let \(m\) be the degree of \(f\).
-          Then by \cref{1.2.11} we have
-          \[
-            \exists \seq{c}{0,1,,m} \in \F : f(x) = c_0 + c_1 x + \cdots + c_m x^m.
-          \]
-          But by setting
-          \[
-            \begin{dcases}
-              a_i = c_i & \text{if } i \leq m \\
-              a_i = 0   & \text{if } i > m
-            \end{dcases}
-          \]
-          we have \(f(x) = \sum_{i \in \N} a_i x^i\), a contradiction.
-  \end{itemize}
-  From all cases above we derived contradictions.
-  Thus \(\set{1, x, x^2, \dots}\) is a basis for \(\ps{\F}\) over \(\F\).
+	Suppose for sake of contradiction that \(\set{1, x, x^2, \dots}\) is not a basis for \(\ps{\F}\) over \(\F\).
+	Then by \cref{1.6.1} we can split into two cases:
+	\begin{itemize}
+		\item If \(\set{1, x, x^2, \dots}\) is linearly dependent, then by \cref{ex:1.5.14} we have
+		      \[
+			      \begin{dcases}
+				      \exists x^n \in \set{1, x, x^2, \dots} \\
+				      \exists \set{\seq{a}{0,1,2,}} \subseteq \F
+			      \end{dcases} : x^n = \sum_{i \in \N : i \neq n} a_i x^i.
+		      \]
+		      By setting \(a_n = -1\) we have
+		      \begin{align*}
+			               & \sum_{i \in \N} a_i x^i = \zv = \sum_{i \in \N} 0x^i                  \\
+			      \implies & \seq[=]{a}{0,1,2,} = 0.                              &  & \by{1.2.11}
+		      \end{align*}
+		      But this means \(a_n = 0\), a contradiction.
+		\item If \(\ps{\F} \neq \spn{\set{1, x, x^2, \dots}}\), then by \cref{1.4.3} we have
+		      \[
+			      \exists f \in \ps{\F} : \forall \set{\seq{a}{0,1,2,}} \subseteq \F, f(x) \neq \sum_{i \in \N} a_i x^i.
+		      \]
+		      Let \(m\) be the degree of \(f\).
+		      Then by \cref{1.2.11} we have
+		      \[
+			      \exists \seq{c}{0,1,,m} \in \F : f(x) = c_0 + c_1 x + \cdots + c_m x^m.
+		      \]
+		      But by setting
+		      \[
+			      \begin{dcases}
+				      a_i = c_i & \text{if } i \leq m \\
+				      a_i = 0   & \text{if } i > m
+			      \end{dcases}
+		      \]
+		      we have \(f(x) = \sum_{i \in \N} a_i x^i\), a contradiction.
+	\end{itemize}
+	From all cases above we derived contradictions.
+	Thus \(\set{1, x, x^2, \dots}\) is a basis for \(\ps{\F}\) over \(\F\).
 \end{proof}
 
 \begin{note}
-  Observe that \cref{1.6.6} shows that a basis need not be finite.
-  In fact, later in \cref{sec:1.6} it is shown that no basis for \(\ps{\F}\) over \(\F\) can be finite.
-  Hence not every vector space has a finite basis.
+	Observe that \cref{1.6.6} shows that a basis need not be finite.
+	In fact, later in \cref{sec:1.6} it is shown that no basis for \(\ps{\F}\) over \(\F\) can be finite.
+	Hence not every vector space has a finite basis.
 \end{note}
 
 \begin{thm}\label{1.8}
-  Let \(\V\) be a vector space over \(\F\) and \(\beta = \set{\seq{u}{1,2,,n}}\) be a subset of \(\V\).
-  Then \(\beta\) is a basis for \(\V\) over \(\F\) iff each \(v \in \V\) can be uniquely expressed as a linear combination of vectors of \(\beta\), that is, can be expressed in the form
-  \[
-    v = \seq[+]{a,u}{1,2,,n}
-  \]
-  for unique scalars \(\seq{a}{1,2,,n} \in \F\).
+	Let \(\V\) be a vector space over \(\F\) and \(\beta = \set{\seq{u}{1,2,,n}}\) be a subset of \(\V\).
+	Then \(\beta\) is a basis for \(\V\) over \(\F\) iff each \(v \in \V\) can be uniquely expressed as a linear combination of vectors of \(\beta\), that is, can be expressed in the form
+	\[
+		v = \seq[+]{a,u}{1,2,,n}
+	\]
+	for unique scalars \(\seq{a}{1,2,,n} \in \F\).
 \end{thm}
 
 \begin{proof}[\pf{1.8}]
-  First suppose that \(\beta\) be a basis for \(\V\) over \(\F\).
-  If \(v \in V\), then \(v \in \spn{\beta}\) because \(\spn{\beta} = \V\).
-  Thus \(v\) is a linear combination of the vectors of \(\beta\).
-  Suppose that
-  \[
-    v = \seq[+]{a,u}{1,2,,n} \quad \text{and} \quad v = \seq[+]{b,u}{1,2,,n}
-  \]
-  are two such representations of \(v\).
-  Subtracting the second equation from the first gives
-  \[
-    \zv = (a_1 - b_1) u_1 + (a_2 - b_2) u_2 + \cdots + (a_n - b_n) u_n.
-  \]
-  Since \(\beta\) is linearly independent, it follows that \(a_1 - b_1 = a_2 - b_2 = \cdots = a_n - b_n = 0\).
-  Hence \(a_1 = b_1, a_2 = b_2, \dots, a_n = b_n\), and so \(v\) is uniquely expressible as a linear combination of the vectors of \(\beta\).
+	First suppose that \(\beta\) be a basis for \(\V\) over \(\F\).
+	If \(v \in V\), then \(v \in \spn{\beta}\) because \(\spn{\beta} = \V\).
+	Thus \(v\) is a linear combination of the vectors of \(\beta\).
+	Suppose that
+	\[
+		v = \seq[+]{a,u}{1,2,,n} \quad \text{and} \quad v = \seq[+]{b,u}{1,2,,n}
+	\]
+	are two such representations of \(v\).
+	Subtracting the second equation from the first gives
+	\[
+		\zv = (a_1 - b_1) u_1 + (a_2 - b_2) u_2 + \cdots + (a_n - b_n) u_n.
+	\]
+	Since \(\beta\) is linearly independent, it follows that \(a_1 - b_1 = a_2 - b_2 = \cdots = a_n - b_n = 0\).
+	Hence \(a_1 = b_1, a_2 = b_2, \dots, a_n = b_n\), and so \(v\) is uniquely expressible as a linear combination of the vectors of \(\beta\).
 
-  Now suppose that each \(v \in \V\) can be uniquely expressed as a linear combination of vectors of \(\beta\).
-  By \cref{1.4.3} and \cref{1.5} this means \(\V = \spn{\beta}\).
-  Thus to show that \(\beta\) is a basis for \(\V\) over \(\F\), by \cref{1.6.1} we need to show that \(\beta\) is linearly independent.
-  This is true since
-  \begin{align*}
-             & \zv \in \V                                             &  & \text{(by \ref{vs3})}    \\
-    \implies & \exists! \seq{a}{1,2,,n} \in \F :                                                    \\
-             & \zv = \seq[+]{a,u}{1,2,,n} = \seq[+]{0u}{1,2,,n}       &  & \text{(by hypothesis)}   \\
-    \implies & \seq[=]{a}{1,2,,n} = 0                                                               \\
-    \implies & \set{\seq{u}{1,2,,n}} \text{ is linearly independent}. &  & \text{(by \cref{1.5.3})}
-  \end{align*}
+	Now suppose that each \(v \in \V\) can be uniquely expressed as a linear combination of vectors of \(\beta\).
+	By \cref{1.4.3} and \cref{1.5} this means \(\V = \spn{\beta}\).
+	Thus to show that \(\beta\) is a basis for \(\V\) over \(\F\), by \cref{1.6.1} we need to show that \(\beta\) is linearly independent.
+	This is true since
+	\begin{align*}
+		         & \zv \in \V                                             &  & \text{(by \ref{vs3})}  \\
+		\implies & \exists! \seq{a}{1,2,,n} \in \F :                                                  \\
+		         & \zv = \seq[+]{a,u}{1,2,,n} = \seq[+]{0u}{1,2,,n}       &  & \text{(by hypothesis)} \\
+		\implies & \seq[=]{a}{1,2,,n} = 0                                                             \\
+		\implies & \set{\seq{u}{1,2,,n}} \text{ is linearly independent}. &  & \by{1.5.3}
+	\end{align*}
 \end{proof}
 
 \begin{note}
-  \cref{1.8} shows that if the vectors \(\seq{u}{1,2,,n}\) form a basis for a vector space \(\V\) over \(\F\), then every vector in \(\V\) can be uniquely expressed in the form
-  \[
-    v = \seq[+]{a,u}{1,2,,n}
-  \]
-  for appropriately chosen scalars \(\seq{a}{1,2,,n}\).
-  Thus \(v\) determines a unique \(n\)-tuple of scalars \(\tuple{a}{1,2,,n}\) and, conversely, each \(n\)-tuple of scalars determines a unique vector \(v \in \V\) by using the entries of the \(n\)-tuple as the coefficients of a linear combination of \(\seq{u}{1,2,,n}\).
-  This fact suggests that \(\V\) is like the vector space \(\vs{F}^n\), where \(n\) is the number of vectors in the basis for \(\V\) over \(\F\).
-  We see in \cref{sec:2.4} that this is indeed the case.
+	\cref{1.8} shows that if the vectors \(\seq{u}{1,2,,n}\) form a basis for a vector space \(\V\) over \(\F\), then every vector in \(\V\) can be uniquely expressed in the form
+	\[
+		v = \seq[+]{a,u}{1,2,,n}
+	\]
+	for appropriately chosen scalars \(\seq{a}{1,2,,n}\).
+	Thus \(v\) determines a unique \(n\)-tuple of scalars \(\tuple{a}{1,2,,n}\) and, conversely, each \(n\)-tuple of scalars determines a unique vector \(v \in \V\) by using the entries of the \(n\)-tuple as the coefficients of a linear combination of \(\seq{u}{1,2,,n}\).
+	This fact suggests that \(\V\) is like the vector space \(\vs{F}^n\), where \(n\) is the number of vectors in the basis for \(\V\) over \(\F\).
+	We see in \cref{sec:2.4} that this is indeed the case.
 \end{note}
 
 \begin{thm}\label{1.9}
-  If a vector space \(\V\) over \(\F\) is generated by a finite set \(S\), then some subset of \(S\) is a basis for \(\V\) over \(\F\).
-  Hence \(\V\) has a finite basis.
+	If a vector space \(\V\) over \(\F\) is generated by a finite set \(S\), then some subset of \(S\) is a basis for \(\V\) over \(\F\).
+	Hence \(\V\) has a finite basis.
 \end{thm}
 
 \begin{proof}[\pf{1.9}]
-  If \(S = \varnothing\) or \(S = \set{\zv}\), then \(\V = \set{\zv}\) and \(\varnothing\) is a subset of \(S\) that is a basis for \(\V\) over \(\F\).
-  Otherwise \(S\) contains a nonzero vector \(u_1\).
-  By \cref{1.5.4}(b), \(\set{u_1}\) is a linearly independent set.
-  Continue, if possible, choosing vectors \(\seq{u}{2,,k}\) in \(S\) such that \(\set{\seq{u}{1,2,,k}}\) is linearly independent.
-  Since \(S\) is a finite set, we must eventually reach a stage at which \(\beta = \set{\seq{u}{1,2,,k}}\) is a linearly independent subset of \(S\), but adjoining to \(\beta\) any vector in \(S \setminus \beta\) produces a linearly dependent set.
-  We claim that \(\beta\) is a basis for \(\V\) over \(\F\).
-  Because \(\beta\) is linearly independent by construction, it suffices to show that \(\beta\) spans \(\V\).
-  By \cref{1.5} we need to show that \(S \subseteq \spn{\beta}\).
-  Let \(v \in S\).
-  If \(v \in \beta\), then clearly \(v \in \spn{\beta}\).
-  Otherwise, if \(v \notin \beta\), then the preceding construction shows that \(\beta \cup \set{v}\) is linearly dependent.
-  So \(v \in \spn{\beta}\) by \cref{1.7}.
-  Thus \(S \subseteq \spn{\beta}\).
+	If \(S = \varnothing\) or \(S = \set{\zv}\), then \(\V = \set{\zv}\) and \(\varnothing\) is a subset of \(S\) that is a basis for \(\V\) over \(\F\).
+	Otherwise \(S\) contains a nonzero vector \(u_1\).
+	By \cref{1.5.4}(b), \(\set{u_1}\) is a linearly independent set.
+	Continue, if possible, choosing vectors \(\seq{u}{2,,k}\) in \(S\) such that \(\set{\seq{u}{1,2,,k}}\) is linearly independent.
+	Since \(S\) is a finite set, we must eventually reach a stage at which \(\beta = \set{\seq{u}{1,2,,k}}\) is a linearly independent subset of \(S\), but adjoining to \(\beta\) any vector in \(S \setminus \beta\) produces a linearly dependent set.
+	We claim that \(\beta\) is a basis for \(\V\) over \(\F\).
+	Because \(\beta\) is linearly independent by construction, it suffices to show that \(\beta\) spans \(\V\).
+	By \cref{1.5} we need to show that \(S \subseteq \spn{\beta}\).
+	Let \(v \in S\).
+	If \(v \in \beta\), then clearly \(v \in \spn{\beta}\).
+	Otherwise, if \(v \notin \beta\), then the preceding construction shows that \(\beta \cup \set{v}\) is linearly dependent.
+	So \(v \in \spn{\beta}\) by \cref{1.7}.
+	Thus \(S \subseteq \spn{\beta}\).
 \end{proof}
 
 \begin{note}
-  Because of the method by which the basis \(\beta\) was obtained in the proof of \cref{1.9}, this theorem is often remembered as saying that \emph{a finite spanning set for \(\V\) can be reduced to a basis for \(\V\) over \(\F\).}
+	Because of the method by which the basis \(\beta\) was obtained in the proof of \cref{1.9}, this theorem is often remembered as saying that \emph{a finite spanning set for \(\V\) can be reduced to a basis for \(\V\) over \(\F\).}
 \end{note}
 
 \begin{thm}[Replacement Theorem]\label{1.10}
-  Let \(\V\) be a vector space over \(\F\) that is generated by a set \(G\) containing exactly \(n\) vectors, and let \(L\) be a linearly independent subset of \(\V\) containing exactly \(m\) vectors.
-  Then \(m \leq n\) and there exists a subset \(H\) of \(G\) containing exactly \(n - m\) vectors such that \(L \cup H\) generates \(\V\).
+	Let \(\V\) be a vector space over \(\F\) that is generated by a set \(G\) containing exactly \(n\) vectors, and let \(L\) be a linearly independent subset of \(\V\) containing exactly \(m\) vectors.
+	Then \(m \leq n\) and there exists a subset \(H\) of \(G\) containing exactly \(n - m\) vectors such that \(L \cup H\) generates \(\V\).
 \end{thm}
 
 \begin{proof}[\pf{1.10}]
-  The proof is by mathematical induction on \(m\).
-  The induction begins with \(m = 0\);
-  for in this case \(L = \varnothing\), and so taking \(H = G\) gives the desired result.
+	The proof is by mathematical induction on \(m\).
+	The induction begins with \(m = 0\);
+	for in this case \(L = \varnothing\), and so taking \(H = G\) gives the desired result.
 
-  Now suppose that the theorem is true for some integer \(m \geq 0\).
-  We prove that the theorem is true for \(m + 1\).
-  Let \(L = \set{\seq{v}{1,2,,m + 1}}\) be a linearly independent subset of \(\V\) consisting of \(m + 1\) vectors.
-  By \cref{1.5.6} \(\set{\seq{v}{1,2,,m}} \subseteq L\) is linearly independent, and so we may apply the induction hypothesis to conclude that \(m \leq n\) and that there is a subset \(\set{\seq{u}{1,2,,n - m}}\) of \(G\) such that \(\set{\seq{v}{1,2,,m}} \cup \set{\seq{u}{1,2,,n - m}}\) generates \(\V\).
-  Thus there exist scalars \(\seq{a}{1,2,,m}, \seq{b}{1,2,,n - m} \in \F\) such that
-  \begin{equation}\label{eq:1.6.1}
-    \seq[+]{a,v}{1,2,,m} + \seq[+]{b,u}{1,2,,n - m} = v_{m + 1}
-  \end{equation}
-  Note that \(n - m > 0\), otherwise \(n - m = 0\) implies \(v_{m + 1}\) is a linear combination of \(\seq{v}{1,2,,m}\), which by \cref{1.7} contradicts the assumption that \(L\) is linearly independent.
-  Hence \(n > m\);
-  that is, \(n \geq m + 1\).
-  Moreover, some \(b_i\), say \(b_1\), is nonzero, for otherwise we obtain the same contradiction.
-  Solving \cref{eq:1.6.1} for \(u_1\) gives
-  \begin{multline*}
-    u_1 = (-b_1^{-1} a_1) v_1 + (-b_1^{-1} a_2) v_2 + \cdots + (-b_1^{-1} a_m) v_m + (b_1^{-1}) v_{m + 1} \\
-    + (-b_1^{-1} b_2) u_2 + \cdots + (-b_1^{-1} b_{n - m}) u_{n - m}.
-  \end{multline*}
-  Let \(H = \set{\seq{u}{2,,n - m}}\).
-  Then \(u_1 \in \spn{L \cup H}\), and because \(\seq{v}{1,2,,m}\), \\
-  \(\seq{u}{2,,n - m}\) are clearly in \(\spn{L \cup H}\), it follows that
-  \[
-    \set{\seq{v}{1,2,,m}, \seq{u}{1,2,,n - m}} \subseteq \spn{L \cup H}.
-  \]
-  Because \(\set{\seq{v}{1,2,,m}, \seq{u}{1,2,n - m}}\) generates \(\V\), \cref{1.5} implies that \\
-  \(\spn{L \cup H} = \V\).
-  Since \(H\) is a subset of \(G\) that contains \((n - m) - 1 = n - (m + 1)\) vectors, the theorem is true for \(m + 1\).
-  This completes the induction.
+	Now suppose that the theorem is true for some integer \(m \geq 0\).
+	We prove that the theorem is true for \(m + 1\).
+	Let \(L = \set{\seq{v}{1,2,,m + 1}}\) be a linearly independent subset of \(\V\) consisting of \(m + 1\) vectors.
+	By \cref{1.5.6} \(\set{\seq{v}{1,2,,m}} \subseteq L\) is linearly independent, and so we may apply the induction hypothesis to conclude that \(m \leq n\) and that there is a subset \(\set{\seq{u}{1,2,,n - m}}\) of \(G\) such that \(\set{\seq{v}{1,2,,m}} \cup \set{\seq{u}{1,2,,n - m}}\) generates \(\V\).
+	Thus there exist scalars \(\seq{a}{1,2,,m}, \seq{b}{1,2,,n - m} \in \F\) such that
+	\begin{equation}\label{eq:1.6.1}
+		\seq[+]{a,v}{1,2,,m} + \seq[+]{b,u}{1,2,,n - m} = v_{m + 1}
+	\end{equation}
+	Note that \(n - m > 0\), otherwise \(n - m = 0\) implies \(v_{m + 1}\) is a linear combination of \(\seq{v}{1,2,,m}\), which by \cref{1.7} contradicts the assumption that \(L\) is linearly independent.
+	Hence \(n > m\);
+	that is, \(n \geq m + 1\).
+	Moreover, some \(b_i\), say \(b_1\), is nonzero, for otherwise we obtain the same contradiction.
+	Solving \cref{eq:1.6.1} for \(u_1\) gives
+	\begin{multline*}
+		u_1 = (-b_1^{-1} a_1) v_1 + (-b_1^{-1} a_2) v_2 + \cdots + (-b_1^{-1} a_m) v_m + (b_1^{-1}) v_{m + 1} \\
+		+ (-b_1^{-1} b_2) u_2 + \cdots + (-b_1^{-1} b_{n - m}) u_{n - m}.
+	\end{multline*}
+	Let \(H = \set{\seq{u}{2,,n - m}}\).
+	Then \(u_1 \in \spn{L \cup H}\), and because \(\seq{v}{1,2,,m}\), \\
+	\(\seq{u}{2,,n - m}\) are clearly in \(\spn{L \cup H}\), it follows that
+	\[
+		\set{\seq{v}{1,2,,m}, \seq{u}{1,2,,n - m}} \subseteq \spn{L \cup H}.
+	\]
+	Because \(\set{\seq{v}{1,2,,m}, \seq{u}{1,2,n - m}}\) generates \(\V\), \cref{1.5} implies that \\
+	\(\spn{L \cup H} = \V\).
+	Since \(H\) is a subset of \(G\) that contains \((n - m) - 1 = n - (m + 1)\) vectors, the theorem is true for \(m + 1\).
+	This completes the induction.
 \end{proof}
 
 \begin{cor}\label{1.6.7}
-  Let \(\V\) be a vector space over \(\F\) having a finite basis.
-  Then every basis for \(\V\) over \(\F\) contains the same number of vectors.
+	Let \(\V\) be a vector space over \(\F\) having a finite basis.
+	Then every basis for \(\V\) over \(\F\) contains the same number of vectors.
 \end{cor}
 
 \begin{proof}[\pf{1.6.7}]
-  Suppose that \(\beta\) is a finite basis for \(\V\) over \(\F\) that contains exactly \(n\) vectors, and let \(\gamma\) be any other basis for \(\V\) over \(\F\).
-  If \(\gamma\) contains more than \(n\) vectors, then we can select a subset \(S\) of \(\gamma\) containing exactly \(n + 1\) vectors.
-  Since \(S\) is linearly independent and \(\beta\) generates \(\V\), the replacement theorem (\cref{1.10}) implies that \(n + 1 \leq n\), a contradiction.
-  Therefore \(\gamma\) is finite, and the number \(m\) of vectors in \(\gamma\) satisfies \(m \leq n\).
-  Reversing the roles of \(\beta\) and \(\gamma\) and arguing as above, we obtain \(n \leq m\).
-  Hence \(m = n\).
+	Suppose that \(\beta\) is a finite basis for \(\V\) over \(\F\) that contains exactly \(n\) vectors, and let \(\gamma\) be any other basis for \(\V\) over \(\F\).
+	If \(\gamma\) contains more than \(n\) vectors, then we can select a subset \(S\) of \(\gamma\) containing exactly \(n + 1\) vectors.
+	Since \(S\) is linearly independent and \(\beta\) generates \(\V\), the replacement theorem (\cref{1.10}) implies that \(n + 1 \leq n\), a contradiction.
+	Therefore \(\gamma\) is finite, and the number \(m\) of vectors in \(\gamma\) satisfies \(m \leq n\).
+	Reversing the roles of \(\beta\) and \(\gamma\) and arguing as above, we obtain \(n \leq m\).
+	Hence \(m = n\).
 \end{proof}
 
 \begin{note}
-  If a vector space has a finite basis, \cref{1.6.7} asserts that the number of vectors in \emph{any} basis for \(\V\) over \(\F\) is an intrinsic property of \(\V\).
+	If a vector space has a finite basis, \cref{1.6.7} asserts that the number of vectors in \emph{any} basis for \(\V\) over \(\F\) is an intrinsic property of \(\V\).
 \end{note}
 
 \begin{defn}\label{1.6.8}
-  A vector space is called \textbf{finite-dimensional} if it has a basis consisting of a finite number of vectors.
-  The unique number of vectors in each basis for \(\V\) over \(\F\) is called the \textbf{dimension} of \(\V\) and is denoted by \(\dim(\V)\).
-  A vector space that is not finite-dimensional is called \textbf{infinite-dimensional}.
+	A vector space is called \textbf{finite-dimensional} if it has a basis consisting of a finite number of vectors.
+	The unique number of vectors in each basis for \(\V\) over \(\F\) is called the \textbf{dimension} of \(\V\) and is denoted by \(\dim(\V)\).
+	A vector space that is not finite-dimensional is called \textbf{infinite-dimensional}.
 \end{defn}
 
 \begin{eg}\label{1.6.9}
-  The vector space \(\set{\zv}\) over \(\F\) has dimension zero.
+	The vector space \(\set{\zv}\) over \(\F\) has dimension zero.
 \end{eg}
 
 \begin{proof}[\pf{1.6.9}]
-  By \cref{1.6.2} and \cref{1.6.7} we are done.
+	By \cref{1.6.2} and \cref{1.6.7} we are done.
 \end{proof}
 
 \begin{eg}\label{1.6.10}
-  The vector space \(\vs{F}^n\) over \(\F\) has dimension \(n\).
+	The vector space \(\vs{F}^n\) over \(\F\) has dimension \(n\).
 \end{eg}
 
 \begin{proof}[\pf{1.6.10}]
-  By \cref{1.6.3} and \cref{1.6.7} we are done.
+	By \cref{1.6.3} and \cref{1.6.7} we are done.
 \end{proof}
 
 \begin{eg}\label{1.6.11}
-  The vector space \(\MS\) over \(\F\) has dimension \(mn\).
+	The vector space \(\MS\) over \(\F\) has dimension \(mn\).
 \end{eg}
 
 \begin{proof}[\pf{1.6.11}]
-  By \cref{1.6.4} and \cref{1.6.7} we are done.
+	By \cref{1.6.4} and \cref{1.6.7} we are done.
 \end{proof}
 
 \begin{eg}\label{1.6.12}
-  The vector space \(\ps[n]{\F}\) over \(\F\) has dimension \(n + 1\).
+	The vector space \(\ps[n]{\F}\) over \(\F\) has dimension \(n + 1\).
 \end{eg}
 
 \begin{proof}[\pf{1.6.12}]
-  By \cref{1.6.5} and \cref{1.6.7} we are done.
+	By \cref{1.6.5} and \cref{1.6.7} we are done.
 \end{proof}
 
 \begin{eg}\label{1.6.13}
-  Over the field of complex numbers, the vector space of complex numbers has dimension \(1\).
-  (A basis is \(\set{1}\).)
+	Over the field of complex numbers, the vector space of complex numbers has dimension \(1\).
+	(A basis is \(\set{1}\).)
 \end{eg}
 
 \begin{proof}[\pf{1.6.13}]
-  We have
-  \begin{align*}
-             & \forall c \in \C, c = c \cdot 1                               \\
-    \implies & \spn{\set{1}} = \C              &  & \text{(by \cref{1.5})}   \\
-    \implies & \#\pa{\set{1}} = 1 = \dim(\C).  &  & \text{(by \cref{1.6.8})}
-  \end{align*}
+	We have
+	\begin{align*}
+		         & \forall c \in \C, c = c \cdot 1                 \\
+		\implies & \spn{\set{1}} = \C              &  & \by{1.5}   \\
+		\implies & \#\pa{\set{1}} = 1 = \dim(\C).  &  & \by{1.6.8}
+	\end{align*}
 \end{proof}
 
 \begin{eg}\label{1.6.14}
-  Over the field of real numbers, the vector space of complex numbers has dimension \(2\).
-  (A basis is \(\set{1, i}\).)
+	Over the field of real numbers, the vector space of complex numbers has dimension \(2\).
+	(A basis is \(\set{1, i}\).)
 \end{eg}
 
 \begin{proof}[\pf{1.6.14}]
-  We have
-  \begin{align*}
-             & \forall c \in \C, c = \Re(c) + i \Im(c) = \Re(c) \cdot 1 + \Im(c) \cdot i &  & (\Re(c), \Im(c) \in \R)  \\
-    \implies & \spn{\set{1, i}} = \C                                                     &  & \text{(by \cref{1.5})}   \\
-    \implies & \#\pa{\set{1, i}} = 2 = \dim(\C).                                         &  & \text{(by \cref{1.6.8})}
-  \end{align*}
+	We have
+	\begin{align*}
+		         & \forall c \in \C, c = \Re(c) + i \Im(c) = \Re(c) \cdot 1 + \Im(c) \cdot i &  & (\Re(c), \Im(c) \in \R) \\
+		\implies & \spn{\set{1, i}} = \C                                                     &  & \by{1.5}                \\
+		\implies & \#\pa{\set{1, i}} = 2 = \dim(\C).                                         &  & \by{1.6.8}
+	\end{align*}
 \end{proof}
 
 \begin{note}
-  From \cref{1.6.13} and \cref{1.6.14} we see that the dimension of a vector space depends on its field of scalars.
+	From \cref{1.6.13} and \cref{1.6.14} we see that the dimension of a vector space depends on its field of scalars.
 \end{note}
 
 \begin{note}
-  In the terminology of dimension, the first conclusion in the replacement theorem states that if \(\V\) is a finite-dimensional vector space over \(\F\), then no linearly independent subset of \(\V\) can contain more than \(\dim(\V)\) vectors.
-  From this fact it follows that the vector space \(\ps{\F}\) over \(\F\) is infinite-dimensional because it has an infinite linearly independent set, namely \(\set{1, x, x^2, \dots}\).
-  This set is, in fact, a basis for \(\ps{\F}\) over \(\F\).
-  Yet nothing that we have proved in this section guarantees an infinite-dimensional vector space must have a basis.
-  In \cref{sec:1.7} it is shown, however, that \emph{every vector space has a basis}.
+	In the terminology of dimension, the first conclusion in the replacement theorem states that if \(\V\) is a finite-dimensional vector space over \(\F\), then no linearly independent subset of \(\V\) can contain more than \(\dim(\V)\) vectors.
+	From this fact it follows that the vector space \(\ps{\F}\) over \(\F\) is infinite-dimensional because it has an infinite linearly independent set, namely \(\set{1, x, x^2, \dots}\).
+	This set is, in fact, a basis for \(\ps{\F}\) over \(\F\).
+	Yet nothing that we have proved in this section guarantees an infinite-dimensional vector space must have a basis.
+	In \cref{sec:1.7} it is shown, however, that \emph{every vector space has a basis}.
 \end{note}
 
 \begin{cor}\label{1.6.15}
-  Let \(\V\) be a vector space over \(\F\) with dimension \(n\).
-  \begin{enumerate}
-    \item Any finite generating set for \(\V\) contains at least \(n\) vectors, and a generating set for \(\V\) that contains exactly \(n\) vectors is a basis for \(\V\) over \(\F\).
-    \item Any linearly independent subset of \(\V\) that contains exactly \(n\) vectors is a basis for \(\V\) over \(\F\).
-    \item Every linearly independent subset of \(\V\) can be extended to a basis for \(\V\) over \(\F\).
-  \end{enumerate}
+	Let \(\V\) be a vector space over \(\F\) with dimension \(n\).
+	\begin{enumerate}
+		\item Any finite generating set for \(\V\) contains at least \(n\) vectors, and a generating set for \(\V\) that contains exactly \(n\) vectors is a basis for \(\V\) over \(\F\).
+		\item Any linearly independent subset of \(\V\) that contains exactly \(n\) vectors is a basis for \(\V\) over \(\F\).
+		\item Every linearly independent subset of \(\V\) can be extended to a basis for \(\V\) over \(\F\).
+	\end{enumerate}
 \end{cor}
 
 \begin{proof}[\pf{1.6.15}]
-  Let \(\beta\) be a basis for \(\V\) over \(\F\).
-  \begin{enumerate}
-    \item Let \(G\) be a finite generating set for \(\V\).
-          By \cref{1.9} some subset \(H\) of \(G\) is a basis for \(\V\) over \(\F\).
-          \cref{1.6.7} implies that \(H\) contains exactly \(n\) vectors.
-          Since a subset of \(G\) contains \(n\) vectors, \(G\) must contain at least \(n\) vectors.
-          Moreover, if \(G\) contains exactly \(n\) vectors, then we must have \(H = G\), so that \(G\) is a basis for \(\V\) over \(\F\).
-    \item Let \(L\) be a linearly independent subset of \(\V\) containing exactly \(n\) vectors.
-          It follows from the replacement theorem that there is a subset \(H\) of \(\beta\) containing \(n - n = 0\) vectors such that \(L \cup H\) generates \(\V\).
-          Thus \(H = \varnothing\), and \(L\) generates \(\V\).
-          Since \(L\) is also linearly independent, \(L\) is a basis for \(\V\) over \(\F\).
-    \item If \(L\) is a linearly independent subset of \(\V\) containing \(m\) vectors, then the replacement theorem asserts that there is a subset \(H\) of \(\beta\) containing exactly \(n - m\) vectors such that \(L \cup H\) generates \(\V\).
-          Now \(L \cup H\) contains at most \(n\) vectors;
-          therefore (a) implies that \(L \cup H\) contains exactly \(n\) vectors and that \(L \cup H\) is a basis for \(\V\) over \(\F\).
-  \end{enumerate}
+	Let \(\beta\) be a basis for \(\V\) over \(\F\).
+	\begin{enumerate}
+		\item Let \(G\) be a finite generating set for \(\V\).
+		      By \cref{1.9} some subset \(H\) of \(G\) is a basis for \(\V\) over \(\F\).
+		      \cref{1.6.7} implies that \(H\) contains exactly \(n\) vectors.
+		      Since a subset of \(G\) contains \(n\) vectors, \(G\) must contain at least \(n\) vectors.
+		      Moreover, if \(G\) contains exactly \(n\) vectors, then we must have \(H = G\), so that \(G\) is a basis for \(\V\) over \(\F\).
+		\item Let \(L\) be a linearly independent subset of \(\V\) containing exactly \(n\) vectors.
+		      It follows from the replacement theorem that there is a subset \(H\) of \(\beta\) containing \(n - n = 0\) vectors such that \(L \cup H\) generates \(\V\).
+		      Thus \(H = \varnothing\), and \(L\) generates \(\V\).
+		      Since \(L\) is also linearly independent, \(L\) is a basis for \(\V\) over \(\F\).
+		\item If \(L\) is a linearly independent subset of \(\V\) containing \(m\) vectors, then the replacement theorem asserts that there is a subset \(H\) of \(\beta\) containing exactly \(n - m\) vectors such that \(L \cup H\) generates \(\V\).
+		      Now \(L \cup H\) contains at most \(n\) vectors;
+		      therefore (a) implies that \(L \cup H\) contains exactly \(n\) vectors and that \(L \cup H\) is a basis for \(\V\) over \(\F\).
+	\end{enumerate}
 \end{proof}
 
 \begin{eg}\label{1.6.16}
-  For \(k = 0, 1, \dots, n\), let \(p_k(x) = x^k + x^{k + 1} + \cdots + x^n\).
-  It follows from \cref{1.5.5} and \cref{1.6.15}(b) that
-  \[
-    \set{p_0(x), p_1(x), \dots, p_n(x)}
-  \]
-  is a basis for \(\ps[n]{\F}\) over \(\F\).
+	For \(k = 0, 1, \dots, n\), let \(p_k(x) = x^k + x^{k + 1} + \cdots + x^n\).
+	It follows from \cref{1.5.5} and \cref{1.6.15}(b) that
+	\[
+		\set{p_0(x), p_1(x), \dots, p_n(x)}
+	\]
+	is a basis for \(\ps[n]{\F}\) over \(\F\).
 \end{eg}
 
 \begin{thm}\label{1.11}
-  Let \(\W\) be a subspace of a finite-dimensional vector space \(\V\) over \(\F\).
-  Then \(\W\) is finite-dimensional and \(\dim(\W) \leq \dim(\V)\).
-  Moreover, if \(\dim(\W) = \dim(\V)\), then \(\V = \W\).
+	Let \(\W\) be a subspace of a finite-dimensional vector space \(\V\) over \(\F\).
+	Then \(\W\) is finite-dimensional and \(\dim(\W) \leq \dim(\V)\).
+	Moreover, if \(\dim(\W) = \dim(\V)\), then \(\V = \W\).
 \end{thm}
 
 \begin{proof}[\pf{1.11}]
-  Let \(\dim(\V) = n\).
-  If \(\W = \set{\zv}\), then \(\W\) is finite-dimensional and \(\dim(\W) = 0 \leq n\).
-  Otherwise, \(\W\) contains a nonzero vector \(x_1\);
-  so \(\set{x_1}\) is a linearly independent set.
-  Continue choosing vectors, \(\seq{x}{1,2,,k}\) in \(\W\) such that \(\set{\seq{x}{1,2,,k}}\) is linearly independent.
-  Since no linearly independent subset of \(\V\) can contain more than \(n\) vectors, this process must stop at a stage where \(k \leq n\) and \(\set{\seq{x}{1,2,,k}}\) is linearly independent but adjoining any other vector from \(\W\) produces a linearly dependent set.
-  \cref{1.7} implies that \(\set{\seq{x}{1,2,,k}}\) generates \(\W\), and hence it is a basis for \(\W\) over \(\F\).
-  Therefore \(\dim(\W) = k \leq n\).
+	Let \(\dim(\V) = n\).
+	If \(\W = \set{\zv}\), then \(\W\) is finite-dimensional and \(\dim(\W) = 0 \leq n\).
+	Otherwise, \(\W\) contains a nonzero vector \(x_1\);
+	so \(\set{x_1}\) is a linearly independent set.
+	Continue choosing vectors, \(\seq{x}{1,2,,k}\) in \(\W\) such that \(\set{\seq{x}{1,2,,k}}\) is linearly independent.
+	Since no linearly independent subset of \(\V\) can contain more than \(n\) vectors, this process must stop at a stage where \(k \leq n\) and \(\set{\seq{x}{1,2,,k}}\) is linearly independent but adjoining any other vector from \(\W\) produces a linearly dependent set.
+	\cref{1.7} implies that \(\set{\seq{x}{1,2,,k}}\) generates \(\W\), and hence it is a basis for \(\W\) over \(\F\).
+	Therefore \(\dim(\W) = k \leq n\).
 
-  If \(\dim(\W) = n\), then a basis for \(\W\) over \(\F\) is a linearly independent subset of \(\V\) containing \(n\) vectors.
-  But \cref{1.6.15}(b) implies that this basis for \(\W\) over \(\F\) is also a basis for \(\V\) over \(\F\);
-  so \(\W = \V\).
+	If \(\dim(\W) = n\), then a basis for \(\W\) over \(\F\) is a linearly independent subset of \(\V\) containing \(n\) vectors.
+	But \cref{1.6.15}(b) implies that this basis for \(\W\) over \(\F\) is also a basis for \(\V\) over \(\F\);
+	so \(\W = \V\).
 \end{proof}
 
 \begin{eg}\label{1.6.17}
-  The set of diagonal \(n \times n\) matrices is a subspace \(\W\) of \(\ms{n}{n}{\F}\) over \(\F\)
-  (See \cref{1.3.8}).
-  A basis for \(\W\) over \(\F\) is
-  \[
-    \set{E^{1 1}, E^{2 2}, \dots, E^{n n}},
-  \]
-  where \(E^{i j}\) is the matrix in which the only nonzero entry is a \(1\) in the \(i\)th row and \(j\)th column.
-  Thus \(\dim(\W) = n\).
+	The set of diagonal \(n \times n\) matrices is a subspace \(\W\) of \(\ms{n}{n}{\F}\) over \(\F\)
+	(See \cref{1.3.8}).
+	A basis for \(\W\) over \(\F\) is
+	\[
+		\set{E^{1 1}, E^{2 2}, \dots, E^{n n}},
+	\]
+	where \(E^{i j}\) is the matrix in which the only nonzero entry is a \(1\) in the \(i\)th row and \(j\)th column.
+	Thus \(\dim(\W) = n\).
 \end{eg}
 
 \begin{proof}[\pf{1.6.17}]
-  By \cref{ex:1.5.6} we know that \(\set{E^{1 1}, E^{2 2}, \dots, E^{n n}}\) is linearly independent.
-  Since \(\W = \spn{\set{E^{1 1}, E^{2 2}, \dots, E^{n n}}}\), by \cref{1.6.15}(a) we know that \(\dim(\W) \leq n\).
-  By \cref{1.6.15}(c) we also know that \(\dim(\W) \geq n\).
-  Thus we have \(\dim(\W) = n\).
+	By \cref{ex:1.5.6} we know that \(\set{E^{1 1}, E^{2 2}, \dots, E^{n n}}\) is linearly independent.
+	Since \(\W = \spn{\set{E^{1 1}, E^{2 2}, \dots, E^{n n}}}\), by \cref{1.6.15}(a) we know that \(\dim(\W) \leq n\).
+	By \cref{1.6.15}(c) we also know that \(\dim(\W) \geq n\).
+	Thus we have \(\dim(\W) = n\).
 \end{proof}
 
 \begin{eg}\label{1.6.18}
-  The set of symmetric \(n \times n\) matrices is a subspace \(\W\) of \(\ms{n}{n}{\F}\) over \(\F\).
-  A basis for \(\W\) over \(\F\) is
-  \[
-    \set{A^{i j} : 1 \leq i \leq j \leq n}
-  \]
-  where \(A^{i j}\) is the \(n \times n\) matrix having \(1\) in the \(i\)th row and \(j\)th column, \(1\) in the \(j\)th row and \(i\)th column, and \(0\) elsewhere.
-  It follows that
-  \[
-    \dim(\W) = n + (n - 1) + \cdots + 1 = \frac{1}{2} n(n + 1).
-  \]
+	The set of symmetric \(n \times n\) matrices is a subspace \(\W\) of \(\ms{n}{n}{\F}\) over \(\F\).
+	A basis for \(\W\) over \(\F\) is
+	\[
+		\set{A^{i j} : 1 \leq i \leq j \leq n}
+	\]
+	where \(A^{i j}\) is the \(n \times n\) matrix having \(1\) in the \(i\)th row and \(j\)th column, \(1\) in the \(j\)th row and \(i\)th column, and \(0\) elsewhere.
+	It follows that
+	\[
+		\dim(\W) = n + (n - 1) + \cdots + 1 = \frac{1}{2} n(n + 1).
+	\]
 \end{eg}
 
 \begin{proof}[\pf{1.6.18}]
-  By \cref{ex:1.5.6} we see that each \(A^{i j}\) can only express as \(E^{i j} + E^{j i}\).
-  Thus \(\set{A^{i j} : 1 \leq i \leq j \leq n}\) is linearly independent and by \cref{1.6.15}(c)we have  \(\dim(\W) \geq \#\pa{\set{A^{i j} : 1 \leq i \leq j \leq n}}\).
-  Since
-  \begin{align*}
-             & \forall M \in \W, M_{i j} = M_{j i} = M_{i j} \cdot 1                                                 \\
-    \implies & \forall M \in \W, M = \sum_{i = 1}^n \sum_{j = i}^n M_{i j} A^{i j} &  & \text{(by \cref{1.2.9})}     \\
-    \implies & \W = \spn{\set{A^{i j} : 1 \leq i \leq j \leq n}}                   &  & \text{(by \cref{1.5})}       \\
-    \implies & \dim(\W) \leq \#\pa{\set{A^{i j} : 1 \leq i \leq j \leq n}},        &  & \text{(by \cref{1.6.15}(a))}
-  \end{align*}
-  we have \(\dim(\W) = \#\pa{\set{A^{i j} : 1 \leq i \leq j \leq n}} = \frac{1}{2} n(n + 1)\).
+	By \cref{ex:1.5.6} we see that each \(A^{i j}\) can only express as \(E^{i j} + E^{j i}\).
+	Thus \(\set{A^{i j} : 1 \leq i \leq j \leq n}\) is linearly independent and by \cref{1.6.15}(c)we have  \(\dim(\W) \geq \#\pa{\set{A^{i j} : 1 \leq i \leq j \leq n}}\).
+	Since
+	\begin{align*}
+		         & \forall M \in \W, M_{i j} = M_{j i} = M_{i j} \cdot 1                                   \\
+		\implies & \forall M \in \W, M = \sum_{i = 1}^n \sum_{j = i}^n M_{i j} A^{i j} &  & \by{1.2.9}     \\
+		\implies & \W = \spn{\set{A^{i j} : 1 \leq i \leq j \leq n}}                   &  & \by{1.5}       \\
+		\implies & \dim(\W) \leq \#\pa{\set{A^{i j} : 1 \leq i \leq j \leq n}},        &  & \by{1.6.15}[a]
+	\end{align*}
+	we have \(\dim(\W) = \#\pa{\set{A^{i j} : 1 \leq i \leq j \leq n}} = \frac{1}{2} n(n + 1)\).
 \end{proof}
 
 \begin{cor}\label{1.6.19}
-  If \(\W\) is a subspace of a finite-dimensional vector space \(\V\) over \(\F\), then any basis for \(\W\) over \(\F\) can be extended to a basis for \(\V\) over \(\F\).
+	If \(\W\) is a subspace of a finite-dimensional vector space \(\V\) over \(\F\), then any basis for \(\W\) over \(\F\) can be extended to a basis for \(\V\) over \(\F\).
 \end{cor}
 
 \begin{proof}[\pf{1.6.19}]
-  Let \(S\) be a basis for \(\W\) over \(\F\).
-  Because \(S\) is a linearly independent subset of \(\V\), \cref{1.6.15}(c) guarantees that \(S\) can be extended to a basis for \(\V\) over \(\F\).
+	Let \(S\) be a basis for \(\W\) over \(\F\).
+	Because \(S\) is a linearly independent subset of \(\V\), \cref{1.6.15}(c) guarantees that \(S\) can be extended to a basis for \(\V\) over \(\F\).
 \end{proof}
 
 \begin{defn}[The Lagrange Interpolation Formula]\label{1.6.20}
-  Let \(\seq{c}{0,1,,n}\) be distinct scalars in an infinite field \(\F\).
-  The polynomials \(f_0(x), f_1(x), \dots, f_n(x)\) defined by
-  \[
-    f_i(x) = \frac{(x - c_0) \cdots (x - c_{i - 1}) (x - c_{i + 1}) \cdots (x - c_n)}{(c_i - c_0) \cdots (c_i - c_{i - 1}) (c_i - c_{i + 1}) \cdots (c_i - c_n)} = \prod_{\substack{k = 0 \\ k \neq i}}^n \frac{x - c_k}{c_i - c_k}
-  \]
-  are called the \textbf{Lagrange polynomials} (associated with \(\seq{c}{0,1,,n}\)).
-  Note that each \(f_i(x)\) is a polynomial of degree \(n\) and hence is in \(\ps[n]{\F}\).
-  By regarding \(f_i(x)\) as a polynomial function \(f_i : \F \to \F\), we see that
-  \begin{equation}\label{eq:1.6.2}
-    f_i(c_j) = \begin{dcases}
-      0 & \text{if } i \neq j \\
-      1 & \text{if } i = j
-    \end{dcases}.
-  \end{equation}
+	Let \(\seq{c}{0,1,,n}\) be distinct scalars in an infinite field \(\F\).
+	The polynomials \(f_0(x), f_1(x), \dots, f_n(x)\) defined by
+	\[
+		f_i(x) = \frac{(x - c_0) \cdots (x - c_{i - 1}) (x - c_{i + 1}) \cdots (x - c_n)}{(c_i - c_0) \cdots (c_i - c_{i - 1}) (c_i - c_{i + 1}) \cdots (c_i - c_n)} = \prod_{\substack{k = 0 \\ k \neq i}}^n \frac{x - c_k}{c_i - c_k}
+	\]
+	are called the \textbf{Lagrange polynomials} (associated with \(\seq{c}{0,1,,n}\)).
+	Note that each \(f_i(x)\) is a polynomial of degree \(n\) and hence is in \(\ps[n]{\F}\).
+	By regarding \(f_i(x)\) as a polynomial function \(f_i : \F \to \F\), we see that
+	\begin{equation}\label{eq:1.6.2}
+		f_i(c_j) = \begin{dcases}
+			0 & \text{if } i \neq j \\
+			1 & \text{if } i = j
+		\end{dcases}.
+	\end{equation}
 
-  This property of Lagrange polynomials can be used to show that \(\beta = \set{\seq{f}{0,1,,n}}\) is a linearly independent subset of \(\ps[n]{\F}\).
-  Suppose that
-  \[
-    \sum_{i = 0}^n a_i f_i = \zv \quad \text{for some scalars } \seq{a}{0,1,,n},
-  \]
-  where \(\zv\) denotes the zero function.
-  Then
-  \[
-    \sum_{i = 0}^n a_i f_i(c_j) = 0 \quad \text{for } j = 0, 1, \dots, n.
-  \]
-  But also
-  \[
-    \sum_{i = 0}^n a_i f_i(c_j) = a_j
-  \]
-  by \cref{eq:1.6.2}.
-  Hence \(a_j = 0\) for \(j = 0, 1, \dots, n\);
-  so \(\beta\) is linearly independent.
-  Since the dimension of \(\ps[n]{\F}\) is \(n + 1\), it follows from \cref{1.6.15} that \(\beta\) is a basis for \(\ps[n]{\F}\) over \(\F\).
+	This property of Lagrange polynomials can be used to show that \(\beta = \set{\seq{f}{0,1,,n}}\) is a linearly independent subset of \(\ps[n]{\F}\).
+	Suppose that
+	\[
+		\sum_{i = 0}^n a_i f_i = \zv \quad \text{for some scalars } \seq{a}{0,1,,n},
+	\]
+	where \(\zv\) denotes the zero function.
+	Then
+	\[
+		\sum_{i = 0}^n a_i f_i(c_j) = 0 \quad \text{for } j = 0, 1, \dots, n.
+	\]
+	But also
+	\[
+		\sum_{i = 0}^n a_i f_i(c_j) = a_j
+	\]
+	by \cref{eq:1.6.2}.
+	Hence \(a_j = 0\) for \(j = 0, 1, \dots, n\);
+	so \(\beta\) is linearly independent.
+	Since the dimension of \(\ps[n]{\F}\) is \(n + 1\), it follows from \cref{1.6.15} that \(\beta\) is a basis for \(\ps[n]{\F}\) over \(\F\).
 
-  Because \(\beta\) is a basis for \(\ps[n]{\F}\) over \(\F\), every polynomial function \(g\) in \(\ps[n]{\F}\) is a linear combination of polynomial functions of \(\beta\), say,
-  \[
-    g = \sum_{i = 0}^n b_i f_i.
-  \]
-  It follows that
-  \[
-    g(c_j) = \sum_{i = 0}^n b_i f_i(c_j) = b_j;
-  \]
-  so
-  \[
-    g = \sum_{i = 0}^n g(c_i) f_i
-  \]
-  is the unique representation of \(g\) as a linear combination of elements of \(\beta\).
-  This representation is called the \textbf{Lagrange interpolation formula}.
-  Notice that the preceding argument shows that if \(\seq{b}{0,1,,n}\) are any \(n + 1\) scalars in \(\F\) (not necessarily distinct), then the polynomial function
-  \[
-    g = \sum_{i = 0}^n b_i f_i
-  \]
-  is the unique polynomial in \(\ps[n]{\F}\) such that \(g(c_j) = b_j\).
-  Thus we have found the unique polynomial of degree not exceeding \(n\) that has specified values \(b_j\) at given points \(c_j\) in its domain (\(j = 0, 1, \dots, n\)).
+	Because \(\beta\) is a basis for \(\ps[n]{\F}\) over \(\F\), every polynomial function \(g\) in \(\ps[n]{\F}\) is a linear combination of polynomial functions of \(\beta\), say,
+	\[
+		g = \sum_{i = 0}^n b_i f_i.
+	\]
+	It follows that
+	\[
+		g(c_j) = \sum_{i = 0}^n b_i f_i(c_j) = b_j;
+	\]
+	so
+	\[
+		g = \sum_{i = 0}^n g(c_i) f_i
+	\]
+	is the unique representation of \(g\) as a linear combination of elements of \(\beta\).
+	This representation is called the \textbf{Lagrange interpolation formula}.
+	Notice that the preceding argument shows that if \(\seq{b}{0,1,,n}\) are any \(n + 1\) scalars in \(\F\) (not necessarily distinct), then the polynomial function
+	\[
+		g = \sum_{i = 0}^n b_i f_i
+	\]
+	is the unique polynomial in \(\ps[n]{\F}\) such that \(g(c_j) = b_j\).
+	Thus we have found the unique polynomial of degree not exceeding \(n\) that has specified values \(b_j\) at given points \(c_j\) in its domain (\(j = 0, 1, \dots, n\)).
 
-  An important consequence of the Lagrange interpolation formula is the following result:
-  If \(f \in \ps[n]{\F}\) and \(f(c_i) = 0\) for \(n + 1\) distinct scalars \(\seq{c}{0,1,,n}\) in \(\F\), then \(f\) is the zero function.
+	An important consequence of the Lagrange interpolation formula is the following result:
+	If \(f \in \ps[n]{\F}\) and \(f(c_i) = 0\) for \(n + 1\) distinct scalars \(\seq{c}{0,1,,n}\) in \(\F\), then \(f\) is the zero function.
 \end{defn}
 
 \exercisesection
 
 \setcounter{ex}{10}
 \begin{ex}\label{ex:1.6.11}
-  Let \(u\) and \(v\) be distinct vectors of a vector space \(\V\) over \(\F\).
-  Show that if \(\set{u, v}\) is a basis for \(\V\) over \(\F\) and \(a\) and \(b\) are nonzero scalars, then both \(\set{u + v, au}\) and \(\set{au, bv}\) are also bases for \(\V\) over \(\F\).
+	Let \(u\) and \(v\) be distinct vectors of a vector space \(\V\) over \(\F\).
+	Show that if \(\set{u, v}\) is a basis for \(\V\) over \(\F\) and \(a\) and \(b\) are nonzero scalars, then both \(\set{u + v, au}\) and \(\set{au, bv}\) are also bases for \(\V\) over \(\F\).
 \end{ex}
 
 \begin{proof}[\pf{ex:1.6.11}]
-  Let \(c_1, c_2 \in \F\).
-  Since
-  \begin{align*}
-             & c_1 (u + v) + c_2 (au) = \zv                                \\
-    \implies & (c_1 + c_2 a) u + c_1 v = \zv &  & \text{(by \cref{1.2.1})} \\
-    \implies & \begin{dcases}
-                 c_1 + c_2 a = 0 \\
-                 c_1 = 0
-               \end{dcases}            &  & \text{(by \cref{1.5.3})}       \\
-    \implies & \begin{dcases}
-                 c_2 a = 0 \\
-                 c_1 = 0
-               \end{dcases}                                               \\
-    \implies & c_1 = c_2 = 0                 &  & (a \neq 0)
-  \end{align*}
-  and
-  \begin{align*}
-             & c_1 (au) + c_2 (bv) = \zv                                 \\
-    \implies & (c_1 a) u + (c_2 b) v = \zv &  & \text{(by \cref{1.2.1})} \\
-    \implies & \begin{dcases}
-                 c_1 a = 0 \\
-                 c_2 b = 0
-               \end{dcases}              &  & \text{(by \cref{1.5.3})}   \\
-    \implies & c_1 = c_2 = 0,              &  & (a \neq 0 \neq b)
-  \end{align*}
-  by \cref{1.5.3} we know that \(\set{u + v, au}\) and \(\set{au, bv}\) are linearly independent.
-  Since
-  \[
-    \#(\set{u + v, au}) = \#(\set{au, bv}) = 2 = \#(\set{u, v}),
-  \]
-  by \cref{1.6.15}(a) we know that \(\set{u + v, au}\) and \(\set{au, bv}\) are basis for \(\V\) over \(\F\).
+	Let \(c_1, c_2 \in \F\).
+	Since
+	\begin{align*}
+		         & c_1 (u + v) + c_2 (au) = \zv                  \\
+		\implies & (c_1 + c_2 a) u + c_1 v = \zv &  & \by{1.2.1} \\
+		\implies & \begin{dcases}
+			           c_1 + c_2 a = 0 \\
+			           c_1 = 0
+		           \end{dcases}            &  & \by{1.5.3}       \\
+		\implies & \begin{dcases}
+			           c_2 a = 0 \\
+			           c_1 = 0
+		           \end{dcases}                                 \\
+		\implies & c_1 = c_2 = 0                 &  & (a \neq 0)
+	\end{align*}
+	and
+	\begin{align*}
+		         & c_1 (au) + c_2 (bv) = \zv                          \\
+		\implies & (c_1 a) u + (c_2 b) v = \zv &  & \by{1.2.1}        \\
+		\implies & \begin{dcases}
+			           c_1 a = 0 \\
+			           c_2 b = 0
+		           \end{dcases}              &  & \by{1.5.3}          \\
+		\implies & c_1 = c_2 = 0,              &  & (a \neq 0 \neq b)
+	\end{align*}
+	by \cref{1.5.3} we know that \(\set{u + v, au}\) and \(\set{au, bv}\) are linearly independent.
+	Since
+	\[
+		\#(\set{u + v, au}) = \#(\set{au, bv}) = 2 = \#(\set{u, v}),
+	\]
+	by \cref{1.6.15}(a) we know that \(\set{u + v, au}\) and \(\set{au, bv}\) are basis for \(\V\) over \(\F\).
 \end{proof}
 
 \begin{ex}\label{ex:1.6.12}
-  Let \(u, v\), and \(w\) be distinct vectors of a vector space \(\V\) over \(\F\).
-  Show that if \(\set{u, v, w}\) is a basis for \(\V\) over \(\F\), then \(\set{u + v + w, v + w, w}\) is also a basis for \(\V\) over \(\F\).
+	Let \(u, v\), and \(w\) be distinct vectors of a vector space \(\V\) over \(\F\).
+	Show that if \(\set{u, v, w}\) is a basis for \(\V\) over \(\F\), then \(\set{u + v + w, v + w, w}\) is also a basis for \(\V\) over \(\F\).
 \end{ex}
 
 \begin{proof}[\pf{ex:1.6.12}]
-  Let \(a, b, c \in \F\).
-  Since
-  \begin{align*}
-             & a(u + v + w) + b(v + w) + cw = \zv                               \\
-    \implies & au + (a + b)v + (a + b + c)w = \zv &  & \text{(by \cref{1.2.1})} \\
-    \implies & \begin{dcases}
-                 a = 0     \\
-                 a + b = 0 \\
-                 a + b + c = 0
-               \end{dcases}                     &  & \text{(by \cref{1.5.3})}   \\
-    \implies & a = b = c = 0,
-  \end{align*}
-  by \cref{1.5.3} we know that \(\set{u + v + w, v + w, w}\) is linearly independent.
-  Since
-  \[
-    \#(\set{u + v + w, v + w, w}) = 3 = \#(\set{u, v, w}),
-  \]
-  by \cref{1.6.15}(a) we know that \(\set{u + v + w, v + w, w}\) is a basis for \(\V\) over \(\F\).
+	Let \(a, b, c \in \F\).
+	Since
+	\begin{align*}
+		         & a(u + v + w) + b(v + w) + cw = \zv                 \\
+		\implies & au + (a + b)v + (a + b + c)w = \zv &  & \by{1.2.1} \\
+		\implies & \begin{dcases}
+			           a = 0     \\
+			           a + b = 0 \\
+			           a + b + c = 0
+		           \end{dcases}                     &  & \by{1.5.3}   \\
+		\implies & a = b = c = 0,
+	\end{align*}
+	by \cref{1.5.3} we know that \(\set{u + v + w, v + w, w}\) is linearly independent.
+	Since
+	\[
+		\#(\set{u + v + w, v + w, w}) = 3 = \#(\set{u, v, w}),
+	\]
+	by \cref{1.6.15}(a) we know that \(\set{u + v + w, v + w, w}\) is a basis for \(\V\) over \(\F\).
 \end{proof}
 
 \setcounter{ex}{14}
 \begin{ex}\label{ex:1.6.15}
-  The set of all \(n \times n\) matrices having trace equal to zero is a subspace \(\W\) of \(\ms{n}{n}{\F}\) over \(\F\) (See \cref{1.3.9}).
-  Find a basis for \(\W\) over \(\F\).
-  What is the dimension of \(\W\)?
+	The set of all \(n \times n\) matrices having trace equal to zero is a subspace \(\W\) of \(\ms{n}{n}{\F}\) over \(\F\) (See \cref{1.3.9}).
+	Find a basis for \(\W\) over \(\F\).
+	What is the dimension of \(\W\)?
 \end{ex}
 
 \begin{proof}[\pf{ex:1.6.15}]
-  Let \(E^{i j} \in \ms{n}{n}{\F}\) be matrix defined as in \cref{ex:1.5.6} and let \(\beta\) be the set
-  \[
-    \beta = \set{E^{i j} : i, j \in \set{1, \dots, n}, i \neq j} \cup \set{E^{i i} - E^{1 1} : 2 \leq i \leq n}.
-  \]
-  Observe that
-  \begin{align*}
-             & \forall A \in \W, \begin{dcases}
-                                   \tr[A] = 0 \\
-                                   A = \sum_{i = 1}^n \sum_{j = 1}^n A_{i j} E^{i j}
-                                 \end{dcases}                                                                                                                                                                         &  & \text{(by \cref{ex:1.5.6})}                 \\
-    \implies & \forall A \in \W, \begin{dcases}
-                                   A_{1 1} + A_{2 2} + \cdots + A_{n n} = 0 \\
-                                   A = \sum_{i = 1}^n \sum_{j = 1}^n A_{i j} E^{i j}
-                                 \end{dcases}                                                                                                                                                                         &  & \text{(by \cref{1.3.9})}                    \\
-    \implies & \forall A \in \W, \begin{dcases}
-                                   A_{2 2} + \cdots + A_{n n} = -A_{1 1}        \\
-                                   A = \pa{\sum_{i = 1}^n \sum_{\substack{j = 1 \\ j \neq i}}^n A_{i j} E^{i j}} + \pa{\sum_{i = 1}^n A_{i i} E^{i i}}
-                                 \end{dcases}              \\
-    \implies & \forall A \in \W, A = \pa{\sum_{i = 1}^n \sum_{\substack{j = 1                                                                                                                                                                                          \\ j \neq i}}^n A_{i j} E^{i j}} + \pa{\sum_{i = 2}^n A_{i i} (E^{i i} - E^{1 1})} \\
-    \implies & \forall A \in \W, A \in \spn{\beta}                                                                                                                                                                                       &  & \text{(by \cref{1.4.3})} \\
-    \implies & \W \subseteq \spn{\beta}.
-  \end{align*}
-  Since
-  \[
-    \tr[E^{i j}] = 0 \quad \forall i, j \in \set{1, \dots, n} \text{ and } i \neq j
-  \]
-  and
-  \[
-    \tr[E^{i i} - E^{1 1}] = 1 + (-1) = 0 \quad \forall i \in \set{2, \dots, n},
-  \]
-  we know that \(\beta \subseteq \W\).
-  Thus by \cref{1.5} we have \(\W = \spn{\beta}\).
-  By \cref{ex:1.5.6} we know that \(\beta\) is linearly independent, thus by \cref{1.6.1} \(\beta\) is a basis for \(\W\) over \(\F\), and by \cref{1.6.8} we know that \(\dim(\W) = n^2 - 1\).
+	Let \(E^{i j} \in \ms{n}{n}{\F}\) be matrix defined as in \cref{ex:1.5.6} and let \(\beta\) be the set
+	\[
+		\beta = \set{E^{i j} : i, j \in \set{1, \dots, n}, i \neq j} \cup \set{E^{i i} - E^{1 1} : 2 \leq i \leq n}.
+	\]
+	Observe that
+	\begin{align*}
+		         & \forall A \in \W, \begin{dcases}
+			                             \tr[A] = 0 \\
+			                             A = \sum_{i = 1}^n \sum_{j = 1}^n A_{i j} E^{i j}
+		                             \end{dcases}                                                                                                                                                                         &  & \by{ex:1.5.6}                  \\
+		\implies & \forall A \in \W, \begin{dcases}
+			                             A_{1 1} + A_{2 2} + \cdots + A_{n n} = 0 \\
+			                             A = \sum_{i = 1}^n \sum_{j = 1}^n A_{i j} E^{i j}
+		                             \end{dcases}                                                                                                                                                                         &  & \by{1.3.9}                     \\
+		\implies & \forall A \in \W, \begin{dcases}
+			                             A_{2 2} + \cdots + A_{n n} = -A_{1 1}        \\
+			                             A = \pa{\sum_{i = 1}^n \sum_{\substack{j = 1 \\ j \neq i}}^n A_{i j} E^{i j}} + \pa{\sum_{i = 1}^n A_{i i} E^{i i}}
+		                             \end{dcases} \\
+		\implies & \forall A \in \W, A = \pa{\sum_{i = 1}^n \sum_{\substack{j = 1                                                                                                                                                                             \\ j \neq i}}^n A_{i j} E^{i j}} + \pa{\sum_{i = 2}^n A_{i i} (E^{i i} - E^{1 1})} \\
+		\implies & \forall A \in \W, A \in \spn{\beta}                                                                                                                                                                                       &  & \by{1.4.3}  \\
+		\implies & \W \subseteq \spn{\beta}.
+	\end{align*}
+	Since
+	\[
+		\tr[E^{i j}] = 0 \quad \forall i, j \in \set{1, \dots, n} \text{ and } i \neq j
+	\]
+	and
+	\[
+		\tr[E^{i i} - E^{1 1}] = 1 + (-1) = 0 \quad \forall i \in \set{2, \dots, n},
+	\]
+	we know that \(\beta \subseteq \W\).
+	Thus by \cref{1.5} we have \(\W = \spn{\beta}\).
+	By \cref{ex:1.5.6} we know that \(\beta\) is linearly independent, thus by \cref{1.6.1} \(\beta\) is a basis for \(\W\) over \(\F\), and by \cref{1.6.8} we know that \(\dim(\W) = n^2 - 1\).
 \end{proof}
 
 \begin{ex}\label{ex:1.6.16}
-  The set of all upper triangular \(n \times n\) matrices is a subspace \(\W\) of \(\ms{n}{n}{\F}\) over \(\F\) (See \cref{ex:1.3.12}).
-  Find a basis for \(\W\) over \(\F\).
-  What is the dimension of \(\W\)?
+	The set of all upper triangular \(n \times n\) matrices is a subspace \(\W\) of \(\ms{n}{n}{\F}\) over \(\F\) (See \cref{ex:1.3.12}).
+	Find a basis for \(\W\) over \(\F\).
+	What is the dimension of \(\W\)?
 \end{ex}
 
 \begin{proof}[\pf{ex:1.6.16}]
-  Let \(E^{i j} \in \ms{n}{n}{\F}\) be matrix defined as in \cref{ex:1.5.6} and let \(\beta\) be the set
-  \[
-    \beta = \set{E^{i j} : i, j \in \set{1, \dots, n}, i \leq j}.
-  \]
-  Clearly \(\beta \subseteq \W\).
-  Since
-  \begin{align*}
-             & \forall A \in \W, A = \sum_{i = 1}^n \sum_{j = 1}^n A_{i j} E^{i j} = \sum_{i = 1}^n \sum_{j = i}^n A_{i j} E^{i j} &  & \text{(by \cref{ex:1.3.12})} \\
-    \implies & \forall A \in \W, A \in \spn{\beta}                                                                                 &  & \text{(by \cref{1.4.3})}     \\
-    \implies & \W = \spn{\beta}                                                                                                    &  & \text{(by \cref{1.5})}
-  \end{align*}
-  and \(\beta\) is linearly independent (by \cref{ex:1.5.6}), by \cref{1.6.1} we know that \(\beta\) is a basis for \(\W\) over \(\F\).
-  Thus by \cref{1.6.8} we have \(\dim(\W) = \frac{1}{2} n(n + 1)\).
+	Let \(E^{i j} \in \ms{n}{n}{\F}\) be matrix defined as in \cref{ex:1.5.6} and let \(\beta\) be the set
+	\[
+		\beta = \set{E^{i j} : i, j \in \set{1, \dots, n}, i \leq j}.
+	\]
+	Clearly \(\beta \subseteq \W\).
+	Since
+	\begin{align*}
+		         & \forall A \in \W, A = \sum_{i = 1}^n \sum_{j = 1}^n A_{i j} E^{i j} = \sum_{i = 1}^n \sum_{j = i}^n A_{i j} E^{i j} &  & \by{ex:1.3.12} \\
+		\implies & \forall A \in \W, A \in \spn{\beta}                                                                                 &  & \by{1.4.3}     \\
+		\implies & \W = \spn{\beta}                                                                                                    &  & \by{1.5}
+	\end{align*}
+	and \(\beta\) is linearly independent (by \cref{ex:1.5.6}), by \cref{1.6.1} we know that \(\beta\) is a basis for \(\W\) over \(\F\).
+	Thus by \cref{1.6.8} we have \(\dim(\W) = \frac{1}{2} n(n + 1)\).
 \end{proof}
 
 \begin{ex}\label{ex:1.6.17}
-  The set of all skew-symmetric \(n \times n\) matrices is a subspace \(\W\) of \(\ms{n}{n}{\F}\) over \(\F\) (See \cref{ex:1.3.28}).
-  Find a basis for \(\W\) over \(\F\).
-  What is the dimension of \(\W\)?
+	The set of all skew-symmetric \(n \times n\) matrices is a subspace \(\W\) of \(\ms{n}{n}{\F}\) over \(\F\) (See \cref{ex:1.3.28}).
+	Find a basis for \(\W\) over \(\F\).
+	What is the dimension of \(\W\)?
 \end{ex}
 
 \begin{proof}[\pf{ex:1.6.17}]
-  Let \(E^{i j} \in \ms{n}{n}{\F}\) be matrix defined as in \cref{ex:1.5.6} and let \(\beta\) be the set
-  \[
-    \beta = \set{E^{i j} - E^{j i} : i, j \in \set{1, \dots, n}, i < j}.
-  \]
-  By \cref{ex:1.3.28} we know that \(\beta \subseteq \W\).
-  Since
-  \begin{align*}
-             & \forall A \in \W, \tp{A} = -A                                                  &  & \text{(by \cref{ex:1.3.28})} \\
-    \implies & \forall A \in \W, A_{j i} = -A_{i j} \text{ where } i, j \in \set{1, \dots, n} &  & \text{(by \cref{1.3.3})}     \\
-    \implies & \forall A \in \W, \begin{dcases}
-                                   A_{i j} = -A_{j i} & \text{if } i \neq j \\
-                                   A_{i j} = 0        & \text{if } i = j
-                                 \end{dcases}                                                       \\
-    \implies & \forall A \in \W, A = \sum_{i = 1}^n \sum_{j = 1}^n A_{i j} E^{i j}                                              \\
-             & = \sum_{i = 1}^n \sum_{j = 1}^{i - 1} (A_{i j} E^{i j} + A_{j i} E^{j i})                                        \\
-             & = \sum_{i = 1}^n \sum_{j = 1}^{i - 1} (A_{i j} E^{i j} - A_{i j} E^{j i})                                        \\
-             & = \sum_{i = 1}^n \sum_{j = 1}^{i - 1} A_{i j} (E^{i j} - E^{j i})                                                \\
-    \implies & \forall A \in \W, A \in \spn{\beta}                                            &  & \text{(by \cref{1.4.3})}     \\
-    \implies & \W = \spn{\beta}                                                               &  & \text{(by \cref{1.5})}
-  \end{align*}
-  and \(\beta\) is linearly independent (by \cref{ex:1.5.6}), by \cref{1.6.1} we know that \(\beta\) is a basis for \(\W\) over \(\F\).
-  Thus by \cref{1.6.8} we have \(\dim(\W) = \frac{1}{2} n(n - 1)\).
+	Let \(E^{i j} \in \ms{n}{n}{\F}\) be matrix defined as in \cref{ex:1.5.6} and let \(\beta\) be the set
+	\[
+		\beta = \set{E^{i j} - E^{j i} : i, j \in \set{1, \dots, n}, i < j}.
+	\]
+	By \cref{ex:1.3.28} we know that \(\beta \subseteq \W\).
+	Since
+	\begin{align*}
+		         & \forall A \in \W, \tp{A} = -A                                                  &  & \by{ex:1.3.28} \\
+		\implies & \forall A \in \W, A_{j i} = -A_{i j} \text{ where } i, j \in \set{1, \dots, n} &  & \by{1.3.3}     \\
+		\implies & \forall A \in \W, \begin{dcases}
+			                             A_{i j} = -A_{j i} & \text{if } i \neq j \\
+			                             A_{i j} = 0        & \text{if } i = j
+		                             \end{dcases}                                         \\
+		\implies & \forall A \in \W, A = \sum_{i = 1}^n \sum_{j = 1}^n A_{i j} E^{i j}                                \\
+		         & = \sum_{i = 1}^n \sum_{j = 1}^{i - 1} (A_{i j} E^{i j} + A_{j i} E^{j i})                          \\
+		         & = \sum_{i = 1}^n \sum_{j = 1}^{i - 1} (A_{i j} E^{i j} - A_{i j} E^{j i})                          \\
+		         & = \sum_{i = 1}^n \sum_{j = 1}^{i - 1} A_{i j} (E^{i j} - E^{j i})                                  \\
+		\implies & \forall A \in \W, A \in \spn{\beta}                                            &  & \by{1.4.3}     \\
+		\implies & \W = \spn{\beta}                                                               &  & \by{1.5}
+	\end{align*}
+	and \(\beta\) is linearly independent (by \cref{ex:1.5.6}), by \cref{1.6.1} we know that \(\beta\) is a basis for \(\W\) over \(\F\).
+	Thus by \cref{1.6.8} we have \(\dim(\W) = \frac{1}{2} n(n - 1)\).
 \end{proof}
 
 \begin{ex}\label{ex:1.6.18}
-  Find a basis for the vector space in \cref{1.2.13}.
-  Justify your answer.
+	Find a basis for the vector space in \cref{1.2.13}.
+	Justify your answer.
 \end{ex}
 
 \begin{proof}[\pf{ex:1.6.18}]
-  Let \(\V\) be the vector space in \cref{1.2.13} over field \(\F\).
-  We claim that the set
-  \[
-    \beta = \set{\set{e_n^i} : e_n^i = 0 \text{ when } n \neq i ; e_n^i = 1 \text{ when } n = i}
-  \]
-  is a basis for \(\V\) over \(\F\).
-  Clearly \(\beta \subseteq \V\).
-  Since
-  \begin{align*}
-             & \forall \set{a_n} \in \V, \set{a_n} = \sum_{i \in \N} a_n \set{e_n^i} &  & \text{(by \cref{1.2.13})} \\
-    \implies & \V = \spn{\beta}                                                      &  & \text{(by \cref{1.5})}
-  \end{align*}
-  and \(\beta\) is linearly independent (for obvious reason), by \cref{1.6.1} we know that \(\beta\) is a basis for \(\V\) over \(\F\).
+	Let \(\V\) be the vector space in \cref{1.2.13} over field \(\F\).
+	We claim that the set
+	\[
+		\beta = \set{\set{e_n^i} : e_n^i = 0 \text{ when } n \neq i ; e_n^i = 1 \text{ when } n = i}
+	\]
+	is a basis for \(\V\) over \(\F\).
+	Clearly \(\beta \subseteq \V\).
+	Since
+	\begin{align*}
+		         & \forall \set{a_n} \in \V, \set{a_n} = \sum_{i \in \N} a_n \set{e_n^i} &  & \by{1.2.13} \\
+		\implies & \V = \spn{\beta}                                                      &  & \by{1.5}
+	\end{align*}
+	and \(\beta\) is linearly independent (for obvious reason), by \cref{1.6.1} we know that \(\beta\) is a basis for \(\V\) over \(\F\).
 \end{proof}
 
 \setcounter{ex}{19}
 \begin{ex}\label{ex:1.6.20}
-  Let \(\V\) be a vector space over \(\F\) having dimension \(n\), and let \(S\) be a subset of \(\V\) that generates \(\V\).
-  \begin{enumerate}
-    \item Prove that there is a subset of \(S\) that is a basis for \(\V\) over \(\F\).
-          (Be careful not to assume that \(S\) is finite.)
-    \item Prove that \(S\) contains at least \(n\) vectors.
-  \end{enumerate}
+	Let \(\V\) be a vector space over \(\F\) having dimension \(n\), and let \(S\) be a subset of \(\V\) that generates \(\V\).
+	\begin{enumerate}
+		\item Prove that there is a subset of \(S\) that is a basis for \(\V\) over \(\F\).
+		      (Be careful not to assume that \(S\) is finite.)
+		\item Prove that \(S\) contains at least \(n\) vectors.
+	\end{enumerate}
 \end{ex}
 
 \begin{proof}[\pf{ex:1.6.20}(a)]
-  Note that the hypothesis of \cref{ex:1.6.20}(a) is different from \cref{1.9} that in \cref{1.9} \(S\) is assumed to be finite.
-  Suppose for sake of contradiction that such subset does not exist.
-  By \cref{1.6.1} this means every subset of \(S\) must either be linearly dependent or cannot generate \(\V\).
-  Since \(S\) is a subset of \(S\) and \(\spn{S} = \V\), we know that \(S\) must be linearly dependent.
+	Note that the hypothesis of \cref{ex:1.6.20}(a) is different from \cref{1.9} that in \cref{1.9} \(S\) is assumed to be finite.
+	Suppose for sake of contradiction that such subset does not exist.
+	By \cref{1.6.1} this means every subset of \(S\) must either be linearly dependent or cannot generate \(\V\).
+	Since \(S\) is a subset of \(S\) and \(\spn{S} = \V\), we know that \(S\) must be linearly dependent.
 
-  Now we let \(\beta_0\) be a finite, linearly independent subset of \(S\).
-  From previous paragraph we know that \(\beta_0 \neq S\) and \(\V \neq \spn{\beta_0}\).
-  By \cref{1.10} we know that \(\#(\beta_0) \leq n\).
-  Then there exists a \(v_1 \in S\) such that \(v_1 \cup \beta_0\) is linearly independent.
-  If such \(v_1\) does not exist, then we would have \(S \subseteq \spn{\beta_0}\), which implies \(\spn{\beta_0} = \V\), a contradiction.
-  So such \(v_1\) exists and we let \(\beta_1 = \beta_0 \cup v_1\).
-  Again we must have \(\beta_1 \neq S\), \(\V \neq \spn{\beta_1}\) and \(\#(\beta_1) \leq n\).
-  Using the same argument as above there must exist a \(v_2 \in S\) such that \(v_2 \cup \beta_1\) is linearly independent.
-  Continue this definition we can define \(\beta_n = \set{\seq{v}{1,2,,n}}\).
-  But by \cref{1.6.15}(b) we know that \(\beta_n\) must be a basis for \(\V\) over \(\F\), a contradiction.
-  Thus there must exists a subset of \(S\) which is a basis for \(\V\) over \(\F\).
+	Now we let \(\beta_0\) be a finite, linearly independent subset of \(S\).
+	From previous paragraph we know that \(\beta_0 \neq S\) and \(\V \neq \spn{\beta_0}\).
+	By \cref{1.10} we know that \(\#(\beta_0) \leq n\).
+	Then there exists a \(v_1 \in S\) such that \(v_1 \cup \beta_0\) is linearly independent.
+	If such \(v_1\) does not exist, then we would have \(S \subseteq \spn{\beta_0}\), which implies \(\spn{\beta_0} = \V\), a contradiction.
+	So such \(v_1\) exists and we let \(\beta_1 = \beta_0 \cup v_1\).
+	Again we must have \(\beta_1 \neq S\), \(\V \neq \spn{\beta_1}\) and \(\#(\beta_1) \leq n\).
+	Using the same argument as above there must exist a \(v_2 \in S\) such that \(v_2 \cup \beta_1\) is linearly independent.
+	Continue this definition we can define \(\beta_n = \set{\seq{v}{1,2,,n}}\).
+	But by \cref{1.6.15}(b) we know that \(\beta_n\) must be a basis for \(\V\) over \(\F\), a contradiction.
+	Thus there must exists a subset of \(S\) which is a basis for \(\V\) over \(\F\).
 \end{proof}
 
 \begin{proof}[\pf{ex:1.6.20}(b)]
-  From \cref{ex:1.6.20}(a) we know that there exists a subset of \(S\) which is a basis for \(\V\) over \(\F\).
-  Thus by \cref{1.6.15}(a) \(S\) must has at least \(n\) vectors.
+	From \cref{ex:1.6.20}(a) we know that there exists a subset of \(S\) which is a basis for \(\V\) over \(\F\).
+	Thus by \cref{1.6.15}(a) \(S\) must has at least \(n\) vectors.
 \end{proof}
 
 \begin{ex}\label{ex:1.6.21}
-  Prove that a vector space is infinite-dimensional iff it contains an infinite linearly independent subset.
+	Prove that a vector space is infinite-dimensional iff it contains an infinite linearly independent subset.
 \end{ex}
 
 \begin{proof}[\pf{ex:1.6.21}]
-  Let \(\V\) be a vector spaces over \(\F\).
-  Then
-  \begin{align*}
-         & \V \text{ is infinite-dimensional}                                                    \\
-    \iff & \V \text{ has an infinite basis}                        &  & \text{(by \cref{1.6.8})} \\
-    \iff & \V \text{ has an infinite linearly independent subset}. &  & \text{(by \cref{1.6.1})}
-  \end{align*}
+	Let \(\V\) be a vector spaces over \(\F\).
+	Then
+	\begin{align*}
+		     & \V \text{ is infinite-dimensional}                                      \\
+		\iff & \V \text{ has an infinite basis}                        &  & \by{1.6.8} \\
+		\iff & \V \text{ has an infinite linearly independent subset}. &  & \by{1.6.1}
+	\end{align*}
 \end{proof}
 
 \begin{ex}\label{ex:1.6.22}
-  Let \(\W_1\) and \(\W_2\) be subspaces of a finite-dimensional vector space \(\V\) over \(\F\).
-  Determine necessary and sufficient conditions on \(\W_1\) and \(\W_2\) so that \(\dim(\W_1 \cap \W_2) = \dim(\W_1)\).
+	Let \(\W_1\) and \(\W_2\) be subspaces of a finite-dimensional vector space \(\V\) over \(\F\).
+	Determine necessary and sufficient conditions on \(\W_1\) and \(\W_2\) so that \(\dim(\W_1 \cap \W_2) = \dim(\W_1)\).
 \end{ex}
 
 \begin{proof}[\pf{ex:1.6.22}]
-  We have
-  \begin{align*}
-         & \dim(\W_1 \cap \W_2) = \dim(\W_1)                                                               \\
-    \iff & \begin{dcases}
-             \exists \beta_1 \subseteq \W_1 \cap \W_2 \\
-             \exists \beta_2 \subseteq \W_1
-           \end{dcases} : \begin{dcases}
-                            \beta_1 \text{ is a basis for } \W_1 \cap \W_2 \text{ over } \F \\
-                            \beta_2 \text{ is a basis for } \W_1 \text{ over } \F           \\
-                            \#(\beta_1) = \#(\beta_2)
-                          \end{dcases} &  & \text{(by \cref{1.6.8})}                  \\
-    \iff & \W_1 \cap \W_2 = \W_1                                              &  & \text{(by \cref{1.11})} \\
-    \iff & \W_1 \subseteq \W_2.
-  \end{align*}
+	We have
+	\begin{align*}
+		     & \dim(\W_1 \cap \W_2) = \dim(\W_1)                                                 \\
+		\iff & \begin{dcases}
+			       \exists \beta_1 \subseteq \W_1 \cap \W_2 \\
+			       \exists \beta_2 \subseteq \W_1
+		       \end{dcases} : \begin{dcases}
+			                      \beta_1 \text{ is a basis for } \W_1 \cap \W_2 \text{ over } \F \\
+			                      \beta_2 \text{ is a basis for } \W_1 \text{ over } \F           \\
+			                      \#(\beta_1) = \#(\beta_2)
+		                      \end{dcases} &  & \by{1.6.8}    \\
+		\iff & \W_1 \cap \W_2 = \W_1                                              &  & \by{1.11} \\
+		\iff & \W_1 \subseteq \W_2.
+	\end{align*}
 \end{proof}
 
 \begin{ex}\label{ex:1.6.23}
-  Let \(\seq{v}{1,2,,k}, v\) be vectors in a vector space \(\V\) over \(\F\), and define \(W_1 = \spn{\set{\seq{v}{1,2,,k}}}\), and \(\W_2 = \spn{\set{\seq{v}{1,2,,k}, v}}\).
-  \begin{enumerate}
-    \item Find necessary and sufficient conditions on \(v\) such that \(\dim(\W_1) = \dim(\W_2)\).
-    \item State and prove a relationship involving \(\dim(\W_1)\) and \(\dim(\W_2)\) in the case that \(\dim(\W_1) \neq \dim(\W_2)\).
-  \end{enumerate}
+	Let \(\seq{v}{1,2,,k}, v\) be vectors in a vector space \(\V\) over \(\F\), and define \(W_1 = \spn{\set{\seq{v}{1,2,,k}}}\), and \(\W_2 = \spn{\set{\seq{v}{1,2,,k}, v}}\).
+	\begin{enumerate}
+		\item Find necessary and sufficient conditions on \(v\) such that \(\dim(\W_1) = \dim(\W_2)\).
+		\item State and prove a relationship involving \(\dim(\W_1)\) and \(\dim(\W_2)\) in the case that \(\dim(\W_1) \neq \dim(\W_2)\).
+	\end{enumerate}
 \end{ex}
 
 \begin{proof}[\pf{ex:1.6.23}(a)]
-  We have
-  \begin{align*}
-         & \begin{dcases}
-             \W_1 \subseteq \W_2 \\
-             \dim(\W_1) = \dim(\W_2)
-           \end{dcases}                                     &  & \text{(by \cref{ex:1.4.13})}        \\
-    \iff & \W_1 = \W_2                                                 &  & \text{(by \cref{1.11})}  \\
-    \iff & v \in \spn{\set{\seq{v}{1,2,,k}}}                           &  & \text{(by \cref{1.4.3})} \\
-    \iff & v \cup \set{\seq{v}{1,2,,k}} \text{ is linearly dependent}. &  & \text{(by \cref{1.7})}
-  \end{align*}
+	We have
+	\begin{align*}
+		     & \begin{dcases}
+			       \W_1 \subseteq \W_2 \\
+			       \dim(\W_1) = \dim(\W_2)
+		       \end{dcases}                                     &  & \by{ex:1.4.13}        \\
+		\iff & \W_1 = \W_2                                                 &  & \by{1.11}  \\
+		\iff & v \in \spn{\set{\seq{v}{1,2,,k}}}                           &  & \by{1.4.3} \\
+		\iff & v \cup \set{\seq{v}{1,2,,k}} \text{ is linearly dependent}. &  & \by{1.7}
+	\end{align*}
 \end{proof}
 
 \begin{proof}[\pf{ex:1.6.23}(b)]
-  By \cref{1.11} we have
-  \[
-    \begin{dcases}
-      \W_1 \subseteq \W_2 \\
-      \W_1 \neq \W_2
-    \end{dcases} \implies \dim(\W_1) \neq \dim(\W_2).
-  \]
+	By \cref{1.11} we have
+	\[
+		\begin{dcases}
+			\W_1 \subseteq \W_2 \\
+			\W_1 \neq \W_2
+		\end{dcases} \implies \dim(\W_1) \neq \dim(\W_2).
+	\]
 \end{proof}
 
 \begin{ex}\label{ex:1.6.24}
-  Let \(f(x)\) be a polynomial of degree n in \(\ps[n]{\R}\).
-  Prove that for any \(g(x) \in \ps[n]{\R}\) there exist scalars \(\seq{c}{0,1,,n}\) such that
-  \[
-    g(x) = c_0 f(x) + c_1 f'(x) + c_2 f''(x) + \cdots + c_n f^{(n)}(x),
-  \]
-  where \(f^{(n)}(x)\) denotes the \(n\)th derivative of \(f(x)\).
+	Let \(f(x)\) be a polynomial of degree n in \(\ps[n]{\R}\).
+	Prove that for any \(g(x) \in \ps[n]{\R}\) there exist scalars \(\seq{c}{0,1,,n}\) such that
+	\[
+		g(x) = c_0 f(x) + c_1 f'(x) + c_2 f''(x) + \cdots + c_n f^{(n)}(x),
+	\]
+	where \(f^{(n)}(x)\) denotes the \(n\)th derivative of \(f(x)\).
 \end{ex}
 
 \begin{proof}[\pf{ex:1.6.24}]
-  We denote \(f^{(0)} = f\).
-  Since \(f^{(i)}(x)\) has degree \(n - i\) for all \(i = 0, 1, \dots, n\), we know that the set
-  \[
-    \beta = \set{f^{(i)} : i = 0, 1, \dots, n}
-  \]
-  is linearly independent.
-  Since \(\#(\beta) = n + 1\), by \cref{1.6.15}(b) we know that \(\beta\) is a basis for \(\ps[n]{\R}\) over \(\R\), thus there exist \(\seq{c}{0,1,,n}\) such that \(g = \sum_{i = 0}^n c_i f^{(i)}\).
+	We denote \(f^{(0)} = f\).
+	Since \(f^{(i)}(x)\) has degree \(n - i\) for all \(i = 0, 1, \dots, n\), we know that the set
+	\[
+		\beta = \set{f^{(i)} : i = 0, 1, \dots, n}
+	\]
+	is linearly independent.
+	Since \(\#(\beta) = n + 1\), by \cref{1.6.15}(b) we know that \(\beta\) is a basis for \(\ps[n]{\R}\) over \(\R\), thus there exist \(\seq{c}{0,1,,n}\) such that \(g = \sum_{i = 0}^n c_i f^{(i)}\).
 \end{proof}
 
 \begin{ex}\label{ex:1.6.25}
-  If \(\V\) and \(\W\) are vector spaces over \(\F\) of dimensions \(m\) and \(n\), determine the dimension of \(\V \times \W\) (See \cref{ex:1.2.21}).
+	If \(\V\) and \(\W\) are vector spaces over \(\F\) of dimensions \(m\) and \(n\), determine the dimension of \(\V \times \W\) (See \cref{ex:1.2.21}).
 \end{ex}
 
 \begin{proof}[\pf{ex:1.6.25}]
-  Let \(\beta_v = \set{\seq{v}{1,2,,m}}, \beta_w = \set{\seq{w}{1,2,n}}\) be a basis for \(\V, \W\) over \(\F\), respectively.
-  Let \(\zv_{\V}, \zv_{\W}\) be the zero vectors of \(\V, \W\), respectively.
-  Then we claim the set
-  \[
-    \beta = \pa{\beta_v \times \set{\zv_{\W}}} \cup \pa{\set{\zv_{\V}} \times \beta_w}
-  \]
-  is a basis for \(\V \times \W\) over \(\F\).
-  Clearly \(\beta \subseteq \V \times \W\).
-  Since
-  \begin{align*}
-             & \forall \seq{a}{1,2,,m + n} \in \F, \sum_{i = 1}^m a_i (v_i, \zv_{\W}) + \sum_{i = 1}^n a_{m + i} (\zv_{\V}, w_i)                                   \\
-             & = (\sum_{i = 1}^m a_i v_i, \sum_{i = 1}^n a_{m + i} w_i) = (\zv_{\V}, \zv_{\W})                                   &  & \text{(by \cref{ex:1.2.21})} \\
-    \implies & \begin{dcases}
-                 \sum_{i = 1}^m a_i v_i = \zv_{\V} \\
-                 \sum_{i = 1}^n a_{m + i} w_i = \zv_{\W}
-               \end{dcases}                                                                                                              \\
-    \implies & \seq[=]{a}{1,2,,m + n} = 0,
-  \end{align*}
-  by \cref{1.5.3} we know that \(\beta\) is linearly independent.
-  Since
-  \begin{align*}
-             & \forall (v, w) \in \V \times \W, \exists \seq{a}{1,2,,m + n} \in \F :                                             \\
-             & (v, w) = (\sum_{i = 1}^m a_i v_i, \sum_{i = 1}^n a_{m + i} w_i)                                                   \\
-             & = \sum_{i = 1}^m a_i (v_i, \zv_{\W}) + \sum_{i = 1}^n a_{m + i} (\zv_{\V}, w_i) &  & \text{(by \cref{ex:1.2.21})} \\
-    \implies & \forall (v, w) \in \V \times \W, (v, w) \in \spn{\beta}                                                           \\
-    \implies & \V \times \W = \spn{\beta},                                                     &  & \text{(by \cref{1.5})}
-  \end{align*}
-  by \cref{1.6.1} we know that \(\beta\) is a basis for \(\V \times \W\) over \(\F\) and \(\dim(\V \times \W) = m + n\).
+	Let \(\beta_v = \set{\seq{v}{1,2,,m}}, \beta_w = \set{\seq{w}{1,2,n}}\) be a basis for \(\V, \W\) over \(\F\), respectively.
+	Let \(\zv_{\V}, \zv_{\W}\) be the zero vectors of \(\V, \W\), respectively.
+	Then we claim the set
+	\[
+		\beta = \pa{\beta_v \times \set{\zv_{\W}}} \cup \pa{\set{\zv_{\V}} \times \beta_w}
+	\]
+	is a basis for \(\V \times \W\) over \(\F\).
+	Clearly \(\beta \subseteq \V \times \W\).
+	Since
+	\begin{align*}
+		         & \forall \seq{a}{1,2,,m + n} \in \F, \sum_{i = 1}^m a_i (v_i, \zv_{\W}) + \sum_{i = 1}^n a_{m + i} (\zv_{\V}, w_i)                     \\
+		         & = (\sum_{i = 1}^m a_i v_i, \sum_{i = 1}^n a_{m + i} w_i) = (\zv_{\V}, \zv_{\W})                                   &  & \by{ex:1.2.21} \\
+		\implies & \begin{dcases}
+			           \sum_{i = 1}^m a_i v_i = \zv_{\V} \\
+			           \sum_{i = 1}^n a_{m + i} w_i = \zv_{\W}
+		           \end{dcases}                                                                                                \\
+		\implies & \seq[=]{a}{1,2,,m + n} = 0,
+	\end{align*}
+	by \cref{1.5.3} we know that \(\beta\) is linearly independent.
+	Since
+	\begin{align*}
+		         & \forall (v, w) \in \V \times \W, \exists \seq{a}{1,2,,m + n} \in \F :                               \\
+		         & (v, w) = (\sum_{i = 1}^m a_i v_i, \sum_{i = 1}^n a_{m + i} w_i)                                     \\
+		         & = \sum_{i = 1}^m a_i (v_i, \zv_{\W}) + \sum_{i = 1}^n a_{m + i} (\zv_{\V}, w_i) &  & \by{ex:1.2.21} \\
+		\implies & \forall (v, w) \in \V \times \W, (v, w) \in \spn{\beta}                                             \\
+		\implies & \V \times \W = \spn{\beta},                                                     &  & \by{1.5}
+	\end{align*}
+	by \cref{1.6.1} we know that \(\beta\) is a basis for \(\V \times \W\) over \(\F\) and \(\dim(\V \times \W) = m + n\).
 \end{proof}
 
 \begin{ex}\label{ex:1.6.26}
-  For a fixed \(a \in \R\), determine the dimension of the subspace of \(\ps[n]{\R}\) defined by \(\set{f \in \ps[n]{\R} : f(a) = 0}\).
+	For a fixed \(a \in \R\), determine the dimension of the subspace of \(\ps[n]{\R}\) defined by \(\set{f \in \ps[n]{\R} : f(a) = 0}\).
 \end{ex}
 
 \begin{proof}[\pf{ex:1.6.26}]
-  Since the set
-  \[
-    \beta = \set{x - a, x^2 - a^2, \dots, x^n - a^n} \subseteq \set{f \in \ps[n]{\R} : f(a) = 0} \subseteq \ps[n]{\R}
-  \]
-  is linearly independent (by \cref{ex:1.5.5}) and
-  \begin{align*}
-             & \forall g \in \set{f \in \ps[n]{\R} : f(a) = 0}, \exists \seq{c}{1,2,,n} \in \R :                               \\
-             & \forall x \in \R, g(x) = c_1 (x - a) + c_2 (x^2 - a^2) + \cdots + c_n (x^n - a^n)                               \\
-    \implies & \forall g \in \set{f \in \ps[n]{\R} : f(a) = 0}, g \in \spn{\beta}                &  & \text{(by \cref{1.4.3})} \\
-    \implies & \set{f \in \ps[n]{\R} : f(a) = 0} = \spn{\beta},                                  &  & \text{(by \cref{1.5})}
-  \end{align*}
-  by \cref{1.6.1} we know that \(\beta\) is a basis for \(\set{f \in \ps[n]{\R} : f(a) = 0}\) over \(\R\).
-  Thus by \cref{1.6.8} we have \(\dim(\set{f \in \ps[n]{\R} : f(a) = 0}) = \#(\beta) = n\).
+	Since the set
+	\[
+		\beta = \set{x - a, x^2 - a^2, \dots, x^n - a^n} \subseteq \set{f \in \ps[n]{\R} : f(a) = 0} \subseteq \ps[n]{\R}
+	\]
+	is linearly independent (by \cref{ex:1.5.5}) and
+	\begin{align*}
+		         & \forall g \in \set{f \in \ps[n]{\R} : f(a) = 0}, \exists \seq{c}{1,2,,n} \in \R :                 \\
+		         & \forall x \in \R, g(x) = c_1 (x - a) + c_2 (x^2 - a^2) + \cdots + c_n (x^n - a^n)                 \\
+		\implies & \forall g \in \set{f \in \ps[n]{\R} : f(a) = 0}, g \in \spn{\beta}                &  & \by{1.4.3} \\
+		\implies & \set{f \in \ps[n]{\R} : f(a) = 0} = \spn{\beta},                                  &  & \by{1.5}
+	\end{align*}
+	by \cref{1.6.1} we know that \(\beta\) is a basis for \(\set{f \in \ps[n]{\R} : f(a) = 0}\) over \(\R\).
+	Thus by \cref{1.6.8} we have \(\dim(\set{f \in \ps[n]{\R} : f(a) = 0}) = \#(\beta) = n\).
 \end{proof}
 
 \begin{ex}\label{ex:1.6.27}
-  Let \(\W_1\) and \(\W_2\) be the subspaces of \(\ps{\F}\) over \(\F\) defined in \cref{ex:1.3.25}.
-  Determine the dimensions of the subspaces \(\W_1 \cap \ps[n]{\F}\) and \(\W_2 \cap \ps[n]{\F}\).
+	Let \(\W_1\) and \(\W_2\) be the subspaces of \(\ps{\F}\) over \(\F\) defined in \cref{ex:1.3.25}.
+	Determine the dimensions of the subspaces \(\W_1 \cap \ps[n]{\F}\) and \(\W_2 \cap \ps[n]{\F}\).
 \end{ex}
 
 \begin{proof}[\pf{ex:1.6.27}]
-  First suppose that \(n\) is odd.
-  We define
-  \begin{align*}
-    \beta_1 & = \set{1, x^2, x^4 \dots, x^{n - 1}} \\
-    \beta_2 & = \set{x, x^3, x^5 \dots, x^n}.
-  \end{align*}
-  Then we have
-  \begin{align*}
-             & \begin{dcases}
-                 \beta_1 \text{ is linearly independent} \\
-                 \beta_2 \text{ is linearly independent} \\
-                 \W_1 = \spn{\beta_1}                    \\
-                 \W_2 = \spn{\beta_2}
-               \end{dcases}               &  & \text{(by \cref{ex:1.3.25})} \\
-    \implies & \begin{dcases}
-                 \beta_1 \text{ is a basis for } \W_1 \text{ over } \F \\
-                 \beta_2 \text{ is a basis for } \W_2 \text{ over } \F
-               \end{dcases} &  & \text{(by \cref{1.6.1})}        \\
-    \implies & \begin{dcases}
-                 \dim(\W_1) = \#(\beta_1) = \frac{n - 1}{2} \\
-                 \dim(\W_2) = \#(\beta_2) = \frac{n - 1}{2}
-               \end{dcases}.            &  & \text{(by \cref{1.6.8})}
-  \end{align*}
-  Using similar arguments as above we can show that when \(n\) is even we have
-  \[
-    \begin{dcases}
-      \dim(\W_1) = \#(\beta_1) = \frac{n}{2} + 1 \\
-      \dim(\W_2) = \#(\beta_2) = \frac{n}{2}
-    \end{dcases}.
-  \]
+	First suppose that \(n\) is odd.
+	We define
+	\begin{align*}
+		\beta_1 & = \set{1, x^2, x^4 \dots, x^{n - 1}} \\
+		\beta_2 & = \set{x, x^3, x^5 \dots, x^n}.
+	\end{align*}
+	Then we have
+	\begin{align*}
+		         & \begin{dcases}
+			           \beta_1 \text{ is linearly independent} \\
+			           \beta_2 \text{ is linearly independent} \\
+			           \W_1 = \spn{\beta_1}                    \\
+			           \W_2 = \spn{\beta_2}
+		           \end{dcases}               &  & \by{ex:1.3.25}        \\
+		\implies & \begin{dcases}
+			           \beta_1 \text{ is a basis for } \W_1 \text{ over } \F \\
+			           \beta_2 \text{ is a basis for } \W_2 \text{ over } \F
+		           \end{dcases} &  & \by{1.6.1} \\
+		\implies & \begin{dcases}
+			           \dim(\W_1) = \#(\beta_1) = \frac{n - 1}{2} \\
+			           \dim(\W_2) = \#(\beta_2) = \frac{n - 1}{2}
+		           \end{dcases}.            &  & \by{1.6.8}
+	\end{align*}
+	Using similar arguments as above we can show that when \(n\) is even we have
+	\[
+		\begin{dcases}
+			\dim(\W_1) = \#(\beta_1) = \frac{n}{2} + 1 \\
+			\dim(\W_2) = \#(\beta_2) = \frac{n}{2}
+		\end{dcases}.
+	\]
 \end{proof}
 
 \begin{ex}\label{ex:1.6.28}
-  Let \(\V\) be a finite-dimensional vector space over \(\C\) with dimension \(n\).
-  Prove that if \(\V\) is now regarded as a vector space over \(\R\), then \(\dim(\V) = 2n\).
+	Let \(\V\) be a finite-dimensional vector space over \(\C\) with dimension \(n\).
+	Prove that if \(\V\) is now regarded as a vector space over \(\R\), then \(\dim(\V) = 2n\).
 \end{ex}
 
 \begin{proof}[\pf{ex:1.6.28}]
-  Let \(\beta = \set{\seq{v}{1,2,,n}}\) be a basis for \(\V\) over \(\C\).
-  Since
-  \begin{align*}
-             & \spn{\beta} = \V                                                           &  & \text{(by \cref{1.6.1})}    \\
-    \implies & \forall v \in \V, \exists \seq{a}{1,2,,n} \in \C :                                                          \\
-             & v = \sum_{j = 1}^n a_j v_j = \sum_{j = 1}^n \pa{\Re(a_j) + i \Im(a_j)} v_j                                  \\
-             & = \sum_{j = 1}^n \Re(a_j) (1 v_j) + \sum_{j = 1}^n \Im(a_j) (i v_j)        &  & \text{(by \cref{1.4.3})}    \\
-    \implies & \forall v \in \V, \exists \seq{b}{1,2,,2n} \in \R :                                                         \\
-             & v = \sum_{j = 1}^n b_j v_j + \sum_{j = 1}^n b_{n + j} (i v_j)              &  & (\Re(a_j), \Im(a_j) \in \R) \\
-    \implies & \spn{\set{\seq{v}{1,2,,n}, \seq{iv}{1,2,,n}}} = \V                         &  & \text{(by \cref{1.4.3})}
-  \end{align*}
-  and
-  \begin{align*}
-             & \forall \seq{b}{1,2,,2n} \in \R, \sum_{j = 1}^n b_j v_j + \sum_{j = 1}^n b_{n + j} (i v_j) = \zv                                            \\
-    \implies & \sum_{j = 1}^n (b_j + i b_{n + j}) v_j = \zv                                                                                                \\
-    \implies & b_1 + i b_{n + 1} = b_2 + i b_{n + 2} = \cdots = b_n + i b_{2n} = 0                              &  & \text{(by \cref{1.5.3})}              \\
-    \implies & \seq[=]{b}{1,2,,2n} = 0,                                                                         &  & (\set{\seq{b}{1,2,,2n}} \subseteq \R)
-  \end{align*}
-  by \cref{1.6.1} we know that \(\set{\seq{v}{1,2,,n}, \seq{iv}{1,2,,n}}\) is a basis for \(\V\) over \(\R\) with dimension \(2n\).
+	Let \(\beta = \set{\seq{v}{1,2,,n}}\) be a basis for \(\V\) over \(\C\).
+	Since
+	\begin{align*}
+		         & \spn{\beta} = \V                                                           &  & \by{1.6.1}                  \\
+		\implies & \forall v \in \V, \exists \seq{a}{1,2,,n} \in \C :                                                          \\
+		         & v = \sum_{j = 1}^n a_j v_j = \sum_{j = 1}^n \pa{\Re(a_j) + i \Im(a_j)} v_j                                  \\
+		         & = \sum_{j = 1}^n \Re(a_j) (1 v_j) + \sum_{j = 1}^n \Im(a_j) (i v_j)        &  & \by{1.4.3}                  \\
+		\implies & \forall v \in \V, \exists \seq{b}{1,2,,2n} \in \R :                                                         \\
+		         & v = \sum_{j = 1}^n b_j v_j + \sum_{j = 1}^n b_{n + j} (i v_j)              &  & (\Re(a_j), \Im(a_j) \in \R) \\
+		\implies & \spn{\set{\seq{v}{1,2,,n}, \seq{iv}{1,2,,n}}} = \V                         &  & \by{1.4.3}
+	\end{align*}
+	and
+	\begin{align*}
+		         & \forall \seq{b}{1,2,,2n} \in \R, \sum_{j = 1}^n b_j v_j + \sum_{j = 1}^n b_{n + j} (i v_j) = \zv                                            \\
+		\implies & \sum_{j = 1}^n (b_j + i b_{n + j}) v_j = \zv                                                                                                \\
+		\implies & b_1 + i b_{n + 1} = b_2 + i b_{n + 2} = \cdots = b_n + i b_{2n} = 0                              &  & \by{1.5.3}                            \\
+		\implies & \seq[=]{b}{1,2,,2n} = 0,                                                                         &  & (\set{\seq{b}{1,2,,2n}} \subseteq \R)
+	\end{align*}
+	by \cref{1.6.1} we know that \(\set{\seq{v}{1,2,,n}, \seq{iv}{1,2,,n}}\) is a basis for \(\V\) over \(\R\) with dimension \(2n\).
 \end{proof}
 
 \begin{ex}\label{ex:1.6.29}
-  \quad
-  \begin{enumerate}
-    \item Prove that if \(\W_1\) and \(\W_2\) are finite-dimensional subspaces of a vector space \(\V\) over \(\F\), then the subspace \(\W_1 + \W_2\) is finite-dimensional, and \(\dim(\W_1 + \W_2) = \dim(\W_1) + \dim(\W_2) - \dim(\W_1 \cap \W_2)\).
-    \item Let \(\W_1\) and \(\W_2\) be finite-dimensional subspaces of a vector space \(\V\) over \(\F\), and let \(\V = \W_1 + \W_2\).
-          Deduce that \(\V\) is the direct sum of \(\W_1\) and \(\W_2\) iff \(\dim(\V) = \dim(\W_1) + \dim(\W_2)\).
-  \end{enumerate}
+	\quad
+	\begin{enumerate}
+		\item Prove that if \(\W_1\) and \(\W_2\) are finite-dimensional subspaces of a vector space \(\V\) over \(\F\), then the subspace \(\W_1 + \W_2\) is finite-dimensional, and \(\dim(\W_1 + \W_2) = \dim(\W_1) + \dim(\W_2) - \dim(\W_1 \cap \W_2)\).
+		\item Let \(\W_1\) and \(\W_2\) be finite-dimensional subspaces of a vector space \(\V\) over \(\F\), and let \(\V = \W_1 + \W_2\).
+		      Deduce that \(\V\) is the direct sum of \(\W_1\) and \(\W_2\) iff \(\dim(\V) = \dim(\W_1) + \dim(\W_2)\).
+	\end{enumerate}
 \end{ex}
 
 \begin{proof}[\pf{ex:1.6.29}(a)]
-  Note that \(\V\) can be infinite-dimensional, but the result does not change as long as \(\W_1, \W_2\) are finite-dimensional.
-  If \(\W_1 = \W_2\), then we have
-  \begin{align*}
-             & \W_1 + \W_1 = \W_1                                                  &  & \text{(by \cref{1.3.10})} \\
-    \implies & \dim(\W_1) = \dim(\W_1 + \W_1) = \dim(\W_1 \cap \W_1)               &  & \text{(by \cref{1.6.8})}  \\
-    \implies & \dim(\W_1 + \W_1) = \dim(\W_1) + \dim(\W_1) - \dim(\W_1 \cap \W_1).
-  \end{align*}
-  So suppose that \(\W_1 \neq \W_2\).
+	Note that \(\V\) can be infinite-dimensional, but the result does not change as long as \(\W_1, \W_2\) are finite-dimensional.
+	If \(\W_1 = \W_2\), then we have
+	\begin{align*}
+		         & \W_1 + \W_1 = \W_1                                                  &  & \by{1.3.10} \\
+		\implies & \dim(\W_1) = \dim(\W_1 + \W_1) = \dim(\W_1 \cap \W_1)               &  & \by{1.6.8}  \\
+		\implies & \dim(\W_1 + \W_1) = \dim(\W_1) + \dim(\W_1) - \dim(\W_1 \cap \W_1).
+	\end{align*}
+	So suppose that \(\W_1 \neq \W_2\).
 
-  Since \(\W_1\) is finite-dimensional and \(\W_1 \cap \W_2 \subseteq \W_1\), by \cref{1.4,1.11} we know that \(\W_1 \cap \W_2\) is finite-dimensional.
-  Thus by \cref{1.6.8} we can define \(\beta\) as a basis for \(\W_1 \cap \W_2\) over \(\F\).
-  Note that \(\#(\beta) \geq 0\).
+	Since \(\W_1\) is finite-dimensional and \(\W_1 \cap \W_2 \subseteq \W_1\), by \cref{1.4,1.11} we know that \(\W_1 \cap \W_2\) is finite-dimensional.
+	Thus by \cref{1.6.8} we can define \(\beta\) as a basis for \(\W_1 \cap \W_2\) over \(\F\).
+	Note that \(\#(\beta) \geq 0\).
 
-  By \cref{1.6.15}(c) we can extend \(\beta\) to \(\beta_1\) and \(\beta_2\) which are bases for \(\W_1\) and \(\W_2\) over \(\F\), respectively.
-  Note that \(\#(\beta_1), \#(\beta_2) \geq 0\).
-  We claim that \((\beta_1 \setminus \beta) \cap \spn{\beta_2} = \varnothing\).
-  Suppose for sake of contradiction that
-  \[
-    \exists v \in \beta_1 \setminus \beta : v \in \spn{\beta_2}.
-  \]
-  Then we have
-  \begin{align*}
-             & \begin{dcases}
-                 v \in \beta_1 \setminus \beta \subseteq \beta_1 \subseteq \W_1 \\
-                 v \in \spn{\beta_2} = \W_2
-               \end{dcases} &  & \text{(by \cref{1.6.1})}                                  \\
-    \implies & v \in \W_1 \cap \W_2 = \spn{\beta}.                               &  & \text{(by \cref{1.6.1})}
-  \end{align*}
-  Since \(\beta_1 \setminus \beta \subseteq \beta_1\), by \cref{1.5.6} \(\beta_1 \setminus \beta\) is linearly independent.
-  But
-  \begin{align*}
-             & v \in \beta_1 \setminus \beta                                \\
-    \implies & v \notin \spn{\beta}          &  & \text{(by \cref{1.5.3})},
-  \end{align*}
-  a contradiction.
-  Thus \((\beta_1 \setminus \beta) \cap \spn{\beta_2} = \varnothing\).
+	By \cref{1.6.15}(c) we can extend \(\beta\) to \(\beta_1\) and \(\beta_2\) which are bases for \(\W_1\) and \(\W_2\) over \(\F\), respectively.
+	Note that \(\#(\beta_1), \#(\beta_2) \geq 0\).
+	We claim that \((\beta_1 \setminus \beta) \cap \spn{\beta_2} = \varnothing\).
+	Suppose for sake of contradiction that
+	\[
+		\exists v \in \beta_1 \setminus \beta : v \in \spn{\beta_2}.
+	\]
+	Then we have
+	\begin{align*}
+		         & \begin{dcases}
+			           v \in \beta_1 \setminus \beta \subseteq \beta_1 \subseteq \W_1 \\
+			           v \in \spn{\beta_2} = \W_2
+		           \end{dcases} &  & \by{1.6.1}                    \\
+		\implies & v \in \W_1 \cap \W_2 = \spn{\beta}.                               &  & \by{1.6.1}
+	\end{align*}
+	Since \(\beta_1 \setminus \beta \subseteq \beta_1\), by \cref{1.5.6} \(\beta_1 \setminus \beta\) is linearly independent.
+	But
+	\begin{align*}
+		         & v \in \beta_1 \setminus \beta                  \\
+		\implies & v \notin \spn{\beta}          &  & \by{1.5.3},
+	\end{align*}
+	a contradiction.
+	Thus \((\beta_1 \setminus \beta) \cap \spn{\beta_2} = \varnothing\).
 
-  Now we claim that \(\beta_1 \cup \beta_2\) is a basis for \(\W_1 + \W_2\) over \(\F\).
-  Since
-  \begin{align*}
-             & \forall v \in \W_1 + \W_2, \exists (v_1, v_2) \in \W_1 \times \W_2 :                                      \\
-             & v = v_1 + v_2 \in \spn{\beta_1 \cup \beta_2}                         &  & \text{(by \cref{1.3.10,1.5.3})} \\
-    \implies & \W_1 + \W_2 \subseteq \spn{\beta_1 \cup \beta_2}                                                          \\
-    \implies & \W_1 + \W_2 = \spn{\beta_1 \cup \beta_2}                             &  & \text{(by \cref{1.5})}
-  \end{align*}
-  and
-  \begin{align*}
-             & \begin{dcases}
-                 \beta_1 \cup \beta_2 = (\beta_1 \setminus \beta) \cup \beta_2 \\
-                 (\beta_1 \setminus \beta) \cap \spn{\beta_2} = \varnothing
-               \end{dcases} &  & \text{(from the claim above)}                                  \\
-    \implies & \beta_1 \cup \beta_2 \text{ is linearly independent},            &  & \text{(by \cref{1.5.3})}
-  \end{align*}
-  by \cref{1.6.1} we know that \(\beta_1 \cup \beta_2\) is a basis for \(\W_1 + \W_2\) over \(\F\).
-  Since \(\beta_1\) and \(\beta_2\) are finite, we know that \(\beta_1 \cup \beta_2\) is also finite, thus by \cref{1.6.8} \(\W_1 + \W_2\) is finite-dimensional, and we have
-  \begin{align*}
-             & \#(\beta_1 \cup \beta_2) = \#(\beta_1) + \#(\beta_2) - \#(\beta_1 \cap \beta_2) \\
-    \implies & \#(\beta_1 \cup \beta_2) = \#(\beta_1) + \#(\beta_2) - \#(\beta)                \\
-    \implies & \dim(\W_1 + \W_2) = \dim(\W_1) + \dim(\W_2) - \dim(\W_1 \cap \W_2).
-  \end{align*}
+	Now we claim that \(\beta_1 \cup \beta_2\) is a basis for \(\W_1 + \W_2\) over \(\F\).
+	Since
+	\begin{align*}
+		         & \forall v \in \W_1 + \W_2, \exists (v_1, v_2) \in \W_1 \times \W_2 :                        \\
+		         & v = v_1 + v_2 \in \spn{\beta_1 \cup \beta_2}                         &  & \by{1.3.10,1.5.3} \\
+		\implies & \W_1 + \W_2 \subseteq \spn{\beta_1 \cup \beta_2}                                            \\
+		\implies & \W_1 + \W_2 = \spn{\beta_1 \cup \beta_2}                             &  & \by{1.5}
+	\end{align*}
+	and
+	\begin{align*}
+		         & \begin{dcases}
+			           \beta_1 \cup \beta_2 = (\beta_1 \setminus \beta) \cup \beta_2 \\
+			           (\beta_1 \setminus \beta) \cap \spn{\beta_2} = \varnothing
+		           \end{dcases} &  & \text{(from the claim above)}                    \\
+		\implies & \beta_1 \cup \beta_2 \text{ is linearly independent},            &  & \by{1.5.3}
+	\end{align*}
+	by \cref{1.6.1} we know that \(\beta_1 \cup \beta_2\) is a basis for \(\W_1 + \W_2\) over \(\F\).
+	Since \(\beta_1\) and \(\beta_2\) are finite, we know that \(\beta_1 \cup \beta_2\) is also finite, thus by \cref{1.6.8} \(\W_1 + \W_2\) is finite-dimensional, and we have
+	\begin{align*}
+		         & \#(\beta_1 \cup \beta_2) = \#(\beta_1) + \#(\beta_2) - \#(\beta_1 \cap \beta_2) \\
+		\implies & \#(\beta_1 \cup \beta_2) = \#(\beta_1) + \#(\beta_2) - \#(\beta)                \\
+		\implies & \dim(\W_1 + \W_2) = \dim(\W_1) + \dim(\W_2) - \dim(\W_1 \cap \W_2).
+	\end{align*}
 \end{proof}
 
 \begin{proof}[\pf{ex:1.6.29}(b)]
-  We have
-  \begin{align*}
-         & \V = \W_1 \oplus \W_2                                                                        \\
-    \iff & \begin{dcases}
-             \V = \W_1 + \W_2 \\
-             \W_1 \cap \W_2 = \varnothing
-           \end{dcases}                            &  & \text{(by \cref{1.3.11})}                       \\
-    \iff & \begin{dcases}
-             \V = \W_1 + \W_2 \\
-             \dim(\W_1 \cap \W_2) = 0
-           \end{dcases}                                &  & \text{(by \cref{1.6.2})}                    \\
-    \iff & \dim(\V) = \dim(\W_1 + \W_2) = \dim(\W_1) + \dim(\W_2). &  & \text{(by \cref{ex:1.6.29}(a))}
-  \end{align*}
+	We have
+	\begin{align*}
+		     & \V = \W_1 \oplus \W_2                                                          \\
+		\iff & \begin{dcases}
+			       \V = \W_1 + \W_2 \\
+			       \W_1 \cap \W_2 = \varnothing
+		       \end{dcases}                            &  & \by{1.3.11}                       \\
+		\iff & \begin{dcases}
+			       \V = \W_1 + \W_2 \\
+			       \dim(\W_1 \cap \W_2) = 0
+		       \end{dcases}                                &  & \by{1.6.2}                    \\
+		\iff & \dim(\V) = \dim(\W_1 + \W_2) = \dim(\W_1) + \dim(\W_2). &  & \by{ex:1.6.29}[a]
+	\end{align*}
 \end{proof}
 
 \setcounter{ex}{30}
 \begin{ex}\label{ex:1.6.31}
-  Let \(\W_1\) and \(\W_2\) be subspaces of a vector space \(\V\) over \(\F\) having dimensions \(m\) and \(n\), respectively, where \(m \geq n\).
-  \begin{enumerate}
-    \item Prove that \(\dim(\W_1 \cap \W_2) \leq n\).
-    \item Prove that \(\dim(\W_1 + \W_2) \leq m + n\).
-  \end{enumerate}
+	Let \(\W_1\) and \(\W_2\) be subspaces of a vector space \(\V\) over \(\F\) having dimensions \(m\) and \(n\), respectively, where \(m \geq n\).
+	\begin{enumerate}
+		\item Prove that \(\dim(\W_1 \cap \W_2) \leq n\).
+		\item Prove that \(\dim(\W_1 + \W_2) \leq m + n\).
+	\end{enumerate}
 \end{ex}
 
 \begin{proof}[\pf{ex:1.6.31}(a)]
-  We have
-  \begin{align*}
-             & \W_1 \cap \W_2 \subseteq \W_2                                          \\
-    \implies & \dim(\W_1 \cap \W_2) \leq \dim(\W_2) = n. &  & \text{(by \cref{1.11})}
-  \end{align*}
+	We have
+	\begin{align*}
+		         & \W_1 \cap \W_2 \subseteq \W_2                            \\
+		\implies & \dim(\W_1 \cap \W_2) \leq \dim(\W_2) = n. &  & \by{1.11}
+	\end{align*}
 \end{proof}
 
 \begin{proof}[\pf{ex:1.6.31}(b)]
-  We have
-  \begin{align*}
-    \dim(\W_1 + \W_2) & = \dim(\W_1) + \dim(\W_2) - \dim(\W_1 \cap \W_2) &  & \text{(by \cref{ex:1.6.29}(a))} \\
-                      & = m + n - \dim(\W_1 \cap \W_2)                                                        \\
-                      & \leq m + n.
-  \end{align*}
+	We have
+	\begin{align*}
+		\dim(\W_1 + \W_2) & = \dim(\W_1) + \dim(\W_2) - \dim(\W_1 \cap \W_2) &  & \by{ex:1.6.29}[a] \\
+		                  & = m + n - \dim(\W_1 \cap \W_2)                                          \\
+		                  & \leq m + n.
+	\end{align*}
 \end{proof}
 
 \setcounter{ex}{32}
 \begin{ex}\label{ex:1.6.33}
-  \quad
-  \begin{enumerate}
-    \item Let \(\W_1\) and \(\W_2\) be subspaces of a vector space \(\V\) over \(\F\) such that \(\V = \W_1 \oplus \W_2\).
-          If \(\beta_1\) and \(\beta_2\) are bases for \(\W_1\) and \(\W_2\) over \(\F\), respectively, show that \(\beta_1 \cap \beta_2 = \varnothing\) and \(\beta_1 \cup \beta_2\) is a basis for \(\V\) over \(\F\).
-    \item Conversely, let \(\beta_1\) and \(\beta_2\) be disjoint bases for subspaces \(\W_1\) and \(\W_2\) over \(\F\), respectively, of a vector space \(\V\) over \(\F\).
-          Prove that if \(\beta_1 \cup \beta_2\) is a basis for \(\V\) over \(\F\), then \(\V = \W_1 \oplus \W_2\).
-  \end{enumerate}
+	\quad
+	\begin{enumerate}
+		\item Let \(\W_1\) and \(\W_2\) be subspaces of a vector space \(\V\) over \(\F\) such that \(\V = \W_1 \oplus \W_2\).
+		      If \(\beta_1\) and \(\beta_2\) are bases for \(\W_1\) and \(\W_2\) over \(\F\), respectively, show that \(\beta_1 \cap \beta_2 = \varnothing\) and \(\beta_1 \cup \beta_2\) is a basis for \(\V\) over \(\F\).
+		\item Conversely, let \(\beta_1\) and \(\beta_2\) be disjoint bases for subspaces \(\W_1\) and \(\W_2\) over \(\F\), respectively, of a vector space \(\V\) over \(\F\).
+		      Prove that if \(\beta_1 \cup \beta_2\) is a basis for \(\V\) over \(\F\), then \(\V = \W_1 \oplus \W_2\).
+	\end{enumerate}
 \end{ex}
 
 \begin{proof}[\pf{ex:1.6.33}(a)]
-  First observe that
-  \begin{align*}
-             & \V = \W_1 \oplus \W_2                                                                                              \\
-    \implies & \V = \W_1 + \W_2                                                                    &  & \text{(by \cref{1.3.11})} \\
-    \implies & \forall v \in \V, \exists (x, y) \in \W_1 \times \W_2 : v = x + y                                                  \\
-    \implies & \forall v \in \V, \exists (x, y) \in \spn{\beta_1} \times \spn{\beta_2} : v = x + y &  & \text{(by \cref{1.6.1})}  \\
-    \implies & \forall v \in \V, v \in \spn{\beta_1 \cup \beta_2}                                  &  & \text{(by \cref{1.2.1})}  \\
-    \implies & \V = \spn{\beta_1 \cup \beta_2}.                                                    &  & \text{(by \cref{1.5})}
-  \end{align*}
-  Since
-  \begin{align*}
-             & V = \W_1 \oplus \W_2                                                                             \\
-    \implies & \W_1 \cap \W_2 = \set{\zv}                                  &  & \text{(by \cref{1.3.11})}       \\
-    \implies & \beta_1 \cap \beta_2 = \varnothing                                                               \\
-    \implies & \dim(\V) = \dim(\W_1 \oplus \W_2) = \dim(\W_1) + \dim(\W_2) &  & \text{(by \cref{ex:1.6.29}(b))} \\
-             & = \#(\beta_1) + \#(\beta_2) = \#(\beta_1 \cup \beta_2),
-  \end{align*}
-  by \cref{1.6.15}(a) we know that \(\beta_1 \cup \beta_2\) is a basis for \(\V\) over \(\F\).
+	First observe that
+	\begin{align*}
+		         & \V = \W_1 \oplus \W_2                                                                                \\
+		\implies & \V = \W_1 + \W_2                                                                    &  & \by{1.3.11} \\
+		\implies & \forall v \in \V, \exists (x, y) \in \W_1 \times \W_2 : v = x + y                                    \\
+		\implies & \forall v \in \V, \exists (x, y) \in \spn{\beta_1} \times \spn{\beta_2} : v = x + y &  & \by{1.6.1}  \\
+		\implies & \forall v \in \V, v \in \spn{\beta_1 \cup \beta_2}                                  &  & \by{1.2.1}  \\
+		\implies & \V = \spn{\beta_1 \cup \beta_2}.                                                    &  & \by{1.5}
+	\end{align*}
+	Since
+	\begin{align*}
+		         & V = \W_1 \oplus \W_2                                                               \\
+		\implies & \W_1 \cap \W_2 = \set{\zv}                                  &  & \by{1.3.11}       \\
+		\implies & \beta_1 \cap \beta_2 = \varnothing                                                 \\
+		\implies & \dim(\V) = \dim(\W_1 \oplus \W_2) = \dim(\W_1) + \dim(\W_2) &  & \by{ex:1.6.29}[b] \\
+		         & = \#(\beta_1) + \#(\beta_2) = \#(\beta_1 \cup \beta_2),
+	\end{align*}
+	by \cref{1.6.15}(a) we know that \(\beta_1 \cup \beta_2\) is a basis for \(\V\) over \(\F\).
 \end{proof}
 
 \begin{proof}[\pf{ex:1.6.33}(b)]
-  Since
-  \begin{align*}
-             & \begin{dcases}
-                 \beta_1 \cap \beta_2 = \varnothing \\
-                 \spn{\beta_1 \cup \beta_2} = \V
-               \end{dcases}                                                                                    \\
-    \implies & \forall v \in \V, v \in \spn{\beta_1 \cup \beta_2}                                                                    \\
-    \implies & \forall v \in \V, \exists (x, y) \in \spn{\beta_1} \times \spn{\beta_2} : v = x + y &  & \text{(by \cref{1.2.1})}     \\
-    \implies & \forall v \in \V, v \in \W_1 + \W_2                                                 &  & \text{(by \cref{1.3.10})}    \\
-    \implies & \V \subseteq \W_1 + \W_2                                                            &  & \text{(by \cref{1.5})}       \\
-    \implies & \V = \W_1 + \W_2                                                                    &  & \text{(by \cref{ex:1.3.23})}
-  \end{align*}
-  and
-  \begin{align*}
-             & \begin{dcases}
-                 \beta_1 \cap \beta_2 = \varnothing \\
-                 \beta_1 \cup \beta_2 \text{ is a basis for } \V \text{ over } \F
-               \end{dcases}                                \\
-    \implies & \begin{dcases}
-                 \spn{\beta_1} \cap \beta_2 = \varnothing \\
-                 \spn{\beta_2} \cap \beta_1 = \varnothing
-               \end{dcases}                      &  & \text{(by \cref{1.7})}                                  \\
-    \implies & \spn{\beta_1} \cap \spn{\beta_2} = \set{\zv}                     &  & \text{(by \cref{1.5.3})} \\
-    \implies & \W_1 \cap \W_2 = \set{\zv},
-  \end{align*}
-  by \cref{1.3.11} we know that \(\V = \W_1 \oplus \W_2\).
+	Since
+	\begin{align*}
+		         & \begin{dcases}
+			           \beta_1 \cap \beta_2 = \varnothing \\
+			           \spn{\beta_1 \cup \beta_2} = \V
+		           \end{dcases}                                                                      \\
+		\implies & \forall v \in \V, v \in \spn{\beta_1 \cup \beta_2}                                                      \\
+		\implies & \forall v \in \V, \exists (x, y) \in \spn{\beta_1} \times \spn{\beta_2} : v = x + y &  & \by{1.2.1}     \\
+		\implies & \forall v \in \V, v \in \W_1 + \W_2                                                 &  & \by{1.3.10}    \\
+		\implies & \V \subseteq \W_1 + \W_2                                                            &  & \by{1.5}       \\
+		\implies & \V = \W_1 + \W_2                                                                    &  & \by{ex:1.3.23}
+	\end{align*}
+	and
+	\begin{align*}
+		         & \begin{dcases}
+			           \beta_1 \cap \beta_2 = \varnothing \\
+			           \beta_1 \cup \beta_2 \text{ is a basis for } \V \text{ over } \F
+		           \end{dcases}                  \\
+		\implies & \begin{dcases}
+			           \spn{\beta_1} \cap \beta_2 = \varnothing \\
+			           \spn{\beta_2} \cap \beta_1 = \varnothing
+		           \end{dcases}                      &  & \by{1.7}                                  \\
+		\implies & \spn{\beta_1} \cap \spn{\beta_2} = \set{\zv}                     &  & \by{1.5.3} \\
+		\implies & \W_1 \cap \W_2 = \set{\zv},
+	\end{align*}
+	by \cref{1.3.11} we know that \(\V = \W_1 \oplus \W_2\).
 \end{proof}
 
 \begin{ex}\label{ex:1.6.34}
-  \quad
-  \begin{enumerate}
-    \item Prove that if \(\W_1\) is any subspace of a finite-dimensional vector space \(\V\) over \(\F\), then there exists a subspace \(\W_2\) of \(\V\) over \(\F\) such that \(\V = \W_1 \oplus \W_2\).
-    \item Let \(\V = \R^2\) and \(\W_1 = \set{(a_1, 0) : a_1 \in \R}\).
-          Give examples of two different subspaces \(\W_2\) and \(\W_2'\) such that \(\V = \W_1 \oplus \W_2\) and \(\V = \W_1 \oplus \W_2'\).
-  \end{enumerate}
+	\quad
+	\begin{enumerate}
+		\item Prove that if \(\W_1\) is any subspace of a finite-dimensional vector space \(\V\) over \(\F\), then there exists a subspace \(\W_2\) of \(\V\) over \(\F\) such that \(\V = \W_1 \oplus \W_2\).
+		\item Let \(\V = \R^2\) and \(\W_1 = \set{(a_1, 0) : a_1 \in \R}\).
+		      Give examples of two different subspaces \(\W_2\) and \(\W_2'\) such that \(\V = \W_1 \oplus \W_2\) and \(\V = \W_1 \oplus \W_2'\).
+	\end{enumerate}
 \end{ex}
 
 \begin{proof}[\pf{ex:1.6.34}(a)]
-  Let \(\beta_1\) be a basis for \(\W_1\) over \(\F\).
-  By \cref{1.6.19} we know that \(\beta_1\) can extend to a basis \(\beta\) for \(\V\) over \(\F\).
-  Let \(\beta_2 = \beta \setminus \beta_1\) and let \(\W_2 = \spn{\beta_2}\).
-  Since \(\beta_1 \cap \beta_2 = \varnothing\) and \(\spn{\beta_1 \cup \beta_2} = \V\), by \cref{ex:1.6.33}(b) we have \(\V = \W_1 \oplus \W_2\).
+	Let \(\beta_1\) be a basis for \(\W_1\) over \(\F\).
+	By \cref{1.6.19} we know that \(\beta_1\) can extend to a basis \(\beta\) for \(\V\) over \(\F\).
+	Let \(\beta_2 = \beta \setminus \beta_1\) and let \(\W_2 = \spn{\beta_2}\).
+	Since \(\beta_1 \cap \beta_2 = \varnothing\) and \(\spn{\beta_1 \cup \beta_2} = \V\), by \cref{ex:1.6.33}(b) we have \(\V = \W_1 \oplus \W_2\).
 \end{proof}
 
 \begin{proof}[\pf{ex:1.6.34}(b)]
-  Let
-  \begin{align*}
-    \W_2  & = \set{(0, a_2) : a_2 \in \R}    \\
-    \W_2' & = \set{(a_2, a_2) : a_2 \in \R}.
-  \end{align*}
-  Clearly we have
-  \begin{align*}
-    \W_1 \cap \W_2  & = \set{(0, 0)}  \\
-    \W_1 \cap \W_2' & = \set{(0, 0)}.
-  \end{align*}
-  Since
-  \begin{align*}
-             & \forall x \in \R^2, x = (x_1, x_2) = (x_1, 0) + (0, x_2)                                           \\
-    \implies & \forall x \in \R^2, \exists (y, z) \in \W_1 \times \W_2 : x = y + z                                \\
-    \implies & \forall x \in \R^2, x \in \W_1 + \W_2                               &  & \text{(by \cref{1.3.10})} \\
-    \implies & \R^2 = \W_1 + \W_2                                                  &  & \text{(by \cref{1.5})}
-  \end{align*}
-  and
-  \begin{align*}
-             & \forall x \in \R^2, x = (x_1, x_2) = (x_1 - x_2, 0) + (x_2, x_2)                                    \\
-    \implies & \forall x \in \R^2, \exists (y, z) \in \W_1 \times \W_2' : x = y + z                                \\
-    \implies & \forall x \in \R^2, x \in \W_1 + \W_2'                               &  & \text{(by \cref{1.3.10})} \\
-    \implies & \R^2 = \W_1 + \W_2',                                                 &  & \text{(by \cref{1.5})}
-  \end{align*}
-  by \cref{1.3.11} we know that \(\V = \W_1 \oplus \W_2 = \W_1 \oplus \W_2'\).
+	Let
+	\begin{align*}
+		\W_2  & = \set{(0, a_2) : a_2 \in \R}    \\
+		\W_2' & = \set{(a_2, a_2) : a_2 \in \R}.
+	\end{align*}
+	Clearly we have
+	\begin{align*}
+		\W_1 \cap \W_2  & = \set{(0, 0)}  \\
+		\W_1 \cap \W_2' & = \set{(0, 0)}.
+	\end{align*}
+	Since
+	\begin{align*}
+		         & \forall x \in \R^2, x = (x_1, x_2) = (x_1, 0) + (0, x_2)                             \\
+		\implies & \forall x \in \R^2, \exists (y, z) \in \W_1 \times \W_2 : x = y + z                  \\
+		\implies & \forall x \in \R^2, x \in \W_1 + \W_2                               &  & \by{1.3.10} \\
+		\implies & \R^2 = \W_1 + \W_2                                                  &  & \by{1.5}
+	\end{align*}
+	and
+	\begin{align*}
+		         & \forall x \in \R^2, x = (x_1, x_2) = (x_1 - x_2, 0) + (x_2, x_2)                      \\
+		\implies & \forall x \in \R^2, \exists (y, z) \in \W_1 \times \W_2' : x = y + z                  \\
+		\implies & \forall x \in \R^2, x \in \W_1 + \W_2'                               &  & \by{1.3.10} \\
+		\implies & \R^2 = \W_1 + \W_2',                                                 &  & \by{1.5}
+	\end{align*}
+	by \cref{1.3.11} we know that \(\V = \W_1 \oplus \W_2 = \W_1 \oplus \W_2'\).
 \end{proof}
 
 \begin{ex}\label{ex:1.6.35}
-  Let \(\W\) be a subspace of a finite-dimensional vector space \(\V\) over \(\F\), and consider the basis \(\set{\seq{u}{1,2,,k}}\) for \(\W\) over \(\F\).
-  Let \(\set{\seq{u}{1,2,,k,k + 1,,n}}\) be an extension of this basis to a basis for \(\V\) over \(\F\).
-  \begin{enumerate}
-    \item Prove that \(\set{u_{k + 1} + \W, u_{k + 2} + \W, \dots , u_n + \W}\) is a basis for \(\V / \W\) over \(\F\).
-    \item Derive a formula relating \(\dim(\V)\), \(\dim(\W)\), and \(\dim(\V / \W)\).
-  \end{enumerate}
+	Let \(\W\) be a subspace of a finite-dimensional vector space \(\V\) over \(\F\), and consider the basis \(\set{\seq{u}{1,2,,k}}\) for \(\W\) over \(\F\).
+	Let \(\set{\seq{u}{1,2,,k,k + 1,,n}}\) be an extension of this basis to a basis for \(\V\) over \(\F\).
+	\begin{enumerate}
+		\item Prove that \(\set{u_{k + 1} + \W, u_{k + 2} + \W, \dots , u_n + \W}\) is a basis for \(\V / \W\) over \(\F\).
+		\item Derive a formula relating \(\dim(\V)\), \(\dim(\W)\), and \(\dim(\V / \W)\).
+	\end{enumerate}
 \end{ex}
 
 \begin{proof}[\pf{ex:1.6.35}(a)]
-  Let \(\beta = \set{u_{k + 1} + \W, u_{k + 2} + \W, \dots , u_n + \W}\).
-  First we show that \(\spn{\beta} = \V / \W\).
-  \begin{align*}
-             & \forall v + \W \in \V / \W, \begin{dcases}
-                                             v \in \V \\
-                                             v + \W = \set{v + w : w \in \W}
-                                           \end{dcases}                   &  & \text{(by \cref{ex:1.3.31})}   \\
-    \implies & \forall v + \W \in \V / \W, \exists \seq{a}{1,2,,n} \in \F :                                   \\
-             & v + \W = \pa{\sum_{i = 1}^n a_i u_i} + \W                    &  & \text{(by \cref{1.4.3})}     \\
-             & = \sum_{i = 1}^n a_i (u_i + \W)                              &  & \text{(by \cref{ex:1.3.31})} \\
-             & = \sum_{i = k + 1}^n a_i (u_i + \W)                          &  & (\seq{u}{1,2,,k} \in \W)     \\
-    \implies & \spn{\beta} = \V / \W.                                       &  & \text{(by \cref{1.4.3})}.
-  \end{align*}
-  Now we show that \(\beta\) is linearly independent.
-  \begin{align*}
-             & \forall \seq{a}{k + 1,,n} \in \F, \sum_{i = k + 1}^n a_i (u_i + \W) = \zv + \W                                    \\
-    \implies & \pa{\sum_{i = k + 1}^n a_i u_i} + \W = \W                                      &  & \text{(by \cref{ex:1.3.31})}  \\
-    \implies & \sum_{i = k + 1}^n a_i u_i \in \W                                              &  & \text{(by \cref{ex:1.3.31})}  \\
-    \implies & \seq[=]{a}{k + 1,,n} = 0.                                                      &  & (\seq{u}{k + 1,,n} \notin \W)
-  \end{align*}
-  From all proofs above we conclude by \cref{1.6.1} that \(\beta\) is a basis for \(\V / \W\) over \(\F\).
+	Let \(\beta = \set{u_{k + 1} + \W, u_{k + 2} + \W, \dots , u_n + \W}\).
+	First we show that \(\spn{\beta} = \V / \W\).
+	\begin{align*}
+		         & \forall v + \W \in \V / \W, \begin{dcases}
+			                                       v \in \V \\
+			                                       v + \W = \set{v + w : w \in \W}
+		                                       \end{dcases}                   &  & \by{ex:1.3.31}             \\
+		\implies & \forall v + \W \in \V / \W, \exists \seq{a}{1,2,,n} \in \F :                               \\
+		         & v + \W = \pa{\sum_{i = 1}^n a_i u_i} + \W                    &  & \by{1.4.3}               \\
+		         & = \sum_{i = 1}^n a_i (u_i + \W)                              &  & \by{ex:1.3.31}           \\
+		         & = \sum_{i = k + 1}^n a_i (u_i + \W)                          &  & (\seq{u}{1,2,,k} \in \W) \\
+		\implies & \spn{\beta} = \V / \W.                                       &  & \by{1.4.3}.
+	\end{align*}
+	Now we show that \(\beta\) is linearly independent.
+	\begin{align*}
+		         & \forall \seq{a}{k + 1,,n} \in \F, \sum_{i = k + 1}^n a_i (u_i + \W) = \zv + \W                                    \\
+		\implies & \pa{\sum_{i = k + 1}^n a_i u_i} + \W = \W                                      &  & \by{ex:1.3.31}                \\
+		\implies & \sum_{i = k + 1}^n a_i u_i \in \W                                              &  & \by{ex:1.3.31}                \\
+		\implies & \seq[=]{a}{k + 1,,n} = 0.                                                      &  & (\seq{u}{k + 1,,n} \notin \W)
+	\end{align*}
+	From all proofs above we conclude by \cref{1.6.1} that \(\beta\) is a basis for \(\V / \W\) over \(\F\).
 \end{proof}
 
 \begin{proof}[\pf{ex:1.6.35}(b)]
-  From \cref{ex:1.6.35}(a) we see that \(\dim(\V / \W) = \dim(\V) - \dim(\W)\).
+	From \cref{ex:1.6.35}(a) we see that \(\dim(\V / \W) = \dim(\V) - \dim(\W)\).
 \end{proof}

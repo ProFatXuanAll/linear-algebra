@@ -1,1505 +1,1505 @@
 \section{Inner Products and Norms}\label{sec:6.1}
 
 \begin{defn}\label{6.1.1}
-  Let \(\V\) be a vector space over \(\F\).
-  An \textbf{inner product} on \(\V\) over \(\F\) is a function that assigns, to every ordered pair of vectors \(x\) and \(y\) in \(\V\), a scalar in \(\F\), denoted \(\inn{x, y}\), such that for all \(x\), \(y\), and \(z\) in \(\V\) and all \(c\) in \(\F\), the following hold:
-  \begin{enumerate}
-    \item \(\inn{x + z, y} = \inn{x, y} + \inn{z, y}\).
-    \item \(\inn{cx, y} = c \inn{x, y}\).
-    \item \(\conj{\inn{x, y}} = \inn{y, x}\), where the bar denotes complex conjugation.
-    \item \(\inn{x, x} > 0\) if \(x \neq \zv\).
-  \end{enumerate}
+	Let \(\V\) be a vector space over \(\F\).
+	An \textbf{inner product} on \(\V\) over \(\F\) is a function that assigns, to every ordered pair of vectors \(x\) and \(y\) in \(\V\), a scalar in \(\F\), denoted \(\inn{x, y}\), such that for all \(x\), \(y\), and \(z\) in \(\V\) and all \(c\) in \(\F\), the following hold:
+	\begin{enumerate}
+		\item \(\inn{x + z, y} = \inn{x, y} + \inn{z, y}\).
+		\item \(\inn{cx, y} = c \inn{x, y}\).
+		\item \(\conj{\inn{x, y}} = \inn{y, x}\), where the bar denotes complex conjugation.
+		\item \(\inn{x, x} > 0\) if \(x \neq \zv\).
+	\end{enumerate}
 \end{defn}
 
 \begin{note}
-  Note that \cref{6.1.1}(c) reduces to \(\inn{x, y} = \inn{y, x}\) if \(\F = \R\).
-  \cref{6.1.1}(a)(b) simply require that the inner product be linear in the first component.
-  It is easily shown that if \(\seq{a}{1,,n} \in \F\) and \(y, \seq{v}{1,,n} \in \V\), then
-  \[
-    \inn{\sum_{i = 1}^n a_i v_i, y} = \sum_{i = 1}^n a_i \inn{v_i, y}.
-  \]
+	Note that \cref{6.1.1}(c) reduces to \(\inn{x, y} = \inn{y, x}\) if \(\F = \R\).
+	\cref{6.1.1}(a)(b) simply require that the inner product be linear in the first component.
+	It is easily shown that if \(\seq{a}{1,,n} \in \F\) and \(y, \seq{v}{1,,n} \in \V\), then
+	\[
+		\inn{\sum_{i = 1}^n a_i v_i, y} = \sum_{i = 1}^n a_i \inn{v_i, y}.
+	\]
 \end{note}
 
 \begin{eg}\label{6.1.2}
-  For \(x = \tuple{a}{1,,n}\) and \(y = \tuple{b}{1,,n}\) in \(\vs{F}^n\), define
-  \[
-    \inn{x, y} = \sum_{i = 1}^n a_i \conj{b_i}.
-  \]
-  The inner product defined above is called the \textbf{standard inner product} on \(\vs{F}^n\).
-  When \(\F = \R\) the conjugations are not needed, and in early courses this standard inner product is usually called the \emph{dot product} and is denoted by \(x \cdot y\) instead of \(\inn{x, y}\).
+	For \(x = \tuple{a}{1,,n}\) and \(y = \tuple{b}{1,,n}\) in \(\vs{F}^n\), define
+	\[
+		\inn{x, y} = \sum_{i = 1}^n a_i \conj{b_i}.
+	\]
+	The inner product defined above is called the \textbf{standard inner product} on \(\vs{F}^n\).
+	When \(\F = \R\) the conjugations are not needed, and in early courses this standard inner product is usually called the \emph{dot product} and is denoted by \(x \cdot y\) instead of \(\inn{x, y}\).
 \end{eg}
 
 \begin{proof}[\pf{6.1.2}]
-  Let \(x, y, z \in \vs{F}^n\) and let \(c \in \F\).
-  Since
-  \begin{align*}
-    \inn{x + y, z}    & = \sum_{i = 1}^n (x + y)_i \conj{z_i}                           &  & \text{(by \cref{6.1.2})}        \\
-                      & = \sum_{i = 1}^n x_i \conj{z_i} + \sum_{i = 1}^n y_i \conj{z_i} &  & \text{(by \cref{c.0.1})}        \\
-                      & = \inn{x, z} + \inn{y, z}                                       &  & \text{(by \cref{6.1.2})}        \\
-    \inn{cx, y}       & = \sum_{i = 1}^n (cx)_i \conj{y_i}                              &  & \text{(by \cref{6.1.2})}        \\
-                      & = c \sum_{i = 1}^n x_i \conj{y_i}                               &  & \text{(by \cref{c.0.1})}        \\
-                      & = c \inn{x, y}                                                  &  & \text{(by \cref{6.1.2})}        \\
-    \conj{\inn{x, y}} & = \conj{\sum_{i = 1}^n x_i \conj{y_i}}                          &  & \text{(by \cref{6.1.2})}        \\
-                      & = \sum_{i = 1}^n \conj{x_i} y_i                                 &  & \text{(by \cref{d.2}(a)(b)(c))} \\
-                      & = \sum_{i = 1}^n y_i \conj{x_i}                                 &  & \text{(by \cref{c.0.1})}        \\
-                      & = \inn{y, x}                                                    &  & \text{(by \cref{6.1.2})}
-  \end{align*}
-  and
-  \begin{align*}
-             & x \neq \zv                                                                                       \\
-    \implies & \exists i \in \set{1, \dots, n} : x_i \neq 0                                                     \\
-    \implies & \exists i \in \set{1, \dots, n} : \abs{x_i}^2 = x_i \conj{x_i} > 0 &  & \text{(by \cref{d.0.5})} \\
-    \implies & \inn{x, x} = \sum_{i = 1}^n x_i \conj{x_i} > 0,                    &  & \text{(by \cref{6.1.2})}
-  \end{align*}
-  by \cref{6.1.1} we know that \(\inn{\cdot, \cdot}\) is an inner product on \(\vs{F}^n\) over \(\F\).
+	Let \(x, y, z \in \vs{F}^n\) and let \(c \in \F\).
+	Since
+	\begin{align*}
+		\inn{x + y, z}    & = \sum_{i = 1}^n (x + y)_i \conj{z_i}                           &  & \by{6.1.2}    \\
+		                  & = \sum_{i = 1}^n x_i \conj{z_i} + \sum_{i = 1}^n y_i \conj{z_i} &  & \by{c.0.1}    \\
+		                  & = \inn{x, z} + \inn{y, z}                                       &  & \by{6.1.2}    \\
+		\inn{cx, y}       & = \sum_{i = 1}^n (cx)_i \conj{y_i}                              &  & \by{6.1.2}    \\
+		                  & = c \sum_{i = 1}^n x_i \conj{y_i}                               &  & \by{c.0.1}    \\
+		                  & = c \inn{x, y}                                                  &  & \by{6.1.2}    \\
+		\conj{\inn{x, y}} & = \conj{\sum_{i = 1}^n x_i \conj{y_i}}                          &  & \by{6.1.2}    \\
+		                  & = \sum_{i = 1}^n \conj{x_i} y_i                                 &  & \by{d.2}[abc] \\
+		                  & = \sum_{i = 1}^n y_i \conj{x_i}                                 &  & \by{c.0.1}    \\
+		                  & = \inn{y, x}                                                    &  & \by{6.1.2}
+	\end{align*}
+	and
+	\begin{align*}
+		         & x \neq \zv                                                                         \\
+		\implies & \exists i \in \set{1, \dots, n} : x_i \neq 0                                       \\
+		\implies & \exists i \in \set{1, \dots, n} : \abs{x_i}^2 = x_i \conj{x_i} > 0 &  & \by{d.0.5} \\
+		\implies & \inn{x, x} = \sum_{i = 1}^n x_i \conj{x_i} > 0,                    &  & \by{6.1.2}
+	\end{align*}
+	by \cref{6.1.1} we know that \(\inn{\cdot, \cdot}\) is an inner product on \(\vs{F}^n\) over \(\F\).
 \end{proof}
 
 \begin{eg}\label{6.1.3}
-  If \(\inn{x, y}\) is any inner product on a vector space \(\V\) over \(\F\) and \(r > 0\), we may define another inner product by the rule \(\inn{x, y}' = r \inn{x, y}\).
-  If \(r \leq 0\), then \cref{6.1.1}(d) would not hold.
+	If \(\inn{x, y}\) is any inner product on a vector space \(\V\) over \(\F\) and \(r > 0\), we may define another inner product by the rule \(\inn{x, y}' = r \inn{x, y}\).
+	If \(r \leq 0\), then \cref{6.1.1}(d) would not hold.
 \end{eg}
 
 \begin{proof}[\pf{6.1.3}]
-  Let \(x, y, z \in \V\), let \(c \in \F\) and let \(r \in \R^+\).
-  Since
-  \begin{align*}
-    \inn{x + y, z}'    & = r\inn{x + y, z}             &  & \text{(by \cref{6.1.3})}    \\
-                       & = r (\inn{x, z} + \inn{y, z}) &  & \text{(by \cref{6.1.1}(a))} \\
-                       & = r \inn{x, z} + r \inn{y, z} &  & \text{(by \cref{c.0.1})}    \\
-                       & = \inn{x, z}' + \inn{y, z}'   &  & \text{(by \cref{6.1.3})}    \\
-    \inn{cx, y}'       & = r \inn{cx, y}               &  & \text{(by \cref{6.1.3})}    \\
-                       & = rc \inn{x, y}               &  & \text{(by \cref{6.1.1}(b))} \\
-                       & = cr \inn{x, y}               &  & \text{(by \cref{c.0.1})}    \\
-                       & = c \inn{x, y}'               &  & \text{(by \cref{6.1.3})}    \\
-    \conj{\inn{x, y}'} & = \conj{r \inn{x, y}}         &  & \text{(by \cref{6.1.3})}    \\
-                       & = \conj{r} \conj{\inn{x, y}}  &  & \text{(by \cref{d.2}(c))}   \\
-                       & = \conj{r} \inn{y, x}         &  & \text{(by \cref{6.1.1}(c))} \\
-                       & = r \inn{y, x}                &  & (r \in \R^+)                \\
-                       & = \inn{y, x}'                 &  & \text{(by \cref{6.1.3})}
-  \end{align*}
-  and
-  \begin{align*}
-             & \begin{dcases}
-                 x \neq \zv \\
-                 r > 0
-               \end{dcases}                                                    \\
-    \implies & \inn{x, x}' = r \inn{x, x} > 0, &  & \text{(by \cref{6.1.1}(d))}
-  \end{align*}
-  by \cref{6.1.1} we see that \(\inn{\cdot, \cdot}'\) is an inner product on \(\V\) over \(\F\).
+	Let \(x, y, z \in \V\), let \(c \in \F\) and let \(r \in \R^+\).
+	Since
+	\begin{align*}
+		\inn{x + y, z}'    & = r\inn{x + y, z}             &  & \by{6.1.3}    \\
+		                   & = r (\inn{x, z} + \inn{y, z}) &  & \by{6.1.1}[a] \\
+		                   & = r \inn{x, z} + r \inn{y, z} &  & \by{c.0.1}    \\
+		                   & = \inn{x, z}' + \inn{y, z}'   &  & \by{6.1.3}    \\
+		\inn{cx, y}'       & = r \inn{cx, y}               &  & \by{6.1.3}    \\
+		                   & = rc \inn{x, y}               &  & \by{6.1.1}[b] \\
+		                   & = cr \inn{x, y}               &  & \by{c.0.1}    \\
+		                   & = c \inn{x, y}'               &  & \by{6.1.3}    \\
+		\conj{\inn{x, y}'} & = \conj{r \inn{x, y}}         &  & \by{6.1.3}    \\
+		                   & = \conj{r} \conj{\inn{x, y}}  &  & \by{d.2}[c]   \\
+		                   & = \conj{r} \inn{y, x}         &  & \by{6.1.1}[c] \\
+		                   & = r \inn{y, x}                &  & (r \in \R^+)  \\
+		                   & = \inn{y, x}'                 &  & \by{6.1.3}
+	\end{align*}
+	and
+	\begin{align*}
+		         & \begin{dcases}
+			           x \neq \zv \\
+			           r > 0
+		           \end{dcases}                                      \\
+		\implies & \inn{x, x}' = r \inn{x, x} > 0, &  & \by{6.1.1}[d]
+	\end{align*}
+	by \cref{6.1.1} we see that \(\inn{\cdot, \cdot}'\) is an inner product on \(\V\) over \(\F\).
 \end{proof}
 
 \begin{eg}\label{6.1.4}
-  Let \(\V = \cfs([0, 1], \R)\), the vector space of real-valued continuous functions on \([0, 1]\).
-  For \(f, g \in \V\), define \(\inn{f, g} = \int_0^1 f(t) g(t) \; dt\).
-  Since the preceding integral is linear in \(f\), \cref{6.1.1}(a)(b) are immediate, and \cref{6.1.1}(c) is trivial.
-  If \(f \neq \zv\), then \(f^2\) is bounded away from zero on some subinterval of \([0, 1]\) (continuity is used here), and hence \(\inn{f, f} = \int_0^1 f^2(t) \; dt > 0\).
+	Let \(\V = \cfs([0, 1], \R)\), the vector space of real-valued continuous functions on \([0, 1]\).
+	For \(f, g \in \V\), define \(\inn{f, g} = \int_0^1 f(t) g(t) \; dt\).
+	Since the preceding integral is linear in \(f\), \cref{6.1.1}(a)(b) are immediate, and \cref{6.1.1}(c) is trivial.
+	If \(f \neq \zv\), then \(f^2\) is bounded away from zero on some subinterval of \([0, 1]\) (continuity is used here), and hence \(\inn{f, f} = \int_0^1 f^2(t) \; dt > 0\).
 \end{eg}
 
 \begin{defn}\label{6.1.5}
-  Let \(A \in \MS\).
-  We define the \textbf{conjugate transpose} or \textbf{adjoint} of \(A\) to be the \(n \times m\) matrix \(A^*\) such that \((A^*)_{i j} = \conj{A_{j i}}\) for all \(i \in \set{1, \dots, m}\) and \(j \in \set{1, \dots, n}\).
+	Let \(A \in \MS\).
+	We define the \textbf{conjugate transpose} or \textbf{adjoint} of \(A\) to be the \(n \times m\) matrix \(A^*\) such that \((A^*)_{i j} = \conj{A_{j i}}\) for all \(i \in \set{1, \dots, m}\) and \(j \in \set{1, \dots, n}\).
 \end{defn}
 
 \begin{note}
-  If \(x\) and \(y\) are viewed as column vectors in \(\vs{F}^n\), then \(\inn{x, y} = y^* x\) where \(\inn{\cdot, \cdot}\) is the standard inner product.
-  The conjugate transpose of a matrix plays a very important role in the remainder of \cref{ch:6}.
-  In the case that \(A\) has real entries, \(A^*\) is simply the transpose of \(A\).
+	If \(x\) and \(y\) are viewed as column vectors in \(\vs{F}^n\), then \(\inn{x, y} = y^* x\) where \(\inn{\cdot, \cdot}\) is the standard inner product.
+	The conjugate transpose of a matrix plays a very important role in the remainder of \cref{ch:6}.
+	In the case that \(A\) has real entries, \(A^*\) is simply the transpose of \(A\).
 \end{note}
 
 \begin{eg}\label{6.1.6}
-  Let \(\V = \ms{n}{n}{\F}\), and define \(\inn{A, B} = \tr(B^* A)\) for \(A, B \in \V\).
-  Then \(\inn{\cdot, \cdot}\) is called the \textbf{Frobenius inner product} and is an inner product on \(\V\).
+	Let \(\V = \ms{n}{n}{\F}\), and define \(\inn{A, B} = \tr(B^* A)\) for \(A, B \in \V\).
+	Then \(\inn{\cdot, \cdot}\) is called the \textbf{Frobenius inner product} and is an inner product on \(\V\).
 \end{eg}
 
 \begin{proof}[\pf{6.1.6}]
-  Let \(A, B, C \in \V\) and let \(k \in \F\).
-  Then
-  \begin{align*}
-    \inn{A + B, C}    & = \tr(C^* (A + B))                                                      &  & \text{(by \cref{6.1.6})}     \\
-                      & = \tr(C^* A + C^* B)                                                    &  & \text{(by \cref{2.3.5})}     \\
-                      & = \tr(C^* A) + \tr(C^* B)                                               &  & \text{(by \cref{ex:1.3.6})}  \\
-                      & = \inn{A, C} + \inn{B, C}                                               &  & \text{(by \cref{6.1.6})}     \\
-    \inn{kA, B}       & = \tr(B^* (kA))                                                         &  & \text{(by \cref{6.1.6})}     \\
-                      & = k \tr(B^* A)                                                          &  & \text{(by \cref{ex:1.3.6})}  \\
-                      & = k \inn{A, B}                                                          &  & \text{(by \cref{6.1.6})}     \\
-    \conj{\inn{A, B}} & = \conj{\tr(B^* A)}                                                     &  & \text{(by \cref{6.1.6})}     \\
-                      & = \conj{\sum_{i = 1}^n (B^* A)_{i i}}                                   &  & \text{(by \cref{1.3.9})}     \\
-                      & = \conj{\sum_{i = 1}^n \sum_{j = 1}^n (B^*)_{i j} \cdot A_{j i}}        &  & \text{(by \cref{2.3.1})}     \\
-                      & = \sum_{i = 1}^n \sum_{j = 1}^n \conj{(B^*)_{i j}} \cdot \conj{A_{j i}} &  & \text{(by \cref{d.2}(b)(c))} \\
-                      & = \sum_{i = 1}^n \sum_{j = 1}^n B_{j i} \cdot (A^*)_{i j}               &  & \text{(by \cref{6.1.5})}     \\
-                      & = \sum_{i = 1}^n (A^* B)_{i i}                                          &  & \text{(by \cref{2.3.1})}     \\
-                      & = \tr(A^* B)                                                            &  & \text{(by \cref{1.3.9})}     \\
-                      & = \inn{B, A}.                                                           &  & \text{(by \cref{6.1.6})}
-  \end{align*}
-  Also
-  \begin{align*}
-    \inn{A, A} & = \tr(A^* A)                                           &  & \text{(by \cref{6.1.6})} \\
-               & = \sum_{i = 1}^n (A^* A)_{i i}                         &  & \text{(by \cref{1.3.9})} \\
-               & = \sum_{i = 1}^n \sum_{k = 1}^n (A^*)_{i k} A_{k i}    &  & \text{(by \cref{2.3.1})} \\
-               & = \sum_{i = 1}^n \sum_{k = 1}^n \conj{A_{k i}} A_{k i} &  & \text{(by \cref{6.1.5})} \\
-               & = \sum_{i = 1}^n \sum_{k = 1}^n \abs{A_{k i}}^2.       &  & \text{(by \cref{d.0.5})}
-  \end{align*}
-  Now if \(A \neq \zm\), then \(A_{k i} \neq 0\) for some \(i, k \in \set{1, \dots, n}\).
-  So \(\inn{A, A} > 0\).
-  Thus by \cref{6.1.1} we see that \(\inn{\cdot, \cdot}\) is an inner product on \(\V\).
+	Let \(A, B, C \in \V\) and let \(k \in \F\).
+	Then
+	\begin{align*}
+		\inn{A + B, C}    & = \tr(C^* (A + B))                                                      &  & \by{6.1.6}    \\
+		                  & = \tr(C^* A + C^* B)                                                    &  & \by{2.3.5}    \\
+		                  & = \tr(C^* A) + \tr(C^* B)                                               &  & \by{ex:1.3.6} \\
+		                  & = \inn{A, C} + \inn{B, C}                                               &  & \by{6.1.6}    \\
+		\inn{kA, B}       & = \tr(B^* (kA))                                                         &  & \by{6.1.6}    \\
+		                  & = k \tr(B^* A)                                                          &  & \by{ex:1.3.6} \\
+		                  & = k \inn{A, B}                                                          &  & \by{6.1.6}    \\
+		\conj{\inn{A, B}} & = \conj{\tr(B^* A)}                                                     &  & \by{6.1.6}    \\
+		                  & = \conj{\sum_{i = 1}^n (B^* A)_{i i}}                                   &  & \by{1.3.9}    \\
+		                  & = \conj{\sum_{i = 1}^n \sum_{j = 1}^n (B^*)_{i j} \cdot A_{j i}}        &  & \by{2.3.1}    \\
+		                  & = \sum_{i = 1}^n \sum_{j = 1}^n \conj{(B^*)_{i j}} \cdot \conj{A_{j i}} &  & \by{d.2}[bc]  \\
+		                  & = \sum_{i = 1}^n \sum_{j = 1}^n B_{j i} \cdot (A^*)_{i j}               &  & \by{6.1.5}    \\
+		                  & = \sum_{i = 1}^n (A^* B)_{i i}                                          &  & \by{2.3.1}    \\
+		                  & = \tr(A^* B)                                                            &  & \by{1.3.9}    \\
+		                  & = \inn{B, A}.                                                           &  & \by{6.1.6}
+	\end{align*}
+	Also
+	\begin{align*}
+		\inn{A, A} & = \tr(A^* A)                                           &  & \by{6.1.6} \\
+		           & = \sum_{i = 1}^n (A^* A)_{i i}                         &  & \by{1.3.9} \\
+		           & = \sum_{i = 1}^n \sum_{k = 1}^n (A^*)_{i k} A_{k i}    &  & \by{2.3.1} \\
+		           & = \sum_{i = 1}^n \sum_{k = 1}^n \conj{A_{k i}} A_{k i} &  & \by{6.1.5} \\
+		           & = \sum_{i = 1}^n \sum_{k = 1}^n \abs{A_{k i}}^2.       &  & \by{d.0.5}
+	\end{align*}
+	Now if \(A \neq \zm\), then \(A_{k i} \neq 0\) for some \(i, k \in \set{1, \dots, n}\).
+	So \(\inn{A, A} > 0\).
+	Thus by \cref{6.1.1} we see that \(\inn{\cdot, \cdot}\) is an inner product on \(\V\).
 \end{proof}
 
 \begin{defn}\label{6.1.7}
-  A vector space \(\V\) over \(\F\) endowed with a specific inner product is called an \textbf{inner product space}.
-  If \(\F = \C\), we call \(\V\) a \textbf{complex inner product space}, whereas if \(\F = \R\), we call \(\V\) a \textbf{real inner product space}.
+	A vector space \(\V\) over \(\F\) endowed with a specific inner product is called an \textbf{inner product space}.
+	If \(\F = \C\), we call \(\V\) a \textbf{complex inner product space}, whereas if \(\F = \R\), we call \(\V\) a \textbf{real inner product space}.
 
-  It is clear that if \(\V\) has an inner product \(\inn{x, y}\) and \(\W\) is a subspace of \(\V\) over \(\F\), then \(\W\) is also an inner product space when the same function \(\inn{x, y}\) is restricted to the vectors \(x, y \in \W\).
+	It is clear that if \(\V\) has an inner product \(\inn{x, y}\) and \(\W\) is a subspace of \(\V\) over \(\F\), then \(\W\) is also an inner product space when the same function \(\inn{x, y}\) is restricted to the vectors \(x, y \in \W\).
 \end{defn}
 
 \begin{note}
-  For the remainder of \cref{ch:6}, \(\vs{F}^n\) denotes the inner product space with the standard inner product as defined in \cref{6.1.2}.
-  Likewise, \(\ms{n}{n}{\F}\) denotes the inner product space with the Frobenius inner product as defined in \cref{6.1.6}.
+	For the remainder of \cref{ch:6}, \(\vs{F}^n\) denotes the inner product space with the standard inner product as defined in \cref{6.1.2}.
+	Likewise, \(\ms{n}{n}{\F}\) denotes the inner product space with the Frobenius inner product as defined in \cref{6.1.6}.
 \end{note}
 
 \begin{eg}\label{6.1.8}
-  Let \(\vs{H} = \cfs([0, 2 \pi], \C)\).
-  For \(f, g \in \vs{H}\), define
-  \[
-    \inn{f, g} = \frac{1}{2 \pi} \int_0^{2 \pi} f(t) \conj{g(t)} \; dt.
-  \]
-  This inner product space, which arises often in the context of physical situations, is examined more closely in later sections.
+	Let \(\vs{H} = \cfs([0, 2 \pi], \C)\).
+	For \(f, g \in \vs{H}\), define
+	\[
+		\inn{f, g} = \frac{1}{2 \pi} \int_0^{2 \pi} f(t) \conj{g(t)} \; dt.
+	\]
+	This inner product space, which arises often in the context of physical situations, is examined more closely in later sections.
 \end{eg}
 
 \begin{proof}
-  Let \(f, g, h \in \vs{H}\) and let \(c \in \C\).
-  Then
-  \begin{align*}
-    \inn{f + g, h}    & = \frac{1}{2 \pi} \int_0^{2 \pi} (f + g)(t) \conj{h(t)} \; dt                                                   &  & \text{(by \cref{6.1.8})}  \\
-                      & = \frac{1}{2 \pi} \int_0^{2 \pi} f(t) \conj{h(t)} \; dt + \frac{1}{2 \pi} \int_0^{2 \pi} g(t) \conj{h(t)} \; dt                                \\
-                      & = \inn{f, h} + \inn{g, h}                                                                                       &  & \text{(by \cref{6.1.8})}  \\
-    \inn{cf, g}       & = \frac{1}{2 \pi} \int_0^{2 \pi} (cf)(t) \conj{g(t)} \; dt                                                      &  & \text{(by \cref{6.1.8})}  \\
-                      & = \frac{c}{2 \pi} \int_0^{2 \pi} f(t) \conj{g(t)} \; dt                                                                                        \\
-                      & = c \inn{f, g}                                                                                                                                 \\
-    \conj{\inn{f, g}} & = \conj{\frac{1}{2 \pi} \int_0^{2 \pi} f(t) \conj{g(t)} \; dt}                                                  &  & \text{(by \cref{6.1.8})}  \\
-                      & = \frac{1}{2 \pi} \int_0^{2 \pi} \conj{f(t)} g(t) \; dt                                                         &  & \text{(by \cref{d.2}(c))} \\
-                      & = \inn{g, f}.                                                                                                   &  & \text{(by \cref{6.1.8})}
-  \end{align*}
-  Also, if \(f \neq \zv\), then we have
-  \begin{align*}
-    \inn{f, f} & = \frac{1}{2 \pi} \int_0^{2 \pi} f(t) \conj{f(t)} \; dt &  & \text{(by \cref{6.1.8})} \\
-               & = \frac{1}{2 \pi} \int_0^{2 \pi} \abs{f(t)}^2 \; dt     &  & \text{(by \cref{d.0.5})} \\
-               & > 0.                                                    &  & (f \neq \zv)
-  \end{align*}
-  Thus by \cref{6.1.1} \(\inn{\cdot, \cdot}\) is an inner product on \(\vs{H}\).
+	Let \(f, g, h \in \vs{H}\) and let \(c \in \C\).
+	Then
+	\begin{align*}
+		\inn{f + g, h}    & = \frac{1}{2 \pi} \int_0^{2 \pi} (f + g)(t) \conj{h(t)} \; dt                                                   &  & \by{6.1.8}  \\
+		                  & = \frac{1}{2 \pi} \int_0^{2 \pi} f(t) \conj{h(t)} \; dt + \frac{1}{2 \pi} \int_0^{2 \pi} g(t) \conj{h(t)} \; dt                  \\
+		                  & = \inn{f, h} + \inn{g, h}                                                                                       &  & \by{6.1.8}  \\
+		\inn{cf, g}       & = \frac{1}{2 \pi} \int_0^{2 \pi} (cf)(t) \conj{g(t)} \; dt                                                      &  & \by{6.1.8}  \\
+		                  & = \frac{c}{2 \pi} \int_0^{2 \pi} f(t) \conj{g(t)} \; dt                                                                          \\
+		                  & = c \inn{f, g}                                                                                                                   \\
+		\conj{\inn{f, g}} & = \conj{\frac{1}{2 \pi} \int_0^{2 \pi} f(t) \conj{g(t)} \; dt}                                                  &  & \by{6.1.8}  \\
+		                  & = \frac{1}{2 \pi} \int_0^{2 \pi} \conj{f(t)} g(t) \; dt                                                         &  & \by{d.2}[c] \\
+		                  & = \inn{g, f}.                                                                                                   &  & \by{6.1.8}
+	\end{align*}
+	Also, if \(f \neq \zv\), then we have
+	\begin{align*}
+		\inn{f, f} & = \frac{1}{2 \pi} \int_0^{2 \pi} f(t) \conj{f(t)} \; dt &  & \by{6.1.8}   \\
+		           & = \frac{1}{2 \pi} \int_0^{2 \pi} \abs{f(t)}^2 \; dt     &  & \by{d.0.5}   \\
+		           & > 0.                                                    &  & (f \neq \zv)
+	\end{align*}
+	Thus by \cref{6.1.1} \(\inn{\cdot, \cdot}\) is an inner product on \(\vs{H}\).
 \end{proof}
 
 \begin{thm}\label{6.1}
-  Let \(\V\) be an inner product space over \(\F\).
-  Then for \(x, y, z \in \V\) and \(c \in \F\), the following statements are true.
-  \begin{enumerate}
-    \item \(\inn{x, y + z} = \inn{x, y} + \inn{x, z}\).
-    \item \(\inn{x, cy} = \conj{c} \inn{x, y}\).
-    \item \(\inn{x, \zv} = \inn{\zv, x} = 0\).
-    \item \(\inn{x, x} = 0\) iff \(x = \zv\).
-    \item If \(\inn{x, y} = \inn{x, z}\) for all \(x \in \V\), then \(y = z\).
-  \end{enumerate}
+	Let \(\V\) be an inner product space over \(\F\).
+	Then for \(x, y, z \in \V\) and \(c \in \F\), the following statements are true.
+	\begin{enumerate}
+		\item \(\inn{x, y + z} = \inn{x, y} + \inn{x, z}\).
+		\item \(\inn{x, cy} = \conj{c} \inn{x, y}\).
+		\item \(\inn{x, \zv} = \inn{\zv, x} = 0\).
+		\item \(\inn{x, x} = 0\) iff \(x = \zv\).
+		\item If \(\inn{x, y} = \inn{x, z}\) for all \(x \in \V\), then \(y = z\).
+	\end{enumerate}
 \end{thm}
 
 \begin{proof}[\pf{6.1}(a)]
-  We have
-  \begin{align*}
-    \inn{x, y + z} & = \conj{\inn{y + z, x}}                 &  & \text{(by \cref{6.1.1}(c))} \\
-                   & = \conj{\inn{y, x} + \inn{z, x}}        &  & \text{(by \cref{6.1.1}(a))} \\
-                   & = \conj{\inn{y, x}} + \conj{\inn{z, x}} &  & \text{(by \cref{d.2}(b))}   \\
-                   & = \inn{x, y} + \inn{x, z}.              &  & \text{(by \cref{6.1.1}(c))}
-  \end{align*}
+	We have
+	\begin{align*}
+		\inn{x, y + z} & = \conj{\inn{y + z, x}}                 &  & \by{6.1.1}[c] \\
+		               & = \conj{\inn{y, x} + \inn{z, x}}        &  & \by{6.1.1}[a] \\
+		               & = \conj{\inn{y, x}} + \conj{\inn{z, x}} &  & \by{d.2}[b]   \\
+		               & = \inn{x, y} + \inn{x, z}.              &  & \by{6.1.1}[c]
+	\end{align*}
 \end{proof}
 
 \begin{proof}[\pf{6.1}(b)]
-  We have
-  \begin{align*}
-    \inn{x, cy} & = \conj{\inn{cy, x}}         &  & \text{(by \cref{6.1.1}(c))} \\
-                & = \conj{c \inn{y, x}}        &  & \text{(by \cref{6.1.1}(b))} \\
-                & = \conj{c} \conj{\inn{y, x}} &  & \text{(by \cref{d.2}(c))}   \\
-                & = \conj{c} \inn{x, y}        &  & \text{(by \cref{6.1.1}(c))}
-  \end{align*}
+	We have
+	\begin{align*}
+		\inn{x, cy} & = \conj{\inn{cy, x}}         &  & \by{6.1.1}[c] \\
+		            & = \conj{c \inn{y, x}}        &  & \by{6.1.1}[b] \\
+		            & = \conj{c} \conj{\inn{y, x}} &  & \by{d.2}[c]   \\
+		            & = \conj{c} \inn{x, y}        &  & \by{6.1.1}[c]
+	\end{align*}
 \end{proof}
 
 \begin{proof}[\pf{6.1}(c)]
-  We have
-  \begin{align*}
-    \inn{x, \zv} & = \inn{x, \zv + \zv}          &  & \text{(by \cref{1.2.1})}    \\
-                 & = \inn{x, \zv} + \inn{x, \zv} &  & \text{(by \cref{6.1}(a))}   \\
-    \inn{\zv, x} & = \inn{\zv + \zv, x}          &  & \text{(by \cref{1.2.1})}    \\
-                 & = \inn{\zv, x} + \inn{\zv, x} &  & \text{(by \cref{6.1.1}(a))}
-  \end{align*}
-  and thus \(\inn{x, \zv} = \inn{\zv, x} = 0\).
+	We have
+	\begin{align*}
+		\inn{x, \zv} & = \inn{x, \zv + \zv}          &  & \by{1.2.1}    \\
+		             & = \inn{x, \zv} + \inn{x, \zv} &  & \by{6.1}[a]   \\
+		\inn{\zv, x} & = \inn{\zv + \zv, x}          &  & \by{1.2.1}    \\
+		             & = \inn{\zv, x} + \inn{\zv, x} &  & \by{6.1.1}[a]
+	\end{align*}
+	and thus \(\inn{x, \zv} = \inn{\zv, x} = 0\).
 \end{proof}
 
 \begin{proof}[\pf{6.1}(d)]
-  By \cref{6.1.1}(d) and \cref{6.1}(c) we have \(\inn{x, x} = 0 \iff x = \zv\).
+	By \cref{6.1.1}(d) and \cref{6.1}(c) we have \(\inn{x, x} = 0 \iff x = \zv\).
 \end{proof}
 
 \begin{proof}[\pf{6.1}(e)]
-  Since
-  \begin{align*}
-    \inn{y - z, y - z} & = \inn{y, y - z} - \inn{z, y - z}                   &  & \text{(by \cref{6.1.1}(a)(b))}              \\
-                       & = \inn{y, y} - \inn{y, z} - \inn{z, y} + \inn{z, z} &  & \text{(by \cref{6.1}(a)(b))}                \\
-                       & = \inn{z, y} - \inn{y, z} - \inn{z, y} + \inn{y, z} &  & (\forall x \in \V, \inn{x, y} = \inn{x, z}) \\
-                       & = 0,
-  \end{align*}
-  by \cref{6.1}(d) we know that \(y - z = \zv\), thus \(y = z\).
+	Since
+	\begin{align*}
+		\inn{y - z, y - z} & = \inn{y, y - z} - \inn{z, y - z}                   &  & \by{6.1.1}[ab]                              \\
+		                   & = \inn{y, y} - \inn{y, z} - \inn{z, y} + \inn{z, z} &  & \by{6.1}[ab]                                \\
+		                   & = \inn{z, y} - \inn{y, z} - \inn{z, y} + \inn{y, z} &  & (\forall x \in \V, \inn{x, y} = \inn{x, z}) \\
+		                   & = 0,
+	\end{align*}
+	by \cref{6.1}(d) we know that \(y - z = \zv\), thus \(y = z\).
 \end{proof}
 
 \begin{note}
-  The reader should observe that \cref{6.1}(a)(b) show that the inner product is \textbf{conjugate linear} in the second component.
+	The reader should observe that \cref{6.1}(a)(b) show that the inner product is \textbf{conjugate linear} in the second component.
 \end{note}
 
 \begin{defn}\label{6.1.9}
-  Let \(\V\) be an inner product space over \(\F\).
-  For \(x \in \V\), we define the \textbf{norm} or \textbf{length} of \(x\) by \(\norm{x} = \sqrt{\inn{x, x}}\).
+	Let \(\V\) be an inner product space over \(\F\).
+	For \(x \in \V\), we define the \textbf{norm} or \textbf{length} of \(x\) by \(\norm{x} = \sqrt{\inn{x, x}}\).
 \end{defn}
 
 \begin{eg}\label{6.1.10}
-  Let \(\V = \vs{F}^n\).
-  If \(x = \tuple{a}{1,,n}\), then
-  \[
-    \norm{x} = \norm{\tuple{a}{1,,n}} = \pa{\sum_{i = 1}^n \abs{a_i}^2}^{\frac{1}{2}}
-  \]
-  is the Euclidean definition of length.
-  Note that if \(n = 1\), we have \(\norm{a} = \abs{a}\).
+	Let \(\V = \vs{F}^n\).
+	If \(x = \tuple{a}{1,,n}\), then
+	\[
+		\norm{x} = \norm{\tuple{a}{1,,n}} = \pa{\sum_{i = 1}^n \abs{a_i}^2}^{\frac{1}{2}}
+	\]
+	is the Euclidean definition of length.
+	Note that if \(n = 1\), we have \(\norm{a} = \abs{a}\).
 \end{eg}
 
 \begin{thm}\label{6.2}
-  Let \(\V\) be an inner product space over \(\F\).
-  Then for all \(x, y \in \V\) and \(c \in \F\), the following statements are true.
-  \begin{enumerate}
-    \item \(\norm{cx} = \abs{c} \cdot \norm{x}\).
-    \item \(\norm{x} = 0\) iff \(x = \zv\).
-          In any case \(\norm{x} \geq 0\).
-    \item (Cauchy--Schwarz Inequality)
-          \(\abs{\inn{x, y}} \leq \norm{x} \cdot \norm{y}\).
-    \item (Triangle Inequality)
-          \(\norm{x + y} \leq \norm{x} + \norm{y}\).
-  \end{enumerate}
+	Let \(\V\) be an inner product space over \(\F\).
+	Then for all \(x, y \in \V\) and \(c \in \F\), the following statements are true.
+	\begin{enumerate}
+		\item \(\norm{cx} = \abs{c} \cdot \norm{x}\).
+		\item \(\norm{x} = 0\) iff \(x = \zv\).
+		      In any case \(\norm{x} \geq 0\).
+		\item (Cauchy--Schwarz Inequality)
+		      \(\abs{\inn{x, y}} \leq \norm{x} \cdot \norm{y}\).
+		\item (Triangle Inequality)
+		      \(\norm{x + y} \leq \norm{x} + \norm{y}\).
+	\end{enumerate}
 \end{thm}
 
 \begin{proof}[\pf{6.2}(a)]
-  We have
-  \begin{align*}
-    \norm{cx} & = \sqrt{\inn{cx, cx}}          &  & \text{(by \cref{6.1.9})}    \\
-              & = \sqrt{c \inn{x, cx}}         &  & \text{(by \cref{6.1.1}(b))} \\
-              & = \sqrt{c \conj{c} \inn{x, x}} &  & \text{(by \cref{6.1}(b))}   \\
-              & = \sqrt{\abs{c}^2 \inn{x, x}}  &  & \text{(by \cref{d.0.5})}    \\
-              & = \abs{c} \sqrt{\inn{x, x}}                                     \\
-              & = \abs{c} \norm{x}.            &  & \text{(by \cref{6.1.9})}
-  \end{align*}
+	We have
+	\begin{align*}
+		\norm{cx} & = \sqrt{\inn{cx, cx}}          &  & \by{6.1.9}    \\
+		          & = \sqrt{c \inn{x, cx}}         &  & \by{6.1.1}[b] \\
+		          & = \sqrt{c \conj{c} \inn{x, x}} &  & \by{6.1}[b]   \\
+		          & = \sqrt{\abs{c}^2 \inn{x, x}}  &  & \by{d.0.5}    \\
+		          & = \abs{c} \sqrt{\inn{x, x}}                       \\
+		          & = \abs{c} \norm{x}.            &  & \by{6.1.9}
+	\end{align*}
 \end{proof}
 
 \begin{proof}[\pf{6.2}(b)]
-  We have
-  \begin{align*}
-         & x = \zv                                              \\
-    \iff & \inn{x, x} = 0        &  & \text{(by \cref{6.1}(d))} \\
-    \iff & \sqrt{\inn{x, x}} = 0                                \\
-    \iff & \norm{x} = 0          &  & \text{(by \cref{6.1.9})}
-  \end{align*}
-  and
-  \begin{align*}
-             & \forall x \in \V, \begin{dcases}
-                                   \inn{x, x} = 0 & \text{if } x = \zv    \\
-                                   \inn{x, x} > 0 & \text{if } x \neq \zv
-                                 \end{dcases}  &  & \text{(by \cref{6.1.1}(d) and \cref{6.1}(d))} \\
-    \implies & \forall x \in \V, \inn{x, x} \geq 0                                                \\
-    \implies & \forall x \in \V, \sqrt{\inn{x, x}} \geq 0                                         \\
-    \implies & \forall x \in \V, \norm{x} \geq 0.         &  & \text{(by \cref{6.1.9})}
-  \end{align*}
+	We have
+	\begin{align*}
+		     & x = \zv                                \\
+		\iff & \inn{x, x} = 0        &  & \by{6.1}[d] \\
+		\iff & \sqrt{\inn{x, x}} = 0                  \\
+		\iff & \norm{x} = 0          &  & \by{6.1.9}
+	\end{align*}
+	and
+	\begin{align*}
+		         & \forall x \in \V, \begin{dcases}
+			                             \inn{x, x} = 0 & \text{if } x = \zv    \\
+			                             \inn{x, x} > 0 & \text{if } x \neq \zv
+		                             \end{dcases}  &  & \text{(by \cref{6.1.1}(d) and \cref{6.1}(d))} \\
+		\implies & \forall x \in \V, \inn{x, x} \geq 0                                                \\
+		\implies & \forall x \in \V, \sqrt{\inn{x, x}} \geq 0                                         \\
+		\implies & \forall x \in \V, \norm{x} \geq 0.         &  & \by{6.1.9}
+	\end{align*}
 \end{proof}
 
 \begin{proof}[\pf{6.2}(c)]
-  If \(y = \zv\), then the result is immediate.
-  So assume that \(y \neq \zv\).
-  For any \(c \in \F\), we have
-  \begin{align*}
-    0 & \leq \norm{x - cy}^2                                                       &  & \text{(by \cref{6.2}(b))}      \\
-      & = \inn{x - cy, x - cy}                                                     &  & \text{(by \cref{6.1.9})}       \\
-      & = \inn{x, x - cy} - c \inn{y, x - cy}                                      &  & \text{(by \cref{6.1.1}(a)(b))} \\
-      & = \inn{x, x} - \conj{c} \inn{x, y} - c \inn{y, x} + c \conj{c} \inn{y, y}. &  & \text{(by \cref{6.1}(a)(b))}
-  \end{align*}
-  In particular, if we set
-  \[
-    c = \frac{\inn{x, y}}{\inn{y, y}},
-  \]
-  the inequality becomes
-  \[
-    0 \leq \inn{x, x} - \frac{\abs{\inn{x, y}}^2}{\inn{y, y}} = \norm{x}^2 - \frac{\abs{\inn{x, y}}^2}{\norm{y}^2},
-  \]
-  from which (c) follows.
+	If \(y = \zv\), then the result is immediate.
+	So assume that \(y \neq \zv\).
+	For any \(c \in \F\), we have
+	\begin{align*}
+		0 & \leq \norm{x - cy}^2                                                       &  & \by{6.2}[b]    \\
+		  & = \inn{x - cy, x - cy}                                                     &  & \by{6.1.9}     \\
+		  & = \inn{x, x - cy} - c \inn{y, x - cy}                                      &  & \by{6.1.1}[ab] \\
+		  & = \inn{x, x} - \conj{c} \inn{x, y} - c \inn{y, x} + c \conj{c} \inn{y, y}. &  & \by{6.1}[ab]
+	\end{align*}
+	In particular, if we set
+	\[
+		c = \frac{\inn{x, y}}{\inn{y, y}},
+	\]
+	the inequality becomes
+	\[
+		0 \leq \inn{x, x} - \frac{\abs{\inn{x, y}}^2}{\inn{y, y}} = \norm{x}^2 - \frac{\abs{\inn{x, y}}^2}{\norm{y}^2},
+	\]
+	from which (c) follows.
 \end{proof}
 
 \begin{proof}[\pf{6.2}(d)]
-  We have
-  \begin{align*}
-     & \norm{x + y}^2                                                                                         \\
-     & = \inn{x + y, x + y}                                &  & \text{(by \cref{6.1.9})}                      \\
-     & = \inn{x, x} + \inn{y, x} + \inn{x, y} + \inn{y, y} &  & \text{(by \cref{6.1.1}(a) and \cref{6.1}(a))} \\
-     & = \norm{x}^2 + 2 \Re(\inn{x, y}) + \norm{y}^2       &  & \text{(by \cref{6.1.1}(d) and \cref{6.1.9})}  \\
-     & \leq \norm{x}^2 + 2 \abs{\inn{x, y}} + \norm{y}^2   &  & \text{(by \cref{d.0.5})}                      \\
-     & \leq \norm{x}^2 + 2 \norm{x} \norm{y} + \norm{y}^2  &  & \text{(by \cref{6.2}(c))}                     \\
-     & = \pa{\norm{x} + \norm{y}}^2,
-  \end{align*}
-  where \(\Re(\inn{x, y})\) denotes the real part of the complex number \(\inn{x, y}\).
+	We have
+	\begin{align*}
+		 & \norm{x + y}^2                                                                                         \\
+		 & = \inn{x + y, x + y}                                &  & \by{6.1.9}                                    \\
+		 & = \inn{x, x} + \inn{y, x} + \inn{x, y} + \inn{y, y} &  & \text{(by \cref{6.1.1}(a) and \cref{6.1}(a))} \\
+		 & = \norm{x}^2 + 2 \Re(\inn{x, y}) + \norm{y}^2       &  & \by{6.1.1}(d) and \cref{6.1.9}                \\
+		 & \leq \norm{x}^2 + 2 \abs{\inn{x, y}} + \norm{y}^2   &  & \by{d.0.5}                                    \\
+		 & \leq \norm{x}^2 + 2 \norm{x} \norm{y} + \norm{y}^2  &  & \by{6.2}[c]                                   \\
+		 & = \pa{\norm{x} + \norm{y}}^2,
+	\end{align*}
+	where \(\Re(\inn{x, y})\) denotes the real part of the complex number \(\inn{x, y}\).
 \end{proof}
 
 \begin{eg}\label{6.1.11}
-  For \(\vs{F}^n\), we may apply \cref{6.2}(c)(d) to the standard inner product to obtain the following well-known inequalities:
-  \[
-    \abs{\sum_{i = 1}^n a_i \conj{b_i}} \leq \pa{\sum_{i = 1}^n \abs{a_i}^2}^{\frac{1}{2}} \pa{\sum_{i = 1}^n \abs{b_i}^2}^{\frac{1}{2}}
-  \]
-  and
-  \[
-    \pa{\sum_{i = 1}^n \abs{a_i + b_i}^2}^{\frac{1}{2}} \leq \pa{\sum_{i = 1}^n \abs{a_i}^2}^{\frac{1}{2}} + \pa{\sum_{i = 1}^n \abs{b_i}^2}^{\frac{1}{2}}.
-  \]
+	For \(\vs{F}^n\), we may apply \cref{6.2}(c)(d) to the standard inner product to obtain the following well-known inequalities:
+	\[
+		\abs{\sum_{i = 1}^n a_i \conj{b_i}} \leq \pa{\sum_{i = 1}^n \abs{a_i}^2}^{\frac{1}{2}} \pa{\sum_{i = 1}^n \abs{b_i}^2}^{\frac{1}{2}}
+	\]
+	and
+	\[
+		\pa{\sum_{i = 1}^n \abs{a_i + b_i}^2}^{\frac{1}{2}} \leq \pa{\sum_{i = 1}^n \abs{a_i}^2}^{\frac{1}{2}} + \pa{\sum_{i = 1}^n \abs{b_i}^2}^{\frac{1}{2}}.
+	\]
 \end{eg}
 
 \begin{note}
-  The reader may recall from earlier courses that, for \(x\) and \(y\) in \(\R^3\) or \(\R^2\), we have that \(\inn{x, y} = \norm{x} \cdot \norm{y} \cos \theta\), where \(\theta \in [0, \pi]\) denotes the angle between \(x\) and \(y\).
-  This equation implies \cref{6.2}(c) immediately since \(\abs{\cos \theta} \leq 1\).
-  Notice also that nonzero vectors \(x\) and \(y\) are perpendicular iff \(\cos \theta = 0\), that is, iff \(\inn{x, y} = 0\).
+	The reader may recall from earlier courses that, for \(x\) and \(y\) in \(\R^3\) or \(\R^2\), we have that \(\inn{x, y} = \norm{x} \cdot \norm{y} \cos \theta\), where \(\theta \in [0, \pi]\) denotes the angle between \(x\) and \(y\).
+	This equation implies \cref{6.2}(c) immediately since \(\abs{\cos \theta} \leq 1\).
+	Notice also that nonzero vectors \(x\) and \(y\) are perpendicular iff \(\cos \theta = 0\), that is, iff \(\inn{x, y} = 0\).
 \end{note}
 
 \begin{defn}\label{6.1.12}
-  Let \(\V\) be an inner product space over \(\F\).
-  Vectors \(x\) and \(y\) in \(\V\) are \textbf{orthogonal} (\textbf{perpendicular}) if \(\inn{x, y} = 0\).
-  A subset \(S\) of \(\V\) is \textbf{orthogonal} if any two distinct vectors in \(S\) are orthogonal.
-  A vector \(x\) in \(\V\) is a \textbf{unit vector} if \(\norm{x} = 1\).
-  Finally, a subset \(S\) of \(\V\) is \textbf{orthonormal} if \(S\) is orthogonal and consists entirely of unit vectors.
+	Let \(\V\) be an inner product space over \(\F\).
+	Vectors \(x\) and \(y\) in \(\V\) are \textbf{orthogonal} (\textbf{perpendicular}) if \(\inn{x, y} = 0\).
+	A subset \(S\) of \(\V\) is \textbf{orthogonal} if any two distinct vectors in \(S\) are orthogonal.
+	A vector \(x\) in \(\V\) is a \textbf{unit vector} if \(\norm{x} = 1\).
+	Finally, a subset \(S\) of \(\V\) is \textbf{orthonormal} if \(S\) is orthogonal and consists entirely of unit vectors.
 
-  Note that if \(S = \set{\seq{v}{1,2,}}\), then \(S\) is orthonormal iff \(\inn{v_i, v_j} = \delta_{i j}\), where \(\delta_{i j}\) denotes the Kronecker delta.
-  Also, observe that multiplying vectors by nonzero scalars does not affect their orthogonality and that if \(x\) is any nonzero vector, then \((1 / \norm{x}) x\) is a unit vector.
-  The process of multiplying a nonzero vector by the reciprocal of its length is called \textbf{normalizing}.
+	Note that if \(S = \set{\seq{v}{1,2,}}\), then \(S\) is orthonormal iff \(\inn{v_i, v_j} = \delta_{i j}\), where \(\delta_{i j}\) denotes the Kronecker delta.
+	Also, observe that multiplying vectors by nonzero scalars does not affect their orthogonality and that if \(x\) is any nonzero vector, then \((1 / \norm{x}) x\) is a unit vector.
+	The process of multiplying a nonzero vector by the reciprocal of its length is called \textbf{normalizing}.
 \end{defn}
 
 \begin{eg}\label{6.1.13}
-  Recall the inner product space \(\vs{H}\) (defined in \cref{6.1.8}).
-  We introduce an important orthonormal subset \(S\) of \(\vs{H}\).
-  For what follows, \(i\) is the imaginary number such that \(i^2 = -1\).
-  For any integer \(n\), let \(f_n(t) = e^{int}\), where \(0 \leq t \leq 2 \pi\).
-  (Recall that \(e^{int} = \cos(nt) + i \sin(nt)\).)
-  Now define \(S = \set{f_n : n \in \Z}\).
-  Clearly \(S\) is a subset of \(\vs{H}\).
-  Using the property that \(\conj{e^{it}} = e^{-it}\) for every real number \(t\), we have, for \(m \neq n\),
-  \begin{align*}
-    \inn{f_m, f_n} & = \frac{1}{2 \pi} \int_0^{2 \pi} e^{imt} \conj{e^{int}} \; dt &  & \text{(by \cref{6.1.8})} \\
-                   & = \frac{1}{2 \pi} \int_0^{2 \pi} e^{i(m - n)t} \; dt                                        \\
-                   & = \eval{\frac{1}{2 \pi i(m - n)} e^{i(m - n)t}}_0^{2 \pi}                                   \\
-                   & = 0.
-  \end{align*}
-  Also,
-  \begin{align*}
-    \inn{f_n, f_n} & = \frac{1}{2 \pi} \int_0^{2 \pi} e^{i(n - n)t} \; dt &  & \text{(by \cref{6.1.8})} \\
-                   & = \frac{1}{2 \pi} \int_0^{2 \pi} 1 \; dt                                           \\
-                   & = 1.
-  \end{align*}
-  In other words, \(\inn{f_m, f_n} = \delta_{m n}\).
+	Recall the inner product space \(\vs{H}\) (defined in \cref{6.1.8}).
+	We introduce an important orthonormal subset \(S\) of \(\vs{H}\).
+	For what follows, \(i\) is the imaginary number such that \(i^2 = -1\).
+	For any integer \(n\), let \(f_n(t) = e^{int}\), where \(0 \leq t \leq 2 \pi\).
+	(Recall that \(e^{int} = \cos(nt) + i \sin(nt)\).)
+	Now define \(S = \set{f_n : n \in \Z}\).
+	Clearly \(S\) is a subset of \(\vs{H}\).
+	Using the property that \(\conj{e^{it}} = e^{-it}\) for every real number \(t\), we have, for \(m \neq n\),
+	\begin{align*}
+		\inn{f_m, f_n} & = \frac{1}{2 \pi} \int_0^{2 \pi} e^{imt} \conj{e^{int}} \; dt &  & \by{6.1.8} \\
+		               & = \frac{1}{2 \pi} \int_0^{2 \pi} e^{i(m - n)t} \; dt                          \\
+		               & = \eval{\frac{1}{2 \pi i(m - n)} e^{i(m - n)t}}_0^{2 \pi}                     \\
+		               & = 0.
+	\end{align*}
+	Also,
+	\begin{align*}
+		\inn{f_n, f_n} & = \frac{1}{2 \pi} \int_0^{2 \pi} e^{i(n - n)t} \; dt &  & \by{6.1.8} \\
+		               & = \frac{1}{2 \pi} \int_0^{2 \pi} 1 \; dt                             \\
+		               & = 1.
+	\end{align*}
+	In other words, \(\inn{f_m, f_n} = \delta_{m n}\).
 \end{eg}
 
 \exercisesection
 
 \setcounter{ex}{8}
 \begin{ex}\label{ex:6.1.9}
-  Let \(\beta\) be a basis for a \(n\)-dimensional inner product space \(\V\) over \(\F\).
-  \begin{enumerate}
-    \item Prove that if \(x \in \V\) and \(\inn{x, z} = 0\) for all \(z \in \beta\), then \(x = \zv\).
-    \item Prove that if \(x \in \V\) and \(\inn{x, z} = \inn{y, z}\) for all \(z \in \beta\), then \(x = y\).
-  \end{enumerate}
+	Let \(\beta\) be a basis for a \(n\)-dimensional inner product space \(\V\) over \(\F\).
+	\begin{enumerate}
+		\item Prove that if \(x \in \V\) and \(\inn{x, z} = 0\) for all \(z \in \beta\), then \(x = \zv\).
+		\item Prove that if \(x \in \V\) and \(\inn{x, z} = \inn{y, z}\) for all \(z \in \beta\), then \(x = y\).
+	\end{enumerate}
 \end{ex}
 
 \begin{proof}[\pf{ex:6.1.9}(a)]
-  Let \(\beta = \set{\seq{v}{1,,n}}\).
-  Then we have
-  \begin{align*}
-             & x \in \V = \spn{\beta}                                                                                                  \\
-    \implies & \exists \seq{a}{1,,n} \in \F : x = \sum_{i = 1}^n a_i v_i                             &  & \text{(by \cref{1.6.1})}     \\
-    \implies & \inn{x, x} = \inn{x, \sum_{i = 1}^n a_i v_i} = \sum_{i = 1}^n \conj{a_i} \inn{x, v_i} &  & \text{(by \cref{6.1}(a)(b))} \\
-             & = \sum_{i = 1}^n \conj{a_i} 0 = 0                                                     &  & \text{(by hypothesis)}       \\
-    \implies & x = \zv.                                                                              &  & \text{(by \cref{6.1}(d))}
-  \end{align*}
+	Let \(\beta = \set{\seq{v}{1,,n}}\).
+	Then we have
+	\begin{align*}
+		         & x \in \V = \spn{\beta}                                                                                            \\
+		\implies & \exists \seq{a}{1,,n} \in \F : x = \sum_{i = 1}^n a_i v_i                             &  & \by{1.6.1}             \\
+		\implies & \inn{x, x} = \inn{x, \sum_{i = 1}^n a_i v_i} = \sum_{i = 1}^n \conj{a_i} \inn{x, v_i} &  & \by{6.1}[ab]           \\
+		         & = \sum_{i = 1}^n \conj{a_i} 0 = 0                                                     &  & \text{(by hypothesis)} \\
+		\implies & x = \zv.                                                                              &  & \by{6.1}[d]
+	\end{align*}
 \end{proof}
 
 \begin{proof}[\pf{ex:6.1.9}(b)]
-  We have
-  \begin{align*}
-             & \forall z \in \beta, \inn{x, z} = \inn{y, z}                                              \\
-    \implies & \forall v \in \V = \spn{\beta}, \inn{x, v} = \inn{y, v} &  & \text{(by \cref{6.1}(a)(b))} \\
-    \implies & \forall v \in \V = \spn{\beta}, \inn{v, x} = \inn{v, y} &  & \text{(by \cref{6.1.1}(c))}  \\
-    \implies & x = y.                                                  &  & \text{(by \cref{6.1}(e))}
-  \end{align*}
+	We have
+	\begin{align*}
+		         & \forall z \in \beta, \inn{x, z} = \inn{y, z}                               \\
+		\implies & \forall v \in \V = \spn{\beta}, \inn{x, v} = \inn{y, v} &  & \by{6.1}[ab]  \\
+		\implies & \forall v \in \V = \spn{\beta}, \inn{v, x} = \inn{v, y} &  & \by{6.1.1}[c] \\
+		\implies & x = y.                                                  &  & \by{6.1}[e]
+	\end{align*}
 \end{proof}
 
 \begin{ex}\label{ex:6.1.10}
-  Let \(\V\) be an inner product space over \(\F\), and suppose that \(x\) and \(y\) are orthogonal vectors in \(\V\).
-  Prove that \(\norm{x + y}^2 = \norm{x}^2 + \norm{y}^2\).
-  Deduce the Pythagorean theorem in \(\R^2\).
+	Let \(\V\) be an inner product space over \(\F\), and suppose that \(x\) and \(y\) are orthogonal vectors in \(\V\).
+	Prove that \(\norm{x + y}^2 = \norm{x}^2 + \norm{y}^2\).
+	Deduce the Pythagorean theorem in \(\R^2\).
 \end{ex}
 
 \begin{proof}[\pf{ex:6.1.10}]
-  We have
-  \begin{align*}
-     & \norm{x + y}^2                                                                                         \\
-     & = \inn{x + y, x + y}                                &  & \text{(by \cref{6.1.9})}                      \\
-     & = \inn{x, x} + \inn{y, x} + \inn{x, y} + \inn{y, y} &  & \text{(by \cref{6.1.1}(a) and \cref{6.1}(a))} \\
-     & = \inn{x, x} + \inn{y, y}                           &  & \text{(by \cref{6.1.12})}                     \\
-     & = \norm{x}^2 + \norm{y}^2.                          &  & \text{(by \cref{6.1.9})}
-  \end{align*}
-  By setting \(\V = \R^2\) and define \(\inn{\cdot, \cdot}\) as in \cref{6.1.2} we see that the Pythagorean theorem is true.
+	We have
+	\begin{align*}
+		 & \norm{x + y}^2                                                                                         \\
+		 & = \inn{x + y, x + y}                                &  & \by{6.1.9}                                    \\
+		 & = \inn{x, x} + \inn{y, x} + \inn{x, y} + \inn{y, y} &  & \text{(by \cref{6.1.1}(a) and \cref{6.1}(a))} \\
+		 & = \inn{x, x} + \inn{y, y}                           &  & \by{6.1.12}                                   \\
+		 & = \norm{x}^2 + \norm{y}^2.                          &  & \by{6.1.9}
+	\end{align*}
+	By setting \(\V = \R^2\) and define \(\inn{\cdot, \cdot}\) as in \cref{6.1.2} we see that the Pythagorean theorem is true.
 \end{proof}
 
 \begin{ex}\label{ex:6.1.11}
-  Prove the \emph{parallelogram law} on an inner product space \(\V\) over \(\F\);
-  that is, show that
-  \[
-    \norm{x + y}^2 + \norm{x - y}^2 = 2 \norm{x}^2 + 2 \norm{y}^2 \quad \text{for all } x, y \in \V.
-  \]
-  What does this equation state about parallelograms in \(\R^2\)?
+	Prove the \emph{parallelogram law} on an inner product space \(\V\) over \(\F\);
+	that is, show that
+	\[
+		\norm{x + y}^2 + \norm{x - y}^2 = 2 \norm{x}^2 + 2 \norm{y}^2 \quad \text{for all } x, y \in \V.
+	\]
+	What does this equation state about parallelograms in \(\R^2\)?
 \end{ex}
 
 \begin{proof}[\pf{ex:6.1.11}]
-  We have
-  \begin{align*}
-     & \norm{x + y}^2 + \norm{x - y}^2                                                                         \\
-     & = \inn{x + y, x + y} + \inn{x - y, x - y}                           &  & \text{(by \cref{6.1.9})}       \\
-     & = \inn{x, x + y} + \inn{y, x + y} + \inn{x, x - y} - \inn{y, x - y} &  & \text{(by \cref{6.1.1}(a)(b))} \\
-     & = \inn{x, 2x} + \inn{y, 2y}                                         &  & \text{(by \cref{6.1}(a)(b))}   \\
-     & = 2 \inn{x, x} + 2 \inn{y, y}                                       &  & \text{(by \cref{6.1}(b))}      \\
-     & = 2 \norm{x}^2 + 2 \norm{y}^2.                                      &  & \text{(by \cref{6.1.9})}
-  \end{align*}
-  On \(\R^2\) we see that if \(x, y\) are the two vectors forming a parallelogram, then \(x + y\) and \(x - y\) are the two diagonal vectors of the parallelogram.
-  Thus we see that the sum of the square of the length of the \(4\) sides of a parallelogram equal to the sum of the square of the length of diagonal lines of the same parallelogram.
+	We have
+	\begin{align*}
+		 & \norm{x + y}^2 + \norm{x - y}^2                                                         \\
+		 & = \inn{x + y, x + y} + \inn{x - y, x - y}                           &  & \by{6.1.9}     \\
+		 & = \inn{x, x + y} + \inn{y, x + y} + \inn{x, x - y} - \inn{y, x - y} &  & \by{6.1.1}[ab] \\
+		 & = \inn{x, 2x} + \inn{y, 2y}                                         &  & \by{6.1}[ab]   \\
+		 & = 2 \inn{x, x} + 2 \inn{y, y}                                       &  & \by{6.1}[b]    \\
+		 & = 2 \norm{x}^2 + 2 \norm{y}^2.                                      &  & \by{6.1.9}
+	\end{align*}
+	On \(\R^2\) we see that if \(x, y\) are the two vectors forming a parallelogram, then \(x + y\) and \(x - y\) are the two diagonal vectors of the parallelogram.
+	Thus we see that the sum of the square of the length of the \(4\) sides of a parallelogram equal to the sum of the square of the length of diagonal lines of the same parallelogram.
 \end{proof}
 
 \begin{ex}\label{ex:6.1.12}
-  Let \(\set{\seq{v}{1,,k}}\) be an orthogonal set in \(\V\) over \(\F\), and let \(\seq{a}{1,,k} \in \F\).
-  Prove that
-  \[
-    \norm{\sum_{i = 1}^k a_i v_i}^2 = \sum_{i = 1}^k \abs{a_i}^2 \norm{v_i}^2.
-  \]
+	Let \(\set{\seq{v}{1,,k}}\) be an orthogonal set in \(\V\) over \(\F\), and let \(\seq{a}{1,,k} \in \F\).
+	Prove that
+	\[
+		\norm{\sum_{i = 1}^k a_i v_i}^2 = \sum_{i = 1}^k \abs{a_i}^2 \norm{v_i}^2.
+	\]
 \end{ex}
 
 \begin{proof}[\pf{ex:6.1.12}]
-  We have
-  \begin{align*}
-    \norm{\sum_{i = 1}^k a_i v_i}^2 & = \sum_{i = 1}^k \norm{a_i v_i}^2          &  & \text{(by \cref{ex:6.1.10})} \\
-                                    & = \sum_{i = 1}^k \abs{a_i}^2 \norm{v_i}^2. &  & \text{(by \cref{6.2}(a))}
-  \end{align*}
+	We have
+	\begin{align*}
+		\norm{\sum_{i = 1}^k a_i v_i}^2 & = \sum_{i = 1}^k \norm{a_i v_i}^2          &  & \by{ex:6.1.10} \\
+		                                & = \sum_{i = 1}^k \abs{a_i}^2 \norm{v_i}^2. &  & \by{6.2}[a]
+	\end{align*}
 \end{proof}
 
 \begin{ex}\label{ex:6.1.13}
-  Suppose that \(\inn{\cdot, \cdot}_1\) and \(\inn{\cdot, \cdot}_2\) are two inner products on a vector space \(\V\) over \(\F\).
-  Prove that \(\inn{\cdot, \cdot} = \inn{\cdot, \cdot}_1 + \inn{\cdot, \cdot}_2\) is another inner product on \(\V\) over \(\F\).
+	Suppose that \(\inn{\cdot, \cdot}_1\) and \(\inn{\cdot, \cdot}_2\) are two inner products on a vector space \(\V\) over \(\F\).
+	Prove that \(\inn{\cdot, \cdot} = \inn{\cdot, \cdot}_1 + \inn{\cdot, \cdot}_2\) is another inner product on \(\V\) over \(\F\).
 \end{ex}
 
 \begin{proof}[\pf{ex:6.1.13}]
-  Let \(x, y, z \in \V\) and let \(c \in \F\).
-  Then we have
-  \begin{align*}
-    \inn{x + y, z}    & = \inn{x + y, z}_1 + \inn{x + y, z}_2                       &  & \text{(by \cref{ex:6.1.13})} \\
-                      & = \inn{x, z}_1 + \inn{y, z}_1 + \inn{x, z}_2 + \inn{y, z}_2 &  & \text{(by \cref{6.1.1}(a))}  \\
-                      & = \inn{x, z} + \inn{y, z}                                   &  & \text{(by \cref{ex:6.1.13})} \\
-    \inn{cx, y}       & = \inn{cx, y}_1 + \inn{cx, y}_2                             &  & \text{(by \cref{ex:6.1.13})} \\
-                      & = c \inn{x, y}_1 + c \inn{x, y}_2                           &  & \text{(by \cref{6.1.1}(b))}  \\
-                      & = c \inn{x, y}                                              &  & \text{(by \cref{ex:6.1.13})} \\
-    \conj{\inn{x, y}} & = \conj{\inn{x, y}_1 + \inn{x, y}_2}                        &  & \text{(by \cref{ex:6.1.13})} \\
-                      & = \conj{\inn{x, y}_1} + \conj{\inn{x, y}_2}                 &  & \text{(by \cref{d.2}(b))}    \\
-                      & = \inn{y, x}_1 + \inn{y, x}_2                               &  & \text{(by \cref{6.1.1}(c))}  \\
-                      & = \inn{y, x}.                                               &  & \text{(by \cref{ex:6.1.13})}
-  \end{align*}
-  If \(x \neq \zv\), then we have
-  \begin{align*}
-    \inn{x, x} & = \inn{x, x}_1 + \inn{x, x}_2 &  & \text{(by \cref{ex:6.1.13})} \\
-               & > 0 + 0                       &  & \text{(by \cref{6.1.1}(d))}  \\
-               & = 0.
-  \end{align*}
-  Thus by \cref{6.1.1} \(\inn{\cdot, \cdot}\) is an inner product on \(\V\) over \(\F\).
+	Let \(x, y, z \in \V\) and let \(c \in \F\).
+	Then we have
+	\begin{align*}
+		\inn{x + y, z}    & = \inn{x + y, z}_1 + \inn{x + y, z}_2                       &  & \by{ex:6.1.13} \\
+		                  & = \inn{x, z}_1 + \inn{y, z}_1 + \inn{x, z}_2 + \inn{y, z}_2 &  & \by{6.1.1}[a]  \\
+		                  & = \inn{x, z} + \inn{y, z}                                   &  & \by{ex:6.1.13} \\
+		\inn{cx, y}       & = \inn{cx, y}_1 + \inn{cx, y}_2                             &  & \by{ex:6.1.13} \\
+		                  & = c \inn{x, y}_1 + c \inn{x, y}_2                           &  & \by{6.1.1}[b]  \\
+		                  & = c \inn{x, y}                                              &  & \by{ex:6.1.13} \\
+		\conj{\inn{x, y}} & = \conj{\inn{x, y}_1 + \inn{x, y}_2}                        &  & \by{ex:6.1.13} \\
+		                  & = \conj{\inn{x, y}_1} + \conj{\inn{x, y}_2}                 &  & \by{d.2}[b]    \\
+		                  & = \inn{y, x}_1 + \inn{y, x}_2                               &  & \by{6.1.1}[c]  \\
+		                  & = \inn{y, x}.                                               &  & \by{ex:6.1.13}
+	\end{align*}
+	If \(x \neq \zv\), then we have
+	\begin{align*}
+		\inn{x, x} & = \inn{x, x}_1 + \inn{x, x}_2 &  & \by{ex:6.1.13} \\
+		           & > 0 + 0                       &  & \by{6.1.1}[d]  \\
+		           & = 0.
+	\end{align*}
+	Thus by \cref{6.1.1} \(\inn{\cdot, \cdot}\) is an inner product on \(\V\) over \(\F\).
 \end{proof}
 
 \begin{ex}\label{ex:6.1.14}
-  Let \(A, B \in \ms{n}{n}{\F}\) and let \(c \in \F\).
-  Prove that \((A + cB)^* = A^* + \conj{c} B^*\).
+	Let \(A, B \in \ms{n}{n}{\F}\) and let \(c \in \F\).
+	Prove that \((A + cB)^* = A^* + \conj{c} B^*\).
 \end{ex}
 
 \begin{proof}[\pf{ex:6.1.14}]
-  We have
-  \begin{align*}
-    \forall i, j \in \set{1, \dots, n}, ((A + cB)^*)_{i j} & = \conj{(A + cB)_{j i}}                    &  & \text{(by \cref{6.1.5})}     \\
-                                                           & = \conj{A_{j i} + c B_{j i}}               &  & \text{(by \cref{1.2.9})}     \\
-                                                           & = \conj{A_{j i}} + \conj{c} \conj{B_{j i}} &  & \text{(by \cref{d.2}(b)(c))} \\
-                                                           & = (A^*)_{i j} + \conj{c} (B^*)_{i j}       &  & \text{(by \cref{6.1.5})}     \\
-                                                           & = (A^* + \conj{c} B^*)_{i j}               &  & \text{(by \cref{1.2.9})}
-  \end{align*}
-  and thus by \cref{1.2.8} \((A + cB)^* = A^* + \conj{c} B^*\).
+	We have
+	\begin{align*}
+		\forall i, j \in \set{1, \dots, n}, ((A + cB)^*)_{i j} & = \conj{(A + cB)_{j i}}                    &  & \by{6.1.5}   \\
+		                                                       & = \conj{A_{j i} + c B_{j i}}               &  & \by{1.2.9}   \\
+		                                                       & = \conj{A_{j i}} + \conj{c} \conj{B_{j i}} &  & \by{d.2}[bc] \\
+		                                                       & = (A^*)_{i j} + \conj{c} (B^*)_{i j}       &  & \by{6.1.5}   \\
+		                                                       & = (A^* + \conj{c} B^*)_{i j}               &  & \by{1.2.9}
+	\end{align*}
+	and thus by \cref{1.2.8} \((A + cB)^* = A^* + \conj{c} B^*\).
 \end{proof}
 
 \begin{ex}\label{ex:6.1.15}
-  \begin{enumerate}
-    \item Prove that if \(\V\) is an inner product space over \(\F\), then \(\abs{\inn{x, y}} = \norm{x} \cdot \norm{y}\) iff one of the vectors \(x\) or \(y\) is a multiple of the other.
-    \item Derive a similar result for the equality \(\norm{x + y} = \norm{x} + \norm{y}\), and generalize it to the case of \(n\) vectors.
-  \end{enumerate}
+	\begin{enumerate}
+		\item Prove that if \(\V\) is an inner product space over \(\F\), then \(\abs{\inn{x, y}} = \norm{x} \cdot \norm{y}\) iff one of the vectors \(x\) or \(y\) is a multiple of the other.
+		\item Derive a similar result for the equality \(\norm{x + y} = \norm{x} + \norm{y}\), and generalize it to the case of \(n\) vectors.
+	\end{enumerate}
 \end{ex}
 
 \begin{proof}[\pf{ex:6.1.15}(a)]
-  If \(y = \zv\) then
-  \begin{align*}
-         & \abs{\inn{x, \zv}} = \abs{0} = 0 = \norm{x} \norm{\zv} &  & \text{(by \cref{6.1}(c))} \\
-    \iff & y = 0x = \zv.                                          &  & \text{(by \cref{1.2}(a))}
-  \end{align*}
-  So suppose that \(y \neq \zv\).
+	If \(y = \zv\) then
+	\begin{align*}
+		     & \abs{\inn{x, \zv}} = \abs{0} = 0 = \norm{x} \norm{\zv} &  & \by{6.1}[c] \\
+		\iff & y = 0x = \zv.                                          &  & \by{1.2}[a]
+	\end{align*}
+	So suppose that \(y \neq \zv\).
 
-  First suppose that \(\abs{\inn{x, y}} = \norm{x} \norm{y}\).
-  Define
-  \[
-    a = \frac{\inn{x, y}}{\norm{y}^2} \quad \text{and} \quad z = x - ay.
-  \]
-  Then we have
-  \begin{align*}
-    \inn{z, y} & = \inn{x - \frac{\inn{x, y}}{\norm{y}^2} y, y}                                              \\
-               & = \inn{x, y} - \frac{\inn{x, y}}{\norm{y}^2} \inn{y, y} &  & \text{(by \cref{6.1.1}(a)(b))} \\
-               & = \inn{x, y} - \frac{\inn{x, y}}{\inn{y, y}} \inn{y, y} &  & \text{(by \cref{6.1.9})}       \\
-               & = 0                                                     &  & (\inn{y, y} > 0)
-  \end{align*}
-  and thus by \cref{6.1.12} we see that \(y, z\) are orthogonal.
-  Since
-  \begin{align*}
-             & \abs{\inn{x, y}} = \norm{x} \norm{y}                                                                     \\
-    \implies & \abs{a} = \abs{\frac{\inn{x, y}}{\norm{y}^2}} = \frac{\norm{x}}{\norm{y}}                                \\
-    \implies & \abs{a} \norm{y} = \norm{ay} = \norm{x}                                   &  & \text{(by \cref{6.2}(a))} \\
-  \end{align*}
-  we have
-  \begin{align*}
-             & \begin{dcases}
-                 z \perp y \\
-                 x = z + ay
-               \end{dcases}                                          &  & \text{(from the proof above)}   \\
-    \implies & \norm{x}^2 = \norm{z + ay}^2 = \norm{z}^2 + \norm{ay}^2 &  & \text{(by \cref{ex:6.1.10})}  \\
-    \implies & \norm{x}^2 = \norm{z}^2 + \norm{x}^2                    &  & \text{(from the proof above)} \\
-    \implies & \norm{z}^2 = 0                                                                             \\
-    \implies & \inn{z, z} = 0                                          &  & \text{(by \cref{6.1.9})}      \\
-    \implies & x - ay = z = \zv                                        &  & \text{(by \cref{6.1}(d))}     \\
-    \implies & x = ay.
-  \end{align*}
+	First suppose that \(\abs{\inn{x, y}} = \norm{x} \norm{y}\).
+	Define
+	\[
+		a = \frac{\inn{x, y}}{\norm{y}^2} \quad \text{and} \quad z = x - ay.
+	\]
+	Then we have
+	\begin{align*}
+		\inn{z, y} & = \inn{x - \frac{\inn{x, y}}{\norm{y}^2} y, y}                                \\
+		           & = \inn{x, y} - \frac{\inn{x, y}}{\norm{y}^2} \inn{y, y} &  & \by{6.1.1}[ab]   \\
+		           & = \inn{x, y} - \frac{\inn{x, y}}{\inn{y, y}} \inn{y, y} &  & \by{6.1.9}       \\
+		           & = 0                                                     &  & (\inn{y, y} > 0)
+	\end{align*}
+	and thus by \cref{6.1.12} we see that \(y, z\) are orthogonal.
+	Since
+	\begin{align*}
+		         & \abs{\inn{x, y}} = \norm{x} \norm{y}                                                       \\
+		\implies & \abs{a} = \abs{\frac{\inn{x, y}}{\norm{y}^2}} = \frac{\norm{x}}{\norm{y}}                  \\
+		\implies & \abs{a} \norm{y} = \norm{ay} = \norm{x}                                   &  & \by{6.2}[a] \\
+	\end{align*}
+	we have
+	\begin{align*}
+		         & \begin{dcases}
+			           z \perp y \\
+			           x = z + ay
+		           \end{dcases}                                          &  & \text{(from the proof above)}   \\
+		\implies & \norm{x}^2 = \norm{z + ay}^2 = \norm{z}^2 + \norm{ay}^2 &  & \by{ex:6.1.10}                \\
+		\implies & \norm{x}^2 = \norm{z}^2 + \norm{x}^2                    &  & \text{(from the proof above)} \\
+		\implies & \norm{z}^2 = 0                                                                             \\
+		\implies & \inn{z, z} = 0                                          &  & \by{6.1.9}                    \\
+		\implies & x - ay = z = \zv                                        &  & \by{6.1}[d]                   \\
+		\implies & x = ay.
+	\end{align*}
 
-  Now suppose that there exists an \(a \in \F\) such that \(x = ay\).
-  Then we have
-  \begin{align*}
-    \norm{x} \norm{y} & = \norm{ay} \norm{y}                                        \\
-                      & = \abs{a} \norm{y}^2       &  & \text{(by \cref{6.2}(a))}   \\
-                      & = \abs{a} \inn{y, y}       &  & \text{(by \cref{6.1.9})}    \\
-                      & = \abs{a} \abs{\inn{y, y}} &  & \text{(by \cref{6.2}(b))}   \\
-                      & = \abs{a \inn{y, y}}       &  & \text{(by \cref{d.3}(a))}   \\
-                      & = \abs{\inn{ay, y}}        &  & \text{(by \cref{6.1.1}(b))} \\
-                      & = \abs{\inn{x, y}}.
-  \end{align*}
+	Now suppose that there exists an \(a \in \F\) such that \(x = ay\).
+	Then we have
+	\begin{align*}
+		\norm{x} \norm{y} & = \norm{ay} \norm{y}                          \\
+		                  & = \abs{a} \norm{y}^2       &  & \by{6.2}[a]   \\
+		                  & = \abs{a} \inn{y, y}       &  & \by{6.1.9}    \\
+		                  & = \abs{a} \abs{\inn{y, y}} &  & \by{6.2}[b]   \\
+		                  & = \abs{a \inn{y, y}}       &  & \by{d.3}[a]   \\
+		                  & = \abs{\inn{ay, y}}        &  & \by{6.1.1}[b] \\
+		                  & = \abs{\inn{x, y}}.
+	\end{align*}
 \end{proof}
 
 \begin{proof}[\pf{ex:6.1.15}(b)]
-  We claim that \(\norm{x + y} = \norm{x} + \norm{y}\) iff there exists a nonnegative scalar \(c \in \F\) such that \(x = cy\) or \(y = cx\).
-  If \(y = \zv\), then we have
-  \begin{align*}
-         & \norm{x + \zv} = \norm{x} + \norm{\zv} = \norm{x} &  & \text{(by \cref{6.1}(c))} \\
-    \iff & \zv = 0x.                                         &  & \text{(by \cref{1.2}(a))}
-  \end{align*}
-  So suppose that \(y \neq \zv\).
-  As in the proof of \cref{6.2}(d), we see that
-  \[
-    \norm{x + y}^2 = \norm{x}^2 + 2 \Re(\inn{x, y}) + \norm{y}^2.
-  \]
-  Thus we have
-  \begin{align*}
-             & \norm{x + y} = \norm{x} + \norm{y}                                                                            \\
-    \implies & \norm{x + y}^2 = \norm{x}^2 + 2 \norm{x} \norm{y} + \norm{y}^2                                                \\
-    \implies & \norm{x} \norm{y} = \Re(\inn{x, y})                                                                           \\
-    \implies & \abs{\inn{x, y}} \leq \norm{x} \norm{y} = \Re(\inn{x, y})                &  & \text{(by \cref{6.2}(d))}       \\
-             & \leq \sqrt{(\Re(\inn{x, y}))^2 + (\Im(\inn{x, y}))^2} = \abs{\inn{x, y}} &  & \text{(by \cref{d.0.5})}        \\
-    \implies & \abs{\inn{x, y}} = \norm{x} \norm{y}                                                                          \\
-    \implies & \exists c \in \F : (x = cy) \lor (y = cx)                                &  & \text{(by \cref{ex:6.1.15}(a))}
-  \end{align*}
-  and
-  \begin{align*}
-             & \exists c \in \F : \begin{dcases}
-                                    c > 0 \\
-                                    x = cy
-                                  \end{dcases}                                                             \\
-    \implies & \norm{x} + \norm{y} = \norm{cy} + \norm{y} = (c + 1) \norm{y} &  & \text{(by \cref{6.2}(a))} \\
-             & = \norm{(c + 1) y} = \norm{x + y}.                            &  & \text{(by \cref{6.2}(a))}
-  \end{align*}
-  In general we see that
-  \[
-    \norm{\sum_{i = 1}^n x_i} = \sum_{i = 1}^n \norm{x_i} \iff \begin{dcases}
-      \exists \seq{c}{1,,n} \in \F \\
-      \exists j \in \set{1, \dots, n}
-    \end{dcases} : \forall i \in \set{1, \dots, n}, \begin{dcases}
-      c_i > 0 \\
-      x_i = c_i x_j
-    \end{dcases}.
-  \]
+	We claim that \(\norm{x + y} = \norm{x} + \norm{y}\) iff there exists a nonnegative scalar \(c \in \F\) such that \(x = cy\) or \(y = cx\).
+	If \(y = \zv\), then we have
+	\begin{align*}
+		     & \norm{x + \zv} = \norm{x} + \norm{\zv} = \norm{x} &  & \by{6.1}[c] \\
+		\iff & \zv = 0x.                                         &  & \by{1.2}[a]
+	\end{align*}
+	So suppose that \(y \neq \zv\).
+	As in the proof of \cref{6.2}(d), we see that
+	\[
+		\norm{x + y}^2 = \norm{x}^2 + 2 \Re(\inn{x, y}) + \norm{y}^2.
+	\]
+	Thus we have
+	\begin{align*}
+		         & \norm{x + y} = \norm{x} + \norm{y}                                                              \\
+		\implies & \norm{x + y}^2 = \norm{x}^2 + 2 \norm{x} \norm{y} + \norm{y}^2                                  \\
+		\implies & \norm{x} \norm{y} = \Re(\inn{x, y})                                                             \\
+		\implies & \abs{\inn{x, y}} \leq \norm{x} \norm{y} = \Re(\inn{x, y})                &  & \by{6.2}[d]       \\
+		         & \leq \sqrt{(\Re(\inn{x, y}))^2 + (\Im(\inn{x, y}))^2} = \abs{\inn{x, y}} &  & \by{d.0.5}        \\
+		\implies & \abs{\inn{x, y}} = \norm{x} \norm{y}                                                            \\
+		\implies & \exists c \in \F : (x = cy) \lor (y = cx)                                &  & \by{ex:6.1.15}[a]
+	\end{align*}
+	and
+	\begin{align*}
+		         & \exists c \in \F : \begin{dcases}
+			                              c > 0 \\
+			                              x = cy
+		                              \end{dcases}                                               \\
+		\implies & \norm{x} + \norm{y} = \norm{cy} + \norm{y} = (c + 1) \norm{y} &  & \by{6.2}[a] \\
+		         & = \norm{(c + 1) y} = \norm{x + y}.                            &  & \by{6.2}[a]
+	\end{align*}
+	In general we see that
+	\[
+		\norm{\sum_{i = 1}^n x_i} = \sum_{i = 1}^n \norm{x_i} \iff \begin{dcases}
+			\exists \seq{c}{1,,n} \in \F \\
+			\exists j \in \set{1, \dots, n}
+		\end{dcases} : \forall i \in \set{1, \dots, n}, \begin{dcases}
+			c_i > 0 \\
+			x_i = c_i x_j
+		\end{dcases}.
+	\]
 \end{proof}
 
 \setcounter{ex}{16}
 \begin{ex}\label{ex:6.1.17}
-  Let \(\T\) be a linear operator on an inner product space \(\V\) over \(\F\), and suppose that \(\norm{\T(x)} = \norm{x}\) for all \(x \in \V\).
-  Prove that \(\T\) is one-to-one.
+	Let \(\T\) be a linear operator on an inner product space \(\V\) over \(\F\), and suppose that \(\norm{\T(x)} = \norm{x}\) for all \(x \in \V\).
+	Prove that \(\T\) is one-to-one.
 \end{ex}
 
 \begin{proof}[\pf{ex:6.1.17}]
-  We have
-  \begin{align*}
-             & \norm{x} = \norm{\T(x)} = 0                                \\
-    \implies & x = \T(x) = \zv             &  & \text{(by \cref{6.2}(b))} \\
-    \implies & \T \text{ is one-to-one}.   &  & \text{(by \cref{2.4})}
-  \end{align*}
+	We have
+	\begin{align*}
+		         & \norm{x} = \norm{\T(x)} = 0                  \\
+		\implies & x = \T(x) = \zv             &  & \by{6.2}[b] \\
+		\implies & \T \text{ is one-to-one}.   &  & \by{2.4}
+	\end{align*}
 \end{proof}
 
 \begin{ex}\label{ex:6.1.18}
-  Let \(\V\) be a vector space over \(\F\), where \(\F = \R\) or \(\F = \C\), and let \(\W\) be an inner product space over \(\F\) with inner product \(\inn{\cdot, \cdot}\).
-  If \(\T \in \ls(\V, \W)\), prove that \(\inn{x, y}' = \inn{\T(x), \T(y)}\) defines an inner product on \(\V\) over \(\F\) iff \(\T\) is one-to-one.
+	Let \(\V\) be a vector space over \(\F\), where \(\F = \R\) or \(\F = \C\), and let \(\W\) be an inner product space over \(\F\) with inner product \(\inn{\cdot, \cdot}\).
+	If \(\T \in \ls(\V, \W)\), prove that \(\inn{x, y}' = \inn{\T(x), \T(y)}\) defines an inner product on \(\V\) over \(\F\) iff \(\T\) is one-to-one.
 \end{ex}
 
 \begin{proof}[\pf{ex:6.1.18}]
-  First suppose that \(\inn{\cdot, \cdot}'\) is an inner product on \(\V\) over \(\F\).
-  Then we have
-  \begin{align*}
-             & \forall x \in \V, \inn{x, x}' = \inn{\T(x), \T(x)} = 0                             \\
-    \implies & \begin{dcases}
-                 x = \zv_{\V} \\
-                 \T(x) = \zv_{\W}
-               \end{dcases}                                       &  & \text{(by \cref{6.1}(d))}  \\
-    \implies & \T \text{ is one-to-one}.                              &  & \text{(by \cref{2.4})}
-  \end{align*}
+	First suppose that \(\inn{\cdot, \cdot}'\) is an inner product on \(\V\) over \(\F\).
+	Then we have
+	\begin{align*}
+		         & \forall x \in \V, \inn{x, x}' = \inn{\T(x), \T(x)} = 0               \\
+		\implies & \begin{dcases}
+			           x = \zv_{\V} \\
+			           \T(x) = \zv_{\W}
+		           \end{dcases}                                       &  & \by{6.1}[d]  \\
+		\implies & \T \text{ is one-to-one}.                              &  & \by{2.4}
+	\end{align*}
 
-  Now suppose that \(\T\) is one-to-one.
-  Let \(x, y, z \in \V\) and let \(c \in \F\).
-  Then we have
-  \begin{align*}
-    \inn{x + y, z}'    & = \inn{\T(x + y), \T(z)}                                                   \\
-                       & = \inn{\T(x) + \T(y), \T(z)}              &  & \text{(by \cref{2.1.1}(a))} \\
-                       & = \inn{\T(x), \T(z)} + \inn{\T(y), \T(z)} &  & \text{(by \cref{6.1.1}(a))} \\
-                       & = \inn{x, z}' + \inn{y, z}'                                                \\
-    \inn{cx, y}'       & = \inn{\T(cx), \T(y)}                                                      \\
-                       & = \inn{c \T(x), \T(y)}                    &  & \text{(by \cref{2.1.1}(b))} \\
-                       & = c \inn{\T(x), \T(y)}                    &  & \text{(by \cref{6.1.1}(b))} \\
-                       & = c \inn{x, y}'                                                            \\
-    \conj{\inn{x, y}'} & = \conj{\inn{\T(x), \T(y)}}                                                \\
-                       & = \inn{\T(y), \T(x)}                      &  & \text{(by \cref{6.1.1}(c))} \\
-                       & = \inn{y, x}'.
-  \end{align*}
-  If \(x \neq \zv_{\V}\), then we have
-  \begin{align*}
-             & \T(x) \neq \zv_{\W}       &  & \text{(by \cref{2.4})}      \\
-    \implies & \inn{\T(x), \T(x)} \neq 0 &  & \text{(by \cref{6.1.1}(d))} \\
-    \implies & \inn{x, x}' \neq 0.
-  \end{align*}
-  Thus by \cref{6.1.1} \(\inn{\cdot, \cdot}'\) is an inner product on \(\V\) over \(\F\).
+	Now suppose that \(\T\) is one-to-one.
+	Let \(x, y, z \in \V\) and let \(c \in \F\).
+	Then we have
+	\begin{align*}
+		\inn{x + y, z}'    & = \inn{\T(x + y), \T(z)}                                     \\
+		                   & = \inn{\T(x) + \T(y), \T(z)}              &  & \by{2.1.1}[a] \\
+		                   & = \inn{\T(x), \T(z)} + \inn{\T(y), \T(z)} &  & \by{6.1.1}[a] \\
+		                   & = \inn{x, z}' + \inn{y, z}'                                  \\
+		\inn{cx, y}'       & = \inn{\T(cx), \T(y)}                                        \\
+		                   & = \inn{c \T(x), \T(y)}                    &  & \by{2.1.1}[b] \\
+		                   & = c \inn{\T(x), \T(y)}                    &  & \by{6.1.1}[b] \\
+		                   & = c \inn{x, y}'                                              \\
+		\conj{\inn{x, y}'} & = \conj{\inn{\T(x), \T(y)}}                                  \\
+		                   & = \inn{\T(y), \T(x)}                      &  & \by{6.1.1}[c] \\
+		                   & = \inn{y, x}'.
+	\end{align*}
+	If \(x \neq \zv_{\V}\), then we have
+	\begin{align*}
+		         & \T(x) \neq \zv_{\W}       &  & \by{2.4}      \\
+		\implies & \inn{\T(x), \T(x)} \neq 0 &  & \by{6.1.1}[d] \\
+		\implies & \inn{x, x}' \neq 0.
+	\end{align*}
+	Thus by \cref{6.1.1} \(\inn{\cdot, \cdot}'\) is an inner product on \(\V\) over \(\F\).
 \end{proof}
 
 \begin{ex}\label{ex:6.1.19}
-  Let \(\V\) be an inner product space over \(\F\).
-  Prove that
-  \begin{enumerate}
-    \item \(\norm{x \pm y}^2 = \norm{x}^2 \pm 2 \Re(\inn{x, y}) + \norm{y}^2\) for all \(x, y \in \V\).
-    \item \(\abs{\norm{x} - \norm{y}} \leq \norm{x - y}\) for all \(x, y \in \V\).
-  \end{enumerate}
+	Let \(\V\) be an inner product space over \(\F\).
+	Prove that
+	\begin{enumerate}
+		\item \(\norm{x \pm y}^2 = \norm{x}^2 \pm 2 \Re(\inn{x, y}) + \norm{y}^2\) for all \(x, y \in \V\).
+		\item \(\abs{\norm{x} - \norm{y}} \leq \norm{x - y}\) for all \(x, y \in \V\).
+	\end{enumerate}
 \end{ex}
 
 \begin{proof}[\pf{ex:6.1.19}(a)]
-  We have
-  \begin{align*}
-     & \norm{x \pm y}^2                                                                          \\
-     & = \inn{x \pm y, x \pm y}                                &  & \text{(by \cref{6.1.9})}     \\
-     & = \begin{dcases}
-           \inn{x, x + y} + \inn{y, x + y} \\
-           \inn{x, x - y} - \inn{y, x - y}
-         \end{dcases}                      &  & \text{(by \cref{6.1.1}(a)(b))}                   \\
-     & = \inn{x, x} \pm (\inn{x, y} + \inn{y, x}) + \inn{y, y} &  & \text{(by \cref{6.1}(a)(b))} \\
-     & = \norm{x}^2 \pm 2 \Re(\inn{x, y}) + \norm{y}^2.        &  & \text{(by \cref{6.1.9})}
-  \end{align*}
+	We have
+	\begin{align*}
+		 & \norm{x \pm y}^2                                                          \\
+		 & = \inn{x \pm y, x \pm y}                                &  & \by{6.1.9}   \\
+		 & = \begin{dcases}
+			     \inn{x, x + y} + \inn{y, x + y} \\
+			     \inn{x, x - y} - \inn{y, x - y}
+		     \end{dcases}                      &  & \by{6.1.1}[ab]                   \\
+		 & = \inn{x, x} \pm (\inn{x, y} + \inn{y, x}) + \inn{y, y} &  & \by{6.1}[ab] \\
+		 & = \norm{x}^2 \pm 2 \Re(\inn{x, y}) + \norm{y}^2.        &  & \by{6.1.9}
+	\end{align*}
 \end{proof}
 
 \begin{proof}[\pf{ex:6.1.19}(b)]
-  We have
-  \begin{align*}
-             & \norm{x} = \norm{x - y + y} \leq \norm{x - y} + \norm{y} &  & \text{(by \cref{6.2}(d))} \\
-    \implies & \norm{x} - \norm{y} \leq \norm{x - y}
-  \end{align*}
-  and
-  \begin{align*}
-             & \norm{y} = \norm{y - x + x} \leq \norm{y - x} + \norm{x}                   &  & \text{(by \cref{6.2}(d))} \\
-    \implies & \norm{y} - \norm{x} \leq \norm{y - x} = \norm{(-1)(x - y)} = \norm{x - y}. &  & \text{(by \cref{6.2}(a))}
-  \end{align*}
-  Thus \(\abs{\norm{x} - \norm{y}} \leq \norm{x - y}\).
+	We have
+	\begin{align*}
+		         & \norm{x} = \norm{x - y + y} \leq \norm{x - y} + \norm{y} &  & \by{6.2}[d] \\
+		\implies & \norm{x} - \norm{y} \leq \norm{x - y}
+	\end{align*}
+	and
+	\begin{align*}
+		         & \norm{y} = \norm{y - x + x} \leq \norm{y - x} + \norm{x}                   &  & \by{6.2}[d] \\
+		\implies & \norm{y} - \norm{x} \leq \norm{y - x} = \norm{(-1)(x - y)} = \norm{x - y}. &  & \by{6.2}[a]
+	\end{align*}
+	Thus \(\abs{\norm{x} - \norm{y}} \leq \norm{x - y}\).
 \end{proof}
 
 \begin{ex}\label{ex:6.1.20}
-  Let \(\V\) be an inner product space over \(\F\).
-  Prove the \emph{polar identities}:
-  For all \(x, y \in \V\),
-  \begin{enumerate}
-    \item \(\inn{x, y} = \frac{1}{4} \norm{x + y}^2 - \frac{1}{4} \norm{x - y}^2\) if \(\F = \R\);
-    \item \(\inn{x, y} = \frac{1}{4} \sum_{k = 1}^4 i^k \norm{x + i^k y}^2\) if \(\F = \C\), where \(i^2 = -1\).
-  \end{enumerate}
+	Let \(\V\) be an inner product space over \(\F\).
+	Prove the \emph{polar identities}:
+	For all \(x, y \in \V\),
+	\begin{enumerate}
+		\item \(\inn{x, y} = \frac{1}{4} \norm{x + y}^2 - \frac{1}{4} \norm{x - y}^2\) if \(\F = \R\);
+		\item \(\inn{x, y} = \frac{1}{4} \sum_{k = 1}^4 i^k \norm{x + i^k y}^2\) if \(\F = \C\), where \(i^2 = -1\).
+	\end{enumerate}
 \end{ex}
 
 \begin{proof}[\pf{ex:6.1.20}(a)]
-  We have
-  \begin{align*}
-    \frac{1}{4} \norm{x + y}^2 - \frac{1}{4} \norm{x - y}^2 & = \Re(\inn{x, y}) &  & \text{(by \cref{ex:6.1.19}(a))} \\
-                                                            & = \inn{x, y}.     &  & (\F = \R)
-  \end{align*}
+	We have
+	\begin{align*}
+		\frac{1}{4} \norm{x + y}^2 - \frac{1}{4} \norm{x - y}^2 & = \Re(\inn{x, y}) &  & \by{ex:6.1.19}[a] \\
+		                                                        & = \inn{x, y}.     &  & (\F = \R)
+	\end{align*}
 \end{proof}
 
 \begin{proof}[\pf{ex:6.1.20}(b)]
-  We have
-  \begin{align*}
-     & \frac{1}{4} \sum_{k = 1}^4 i^k \norm{x + i^k y}^2                                                                                         \\
-     & = \frac{1}{4} \sum_{k = 1}^4 i^k \pa{\norm{x}^2 + 2 \Re(\inn{x, i^k y}) + \norm{i^k y}^2}            &  & \text{(by \cref{ex:6.1.19}(a))} \\
-     & = \frac{1}{4} \sum_{k = 1}^4 i^k \pa{\norm{x}^2 + 2 \Re((-i)^k \inn{x, y}) + \norm{i^k y}^2}         &  & \text{(by \cref{6.1}(b))}       \\
-     & = \frac{1}{4} \sum_{k = 1}^4 i^k \pa{\norm{x}^2 + 2 \Re((-i)^k \inn{x, y}) + \abs{i^k}^2 \norm{y}^2} &  & \text{(by \cref{6.2}(a))}       \\
-     & = \frac{1}{4} \sum_{k = 1}^4 i^k \pa{\norm{x}^2 + 2 \Re((-i)^k \inn{x, y}) + \norm{y}^2}             &  & (\abs{i} = 1)                   \\
-     & = \frac{1}{4} \sum_{k = 1}^4 i^k 2 \Re((-i)^k \inn{x, y})                                            &  & (i + (-1) + (-i) + 1 = 0)       \\
-     & = \frac{1}{2} \pa{i \Re(-i \inn{x, y}) - \Re(-\inn{x, y}) - i \Re(i \inn{x, y}) + \Re(\inn{x, y})}                                        \\
-     & = \Re(\inn{x, y}) - i \Re(i \inn{x, y})                                                                                                   \\
-     & = \Re(\inn{x, y}) - i \Im(-\inn{x, y})                                                                                                    \\
-     & = \Re(\inn{x, y}) + i \Im(\inn{x, y})                                                                                                     \\
-     & = \inn{x, y}.
-  \end{align*}
+	We have
+	\begin{align*}
+		 & \frac{1}{4} \sum_{k = 1}^4 i^k \norm{x + i^k y}^2                                                                                   \\
+		 & = \frac{1}{4} \sum_{k = 1}^4 i^k \pa{\norm{x}^2 + 2 \Re(\inn{x, i^k y}) + \norm{i^k y}^2}            &  & \by{ex:6.1.19}[a]         \\
+		 & = \frac{1}{4} \sum_{k = 1}^4 i^k \pa{\norm{x}^2 + 2 \Re((-i)^k \inn{x, y}) + \norm{i^k y}^2}         &  & \by{6.1}[b]               \\
+		 & = \frac{1}{4} \sum_{k = 1}^4 i^k \pa{\norm{x}^2 + 2 \Re((-i)^k \inn{x, y}) + \abs{i^k}^2 \norm{y}^2} &  & \by{6.2}[a]               \\
+		 & = \frac{1}{4} \sum_{k = 1}^4 i^k \pa{\norm{x}^2 + 2 \Re((-i)^k \inn{x, y}) + \norm{y}^2}             &  & (\abs{i} = 1)             \\
+		 & = \frac{1}{4} \sum_{k = 1}^4 i^k 2 \Re((-i)^k \inn{x, y})                                            &  & (i + (-1) + (-i) + 1 = 0) \\
+		 & = \frac{1}{2} \pa{i \Re(-i \inn{x, y}) - \Re(-\inn{x, y}) - i \Re(i \inn{x, y}) + \Re(\inn{x, y})}                                  \\
+		 & = \Re(\inn{x, y}) - i \Re(i \inn{x, y})                                                                                             \\
+		 & = \Re(\inn{x, y}) - i \Im(-\inn{x, y})                                                                                              \\
+		 & = \Re(\inn{x, y}) + i \Im(\inn{x, y})                                                                                               \\
+		 & = \inn{x, y}.
+	\end{align*}
 \end{proof}
 
 \begin{ex}\label{ex:6.1.21}
-  Let \(A \in \ms{n}{n}{\F}\).
-  Define
-  \[
-    A_1 = \frac{1}{2} (A + A^*) \quad \text{and} \quad A_2 = \frac{1}{2i} (A - A^*).
-  \]
-  \begin{enumerate}
-    \item Prove that \(A_1^* = A_1\), \(A_2^* = A_2\), and \(A = A_1 + i A_2\).
-          Would it be reasonable to define \(A_1\) and \(A_2\) to be the real and imaginary parts, respectively, of the matrix \(A\)?
-    \item Prove that the representation in (a) is unique.
-          That is, prove that if \(A = B_1 + i B_2\), where \(B_1^* = B_1\) and \(B_2^* = B_2\), then \(B_1 = A_1\) and \(B_2 = A_2\).
-  \end{enumerate}
+	Let \(A \in \ms{n}{n}{\F}\).
+	Define
+	\[
+		A_1 = \frac{1}{2} (A + A^*) \quad \text{and} \quad A_2 = \frac{1}{2i} (A - A^*).
+	\]
+	\begin{enumerate}
+		\item Prove that \(A_1^* = A_1\), \(A_2^* = A_2\), and \(A = A_1 + i A_2\).
+		      Would it be reasonable to define \(A_1\) and \(A_2\) to be the real and imaginary parts, respectively, of the matrix \(A\)?
+		\item Prove that the representation in (a) is unique.
+		      That is, prove that if \(A = B_1 + i B_2\), where \(B_1^* = B_1\) and \(B_2^* = B_2\), then \(B_1 = A_1\) and \(B_2 = A_2\).
+	\end{enumerate}
 \end{ex}
 
 \begin{proof}[\pf{ex:6.1.21}(a)]
-  We have
-  \begin{align*}
-    \forall i, j \in \set{1, \dots, n}, (A_1^*)_{i j} & = \conj{(A_1)_{j i}}                                  &  & \text{(by \cref{6.1.5})}     \\
-                                                      & = \conj{\pa{\frac{1}{2} (A + A^*)}_{j i}}             &  & \text{(by \cref{ex:6.1.21})} \\
-                                                      & = \conj{\frac{1}{2} (A_{j i} + (A^*)_{j i})}          &  & \text{(by \cref{1.2.9})}     \\
-                                                      & = \frac{1}{2} (\conj{A_{j i}} + \conj{(A^*)_{j i}})   &  & \text{(by \cref{d.2}(b)(c))} \\
-                                                      & = \frac{1}{2} ((A^*)_{i j} + \conj{\conj{A_{i j}}})   &  & \text{(by \cref{6.1.5})}     \\
-                                                      & = \frac{1}{2} ((A^*)_{i j} + A_{i j})                 &  & \text{(by \cref{d.2}(a))}    \\
-                                                      & = \pa{\frac{1}{2} (A^* + A)}_{i j}                    &  & \text{(by \cref{1.2.9})}     \\
-                                                      & = \pa{\frac{1}{2} (A + A^*)}_{i j}                    &  & \text{(by \cref{1.2.9})}     \\
-                                                      & = (A_1)_{i j}                                         &  & \text{(by \cref{ex:6.1.21})} \\
-    \forall i, j \in \set{1, \dots, n}, (A_2^*)_{i j} & = \conj{(A_2)_{j i}}                                  &  & \text{(by \cref{6.1.5})}     \\
-                                                      & = \conj{\pa{\frac{1}{2i} (A - A^*)}_{j i}}            &  & \text{(by \cref{ex:6.1.21})} \\
-                                                      & = \conj{\frac{1}{2i} (A_{j i} - (A^*)_{j i})}         &  & \text{(by \cref{1.2.9})}     \\
-                                                      & = \frac{-1}{2i} (\conj{A_{j i}} - \conj{(A^*)_{j i}}) &  & \text{(by \cref{d.2}(b)(c))} \\
-                                                      & = \frac{-1}{2i} ((A^*)_{i j} - \conj{\conj{A_{i j}}}) &  & \text{(by \cref{6.1.5})}     \\
-                                                      & = \frac{-1}{2i} ((A^*)_{i j} - A_{i j})               &  & \text{(by \cref{d.2}(a))}    \\
-                                                      & = \pa{\frac{-1}{2i} (A^* - A)}_{i j}                  &  & \text{(by \cref{1.2.9})}     \\
-                                                      & = \pa{\frac{1}{2i} (A - A^*)}_{i j}                   &  & \text{(by \cref{1.2.9})}     \\
-                                                      & = (A_2)_{i j}                                         &  & \text{(by \cref{ex:6.1.21})}
-  \end{align*}
-  and thus by \cref{1.2.8} \(A_1^* = A_1\) and \(A_2^* = A_2\).
-  Observe that
-  \begin{align*}
-    A_1 + i A_2 & = \frac{1}{2} (A + A^*) + \frac{i}{2i} (A - A^*) &  & \text{(by \cref{ex:6.1.21})} \\
-                & = A.                                             &  & \text{(by \cref{1.2.9})}
-  \end{align*}
-  If we let \(A \in \ms{2}{2}{\C}\) where \(A = \begin{pmatrix}
-    1 & -i \\
-    i & 1
-  \end{pmatrix}\), then we have
-  \begin{align*}
-    A_1          & = \frac{1}{2} (A + A^*)           &  & \text{(by \cref{ex:6.1.21})}            \\
-                 & = \frac{1}{2} \pa{\begin{pmatrix}
-                                         1 & -i \\
-                                         i & 1
-                                       \end{pmatrix} + \begin{pmatrix}
-                                                         1 & -i \\
-                                                         i & 1
-                                                       \end{pmatrix}} &  & \text{(by \cref{6.1.5})} \\
-                 & = A                                                                            \\
-    A_2          & = \frac{1}{2} (A - A^*)           &  & \text{(by \cref{ex:6.1.21})}            \\
-                 & = \frac{1}{2} \pa{\begin{pmatrix}
-                                         1 & -i \\
-                                         i & 1
-                                       \end{pmatrix} - \begin{pmatrix}
-                                                         1 & -i \\
-                                                         i & 1
-                                                       \end{pmatrix}} &  & \text{(by \cref{6.1.5})} \\
-                 & = \zm                                                                          \\
-    A + \conj{A} & = \begin{pmatrix}
-                       1 & -i \\
-                       i & 1
-                     \end{pmatrix} + \begin{pmatrix}
-                                       1  & i \\
-                                       -i & 1
-                                     \end{pmatrix}   &  & \text{(by \cref{ex:4.3.13})}            \\
-                 & = \begin{pmatrix}
-                       2 & 0 \\
-                       0 & 2
-                     \end{pmatrix}                                                               \\
-                 & \neq 2 A_1.
-  \end{align*}
-  Thus it does not make sense to define \(A_1\) as the real part of \(A\) and \(A_2\) as the imaginary part of \(A\).
+	We have
+	\begin{align*}
+		\forall i, j \in \set{1, \dots, n}, (A_1^*)_{i j} & = \conj{(A_1)_{j i}}                                  &  & \by{6.1.5}     \\
+		                                                  & = \conj{\pa{\frac{1}{2} (A + A^*)}_{j i}}             &  & \by{ex:6.1.21} \\
+		                                                  & = \conj{\frac{1}{2} (A_{j i} + (A^*)_{j i})}          &  & \by{1.2.9}     \\
+		                                                  & = \frac{1}{2} (\conj{A_{j i}} + \conj{(A^*)_{j i}})   &  & \by{d.2}[bc]   \\
+		                                                  & = \frac{1}{2} ((A^*)_{i j} + \conj{\conj{A_{i j}}})   &  & \by{6.1.5}     \\
+		                                                  & = \frac{1}{2} ((A^*)_{i j} + A_{i j})                 &  & \by{d.2}[a]    \\
+		                                                  & = \pa{\frac{1}{2} (A^* + A)}_{i j}                    &  & \by{1.2.9}     \\
+		                                                  & = \pa{\frac{1}{2} (A + A^*)}_{i j}                    &  & \by{1.2.9}     \\
+		                                                  & = (A_1)_{i j}                                         &  & \by{ex:6.1.21} \\
+		\forall i, j \in \set{1, \dots, n}, (A_2^*)_{i j} & = \conj{(A_2)_{j i}}                                  &  & \by{6.1.5}     \\
+		                                                  & = \conj{\pa{\frac{1}{2i} (A - A^*)}_{j i}}            &  & \by{ex:6.1.21} \\
+		                                                  & = \conj{\frac{1}{2i} (A_{j i} - (A^*)_{j i})}         &  & \by{1.2.9}     \\
+		                                                  & = \frac{-1}{2i} (\conj{A_{j i}} - \conj{(A^*)_{j i}}) &  & \by{d.2}[bc]   \\
+		                                                  & = \frac{-1}{2i} ((A^*)_{i j} - \conj{\conj{A_{i j}}}) &  & \by{6.1.5}     \\
+		                                                  & = \frac{-1}{2i} ((A^*)_{i j} - A_{i j})               &  & \by{d.2}[a]    \\
+		                                                  & = \pa{\frac{-1}{2i} (A^* - A)}_{i j}                  &  & \by{1.2.9}     \\
+		                                                  & = \pa{\frac{1}{2i} (A - A^*)}_{i j}                   &  & \by{1.2.9}     \\
+		                                                  & = (A_2)_{i j}                                         &  & \by{ex:6.1.21}
+	\end{align*}
+	and thus by \cref{1.2.8} \(A_1^* = A_1\) and \(A_2^* = A_2\).
+	Observe that
+	\begin{align*}
+		A_1 + i A_2 & = \frac{1}{2} (A + A^*) + \frac{i}{2i} (A - A^*) &  & \by{ex:6.1.21} \\
+		            & = A.                                             &  & \by{1.2.9}
+	\end{align*}
+	If we let \(A \in \ms{2}{2}{\C}\) where \(A = \begin{pmatrix}
+		1 & -i \\
+		i & 1
+	\end{pmatrix}\), then we have
+	\begin{align*}
+		A_1          & = \frac{1}{2} (A + A^*)           &  & \by{ex:6.1.21}            \\
+		             & = \frac{1}{2} \pa{\begin{pmatrix}
+				                                 1 & -i \\
+				                                 i & 1
+			                                 \end{pmatrix} + \begin{pmatrix}
+				                                                 1 & -i \\
+				                                                 i & 1
+			                                                 \end{pmatrix}} &  & \by{6.1.5} \\
+		             & = A                                                              \\
+		A_2          & = \frac{1}{2} (A - A^*)           &  & \by{ex:6.1.21}            \\
+		             & = \frac{1}{2} \pa{\begin{pmatrix}
+				                                 1 & -i \\
+				                                 i & 1
+			                                 \end{pmatrix} - \begin{pmatrix}
+				                                                 1 & -i \\
+				                                                 i & 1
+			                                                 \end{pmatrix}} &  & \by{6.1.5} \\
+		             & = \zm                                                            \\
+		A + \conj{A} & = \begin{pmatrix}
+			                 1 & -i \\
+			                 i & 1
+		                 \end{pmatrix} + \begin{pmatrix}
+			                                 1  & i \\
+			                                 -i & 1
+		                                 \end{pmatrix}   &  & \by{ex:4.3.13}            \\
+		             & = \begin{pmatrix}
+			                 2 & 0 \\
+			                 0 & 2
+		                 \end{pmatrix}                                                 \\
+		             & \neq 2 A_1.
+	\end{align*}
+	Thus it does not make sense to define \(A_1\) as the real part of \(A\) and \(A_2\) as the imaginary part of \(A\).
 \end{proof}
 
 \begin{proof}[\pf{ex:6.1.21}(b)]
-  We have
-  \begin{align*}
-             & A = B_1 + i B_2 = A_1 + i A_2                                                  \\
-    \implies & (A_1 - B_1) + i (A_2 - B_2) = \zm         &  & \text{(by \cref{1.2.9})}        \\
-    \implies & ((A_1 - B_1) + i (A_2 - B_2))^* = \zm     &  & \text{(by \cref{6.1.5})}        \\
-    \implies & (A_1 - B_1)^* - i (A_2 - B_2)^* = \zm     &  & \text{(by \cref{ex:6.1.14})}    \\
-    \implies & (A_1^* - B_1^*) - i (A_2^* - B_2^*) = \zm &  & \text{(by \cref{ex:6.1.14})}    \\
-    \implies & (A_1 - B_1) - i (A_2 - B_2) = \zm         &  & \text{(by \cref{ex:6.1.21}(a))} \\
-    \implies & \begin{dcases}
-                 (A_1 - B_1) + i (A_2 - B_2) = \zm \\
-                 (A_1 - B_1) - i (A_2 - B_2) = \zm
-               \end{dcases}                                              \\
-    \implies & \begin{dcases}
-                 A_1 = B_1 \\
-                 A_2 = B_2
-               \end{dcases}.                            &  & \text{(by \cref{1.2.9})}
-  \end{align*}
+	We have
+	\begin{align*}
+		         & A = B_1 + i B_2 = A_1 + i A_2                                    \\
+		\implies & (A_1 - B_1) + i (A_2 - B_2) = \zm         &  & \by{1.2.9}        \\
+		\implies & ((A_1 - B_1) + i (A_2 - B_2))^* = \zm     &  & \by{6.1.5}        \\
+		\implies & (A_1 - B_1)^* - i (A_2 - B_2)^* = \zm     &  & \by{ex:6.1.14}    \\
+		\implies & (A_1^* - B_1^*) - i (A_2^* - B_2^*) = \zm &  & \by{ex:6.1.14}    \\
+		\implies & (A_1 - B_1) - i (A_2 - B_2) = \zm         &  & \by{ex:6.1.21}[a] \\
+		\implies & \begin{dcases}
+			           (A_1 - B_1) + i (A_2 - B_2) = \zm \\
+			           (A_1 - B_1) - i (A_2 - B_2) = \zm
+		           \end{dcases}                                \\
+		\implies & \begin{dcases}
+			           A_1 = B_1 \\
+			           A_2 = B_2
+		           \end{dcases}.                            &  & \by{1.2.9}
+	\end{align*}
 \end{proof}
 
 \begin{ex}\label{ex:6.1.22}
-  Let \(\V\) be a vector space over \(\F\) (possibly infinite-dimensional) where \(\F = \R\) or \(\F = \C\), and let \(\beta\) be a basis for \(\V\) over \(\F\).
-  For \(x, y \in \V\) there exist \(\seq{v}{1,,n} \in \beta\) such that
-  \[
-    \sum_{i = 1}^n a_i v_i \quad \text{and} \quad y = \sum_{i = 1}^n b_i v_i.
-  \]
-  Define
-  \[
-    \inn{x, y} = \sum_{i = 1}^n a_i \conj{b_i}.
-  \]
-  \begin{enumerate}
-    \item Prove that \(\inn{\cdot, \cdot}\) is an inner product on \(\V\) over \(\F\) and that \(\beta\) is an orthonormal basis for \(\V\) over \(\F\).
-          Thus every real or complex vector space may be regarded as an inner product space.
-    \item Prove that if \(\V = \R^n\) or \(\V = \C^n\) and \(\beta\) is the standard ordered basis for \(\V\) over \(\F\), then the inner product defined above is the standard inner product.
-  \end{enumerate}
+	Let \(\V\) be a vector space over \(\F\) (possibly infinite-dimensional) where \(\F = \R\) or \(\F = \C\), and let \(\beta\) be a basis for \(\V\) over \(\F\).
+	For \(x, y \in \V\) there exist \(\seq{v}{1,,n} \in \beta\) such that
+	\[
+		\sum_{i = 1}^n a_i v_i \quad \text{and} \quad y = \sum_{i = 1}^n b_i v_i.
+	\]
+	Define
+	\[
+		\inn{x, y} = \sum_{i = 1}^n a_i \conj{b_i}.
+	\]
+	\begin{enumerate}
+		\item Prove that \(\inn{\cdot, \cdot}\) is an inner product on \(\V\) over \(\F\) and that \(\beta\) is an orthonormal basis for \(\V\) over \(\F\).
+		      Thus every real or complex vector space may be regarded as an inner product space.
+		\item Prove that if \(\V = \R^n\) or \(\V = \C^n\) and \(\beta\) is the standard ordered basis for \(\V\) over \(\F\), then the inner product defined above is the standard inner product.
+	\end{enumerate}
 \end{ex}
 
 \begin{proof}[\pf{ex:6.1.22}(a)]
-  Let \(x, y, z \in \V\) and let \(k \in \F\).
-  Then
-  \[
-    \begin{dcases}
-      \exists \seq{a}{1,,n} \in \F \\
-      \exists \seq{b}{1,,n} \in \F \\
-      \exists \seq{c}{1,,n} \in \F \\
-      \exists \seq{v}{1,,n} \in \F
-    \end{dcases} : \begin{dcases}
-      x = \sum_{i = 1}^n a_i v_i \\
-      y = \sum_{i = 1}^n b_i v_i \\
-      z = \sum_{i = 1}^n c_i v_i
-    \end{dcases}.
-  \]
-  Thus we have
-  \begin{align*}
-    \inn{x + y, z}    & = \inn{\sum_{i = 1}^n (a_i + b_i) v_i, \sum_{i = 1}^n c_i v_i}  &  & \text{(by \cref{1.2.1})}        \\
-                      & = \sum_{i = 1}^n (a_i + b_i) \conj{c_i}                         &  & \text{(by \cref{ex:6.1.22})}    \\
-                      & = \sum_{i = 1}^n a_i \conj{c_i} + \sum_{i = 1}^n b_i \conj{c_i}                                      \\
-                      & = \inn{x, z} + \inn{y, z}                                       &  & \text{(by \cref{ex:6.1.22})}    \\
-    \inn{kx, y}       & = \inn{\sum_{i = 1}^n k a_i v_i, \sum_{i = 1}^n b_i v_i}        &  & \text{(by \cref{1.2.1})}        \\
-                      & = \sum_{i = 1}^n (k a_i) \conj{b_j}                             &  & \text{(by \cref{ex:6.1.22})}    \\
-                      & = k \sum_{i = 1}^n a_i \conj{b_i}                                                                    \\
-                      & = k \inn{x, y}                                                  &  & \text{(by \cref{ex:6.1.22})}    \\
-    \conj{\inn{x, y}} & = \conj{\sum_{i = 1}^n a_i \conj{b_i}}                          &  & \text{(by \cref{ex:6.1.22})}    \\
-                      & = \sum_{i = 1}^n \conj{a_i} b_i                                 &  & \text{(by \cref{d.2}(a)(b)(c))} \\
-                      & = \inn{y, x}.                                                   &  & \text{(by \cref{ex:6.1.22})}
-  \end{align*}
-  If \(x \neq \zv\), then we have
-  \begin{align*}
-             & \exists i \in \set{1, \dots, n} : a_i \neq 0                       &  & \text{(by \cref{1.5.3})}     \\
-    \implies & \exists i \in \set{1, \dots, n} : a_i \conj{a_i} = \abs{a_i}^2 > 0 &  & \text{(by \cref{d.0.5})}     \\
-    \implies & \sum_{i = 1}^n a_i \conj{a_i} = \sum_{i = 1}^n \abs{a_i}^2 > 0                                       \\
-    \implies & \inn{x, x} > 0.                                                    &  & \text{(by \cref{ex:6.1.22})}
-  \end{align*}
-  Thus by \cref{6.1.1} \(\inn{\cdot, \cdot}\) is an inner product on \(\V\) over \(\F\).
+	Let \(x, y, z \in \V\) and let \(k \in \F\).
+	Then
+	\[
+		\begin{dcases}
+			\exists \seq{a}{1,,n} \in \F \\
+			\exists \seq{b}{1,,n} \in \F \\
+			\exists \seq{c}{1,,n} \in \F \\
+			\exists \seq{v}{1,,n} \in \F
+		\end{dcases} : \begin{dcases}
+			x = \sum_{i = 1}^n a_i v_i \\
+			y = \sum_{i = 1}^n b_i v_i \\
+			z = \sum_{i = 1}^n c_i v_i
+		\end{dcases}.
+	\]
+	Thus we have
+	\begin{align*}
+		\inn{x + y, z}    & = \inn{\sum_{i = 1}^n (a_i + b_i) v_i, \sum_{i = 1}^n c_i v_i}  &  & \by{1.2.1}     \\
+		                  & = \sum_{i = 1}^n (a_i + b_i) \conj{c_i}                         &  & \by{ex:6.1.22} \\
+		                  & = \sum_{i = 1}^n a_i \conj{c_i} + \sum_{i = 1}^n b_i \conj{c_i}                     \\
+		                  & = \inn{x, z} + \inn{y, z}                                       &  & \by{ex:6.1.22} \\
+		\inn{kx, y}       & = \inn{\sum_{i = 1}^n k a_i v_i, \sum_{i = 1}^n b_i v_i}        &  & \by{1.2.1}     \\
+		                  & = \sum_{i = 1}^n (k a_i) \conj{b_j}                             &  & \by{ex:6.1.22} \\
+		                  & = k \sum_{i = 1}^n a_i \conj{b_i}                                                   \\
+		                  & = k \inn{x, y}                                                  &  & \by{ex:6.1.22} \\
+		\conj{\inn{x, y}} & = \conj{\sum_{i = 1}^n a_i \conj{b_i}}                          &  & \by{ex:6.1.22} \\
+		                  & = \sum_{i = 1}^n \conj{a_i} b_i                                 &  & \by{d.2}[abc]  \\
+		                  & = \inn{y, x}.                                                   &  & \by{ex:6.1.22}
+	\end{align*}
+	If \(x \neq \zv\), then we have
+	\begin{align*}
+		         & \exists i \in \set{1, \dots, n} : a_i \neq 0                       &  & \by{1.5.3}     \\
+		\implies & \exists i \in \set{1, \dots, n} : a_i \conj{a_i} = \abs{a_i}^2 > 0 &  & \by{d.0.5}     \\
+		\implies & \sum_{i = 1}^n a_i \conj{a_i} = \sum_{i = 1}^n \abs{a_i}^2 > 0                         \\
+		\implies & \inn{x, x} > 0.                                                    &  & \by{ex:6.1.22}
+	\end{align*}
+	Thus by \cref{6.1.1} \(\inn{\cdot, \cdot}\) is an inner product on \(\V\) over \(\F\).
 
-  Now we show that \(\beta\) is orthonormal.
-  Since
-  \begin{align*}
-             & \forall v_i, v_j \in \beta, \exists \seq{v}{1,,n} \in \beta : \begin{dcases}
-                                                                               n = \max(i, j)                        \\
-                                                                               v_i = \sum_{k = 1}^n \delta_{k i} v_k \\
-                                                                               v_j = \sum_{k = 1}^n \delta_{k j} v_k
-                                                                             \end{dcases}                 &  & \text{(by \cref{1.8})}         \\
-    \implies & \inn{v_i, v_j} = \inn{\sum_{k = 1}^n \delta_{k i} v_k, \sum_{k = 1}^n \delta_{k j} v_k}                                        \\
-             & = \sum_{k = 1}^n \delta_{k i} \conj{\delta_{k j}} = \sum_{k = 1}^n \delta_{k i} \delta_{k j} &  & \text{(by \cref{ex:6.1.22})} \\
-             & = \begin{dcases}
-                   \delta_{i i} \delta_{i j} + \delta_{j i} \delta_{j j} = 0 & \text{if } i \neq j \\
-                   \delta_{i i} = 1                                          & \text{if } i = j
-                 \end{dcases}           &  & \text{(by \cref{2.3.4})}                                              \\
-             & = \delta_{i j},                                                                              &  & \text{(by \cref{2.3.4})}
-  \end{align*}
-  by \cref{6.1.12} we know that \(\beta\) is orthonormal.
+	Now we show that \(\beta\) is orthonormal.
+	Since
+	\begin{align*}
+		         & \forall v_i, v_j \in \beta, \exists \seq{v}{1,,n} \in \beta : \begin{dcases}
+			                                                                         n = \max(i, j)                        \\
+			                                                                         v_i = \sum_{k = 1}^n \delta_{k i} v_k \\
+			                                                                         v_j = \sum_{k = 1}^n \delta_{k j} v_k
+		                                                                         \end{dcases}                 &  & \by{1.8}         \\
+		\implies & \inn{v_i, v_j} = \inn{\sum_{k = 1}^n \delta_{k i} v_k, \sum_{k = 1}^n \delta_{k j} v_k}                          \\
+		         & = \sum_{k = 1}^n \delta_{k i} \conj{\delta_{k j}} = \sum_{k = 1}^n \delta_{k i} \delta_{k j} &  & \by{ex:6.1.22} \\
+		         & = \begin{dcases}
+			             \delta_{i i} \delta_{i j} + \delta_{j i} \delta_{j j} = 0 & \text{if } i \neq j \\
+			             \delta_{i i} = 1                                          & \text{if } i = j
+		             \end{dcases}           &  & \by{2.3.4}                                \\
+		         & = \delta_{i j},                                                                              &  & \by{2.3.4}
+	\end{align*}
+	by \cref{6.1.12} we know that \(\beta\) is orthonormal.
 \end{proof}
 
 \begin{proof}[\pf{ex:6.1.22}(b)]
-  Since
-  \[
-    \forall x, y \in \V, \inn{x, y} = \inn{\sum_{i = 1}^n x_i e_i, \sum_{i = 1}^n y_i e_i} = \sum_{i = 1}^n x_i \conj{y_i},
-  \]
-  by \cref{6.1.2} we see that \(\inn{\cdot, \cdot}\) is the standard inner product on \(\V\) over \(\F\).
+	Since
+	\[
+		\forall x, y \in \V, \inn{x, y} = \inn{\sum_{i = 1}^n x_i e_i, \sum_{i = 1}^n y_i e_i} = \sum_{i = 1}^n x_i \conj{y_i},
+	\]
+	by \cref{6.1.2} we see that \(\inn{\cdot, \cdot}\) is the standard inner product on \(\V\) over \(\F\).
 \end{proof}
 
 \begin{ex}\label{ex:6.1.23}
-  Let \(\inn{\cdot, \cdot}\) be the standard inner product on \(\vs{F}^n\) over \(\F\), and let \(A \in \ms{n}{n}{\F}\).
-  \begin{enumerate}
-    \item Prove that \(\inn{x, Ay} = \inn{A^* x, y}\) for all \(x, y \in \vs{F}^n\).
-    \item Suppose that for some \(B \in \ms{n}{n}{\F}\), we have \(\inn{x, Ay} = \inn{Bx, y}\) for all \(x, y \in \vs{F}^n\).
-          Prove that \(B = A^*\).
-    \item Let \(\alpha\) be the standard ordered basis for \(\vs{F}^n\) over \(\F\).
-          For any orthonormal basis \(\beta\) for \(\vs{F}^n\) over \(\F\), let \(Q \in \ms{n}{n}{\F}\) whose columns are the vectors in \(\beta\).
-          Prove that \(Q^* = Q^{-1}\).
-    \item Define \(\T, \U \in \ls(\vs{F}^n)\) by \(\T(x) = Ax\) and \(\U(x) = A^* x\).
-          Show that \([\U]_{\beta} = [\T]_{\beta}^*\) for any orthonormal basis \(\beta\) for \(\vs{F}^n\) over \(\F\).
-  \end{enumerate}
+	Let \(\inn{\cdot, \cdot}\) be the standard inner product on \(\vs{F}^n\) over \(\F\), and let \(A \in \ms{n}{n}{\F}\).
+	\begin{enumerate}
+		\item Prove that \(\inn{x, Ay} = \inn{A^* x, y}\) for all \(x, y \in \vs{F}^n\).
+		\item Suppose that for some \(B \in \ms{n}{n}{\F}\), we have \(\inn{x, Ay} = \inn{Bx, y}\) for all \(x, y \in \vs{F}^n\).
+		      Prove that \(B = A^*\).
+		\item Let \(\alpha\) be the standard ordered basis for \(\vs{F}^n\) over \(\F\).
+		      For any orthonormal basis \(\beta\) for \(\vs{F}^n\) over \(\F\), let \(Q \in \ms{n}{n}{\F}\) whose columns are the vectors in \(\beta\).
+		      Prove that \(Q^* = Q^{-1}\).
+		\item Define \(\T, \U \in \ls(\vs{F}^n)\) by \(\T(x) = Ax\) and \(\U(x) = A^* x\).
+		      Show that \([\U]_{\beta} = [\T]_{\beta}^*\) for any orthonormal basis \(\beta\) for \(\vs{F}^n\) over \(\F\).
+	\end{enumerate}
 \end{ex}
 
 \begin{proof}[\pf{ex:6.1.23}(a)]
-  We have
-  \begin{align*}
-    \inn{x, Ay} & = \sum_{i = 1}^n x_i \conj{(Ay)_i}                                 &  & \text{(by \cref{6.1.2})}     \\
-                & = \sum_{i = 1}^n x_i \conj{\pa{\sum_{j = 1}^n A_{i j} y_j}}        &  & \text{(by \cref{2.3.1})}     \\
-                & = \sum_{i = 1}^n x_i \pa{\sum_{j = 1}^n \conj{A_{i j}} \conj{y_j}} &  & \text{(by \cref{d.2}(b)(c))} \\
-                & = \sum_{j = 1}^n \conj{y_j} \sum_{i = 1}^n \conj{A_{i j}} x_i                                        \\
-                & = \sum_{j = 1}^n \conj{y_j} \sum_{i = 1}^n (A^*)_{j i} x_i         &  & \text{(by \cref{6.1.5})}     \\
-                & = \sum_{j = 1}^n \conj{y_j} (A^* x)_j                              &  & \text{(by \cref{2.3.1})}     \\
-                & = \inn{A^* x, y}.                                                  &  & \text{(by \cref{6.1.2})}
-  \end{align*}
+	We have
+	\begin{align*}
+		\inn{x, Ay} & = \sum_{i = 1}^n x_i \conj{(Ay)_i}                                 &  & \by{6.1.2}   \\
+		            & = \sum_{i = 1}^n x_i \conj{\pa{\sum_{j = 1}^n A_{i j} y_j}}        &  & \by{2.3.1}   \\
+		            & = \sum_{i = 1}^n x_i \pa{\sum_{j = 1}^n \conj{A_{i j}} \conj{y_j}} &  & \by{d.2}[bc] \\
+		            & = \sum_{j = 1}^n \conj{y_j} \sum_{i = 1}^n \conj{A_{i j}} x_i                        \\
+		            & = \sum_{j = 1}^n \conj{y_j} \sum_{i = 1}^n (A^*)_{j i} x_i         &  & \by{6.1.5}   \\
+		            & = \sum_{j = 1}^n \conj{y_j} (A^* x)_j                              &  & \by{2.3.1}   \\
+		            & = \inn{A^* x, y}.                                                  &  & \by{6.1.2}
+	\end{align*}
 \end{proof}
 
 \begin{proof}[\pf{ex:6.1.23}(b)]
-  We have
-  \begin{align*}
-             & \forall x, y \in \vs{F}^n, \inn{x, Ay} = \inn{A^* x, y} = \inn{Bx, y} &  & \text{(by \cref{ex:6.1.23}(a))} \\
-    \implies & \forall x, y \in \vs{F}^n, \inn{y, A^* x} = \inn{y, Bx}               &  & \text{(by \cref{6.1.1}(c))}     \\
-    \implies & \forall x \in \vs{F}^n, A^* x = Bx                                    &  & \text{(by \cref{6.1}(e))}       \\
-    \implies & A^* = B.                                                              &  & \text{(by \cref{2.1.13})}
-  \end{align*}
+	We have
+	\begin{align*}
+		         & \forall x, y \in \vs{F}^n, \inn{x, Ay} = \inn{A^* x, y} = \inn{Bx, y} &  & \by{ex:6.1.23}[a] \\
+		\implies & \forall x, y \in \vs{F}^n, \inn{y, A^* x} = \inn{y, Bx}               &  & \by{6.1.1}[c]     \\
+		\implies & \forall x \in \vs{F}^n, A^* x = Bx                                    &  & \by{6.1}[e]       \\
+		\implies & A^* = B.                                                              &  & \by{2.1.13}
+	\end{align*}
 \end{proof}
 
 \begin{proof}[\pf{ex:6.1.23}(c)]
-  For each \(i \in \set{1, \dots, n}\), define \(v_i\) be the \(i\)th column of \(Q\).
-  Then we have
-  \begin{align*}
-             & Q = [\IT[\vs{F}^n]]_{\beta}^{\alpha}                                                   &  & \text{(by \cref{2.5.1})}        \\
-    \implies & \forall i, j \in \set{1, \dots, n}, (Q^* Q)_{i j} = \sum_{k = 1}^n (Q^*)_{i k} Q_{k j} &  & \text{(by \cref{2.3.1})}        \\
-             & = \sum_{k = 1}^n \conj{Q_{k i}} Q_{k j}                                                &  & \text{(by \cref{6.1.5})}        \\
-             & = \inn{v_j, v_i}                                                                       &  & \text{(by \cref{2.5.1})}        \\
-             & = \delta_{j i}                                                                         &  & \text{(by \cref{6.1.12})}       \\
-    \implies & Q^* Q = I_n                                                                            &  & \text{(by \cref{2.3.4})}        \\
-    \implies & Q^{-1} = Q^*.                                                                          &  & \text{(by \cref{ex:2.4.10}(b))}
-  \end{align*}
+	For each \(i \in \set{1, \dots, n}\), define \(v_i\) be the \(i\)th column of \(Q\).
+	Then we have
+	\begin{align*}
+		         & Q = [\IT[\vs{F}^n]]_{\beta}^{\alpha}                                                   &  & \by{2.5.1}        \\
+		\implies & \forall i, j \in \set{1, \dots, n}, (Q^* Q)_{i j} = \sum_{k = 1}^n (Q^*)_{i k} Q_{k j} &  & \by{2.3.1}        \\
+		         & = \sum_{k = 1}^n \conj{Q_{k i}} Q_{k j}                                                &  & \by{6.1.5}        \\
+		         & = \inn{v_j, v_i}                                                                       &  & \by{2.5.1}        \\
+		         & = \delta_{j i}                                                                         &  & \by{6.1.12}       \\
+		\implies & Q^* Q = I_n                                                                            &  & \by{2.3.4}        \\
+		\implies & Q^{-1} = Q^*.                                                                          &  & \by{ex:2.4.10}[b]
+	\end{align*}
 \end{proof}
 
 \begin{proof}[\pf{ex:6.1.23}(d)]
-  Let \(\alpha\) be the standard ordered basis for \(\vs{F}^n\) over \(\F\).
-  Then we have
-  \begin{align*}
-    [\T]_{\beta}^* & = ([\IT[\vs{F}^n]]_{\alpha}^{\beta} \cdot [\T]_{\alpha} \cdot [\IT[\vs{F}^n]]_{\beta}^{\alpha})^*                         &  & \text{(by \cref{2.23})}         \\
-                   & = ([\IT[\vs{F}^n]]_{\alpha}^{\beta} \cdot A \cdot [\IT[\vs{F}^n]]_{\beta}^{\alpha})^*                                     &  & \text{(by \cref{2.15}(a))}      \\
-                   & = \conj{\tp{([\IT[\vs{F}^n]]_{\alpha}^{\beta} \cdot A \cdot [\IT[\vs{F}^n]]_{\beta}^{\alpha})}}                           &  & \text{(by \cref{6.1.5})}        \\
-                   & = \conj{\tp{([\IT[\vs{F}^n]]_{\beta}^{\alpha})} \cdot \tp{A} \cdot \tp{([\IT[\vs{F}^n]]_{\alpha}^{\beta})}}               &  & \text{(by \cref{2.3.2})}        \\
-                   & = \conj{\tp{([\IT[\vs{F}^n]]_{\beta}^{\alpha})}} \cdot \conj{\tp{A}} \cdot \conj{\tp{([\IT[\vs{F}^n]]_{\alpha}^{\beta})}} &  & \text{(by \cref{ex:4.3.13})}    \\
-                   & = ([\IT[\vs{F}^n]]_{\beta}^{\alpha})^* \cdot A^* \cdot ([\IT[\vs{F}^n]]_{\alpha}^{\beta})^*                               &  & \text{(by \cref{6.1.5})}        \\
-                   & = ([\IT[\vs{F}^n]]_{\beta}^{\alpha})^{-1} \cdot A^* \cdot ([\IT[\vs{F}^n]]_{\alpha}^{\beta})^*                            &  & \text{(by \cref{ex:6.1.23}(c))} \\
-                   & = [\IT[\vs{F}^n]]_{\alpha}^{\beta} \cdot A^* \cdot (([\IT[\vs{F}^n]]_{\beta}^{\alpha})^{-1})^*                            &  & \text{(by \cref{2.23})}         \\
-                   & = [\IT[\vs{F}^n]]_{\alpha}^{\beta} \cdot A^* \cdot (([\IT[\vs{F}^n]]_{\beta}^{\alpha})^*)^*                               &  & \text{(by \cref{ex:6.1.23})}    \\
-                   & = [\IT[\vs{F}^n]]_{\alpha}^{\beta} \cdot A^* \cdot [\IT[\vs{F}^n]]_{\beta}^{\alpha}                                       &  & \text{(by \cref{6.1.5})}        \\
-                   & = [\IT[\vs{F}^n]]_{\alpha}^{\beta} \cdot [\U]_{\alpha} \cdot [\IT[\vs{F}^n]]_{\beta}^{\alpha}                             &  & \text{(by \cref{2.15}(a))}      \\
-                   & = [\U]_{\beta}.                                                                                                           &  & \text{(by \cref{2.23})}
-  \end{align*}
+	Let \(\alpha\) be the standard ordered basis for \(\vs{F}^n\) over \(\F\).
+	Then we have
+	\begin{align*}
+		[\T]_{\beta}^* & = ([\IT[\vs{F}^n]]_{\alpha}^{\beta} \cdot [\T]_{\alpha} \cdot [\IT[\vs{F}^n]]_{\beta}^{\alpha})^*                         &  & \by{2.23}         \\
+		               & = ([\IT[\vs{F}^n]]_{\alpha}^{\beta} \cdot A \cdot [\IT[\vs{F}^n]]_{\beta}^{\alpha})^*                                     &  & \by{2.15}[a]      \\
+		               & = \conj{\tp{([\IT[\vs{F}^n]]_{\alpha}^{\beta} \cdot A \cdot [\IT[\vs{F}^n]]_{\beta}^{\alpha})}}                           &  & \by{6.1.5}        \\
+		               & = \conj{\tp{([\IT[\vs{F}^n]]_{\beta}^{\alpha})} \cdot \tp{A} \cdot \tp{([\IT[\vs{F}^n]]_{\alpha}^{\beta})}}               &  & \by{2.3.2}        \\
+		               & = \conj{\tp{([\IT[\vs{F}^n]]_{\beta}^{\alpha})}} \cdot \conj{\tp{A}} \cdot \conj{\tp{([\IT[\vs{F}^n]]_{\alpha}^{\beta})}} &  & \by{ex:4.3.13}    \\
+		               & = ([\IT[\vs{F}^n]]_{\beta}^{\alpha})^* \cdot A^* \cdot ([\IT[\vs{F}^n]]_{\alpha}^{\beta})^*                               &  & \by{6.1.5}        \\
+		               & = ([\IT[\vs{F}^n]]_{\beta}^{\alpha})^{-1} \cdot A^* \cdot ([\IT[\vs{F}^n]]_{\alpha}^{\beta})^*                            &  & \by{ex:6.1.23}[c] \\
+		               & = [\IT[\vs{F}^n]]_{\alpha}^{\beta} \cdot A^* \cdot (([\IT[\vs{F}^n]]_{\beta}^{\alpha})^{-1})^*                            &  & \by{2.23}         \\
+		               & = [\IT[\vs{F}^n]]_{\alpha}^{\beta} \cdot A^* \cdot (([\IT[\vs{F}^n]]_{\beta}^{\alpha})^*)^*                               &  & \by{ex:6.1.23}    \\
+		               & = [\IT[\vs{F}^n]]_{\alpha}^{\beta} \cdot A^* \cdot [\IT[\vs{F}^n]]_{\beta}^{\alpha}                                       &  & \by{6.1.5}        \\
+		               & = [\IT[\vs{F}^n]]_{\alpha}^{\beta} \cdot [\U]_{\alpha} \cdot [\IT[\vs{F}^n]]_{\beta}^{\alpha}                             &  & \by{2.15}[a]      \\
+		               & = [\U]_{\beta}.                                                                                                           &  & \by{2.23}
+	\end{align*}
 \end{proof}
 
 \begin{defn}\label{6.1.14}
-  Let \(\V\) be a vector space over \(\F\), where \(\F\) is either \(\R\) or \(\C\).
-  Regardless of whether \(\V\) is or is not an inner product space, we may still define a norm \(\norm{\cdot}\) as a real-valued function on \(\V\) satisfying the following three conditions for all \(x, y \in \V\) and \(a \in \F\):
-  \begin{enumerate}
-    \item \(\norm{x} \geq 0\), and \(\norm{x} = 0\) iff \(x = \zv\).
-    \item \(\norm{ax} = \abs{a} \norm{x}\).
-    \item \(\norm{x + y} \leq \norm{x} + \norm{y}\).
-  \end{enumerate}
+	Let \(\V\) be a vector space over \(\F\), where \(\F\) is either \(\R\) or \(\C\).
+	Regardless of whether \(\V\) is or is not an inner product space, we may still define a norm \(\norm{\cdot}\) as a real-valued function on \(\V\) satisfying the following three conditions for all \(x, y \in \V\) and \(a \in \F\):
+	\begin{enumerate}
+		\item \(\norm{x} \geq 0\), and \(\norm{x} = 0\) iff \(x = \zv\).
+		\item \(\norm{ax} = \abs{a} \norm{x}\).
+		\item \(\norm{x + y} \leq \norm{x} + \norm{y}\).
+	\end{enumerate}
 \end{defn}
 
 \begin{ex}\label{ex:6.1.24}
-  Let \(\F = \R\) or \(\F = \C\).
-  Prove that the following are norms on the given vector spaces.
-  \begin{enumerate}
-    \item \(\norm{A} = \max_{1 \leq i \leq m, 1 \leq j \leq n} \abs{A_{i j}}\) for all \(A \in \MS\).
-    \item \(\norm{f} = \max_{t \in [0, 1]} \abs{f(t)}\) for all \(f \in \cfs([0, 1], \F)\).
-    \item \(\norm{f} = \int_0^1 \abs{f(t)} \; dt\) for all \(f \in \cfs([0, 1], \F)\).
-    \item \(\norm{(a, b)} = \max\set{\abs{a}, \abs{b}}\) for all \((a, b) \in \F^2\).
-  \end{enumerate}
+	Let \(\F = \R\) or \(\F = \C\).
+	Prove that the following are norms on the given vector spaces.
+	\begin{enumerate}
+		\item \(\norm{A} = \max_{1 \leq i \leq m, 1 \leq j \leq n} \abs{A_{i j}}\) for all \(A \in \MS\).
+		\item \(\norm{f} = \max_{t \in [0, 1]} \abs{f(t)}\) for all \(f \in \cfs([0, 1], \F)\).
+		\item \(\norm{f} = \int_0^1 \abs{f(t)} \; dt\) for all \(f \in \cfs([0, 1], \F)\).
+		\item \(\norm{(a, b)} = \max\set{\abs{a}, \abs{b}}\) for all \((a, b) \in \F^2\).
+	\end{enumerate}
 \end{ex}
 
 \begin{proof}[\pf{ex:6.1.24}(a)]
-  \begin{description}
-    \item[For \cref{6.1.14}(a):]
-      Let \(A \in \MS\).
-      Then we have
-      \begin{align*}
-                 & \forall (i, j) \in \set{1, \dots, m} \times \set{1, \dots, n}, \abs{A_{i j}} \geq 0 &  & \text{(by \cref{d.0.5})} \\
-        \implies & \norm{A} = \max_{1 \leq i \leq m, 1 \leq j \leq n} \abs{A_{i j}} \geq 0
-      \end{align*}
-      and
-      \begin{align*}
-             & \norm{A} = \max_{1 \leq i \leq m, 1 \leq n \leq n} \abs{A_{i j}} = 0                                           \\
-        \iff & \forall (i, j) \in \set{1, \dots, m} \times \set{1, \dots, n}, \abs{A_{i j}} = 0                               \\
-        \iff & \forall (i, j) \in \set{1, \dots, m} \times \set{1, \dots, n}, A_{i j} = 0       &  & \text{(by \cref{d.0.5})} \\
-        \iff & A = \zm.
-      \end{align*}
-    \item[For \cref{6.1.14}(b):]
-      Let \(A \in \MS\) and let \(a \in \F\).
-      Then we have
-      \begin{align*}
-        \norm{a A} & = \max_{1 \leq i \leq m, 1 \leq j \leq n} \abs{(a A)_{i j}}                                   \\
-                   & = \max_{1 \leq i \leq m, 1 \leq j \leq n} \abs{a A_{i j}}       &  & \text{(by \cref{1.2.9})} \\
-                   & = \max_{1 \leq i \leq m, 1 \leq j \leq n} \abs{a} \abs{A_{i j}}                               \\
-                   & = \abs{a} \max_{1 \leq i \leq m, 1 \leq j \leq n} \abs{A_{i j}}                               \\
-                   & = \abs{a} \norm{A}.
-      \end{align*}
-    \item[For \cref{6.1.14}(c):]
-      Let \(A, B \in \MS\).
-      Then we have
-      \begin{align*}
-        \norm{A + B} & = \max_{1 \leq i \leq m, 1 \leq j \leq n} \abs{(A + B)_{i j}}                                                                                  \\
-                     & = \max_{1 \leq i \leq m, 1 \leq j \leq n} \abs{A_{i j} + B_{i j}}                                               &  & \text{(by \cref{1.2.9})}  \\
-                     & \leq \max_{1 \leq i \leq m, 1 \leq j \leq n} \abs{A_{i j}} + \abs{B_{i j}}                                      &  & \text{(by \cref{d.3}(c))} \\
-                     & = \max_{1 \leq i \leq m, 1 \leq j \leq n} \abs{A_{i j}} + \max_{1 \leq i \leq m, 1 \leq j \leq n} \abs{B_{i j}}                                \\
-                     & = \norm{A} + \norm{B}.
-      \end{align*}
-  \end{description}
-  From all proofs above we conclude by \cref{6.1.14} that \(\norm{\cdot}\) is a norm on \(\MS\) over \(\F\).
+	\begin{description}
+		\item[For \cref{6.1.14}(a):]
+			Let \(A \in \MS\).
+			Then we have
+			\begin{align*}
+				         & \forall (i, j) \in \set{1, \dots, m} \times \set{1, \dots, n}, \abs{A_{i j}} \geq 0 &  & \by{d.0.5} \\
+				\implies & \norm{A} = \max_{1 \leq i \leq m, 1 \leq j \leq n} \abs{A_{i j}} \geq 0
+			\end{align*}
+			and
+			\begin{align*}
+				     & \norm{A} = \max_{1 \leq i \leq m, 1 \leq n \leq n} \abs{A_{i j}} = 0                             \\
+				\iff & \forall (i, j) \in \set{1, \dots, m} \times \set{1, \dots, n}, \abs{A_{i j}} = 0                 \\
+				\iff & \forall (i, j) \in \set{1, \dots, m} \times \set{1, \dots, n}, A_{i j} = 0       &  & \by{d.0.5} \\
+				\iff & A = \zm.
+			\end{align*}
+		\item[For \cref{6.1.14}(b):]
+			Let \(A \in \MS\) and let \(a \in \F\).
+			Then we have
+			\begin{align*}
+				\norm{a A} & = \max_{1 \leq i \leq m, 1 \leq j \leq n} \abs{(a A)_{i j}}                     \\
+				           & = \max_{1 \leq i \leq m, 1 \leq j \leq n} \abs{a A_{i j}}       &  & \by{1.2.9} \\
+				           & = \max_{1 \leq i \leq m, 1 \leq j \leq n} \abs{a} \abs{A_{i j}}                 \\
+				           & = \abs{a} \max_{1 \leq i \leq m, 1 \leq j \leq n} \abs{A_{i j}}                 \\
+				           & = \abs{a} \norm{A}.
+			\end{align*}
+		\item[For \cref{6.1.14}(c):]
+			Let \(A, B \in \MS\).
+			Then we have
+			\begin{align*}
+				\norm{A + B} & = \max_{1 \leq i \leq m, 1 \leq j \leq n} \abs{(A + B)_{i j}}                                                                    \\
+				             & = \max_{1 \leq i \leq m, 1 \leq j \leq n} \abs{A_{i j} + B_{i j}}                                               &  & \by{1.2.9}  \\
+				             & \leq \max_{1 \leq i \leq m, 1 \leq j \leq n} \abs{A_{i j}} + \abs{B_{i j}}                                      &  & \by{d.3}[c] \\
+				             & = \max_{1 \leq i \leq m, 1 \leq j \leq n} \abs{A_{i j}} + \max_{1 \leq i \leq m, 1 \leq j \leq n} \abs{B_{i j}}                  \\
+				             & = \norm{A} + \norm{B}.
+			\end{align*}
+	\end{description}
+	From all proofs above we conclude by \cref{6.1.14} that \(\norm{\cdot}\) is a norm on \(\MS\) over \(\F\).
 \end{proof}
 
 \begin{proof}[\pf{ex:6.1.24}(b)]
-  \begin{description}
-    \item[For \cref{6.1.14}(a):]
-      Let \(f \in \cfs([0, 1], \F)\).
-      Then we have
-      \begin{align*}
-                 & \forall t \in [0, 1], \abs{f(t)} \geq 0          &  & \text{(by \cref{d.0.5})} \\
-        \implies & \norm{f} = \max_{t \in [0, 1]} \abs{f(t)} \geq 0
-      \end{align*}
-      and
-      \begin{align*}
-             & \norm{f} = \max_{t \in [0, 1]} \abs{f(t)} = 0                               \\
-        \iff & \forall t \in [0, 1], \abs{f(t)} = 0                                        \\
-        \iff & \forall t \in [0, 1], f(t) = 0                &  & \text{(by \cref{d.0.5})} \\
-        \iff & f = \zv.
-      \end{align*}
-    \item[For \cref{6.1.14}(b):]
-      Let \(f \in \cfs([0, 1], \F)\) and let \(c \in \F\).
-      Then we have
-      \begin{align*}
-        \norm{cf} & = \max_{t \in [0, 1]} \abs{(cf)(t)}      \\
-                  & = \max_{t \in [0, 1]} \abs{cf(t)}        \\
-                  & = \max_{t \in [0, 1]} \abs{c} \abs{f(t)} \\
-                  & = \abs{c} \max_{t \in [0, 1]} \abs{f(t)} \\
-                  & = \abs{c} \norm{f}.
-      \end{align*}
-    \item[For \cref{6.1.14}(c):]
-      Let \(f, g \in \cfs([0, 1], \F)\).
-      Then we have
-      \begin{align*}
-        \norm{f + g} & = \max_{t \in [0, 1]} \abs{(f + g)(t)}                            \\
-                     & = \max_{t \in [0, 1]} \abs{f(t) + g(t)}                           \\
-                     & \leq \max_{t \in [0, 1]} \abs{f(t)} + \abs{g(t)}                  \\
-                     & = \max_{t \in [0, 1]} \abs{f(t)} + \max_{t \in [0, 1]} \abs{g(t)} \\
-                     & = \norm{f} + \norm{g}.
-      \end{align*}
-  \end{description}
-  From all proofs above we conclude by \cref{6.1.14} that \(\norm{\cdot}\) is a norm on \(\cfs([0, 1], \F)\) over \(\F\).
+	\begin{description}
+		\item[For \cref{6.1.14}(a):]
+			Let \(f \in \cfs([0, 1], \F)\).
+			Then we have
+			\begin{align*}
+				         & \forall t \in [0, 1], \abs{f(t)} \geq 0          &  & \by{d.0.5} \\
+				\implies & \norm{f} = \max_{t \in [0, 1]} \abs{f(t)} \geq 0
+			\end{align*}
+			and
+			\begin{align*}
+				     & \norm{f} = \max_{t \in [0, 1]} \abs{f(t)} = 0                 \\
+				\iff & \forall t \in [0, 1], \abs{f(t)} = 0                          \\
+				\iff & \forall t \in [0, 1], f(t) = 0                &  & \by{d.0.5} \\
+				\iff & f = \zv.
+			\end{align*}
+		\item[For \cref{6.1.14}(b):]
+			Let \(f \in \cfs([0, 1], \F)\) and let \(c \in \F\).
+			Then we have
+			\begin{align*}
+				\norm{cf} & = \max_{t \in [0, 1]} \abs{(cf)(t)}      \\
+				          & = \max_{t \in [0, 1]} \abs{cf(t)}        \\
+				          & = \max_{t \in [0, 1]} \abs{c} \abs{f(t)} \\
+				          & = \abs{c} \max_{t \in [0, 1]} \abs{f(t)} \\
+				          & = \abs{c} \norm{f}.
+			\end{align*}
+		\item[For \cref{6.1.14}(c):]
+			Let \(f, g \in \cfs([0, 1], \F)\).
+			Then we have
+			\begin{align*}
+				\norm{f + g} & = \max_{t \in [0, 1]} \abs{(f + g)(t)}                            \\
+				             & = \max_{t \in [0, 1]} \abs{f(t) + g(t)}                           \\
+				             & \leq \max_{t \in [0, 1]} \abs{f(t)} + \abs{g(t)}                  \\
+				             & = \max_{t \in [0, 1]} \abs{f(t)} + \max_{t \in [0, 1]} \abs{g(t)} \\
+				             & = \norm{f} + \norm{g}.
+			\end{align*}
+	\end{description}
+	From all proofs above we conclude by \cref{6.1.14} that \(\norm{\cdot}\) is a norm on \(\cfs([0, 1], \F)\) over \(\F\).
 \end{proof}
 
 \begin{proof}[\pf{ex:6.1.24}(c)]
-  \begin{description}
-    \item[For \cref{6.1.14}(a):]
-      Let \(f \in \cfs([0, 1], \F)\).
-      Then we have
-      \begin{align*}
-                 & \forall t \in [0, 1], \abs{f(t)} \geq 0     &  & \text{(by \cref{d.0.5})} \\
-        \implies & \norm{f} = \int_0^1 \abs{f(t)} \; dt \geq 0
-      \end{align*}
-      and
-      \begin{align*}
-             & \norm{f} = \int_0^1 \abs{f(t)} \; dt = 0                               \\
-        \iff & \forall t \in [0, 1], \abs{f(t)} = 0                                   \\
-        \iff & \forall t \in [0, 1], f(t) = 0           &  & \text{(by \cref{d.0.5})} \\
-        \iff & f = \zv.
-      \end{align*}
-    \item[For \cref{6.1.14}(b):]
-      Let \(f \in \cfs([0, 1], \F)\) and let \(c \in \F\).
-      Then we have
-      \begin{align*}
-        \norm{cf} & = \int_0^1 \abs{(cf)(t)} \; dt      \\
-                  & = \int_0^1 \abs{cf(t)} \; dt        \\
-                  & = \int_0^1 \abs{c} \abs{f(t)} \; dt \\
-                  & = \abs{c} \int_0^1 \abs{f(t)} \; dt \\
-                  & = \abs{c} \norm{f}.
-      \end{align*}
-    \item[For \cref{6.1.14}(c):]
-      Let \(f, g \in \cfs([0, 1], \F)\).
-      Then we have
-      \begin{align*}
-        \norm{f + g} & = \int_0^1 \abs{(f + g)(t)} \; dt                       \\
-                     & = \int_0^1 \abs{f(t) + g(t)} \; dt                      \\
-                     & \leq \int_0^1 \abs{f(t)} + \abs{g(t)} \; dt             \\
-                     & = \int_0^1 \abs{f(t)} \; dt + \int_0^1 \abs{g(t)} \; dt \\
-                     & = \norm{f} + \norm{g}.
-      \end{align*}
-  \end{description}
-  From all proofs above we conclude by \cref{6.1.14} that \(\norm{\cdot}\) is a norm on \(\cfs([0, 1], \F)\) over \(\F\).
+	\begin{description}
+		\item[For \cref{6.1.14}(a):]
+			Let \(f \in \cfs([0, 1], \F)\).
+			Then we have
+			\begin{align*}
+				         & \forall t \in [0, 1], \abs{f(t)} \geq 0     &  & \by{d.0.5} \\
+				\implies & \norm{f} = \int_0^1 \abs{f(t)} \; dt \geq 0
+			\end{align*}
+			and
+			\begin{align*}
+				     & \norm{f} = \int_0^1 \abs{f(t)} \; dt = 0                 \\
+				\iff & \forall t \in [0, 1], \abs{f(t)} = 0                     \\
+				\iff & \forall t \in [0, 1], f(t) = 0           &  & \by{d.0.5} \\
+				\iff & f = \zv.
+			\end{align*}
+		\item[For \cref{6.1.14}(b):]
+			Let \(f \in \cfs([0, 1], \F)\) and let \(c \in \F\).
+			Then we have
+			\begin{align*}
+				\norm{cf} & = \int_0^1 \abs{(cf)(t)} \; dt      \\
+				          & = \int_0^1 \abs{cf(t)} \; dt        \\
+				          & = \int_0^1 \abs{c} \abs{f(t)} \; dt \\
+				          & = \abs{c} \int_0^1 \abs{f(t)} \; dt \\
+				          & = \abs{c} \norm{f}.
+			\end{align*}
+		\item[For \cref{6.1.14}(c):]
+			Let \(f, g \in \cfs([0, 1], \F)\).
+			Then we have
+			\begin{align*}
+				\norm{f + g} & = \int_0^1 \abs{(f + g)(t)} \; dt                       \\
+				             & = \int_0^1 \abs{f(t) + g(t)} \; dt                      \\
+				             & \leq \int_0^1 \abs{f(t)} + \abs{g(t)} \; dt             \\
+				             & = \int_0^1 \abs{f(t)} \; dt + \int_0^1 \abs{g(t)} \; dt \\
+				             & = \norm{f} + \norm{g}.
+			\end{align*}
+	\end{description}
+	From all proofs above we conclude by \cref{6.1.14} that \(\norm{\cdot}\) is a norm on \(\cfs([0, 1], \F)\) over \(\F\).
 \end{proof}
 
 \begin{proof}[\pf{ex:6.1.24}(d)]
-  This is the special case of \cref{ex:6.1.24}(a) where \(m = 2\) and \(n = 1\).
+	This is the special case of \cref{ex:6.1.24}(a) where \(m = 2\) and \(n = 1\).
 \end{proof}
 
 \begin{ex}\label{ex:6.1.25}
-  Use \cref{ex:6.1.20} to show that there is no inner product \(\inn{\cdot, \cdot}\) on \(\R^2\) such that \(\norm{x}^2 = \inn{x, x}\) for all \(x \in \R^2\) if the norm is defined as in \cref{ex:6.1.24}(d).
+	Use \cref{ex:6.1.20} to show that there is no inner product \(\inn{\cdot, \cdot}\) on \(\R^2\) such that \(\norm{x}^2 = \inn{x, x}\) for all \(x \in \R^2\) if the norm is defined as in \cref{ex:6.1.24}(d).
 \end{ex}
 
 \begin{proof}[\pf{ex:6.1.25}]
-  Suppose for sake of contradiction that there exist an inner product \(\inn{\cdot, \cdot}\) on \(\R^2\) over \(\R\) such that \(\inn{x, x} = \norm{x}^2 = (\max\set{\abs{x_1}, \abs{x_2}})^2\) for all \(x \in \R^2\).
-  But then we have
-  \begin{align*}
-    \inn{(2, 0), (1, 1)}   & = \frac{1}{4} \norm{(3, 1)}^2 - \frac{1}{4} \norm{(1, -1)}^2        &  & \text{(by \cref{ex:6.1.20}(a))} \\
-                           & = \frac{9}{4} - \frac{1}{4}                                         &  & \text{(by \cref{ex:6.1.24}(d))} \\
-                           & = 2                                                                                                      \\
-    2 \inn{(1, 0), (1, 1)} & = 2 \pa{\frac{1}{4} \norm{(2, 1)}^2 - \frac{1}{4} \norm{(0, -1)}^2} &  & \text{(by \cref{ex:6.1.20}(a))} \\
-                           & = 2 \pa{\frac{4}{4} - \frac{1}{4}}                                  &  & \text{(by \cref{ex:6.1.24}(d))} \\
-                           & = \frac{3}{2}                                                                                            \\
-                           & \neq \inn{(2, 0), (1, 1)},
-  \end{align*}
-  a contradiction.
-  Thus there does not exist an inner product on \(\R^2\) such that \(\inn{x, x} = \norm{x}^2 = \max\set{\abs{x_1}, \abs{x_2}}\) for all \(x \in \R^2\).
+	Suppose for sake of contradiction that there exist an inner product \(\inn{\cdot, \cdot}\) on \(\R^2\) over \(\R\) such that \(\inn{x, x} = \norm{x}^2 = (\max\set{\abs{x_1}, \abs{x_2}})^2\) for all \(x \in \R^2\).
+	But then we have
+	\begin{align*}
+		\inn{(2, 0), (1, 1)}   & = \frac{1}{4} \norm{(3, 1)}^2 - \frac{1}{4} \norm{(1, -1)}^2        &  & \by{ex:6.1.20}[a] \\
+		                       & = \frac{9}{4} - \frac{1}{4}                                         &  & \by{ex:6.1.24}[d] \\
+		                       & = 2                                                                                        \\
+		2 \inn{(1, 0), (1, 1)} & = 2 \pa{\frac{1}{4} \norm{(2, 1)}^2 - \frac{1}{4} \norm{(0, -1)}^2} &  & \by{ex:6.1.20}[a] \\
+		                       & = 2 \pa{\frac{4}{4} - \frac{1}{4}}                                  &  & \by{ex:6.1.24}[d] \\
+		                       & = \frac{3}{2}                                                                              \\
+		                       & \neq \inn{(2, 0), (1, 1)},
+	\end{align*}
+	a contradiction.
+	Thus there does not exist an inner product on \(\R^2\) such that \(\inn{x, x} = \norm{x}^2 = \max\set{\abs{x_1}, \abs{x_2}}\) for all \(x \in \R^2\).
 \end{proof}
 
 \begin{ex}\label{ex:6.1.26}
-  Let \(\norm{\cdot}\) be a norm on a vector space \(\V\) over \(\F\), and define, for each ordered pair of vectors, the scalar \(d(x, y) = \norm{x - y}\), called the \textbf{distance} between \(x\) and \(y\).
-  Prove the following results for all \(x, y, z \in \V\).
-  \begin{enumerate}
-    \item \(d(x, y) \geq 0\).
-    \item \(d(x, y) = d(y, x)\).
-    \item \(d(x, y) \leq d(x, z) + d(z, y)\).
-    \item \(d(x, x) = 0\).
-    \item \(d(x, y) \neq 0\) if \(x \neq y\).
-  \end{enumerate}
+	Let \(\norm{\cdot}\) be a norm on a vector space \(\V\) over \(\F\), and define, for each ordered pair of vectors, the scalar \(d(x, y) = \norm{x - y}\), called the \textbf{distance} between \(x\) and \(y\).
+	Prove the following results for all \(x, y, z \in \V\).
+	\begin{enumerate}
+		\item \(d(x, y) \geq 0\).
+		\item \(d(x, y) = d(y, x)\).
+		\item \(d(x, y) \leq d(x, z) + d(z, y)\).
+		\item \(d(x, x) = 0\).
+		\item \(d(x, y) \neq 0\) if \(x \neq y\).
+	\end{enumerate}
 \end{ex}
 
 \begin{proof}[\pf{ex:6.1.26}]
-  We have
-  \begin{align*}
-    d(x, y) & = \norm{x - y}                   &  & \text{(by \cref{ex:6.1.26})} \\
-            & \geq 0                           &  & \text{(by \cref{6.1.14}(a))} \\
-    d(x, y) & = \norm{x - y}                   &  & \text{(by \cref{ex:6.1.26})} \\
-            & = \norm{(-1)(y - x)}             &  & \text{(by \cref{1.2.1})}     \\
-            & = \abs{-1} \norm{y - x}          &  & \text{(by \cref{6.1.14}(b))} \\
-            & = \norm{y - x}                                                     \\
-            & = d(y, x)                        &  & \text{(by \cref{ex:6.1.26})} \\
-    d(x, y) & = \norm{x - y}                   &  & \text{(by \cref{ex:6.1.26})} \\
-            & = \norm{x - z + z - y}                                             \\
-            & \leq \norm{x - z} + \norm{z - y} &  & \text{(by \cref{6.1.14}(c))} \\
-    d(x, x) & = \norm{x - x}                   &  & \text{(by \cref{ex:6.1.26})} \\
-            & = \norm{\zv}                                                       \\
-            & = 0                              &  & \text{(by \cref{6.1.14}(a))}
-  \end{align*}
-  and
-  \begin{align*}
-             & x \neq y                                              \\
-    \implies & x - y \neq \zv                                        \\
-    \implies & \norm{x - y} \neq 0 &  & \text{(by \cref{6.1.14}(a))} \\
-    \implies & d(x, y) \neq 0.     &  & \text{(by \cref{ex:6.1.26})}
-  \end{align*}
+	We have
+	\begin{align*}
+		d(x, y) & = \norm{x - y}                   &  & \by{ex:6.1.26} \\
+		        & \geq 0                           &  & \by{6.1.14}[a] \\
+		d(x, y) & = \norm{x - y}                   &  & \by{ex:6.1.26} \\
+		        & = \norm{(-1)(y - x)}             &  & \by{1.2.1}     \\
+		        & = \abs{-1} \norm{y - x}          &  & \by{6.1.14}[b] \\
+		        & = \norm{y - x}                                       \\
+		        & = d(y, x)                        &  & \by{ex:6.1.26} \\
+		d(x, y) & = \norm{x - y}                   &  & \by{ex:6.1.26} \\
+		        & = \norm{x - z + z - y}                               \\
+		        & \leq \norm{x - z} + \norm{z - y} &  & \by{6.1.14}[c] \\
+		d(x, x) & = \norm{x - x}                   &  & \by{ex:6.1.26} \\
+		        & = \norm{\zv}                                         \\
+		        & = 0                              &  & \by{6.1.14}[a]
+	\end{align*}
+	and
+	\begin{align*}
+		         & x \neq y                                \\
+		\implies & x - y \neq \zv                          \\
+		\implies & \norm{x - y} \neq 0 &  & \by{6.1.14}[a] \\
+		\implies & d(x, y) \neq 0.     &  & \by{ex:6.1.26}
+	\end{align*}
 \end{proof}
 
 \begin{ex}\label{ex:6.1.27}
-  Let \(\norm{\cdot}\) be a norm on \(\V\) over \(\R\) satisfying the parallelogram law given in \cref{ex:6.1.11}.
-  Define
-  \[
-    \inn{x, y} = \frac{1}{4} \pa{\norm{x + y}^2 - \norm{x - y}^2}.
-  \]
-  Prove that \(\inn{\cdot, \cdot}\) defines an inner product on \(\V\) over \(\R\) such that \(\norm{x}^2 = \inn{x, x}\) for all \(x \in \V\).
+	Let \(\norm{\cdot}\) be a norm on \(\V\) over \(\R\) satisfying the parallelogram law given in \cref{ex:6.1.11}.
+	Define
+	\[
+		\inn{x, y} = \frac{1}{4} \pa{\norm{x + y}^2 - \norm{x - y}^2}.
+	\]
+	Prove that \(\inn{\cdot, \cdot}\) defines an inner product on \(\V\) over \(\R\) such that \(\norm{x}^2 = \inn{x, x}\) for all \(x \in \V\).
 \end{ex}
 
 \begin{proof}[\pf{ex:6.1.27}]
-  Let \(x, y, z \in \V\).
-  First we show that \(\inn{2x, y} = 2 \inn{x, y}\).
-  This is true since
-  \begin{align*}
-    \inn{x, 2y} & = \frac{1}{4} \pa{\norm{x + 2y}^2 - \norm{x - 2y}^2}                                                                   \\
-                & = \frac{1}{4} \pa{\norm{x + 2y}^2 + \norm{x}^2 - \norm{x}^2 - \norm{x - 2y}^2}                                         \\
-                & = \frac{1}{4} \pa{2 \norm{x + y}^2 + 2 \norm{y}^2 - 2 \norm{x - y}^2 - 2 \norm{y}^2} &  & \text{(by \cref{ex:6.1.11})} \\
-                & = 2 \inn{x, y}.
-  \end{align*}
+	Let \(x, y, z \in \V\).
+	First we show that \(\inn{2x, y} = 2 \inn{x, y}\).
+	This is true since
+	\begin{align*}
+		\inn{x, 2y} & = \frac{1}{4} \pa{\norm{x + 2y}^2 - \norm{x - 2y}^2}                                                     \\
+		            & = \frac{1}{4} \pa{\norm{x + 2y}^2 + \norm{x}^2 - \norm{x}^2 - \norm{x - 2y}^2}                           \\
+		            & = \frac{1}{4} \pa{2 \norm{x + y}^2 + 2 \norm{y}^2 - 2 \norm{x - y}^2 - 2 \norm{y}^2} &  & \by{ex:6.1.11} \\
+		            & = 2 \inn{x, y}.
+	\end{align*}
 
-  Next we show that \(\inn{x + y, z} = \inn{x, z} + \inn{y, z}\).
-  This is true since
-  \begin{align*}
-     & \inn{x, z} + \inn{y, z}                                                                                                                             \\
-     & = \frac{1}{4} \pa{\norm{x + z}^2 - \norm{x - z}^2 + \norm{y + z}^2 - \norm{y - z}^2}                                                                \\
-     & = \frac{1}{4} \pa{2 \norm{\frac{1}{2} x + \frac{1}{2} y + z}^2 + 2 \norm{\frac{1}{2} x - \frac{1}{2} y}^2}       &  & \text{(by \cref{ex:6.1.11})}  \\
-     & \quad - \frac{1}{4} \pa{2 \norm{\frac{1}{2} x + \frac{1}{2} y - z}^2 + 2 \norm{\frac{1}{2} x - \frac{1}{2} y}^2} &  & \text{(by \cref{ex:6.1.11})}  \\
-     & = \frac{1}{8} \pa{\norm{x + y + 2z}^2 - \norm{x + y - 2z}^2}                                                     &  & \text{(by \cref{6.1.14}(b))}  \\
-     & = \frac{1}{2} \inn{x + y, 2z}                                                                                                                       \\
-     & = \inn{x + y, z}.                                                                                                &  & \text{(from the proof above)}
-  \end{align*}
-  Thus \cref{6.1.1}(a) is satisfied.
+	Next we show that \(\inn{x + y, z} = \inn{x, z} + \inn{y, z}\).
+	This is true since
+	\begin{align*}
+		 & \inn{x, z} + \inn{y, z}                                                                                                                             \\
+		 & = \frac{1}{4} \pa{\norm{x + z}^2 - \norm{x - z}^2 + \norm{y + z}^2 - \norm{y - z}^2}                                                                \\
+		 & = \frac{1}{4} \pa{2 \norm{\frac{1}{2} x + \frac{1}{2} y + z}^2 + 2 \norm{\frac{1}{2} x - \frac{1}{2} y}^2}       &  & \by{ex:6.1.11}                \\
+		 & \quad - \frac{1}{4} \pa{2 \norm{\frac{1}{2} x + \frac{1}{2} y - z}^2 + 2 \norm{\frac{1}{2} x - \frac{1}{2} y}^2} &  & \by{ex:6.1.11}                \\
+		 & = \frac{1}{8} \pa{\norm{x + y + 2z}^2 - \norm{x + y - 2z}^2}                                                     &  & \by{6.1.14}[b]                \\
+		 & = \frac{1}{2} \inn{x + y, 2z}                                                                                                                       \\
+		 & = \inn{x + y, z}.                                                                                                &  & \text{(from the proof above)}
+	\end{align*}
+	Thus \cref{6.1.1}(a) is satisfied.
 
-  Next we show that \(\inn{nx, y} = n \inn{x, y}\) for all \(n \in \Z^+\).
-  This is true since
-  \begin{align*}
-    \forall n \in \Z^+, \inn{nx, y} & = \inn{\sum_{i = 1}^n x, y}                                    \\
-                                    & = \sum_{i = 1}^n \inn{x, y} &  & \text{(from the proof above)} \\
-                                    & = n \inn{x, y}.
-  \end{align*}
+	Next we show that \(\inn{nx, y} = n \inn{x, y}\) for all \(n \in \Z^+\).
+	This is true since
+	\begin{align*}
+		\forall n \in \Z^+, \inn{nx, y} & = \inn{\sum_{i = 1}^n x, y}                                    \\
+		                                & = \sum_{i = 1}^n \inn{x, y} &  & \text{(from the proof above)} \\
+		                                & = n \inn{x, y}.
+	\end{align*}
 
-  Next we show that \(\inn{nx, y} = n \inn{x, y}\) for all \(n \in \Z^-\).
-  This is true since
-  \begin{align*}
-             & \frac{1}{4} \pa{\norm{\zv + y}^2 - \norm{\zv - y}^2} = \frac{1}{4} \pa{\norm{y}^2 - \norm{y}^2} = 0 &  & \text{(by \cref{6.1.14}(b))}  \\
-    \implies & 0 = \inn{\zv, y} = \inn{0x, y}                                                                      &  & \text{(by \cref{1.2}(a))}     \\
-    \implies & \forall n \in \Z^-, 0 = \inn{(n + (-n)) x, y}                                                                                          \\
-             & = \inn{nx, y} + \inn{(-n)x, y}                                                                      &  & \text{(from the proof above)} \\
-             & = \inn{nx, y} + (-n) \inn{x, y}                                                                     &  & (-n \in \Z^+)                 \\
-    \implies & \forall n \in \Z^-, n \inn{x, y} = \inn{nx, y}.
-  \end{align*}
-  This implies \(\inn{nx, y} = n \inn{x, y}\) for all \(n \in \Z\).
+	Next we show that \(\inn{nx, y} = n \inn{x, y}\) for all \(n \in \Z^-\).
+	This is true since
+	\begin{align*}
+		         & \frac{1}{4} \pa{\norm{\zv + y}^2 - \norm{\zv - y}^2} = \frac{1}{4} \pa{\norm{y}^2 - \norm{y}^2} = 0 &  & \by{6.1.14}[b]                \\
+		\implies & 0 = \inn{\zv, y} = \inn{0x, y}                                                                      &  & \by{1.2}[a]                   \\
+		\implies & \forall n \in \Z^-, 0 = \inn{(n + (-n)) x, y}                                                                                          \\
+		         & = \inn{nx, y} + \inn{(-n)x, y}                                                                      &  & \text{(from the proof above)} \\
+		         & = \inn{nx, y} + (-n) \inn{x, y}                                                                     &  & (-n \in \Z^+)                 \\
+		\implies & \forall n \in \Z^-, n \inn{x, y} = \inn{nx, y}.
+	\end{align*}
+	This implies \(\inn{nx, y} = n \inn{x, y}\) for all \(n \in \Z\).
 
-  Next we show that \(m \inn{\frac{1}{m} x, y} = \inn{x, y}\) for all \(m \in \Z^+\).
-  This is true since
-  \begin{align*}
-    \forall m \in \Z^+, m \inn{\frac{1}{m} x, y} & = \inn{m \frac{1}{m} x, y} &  & \text{(from the proof above)} \\
-                                                 & = \inn{x, y}.
-  \end{align*}
-  This implies \(\inn{\frac{1}{m} x, y} = \frac{1}{m} \inn{x, y}\) for all \(m \in \Z^+\).
+	Next we show that \(m \inn{\frac{1}{m} x, y} = \inn{x, y}\) for all \(m \in \Z^+\).
+	This is true since
+	\begin{align*}
+		\forall m \in \Z^+, m \inn{\frac{1}{m} x, y} & = \inn{m \frac{1}{m} x, y} &  & \text{(from the proof above)} \\
+		                                             & = \inn{x, y}.
+	\end{align*}
+	This implies \(\inn{\frac{1}{m} x, y} = \frac{1}{m} \inn{x, y}\) for all \(m \in \Z^+\).
 
-  Next we show that \(\inn{rx, y} = r \inn{x, y}\) for all \(r \in \Q\).
-  This is true since
-  \begin{align*}
-             & \forall r \in \Q, \exists a, b \in \Z : \begin{dcases}
-                                                         b > 0 \\
-                                                         r = a / b
-                                                       \end{dcases}                                                               \\
-    \implies & \forall r \in \Q, \inn{rx, y} = \inn{\frac{a}{b} x, y} = \frac{1}{b} \inn{ax, y} &  & \text{(from the proof above)} \\
-             & = \frac{a}{b} \inn{x, y} = r \inn{x, y}.                                         &  & \text{(from the proof above)}
-  \end{align*}
+	Next we show that \(\inn{rx, y} = r \inn{x, y}\) for all \(r \in \Q\).
+	This is true since
+	\begin{align*}
+		         & \forall r \in \Q, \exists a, b \in \Z : \begin{dcases}
+			                                                   b > 0 \\
+			                                                   r = a / b
+		                                                   \end{dcases}                                                               \\
+		\implies & \forall r \in \Q, \inn{rx, y} = \inn{\frac{a}{b} x, y} = \frac{1}{b} \inn{ax, y} &  & \text{(from the proof above)} \\
+		         & = \frac{a}{b} \inn{x, y} = r \inn{x, y}.                                         &  & \text{(from the proof above)}
+	\end{align*}
 
-  Next we show that \(\abs{\inn{x, y}} \leq \norm{x} \norm{y}\).
-  Observe that
-  \begin{align*}
-             & \norm{x + y}^2 = 2 \norm{x}^2 - \norm{x - y}^2 + 2 \norm{y}^2       &  & \text{(by \cref{ex:6.1.11})} \\
-             & = 2 \norm{x}^2 + 4 \inn{x, y} + 2 \norm{y}^2 - \norm{x + y}^2                                         \\
-    \implies & \norm{x + y}^2 = \norm{x}^2 + 2 \inn{x, y} + \norm{y}^2                                               \\
-    \implies & \norm{x}^2 + 2 \inn{x, y} + \norm{y}^2 \leq (\norm{x} + \norm{y})^2 &  & \text{(by \cref{6.1.14}(c))} \\
-             & = \norm{x}^2 + 2 \norm{x} \norm{y} + \norm{y}^2                                                       \\
-    \implies & \inn{x, y} \leq \norm{x} \norm{y}
-  \end{align*}
-  and
-  \begin{align*}
-             & \norm{x - y}^2 = 2 \norm{x}^2 - \norm{x + y}^2 + 2 \norm{y}^2        &  & \text{(by \cref{ex:6.1.11})} \\
-             & = 2 \norm{x}^2 - 4 \inn{x, y} + 2 \norm{y}^2 - \norm{x - y}^2                                          \\
-    \implies & \norm{x - y}^2 = \norm{x}^2 - 2 \inn{x, y} + \norm{y}^2                                                \\
-    \implies & \norm{x}^2 - 2 \inn{x, y} + \norm{y}^2 \leq (\norm{x} + \norm{-y})^2 &  & \text{(by \cref{6.1.14}(c))} \\
-             & = (\norm{x} + \norm{y})^2                                            &  & \text{(by \cref{6.1.14}(b))} \\
-             & = \norm{x}^2 + 2 \norm{x} \norm{y} + \norm{y}^2                                                        \\
-    \implies & - \inn{x, y} \leq \norm{x} \norm{y}.
-  \end{align*}
-  Thus
-  \[
-    \begin{dcases}
-      \inn{x, y} \leq \norm{x} \norm{y} \\
-      -\inn{x, y} \leq \norm{x} \norm{y}
-    \end{dcases} \implies \abs{\inn{x, y}} \leq \norm{x} \norm{y}.
-  \]
+	Next we show that \(\abs{\inn{x, y}} \leq \norm{x} \norm{y}\).
+	Observe that
+	\begin{align*}
+		         & \norm{x + y}^2 = 2 \norm{x}^2 - \norm{x - y}^2 + 2 \norm{y}^2       &  & \by{ex:6.1.11} \\
+		         & = 2 \norm{x}^2 + 4 \inn{x, y} + 2 \norm{y}^2 - \norm{x + y}^2                           \\
+		\implies & \norm{x + y}^2 = \norm{x}^2 + 2 \inn{x, y} + \norm{y}^2                                 \\
+		\implies & \norm{x}^2 + 2 \inn{x, y} + \norm{y}^2 \leq (\norm{x} + \norm{y})^2 &  & \by{6.1.14}[c] \\
+		         & = \norm{x}^2 + 2 \norm{x} \norm{y} + \norm{y}^2                                         \\
+		\implies & \inn{x, y} \leq \norm{x} \norm{y}
+	\end{align*}
+	and
+	\begin{align*}
+		         & \norm{x - y}^2 = 2 \norm{x}^2 - \norm{x + y}^2 + 2 \norm{y}^2        &  & \by{ex:6.1.11} \\
+		         & = 2 \norm{x}^2 - 4 \inn{x, y} + 2 \norm{y}^2 - \norm{x - y}^2                            \\
+		\implies & \norm{x - y}^2 = \norm{x}^2 - 2 \inn{x, y} + \norm{y}^2                                  \\
+		\implies & \norm{x}^2 - 2 \inn{x, y} + \norm{y}^2 \leq (\norm{x} + \norm{-y})^2 &  & \by{6.1.14}[c] \\
+		         & = (\norm{x} + \norm{y})^2                                            &  & \by{6.1.14}[b] \\
+		         & = \norm{x}^2 + 2 \norm{x} \norm{y} + \norm{y}^2                                          \\
+		\implies & - \inn{x, y} \leq \norm{x} \norm{y}.
+	\end{align*}
+	Thus
+	\[
+		\begin{dcases}
+			\inn{x, y} \leq \norm{x} \norm{y} \\
+			-\inn{x, y} \leq \norm{x} \norm{y}
+		\end{dcases} \implies \abs{\inn{x, y}} \leq \norm{x} \norm{y}.
+	\]
 
-  Next we show that
-  \[
-    \abs{c \inn{x, y} - \inn{cx, y}} = \abs{(c - r) \inn{x, y} - \inn{(c - r) x, y}} \leq 2 \abs{c - r} \norm{x} \norm{y}
-  \]
-  for all \((c, r) \in \R \times \Q\).
-  This is true since
-  \begin{align*}
-     & \forall (c, r) \in \R \times \Q, \abs{c \inn{x, y} - \inn{cx, y}}                                               \\
-     & = \abs{(c - r + r) \inn{x, y} - \inn{(c - r + r) x, y}}                                                         \\
-     & = \abs{(c - r) \inn{x, y} + r \inn{x, y} - \inn{(c - r)x + rx, y}}                                              \\
-     & = \abs{(c - r) \inn{x, y} + r \inn{x, y} - \inn{(c - r)x, y} - \inn{rx, y}}  &  & \text{(from the proof above)} \\
-     & = \abs{(c - r) \inn{x, y} + r \inn{x, y} - \inn{(c - r)x, y} - r \inn{x, y}} &  & \text{(from the proof above)} \\
-     & = \abs{(c - r) \inn{x, y} - \inn{(c - r) x, y}}                                                                 \\
-     & \leq \abs{(c - r) \inn{x, y}} + \abs{\inn{(c - r) x, y}}                     &  & \text{(by \cref{d.3}(c))}     \\
-     & = \abs{c - r} \abs{\inn{x, y}} + \abs{\inn{(c - r) x, y}}                                                       \\
-     & \leq \abs{c - r} \abs{\inn{x, y}} + \norm{(c - r) x} \norm{y}                &  & \text{(from the proof above)} \\
-     & = \abs{c - r} \abs{\inn{x, y}} + \abs{c - r} \norm{x} \norm{y}               &  & \text{(by \cref{6.1.14}(b))}  \\
-     & \leq 2 \abs{c - r} \norm{x} \norm{y}.                                        &  & \text{(from the proof above)}
-  \end{align*}
+	Next we show that
+	\[
+		\abs{c \inn{x, y} - \inn{cx, y}} = \abs{(c - r) \inn{x, y} - \inn{(c - r) x, y}} \leq 2 \abs{c - r} \norm{x} \norm{y}
+	\]
+	for all \((c, r) \in \R \times \Q\).
+	This is true since
+	\begin{align*}
+		 & \forall (c, r) \in \R \times \Q, \abs{c \inn{x, y} - \inn{cx, y}}                                               \\
+		 & = \abs{(c - r + r) \inn{x, y} - \inn{(c - r + r) x, y}}                                                         \\
+		 & = \abs{(c - r) \inn{x, y} + r \inn{x, y} - \inn{(c - r)x + rx, y}}                                              \\
+		 & = \abs{(c - r) \inn{x, y} + r \inn{x, y} - \inn{(c - r)x, y} - \inn{rx, y}}  &  & \text{(from the proof above)} \\
+		 & = \abs{(c - r) \inn{x, y} + r \inn{x, y} - \inn{(c - r)x, y} - r \inn{x, y}} &  & \text{(from the proof above)} \\
+		 & = \abs{(c - r) \inn{x, y} - \inn{(c - r) x, y}}                                                                 \\
+		 & \leq \abs{(c - r) \inn{x, y}} + \abs{\inn{(c - r) x, y}}                     &  & \by{d.3}[c]                   \\
+		 & = \abs{c - r} \abs{\inn{x, y}} + \abs{\inn{(c - r) x, y}}                                                       \\
+		 & \leq \abs{c - r} \abs{\inn{x, y}} + \norm{(c - r) x} \norm{y}                &  & \text{(from the proof above)} \\
+		 & = \abs{c - r} \abs{\inn{x, y}} + \abs{c - r} \norm{x} \norm{y}               &  & \by{6.1.14}[b]                \\
+		 & \leq 2 \abs{c - r} \norm{x} \norm{y}.                                        &  & \text{(from the proof above)}
+	\end{align*}
 
-  Next we show that \(c \inn{x, y} = \inn{cx, y}\) for all \(c \in \R\).
-  This is true since
-  \begin{align*}
-             & \forall c \in \R, \exists (r_n)_{n = 0}^\infty \subseteq \Q : \lim_{n \to \infty} r_n = c                                                 \\
-    \implies & \forall c \in \R, \exists (r_n)_{n = 0}^\infty \subseteq \Q :                                                                             \\
-             & 0 \leq \abs{c \inn{x, y} - \inn{cx, y}} \leq \lim_{n \to \infty} 2 \abs{c - r_n} \norm{x} \norm{y} = 0 &  & \text{(from the proof above)} \\
-    \implies & \forall c \in \R, \abs{c \inn{x, y} - \inn{cx, y}} = 0                                                                                    \\
-    \implies & \forall c \in \R, c \inn{x, y} - \inn{cx, y} = 0                                                                                          \\
-    \implies & \forall c \in \R, c \inn{x, y} = \inn{cx, y}.
-  \end{align*}
-  Thus \cref{6.1.1}(b) is satisfied.
+	Next we show that \(c \inn{x, y} = \inn{cx, y}\) for all \(c \in \R\).
+	This is true since
+	\begin{align*}
+		         & \forall c \in \R, \exists (r_n)_{n = 0}^\infty \subseteq \Q : \lim_{n \to \infty} r_n = c                                                 \\
+		\implies & \forall c \in \R, \exists (r_n)_{n = 0}^\infty \subseteq \Q :                                                                             \\
+		         & 0 \leq \abs{c \inn{x, y} - \inn{cx, y}} \leq \lim_{n \to \infty} 2 \abs{c - r_n} \norm{x} \norm{y} = 0 &  & \text{(from the proof above)} \\
+		\implies & \forall c \in \R, \abs{c \inn{x, y} - \inn{cx, y}} = 0                                                                                    \\
+		\implies & \forall c \in \R, c \inn{x, y} - \inn{cx, y} = 0                                                                                          \\
+		\implies & \forall c \in \R, c \inn{x, y} = \inn{cx, y}.
+	\end{align*}
+	Thus \cref{6.1.1}(b) is satisfied.
 
-  Next we show that \cref{6.1.1}(c) is satisfied.
-  This is true since
-  \begin{align*}
-    \conj{\inn{x, y}} & = \inn{x, y}                                              &  & (\inn{x, y} \in \R)          \\
-                      & = \frac{1}{4} \pa{\norm{x + y}^2 - \norm{x - y}^2}                                          \\
-                      & = \frac{1}{4} \pa{\norm{y + x}^2 - \norm{(-1) (y - x)}^2} &  & \text{(by \cref{1.2.1})}     \\
-                      & = \frac{1}{4} \pa{\norm{y + x}^2 - \norm{y - x}^2}        &  & \text{(by \cref{6.1.14}(b))} \\
-                      & = \inn{y, x}.
-  \end{align*}
+	Next we show that \cref{6.1.1}(c) is satisfied.
+	This is true since
+	\begin{align*}
+		\conj{\inn{x, y}} & = \inn{x, y}                                              &  & (\inn{x, y} \in \R) \\
+		                  & = \frac{1}{4} \pa{\norm{x + y}^2 - \norm{x - y}^2}                                 \\
+		                  & = \frac{1}{4} \pa{\norm{y + x}^2 - \norm{(-1) (y - x)}^2} &  & \by{1.2.1}          \\
+		                  & = \frac{1}{4} \pa{\norm{y + x}^2 - \norm{y - x}^2}        &  & \by{6.1.14}[b]      \\
+		                  & = \inn{y, x}.
+	\end{align*}
 
-  Finally we show that \cref{6.1.1}(d) is satisfied.
-  Suppose that \(x \neq \zv\).
-  Then we have
-  \begin{align*}
-    \inn{x, x} & = \frac{1}{4} \pa{\norm{2x}^2 - \norm{\zv}^2}                                      \\
-               & = \norm{x}^2                                  &  & \text{(by \cref{6.1.14}(a)(b))} \\
-               & > 0.                                          &  & \text{(by \cref{6.1.14}(a))}
-  \end{align*}
-  We conclude by \cref{6.1.1} that \(\inn{\cdot, \cdot}\) is an inner product on \(\V\) over \(\R\).
+	Finally we show that \cref{6.1.1}(d) is satisfied.
+	Suppose that \(x \neq \zv\).
+	Then we have
+	\begin{align*}
+		\inn{x, x} & = \frac{1}{4} \pa{\norm{2x}^2 - \norm{\zv}^2}                      \\
+		           & = \norm{x}^2                                  &  & \by{6.1.14}[ab] \\
+		           & > 0.                                          &  & \by{6.1.14}[a]
+	\end{align*}
+	We conclude by \cref{6.1.1} that \(\inn{\cdot, \cdot}\) is an inner product on \(\V\) over \(\R\).
 \end{proof}
 
 \begin{ex}\label{ex:6.1.28}
-  Let \(\V\) be an inner product space over \(\C\) with an inner product \(\inn{\cdot, \cdot}\).
-  Let \([\cdot, \cdot]\) be the real-valued function such that \([x, y]\) is the real part of the complex number \(\inn{x, y}\) for all \(x, y \in \V\).
-  Prove that \([\cdot, \cdot]\) is an inner product for \(\V\) over \(\R\) (instead of \(\C\)).
-  Prove, furthermore, that \([x, ix] = 0\) for all \(x \in \V\).
+	Let \(\V\) be an inner product space over \(\C\) with an inner product \(\inn{\cdot, \cdot}\).
+	Let \([\cdot, \cdot]\) be the real-valued function such that \([x, y]\) is the real part of the complex number \(\inn{x, y}\) for all \(x, y \in \V\).
+	Prove that \([\cdot, \cdot]\) is an inner product for \(\V\) over \(\R\) (instead of \(\C\)).
+	Prove, furthermore, that \([x, ix] = 0\) for all \(x \in \V\).
 \end{ex}
 
 \begin{proof}[\pf{ex:6.1.28}]
-  Let \(x, y, z \in \V\) and let \(c \in \R\).
-  Then we have
-  \begin{align*}
-    [x + y, z]    & = \Re(\inn{x + y, z})               &  & \text{(by \cref{ex:6.1.28})} \\
-                  & = \Re(\inn{x, z} + \inn{y, z})      &  & \text{(by \cref{6.1.1}(a))}  \\
-                  & = \Re(\inn{x, z}) + \Re(\inn{y, z}) &  & \text{(by \cref{d.0.1})}     \\
-                  & = [x, z] + [y, z]                   &  & \text{(by \cref{ex:6.1.28})} \\
-    [cx, y]       & = \Re(\inn{cx, y})                  &  & \text{(by \cref{ex:6.1.28})} \\
-                  & = \Re(c \inn{x, y})                 &  & \text{(by \cref{6.1.1}(b))}  \\
-                  & = c \Re(\inn{x, y})                 &  & \text{(by \cref{d.0.1})}     \\
-                  & = c [x, y]                          &  & \text{(by \cref{ex:6.1.28})} \\
-    \conj{[x, y]} & = \conj{\Re(\inn{x, y})}            &  & \text{(by \cref{ex:6.1.28})} \\
-                  & = \Re(\conj{\inn{x, y}})            &  & \text{(by \cref{d.0.4})}     \\
-                  & = \Re(\inn{y, x})                   &  & \text{(by \cref{6.1.1}(c))}  \\
-                  & = [y, x].                           &  & \text{(by \cref{ex:6.1.28})}
-  \end{align*}
-  If \(x \neq \zv\), then we have
-  \begin{align*}
-             & \inn{x, x} > 0                             &  & \text{(by \cref{6.1.1}(d))}             \\
-    \implies & \inn{x, x} \in \R                          &  & \text{(\(\C\) is not an ordered field)} \\
-    \implies & [x, x] = \Re(\inn{x, x}) = \inn{x, x} > 0. &  & \text{(by \cref{ex:6.1.28})}
-  \end{align*}
-  Thus by \cref{6.1.1} \([\cdot, \cdot]\) is an inner product on \(\V\) over \(\R\).
+	Let \(x, y, z \in \V\) and let \(c \in \R\).
+	Then we have
+	\begin{align*}
+		[x + y, z]    & = \Re(\inn{x + y, z})               &  & \by{ex:6.1.28} \\
+		              & = \Re(\inn{x, z} + \inn{y, z})      &  & \by{6.1.1}[a]  \\
+		              & = \Re(\inn{x, z}) + \Re(\inn{y, z}) &  & \by{d.0.1}     \\
+		              & = [x, z] + [y, z]                   &  & \by{ex:6.1.28} \\
+		[cx, y]       & = \Re(\inn{cx, y})                  &  & \by{ex:6.1.28} \\
+		              & = \Re(c \inn{x, y})                 &  & \by{6.1.1}[b]  \\
+		              & = c \Re(\inn{x, y})                 &  & \by{d.0.1}     \\
+		              & = c [x, y]                          &  & \by{ex:6.1.28} \\
+		\conj{[x, y]} & = \conj{\Re(\inn{x, y})}            &  & \by{ex:6.1.28} \\
+		              & = \Re(\conj{\inn{x, y}})            &  & \by{d.0.4}     \\
+		              & = \Re(\inn{y, x})                   &  & \by{6.1.1}[c]  \\
+		              & = [y, x].                           &  & \by{ex:6.1.28}
+	\end{align*}
+	If \(x \neq \zv\), then we have
+	\begin{align*}
+		         & \inn{x, x} > 0                             &  & \by{6.1.1}[d]                           \\
+		\implies & \inn{x, x} \in \R                          &  & \text{(\(\C\) is not an ordered field)} \\
+		\implies & [x, x] = \Re(\inn{x, x}) = \inn{x, x} > 0. &  & \by{ex:6.1.28}
+	\end{align*}
+	Thus by \cref{6.1.1} \([\cdot, \cdot]\) is an inner product on \(\V\) over \(\R\).
 
-  Now we show that \([x, ix] = 0\) for all \(x \in \V\).
-  This is true since
-  \begin{align*}
-    \forall x \in \V, [x, ix] & = \Re(\inn{x, ix})   &  & \text{(by \cref{ex:6.1.28})} \\
-                              & = \Re(-i \inn{x, x}) &  & \text{(by \cref{6.1}(b))}    \\
-                              & = 0.                 &  & (\inn{x, x} \in \R)
-  \end{align*}
+	Now we show that \([x, ix] = 0\) for all \(x \in \V\).
+	This is true since
+	\begin{align*}
+		\forall x \in \V, [x, ix] & = \Re(\inn{x, ix})   &  & \by{ex:6.1.28}      \\
+		                          & = \Re(-i \inn{x, x}) &  & \by{6.1}[b]         \\
+		                          & = 0.                 &  & (\inn{x, x} \in \R)
+	\end{align*}
 \end{proof}
 
 \begin{ex}\label{ex:6.1.29}
-  Let \(\V\) be a vector space over \(\C\), and suppose that \([\cdot, \cdot]\) is an inner product on \(\V\) over \(\R\) (instead of \(\C\)), such that \([x, ix] = 0\) for all \(x \in \V\).
-  Let \(\inn{\cdot, \cdot}\) be the complex-valued function defined by
-  \[
-    \inn{x, y} = [x, y] + i[x, iy] \quad \text{for } x, y \in \V.
-  \]
-  Prove that \(\inn{\cdot, \cdot}\) is an inner product on \(\V\) over \(\C\).
+	Let \(\V\) be a vector space over \(\C\), and suppose that \([\cdot, \cdot]\) is an inner product on \(\V\) over \(\R\) (instead of \(\C\)), such that \([x, ix] = 0\) for all \(x \in \V\).
+	Let \(\inn{\cdot, \cdot}\) be the complex-valued function defined by
+	\[
+		\inn{x, y} = [x, y] + i[x, iy] \quad \text{for } x, y \in \V.
+	\]
+	Prove that \(\inn{\cdot, \cdot}\) is an inner product on \(\V\) over \(\C\).
 \end{ex}
 
 \begin{proof}[\pf{ex:6.1.29}]
-  Let \(x, y, z \in \V\) and let \(c \in \C\).
-  First observe that
-  \begin{align*}
-    0 & = [x + iy, i(x + iy)]                   &  & \text{(by hypothesis)}       \\
-      & = [x + iy, ix - y]                                                        \\
-      & = [x, ix - y] + [iy, ix - y]            &  & \text{(by \cref{6.1.1}(a))}  \\
-      & = [x, ix] - [x, y] + [iy, ix] - [iy, y] &  & \text{(by \cref{6.1}(a)(b))} \\
-      & = [x, ix] - [x, y] + [ix, iy] - [y, iy] &  & \text{(by \cref{6.1.1}(c))}  \\
-      & = [ix, iy] - [x, y].                    &  & \text{(by hypothesis)}
-  \end{align*}
-  Thus \([x, y] = [ix, iy]\) and
-  \begin{align*}
-    [ix, y] & = [i(ix), iy]                                  \\
-            & = [-x, iy]                                     \\
-            & = -[x, iy].   &  & \text{(by \cref{6.1.1}(a))}
-  \end{align*}
-  Then we have
-  \begin{align*}
-    \inn{x + y, z}    & = [x + y, z] + i[x + y, iz]                                 &  & \text{(by \cref{ex:6.1.29})}   \\
-                      & = [x, z] + [y, z] + i[x, iz] + i[y, iz]                     &  & \text{(by \cref{6.1.1}(a))}    \\
-                      & = \inn{x, z} + \inn{y, z}                                   &  & \text{(by \cref{ex:6.1.29})}   \\
-    \inn{cx, y}       & = [cx, y] + i[cx, iy]                                       &  & \text{(by \cref{ex:6.1.29})}   \\
-                      & = [(\Re(c) + i \Im(c)) x, y] + i[(\Re(c) + i \Im(c)) x, iy]                                     \\
-                      & = \Re(c) [x, y] + \Im(c) [ix, y]                            &  & \text{(by \cref{6.1.1}(a)(b))} \\
-                      & \quad + i \Re(c) [x, iy] + i \Im(c) [ix, iy]                &  & \text{(by \cref{6.1.1}(a)(b))} \\
-                      & = \Re(c) ([x, y] + i[x, iy])                                                                    \\
-                      & \quad + i \Im(c) ([ix, iy] - i[ix, y])                                                          \\
-                      & = \Re(c) ([x, y] + i[x, iy])                                                                    \\
-                      & \quad + i \Im(c) ([x, y] + i[x, iy])                        &  & \text{(from the proof above)}  \\
-                      & = c \inn{x, y}                                              &  & \text{(by \cref{ex:6.1.29})}   \\
-    \conj{\inn{x, y}} & = \conj{[x, y] + i[x, iy]}                                  &  & \text{(by \cref{ex:6.1.29})}   \\
-                      & = [x, y] - i[x, iy]                                         &  & \text{(by \cref{d.0.4})}       \\
-                      & = [y, x] - i[iy, x]                                         &  & \text{(by \cref{6.1.1}(c))}    \\
-                      & = [y, x] + i[y, ix]                                         &  & \text{(from the proof above)}  \\
-                      & = \inn{y, x}.                                               &  & \text{(by \cref{ex:6.1.29})}
-  \end{align*}
-  If \(x \neq \zv\), then we have
-  \begin{align*}
-             & [x, x] > 0                                   &  & \text{(by \cref{6.1.1}(d))}  \\
-    \implies & \inn{x, x} = [x, x] + i[x, ix] = [x, x] > 0. &  & \text{(by \cref{ex:6.1.29})}
-  \end{align*}
-  Thus by \cref{6.1.1} \(\inn{\cdot, \cdot}\) is an inner product on \(V\) over \(\C\).
+	Let \(x, y, z \in \V\) and let \(c \in \C\).
+	First observe that
+	\begin{align*}
+		0 & = [x + iy, i(x + iy)]                   &  & \text{(by hypothesis)} \\
+		  & = [x + iy, ix - y]                                                  \\
+		  & = [x, ix - y] + [iy, ix - y]            &  & \by{6.1.1}[a]          \\
+		  & = [x, ix] - [x, y] + [iy, ix] - [iy, y] &  & \by{6.1}[ab]           \\
+		  & = [x, ix] - [x, y] + [ix, iy] - [y, iy] &  & \by{6.1.1}[c]          \\
+		  & = [ix, iy] - [x, y].                    &  & \text{(by hypothesis)}
+	\end{align*}
+	Thus \([x, y] = [ix, iy]\) and
+	\begin{align*}
+		[ix, y] & = [i(ix), iy]                    \\
+		        & = [-x, iy]                       \\
+		        & = -[x, iy].   &  & \by{6.1.1}[a]
+	\end{align*}
+	Then we have
+	\begin{align*}
+		\inn{x + y, z}    & = [x + y, z] + i[x + y, iz]                                 &  & \by{ex:6.1.29}                \\
+		                  & = [x, z] + [y, z] + i[x, iz] + i[y, iz]                     &  & \by{6.1.1}[a]                 \\
+		                  & = \inn{x, z} + \inn{y, z}                                   &  & \by{ex:6.1.29}                \\
+		\inn{cx, y}       & = [cx, y] + i[cx, iy]                                       &  & \by{ex:6.1.29}                \\
+		                  & = [(\Re(c) + i \Im(c)) x, y] + i[(\Re(c) + i \Im(c)) x, iy]                                    \\
+		                  & = \Re(c) [x, y] + \Im(c) [ix, y]                            &  & \by{6.1.1}[ab]                \\
+		                  & \quad + i \Re(c) [x, iy] + i \Im(c) [ix, iy]                &  & \by{6.1.1}[ab]                \\
+		                  & = \Re(c) ([x, y] + i[x, iy])                                                                   \\
+		                  & \quad + i \Im(c) ([ix, iy] - i[ix, y])                                                         \\
+		                  & = \Re(c) ([x, y] + i[x, iy])                                                                   \\
+		                  & \quad + i \Im(c) ([x, y] + i[x, iy])                        &  & \text{(from the proof above)} \\
+		                  & = c \inn{x, y}                                              &  & \by{ex:6.1.29}                \\
+		\conj{\inn{x, y}} & = \conj{[x, y] + i[x, iy]}                                  &  & \by{ex:6.1.29}                \\
+		                  & = [x, y] - i[x, iy]                                         &  & \by{d.0.4}                    \\
+		                  & = [y, x] - i[iy, x]                                         &  & \by{6.1.1}[c]                 \\
+		                  & = [y, x] + i[y, ix]                                         &  & \text{(from the proof above)} \\
+		                  & = \inn{y, x}.                                               &  & \by{ex:6.1.29}
+	\end{align*}
+	If \(x \neq \zv\), then we have
+	\begin{align*}
+		         & [x, x] > 0                                   &  & \by{6.1.1}[d]  \\
+		\implies & \inn{x, x} = [x, x] + i[x, ix] = [x, x] > 0. &  & \by{ex:6.1.29}
+	\end{align*}
+	Thus by \cref{6.1.1} \(\inn{\cdot, \cdot}\) is an inner product on \(V\) over \(\C\).
 \end{proof}
 
 \begin{ex}\label{ex:6.1.30}
-  Let \(\norm{\cdot}\) be a norm (as in \cref{6.1.14}) on a vector space \(\V\) over \(\C\) satisfying the parallelogram law given in \cref{ex:6.1.11}.
-  Prove that there is an inner product \(\inn{\cdot, \cdot}\) on \(\V\) over \(\C\) such that \(\norm{x}^2 = \inn{x, x}\) for all \(x \in \V\).
+	Let \(\norm{\cdot}\) be a norm (as in \cref{6.1.14}) on a vector space \(\V\) over \(\C\) satisfying the parallelogram law given in \cref{ex:6.1.11}.
+	Prove that there is an inner product \(\inn{\cdot, \cdot}\) on \(\V\) over \(\C\) such that \(\norm{x}^2 = \inn{x, x}\) for all \(x \in \V\).
 \end{ex}
 
 \begin{proof}[\pf{ex:6.1.30}]
-  First we define a real-valued function \([\cdot, \cdot]\) as follow:
-  \[
-    \forall x, y \in \V, [x, y] = \frac{1}{4} \pa{\norm{x + y}^2 - \norm{x - y}^2}.
-  \]
-  By \cref{ex:6.1.27} we see that \([x, y]\) is an inner product on \(\V\) over \(\R\).
-  Observe that
-  \begin{align*}
-    [x, ix] & = \frac{1}{4} \pa{\norm{x + ix}^2 - \norm{x - ix}^2}                                       \\
-            & = \frac{1}{4} \pa{\norm{x + ix}^2 - \norm{(-i) (x + ix)}^2}                                \\
-            & = \frac{1}{4} \pa{\norm{x + ix}^2 - \norm{x + ix}^2}        &  & \text{(by \cref{6.2}(a))} \\
-            & = 0.
-  \end{align*}
-  Now we define a complex-valued function \(\inn{\cdot, \cdot}\) as follow:
-  \[
-    \forall x, y \in \V, \inn{x, y} = [x, y] + i[x, iy].
-  \]
-  By \cref{ex:6.1.29} we see that \(\inn{\cdot, \cdot}\) is an inner product on \(\V\) over \(\C\).
-  Then we have
-  \begin{align*}
-    \forall x \in \V, \norm{x}^2 & = [x, x]            &  & \text{(by \cref{ex:6.1.27})}  \\
-                                 & = [x, x] + 0                                           \\
-                                 & = [x, x] + i[x, ix] &  & \text{(from the proof above)} \\
-                                 & = \inn{x, x}.       &  & \text{(by \cref{ex:6.1.29})}
-  \end{align*}
+	First we define a real-valued function \([\cdot, \cdot]\) as follow:
+	\[
+		\forall x, y \in \V, [x, y] = \frac{1}{4} \pa{\norm{x + y}^2 - \norm{x - y}^2}.
+	\]
+	By \cref{ex:6.1.27} we see that \([x, y]\) is an inner product on \(\V\) over \(\R\).
+	Observe that
+	\begin{align*}
+		[x, ix] & = \frac{1}{4} \pa{\norm{x + ix}^2 - \norm{x - ix}^2}                         \\
+		        & = \frac{1}{4} \pa{\norm{x + ix}^2 - \norm{(-i) (x + ix)}^2}                  \\
+		        & = \frac{1}{4} \pa{\norm{x + ix}^2 - \norm{x + ix}^2}        &  & \by{6.2}[a] \\
+		        & = 0.
+	\end{align*}
+	Now we define a complex-valued function \(\inn{\cdot, \cdot}\) as follow:
+	\[
+		\forall x, y \in \V, \inn{x, y} = [x, y] + i[x, iy].
+	\]
+	By \cref{ex:6.1.29} we see that \(\inn{\cdot, \cdot}\) is an inner product on \(\V\) over \(\C\).
+	Then we have
+	\begin{align*}
+		\forall x \in \V, \norm{x}^2 & = [x, x]            &  & \by{ex:6.1.27}                \\
+		                             & = [x, x] + 0                                           \\
+		                             & = [x, x] + i[x, ix] &  & \text{(from the proof above)} \\
+		                             & = \inn{x, x}.       &  & \by{ex:6.1.29}
+	\end{align*}
 \end{proof}

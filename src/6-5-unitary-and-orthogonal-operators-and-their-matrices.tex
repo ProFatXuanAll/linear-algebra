@@ -1,40 +1,40 @@
 \section{Unitary and Orthogonal Operators and Their Matrices}\label{sec:6.5}
 
 \begin{note}
-  In \cref{sec:6.5}, we study those linear operators \(\T\) on an inner product space \(\V\) over \(\F\) such that \(\T \T^* = \T^* \T = \IT[\V]\).
-  We will see that these are precisely the linear operators that ``preserve length'' in the sense that \(\norm{\T(x)} = \norm{x}\) for all \(x \in \V\).
-  As another characterization, we prove that, on a finite-dimensional complex inner product space, these are the normal operators whose eigenvalues all have absolute value \(1\).
+	In \cref{sec:6.5}, we study those linear operators \(\T\) on an inner product space \(\V\) over \(\F\) such that \(\T \T^* = \T^* \T = \IT[\V]\).
+	We will see that these are precisely the linear operators that ``preserve length'' in the sense that \(\norm{\T(x)} = \norm{x}\) for all \(x \in \V\).
+	As another characterization, we prove that, on a finite-dimensional complex inner product space, these are the normal operators whose eigenvalues all have absolute value \(1\).
 
-  In past chapters, we were interested in studying those functions that preserve the structure of the underlying space.
-  In particular, linear operators preserve the operations of vector addition and scalar multiplication, and isomorphisms preserve all the vector space structure.
-  It is now natural to consider those linear operators \(\T\) on an inner product space that preserve length.
-  We will see that this condition guarantees, in fact, that \(\T\) preserves the inner product.
+	In past chapters, we were interested in studying those functions that preserve the structure of the underlying space.
+	In particular, linear operators preserve the operations of vector addition and scalar multiplication, and isomorphisms preserve all the vector space structure.
+	It is now natural to consider those linear operators \(\T\) on an inner product space that preserve length.
+	We will see that this condition guarantees, in fact, that \(\T\) preserves the inner product.
 \end{note}
 
 \begin{defn}\label{6.5.1}
-  Let \(\T\) be a linear operator on a finite-dimensional inner product space \(\V\) over \(\F\).
-  If \(\norm{\T(x)} = \norm{x}\) for all \(x \in \V\), we call \(\T\) a \textbf{unitary operator} if \(\F = \C\) and an \textbf{orthogonal operator} if \(\F = \R\).
+	Let \(\T\) be a linear operator on a finite-dimensional inner product space \(\V\) over \(\F\).
+	If \(\norm{\T(x)} = \norm{x}\) for all \(x \in \V\), we call \(\T\) a \textbf{unitary operator} if \(\F = \C\) and an \textbf{orthogonal operator} if \(\F = \R\).
 
-  in the infinite-dimensional case, an operator satisfying the preceding norm requirement is generally called an \textbf{isometry}.
-  If, in addition, the operator is onto (the condition guarantees one-to-one, see \cref{ex:6.1.17}), then the operator is called a \textbf{unitary} or \textbf{orthogonal operator}.
+	in the infinite-dimensional case, an operator satisfying the preceding norm requirement is generally called an \textbf{isometry}.
+	If, in addition, the operator is onto (the condition guarantees one-to-one, see \cref{ex:6.1.17}), then the operator is called a \textbf{unitary} or \textbf{orthogonal operator}.
 \end{defn}
 
 \begin{note}
-  Clearly, any rotation or reflection in \(\R^2\) preserves length and hence is an orthogonal operator.
-  We study these operators in much more detail in \cref{sec:6.11}.
+	Clearly, any rotation or reflection in \(\R^2\) preserves length and hence is an orthogonal operator.
+	We study these operators in much more detail in \cref{sec:6.11}.
 \end{note}
 
 \begin{eg}\label{6.5.2}
-  Let \(h \in \vs{H}\) (see \cref{6.1.8}) satisfy \(\abs{h(x)} = 1\) for all \(x \in [0, 2 \pi]\).
-  Define \(\T \in \ls(\vs{H})\) by \(\T(f) = hf\).
-  Then
-  \begin{align*}
-    \norm{\T(f)}^2 & = \norm{hf}^2                                                                                   \\
-                   & = \inn{hf, hf}                                                    &  & \text{(by \cref{6.1.9})} \\
-                   & = \frac{1}{2 \pi} \int_0^{2 \pi} h(t) f(t) \conj{h(t) f(t)} \; dt &  & \text{(by \cref{6.1.8})} \\
-                   & = \inn{f, f}                                                      &  & \text{(by \cref{6.1.8})} \\
-                   & = \norm{f}^2                                                      &  & \text{(by \cref{6.1.9})}
-  \end{align*}
-  since \(\abs{h(t)}^2 = 1\) for all \(t \in [0, 2 \pi]\).
-  So \(\T\) is a unitary operator.
+	Let \(h \in \vs{H}\) (see \cref{6.1.8}) satisfy \(\abs{h(x)} = 1\) for all \(x \in [0, 2 \pi]\).
+	Define \(\T \in \ls(\vs{H})\) by \(\T(f) = hf\).
+	Then
+	\begin{align*}
+		\norm{\T(f)}^2 & = \norm{hf}^2                                                                     \\
+		               & = \inn{hf, hf}                                                    &  & \by{6.1.9} \\
+		               & = \frac{1}{2 \pi} \int_0^{2 \pi} h(t) f(t) \conj{h(t) f(t)} \; dt &  & \by{6.1.8} \\
+		               & = \inn{f, f}                                                      &  & \by{6.1.8} \\
+		               & = \norm{f}^2                                                      &  & \by{6.1.9}
+	\end{align*}
+	since \(\abs{h(t)}^2 = 1\) for all \(t \in [0, 2 \pi]\).
+	So \(\T\) is a unitary operator.
 \end{eg}

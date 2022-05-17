@@ -81,9 +81,9 @@
 	\]
 	Then we have
 	\begin{align*}
-		         & w \neq w'                                                                  \\
-		\implies & \exists i \in I_n : w_i \neq w_i'            &  & \by{1.2.3}               \\
-		\implies & \exists i \in I_n : u_i + v_i \neq u_i + v_i &  & \text{(by \cref{1.2.4})}
+		         & w \neq w'                                                    \\
+		\implies & \exists i \in I_n : w_i \neq w_i'            &  & \by{1.2.3} \\
+		\implies & \exists i \in I_n : u_i + v_i \neq u_i + v_i &  & \by{1.2.4}
 	\end{align*}
 	which contradicts to the fact that \(u_i + v_i \in \F\) is unique.
 	Thus addition in \(\vs{F}^n\) over \(\F\) is unique.
@@ -100,9 +100,9 @@
 	\]
 	Then we have
 	\begin{align*}
-		         & w \neq w'                                                          \\
-		\implies & \exists i \in I_n : w_i \neq w_i'    &  & \text{(by \cref{1.2.3})} \\
-		\implies & \exists i \in I_n : c u_i \neq c u_i &  & \text{(by \cref{1.2.4})}
+		         & w \neq w'                                            \\
+		\implies & \exists i \in I_n : w_i \neq w_i'    &  & \by{1.2.3} \\
+		\implies & \exists i \in I_n : c u_i \neq c u_i &  & \by{1.2.4}
 	\end{align*}
 	which contradicts to the fact that \(c u_i \in \F\) is unique.
 	Thus scalar multiplication in \(\vs{F}^n\) over \(\F\) is unique.
@@ -112,25 +112,25 @@
 		\item[For \ref{vs1}:]
 			For all \(u, v \in \vs{F}^n\), we have
 			\begin{align*}
-				u + v & = (u_1 + v_1, u_2 + v_2, \dots, u_n + v_n) &  & \text{(by \cref{1.2.4})}   \\
+				u + v & = (u_1 + v_1, u_2 + v_2, \dots, u_n + v_n) &  & \by{1.2.4}                 \\
 				      & = (v_1 + u_1, v_2 + u_2, \dots, v_n + u_n) &  & \text{(\(\F\) is a field)} \\
-				      & = v + u.                                   &  & \text{(by \cref{1.2.4})}
+				      & = v + u.                                   &  & \by{1.2.4}
 			\end{align*}
 		\item[For \ref{vs2}:]
 			For all \(u, v, w \in \vs{F}^n\), we have
 			\begin{align*}
 				 & (u + v) + w                                                                                        \\
-				 & = (u_1 + v_1, u_2 + v_2, \dots, u_n + v_n) + w                     &  & \text{(by \cref{1.2.4})}   \\
-				 & = ((u_1 + v_1) + w_1, (u_2 + v_2) + w_2, \dots, (u_n + v_n) + w_n) &  & \text{(by \cref{1.2.4})}   \\
+				 & = (u_1 + v_1, u_2 + v_2, \dots, u_n + v_n) + w                     &  & \by{1.2.4}                 \\
+				 & = ((u_1 + v_1) + w_1, (u_2 + v_2) + w_2, \dots, (u_n + v_n) + w_n) &  & \by{1.2.4}                 \\
 				 & = (u_1 + (v_1 + w_1), u_2 + (v_2 + w_2), \dots, u_n + (v_n + w_n)) &  & \text{(\(\F\) is a field)} \\
-				 & = u + (v_1 + w_1, v_2 + w_2, \dots, v_n + w_n)                     &  & \text{(by \cref{1.2.4})}   \\
-				 & = u + (v + w).                                                     &  & \text{(by \cref{1.2.4})}
+				 & = u + (v_1 + w_1, v_2 + w_2, \dots, v_n + w_n)                     &  & \by{1.2.4}                 \\
+				 & = u + (v + w).                                                     &  & \by{1.2.4}
 			\end{align*}
 		\item[For \ref{vs3}:]
 			Since \(\F\) is a field, we know that \(0 \in \F\) and thus \((0, \dots, 0) \in \vs{F}^n\).
 			Then for all \(u \in \vs{F}^n\), we have
 			\begin{align*}
-				u + (0, \dots, 0) & = (u_1 + 0, u_2 + 0, \dots, u_n + 0) &  & \text{(by \cref{1.2.4})}   \\
+				u + (0, \dots, 0) & = (u_1 + 0, u_2 + 0, \dots, u_n + 0) &  & \by{1.2.4}                 \\
 				                  & = \tuple{u}{1,2,,n}                  &  & \text{(\(\F\) is a field)} \\
 				                  & = u.
 			\end{align*}
@@ -148,34 +148,34 @@
 			Since \(\F\) is a field, we know that \(1 \in \F\).
 			Then for all \(u \in \vs{F}^n\), we have
 			\begin{align*}
-				1u & = \tuple{1u}{1,2,,n} &  & \text{(by \cref{1.2.4})}   \\
+				1u & = \tuple{1u}{1,2,,n} &  & \by{1.2.4}                 \\
 				   & = \tuple{u}{1,2,,n}  &  & \text{(\(\F\) is a field)} \\
 				   & = u.
 			\end{align*}
 		\item[For \ref{vs6}:]
 			For all \(a, b \in \F\) and \(u \in \vs{F}^n\), we have
 			\begin{align*}
-				(ab) u & = \tuple{(ab) u}{1,2,,n}                   &  & \text{(by \cref{1.2.4})}   \\
+				(ab) u & = \tuple{(ab) u}{1,2,,n}                   &  & \by{1.2.4}                 \\
 				       & = (a (b u_1), a (b u_2), \dots, a (b u_n)) &  & \text{(\(\F\) is a field)} \\
-				       & = a \tuple{bu}{1,2,,n}                     &  & \text{(by \cref{1.2.4})}   \\
-				       & = a (bu).                                  &  & \text{(by \cref{1.2.4})}
+				       & = a \tuple{bu}{1,2,,n}                     &  & \by{1.2.4}                 \\
+				       & = a (bu).                                  &  & \by{1.2.4}
 			\end{align*}
 		\item[For \ref{vs7}:]
 			For all \(a \in \F\) and \(u, v \in \vs{F}^n\), we have
 			\begin{align*}
-				a (u + v) & = a (u_1 + v_1, u_2 + v_2, \dots, u_n + v_n)           &  & \text{(by \cref{1.2.4})}   \\
-				          & = (a (u_1 + v_1), a (u_2 + v_2), \dots, a (u_n + v_n)) &  & \text{(by \cref{1.2.4})}   \\
+				a (u + v) & = a (u_1 + v_1, u_2 + v_2, \dots, u_n + v_n)           &  & \by{1.2.4}                 \\
+				          & = (a (u_1 + v_1), a (u_2 + v_2), \dots, a (u_n + v_n)) &  & \by{1.2.4}                 \\
 				          & = (a u_1 + a v_1, a u_2 + a v_2, \dots, a u_n + a v_n) &  & \text{(\(\F\) is a field)} \\
-				          & = \tuple{au}{1,2,,n} + \tuple{av}{1,2,,n}              &  & \text{(by \cref{1.2.4})}   \\
-				          & = a u + a v.                                           &  & \text{(by \cref{1.2.4})}
+				          & = \tuple{au}{1,2,,n} + \tuple{av}{1,2,,n}              &  & \by{1.2.4}                 \\
+				          & = a u + a v.                                           &  & \by{1.2.4}
 			\end{align*}
 		\item[For \ref{vs8}:]
 			For all \(a, b \in \F\) and \(u \in \vs{F}^n\), we have
 			\begin{align*}
-				(a + b) u & = \tuple{(a + b) u}{1,2,,n}                            &  & \text{(by \cref{1.2.4})}   \\
+				(a + b) u & = \tuple{(a + b) u}{1,2,,n}                            &  & \by{1.2.4}                 \\
 				          & = (a u_1 + b u_1, a u_2 + b u_2, \dots, a u_n + b u_n) &  & \text{(\(\F\) is a field)} \\
-				          & = \tuple{au}{1,2,,n} + \tuple{bu}{1,2,,n}              &  & \text{(by \cref{1.2.4})}   \\
-				          & = a u + b u.                                           &  & \text{(by \cref{1.2.4})}
+				          & = \tuple{au}{1,2,,n} + \tuple{bu}{1,2,,n}              &  & \by{1.2.4}                 \\
+				          & = a u + b u.                                           &  & \by{1.2.4}
 			\end{align*}
 	\end{description}
 	From all proofs above we conclude by \cref{1.2.1} that \cref{1.2.4} is indeed a vector space over \(\F\).
@@ -256,9 +256,9 @@
 	\]
 	Then we have
 	\begin{align*}
-		         & C \neq C'                                                                                                   \\
-		\implies & \exists (i, j) \in I_m \times J_n :  C_{i j} \neq C_{i j}'                    &  & \text{(by \cref{1.2.8})} \\
-		\implies & \exists (i, j) \in I_m \times J_n :  A_{i j} + B_{i j} \neq A_{i j} + B_{i j} &  & \text{(by \cref{1.2.9})}
+		         & C \neq C'                                                                                     \\
+		\implies & \exists (i, j) \in I_m \times J_n :  C_{i j} \neq C_{i j}'                    &  & \by{1.2.8} \\
+		\implies & \exists (i, j) \in I_m \times J_n :  A_{i j} + B_{i j} \neq A_{i j} + B_{i j} &  & \by{1.2.9}
 	\end{align*}
 	which contradicts to the fact that \(A_{i j} + B_{i j} \in \F\) is unique.
 	Thus addition in \(\MS\) over \(\F\) is unique.
@@ -275,9 +275,9 @@
 	\]
 	Then we have
 	\begin{align*}
-		         & B \neq B'                                                                                  \\
-		\implies & \exists (i, j) \in I_m \times J_n : B_{i j} \neq B_{i j}     &  & \text{(by \cref{1.2.8})} \\
-		\implies & \exists (i, j) \in I_m \times J_n : c A_{i j} \neq c A_{i j} &  & \text{(by \cref{1.2.9})}
+		         & B \neq B'                                                                    \\
+		\implies & \exists (i, j) \in I_m \times J_n : B_{i j} \neq B_{i j}     &  & \by{1.2.8} \\
+		\implies & \exists (i, j) \in I_m \times J_n : c A_{i j} \neq c A_{i j} &  & \by{1.2.9}
 	\end{align*}
 	which contradicts to the fact that \(c A_{i j} \in \F\) is unique.
 	Thus scalar multiplication in \(\MS\) over \(\F\) is unique.
@@ -287,19 +287,19 @@
 		\item[For \ref{vs1}:]
 			For all \(A, B \in \MS\) and \((i, j) \in I_m \times J_n\), we have
 			\begin{align*}
-				(A + B)_{i j} & = A_{i j} + B_{i j} &  & \text{(by \cref{1.2.9})}   \\
+				(A + B)_{i j} & = A_{i j} + B_{i j} &  & \by{1.2.9}                 \\
 				              & = B_{i j} + A_{i j} &  & \text{(\(\F\) is a field)} \\
-				              & = (B + A)_{i j}     &  & \text{(by \cref{1.2.9})}
+				              & = (B + A)_{i j}     &  & \by{1.2.9}
 			\end{align*}
 			and thus by \cref{1.2.8} \(A + B = B + A\).
 		\item[For \ref{vs2}:]
 			For all \(A, B, C \in \MS\) and \((i, j) \in I_m \times J_n\), we have
 			\begin{align*}
-				((A + B) + C)_{i j} & = (A + B)_{i j} + C_{i + j}     &  & \text{(by \cref{1.2.9})}   \\
-				                    & = (A_{i j} + B_{i j}) + C_{i j} &  & \text{(by \cref{1.2.9})}   \\
+				((A + B) + C)_{i j} & = (A + B)_{i j} + C_{i + j}     &  & \by{1.2.9}                 \\
+				                    & = (A_{i j} + B_{i j}) + C_{i j} &  & \by{1.2.9}                 \\
 				                    & = A_{i j} + (B_{i j} + C_{i j}) &  & \text{(\(\F\) is a field)} \\
-				                    & = A_{i j} + (B + C)_{i j}       &  & \text{(by \cref{1.2.9})}   \\
-				                    & = (A + (B + C))_{i j}           &  & \text{(by \cref{1.2.9})}
+				                    & = A_{i j} + (B + C)_{i j}       &  & \by{1.2.9}                 \\
+				                    & = (A + (B + C))_{i j}           &  & \by{1.2.9}
 			\end{align*}
 			and thus by \cref{1.2.8} \((A + B) + C = A + (B + C)\).
 		\item[For \ref{vs3}:]
@@ -314,8 +314,8 @@
 			\]
 			Then for all \(A \in \MS\) and \((i, j) \in I_m \times J_n\), we have
 			\begin{align*}
-				(A + \zm)_{i j} & = A_{i j} + \zm_{i j} &  & \text{(by \cref{1.2.9})}   \\
-				                & = A_{i j} + 0         &  & \text{(by \cref{1.2.6})}   \\
+				(A + \zm)_{i j} & = A_{i j} + \zm_{i j} &  & \by{1.2.9}                 \\
+				                & = A_{i j} + 0         &  & \by{1.2.6}                 \\
 				                & = A_{i j}             &  & \text{(\(\F\) is a field)}
 			\end{align*}
 			and thus by \cref{1.2.8} \(A + \zm = A\).
@@ -330,34 +330,34 @@
 			Since \(\F\) is a field, we know that \(1 \in \F\).
 			Then for all \(A \in \MS\) and \((i, j) \in I_m \times J_n\), we have
 			\begin{align*}
-				(1A)_{i j} & = 1 A_{i j} &  & \text{(by \cref{1.2.9})}   \\
+				(1A)_{i j} & = 1 A_{i j} &  & \by{1.2.9}                 \\
 				           & = A_{i j}   &  & \text{(\(\F\) is a field)}
 			\end{align*}
 			and thus by \cref{1.2.8} \(1A = A\).
 		\item[For \ref{vs6}:]
 			For all \(c, d \in \F\), \(A \in \MS\) and \((i, j) \in I_m \times J_n\), we have
 			\begin{align*}
-				((cd) A)_{i j} & = (cd) A_{i j}    &  & \text{(by \cref{1.2.9})}   \\
+				((cd) A)_{i j} & = (cd) A_{i j}    &  & \by{1.2.9}                 \\
 				               & = c (d A_{i j})   &  & \text{(\(\F\) is a field)} \\
-				               & = c (d A)_{i j}   &  & \text{(by \cref{1.2.9})}   \\
-				               & = (c (d A))_{i j} &  & \text{(by \cref{1.2.9})}
+				               & = c (d A)_{i j}   &  & \by{1.2.9}                 \\
+				               & = (c (d A))_{i j} &  & \by{1.2.9}
 			\end{align*}
 			and thus by \cref{1.2.8} \((cd) A = c (dA)\).
 		\item[For \ref{vs7}:]
 			For all \(c \in \F\), \(A, B \in \MS\) and \((i, j) \in I_m \times J_n\), we have
 			\begin{align*}
-				(c (A + B))_{i j} & = c (A + B)_{i j}         &  & \text{(by \cref{1.2.9})}   \\
-				                  & = c (A_{i j} + B_{i j})   &  & \text{(by \cref{1.2.9})}   \\
+				(c (A + B))_{i j} & = c (A + B)_{i j}         &  & \by{1.2.9}                 \\
+				                  & = c (A_{i j} + B_{i j})   &  & \by{1.2.9}                 \\
 				                  & = c A_{i j} + c B_{i j}   &  & \text{(\(\F\) is a field)} \\
-				                  & = (cA)_{i j} + (cB)_{i j} &  & \text{(by \cref{1.2.9})}
+				                  & = (cA)_{i j} + (cB)_{i j} &  & \by{1.2.9}
 			\end{align*}
 			and thus by \cref{1.2.8} \(c (A + B) = cA + cB\).
 		\item[For \ref{vs8}:]
 			For all \(c, d \in \F\), \(A \in \MS\) and \((i, j) \in I_m \times J_n\), we have
 			\begin{align*}
-				((c + d) A)_{i j} & = (c + d) A_{i j}         &  & \text{(by \cref{1.2.9})}   \\
+				((c + d) A)_{i j} & = (c + d) A_{i j}         &  & \by{1.2.9}                 \\
 				                  & = c A_{i j} + d A_{i j}   &  & \text{(\(\F\) is a field)} \\
-				                  & = (cA)_{i j} + (dA)_{i j} &  & \text{(by \cref{1.2.9})}
+				                  & = (cA)_{i j} + (dA)_{i j} &  & \by{1.2.9}
 			\end{align*}
 			and thus by \cref{1.2.8} \((c + d) A = cA + dA\).
 	\end{description}
@@ -399,10 +399,10 @@
 	\]
 	Then we have
 	\begin{align*}
-		         & h \neq h'                                                                     \\
-		\implies & \exists s \in S : h(s) \neq h'(s)              &  & \text{(by \cref{1.2.10})} \\
-		\implies & \exists s \in S : (f + g)(s) \neq (f + g)(s)   &  & \text{(by \cref{1.2.10})} \\
-		\implies & \exists s \in S : f(s) + g(s) \neq f(s) + g(s) &  & \text{(by \cref{1.2.10})}
+		         & h \neq h'                                                       \\
+		\implies & \exists s \in S : h(s) \neq h'(s)              &  & \by{1.2.10} \\
+		\implies & \exists s \in S : (f + g)(s) \neq (f + g)(s)   &  & \by{1.2.10} \\
+		\implies & \exists s \in S : f(s) + g(s) \neq f(s) + g(s) &  & \by{1.2.10}
 	\end{align*}
 	which contradicts to the fact that \(f(s) + g(s) \in \F\) is unique.
 	Thus addition in \(\FS\) over \(\F\) is unique.
@@ -419,10 +419,10 @@
 	\]
 	Then we have
 	\begin{align*}
-		         & h \neq h'                                                             \\
-		\implies & \exists s \in S : h(s) \neq h'(s)      &  & \text{(by \cref{1.2.10})} \\
-		\implies & \exists s \in S : (cf)(s) \neq (cf)(s) &  & \text{(by \cref{1.2.10})} \\
-		\implies & \exists s \in S : cf(s) \neq cf(s)     &  & \text{(by \cref{1.2.10})}
+		         & h \neq h'                                               \\
+		\implies & \exists s \in S : h(s) \neq h'(s)      &  & \by{1.2.10} \\
+		\implies & \exists s \in S : (cf)(s) \neq (cf)(s) &  & \by{1.2.10} \\
+		\implies & \exists s \in S : cf(s) \neq cf(s)     &  & \by{1.2.10}
 	\end{align*}
 	which contradicts to the fact that \(cf(s) \in \F\) is unique.
 	Thus scalar multiplication in \(\FS\) over \(\F\) is unique.
@@ -432,20 +432,20 @@
 		\item[For \ref{vs1}:]
 			For all \(f, g \in \FS\) and \(s \in S\), we have
 			\begin{align*}
-				(f + g)(s) & = f(s) + g(s) &  & \text{(by \cref{1.2.10})}  \\
+				(f + g)(s) & = f(s) + g(s) &  & \by{1.2.10}                \\
 				           & = g(s) + f(s) &  & \text{(\(\F\) is a field)} \\
-				           & = (g + f)(s)  &  & \text{(by \cref{1.2.10})}
+				           & = (g + f)(s)  &  & \by{1.2.10}
 			\end{align*}
 			and thus by \cref{1.2.10} \(f + g = g + f\).
 		\item[For \ref{vs2}:]
 			For all \(f, g, h \in \FS\) and \(s \in S\), we have
 			\begin{align*}
 				 & ((f + g) + h)(s)                                       \\
-				 & = (f + g)(s) + h(s)    &  & \text{(by \cref{1.2.10})}  \\
-				 & = (f(s) + g(s)) + h(s) &  & \text{(by \cref{1.2.10})}  \\
+				 & = (f + g)(s) + h(s)    &  & \by{1.2.10}                \\
+				 & = (f(s) + g(s)) + h(s) &  & \by{1.2.10}                \\
 				 & = f(s) + (g(s) + h(s)) &  & \text{(\(\F\) is a field)} \\
-				 & = f(s) + (g + h)(s)    &  & \text{(by \cref{1.2.10})}  \\
-				 & = (f + (g + h))(s)     &  & \text{(by \cref{1.2.10})}
+				 & = f(s) + (g + h)(s)    &  & \by{1.2.10}                \\
+				 & = (f + (g + h))(s)     &  & \by{1.2.10}
 			\end{align*}
 			and thus by \cref{1.2.10} \((f + g) + h = f + (g + h)\).
 		\item[For \ref{vs3}:]
@@ -453,7 +453,7 @@
 			If we define \(\zv : S \to \{0\}\), then we know that \(\zv \in \F\).
 			Thus for all \(f \in \FS\) and \(s \in S\), we have
 			\begin{align*}
-				(f + \zv)(s) & = f(s) + \zv(s) &  & \text{(by \cref{1.2.10})}  \\
+				(f + \zv)(s) & = f(s) + \zv(s) &  & \by{1.2.10}                \\
 				             & = f(s) + 0                                      \\
 				             & = f(s)          &  & \text{(\(\F\) is a field)}
 			\end{align*}
@@ -467,43 +467,43 @@
 					                               g = s \mapsto s' \\
 					                               f(s) + g(s) = 0
 				                               \end{dcases}                                                  \\
-				\implies & \exists g \in \FS : (f + g)(s) = 0                 &  & \text{(by \cref{1.2.10})}     \\
+				\implies & \exists g \in \FS : (f + g)(s) = 0                 &  & \by{1.2.10}                   \\
 				\implies & \exists g \in \FS : f + g = \zv.                   &  & \text{(from the proof above)}
 			\end{align*}
 		\item[For \ref{vs5}:]
 			Since \(\F\) is a field, we know that \(1 \in \F\).
 			Then for all \(f \in \FS\) and \(s \in S\), we have
 			\begin{align*}
-				(1f)(s) & = 1f(s) &  & \text{(by \cref{1.2.10})}  \\
+				(1f)(s) & = 1f(s) &  & \by{1.2.10}                \\
 				        & = f(s)  &  & \text{(\(\F\) is a field)}
 			\end{align*}
 			and thus by \cref{1.2.10} \(1f = f\).
 		\item[For \ref{vs6}:]
 			For all \(a, b \in \F\), \(f \in \FS\) and \(s \in S\), we have
 			\begin{align*}
-				((ab) f)(s) & = (ab) f(s)   &  & \text{(by \cref{1.2.10})}  \\
+				((ab) f)(s) & = (ab) f(s)   &  & \by{1.2.10}                \\
 				            & = a (b f(s))  &  & \text{(\(\F\) is a field)} \\
-				            & = a ((bf)(s)) &  & \text{(by \cref{1.2.10})}  \\
-				            & = (a (bf))(s) &  & \text{(by \cref{1.2.10})}
+				            & = a ((bf)(s)) &  & \by{1.2.10}                \\
+				            & = (a (bf))(s) &  & \by{1.2.10}
 			\end{align*}
 			and thus by \cref{1.2.10} \((ab) f = a (bf)\).
 		\item[For \ref{vs7}:]
 			For all \(a \in \F\), \(f, g \in \FS\) and \(s \in S\), we have
 			\begin{align*}
-				(a (f + g))(s) & = a ((f + g)(s))    &  & \text{(by \cref{1.2.10})}  \\
-				               & = a (f(s) + g(s))   &  & \text{(by \cref{1.2.10})}  \\
+				(a (f + g))(s) & = a ((f + g)(s))    &  & \by{1.2.10}                \\
+				               & = a (f(s) + g(s))   &  & \by{1.2.10}                \\
 				               & = af(s) + ag(s)     &  & \text{(\(\F\) is a field)} \\
-				               & = (af)(s) + (ag)(s) &  & \text{(by \cref{1.2.10})}  \\
-				               & = (af + ag)(s)      &  & \text{(by \cref{1.2.10})}
+				               & = (af)(s) + (ag)(s) &  & \by{1.2.10}                \\
+				               & = (af + ag)(s)      &  & \by{1.2.10}
 			\end{align*}
 			and thus by \cref{1.2.10} \(a (f + g) = af + ag\).
 		\item[For \ref{vs8}:]
 			For all \(a, b \in \F\), \(f \in \FS\) and \(s \in S\), we have
 			\begin{align*}
-				((a + b) f)(s) & = (a + b) f(s)      &  & \text{(by \cref{1.2.10})}  \\
+				((a + b) f)(s) & = (a + b) f(s)      &  & \by{1.2.10}                \\
 				               & = af(s) + bf(s)     &  & \text{(\(\F\) is a field)} \\
-				               & = (af)(s) + (bf)(s) &  & \text{(by \cref{1.2.10})}  \\
-				               & = (af + bf)(s)      &  & \text{(by \cref{1.2.10})}
+				               & = (af)(s) + (bf)(s) &  & \by{1.2.10}                \\
+				               & = (af + bf)(s)      &  & \by{1.2.10}
 			\end{align*}
 			and thus by \cref{1.2.10} \((a + b) f = af + bf\).
 	\end{description}
@@ -577,9 +577,9 @@
 	\]
 	Since
 	\begin{align*}
-		         & \forall p \in \ps{\F}, \forall s \in \F, p(s) + \zv'(s) = p(s) = p(s) + \zv(s)                                \\
-		\implies & \forall s \in \F, \zv'(s) = \zv(s)                                             &  & (p(s) \in \F)             \\
-		\implies & \zv' = \zv,                                                                    &  & \text{(by \cref{1.2.10})}
+		         & \forall p \in \ps{\F}, \forall s \in \F, p(s) + \zv'(s) = p(s) = p(s) + \zv(s)                    \\
+		\implies & \forall s \in \F, \zv'(s) = \zv(s)                                             &  & (p(s) \in \F) \\
+		\implies & \zv' = \zv,                                                                    &  & \by{1.2.10}
 	\end{align*}
 	we know that \(\zv \in \ps{\F}\).
 	Since \(\ps{\F}\) is closed under addition and scalar multiplication for obvious reason, by \cref{1.3} we conclude that \(\ps{\F}\) is a subspace of \(\fs(\F, \F)\) over \(\F\) and thus \(\ps{\F}\) is a vector space over \(\F\).
@@ -636,8 +636,8 @@
 	\]
 	But then we have
 	\begin{align*}
-		         & x + \zv = x = x + \zv' &  & \text{(by \ref{vs3})}  \\
-		\implies & \zv = \zv',            &  & \text{(by \cref{1.1})}
+		         & x + \zv = x = x + \zv' &  & \text{(by \ref{vs3})} \\
+		\implies & \zv = \zv',            &  & \by{1.1}
 	\end{align*}
 	a contradiction.
 	Thus \(\zv \in \V\) is unique.
@@ -657,8 +657,8 @@
 	\]
 	But then we have
 	\begin{align*}
-		         & x + y = x + y'                             \\
-		\implies & y = y',        &  & \text{(by \cref{1.1})}
+		         & x + y = x + y'               \\
+		\implies & y = y',        &  & \by{1.1}
 	\end{align*}
 	a contradiction.
 	Thus \(y\) described in \ref{vs4} is unique.
@@ -823,15 +823,15 @@
 	Let \(f, g \in \V\) and \(t, c \in \R\).
 	Since
 	\begin{align*}
-		(f + g)(t) & = f(t) + g(t)   &  & \text{(by \cref{1.2.10})}    \\
-		           & = f(-t) + g(-t) &  & \text{(by \cref{ex:1.2.12})} \\
-		           & = (f + g)(-t)   &  & \text{(by \cref{1.2.10})}
+		(f + g)(t) & = f(t) + g(t)   &  & \by{1.2.10}    \\
+		           & = f(-t) + g(-t) &  & \by{ex:1.2.12} \\
+		           & = (f + g)(-t)   &  & \by{1.2.10}
 	\end{align*}
 	and
 	\begin{align*}
-		(cf)(t) & = cf(t)     &  & \text{(by \cref{1.2.10})}    \\
-		        & = cf(-t)    &  & \text{(by \cref{ex:1.2.12})} \\
-		        & = (cf)(-t), &  & \text{(by \cref{1.2.10})}
+		(cf)(t) & = cf(t)     &  & \by{1.2.10}    \\
+		        & = cf(-t)    &  & \by{ex:1.2.12} \\
+		        & = (cf)(-t), &  & \by{1.2.10}
 	\end{align*}
 	we know that \(f + g \in \V\) and \(cf \in \V\).
 	Thus by \cref{1.3} we know that \(\V\) is a subspace of \(\fs(\R, \R)\) over \(\R\) and \(\V\) is a vector space over \(\R\).
@@ -872,7 +872,7 @@
 	Then we have
 	\begin{align*}
 		         & (v_1, w_1) + (v_2, w_2) \neq (v_1, w_1) + (v_2, w_2)                                                                \\
-		\implies & (v_1 + v_2, w_1 + w_2) \neq (v_1 + v_2, w_1 + w_2)         &  & \text{(by \cref{ex:1.2.21})}                        \\
+		\implies & (v_1 + v_2, w_1 + w_2) \neq (v_1 + v_2, w_1 + w_2)         &  & \by{ex:1.2.21}                                      \\
 		\implies & (v_1 + v_2 \neq v_1 + v_2) \lor (w_1 + w_2 \neq w_1 + w_2) &  & \text{(this is the definition of \(\V \times \W\))}
 	\end{align*}
 	which contradicts to the fact that \(v_1 + v_2 \in \V\) is unique and \(w_1 + w_2 \in \W\) is unique.
@@ -887,7 +887,7 @@
 	Then we have
 	\begin{align*}
 		         & c(v, w) \neq c(v, w)                                                                    \\
-		\implies & (cv, cw) \neq (cv, cw)         &  & \text{(by \cref{ex:1.2.21})}                        \\
+		\implies & (cv, cw) \neq (cv, cw)         &  & \by{ex:1.2.21}                                      \\
 		\implies & (cv \neq cv) \lor (cw \neq cw) &  & \text{(this is the definition of \(\V \times \W\))}
 	\end{align*}
 	which contradicts to the fact that \(cv \in \V\) is unique and \(cw \in \W\) is unique.
@@ -898,32 +898,32 @@
 		\item[For \ref{vs1}:]
 			For all \((v_1, w_1), (v_2, w_2) \in \V \times \W\), we have
 			\begin{align*}
-				(v_1, w_1) + (v_2, w_2) & = (v_1 + v_2, w_1 + w_2)   &  & \text{(by \cref{ex:1.2.21})} \\
-				                        & = (v_2 + v_1, w_2 + w_1)   &  & \text{(bt \ref{vs1})}        \\
-				                        & = (v_2, w_2) + (v_1, w_1). &  & \text{(by \cref{ex:1.2.21})}
+				(v_1, w_1) + (v_2, w_2) & = (v_1 + v_2, w_1 + w_2)   &  & \by{ex:1.2.21}        \\
+				                        & = (v_2 + v_1, w_2 + w_1)   &  & \text{(bt \ref{vs1})} \\
+				                        & = (v_2, w_2) + (v_1, w_1). &  & \by{ex:1.2.21}
 			\end{align*}
 		\item[For \ref{vs2}:]
 			For all \((v_1, w_1), (v_2, w_2), (v_3, w_3) \in \V \times \W\), we have
 			\begin{align*}
-				 & ((v_1, w_1) + (v_2, w_2)) + (v_3, w_3)                                      \\
-				 & = (v_1 + v_2, w_1 + w_2) + (v_3, w_3)     &  & \text{(by \cref{ex:1.2.21})} \\
-				 & = ((v_1 + v_2) + v_3, (w_1 + w_2) + w_3)  &  & \text{(by \cref{ex:1.2.21})} \\
-				 & = (v_1 + (v_2 + v_3), w_1 + (w_2 + w_3))  &  & \text{(by \ref{vs2})}        \\
-				 & = (v_1, w_1) + (v_2 + v_3, w_2 + w_3)     &  & \text{(by \cref{ex:1.2.21})} \\
-				 & = (v_1, w_1) + ((v_2, w_2) + (v_3, w_3)). &  & \text{(by \cref{ex:1.2.21})}
+				 & ((v_1, w_1) + (v_2, w_2)) + (v_3, w_3)                               \\
+				 & = (v_1 + v_2, w_1 + w_2) + (v_3, w_3)     &  & \by{ex:1.2.21}        \\
+				 & = ((v_1 + v_2) + v_3, (w_1 + w_2) + w_3)  &  & \by{ex:1.2.21}        \\
+				 & = (v_1 + (v_2 + v_3), w_1 + (w_2 + w_3))  &  & \text{(by \ref{vs2})} \\
+				 & = (v_1, w_1) + (v_2 + v_3, w_2 + w_3)     &  & \by{ex:1.2.21}        \\
+				 & = (v_1, w_1) + ((v_2, w_2) + (v_3, w_3)). &  & \by{ex:1.2.21}
 			\end{align*}
 		\item[For \ref{vs3}:]
 			Since \(\V, \W\) are vector spaces, we know that \(\zv_{\V} \in \V\) and \(\zv_{\W} \in \W\).
 			Thus for all \((v, w) \in \V \times \W\), we have
 			\begin{align*}
-				(v, w) + (\zv_{\V}, \zv_{\W}) & = (v + \zv_{\V}, w + \zv_{\W}) &  & \text{(by \cref{ex:1.2.21})} \\
+				(v, w) + (\zv_{\V}, \zv_{\W}) & = (v + \zv_{\V}, w + \zv_{\W}) &  & \by{ex:1.2.21}        \\
 				                              & = (v, w).                      &  & \text{(by \ref{vs3})}
 			\end{align*}
 			We denote \(\zv = (\zv_{\V}, \zv_{\W})\).
 		\item[For \ref{vs4}:]
 			For all \((v_1, w_1) \in \V \times \W\), we have
 			\begin{align*}
-				         & (v_1 \in \V) \land (w_1 \in \W)                                      &  & \text{(by \cref{ex:1.2.21})}  \\
+				         & (v_1 \in \V) \land (w_1 \in \W)                                      &  & \by{ex:1.2.21}                \\
 				\implies & \begin{dcases}
 					           \exists v_2 \in \V : v_1 + v_2 = \zv_{\V} \\
 					           \exists w_2 \in \V : w_1 + w_2 = \zv_{\W}
@@ -934,33 +934,33 @@
 			Since \(\F\) is a field, we know that \(1 \in \F\).
 			Thus for all \((v, w) \in \V \times \W\), we have
 			\begin{align*}
-				1(v, w) & = (1v, 1w) &  & \text{(by \cref{ex:1.2.21})} \\
+				1(v, w) & = (1v, 1w) &  & \by{ex:1.2.21}        \\
 				        & = (v, w).  &  & \text{(by \ref{vs5})}
 			\end{align*}
 		\item[For \ref{vs6}:]
 			For all \(c, d \in \F\), \((v, w) \in \V \times \W\), we have
 			\begin{align*}
-				(cd) (v, w) & = ((cd) v, (cd) w) &  & \text{(by \cref{ex:1.2.21})} \\
-				            & = (c(dv), c(dw))   &  & \text{(by \ref{vs6})}        \\
-				            & = c (dv, dw)       &  & \text{(by \cref{ex:1.2.21})} \\
-				            & = c(d(v, w)).      &  & \text{(by \cref{ex:1.2.21})}
+				(cd) (v, w) & = ((cd) v, (cd) w) &  & \by{ex:1.2.21}        \\
+				            & = (c(dv), c(dw))   &  & \text{(by \ref{vs6})} \\
+				            & = c (dv, dw)       &  & \by{ex:1.2.21}        \\
+				            & = c(d(v, w)).      &  & \by{ex:1.2.21}
 			\end{align*}
 		\item[For \ref{vs7}:]
 			For all \(c \in \F\), \((v_1, w_1), (v_2, w_2) \in \V \times \W\), we have
 			\begin{align*}
-				c ((v_1, w_1) + (v_2, w_2)) & = c (v_1 + v_2, w_1, w_2)     &  & \text{(by \cref{ex:1.2.21})} \\
-				                            & = (c(v_1 + v_2), c(w_1, w_2)) &  & \text{(by \cref{ex:1.2.21})} \\
-				                            & = (cv_1 + cv_2, cw_1 + cw_2)  &  & \text{(by \ref{vs7})}        \\
-				                            & = (cv_1, cw_1) + (cv_2, cw_2) &  & \text{(by \cref{ex:1.2.21})} \\
-				                            & = c(v_1, w_1) + c(v_2, w_2).  &  & \text{(by \cref{ex:1.2.21})}
+				c ((v_1, w_1) + (v_2, w_2)) & = c (v_1 + v_2, w_1, w_2)     &  & \by{ex:1.2.21}        \\
+				                            & = (c(v_1 + v_2), c(w_1, w_2)) &  & \by{ex:1.2.21}        \\
+				                            & = (cv_1 + cv_2, cw_1 + cw_2)  &  & \text{(by \ref{vs7})} \\
+				                            & = (cv_1, cw_1) + (cv_2, cw_2) &  & \by{ex:1.2.21}        \\
+				                            & = c(v_1, w_1) + c(v_2, w_2).  &  & \by{ex:1.2.21}
 			\end{align*}
 		\item[For \ref{vs8}:]
 			For all \(c, d \in \F\), \((v, w) \in \V \times \W\), we have
 			\begin{align*}
-				(c + d) (v, w) & = ((c + d) v, (c + d) w) &  & \text{(by \cref{ex:1.2.21})} \\
-				               & = (cv + dv, cw + dw)     &  & \text{(by \ref{vs8})}        \\
-				               & = (cv, cw) + (dv, dw)    &  & \text{(by \cref{ex:1.2.21})} \\
-				               & = c(v, w) + d(v, w).     &  & \text{(by \cref{ex:1.2.21})}
+				(c + d) (v, w) & = ((c + d) v, (c + d) w) &  & \by{ex:1.2.21}        \\
+				               & = (cv + dv, cw + dw)     &  & \text{(by \ref{vs8})} \\
+				               & = (cv, cw) + (dv, dw)    &  & \by{ex:1.2.21}        \\
+				               & = c(v, w) + d(v, w).     &  & \by{ex:1.2.21}
 			\end{align*}
 	\end{description}
 	From all proofs above we conclude by \cref{1.2.1} that \cref{ex:1.2.21} is indeed a vector space over \(\F\).

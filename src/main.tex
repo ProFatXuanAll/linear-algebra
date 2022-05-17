@@ -19,6 +19,8 @@
 \usepackage{amsthm}
 % Define page header and footer layout.
 \usepackage{fancyhdr}
+% LaTex 3 new command tools.
+\usepackage{xparse}
 
 % Use `fancyhdr' page style.  All page style settings must be called only after
 % this command.  See `fancyhdr' for details.
@@ -114,7 +116,13 @@
 % Proof environments reference text.
 \newcommand{\pf}[1]{Proof of \cref{#1}}
 % Proof statements reference text.
-\newcommand{\by}[1]{(\text{by \cref{#1}})}
+\NewDocumentCommand{\by}{mo}{%
+	\IfNoValueTF{#2}{%
+		(\text{by \cref{#1}})%
+	}{%
+		(\text{by \cref{#1}{(#2)}})%
+	}%
+}
 
 % In `enumerate' enviroments, items' label are alphabets and surrounded by
 % parentheses.  See `enumitem' for details.

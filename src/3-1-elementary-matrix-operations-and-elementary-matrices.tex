@@ -1,651 +1,651 @@
 \section{Elementary Matrix Operations and Elementary Matrices}\label{sec:3.1}
 
 \begin{defn}\label{3.1.1}
-  Let \(A \in \MS\).
-  Any one of the following three operations on the rows (columns) of \(A\) is called an \textbf{elementary row (column) operation}:
-  \begin{enumerate}[label=(\arabic*)]
-    \item interchanging any two rows (columns) of \(A\);
-    \item multiplying any row (column) of \(A\) by a nonzero scalar;
-    \item adding any scalar multiple of a row (column) of \(A\) to another row (column).
-  \end{enumerate}
-  Any of these three operations is called an \textbf{elementary operation}.
-  Elementary operations are of \textbf{type 1}, \textbf{type 2}, or \textbf{type 3} depending on whether they are obtained by (1), (2), or (3).
+	Let \(A \in \MS\).
+	Any one of the following three operations on the rows (columns) of \(A\) is called an \textbf{elementary row (column) operation}:
+	\begin{enumerate}[label=(\arabic*)]
+		\item interchanging any two rows (columns) of \(A\);
+		\item multiplying any row (column) of \(A\) by a nonzero scalar;
+		\item adding any scalar multiple of a row (column) of \(A\) to another row (column).
+	\end{enumerate}
+	Any of these three operations is called an \textbf{elementary operation}.
+	Elementary operations are of \textbf{type 1}, \textbf{type 2}, or \textbf{type 3} depending on whether they are obtained by (1), (2), or (3).
 \end{defn}
 
 \begin{note}
-  Notice that if a matrix \(Q\) can be obtained from a matrix \(P\) by means of an elementary row operation, then \(P\) can be obtained from \(Q\) by an elementary row operation of the same type.
-  (See \cref{ex:3.1.8}.)
+	Notice that if a matrix \(Q\) can be obtained from a matrix \(P\) by means of an elementary row operation, then \(P\) can be obtained from \(Q\) by an elementary row operation of the same type.
+	(See \cref{ex:3.1.8}.)
 \end{note}
 
 \begin{defn}\label{3.1.2}
-  An \(n \times n\) \textbf{elementary matrix} is a matrix obtained by performing an elementary operation on \(I_n\).
-  The elementary matrix is said to be of \textbf{type 1}, \textbf{2}, or \textbf{3} according to whether the elementary operation performed on \(I_n\) is a type 1, 2, or 3 operation, respectively.
+	An \(n \times n\) \textbf{elementary matrix} is a matrix obtained by performing an elementary operation on \(I_n\).
+	The elementary matrix is said to be of \textbf{type 1}, \textbf{2}, or \textbf{3} according to whether the elementary operation performed on \(I_n\) is a type 1, 2, or 3 operation, respectively.
 \end{defn}
 
 \begin{note}
-  Any elementary matrix can be obtained in at least two ways ---
-  either by performing an elementary row operation on \(I_n\) or by performing an elementary column operation on \(I_n\).
-  (See \cref{ex:3.1.4}.)
+	Any elementary matrix can be obtained in at least two ways ---
+	either by performing an elementary row operation on \(I_n\) or by performing an elementary column operation on \(I_n\).
+	(See \cref{ex:3.1.4}.)
 \end{note}
 
 \begin{thm}\label{3.1}
-  Let \(A \in \MS\), and suppose that \(B\) is obtained from \(A\) by performing an elementary row (column) operation.
-  Then there exists an \(m \times m\) (\(n \times n\)) elementary matrix \(E\) such that \(B = EA\) (\(B = AE\)).
-  In fact, \(E\) is obtained from \(I_m\) (\(I_n\)) by performing the same elementary row (column) operation as that which was performed on \(A\) to obtain \(B\).
-  Conversely, if \(E\) is an elementary \(m \times m\) (\(n \times n\)) matrix, then \(EA\) (\(AE\)) is the matrix obtained from \(A\) by performing the same elementary row (column) operation as that which produces \(E\) from \(I_m\) (\(I_n\)).
+	Let \(A \in \MS\), and suppose that \(B\) is obtained from \(A\) by performing an elementary row (column) operation.
+	Then there exists an \(m \times m\) (\(n \times n\)) elementary matrix \(E\) such that \(B = EA\) (\(B = AE\)).
+	In fact, \(E\) is obtained from \(I_m\) (\(I_n\)) by performing the same elementary row (column) operation as that which was performed on \(A\) to obtain \(B\).
+	Conversely, if \(E\) is an elementary \(m \times m\) (\(n \times n\)) matrix, then \(EA\) (\(AE\)) is the matrix obtained from \(A\) by performing the same elementary row (column) operation as that which produces \(E\) from \(I_m\) (\(I_n\)).
 \end{thm}
 
 \begin{proof}[\pf{3.1}]
-  First we prove that \cref{3.1} is true for a type 1 row operation.
-  Let \(A, B \in \MS\) such that \(B\) is obtained by interchanging two rows of \(A\).
-  Let the interchanging rows be \(i, j \in \set{1, \dots, m}\).
-  If \(E \in \ms{m}{m}{\F}\) is the elementary matrix performing the same operation, then by \cref{2.3.4} we have
-  \[
-    \forall p, q \in \set{1, \dots, m}, E_{p q} = \begin{dcases}
-      \delta_{p q} & \text{if } (p \neq i) \land (p \neq j) \\
-      \delta_{j q} & \text{if } p = i                       \\
-      \delta_{i q} & \text{if } p = j
-    \end{dcases}.
-  \]
-  Thus
-  \begin{align*}
-     & \forall (p, k) \in \set{1, \dots, m} \times \set{1, \dots, n},                                                \\
-     & (EA)_{p k} = \sum_{q = 1}^m E_{p q} A_{q k}                                     &  & \text{(by \cref{2.3.1})} \\
-     & = \begin{dcases}
-           \sum_{q = 1}^m \delta_{p q} A_{q k} & \text{if } (p \neq i) \land (p \neq j) \\
-           \sum_{q = 1}^m \delta_{j q} A_{q k} & \text{if } p = i                       \\
-           \sum_{q = 1}^m \delta_{i q} A_{q k} & \text{if } p = j
-         \end{dcases}                                \\
-     & = \begin{dcases}
-           A_{p k} & \text{if } (p \neq i) \land (p \neq j) \\
-           A_{j k} & \text{if } p = i                       \\
-           A_{i k} & \text{if } p = j
-         \end{dcases}                                                            \\
-     & = B_{p k}                                                                       &  & \text{(by \cref{3.1.1})}
-  \end{align*}
-  and we have \(B = EA\).
+	First we prove that \cref{3.1} is true for a type 1 row operation.
+	Let \(A, B \in \MS\) such that \(B\) is obtained by interchanging two rows of \(A\).
+	Let the interchanging rows be \(i, j \in \set{1, \dots, m}\).
+	If \(E \in \ms{m}{m}{\F}\) is the elementary matrix performing the same operation, then by \cref{2.3.4} we have
+	\[
+		\forall p, q \in \set{1, \dots, m}, E_{p q} = \begin{dcases}
+			\delta_{p q} & \text{if } (p \neq i) \land (p \neq j) \\
+			\delta_{j q} & \text{if } p = i                       \\
+			\delta_{i q} & \text{if } p = j
+		\end{dcases}.
+	\]
+	Thus
+	\begin{align*}
+		 & \forall (p, k) \in \set{1, \dots, m} \times \set{1, \dots, n},                                  \\
+		 & (EA)_{p k} = \sum_{q = 1}^m E_{p q} A_{q k}                                     &  & \by{2.3.1} \\
+		 & = \begin{dcases}
+			     \sum_{q = 1}^m \delta_{p q} A_{q k} & \text{if } (p \neq i) \land (p \neq j) \\
+			     \sum_{q = 1}^m \delta_{j q} A_{q k} & \text{if } p = i                       \\
+			     \sum_{q = 1}^m \delta_{i q} A_{q k} & \text{if } p = j
+		     \end{dcases}                  \\
+		 & = \begin{dcases}
+			     A_{p k} & \text{if } (p \neq i) \land (p \neq j) \\
+			     A_{j k} & \text{if } p = i                       \\
+			     A_{i k} & \text{if } p = j
+		     \end{dcases}                                              \\
+		 & = B_{p k}                                                                       &  & \by{3.1.1}
+	\end{align*}
+	and we have \(B = EA\).
 
-  Next we prove that \cref{3.1} is true for a type 1 column operation.
-  Let \(A, B \in \MS\) such that \(B\) is obtained by interchanging two columns of \(A\).
-  Let the interchanging columns be \(i, j \in \set{1, \dots, n}\).
-  If \(E \in \ms{n}{n}{\F}\) is the elementary matrix performing the same operation, then by \cref{2.3.4} we have
-  \[
-    \forall p, q \in \set{1, \dots, n}, E_{p q} = \begin{dcases}
-      \delta_{p q} & \text{if } (q \neq i) \land (q \neq j) \\
-      \delta_{p j} & \text{if } q = i                       \\
-      \delta_{p i} & \text{if } q = j
-    \end{dcases}.
-  \]
-  Thus
-  \begin{align*}
-     & \forall (k, q) \in \set{1, \dots, m} \times \set{1, \dots, n},                                                \\
-     & (AE)_{k q} = \sum_{p = 1}^n A_{k p} E_{p q}                                     &  & \text{(by \cref{2.3.1})} \\
-     & = \begin{dcases}
-           \sum_{p = 1}^n A_{k p} \delta_{p q} & \text{if } (q \neq i) \land (q \neq j) \\
-           \sum_{p = 1}^n A_{k p} \delta_{p j} & \text{if } q = i                       \\
-           \sum_{p = 1}^n A_{k p} \delta_{p i} & \text{if } q = j
-         \end{dcases}                                \\
-     & = \begin{dcases}
-           A_{k q} & \text{if } (q \neq i) \land (q \neq j) \\
-           A_{k j} & \text{if } q = i                       \\
-           A_{k i} & \text{if } q = j
-         \end{dcases}                                                            \\
-     & = B_{k q}                                                                       &  & \text{(by \cref{3.1.1})}
-  \end{align*}
-  and we have \(B = AE\).
+	Next we prove that \cref{3.1} is true for a type 1 column operation.
+	Let \(A, B \in \MS\) such that \(B\) is obtained by interchanging two columns of \(A\).
+	Let the interchanging columns be \(i, j \in \set{1, \dots, n}\).
+	If \(E \in \ms{n}{n}{\F}\) is the elementary matrix performing the same operation, then by \cref{2.3.4} we have
+	\[
+		\forall p, q \in \set{1, \dots, n}, E_{p q} = \begin{dcases}
+			\delta_{p q} & \text{if } (q \neq i) \land (q \neq j) \\
+			\delta_{p j} & \text{if } q = i                       \\
+			\delta_{p i} & \text{if } q = j
+		\end{dcases}.
+	\]
+	Thus
+	\begin{align*}
+		 & \forall (k, q) \in \set{1, \dots, m} \times \set{1, \dots, n},                                  \\
+		 & (AE)_{k q} = \sum_{p = 1}^n A_{k p} E_{p q}                                     &  & \by{2.3.1} \\
+		 & = \begin{dcases}
+			     \sum_{p = 1}^n A_{k p} \delta_{p q} & \text{if } (q \neq i) \land (q \neq j) \\
+			     \sum_{p = 1}^n A_{k p} \delta_{p j} & \text{if } q = i                       \\
+			     \sum_{p = 1}^n A_{k p} \delta_{p i} & \text{if } q = j
+		     \end{dcases}                  \\
+		 & = \begin{dcases}
+			     A_{k q} & \text{if } (q \neq i) \land (q \neq j) \\
+			     A_{k j} & \text{if } q = i                       \\
+			     A_{k i} & \text{if } q = j
+		     \end{dcases}                                              \\
+		 & = B_{k q}                                                                       &  & \by{3.1.1}
+	\end{align*}
+	and we have \(B = AE\).
 
-  Next we prove that \cref{3.1} is true for a type 2 row operation.
-  Let \(c \in \F \setminus \set{0}\) and let \(A, B \in \MS\) such that \(B\) is obtained by multiplying the \(i\)th row of \(A\) with \(c\).
-  If \(E \in \ms{m}{m}{\F}\) is the elementary matrix performing the same operation, then by \cref{2.3.4} we have
-  \[
-    \forall p, q \in \set{1, \dots, m}, E_{p q} = \begin{dcases}
-      \delta_{p q}   & \text{if } p \neq i \\
-      c \delta_{i q} & \text{if } p = i
-    \end{dcases}.
-  \]
-  Thus
-  \begin{align*}
-     & \forall (p, k) \in \set{1, \dots, m} \times \set{1, \dots, n},                               \\
-     & (EA)_{p k} = \sum_{q = 1}^m E_{p q} A_{q k}                    &  & \text{(by \cref{2.3.1})} \\
-     & = \begin{dcases}
-           \sum_{q = 1}^m \delta_{p q} A_{q k}   & \text{if } p \neq i \\
-           \sum_{q = 1}^m c \delta_{i q} A_{q k} & \text{if } p = i
-         \end{dcases}                                \\
-     & = \begin{dcases}
-           A_{p k}   & \text{if } p \neq i \\
-           c A_{i k} & \text{if } p = i
-         \end{dcases}                                                            \\
-     & = B_{p k}                                                      &  & \text{(by \cref{3.1.1})}
-  \end{align*}
-  and we have \(B = EA\).
+	Next we prove that \cref{3.1} is true for a type 2 row operation.
+	Let \(c \in \F \setminus \set{0}\) and let \(A, B \in \MS\) such that \(B\) is obtained by multiplying the \(i\)th row of \(A\) with \(c\).
+	If \(E \in \ms{m}{m}{\F}\) is the elementary matrix performing the same operation, then by \cref{2.3.4} we have
+	\[
+		\forall p, q \in \set{1, \dots, m}, E_{p q} = \begin{dcases}
+			\delta_{p q}   & \text{if } p \neq i \\
+			c \delta_{i q} & \text{if } p = i
+		\end{dcases}.
+	\]
+	Thus
+	\begin{align*}
+		 & \forall (p, k) \in \set{1, \dots, m} \times \set{1, \dots, n},                 \\
+		 & (EA)_{p k} = \sum_{q = 1}^m E_{p q} A_{q k}                    &  & \by{2.3.1} \\
+		 & = \begin{dcases}
+			     \sum_{q = 1}^m \delta_{p q} A_{q k}   & \text{if } p \neq i \\
+			     \sum_{q = 1}^m c \delta_{i q} A_{q k} & \text{if } p = i
+		     \end{dcases}                  \\
+		 & = \begin{dcases}
+			     A_{p k}   & \text{if } p \neq i \\
+			     c A_{i k} & \text{if } p = i
+		     \end{dcases}                                              \\
+		 & = B_{p k}                                                      &  & \by{3.1.1}
+	\end{align*}
+	and we have \(B = EA\).
 
-  Next we prove that \cref{3.1} is true for a type 2 column operation.
-  Let \(c \in \F \setminus \set{0}\) and let \(A, B \in \MS\) such that \(B\) is obtained by multiplying the \(i\)th column of \(A\) with \(c\).
-  If \(E \in \ms{n}{n}{\F}\) is the elementary matrix performing the same operation, then by \cref{2.3.4} we have
-  \[
-    \forall p, q \in \set{1, \dots, n}, E_{p q} = \begin{dcases}
-      \delta_{p q}   & \text{if } q \neq i \\
-      c \delta_{p i} & \text{if } q = i
-    \end{dcases}.
-  \]
-  Thus
-  \begin{align*}
-     & \forall (k, q) \in \set{1, \dots, m} \times \set{1, \dots, n},                               \\
-     & (AE)_{k q} = \sum_{p = 1}^n A_{k p} E_{p q}                    &  & \text{(by \cref{2.3.1})} \\
-     & = \begin{dcases}
-           \sum_{p = 1}^n A_{k p} \delta_{p q}   & \text{if } q \neq i \\
-           \sum_{p = 1}^n A_{k p} c \delta_{p i} & \text{if } q = i
-         \end{dcases}                                \\
-     & = \begin{dcases}
-           A_{k q}   & \text{if } q \neq i \\
-           c A_{k i} & \text{if } q = i
-         \end{dcases}                                                            \\
-     & = B_{k q}                                                      &  & \text{(by \cref{3.1.1})}
-  \end{align*}
-  and we have \(B = AE\).
+	Next we prove that \cref{3.1} is true for a type 2 column operation.
+	Let \(c \in \F \setminus \set{0}\) and let \(A, B \in \MS\) such that \(B\) is obtained by multiplying the \(i\)th column of \(A\) with \(c\).
+	If \(E \in \ms{n}{n}{\F}\) is the elementary matrix performing the same operation, then by \cref{2.3.4} we have
+	\[
+		\forall p, q \in \set{1, \dots, n}, E_{p q} = \begin{dcases}
+			\delta_{p q}   & \text{if } q \neq i \\
+			c \delta_{p i} & \text{if } q = i
+		\end{dcases}.
+	\]
+	Thus
+	\begin{align*}
+		 & \forall (k, q) \in \set{1, \dots, m} \times \set{1, \dots, n},                 \\
+		 & (AE)_{k q} = \sum_{p = 1}^n A_{k p} E_{p q}                    &  & \by{2.3.1} \\
+		 & = \begin{dcases}
+			     \sum_{p = 1}^n A_{k p} \delta_{p q}   & \text{if } q \neq i \\
+			     \sum_{p = 1}^n A_{k p} c \delta_{p i} & \text{if } q = i
+		     \end{dcases}                  \\
+		 & = \begin{dcases}
+			     A_{k q}   & \text{if } q \neq i \\
+			     c A_{k i} & \text{if } q = i
+		     \end{dcases}                                              \\
+		 & = B_{k q}                                                      &  & \by{3.1.1}
+	\end{align*}
+	and we have \(B = AE\).
 
-  Next we prove that \cref{3.1} is true for a type 3 row operation.
-  Let \(i, j \in \set{1, \dots, m}\) such that \(i \neq j\).
-  Let \(A, B \in \MS\) such that \(B\) is obtained by multiplying the \(i\)th row of \(A\) with \(c \in \F \setminus \set{0}\) and add it to the \(j\)th row of \(A\).
-  If \(E \in \ms{m}{m}{\F}\) is the elementary matrix performing the same operation, then by \cref{2.3.4} we have
-  \[
-    \forall p, q \in \set{1, \dots, m}, E_{p q} = \begin{dcases}
-      \delta_{p q}                  & \text{if } p \neq j \\
-      c \delta_{i q} + \delta_{j q} & \text{if } p = j
-    \end{dcases}.
-  \]
-  Thus
-  \begin{align*}
-     & \forall (p, k) \in \set{1, \dots, m} \times \set{1, \dots, n},                                                                      \\
-     & (EA)_{p k} = \sum_{q = 1}^m E_{p q} A_{q k}                                                           &  & \text{(by \cref{2.3.1})} \\
-     & = \begin{dcases}
-           \sum_{q = 1}^m \delta_{p q} A_{q k}                    & \text{if } p \neq j \\                    \\
-           \sum_{q = 1}^m (c \delta_{i q} + \delta_{j q}) A_{q k} & \text{if } p = j
-         \end{dcases}                                \\
-     & = \begin{dcases}
-           A_{p k}             & \text{if } p \neq j \\
-           c A_{i k} + A_{j k} & \text{if } p = j
-         \end{dcases}                                                                                         \\
-     & = B_{p k}                                                                                             &  & \text{(by \cref{3.1.1})}
-  \end{align*}
-  and we have \(B = EA\).
+	Next we prove that \cref{3.1} is true for a type 3 row operation.
+	Let \(i, j \in \set{1, \dots, m}\) such that \(i \neq j\).
+	Let \(A, B \in \MS\) such that \(B\) is obtained by multiplying the \(i\)th row of \(A\) with \(c \in \F \setminus \set{0}\) and add it to the \(j\)th row of \(A\).
+	If \(E \in \ms{m}{m}{\F}\) is the elementary matrix performing the same operation, then by \cref{2.3.4} we have
+	\[
+		\forall p, q \in \set{1, \dots, m}, E_{p q} = \begin{dcases}
+			\delta_{p q}                  & \text{if } p \neq j \\
+			c \delta_{i q} + \delta_{j q} & \text{if } p = j
+		\end{dcases}.
+	\]
+	Thus
+	\begin{align*}
+		 & \forall (p, k) \in \set{1, \dots, m} \times \set{1, \dots, n},                                                        \\
+		 & (EA)_{p k} = \sum_{q = 1}^m E_{p q} A_{q k}                                                           &  & \by{2.3.1} \\
+		 & = \begin{dcases}
+			     \sum_{q = 1}^m \delta_{p q} A_{q k}                    & \text{if } p \neq j \\                    \\
+			     \sum_{q = 1}^m (c \delta_{i q} + \delta_{j q}) A_{q k} & \text{if } p = j
+		     \end{dcases}                  \\
+		 & = \begin{dcases}
+			     A_{p k}             & \text{if } p \neq j \\
+			     c A_{i k} + A_{j k} & \text{if } p = j
+		     \end{dcases}                                                                           \\
+		 & = B_{p k}                                                                                             &  & \by{3.1.1}
+	\end{align*}
+	and we have \(B = EA\).
 
-  Finally we prove that \cref{3.1} is true for a type 3 column operation.
-  Let \(i, j \in \set{1, \dots, m}\) such that \(i \neq j\).
-  Let \(A, B \in \MS\) such that \(B\) is obtained by multiplying the \(i\)th column of \(A\) with \(c \in \F \setminus \set{0}\) and add it to the \(j\)th column of \(A\).
-  If \(E \in \ms{n}{n}{\F}\) is the elementary matrix performing the same operation, then by \cref{2.3.4} we have
-  \[
-    \forall p, q \in \set{1, \dots, n}, E_{p q} = \begin{dcases}
-      \delta_{p q}                  & \text{if } q \neq j \\
-      c \delta_{p i} + \delta_{p j} & \text{if } q = j
-    \end{dcases}.
-  \]
-  Thus
-  \begin{align*}
-     & \forall (k, q) \in \set{1, \dots, m} \times \set{1, \dots, n},                                                \\
-     & (AE)_{k q} = \sum_{p = 1}^n A_{k p} E_{p q}                                     &  & \text{(by \cref{2.3.1})} \\
-     & = \begin{dcases}
-           \sum_{p = 1}^n A_{k p} \delta_{p q}                    & \text{if } q \neq j \\
-           \sum_{p = 1}^n A_{k p} (c \delta_{p i} + \delta_{p j}) & \text{if } q = j
-         \end{dcases}                                \\
-     & = \begin{dcases}
-           A_{k q}             & \text{if } q \neq j \\
-           c A_{k i} + A_{k j} & \text{if } q = j
-         \end{dcases}                                                                   \\
-     & = B_{k q}                                                                       &  & \text{(by \cref{3.1.1})}
-  \end{align*}
-  and we have \(B = AE\).
+	Finally we prove that \cref{3.1} is true for a type 3 column operation.
+	Let \(i, j \in \set{1, \dots, m}\) such that \(i \neq j\).
+	Let \(A, B \in \MS\) such that \(B\) is obtained by multiplying the \(i\)th column of \(A\) with \(c \in \F \setminus \set{0}\) and add it to the \(j\)th column of \(A\).
+	If \(E \in \ms{n}{n}{\F}\) is the elementary matrix performing the same operation, then by \cref{2.3.4} we have
+	\[
+		\forall p, q \in \set{1, \dots, n}, E_{p q} = \begin{dcases}
+			\delta_{p q}                  & \text{if } q \neq j \\
+			c \delta_{p i} + \delta_{p j} & \text{if } q = j
+		\end{dcases}.
+	\]
+	Thus
+	\begin{align*}
+		 & \forall (k, q) \in \set{1, \dots, m} \times \set{1, \dots, n},                                  \\
+		 & (AE)_{k q} = \sum_{p = 1}^n A_{k p} E_{p q}                                     &  & \by{2.3.1} \\
+		 & = \begin{dcases}
+			     \sum_{p = 1}^n A_{k p} \delta_{p q}                    & \text{if } q \neq j \\
+			     \sum_{p = 1}^n A_{k p} (c \delta_{p i} + \delta_{p j}) & \text{if } q = j
+		     \end{dcases}                  \\
+		 & = \begin{dcases}
+			     A_{k q}             & \text{if } q \neq j \\
+			     c A_{k i} + A_{k j} & \text{if } q = j
+		     \end{dcases}                                                     \\
+		 & = B_{k q}                                                                       &  & \by{3.1.1}
+	\end{align*}
+	and we have \(B = AE\).
 \end{proof}
 
 \begin{thm}\label{3.2}
-  Elementary matrices are invertible, and the inverse of an elementary matrix is an elementary matrix of the same type.
+	Elementary matrices are invertible, and the inverse of an elementary matrix is an elementary matrix of the same type.
 \end{thm}
 
 \begin{proof}[\pf{3.2}]
-  Let \(E\) be an elementary \(n \times n\) matrix.
-  Then \(E\) can be obtained by an elementary row operation on \(I_n\).
-  By reversing the steps used to transform \(I_n\) into \(E\), we can transform \(E\) back into \(I_n\).
-  The result is that \(I_n\) can be obtained from \(E\) by an elementary row operation of the same type.
-  By \cref{3.1} there is an elementary matrix \(\overline{E}\) such that \(\overline{E} E = I_n\).
-  Therefore, by \cref{ex:2.4.10} \(E\) is invertible and \(E^{-1} = \overline{E}\).
+	Let \(E\) be an elementary \(n \times n\) matrix.
+	Then \(E\) can be obtained by an elementary row operation on \(I_n\).
+	By reversing the steps used to transform \(I_n\) into \(E\), we can transform \(E\) back into \(I_n\).
+	The result is that \(I_n\) can be obtained from \(E\) by an elementary row operation of the same type.
+	By \cref{3.1} there is an elementary matrix \(\overline{E}\) such that \(\overline{E} E = I_n\).
+	Therefore, by \cref{ex:2.4.10} \(E\) is invertible and \(E^{-1} = \overline{E}\).
 \end{proof}
 
 \exercisesection
 
 \setcounter{ex}{3}
 \begin{ex}\label{ex:3.1.4}
-  Prove the following statement:
-  Any elementary \(n \times n\) matrix can be obtained in at least two ways.
-  More precisely, let \(E \in \ms{n}{n}{\F}\) and let \(c \in \F \setminus \set{0}\).
-  For distinct \(i, j \in \set{1, \dots, n}\), we have
-  \begin{itemize}
-    \item \(E\) is an elementary matrix of type 1 which interchange the \(i\)th row with \(j\)th row, iff, \(E\) is an elementary matrix of type 1 which interchange the \(i\)th column with \(j\)th column.
-    \item \(E\) is an elementary matrix of type 2 which multiply the \(i\)th row with \(c\), iff, \(E\) is an elementary matrix of type 2 which multiply the \(i\)th column with \(c\).
-    \item \(E\) is an elementary matrix of type 3 which multiply the \(i\)th row with \(c\) and add it to the \(j\)th row, iff, \(E\) is an elementary matrix of type 3 which multiply the \(j\)th column with \(c\) and add it to the \(i\)th column.
-  \end{itemize}
+	Prove the following statement:
+	Any elementary \(n \times n\) matrix can be obtained in at least two ways.
+	More precisely, let \(E \in \ms{n}{n}{\F}\) and let \(c \in \F \setminus \set{0}\).
+	For distinct \(i, j \in \set{1, \dots, n}\), we have
+	\begin{itemize}
+		\item \(E\) is an elementary matrix of type 1 which interchange the \(i\)th row with \(j\)th row, iff, \(E\) is an elementary matrix of type 1 which interchange the \(i\)th column with \(j\)th column.
+		\item \(E\) is an elementary matrix of type 2 which multiply the \(i\)th row with \(c\), iff, \(E\) is an elementary matrix of type 2 which multiply the \(i\)th column with \(c\).
+		\item \(E\) is an elementary matrix of type 3 which multiply the \(i\)th row with \(c\) and add it to the \(j\)th row, iff, \(E\) is an elementary matrix of type 3 which multiply the \(j\)th column with \(c\) and add it to the \(i\)th column.
+	\end{itemize}
 \end{ex}
 
 \begin{proof}[\pf{ex:3.1.4}]
-  First we show that a type 1 elementary matrix can be obtained in at least two ways.
-  Fix \(i, j \in \set{1, \dots, n}\) and \(i \neq j\).
-  Let \(E \in \ms{n}{n}{\F}\) be an elementary matrix of type 1 which interchange the \(i\)th row with \(j\)th row, and let \(F \in \ms{n}{n}{\F}\) be an elementary matrix of type 1 which interchange the \(i\)th column with \(j\)th column.
-  Observe that
-  \begin{align*}
-    \forall p, q \in \set{1, \dots, n}, E_{p q} & = \begin{dcases}
-                                                      \delta_{p q} & \text{if } (p \neq i) \land (p \neq j) \\
-                                                      \delta_{j q} & \text{if } p = i                       \\
-                                                      \delta_{i q} & \text{if } p = j
-                                                    \end{dcases}    &  & \text{(by \cref{2.3.4})}    \\
-                                                & = \begin{dcases}
-                                                      1 & \text{if } (p \neq i) \land (p \neq j) \land (p = q) \\
-                                                      1 & \text{if } (p = i) \land (q = j)                     \\
-                                                      1 & \text{if } (p = j) \land (q = i)                     \\
-                                                      0 & \text{otherwise}
-                                                    \end{dcases} &  & \text{(by \cref{2.3.4})} \\
-                                                & = \begin{dcases}
-                                                      1 & \text{if } (q \neq i) \land (q \neq j) \land (p = q) \\
-                                                      1 & \text{if } (p = i) \land (q = j)                     \\
-                                                      1 & \text{if } (p = j) \land (q = i)                     \\
-                                                      0 & \text{otherwise}
-                                                    \end{dcases} \\
-                                                & = \begin{dcases}
-                                                      \delta_{p q} & \text{if } (q \neq i) \land (q \neq j) \\
-                                                      \delta_{p i} & \text{if } q = j                       \\
-                                                      \delta_{p j} & \text{if } q = i
-                                                    \end{dcases}    &  & \text{(by \cref{2.3.4})}    \\
-                                                & = F_{p q}.
-  \end{align*}
-  Thus a type 1 elementary matrix can be obtained in at least two ways.
+	First we show that a type 1 elementary matrix can be obtained in at least two ways.
+	Fix \(i, j \in \set{1, \dots, n}\) and \(i \neq j\).
+	Let \(E \in \ms{n}{n}{\F}\) be an elementary matrix of type 1 which interchange the \(i\)th row with \(j\)th row, and let \(F \in \ms{n}{n}{\F}\) be an elementary matrix of type 1 which interchange the \(i\)th column with \(j\)th column.
+	Observe that
+	\begin{align*}
+		\forall p, q \in \set{1, \dots, n}, E_{p q} & = \begin{dcases}
+			                                                \delta_{p q} & \text{if } (p \neq i) \land (p \neq j) \\
+			                                                \delta_{j q} & \text{if } p = i                       \\
+			                                                \delta_{i q} & \text{if } p = j
+		                                                \end{dcases}    &  & \by{2.3.4}    \\
+		                                            & = \begin{dcases}
+			                                                1 & \text{if } (p \neq i) \land (p \neq j) \land (p = q) \\
+			                                                1 & \text{if } (p = i) \land (q = j)                     \\
+			                                                1 & \text{if } (p = j) \land (q = i)                     \\
+			                                                0 & \text{otherwise}
+		                                                \end{dcases} &  & \by{2.3.4} \\
+		                                            & = \begin{dcases}
+			                                                1 & \text{if } (q \neq i) \land (q \neq j) \land (p = q) \\
+			                                                1 & \text{if } (p = i) \land (q = j)                     \\
+			                                                1 & \text{if } (p = j) \land (q = i)                     \\
+			                                                0 & \text{otherwise}
+		                                                \end{dcases} \\
+		                                            & = \begin{dcases}
+			                                                \delta_{p q} & \text{if } (q \neq i) \land (q \neq j) \\
+			                                                \delta_{p i} & \text{if } q = j                       \\
+			                                                \delta_{p j} & \text{if } q = i
+		                                                \end{dcases}    &  & \by{2.3.4}    \\
+		                                            & = F_{p q}.
+	\end{align*}
+	Thus a type 1 elementary matrix can be obtained in at least two ways.
 
-  Next we show that a type 2 elementary matrix can be obtained in at least two ways.
-  Fix \(i \in \set{1, \dots, n}\).
-  Let \(c \in \F \setminus \set{0}\), let \(E \in \ms{n}{n}{\F}\) be an elementary matrix of type 2 which multiply the \(i\)th row with \(c\), and let \(F \in \ms{n}{n}{\F}\) be an elementary matrix of type 2 which multiply the \(i\)th column with \(c\).
-  Observe that
-  \begin{align*}
-    \forall p, q \in \set{1, \dots, n}, E_{p q} & = \begin{dcases}
-                                                      \delta_{p q}   & \text{if } p \neq i \\
-                                                      c \delta_{i q} & \text{if } p = i
-                                                    \end{dcases}    &  & \text{(by \cref{2.3.4})}                          \\
-                                                & = \begin{dcases}
-                                                      1 & \text{if } (p \neq i) \land (p = q) \\
-                                                      c & \text{if } (p = i) \land (q = i)    \\
-                                                      0 & \text{otherwise}
-                                                    \end{dcases} &  & \text{(by \cref{2.3.4})}                             \\
-                                                & = \begin{dcases}
-                                                      1 & \text{if } (q \neq i) \land (p = q) \\
-                                                      c & \text{if } (p = i) \land (q = i)    \\
-                                                      0 & \text{otherwise}
-                                                    \end{dcases}                                \\
-                                                & = \begin{dcases}
-                                                      \delta_{p q}   & \text{if } q \neq i \\
-                                                      c \delta_{p i} & \text{if } q = i
-                                                    \end{dcases}    &  & \text{(by \cref{2.3.4})}                          \\
-                                                & = F_{p q}.                                 &  & \text{(by \cref{2.3.4})}
-  \end{align*}
-  Thus a type 2 elementary matrix can be obtained in at least two ways.
+	Next we show that a type 2 elementary matrix can be obtained in at least two ways.
+	Fix \(i \in \set{1, \dots, n}\).
+	Let \(c \in \F \setminus \set{0}\), let \(E \in \ms{n}{n}{\F}\) be an elementary matrix of type 2 which multiply the \(i\)th row with \(c\), and let \(F \in \ms{n}{n}{\F}\) be an elementary matrix of type 2 which multiply the \(i\)th column with \(c\).
+	Observe that
+	\begin{align*}
+		\forall p, q \in \set{1, \dots, n}, E_{p q} & = \begin{dcases}
+			                                                \delta_{p q}   & \text{if } p \neq i \\
+			                                                c \delta_{i q} & \text{if } p = i
+		                                                \end{dcases}    &  & \by{2.3.4}                     \\
+		                                            & = \begin{dcases}
+			                                                1 & \text{if } (p \neq i) \land (p = q) \\
+			                                                c & \text{if } (p = i) \land (q = i)    \\
+			                                                0 & \text{otherwise}
+		                                                \end{dcases} &  & \by{2.3.4}                  \\
+		                                            & = \begin{dcases}
+			                                                1 & \text{if } (q \neq i) \land (p = q) \\
+			                                                c & \text{if } (p = i) \land (q = i)    \\
+			                                                0 & \text{otherwise}
+		                                                \end{dcases}                  \\
+		                                            & = \begin{dcases}
+			                                                \delta_{p q}   & \text{if } q \neq i \\
+			                                                c \delta_{p i} & \text{if } q = i
+		                                                \end{dcases}    &  & \by{2.3.4}                     \\
+		                                            & = F_{p q}.                                 &  & \by{2.3.4}
+	\end{align*}
+	Thus a type 2 elementary matrix can be obtained in at least two ways.
 
-  Finally we show that a type 3 elementary matrix can be obtained in at least two ways.
-  Fix \(i, j \in \set{1, \dots, n}\) and \(i \neq j\).
-  Let \(c \in \F \setminus \set{0}\), let \(E \in \ms{n}{n}{\F}\) be an elementary matrix of type 3 which multiply the \(i\)th row with \(c\) and add it to the \(j\)th row, and let \(F \in \ms{n}{n}{\F}\) be an elementary matrix of type 3 which multiply the \(j\)th column with \(c\) and add it to the \(i\)th column.
-  Observe that
-  \begin{align*}
-    \forall p, q \in \set{1, \dots, n}, E_{p q} & = \begin{dcases}
-                                                      \delta_{p q}                  & \text{if } p \neq j \\
-                                                      c \delta_{i q} + \delta_{j q} & \text{if } p = j
-                                                    \end{dcases} &  & \text{(by \cref{2.3.4})}                                \\
-                                                & = \begin{dcases}
-                                                      1 & \text{if } (p \neq j) \land (p = q) \\
-                                                      c & \text{if } (p = j) \land (q = i)    \\
-                                                      1 & \text{if } (p = j) \land (q = j)    \\
-                                                      0 & \text{otherwise}
-                                                    \end{dcases}             &  & \text{(by \cref{2.3.4})}                             \\
-                                                & = \begin{dcases}
-                                                      1 & \text{if } p = q                 \\
-                                                      c & \text{if } (p = j) \land (q = i) \\
-                                                      0 & \text{otherwise}
-                                                    \end{dcases}                                               \\
-                                                & = \begin{dcases}
-                                                      1 & \text{if } (p = q) \land (q \neq i) \\
-                                                      c & \text{if } (p = j) \land (q = i)    \\
-                                                      1 & \text{if } (p = i) \land (q = i)    \\
-                                                      0 & \text{otherwise}
-                                                    \end{dcases}                                            \\
-                                                & = \begin{dcases}
-                                                      \delta_{p q}                  & \text{if } q \neq i \\
-                                                      c \delta_{p j} + \delta_{p i} & \text{if } q = i
-                                                    \end{dcases} &  & \text{(by \cref{2.3.4})}                                \\
-                                                & = F_{p q}.                                             &  & \text{(by \cref{2.3.4})}
-  \end{align*}
-  Thus a type 3 elementary matrix can be obtained in at least two ways.
+	Finally we show that a type 3 elementary matrix can be obtained in at least two ways.
+	Fix \(i, j \in \set{1, \dots, n}\) and \(i \neq j\).
+	Let \(c \in \F \setminus \set{0}\), let \(E \in \ms{n}{n}{\F}\) be an elementary matrix of type 3 which multiply the \(i\)th row with \(c\) and add it to the \(j\)th row, and let \(F \in \ms{n}{n}{\F}\) be an elementary matrix of type 3 which multiply the \(j\)th column with \(c\) and add it to the \(i\)th column.
+	Observe that
+	\begin{align*}
+		\forall p, q \in \set{1, \dots, n}, E_{p q} & = \begin{dcases}
+			                                                \delta_{p q}                  & \text{if } p \neq j \\
+			                                                c \delta_{i q} + \delta_{j q} & \text{if } p = j
+		                                                \end{dcases} &  & \by{2.3.4}                  \\
+		                                            & = \begin{dcases}
+			                                                1 & \text{if } (p \neq j) \land (p = q) \\
+			                                                c & \text{if } (p = j) \land (q = i)    \\
+			                                                1 & \text{if } (p = j) \land (q = j)    \\
+			                                                0 & \text{otherwise}
+		                                                \end{dcases}             &  & \by{2.3.4}                             \\
+		                                            & = \begin{dcases}
+			                                                1 & \text{if } p = q                 \\
+			                                                c & \text{if } (p = j) \land (q = i) \\
+			                                                0 & \text{otherwise}
+		                                                \end{dcases}                                 \\
+		                                            & = \begin{dcases}
+			                                                1 & \text{if } (p = q) \land (q \neq i) \\
+			                                                c & \text{if } (p = j) \land (q = i)    \\
+			                                                1 & \text{if } (p = i) \land (q = i)    \\
+			                                                0 & \text{otherwise}
+		                                                \end{dcases}                              \\
+		                                            & = \begin{dcases}
+			                                                \delta_{p q}                  & \text{if } q \neq i \\
+			                                                c \delta_{p j} + \delta_{p i} & \text{if } q = i
+		                                                \end{dcases} &  & \by{2.3.4}                  \\
+		                                            & = F_{p q}.                                             &  & \by{2.3.4}
+	\end{align*}
+	Thus a type 3 elementary matrix can be obtained in at least two ways.
 \end{proof}
 
 \begin{ex}\label{ex:3.1.5}
-  Prove that \(E\) is an elementary matrix iff \(\tp{E}\) is.
-  More precisely, let \(E \in \ms{n}{n}{\F}\) and let \(c \in \F \setminus \set{0}\).
-  For distinct \(i, j \in \set{1, \dots, n}\), we have
-  \begin{itemize}
-    \item If \(E\) is an elementary matrix of type 1 iff \(\tp{E}\) is an elementary matrix of type 1.
-          Futhermore, \(E = \tp{E}\).
-    \item If \(E\) is an elementary matrix of type 2 iff \(\tp{E}\) is an elementary matrix of type 2.
-          Futhermore, \(E = \tp{E}\).
-    \item \(E\) is an elementary matrix of type 3 which multiply the \(i\)th row (column) with \(c\) and add it to the \(j\)th row (column), iff, \(\tp{E}\) is an elementary matrix of type 3 which multiply the \(i\)th row (column) with \(c\) and add it to the \(j\)th row (column).
-  \end{itemize}
+	Prove that \(E\) is an elementary matrix iff \(\tp{E}\) is.
+	More precisely, let \(E \in \ms{n}{n}{\F}\) and let \(c \in \F \setminus \set{0}\).
+	For distinct \(i, j \in \set{1, \dots, n}\), we have
+	\begin{itemize}
+		\item If \(E\) is an elementary matrix of type 1 iff \(\tp{E}\) is an elementary matrix of type 1.
+		      Futhermore, \(E = \tp{E}\).
+		\item If \(E\) is an elementary matrix of type 2 iff \(\tp{E}\) is an elementary matrix of type 2.
+		      Futhermore, \(E = \tp{E}\).
+		\item \(E\) is an elementary matrix of type 3 which multiply the \(i\)th row (column) with \(c\) and add it to the \(j\)th row (column), iff, \(\tp{E}\) is an elementary matrix of type 3 which multiply the \(i\)th row (column) with \(c\) and add it to the \(j\)th row (column).
+	\end{itemize}
 \end{ex}
 
 \begin{proof}[\pf{ex:3.1.5}]
-  First we show that the transpose of a type 1 elementary matrix is a type 1 elementary matrix.
-  Fix \(i, j \in \set{1, \dots, n}\) and \(i \neq j\).
-  Let \(E \in \ms{n}{n}{\F}\) be an elementary matrix of type 1 which interchange the \(i\)th row with \(j\)th row.
-  Observe that
-  \begin{align*}
-    \forall p, q \in \set{1, \dots, n}, \pa{\tp{E}}_{p q} & = E_{q p}                                                   &  & \text{(by \cref{1.3.3})} \\
-                                                          & = \begin{dcases}
-                                                                \delta_{q p} & \text{if } (q \neq i) \land (q \neq j) \\
-                                                                \delta_{j p} & \text{if } q = i                       \\
-                                                                \delta_{i p} & \text{if } q = j
-                                                              \end{dcases}    &  & \text{(by \cref{2.3.4})}                                   \\
-                                                          & = \begin{dcases}
-                                                                1 & \text{if } (q \neq i) \land (q \neq j) \land (q = p) \\
-                                                                1 & \text{if } (q = i) \land (p = j)                     \\
-                                                                1 & \text{if } (q = j) \land (p = i)                     \\
-                                                                0 & \text{otherwise}
-                                                              \end{dcases} &  & \text{(by \cref{2.3.4})}                                \\
-                                                          & = \begin{dcases}
-                                                                1 & \text{if } (p \neq i) \land (p \neq j) \land (q = p) \\
-                                                                1 & \text{if } (q = i) \land (p = j)                     \\
-                                                                1 & \text{if } (q = j) \land (p = i)                     \\
-                                                                0 & \text{otherwise}
-                                                              \end{dcases}                                \\
-                                                          & = \begin{dcases}
-                                                                \delta_{p q} & \text{if } (p \neq i) \land (p \neq j) \\
-                                                                \delta_{i q} & \text{if } p = j                       \\
-                                                                \delta_{j q} & \text{if } p = i
-                                                              \end{dcases}    &  & \text{(by \cref{2.3.4})}                                   \\
-                                                          & = E_{p q}.                                                  &  & \text{(by \cref{2.3.4})}
-  \end{align*}
-  Thus we have \(\tp{E} = E\).
-  By \cref{ex:3.1.4} we see that \(E\) is also an elementary matrix of type 1 which interchange the \(i\)th column with \(j\)th column.
-  Thus the transpose of a type 1 elementary matrix is a type 1 elementary matrix.
+	First we show that the transpose of a type 1 elementary matrix is a type 1 elementary matrix.
+	Fix \(i, j \in \set{1, \dots, n}\) and \(i \neq j\).
+	Let \(E \in \ms{n}{n}{\F}\) be an elementary matrix of type 1 which interchange the \(i\)th row with \(j\)th row.
+	Observe that
+	\begin{align*}
+		\forall p, q \in \set{1, \dots, n}, \pa{\tp{E}}_{p q} & = E_{q p}                                                   &  & \by{1.3.3} \\
+		                                                      & = \begin{dcases}
+			                                                          \delta_{q p} & \text{if } (q \neq i) \land (q \neq j) \\
+			                                                          \delta_{j p} & \text{if } q = i                       \\
+			                                                          \delta_{i p} & \text{if } q = j
+		                                                          \end{dcases}    &  & \by{2.3.4}                     \\
+		                                                      & = \begin{dcases}
+			                                                          1 & \text{if } (q \neq i) \land (q \neq j) \land (q = p) \\
+			                                                          1 & \text{if } (q = i) \land (p = j)                     \\
+			                                                          1 & \text{if } (q = j) \land (p = i)                     \\
+			                                                          0 & \text{otherwise}
+		                                                          \end{dcases} &  & \by{2.3.4}                  \\
+		                                                      & = \begin{dcases}
+			                                                          1 & \text{if } (p \neq i) \land (p \neq j) \land (q = p) \\
+			                                                          1 & \text{if } (q = i) \land (p = j)                     \\
+			                                                          1 & \text{if } (q = j) \land (p = i)                     \\
+			                                                          0 & \text{otherwise}
+		                                                          \end{dcases}                  \\
+		                                                      & = \begin{dcases}
+			                                                          \delta_{p q} & \text{if } (p \neq i) \land (p \neq j) \\
+			                                                          \delta_{i q} & \text{if } p = j                       \\
+			                                                          \delta_{j q} & \text{if } p = i
+		                                                          \end{dcases}    &  & \by{2.3.4}                     \\
+		                                                      & = E_{p q}.                                                  &  & \by{2.3.4}
+	\end{align*}
+	Thus we have \(\tp{E} = E\).
+	By \cref{ex:3.1.4} we see that \(E\) is also an elementary matrix of type 1 which interchange the \(i\)th column with \(j\)th column.
+	Thus the transpose of a type 1 elementary matrix is a type 1 elementary matrix.
 
-  Next we show that the transpose of a type 2 elementary matrix is a type 2 elementary matrix.
-  Fix \(i \in \set{1, \dots, n}\).
-  Let \(E \in \ms{n}{n}{\F}\) be an elementary matrix of type 2 which multiply the \(i\)th row with \(c \in \F \setminus \set{0}\).
-  Observe that
-  \begin{align*}
-    \forall p, q \in \set{1, \dots, n}, \pa{\tp{E}}_{p q} & = E_{q p}                                  &  & \text{(by \cref{1.3.3})} \\
-                                                          & = \begin{dcases}
-                                                                \delta_{q p}   & \text{if } q \neq i \\
-                                                                c \delta_{i p} & \text{if } q = i
-                                                              \end{dcases}    &  & \text{(by \cref{2.3.4})}                          \\
-                                                          & = \begin{dcases}
-                                                                1 & \text{if } (q \neq i) \land (q = p) \\
-                                                                c & \text{if } (q = i) \land (p = i)    \\
-                                                                0 & \text{otherwise}
-                                                              \end{dcases} &  & \text{(by \cref{2.3.4})}                             \\
-                                                          & = \begin{dcases}
-                                                                1 & \text{if } (p \neq i) \land (q = p) \\
-                                                                c & \text{if } (q = i) \land (p = i)    \\
-                                                                0 & \text{otherwise}
-                                                              \end{dcases}                                \\
-                                                          & = \begin{dcases}
-                                                                \delta_{p q}   & \text{if } p \neq i \\
-                                                                c \delta_{i q} & \text{if } p = i
-                                                              \end{dcases}    &  & \text{(by \cref{2.3.4})}                          \\
-                                                          & = E_{p q}.                                 &  & \text{(by \cref{2.3.4})}
-  \end{align*}
-  Thus we have \(\tp{E} = E\).
-  By \cref{ex:3.1.4} we see that \(E\) is also an elementary matrix of type 2 which multiply the \(i\)th column with \(c\).
-  Thus the transpose of a type 2 elementary matrix is a type 2 elementary matrix.
+	Next we show that the transpose of a type 2 elementary matrix is a type 2 elementary matrix.
+	Fix \(i \in \set{1, \dots, n}\).
+	Let \(E \in \ms{n}{n}{\F}\) be an elementary matrix of type 2 which multiply the \(i\)th row with \(c \in \F \setminus \set{0}\).
+	Observe that
+	\begin{align*}
+		\forall p, q \in \set{1, \dots, n}, \pa{\tp{E}}_{p q} & = E_{q p}                                  &  & \by{1.3.3} \\
+		                                                      & = \begin{dcases}
+			                                                          \delta_{q p}   & \text{if } q \neq i \\
+			                                                          c \delta_{i p} & \text{if } q = i
+		                                                          \end{dcases}    &  & \by{2.3.4}                     \\
+		                                                      & = \begin{dcases}
+			                                                          1 & \text{if } (q \neq i) \land (q = p) \\
+			                                                          c & \text{if } (q = i) \land (p = i)    \\
+			                                                          0 & \text{otherwise}
+		                                                          \end{dcases} &  & \by{2.3.4}                  \\
+		                                                      & = \begin{dcases}
+			                                                          1 & \text{if } (p \neq i) \land (q = p) \\
+			                                                          c & \text{if } (q = i) \land (p = i)    \\
+			                                                          0 & \text{otherwise}
+		                                                          \end{dcases}                  \\
+		                                                      & = \begin{dcases}
+			                                                          \delta_{p q}   & \text{if } p \neq i \\
+			                                                          c \delta_{i q} & \text{if } p = i
+		                                                          \end{dcases}    &  & \by{2.3.4}                     \\
+		                                                      & = E_{p q}.                                 &  & \by{2.3.4}
+	\end{align*}
+	Thus we have \(\tp{E} = E\).
+	By \cref{ex:3.1.4} we see that \(E\) is also an elementary matrix of type 2 which multiply the \(i\)th column with \(c\).
+	Thus the transpose of a type 2 elementary matrix is a type 2 elementary matrix.
 
-  Finally we show that the transpose of a type 3 elementary matrix is a type 3 elementary matrix.
-  Fix \(i, j \in \set{1, \dots, n}\) and \(i \neq j\).
-  Let \(c \in \F \setminus \set{0}\), let \(E \in \ms{n}{n}{\F}\) be an elementary matrix of type 3 which multiply the \(i\)th row with \(c\) and add it to the \(j\)th row, and let \(F \in \ms{n}{n}{\F}\) be an elementary matrix of type 3 which multiply the \(j\)th row with \(c\) and add it to the \(i\)th row.
-  Observe that
-  \begin{align*}
-    \forall p, q \in \set{1, \dots, n}, \pa{\tp{E}}_{p q} & = E_{q p}                                              &  & \text{(by \cref{1.3.3})} \\
-                                                          & = \begin{dcases}
-                                                                \delta_{q p}                  & \text{if } q \neq j \\
-                                                                c \delta_{i p} + \delta_{j p} & \text{if } q = j
-                                                              \end{dcases} &  & \text{(by \cref{2.3.4})}                                \\
-                                                          & = \begin{dcases}
-                                                                1 & \text{if } (q \neq j) \land (q = p) \\
-                                                                c & \text{if } (q = j) \land (p = i)    \\
-                                                                1 & \text{if } (q = j) \land (p = j)    \\
-                                                                0 & \text{otherwise}
-                                                              \end{dcases}             &  & \text{(by \cref{2.3.4})}                             \\
-                                                          & = \begin{dcases}
-                                                                1 & \text{if } q = p                 \\
-                                                                c & \text{if } (q = j) \land (p = i) \\
-                                                                0 & \text{otherwise}
-                                                              \end{dcases}                                               \\
-                                                          & = \begin{dcases}
-                                                                1 & \text{if } (p \neq i) \land (p = q) \\
-                                                                c & \text{if } (p = i) \land (q = j)    \\
-                                                                1 & \text{if } (p = i) \land (q = i)    \\
-                                                                0 & \text{otherwise}
-                                                              \end{dcases}                                            \\
-                                                          & = \begin{dcases}
-                                                                \delta_{p q}                  & \text{if } p \neq i \\
-                                                                c \delta_{j q} + \delta_{i q} & \text{if } p = i
-                                                              \end{dcases} &  & \text{(by \cref{2.3.4})}                                \\
-                                                          & = F_{p q}.                                             &  & \text{(by \cref{2.3.4})}
-  \end{align*}
-  Thus we have \(\tp{E} = F\).
-  By \cref{ex:3.1.4} we see that \(E\) is also an elementary matrix of type 3 which multiply the \(j\)th column with \(c\) and add it to the \(i\)th column.
-  Thus the transpose of a type 3 elementary matrix is a type 3 elementary matrix.
+	Finally we show that the transpose of a type 3 elementary matrix is a type 3 elementary matrix.
+	Fix \(i, j \in \set{1, \dots, n}\) and \(i \neq j\).
+	Let \(c \in \F \setminus \set{0}\), let \(E \in \ms{n}{n}{\F}\) be an elementary matrix of type 3 which multiply the \(i\)th row with \(c\) and add it to the \(j\)th row, and let \(F \in \ms{n}{n}{\F}\) be an elementary matrix of type 3 which multiply the \(j\)th row with \(c\) and add it to the \(i\)th row.
+	Observe that
+	\begin{align*}
+		\forall p, q \in \set{1, \dots, n}, \pa{\tp{E}}_{p q} & = E_{q p}                                              &  & \by{1.3.3} \\
+		                                                      & = \begin{dcases}
+			                                                          \delta_{q p}                  & \text{if } q \neq j \\
+			                                                          c \delta_{i p} + \delta_{j p} & \text{if } q = j
+		                                                          \end{dcases} &  & \by{2.3.4}                  \\
+		                                                      & = \begin{dcases}
+			                                                          1 & \text{if } (q \neq j) \land (q = p) \\
+			                                                          c & \text{if } (q = j) \land (p = i)    \\
+			                                                          1 & \text{if } (q = j) \land (p = j)    \\
+			                                                          0 & \text{otherwise}
+		                                                          \end{dcases}             &  & \by{2.3.4}                             \\
+		                                                      & = \begin{dcases}
+			                                                          1 & \text{if } q = p                 \\
+			                                                          c & \text{if } (q = j) \land (p = i) \\
+			                                                          0 & \text{otherwise}
+		                                                          \end{dcases}                                 \\
+		                                                      & = \begin{dcases}
+			                                                          1 & \text{if } (p \neq i) \land (p = q) \\
+			                                                          c & \text{if } (p = i) \land (q = j)    \\
+			                                                          1 & \text{if } (p = i) \land (q = i)    \\
+			                                                          0 & \text{otherwise}
+		                                                          \end{dcases}                              \\
+		                                                      & = \begin{dcases}
+			                                                          \delta_{p q}                  & \text{if } p \neq i \\
+			                                                          c \delta_{j q} + \delta_{i q} & \text{if } p = i
+		                                                          \end{dcases} &  & \by{2.3.4}                  \\
+		                                                      & = F_{p q}.                                             &  & \by{2.3.4}
+	\end{align*}
+	Thus we have \(\tp{E} = F\).
+	By \cref{ex:3.1.4} we see that \(E\) is also an elementary matrix of type 3 which multiply the \(j\)th column with \(c\) and add it to the \(i\)th column.
+	Thus the transpose of a type 3 elementary matrix is a type 3 elementary matrix.
 \end{proof}
 
 \begin{ex}\label{ex:3.1.6}
-  Let \(A \in \MS\).
-  Prove that if \(B\) can be obtained from \(A\) by an elementary row (column) operation, then \(\tp{B}\) can be obtained from \(\tp{A}\) by the corresponding elementary column (row) operation.
+	Let \(A \in \MS\).
+	Prove that if \(B\) can be obtained from \(A\) by an elementary row (column) operation, then \(\tp{B}\) can be obtained from \(\tp{A}\) by the corresponding elementary column (row) operation.
 \end{ex}
 
 \begin{proof}[\pf{ex:3.1.6}]
-  First suppose that \(B\) is obtained from \(A\) by an elementary row operation.
-  By \cref{3.1} we know that there exists an elementary matrix \(E\) such that \(B = EA\).
-  By \cref{2.3.2} we know that \(\tp{B} = \tp{A} \tp{E}\).
-  By \cref{ex:3.1.5} we know that \(\tp{E}\) is an elementary operation.
-  Thus by \cref{3.1} we know that \(\tp{B}\) can be obtained from \(\tp{A}\) by an elementary column operation.
+	First suppose that \(B\) is obtained from \(A\) by an elementary row operation.
+	By \cref{3.1} we know that there exists an elementary matrix \(E\) such that \(B = EA\).
+	By \cref{2.3.2} we know that \(\tp{B} = \tp{A} \tp{E}\).
+	By \cref{ex:3.1.5} we know that \(\tp{E}\) is an elementary operation.
+	Thus by \cref{3.1} we know that \(\tp{B}\) can be obtained from \(\tp{A}\) by an elementary column operation.
 
-  Now suppose that \(B\) is obtained from \(A\) by an elementary column operation.
-  By \cref{3.1} we know that there exists an elementary matrix \(E\) such that \(B = AE\).
-  By \cref{2.3.2} we know that \(\tp{B} = \tp{E} \tp{A}\).
-  By \cref{ex:3.1.5} we know that \(\tp{E}\) is an elementary operation.
-  Thus by \cref{3.1} we know that \(\tp{B}\) can be obtained from \(\tp{A}\) by an elementary row operation.
+	Now suppose that \(B\) is obtained from \(A\) by an elementary column operation.
+	By \cref{3.1} we know that there exists an elementary matrix \(E\) such that \(B = AE\).
+	By \cref{2.3.2} we know that \(\tp{B} = \tp{E} \tp{A}\).
+	By \cref{ex:3.1.5} we know that \(\tp{E}\) is an elementary operation.
+	Thus by \cref{3.1} we know that \(\tp{B}\) can be obtained from \(\tp{A}\) by an elementary row operation.
 \end{proof}
 
 \setcounter{ex}{7}
 \begin{ex}\label{ex:3.1.8}
-  Prove that if a matrix \(Q\) can be obtained from a matrix \(P\) by an elementary row operation, then \(P\) can be obtained from \(Q\) by an elementary row operation of the same type.
+	Prove that if a matrix \(Q\) can be obtained from a matrix \(P\) by an elementary row operation, then \(P\) can be obtained from \(Q\) by an elementary row operation of the same type.
 \end{ex}
 
 \begin{proof}[\pf{ex:3.1.8}]
-  First suppose that \(Q\) is obtained from \(P\) by an elementary row operation.
-  By \cref{3.1} we know that there exists an elementary matrix \(E\) such that \(Q = EP\).
-  By \cref{3.2} we know that \(E^{-1}\) exists and \(E^{-1}\) is an elementary row operation of the same type.
-  Thus we have \(P = E^{-1} E P = E^{-1} Q\).
-  By \cref{3.1} this means \(P\) can be obtained from \(Q\) by an elementary row operation of the same type.
+	First suppose that \(Q\) is obtained from \(P\) by an elementary row operation.
+	By \cref{3.1} we know that there exists an elementary matrix \(E\) such that \(Q = EP\).
+	By \cref{3.2} we know that \(E^{-1}\) exists and \(E^{-1}\) is an elementary row operation of the same type.
+	Thus we have \(P = E^{-1} E P = E^{-1} Q\).
+	By \cref{3.1} this means \(P\) can be obtained from \(Q\) by an elementary row operation of the same type.
 
-  Now suppose that \(Q\) is obtained from \(P\) by an elementary column operation.
-  By \cref{3.1} we know that there exists an elementary matrix \(E\) such that \(Q = PE\).
-  By \cref{3.2} we know that \(E^{-1}\) exists and \(E^{-1}\) is an elementary column operation of the same type.
-  Thus we have \(P = P E E^{-1} = Q E^{-1}\).
-  By \cref{3.1} this means \(P\) can be obtained from \(Q\) by an elementary column operation of the same type.
+	Now suppose that \(Q\) is obtained from \(P\) by an elementary column operation.
+	By \cref{3.1} we know that there exists an elementary matrix \(E\) such that \(Q = PE\).
+	By \cref{3.2} we know that \(E^{-1}\) exists and \(E^{-1}\) is an elementary column operation of the same type.
+	Thus we have \(P = P E E^{-1} = Q E^{-1}\).
+	By \cref{3.1} this means \(P\) can be obtained from \(Q\) by an elementary column operation of the same type.
 \end{proof}
 
 \begin{ex}\label{ex:3.1.9}
-  Prove that any elementary row (column) operation of type 1 can be obtained by a succession of three elementary row (column) operations of type 3 followed by one elementary row (column) operation of type 2.
+	Prove that any elementary row (column) operation of type 1 can be obtained by a succession of three elementary row (column) operations of type 3 followed by one elementary row (column) operation of type 2.
 \end{ex}
 
 \begin{proof}[\pf{ex:3.1.9}]
-  Fix \(i, j \in \set{1, \dots n}\) such that \(i \neq j\).
-  First suppose that \(E \in \ms{n}{n}{\F}\) is an elementary matrix of type 1 which interchange the \(i\)th row and the \(j\)th row.
-  Let \(E_1 \in \ms{n}{n}{\F}\) be the elementary matrix of type 3 which add the \(i\)th row to the \(j\)th row.
-  Let \(E_2 \in \ms{n}{n}{\F}\) be the elementary matrix of type 3 which multiply \(j\)th row with \(-1\) and add it to the \(i\)th row.
-  Let \(E_3 \in \ms{n}{n}{\F}\) be the elementary matrix of type 3 which add the \(i\)th row to the \(j\)th row.
-  Let \(E_4 \in \ms{n}{n}{\F}\) be the elementary matrix of type 4 which multiply \(i\)th row with \(-1\).
-  Observe that
-  \begin{align*}
-    \forall p, q \in \set{1, \dots, n}, E_{p q} & = \begin{dcases}
-                                                      \delta_{p q} & \text{if } (p \neq i) \land (p \neq j) \\
-                                                      \delta_{j q} & \text{if } p = i                       \\
-                                                      \delta_{i q} & \text{if } p = j
-                                                    \end{dcases} &  & \text{(by \cref{2.3.4})}         \\
-    (E_1)_{p q}                                 & = \begin{dcases}
-                                                      \delta_{p q}                & \text{if } p \neq j \\
-                                                      \delta_{i q} + \delta_{j q} & \text{if } p = j
-                                                    \end{dcases}     &  & \text{(by \cref{2.3.4})}             \\
-    (E_2)_{p q}                                 & = \begin{dcases}
-                                                      \delta_{p q}                 & \text{if } p \neq i \\
-                                                      -\delta_{j q} + \delta_{i q} & \text{if } p = i
-                                                    \end{dcases}    &  & \text{(by \cref{2.3.4})}            \\
-    (E_3)_{p q}                                 & = \begin{dcases}
-                                                      \delta_{p q}                & \text{if } p \neq j \\
-                                                      \delta_{i q} + \delta_{j q} & \text{if } p = j
-                                                    \end{dcases}     &  & \text{(by \cref{2.3.4})}             \\
-    (E_4)_{p q}                                 & = \begin{dcases}
-                                                      \delta_{p q}  & \text{if } p \neq i \\
-                                                      -\delta_{i q} & \text{if } p = i
-                                                    \end{dcases}.                   &  & \text{(by \cref{2.3.4})}
-  \end{align*}
-  Then we have
-  \begin{align*}
-     & \forall p, q \in \set{1, \dots, n},                                                                                                                           \\
-     & (E_4 E_3 E_2 E_1)_{p q} = \sum_{r = 1}^n \sum_{s = 1}^n \sum_{t = 1}^n (E_4)_{p r} (E_3)_{r s} (E_2)_{s t} (E_1)_{t q}          &  & \text{(by \cref{2.3.1})} \\
-     & = \begin{dcases}
-           \sum_{r = 1}^n \sum_{s = 1}^n \sum_{t = 1}^n \delta_{p r} (E_3)_{r s} (E_2)_{s t} (E_1)_{t q}  & \text{if } p \neq i \\
-           \sum_{r = 1}^n \sum_{s = 1}^n \sum_{t = 1}^n -\delta_{i r} (E_3)_{r s} (E_2)_{s t} (E_1)_{t q} & \text{if } p = i
-         \end{dcases}                                        \\
-     & = \begin{dcases}
-           \sum_{s = 1}^n \sum_{t = 1}^n (E_3)_{p s} (E_2)_{s t} (E_1)_{t q}  & \text{if } p \neq i \\
-           \sum_{s = 1}^n \sum_{t = 1}^n -(E_3)_{i s} (E_2)_{s t} (E_1)_{t q} & \text{if } p = i
-         \end{dcases}                                                                    \\
-     & = \begin{dcases}
-           \sum_{s = 1}^n \sum_{t = 1}^n \delta_{p s} (E_2)_{s t} (E_1)_{t q}                  & \text{if } (p \neq i) \land (p \neq j) \\
-           \sum_{s = 1}^n \sum_{t = 1}^n (\delta_{i s} + \delta_{j s}) (E_2)_{s t} (E_1)_{t q} & \text{if } p = j                       \\
-           \sum_{s = 1}^n \sum_{t = 1}^n -\delta_{i s} (E_2)_{s t} (E_1)_{t q}                 & \text{if } p = i
-         \end{dcases}                                \\
-     & = \begin{dcases}
-           \sum_{t = 1}^n (E_2)_{p t} (E_1)_{t q}                 & \text{if } (p \neq i) \land (p \neq j) \\
-           \sum_{t = 1}^n ((E_2)_{i t} + (E_2)_{j t}) (E_1)_{t q} & \text{if } p = j                       \\
-           \sum_{t = 1}^n -(E_2)_{i t} (E_1)_{t q}                & \text{if } p = i
-         \end{dcases}                                                             \\
-     & = \begin{dcases}
-           \sum_{t = 1}^n \delta_{p t} (E_1)_{t q}                                  & \text{if } (p \neq i) \land (p \neq j) \\
-           \sum_{t = 1}^n (-\delta_{j t} + \delta_{i t} + \delta_{j t}) (E_1)_{t q} & \text{if } p = j                       \\
-           \sum_{t = 1}^n -(-\delta_{j t} + \delta_{i t}) (E_1)_{t q}               & \text{if } p = i
-         \end{dcases}                                           \\
-     & = \begin{dcases}
-           (E_1)_{p q}               & \text{if } (p \neq i) \land (p \neq j) \\
-           (E_1)_{i q}               & \text{if } p = j                       \\
-           (E_1)_{j q} - (E_1)_{i q} & \text{if } p = i
-         \end{dcases}                                                                                          \\
-     & = \begin{dcases}
-           \delta_{p q}                               & \text{if } (p \neq i) \land (p \neq j) \\
-           \delta_{i q}                               & \text{if } p = j                       \\
-           \delta_{i q} + \delta_{j q} - \delta_{i q} & \text{if } p = i
-         \end{dcases}                                                                         \\
-     & = E_{p q}.
-  \end{align*}
-  Thus \(E = E_4 E_3 E_2 E_1\).
-  We conclude by \cref{3.1} that an elementary row operation of type 1 can be replaced with three consecutive elementary row operations of type 3 followed by one elementary row operation of type 2.
-  Since
-  \begin{align*}
-    E & = \tp{E}                              &  & \text{(by \cref{ex:3.1.5})} \\
-      & = \tp{E_1} \tp{E_2} \tp{E_3} \tp{E_4} &  & \text{(by \cref{2.3.2})}
-  \end{align*}
-  and \(E\) is also an elementary matrix of type 1 which interchange columns, we can conclude by \cref{3.1} and \cref{ex:3.1.5} that an elementary column operation of type 1 can be replaced with three consecutive elementary column operations of type 3 followed by one elementary column operation of type 2.
+	Fix \(i, j \in \set{1, \dots n}\) such that \(i \neq j\).
+	First suppose that \(E \in \ms{n}{n}{\F}\) is an elementary matrix of type 1 which interchange the \(i\)th row and the \(j\)th row.
+	Let \(E_1 \in \ms{n}{n}{\F}\) be the elementary matrix of type 3 which add the \(i\)th row to the \(j\)th row.
+	Let \(E_2 \in \ms{n}{n}{\F}\) be the elementary matrix of type 3 which multiply \(j\)th row with \(-1\) and add it to the \(i\)th row.
+	Let \(E_3 \in \ms{n}{n}{\F}\) be the elementary matrix of type 3 which add the \(i\)th row to the \(j\)th row.
+	Let \(E_4 \in \ms{n}{n}{\F}\) be the elementary matrix of type 4 which multiply \(i\)th row with \(-1\).
+	Observe that
+	\begin{align*}
+		\forall p, q \in \set{1, \dots, n}, E_{p q} & = \begin{dcases}
+			                                                \delta_{p q} & \text{if } (p \neq i) \land (p \neq j) \\
+			                                                \delta_{j q} & \text{if } p = i                       \\
+			                                                \delta_{i q} & \text{if } p = j
+		                                                \end{dcases} &  & \by{2.3.4} \\
+		(E_1)_{p q}                                 & = \begin{dcases}
+			                                                \delta_{p q}                & \text{if } p \neq j \\
+			                                                \delta_{i q} + \delta_{j q} & \text{if } p = j
+		                                                \end{dcases}     &  & \by{2.3.4}     \\
+		(E_2)_{p q}                                 & = \begin{dcases}
+			                                                \delta_{p q}                 & \text{if } p \neq i \\
+			                                                -\delta_{j q} + \delta_{i q} & \text{if } p = i
+		                                                \end{dcases}    &  & \by{2.3.4}    \\
+		(E_3)_{p q}                                 & = \begin{dcases}
+			                                                \delta_{p q}                & \text{if } p \neq j \\
+			                                                \delta_{i q} + \delta_{j q} & \text{if } p = j
+		                                                \end{dcases}     &  & \by{2.3.4}     \\
+		(E_4)_{p q}                                 & = \begin{dcases}
+			                                                \delta_{p q}  & \text{if } p \neq i \\
+			                                                -\delta_{i q} & \text{if } p = i
+		                                                \end{dcases}.                   &  & \by{2.3.4}
+	\end{align*}
+	Then we have
+	\begin{align*}
+		 & \forall p, q \in \set{1, \dots, n},                                                                                                             \\
+		 & (E_4 E_3 E_2 E_1)_{p q} = \sum_{r = 1}^n \sum_{s = 1}^n \sum_{t = 1}^n (E_4)_{p r} (E_3)_{r s} (E_2)_{s t} (E_1)_{t q}          &  & \by{2.3.1} \\
+		 & = \begin{dcases}
+			     \sum_{r = 1}^n \sum_{s = 1}^n \sum_{t = 1}^n \delta_{p r} (E_3)_{r s} (E_2)_{s t} (E_1)_{t q}  & \text{if } p \neq i \\
+			     \sum_{r = 1}^n \sum_{s = 1}^n \sum_{t = 1}^n -\delta_{i r} (E_3)_{r s} (E_2)_{s t} (E_1)_{t q} & \text{if } p = i
+		     \end{dcases}                          \\
+		 & = \begin{dcases}
+			     \sum_{s = 1}^n \sum_{t = 1}^n (E_3)_{p s} (E_2)_{s t} (E_1)_{t q}  & \text{if } p \neq i \\
+			     \sum_{s = 1}^n \sum_{t = 1}^n -(E_3)_{i s} (E_2)_{s t} (E_1)_{t q} & \text{if } p = i
+		     \end{dcases}                                                      \\
+		 & = \begin{dcases}
+			     \sum_{s = 1}^n \sum_{t = 1}^n \delta_{p s} (E_2)_{s t} (E_1)_{t q}                  & \text{if } (p \neq i) \land (p \neq j) \\
+			     \sum_{s = 1}^n \sum_{t = 1}^n (\delta_{i s} + \delta_{j s}) (E_2)_{s t} (E_1)_{t q} & \text{if } p = j                       \\
+			     \sum_{s = 1}^n \sum_{t = 1}^n -\delta_{i s} (E_2)_{s t} (E_1)_{t q}                 & \text{if } p = i
+		     \end{dcases}                  \\
+		 & = \begin{dcases}
+			     \sum_{t = 1}^n (E_2)_{p t} (E_1)_{t q}                 & \text{if } (p \neq i) \land (p \neq j) \\
+			     \sum_{t = 1}^n ((E_2)_{i t} + (E_2)_{j t}) (E_1)_{t q} & \text{if } p = j                       \\
+			     \sum_{t = 1}^n -(E_2)_{i t} (E_1)_{t q}                & \text{if } p = i
+		     \end{dcases}                                               \\
+		 & = \begin{dcases}
+			     \sum_{t = 1}^n \delta_{p t} (E_1)_{t q}                                  & \text{if } (p \neq i) \land (p \neq j) \\
+			     \sum_{t = 1}^n (-\delta_{j t} + \delta_{i t} + \delta_{j t}) (E_1)_{t q} & \text{if } p = j                       \\
+			     \sum_{t = 1}^n -(-\delta_{j t} + \delta_{i t}) (E_1)_{t q}               & \text{if } p = i
+		     \end{dcases}                             \\
+		 & = \begin{dcases}
+			     (E_1)_{p q}               & \text{if } (p \neq i) \land (p \neq j) \\
+			     (E_1)_{i q}               & \text{if } p = j                       \\
+			     (E_1)_{j q} - (E_1)_{i q} & \text{if } p = i
+		     \end{dcases}                                                                            \\
+		 & = \begin{dcases}
+			     \delta_{p q}                               & \text{if } (p \neq i) \land (p \neq j) \\
+			     \delta_{i q}                               & \text{if } p = j                       \\
+			     \delta_{i q} + \delta_{j q} - \delta_{i q} & \text{if } p = i
+		     \end{dcases}                                                           \\
+		 & = E_{p q}.
+	\end{align*}
+	Thus \(E = E_4 E_3 E_2 E_1\).
+	We conclude by \cref{3.1} that an elementary row operation of type 1 can be replaced with three consecutive elementary row operations of type 3 followed by one elementary row operation of type 2.
+	Since
+	\begin{align*}
+		E & = \tp{E}                              &  & \by{ex:3.1.5} \\
+		  & = \tp{E_1} \tp{E_2} \tp{E_3} \tp{E_4} &  & \by{2.3.2}
+	\end{align*}
+	and \(E\) is also an elementary matrix of type 1 which interchange columns, we can conclude by \cref{3.1} and \cref{ex:3.1.5} that an elementary column operation of type 1 can be replaced with three consecutive elementary column operations of type 3 followed by one elementary column operation of type 2.
 \end{proof}
 
 \begin{ex}\label{ex:3.1.10}
-  Prove that any elementary row (column) operation of type 2 can be obtained by \emph{dividing} some row (column) by a nonzero scalar.
+	Prove that any elementary row (column) operation of type 2 can be obtained by \emph{dividing} some row (column) by a nonzero scalar.
 \end{ex}
 
 \begin{proof}[\pf{ex:3.1.10}]
-  Let \(E \in \ms{n}{n}{\F}\) be an elementary matrix of type 2 which multiply the \(i\)th row with \(c \in \F \setminus \set{0}\).
-  Then we have
-  \begin{align*}
-    \forall p, q \in \set{1, \dots, n}, E_{p q} & = \begin{dcases}
-                                                      \delta_{p q}   & \text{if } p \neq i \\
-                                                      c \delta_{i q} & \text{if } p = i
-                                                    \end{dcases}                                      &  & \text{(by \cref{2.3.4})} \\
-                                                & = \begin{dcases}
-                                                      \delta_{p q}                  & \text{if } p \neq i \\
-                                                      \frac{1}{c^{-1}} \delta_{i q} & \text{if } p = i
-                                                    \end{dcases}. &  & (c \neq 0)
-  \end{align*}
-  Thus \(E\) can be obtained by dividing the \(i\)th row of \(I_n\) with \(c^{-1}\).
-  Since \(E\) is also an elementary matrix of type 2 which multiply the \(i\)th column with \(c\) (by \cref{ex:3.1.4}), we know that \(E\) can also be obtained by dividing the \(i\)th column of \(I_n\) with \(c^{-1}\).
+	Let \(E \in \ms{n}{n}{\F}\) be an elementary matrix of type 2 which multiply the \(i\)th row with \(c \in \F \setminus \set{0}\).
+	Then we have
+	\begin{align*}
+		\forall p, q \in \set{1, \dots, n}, E_{p q} & = \begin{dcases}
+			                                                \delta_{p q}   & \text{if } p \neq i \\
+			                                                c \delta_{i q} & \text{if } p = i
+		                                                \end{dcases}                                      &  & \by{2.3.4}           \\
+		                                            & = \begin{dcases}
+			                                                \delta_{p q}                  & \text{if } p \neq i \\
+			                                                \frac{1}{c^{-1}} \delta_{i q} & \text{if } p = i
+		                                                \end{dcases}. &  & (c \neq 0)
+	\end{align*}
+	Thus \(E\) can be obtained by dividing the \(i\)th row of \(I_n\) with \(c^{-1}\).
+	Since \(E\) is also an elementary matrix of type 2 which multiply the \(i\)th column with \(c\) (by \cref{ex:3.1.4}), we know that \(E\) can also be obtained by dividing the \(i\)th column of \(I_n\) with \(c^{-1}\).
 \end{proof}
 
 \begin{ex}\label{ex:3.1.11}
-  Prove that any elementary row (column) operation of type 3 can be obtained by \emph{subtracting} a multiple of some row (column) from another row (column).
+	Prove that any elementary row (column) operation of type 3 can be obtained by \emph{subtracting} a multiple of some row (column) from another row (column).
 \end{ex}
 
 \begin{proof}[\pf{ex:3.1.11}]
-  Fix \(i, j \in \set{1, \dots, n}\) such that \(i \neq j\).
-  First suppose that \(E \in \ms{n}{n}{\F}\) is an elementary matrix of type 3 which multiply the \(i\)th row with \(c \in \F \setminus \set{0}\) and add it to the \(j\)th row.
-  Then we have
-  \begin{align*}
-    \forall p, q \in \set{1, \dots, n}, E_{p q} & = \begin{dcases}
-                                                      \delta_{p q}                  & \text{if } p \neq j \\
-                                                      c \delta_{i q} + \delta_{j q} & \text{if } p = j
-                                                    \end{dcases}    &  & \text{(by \cref{2.3.4})}    \\
-                                                & = \begin{dcases}
-                                                      \delta_{p q}                     & \text{if } p \neq j \\
-                                                      \delta_{j q} - (-c) \delta_{i q} & \text{if } p = j
-                                                    \end{dcases}. &  & (c \in \F)
-  \end{align*}
-  Thus \(E\) can be obtained by subtracting the \(j\)th row with a multiple of \(i\)th row.
+	Fix \(i, j \in \set{1, \dots, n}\) such that \(i \neq j\).
+	First suppose that \(E \in \ms{n}{n}{\F}\) is an elementary matrix of type 3 which multiply the \(i\)th row with \(c \in \F \setminus \set{0}\) and add it to the \(j\)th row.
+	Then we have
+	\begin{align*}
+		\forall p, q \in \set{1, \dots, n}, E_{p q} & = \begin{dcases}
+			                                                \delta_{p q}                  & \text{if } p \neq j \\
+			                                                c \delta_{i q} + \delta_{j q} & \text{if } p = j
+		                                                \end{dcases}    &  & \by{2.3.4}    \\
+		                                            & = \begin{dcases}
+			                                                \delta_{p q}                     & \text{if } p \neq j \\
+			                                                \delta_{j q} - (-c) \delta_{i q} & \text{if } p = j
+		                                                \end{dcases}. &  & (c \in \F)
+	\end{align*}
+	Thus \(E\) can be obtained by subtracting the \(j\)th row with a multiple of \(i\)th row.
 
-  Now suppose that \(E \in \ms{n}{n}{\F}\) is an elementary matrix of type 3 which multiply the \(i\)th column with \(c \in \F \setminus \set{0}\) and add it to the \(j\)th column.
-  Then we have
-  \begin{align*}
-    \forall p, q \in \set{1, \dots, n}, E_{p q} & = \begin{dcases}
-                                                      \delta_{p q}                  & \text{if } q \neq j \\
-                                                      c \delta_{p i} + \delta_{p j} & \text{if } q = j
-                                                    \end{dcases}    &  & \text{(by \cref{2.3.4})}    \\
-                                                & = \begin{dcases}
-                                                      \delta_{p q}                     & \text{if } q \neq j \\
-                                                      \delta_{p j} - (-c) \delta_{p i} & \text{if } q = j
-                                                    \end{dcases}. &  & (c \in \F)
-  \end{align*}
-  Thus \(E\) can be obtained by subtracting the \(j\)th column with a multiple of \(i\)th column.
+	Now suppose that \(E \in \ms{n}{n}{\F}\) is an elementary matrix of type 3 which multiply the \(i\)th column with \(c \in \F \setminus \set{0}\) and add it to the \(j\)th column.
+	Then we have
+	\begin{align*}
+		\forall p, q \in \set{1, \dots, n}, E_{p q} & = \begin{dcases}
+			                                                \delta_{p q}                  & \text{if } q \neq j \\
+			                                                c \delta_{p i} + \delta_{p j} & \text{if } q = j
+		                                                \end{dcases}    &  & \by{2.3.4}    \\
+		                                            & = \begin{dcases}
+			                                                \delta_{p q}                     & \text{if } q \neq j \\
+			                                                \delta_{p j} - (-c) \delta_{p i} & \text{if } q = j
+		                                                \end{dcases}. &  & (c \in \F)
+	\end{align*}
+	Thus \(E\) can be obtained by subtracting the \(j\)th column with a multiple of \(i\)th column.
 \end{proof}
 
 \begin{ex}\label{ex:3.1.12}
-  Let \(A \in \MS\).
-  Prove that there exists a sequence of elementary row operations of types 1 and 3 that transforms \(A\) into an upper triangular matrix.
+	Let \(A \in \MS\).
+	Prove that there exists a sequence of elementary row operations of types 1 and 3 that transforms \(A\) into an upper triangular matrix.
 \end{ex}
 
 \begin{proof}[\pf{ex:3.1.12}]
-  We use induction on \(m\).
-  For \(m = 1\), by \cref{ex:1.3.12} every \(A \in \ms{1}{n}{\F}\) is an upper triangular matrix and thus the base case holds.
-  Suppose inductive that for some \(m \geq 1\), every \(A \in \MS\) can be transformed into an upper triangular matrix.
-  Let \(B \in \ms{(m + 1)}{n}{\F}\).
-  By induction hypothesis we can transform the first \(m\) rows of \(B\) into an upper triangular matrix with row operations of type 1 and type 3.
-  Call the transformed matrix as \(C\).
-  Now we only need to deal with the \((m + 1)\)th row of \(C\) to make it an upper triangular matrix.
-  First we check if \(C_{(m + 1) 1}\) is zero or not.
-  If \(C_{(m + 1) 1} = 0\) then we do nothing.
-  If not, then we split into two cases:
-  \begin{itemize}
-    \item If \(C_{1 1} \neq 0\), then we multiply the first row of \(C\) with \(\frac{-C_{(m + 1) 1}}{C_{1 1}}\) and add it to the \((m + 1)\)th row of \(C\).
-          The resulting matrix, called it \(D\), will have \(D_{(m + 1) 1} = 0\) (thanks to the elementary row operation of type 3) and the first \(m\) rows of \(D\) is upper triangular (since they are the first \(m\) rows of \(C\)).
-    \item If \(C_{1 1} = 0\), then we interchange the first and the \((m + 1)\)th rows of \(C\).
-          The resulting matrix, called it \(D\), will have \(D_{(m + 1) 1} = 0\) (thanks to the elementary row operation of type 1) and the first \(m\) rows of \(D\) is upper triangular (since the second to the \(m\)th rows of \(D\) is the same as \(C\)).
-  \end{itemize}
-  After the above operation (if there is any) we can obtain a matrix \(D\) with \(D_{(m + 1) 1} = 0\) and the first \(m\) rows of \(D\) is upper triangular.
-  Next we check if \(D_{(m + 1) 2}\) is zero or not.
-  If \(D_{(m + 1) 2} = 0\) then we do nothing.
-  If not, then we split into two cases:
-  \begin{itemize}
-    \item If \(D_{2 2} \neq 0\), then we multiply the second row of \(D\) with \(\frac{-D_{(m + 1) 2}}{D_{2 2}}\) and add it to the \((m + 1)\)th row of \(D\).
-          The resulting matrix, called it \(E\), will have \(E_{(m + 1) 1} = E_{(m + 1) 2} = 0\) (thanks to the elementary row operation of type 3 and \(D_{2 1} = 0\)) and the first \(m\) rows of \(E\) is upper triangular (since they are the first \(m\) rows of \(D\)).
-    \item If \(D_{2 2} = 0\), then we interchange the second and the \((m + 1)\)th rows of \(D\).
-          The resulting matrix, called it \(E\), will have \(E_{(m + 1) 1} = E_{(m + 1) 2} = 0\) (thanks to the elementary row operation of type 1 and \(D_{2 1} = 0\)) and the first \(m\) rows of \(E\) is upper triangular (since the first row and the third to the \(m\)th rows of \(E\) is the same as \(D\), and \(E_{2 1} = D_{(m + 1) 1} = 0\)).
-  \end{itemize}
-  After the above operation (if there is any) we can obtain a matrix \(E\) with \(E_{(m + 1) 1} = E_{(m + 1) 2} = 0\) and the first \(m\) rows of \(E\) is upper triangular.
-  Continue this manner at most \(z = \max(m, n)\) times we can obtain a matrix \(Z\) with \(Z_{(m + 1) 1} = Z_{(m + 1) 2} = \cdots = Z_{(m + 1) z} = 0\) and the first \(m\) rows of \(Z\) is upper triangular.
-  But this also means \(Z\) is an upper triangular matrix and the induction is closed.
+	We use induction on \(m\).
+	For \(m = 1\), by \cref{ex:1.3.12} every \(A \in \ms{1}{n}{\F}\) is an upper triangular matrix and thus the base case holds.
+	Suppose inductive that for some \(m \geq 1\), every \(A \in \MS\) can be transformed into an upper triangular matrix.
+	Let \(B \in \ms{(m + 1)}{n}{\F}\).
+	By induction hypothesis we can transform the first \(m\) rows of \(B\) into an upper triangular matrix with row operations of type 1 and type 3.
+	Call the transformed matrix as \(C\).
+	Now we only need to deal with the \((m + 1)\)th row of \(C\) to make it an upper triangular matrix.
+	First we check if \(C_{(m + 1) 1}\) is zero or not.
+	If \(C_{(m + 1) 1} = 0\) then we do nothing.
+	If not, then we split into two cases:
+	\begin{itemize}
+		\item If \(C_{1 1} \neq 0\), then we multiply the first row of \(C\) with \(\frac{-C_{(m + 1) 1}}{C_{1 1}}\) and add it to the \((m + 1)\)th row of \(C\).
+		      The resulting matrix, called it \(D\), will have \(D_{(m + 1) 1} = 0\) (thanks to the elementary row operation of type 3) and the first \(m\) rows of \(D\) is upper triangular (since they are the first \(m\) rows of \(C\)).
+		\item If \(C_{1 1} = 0\), then we interchange the first and the \((m + 1)\)th rows of \(C\).
+		      The resulting matrix, called it \(D\), will have \(D_{(m + 1) 1} = 0\) (thanks to the elementary row operation of type 1) and the first \(m\) rows of \(D\) is upper triangular (since the second to the \(m\)th rows of \(D\) is the same as \(C\)).
+	\end{itemize}
+	After the above operation (if there is any) we can obtain a matrix \(D\) with \(D_{(m + 1) 1} = 0\) and the first \(m\) rows of \(D\) is upper triangular.
+	Next we check if \(D_{(m + 1) 2}\) is zero or not.
+	If \(D_{(m + 1) 2} = 0\) then we do nothing.
+	If not, then we split into two cases:
+	\begin{itemize}
+		\item If \(D_{2 2} \neq 0\), then we multiply the second row of \(D\) with \(\frac{-D_{(m + 1) 2}}{D_{2 2}}\) and add it to the \((m + 1)\)th row of \(D\).
+		      The resulting matrix, called it \(E\), will have \(E_{(m + 1) 1} = E_{(m + 1) 2} = 0\) (thanks to the elementary row operation of type 3 and \(D_{2 1} = 0\)) and the first \(m\) rows of \(E\) is upper triangular (since they are the first \(m\) rows of \(D\)).
+		\item If \(D_{2 2} = 0\), then we interchange the second and the \((m + 1)\)th rows of \(D\).
+		      The resulting matrix, called it \(E\), will have \(E_{(m + 1) 1} = E_{(m + 1) 2} = 0\) (thanks to the elementary row operation of type 1 and \(D_{2 1} = 0\)) and the first \(m\) rows of \(E\) is upper triangular (since the first row and the third to the \(m\)th rows of \(E\) is the same as \(D\), and \(E_{2 1} = D_{(m + 1) 1} = 0\)).
+	\end{itemize}
+	After the above operation (if there is any) we can obtain a matrix \(E\) with \(E_{(m + 1) 1} = E_{(m + 1) 2} = 0\) and the first \(m\) rows of \(E\) is upper triangular.
+	Continue this manner at most \(z = \max(m, n)\) times we can obtain a matrix \(Z\) with \(Z_{(m + 1) 1} = Z_{(m + 1) 2} = \cdots = Z_{(m + 1) z} = 0\) and the first \(m\) rows of \(Z\) is upper triangular.
+	But this also means \(Z\) is an upper triangular matrix and the induction is closed.
 \end{proof}

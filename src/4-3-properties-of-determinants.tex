@@ -1,1011 +1,1011 @@
 \section{Properties of Determinants}\label{sec:4.3}
 
 \begin{thm}\label{4.7}
-  For any \(A, B \in \ms{n}{n}{\F}\), \(\det(AB) = \det(A) \cdot \det(B)\).
+	For any \(A, B \in \ms{n}{n}{\F}\), \(\det(AB) = \det(A) \cdot \det(B)\).
 \end{thm}
 
 \begin{proof}[\pf{4.7}]
-  We begin by establishing the result when \(A\) is an elementary matrix.
-  If \(A\) is an elementary matrix obtained by interchanging two rows of \(I_n\), then by \cref{ex:4.2.28} we have \(\det(A) = -1\).
-  But by \cref{3.1}, \(AB\) is a matrix obtained by interchanging two rows of \(B\).
-  Hence by \cref{4.5}, \(\det(AB) = -\det(B) = \det(A) \cdot \det(B)\).
-  Similar arguments establish the result when \(A\) is an elementary matrix of type 2 or type 3.
-  (See \cref{ex:4.3.18}.)
+	We begin by establishing the result when \(A\) is an elementary matrix.
+	If \(A\) is an elementary matrix obtained by interchanging two rows of \(I_n\), then by \cref{ex:4.2.28} we have \(\det(A) = -1\).
+	But by \cref{3.1}, \(AB\) is a matrix obtained by interchanging two rows of \(B\).
+	Hence by \cref{4.5}, \(\det(AB) = -\det(B) = \det(A) \cdot \det(B)\).
+	Similar arguments establish the result when \(A\) is an elementary matrix of type 2 or type 3.
+	(See \cref{ex:4.3.18}.)
 
-  If \(\rk{A} < n\), then \(\det(A) = 0\) by \cref{4.2.7}.
-  Since \(\rk{AB} \leq \rk{A} < n\) by \cref{3.7}, we have \(\det(AB) = 0\).
-  Thus \(\det(AB) = \det(A) \cdot \det(B)\) in this case.
+	If \(\rk{A} < n\), then \(\det(A) = 0\) by \cref{4.2.7}.
+	Since \(\rk{AB} \leq \rk{A} < n\) by \cref{3.7}, we have \(\det(AB) = 0\).
+	Thus \(\det(AB) = \det(A) \cdot \det(B)\) in this case.
 
-  On the other hand, if \(\rk{A} = n\), then \(A\) is invertible and hence is the product of elementary matrices (\cref{3.2.6}), say, \(A = \seq[]{E}{m,,1}\).
-  The first paragraph of this proof shows that
-  \begin{align*}
-    \det(AB) & = \det(\seq[]{E}{m,,1} B)                     \\
-             & = \det(E_m) \cdot \det(\seq[]{E}{m - 1,,1} B) \\
-             & \vdots                                        \\
-             & = \det(E_m) \cdots \det(E_1) \cdot \det(B)    \\
-             & = \det(\seq[]{E}{m,,1}) \cdot \det(B)         \\
-             & = \det(A) \cdot \det(B).
-  \end{align*}
+	On the other hand, if \(\rk{A} = n\), then \(A\) is invertible and hence is the product of elementary matrices (\cref{3.2.6}), say, \(A = \seq[]{E}{m,,1}\).
+	The first paragraph of this proof shows that
+	\begin{align*}
+		\det(AB) & = \det(\seq[]{E}{m,,1} B)                     \\
+		         & = \det(E_m) \cdot \det(\seq[]{E}{m - 1,,1} B) \\
+		         & \vdots                                        \\
+		         & = \det(E_m) \cdots \det(E_1) \cdot \det(B)    \\
+		         & = \det(\seq[]{E}{m,,1}) \cdot \det(B)         \\
+		         & = \det(A) \cdot \det(B).
+	\end{align*}
 \end{proof}
 
 \begin{note}
-  The determinant is a \emph{multiplicative} function.
+	The determinant is a \emph{multiplicative} function.
 \end{note}
 
 \begin{cor}\label{4.3.1}
-  A matrix \(A \in \ms{n}{n}{\F}\) is invertible iff \(\det(A) \neq 0\).
-  Furthermore, if \(A\) is invertible, then \(\det(A^{-1}) = \frac{1}{\det(A)}\).
+	A matrix \(A \in \ms{n}{n}{\F}\) is invertible iff \(\det(A) \neq 0\).
+	Furthermore, if \(A\) is invertible, then \(\det(A^{-1}) = \frac{1}{\det(A)}\).
 \end{cor}
 
 \begin{proof}[\pf{4.3.1}]
-  If \(A \in \ms{n}{n}{\F}\) is not invertible, then by \cref{3.2.2} the rank of \(A\) is less than \(n\).
-  So \(\det(A) = 0\) by \cref{4.2.7}.
-  On the other hand, if \(A \in \ms{n}{n}{\F}\) is invertible, then
-  \[
-    \det(A) \cdot \det(A^{-1}) = \det(A A^{-1}) = \det(I_n) = 1
-  \]
-  by \cref{4.7}.
-  Hence \(\det(A) \neq 0\) and \(\det(A^{-1}) = \frac{1}{\det(A)}\).
+	If \(A \in \ms{n}{n}{\F}\) is not invertible, then by \cref{3.2.2} the rank of \(A\) is less than \(n\).
+	So \(\det(A) = 0\) by \cref{4.2.7}.
+	On the other hand, if \(A \in \ms{n}{n}{\F}\) is invertible, then
+	\[
+		\det(A) \cdot \det(A^{-1}) = \det(A A^{-1}) = \det(I_n) = 1
+	\]
+	by \cref{4.7}.
+	Hence \(\det(A) \neq 0\) and \(\det(A^{-1}) = \frac{1}{\det(A)}\).
 \end{proof}
 
 \begin{thm}\label{4.8}
-  For any \(A \in \ms{n}{n}{\F}\), \(\det(\tp{A}) = \det(A)\).
+	For any \(A \in \ms{n}{n}{\F}\), \(\det(\tp{A}) = \det(A)\).
 \end{thm}
 
 \begin{proof}[\pf{4.8}]
-  If \(A\) is not invertible, then \(\rk{A} < n\).
-  But \(\rk{\tp{A}} = \rk{A}\) by \cref{3.2.5}(a), and so \(\tp{A}\) is not invertible.
-  Thus \(\det(\tp{A}) = 0 = \det(A)\) in this case.
+	If \(A\) is not invertible, then \(\rk{A} < n\).
+	But \(\rk{\tp{A}} = \rk{A}\) by \cref{3.2.5}(a), and so \(\tp{A}\) is not invertible.
+	Thus \(\det(\tp{A}) = 0 = \det(A)\) in this case.
 
-  On the other hand, if \(A\) is invertible, then \(A\) is a product of elementary matrices, say \(A = \seq[]{E}{m,,1}\).
-  This means
-  \begin{align*}
-    \det(\tp{A}) & = \det(\tp{E_1} \cdots \tp{E_m})       &  & \text{(by \cref{2.3.2})}     \\
-                 & = \det(\tp{E_1}) \cdots \det(\tp{E_m}) &  & \text{(by \cref{4.7})}       \\
-                 & = \det(E_1) \cdots \det(E_m)           &  & \text{(by \cref{ex:4.2.29})} \\
-                 & = \det(E_m) \cdots \det(E_1)           &  & (\det(\tp{E_i}) \in \F)      \\
-                 & = \det(E_m \cdots E_1)                 &  & \text{(by \cref{4.7})}       \\
-                 & = \det(A).
-  \end{align*}
-  Thus, in either case, \(\det(\tp{A}) = \det(A)\).
+	On the other hand, if \(A\) is invertible, then \(A\) is a product of elementary matrices, say \(A = \seq[]{E}{m,,1}\).
+	This means
+	\begin{align*}
+		\det(\tp{A}) & = \det(\tp{E_1} \cdots \tp{E_m})       &  & \by{2.3.2}              \\
+		             & = \det(\tp{E_1}) \cdots \det(\tp{E_m}) &  & \by{4.7}                \\
+		             & = \det(E_1) \cdots \det(E_m)           &  & \by{ex:4.2.29}          \\
+		             & = \det(E_m) \cdots \det(E_1)           &  & (\det(\tp{E_i}) \in \F) \\
+		             & = \det(E_m \cdots E_1)                 &  & \by{4.7}                \\
+		             & = \det(A).
+	\end{align*}
+	Thus, in either case, \(\det(\tp{A}) = \det(A)\).
 \end{proof}
 
 \begin{note}
-  In our discussion of determinants until now, we have used only the rows of a matrix.
-  For example, the recursive definition of a determinant involved cofactor expansion along a row, and the more efficient method developed in \cref{sec:4.2} used elementary row operations.
-  \cref{4.8} shows that the determinants of \(A\) and \(\tp{A}\) are always equal.
-  Since the rows of \(A\) are the columns of \(\tp{A}\), this fact enables us to translate any statement about determinants that involves the rows of a matrix into a corresponding statement that involves its columns.
+	In our discussion of determinants until now, we have used only the rows of a matrix.
+	For example, the recursive definition of a determinant involved cofactor expansion along a row, and the more efficient method developed in \cref{sec:4.2} used elementary row operations.
+	\cref{4.8} shows that the determinants of \(A\) and \(\tp{A}\) are always equal.
+	Since the rows of \(A\) are the columns of \(\tp{A}\), this fact enables us to translate any statement about determinants that involves the rows of a matrix into a corresponding statement that involves its columns.
 \end{note}
 
 \begin{thm}[Cramer's Rule]\label{4.9}
-  Let \(Ax = b\) be the matrix form of a system of \(n\) linear equations in \(n\) unknowns, where \(x = \tp{\tuple{x}{1,,n}}\).
-  If \(\det(A) \neq 0\), then this system has a unique solution, and for each \(k \in \set{1, \dots, n}\),
-  \[
-    x_k = \frac{\det(M_k)}{\det(A)},
-  \]
-  where \(M_k \in \ms{n}{n}{\F}\) is obtained from \(A\) by replacing column \(k\) of \(A\) by \(b\).
+	Let \(Ax = b\) be the matrix form of a system of \(n\) linear equations in \(n\) unknowns, where \(x = \tp{\tuple{x}{1,,n}}\).
+	If \(\det(A) \neq 0\), then this system has a unique solution, and for each \(k \in \set{1, \dots, n}\),
+	\[
+		x_k = \frac{\det(M_k)}{\det(A)},
+	\]
+	where \(M_k \in \ms{n}{n}{\F}\) is obtained from \(A\) by replacing column \(k\) of \(A\) by \(b\).
 \end{thm}
 
 \begin{proof}[\pf{4.9}]
-  If \(\det(A) \neq 0\), then the system \(Ax = b\) has a unique solution by the \cref{4.3.1,3.10}.
-  For each integer \(k \in \set{1, \dots, n}\), let \(a_k\) denote the \(k\)th column of \(A\) and \(X_k\) denote the matrix obtained from the \(I_n\) by replacing column \(k\) by \(x\).
-  Then by \cref{2.13}, \(A X_k\) is the \(n \times n\) matrix whose \(i\)th column is
-  \[
-    A e_i = a_i \text{ if } i \neq k \quad \text{and} \quad Ax = b \text{ if } i = k.
-  \]
-  Thus \(A X_k = M_k\).
-  Evaluating \(X_k\) by cofactor expansion along row \(k\) produces
-  \[
-    \det(X_k) = x_k \cdot \det(I_{n - 1}) = x_k.
-  \]
-  Hence by \cref{4.7},
-  \[
-    \det(M_k) = \det(A X_k) = \det(A) \cdot \det(X_k) = \det(A) \cdot x_k.
-  \]
-  Therefore
-  \[
-    x_k = \pa{\det(A)}^{-1} \cdot \det(M_k).
-  \]
+	If \(\det(A) \neq 0\), then the system \(Ax = b\) has a unique solution by the \cref{4.3.1,3.10}.
+	For each integer \(k \in \set{1, \dots, n}\), let \(a_k\) denote the \(k\)th column of \(A\) and \(X_k\) denote the matrix obtained from the \(I_n\) by replacing column \(k\) by \(x\).
+	Then by \cref{2.13}, \(A X_k\) is the \(n \times n\) matrix whose \(i\)th column is
+	\[
+		A e_i = a_i \text{ if } i \neq k \quad \text{and} \quad Ax = b \text{ if } i = k.
+	\]
+	Thus \(A X_k = M_k\).
+	Evaluating \(X_k\) by cofactor expansion along row \(k\) produces
+	\[
+		\det(X_k) = x_k \cdot \det(I_{n - 1}) = x_k.
+	\]
+	Hence by \cref{4.7},
+	\[
+		\det(M_k) = \det(A X_k) = \det(A) \cdot \det(X_k) = \det(A) \cdot x_k.
+	\]
+	Therefore
+	\[
+		x_k = \pa{\det(A)}^{-1} \cdot \det(M_k).
+	\]
 \end{proof}
 
 \begin{note}
-  In applications involving systems of linear equations, we sometimes need to know that there is a solution in which the unknowns are integers.
-  In this situation, Cramer's rule can be useful because it implies that a system of linear equations with integral coefficients has an integral solution if the determinant of its coefficient matrix is \(\pm 1\).
-  On the other hand, Cramer's rule is not useful for computation because it requires evaluating \(n + 1\) determinants of \(n \times n\) matrices to solve a system of \(n\) linear equations in \(n\) unknowns.
-  The amount of computation to do this is far greater than that required to solve the system by the method of Gaussian-Jordan elimination, which was discussed in \cref{sec:3.4}.
-  Thus Cramer's rule is primarily of theoretical and aesthetic interest, rather than of computational value.
+	In applications involving systems of linear equations, we sometimes need to know that there is a solution in which the unknowns are integers.
+	In this situation, Cramer's rule can be useful because it implies that a system of linear equations with integral coefficients has an integral solution if the determinant of its coefficient matrix is \(\pm 1\).
+	On the other hand, Cramer's rule is not useful for computation because it requires evaluating \(n + 1\) determinants of \(n \times n\) matrices to solve a system of \(n\) linear equations in \(n\) unknowns.
+	The amount of computation to do this is far greater than that required to solve the system by the method of Gaussian-Jordan elimination, which was discussed in \cref{sec:3.4}.
+	Thus Cramer's rule is primarily of theoretical and aesthetic interest, rather than of computational value.
 \end{note}
 
 \begin{note}
-  As in \cref{sec:4.1}, it is possible to interpret the determinant of a matrix \(A \in \ms{n}{n}{\F}\) geometrically.
-  If the rows of \(A\) are \(\seq{a}{1,,n}\), respectively, then \(\abs{\det(A)}\) is the \textbf{\(n\)-dimensional volume} (the generalization of area in \(\R^2\) and volume in \(\R^3\)) of the parallelepiped having the vectors \(\seq{a}{1,,n}\) as adjacent sides.
+	As in \cref{sec:4.1}, it is possible to interpret the determinant of a matrix \(A \in \ms{n}{n}{\F}\) geometrically.
+	If the rows of \(A\) are \(\seq{a}{1,,n}\), respectively, then \(\abs{\det(A)}\) is the \textbf{\(n\)-dimensional volume} (the generalization of area in \(\R^2\) and volume in \(\R^3\)) of the parallelepiped having the vectors \(\seq{a}{1,,n}\) as adjacent sides.
 \end{note}
 
 \begin{note}
-  In our earlier discussion of the geometric significance of the determinant formed from the vectors in an ordered basis for \(\R^2\), we also saw that this determinant is positive iff the basis induces a right-handed coordinate system.
-  A similar statement is true in \(\R^n\).
-  Specifically, if \(\gamma\) is any ordered basis for \(\R^n\) and \(\beta\) is the standard ordered basis for \(\R^n\), then \(\gamma\) induces a \emph{right-handed coordinate system} iff \(\det(Q) > 0\), where \(Q\) is the change of coordinate matrix changing \(\gamma\)-coordinates into \(\beta\)-coordinates, i.e., \(Q = [I_n]_{\gamma}^{\beta}\)
-  (see \cref{2.5.1}).
-  More generally, if \(\beta\) and \(\gamma\) are two ordered bases for \(\R^n\), then the coordinate systems induced by \(\beta\) and \(\gamma\) have the same \textbf{orientation} (either both are right-handed or both are left-handed) iff \(\det(Q) > 0\), where \(Q\) is the change of coordinate matrix changing \(\gamma\)-coordinates into \(\beta\)-coordinates.
+	In our earlier discussion of the geometric significance of the determinant formed from the vectors in an ordered basis for \(\R^2\), we also saw that this determinant is positive iff the basis induces a right-handed coordinate system.
+	A similar statement is true in \(\R^n\).
+	Specifically, if \(\gamma\) is any ordered basis for \(\R^n\) and \(\beta\) is the standard ordered basis for \(\R^n\), then \(\gamma\) induces a \emph{right-handed coordinate system} iff \(\det(Q) > 0\), where \(Q\) is the change of coordinate matrix changing \(\gamma\)-coordinates into \(\beta\)-coordinates, i.e., \(Q = [I_n]_{\gamma}^{\beta}\)
+	(see \cref{2.5.1}).
+	More generally, if \(\beta\) and \(\gamma\) are two ordered bases for \(\R^n\), then the coordinate systems induced by \(\beta\) and \(\gamma\) have the same \textbf{orientation} (either both are right-handed or both are left-handed) iff \(\det(Q) > 0\), where \(Q\) is the change of coordinate matrix changing \(\gamma\)-coordinates into \(\beta\)-coordinates.
 \end{note}
 
 \exercisesection
 
 \setcounter{ex}{7}
 \begin{ex}\label{ex:4.3.8}
-  Use \cref{4.8} to prove a result analogous to \cref{4.3}, but for columns.
+	Use \cref{4.8} to prove a result analogous to \cref{4.3}, but for columns.
 \end{ex}
 
 \begin{proof}[\pf{ex:4.3.8}]
-  Let \(A \in \ms{n}{n}{\F}\) and let \(\seq{a}{1,,n}\) be columns of \(A\).
-  Let \(u, v \in \vs{F}^n\) and let \(k \in \F\).
-  If \(a_r = u + kv\) for some \(r \in \set{1, \dots, n}\), then we have
-  \begin{align*}
-    \det(A) & = \det\begin{pmatrix}
-                      a_1 & \cdots & a_{r - 1} & u + kv & a_{r + 1} & \cdots & a_n
-                    \end{pmatrix}                            \\
-            & = \det\begin{pmatrix}
-                      \tp{a_1}          \\
-                      \vdots            \\
-                      \tp{a_{r - 1}}    \\
-                      \tp{u} + k \tp{v} \\
-                      \tp{a_{r + 1}}    \\
-                      \vdots            \\
-                      \tp{a_n}
-                    \end{pmatrix}                      &  & \text{(by \cref{4.8})}                          \\
-            & = \det\begin{pmatrix}
-                      \tp{a_1}       \\
-                      \vdots         \\
-                      \tp{a_{r - 1}} \\
-                      \tp{u}         \\
-                      \tp{a_{r + 1}} \\
-                      \vdots         \\
-                      \tp{a_n}
-                    \end{pmatrix} + k \det\begin{pmatrix}
-                                            \tp{a_1}       \\
-                                            \vdots         \\
-                                            \tp{a_{r - 1}} \\
-                                            \tp{v}         \\
-                                            \tp{a_{r + 1}} \\
-                                            \vdots         \\
-                                            \tp{a_n}
-                                          \end{pmatrix}                         &  & \text{(by \cref{4.3})} \\
-            & = \det\begin{pmatrix}
-                      a_1 & \cdots & a_{r - 1} & u & a_{r + 1} & \cdots & a_n
-                    \end{pmatrix}                                 \\
-            & \quad + k \det\begin{pmatrix}
-                              a_1 & \cdots & a_{r - 1} & v & a_{r + 1} & \cdots & a_n
-                            \end{pmatrix}.      &  & \text{(by \cref{4.8})}
-  \end{align*}
+	Let \(A \in \ms{n}{n}{\F}\) and let \(\seq{a}{1,,n}\) be columns of \(A\).
+	Let \(u, v \in \vs{F}^n\) and let \(k \in \F\).
+	If \(a_r = u + kv\) for some \(r \in \set{1, \dots, n}\), then we have
+	\begin{align*}
+		\det(A) & = \det\begin{pmatrix}
+			                a_1 & \cdots & a_{r - 1} & u + kv & a_{r + 1} & \cdots & a_n
+		                \end{pmatrix}              \\
+		        & = \det\begin{pmatrix}
+			                \tp{a_1}          \\
+			                \vdots            \\
+			                \tp{a_{r - 1}}    \\
+			                \tp{u} + k \tp{v} \\
+			                \tp{a_{r + 1}}    \\
+			                \vdots            \\
+			                \tp{a_n}
+		                \end{pmatrix}                      &  & \by{4.8}                          \\
+		        & = \det\begin{pmatrix}
+			                \tp{a_1}       \\
+			                \vdots         \\
+			                \tp{a_{r - 1}} \\
+			                \tp{u}         \\
+			                \tp{a_{r + 1}} \\
+			                \vdots         \\
+			                \tp{a_n}
+		                \end{pmatrix} + k \det\begin{pmatrix}
+			                                      \tp{a_1}       \\
+			                                      \vdots         \\
+			                                      \tp{a_{r - 1}} \\
+			                                      \tp{v}         \\
+			                                      \tp{a_{r + 1}} \\
+			                                      \vdots         \\
+			                                      \tp{a_n}
+		                                      \end{pmatrix}                         &  & \by{4.3} \\
+		        & = \det\begin{pmatrix}
+			                a_1 & \cdots & a_{r - 1} & u & a_{r + 1} & \cdots & a_n
+		                \end{pmatrix}                   \\
+		        & \quad + k \det\begin{pmatrix}
+			                        a_1 & \cdots & a_{r - 1} & v & a_{r + 1} & \cdots & a_n
+		                        \end{pmatrix}.      &  & \by{4.8}
+	\end{align*}
 \end{proof}
 
 \begin{ex}\label{ex:4.3.9}
-  Prove that an upper triangular matrix \(A \in \ms{n}{n}{\F}\) is invertible iff all its diagonal entries are nonzero.
+	Prove that an upper triangular matrix \(A \in \ms{n}{n}{\F}\) is invertible iff all its diagonal entries are nonzero.
 \end{ex}
 
 \begin{proof}[\pf{ex:4.3.9}]
-  We have
-  \begin{align*}
-         & A \text{ is invertible}                                                            \\
-    \iff & \det(A) \neq 0                                   &  & \text{(by \cref{4.3.1})}     \\
-    \iff & \prod_{j = 1}^n A_{j j} \neq 0                   &  & \text{(by \cref{ex:4.2.23})} \\
-    \iff & \forall j \in \set{1, \dots, n}, A_{j j} \neq 0.
-  \end{align*}
+	We have
+	\begin{align*}
+		     & A \text{ is invertible}                                              \\
+		\iff & \det(A) \neq 0                                   &  & \by{4.3.1}     \\
+		\iff & \prod_{j = 1}^n A_{j j} \neq 0                   &  & \by{ex:4.2.23} \\
+		\iff & \forall j \in \set{1, \dots, n}, A_{j j} \neq 0.
+	\end{align*}
 \end{proof}
 
 \begin{ex}\label{ex:4.3.10}
-  A matrix \(M \in \ms{n}{n}{\C}\) is called \textbf{nilpotent} if, for some positive integer \(k\), \(M^k = \zm\), where \(\zm\) is the \(n \times n\) zero matrix.
-  Prove that if \(M\) is nilpotent, then \(\det(M) = 0\).
+	A matrix \(M \in \ms{n}{n}{\C}\) is called \textbf{nilpotent} if, for some positive integer \(k\), \(M^k = \zm\), where \(\zm\) is the \(n \times n\) zero matrix.
+	Prove that if \(M\) is nilpotent, then \(\det(M) = 0\).
 \end{ex}
 
 \begin{proof}[\pf{ex:4.3.10}]
-  Suppose for sake of contradiction that \(\det(M) \neq 0\).
-  Then we have
-  \begin{align*}
-             & \det(M) \neq 0                                       \\
-    \implies & (\det(M))^k \neq 0                                   \\
-    \implies & \det(M^k) \neq 0   &  & \text{(by \cref{4.7})}       \\
-    \implies & \det(\zm) \neq 0.  &  & \text{(by \cref{ex:4.3.10})}
-  \end{align*}
-  But we know that \(\det(\zm) = 0\), a contradiction.
-  Thus \(\det(M) = 0\).
+	Suppose for sake of contradiction that \(\det(M) \neq 0\).
+	Then we have
+	\begin{align*}
+		         & \det(M) \neq 0                         \\
+		\implies & (\det(M))^k \neq 0                     \\
+		\implies & \det(M^k) \neq 0   &  & \by{4.7}       \\
+		\implies & \det(\zm) \neq 0.  &  & \by{ex:4.3.10}
+	\end{align*}
+	But we know that \(\det(\zm) = 0\), a contradiction.
+	Thus \(\det(M) = 0\).
 \end{proof}
 
 \begin{ex}\label{ex:4.3.11}
-  A matrix \(M \in \ms{n}{n}{\C}\) is called \textbf{skew-symmetric} if \(\tp{M} = -M\).
-  Prove that if \(M\) is skew-symmetric and \(n\) is odd, then \(M\) is not invertible.
-  What happens if \(n\) is even?
+	A matrix \(M \in \ms{n}{n}{\C}\) is called \textbf{skew-symmetric} if \(\tp{M} = -M\).
+	Prove that if \(M\) is skew-symmetric and \(n\) is odd, then \(M\) is not invertible.
+	What happens if \(n\) is even?
 \end{ex}
 
 \begin{proof}[\pf{ex:4.3.11}]
-  Since
-  \begin{align*}
-    \det(M) & = \det(\tp{M})    &  & \text{(by \cref{4.8})}       \\
-            & = \det(-M)        &  & \text{(by \cref{ex:4.3.11})} \\
-            & = (-1)^n \det(M), &  & \text{(by \cref{4.3})}
-  \end{align*}
-  we know that when \(n\) is odd,
-  \begin{align*}
-             & \det(M) = -\det(M)                                         \\
-    \implies & 2 \det(M) = 0                                              \\
-    \implies & \det(M) = 0                                                \\
-    \implies & M \text{ is not invertible}. &  & \text{(by \cref{4.3.1})}
-  \end{align*}
-  We cannot conclude anything when \(n\) is even.
+	Since
+	\begin{align*}
+		\det(M) & = \det(\tp{M})    &  & \by{4.8}       \\
+		        & = \det(-M)        &  & \by{ex:4.3.11} \\
+		        & = (-1)^n \det(M), &  & \by{4.3}
+	\end{align*}
+	we know that when \(n\) is odd,
+	\begin{align*}
+		         & \det(M) = -\det(M)                           \\
+		\implies & 2 \det(M) = 0                                \\
+		\implies & \det(M) = 0                                  \\
+		\implies & M \text{ is not invertible}. &  & \by{4.3.1}
+	\end{align*}
+	We cannot conclude anything when \(n\) is even.
 \end{proof}
 
 \begin{ex}\label{ex:4.3.12}
-  A matrix \(Q \in \ms{n}{n}{\R}\) is called \textbf{orthogonal} if \(Q \tp{Q} = I_n\).
-  Prove that if \(Q\) is orthogonal, then \(\det(Q) = \pm 1\).
+	A matrix \(Q \in \ms{n}{n}{\R}\) is called \textbf{orthogonal} if \(Q \tp{Q} = I_n\).
+	Prove that if \(Q\) is orthogonal, then \(\det(Q) = \pm 1\).
 \end{ex}
 
 \begin{proof}[\pf{ex:4.3.12}]
-  We have
-  \begin{align*}
-    1 & = \det(I_n)            &  & \text{(by \cref{4.2.3})}     \\
-      & = \det(Q \tp{Q})       &  & \text{(by \cref{ex:4.3.12})} \\
-      & = \det(Q) \det(\tp{Q}) &  & \text{(by \cref{4.7})}       \\
-      & = (\det(Q))^2          &  & \text{(by \cref{4.8})}
-  \end{align*}
-  and thus \(\det(Q) = \pm 1\).
+	We have
+	\begin{align*}
+		1 & = \det(I_n)            &  & \by{4.2.3}     \\
+		  & = \det(Q \tp{Q})       &  & \by{ex:4.3.12} \\
+		  & = \det(Q) \det(\tp{Q}) &  & \by{4.7}       \\
+		  & = (\det(Q))^2          &  & \by{4.8}
+	\end{align*}
+	and thus \(\det(Q) = \pm 1\).
 \end{proof}
 
 \begin{ex}\label{ex:4.3.13}
-  For \(M \in \ms{n}{n}{\C}\), let \(\conj{M}\) be the matrix such that \((\conj{M})_{i j} = \conj{M_{i j}}\) for all \(i, j \in \set{1, \dots, n}\), where \(\conj{M_{i j}}\) is the complex conjugate of \(M_{i j}\).
-  \begin{enumerate}
-    \item Prove that \(\det(\conj{M}) = \conj{\det(M)}\).
-    \item A matrix \(Q \in \ms{n}{n}{\C}\) is called \textbf{unitary} if \(Q Q^* = I_n\), where \(Q^* = \conj{\tp{Q}}\).
-          Prove that if \(Q\) is a unitary matrix, then \(\abs{\det(Q)} = 1\).
-  \end{enumerate}
+	For \(M \in \ms{n}{n}{\C}\), let \(\conj{M}\) be the matrix such that \((\conj{M})_{i j} = \conj{M_{i j}}\) for all \(i, j \in \set{1, \dots, n}\), where \(\conj{M_{i j}}\) is the complex conjugate of \(M_{i j}\).
+	\begin{enumerate}
+		\item Prove that \(\det(\conj{M}) = \conj{\det(M)}\).
+		\item A matrix \(Q \in \ms{n}{n}{\C}\) is called \textbf{unitary} if \(Q Q^* = I_n\), where \(Q^* = \conj{\tp{Q}}\).
+		      Prove that if \(Q\) is a unitary matrix, then \(\abs{\det(Q)} = 1\).
+	\end{enumerate}
 \end{ex}
 
 \begin{proof}[\pf{ex:4.3.13}(a)]
-  We use induction on \(n\).
-  For \(n = 1\), we have
-  \begin{align*}
-    \det(\conj{M}) & = (\conj{M})_{1 1} &  & \text{(by \cref{4.2.2})}     \\
-                   & = \conj{M_{1 1}}   &  & \text{(by \cref{ex:4.3.13})} \\
-                   & = \conj{\det(M)}   &  & \text{(by \cref{4.2.2})}
-  \end{align*}
-  and thus the base case holds.
-  Suppose inductively that for some \(n \geq 1\), we have \(\det(\conj{M}) = \conj{\det(M)}\) for all \(M \in \ms{n}{n}{\C}\).
-  We need to show that \(\det(\conj{M}) = \conj{\det(M)}\) for all \(M \in \ms{(n + 1)}{(n + 1)}{\C}\).
-  Let \(M \in \ms{(n + 1)}{(n + 1)}{\C}\).
-  Then we have
-  \begin{align*}
-    \conj{\det(M)} & = \conj{\sum_{j = 1}^{n + 1} (-1)^{1 + j} M_{1 j} \cdot \det(\tilde{M}_{1 j})}          &  & \text{(by \cref{4.2.2})}         \\
-                   & = \sum_{j = 1}^{n + 1} (-1)^{1 + j} \conj{M_{1 j}} \cdot \conj{\det(\tilde{M}_{1 j})}   &  & \text{(by \cref{d.2}(b)(c))}     \\
-                   & = \sum_{j = 1}^{n + 1} (-1)^{1 + j} (\conj{M})_{1 j} \cdot \conj{\det(\tilde{M}_{1 j})} &  & \text{(by \cref{ex:4.3.13})}     \\
-                   & = \sum_{j = 1}^{n + 1} (-1)^{1 + j} (\conj{M})_{1 j} \cdot \det(\conj{\tilde{M}_{1 j}}) &  & \text{(by induction hypothesis)} \\
-                   & = \sum_{j = 1}^{n + 1} (-1)^{1 + j} (\conj{M})_{1 j} \cdot \det(\tilde{\conj{M}}_{1 j}) &  & \text{(by \cref{ex:4.3.13})}     \\
-                   & = \det(\conj{M})                                                                        &  & \text{(by \cref{4.2.2})}
-  \end{align*}
-  and this closes the induction.
+	We use induction on \(n\).
+	For \(n = 1\), we have
+	\begin{align*}
+		\det(\conj{M}) & = (\conj{M})_{1 1} &  & \by{4.2.2}     \\
+		               & = \conj{M_{1 1}}   &  & \by{ex:4.3.13} \\
+		               & = \conj{\det(M)}   &  & \by{4.2.2}
+	\end{align*}
+	and thus the base case holds.
+	Suppose inductively that for some \(n \geq 1\), we have \(\det(\conj{M}) = \conj{\det(M)}\) for all \(M \in \ms{n}{n}{\C}\).
+	We need to show that \(\det(\conj{M}) = \conj{\det(M)}\) for all \(M \in \ms{(n + 1)}{(n + 1)}{\C}\).
+	Let \(M \in \ms{(n + 1)}{(n + 1)}{\C}\).
+	Then we have
+	\begin{align*}
+		\conj{\det(M)} & = \conj{\sum_{j = 1}^{n + 1} (-1)^{1 + j} M_{1 j} \cdot \det(\tilde{M}_{1 j})}          &  & \by{4.2.2}                       \\
+		               & = \sum_{j = 1}^{n + 1} (-1)^{1 + j} \conj{M_{1 j}} \cdot \conj{\det(\tilde{M}_{1 j})}   &  & \by{d.2}[bc]                     \\
+		               & = \sum_{j = 1}^{n + 1} (-1)^{1 + j} (\conj{M})_{1 j} \cdot \conj{\det(\tilde{M}_{1 j})} &  & \by{ex:4.3.13}                   \\
+		               & = \sum_{j = 1}^{n + 1} (-1)^{1 + j} (\conj{M})_{1 j} \cdot \det(\conj{\tilde{M}_{1 j}}) &  & \text{(by induction hypothesis)} \\
+		               & = \sum_{j = 1}^{n + 1} (-1)^{1 + j} (\conj{M})_{1 j} \cdot \det(\tilde{\conj{M}}_{1 j}) &  & \by{ex:4.3.13}                   \\
+		               & = \det(\conj{M})                                                                        &  & \by{4.2.2}
+	\end{align*}
+	and this closes the induction.
 \end{proof}
 
 \begin{proof}[\pf{ex:4.3.13}(b)]
-  We have
-  \begin{align*}
-    1 & = \det(I_n)                         &  & \text{(by \cref{4.2.3})}        \\
-      & = \det(Q Q^*)                       &  & \text{(by \cref{ex:4.3.13})}    \\
-      & = \det(Q) \cdot \det(Q^*)           &  & \text{(by \cref{4.7})}          \\
-      & = \det(Q) \cdot \det(\conj{\tp{Q}}) &  & \text{(by \cref{ex:4.3.13})}    \\
-      & = \det(Q) \cdot \conj{\det(\tp{Q})} &  & \text{(by \cref{ex:4.3.13}(a))} \\
-      & = \det(Q) \cdot \conj{\det(Q)}      &  & \text{(by \cref{4.8})}          \\
-      & = \abs{\det(Q)}^2                   &  & \text{(by \cref{d.0.5})}
-  \end{align*}
-  and thus \(\abs{\det(Q)} = 1\).
+	We have
+	\begin{align*}
+		1 & = \det(I_n)                         &  & \by{4.2.3}        \\
+		  & = \det(Q Q^*)                       &  & \by{ex:4.3.13}    \\
+		  & = \det(Q) \cdot \det(Q^*)           &  & \by{4.7}          \\
+		  & = \det(Q) \cdot \det(\conj{\tp{Q}}) &  & \by{ex:4.3.13}    \\
+		  & = \det(Q) \cdot \conj{\det(\tp{Q})} &  & \by{ex:4.3.13}[a] \\
+		  & = \det(Q) \cdot \conj{\det(Q)}      &  & \by{4.8}          \\
+		  & = \abs{\det(Q)}^2                   &  & \by{d.0.5}
+	\end{align*}
+	and thus \(\abs{\det(Q)} = 1\).
 \end{proof}
 
 \begin{ex}\label{ex:4.3.14}
-  Let \(\beta = \set{\seq{u}{1,,n}}\) be a subset of \(\vs{F}^n\) containing \(n\) distinct vectors, and let \(B \in \ms{n}{n}{\F}\) having \(u_j\) as column \(j\).
-  Prove that \(\beta\) is a basis for \(\vs{F}^n\) over \(\F\) iff \(\det(B) \neq 0\).
+	Let \(\beta = \set{\seq{u}{1,,n}}\) be a subset of \(\vs{F}^n\) containing \(n\) distinct vectors, and let \(B \in \ms{n}{n}{\F}\) having \(u_j\) as column \(j\).
+	Prove that \(\beta\) is a basis for \(\vs{F}^n\) over \(\F\) iff \(\det(B) \neq 0\).
 \end{ex}
 
 \begin{proof}[\pf{ex:4.3.14}]
-  We have
-  \begin{align*}
-         & \beta \text{ is a basis for } \vs{F}^n \text{ over } \F                               \\
-    \iff & \beta \text{ is linearly independent}                   &  & \text{(by \cref{1.6.1})} \\
-    \iff & \rk{B} = \#(\beta) = n                                  &  & \text{(by \cref{3.5})}   \\
-    \iff & B \text{ is invertible}                                 &  & \text{(by \cref{3.2.2})} \\
-    \iff & \det(B) \neq 0.                                         &  & \text{(by \cref{4.3.1})}
-  \end{align*}
+	We have
+	\begin{align*}
+		     & \beta \text{ is a basis for } \vs{F}^n \text{ over } \F                 \\
+		\iff & \beta \text{ is linearly independent}                   &  & \by{1.6.1} \\
+		\iff & \rk{B} = \#(\beta) = n                                  &  & \by{3.5}   \\
+		\iff & B \text{ is invertible}                                 &  & \by{3.2.2} \\
+		\iff & \det(B) \neq 0.                                         &  & \by{4.3.1}
+	\end{align*}
 \end{proof}
 
 \begin{ex}\label{ex:4.3.15}
-  Prove that if \(A, B \in \ms{n}{n}{\F}\) are similar, then \(\det(A) = \det(B)\).
+	Prove that if \(A, B \in \ms{n}{n}{\F}\) are similar, then \(\det(A) = \det(B)\).
 \end{ex}
 
 \begin{proof}[\pf{ex:4.3.15}]
-  Since \(A, B\) are similar, by \cref{2.5.4} we know that there exists a \(Q \in \ms{n}{n}{\F}\) such that \(A = Q^{-1} B Q\).
-  Then we have
-  \begin{align*}
-    \det(A) & = \det(Q^{-1} B Q)                                           \\
-            & = \det(Q^{-1}) \det(B) \det(Q) &  & \text{(by \cref{4.7})}   \\
-            & = \det(Q^{-1}) \det(Q) \det(B)                               \\
-            & = \det(Q^{-1} Q) \det(B)       &  & \text{(by \cref{4.7})}   \\
-            & = \det(I_n) \det(B) = \det(B). &  & \text{(by \cref{4.2.3})}
-  \end{align*}
+	Since \(A, B\) are similar, by \cref{2.5.4} we know that there exists a \(Q \in \ms{n}{n}{\F}\) such that \(A = Q^{-1} B Q\).
+	Then we have
+	\begin{align*}
+		\det(A) & = \det(Q^{-1} B Q)                             \\
+		        & = \det(Q^{-1}) \det(B) \det(Q) &  & \by{4.7}   \\
+		        & = \det(Q^{-1}) \det(Q) \det(B)                 \\
+		        & = \det(Q^{-1} Q) \det(B)       &  & \by{4.7}   \\
+		        & = \det(I_n) \det(B) = \det(B). &  & \by{4.2.3}
+	\end{align*}
 \end{proof}
 
 \begin{ex}\label{ex:4.3.16}
-  Use determinants to prove that if \(A, B \in \ms{n}{n}{\F}\) are such that \(AB = I_n\), then \(A\) is invertible
-  (and hence \(B = A^{-1}\)).
+	Use determinants to prove that if \(A, B \in \ms{n}{n}{\F}\) are such that \(AB = I_n\), then \(A\) is invertible
+	(and hence \(B = A^{-1}\)).
 \end{ex}
 
 \begin{proof}[\pf{ex:4.3.16}]
-  Since
-  \begin{align*}
-    1 & = \det(I)          &  & \text{(by \cref{4.2.3})} \\
-      & = \det(AB)                                       \\
-      & = \det(A) \det(B), &  & \text{(by \cref{4.7})}
-  \end{align*}
-  we know that \(\det(A) \neq 0\) and thus by \cref{4.3.1} \(A\) is invertible.
+	Since
+	\begin{align*}
+		1 & = \det(I)          &  & \by{4.2.3} \\
+		  & = \det(AB)                         \\
+		  & = \det(A) \det(B), &  & \by{4.7}
+	\end{align*}
+	we know that \(\det(A) \neq 0\) and thus by \cref{4.3.1} \(A\) is invertible.
 \end{proof}
 
 \begin{ex}\label{ex:4.3.17}
-  Let \(A, B \in \ms{n}{n}{\F}\) be such that \(AB = -BA\).
-  Prove that if \(n\) is odd and \(\F\) is not a field of characteristic two, then \(A\) or \(B\) is not invertible.
+	Let \(A, B \in \ms{n}{n}{\F}\) be such that \(AB = -BA\).
+	Prove that if \(n\) is odd and \(\F\) is not a field of characteristic two, then \(A\) or \(B\) is not invertible.
 \end{ex}
 
 \begin{proof}[\pf{ex:4.3.17}]
-  Since
-  \begin{align*}
-    \det(A) \det(B) & = \det(AB)               &  & \text{(by \cref{4.7})} \\
-                    & = \det(-BA)                                          \\
-                    & = (-1)^n \det(BA)        &  & \text{(by \cref{4.3})} \\
-                    & = (-1)^n \det(B) \det(A) &  & \text{(by \cref{4.7})} \\
-                    & = -\det(B) \det(A),      &  & \text{(\(n\) is odd)}
-  \end{align*}
-  we know that
-  \begin{align*}
-             & 2 \det(A) \det(B) = 0                                                                           \\
-    \implies & \det(A) \det(B) = 0                                               &  & (\F \neq \Z_2)           \\
-    \implies & (\det(A) = 0) \lor (\det(B) = 0)                                                                \\
-    \implies & (A \text{ is not invertible}) \lor (B \text{ is not invertible}). &  & \text{(by \cref{4.3.1})}
-  \end{align*}
+	Since
+	\begin{align*}
+		\det(A) \det(B) & = \det(AB)               &  & \by{4.7}              \\
+		                & = \det(-BA)                                         \\
+		                & = (-1)^n \det(BA)        &  & \by{4.3}              \\
+		                & = (-1)^n \det(B) \det(A) &  & \by{4.7}              \\
+		                & = -\det(B) \det(A),      &  & \text{(\(n\) is odd)}
+	\end{align*}
+	we know that
+	\begin{align*}
+		         & 2 \det(A) \det(B) = 0                                                                 \\
+		\implies & \det(A) \det(B) = 0                                               &  & (\F \neq \Z_2) \\
+		\implies & (\det(A) = 0) \lor (\det(B) = 0)                                                      \\
+		\implies & (A \text{ is not invertible}) \lor (B \text{ is not invertible}). &  & \by{4.3.1}
+	\end{align*}
 \end{proof}
 
 \begin{ex}\label{ex:4.3.18}
-  If \(A, B \in \ms{n}{n}{\F}\) and \(A\) is an elementary matrix, then \(\det(AB) = \det(A) \cdot \det(B)\).
+	If \(A, B \in \ms{n}{n}{\F}\) and \(A\) is an elementary matrix, then \(\det(AB) = \det(A) \cdot \det(B)\).
 \end{ex}
 
 \begin{proof}[\pf{ex:4.3.18}]
-  We split into three cases:
-  \begin{itemize}
-    \item If \(A\) is type 1, then by \cref{3.1} \(AB\) is equivalent to interchang rows of \(B\).
-          Thus we have
-          \begin{align*}
-            \det(AB) & = -\det(B)           &  & \text{(by \cref{4.5})}   \\
-                     & = -\det(I_n) \det(B) &  & \text{(by \cref{4.2.3})} \\
-                     & = \det(A) \det(B).   &  & \text{(by \cref{4.5})}
-          \end{align*}
-    \item If \(A\) is type 2, then by \cref{3.1} \(AB\) is equivalent to multiply \(1\) rows of \(B\) with some \(k \in \F\).
-          Thus we have
-          \begin{align*}
-            \det(AB) & = k \det(B)           &  & \text{(by \cref{4.3})}   \\
-                     & = k \det(I_n) \det(B) &  & \text{(by \cref{4.2.3})} \\
-                     & = \det(A) \det(B).    &  & \text{(by \cref{4.3})}
-          \end{align*}
-    \item If \(A\) is type 3, then by \cref{3.1} \(AB\) is equivalent to multiply \(1\) rows of \(B\) with some \(k \in \F\) and add it to another row of \(B\).
-          Thus we have
-          \begin{align*}
-            \det(AB) & = \det(B)           &  & \text{(by \cref{4.6})}   \\
-                     & = \det(I_n) \det(B) &  & \text{(by \cref{4.2.3})} \\
-                     & = \det(A) \det(B).  &  & \text{(by \cref{4.6})}
-          \end{align*}
-  \end{itemize}
-  From all cases above we conclude that \(\det(AB) = \det(A) \cdot \det(B)\).
+	We split into three cases:
+	\begin{itemize}
+		\item If \(A\) is type 1, then by \cref{3.1} \(AB\) is equivalent to interchang rows of \(B\).
+		      Thus we have
+		      \begin{align*}
+			      \det(AB) & = -\det(B)           &  & \by{4.5}   \\
+			               & = -\det(I_n) \det(B) &  & \by{4.2.3} \\
+			               & = \det(A) \det(B).   &  & \by{4.5}
+		      \end{align*}
+		\item If \(A\) is type 2, then by \cref{3.1} \(AB\) is equivalent to multiply \(1\) rows of \(B\) with some \(k \in \F\).
+		      Thus we have
+		      \begin{align*}
+			      \det(AB) & = k \det(B)           &  & \by{4.3}   \\
+			               & = k \det(I_n) \det(B) &  & \by{4.2.3} \\
+			               & = \det(A) \det(B).    &  & \by{4.3}
+		      \end{align*}
+		\item If \(A\) is type 3, then by \cref{3.1} \(AB\) is equivalent to multiply \(1\) rows of \(B\) with some \(k \in \F\) and add it to another row of \(B\).
+		      Thus we have
+		      \begin{align*}
+			      \det(AB) & = \det(B)           &  & \by{4.6}   \\
+			               & = \det(I_n) \det(B) &  & \by{4.2.3} \\
+			               & = \det(A) \det(B).  &  & \by{4.6}
+		      \end{align*}
+	\end{itemize}
+	From all cases above we conclude that \(\det(AB) = \det(A) \cdot \det(B)\).
 \end{proof}
 
 \begin{ex}\label{ex:4.3.19}
-  A matrix \(A \in \ms{n}{n}{\F}\) is called \textbf{lower triangular} if \(A_{i j} = 0\) for \(1 \leq i < j \leq n\).
-  Suppose that \(A\) is a lower triangular matrix.
-  Describe \(\det(A)\) in terms of the entries of \(A\).
+	A matrix \(A \in \ms{n}{n}{\F}\) is called \textbf{lower triangular} if \(A_{i j} = 0\) for \(1 \leq i < j \leq n\).
+	Suppose that \(A\) is a lower triangular matrix.
+	Describe \(\det(A)\) in terms of the entries of \(A\).
 \end{ex}
 
 \begin{proof}[\pf{ex:4.3.19}]
-  First we claim that \(A \in \ms{n}{n}{\F}\) is lower triangular iff \(\tp{A}\) is upper triangular.
-  This is true since
-  \begin{align*}
-         & A \text{ is lower triangular}                                          \\
-    \iff & A_{i j} = 0 \text{ if } i < j        &  & \text{(by \cref{ex:4.3.19})} \\
-    \iff & (\tp{A})_{j i} = 0 \text{ if } i < j &  & \text{(by \cref{1.3.3})}     \\
-    \iff & \tp{A} \text{ is upper triangular}.  &  & \text{(by \cref{ex:1.3.12})}
-  \end{align*}
-  Now we claim that if \(A \in \ms{n}{n}{\F}\) is lower triangular, then \(\det(A) = \prod_{j = 1}^n A_{j j}\).
-  This is true since
-  \begin{align*}
-    \det(A) & = \det(\tp{A})                   &  & \text{(by \cref{4.8})}       \\
-            & = \prod_{j = 1}^n (\tp{A})_{j j} &  & \text{(by \cref{ex:4.2.23})} \\
-            & = \prod_{j = 1}^n A_{j j}.       &  & \text{(by \cref{1.3.3})}
-  \end{align*}
+	First we claim that \(A \in \ms{n}{n}{\F}\) is lower triangular iff \(\tp{A}\) is upper triangular.
+	This is true since
+	\begin{align*}
+		     & A \text{ is lower triangular}                            \\
+		\iff & A_{i j} = 0 \text{ if } i < j        &  & \by{ex:4.3.19} \\
+		\iff & (\tp{A})_{j i} = 0 \text{ if } i < j &  & \by{1.3.3}     \\
+		\iff & \tp{A} \text{ is upper triangular}.  &  & \by{ex:1.3.12}
+	\end{align*}
+	Now we claim that if \(A \in \ms{n}{n}{\F}\) is lower triangular, then \(\det(A) = \prod_{j = 1}^n A_{j j}\).
+	This is true since
+	\begin{align*}
+		\det(A) & = \det(\tp{A})                   &  & \by{4.8}       \\
+		        & = \prod_{j = 1}^n (\tp{A})_{j j} &  & \by{ex:4.2.23} \\
+		        & = \prod_{j = 1}^n A_{j j}.       &  & \by{1.3.3}
+	\end{align*}
 \end{proof}
 
 \begin{ex}\label{ex:4.3.20}
-  Suppose that \(M \in \ms{n}{n}{\F}\) can be written in the form
-  \[
-    M = \begin{pmatrix}
-      A   & B         \\
-      \zm & I_{n - m}
-    \end{pmatrix},
-  \]
-  where \(A \in \ms{m}{m}{\F}\) for some \(m \in \set{1, \dots, n - 1}\).
-  Prove that \(\det(M) = \det(A)\).
+	Suppose that \(M \in \ms{n}{n}{\F}\) can be written in the form
+	\[
+		M = \begin{pmatrix}
+			A   & B         \\
+			\zm & I_{n - m}
+		\end{pmatrix},
+	\]
+	where \(A \in \ms{m}{m}{\F}\) for some \(m \in \set{1, \dots, n - 1}\).
+	Prove that \(\det(M) = \det(A)\).
 \end{ex}
 
 \begin{proof}[\pf{ex:4.3.20}]
-  For each \(j \in \set{2, \dots, n - m}\), let \(B_{j : n - m}\) denote the matrix consist of the \(j\)th column of \(B\) to the \((n - m)\)th column (the last column) of \(B\).
-  Then we have
-  \begin{align*}
-    \det(M) & = (-1)^{(m + 1) + (m + 1)} \det\pa{\tilde{M}_{(m + 1) (m + 1)}} &  & \text{(by \cref{4.2.5})}                   \\
-            & = \det\begin{pmatrix}
-                      A   & B_{2 : n - m} \\
-                      \zm & I_{n - m - 1}
-                    \end{pmatrix}                                          &  & \text{(by \cref{4.2.1})}                      \\
-            & = (-1)^{(m + 1) + (m + 1)} \det\pa{\tilde{\begin{pmatrix}
-                                                              A   & B_{2 : n - m} \\
-                                                              \zm & I_{n - m - 1}
-                                                            \end{pmatrix}}_{(m + 1) (m + 1)}}       &  & \text{(by \cref{4.2.5})} \\
-            & = \det\begin{pmatrix}
-                      A   & B_{3 : n - m} \\
-                      \zm & I_{n - m - 2}
-                    \end{pmatrix}                                          &  & \text{(by \cref{4.2.1})}                      \\
-            & \vdots                                                                                                          \\
-            & = \det\begin{pmatrix}
-                      A   & B_{n - m - 1 : n - m} \\
-                      \zm & I_1
-                    \end{pmatrix}                                                                               \\
-            & = (-1)^{(m + 1) + (m + 1)} \det(A)                              &  & \text{(by \cref{4.2.5})}                   \\
-            & = \det(A).
-  \end{align*}
+	For each \(j \in \set{2, \dots, n - m}\), let \(B_{j : n - m}\) denote the matrix consist of the \(j\)th column of \(B\) to the \((n - m)\)th column (the last column) of \(B\).
+	Then we have
+	\begin{align*}
+		\det(M) & = (-1)^{(m + 1) + (m + 1)} \det\pa{\tilde{M}_{(m + 1) (m + 1)}} &  & \by{4.2.5}                   \\
+		        & = \det\begin{pmatrix}
+			                A   & B_{2 : n - m} \\
+			                \zm & I_{n - m - 1}
+		                \end{pmatrix}                                          &  & \by{4.2.1}                      \\
+		        & = (-1)^{(m + 1) + (m + 1)} \det\pa{\tilde{\begin{pmatrix}
+					                                                    A   & B_{2 : n - m} \\
+					                                                    \zm & I_{n - m - 1}
+				                                                    \end{pmatrix}}_{(m + 1) (m + 1)}}       &  & \by{4.2.5} \\
+		        & = \det\begin{pmatrix}
+			                A   & B_{3 : n - m} \\
+			                \zm & I_{n - m - 2}
+		                \end{pmatrix}                                          &  & \by{4.2.1}                      \\
+		        & \vdots                                                                                            \\
+		        & = \det\begin{pmatrix}
+			                A   & B_{n - m - 1 : n - m} \\
+			                \zm & I_1
+		                \end{pmatrix}                                                                 \\
+		        & = (-1)^{(m + 1) + (m + 1)} \det(A)                              &  & \by{4.2.5}                   \\
+		        & = \det(A).
+	\end{align*}
 \end{proof}
 
 \begin{ex}\label{ex:4.3.21}
-  Prove that if \(M \in \ms{n}{n}{\F}\) can be written in the form
-  \[
-    M = \begin{pmatrix}
-      A   & B \\
-      \zm & C
-    \end{pmatrix},
-  \]
-  where \(A\) and \(C\) are square matrices, then \(\det(M) = \det(A) \cdot \det(C)\).
+	Prove that if \(M \in \ms{n}{n}{\F}\) can be written in the form
+	\[
+		M = \begin{pmatrix}
+			A   & B \\
+			\zm & C
+		\end{pmatrix},
+	\]
+	where \(A\) and \(C\) are square matrices, then \(\det(M) = \det(A) \cdot \det(C)\).
 \end{ex}
 
 \begin{proof}[\pf{ex:4.3.21}]
-  Let \(m \in \set{1, \dots, n - 1}\) such that \(A \in \ms{m}{m}{\F}\) and \(C \in \ms{(n - m)}{(n - m)}{\F}\).
-  We split into two cases:
-  \begin{itemize}
-    \item If \(C\) is not invertible, then by \cref{3.2.2} and \cref{3.2.5}(b) we know that \(\rk{\zm | C} = \rk{C} < n - m\).
-          Thus by \cref{3.2.5}(b) \(\rk{M} < n\) and by \cref{3.2.2} \(M\) is not invertible.
-          By \cref{4.3.1} this means
-          \[
-            \det(M) = 0 = \det(A) \cdot 0 = \det(A) \cdot \det(C).
-          \]
-    \item If \(C\) is invertible, then we have
-          \begin{align*}
-            \det(M) \frac{1}{\det(C)} & = \det(M) \det(C^{-1})        &  & \text{(by \cref{4.3.1})}     \\
-                                      & = \det(M) \det\begin{pmatrix}
-                                                        I_m   & \zm_1  \\
-                                                        \zm_2 & C^{-1}
-                                                      \end{pmatrix} &  & \text{(by \cref{4.2.5})}       \\
-                                      & = \det\pa{M \begin{pmatrix}
-                                                        I_m   & \zm_1  \\
-                                                        \zm_2 & C^{-1}
-                                                      \end{pmatrix}}   &  & \text{(by \cref{4.7})}        \\
-                                      & = \det\begin{pmatrix}
-                                                A   & BC^{-1} \\
-                                                \zm & CC^{-1}
-                                              \end{pmatrix}         &  & \text{(by \cref{2.3.1})}       \\
-                                      & = \det\begin{pmatrix}
-                                                A   & BC^{-1}   \\
-                                                \zm & I_{n - m}
-                                              \end{pmatrix}         &  & \text{(by \cref{2.4.3})}       \\
-                                      & = \det(A)                     &  & \text{(by \cref{ex:4.3.20})}
-          \end{align*}
-          where \(\zm_1 \in \ms{m}{(n - m)}{\F}\) and \(\zm_2 \in \ms{(n - m)}{m}{\F}\) are zero matrices.
-          Thus \(\det(M) = \det(A) \det(C)\).
-  \end{itemize}
-  From all cases above we conclude that \(\det(M) = \det(A) \det(C)\).
+	Let \(m \in \set{1, \dots, n - 1}\) such that \(A \in \ms{m}{m}{\F}\) and \(C \in \ms{(n - m)}{(n - m)}{\F}\).
+	We split into two cases:
+	\begin{itemize}
+		\item If \(C\) is not invertible, then by \cref{3.2.2} and \cref{3.2.5}(b) we know that \(\rk{\zm | C} = \rk{C} < n - m\).
+		      Thus by \cref{3.2.5}(b) \(\rk{M} < n\) and by \cref{3.2.2} \(M\) is not invertible.
+		      By \cref{4.3.1} this means
+		      \[
+			      \det(M) = 0 = \det(A) \cdot 0 = \det(A) \cdot \det(C).
+		      \]
+		\item If \(C\) is invertible, then we have
+		      \begin{align*}
+			      \det(M) \frac{1}{\det(C)} & = \det(M) \det(C^{-1})        &  & \by{4.3.1}     \\
+			                                & = \det(M) \det\begin{pmatrix}
+				                                                I_m   & \zm_1  \\
+				                                                \zm_2 & C^{-1}
+			                                                \end{pmatrix} &  & \by{4.2.5}       \\
+			                                & = \det\pa{M \begin{pmatrix}
+					                                              I_m   & \zm_1  \\
+					                                              \zm_2 & C^{-1}
+				                                              \end{pmatrix}}   &  & \by{4.7}        \\
+			                                & = \det\begin{pmatrix}
+				                                        A   & BC^{-1} \\
+				                                        \zm & CC^{-1}
+			                                        \end{pmatrix}         &  & \by{2.3.1}       \\
+			                                & = \det\begin{pmatrix}
+				                                        A   & BC^{-1}   \\
+				                                        \zm & I_{n - m}
+			                                        \end{pmatrix}         &  & \by{2.4.3}       \\
+			                                & = \det(A)                     &  & \by{ex:4.3.20}
+		      \end{align*}
+		      where \(\zm_1 \in \ms{m}{(n - m)}{\F}\) and \(\zm_2 \in \ms{(n - m)}{m}{\F}\) are zero matrices.
+		      Thus \(\det(M) = \det(A) \det(C)\).
+	\end{itemize}
+	From all cases above we conclude that \(\det(M) = \det(A) \det(C)\).
 \end{proof}
 
 \begin{ex}\label{ex:4.3.22}
-  Let \(\T : \ps[n]{\F} \to \vs{F}^{n + 1}\) be the linear transformation defined in \cref{ex:2.4.22} by \(\T(f) = (f(c_0), f(c_1), \dots, f(c_n))\), where \(\seq{c}{0,,n}\) are distinct scalars in an infinite field \(\F\).
-  Let \(\beta\) be the standard ordered basis for \(\ps[n]{\F}\) and \(\gamma\) be the standard ordered basis for \(\vs{F}^{n + 1}\) .
-  \begin{enumerate}
-    \item Show that \(M = [\T]_{\beta}^{\gamma}\) has the form
-          \[
-            \begin{pmatrix}
-              1      & c_0    & c_0^2  & \cdots & c_0^n  \\
-              1      & c_1    & c_1^2  & \cdots & c_1^n  \\
-              \vdots & \vdots & \vdots &        & \vdots \\
-              1      & c_n    & c_n^2  & \cdots & c_n^n
-            \end{pmatrix}
-          \]
-          A matrix with this form is called a \textbf{Vandermonde matrix}.
-    \item Use \cref{ex:2.4.22} to prove that \(\det(M) \neq 0\).
-    \item Prove that
-          \[
-            \det(M) = \prod_{0 \leq i < j \leq n} (c_j - c_i),
-          \]
-          the product of all terms of the form \(c_j - c_i\) for \(0 \leq i < j \leq n\).
-  \end{enumerate}
+	Let \(\T : \ps[n]{\F} \to \vs{F}^{n + 1}\) be the linear transformation defined in \cref{ex:2.4.22} by \(\T(f) = (f(c_0), f(c_1), \dots, f(c_n))\), where \(\seq{c}{0,,n}\) are distinct scalars in an infinite field \(\F\).
+	Let \(\beta\) be the standard ordered basis for \(\ps[n]{\F}\) and \(\gamma\) be the standard ordered basis for \(\vs{F}^{n + 1}\) .
+	\begin{enumerate}
+		\item Show that \(M = [\T]_{\beta}^{\gamma}\) has the form
+		      \[
+			      \begin{pmatrix}
+				      1      & c_0    & c_0^2  & \cdots & c_0^n  \\
+				      1      & c_1    & c_1^2  & \cdots & c_1^n  \\
+				      \vdots & \vdots & \vdots &        & \vdots \\
+				      1      & c_n    & c_n^2  & \cdots & c_n^n
+			      \end{pmatrix}
+		      \]
+		      A matrix with this form is called a \textbf{Vandermonde matrix}.
+		\item Use \cref{ex:2.4.22} to prove that \(\det(M) \neq 0\).
+		\item Prove that
+		      \[
+			      \det(M) = \prod_{0 \leq i < j \leq n} (c_j - c_i),
+		      \]
+		      the product of all terms of the form \(c_j - c_i\) for \(0 \leq i < j \leq n\).
+	\end{enumerate}
 \end{ex}
 
 \begin{proof}[\pf{ex:4.3.22}(a)]
-  We have
-  \begin{align*}
-             & \forall i \in \set{0, \dots, n}, [\T(x^i)]_{\beta} = [(c_0^i, c_1^i, \dots, c_n^i)]_{\beta}                                 \\
-             & = \begin{pmatrix}
-                   c_0^i  \\
-                   c_1^i  \\
-                   \vdots \\
-                   c_n^i
-                 \end{pmatrix} = \sum_{j = 1}^{n + 1} c_{j - 1}^i e_j                                        &  & \text{(by \cref{2.2.3})} \\
-    \implies & [\T]_{\beta}^{\gamma} = \begin{pmatrix}
-                                         1      & c_0    & c_0^2  & \cdots & c_0^n  \\
-                                         1      & c_1    & c_1^2  & \cdots & c_1^n  \\
-                                         \vdots & \vdots & \vdots &        & \vdots \\
-                                         1      & c_n    & c_n^2  & \cdots & c_n^n
-                                       \end{pmatrix}.                                               &  & \text{(by \cref{2.2.4})}
-  \end{align*}
+	We have
+	\begin{align*}
+		         & \forall i \in \set{0, \dots, n}, [\T(x^i)]_{\beta} = [(c_0^i, c_1^i, \dots, c_n^i)]_{\beta}                   \\
+		         & = \begin{pmatrix}
+			             c_0^i  \\
+			             c_1^i  \\
+			             \vdots \\
+			             c_n^i
+		             \end{pmatrix} = \sum_{j = 1}^{n + 1} c_{j - 1}^i e_j                                        &  & \by{2.2.3} \\
+		\implies & [\T]_{\beta}^{\gamma} = \begin{pmatrix}
+			                                   1      & c_0    & c_0^2  & \cdots & c_0^n  \\
+			                                   1      & c_1    & c_1^2  & \cdots & c_1^n  \\
+			                                   \vdots & \vdots & \vdots &        & \vdots \\
+			                                   1      & c_n    & c_n^2  & \cdots & c_n^n
+		                                   \end{pmatrix}.                                               &  & \by{2.2.4}
+	\end{align*}
 \end{proof}
 
 \begin{proof}[\pf{ex:4.3.22}(b)]
-  We have
-  \begin{align*}
-             & \T \text{ is invertible}                        &  & \text{(by \cref{ex:2.4.22})} \\
-    \implies & M = [\T]_{\beta}^{\gamma} \text{ is invertible} &  & \text{(by \cref{2.18})}      \\
-    \implies & \det(M) \neq 0.                                 &  & \text{(by \cref{4.3.1})}
-  \end{align*}
+	We have
+	\begin{align*}
+		         & \T \text{ is invertible}                        &  & \by{ex:2.4.22} \\
+		\implies & M = [\T]_{\beta}^{\gamma} \text{ is invertible} &  & \by{2.18}      \\
+		\implies & \det(M) \neq 0.                                 &  & \by{4.3.1}
+	\end{align*}
 \end{proof}
 
 \begin{proof}[\pf{ex:4.3.22}(c)]
-  Starting from the last column and stoping at the second column, we subtract each column with its preceding column times \(c_0\) and get the following result.
-  \[
-    \det\begin{pmatrix}
-      1      & c_0    & c_0^2  & \cdots & c_0^n  \\
-      1      & c_1    & c_1^2  & \cdots & c_1^n  \\
-      1      & c_2    & c_2^2  & \cdots & c_2^n  \\
-      \vdots & \vdots & \vdots &        & \vdots \\
-      1      & c_n    & c_n^2  & \cdots & c_n^n
-    \end{pmatrix} = \det\begin{pmatrix}
-      1      & c_0 - c_0 & c_0^2 - c_0^2   & \cdots & c_0^n - c_0^n           \\
-      1      & c_1 - c_0 & c_1^2 - c_0 c_1 & \cdots & c_1^n - c_0 c_1^{n - 1} \\
-      1      & c_2 - c_0 & c_2^2 - c_0 c_2 & \cdots & c_2^n - c_0 c_2^{n - 1} \\
-      \vdots & \vdots    & \vdots          &        & \vdots                  \\
-      1      & c_n - c_0 & c_n^2 - c_0 c_n & \cdots & c_n^n - c_0 c_n^{n - 1}
-    \end{pmatrix}.
-  \]
-  The equality holds by \cref{4.6,4.8}.
-  Since
-  \begin{align*}
-     & \det\begin{pmatrix}
-             1      & c_0 - c_0 & c_0^2 - c_0^2   & \cdots & c_0^n - c_0^n           \\
-             1      & c_1 - c_0 & c_1^2 - c_0 c_1 & \cdots & c_1^n - c_0 c_1^{n - 1} \\
-             1      & c_2 - c_0 & c_2^2 - c_0 c_2 & \cdots & c_2^n - c_0 c_2^{n - 1} \\
-             \vdots & \vdots    & \vdots          &        & \vdots                  \\
-             1      & c_n - c_0 & c_n^2 - c_0 c_n & \cdots & c_n^n - c_0 c_n^{n - 1}
-           \end{pmatrix}                           \\
-     & = \det\begin{pmatrix}
-               1      & 0         & 0               & \cdots & 0                       \\
-               1      & c_1 - c_0 & c_1 (c_1 - c_0) & \cdots & c_1^{n - 1} (c_1 - c_0) \\
-               1      & c_2 - c_0 & c_2 (c_2 - c_0) & \cdots & c_2^{n - 1} (c_2 - c_0) \\
-               \vdots & \vdots    & \vdots          &        & \vdots                  \\
-               1      & c_n - c_0 & c_n (c_n - c_0) & \cdots & c_n^{n - 1} (c_n - c_0)
-             \end{pmatrix}                         \\
-     & = \det\begin{pmatrix}
-               c_1 - c_0 & c_1 (c_1 - c_0) & \cdots & c_1^{n - 1} (c_1 - c_0) \\
-               c_2 - c_0 & c_2 (c_2 - c_0) & \cdots & c_2^{n - 1} (c_2 - c_0) \\
-               \vdots    & \vdots          &        & \vdots                  \\
-               c_n - c_0 & c_n (c_n - c_0) & \cdots & c_n^{n - 1} (c_n - c_0)
-             \end{pmatrix}          &  & \text{(by \cref{4.2.2})}                                  \\
-     & = \pa{\prod_{j = 1}^n (c_j - c_0)} \cdot \det\begin{pmatrix}
-                                                      1      & c_1    & \cdots & c_1^{n - 1} \\
-                                                      1      & c_2    & \cdots & c_2^{n - 1} \\
-                                                      \vdots & \vdots &        & \vdots      \\
-                                                      1      & c_n    & \cdots & c_n^{n - 1}
-                                                    \end{pmatrix},               &  & \text{(by \cref{4.3})}
-  \end{align*}
-  appling the same calculation \(n + 1\) times we obtain
-  \[
-    \det\begin{pmatrix}
-      1      & c_0    & c_0^2  & \cdots & c_0^n  \\
-      1      & c_1    & c_1^2  & \cdots & c_1^n  \\
-      1      & c_2    & c_2^2  & \cdots & c_2^n  \\
-      \vdots & \vdots & \vdots &        & \vdots \\
-      1      & c_n    & c_n^2  & \cdots & c_n^n
-    \end{pmatrix} = \prod_{i = 0}^n \prod_{j = i + 1}^n (c_j - c_i).
-  \]
+	Starting from the last column and stoping at the second column, we subtract each column with its preceding column times \(c_0\) and get the following result.
+	\[
+		\det\begin{pmatrix}
+			1      & c_0    & c_0^2  & \cdots & c_0^n  \\
+			1      & c_1    & c_1^2  & \cdots & c_1^n  \\
+			1      & c_2    & c_2^2  & \cdots & c_2^n  \\
+			\vdots & \vdots & \vdots &        & \vdots \\
+			1      & c_n    & c_n^2  & \cdots & c_n^n
+		\end{pmatrix} = \det\begin{pmatrix}
+			1      & c_0 - c_0 & c_0^2 - c_0^2   & \cdots & c_0^n - c_0^n           \\
+			1      & c_1 - c_0 & c_1^2 - c_0 c_1 & \cdots & c_1^n - c_0 c_1^{n - 1} \\
+			1      & c_2 - c_0 & c_2^2 - c_0 c_2 & \cdots & c_2^n - c_0 c_2^{n - 1} \\
+			\vdots & \vdots    & \vdots          &        & \vdots                  \\
+			1      & c_n - c_0 & c_n^2 - c_0 c_n & \cdots & c_n^n - c_0 c_n^{n - 1}
+		\end{pmatrix}.
+	\]
+	The equality holds by \cref{4.6,4.8}.
+	Since
+	\begin{align*}
+		 & \det\begin{pmatrix}
+			       1      & c_0 - c_0 & c_0^2 - c_0^2   & \cdots & c_0^n - c_0^n           \\
+			       1      & c_1 - c_0 & c_1^2 - c_0 c_1 & \cdots & c_1^n - c_0 c_1^{n - 1} \\
+			       1      & c_2 - c_0 & c_2^2 - c_0 c_2 & \cdots & c_2^n - c_0 c_2^{n - 1} \\
+			       \vdots & \vdots    & \vdots          &        & \vdots                  \\
+			       1      & c_n - c_0 & c_n^2 - c_0 c_n & \cdots & c_n^n - c_0 c_n^{n - 1}
+		       \end{pmatrix}             \\
+		 & = \det\begin{pmatrix}
+			         1      & 0         & 0               & \cdots & 0                       \\
+			         1      & c_1 - c_0 & c_1 (c_1 - c_0) & \cdots & c_1^{n - 1} (c_1 - c_0) \\
+			         1      & c_2 - c_0 & c_2 (c_2 - c_0) & \cdots & c_2^{n - 1} (c_2 - c_0) \\
+			         \vdots & \vdots    & \vdots          &        & \vdots                  \\
+			         1      & c_n - c_0 & c_n (c_n - c_0) & \cdots & c_n^{n - 1} (c_n - c_0)
+		         \end{pmatrix}           \\
+		 & = \det\begin{pmatrix}
+			         c_1 - c_0 & c_1 (c_1 - c_0) & \cdots & c_1^{n - 1} (c_1 - c_0) \\
+			         c_2 - c_0 & c_2 (c_2 - c_0) & \cdots & c_2^{n - 1} (c_2 - c_0) \\
+			         \vdots    & \vdots          &        & \vdots                  \\
+			         c_n - c_0 & c_n (c_n - c_0) & \cdots & c_n^{n - 1} (c_n - c_0)
+		         \end{pmatrix}          &  & \by{4.2.2}                    \\
+		 & = \pa{\prod_{j = 1}^n (c_j - c_0)} \cdot \det\begin{pmatrix}
+			                                                1      & c_1    & \cdots & c_1^{n - 1} \\
+			                                                1      & c_2    & \cdots & c_2^{n - 1} \\
+			                                                \vdots & \vdots &        & \vdots      \\
+			                                                1      & c_n    & \cdots & c_n^{n - 1}
+		                                                \end{pmatrix},               &  & \by{4.3}
+	\end{align*}
+	appling the same calculation \(n + 1\) times we obtain
+	\[
+		\det\begin{pmatrix}
+			1      & c_0    & c_0^2  & \cdots & c_0^n  \\
+			1      & c_1    & c_1^2  & \cdots & c_1^n  \\
+			1      & c_2    & c_2^2  & \cdots & c_2^n  \\
+			\vdots & \vdots & \vdots &        & \vdots \\
+			1      & c_n    & c_n^2  & \cdots & c_n^n
+		\end{pmatrix} = \prod_{i = 0}^n \prod_{j = i + 1}^n (c_j - c_i).
+	\]
 \end{proof}
 
 \begin{ex}\label{ex:4.3.23}
-  Let \(A \in \ms{n}{n}{\F} \setminus \set{\zm}\).
-  For any \(m \in \set{1, \dots, n}\), an \(m \times m\) \textbf{submatrix} is obtained by deleting any \(n - m\) rows and any \(n - m\) columns of \(A\).
-  \begin{enumerate}
-    \item Let \(k \in \set{1, \dots, n}\) denote the largest integer such that some \(k \times k\) submatrix has a nonzero determinant.
-          Prove that \(\rk{A} = k\).
-    \item Conversely, suppose that \(\rk{A} = k\).
-          Prove that there exists a \(k \times k\) submatrix with a nonzero determinant.
-  \end{enumerate}
+	Let \(A \in \ms{n}{n}{\F} \setminus \set{\zm}\).
+	For any \(m \in \set{1, \dots, n}\), an \(m \times m\) \textbf{submatrix} is obtained by deleting any \(n - m\) rows and any \(n - m\) columns of \(A\).
+	\begin{enumerate}
+		\item Let \(k \in \set{1, \dots, n}\) denote the largest integer such that some \(k \times k\) submatrix has a nonzero determinant.
+		      Prove that \(\rk{A} = k\).
+		\item Conversely, suppose that \(\rk{A} = k\).
+		      Prove that there exists a \(k \times k\) submatrix with a nonzero determinant.
+	\end{enumerate}
 \end{ex}
 
 \begin{proof}[\pf{ex:4.3.23}(a)]
-  We use induction on \(n\).
-  For \(n = 1\), we have \(\det(A) \neq 0\) for any \(A \in \ms{1}{1}{\F} \setminus \set{\zm}\).
-  Thus the largest submatrix of \(A\) with nonzero determinant is \(A\) itself and therefore \(\rk{A} = 1\).
-  Suppose inductively that for some \(n \geq 1\) the statement is true.
-  We need to show that for \(n + 1\) the statement is also true.
-  Let \(A \in \ms{(n + 1)}{(n + 1)}{\F} \setminus \set{\zm}\) and let \(k\) be the largest integer such that some \(k \times k\) submatrix of \(A\) have nonzero determinant.
-  If \(k = n + 1\), then we have \(\det(A) \neq 0\) and by \cref{4.3.1,3.2.2} we have \(\rk{A} = n + 1\).
-  So suppose that \(k < n + 1\).
+	We use induction on \(n\).
+	For \(n = 1\), we have \(\det(A) \neq 0\) for any \(A \in \ms{1}{1}{\F} \setminus \set{\zm}\).
+	Thus the largest submatrix of \(A\) with nonzero determinant is \(A\) itself and therefore \(\rk{A} = 1\).
+	Suppose inductively that for some \(n \geq 1\) the statement is true.
+	We need to show that for \(n + 1\) the statement is also true.
+	Let \(A \in \ms{(n + 1)}{(n + 1)}{\F} \setminus \set{\zm}\) and let \(k\) be the largest integer such that some \(k \times k\) submatrix of \(A\) have nonzero determinant.
+	If \(k = n + 1\), then we have \(\det(A) \neq 0\) and by \cref{4.3.1,3.2.2} we have \(\rk{A} = n + 1\).
+	So suppose that \(k < n + 1\).
 
-  Since \(k < n + 1\), by definition we must have \(\det(A) = 0\) (otherwise we would have \(\det(A) \neq 0\) and thus \(k = n + 1\)).
-  By \cref{4.3.1,3.2.2} we have \(\rk{A} < n + 1\).
-  By \cref{3.5} there must exists at least one column of \(A\), say column \(p\), is a linear combination of other columns.
-  Using elementary column operations of type 3 we can make the \(p\)th column of \(A\) become all zeros.
-  By \cref{3.2.3} the resulting matrix, denoted as \(B\), has the same rank as \(A\).
-  Since \(\rk{B} = \rk{A} < n + 1\), using similar argument with \cref{3.2.5}(b) we know can obtain another matrix from \(B\), called it \(C\), such that the \(q\)th row of \(C\) is all zeros and \(\rk{B} = \rk{C}\).
-  Since the \(p\)th column and the \(q\)th row of \(C\) is all zeros, the submatrix obtained by deleting the \(p\)th column and the \(q\)th row of \(C\), called it \(D\), must have the same rank as \(C\).
-  (This is guaranteed since \(\zv\) cannot be expressed as linear combination with nonzero coefficients of linearly independent rows or columns.)
-  Note that
-  \[
-    \forall i, j \in \set{1, \dots, n}, D_{i j} = \begin{dcases}
-      A_{i j}             & \text{if } (1 \leq i \leq q - 1) \land (1 \leq j \leq p - 1) \\
-      A_{i (j + 1)}       & \text{if } (1 \leq i \leq q - 1) \land (p + 1 \leq j \leq n) \\
-      A_{(i + 1) j}       & \text{if } (q + 1 \leq i \leq n) \land (1 \leq j \leq p - 1) \\
-      A_{(i + 1) (j + 1)} & \text{if } (q + 1 \leq i \leq n) \land (p + 1 \leq j \leq n)
-    \end{dcases}.
-  \]
+	Since \(k < n + 1\), by definition we must have \(\det(A) = 0\) (otherwise we would have \(\det(A) \neq 0\) and thus \(k = n + 1\)).
+	By \cref{4.3.1,3.2.2} we have \(\rk{A} < n + 1\).
+	By \cref{3.5} there must exists at least one column of \(A\), say column \(p\), is a linear combination of other columns.
+	Using elementary column operations of type 3 we can make the \(p\)th column of \(A\) become all zeros.
+	By \cref{3.2.3} the resulting matrix, denoted as \(B\), has the same rank as \(A\).
+	Since \(\rk{B} = \rk{A} < n + 1\), using similar argument with \cref{3.2.5}(b) we know can obtain another matrix from \(B\), called it \(C\), such that the \(q\)th row of \(C\) is all zeros and \(\rk{B} = \rk{C}\).
+	Since the \(p\)th column and the \(q\)th row of \(C\) is all zeros, the submatrix obtained by deleting the \(p\)th column and the \(q\)th row of \(C\), called it \(D\), must have the same rank as \(C\).
+	(This is guaranteed since \(\zv\) cannot be expressed as linear combination with nonzero coefficients of linearly independent rows or columns.)
+	Note that
+	\[
+		\forall i, j \in \set{1, \dots, n}, D_{i j} = \begin{dcases}
+			A_{i j}             & \text{if } (1 \leq i \leq q - 1) \land (1 \leq j \leq p - 1) \\
+			A_{i (j + 1)}       & \text{if } (1 \leq i \leq q - 1) \land (p + 1 \leq j \leq n) \\
+			A_{(i + 1) j}       & \text{if } (q + 1 \leq i \leq n) \land (1 \leq j \leq p - 1) \\
+			A_{(i + 1) (j + 1)} & \text{if } (q + 1 \leq i \leq n) \land (p + 1 \leq j \leq n)
+		\end{dcases}.
+	\]
 
-  We claim that we can find a \(k \times k\) submatrix of \(D\) with nonzero determinant.
-  If not, then we cannot find \(k\) linearly independent rows from \(D\).
-  But this means we cannot find \(k\) linearly independent rows from \(A\), since \(D\) is obtained from \(A\) by removing linearly dependent row \(q\) and column \(p\), clearly a contradiction.
+	We claim that we can find a \(k \times k\) submatrix of \(D\) with nonzero determinant.
+	If not, then we cannot find \(k\) linearly independent rows from \(D\).
+	But this means we cannot find \(k\) linearly independent rows from \(A\), since \(D\) is obtained from \(A\) by removing linearly dependent row \(q\) and column \(p\), clearly a contradiction.
 
-  Now we claim that if \(k' \in \set{1, \dots, n}\) is the largest integer such that some \(k' \times k'\) submatrix of \(D\) has a nonzero determinant, then \(k = k'\).
-  From previous paragraph we know that \(k \leq k'\).
-  So suppose for sake of contradiction that \(k < k'\).
-  But any submatrix of \(D\) is also a submatrix of \(A\), \(k\) cannot be the largest integer such that some \(k \times k\) submatrix of \(A\) has nonzero determinant.
-  Thus we have \(k = k'\).
-  By induction hypothesis we know that \(\rk{D} = k\).
-  From previous paragraph we have \(\rk{A} = \rk{D} = k\), this closes the induction.
+	Now we claim that if \(k' \in \set{1, \dots, n}\) is the largest integer such that some \(k' \times k'\) submatrix of \(D\) has a nonzero determinant, then \(k = k'\).
+	From previous paragraph we know that \(k \leq k'\).
+	So suppose for sake of contradiction that \(k < k'\).
+	But any submatrix of \(D\) is also a submatrix of \(A\), \(k\) cannot be the largest integer such that some \(k \times k\) submatrix of \(A\) has nonzero determinant.
+	Thus we have \(k = k'\).
+	By induction hypothesis we know that \(\rk{D} = k\).
+	From previous paragraph we have \(\rk{A} = \rk{D} = k\), this closes the induction.
 \end{proof}
 
 \begin{proof}[\pf{ex:4.3.23}(b)]
-  Since \(\rk{A} = k\), by \cref{3.5} and \cref{3.2.5}(b) \(A\) has \((n - k)\) linearly dependent rows and columns.
-  We can perform elementary operations of type 3 to make these linearly dependent rows and columns become all zeros.
-  We claim that the resulting matrix, called it \(B\), has \(k\) linearly independent rows and columns.
-  If not, then by \cref{3.5} we have \(\rk{B} < k\).
-  But by \cref{3.2.3} we have \(k = \rk{A} = \rk{B} < k\), a contradiction.
-  By removing all-zero rows and column we now obtain a \(k \times k\) submatrix whose rank is \(k\) (since the removed rows and columns are all zeros).
-  By \cref{3.2.2} and \cref{4.1.3} we see that this submatrix has nonzero determinant.
+	Since \(\rk{A} = k\), by \cref{3.5} and \cref{3.2.5}(b) \(A\) has \((n - k)\) linearly dependent rows and columns.
+	We can perform elementary operations of type 3 to make these linearly dependent rows and columns become all zeros.
+	We claim that the resulting matrix, called it \(B\), has \(k\) linearly independent rows and columns.
+	If not, then by \cref{3.5} we have \(\rk{B} < k\).
+	But by \cref{3.2.3} we have \(k = \rk{A} = \rk{B} < k\), a contradiction.
+	By removing all-zero rows and column we now obtain a \(k \times k\) submatrix whose rank is \(k\) (since the removed rows and columns are all zeros).
+	By \cref{3.2.2} and \cref{4.1.3} we see that this submatrix has nonzero determinant.
 \end{proof}
 
 \begin{ex}\label{ex:4.2.24}
-  Let \(A \in \ms{n}{n}{\F}\) have the form
-  \[
-    A = \begin{pmatrix}
-      0      & 0      & 0      & \cdots & 0      & a_0       \\
-      -1     & 0      & 0      & \cdots & 0      & a_1       \\
-      0      & -1     & 0      & \cdots & 0      & a_2       \\
-      \vdots & \vdots & \vdots &        & \vdots & \vdots    \\
-      0      & 0      & 0      & \cdots & -1     & a_{n - 1}
-    \end{pmatrix}.
-  \]
-  Compute \(\det(A + t I_n)\).
+	Let \(A \in \ms{n}{n}{\F}\) have the form
+	\[
+		A = \begin{pmatrix}
+			0      & 0      & 0      & \cdots & 0      & a_0       \\
+			-1     & 0      & 0      & \cdots & 0      & a_1       \\
+			0      & -1     & 0      & \cdots & 0      & a_2       \\
+			\vdots & \vdots & \vdots &        & \vdots & \vdots    \\
+			0      & 0      & 0      & \cdots & -1     & a_{n - 1}
+		\end{pmatrix}.
+	\]
+	Compute \(\det(A + t I_n)\).
 \end{ex}
 
 \begin{proof}[\pf{ex:4.2.24}]
-  We have
-  \begin{align*}
-     & \det(A + t I_n)                                                                                                                \\
-     & = \det\begin{pmatrix}
-               t      & 0      & 0      & \cdots & 0      & a_0           \\
-               -1     & t      & 0      & \cdots & 0      & a_1           \\
-               0      & -1     & t      & \cdots & 0      & a_2           \\
-               \vdots & \vdots & \vdots &        & \vdots & \vdots        \\
-               0      & 0      & 0      & \cdots & -1     & a_{n - 1} + t
-             \end{pmatrix}                                                               \\
-     & = (-1)^{1 + 1} t \det\begin{pmatrix}
-                              t      & 0      & \cdots & 0      & a_1           \\
-                              -1     & t      & \cdots & 0      & a_2           \\
-                              \vdots & \vdots &        & \vdots & \vdots        \\
-                              0      & 0      & \cdots & -1     & a_{n - 1} + t
-                            \end{pmatrix}                                                         \\
-     & \quad + (-1)^{2 + 1} (-1) \det\begin{pmatrix}
-                                       0      & 0      & \cdots & 0      & a_0           \\
-                                       -1     & t      & \cdots & 0      & a_2           \\
-                                       \vdots & \vdots &        & \vdots & \vdots        \\
-                                       0      & 0      & \cdots & -1     & a_{n - 1} + t
-                                     \end{pmatrix}                                            &  & \text{(by \cref{4.8})}             \\
-     & = t \det\begin{pmatrix}
-                 t      & 0      & \cdots & 0      & a_1           \\
-                 -1     & t      & \cdots & 0      & a_2           \\
-                 \vdots & \vdots &        & \vdots & \vdots        \\
-                 0      & 0      & \cdots & -1     & a_{n - 1} + t
-               \end{pmatrix}                                                                      \\
-     & \quad + (-1)^{1 + n - 1} a_0 \det\begin{pmatrix}
-                                          -1     & t      & \cdots & 0      \\
-                                          \vdots & \vdots &        & \vdots \\
-                                          0      & 0      & \cdots & -1
-                                        \end{pmatrix}                                                &  & \text{(by \cref{4.2.2})}    \\
-     & = t \det\begin{pmatrix}
-                 t      & 0      & \cdots & 0      & a_1           \\
-                 -1     & t      & \cdots & 0      & a_2           \\
-                 \vdots & \vdots &        & \vdots & \vdots        \\
-                 0      & 0      & \cdots & -1     & a_{n - 1} + t
-               \end{pmatrix} + (-1)^n a_0 (-1)^{n - 2}                                            &  & \text{(by \cref{ex:4.2.23})}   \\
-     & = t \det\begin{pmatrix}
-                 t      & 0      & \cdots & 0      & a_1           \\
-                 -1     & t      & \cdots & 0      & a_2           \\
-                 \vdots & \vdots &        & \vdots & \vdots        \\
-                 0      & 0      & \cdots & -1     & a_{n - 1} + t
-               \end{pmatrix} + a_0                                                                      \\
-     & = t \pa{t \det\begin{pmatrix}
-                         t      & \cdots & 0      & a_2           \\
-                         \vdots &        & \vdots & \vdots        \\
-                         0      & \cdots & -1     & a_{n - 1} + t
-                       \end{pmatrix} + a_1} + a_0                                                     &  & \text{(recursive structure)} \\
-     & = t^2 \det\begin{pmatrix}
-                   t      & \cdots & 0      & a_2           \\
-                   \vdots &        & \vdots & \vdots        \\
-                   0      & \cdots & -1     & a_{n - 1} + t
-                 \end{pmatrix} + a_1 t + a_0                                                                             \\
-     & = t^{n - 2} \det\begin{pmatrix}
-                         t  & a_{n - 2}     \\
-                         -1 & a_{n - 1} + t
-                       \end{pmatrix} + a_{n - 3} t^{n - 3} + \cdots + a_1 t + a_0                                                     \\
-     & = t^n + a_{n - 1} t^{n - 1} + a_{n - 2} t^{n - 2} + a_{n - 3} t^{n - 3} + \cdots + a_1 t + a_0. &  & \text{(by \cref{4.2.2})}
-  \end{align*}
+	We have
+	\begin{align*}
+		 & \det(A + t I_n)                                                                                                                \\
+		 & = \det\begin{pmatrix}
+			         t      & 0      & 0      & \cdots & 0      & a_0           \\
+			         -1     & t      & 0      & \cdots & 0      & a_1           \\
+			         0      & -1     & t      & \cdots & 0      & a_2           \\
+			         \vdots & \vdots & \vdots &        & \vdots & \vdots        \\
+			         0      & 0      & 0      & \cdots & -1     & a_{n - 1} + t
+		         \end{pmatrix}                                                               \\
+		 & = (-1)^{1 + 1} t \det\begin{pmatrix}
+			                        t      & 0      & \cdots & 0      & a_1           \\
+			                        -1     & t      & \cdots & 0      & a_2           \\
+			                        \vdots & \vdots &        & \vdots & \vdots        \\
+			                        0      & 0      & \cdots & -1     & a_{n - 1} + t
+		                        \end{pmatrix}                                                         \\
+		 & \quad + (-1)^{2 + 1} (-1) \det\begin{pmatrix}
+			                                 0      & 0      & \cdots & 0      & a_0           \\
+			                                 -1     & t      & \cdots & 0      & a_2           \\
+			                                 \vdots & \vdots &        & \vdots & \vdots        \\
+			                                 0      & 0      & \cdots & -1     & a_{n - 1} + t
+		                                 \end{pmatrix}                                            &  & \by{4.8}                           \\
+		 & = t \det\begin{pmatrix}
+			           t      & 0      & \cdots & 0      & a_1           \\
+			           -1     & t      & \cdots & 0      & a_2           \\
+			           \vdots & \vdots &        & \vdots & \vdots        \\
+			           0      & 0      & \cdots & -1     & a_{n - 1} + t
+		           \end{pmatrix}                                                                      \\
+		 & \quad + (-1)^{1 + n - 1} a_0 \det\begin{pmatrix}
+			                                    -1     & t      & \cdots & 0      \\
+			                                    \vdots & \vdots &        & \vdots \\
+			                                    0      & 0      & \cdots & -1
+		                                    \end{pmatrix}                                                &  & \by{4.2.2}                  \\
+		 & = t \det\begin{pmatrix}
+			           t      & 0      & \cdots & 0      & a_1           \\
+			           -1     & t      & \cdots & 0      & a_2           \\
+			           \vdots & \vdots &        & \vdots & \vdots        \\
+			           0      & 0      & \cdots & -1     & a_{n - 1} + t
+		           \end{pmatrix} + (-1)^n a_0 (-1)^{n - 2}                                            &  & \by{ex:4.2.23}                 \\
+		 & = t \det\begin{pmatrix}
+			           t      & 0      & \cdots & 0      & a_1           \\
+			           -1     & t      & \cdots & 0      & a_2           \\
+			           \vdots & \vdots &        & \vdots & \vdots        \\
+			           0      & 0      & \cdots & -1     & a_{n - 1} + t
+		           \end{pmatrix} + a_0                                                                      \\
+		 & = t \pa{t \det\begin{pmatrix}
+				                 t      & \cdots & 0      & a_2           \\
+				                 \vdots &        & \vdots & \vdots        \\
+				                 0      & \cdots & -1     & a_{n - 1} + t
+			                 \end{pmatrix} + a_1} + a_0                                                     &  & \text{(recursive structure)} \\
+		 & = t^2 \det\begin{pmatrix}
+			             t      & \cdots & 0      & a_2           \\
+			             \vdots &        & \vdots & \vdots        \\
+			             0      & \cdots & -1     & a_{n - 1} + t
+		             \end{pmatrix} + a_1 t + a_0                                                                             \\
+		 & = t^{n - 2} \det\begin{pmatrix}
+			                   t  & a_{n - 2}     \\
+			                   -1 & a_{n - 1} + t
+		                   \end{pmatrix} + a_{n - 3} t^{n - 3} + \cdots + a_1 t + a_0                                                     \\
+		 & = t^n + a_{n - 1} t^{n - 1} + a_{n - 2} t^{n - 2} + a_{n - 3} t^{n - 3} + \cdots + a_1 t + a_0. &  & \by{4.2.2}
+	\end{align*}
 \end{proof}
 
 \begin{ex}\label{ex:4.3.25}
-  Let \(c_{j k}\) denote the cofactor of the row \(j\), column \(k\) entry of the matrix \(A \in \ms{n}{n}{\F}\).
-  \begin{enumerate}
-    \item Prove that if \(B\) is the matrix obtained from \(A\) by replacing column \(k\) by \(e_j\), then \(\det(B) = c_{j k}\).
-    \item Show that for \(j \in \set{1, \dots, n}\), we have
-          \[
-            A \begin{pmatrix}
-              c_{j 1} \\
-              c_{j 2} \\
-              \vdots  \\
-              c_{j n}
-            \end{pmatrix} = \det(A) \cdot e_j.
-          \]
-    \item Deduce that if \(C \in \ms{n}{n}{\F}\) such that \(C_{i j} = c_{j i}\), then \(AC = \det(A) I_n\).
-    \item Show that if \(\det(A) \neq 0\), then \(A^{-1} = (\det(A))^{-1} C\).
-  \end{enumerate}
+	Let \(c_{j k}\) denote the cofactor of the row \(j\), column \(k\) entry of the matrix \(A \in \ms{n}{n}{\F}\).
+	\begin{enumerate}
+		\item Prove that if \(B\) is the matrix obtained from \(A\) by replacing column \(k\) by \(e_j\), then \(\det(B) = c_{j k}\).
+		\item Show that for \(j \in \set{1, \dots, n}\), we have
+		      \[
+			      A \begin{pmatrix}
+				      c_{j 1} \\
+				      c_{j 2} \\
+				      \vdots  \\
+				      c_{j n}
+			      \end{pmatrix} = \det(A) \cdot e_j.
+		      \]
+		\item Deduce that if \(C \in \ms{n}{n}{\F}\) such that \(C_{i j} = c_{j i}\), then \(AC = \det(A) I_n\).
+		\item Show that if \(\det(A) \neq 0\), then \(A^{-1} = (\det(A))^{-1} C\).
+	\end{enumerate}
 \end{ex}
 
 \begin{proof}[\pf{ex:4.3.25}(a)]
-  We have
-  \begin{align*}
-    \det(B) & = \sum_{i = 1}^n (-1)^{i + k} \cdot B_{i k} \cdot \det(\tilde{B}_{i k}) &  & \text{(by \cref{4.8})}              \\
-            & = (-1)^{j + k} \cdot 1 \cdot \det(\tilde{B}_{j k})                      &  & (B_{i k} = e_j)                     \\
-            & = (-1)^{j + k} \cdot 1 \cdot \det(\tilde{A}_{j k})                      &  & \text{(by the definition of \(B\))} \\
-            & = c_{j k}.                                                              &  & \text{(by \cref{4.2.2})}
-  \end{align*}
+	We have
+	\begin{align*}
+		\det(B) & = \sum_{i = 1}^n (-1)^{i + k} \cdot B_{i k} \cdot \det(\tilde{B}_{i k}) &  & \by{4.8}                            \\
+		        & = (-1)^{j + k} \cdot 1 \cdot \det(\tilde{B}_{j k})                      &  & (B_{i k} = e_j)                     \\
+		        & = (-1)^{j + k} \cdot 1 \cdot \det(\tilde{A}_{j k})                      &  & \text{(by the definition of \(B\))} \\
+		        & = c_{j k}.                                                              &  & \by{4.2.2}
+	\end{align*}
 \end{proof}
 
 \begin{proof}[\pf{ex:4.3.25}(b)]
-  We have
-  \begin{align*}
-             & \forall j \in \set{1, \dots, n}, \sum_{k = 1}^n A_{j k} c_{j k} = \det(A) &  & \text{(by \cref{4.4,4.8})}                        \\
-    \implies & \forall j \in \set{1, \dots, n}, A \begin{pmatrix}
-                                                    c_{j 1} \\
-                                                    c_{j 2} \\
-                                                    \vdots  \\
-                                                    c_{j j} \\
-                                                    \vdots  \\
-                                                    c_{j n}
-                                                  \end{pmatrix} = \begin{pmatrix}
-                                                                    \sum_{k = 1}^n A_{1 k} c_{j k} \\
-                                                                    \sum_{k = 1}^n A_{2 k} c_{j k} \\
-                                                                    \vdots                         \\
-                                                                    \det(A)                        \\
-                                                                    \vdots                         \\
-                                                                    \sum_{k = 1}^n A_{n k} c_{j k}
-                                                                  \end{pmatrix}                        &  & \text{(by \cref{2.3.1})}            \\
-             & = \begin{pmatrix}
-                   0       \\
-                   0       \\
-                   \vdots  \\
-                   \det(A) \\
-                   \vdots  \\
-                   0
-                 \end{pmatrix} = \det(A) e_j.                                              &  & \text{(replacing \(j\)th row with \(i\)th row)}
-  \end{align*}
+	We have
+	\begin{align*}
+		         & \forall j \in \set{1, \dots, n}, \sum_{k = 1}^n A_{j k} c_{j k} = \det(A) &  & \by{4.4,4.8}                                      \\
+		\implies & \forall j \in \set{1, \dots, n}, A \begin{pmatrix}
+			                                              c_{j 1} \\
+			                                              c_{j 2} \\
+			                                              \vdots  \\
+			                                              c_{j j} \\
+			                                              \vdots  \\
+			                                              c_{j n}
+		                                              \end{pmatrix} = \begin{pmatrix}
+			                                                              \sum_{k = 1}^n A_{1 k} c_{j k} \\
+			                                                              \sum_{k = 1}^n A_{2 k} c_{j k} \\
+			                                                              \vdots                         \\
+			                                                              \det(A)                        \\
+			                                                              \vdots                         \\
+			                                                              \sum_{k = 1}^n A_{n k} c_{j k}
+		                                                              \end{pmatrix}                        &  & \by{2.3.1}                          \\
+		         & = \begin{pmatrix}
+			             0       \\
+			             0       \\
+			             \vdots  \\
+			             \det(A) \\
+			             \vdots  \\
+			             0
+		             \end{pmatrix} = \det(A) e_j.                                              &  & \text{(replacing \(j\)th row with \(i\)th row)}
+	\end{align*}
 \end{proof}
 
 \begin{proof}[\pf{ex:4.3.25}(c)]
-  We have
-  \begin{align*}
-    AC & = \begin{pmatrix}
-             A \begin{pmatrix}
-          c_{1 1} \\
-          c_{1 2} \\
-          \vdots  \\
-          c_{1 n}
-        \end{pmatrix} & A \begin{pmatrix}
-                            c_{2 1} \\
-                            c_{2 2} \\
-                            \vdots  \\
-                            c_{2 n}
-                          \end{pmatrix} & \cdots & A \begin{pmatrix}
-                                                       c_{n 1} \\
-                                                       c_{n 2} \\
-                                                       \vdots  \\
-                                                       c_{n n}
-                                                     \end{pmatrix}
-           \end{pmatrix} &  & \text{(by \cref{2.3.1})}                              \\
-       & = \begin{pmatrix}
-             \det(A) e_1 & \det(A) e_2 & \cdots & \det(A) e_n
-           \end{pmatrix}                                                   &  & \text{(by \cref{ex:4.3.25}(b))}                            \\
-       & = \det(A) I_n.                                                                                      &  & \text{(by \cref{1.2.9})}
-  \end{align*}
+	We have
+	\begin{align*}
+		AC & = \begin{pmatrix}
+			       A \begin{pmatrix}
+				  c_{1 1} \\
+				  c_{1 2} \\
+				  \vdots  \\
+				  c_{1 n}
+			  \end{pmatrix} & A \begin{pmatrix}
+				                    c_{2 1} \\
+				                    c_{2 2} \\
+				                    \vdots  \\
+				                    c_{2 n}
+			                    \end{pmatrix} & \cdots & A \begin{pmatrix}
+				                                               c_{n 1} \\
+				                                               c_{n 2} \\
+				                                               \vdots  \\
+				                                               c_{n n}
+			                                               \end{pmatrix}
+		       \end{pmatrix} &  & \by{2.3.1}                \\
+		   & = \begin{pmatrix}
+			       \det(A) e_1 & \det(A) e_2 & \cdots & \det(A) e_n
+		       \end{pmatrix}                                                   &  & \by{ex:4.3.25}[b]                            \\
+		   & = \det(A) I_n.                                                                                      &  & \by{1.2.9}
+	\end{align*}
 \end{proof}
 
 \begin{proof}[\pf{ex:4.3.25}(d)]
-  We have
-  \begin{align*}
-             & AC = \det(A) I_n = \det(A) A A^{-1}                       &  & \text{(by \cref{ex:4.3.25}(c))} \\
-    \implies & C = A^{-1} AC = A^{-1} (\det(A) I_n) = \det(A) A^{-1} I_n &  & \text{(by \cref{2.12}(b))}      \\
-             & = \det(A) A^{-1}                                                                               \\
-    \implies & A^{-1} = \frac{1}{\det(A)} C.
-  \end{align*}
+	We have
+	\begin{align*}
+		         & AC = \det(A) I_n = \det(A) A A^{-1}                       &  & \by{ex:4.3.25}[c] \\
+		\implies & C = A^{-1} AC = A^{-1} (\det(A) I_n) = \det(A) A^{-1} I_n &  & \by{2.12}[b]      \\
+		         & = \det(A) A^{-1}                                                                 \\
+		\implies & A^{-1} = \frac{1}{\det(A)} C.
+	\end{align*}
 \end{proof}
 
 \begin{defn}\label{4.3.2}
-  The \textbf{classical adjoint} of a square matrix \(A\) is the transpose of the matrix whose \(i j\)-entry is the \(i j\)-cofactor of \(A\).
+	The \textbf{classical adjoint} of a square matrix \(A\) is the transpose of the matrix whose \(i j\)-entry is the \(i j\)-cofactor of \(A\).
 \end{defn}
 
 \setcounter{ex}{26}
 \begin{ex}\label{ex:4.3.27}
-  Let \(C\) be the classical adjoint of \(A \in \ms{n}{n}{\F}\).
-  Prove the following statements.
-  \begin{enumerate}
-    \item \(\det(C) = (\det(A))^{n - 1}\).
-    \item \(\tp{C}\) is the classical adjoint of \(\tp{A}\).
-    \item If \(A\) is an invertible upper triangular matrix, then \(C\) and \(A^{-1}\) are both upper triangular matrices.
-  \end{enumerate}
+	Let \(C\) be the classical adjoint of \(A \in \ms{n}{n}{\F}\).
+	Prove the following statements.
+	\begin{enumerate}
+		\item \(\det(C) = (\det(A))^{n - 1}\).
+		\item \(\tp{C}\) is the classical adjoint of \(\tp{A}\).
+		\item If \(A\) is an invertible upper triangular matrix, then \(C\) and \(A^{-1}\) are both upper triangular matrices.
+	\end{enumerate}
 \end{ex}
 
 \begin{proof}[\pf{ex:4.3.27}(a)]
-  Let \(c_{i j}\) be the \(i j\)-cofactor of \(A\).
-  Since
-  \begin{align*}
-             & C = \begin{pmatrix}
-                     c_{1 1} & c_{2 1} & \cdots & c_{n 1} \\
-                     c_{1 2} & c_{2 2} & \cdots & c_{n 2} \\
-                     \vdots  & \vdots  & \ddots & \vdots  \\
-                     c_{1 n} & c_{2 n} & \cdots & c_{n n}
-                   \end{pmatrix} &  & \text{(by \cref{4.3.2})}                              \\
-    \implies & AC = \det(A) I_n                        &  & \text{(by \cref{ex:4.3.25}(c))} \\
-    \implies & \det(A) \det(C) = \det(AC)              &  & \text{(by \cref{4.7})}          \\
-             & = \det(\det(A) I_n) = (\det(A))^n,      &  & \text{(by \cref{ex:4.2.25})}
-  \end{align*}
-  we see that \(\det(C) = (\det(A))^{n - 1}\) when \(\det(A) \neq 0\).
-  So suppose that \(\det(A) = 0\).
+	Let \(c_{i j}\) be the \(i j\)-cofactor of \(A\).
+	Since
+	\begin{align*}
+		         & C = \begin{pmatrix}
+			               c_{1 1} & c_{2 1} & \cdots & c_{n 1} \\
+			               c_{1 2} & c_{2 2} & \cdots & c_{n 2} \\
+			               \vdots  & \vdots  & \ddots & \vdots  \\
+			               c_{1 n} & c_{2 n} & \cdots & c_{n n}
+		               \end{pmatrix} &  & \by{4.3.2}                       \\
+		\implies & AC = \det(A) I_n                        &  & \by{ex:4.3.25}[c] \\
+		\implies & \det(A) \det(C) = \det(AC)              &  & \by{4.7}          \\
+		         & = \det(\det(A) I_n) = (\det(A))^n,      &  & \by{ex:4.2.25}
+	\end{align*}
+	we see that \(\det(C) = (\det(A))^{n - 1}\) when \(\det(A) \neq 0\).
+	So suppose that \(\det(A) = 0\).
 
-  If \(A = \zm\), then we have \(C = \zm\) and thus \(\det(C) = 0 = 0^{n - 1} = (\det(A))^{n - 1}\).
-  So suppose that \(A \neq \zm\).
-  Suppose for sake of contradiction that \(\det(C) \neq 0\).
-  Then by \cref{4.1.3} \(C\) is invertible.
-  But by \cref{ex:4.3.25}(c) we have
-  \[
-    A = A C C^{-1} = \det(A) I_n C^{-1} = \zm,
-  \]
-  a contradiction.
-  Thus we must have \(\det(C) = 0\).
-  We conclude that \(\det(C) = (\det(A))^{n - 1}\).
+	If \(A = \zm\), then we have \(C = \zm\) and thus \(\det(C) = 0 = 0^{n - 1} = (\det(A))^{n - 1}\).
+	So suppose that \(A \neq \zm\).
+	Suppose for sake of contradiction that \(\det(C) \neq 0\).
+	Then by \cref{4.1.3} \(C\) is invertible.
+	But by \cref{ex:4.3.25}(c) we have
+	\[
+		A = A C C^{-1} = \det(A) I_n C^{-1} = \zm,
+	\]
+	a contradiction.
+	Thus we must have \(\det(C) = 0\).
+	We conclude that \(\det(C) = (\det(A))^{n - 1}\).
 \end{proof}
 
 \begin{proof}[\pf{ex:4.3.27}(b)]
-  We have
-  \begin{align*}
-    \forall i, j \in \set{1, \dots, n}, (\tp{C})_{i j} & = C_{j i}                                           &  & \text{(by \cref{1.3.3})} \\
-                                                       & = (-1)^{i + j} \det(\tilde{A}_{i j})                &  & \text{(by \cref{4.3.2})} \\
-                                                       & = (-1)^{i + j} \det(\tilde{(\tp{A})}_{j i})         &  & \text{(by \cref{1.3.3})} \\
-                                                       & = (-1)^{j + i} \det(\tilde{(\tp{A})}_{j i})                                       \\
-                                                       & = j i\text{-cofactor of } \tp{A}                    &  & \text{(by \cref{4.2.2})} \\
-                                                       & = i j\text{-entry of classical adjoint of } \tp{A}. &  & \text{(by \cref{4.2.3})}
-  \end{align*}
-  and thus by \cref{1.2.8} we see that \(\tp{C}\) is the classical adjoint of \(\tp{A}\).
+	We have
+	\begin{align*}
+		\forall i, j \in \set{1, \dots, n}, (\tp{C})_{i j} & = C_{j i}                                           &  & \by{1.3.3} \\
+		                                                   & = (-1)^{i + j} \det(\tilde{A}_{i j})                &  & \by{4.3.2} \\
+		                                                   & = (-1)^{i + j} \det(\tilde{(\tp{A})}_{j i})         &  & \by{1.3.3} \\
+		                                                   & = (-1)^{j + i} \det(\tilde{(\tp{A})}_{j i})                         \\
+		                                                   & = j i\text{-cofactor of } \tp{A}                    &  & \by{4.2.2} \\
+		                                                   & = i j\text{-entry of classical adjoint of } \tp{A}. &  & \by{4.2.3}
+	\end{align*}
+	and thus by \cref{1.2.8} we see that \(\tp{C}\) is the classical adjoint of \(\tp{A}\).
 \end{proof}
 
 \begin{proof}[\pf{ex:4.3.27}(c)]
-  Let \(i, j \in \set{1, \dots, n}\).
-  Then we have
-  \begin{align*}
-             & A_{i j} = 0 \text{ if } i > j                             &  & \text{(by \cref{ex:1.3.12})} \\
-    \implies & \det(\tilde{A}_{i j}) = 0 \text{ if } j > i               &  & \text{(by \cref{4.2.1})}     \\
-    \implies & i j\text{-cofactor of } A \text{ is } 0 \text{ if } j > i &  & \text{(by \cref{4.2.2})}     \\
-    \implies & C_{j i} = 0 \text{ if } j > i                             &  & \text{(by \cref{4.3.2})}     \\
-    \implies & C \text{ is an upper triangular matrix}                   &  & \text{(by \cref{ex:1.3.12})}
-  \end{align*}
-  and
-  \begin{align*}
-             & \det(A) \neq 0                                                                     \\
-    \implies & A^{-1} = \frac{1}{\det(A)} C                  &  & \text{(by \cref{ex:4.3.25}(d))} \\
-    \implies & A^{-1} \text{ is an upper triangular matrix}. &  & \text{(from the proof above)}
-  \end{align*}
+	Let \(i, j \in \set{1, \dots, n}\).
+	Then we have
+	\begin{align*}
+		         & A_{i j} = 0 \text{ if } i > j                             &  & \by{ex:1.3.12} \\
+		\implies & \det(\tilde{A}_{i j}) = 0 \text{ if } j > i               &  & \by{4.2.1}     \\
+		\implies & i j\text{-cofactor of } A \text{ is } 0 \text{ if } j > i &  & \by{4.2.2}     \\
+		\implies & C_{j i} = 0 \text{ if } j > i                             &  & \by{4.3.2}     \\
+		\implies & C \text{ is an upper triangular matrix}                   &  & \by{ex:1.3.12}
+	\end{align*}
+	and
+	\begin{align*}
+		         & \det(A) \neq 0                                                                   \\
+		\implies & A^{-1} = \frac{1}{\det(A)} C                  &  & \by{ex:4.3.25}[d]             \\
+		\implies & A^{-1} \text{ is an upper triangular matrix}. &  & \text{(from the proof above)}
+	\end{align*}
 \end{proof}
 
 \begin{ex}\label{ex:4.3.28}
-  Let \(\seq{y}{1,,n}\) be linearly independent functions in \(\cfs[\infty](\R, \C)\).
-  For each \(y \in \cfs[\infty](\R, \C)\), define \(\T(y) \in \cfs[\infty](\R, \C)\) by
-  \[
-    (\T(y))(t) = \det\begin{pmatrix}
-      y(t)       & y_1(t)       & y_2(t)       & \cdots & y_n(t)       \\
-      y'(t)      & y_1'(t)      & y_2'(t)      & \cdots & y_n'(t)      \\
-      \vdots     & \vdots       & \vdots       &        & \vdots       \\
-      y^{(n)}(t) & y_1^{(n)}(t) & y_2^{(n)}(t) & \cdots & y_n^{(n)}(t)
-    \end{pmatrix}.
-  \]
-  The preceding determinant is called the \textbf{Wronskian} of \(y, \seq{y}{1,,n}\).
-  \begin{enumerate}
-    \item Prove that \(\T : \cfs[\infty](\R, \C) \to \cfs[\infty](\R, \C)\) is a linear transformation.
-    \item Prove that \(\spn{\set{\seq{y}{1,,n}}} \subseteq \ns{\T}\).
-  \end{enumerate}
+	Let \(\seq{y}{1,,n}\) be linearly independent functions in \(\cfs[\infty](\R, \C)\).
+	For each \(y \in \cfs[\infty](\R, \C)\), define \(\T(y) \in \cfs[\infty](\R, \C)\) by
+	\[
+		(\T(y))(t) = \det\begin{pmatrix}
+			y(t)       & y_1(t)       & y_2(t)       & \cdots & y_n(t)       \\
+			y'(t)      & y_1'(t)      & y_2'(t)      & \cdots & y_n'(t)      \\
+			\vdots     & \vdots       & \vdots       &        & \vdots       \\
+			y^{(n)}(t) & y_1^{(n)}(t) & y_2^{(n)}(t) & \cdots & y_n^{(n)}(t)
+		\end{pmatrix}.
+	\]
+	The preceding determinant is called the \textbf{Wronskian} of \(y, \seq{y}{1,,n}\).
+	\begin{enumerate}
+		\item Prove that \(\T : \cfs[\infty](\R, \C) \to \cfs[\infty](\R, \C)\) is a linear transformation.
+		\item Prove that \(\spn{\set{\seq{y}{1,,n}}} \subseteq \ns{\T}\).
+	\end{enumerate}
 \end{ex}
 
 \begin{proof}[\pf{ex:4.3.28}(a)]
-  Let \(f, g \in \cfs[\infty](\R, \C)\) and let \(c \in \C\).
-  Since
-  \begin{align*}
-     & \forall t \in \R, (\T(cf + g))(t)                                                                                   \\
-     & = \det\begin{pmatrix}
-               (cf + g)(t)       & y_1(t)       & y_2(t)       & \cdots & y_n(t)       \\
-               (cf + g)'(t)      & y_1'(t)      & y_2'(t)      & \cdots & y_n'(t)      \\
-               \vdots            & \vdots       & \vdots       &        & \vdots       \\
-               (cf + g)^{(n)}(t) & y_1^{(n)}(t) & y_2^{(n)}(t) & \cdots & y_n^{(n)}(t)
-             \end{pmatrix}        &  & \text{(by \cref{ex:4.3.28})}                                       \\
-     & = \det\begin{pmatrix}
-               cf(t) + g(t)             & y_1(t)       & y_2(t)       & \cdots & y_n(t)       \\
-               cf'(t) + g'(t)           & y_1'(t)      & y_2'(t)      & \cdots & y_n'(t)      \\
-               \vdots                   & \vdots       & \vdots       &        & \vdots       \\
-               cf^{(n)}(t) + g^{(n)}(t) & y_1^{(n)}(t) & y_2^{(n)}(t) & \cdots & y_n^{(n)}(t)
-             \end{pmatrix}                                \\
-     & = c \det\begin{pmatrix}
-                 f(t)       & y_1(t)       & y_2(t)       & \cdots & y_n(t)       \\
-                 f'(t)      & y_1'(t)      & y_2'(t)      & \cdots & y_n'(t)      \\
-                 \vdots     & \vdots       & \vdots       &        & \vdots       \\
-                 f^{(n)}(t) & y_1^{(n)}(t) & y_2^{(n)}(t) & \cdots & y_n^{(n)}(t)
-               \end{pmatrix}                                            \\
-     & \quad + \det\begin{pmatrix}
-                     g(t)       & y_1(t)       & y_2(t)       & \cdots & y_n(t)       \\
-                     g'(t)      & y_1'(t)      & y_2'(t)      & \cdots & y_n'(t)      \\
-                     \vdots     & \vdots       & \vdots       &        & \vdots       \\
-                     g^{(n)}(t) & y_1^{(n)}(t) & y_2^{(n)}(t) & \cdots & y_n^{(n)}(t)
-                   \end{pmatrix}               &  & \text{(by \cref{ex:4.3.8})}                                        \\
-     & = c (\T(f))(t) + (\T(g))(t)                                                       &  & \text{(by \cref{ex:4.3.28})} \\
-     & = (c \T(f) + \T(g))(t),
-  \end{align*}
-  we know that \(\T(cf + g) = c \T(f) + \T(g)\).
-  Thus by \cref{2.1.2}(b) \(\T \in \ls(\cfs[\infty](\R, \C))\).
+	Let \(f, g \in \cfs[\infty](\R, \C)\) and let \(c \in \C\).
+	Since
+	\begin{align*}
+		 & \forall t \in \R, (\T(cf + g))(t)                                                                     \\
+		 & = \det\begin{pmatrix}
+			         (cf + g)(t)       & y_1(t)       & y_2(t)       & \cdots & y_n(t)       \\
+			         (cf + g)'(t)      & y_1'(t)      & y_2'(t)      & \cdots & y_n'(t)      \\
+			         \vdots            & \vdots       & \vdots       &        & \vdots       \\
+			         (cf + g)^{(n)}(t) & y_1^{(n)}(t) & y_2^{(n)}(t) & \cdots & y_n^{(n)}(t)
+		         \end{pmatrix}        &  & \by{ex:4.3.28}                         \\
+		 & = \det\begin{pmatrix}
+			         cf(t) + g(t)             & y_1(t)       & y_2(t)       & \cdots & y_n(t)       \\
+			         cf'(t) + g'(t)           & y_1'(t)      & y_2'(t)      & \cdots & y_n'(t)      \\
+			         \vdots                   & \vdots       & \vdots       &        & \vdots       \\
+			         cf^{(n)}(t) + g^{(n)}(t) & y_1^{(n)}(t) & y_2^{(n)}(t) & \cdots & y_n^{(n)}(t)
+		         \end{pmatrix}                  \\
+		 & = c \det\begin{pmatrix}
+			           f(t)       & y_1(t)       & y_2(t)       & \cdots & y_n(t)       \\
+			           f'(t)      & y_1'(t)      & y_2'(t)      & \cdots & y_n'(t)      \\
+			           \vdots     & \vdots       & \vdots       &        & \vdots       \\
+			           f^{(n)}(t) & y_1^{(n)}(t) & y_2^{(n)}(t) & \cdots & y_n^{(n)}(t)
+		           \end{pmatrix}                              \\
+		 & \quad + \det\begin{pmatrix}
+			               g(t)       & y_1(t)       & y_2(t)       & \cdots & y_n(t)       \\
+			               g'(t)      & y_1'(t)      & y_2'(t)      & \cdots & y_n'(t)      \\
+			               \vdots     & \vdots       & \vdots       &        & \vdots       \\
+			               g^{(n)}(t) & y_1^{(n)}(t) & y_2^{(n)}(t) & \cdots & y_n^{(n)}(t)
+		               \end{pmatrix}               &  & \by{ex:4.3.8}                          \\
+		 & = c (\T(f))(t) + (\T(g))(t)                                                       &  & \by{ex:4.3.28} \\
+		 & = (c \T(f) + \T(g))(t),
+	\end{align*}
+	we know that \(\T(cf + g) = c \T(f) + \T(g)\).
+	Thus by \cref{2.1.2}(b) \(\T \in \ls(\cfs[\infty](\R, \C))\).
 \end{proof}
 
 \begin{proof}[\pf{ex:4.3.28}(b)]
-  Let \(y \in \spn{\set{\seq{y}{1,,n}}}\).
-  Then there exist \(\seq{c}{1,,n} \in \C\) such that \(y = \sum_{i = 1}^n c_i y_i\).
-  Since
-  \begin{align*}
-     & \forall t \in \R, (\T(y))(t)                                                                                         \\
-     & = \det\begin{pmatrix}
-               y(t)       & y_1(t)       & y_2(t)       & \cdots & y_n(t)       \\
-               y'(t)      & y_1'(t)      & y_2'(t)      & \cdots & y_n'(t)      \\
-               \vdots     & \vdots       & \vdots       &        & \vdots       \\
-               y^{(n)}(t) & y_1^{(n)}(t) & y_2^{(n)}(t) & \cdots & y_n^{(n)}(t)
-             \end{pmatrix}                    &  & \text{(by \cref{ex:4.3.28})}                                             \\
-     & = \det\begin{pmatrix}
-               \sum_{i = 1}^n c_i y_i(t)     & y_1(t)       & y_2(t)       & \cdots & y_n(t)       \\
-               \sum_{i = 1}^n c_i y_i'(t)    & y_1'(t)      & y_2'(t)      & \cdots & y_n'(t)      \\
-               \vdots                        & \vdots       & \vdots       &        & \vdots       \\
-               \sum_{i = 1}^n c_i y^{(n)}(t) & y_1^{(n)}(t) & y_2^{(n)}(t) & \cdots & y_n^{(n)}(t)
-             \end{pmatrix}                            \\
-     & = 0,                                                                                   &  & \text{(by \cref{4.2.7})}
-  \end{align*}
-  we know that \(\T(y)\) is the zero function of \(\cfs[\infty](\R, \C)\) and by \cref{2.1.10} \(y \in \ns{\T}\).
-  Thus we have \(\spn{\set{\seq{y}{1,,n}}} \subseteq \ns{\T}\).
+	Let \(y \in \spn{\set{\seq{y}{1,,n}}}\).
+	Then there exist \(\seq{c}{1,,n} \in \C\) such that \(y = \sum_{i = 1}^n c_i y_i\).
+	Since
+	\begin{align*}
+		 & \forall t \in \R, (\T(y))(t)                                                                           \\
+		 & = \det\begin{pmatrix}
+			         y(t)       & y_1(t)       & y_2(t)       & \cdots & y_n(t)       \\
+			         y'(t)      & y_1'(t)      & y_2'(t)      & \cdots & y_n'(t)      \\
+			         \vdots     & \vdots       & \vdots       &        & \vdots       \\
+			         y^{(n)}(t) & y_1^{(n)}(t) & y_2^{(n)}(t) & \cdots & y_n^{(n)}(t)
+		         \end{pmatrix}                    &  & \by{ex:4.3.28}                                 \\
+		 & = \det\begin{pmatrix}
+			         \sum_{i = 1}^n c_i y_i(t)     & y_1(t)       & y_2(t)       & \cdots & y_n(t)       \\
+			         \sum_{i = 1}^n c_i y_i'(t)    & y_1'(t)      & y_2'(t)      & \cdots & y_n'(t)      \\
+			         \vdots                        & \vdots       & \vdots       &        & \vdots       \\
+			         \sum_{i = 1}^n c_i y^{(n)}(t) & y_1^{(n)}(t) & y_2^{(n)}(t) & \cdots & y_n^{(n)}(t)
+		         \end{pmatrix}              \\
+		 & = 0,                                                                                   &  & \by{4.2.7}
+	\end{align*}
+	we know that \(\T(y)\) is the zero function of \(\cfs[\infty](\R, \C)\) and by \cref{2.1.10} \(y \in \ns{\T}\).
+	Thus we have \(\spn{\set{\seq{y}{1,,n}}} \subseteq \ns{\T}\).
 \end{proof}

@@ -1,386 +1,386 @@
 \section{Maximal Linearly Independent Subsets}\label{sec:1.7}
 
 \begin{note}
-  The difficulty that arises in extending the theorems of the preceding section to infinite-dimensional vector spaces is that the principle of mathematical induction, which played a crucial role in many of the proofs of \cref{sec:1.6}, is no longer adequate.
-  Instead, a more general result called the \emph{maximal principle} is needed.
-  Before stating this principle, we need to introduce some terminology.
+	The difficulty that arises in extending the theorems of the preceding section to infinite-dimensional vector spaces is that the principle of mathematical induction, which played a crucial role in many of the proofs of \cref{sec:1.6}, is no longer adequate.
+	Instead, a more general result called the \emph{maximal principle} is needed.
+	Before stating this principle, we need to introduce some terminology.
 \end{note}
 
 \begin{defn}\label{1.7.1}
-  Let \(\mathcal{F}\) be a family of sets.
-  A member \(M\) of \(\mathcal{F}\) is called \textbf{maximal} (with respect to set inclusion) if \(M\) is contained in no member of \(\mathcal{F}\) other than \(M\) itself.
+	Let \(\mathcal{F}\) be a family of sets.
+	A member \(M\) of \(\mathcal{F}\) is called \textbf{maximal} (with respect to set inclusion) if \(M\) is contained in no member of \(\mathcal{F}\) other than \(M\) itself.
 \end{defn}
 
 \begin{eg}\label{1.7.2}
-  Let \(2^S\) be the family of all subsets of a nonempty set \(S\).
-  (This family \(2^S\) is called the \textbf{power set} of \(S\).)
-  The set \(S\) is easily seen to be a maximal element of \(2^S\).
+	Let \(2^S\) be the family of all subsets of a nonempty set \(S\).
+	(This family \(2^S\) is called the \textbf{power set} of \(S\).)
+	The set \(S\) is easily seen to be a maximal element of \(2^S\).
 \end{eg}
 
 \begin{proof}[\pf{1.7.2}]
-  Suppose for sake of contradiction that \(S\) is not a maximal element of \(2^S\).
-  Since \(S \in 2^S\), we know that \(S \in 2^S\).
-  Thus by \cref{1.7.1} we know that
-  \[
-    \exists S' \in 2^S : \begin{dcases}
-      S \subseteq S' \\
-      S \neq S'
-    \end{dcases}.
-  \]
-  But then we have
-  \begin{align*}
-             & S' \in 2^S                           \\
-    \implies & S' \subseteq S                       \\
-    \implies & S' = S,        &  & (S \subseteq S')
-  \end{align*}
-  which contradicts to the fact that \(S \neq S'\).
-  Thus \(S\) is a maximal element of \(2^S\).
+	Suppose for sake of contradiction that \(S\) is not a maximal element of \(2^S\).
+	Since \(S \in 2^S\), we know that \(S \in 2^S\).
+	Thus by \cref{1.7.1} we know that
+	\[
+		\exists S' \in 2^S : \begin{dcases}
+			S \subseteq S' \\
+			S \neq S'
+		\end{dcases}.
+	\]
+	But then we have
+	\begin{align*}
+		         & S' \in 2^S                           \\
+		\implies & S' \subseteq S                       \\
+		\implies & S' = S,        &  & (S \subseteq S')
+	\end{align*}
+	which contradicts to the fact that \(S \neq S'\).
+	Thus \(S\) is a maximal element of \(2^S\).
 \end{proof}
 
 \begin{eg}\label{1.7.3}
-  Let \(S\) and \(T\) be disjoint nonempty sets, and let \(\mathcal{F}\) be the union of their power sets.
-  Then \(S\) and \(T\) are both maximal elements of \(\mathcal{F}\).
+	Let \(S\) and \(T\) be disjoint nonempty sets, and let \(\mathcal{F}\) be the union of their power sets.
+	Then \(S\) and \(T\) are both maximal elements of \(\mathcal{F}\).
 \end{eg}
 
 \begin{proof}[\pf{1.7.3}]
-  Since \(S \cap T = \varnothing\), we know that \(2^S \cap 2^T = \set{\varnothing}\).
-  Since \(\varnothing \subseteq U\) for all \(U \in (2^S \cup 2^T) \setminus \set{\varnothing}\), by \cref{1.7.1} we know that \(\varnothing\) is not a maximal element of \(2^S \cup 2^T\).
-  Thus we know that a maximal element of \(2^S \cup 2^T\) must be in either \(2^S \setminus \set{\varnothing}\) or \(2^T \setminus \set{\varnothing}\), and by \cref{1.7.2} we know that \(S, T\) are both maximal elements of \(\mathcal{F}\).
+	Since \(S \cap T = \varnothing\), we know that \(2^S \cap 2^T = \set{\varnothing}\).
+	Since \(\varnothing \subseteq U\) for all \(U \in (2^S \cup 2^T) \setminus \set{\varnothing}\), by \cref{1.7.1} we know that \(\varnothing\) is not a maximal element of \(2^S \cup 2^T\).
+	Thus we know that a maximal element of \(2^S \cup 2^T\) must be in either \(2^S \setminus \set{\varnothing}\) or \(2^T \setminus \set{\varnothing}\), and by \cref{1.7.2} we know that \(S, T\) are both maximal elements of \(\mathcal{F}\).
 \end{proof}
 
 \begin{eg}\label{1.7.4}
-  Let \(\mathcal{F}\) be the family of all finite subsets of an infinite set \(S\).
-  Then \(\mathcal{F}\) has no maximal element.
+	Let \(\mathcal{F}\) be the family of all finite subsets of an infinite set \(S\).
+	Then \(\mathcal{F}\) has no maximal element.
 \end{eg}
 
 \begin{proof}[\pf{1.7.4}]
-  Suppose for sake of contradiction that \(\mathcal{F}\) has a maximal element \(M\).
-  But then we have
-  \begin{align*}
-             & \begin{dcases}
-                 M \text{ is finite} \\
-                 S \text{ is infinite}
-               \end{dcases}                            \\
-    \implies & S \setminus M \neq \varnothing                  \\
-    \implies & \exists s \in S : s \notin M                    \\
-    \implies & \exists s \in S : \begin{dcases}
-                                   M \subseteq M \cup \set{s} \\
-                                   M \cup \set{s} \in \mathcal{F}
-                                 \end{dcases}
-  \end{align*}
-  which contradicts to the fact that \(M\) is a maximal element of \(\mathcal{F}\).
+	Suppose for sake of contradiction that \(\mathcal{F}\) has a maximal element \(M\).
+	But then we have
+	\begin{align*}
+		         & \begin{dcases}
+			           M \text{ is finite} \\
+			           S \text{ is infinite}
+		           \end{dcases}                            \\
+		\implies & S \setminus M \neq \varnothing                  \\
+		\implies & \exists s \in S : s \notin M                    \\
+		\implies & \exists s \in S : \begin{dcases}
+			                             M \subseteq M \cup \set{s} \\
+			                             M \cup \set{s} \in \mathcal{F}
+		                             \end{dcases}
+	\end{align*}
+	which contradicts to the fact that \(M\) is a maximal element of \(\mathcal{F}\).
 \end{proof}
 
 \begin{defn}\label{1.7.5}
-  A collection of sets \(\mathcal{C}\) is called a \textbf{chain} (or \textbf{nest} or \textbf{tower}) if for each pair of sets \(A\) and \(B\) in \(\mathcal{C}\), either \(A \subseteq B\) or \(B \subseteq A\).
+	A collection of sets \(\mathcal{C}\) is called a \textbf{chain} (or \textbf{nest} or \textbf{tower}) if for each pair of sets \(A\) and \(B\) in \(\mathcal{C}\), either \(A \subseteq B\) or \(B \subseteq A\).
 \end{defn}
 
 \begin{eg}\label{1.7.6}
-  For each positive integer \(n\) let \(A_n = \set{1, 2, \dots, n}\).
-  Then the collection of sets \(\mathcal{C} = \set{A_n : n = 1, 2, 3, \dots}\) is a chain.
-  In fact, \(A_m \subseteq A_n\) iff \(m \leq n\).
+	For each positive integer \(n\) let \(A_n = \set{1, 2, \dots, n}\).
+	Then the collection of sets \(\mathcal{C} = \set{A_n : n = 1, 2, 3, \dots}\) is a chain.
+	In fact, \(A_m \subseteq A_n\) iff \(m \leq n\).
 \end{eg}
 
 \begin{proof}[\pf{1.7.6}]
-  We have
-  \begin{align*}
-             & \forall \seq{A}{m,n} \in \mathcal{C}, \begin{dcases}
-                                                       A_m = \set{1, 2, \dots, m} \\
-                                                       A_n = \set{1, 2, \dots, n}
-                                                     \end{dcases}                   \\
-    \implies & \forall \seq{A}{m,n} \in \mathcal{C}, \begin{dcases}
-                                                       A_m \subseteq A_n & \text{if } m \leq n \\
-                                                       A_n \subseteq A_m & \text{if } m > n
-                                                     \end{dcases}      \\
-    \implies & \mathcal{C} \text{ is a chain}.                      &  & \text{(by \cref{1.7.5})}
-  \end{align*}
+	We have
+	\begin{align*}
+		         & \forall \seq{A}{m,n} \in \mathcal{C}, \begin{dcases}
+			                                                 A_m = \set{1, 2, \dots, m} \\
+			                                                 A_n = \set{1, 2, \dots, n}
+		                                                 \end{dcases}              \\
+		\implies & \forall \seq{A}{m,n} \in \mathcal{C}, \begin{dcases}
+			                                                 A_m \subseteq A_n & \text{if } m \leq n \\
+			                                                 A_n \subseteq A_m & \text{if } m > n
+		                                                 \end{dcases} \\
+		\implies & \mathcal{C} \text{ is a chain}.                      &  & \by{1.7.5}
+	\end{align*}
 \end{proof}
 
 \begin{ax}[Maximal Principle]\label{1.7.7}
-  Let \(\mathcal{F}\) be a family of sets.
-  If, for each chain \(\mathcal{C} \subseteq \mathcal{F}\), there exists a member of \(\mathcal{F}\) that contains each member of \(\mathcal{C}\), then \(\mathcal{F}\) contains a maximal member.
+	Let \(\mathcal{F}\) be a family of sets.
+	If, for each chain \(\mathcal{C} \subseteq \mathcal{F}\), there exists a member of \(\mathcal{F}\) that contains each member of \(\mathcal{C}\), then \(\mathcal{F}\) contains a maximal member.
 \end{ax}
 
 \begin{note}
-  The \emph{Maximal Principle} is logically equivalent to the \emph{Axiom of Choice}, which is an assumption in most axiomatic developments of set theory.
-  For a treatment of set theory using the Maximal Principle, see John L. Kelley, General Topology, Graduate Texts in Mathematics Series, Vol. 27, Springer-Verlag, 1991.
+	The \emph{Maximal Principle} is logically equivalent to the \emph{Axiom of Choice}, which is an assumption in most axiomatic developments of set theory.
+	For a treatment of set theory using the Maximal Principle, see John L. Kelley, General Topology, Graduate Texts in Mathematics Series, Vol. 27, Springer-Verlag, 1991.
 \end{note}
 
 \begin{defn}\label{1.7.8}
-  Let \(S\) be a subset of a vector space \(\V\) over \(\F\).
-  A \textbf{maximal linearly independent subset} of \(S\) is a subset \(B\) of \(S\) satisfying both of the following conditions.
-  \begin{enumerate}
-    \item \(B\) is linearly independent.
-    \item The only linearly independent subset of \(S\) that contains \(B\) is \(B\) itself.
-  \end{enumerate}
+	Let \(S\) be a subset of a vector space \(\V\) over \(\F\).
+	A \textbf{maximal linearly independent subset} of \(S\) is a subset \(B\) of \(S\) satisfying both of the following conditions.
+	\begin{enumerate}
+		\item \(B\) is linearly independent.
+		\item The only linearly independent subset of \(S\) that contains \(B\) is \(B\) itself.
+	\end{enumerate}
 \end{defn}
 
 \begin{note}
-  Maximal linearly independent subsets of a set need not be unique.
+	Maximal linearly independent subsets of a set need not be unique.
 \end{note}
 
 \begin{eg}\label{1.7.9}
-  A basis \(\beta\) for a vector space \(\V\) over \(\F\) is a maximal linearly independent subset of \(\V\).
+	A basis \(\beta\) for a vector space \(\V\) over \(\F\) is a maximal linearly independent subset of \(\V\).
 \end{eg}
 
 \begin{proof}[\pf{1.7.9}]
-  \cref{1.7.9} is true since
-  \begin{itemize}
-    \item \(\beta\) is linearly independent by definition.
-    \item If \(v \in V\) and \(v \notin \beta\), then \(\beta \cup \set{v}\) is linearly dependent by \cref{1.7} because \(\spn{\beta} = \V\).
-  \end{itemize}
+	\cref{1.7.9} is true since
+	\begin{itemize}
+		\item \(\beta\) is linearly independent by definition.
+		\item If \(v \in V\) and \(v \notin \beta\), then \(\beta \cup \set{v}\) is linearly dependent by \cref{1.7} because \(\spn{\beta} = \V\).
+	\end{itemize}
 \end{proof}
 
 \begin{thm}\label{1.12}
-  Let \(\V\) be a vector space over \(\F\) and \(S\) a subset that generates \(\V\).
-  If \(\beta\) is a maximal linearly independent subset of \(S\), then \(\beta\) is a basis for \(\V\) over \(\F\).
+	Let \(\V\) be a vector space over \(\F\) and \(S\) a subset that generates \(\V\).
+	If \(\beta\) is a maximal linearly independent subset of \(S\), then \(\beta\) is a basis for \(\V\) over \(\F\).
 \end{thm}
 
 \begin{proof}[\pf{1.12}]
-  Let \(\beta\) be a maximal linearly independent subset of \(S\).
-  Because \(\beta\) is linearly independent, it suffices to prove that \(\beta\) generates \(\V\).
-  We claim that \(S \subseteq \spn{\beta}\), for otherwise there exists a \(v \in S\) such that \(v \notin \spn{\beta}\).
-  Since \cref{1.7} implies that \(\beta \cup \set{v}\) is linearly independent, we have contradicted the maximality of \(\beta\).
-  Therefore \(S \subseteq \spn{\beta}\).
-  Because \(\spn{S} = \V\), it follows from \cref{1.5} that \(\spn{\beta} = \V\).
+	Let \(\beta\) be a maximal linearly independent subset of \(S\).
+	Because \(\beta\) is linearly independent, it suffices to prove that \(\beta\) generates \(\V\).
+	We claim that \(S \subseteq \spn{\beta}\), for otherwise there exists a \(v \in S\) such that \(v \notin \spn{\beta}\).
+	Since \cref{1.7} implies that \(\beta \cup \set{v}\) is linearly independent, we have contradicted the maximality of \(\beta\).
+	Therefore \(S \subseteq \spn{\beta}\).
+	Because \(\spn{S} = \V\), it follows from \cref{1.5} that \(\spn{\beta} = \V\).
 \end{proof}
 
 \begin{note}
-  From \cref{1.7.9} and \cref{1.12} (by replacing \(S\) with \(\V\) in \cref{1.12}) we see that a subset of a vector space is a basis iff it is a maximal linearly independent subset of the vector space.
+	From \cref{1.7.9} and \cref{1.12} (by replacing \(S\) with \(\V\) in \cref{1.12}) we see that a subset of a vector space is a basis iff it is a maximal linearly independent subset of the vector space.
 \end{note}
 
 \begin{thm}\label{1.13}
-  Let \(S\) be a linearly independent subset of a vector space \(\V\) over \(\F\).
-  There exists a maximal linearly independent subset of \(\V\) that contains \(S\).
+	Let \(S\) be a linearly independent subset of a vector space \(\V\) over \(\F\).
+	There exists a maximal linearly independent subset of \(\V\) that contains \(S\).
 \end{thm}
 
 \begin{proof}[\pf{1.13}]
-  Let \(\mathcal{F}\) denote the family of all linearly independent subsets of \(\V\) that contain \(S\).
-  In order to show that \(\mathcal{F}\) contains a maximal element, we must show that if \(\mathcal{C}\) is a chain in \(\mathcal{F}\), then there exists a member \(U\) of \(\mathcal{F}\) that contains each member of \(\mathcal{C}\).
-  We claim that \(U\), the union of the members of \(\mathcal{C}\), is the desired set.
-  Clearly \(U\) contains each member of \(\mathcal{C}\), and so it suffices to prove that \(U \in \mathcal{F}\)
-  (i.e., that \(U\) is a linearly independent subset of \(\V\) that contains \(S\)).
-  Because each member of \(\mathcal{C}\) is a subset of \(\V\) containing \(S\), we have \(S \subseteq U \subseteq \V\).
-  Thus we only need to prove that \(U\) is linearly independent.
-  Let \(\seq{u}{1,2,,n}\) be in \(U\) and \(\seq{a}{1,2,,n}\) be scalars in \(\F\) such that \(\seq[+]{a,u}{1,2,,n} = 0\).
-  Because \(u_i \in U\) for \(i = 1, 2, \dots, n\), there exists a set \(A_i\) in \(\mathcal{C}\) such that \(u_i \in A_i\).
-  But since \(\mathcal{C}\) is a chain, one of these sets, say \(A_k\), contains all the others.
-  Thus \(u_i \in A_k\) for \(i = 1, 2, \dots, n\).
-  However, \(A_k\) is a linearly independent set;
-  so \(\seq[+]{a,u}{1,2,,n} = 0\) implies that \(\seq[=]{a}{1,2,,n} = 0\).
-  It follows that \(U\) is linearly independent.
+	Let \(\mathcal{F}\) denote the family of all linearly independent subsets of \(\V\) that contain \(S\).
+	In order to show that \(\mathcal{F}\) contains a maximal element, we must show that if \(\mathcal{C}\) is a chain in \(\mathcal{F}\), then there exists a member \(U\) of \(\mathcal{F}\) that contains each member of \(\mathcal{C}\).
+	We claim that \(U\), the union of the members of \(\mathcal{C}\), is the desired set.
+	Clearly \(U\) contains each member of \(\mathcal{C}\), and so it suffices to prove that \(U \in \mathcal{F}\)
+	(i.e., that \(U\) is a linearly independent subset of \(\V\) that contains \(S\)).
+	Because each member of \(\mathcal{C}\) is a subset of \(\V\) containing \(S\), we have \(S \subseteq U \subseteq \V\).
+	Thus we only need to prove that \(U\) is linearly independent.
+	Let \(\seq{u}{1,2,,n}\) be in \(U\) and \(\seq{a}{1,2,,n}\) be scalars in \(\F\) such that \(\seq[+]{a,u}{1,2,,n} = 0\).
+	Because \(u_i \in U\) for \(i = 1, 2, \dots, n\), there exists a set \(A_i\) in \(\mathcal{C}\) such that \(u_i \in A_i\).
+	But since \(\mathcal{C}\) is a chain, one of these sets, say \(A_k\), contains all the others.
+	Thus \(u_i \in A_k\) for \(i = 1, 2, \dots, n\).
+	However, \(A_k\) is a linearly independent set;
+	so \(\seq[+]{a,u}{1,2,,n} = 0\) implies that \(\seq[=]{a}{1,2,,n} = 0\).
+	It follows that \(U\) is linearly independent.
 
-  The maximal principle implies that \(\mathcal{F}\) has a maximal element.
-  This element is easily seen to be a maximal linearly independent subset of \(\V\) that contains \(S\).
+	The maximal principle implies that \(\mathcal{F}\) has a maximal element.
+	This element is easily seen to be a maximal linearly independent subset of \(\V\) that contains \(S\).
 \end{proof}
 
 \begin{cor}\label{1.7.10}
-  Every vector space has a basis.
+	Every vector space has a basis.
 \end{cor}
 
 \begin{proof}[\pf{1.7.10}]
-  Let \(\V\) be a vector space over \(\F\).
-  If \(\V = \set{\zv}\), then by \cref{1.6.2} \(\varnothing\) is the basis for \(\set{\zv}\).
-  So suppose that \(\V \neq \set{\zv}\).
-  Then there exists a \(v \in \V \setminus \set{\zv}\) and by \cref{1.5.4}(b) \(\set{v}\) is linearly independent.
-  From \cref{1.13} we see that there exists a maximal linearly independent subset \(\beta\) of \(\V\) that contains \(\set{v}\).
-  Since \(\spn{\V} = \V\), by \cref{1.12} we know that \(\beta\) is a basis for \(\V\) over \(\F\).
+	Let \(\V\) be a vector space over \(\F\).
+	If \(\V = \set{\zv}\), then by \cref{1.6.2} \(\varnothing\) is the basis for \(\set{\zv}\).
+	So suppose that \(\V \neq \set{\zv}\).
+	Then there exists a \(v \in \V \setminus \set{\zv}\) and by \cref{1.5.4}(b) \(\set{v}\) is linearly independent.
+	From \cref{1.13} we see that there exists a maximal linearly independent subset \(\beta\) of \(\V\) that contains \(\set{v}\).
+	Since \(\spn{\V} = \V\), by \cref{1.12} we know that \(\beta\) is a basis for \(\V\) over \(\F\).
 \end{proof}
 
 \begin{note}
-  It can be shown, analogously to \cref{1.6.7}, that every basis for an infinite-dimensional vector space has the same \emph{cardinality}.
-  (Sets have the same cardinality if there is a one-to-one and onto mapping between them.)
-  (See, for example, N. Jacobson, Lectures in Ab- stract Algebra, vol. 2, Linear Algebra, D. Van Nostrand Company, New York, 1953, p. 240.)
+	It can be shown, analogously to \cref{1.6.7}, that every basis for an infinite-dimensional vector space has the same \emph{cardinality}.
+	(Sets have the same cardinality if there is a one-to-one and onto mapping between them.)
+	(See, for example, N. Jacobson, Lectures in Ab- stract Algebra, vol. 2, Linear Algebra, D. Van Nostrand Company, New York, 1953, p. 240.)
 \end{note}
 
 \exercisesection
 
 \setcounter{ex}{1}
 \begin{ex}\label{ex:1.7.2}
-  Show that the set of convergent sequences is an infinite-dimensional subspace of the vector space of all sequences of real numbers.
+	Show that the set of convergent sequences is an infinite-dimensional subspace of the vector space of all sequences of real numbers.
 \end{ex}
 
 \begin{proof}[\pf{ex:1.7.2}]
-  Let \(\W\) be the set of convergent sequences over \(\R\).
-  By \cref{ex:1.3.21} we know that \(\W\) is a vector space over \(\R\).
-  From \cref{ex:1.6.18} we see that \(\set{e_n^i} \in \W\) for all \(i \in \N\) since \(\lim_{n \to \infty} e_n^i = 0\).
-  Thus \(\W\) is an infinite-dimensional subspace of vector space of all sequences of \(\R\).
+	Let \(\W\) be the set of convergent sequences over \(\R\).
+	By \cref{ex:1.3.21} we know that \(\W\) is a vector space over \(\R\).
+	From \cref{ex:1.6.18} we see that \(\set{e_n^i} \in \W\) for all \(i \in \N\) since \(\lim_{n \to \infty} e_n^i = 0\).
+	Thus \(\W\) is an infinite-dimensional subspace of vector space of all sequences of \(\R\).
 \end{proof}
 
 \begin{ex}\label{ex:1.7.3}
-  Let \(\R\) be the set of real numbers regarded as a vector space over the field of rational numbers \(\Q\).
-  Prove that \(\R\) over \(\Q\) is infinite-dimensional.
-  (Use the fact that \(\pi\) is transcendental, that is, \(\pi\) is not a zero of any polynomial with rational coefficients.)
+	Let \(\R\) be the set of real numbers regarded as a vector space over the field of rational numbers \(\Q\).
+	Prove that \(\R\) over \(\Q\) is infinite-dimensional.
+	(Use the fact that \(\pi\) is transcendental, that is, \(\pi\) is not a zero of any polynomial with rational coefficients.)
 \end{ex}
 
 \begin{proof}[\pf{ex:1.7.3}]
-  Let \(\beta_n = \set{1, \pi, \pi^2, \dots, \pi^n}\) for all \(n \in \N\).
-  We claim that \(\beta_n\) is linearly independent for all \(n \in \N\).
-  Since \(\pi\) is transcendental, we know that
-  \[
-    \forall \seq{q}{0,1,,n} \in \Q, \sum_{i = 0}^n q_i \pi^i = 0 \implies \seq[=]{q}{0,1,,n} = 0.
-  \]
-  Thus by \cref{1.5.3} \(\beta_n\) is linearly independent for all \(n \in \N\).
+	Let \(\beta_n = \set{1, \pi, \pi^2, \dots, \pi^n}\) for all \(n \in \N\).
+	We claim that \(\beta_n\) is linearly independent for all \(n \in \N\).
+	Since \(\pi\) is transcendental, we know that
+	\[
+		\forall \seq{q}{0,1,,n} \in \Q, \sum_{i = 0}^n q_i \pi^i = 0 \implies \seq[=]{q}{0,1,,n} = 0.
+	\]
+	Thus by \cref{1.5.3} \(\beta_n\) is linearly independent for all \(n \in \N\).
 
-  Now we show that \(\R\) over \(\Q\) is infinite-dimensional.
-  Suppose for sake of contradiction that \(\R\) over \(\Q\) is finite-dimensional with dimension \(n + 1\).
-  Since \(\#(\beta_n) = n + 1\), by \cref{1.6.15}(b) we know that \(\beta_n\) is a basis for \(\R\) over \(\Q\).
-  Then we have
-  \begin{align*}
-             & \forall y \in \R, \exists \seq{q}{0,1,,n} \in \Q : y = \sum_{i = 0}^n q_i \pi^i &  & \text{(by \cref{1.6.1})} \\
-    \implies & \exists \seq{q}{0,1,,n} \in \Q : \pi^{n + 1} = \sum_{i = 1}^n q_i \pi^i                                       \\
-    \implies & \exists \seq{q}{0,1,,n} \in \Q : \pi^{n + 1} - \sum_{i = 1}^n q_i \pi^i = 0                                   \\
-    \implies & \exists \seq{q}{0,1,,n + 1} \in \Q : \begin{dcases}
-                                                      \sum_{i = 1}^{n + 1} q_i \pi^i = 0 \\
-                                                      q_{n + 1} \neq 0
-                                                    \end{dcases}.
-  \end{align*}
-  But \(\pi\) is transcendental implies that \(\seq[=]{q}{0,1,,n + 1} = 0\), a contradiction.
-  Thus \(\R\) over \(\Q\) is infinite-dimensional.
+	Now we show that \(\R\) over \(\Q\) is infinite-dimensional.
+	Suppose for sake of contradiction that \(\R\) over \(\Q\) is finite-dimensional with dimension \(n + 1\).
+	Since \(\#(\beta_n) = n + 1\), by \cref{1.6.15}(b) we know that \(\beta_n\) is a basis for \(\R\) over \(\Q\).
+	Then we have
+	\begin{align*}
+		         & \forall y \in \R, \exists \seq{q}{0,1,,n} \in \Q : y = \sum_{i = 0}^n q_i \pi^i &  & \by{1.6.1} \\
+		\implies & \exists \seq{q}{0,1,,n} \in \Q : \pi^{n + 1} = \sum_{i = 1}^n q_i \pi^i                         \\
+		\implies & \exists \seq{q}{0,1,,n} \in \Q : \pi^{n + 1} - \sum_{i = 1}^n q_i \pi^i = 0                     \\
+		\implies & \exists \seq{q}{0,1,,n + 1} \in \Q : \begin{dcases}
+			                                                \sum_{i = 1}^{n + 1} q_i \pi^i = 0 \\
+			                                                q_{n + 1} \neq 0
+		                                                \end{dcases}.
+	\end{align*}
+	But \(\pi\) is transcendental implies that \(\seq[=]{q}{0,1,,n + 1} = 0\), a contradiction.
+	Thus \(\R\) over \(\Q\) is infinite-dimensional.
 \end{proof}
 
 \begin{ex}\label{ex:1.7.4}
-  Let \(\W\) be a subspace of a (not necessarily finite-dimensional) vector space \(\V\) over \(\F\).
-  Prove that any basis for \(\W\) over \(\F\) is a subset of a basis for \(\V\) over \(\F\).
+	Let \(\W\) be a subspace of a (not necessarily finite-dimensional) vector space \(\V\) over \(\F\).
+	Prove that any basis for \(\W\) over \(\F\) is a subset of a basis for \(\V\) over \(\F\).
 \end{ex}
 
 \begin{proof}[\pf{ex:1.7.4}]
-  Let \(\beta_{\W}\) be a basis for \(\W\) over \(\F\).
-  Since \(\beta_{\W} \subseteq \W \subseteq \V\), by \cref{1.13} we know that there exists a maximal linearly independent subset \(\beta_{\V}\) of \(\V\) that contains \(\beta_{\W}\), and by \cref{1.12} we know that such \(\beta_{\V}\) is a basis for \(\V\) over \(\F\).
-  Since \(\beta_{\W}\) is arbitrary, we conclude that any basis for \(\W\) over \(\F\) is a subset of a basis for \(\V\) over \(\F\).
+	Let \(\beta_{\W}\) be a basis for \(\W\) over \(\F\).
+	Since \(\beta_{\W} \subseteq \W \subseteq \V\), by \cref{1.13} we know that there exists a maximal linearly independent subset \(\beta_{\V}\) of \(\V\) that contains \(\beta_{\W}\), and by \cref{1.12} we know that such \(\beta_{\V}\) is a basis for \(\V\) over \(\F\).
+	Since \(\beta_{\W}\) is arbitrary, we conclude that any basis for \(\W\) over \(\F\) is a subset of a basis for \(\V\) over \(\F\).
 \end{proof}
 
 \begin{ex}\label{ex:1.7.5}
-  Prove the following infinite-dimensional version of \cref{1.8}:
-  Let \(\beta\) be a subset of an infinite-dimensional vector space \(\V\) over \(\F\).
-  Then \(\beta\) is a basis for \(\V\) over \(\F\) iff for each nonzero vector \(v\) in \(\V\), there exist unique vectors \(\seq{u}{1,2,,n}\) in \(\beta\) and unique nonzero scalars \(\seq{c}{1,2,,n} \in \F\) such that \(v = \seq[+]{c,u}{1,2,,n}\).
+	Prove the following infinite-dimensional version of \cref{1.8}:
+	Let \(\beta\) be a subset of an infinite-dimensional vector space \(\V\) over \(\F\).
+	Then \(\beta\) is a basis for \(\V\) over \(\F\) iff for each nonzero vector \(v\) in \(\V\), there exist unique vectors \(\seq{u}{1,2,,n}\) in \(\beta\) and unique nonzero scalars \(\seq{c}{1,2,,n} \in \F\) such that \(v = \seq[+]{c,u}{1,2,,n}\).
 \end{ex}
 
 \begin{proof}[\pf{ex:1.7.5}]
-  First suppose that \(\beta\) is a basis for \(\V\) over \(\F\).
-  Let \(v \in \V \setminus \set{\zv}\).
-  Then by \cref{1.6.1} we know that
-  \[
-    \begin{dcases}
-      \exists \seq{u}{1,2,,n} \in \V \\
-      \exists \seq{a}{1,2,,n} \in \F
-    \end{dcases} : \begin{dcases}
-      v = \seq[+]{a,u}{1,2,,n} \\
-      \lnot (\seq[=]{a}{1,2,,n} = 0)
-    \end{dcases}.
-  \]
-  Suppose for sake of contradiction that
-  \[
-    \begin{dcases}
-      \exists \seq{u}{1,2,,m} \in \V \\
-      \exists \seq{b}{1,2,,m} \in \F \\
-      \exists i \in \set{1, \dots, n}
-    \end{dcases} : \begin{dcases}
-      v = \seq[+]{b,u}{1,2,,m}       \\
-      \lnot (\seq[=]{b}{1,2,,m} = 0) \\
-      a_i \neq b_i
-    \end{dcases}.
-  \]
-  If \(n \geq m\), then we have
-  \begin{align*}
-             & \begin{dcases}
-                 v = \seq[+]{a,u}{1,2,,n} \\
-                 v = \seq[+]{b,u}{1,2,,m}
-               \end{dcases}                                                                   \\
-    \implies & \seq[+]{a,u}{1,2,,n} - \seq[-]{b,u}{1,2,,m} = \zv            &  & \text{(by \cref{1.2.1})} \\
-    \implies & (a_1 - b_1) u_1 + (a_2 - b_2) u_2 + \cdots + (a_m - b_m) u_m                               \\
-             & + \seq[+]{a,u}{m + 1,,n} = \zv                               &  & \text{(by \cref{1.2.1})} \\
-    \implies & a_1 - b_1 = a_2 - b_2 = \cdots = a_m - b_m                                                 \\
-             & = \seq[=]{a}{m + 1,,n} = 0                                   &  & \text{(by \cref{1.5.3})} \\
-    \implies & \begin{dcases}
-                 v = \seq[+]{a,u}{1,2,,m} \\
-                 v = \seq[+]{b,u}{1,2,,m}
-               \end{dcases}
-  \end{align*}
-  Similar arguments show that when \(n \leq m\) we have
-  \[
-    \begin{dcases}
-      v = \seq[+]{a,u}{1,2,,n} \\
-      v = \seq[+]{b,u}{1,2,,n}
-    \end{dcases}.
-  \]
-  Thus we can safely assume that \(n = m\).
-  But then we have
-  \begin{align*}
-             & \begin{dcases}
-                 v = \seq[+]{a,u}{1,2,,n} \\
-                 v = \seq[+]{b,u}{1,2,,n}
-               \end{dcases}                                                                         \\
-    \implies & \seq[+]{a,u}{1,2,,n} - \seq[-]{b,u}{1,2,,n} = \zv                  &  & \text{(by \cref{1.2.1})} \\
-    \implies & (a_1 - b_1) u_1 + (a_2 - b_2) u_2 + \cdots + (a_n - b_n) u_n = \zv &  & \text{(by \cref{1.2.1})} \\
-    \implies & a_1 - b_1 = a_2 - b_2 = \cdots = a_n - b_n = 0                     &  & \text{(by \cref{1.5.3})} \\
-    \implies & \forall j \in \set{1, \dots, n}, a_j = b_j,
-  \end{align*}
-  which contradicts to the fact that \(a_i \neq b_i\).
-  Thus \(v\) can be uniquely expressed as linear combination of vectors in \(\beta\).
-  Since \(v\) is arbitrary non-zero vector of \(\V\), we conclude that every vector \(v \in \V \setminus \set{\zv}\) can be uniquely expressed as linear combination of vectors in \(\beta\).
+	First suppose that \(\beta\) is a basis for \(\V\) over \(\F\).
+	Let \(v \in \V \setminus \set{\zv}\).
+	Then by \cref{1.6.1} we know that
+	\[
+		\begin{dcases}
+			\exists \seq{u}{1,2,,n} \in \V \\
+			\exists \seq{a}{1,2,,n} \in \F
+		\end{dcases} : \begin{dcases}
+			v = \seq[+]{a,u}{1,2,,n} \\
+			\lnot (\seq[=]{a}{1,2,,n} = 0)
+		\end{dcases}.
+	\]
+	Suppose for sake of contradiction that
+	\[
+		\begin{dcases}
+			\exists \seq{u}{1,2,,m} \in \V \\
+			\exists \seq{b}{1,2,,m} \in \F \\
+			\exists i \in \set{1, \dots, n}
+		\end{dcases} : \begin{dcases}
+			v = \seq[+]{b,u}{1,2,,m}       \\
+			\lnot (\seq[=]{b}{1,2,,m} = 0) \\
+			a_i \neq b_i
+		\end{dcases}.
+	\]
+	If \(n \geq m\), then we have
+	\begin{align*}
+		         & \begin{dcases}
+			           v = \seq[+]{a,u}{1,2,,n} \\
+			           v = \seq[+]{b,u}{1,2,,m}
+		           \end{dcases}                                                     \\
+		\implies & \seq[+]{a,u}{1,2,,n} - \seq[-]{b,u}{1,2,,m} = \zv            &  & \by{1.2.1} \\
+		\implies & (a_1 - b_1) u_1 + (a_2 - b_2) u_2 + \cdots + (a_m - b_m) u_m                 \\
+		         & + \seq[+]{a,u}{m + 1,,n} = \zv                               &  & \by{1.2.1} \\
+		\implies & a_1 - b_1 = a_2 - b_2 = \cdots = a_m - b_m                                   \\
+		         & = \seq[=]{a}{m + 1,,n} = 0                                   &  & \by{1.5.3} \\
+		\implies & \begin{dcases}
+			           v = \seq[+]{a,u}{1,2,,m} \\
+			           v = \seq[+]{b,u}{1,2,,m}
+		           \end{dcases}
+	\end{align*}
+	Similar arguments show that when \(n \leq m\) we have
+	\[
+		\begin{dcases}
+			v = \seq[+]{a,u}{1,2,,n} \\
+			v = \seq[+]{b,u}{1,2,,n}
+		\end{dcases}.
+	\]
+	Thus we can safely assume that \(n = m\).
+	But then we have
+	\begin{align*}
+		         & \begin{dcases}
+			           v = \seq[+]{a,u}{1,2,,n} \\
+			           v = \seq[+]{b,u}{1,2,,n}
+		           \end{dcases}                                                           \\
+		\implies & \seq[+]{a,u}{1,2,,n} - \seq[-]{b,u}{1,2,,n} = \zv                  &  & \by{1.2.1} \\
+		\implies & (a_1 - b_1) u_1 + (a_2 - b_2) u_2 + \cdots + (a_n - b_n) u_n = \zv &  & \by{1.2.1} \\
+		\implies & a_1 - b_1 = a_2 - b_2 = \cdots = a_n - b_n = 0                     &  & \by{1.5.3} \\
+		\implies & \forall j \in \set{1, \dots, n}, a_j = b_j,
+	\end{align*}
+	which contradicts to the fact that \(a_i \neq b_i\).
+	Thus \(v\) can be uniquely expressed as linear combination of vectors in \(\beta\).
+	Since \(v\) is arbitrary non-zero vector of \(\V\), we conclude that every vector \(v \in \V \setminus \set{\zv}\) can be uniquely expressed as linear combination of vectors in \(\beta\).
 
-  Now suppose that every vector \(v \in \V \setminus \set{\zv}\) can be uniquely expressed as linear combination of vectors in \(\beta\).
-  Suppose for sake of contradiction that \(\beta\) is not a basis for \(\V\) over \(\F\).
-  Since \(\spn{\beta} = \V\), by \cref{1.6.1} we know that \(\beta\) is linearly dependent.
-  By \cref{1.5.1} this means
-  \[
-    \begin{dcases}
-      \exists \seq{u}{1,2,,n} \in \beta \setminus \set{\zv} \\
-      \exists \seq{a}{1,2,,n} \in \F \setminus \set{0}
-    \end{dcases} : \seq[+]{a,u}{1,2,,n} = \zv.
-  \]
-  Then we have
-  \begin{align*}
-             & a_1 u_1 = -\seq[-]{a,u}{2,,n}                        &  & \text{(by \cref{1.2.1})} \\
-    \implies & u_1 = -a_1^{-1} a_2 u_2 - \cdots - a_1^{-1} a_n u_n. &  & \text{(by \cref{1.2.1})}
-  \end{align*}
-  But
-  \[
-    \begin{dcases}
-      u_1 \in \beta \subseteq \V \\
-      u_1 = 1u_1
-    \end{dcases}
-  \]
-  implies \(u_1\) can be expressed as two different linear combinations of vectors in \(\beta\), a contradiction.
-  Thus \(\beta\) is a basis for \(\V\) over \(\F\).
+	Now suppose that every vector \(v \in \V \setminus \set{\zv}\) can be uniquely expressed as linear combination of vectors in \(\beta\).
+	Suppose for sake of contradiction that \(\beta\) is not a basis for \(\V\) over \(\F\).
+	Since \(\spn{\beta} = \V\), by \cref{1.6.1} we know that \(\beta\) is linearly dependent.
+	By \cref{1.5.1} this means
+	\[
+		\begin{dcases}
+			\exists \seq{u}{1,2,,n} \in \beta \setminus \set{\zv} \\
+			\exists \seq{a}{1,2,,n} \in \F \setminus \set{0}
+		\end{dcases} : \seq[+]{a,u}{1,2,,n} = \zv.
+	\]
+	Then we have
+	\begin{align*}
+		         & a_1 u_1 = -\seq[-]{a,u}{2,,n}                        &  & \by{1.2.1} \\
+		\implies & u_1 = -a_1^{-1} a_2 u_2 - \cdots - a_1^{-1} a_n u_n. &  & \by{1.2.1}
+	\end{align*}
+	But
+	\[
+		\begin{dcases}
+			u_1 \in \beta \subseteq \V \\
+			u_1 = 1u_1
+		\end{dcases}
+	\]
+	implies \(u_1\) can be expressed as two different linear combinations of vectors in \(\beta\), a contradiction.
+	Thus \(\beta\) is a basis for \(\V\) over \(\F\).
 \end{proof}
 
 \begin{ex}\label{ex:1.7.6}
-  Prove the following generalization of \cref{1.9}:
-  Let \(S_1\) and \(S_2\) be subsets of a vector space \(\V\) over \(\F\) such that \(S_1 \subseteq S_2\).
-  If \(S_1\) is linearly independent and \(S_2\) generates \(\V\), then there exists a basis \(\beta\) for \(\V\) over \(\F\) such that \(S_1 \subseteq \beta \subseteq S_2\).
+	Prove the following generalization of \cref{1.9}:
+	Let \(S_1\) and \(S_2\) be subsets of a vector space \(\V\) over \(\F\) such that \(S_1 \subseteq S_2\).
+	If \(S_1\) is linearly independent and \(S_2\) generates \(\V\), then there exists a basis \(\beta\) for \(\V\) over \(\F\) such that \(S_1 \subseteq \beta \subseteq S_2\).
 \end{ex}
 
 \begin{proof}[\pf{ex:1.7.6}]
-  Let \(\mathcal{F}\) be the set of all linearly independent subsets of \(S_2\) that contain \(S_1\).
-  In order to show that \(\mathcal{F}\) contains a maximal element, we must show that if \(\mathcal{C}\) is a chain in \(\mathcal{F}\), then there exists a member \(U\) of \(\mathcal{F}\) that contains each member of \(\mathcal{C}\).
-  We claim that \(U\), the union of the members of \(\mathcal{C}\), is the desired set.
-  Clearly \(U\) contains each member of \(\mathcal{C}\), and so it suffices to prove that \(U \in \mathcal{F}\)
-  (i.e., that \(U\) is a linearly independent subset of \(S_2\) that contains \(S_1\)).
-  Because each member of \(\mathcal{C}\) is a subset of \(S_2\) containing \(S_1\), we have \(S_1 \subseteq U \subseteq S_2\).
-  Thus we only need to prove that \(U\) is linearly independent.
-  Let \(\seq{u}{1,2,,n}\) be in \(U\) and \(\seq{a}{1,2,,n}\) be scalars in \(\F\) such that \(\seq[+]{a,u}{1,2,,n} = 0\).
-  Because \(u_i \in U\) for \(i = 1, 2, \dots, n\), there exists a set \(A_i\) in \(\mathcal{C}\) such that \(u_i \in A_i\).
-  But since \(\mathcal{C}\) is a chain, one of these sets, say \(A_k\), contains all the others.
-  Thus \(u_i \in A_k\) for \(i = 1, 2, \dots, n\).
-  However, \(A_k\) is a linearly independent set;
-  so \(\seq[+]{a,u}{1,2,,n} = 0\) implies that \(\seq[=]{a}{1,2,,n} = 0\).
-  It follows that \(U\) is linearly independent.
+	Let \(\mathcal{F}\) be the set of all linearly independent subsets of \(S_2\) that contain \(S_1\).
+	In order to show that \(\mathcal{F}\) contains a maximal element, we must show that if \(\mathcal{C}\) is a chain in \(\mathcal{F}\), then there exists a member \(U\) of \(\mathcal{F}\) that contains each member of \(\mathcal{C}\).
+	We claim that \(U\), the union of the members of \(\mathcal{C}\), is the desired set.
+	Clearly \(U\) contains each member of \(\mathcal{C}\), and so it suffices to prove that \(U \in \mathcal{F}\)
+	(i.e., that \(U\) is a linearly independent subset of \(S_2\) that contains \(S_1\)).
+	Because each member of \(\mathcal{C}\) is a subset of \(S_2\) containing \(S_1\), we have \(S_1 \subseteq U \subseteq S_2\).
+	Thus we only need to prove that \(U\) is linearly independent.
+	Let \(\seq{u}{1,2,,n}\) be in \(U\) and \(\seq{a}{1,2,,n}\) be scalars in \(\F\) such that \(\seq[+]{a,u}{1,2,,n} = 0\).
+	Because \(u_i \in U\) for \(i = 1, 2, \dots, n\), there exists a set \(A_i\) in \(\mathcal{C}\) such that \(u_i \in A_i\).
+	But since \(\mathcal{C}\) is a chain, one of these sets, say \(A_k\), contains all the others.
+	Thus \(u_i \in A_k\) for \(i = 1, 2, \dots, n\).
+	However, \(A_k\) is a linearly independent set;
+	so \(\seq[+]{a,u}{1,2,,n} = 0\) implies that \(\seq[=]{a}{1,2,,n} = 0\).
+	It follows that \(U\) is linearly independent.
 
-  The maximal principle implies that \(\mathcal{F}\) has a maximal element \(\beta\).
-  This element is easily seen to be a maximal linearly independent subset of \(S_2\) that contains \(S_1\).
-  Since \(\spn{S_2} = \V\), by \cref{1.12} we see that \(\beta\) is a basis for \(\V\) over \(\F\).
+	The maximal principle implies that \(\mathcal{F}\) has a maximal element \(\beta\).
+	This element is easily seen to be a maximal linearly independent subset of \(S_2\) that contains \(S_1\).
+	Since \(\spn{S_2} = \V\), by \cref{1.12} we see that \(\beta\) is a basis for \(\V\) over \(\F\).
 \end{proof}
 
 \begin{ex}\label{ex:1.7.7}
-  Prove the following generalization of the replacement theorem (\cref{1.10}).
-  Let \(\beta\) be a basis for a vector space \(\V\) over \(\F\), and let \(S\) be a linearly independent subset of \(\V\).
-  There exists a subset \(S_1\) of \(\beta\) such that \(S \cup S_1\) is a basis for \(\V\) over \(\F\).
+	Prove the following generalization of the replacement theorem (\cref{1.10}).
+	Let \(\beta\) be a basis for a vector space \(\V\) over \(\F\), and let \(S\) be a linearly independent subset of \(\V\).
+	There exists a subset \(S_1\) of \(\beta\) such that \(S \cup S_1\) is a basis for \(\V\) over \(\F\).
 \end{ex}
 
 \begin{proof}[\pf{ex:1.7.7}]
-  Since \(\spn{\beta} = \V\), we know that \(\spn{\beta \cup S} = \V\).
-  From \cref{ex:1.7.6} we see that there exists a set \(\beta'\) such that \(S \subseteq \beta' \subseteq \beta \cup S\) and \(\beta'\) is a basis for \(\V\) over \(\F\).
-  By setting \(S_1 = \beta' \setminus S\) we are done.
+	Since \(\spn{\beta} = \V\), we know that \(\spn{\beta \cup S} = \V\).
+	From \cref{ex:1.7.6} we see that there exists a set \(\beta'\) such that \(S \subseteq \beta' \subseteq \beta \cup S\) and \(\beta'\) is a basis for \(\V\) over \(\F\).
+	By setting \(S_1 = \beta' \setminus S\) we are done.
 \end{proof}

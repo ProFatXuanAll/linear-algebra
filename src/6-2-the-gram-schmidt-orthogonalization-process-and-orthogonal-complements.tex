@@ -1,818 +1,818 @@
 \section{The Gram-Schmidt Orthogonalization Process and Orthogonal Complements}\label{sec:6.2}
 
 \begin{defn}\label{6.2.1}
-  Let \(\V\) be an inner product space over \(\F\).
-  A subset of \(\V\) is an \textbf{orthonormal basis} for \(\V\) over \(\F\) if it is an ordered basis that is orthonormal.
+	Let \(\V\) be an inner product space over \(\F\).
+	A subset of \(\V\) is an \textbf{orthonormal basis} for \(\V\) over \(\F\) if it is an ordered basis that is orthonormal.
 \end{defn}
 
 \begin{eg}\label{6.2.2}
-  The standard ordered basis for \(\vs{F}^n\) over \(\F\) is an orthonormal basis for \(\vs{F}^n\) over \(\F\).
+	The standard ordered basis for \(\vs{F}^n\) over \(\F\) is an orthonormal basis for \(\vs{F}^n\) over \(\F\).
 \end{eg}
 
 \begin{thm}\label{6.3}
-  Let \(\V\) be an inner product space over \(\F\) and \(S = \set{\seq{v}{1,,k}}\) be an orthogonal subset of \(\V\) consisting of nonzero vectors.
-  If \(y \in \spn{S}\), then
-  \[
-    y = \sum_{i = 1}^k \frac{\inn{y, v_i}}{\norm{v_i}^2} v_i.
-  \]
+	Let \(\V\) be an inner product space over \(\F\) and \(S = \set{\seq{v}{1,,k}}\) be an orthogonal subset of \(\V\) consisting of nonzero vectors.
+	If \(y \in \spn{S}\), then
+	\[
+		y = \sum_{i = 1}^k \frac{\inn{y, v_i}}{\norm{v_i}^2} v_i.
+	\]
 \end{thm}
 
 \begin{proof}[\pf{6.3}]
-  Write \(y = \sum_{i = 1}^k a_i v_i\), where \(\seq{a}{1,,k} \in \F\).
-  Then, for \(j \in \set{1, \dots, k}\), we have
-  \begin{align*}
-    \inn{y, v_j} & = \inn{\sum_{i = 1}^k a_i v_i, v_j}                                     \\
-                 & = \sum_{i = 1}^k a_i \inn{v_i, v_j} &  & \text{(by \cref{6.1.1}(a)(b))} \\
-                 & = a_j \inn{v_j, v_j}                &  & \text{(by \cref{6.1.12})}      \\
-                 & = a_j \norm{v_j}^2.                 &  & \text{(by \cref{6.1.9})}
-  \end{align*}
-  So \(a_j = \frac{\inn{y, v_j}}{\norm{v_j}^2}\), and the result follows.
+	Write \(y = \sum_{i = 1}^k a_i v_i\), where \(\seq{a}{1,,k} \in \F\).
+	Then, for \(j \in \set{1, \dots, k}\), we have
+	\begin{align*}
+		\inn{y, v_j} & = \inn{\sum_{i = 1}^k a_i v_i, v_j}                     \\
+		             & = \sum_{i = 1}^k a_i \inn{v_i, v_j} &  & \by{6.1.1}[ab] \\
+		             & = a_j \inn{v_j, v_j}                &  & \by{6.1.12}    \\
+		             & = a_j \norm{v_j}^2.                 &  & \by{6.1.9}
+	\end{align*}
+	So \(a_j = \frac{\inn{y, v_j}}{\norm{v_j}^2}\), and the result follows.
 \end{proof}
 
 \begin{cor}\label{6.2.3}
-  If, in addition to the hypotheses of \cref{6.3}, \(S\) is orthonormal and \(y \in \spn{S}\), then
-  \[
-    y = \sum_{i = 1}^k \inn{y, v_i} v_i.
-  \]
+	If, in addition to the hypotheses of \cref{6.3}, \(S\) is orthonormal and \(y \in \spn{S}\), then
+	\[
+		y = \sum_{i = 1}^k \inn{y, v_i} v_i.
+	\]
 \end{cor}
 
 \begin{proof}[\pf{6.2.3}]
-  We have
-  \begin{align*}
-    y & = \sum_{i = 1}^k \frac{\inn{y, v_i}}{\norm{v_i}^2} v_i &  & \text{(by \cref{6.3})}    \\
-      & = \sum_{i = 1}^k \inn{y, v_i} v_i.                     &  & \text{(by \cref{6.1.12})}
-  \end{align*}
+	We have
+	\begin{align*}
+		y & = \sum_{i = 1}^k \frac{\inn{y, v_i}}{\norm{v_i}^2} v_i &  & \by{6.3}    \\
+		  & = \sum_{i = 1}^k \inn{y, v_i} v_i.                     &  & \by{6.1.12}
+	\end{align*}
 \end{proof}
 
 \begin{note}
-  If \(\V\) possesses a finite orthonormal basis, then \cref{6.2.3} allows us to compute the coefficients in a linear combination very easily.
+	If \(\V\) possesses a finite orthonormal basis, then \cref{6.2.3} allows us to compute the coefficients in a linear combination very easily.
 \end{note}
 
 \begin{cor}\label{6.2.4}
-  Let \(\V\) be an inner product space over \(\F\), and let \(S\) be an orthogonal subset of \(\V\) consisting of nonzero vectors.
-  Then \(S\) is linearly independent.
+	Let \(\V\) be an inner product space over \(\F\), and let \(S\) be an orthogonal subset of \(\V\) consisting of nonzero vectors.
+	Then \(S\) is linearly independent.
 \end{cor}
 
 \begin{proof}[\pf{6.2.4}]
-  Suppose that \(\seq{v}{1,,k} \in S\) and
-  \[
-    \sum_{i = 1}^k a_i v_i = \zv.
-  \]
-  As in the proof of \cref{6.3} with \(y = \zv\), we have \(a_j = \inn{\zv, v_j} / \norm{v_j}^2 = 0\) for all \(j \in \set{1, \dots, k}\).
-  So \(S\) is linearly independent.
+	Suppose that \(\seq{v}{1,,k} \in S\) and
+	\[
+		\sum_{i = 1}^k a_i v_i = \zv.
+	\]
+	As in the proof of \cref{6.3} with \(y = \zv\), we have \(a_j = \inn{\zv, v_j} / \norm{v_j}^2 = 0\) for all \(j \in \set{1, \dots, k}\).
+	So \(S\) is linearly independent.
 \end{proof}
 
 \begin{note}
-  \cref{6.2.4} tells us that the vector space \(\vs{H}\) in \cref{6.1.13} contains an infinite linearly independent set, and hence \(\vs{H}\) is not a finite-dimensional vector space.
+	\cref{6.2.4} tells us that the vector space \(\vs{H}\) in \cref{6.1.13} contains an infinite linearly independent set, and hence \(\vs{H}\) is not a finite-dimensional vector space.
 \end{note}
 
 \begin{thm}\label{6.4}
-  Let \(\V\) be an inner product space over \(\F\) and \(S = \set{\seq{w}{1,,n}}\) be a linearly independent subset of \(\V\).
-  Define \(S' = \set{\seq{v}{1,,n}}\), where \(v_1 = w_1\) and
-  \begin{equation}\label{eq:6.2.1}
-    v_k = w_k - \sum_{j = 1}^{k - 1} \frac{\inn{w_k, v_j}}{\norm{v_j}^2} v_j \quad \text{for } k \in \set{2, \dots, n}.
-  \end{equation}
-  Then \(S'\) is an orthogonal set of nonzero vectors such that \(\spn{S'} = \spn{S}\).
-  The construction of \(\set{\seq{v}{1,,n}}\) is called the \textbf{Gram--Schmidt process}.
+	Let \(\V\) be an inner product space over \(\F\) and \(S = \set{\seq{w}{1,,n}}\) be a linearly independent subset of \(\V\).
+	Define \(S' = \set{\seq{v}{1,,n}}\), where \(v_1 = w_1\) and
+	\begin{equation}\label{eq:6.2.1}
+		v_k = w_k - \sum_{j = 1}^{k - 1} \frac{\inn{w_k, v_j}}{\norm{v_j}^2} v_j \quad \text{for } k \in \set{2, \dots, n}.
+	\end{equation}
+	Then \(S'\) is an orthogonal set of nonzero vectors such that \(\spn{S'} = \spn{S}\).
+	The construction of \(\set{\seq{v}{1,,n}}\) is called the \textbf{Gram--Schmidt process}.
 \end{thm}
 
 \begin{proof}[\pf{6.4}]
-  The proof is by mathematical induction on \(n\), the number of vectors in \(S\).
-  For \(k \in \set{1, \dots, n}\), let \(S_k = \set{\seq{w}{1,,k}}\).
-  If \(n = 1\), then the theorem is proved by taking \(S_1' = S_1\);
-  i.e., \(v_1 = w_1 \neq \zv\).
-  Assume then that the set \(S_n' = \set{\seq{v}{1,,n}}\) with the desired properties has been constructed by the repeated use of \cref{eq:6.2.1}.
-  We show that the set \(S_{n + 1}' = \set{\seq{v}{1,,n+1}}\) also has the desired properties, where \(v_{n + 1}\) is obtained from \(S_n'\) by \cref{eq:6.2.1}.
-  If \(v_{n + 1} = \zv\), then \cref{eq:6.2.1} implies that \(w_{n + 1} \in \spn{S_n'} = \spn{S_n}\), which contradicts the assumption that \(S_{n + 1}\) is linearly independent.
-  For \(i \in \set{1, \dots, n}\), it follows from \cref{eq:6.2.1} that
-  \begin{align*}
-    \inn{v_{n + 1}, v_i} & = \inn{w_{n + 1}, v_i} - \sum_{j = 1}^n \frac{\inn{w_{n + 1}, v_j}}{\norm{v_j}^2} \inn{v_j, v_i} &  & \text{(by \cref{6.1.1}(a)(b))}   \\
-                         & = \inn{w_{n + 1}, v_i} - \frac{\inn{w_{n + 1}, v_i}}{\norm{v_i}^2} \norm{v_i}^2                  &  & \text{(by induction hypotheses)} \\
-                         & = 0,
-  \end{align*}
-  since \(\inn{v_j, v_i} = 0\) if \(i \neq j\) by the induction assumption that \(S_n'\) is orthogonal.
-  Hence \(S_{n + 1}'\) is an orthogonal set of nonzero vectors.
-  Now, by \cref{eq:6.2.1}, we have that \(\spn{S_{n + 1}'} \subseteq \spn{S_{n + 1}}\).
-  But by \cref{6.2.4}, \(S_{n + 1}'\) is linearly independent;
-  so \(\dim(\spn{S_{n + 1}'}) = \dim(\spn{S_{n + 1}}) = n + 1\).
-  Therefore by \cref{1.11} we have \(\spn{S_{n + 1}'} = \spn{S_{n + 1}}\) and this closes the induction.
+	The proof is by mathematical induction on \(n\), the number of vectors in \(S\).
+	For \(k \in \set{1, \dots, n}\), let \(S_k = \set{\seq{w}{1,,k}}\).
+	If \(n = 1\), then the theorem is proved by taking \(S_1' = S_1\);
+	i.e., \(v_1 = w_1 \neq \zv\).
+	Assume then that the set \(S_n' = \set{\seq{v}{1,,n}}\) with the desired properties has been constructed by the repeated use of \cref{eq:6.2.1}.
+	We show that the set \(S_{n + 1}' = \set{\seq{v}{1,,n+1}}\) also has the desired properties, where \(v_{n + 1}\) is obtained from \(S_n'\) by \cref{eq:6.2.1}.
+	If \(v_{n + 1} = \zv\), then \cref{eq:6.2.1} implies that \(w_{n + 1} \in \spn{S_n'} = \spn{S_n}\), which contradicts the assumption that \(S_{n + 1}\) is linearly independent.
+	For \(i \in \set{1, \dots, n}\), it follows from \cref{eq:6.2.1} that
+	\begin{align*}
+		\inn{v_{n + 1}, v_i} & = \inn{w_{n + 1}, v_i} - \sum_{j = 1}^n \frac{\inn{w_{n + 1}, v_j}}{\norm{v_j}^2} \inn{v_j, v_i} &  & \by{6.1.1}[ab]                   \\
+		                     & = \inn{w_{n + 1}, v_i} - \frac{\inn{w_{n + 1}, v_i}}{\norm{v_i}^2} \norm{v_i}^2                  &  & \text{(by induction hypotheses)} \\
+		                     & = 0,
+	\end{align*}
+	since \(\inn{v_j, v_i} = 0\) if \(i \neq j\) by the induction assumption that \(S_n'\) is orthogonal.
+	Hence \(S_{n + 1}'\) is an orthogonal set of nonzero vectors.
+	Now, by \cref{eq:6.2.1}, we have that \(\spn{S_{n + 1}'} \subseteq \spn{S_{n + 1}}\).
+	But by \cref{6.2.4}, \(S_{n + 1}'\) is linearly independent;
+	so \(\dim(\spn{S_{n + 1}'}) = \dim(\spn{S_{n + 1}}) = n + 1\).
+	Therefore by \cref{1.11} we have \(\spn{S_{n + 1}'} = \spn{S_{n + 1}}\) and this closes the induction.
 \end{proof}
 
 \begin{defn}\label{6.2.5}
-  If we continue applying the Gram--Schmidt orthogonalization process to the basis \(\set{1, x, x^2, \dots}\) for \(\ps{\R}\), we obtain an orthogonal basis whose elements are called the \emph{Legendre polynomials}.
+	If we continue applying the Gram--Schmidt orthogonalization process to the basis \(\set{1, x, x^2, \dots}\) for \(\ps{\R}\), we obtain an orthogonal basis whose elements are called the \emph{Legendre polynomials}.
 \end{defn}
 
 \begin{thm}\label{6.5}
-  Let \(\V\) be a nonzero finite-dimensional inner product space over \(\F\).
-  Then \(\V\) has an orthonormal basis \(\beta\).
-  Furthermore, if \(\beta = \set{\seq{v}{1,,n}}\) and \(x \in \V\), then
-  \[
-    x = \sum_{i = 1}^n \inn{x, v_i} v_i.
-  \]
+	Let \(\V\) be a nonzero finite-dimensional inner product space over \(\F\).
+	Then \(\V\) has an orthonormal basis \(\beta\).
+	Furthermore, if \(\beta = \set{\seq{v}{1,,n}}\) and \(x \in \V\), then
+	\[
+		x = \sum_{i = 1}^n \inn{x, v_i} v_i.
+	\]
 \end{thm}
 
 \begin{proof}[\pf{6.5}]
-  Let \(\beta_0\) be an ordered basis for \(\V\) over \(\F\).
-  Apply \cref{6.4} to obtain an orthogonal set \(\beta'\) of nonzero vectors with \(\spn{\beta'} = \spn{\beta_0} = \V\).
-  By normalizing each vector in \(\beta'\), we obtain an orthonormal set \(\beta\) that generates \(\V\).
-  By \cref{6.2.4}, \(\beta\) is linearly independent;
-  therefore \(\beta\) is an orthonormal basis for \(\V\) over \(\F\).
-  The remainder of the theorem follows from \cref{6.2.3}.
+	Let \(\beta_0\) be an ordered basis for \(\V\) over \(\F\).
+	Apply \cref{6.4} to obtain an orthogonal set \(\beta'\) of nonzero vectors with \(\spn{\beta'} = \spn{\beta_0} = \V\).
+	By normalizing each vector in \(\beta'\), we obtain an orthonormal set \(\beta\) that generates \(\V\).
+	By \cref{6.2.4}, \(\beta\) is linearly independent;
+	therefore \(\beta\) is an orthonormal basis for \(\V\) over \(\F\).
+	The remainder of the theorem follows from \cref{6.2.3}.
 \end{proof}
 
 \begin{cor}\label{6.2.6}
-  Let \(\V\) be a finite-dimensional inner product space over \(\F\) with an orthonormal basis \(\beta = \set{\seq{v}{1,,n}}\).
-  Let \(\T \in \ls(\V)\), and let \(A = [\T]_{\beta}\).
-  Then for any \(i, j \in \set{1, \dots, n}\), \(A_{i j} = \inn{\T(v_j), v_i}\).
+	Let \(\V\) be a finite-dimensional inner product space over \(\F\) with an orthonormal basis \(\beta = \set{\seq{v}{1,,n}}\).
+	Let \(\T \in \ls(\V)\), and let \(A = [\T]_{\beta}\).
+	Then for any \(i, j \in \set{1, \dots, n}\), \(A_{i j} = \inn{\T(v_j), v_i}\).
 \end{cor}
 
 \begin{proof}[\pf{6.2.6}]
-  From \cref{6.5}, we have
-  \[
-    \T(v_j) = \sum_{i = 1}^n \inn{\T(v_j), v_i} v_i.
-  \]
-  Hence by \cref{2.2.4} \(A_{i j} = \inn{\T(v_j), v_i}\).
+	From \cref{6.5}, we have
+	\[
+		\T(v_j) = \sum_{i = 1}^n \inn{\T(v_j), v_i} v_i.
+	\]
+	Hence by \cref{2.2.4} \(A_{i j} = \inn{\T(v_j), v_i}\).
 \end{proof}
 
 \begin{defn}\label{6.2.7}
-  Let \(\beta\) be an orthonormal subset (possibly infinite) of an inner product space \(\V\) over \(\F\), and let \(x \in \V\).
-  We define the \textbf{Fourier coefficients} of \(x\) relative to \(\beta\) to be the scalars \(\inn{x, y}\), where \(y \in \beta\).
+	Let \(\beta\) be an orthonormal subset (possibly infinite) of an inner product space \(\V\) over \(\F\), and let \(x \in \V\).
+	We define the \textbf{Fourier coefficients} of \(x\) relative to \(\beta\) to be the scalars \(\inn{x, y}\), where \(y \in \beta\).
 
-  In the first half of the 19th century, the French mathematician Jean Baptiste Fourier was associated with the study of the scalars
-  \[
-    \int_0^{2 \pi} f(t) \sin(nt) \; dt \quad \text{and} \quad \int_0^{2 \pi} f(t) \cos(nt) \; dt,
-  \]
-  or more generally,
-  \[
-    c_n = \frac{1}{2 \pi} \int_0^{2 \pi} f(t) e^{-int} \; dt,
-  \]
-  for a function \(f\).
-  In the context of \cref{6.1.8}, we see that \(c_n = \inn{f, f_n}\), where \(f_n(t) = e^{int}\);
-  that is, \(c_n\) is the \(n\)th Fourier coefficient for a continuous function \(f \in \V\) relative to \(S\).
-  These coefficients are the ``classical'' Fourier coefficients of a function, and the literature concerning the behavior of these coefficients is extensive.
+	In the first half of the 19th century, the French mathematician Jean Baptiste Fourier was associated with the study of the scalars
+	\[
+		\int_0^{2 \pi} f(t) \sin(nt) \; dt \quad \text{and} \quad \int_0^{2 \pi} f(t) \cos(nt) \; dt,
+	\]
+	or more generally,
+	\[
+		c_n = \frac{1}{2 \pi} \int_0^{2 \pi} f(t) e^{-int} \; dt,
+	\]
+	for a function \(f\).
+	In the context of \cref{6.1.8}, we see that \(c_n = \inn{f, f_n}\), where \(f_n(t) = e^{int}\);
+	that is, \(c_n\) is the \(n\)th Fourier coefficient for a continuous function \(f \in \V\) relative to \(S\).
+	These coefficients are the ``classical'' Fourier coefficients of a function, and the literature concerning the behavior of these coefficients is extensive.
 \end{defn}
 
 \begin{eg}\label{6.2.8}
-  Let \(S = \set{e^{int} : n \text{ is an integer}}\).
-  In \cref{6.1.13}, \(S\) was shown to be an orthonormal set in \(\vs{H}\).
-  We compute the Fourier coefficients of \(f(t) = t\) relative to \(S\).
-  Using integration by parts, we have, for \(n \neq 0\),
-  \begin{align*}
-    \inn{f, f_n} & = \frac{1}{2 \pi} \int_0^{2 \pi} t \conj{e^{int}} \; dt                                          \\
-                 & = \frac{1}{2 \pi} \int_0^{2 \pi} t e^{-int} \; dt                                                \\
-                 & = \frac{1}{2 \pi} \pa{\eval{\frac{-1}{in} t e^{-int}}_0^{2 \pi} - \int_0^{2 \pi} e^{-int} \; dt} \\
-                 & = \frac{1}{2 \pi} \pa{\frac{-2 \pi}{in} - \frac{-1}{in} \eval{e^{-int}}_0^{2 \pi}}               \\
-                 & = \frac{-1}{in},
-  \end{align*}
-  and, for \(n = 0\),
-  \[
-    \inn{f, 1} = \frac{1}{2 \pi} \int_0^{2 \pi} t(1) \; dt = \pi.
-  \]
-  As a result of these computations, and using \cref{ex:6.2.16}, we obtain an upper bound for the sum of a special infinite series as follows:
-  \begin{align*}
-    \norm{f}^2 & \geq \sum_{n = -k}^{-1} \abs{\inn{f, f_n}}^2 + \abs{\inn{f, 1}}^2 + \sum_{i = 1}^k \abs{\inn{f, f_n}}^2 \\
-               & = \sum_{n = -k}^1 \frac{1}{n^2} + \pi^2 + \sum_{n = 1}^k \frac{1}{n^2}                                  \\
-               & = 2 \sum_{n = 1}^k \frac{1}{n^2} + \pi^2
-  \end{align*}
-  for every \(k \in \Z^+\).
-  Now, using the fact that \(\norm{f}^2 = \frac{4}{3} \pi^2\), we obtain
-  \[
-    \frac{4}{3} \pi^2 \geq 2 \sum_{n = 1}^k \frac{1}{n^2} + \pi^2,
-  \]
-  or
-  \[
-    \frac{\pi^2}{6} \geq \sum_{n = 1}^k \frac{1}{n^2}.
-  \]
-  Because this inequality holds for all \(k \in \Z^+\), we may let \(k \to \infty\) to obtain
-  \[
-    \frac{\pi^2}{6} \geq \sum_{n = 1}^\infty \frac{1}{n^2}.
-  \]
-  Additional results may be produced by replacing \(f\) by other functions.
+	Let \(S = \set{e^{int} : n \text{ is an integer}}\).
+	In \cref{6.1.13}, \(S\) was shown to be an orthonormal set in \(\vs{H}\).
+	We compute the Fourier coefficients of \(f(t) = t\) relative to \(S\).
+	Using integration by parts, we have, for \(n \neq 0\),
+	\begin{align*}
+		\inn{f, f_n} & = \frac{1}{2 \pi} \int_0^{2 \pi} t \conj{e^{int}} \; dt                                          \\
+		             & = \frac{1}{2 \pi} \int_0^{2 \pi} t e^{-int} \; dt                                                \\
+		             & = \frac{1}{2 \pi} \pa{\eval{\frac{-1}{in} t e^{-int}}_0^{2 \pi} - \int_0^{2 \pi} e^{-int} \; dt} \\
+		             & = \frac{1}{2 \pi} \pa{\frac{-2 \pi}{in} - \frac{-1}{in} \eval{e^{-int}}_0^{2 \pi}}               \\
+		             & = \frac{-1}{in},
+	\end{align*}
+	and, for \(n = 0\),
+	\[
+		\inn{f, 1} = \frac{1}{2 \pi} \int_0^{2 \pi} t(1) \; dt = \pi.
+	\]
+	As a result of these computations, and using \cref{ex:6.2.16}, we obtain an upper bound for the sum of a special infinite series as follows:
+	\begin{align*}
+		\norm{f}^2 & \geq \sum_{n = -k}^{-1} \abs{\inn{f, f_n}}^2 + \abs{\inn{f, 1}}^2 + \sum_{i = 1}^k \abs{\inn{f, f_n}}^2 \\
+		           & = \sum_{n = -k}^1 \frac{1}{n^2} + \pi^2 + \sum_{n = 1}^k \frac{1}{n^2}                                  \\
+		           & = 2 \sum_{n = 1}^k \frac{1}{n^2} + \pi^2
+	\end{align*}
+	for every \(k \in \Z^+\).
+	Now, using the fact that \(\norm{f}^2 = \frac{4}{3} \pi^2\), we obtain
+	\[
+		\frac{4}{3} \pi^2 \geq 2 \sum_{n = 1}^k \frac{1}{n^2} + \pi^2,
+	\]
+	or
+	\[
+		\frac{\pi^2}{6} \geq \sum_{n = 1}^k \frac{1}{n^2}.
+	\]
+	Because this inequality holds for all \(k \in \Z^+\), we may let \(k \to \infty\) to obtain
+	\[
+		\frac{\pi^2}{6} \geq \sum_{n = 1}^\infty \frac{1}{n^2}.
+	\]
+	Additional results may be produced by replacing \(f\) by other functions.
 \end{eg}
 
 \begin{defn}\label{6.2.9}
-  Let \(S\) be a nonempty subset of an inner product space \(\V\) over \(\F\).
-  We define \(S^{\perp}\) (read ``\(S\) perp'') to be the set of all vectors in \(\V\) that are orthogonal to every vector in \(S\);
-  that is, \(S^{\perp} = \set{x \in \V : \inn{x, y} = 0 \text{ for all } y \in S}\).
-  The set \(S^{\perp}\) is called the \textbf{orthogonal complement} of \(S\).
+	Let \(S\) be a nonempty subset of an inner product space \(\V\) over \(\F\).
+	We define \(S^{\perp}\) (read ``\(S\) perp'') to be the set of all vectors in \(\V\) that are orthogonal to every vector in \(S\);
+	that is, \(S^{\perp} = \set{x \in \V : \inn{x, y} = 0 \text{ for all } y \in S}\).
+	The set \(S^{\perp}\) is called the \textbf{orthogonal complement} of \(S\).
 \end{defn}
 
 \begin{prop}\label{6.2.10}
-  Let \(S\) be a nonempty subset of an inner product space \(\V\) over \(\F\).
-  Then \(S^{\perp}\) is a subspace of \(\V\) over \(\F\).
+	Let \(S\) be a nonempty subset of an inner product space \(\V\) over \(\F\).
+	Then \(S^{\perp}\) is a subspace of \(\V\) over \(\F\).
 \end{prop}
 
 \begin{proof}[\pf{6.2.10}]
-  Let \(x, y \in S^{\perp}\) and let \(c \in \F\).
-  Since
-  \begin{align*}
-             & \forall z \in S, \inn{x, z} = \inn{y, z} = 0 &  & \text{(by \cref{6.2.9})}       \\
-    \implies & \forall z \in S, \inn{cx + y, z} = 0         &  & \text{(by \cref{6.1.1}(a)(b))} \\
-    \implies & cx + y \in S^{\perp}                         &  & \text{(by \cref{6.2.9})}
-  \end{align*}
-  and
-  \begin{align*}
-             & \forall z \in S, \inn{\zv, z} = 0 &  & \text{(by \cref{6.1}(c))} \\
-    \implies & \zv \in S^{\perp},                &  & \text{(by \cref{6.2.9})}
-  \end{align*}
-  by \cref{ex:1.3.18} we see that \(S^{\perp}\) is a subspace of \(\V\) over \(\F\).
+	Let \(x, y \in S^{\perp}\) and let \(c \in \F\).
+	Since
+	\begin{align*}
+		         & \forall z \in S, \inn{x, z} = \inn{y, z} = 0 &  & \by{6.2.9}     \\
+		\implies & \forall z \in S, \inn{cx + y, z} = 0         &  & \by{6.1.1}[ab] \\
+		\implies & cx + y \in S^{\perp}                         &  & \by{6.2.9}
+	\end{align*}
+	and
+	\begin{align*}
+		         & \forall z \in S, \inn{\zv, z} = 0 &  & \by{6.1}[c] \\
+		\implies & \zv \in S^{\perp},                &  & \by{6.2.9}
+	\end{align*}
+	by \cref{ex:1.3.18} we see that \(S^{\perp}\) is a subspace of \(\V\) over \(\F\).
 \end{proof}
 
 \begin{eg}\label{6.2.11}
-  \(\set{\zv}^{\perp} = \V\) and \(\V^{\perp} = \set{\zv}\) for any inner product space \(\V\) over \(\F\).
+	\(\set{\zv}^{\perp} = \V\) and \(\V^{\perp} = \set{\zv}\) for any inner product space \(\V\) over \(\F\).
 \end{eg}
 
 \begin{proof}[\pf{6.2.11}]
-  We have
-  \begin{align*}
-             & \forall x \in \V, \inn{x, \zv} = 0        &  & \text{(by \cref{6.1}(c))} \\
-    \implies & \forall x \in \V, x \in \set{\zv}^{\perp} &  & \text{(by \cref{6.2.9})}  \\
-    \implies & \V = \set{\zv}^{\perp}                    &  & \text{(by \cref{6.2.10})}
-  \end{align*}
-  and
-  \begin{align*}
-             & \forall x \in \V^{\perp}, \inn{x, x} = 0 &  & \text{(by \cref{6.2.9})}  \\
-    \implies & \forall x \in \V^{\perp}, x = \zv        &  & \text{(by \cref{6.1}(d))} \\
-    \implies & \V^{\perp} = \set{\zv}.
-  \end{align*}
+	We have
+	\begin{align*}
+		         & \forall x \in \V, \inn{x, \zv} = 0        &  & \by{6.1}[c] \\
+		\implies & \forall x \in \V, x \in \set{\zv}^{\perp} &  & \by{6.2.9}  \\
+		\implies & \V = \set{\zv}^{\perp}                    &  & \by{6.2.10}
+	\end{align*}
+	and
+	\begin{align*}
+		         & \forall x \in \V^{\perp}, \inn{x, x} = 0 &  & \by{6.2.9}  \\
+		\implies & \forall x \in \V^{\perp}, x = \zv        &  & \by{6.1}[d] \\
+		\implies & \V^{\perp} = \set{\zv}.
+	\end{align*}
 \end{proof}
 
 \begin{thm}\label{6.6}
-  Let \(\W\) be a finite-dimensional subspace of an inner product space \(\V\) over \(\F\), and let \(y \in \V\).
-  Then there exist unique vectors \(u \in \W\) and \(z \in \W^{\perp}\) such that \(y = u + z\).
-  Furthermore, if \(\set{\seq{v}{1,,k}}\) is an orthonormal basis for \(\W\), then
-  \[
-    u = \sum_{i = 1}^k \inn{y, v_i} v_i.
-  \]
+	Let \(\W\) be a finite-dimensional subspace of an inner product space \(\V\) over \(\F\), and let \(y \in \V\).
+	Then there exist unique vectors \(u \in \W\) and \(z \in \W^{\perp}\) such that \(y = u + z\).
+	Furthermore, if \(\set{\seq{v}{1,,k}}\) is an orthonormal basis for \(\W\), then
+	\[
+		u = \sum_{i = 1}^k \inn{y, v_i} v_i.
+	\]
 \end{thm}
 
 \begin{proof}[\pf{6.6}]
-  Let \(\set{\seq{v}{1,,k}}\) be an orthonormal basis for \(\W\) over \(\F\), let \(u\) be as defined in the preceding equation, and let \(z = y - u\).
-  Clearly \(u \in \W\) and \(y = u + z\).
+	Let \(\set{\seq{v}{1,,k}}\) be an orthonormal basis for \(\W\) over \(\F\), let \(u\) be as defined in the preceding equation, and let \(z = y - u\).
+	Clearly \(u \in \W\) and \(y = u + z\).
 
-  To show that \(z \in \W^{\perp}\), it suffices to show, by \cref{ex:6.2.7}, that \(z\) is orthogonal to each \(v_j\).
-  For any \(j \in \set{1, \dots, k}\), we have
-  \begin{align*}
-    \inn{z, v_j} & = \inn{y - \sum_{i = 1}^k \inn{y, v_i} v_i, v_j}                                                \\
-                 & = \inn{y, v_j} - \sum_{i = 1}^k \inn{y, v_i} \inn{v_i, v_j} &  & \text{(by \cref{6.1.1}(a)(b))} \\
-                 & = \inn{y, v_j} - \inn{y, v_j}                               &  & \text{(by \cref{6.1.12})}      \\
-                 & = 0.
-  \end{align*}
-  To show uniqueness of \(u\) and \(z\), suppose that \(y = u + z = u' + z'\), where \(u' \in \W\) and \(z' \in \W^{\perp}\).
-  Then \(u - u' = z' - z \in \W \cap \W^{\perp} = \set{\zv}\) (by \cref{6.2.11}).
-  Therefore, \(u = u'\) and \(z = z'\).
+	To show that \(z \in \W^{\perp}\), it suffices to show, by \cref{ex:6.2.7}, that \(z\) is orthogonal to each \(v_j\).
+	For any \(j \in \set{1, \dots, k}\), we have
+	\begin{align*}
+		\inn{z, v_j} & = \inn{y - \sum_{i = 1}^k \inn{y, v_i} v_i, v_j}                                \\
+		             & = \inn{y, v_j} - \sum_{i = 1}^k \inn{y, v_i} \inn{v_i, v_j} &  & \by{6.1.1}[ab] \\
+		             & = \inn{y, v_j} - \inn{y, v_j}                               &  & \by{6.1.12}    \\
+		             & = 0.
+	\end{align*}
+	To show uniqueness of \(u\) and \(z\), suppose that \(y = u + z = u' + z'\), where \(u' \in \W\) and \(z' \in \W^{\perp}\).
+	Then \(u - u' = z' - z \in \W \cap \W^{\perp} = \set{\zv}\) (by \cref{6.2.11}).
+	Therefore, \(u = u'\) and \(z = z'\).
 \end{proof}
 
 \begin{cor}\label{6.2.12}
-  In the notation of \cref{6.6}, the vector \(u\) is the unique vector in \(\W\) that is ``closest'' to \(y\);
-  that is, for any \(x \in \W\), \(\norm{y - x} \geq \norm{y - u}\), and this inequality is an equality iff \(x = u\).
-  The vector \(u\) is called the \textbf{orthogonal projection} of \(y\) on \(W\).
+	In the notation of \cref{6.6}, the vector \(u\) is the unique vector in \(\W\) that is ``closest'' to \(y\);
+	that is, for any \(x \in \W\), \(\norm{y - x} \geq \norm{y - u}\), and this inequality is an equality iff \(x = u\).
+	The vector \(u\) is called the \textbf{orthogonal projection} of \(y\) on \(W\).
 \end{cor}
 
 \begin{proof}[\pf{6.2.12}]
-  As in \cref{6.6}, we have that \(y = u + z\), where \(z \in \W^{\perp}\).
-  Let \(x \in \W\).
-  Then \(u - x\) is orthogonal to \(z\), so we have
-  \begin{align*}
-    \norm{y - x}^2 & = \norm{u + z - x}^2                                            \\
-                   & = \norm{(u - x) + z}^2                                          \\
-                   & = \norm{u - x}^2 + \norm{z}^2 &  & \text{(by \cref{ex:6.1.10})} \\
-                   & \geq \norm{z}^2               &  & \text{(by \cref{6.2}(b))}    \\
-                   & = \norm{y - u}^2.
-  \end{align*}
-  Now suppose that \(\norm{y - x} = \norm{y - u}\).
-  Then the inequality above becomes an equality, and therefore \(\norm{u - x}^2 + \norm{z}^2 = \norm{z}^2\).
-  It follows that \(\norm{u - x} = 0\), and hence \(x = u\).
-  The proof of the converse is obvious.
+	As in \cref{6.6}, we have that \(y = u + z\), where \(z \in \W^{\perp}\).
+	Let \(x \in \W\).
+	Then \(u - x\) is orthogonal to \(z\), so we have
+	\begin{align*}
+		\norm{y - x}^2 & = \norm{u + z - x}^2                              \\
+		               & = \norm{(u - x) + z}^2                            \\
+		               & = \norm{u - x}^2 + \norm{z}^2 &  & \by{ex:6.1.10} \\
+		               & \geq \norm{z}^2               &  & \by{6.2}[b]    \\
+		               & = \norm{y - u}^2.
+	\end{align*}
+	Now suppose that \(\norm{y - x} = \norm{y - u}\).
+	Then the inequality above becomes an equality, and therefore \(\norm{u - x}^2 + \norm{z}^2 = \norm{z}^2\).
+	It follows that \(\norm{u - x} = 0\), and hence \(x = u\).
+	The proof of the converse is obvious.
 \end{proof}
 
 \begin{thm}\label{6.7}
-  Suppose that \(S = \set{\seq{v}{1,,k}}\) is an orthonormal set in an \(n\)-dimensional inner product space \(\V\) over \(\F\).
-  Then
-  \begin{enumerate}
-    \item \(S\) can be extended to an orthonormal basis \(\set{\seq{v}{1,,k,k+1,,n}}\) for \(\V\) over \(\F\).
-    \item If \(\W = \spn{S}\), then \(S_1 = \set{\seq{v}{k+1,,n}}\) is an orthonormal basis for \(\W^{\perp}\) over \(\F\) (using the preceding notation).
-    \item If \(\W\) is any subspace of \(\V\), then \(\dim(\V) = \dim(\W) + \dim(\W^{\perp})\).
-  \end{enumerate}
+	Suppose that \(S = \set{\seq{v}{1,,k}}\) is an orthonormal set in an \(n\)-dimensional inner product space \(\V\) over \(\F\).
+	Then
+	\begin{enumerate}
+		\item \(S\) can be extended to an orthonormal basis \(\set{\seq{v}{1,,k,k+1,,n}}\) for \(\V\) over \(\F\).
+		\item If \(\W = \spn{S}\), then \(S_1 = \set{\seq{v}{k+1,,n}}\) is an orthonormal basis for \(\W^{\perp}\) over \(\F\) (using the preceding notation).
+		\item If \(\W\) is any subspace of \(\V\), then \(\dim(\V) = \dim(\W) + \dim(\W^{\perp})\).
+	\end{enumerate}
 \end{thm}
 
 \begin{proof}[\pf{6.7}(a)]
-  By \cref{1.6.15}(c), \(S\) can be extended to an ordered basis \(S' = \set{\seq{v}{1,,k}, \seq{w}{k+1,,n}}\) for \(\V\) over \(\F\).
-  Now apply the Gram--Schmidt process (\cref{6.4}) to \(S'\).
-  The first \(k\) vectors resulting from this process are the vectors in \(S\) by \cref{ex:6.2.8}, and this new set spans \(\V\).
-  Normalizing the last \(n - k\) vectors of this set produces an orthonormal set that spans \(\V\).
-  The result now follows.
+	By \cref{1.6.15}(c), \(S\) can be extended to an ordered basis \(S' = \set{\seq{v}{1,,k}, \seq{w}{k+1,,n}}\) for \(\V\) over \(\F\).
+	Now apply the Gram--Schmidt process (\cref{6.4}) to \(S'\).
+	The first \(k\) vectors resulting from this process are the vectors in \(S\) by \cref{ex:6.2.8}, and this new set spans \(\V\).
+	Normalizing the last \(n - k\) vectors of this set produces an orthonormal set that spans \(\V\).
+	The result now follows.
 \end{proof}
 
 \begin{proof}[\pf{6.7}(b)]
-  Because \(S_1\) is a subset of a basis, it is linearly independent.
-  Since \(S_1\) is clearly a subset of \(\W^{\perp}\), we need only show that it spans \(\W^{\perp}\).
-  Note that, for any \(x \in \V\), we have
-  \[
-    x = \sum_{i = 1}^n \inn{x, v_i} v_i.
-  \]
-  If \(x \in \W^{\perp}\), then \(\inn{x, v_i} = 0\) for \(i \in \set{1, \dots, k}\).
-  Therefore,
-  \[
-    x = \sum_{i = k + 1}^n \inn{x, v_i} v_i \in \spn{S_1}.
-  \]
+	Because \(S_1\) is a subset of a basis, it is linearly independent.
+	Since \(S_1\) is clearly a subset of \(\W^{\perp}\), we need only show that it spans \(\W^{\perp}\).
+	Note that, for any \(x \in \V\), we have
+	\[
+		x = \sum_{i = 1}^n \inn{x, v_i} v_i.
+	\]
+	If \(x \in \W^{\perp}\), then \(\inn{x, v_i} = 0\) for \(i \in \set{1, \dots, k}\).
+	Therefore,
+	\[
+		x = \sum_{i = k + 1}^n \inn{x, v_i} v_i \in \spn{S_1}.
+	\]
 \end{proof}
 
 \begin{proof}[\pf{6.7}(c)]
-  Let \(\W\) be a subspace of \(\V\) over \(\F\).
-  It is a finite-dimensional inner product space because \(\V\) is, and so it has an orthonormal basis \(\set{\seq{v}{1,,k}}\).
-  By \cref{6.7}(a)(b), we have
-  \[
-    \dim(\V) = n = k + (n - k) = \dim(\W) + \dim(\W^{\perp}).
-  \]
+	Let \(\W\) be a subspace of \(\V\) over \(\F\).
+	It is a finite-dimensional inner product space because \(\V\) is, and so it has an orthonormal basis \(\set{\seq{v}{1,,k}}\).
+	By \cref{6.7}(a)(b), we have
+	\[
+		\dim(\V) = n = k + (n - k) = \dim(\W) + \dim(\W^{\perp}).
+	\]
 \end{proof}
 
 \exercisesection
 
 \setcounter{ex}{5}
 \begin{ex}\label{ex:6.2.6}
-  Let \(\V\) be an inner product space over \(\F\), and let \(\W\) be a finite-dimensional subspace of \(\V\) over \(\F\).
-  If \(x \notin \W\), prove that there exists \(y \in \V\) such that \(y \in \W^{\perp}\), but \(\inn{x, y} \neq 0\).
+	Let \(\V\) be an inner product space over \(\F\), and let \(\W\) be a finite-dimensional subspace of \(\V\) over \(\F\).
+	If \(x \notin \W\), prove that there exists \(y \in \V\) such that \(y \in \W^{\perp}\), but \(\inn{x, y} \neq 0\).
 \end{ex}
 
 \begin{proof}[\pf{ex:6.2.6}]
-  Since \(x \in \V\), by \cref{6.6} there exist a \((u, v) \in \W \times \W^{\perp}\) such that \(x = u + v\).
-  Then we have
-  \begin{align*}
-             & \begin{dcases}
-                 x \notin \W \\
-                 \zv \in \W
-               \end{dcases} &  & \text{(by \cref{1.3}(c))} \\
-    \implies & x \neq \zv                                  \\
-    \implies & v \neq \zv     &  & (x \notin \W)
-  \end{align*}
-  and
-  \begin{align*}
-    \inn{x, v} & = \inn{u + v, v}                                           \\
-               & = \inn{u, v} + \inn{v, v} &  & \text{(by \cref{6.1.1}(a))} \\
-               & = \inn{v, v}              &  & \text{(by \cref{6.2.9})}    \\
-               & > 0.                      &  & \text{(by \cref{6.1.1}(d))}
-  \end{align*}
-  By setting \(y = v\) we are done.
+	Since \(x \in \V\), by \cref{6.6} there exist a \((u, v) \in \W \times \W^{\perp}\) such that \(x = u + v\).
+	Then we have
+	\begin{align*}
+		         & \begin{dcases}
+			           x \notin \W \\
+			           \zv \in \W
+		           \end{dcases} &  & \by{1.3}[c]     \\
+		\implies & x \neq \zv                        \\
+		\implies & v \neq \zv     &  & (x \notin \W)
+	\end{align*}
+	and
+	\begin{align*}
+		\inn{x, v} & = \inn{u + v, v}                             \\
+		           & = \inn{u, v} + \inn{v, v} &  & \by{6.1.1}[a] \\
+		           & = \inn{v, v}              &  & \by{6.2.9}    \\
+		           & > 0.                      &  & \by{6.1.1}[d]
+	\end{align*}
+	By setting \(y = v\) we are done.
 \end{proof}
 
 \begin{ex}\label{ex:6.2.7}
-  Let \(\beta\) be a basis for a subspace \(\W\) of an inner product space \(\V\) over \(\F\), and let \(z \in \V\).
-  Prove that \(z \in \W^{\perp}\) iff \(\inn{z, v} = 0\) for every \(v \in \beta\).
+	Let \(\beta\) be a basis for a subspace \(\W\) of an inner product space \(\V\) over \(\F\), and let \(z \in \V\).
+	Prove that \(z \in \W^{\perp}\) iff \(\inn{z, v} = 0\) for every \(v \in \beta\).
 \end{ex}
 
 \begin{proof}[\pf{ex:6.2.7}]
-  We have
-  \begin{align*}
-             & z \in \W^{\perp}                                                  \\
-    \implies & \forall w \in \W, \inn{z, w} = 0    &  & \text{(by \cref{6.2.9})} \\
-    \implies & \forall v \in \beta, \inn{z, v} = 0 &  & (\beta \subseteq \W)
-  \end{align*}
-  and
-  \begin{align*}
-             & \forall v \in \beta, \inn{z, v} = 0                                                                                         \\
-    \implies & \forall w \in \W, \begin{dcases}
-                                   \exists \seq{v}{1,,k} \in \beta \\
-                                   \exists \seq{a}{1,,k} \in \F
-                                 \end{dcases} :                                                                           \\
-             & \inn{z, w} = \inn{z, \sum_{i = 1}^k a_i v_i} = \sum_{i = 1}^k \conj{a_i} \inn{z, v_i} = 0 &  & \text{(by \cref{6.1}(a)(b))} \\
-    \implies & z \in \W^{\perp}.                                                                         &  & \text{(by \cref{6.2.9})}
-  \end{align*}
+	We have
+	\begin{align*}
+		         & z \in \W^{\perp}                                              \\
+		\implies & \forall w \in \W, \inn{z, w} = 0    &  & \by{6.2.9}           \\
+		\implies & \forall v \in \beta, \inn{z, v} = 0 &  & (\beta \subseteq \W)
+	\end{align*}
+	and
+	\begin{align*}
+		         & \forall v \in \beta, \inn{z, v} = 0                                                                         \\
+		\implies & \forall w \in \W, \begin{dcases}
+			                             \exists \seq{v}{1,,k} \in \beta \\
+			                             \exists \seq{a}{1,,k} \in \F
+		                             \end{dcases} :                                                           \\
+		         & \inn{z, w} = \inn{z, \sum_{i = 1}^k a_i v_i} = \sum_{i = 1}^k \conj{a_i} \inn{z, v_i} = 0 &  & \by{6.1}[ab] \\
+		\implies & z \in \W^{\perp}.                                                                         &  & \by{6.2.9}
+	\end{align*}
 \end{proof}
 
 \begin{ex}\label{ex:6.2.8}
-  Prove that if \(\set{\seq{w}{1,,n}}\) is an orthogonal set of nonzero vectors, then the vectors \(\seq{v}{1,,n}\) derived from the Gram--Schmidt process satisfy \(v_i = w_i\) for \(i \in \set{1, \dots, n}\).
+	Prove that if \(\set{\seq{w}{1,,n}}\) is an orthogonal set of nonzero vectors, then the vectors \(\seq{v}{1,,n}\) derived from the Gram--Schmidt process satisfy \(v_i = w_i\) for \(i \in \set{1, \dots, n}\).
 \end{ex}
 
 \begin{proof}[\pf{ex:6.2.8}]
-  We use induction on \(n\).
-  For \(n = 1\) we see by \cref{6.4} that \(v_1 = w_1\).
-  Thus the base case holds.
-  Suppose inductively that the statement is true for some \(n \geq 1\).
-  We need to show that for \(n + 1\) the statement is still true.
-  Let \(\set{\seq{w}{1,,n+1}}\) be an orthogonal set of nonzero vectors and let \(\set{\seq{v}{1,,n+1}}\) derived from the Gram--Schmidt process.
-  By induction hypothesis we see that \(\set{\seq{v}{1,,n+1}} = \set{\seq{w}{1,,n}, v_{n + 1}}\).
-  Thus we have
-  \begin{align*}
-    v_{n + 1} & = w_{n + 1} + \sum_{i = 1}^n \frac{\inn{w_{n + 1}, v_i}}{\norm{v_i}^2} v_i &  & \text{(by \cref{6.4})}           \\
-              & = w_{n + 1} + \sum_{i = 1}^n \frac{\inn{w_{n + 1}, w_i}}{\norm{w_i}^2} w_i &  & \text{(by induction hypothesis)} \\
-              & = w_{n + 1}                                                                &  & \text{(by \cref{6.1.12})}
-  \end{align*}
-  and this closes the induction.
+	We use induction on \(n\).
+	For \(n = 1\) we see by \cref{6.4} that \(v_1 = w_1\).
+	Thus the base case holds.
+	Suppose inductively that the statement is true for some \(n \geq 1\).
+	We need to show that for \(n + 1\) the statement is still true.
+	Let \(\set{\seq{w}{1,,n+1}}\) be an orthogonal set of nonzero vectors and let \(\set{\seq{v}{1,,n+1}}\) derived from the Gram--Schmidt process.
+	By induction hypothesis we see that \(\set{\seq{v}{1,,n+1}} = \set{\seq{w}{1,,n}, v_{n + 1}}\).
+	Thus we have
+	\begin{align*}
+		v_{n + 1} & = w_{n + 1} + \sum_{i = 1}^n \frac{\inn{w_{n + 1}, v_i}}{\norm{v_i}^2} v_i &  & \by{6.4}                         \\
+		          & = w_{n + 1} + \sum_{i = 1}^n \frac{\inn{w_{n + 1}, w_i}}{\norm{w_i}^2} w_i &  & \text{(by induction hypothesis)} \\
+		          & = w_{n + 1}                                                                &  & \by{6.1.12}
+	\end{align*}
+	and this closes the induction.
 \end{proof}
 
 \setcounter{ex}{9}
 \begin{ex}\label{ex:6.2.10}
-  Let \(\W\) be a finite-dimensional subspace of an inner product space \(\V\) over \(\F\).
-  Prove that there exists a projection \(\T\) on \(\W\) along \(\W^{\perp}\) that satisfies \(\ns{\T} = \W^{\perp}\).
-  In addition, prove that \(\norm{\T(x)} \leq \norm{x}\) for all \(x \in \V\).
-  (Projections are defined in \cref{2.1.14}.)
+	Let \(\W\) be a finite-dimensional subspace of an inner product space \(\V\) over \(\F\).
+	Prove that there exists a projection \(\T\) on \(\W\) along \(\W^{\perp}\) that satisfies \(\ns{\T} = \W^{\perp}\).
+	In addition, prove that \(\norm{\T(x)} \leq \norm{x}\) for all \(x \in \V\).
+	(Projections are defined in \cref{2.1.14}.)
 \end{ex}
 
 \begin{proof}[\pf{ex:6.2.10}]
-  By \cref{ex:1.3.23,6.2.10,6.6} we see that \(\V = \W + \W^{\perp}\).
-  Since \(\W \cap \W^{\perp} = \set{\zv}\), by \cref{5.2.7} we see that \(\V = \W \oplus \W^{\perp}\).
-  Now we define a function \(\T : \V \to \V\) as follow:
-  \[
-    \forall x \in \V, \T(x) = \T(x_1 + x_2) = x_1
-  \]
-  where \((x_1, x_2) \in \W \times \W^{\perp}\) and \(x = x_1 + x_2\).
-  The existence and uniqueness of \((x_1, x_2)\) are asserted by \cref{6.6}, thus \(\T\) is well-defined.
-  By \cref{2.1.14} \(\T\) is a projection on \(\W\) along \(\W^{\perp}\).
-  By \cref{ex:2.1.26}(a)(b) we see that \(\T \in \ls(\V)\) and \(\ns{\T} = \W^{\perp}\).
-  Then we have
-  \begin{align*}
-    \forall x \in \V, \norm{\T(x)} & = \norm{x_1}                 &  & \text{(by \cref{2.1.14})}    \\
-                                   & \leq \norm{x_1} + \norm{x_2} &  & \text{(by \cref{6.2}(b))}    \\
-                                   & = \norm{x_1 + x_2}           &  & \text{(by \cref{ex:6.1.10})} \\
-                                   & = \norm{x}.
-  \end{align*}
+	By \cref{ex:1.3.23,6.2.10,6.6} we see that \(\V = \W + \W^{\perp}\).
+	Since \(\W \cap \W^{\perp} = \set{\zv}\), by \cref{5.2.7} we see that \(\V = \W \oplus \W^{\perp}\).
+	Now we define a function \(\T : \V \to \V\) as follow:
+	\[
+		\forall x \in \V, \T(x) = \T(x_1 + x_2) = x_1
+	\]
+	where \((x_1, x_2) \in \W \times \W^{\perp}\) and \(x = x_1 + x_2\).
+	The existence and uniqueness of \((x_1, x_2)\) are asserted by \cref{6.6}, thus \(\T\) is well-defined.
+	By \cref{2.1.14} \(\T\) is a projection on \(\W\) along \(\W^{\perp}\).
+	By \cref{ex:2.1.26}(a)(b) we see that \(\T \in \ls(\V)\) and \(\ns{\T} = \W^{\perp}\).
+	Then we have
+	\begin{align*}
+		\forall x \in \V, \norm{\T(x)} & = \norm{x_1}                 &  & \by{2.1.14}    \\
+		                               & \leq \norm{x_1} + \norm{x_2} &  & \by{6.2}[b]    \\
+		                               & = \norm{x_1 + x_2}           &  & \by{ex:6.1.10} \\
+		                               & = \norm{x}.
+	\end{align*}
 \end{proof}
 
 \begin{ex}\label{ex:6.2.11}
-  Let \(A \in \ms{n}{n}{\C}\).
-  Prove that \(AA^* = I_n\) iff the rows of \(A\) form an orthonormal basis for \(\C^n\) over \(\C\).
+	Let \(A \in \ms{n}{n}{\C}\).
+	Prove that \(AA^* = I_n\) iff the rows of \(A\) form an orthonormal basis for \(\C^n\) over \(\C\).
 \end{ex}
 
 \begin{proof}[\pf{ex:6.2.11}]
-  For each \(i \in \set{1, \dots, n}\), let \(a_i\) be the \(i\)th row of \(A\).
-  Then we have
-  \begin{align*}
-         & AA^* = I_n                                                                                                             \\
-    \iff & \forall i, j \in \set{1, \dots, n}, (AA^*)_{i j} = \delta_{i j}                          &  & \text{(by \cref{2.3.4})} \\
-    \iff & \forall i, j \in \set{1, \dots, n}, \sum_{k = 1}^n A_{i k} (A^*)_{k j} = \delta_{i j}    &  & \text{(by \cref{2.3.1})} \\
-    \iff & \forall i, j \in \set{1, \dots, n}, \sum_{k = 1}^n A_{i k} \conj{A_{j k}} = \delta_{i j} &  & \text{(by \cref{6.1.5})} \\
-    \iff & \forall i, j \in \set{1, \dots, n}, \inn{a_i, a_j} = \delta_{i j}                        &  & \text{(by \cref{6.1.2})} \\
-    \iff & \text{rows of } A \text{ form an orthonormal basis for } \C^n \text{ over } \C.          &  & \text{(by \cref{6.2.4})}
-  \end{align*}
+	For each \(i \in \set{1, \dots, n}\), let \(a_i\) be the \(i\)th row of \(A\).
+	Then we have
+	\begin{align*}
+		     & AA^* = I_n                                                                                               \\
+		\iff & \forall i, j \in \set{1, \dots, n}, (AA^*)_{i j} = \delta_{i j}                          &  & \by{2.3.4} \\
+		\iff & \forall i, j \in \set{1, \dots, n}, \sum_{k = 1}^n A_{i k} (A^*)_{k j} = \delta_{i j}    &  & \by{2.3.1} \\
+		\iff & \forall i, j \in \set{1, \dots, n}, \sum_{k = 1}^n A_{i k} \conj{A_{j k}} = \delta_{i j} &  & \by{6.1.5} \\
+		\iff & \forall i, j \in \set{1, \dots, n}, \inn{a_i, a_j} = \delta_{i j}                        &  & \by{6.1.2} \\
+		\iff & \text{rows of } A \text{ form an orthonormal basis for } \C^n \text{ over } \C.          &  & \by{6.2.4}
+	\end{align*}
 \end{proof}
 
 \begin{ex}\label{ex:6.2.12}
-  Prove that for any matrix \(A \in \MS\), \((\rg{\L_{A^*}})^{\perp} = \ns{\L_A}\).
+	Prove that for any matrix \(A \in \MS\), \((\rg{\L_{A^*}})^{\perp} = \ns{\L_A}\).
 \end{ex}
 
 \begin{proof}[\pf{ex:6.2.12}]
-  Let \(x \in \vs{F}^n\) and \(y \in \vs{F}^m\).
-  Denote the standard inner product on \(\vs{F}^m\) and \(\vs{F}^n\) over \(\F\) as \(\inn{\cdot, \cdot}_m\) and \(\inn{\cdot, \cdot}_n\), respectively.
-  Observe that
-  \begin{align*}
-    \inn{x, \L_{A^*}(y)}_n & = \inn{x, A^* y}_n                                                 &  & \text{(by \cref{2.3.8})}        \\
-                           & = \sum_{i = 1}^n x_i \conj{(A^* y)_i}                              &  & \text{(by \cref{6.1.2})}        \\
-                           & = \sum_{i = 1}^n x_i \conj{\pa{\sum_{j = 1}^m (A^*)_{i j} y_j}}    &  & \text{(by \cref{2.3.1})}        \\
-                           & = \sum_{i = 1}^n x_i \conj{\pa{\sum_{j = 1}^m \conj{A_{j i}} y_j}} &  & \text{(by \cref{6.1.5})}        \\
-                           & = \sum_{i = 1}^n x_i \pa{\sum_{j = 1}^m A_{j i} \conj{y_j}}        &  & \text{(by \cref{d.2}(a)(b)(c))} \\
-                           & = \sum_{j = 1}^m \pa{\sum_{i = 1}^n A_{j i} x_i} \conj{y_j}                                             \\
-                           & = \sum_{j = 1}^m (Ax)_j \conj{y_j}                                 &  & \text{(by \cref{2.3.1})}        \\
-                           & = \inn{Ax, y}_m                                                    &  & \text{(by \cref{6.1.2})}        \\
-                           & = \inn{\L_A(x), y}_m.                                              &  & \text{(by \cref{2.3.8})}
-  \end{align*}
-  Then we have
-  \begin{align*}
-         & v \in (\rg{\L_{A^*}})^{\perp}                                                          \\
-    \iff & \forall y \in \rg{\L_{A^*}}, \inn{v, y}_n = 0       &  & \text{(by \cref{6.2.9})}      \\
-    \iff & \forall x \in \vs{F}^m : \inn{v, \L_{A^*}(x)}_n = 0 &  & \text{(by \cref{2.1.10})}     \\
-    \iff & \forall x \in \vs{F}^m : \inn{\L_A(v), x}_m = 0     &  & \text{(from the proof above)} \\
-    \iff & \forall x \in \vs{F}^m : \inn{x, \L_A(v)}_m = 0     &  & \text{(by \cref{6.1.1}(c))}   \\
-    \iff & \L_A(v) = \zv_{\vs{F}^m}                            &  & \text{(by \cref{6.1}(c)(e))}  \\
-    \iff & v \in \ns{\L_A}                                     &  & \text{(by \cref{2.1.10})}
-  \end{align*}
-  and thus \((\rg{\L_{A^*}})^{\perp} = \ns{\L_A}\).
+	Let \(x \in \vs{F}^n\) and \(y \in \vs{F}^m\).
+	Denote the standard inner product on \(\vs{F}^m\) and \(\vs{F}^n\) over \(\F\) as \(\inn{\cdot, \cdot}_m\) and \(\inn{\cdot, \cdot}_n\), respectively.
+	Observe that
+	\begin{align*}
+		\inn{x, \L_{A^*}(y)}_n & = \inn{x, A^* y}_n                                                 &  & \by{2.3.8}    \\
+		                       & = \sum_{i = 1}^n x_i \conj{(A^* y)_i}                              &  & \by{6.1.2}    \\
+		                       & = \sum_{i = 1}^n x_i \conj{\pa{\sum_{j = 1}^m (A^*)_{i j} y_j}}    &  & \by{2.3.1}    \\
+		                       & = \sum_{i = 1}^n x_i \conj{\pa{\sum_{j = 1}^m \conj{A_{j i}} y_j}} &  & \by{6.1.5}    \\
+		                       & = \sum_{i = 1}^n x_i \pa{\sum_{j = 1}^m A_{j i} \conj{y_j}}        &  & \by{d.2}[abc] \\
+		                       & = \sum_{j = 1}^m \pa{\sum_{i = 1}^n A_{j i} x_i} \conj{y_j}                           \\
+		                       & = \sum_{j = 1}^m (Ax)_j \conj{y_j}                                 &  & \by{2.3.1}    \\
+		                       & = \inn{Ax, y}_m                                                    &  & \by{6.1.2}    \\
+		                       & = \inn{\L_A(x), y}_m.                                              &  & \by{2.3.8}
+	\end{align*}
+	Then we have
+	\begin{align*}
+		     & v \in (\rg{\L_{A^*}})^{\perp}                                                          \\
+		\iff & \forall y \in \rg{\L_{A^*}}, \inn{v, y}_n = 0       &  & \by{6.2.9}                    \\
+		\iff & \forall x \in \vs{F}^m : \inn{v, \L_{A^*}(x)}_n = 0 &  & \by{2.1.10}                   \\
+		\iff & \forall x \in \vs{F}^m : \inn{\L_A(v), x}_m = 0     &  & \text{(from the proof above)} \\
+		\iff & \forall x \in \vs{F}^m : \inn{x, \L_A(v)}_m = 0     &  & \by{6.1.1}[c]                 \\
+		\iff & \L_A(v) = \zv_{\vs{F}^m}                            &  & \by{6.1}[ce]                  \\
+		\iff & v \in \ns{\L_A}                                     &  & \by{2.1.10}
+	\end{align*}
+	and thus \((\rg{\L_{A^*}})^{\perp} = \ns{\L_A}\).
 \end{proof}
 
 \begin{ex}\label{ex:6.2.13}
-  Let \(\V\) be an inner product space over \(\F\), \(S\) and \(S_0\) be subsets of \(\V\), and \(\W\) be a finite-dimensional subspace of \(\V\) over \(\F\).
-  Prove the following results.
-  \begin{enumerate}
-    \item \(S_0 \subseteq S \implies S^{\perp} \subseteq S_0^{\perp}\).
-    \item \(S \subseteq (S^{\perp})^{\perp}\);
-          so \(\spn{S} \subseteq (S^{\perp})^{\perp}\).
-    \item \(\W = (\W^{\perp})^{\perp}\).
-    \item \(\V = \W \oplus \W^{\perp}\).
-  \end{enumerate}
+	Let \(\V\) be an inner product space over \(\F\), \(S\) and \(S_0\) be subsets of \(\V\), and \(\W\) be a finite-dimensional subspace of \(\V\) over \(\F\).
+	Prove the following results.
+	\begin{enumerate}
+		\item \(S_0 \subseteq S \implies S^{\perp} \subseteq S_0^{\perp}\).
+		\item \(S \subseteq (S^{\perp})^{\perp}\);
+		      so \(\spn{S} \subseteq (S^{\perp})^{\perp}\).
+		\item \(\W = (\W^{\perp})^{\perp}\).
+		\item \(\V = \W \oplus \W^{\perp}\).
+	\end{enumerate}
 \end{ex}
 
 \begin{proof}[\pf{ex:6.2.13}(a)]
-  We have
-  \begin{align*}
-             & v \in S^{\perp}                                                 \\
-    \implies & \forall y \in S, \inn{v, y} = 0   &  & \text{(by \cref{6.2.9})} \\
-    \implies & \forall y \in S_0, \inn{v, y} = 0 &  & (S_0 \subseteq S)        \\
-    \implies & v \in S_0^{\perp}                 &  & \text{(by \cref{6.2.9})}
-  \end{align*}
-  and thus \(S^{\perp} \subseteq S_0^{\perp}\).
+	We have
+	\begin{align*}
+		         & v \in S^{\perp}                                          \\
+		\implies & \forall y \in S, \inn{v, y} = 0   &  & \by{6.2.9}        \\
+		\implies & \forall y \in S_0, \inn{v, y} = 0 &  & (S_0 \subseteq S) \\
+		\implies & v \in S_0^{\perp}                 &  & \by{6.2.9}
+	\end{align*}
+	and thus \(S^{\perp} \subseteq S_0^{\perp}\).
 \end{proof}
 
 \begin{proof}[\pf{ex:6.2.13}(b)]
-  We have
-  \begin{align*}
-             & y \in S                                                               \\
-    \implies & \forall v \in S^{\perp}, \inn{v, y} = 0 &  & \text{(by \cref{6.2.9})} \\
-    \implies & y \in (S^{\perp})^{\perp}               &  & \text{(by \cref{6.2.9})}
-  \end{align*}
-  and thus \(S \subseteq (S^{\perp})^{\perp}\).
-  By \cref{6.2.10} we know that \((S^{\perp})^{\perp}\) is a subspace of \(\V\) over \(\F\), thus by \cref{1.5} we have \(\spn{S} \subseteq (S^{\perp})^{\perp}\).
+	We have
+	\begin{align*}
+		         & y \in S                                                 \\
+		\implies & \forall v \in S^{\perp}, \inn{v, y} = 0 &  & \by{6.2.9} \\
+		\implies & y \in (S^{\perp})^{\perp}               &  & \by{6.2.9}
+	\end{align*}
+	and thus \(S \subseteq (S^{\perp})^{\perp}\).
+	By \cref{6.2.10} we know that \((S^{\perp})^{\perp}\) is a subspace of \(\V\) over \(\F\), thus by \cref{1.5} we have \(\spn{S} \subseteq (S^{\perp})^{\perp}\).
 \end{proof}
 
 \begin{proof}[\pf{ex:6.2.13}(c)]
-  By \cref{ex:6.2.13}(b) we have \(\W \subseteq (\W^{\perp})^{\perp}\), thus we only need to show that \((\W^{\perp})^{\perp} \subseteq \W\).
-  Suppose for sake of contradiction that there exists a \(x \in (\W^{\perp})^{\perp} \setminus \W\).
-  By \cref{ex:6.2.6} there exists a \(y \in \W^{\perp}\) such that \(\inn{x, y} \neq 0\).
-  But then we have
-  \begin{align*}
-             & x \in (\W^{\perp})^{\perp}                                             \\
-    \implies & \forall v \in \W^{\perp}, \inn{x, v} = 0 &  & \text{(by \cref{6.2.9})} \\
-    \implies & \inn{y, v} = 0,                          &  & (y \in \W^{\perp})
-  \end{align*}
-  a contradiction.
-  Thus such \(x\) does not exist and \((\W^{\perp})^{\perp} \subseteq \W\).
+	By \cref{ex:6.2.13}(b) we have \(\W \subseteq (\W^{\perp})^{\perp}\), thus we only need to show that \((\W^{\perp})^{\perp} \subseteq \W\).
+	Suppose for sake of contradiction that there exists a \(x \in (\W^{\perp})^{\perp} \setminus \W\).
+	By \cref{ex:6.2.6} there exists a \(y \in \W^{\perp}\) such that \(\inn{x, y} \neq 0\).
+	But then we have
+	\begin{align*}
+		         & x \in (\W^{\perp})^{\perp}                                       \\
+		\implies & \forall v \in \W^{\perp}, \inn{x, v} = 0 &  & \by{6.2.9}         \\
+		\implies & \inn{y, v} = 0,                          &  & (y \in \W^{\perp})
+	\end{align*}
+	a contradiction.
+	Thus such \(x\) does not exist and \((\W^{\perp})^{\perp} \subseteq \W\).
 \end{proof}
 
 \begin{proof}[\pf{ex:6.2.13}(d)]
-  By \cref{ex:1.3.23,6.2.10,6.6} we have \(\V = \W + \W^{\perp}\).
-  Since \(\W \cap \W^{\perp} = \set{\zv}\), by \cref{5.2.7} we have \(\V = \W \oplus \W^{\perp}\).
+	By \cref{ex:1.3.23,6.2.10,6.6} we have \(\V = \W + \W^{\perp}\).
+	Since \(\W \cap \W^{\perp} = \set{\zv}\), by \cref{5.2.7} we have \(\V = \W \oplus \W^{\perp}\).
 \end{proof}
 
 \begin{ex}\label{ex:6.2.14}
-  Let \(\W_1\) and \(\W_2\) be subspaces of a finite-dimensional inner product space \(\V\) over \(\F\).
-  Prove that \((\W_1 + \W_2)^{\perp} = \W_1^{\perp} \cap \W_2^{\perp}\) and \((\W_1 \cap \W_2)^{\perp} = \W_1^{\perp} + \W_2^{\perp}\).
+	Let \(\W_1\) and \(\W_2\) be subspaces of a finite-dimensional inner product space \(\V\) over \(\F\).
+	Prove that \((\W_1 + \W_2)^{\perp} = \W_1^{\perp} \cap \W_2^{\perp}\) and \((\W_1 \cap \W_2)^{\perp} = \W_1^{\perp} + \W_2^{\perp}\).
 \end{ex}
 
 \begin{proof}[\pf{ex:6.2.14}]
-  We have
-  \begin{align*}
-         & v \in (\W_1 + \W_2)^{\perp}                                                                             \\
-    \iff & \forall x_1 + x_2 \in \W_1 + \W_2, \inn{v, x_1 + x_2} = 0                &  & \text{(by \cref{6.2.9})}  \\
-    \iff & \forall x_1 + x_2 \in \W_1 + \W_2, \inn{v, x_1} + \inn{v, x_2} = 0       &  & \text{(by \cref{6.1}(a))} \\
-    \iff & \forall (x_1, x_2) \in \W_1 \times \W_2, \inn{v, x_1} = \inn{v, x_2} = 0 &  & (\zv \in \W_1 \cap \W_2)  \\
-    \iff & v \in \W_1^{\perp} \cap \W_2^{\perp}.                                    &  & \text{(by \cref{6.2.9})}
-  \end{align*}
-  and thus \((\W_1 + \W_2)^{\perp} = \W_1^{\perp} \cap \W_2^{\perp}\).
-  This means
-  \begin{align*}
-    (\W_1 \cap \W_2)^{\perp} & = \pa{\pa{\W_1^{\perp}}^{\perp} \cap \pa{\W_2^{\perp}}^{\perp}}^{\perp} &  & \text{(by \cref{ex:6.2.13}(c))} \\
-                             & = \pa{\pa{\W_1^{\perp} + \W_2^{\perp}}^{\perp}}^{\perp}                 &  & \text{(from the proof above)}   \\
-                             & = \W_1^{\perp} + \W_2^{\perp}.                                          &  & \text{(by \cref{ex:6.2.13}(c))}
-  \end{align*}
+	We have
+	\begin{align*}
+		     & v \in (\W_1 + \W_2)^{\perp}                                                                            \\
+		\iff & \forall x_1 + x_2 \in \W_1 + \W_2, \inn{v, x_1 + x_2} = 0                &  & \by{6.2.9}               \\
+		\iff & \forall x_1 + x_2 \in \W_1 + \W_2, \inn{v, x_1} + \inn{v, x_2} = 0       &  & \by{6.1}[a]              \\
+		\iff & \forall (x_1, x_2) \in \W_1 \times \W_2, \inn{v, x_1} = \inn{v, x_2} = 0 &  & (\zv \in \W_1 \cap \W_2) \\
+		\iff & v \in \W_1^{\perp} \cap \W_2^{\perp}.                                    &  & \by{6.2.9}
+	\end{align*}
+	and thus \((\W_1 + \W_2)^{\perp} = \W_1^{\perp} \cap \W_2^{\perp}\).
+	This means
+	\begin{align*}
+		(\W_1 \cap \W_2)^{\perp} & = \pa{\pa{\W_1^{\perp}}^{\perp} \cap \pa{\W_2^{\perp}}^{\perp}}^{\perp} &  & \by{ex:6.2.13}[c]             \\
+		                         & = \pa{\pa{\W_1^{\perp} + \W_2^{\perp}}^{\perp}}^{\perp}                 &  & \text{(from the proof above)} \\
+		                         & = \W_1^{\perp} + \W_2^{\perp}.                                          &  & \by{ex:6.2.13}[c]
+	\end{align*}
 \end{proof}
 
 \begin{ex}\label{ex:6.2.15}
-  Let \(\V\) be a finite-dimensional inner product space over \(\F\).
-  \begin{enumerate}
-    \item (\emph{Parseval's Identity}.)
-          Let \(\set{\seq{v}{1,,n}}\) be an orthonormal basis for \(\V\) over \(\F\).
-          For any \(x, y \in \V\) prove that
-          \[
-            \inn{x, y} = \sum_{i = 1}^n \inn{x, v_i} \conj{\inn{y, v_i}}.
-          \]
-    \item Use (a) to prove that if \(\beta\) is an orthonormal basis for \(\V\) over \(\F\) with inner product \(\inn{\cdot, \cdot}\), then for any \(x, y \in \V\)
-          \[
-            \inn{\phi_{\beta}(x), \phi_{\beta}(y)}' = \inn{[x]_{\beta}, [y]_{\beta}}' = \inn{x, y},
-          \]
-          where \(\inn{\cdot, \cdot}'\) is the standard inner product on \(\vs{F}^n\).
-  \end{enumerate}
+	Let \(\V\) be a finite-dimensional inner product space over \(\F\).
+	\begin{enumerate}
+		\item (\emph{Parseval's Identity}.)
+		      Let \(\set{\seq{v}{1,,n}}\) be an orthonormal basis for \(\V\) over \(\F\).
+		      For any \(x, y \in \V\) prove that
+		      \[
+			      \inn{x, y} = \sum_{i = 1}^n \inn{x, v_i} \conj{\inn{y, v_i}}.
+		      \]
+		\item Use (a) to prove that if \(\beta\) is an orthonormal basis for \(\V\) over \(\F\) with inner product \(\inn{\cdot, \cdot}\), then for any \(x, y \in \V\)
+		      \[
+			      \inn{\phi_{\beta}(x), \phi_{\beta}(y)}' = \inn{[x]_{\beta}, [y]_{\beta}}' = \inn{x, y},
+		      \]
+		      where \(\inn{\cdot, \cdot}'\) is the standard inner product on \(\vs{F}^n\).
+	\end{enumerate}
 \end{ex}
 
 \begin{proof}[\pf{ex:6.2.15}(a)]
-  We have
-  \begin{align*}
-    \inn{x, y} & = \inn{\sum_{i = 1}^n \inn{x, v_i} v_i, \sum_{j = 1}^n \inn{y, v_j} v_j}                  &  & \text{(by \cref{6.5})}         \\
-               & = \sum_{i = 1}^n \pa{\inn{x, v_i} \pa{\inn{v_i, \sum_{j = 1}^n \inn{y, v_j} v_j}}}        &  & \text{(by \cref{6.1.1}(a)(b))} \\
-               & = \sum_{i = 1}^n \pa{\inn{x, v_i} \pa{\sum_{j = 1}^n \conj{\inn{y, v_j}} \inn{v_i, v_j}}} &  & \text{(by \cref{6.1}(a)(b))}   \\
-               & = \sum_{i = 1}^n \sum_{j = 1}^n \pa{\inn{x, v_i} \conj{\inn{y, v_j}} \inn{v_i, v_j}}                                          \\
-               & = \sum_{i = 1}^n \inn{x, v_i} \conj{\inn{y, v_i}}.                                        &  & \text{(by \cref{6.1.12})}
-  \end{align*}
+	We have
+	\begin{align*}
+		\inn{x, y} & = \inn{\sum_{i = 1}^n \inn{x, v_i} v_i, \sum_{j = 1}^n \inn{y, v_j} v_j}                  &  & \by{6.5}       \\
+		           & = \sum_{i = 1}^n \pa{\inn{x, v_i} \pa{\inn{v_i, \sum_{j = 1}^n \inn{y, v_j} v_j}}}        &  & \by{6.1.1}[ab] \\
+		           & = \sum_{i = 1}^n \pa{\inn{x, v_i} \pa{\sum_{j = 1}^n \conj{\inn{y, v_j}} \inn{v_i, v_j}}} &  & \by{6.1}[ab]   \\
+		           & = \sum_{i = 1}^n \sum_{j = 1}^n \pa{\inn{x, v_i} \conj{\inn{y, v_j}} \inn{v_i, v_j}}                          \\
+		           & = \sum_{i = 1}^n \inn{x, v_i} \conj{\inn{y, v_i}}.                                        &  & \by{6.1.12}
+	\end{align*}
 \end{proof}
 
 \begin{proof}[\pf{ex:6.2.15}(b)]
-  Let \(\beta = \set{\seq{v}{1,,n}}\).
-  Then we have
-  \begin{align*}
-    \inn{\phi_{\beta}(x), \phi_{\beta}(y)}' & = \inn{[x]_{\beta}, [y]_{\beta}}'                       &  & \text{(by \cref{2.4.11})}       \\
-                                            & = \sum_{i = 1}^n ([x]_{\beta})_i \conj{([y]_{\beta})_i} &  & \text{(by \cref{6.1.2})}        \\
-                                            & = \sum_{i = 1}^n \inn{x, v_i} \conj{\inn{y, v_i}}       &  & \text{(by \cref{6.5})}          \\
-                                            & = \inn{x, y}.                                           &  & \text{(by \cref{ex:6.2.15}(a))}
-  \end{align*}
+	Let \(\beta = \set{\seq{v}{1,,n}}\).
+	Then we have
+	\begin{align*}
+		\inn{\phi_{\beta}(x), \phi_{\beta}(y)}' & = \inn{[x]_{\beta}, [y]_{\beta}}'                       &  & \by{2.4.11}       \\
+		                                        & = \sum_{i = 1}^n ([x]_{\beta})_i \conj{([y]_{\beta})_i} &  & \by{6.1.2}        \\
+		                                        & = \sum_{i = 1}^n \inn{x, v_i} \conj{\inn{y, v_i}}       &  & \by{6.5}          \\
+		                                        & = \inn{x, y}.                                           &  & \by{ex:6.2.15}[a]
+	\end{align*}
 \end{proof}
 
 \begin{ex}\label{ex:6.2.16}
-  \begin{enumerate}
-    \item \emph{Bessel's Inequality}.
-          Let \(\V\) be an inner product space over \(\F\), and let \(S = \set{\seq{v}{1,,n}}\) be an orthonormal subset of \(\V\).
-          Prove that for any \(x \in \V\) we have
-          \[
-            \norm{x}^2 \geq \sum_{i = 1}^n \abs{\inn{x, v_i}}^2.
-          \]
-    \item In the context of (a), prove that Bessel's inequality is an equality iff \(x \in \spn{S}\).
-  \end{enumerate}
+	\begin{enumerate}
+		\item \emph{Bessel's Inequality}.
+		      Let \(\V\) be an inner product space over \(\F\), and let \(S = \set{\seq{v}{1,,n}}\) be an orthonormal subset of \(\V\).
+		      Prove that for any \(x \in \V\) we have
+		      \[
+			      \norm{x}^2 \geq \sum_{i = 1}^n \abs{\inn{x, v_i}}^2.
+		      \]
+		\item In the context of (a), prove that Bessel's inequality is an equality iff \(x \in \spn{S}\).
+	\end{enumerate}
 \end{ex}
 
 \begin{proof}[\pf{ex:6.2.16}(a)]
-  Let \(\W = \spn{S}\).
-  Since \(S\) is finite, we know that \(\W\) is a finite-dimensional subspace of \(\V\) over \(\F\) and by \cref{6.6} we have
-  \[
-    \forall x \in \V, \exists (x_1, x_2) \in \W \times \W^{\perp} : x = x_1 + x_2.
-  \]
-  Thus
-  \begin{align*}
-    \forall x \in \V, \norm{x}^2 & = \norm{x_1 + x_2}^2                               &  & \text{(by \cref{6.6})}       \\
-                                 & = \norm{x_1}^2 + \norm{x_2}^2                      &  & \text{(by \cref{ex:6.1.10})} \\
-                                 & \geq \norm{x_1}^2                                  &  & \text{(by \cref{6.2}(b))}    \\
-                                 & = \norm{\sum_{i = 1}^n \inn{x, v_i} v_i}^2         &  & \text{(by \cref{6.6})}       \\
-                                 & = \sum_{i = 1}^n \norm{\inn{x, v_i} v_i}^2         &  & \text{(by \cref{ex:6.1.10})} \\
-                                 & = \sum_{i = 1}^n \abs{\inn{x, v_i}}^2 \norm{v_i}^2 &  & \text{(by \cref{6.2}(a))}    \\
-                                 & = \sum_{i = 1}^n \abs{\inn{x, v_i}}^2.             &  & \text{(by \cref{6.1.12})}
-  \end{align*}
+	Let \(\W = \spn{S}\).
+	Since \(S\) is finite, we know that \(\W\) is a finite-dimensional subspace of \(\V\) over \(\F\) and by \cref{6.6} we have
+	\[
+		\forall x \in \V, \exists (x_1, x_2) \in \W \times \W^{\perp} : x = x_1 + x_2.
+	\]
+	Thus
+	\begin{align*}
+		\forall x \in \V, \norm{x}^2 & = \norm{x_1 + x_2}^2                               &  & \by{6.6}       \\
+		                             & = \norm{x_1}^2 + \norm{x_2}^2                      &  & \by{ex:6.1.10} \\
+		                             & \geq \norm{x_1}^2                                  &  & \by{6.2}[b]    \\
+		                             & = \norm{\sum_{i = 1}^n \inn{x, v_i} v_i}^2         &  & \by{6.6}       \\
+		                             & = \sum_{i = 1}^n \norm{\inn{x, v_i} v_i}^2         &  & \by{ex:6.1.10} \\
+		                             & = \sum_{i = 1}^n \abs{\inn{x, v_i}}^2 \norm{v_i}^2 &  & \by{6.2}[a]    \\
+		                             & = \sum_{i = 1}^n \abs{\inn{x, v_i}}^2.             &  & \by{6.1.12}
+	\end{align*}
 \end{proof}
 
 \begin{proof}[\pf{ex:6.2.16}(b)]
-  First suppose that \(\norm{x}^2 = \sum_{i = 1}^n \abs{\inn{x, v_i}}^2\).
-  In the proof of \cref{ex:6.2.16}(a) we see that \(\norm{x}^2 = \norm{x_1}^2\).
-  This implies \(\norm{x_2} = 0\) and by \cref{6.2}(b) we have \(x_2 = \zv\).
-  Thus \(x = x_1\) and \(x \in \spn{S}\).
+	First suppose that \(\norm{x}^2 = \sum_{i = 1}^n \abs{\inn{x, v_i}}^2\).
+	In the proof of \cref{ex:6.2.16}(a) we see that \(\norm{x}^2 = \norm{x_1}^2\).
+	This implies \(\norm{x_2} = 0\) and by \cref{6.2}(b) we have \(x_2 = \zv\).
+	Thus \(x = x_1\) and \(x \in \spn{S}\).
 
-  Now suppose that \(x \in \spn{S}\).
-  Then we have
-  \begin{align*}
-    \norm{x}^2 & = \norm{\sum_{i = 1}^n \inn{x, v_i} v_i}^2         &  & \text{(by \cref{6.5})}       \\
-               & = \sum_{i = 1}^n \norm{\inn{x, v_i} v_i}^2         &  & \text{(by \cref{ex:6.1.10})} \\
-               & = \sum_{i = 1}^n \abs{\inn{x, v_i}}^2 \norm{v_i}^2 &  & \text{(by \cref{6.2}(a))}    \\
-               & = \sum_{i = 1}^n \abs{\inn{x, v_i}}^2.             &  & \text{(by \cref{6.1.12})}
-  \end{align*}
+	Now suppose that \(x \in \spn{S}\).
+	Then we have
+	\begin{align*}
+		\norm{x}^2 & = \norm{\sum_{i = 1}^n \inn{x, v_i} v_i}^2         &  & \by{6.5}       \\
+		           & = \sum_{i = 1}^n \norm{\inn{x, v_i} v_i}^2         &  & \by{ex:6.1.10} \\
+		           & = \sum_{i = 1}^n \abs{\inn{x, v_i}}^2 \norm{v_i}^2 &  & \by{6.2}[a]    \\
+		           & = \sum_{i = 1}^n \abs{\inn{x, v_i}}^2.             &  & \by{6.1.12}
+	\end{align*}
 \end{proof}
 
 \begin{ex}\label{ex:6.2.17}
-  Let \(\T\) be a linear operator on an inner product space \(\V\) over \(\F\).
-  If \(\inn{\T(x), y} = 0\) for all \(x, y \in \V\), prove that \(\T = \zT\).
-  In fact, prove this result if the equality holds for all \(x\) and \(y\) in some basis for \(\V\) over \(\F\).
+	Let \(\T\) be a linear operator on an inner product space \(\V\) over \(\F\).
+	If \(\inn{\T(x), y} = 0\) for all \(x, y \in \V\), prove that \(\T = \zT\).
+	In fact, prove this result if the equality holds for all \(x\) and \(y\) in some basis for \(\V\) over \(\F\).
 \end{ex}
 
 \begin{proof}[\pf{ex:6.2.17}]
-  Let \(\beta\) be a basis for \(\V\) over \(\F\) and suppose that
-  \[
-    \forall x, y \in \beta, \inn{\T(x), y} = 0.
-  \]
-  Then we have
-  \begin{align*}
-     & \forall z_1, z_2 \in \V, \begin{dcases}
-                                  \exists \seq{v}{1,,n} \in \beta \\
-                                  \exists \seq{a}{1,,n}, \seq{b}{1,,n} \in \F
-                                \end{dcases} :                                                  \\
-     & \inn{\T(z_1), z_2} = \inn{\T\pa{\sum_{i = 1}^n a_i v_i}, \sum_{j = 1}^n b_j v_j} &  & \text{(by \cref{1.7.10})}      \\
-     & = \inn{\sum_{i = 1}^n a_i \T(v_i), \sum_{j = 1}^n b_j v_j}                       &  & \text{(by \cref{2.1.2}(b))}    \\
-     & = \sum_{i = 1}^n a_i \inn{\T(v_i), \sum_{j = 1}^n b_j v_j}                       &  & \text{(by \cref{6.1.1}(a)(b))} \\
-     & = \sum_{i = 1}^n a_i \pa{\sum_{j = 1}^n \conj{b_j} \inn{\T(v_i), v_j}}           &  & \text{(by \cref{6.1}(a)(b))}   \\
-     & = 0.                                                                             &  & \text{(by hypothesis)}
-  \end{align*}
-  Now we show that \(\T = \zT\).
-  This is true since
-  \begin{align*}
-             & \forall x, y \in \V, \inn{\T(x), y} = \inn{\zv, y} = 0 &  & \text{(by \cref{6.1}(c))}   \\
-    \implies & \forall x, y \in \V, \inn{y, \T(x)} = \inn{y, \zv} = 0 &  & \text{(by \cref{6.1.1}(c))} \\
-    \implies & \forall x \in \V, \T(x) = \zv                          &  & \text{(by \cref{6.1}(e))}   \\
-    \implies & \T = \zT.                                              &  & \text{(by \cref{2.1.9})}
-  \end{align*}
+	Let \(\beta\) be a basis for \(\V\) over \(\F\) and suppose that
+	\[
+		\forall x, y \in \beta, \inn{\T(x), y} = 0.
+	\]
+	Then we have
+	\begin{align*}
+		 & \forall z_1, z_2 \in \V, \begin{dcases}
+			                            \exists \seq{v}{1,,n} \in \beta \\
+			                            \exists \seq{a}{1,,n}, \seq{b}{1,,n} \in \F
+		                            \end{dcases} :                                          \\
+		 & \inn{\T(z_1), z_2} = \inn{\T\pa{\sum_{i = 1}^n a_i v_i}, \sum_{j = 1}^n b_j v_j} &  & \by{1.7.10}            \\
+		 & = \inn{\sum_{i = 1}^n a_i \T(v_i), \sum_{j = 1}^n b_j v_j}                       &  & \by{2.1.2}[b]          \\
+		 & = \sum_{i = 1}^n a_i \inn{\T(v_i), \sum_{j = 1}^n b_j v_j}                       &  & \by{6.1.1}[ab]         \\
+		 & = \sum_{i = 1}^n a_i \pa{\sum_{j = 1}^n \conj{b_j} \inn{\T(v_i), v_j}}           &  & \by{6.1}[ab]           \\
+		 & = 0.                                                                             &  & \text{(by hypothesis)}
+	\end{align*}
+	Now we show that \(\T = \zT\).
+	This is true since
+	\begin{align*}
+		         & \forall x, y \in \V, \inn{\T(x), y} = \inn{\zv, y} = 0 &  & \by{6.1}[c]   \\
+		\implies & \forall x, y \in \V, \inn{y, \T(x)} = \inn{y, \zv} = 0 &  & \by{6.1.1}[c] \\
+		\implies & \forall x \in \V, \T(x) = \zv                          &  & \by{6.1}[e]   \\
+		\implies & \T = \zT.                                              &  & \by{2.1.9}
+	\end{align*}
 \end{proof}
 
 \begin{ex}\label{ex:6.2.18}
-  Let \(\V = \cfs([-1, 1], \C)\).
-  Suppose that \(\W_e\) and \(\W_o\) denote the subspaces of \(\V\) over \(\C\) consisting of the even and odd functions, respectively.
-  (See \cref{ex:1.3.22}.)
-  Prove that \(\W_e^{\perp} = \W_o\), where the inner product on \(\V\) over \(\F\) is defined by
-  \[
-    \forall f, g \in \V, \inn{f, g} = \int_{-1}^1 f(t) g(t) \; dt.
-  \]
+	Let \(\V = \cfs([-1, 1], \C)\).
+	Suppose that \(\W_e\) and \(\W_o\) denote the subspaces of \(\V\) over \(\C\) consisting of the even and odd functions, respectively.
+	(See \cref{ex:1.3.22}.)
+	Prove that \(\W_e^{\perp} = \W_o\), where the inner product on \(\V\) over \(\F\) is defined by
+	\[
+		\forall f, g \in \V, \inn{f, g} = \int_{-1}^1 f(t) g(t) \; dt.
+	\]
 \end{ex}
 
 \begin{proof}[\pf{ex:6.2.18}]
-  For each \(f \in \V\), we define \(f_e, f_o \in \V\) as follow:
-  \begin{align*}
-     & \forall t \in [-1, 1], f_e(t) = \frac{f(t) + f(-t)}{2}  \\
-     & \forall t \in [-1, 1], f_o(t) = \frac{f(t) - f(-t)}{2}.
-  \end{align*}
-  Then we have \(f = f_e + f_o\) and
-  \begin{align*}
-             & \forall t \in [-1, 1], f_e(-t) = \frac{f(-t) + f(-(-t))}{2} = f_e(t)                                    \\
-    \implies & f_e \in \W_e                                                          &  & \text{(by \cref{ex:1.3.22})} \\
-             & \forall t \in [-1, 1], f_o(-t) = \frac{f(-t) - f(-(-t))}{2} = -f_o(t)                                   \\
-    \implies & f_o \in \W_o.                                                         &  & \text{(by \cref{ex:1.3.22})}
-  \end{align*}
-  Thus by \cref{5.2.6} we have \(\V = \W_e + \W_o\).
-  Since
-  \begin{align*}
-             & f \in \W_e \cap \W_o                                                          \\
-    \implies & \forall t \in [-1, 1], f(t) = f(-t) = -f(t) &  & \text{(by \cref{ex:1.3.22})} \\
-    \implies & \forall t \in [-1, 1], f(t) = 0                                               \\
-    \implies & f = \zv                                                                       \\
-    \implies & \W_e \cap \W_o = \set{\zv},                 &  & \text{(by \cref{1.3}(a))}
-  \end{align*}
-  by \cref{5.2.7} we know that \(\V = \W_e \oplus \W_o\).
+	For each \(f \in \V\), we define \(f_e, f_o \in \V\) as follow:
+	\begin{align*}
+		 & \forall t \in [-1, 1], f_e(t) = \frac{f(t) + f(-t)}{2}  \\
+		 & \forall t \in [-1, 1], f_o(t) = \frac{f(t) - f(-t)}{2}.
+	\end{align*}
+	Then we have \(f = f_e + f_o\) and
+	\begin{align*}
+		         & \forall t \in [-1, 1], f_e(-t) = \frac{f(-t) + f(-(-t))}{2} = f_e(t)                      \\
+		\implies & f_e \in \W_e                                                          &  & \by{ex:1.3.22} \\
+		         & \forall t \in [-1, 1], f_o(-t) = \frac{f(-t) - f(-(-t))}{2} = -f_o(t)                     \\
+		\implies & f_o \in \W_o.                                                         &  & \by{ex:1.3.22}
+	\end{align*}
+	Thus by \cref{5.2.6} we have \(\V = \W_e + \W_o\).
+	Since
+	\begin{align*}
+		         & f \in \W_e \cap \W_o                                            \\
+		\implies & \forall t \in [-1, 1], f(t) = f(-t) = -f(t) &  & \by{ex:1.3.22} \\
+		\implies & \forall t \in [-1, 1], f(t) = 0                                 \\
+		\implies & f = \zv                                                         \\
+		\implies & \W_e \cap \W_o = \set{\zv},                 &  & \by{1.3}[a]
+	\end{align*}
+	by \cref{5.2.7} we know that \(\V = \W_e \oplus \W_o\).
 
-  Now we show that \(\W_o \subseteq \W_e^{\perp}\).
-  This is true since
-  \begin{align*}
-             & f \in \W_o                                                                                            \\
-    \implies & \forall (g, t) \in \W_e \times [-1, 1], f(-t) g(-t) = -f(t) g(t)    &  & \text{(by \cref{ex:1.3.22})} \\
-    \implies & \forall (g, t) \in \W_e \times [-1, 1], f(t) g(t) + f(-t) g(-t) = 0                                   \\
-    \implies & \forall (g, t) \in \W_e \times [0, 1], f(t) g(t) + f(-t) g(-t) = 0                                    \\
-    \implies & \forall g \in \W_e, 0 = \int_0^1 f(t) g(t) + f(-t) g(-t) \; dt                                        \\
-             & = \int_0^1 f(t) g(t) \; dt + \int_0^1 f(-t) g(-t) \; dt                                               \\
-             & = \int_0^1 f(t) g(t) \; dt + \int_{-1}^0 f(t) g(t) \; dt                                              \\
-             & = \int_{-1}^1 f(t) g(t) \; dt = \inn{f, g}                          &  & \text{(by \cref{ex:6.2.18})} \\
-    \implies & f \in \W_e^{\perp}.                                                 &  & \text{(by \cref{6.2.9})}
-  \end{align*}
+	Now we show that \(\W_o \subseteq \W_e^{\perp}\).
+	This is true since
+	\begin{align*}
+		         & f \in \W_o                                                                              \\
+		\implies & \forall (g, t) \in \W_e \times [-1, 1], f(-t) g(-t) = -f(t) g(t)    &  & \by{ex:1.3.22} \\
+		\implies & \forall (g, t) \in \W_e \times [-1, 1], f(t) g(t) + f(-t) g(-t) = 0                     \\
+		\implies & \forall (g, t) \in \W_e \times [0, 1], f(t) g(t) + f(-t) g(-t) = 0                      \\
+		\implies & \forall g \in \W_e, 0 = \int_0^1 f(t) g(t) + f(-t) g(-t) \; dt                          \\
+		         & = \int_0^1 f(t) g(t) \; dt + \int_0^1 f(-t) g(-t) \; dt                                 \\
+		         & = \int_0^1 f(t) g(t) \; dt + \int_{-1}^0 f(t) g(t) \; dt                                \\
+		         & = \int_{-1}^1 f(t) g(t) \; dt = \inn{f, g}                          &  & \by{ex:6.2.18} \\
+		\implies & f \in \W_e^{\perp}.                                                 &  & \by{6.2.9}
+	\end{align*}
 
-  Finally we show that \(\W_e^{\perp} \subseteq \W_o\).
-  This is true since
-  \begin{align*}
-             & f \in \W_e^{\perp}                                                                                 \\
-    \implies & \forall g \in \W_e, 0 = \inn{f, g}                              &  & \text{(by \cref{6.2.9})}      \\
-             & = \inn{f_o + f_e, g}                                            &  & \text{(from the proof above)} \\
-             & = \inn{f_o, g} + \inn{f_e, g}                                   &  & \text{(by \cref{6.1.1}(a))}   \\
-             & = \int_{-1}^1 f_o(t) g(t) \; dt + \int_{-1}^1 f_e(t) g(t) \; dt &  & \text{(by \cref{ex:6.2.18})}  \\
-             & = \int_{-1}^1 f_e(t) g(t) \; dt                                 &  & (f_o \cdot g \in \W_o)        \\
-             & = \inn{f_e, g}                                                  &  & \text{(by \cref{ex:6.2.18})}  \\
-    \implies & \norm{f_e}^2 = \inn{f_e, f_e} = 0                               &  & (f_e \in \W_e)                \\
-    \implies & f_e = \zv                                                       &  & \text{(by \cref{6.2}(b))}     \\
-    \implies & f = f_o \in \W_o.
-  \end{align*}
-  Thus we have \(\W_e^{\perp} = \W_o\).
+	Finally we show that \(\W_e^{\perp} \subseteq \W_o\).
+	This is true since
+	\begin{align*}
+		         & f \in \W_e^{\perp}                                                                                 \\
+		\implies & \forall g \in \W_e, 0 = \inn{f, g}                              &  & \by{6.2.9}                    \\
+		         & = \inn{f_o + f_e, g}                                            &  & \text{(from the proof above)} \\
+		         & = \inn{f_o, g} + \inn{f_e, g}                                   &  & \by{6.1.1}[a]                 \\
+		         & = \int_{-1}^1 f_o(t) g(t) \; dt + \int_{-1}^1 f_e(t) g(t) \; dt &  & \by{ex:6.2.18}                \\
+		         & = \int_{-1}^1 f_e(t) g(t) \; dt                                 &  & (f_o \cdot g \in \W_o)        \\
+		         & = \inn{f_e, g}                                                  &  & \by{ex:6.2.18}                \\
+		\implies & \norm{f_e}^2 = \inn{f_e, f_e} = 0                               &  & (f_e \in \W_e)                \\
+		\implies & f_e = \zv                                                       &  & \by{6.2}[b]                   \\
+		\implies & f = f_o \in \W_o.
+	\end{align*}
+	Thus we have \(\W_e^{\perp} = \W_o\).
 \end{proof}
 
 \setcounter{ex}{22}
 \begin{ex}\label{ex:6.2.23}
-  Let \(\V\) be the vector space defined \cref{1.2.13}, the space of all sequences \(\sigma\) in \(\F\) (where \(\F = \R\) or \(\F = \C\)) such that \(\sigma(n) \neq 0\) for only finitely many positive integers \(n\).
-  For \(\sigma, \mu \in \V\), we define \(\inn{\sigma, \mu} = \sum_{n = 1}^\infty \sigma(n) \conj{\mu(n)}\).
-  Since all but a finite number of terms of the series are zero, the series converges.
-  \begin{enumerate}
-    \item Prove that \(\inn{\cdot, \cdot}\) is an inner product on \(\V\) over \(\F\), and hence \(\V\) is an inner product space over \(\F\).
-    \item For each positive integer \(n\), let \(e_n\) be the sequence defined by \(e_n(k) = \delta_{n k}\), where \(\delta_{n k}\) is the Kronecker delta.
-          Prove that \(\set{\seq{e}{1,2,}}\) is an orthonormal basis for \(\V\) over \(\F\).
-    \item Let \(\sigma_n = e_1 + e_n\) and \(\W = \spn{\set{\sigma_n : n \geq 2}}\).
-          \begin{enumerate}
-            \item Prove that \(e_1 \notin \W\), so \(\W \neq \V\).
-            \item Prove that \(\W^{\perp} = \set{\zv}\), and conclude that \(\W \neq (\W^{\perp})^{\perp}\).
-          \end{enumerate}
-          Thus the assumption in \cref{ex:6.2.13}(c) that \(\W\) is finite-dimensional is essential.
-  \end{enumerate}
+	Let \(\V\) be the vector space defined \cref{1.2.13}, the space of all sequences \(\sigma\) in \(\F\) (where \(\F = \R\) or \(\F = \C\)) such that \(\sigma(n) \neq 0\) for only finitely many positive integers \(n\).
+	For \(\sigma, \mu \in \V\), we define \(\inn{\sigma, \mu} = \sum_{n = 1}^\infty \sigma(n) \conj{\mu(n)}\).
+	Since all but a finite number of terms of the series are zero, the series converges.
+	\begin{enumerate}
+		\item Prove that \(\inn{\cdot, \cdot}\) is an inner product on \(\V\) over \(\F\), and hence \(\V\) is an inner product space over \(\F\).
+		\item For each positive integer \(n\), let \(e_n\) be the sequence defined by \(e_n(k) = \delta_{n k}\), where \(\delta_{n k}\) is the Kronecker delta.
+		      Prove that \(\set{\seq{e}{1,2,}}\) is an orthonormal basis for \(\V\) over \(\F\).
+		\item Let \(\sigma_n = e_1 + e_n\) and \(\W = \spn{\set{\sigma_n : n \geq 2}}\).
+		      \begin{enumerate}
+			      \item Prove that \(e_1 \notin \W\), so \(\W \neq \V\).
+			      \item Prove that \(\W^{\perp} = \set{\zv}\), and conclude that \(\W \neq (\W^{\perp})^{\perp}\).
+		      \end{enumerate}
+		      Thus the assumption in \cref{ex:6.2.13}(c) that \(\W\) is finite-dimensional is essential.
+	\end{enumerate}
 \end{ex}
 
 \begin{proof}[\pf{ex:6.2.23}(a)]
-  Let \(a, b, c \in \V\) and let \(k \in \F\).
-  Then we have
-  \begin{align*}
-    \inn{a + b, c}    & = \sum_{n = 1}^\infty (a(n) + b(n)) \conj{c(n)}                               &  & \text{(by \cref{ex:6.2.23})}    \\
-                      & = \sum_{n = 1}^\infty a(n) \conj{c(n)} + \sum_{n = 1}^\infty b(n) \conj{c(n)}                                      \\
-                      & = \inn{a, c} + \inn{b, c}                                                     &  & \text{(by \cref{ex:6.2.23})}    \\
-    \inn{ka, b}       & = \sum_{n = 1}^\infty (ka)(n) \conj{b(n)}                                     &  & \text{(by \cref{ex:6.2.23})}    \\
-                      & = k \sum_{n = 1}^\infty a(n) \conj{b(n)}                                                                           \\
-                      & = k \inn{a, b}                                                                &  & \text{(by \cref{ex:6.2.23})}    \\
-    \conj{\inn{a, b}} & = \conj{\sum_{n = 1}^\infty a(n) \conj{b(n)}}                                 &  & \text{(by \cref{ex:6.2.23})}    \\
-                      & = \sum_{n = 1}^\infty \conj{a(n)} b(n)                                        &  & \text{(by \cref{d.2}(a)(b)(c))} \\
-                      & = \inn{b, a}.                                                                 &  & \text{(by \cref{ex:6.2.23})}
-  \end{align*}
-  If \(a \neq \zv\), then we have
-  \begin{align*}
-             & \exists n \in \Z^+ : a(n) \neq 0                                                           \\
-    \implies & \exists n \in \Z^+ : a(n) \conj{a(n)} = \abs{a(n)}^2 > 0 &  & \text{(by \cref{d.0.5})}     \\
-    \implies & \inn{a, a} = \sum_{n = 1}^\infty a(n) \conj{a(n)} > 0.   &  & \text{(by \cref{ex:6.2.23})}
-  \end{align*}
-  Thus by \cref{6.1.1} \(\inn{\cdot, \cdot}\) is an inner product on \(\V\) over \(\F\).
+	Let \(a, b, c \in \V\) and let \(k \in \F\).
+	Then we have
+	\begin{align*}
+		\inn{a + b, c}    & = \sum_{n = 1}^\infty (a(n) + b(n)) \conj{c(n)}                               &  & \by{ex:6.2.23} \\
+		                  & = \sum_{n = 1}^\infty a(n) \conj{c(n)} + \sum_{n = 1}^\infty b(n) \conj{c(n)}                     \\
+		                  & = \inn{a, c} + \inn{b, c}                                                     &  & \by{ex:6.2.23} \\
+		\inn{ka, b}       & = \sum_{n = 1}^\infty (ka)(n) \conj{b(n)}                                     &  & \by{ex:6.2.23} \\
+		                  & = k \sum_{n = 1}^\infty a(n) \conj{b(n)}                                                          \\
+		                  & = k \inn{a, b}                                                                &  & \by{ex:6.2.23} \\
+		\conj{\inn{a, b}} & = \conj{\sum_{n = 1}^\infty a(n) \conj{b(n)}}                                 &  & \by{ex:6.2.23} \\
+		                  & = \sum_{n = 1}^\infty \conj{a(n)} b(n)                                        &  & \by{d.2}[abc]  \\
+		                  & = \inn{b, a}.                                                                 &  & \by{ex:6.2.23}
+	\end{align*}
+	If \(a \neq \zv\), then we have
+	\begin{align*}
+		         & \exists n \in \Z^+ : a(n) \neq 0                                             \\
+		\implies & \exists n \in \Z^+ : a(n) \conj{a(n)} = \abs{a(n)}^2 > 0 &  & \by{d.0.5}     \\
+		\implies & \inn{a, a} = \sum_{n = 1}^\infty a(n) \conj{a(n)} > 0.   &  & \by{ex:6.2.23}
+	\end{align*}
+	Thus by \cref{6.1.1} \(\inn{\cdot, \cdot}\) is an inner product on \(\V\) over \(\F\).
 \end{proof}
 
 \begin{proof}[\pf{ex:6.2.23}(b)]
-  We have
-  \begin{align*}
-    \forall p, q \in \Z^+, \inn{e_p, e_q} & = \sum_{n = 1}^\infty \delta_{p n} \conj{\delta_{q n}} &  & \text{(by \cref{ex:6.2.23})} \\
-                                          & = \sum_{n = 1}^\infty \delta_{p n} \delta_{q n}        &  & (\delta_{q n} \in \R)        \\
-                                          & = \delta_{p q}.                                        &  & \text{(by \cref{2.3.4})}
-  \end{align*}
-  Thus by \cref{ex:1.6.18,6.1.12,6.2.1} \(\set{\seq{e}{1,2,}}\) is an orthonormal basis for \(\V\) over \(\F\).
+	We have
+	\begin{align*}
+		\forall p, q \in \Z^+, \inn{e_p, e_q} & = \sum_{n = 1}^\infty \delta_{p n} \conj{\delta_{q n}} &  & \by{ex:6.2.23}        \\
+		                                      & = \sum_{n = 1}^\infty \delta_{p n} \delta_{q n}        &  & (\delta_{q n} \in \R) \\
+		                                      & = \delta_{p q}.                                        &  & \by{2.3.4}
+	\end{align*}
+	Thus by \cref{ex:1.6.18,6.1.12,6.2.1} \(\set{\seq{e}{1,2,}}\) is an orthonormal basis for \(\V\) over \(\F\).
 \end{proof}
 
 \begin{proof}[\pf{ex:6.2.23}(c)]
-  First we show that \(e_1 \notin \W\) and \(\V \neq \W\).
-  This is true since
-  \begin{align*}
-             & \forall n \geq 2, \sigma_n = e_1 + e_n                             \\
-    \implies & \forall \seq{a}{2,,n} \in \F, e_1 \neq \sum_{k = 2}^n a_k \sigma_k \\
-    \implies & e_1 \notin \spn{\set{\sigma_n : n \geq 2}} = \W                    \\
-    \implies & e_1 \in \V \setminus \W                                            \\
-    \implies & \V \neq \W.
-  \end{align*}
+	First we show that \(e_1 \notin \W\) and \(\V \neq \W\).
+	This is true since
+	\begin{align*}
+		         & \forall n \geq 2, \sigma_n = e_1 + e_n                             \\
+		\implies & \forall \seq{a}{2,,n} \in \F, e_1 \neq \sum_{k = 2}^n a_k \sigma_k \\
+		\implies & e_1 \notin \spn{\set{\sigma_n : n \geq 2}} = \W                    \\
+		\implies & e_1 \in \V \setminus \W                                            \\
+		\implies & \V \neq \W.
+	\end{align*}
 
-  Now we show that \(\W^{\perp} = \set{\zv}\) and \(\W \neq (\W^{\perp})^{\perp}\).
-  Since
-  \begin{align*}
-             & \mu \in \W^{\perp}                                                                                                          \\
-    \implies & \forall x \in \W, \inn{\mu, x} = 0                                                        &  & \text{(by \cref{6.2.9})}     \\
-    \implies & \forall n \geq 2, 0 = \inn{\sigma_n, \mu} = \sum_{k = 1}^\infty \sigma_n(k) \conj{\mu(k)} &  & \text{(by \cref{ex:6.2.23})} \\
-             & = \sum_{k = 1}^\infty e_1(k) \conj{\mu(k)} + \sum_{k = 1}^\infty e_n(k) \conj{\mu(k)}                                       \\
-             & = \conj{\mu(1)} + \conj{\mu(n)}                                                                                             \\
-    \implies & \conj{\mu(1)} = 0                                                                         &  & (\mu \in \V)                 \\
-    \implies & \mu(1) = 0                                                                                                                  \\
-    \implies & \forall n \geq 1, \mu(n) = 0                                                                                                \\
-    \implies & \mu = \zv,
-  \end{align*}
-  by \cref{6.2.10} we have \(\W^{\perp} = \set{\zv}\).
-  Thus \(\W \neq (\W^{\perp})^{\perp}\).
+	Now we show that \(\W^{\perp} = \set{\zv}\) and \(\W \neq (\W^{\perp})^{\perp}\).
+	Since
+	\begin{align*}
+		         & \mu \in \W^{\perp}                                                                                            \\
+		\implies & \forall x \in \W, \inn{\mu, x} = 0                                                        &  & \by{6.2.9}     \\
+		\implies & \forall n \geq 2, 0 = \inn{\sigma_n, \mu} = \sum_{k = 1}^\infty \sigma_n(k) \conj{\mu(k)} &  & \by{ex:6.2.23} \\
+		         & = \sum_{k = 1}^\infty e_1(k) \conj{\mu(k)} + \sum_{k = 1}^\infty e_n(k) \conj{\mu(k)}                         \\
+		         & = \conj{\mu(1)} + \conj{\mu(n)}                                                                               \\
+		\implies & \conj{\mu(1)} = 0                                                                         &  & (\mu \in \V)   \\
+		\implies & \mu(1) = 0                                                                                                    \\
+		\implies & \forall n \geq 1, \mu(n) = 0                                                                                  \\
+		\implies & \mu = \zv,
+	\end{align*}
+	by \cref{6.2.10} we have \(\W^{\perp} = \set{\zv}\).
+	Thus \(\W \neq (\W^{\perp})^{\perp}\).
 \end{proof}
