@@ -6,11 +6,11 @@
 \end{defn}
 
 \begin{eg}\label{2.6.2}
-  Let \(\V\) be the vector space of continuous real-valued functions on the interval \([0, 2\pi]\).
+  Let \(\V\) be the vector space of continuous real-valued functions on the interval \([0, 2 \pi]\).
   Fix a function \(g \in \V\).
   The function \(h : \V \to \R\) defined by
   \[
-    h(x) = \frac{1}{2\pi} \int_{0}^{2\pi} x(t) g(t) \; dt
+    h(x) = \frac{1}{2 \pi} \int_{0}^{2 \pi} x(t) g(t) \; dt
   \]
   is a linear functional on \(\V\).
   In the cases that \(g(t)\) equals \(\sin(nt)\) or \(\cos(nt)\), \(h(x)\) is often called the \textbf{\(n\)th Fourier coefficient of \(x\)}.
@@ -20,10 +20,10 @@
   Let \(f_1, f_2 \in \V\) and let \(c \in \R\).
   Then we have
   \begin{align*}
-    h(cf_1 + f_2) & = \frac{1}{2\pi} \int_{0}^{2\pi} (cf_1 + f_2)(t) g(t) \; dt                                           &  & \text{(by \cref{2.6.2})} \\
-                  & = \frac{1}{2\pi} \int_{0}^{2\pi} cf_1(t) g(t) + f_2(t) g(t) \; dt                                                                   \\
-                  & = \frac{c}{2\pi} \int_{0}^{2\pi} f_1(t) g(t) \; dt + \frac{1}{2\pi} \int_{0}^{2\pi} f_2(t) g(t) \; dt                               \\
-                  & = c h(f_1) + h(f_2)                                                                                   &  & \text{(by \cref{2.6.2})}
+    h(cf_1 + f_2) & = \frac{1}{2 \pi} \int_{0}^{2 \pi} (cf_1 + f_2)(t) g(t) \; dt                                             &  & \text{(by \cref{2.6.2})} \\
+                  & = \frac{1}{2 \pi} \int_{0}^{2 \pi} cf_1(t) g(t) + f_2(t) g(t) \; dt                                                                     \\
+                  & = \frac{c}{2 \pi} \int_{0}^{2 \pi} f_1(t) g(t) \; dt + \frac{1}{2 \pi} \int_{0}^{2 \pi} f_2(t) g(t) \; dt                               \\
+                  & = c h(f_1) + h(f_2)                                                                                       &  & \text{(by \cref{2.6.2})}
   \end{align*}
   and thus by \cref{2.1.2}(b) \(h \in \ls(\V, \F)\).
 \end{proof}

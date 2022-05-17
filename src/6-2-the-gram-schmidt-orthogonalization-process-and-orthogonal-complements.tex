@@ -140,11 +140,11 @@
 
   In the first half of the 19th century, the French mathematician Jean Baptiste Fourier was associated with the study of the scalars
   \[
-    \int_0^{2\pi} f(t) \sin(nt) \; dt \quad \text{and} \quad \int_0^{2\pi} f(t) \cos(nt) \; dt,
+    \int_0^{2 \pi} f(t) \sin(nt) \; dt \quad \text{and} \quad \int_0^{2 \pi} f(t) \cos(nt) \; dt,
   \]
   or more generally,
   \[
-    c_n = \frac{1}{2\pi} \int_0^{2\pi} f(t) e^{-int} \; dt,
+    c_n = \frac{1}{2 \pi} \int_0^{2 \pi} f(t) e^{-int} \; dt,
   \]
   for a function \(f\).
   In the context of \cref{6.1.8}, we see that \(c_n = \inn{f, f_n}\), where \(f_n(t) = e^{int}\);
@@ -158,15 +158,15 @@
   We compute the Fourier coefficients of \(f(t) = t\) relative to \(S\).
   Using integration by parts, we have, for \(n \neq 0\),
   \begin{align*}
-    \inn{f, f_n} & = \frac{1}{2\pi} \int_0^{2\pi} t \conj{e^{int}} \; dt                                         \\
-                 & = \frac{1}{2\pi} \int_0^{2\pi} t e^{-int} \; dt                                               \\
-                 & = \frac{1}{2\pi} \pa{\eval{\frac{-1}{in} t e^{-int}}_0^{2\pi} - \int_0^{2\pi} e^{-int} \; dt} \\
-                 & = \frac{1}{2\pi} \pa{\frac{-2\pi}{in} - \frac{-1}{in} \eval{e^{-int}}_0^{2\pi}}               \\
+    \inn{f, f_n} & = \frac{1}{2 \pi} \int_0^{2 \pi} t \conj{e^{int}} \; dt                                          \\
+                 & = \frac{1}{2 \pi} \int_0^{2 \pi} t e^{-int} \; dt                                                \\
+                 & = \frac{1}{2 \pi} \pa{\eval{\frac{-1}{in} t e^{-int}}_0^{2 \pi} - \int_0^{2 \pi} e^{-int} \; dt} \\
+                 & = \frac{1}{2 \pi} \pa{\frac{-2 \pi}{in} - \frac{-1}{in} \eval{e^{-int}}_0^{2 \pi}}               \\
                  & = \frac{-1}{in},
   \end{align*}
   and, for \(n = 0\),
   \[
-    \inn{f, 1} = \frac{1}{2\pi} \int_0^{2\pi} t(1) \; dt = \pi.
+    \inn{f, 1} = \frac{1}{2 \pi} \int_0^{2 \pi} t(1) \; dt = \pi.
   \]
   As a result of these computations, and using \cref{ex:6.2.16}, we obtain an upper bound for the sum of a special infinite series as follows:
   \begin{align*}

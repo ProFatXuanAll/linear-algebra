@@ -87,31 +87,34 @@
 % each chapter).  Theorems and exercises has their owned counter.  Notes do not
 % use counter.  See `amsthm' for details.
 \theoremstyle{definition}
-\newtheorem{ax}{Axiom}[section]
-\newtheorem{cor}[ax]{Corollary}
-\newtheorem{defn}[ax]{Definition}
-\newtheorem{eg}[ax]{Example}
-\newtheorem{ex}{Exercise}[section]
-\newtheorem{lem}[ax]{Lemma}
+\newtheorem{ax}{Ax.}[section]
+\newtheorem{cor}[ax]{Cor.}
+\newtheorem{defn}[ax]{Def.}
+\newtheorem{eg}[ax]{E.g.}
+\newtheorem{ex}{Ex.}[section]
+\newtheorem{lem}[ax]{Lem.}
+\newtheorem{prop}[ax]{Prop.}
+\newtheorem{thm}{Thm.}[chapter]
 \newtheorem*{note}{Note}
-\newtheorem{prop}[ax]{Proposition}
-\newtheorem{rem}[ax]{Remark}
-\newtheorem{thm}{Theorem}[chapter]
 
-% Define plural form for theorem-like environments. See `cleveref' for details.
-\crefname{ax}{Axiom}{Axioms}
-\crefname{cor}{Corollary}{Corollaries}
-\crefname{defn}{Definition}{Definitions}
-\crefname{eg}{Example}{Examples}
-\crefname{ex}{Exercise}{Exercises}
-\crefname{lem}{Lemma}{Lemmas} % We don not use Lemmata.
-\crefname{note}{Note}{Notes}
-\crefname{prop}{Proposition}{Propositions}
-\crefname{rem}{Remark}{Remarks}
-\crefname{thm}{Theorem}{Theorems}
+% Define plural form for theorem-like environments.  This is needed when we
+% call `cref' with multiple references.  See `cleveref' for details.
+\crefname{ax}{Ax.}{Ax.}
+\crefname{cor}{Cor.}{Cor.}
+\crefname{defn}{Def.}{Def.}
+\crefname{eg}{E.g.}{E.g.}
+\crefname{ex}{Ex.}{Ex.}
+\crefname{lem}{Lem.}{Lem.}
+\crefname{note}{Note}{Note}
+\crefname{prop}{Prop.}{Prop.}
+\crefname{section}{Sec.}{Sec.}
+\crefname{chapter}{Ch.}{Ch.}
+\crefname{thm}{Thm.}{Thm.}
 
-% Proof reference text.
+% Proof environments reference text.
 \newcommand{\pf}[1]{Proof of \cref{#1}}
+% Proof statements reference text.
+\newcommand{\by}[1]{(\text{by \cref{#1}})}
 
 % In `enumerate' enviroments, items' label are alphabets and surrounded by
 % parentheses.  See `enumitem' for details.
@@ -376,6 +379,10 @@
 
 % Table of contents.
 \tableofcontents
+
+% Notations explanation.
+\input{notations.tex}
+\addcontentsline{toc}{chapter}{Notations}
 
 %------------------------------------------------------------------------------
 % Main matters.
