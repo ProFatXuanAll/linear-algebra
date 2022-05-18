@@ -38,3 +38,154 @@
 	since \(\abs{h(t)}^2 = 1\) for all \(t \in [0, 2 \pi]\).
 	So \(\T\) is a unitary operator.
 \end{eg}
+
+\begin{lem}\label{6.5.3}
+	Let \(\U\) be a self-adjoint operator on a finite-dimensional inner product space \(\V\) over \(\F\).
+	If \(\inn{x, \U(x)} = 0\) for all \(x \in \V\), then \(\U = \zT\).
+\end{lem}
+
+\begin{proof}[\pf{6.5.3}]
+	By either \cref{6.16} or \cref{6.17}, we may choose an orthonormal basis \(\beta\) for \(\V\) over \(\F\) consisting of eigenvectors of \(\U\).
+	If \(x \in \beta\), then \(\U(x) = \lambda x\) for some \(\lambda\).
+	Thus
+	\begin{align*}
+		0 & = \inn{x, \U(x)}                              \\
+		  & = \inn{x, \lambda x}         &  & \by{5.1.2}  \\
+		  & = \conj{\lambda} \inn{x, x}; &  & \by{6.1}[b]
+	\end{align*}
+	so \(\lambda = 0\).
+	Hence \(\U(x) = \zv\) for all \(x \in \beta\), and thus \(\U = \zT\).
+\end{proof}
+
+\begin{note}
+	Compare \cref{6.5.3} to \cref{ex:6.4.11}(b).
+\end{note}
+
+\begin{thm}\label{6.18}
+	Let \(\T\) be a linear operator on a finite-dimensional inner product space \(\V\) over \(\F\).
+	Then the following statements are equivalent.
+	\begin{enumerate}
+		\item \(\T \T^* = \T^* \T = \IT[\V]\).
+		\item \(\inn{\T(x), \T(y)} = \inn{x, y}\) for all \(x, y \in \V\).
+		\item If \(\beta\) is an orthonormal basis for \(\V\) over \(\F\), then \(\T(\beta)\) is an orthonormal basis for \(\V\) over \(\F\).
+		\item There exists an orthonormal basis \(\beta\) for \(\V\) over \(\F\) such that \(\T(\beta)\) is an orthonormal basis for \(\V\) over \(\F\).
+		\item \(\norm{\T(x)} = \norm{x}\) for all \(x \in \V\).
+	\end{enumerate}
+	Thus all the conditions above are equivalent to the definition of a unitary or orthogonal operator.
+	From (a), it follows that unitary or orthogonal operators are normal.
+\end{thm}
+
+\begin{proof}[\pf{6.18}]
+	We prove first that (a) implies (b).
+	Let \(x, y \in \V\).
+	Then \(\inn{x, y} = \inn{\T^* \T(x), y} = \inn{\T(x), \T(y)}\).
+
+	Second, we prove that (b) implies (c).
+	Let \(\beta = \set{\seq{v}{1,,n}}\) be an orthonormal basis for \(\V\) over \(\F\);
+	so \(\T(\beta) = \set{\T(v_1), \dots, \T(v_n)}\).
+	It follows that \(\inn{\T(v_i), \T(v_j)} = \inn{v_i, v_j} = \delta_{i j}\).
+	Therefore \(\T(\beta)\) is an orthonormal basis for \(\V\) over \(\F\).
+
+	That (c) implies (d) is obvious.
+
+	Next we prove that (d) implies (e).
+	Let \(x \in \V\), and let \(\beta = \set{\seq{v}{1,,n}}\).
+	Now
+	\[
+		x = \sum_{i = 1}^n a_i v_i
+	\]
+	for some scalars \(a_i \in \F\), and so
+	\begin{align*}
+		\norm{x}^2 & = \inn{\sum_{i = 1}^n a_i v_i, \sum_{j = 1}^n a_j v_j}         &  & \by{6.1.9}     \\
+		           & = \sum_{i = 1}^n  a_i \inn{v_i, \sum_{j = 1}^n \conj{a_j} v_j} &  & \by{6.1.1}[ab] \\
+		           & = \sum_{i = 1}^n \sum_{j = 1}^n a_i \conj{a_j} \inn{v_i, v_j}  &  & \by{6.1}[ab]   \\
+		           & = \sum_{i = 1}^n \sum_{j = 1}^n a_i \conj{a_j} \delta_{i j}    &  & \by{6.1.12}    \\
+		           & = \sum_{i = 1}^n a_i \conj{a_i}                                &  & \by{2.3.4}     \\
+		           & = \sum_{i = 1}^n \abs{a_i}^2                                   &  & \by{d.0.5}
+	\end{align*}
+	since \(\beta\) is orthonormal.
+
+	Applying the same manipulations to
+	\[
+		\T(x) = \sum_{i = 1}^n a_i \T(v_i)
+	\]
+	and using the fact that \(\T(\beta)\) is also orthonormal, we obtain
+	\[
+		\norm{\T(x)}^2 = \sum_{i = 1}^n \abs{a_i}^2.
+	\]
+	Hence \(\norm{\T(x)} = \norm{x}\).
+
+	Finally, we prove that (e) implies (a).
+	For any \(x \in \V\), we have
+	\begin{align*}
+		\inn{x, x} & = \norm{x}^2           &  & \by{6.1.9} \\
+		           & = \norm{\T(x)}^2                       \\
+		           & = \inn{\T(x), \T(x)}   &  & \by{6.1.9} \\
+		           & = \inn{x, \T^* \T(x)}. &  & \by{6.9}
+	\end{align*}
+	So \(\inn{x, (\IT[\V] - \T^* \T)(x)} = 0\) for all \(x \in \V\).
+	Let \(\U = \IT[\V] - \T^* \T\);
+	then \(\U\) is self-adjoint (by \cref{6.11}) and \(\inn{x, \U(x)} = 0\) for all \(x \in \V\).
+	Hence, by \cref{6.5.3}, we have \(\zT = \U = \IT[\V] - \T^* \T\), and therefore \(\T^* \T = \IT[\V]\).
+	Since \(\V\) is finite-dimensional, we may use \cref{ex:2.4.10} to conclude that \(\T \T^* = \IT[\V]\).
+\end{proof}
+
+\begin{cor}\label{6.5.4}
+	Let \(\T\) be a linear operator on a finite-dimensional real inner product space \(\V\).
+	Then \(\V\) has an orthonormal basis of eigenvectors of \(\T\) with corresponding eigenvalues of absolute value \(1\) iff \(\T\) is both self-adjoint and orthogonal.
+\end{cor}
+
+\begin{proof}[\pf{6.5.4}]
+	Suppose that \(\V\) has an orthonormal basis \(\set{\seq{v}{1,,n}}\) over \(\R\) such that \(\T(v_i) = \lambda_i v_i\) and \(\abs{\lambda_i} = 1\) for all \(i \in \set{1, \dots, n}\).
+	By \cref{6.17}, \(\T\) is self-adjoint.
+	Thus
+	\begin{align*}
+		(\T \T^*)(v_i) & = (\T \T)(v_i)            &  & \by{6.4.8}                                          \\
+		               & = \T(\lambda_i v_i)       &  & \by{5.1.2}                                          \\
+		               & = \lambda_i \lambda_i v_i &  & \by{5.1.2}                                          \\
+		               & = \lambda_i^2 v_i                                                                  \\
+		               & = v_i                     &  & (\abs{\lambda_i} = 1 \text{ and } \lambda_i \in \R)
+	\end{align*}
+	for each \(i \in \set{1, \dots, n}\).
+	So \(\T \T^* = \IT[\V]\), and again by \cref{ex:2.4.10}, \(\T\) is orthogonal by \cref{6.18}(a).
+
+	If \(\T\) is self-adjoint, then, by \cref{6.17}, we have that \(\V\) possesses an orthonormal basis \(\set{\seq{v}{1,,n}}\) over \(\R\) such that \(\T(v_i) = \lambda_i v_i\) for all \(i \in \set{1, \dots, n}\).
+	If \(\T\) is also orthogonal, we have
+	\begin{align*}
+		\abs{\lambda_i} \cdot \norm{v_i} & = \norm{\lambda_i v_i} &  & \by{6.2}[a] \\
+		                                 & = \norm{\T(v_i)}       &  & \by{5.1.2}  \\
+		                                 & = \norm{v_i};          &  & \by{6.5.1}
+	\end{align*}
+	so \(\abs{\lambda_i} = 1\) for every \(i \in \set{1, \dots, n}\).
+\end{proof}
+
+\begin{cor}\label{6.5.5}
+	Let \(\T\) be a linear operator on a finite-dimensional complex inner product space \(\V\).
+	Then \(\V\) has an orthonormal basis of eigenvectors of \(\T\) with corresponding eigenvalues of absolute value \(1\) iff \(\T\) is unitary.
+\end{cor}
+
+\begin{proof}[\pf{6.5.5}]
+	Suppose that \(\V\) has an orthonormal basis \(\set{\seq{v}{1,,n}}\) over \(\C\) such that \(\T(v_i) = \lambda_i v_i\) and \(\abs{\lambda_i} = 1\) for all \(i \in \set{1, \dots, n}\).
+	By \cref{6.16}, \(\T\) is normal.
+	Thus
+	\begin{align*}
+		(\T^* \T)(v_i) & = (\T \T^*)(v_i)                 &  & \by{6.4.3}            \\
+		               & = \T(\conj{\lambda_i} v_i)       &  & \by{6.15}[c]          \\
+		               & = \conj{\lambda_i} \lambda_i v_i &  & \by{5.1.2}            \\
+		               & = \abs{\lambda_i}^2 v_i          &  & \by{d.0.5}            \\
+		               & = v_i                            &  & (\abs{\lambda_i} = 1)
+	\end{align*}
+	for each \(i \in \set{1, \dots, n}\).
+	So \(\T^* \T = \T \T^* = \IT[\V]\) by \cref{2.1.13}.
+	Thus by \cref{6.18}(a) \(\T\) is unitary.
+
+	If \(\T\) is unitary, then by \cref{6.18}(a)(e) we know that \(\T\) is normal.
+	By \cref{6.16}, we have that \(\V\) possesses an orthonormal basis \(\set{\seq{v}{1,,n}}\) over \(\C\) such that \(\T(v_i) = \lambda_i v_i\) for all \(i \in \set{1, \dots, n}\).
+	Then we have
+	\begin{align*}
+		\abs{\lambda_i} \cdot \norm{v_i} & = \norm{\lambda_i v_i} &  & \by{6.2}[a] \\
+		                                 & = \norm{\T(v_i)}       &  & \by{5.1.2}  \\
+		                                 & = \norm{v_i};          &  & \by{6.5.1}
+	\end{align*}
+	so \(\abs{\lambda_i} = 1\) for every \(i \in \set{1, \dots, n}\).
+\end{proof}
