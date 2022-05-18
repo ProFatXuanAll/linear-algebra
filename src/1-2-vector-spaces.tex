@@ -222,8 +222,8 @@
 \end{defn}
 
 \begin{eg}\label{1.2.9}
-	The set of all \(m \times n\) matrices with entries from a field \(\F\) is a vector space over \(\F\), which we denote by \(\MS\), with the following operations of \textbf{matrix addition} and \textbf{scalar multiplication}:
-	For \(A, B \in \MS\) and \(c \in \F\),
+	The set of all \(m \times n\) matrices with entries from a field \(\F\) is a vector space over \(\F\), which we denote by \(\ms\), with the following operations of \textbf{matrix addition} and \textbf{scalar multiplication}:
+	For \(A, B \in \ms\) and \(c \in \F\),
 	\[
 		(A + B)_{i j} = A_{i j} + B_{i j} \quad \text{and} \quad (c A)_{i j} = c A_{i j}
 	\]
@@ -233,24 +233,24 @@
 \begin{proof}[\pf{1.2.9}]
 	Clearly we have
 	\[
-		\forall A, B \in \MS, A + B \in \MS
+		\forall A, B \in \ms, A + B \in \ms
 	\]
 	and
 	\[
 		\begin{dcases}
-			\forall A \in \MS \\
+			\forall A \in \ms \\
 			\forall c \in \F
-		\end{dcases}, cA \in \MS.
+		\end{dcases}, cA \in \ms.
 	\]
 
 	Let \(I_m = \set{i \in \N : 1 \leq i \leq m}\) and \(J_n = \set{j \in \N : 1 \leq j \leq n}\).
-	First we show that addition in \(\MS\) over \(\F\) is unique.
-	Let \(A, B \in \MS\).
+	First we show that addition in \(\ms\) over \(\F\) is unique.
+	Let \(A, B \in \ms\).
 	Suppose for sake of contradiction that
 	\[
 		\begin{dcases}
-			A + B = C \in \MS  \\
-			A + B = C' \in \MS \\
+			A + B = C \in \ms  \\
+			A + B = C' \in \ms \\
 			C \neq C'
 		\end{dcases}.
 	\]
@@ -261,15 +261,15 @@
 		\implies & \exists (i, j) \in I_m \times J_n :  A_{i j} + B_{i j} \neq A_{i j} + B_{i j} &  & \by{1.2.9}
 	\end{align*}
 	which contradicts to the fact that \(A_{i j} + B_{i j} \in \F\) is unique.
-	Thus addition in \(\MS\) over \(\F\) is unique.
+	Thus addition in \(\ms\) over \(\F\) is unique.
 
-	Next we show that scalar multiplication in \(\MS\) over \(\F\) is unique.
-	Let \(A \in \MS\) and \(c \in \F\).
+	Next we show that scalar multiplication in \(\ms\) over \(\F\) is unique.
+	Let \(A \in \ms\) and \(c \in \F\).
 	Suppose for sake of contradiction that
 	\[
 		\begin{dcases}
-			cA = B \in \MS  \\
-			cA = B' \in \MS \\
+			cA = B \in \ms  \\
+			cA = B' \in \ms \\
 			B \neq B'
 		\end{dcases}.
 	\]
@@ -280,12 +280,12 @@
 		\implies & \exists (i, j) \in I_m \times J_n : c A_{i j} \neq c A_{i j} &  & \by{1.2.9}
 	\end{align*}
 	which contradicts to the fact that \(c A_{i j} \in \F\) is unique.
-	Thus scalar multiplication in \(\MS\) over \(\F\) is unique.
+	Thus scalar multiplication in \(\ms\) over \(\F\) is unique.
 
 	Now we show that \ref{vs1}--\ref{vs8} holds for \cref{1.2.9}.
 	\begin{description}
 		\item[For \ref{vs1}:]
-			For all \(A, B \in \MS\) and \((i, j) \in I_m \times J_n\), we have
+			For all \(A, B \in \ms\) and \((i, j) \in I_m \times J_n\), we have
 			\begin{align*}
 				(A + B)_{i j} & = A_{i j} + B_{i j} &  & \by{1.2.9}                 \\
 				              & = B_{i j} + A_{i j} &  & \text{(\(\F\) is a field)} \\
@@ -293,7 +293,7 @@
 			\end{align*}
 			and thus by \cref{1.2.8} \(A + B = B + A\).
 		\item[For \ref{vs2}:]
-			For all \(A, B, C \in \MS\) and \((i, j) \in I_m \times J_n\), we have
+			For all \(A, B, C \in \ms\) and \((i, j) \in I_m \times J_n\), we have
 			\begin{align*}
 				((A + B) + C)_{i j} & = (A + B)_{i j} + C_{i + j}     &  & \by{1.2.9}                 \\
 				                    & = (A_{i j} + B_{i j}) + C_{i j} &  & \by{1.2.9}                 \\
@@ -310,9 +310,9 @@
 					0      & 0      & \cdots & 0      \\
 					\vdots & \vdots & \ddots & \vdots \\
 					0      & 0      & \cdots & 0
-				\end{pmatrix} \in \MS.
+				\end{pmatrix} \in \ms.
 			\]
-			Then for all \(A \in \MS\) and \((i, j) \in I_m \times J_n\), we have
+			Then for all \(A \in \ms\) and \((i, j) \in I_m \times J_n\), we have
 			\begin{align*}
 				(A + \zm)_{i j} & = A_{i j} + \zm_{i j} &  & \by{1.2.9}                 \\
 				                & = A_{i j} + 0         &  & \by{1.2.6}                 \\
@@ -320,22 +320,22 @@
 			\end{align*}
 			and thus by \cref{1.2.8} \(A + \zm = A\).
 		\item[For \ref{vs4}:]
-			For all \(A \in \MS\), we have
+			For all \(A \in \ms\), we have
 			\begin{align*}
 				         & \forall (i, j) \in I_m \times J_n, A_{i j} \in \F                                                                    \\
 				\implies & \forall (i, j) \in I_m \times J_n, \exists B_{i j} \in \F : A_{i j} + B_{i j} = 0 &  & \text{(\(\F\) is a field)}    \\
-				\implies & \exists B \in \MS : A + B = \zm.                                                  &  & \text{(from the proof above)}
+				\implies & \exists B \in \ms : A + B = \zm.                                                  &  & \text{(from the proof above)}
 			\end{align*}
 		\item[For \ref{vs5}:]
 			Since \(\F\) is a field, we know that \(1 \in \F\).
-			Then for all \(A \in \MS\) and \((i, j) \in I_m \times J_n\), we have
+			Then for all \(A \in \ms\) and \((i, j) \in I_m \times J_n\), we have
 			\begin{align*}
 				(1A)_{i j} & = 1 A_{i j} &  & \by{1.2.9}                 \\
 				           & = A_{i j}   &  & \text{(\(\F\) is a field)}
 			\end{align*}
 			and thus by \cref{1.2.8} \(1A = A\).
 		\item[For \ref{vs6}:]
-			For all \(c, d \in \F\), \(A \in \MS\) and \((i, j) \in I_m \times J_n\), we have
+			For all \(c, d \in \F\), \(A \in \ms\) and \((i, j) \in I_m \times J_n\), we have
 			\begin{align*}
 				((cd) A)_{i j} & = (cd) A_{i j}    &  & \by{1.2.9}                 \\
 				               & = c (d A_{i j})   &  & \text{(\(\F\) is a field)} \\
@@ -344,7 +344,7 @@
 			\end{align*}
 			and thus by \cref{1.2.8} \((cd) A = c (dA)\).
 		\item[For \ref{vs7}:]
-			For all \(c \in \F\), \(A, B \in \MS\) and \((i, j) \in I_m \times J_n\), we have
+			For all \(c \in \F\), \(A, B \in \ms\) and \((i, j) \in I_m \times J_n\), we have
 			\begin{align*}
 				(c (A + B))_{i j} & = c (A + B)_{i j}         &  & \by{1.2.9}                 \\
 				                  & = c (A_{i j} + B_{i j})   &  & \by{1.2.9}                 \\
@@ -353,7 +353,7 @@
 			\end{align*}
 			and thus by \cref{1.2.8} \(c (A + B) = cA + cB\).
 		\item[For \ref{vs8}:]
-			For all \(c, d \in \F\), \(A \in \MS\) and \((i, j) \in I_m \times J_n\), we have
+			For all \(c, d \in \F\), \(A \in \ms\) and \((i, j) \in I_m \times J_n\), we have
 			\begin{align*}
 				((c + d) A)_{i j} & = (c + d) A_{i j}         &  & \by{1.2.9}                 \\
 				                  & = c A_{i j} + d A_{i j}   &  & \text{(\(\F\) is a field)} \\

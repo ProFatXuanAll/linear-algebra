@@ -96,7 +96,7 @@
 \end{eg}
 
 \begin{defn}\label{6.1.5}
-	Let \(A \in \MS\).
+	Let \(A \in \ms\).
 	We define the \textbf{conjugate transpose} or \textbf{adjoint} of \(A\) to be the \(n \times m\) matrix \(A^*\) such that \((A^*)_{i j} = \conj{A_{j i}}\) for all \(i \in \set{1, \dots, m}\) and \(j \in \set{1, \dots, n}\).
 \end{defn}
 
@@ -1035,7 +1035,7 @@
 	Let \(\F = \R\) or \(\F = \C\).
 	Prove that the following are norms on the given vector spaces.
 	\begin{enumerate}
-		\item \(\norm{A} = \max_{1 \leq i \leq m, 1 \leq j \leq n} \abs{A_{i j}}\) for all \(A \in \MS\).
+		\item \(\norm{A} = \max_{1 \leq i \leq m, 1 \leq j \leq n} \abs{A_{i j}}\) for all \(A \in \ms\).
 		\item \(\norm{f} = \max_{t \in [0, 1]} \abs{f(t)}\) for all \(f \in \cfs([0, 1], \F)\).
 		\item \(\norm{f} = \int_0^1 \abs{f(t)} \; dt\) for all \(f \in \cfs([0, 1], \F)\).
 		\item \(\norm{(a, b)} = \max\set{\abs{a}, \abs{b}}\) for all \((a, b) \in \F^2\).
@@ -1045,7 +1045,7 @@
 \begin{proof}[\pf{ex:6.1.24}(a)]
 	\begin{description}
 		\item[For \cref{6.1.14}(a):]
-			Let \(A \in \MS\).
+			Let \(A \in \ms\).
 			Then we have
 			\begin{align*}
 				         & \forall (i, j) \in \set{1, \dots, m} \times \set{1, \dots, n}, \abs{A_{i j}} \geq 0 &  & \by{d.0.5} \\
@@ -1059,7 +1059,7 @@
 				\iff & A = \zm.
 			\end{align*}
 		\item[For \cref{6.1.14}(b):]
-			Let \(A \in \MS\) and let \(a \in \F\).
+			Let \(A \in \ms\) and let \(a \in \F\).
 			Then we have
 			\begin{align*}
 				\norm{a A} & = \max_{1 \leq i \leq m, 1 \leq j \leq n} \abs{(a A)_{i j}}                     \\
@@ -1069,7 +1069,7 @@
 				           & = \abs{a} \norm{A}.
 			\end{align*}
 		\item[For \cref{6.1.14}(c):]
-			Let \(A, B \in \MS\).
+			Let \(A, B \in \ms\).
 			Then we have
 			\begin{align*}
 				\norm{A + B} & = \max_{1 \leq i \leq m, 1 \leq j \leq n} \abs{(A + B)_{i j}}                                                                    \\
@@ -1079,7 +1079,7 @@
 				             & = \norm{A} + \norm{B}.
 			\end{align*}
 	\end{description}
-	From all proofs above we conclude by \cref{6.1.14} that \(\norm{\cdot}\) is a norm on \(\MS\) over \(\F\).
+	From all proofs above we conclude by \cref{6.1.14} that \(\norm{\cdot}\) is a norm on \(\ms\) over \(\F\).
 \end{proof}
 
 \begin{proof}[\pf{ex:6.1.24}(b)]

@@ -193,14 +193,14 @@
 
 \begin{thm}\label{2.20}
 	Let \(\V\) and \(\W\) be finite-dimensional vector spaces over \(\F\) of dimensions \(n\) and \(m\), respectively, and let \(\beta\) and \(\gamma\) be ordered bases for \(\V\) and \(\W\) over \(\F\), respectively.
-	Then the function \(\Phi : \ls(\V, \W) \to \MS\), defined by \(\Phi(\T) = [\T]_{\beta}^{\gamma}\) for \(\T \in \ls(\V, \W)\), is an isomorphism.
+	Then the function \(\Phi : \ls(\V, \W) \to \ms\), defined by \(\Phi(\T) = [\T]_{\beta}^{\gamma}\) for \(\T \in \ls(\V, \W)\), is an isomorphism.
 \end{thm}
 
 \begin{proof}[\pf{2.20}]
 	By \cref{2.8} \(\Phi\) is linear.
 	Hence we must show that \(\Phi\) is one-to-one and onto.
-	This is accomplished if we show that for every \(A \in \MS\), there exists a unique linear transformation \(\T : \V \to \W\) such that \(\Phi(\T) = A\).
-	Let \(\beta = \set{\seq{v}{1,,n}}\), \(\gamma = \set{\seq{w}{1,,m}}\), and let \(A \in \MS\).
+	This is accomplished if we show that for every \(A \in \ms\), there exists a unique linear transformation \(\T : \V \to \W\) such that \(\Phi(\T) = A\).
+	Let \(\beta = \set{\seq{v}{1,,n}}\), \(\gamma = \set{\seq{w}{1,,m}}\), and let \(A \in \ms\).
 	By \cref{2.6} there exists a unique linear transformation \(\T : \V \to \W\) such that
 	\[
 		\T(v_j) = \sum_{i = 1}^m A_{i j} w_i \quad \text{for } 1 \leq j \leq n.
@@ -215,7 +215,7 @@
 \end{cor}
 
 \begin{proof}[\pf{2.4.10}]
-	The proof follows from \cref{2.20} and \cref{2.19} and the fact that \(\dim(\MS) = mn\).
+	The proof follows from \cref{2.20} and \cref{2.19} and the fact that \(\dim(\ms) = mn\).
 \end{proof}
 
 \begin{defn}\label{2.4.11}
@@ -388,7 +388,7 @@
 		\implies & A, B \text{ are invertible}.                         &  & \by{2.4.7}
 	\end{align*}
 
-	Now we show that if \(A \in \ms[n][m][\F]\) and \(B \in \MS\), then \(AB\) can be invertible.
+	Now we show that if \(A \in \ms[n][m][\F]\) and \(B \in \ms\), then \(AB\) can be invertible.
 	We define \(A, B\) as follow:
 	\[
 		A = \begin{pmatrix}
@@ -622,8 +622,8 @@
 		\end{dcases}.
 	\]
 	First prove that \(\set{\T_{i j} : 1 \leq i \leq m, 1 \leq j \leq n}\) is a basis for \(\ls(\V, \W)\) over \(\F\).
-	Then let \(E^{i j} \in \MS\) with \(1\) in the \(i\)th row and \(j\)th column and \(0\) elsewhere, and prove that \([\T_{i j}]_{\beta}^{\gamma} = E^{i j}\).
-	Again by \cref{2.6}, there exists a linear transformation \(\Phi : \ls(\V, \W) \to \MS\) such that \(\Phi(\T_{i j}) = E^{i j}\).
+	Then let \(E^{i j} \in \ms\) with \(1\) in the \(i\)th row and \(j\)th column and \(0\) elsewhere, and prove that \([\T_{i j}]_{\beta}^{\gamma} = E^{i j}\).
+	Again by \cref{2.6}, there exists a linear transformation \(\Phi : \ls(\V, \W) \to \ms\) such that \(\Phi(\T_{i j}) = E^{i j}\).
 	Prove that \(\Phi\) is an isomorphism.
 \end{ex}
 
@@ -661,7 +661,7 @@
 		\implies & [\T_{i j}]_{\beta}^{\gamma} = E^{i j}.                                       &  & \by{2.2.4}
 	\end{align*}
 
-	Finally we show that \(\Phi\) is an isomorphism from \(\ls(\V, \W)\) onto \(\MS\).
+	Finally we show that \(\Phi\) is an isomorphism from \(\ls(\V, \W)\) onto \(\ms\).
 	Let \(\U \in \ls(\V, \W)\).
 	Since
 	\begin{align*}
@@ -673,7 +673,7 @@
 		         & = \sum_{i = 1}^m \sum_{j = 1}^n a_{i j} [\T_{i j}]_{\beta}^{\gamma}                                             &  & \text{(from the proof above)} \\
 		         & = \br{\sum_{i = 1}^m \sum_{j = 1}^n a_{i j} \T_{i j}}_{\beta}^{\gamma} = [\U]_{\beta}^{\gamma},                 &  & \by{2.8}
 	\end{align*}
-	by \cref{2.20} we see that \(\Phi\) is an isomorphism from \(\ls(\V, \W)\) onto \(\MS\).
+	by \cref{2.20} we see that \(\Phi\) is an isomorphism from \(\ls(\V, \W)\) onto \(\ms\).
 \end{proof}
 
 \begin{ex}\label{ex:2.4.22}

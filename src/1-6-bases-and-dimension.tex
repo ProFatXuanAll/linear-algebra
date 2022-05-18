@@ -21,25 +21,25 @@
 \end{proof}
 
 \begin{eg}\label{1.6.4}
-	In \(\MS\), let \(E^{i j}\) denote the matrix whose only nonzero entry is a \(1\) in the \(i\)th row and \(j\)th column.
-	Then \(\set{E^{i j} : 1 \leq i \leq m, 1 \leq j \leq n}\) is a basis for \(\MS\) over \(\F\).
+	In \(\ms\), let \(E^{i j}\) denote the matrix whose only nonzero entry is a \(1\) in the \(i\)th row and \(j\)th column.
+	Then \(\set{E^{i j} : 1 \leq i \leq m, 1 \leq j \leq n}\) is a basis for \(\ms\) over \(\F\).
 \end{eg}
 
 \begin{proof}[\pf{1.6.4}]
 	By \cref{ex:1.5.6} we know that \(\set{E^{i j} : 1 \leq i \leq m, 1 \leq j \leq n}\) is linearly independent.
 	Since
 	\begin{align*}
-		         & \forall A \in \MS, A = \begin{pmatrix}
+		         & \forall A \in \ms, A = \begin{pmatrix}
 			                                  A_{1 1} & A_{1 2} & \cdots & A_{1 n} \\
 			                                  A_{2 1} & A_{2 2} & \cdots & A_{2 n} \\
 			                                  \vdots  & \vdots  & \ddots & \vdots  \\
 			                                  A_{m 1} & A_{m 2} & \cdots & A_{m n}
 		                                  \end{pmatrix}                                     \\
 		         & = \sum_{i = 1}^m \sum_{j = 1}^n A_{i j} E^{i j}                                 &  & \by{1.2.9} \\
-		\implies & \forall A \in \MS, A \in \spn{\set{E^{i j} : 1 \leq i \leq m, 1 \leq j \leq n}} &  & \by{1.4.3} \\
-		\implies & \MS = \spn{\set{E^{i j} : 1 \leq i \leq m, 1 \leq j \leq n}},                   &  & \by{1.5}
+		\implies & \forall A \in \ms, A \in \spn{\set{E^{i j} : 1 \leq i \leq m, 1 \leq j \leq n}} &  & \by{1.4.3} \\
+		\implies & \ms = \spn{\set{E^{i j} : 1 \leq i \leq m, 1 \leq j \leq n}},                   &  & \by{1.5}
 	\end{align*}
-	by \cref{1.6.1} we know that \(\set{E^{i j} : 1 \leq i \leq m, 1 \leq j \leq n}\) is a basis for \(\MS\) over \(\F\).
+	by \cref{1.6.1} we know that \(\set{E^{i j} : 1 \leq i \leq m, 1 \leq j \leq n}\) is a basis for \(\ms\) over \(\F\).
 \end{proof}
 
 \begin{eg}\label{1.6.5}
@@ -256,7 +256,7 @@
 \end{proof}
 
 \begin{eg}\label{1.6.11}
-	The vector space \(\MS\) over \(\F\) has dimension \(mn\).
+	The vector space \(\ms\) over \(\F\) has dimension \(mn\).
 \end{eg}
 
 \begin{proof}[\pf{1.6.11}]

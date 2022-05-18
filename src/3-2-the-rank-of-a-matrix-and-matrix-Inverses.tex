@@ -1,7 +1,7 @@
 \section{The Rank of a Matrix and Matrix Inverses}\label{sec:3.2}
 
 \begin{defn}\label{3.2.1}
-	If \(A \in \MS\), we define the \textbf{rank} of \(A\), denoted \(\rk{A}\), to be the rank of the linear transformation \(\L_A : \vs{F}^n \to \vs{F}^m\).
+	If \(A \in \ms\), we define the \textbf{rank} of \(A\), denoted \(\rk{A}\), to be the rank of the linear transformation \(\L_A : \vs{F}^n \to \vs{F}^m\).
 \end{defn}
 
 \begin{cor}\label{3.2.2}
@@ -39,7 +39,7 @@
 \end{note}
 
 \begin{thm}\label{3.4}
-	Let \(A \in \MS\).
+	Let \(A \in \ms\).
 	If \(P \in \ms[m][m][\F]\) and \(Q \in \ms[n][n][\F]\) are invertible, then
 	\begin{enumerate}
 		\item \(\rk{AQ} = \rk{A}\).
@@ -100,7 +100,7 @@
 \end{thm}
 
 \begin{proof}[\pf{3.5}]
-	For any \(A \in \MS\),
+	For any \(A \in \ms\),
 	\[
 		\rk{A} = \rk{\L_A} = \dim(\rg{\L_A}).
 	\]
@@ -127,7 +127,7 @@
 \end{note}
 
 \begin{thm}\label{3.6}
-	Let \(A \in \MS\) be of rank \(r\).
+	Let \(A \in \ms\) be of rank \(r\).
 	Then \(r \leq m\), \(r \leq n\), and, by means of a finite number of elementary row and column operations, \(A\) can be transformed into the matrix
 	\[
 		D = \begin{pmatrix}
@@ -162,7 +162,7 @@
 	Next assume that the theorem holds for any matrix with at most \(m - 1\) rows (for some \(m > 1\)).
 	We must prove that the theorem holds for any matrix with \(m\) rows.
 
-	Suppose that \(A \in \MS\).
+	Suppose that \(A \in \ms\).
 	If \(n = 1\), \cref{3.6} can be established in a manner analogous to that for \(m = 1\)
 	(see \cref{ex:3.2.10}).
 
@@ -218,7 +218,7 @@
 \end{proof}
 
 \begin{cor}\label{3.2.4}
-	Let \(A \in \MS\) be of rank \(r\).
+	Let \(A \in \ms\) be of rank \(r\).
 	Then there exist invertible matrices \(B \in \ms[m][m][\F]\) and \(C \in \ms[n][n][\F]\) such that \(D = BAC\), where
 	\[
 		D = \begin{pmatrix}
@@ -242,7 +242,7 @@
 \end{proof}
 
 \begin{cor}\label{3.2.5}
-	Let \(A \in \MS\).
+	Let \(A \in \ms\).
 	Then
 	\begin{enumerate}
 		\item \(\rk{\tp{A}} = \rk{A}\).
@@ -365,7 +365,7 @@
 \end{note}
 
 \begin{defn}\label{3.2.7}
-	Let \(A \in \MS\) and \(B \in \ms[m][p][\F]\).
+	Let \(A \in \ms\) and \(B \in \ms[m][p][\F]\).
 	By the \textbf{augmented matrix} \((A | B)\), we mean the \(m \times (n + p)\) matrix whose first \(n\) columns are the columns of \(A\), and whose last \(p\) columns are the columns of \(B\).
 \end{defn}
 
@@ -430,7 +430,7 @@
 
 \setcounter{ex}{2}
 \begin{ex}\label{ex:3.2.3}
-	Prove that for any \(A \in \MS\), \(\rk{A} = 0\) iff \(A\) is the zero matrix.
+	Prove that for any \(A \in \ms\), \(\rk{A} = 0\) iff \(A\) is the zero matrix.
 \end{ex}
 
 \begin{proof}[\pf{ex:3.2.3}]
@@ -447,7 +447,7 @@
 
 \setcounter{ex}{7}
 \begin{ex}\label{ex:3.2.8}
-	Let \(A \in \MS\).
+	Let \(A \in \ms\).
 	Prove that if \(c \in \F \setminus \set{0}\), then \(\rk{cA} = \rk{A}\).
 \end{ex}
 
@@ -572,7 +572,7 @@
 \end{proof}
 
 \begin{ex}\label{ex:3.2.12}
-	Let \(B', D' \in \MS\), and let \(B, D \in \ms[(m + 1)][(n + 1)][\F]\) defined by
+	Let \(B', D' \in \ms\), and let \(B, D \in \ms[(m + 1)][(n + 1)][\F]\) defined by
 	\[
 		B = \pa{\begin{array}{c|ccc}
 				1      & 0 & \cdots & 0 \\
@@ -656,7 +656,7 @@
 		\item Prove that \(\rg{\T + \U} \subseteq \rg{\T} + \rg{\U}\).
 		      (See \cref{1.3.10}.)
 		\item Prove that if \(\W\) is finite-dimensional, then \(\rk{\T + \U} \leq \rk{\T} + \rk{\U}\).
-		\item Deduce from (b) that \(\rk{A + B} \leq \rk{A} + \rk{B}\) for any \(A, B \in \MS\).
+		\item Deduce from (b) that \(\rk{A + B} \leq \rk{A} + \rk{B}\) for any \(A, B \in \ms\).
 	\end{enumerate}
 \end{ex}
 
@@ -692,7 +692,7 @@
 
 \begin{ex}\label{ex:3.2.15}
 	Suppose that \(A \in \ms[n][p][\F]\) and \(B \in \ms[n][q][\F]\).
-	Prove that \(M (A | B) = (MA | MB)\) for any \(M \in \MS\).
+	Prove that \(M (A | B) = (MA | MB)\) for any \(M \in \ms\).
 \end{ex}
 
 \begin{proof}[\pf{ex:3.2.15}]
@@ -715,7 +715,7 @@
 
 \setcounter{ex}{17}
 \begin{ex}\label{ex:3.2.18}
-	Let \(A \in \MS\) and \(B \in \ms[n][p][\F]\).
+	Let \(A \in \ms\) and \(B \in \ms[n][p][\F]\).
 	Prove that \(AB\) can be written as a sum of \(n\) matrices of rank at most one.
 \end{ex}
 
@@ -742,7 +742,7 @@
 \end{proof}
 
 \begin{ex}\label{ex:3.2.19}
-	Let \(A \in \MS\) with rank \(m\) and \(B \in \ms[n][p][\F]\) with rank \(n\).
+	Let \(A \in \ms\) with rank \(m\) and \(B \in \ms[n][p][\F]\) with rank \(n\).
 	Determine the rank of \(AB\).
 	Justify your answer.
 \end{ex}
@@ -759,7 +759,7 @@
 
 \setcounter{ex}{20}
 \begin{ex}\label{ex:3.2.21}
-	Let \(A \in \MS\) with rank \(m\).
+	Let \(A \in \ms\) with rank \(m\).
 	Prove that there exists an \(B \in \ms[n][m][\F]\) such that \(AB = I_m\).
 \end{ex}
 
@@ -793,7 +793,7 @@
 
 \begin{ex}\label{ex:3.2.22}
 	Let \(B \in \ms[n][m][\F]\) with rank \(m\).
-	Prove that there exists an \(A \in \MS\) such that \(AB = I_m\).
+	Prove that there exists an \(A \in \ms\) such that \(AB = I_m\).
 \end{ex}
 
 \begin{proof}[\pf{ex:3.2.22}]

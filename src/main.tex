@@ -202,8 +202,6 @@
 
 % Metric space with shape #1 x #2 over field #3.
 \NewDocumentCommand{\ms}{O{m}O{n}O{\F}}{\vs{M}_{{#1} \times {#2}}\pa{#3}}
-% General metric space.
-\NewDocumentCommand{\MS}{}{\ms}
 
 % Function space.
 \NewDocumentCommand{\fs}{}{\mathcal{F}}
@@ -294,7 +292,7 @@
 }
 
 % Tuple.
-\newcommand{\tuple}[2]{\pa{\seq{#1}{#2}}}
+\NewDocumentCommand{\tuple}{mm}{\pa{\seq{#1}{#2}}}
 
 % 0 vector.
 \NewDocumentCommand{\zv}{}{\mathit{0}}

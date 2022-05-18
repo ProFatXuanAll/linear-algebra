@@ -264,7 +264,7 @@
 \end{defn}
 
 \begin{lem}\label{6.3.4}
-	Let \(A \in \MS\), \(x \in \vs{F}^n\), and \(y \in \vs{F}^m\).
+	Let \(A \in \ms\), \(x \in \vs{F}^n\), and \(y \in \vs{F}^m\).
 	Then
 	\[
 		\inn{Ax, y}_m = \inn{x, A^* y}_n.
@@ -282,7 +282,7 @@
 \end{proof}
 
 \begin{lem}\label{6.3.5}
-	Let \(A \in \MS\).
+	Let \(A \in \ms\).
 	Then \(\rk{A^* A} = \rk{A}\).
 \end{lem}
 
@@ -300,7 +300,7 @@
 \end{proof}
 
 \begin{cor}\label{6.3.6}
-	If \(A \in \MS\) such that \(\rk{A} = n\), then \(A^* A\) is invertible.
+	If \(A \in \ms\) such that \(\rk{A} = n\), then \(A^* A\) is invertible.
 \end{cor}
 
 \begin{proof}[\pf{6.3.6}]
@@ -309,7 +309,7 @@
 \end{proof}
 
 \begin{thm}\label{6.12}
-	Let \(A \in \MS\) and \(y \in \vs{F}^m\).
+	Let \(A \in \ms\) and \(y \in \vs{F}^m\).
 	Then there exists \(x_0 \in \vs{F}^n\) such that \((A^* A) x_0 = A^* y\) and \(\norm{A x_0 - y} \leq \norm{Ax - y}\) for all \(x \in \vs{F}^n\).
 	Furthermore, if \(\rk{A} = n\), then \(x_0 = (A^* A)^{-1} A^* y\).
 \end{thm}
@@ -359,7 +359,7 @@
 	then it follows that \(E = \norm{y - Ax}^2\).
 
 	\cref{6.12} develop a general method for finding an explicit vector \(x_0 \in \vs{F}^n\) that minimizes \(E\);
-	that is, given \(A \in \MS\), we find \(x_0 \in \vs{F}^n\) such that \(\norm{y - A x_0} \leq \norm{y - Ax}\) for all vectors \(x \in \vs{F}^n\).
+	that is, given \(A \in \ms\), we find \(x_0 \in \vs{F}^n\) such that \(\norm{y - A x_0} \leq \norm{y - Ax}\) for all vectors \(x \in \vs{F}^n\).
 	This method not only allows us to find the linear function that best fits the data, but also, for any positive integer \(n\), the best fit using a polynomial of degree at most \(n\).
 
 	Suppose that the experimenter chose the times \(t_i\) for \(i \in \set{1, \dots, m}\) to satisfy
@@ -397,7 +397,7 @@
 \end{defn}
 
 \begin{thm}\label{6.13}
-	Let \(A \in \MS\) and \(b \in \vs{F}^m\).
+	Let \(A \in \ms\) and \(b \in \vs{F}^m\).
 	Suppose that \(Ax = b\) is consistent.
 	Then the following statements are true.
 	\begin{enumerate}
@@ -448,7 +448,7 @@
 
 \setcounter{ex}{4}
 \begin{ex}\label{ex:6.3.5}
-	Let \(A, B \in \MS\) and let \(C \in \ms[n][p][\F]\).
+	Let \(A, B \in \ms\) and let \(C \in \ms[n][p][\F]\).
 	Then
 	\begin{enumerate}
 		\item \((A + B)^* = A^* + B^*\);
@@ -980,7 +980,7 @@
 \end{proof}
 
 \begin{ex}\label{ex:6.3.19}
-	Suppose that \(A \in \MS\) and no two columns of \(A\) are identical.
+	Suppose that \(A \in \ms\) and no two columns of \(A\) are identical.
 	Prove that \(A^* A\) is a diagonal matrix iff every pair of columns of \(A\) is orthogonal.
 \end{ex}
 

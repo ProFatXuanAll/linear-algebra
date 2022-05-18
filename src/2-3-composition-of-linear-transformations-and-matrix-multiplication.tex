@@ -89,7 +89,7 @@
 \end{proof}
 
 \begin{defn}\label{2.3.1}
-	Let \(A \in \MS\) matrix and \(B \in \ms[n][p][\F]\).
+	Let \(A \in \ms\) matrix and \(B \in \ms[n][p][\F]\).
 	We define the \textbf{product} of \(A\) and \(B\), denoted \(AB\), to be the \(m \times p\) matrix such that
 	\[
 		(AB)_{i j} = \sum_{k = 1}^n A_{i k} B_{k j} \quad \text{for } 1 \leq i \leq m, 1 \leq j \leq p.
@@ -131,7 +131,7 @@
 \end{note}
 
 \begin{eg}\label{2.3.2}
-	If \(A \in \MS\) and \(B \in \ms[n][p][\F]\), then \(\tp{(AB)} = \tp{B} \tp{A}\).
+	If \(A \in \ms\) and \(B \in \ms[n][p][\F]\), then \(\tp{(AB)} = \tp{B} \tp{A}\).
 \end{eg}
 
 \begin{proof}[\pf{2.3.2}]
@@ -200,7 +200,7 @@
 \end{defn}
 
 \begin{thm}\label{2.12}
-	Let \(A \in \MS\), let \(B, C \in \ms[n][p][\F]\) and let \(D, E \in \ms[q][m][\F]\).
+	Let \(A \in \ms\), let \(B, C \in \ms[n][p][\F]\) and let \(D, E \in \ms[q][m][\F]\).
 	Then
 	\begin{enumerate}
 		\item \(A (B + C) = AB + AC\) and \((D + E) A = DA + EA\).
@@ -281,7 +281,7 @@
 \begin{cor}\label{2.3.5}
 	Let
 	\begin{align*}
-		A               & \in \MS;           \\
+		A               & \in \ms;           \\
 		\seq{B}{1,2,,k} & \in \ms[n][p][\F]; \\
 		\seq{C}{1,2,,k} & \in \ms[q][m][\F]; \\
 		\seq{a}{1,2,,k} & \in \F.
@@ -322,7 +322,7 @@
 \end{eg}
 
 \begin{thm}\label{2.13}
-	Let \(A \in \MS\) and \(B \in \ms[n][p][\F]\).
+	Let \(A \in \ms\) and \(B \in \ms[n][p][\F]\).
 	For each \(j\) (\(1 \leq j \leq p\)) let \(u_j\) and \(v_j\) denote the \(j\)th columns of \(AB\) and \(B\), respectively.
 	Then
 	\begin{enumerate}
@@ -418,14 +418,14 @@
 \end{defn}
 
 \begin{thm}\label{2.15}
-	Let \(A \in \MS\).
+	Let \(A \in \ms\).
 	Then the left-multiplication transformation \(\L_A : \vs{F}^n \to \vs{F}^m\) is linear.
-	Furthermore, if \(B \in \MS\) and \(\beta\) and \(\gamma\) are the standard ordered bases for \(\vs{F}^n\) and \(\vs{F}^m\) over \(\F\), respectively, then we have the following properties.
+	Furthermore, if \(B \in \ms\) and \(\beta\) and \(\gamma\) are the standard ordered bases for \(\vs{F}^n\) and \(\vs{F}^m\) over \(\F\), respectively, then we have the following properties.
 	\begin{enumerate}
 		\item \([\L_A]_{\beta}^{\gamma} = A\).
 		\item \(\L_A = \L_B\) iff \(A = B\).
 		\item \(\L_{A + B} = \L_A + \L_B\) and \(\L_{aA} = a \L_A\) for all \(a \in \F\).
-		\item If \(\T : \vs{F}^n \to \vs{F}^m\) is linear, then there exists a unique \(C \in \MS\) such that \(\T = \L_C\).
+		\item If \(\T : \vs{F}^n \to \vs{F}^m\) is linear, then there exists a unique \(C \in \ms\) such that \(\T = \L_C\).
 		      In fact, \(C = [\T]_{\beta}^{\gamma}\).
 		\item If \(E \in \ms[n][p][\F]\), then \(\L_{AE} = \L_A \L_E\).
 		\item If \(m = n\), then \(\L_{I_n} = \IT[\vs{F}^n]\).
@@ -497,12 +497,12 @@
 \end{thm}
 
 \begin{proof}[\pf{2.16}]
-	Since \(A (BC)\) is defined, by \cref{2.3.1} we can let \(A \in \MS\) and \(BC \in \ms[n][p][\F]\) such that \(A (BC) \in \ms[m][p][\F]\).
+	Since \(A (BC)\) is defined, by \cref{2.3.1} we can let \(A \in \ms\) and \(BC \in \ms[n][p][\F]\) such that \(A (BC) \in \ms[m][p][\F]\).
 	Since \(BC\) is also defined, by \cref{2.3.1} again we can let \(B \in \ms[n][k][\F]\) and \(C \in \ms[k][p][\F]\).
 	Then we have
 	\begin{align*}
 		         & \begin{dcases}
-			           A \in \MS           \\
+			           A \in \ms           \\
 			           B \in \ms[n][k][\F] \\
 			           C \in \ms[k][p][\F]
 		           \end{dcases}                      \\
@@ -816,7 +816,7 @@
 \end{ex}
 
 \begin{proof}[\pf{ex:2.3.15}]
-	Let \(M \in \MS\) and let \(A \in \ms[n][p][\F]\).
+	Let \(M \in \ms\) and let \(A \in \ms[n][p][\F]\).
 	For all \(i \in \set{1, 2, \dots, p}\) we define \(v_i\) to be the \(i\)th column of \(A\).
 	By hypothesis we know that
 	\[
@@ -939,7 +939,7 @@
 \end{ex}
 
 \begin{proof}[\pf{ex:2.3.18}]
-	Let \(A \in \MS\), \(B \in \ms[n][p][\F]\) and \(C \in \ms[p][q][\F]\).
+	Let \(A \in \ms\), \(B \in \ms[n][p][\F]\) and \(C \in \ms[p][q][\F]\).
 	Then we have
 	\begin{align*}
 		((AB) C)_{i j} & = \sum_{k_2 = 1}^p (AB)_{i k_2} C_{k_2 j}                                     &  & \by{2.3.1} \\

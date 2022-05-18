@@ -1,7 +1,7 @@
 \section{Elementary Matrix Operations and Elementary Matrices}\label{sec:3.1}
 
 \begin{defn}\label{3.1.1}
-	Let \(A \in \MS\).
+	Let \(A \in \ms\).
 	Any one of the following three operations on the rows (columns) of \(A\) is called an \textbf{elementary row (column) operation}:
 	\begin{enumerate}[label=(\arabic*)]
 		\item interchanging any two rows (columns) of \(A\);
@@ -29,7 +29,7 @@
 \end{note}
 
 \begin{thm}\label{3.1}
-	Let \(A \in \MS\), and suppose that \(B\) is obtained from \(A\) by performing an elementary row (column) operation.
+	Let \(A \in \ms\), and suppose that \(B\) is obtained from \(A\) by performing an elementary row (column) operation.
 	Then there exists an \(m \times m\) (\(n \times n\)) elementary matrix \(E\) such that \(B = EA\) (\(B = AE\)).
 	In fact, \(E\) is obtained from \(I_m\) (\(I_n\)) by performing the same elementary row (column) operation as that which was performed on \(A\) to obtain \(B\).
 	Conversely, if \(E\) is an elementary \(m \times m\) (\(n \times n\)) matrix, then \(EA\) (\(AE\)) is the matrix obtained from \(A\) by performing the same elementary row (column) operation as that which produces \(E\) from \(I_m\) (\(I_n\)).
@@ -37,7 +37,7 @@
 
 \begin{proof}[\pf{3.1}]
 	First we prove that \cref{3.1} is true for a type 1 row operation.
-	Let \(A, B \in \MS\) such that \(B\) is obtained by interchanging two rows of \(A\).
+	Let \(A, B \in \ms\) such that \(B\) is obtained by interchanging two rows of \(A\).
 	Let the interchanging rows be \(i, j \in \set{1, \dots, m}\).
 	If \(E \in \ms[m][m][\F]\) is the elementary matrix performing the same operation, then by \cref{2.3.4} we have
 	\[
@@ -66,7 +66,7 @@
 	and we have \(B = EA\).
 
 	Next we prove that \cref{3.1} is true for a type 1 column operation.
-	Let \(A, B \in \MS\) such that \(B\) is obtained by interchanging two columns of \(A\).
+	Let \(A, B \in \ms\) such that \(B\) is obtained by interchanging two columns of \(A\).
 	Let the interchanging columns be \(i, j \in \set{1, \dots, n}\).
 	If \(E \in \ms[n][n][\F]\) is the elementary matrix performing the same operation, then by \cref{2.3.4} we have
 	\[
@@ -95,7 +95,7 @@
 	and we have \(B = AE\).
 
 	Next we prove that \cref{3.1} is true for a type 2 row operation.
-	Let \(c \in \F \setminus \set{0}\) and let \(A, B \in \MS\) such that \(B\) is obtained by multiplying the \(i\)th row of \(A\) with \(c\).
+	Let \(c \in \F \setminus \set{0}\) and let \(A, B \in \ms\) such that \(B\) is obtained by multiplying the \(i\)th row of \(A\) with \(c\).
 	If \(E \in \ms[m][m][\F]\) is the elementary matrix performing the same operation, then by \cref{2.3.4} we have
 	\[
 		\forall p, q \in \set{1, \dots, m}, E_{p q} = \begin{dcases}
@@ -120,7 +120,7 @@
 	and we have \(B = EA\).
 
 	Next we prove that \cref{3.1} is true for a type 2 column operation.
-	Let \(c \in \F \setminus \set{0}\) and let \(A, B \in \MS\) such that \(B\) is obtained by multiplying the \(i\)th column of \(A\) with \(c\).
+	Let \(c \in \F \setminus \set{0}\) and let \(A, B \in \ms\) such that \(B\) is obtained by multiplying the \(i\)th column of \(A\) with \(c\).
 	If \(E \in \ms[n][n][\F]\) is the elementary matrix performing the same operation, then by \cref{2.3.4} we have
 	\[
 		\forall p, q \in \set{1, \dots, n}, E_{p q} = \begin{dcases}
@@ -146,7 +146,7 @@
 
 	Next we prove that \cref{3.1} is true for a type 3 row operation.
 	Let \(i, j \in \set{1, \dots, m}\) such that \(i \neq j\).
-	Let \(A, B \in \MS\) such that \(B\) is obtained by multiplying the \(i\)th row of \(A\) with \(c \in \F \setminus \set{0}\) and add it to the \(j\)th row of \(A\).
+	Let \(A, B \in \ms\) such that \(B\) is obtained by multiplying the \(i\)th row of \(A\) with \(c \in \F \setminus \set{0}\) and add it to the \(j\)th row of \(A\).
 	If \(E \in \ms[m][m][\F]\) is the elementary matrix performing the same operation, then by \cref{2.3.4} we have
 	\[
 		\forall p, q \in \set{1, \dots, m}, E_{p q} = \begin{dcases}
@@ -172,7 +172,7 @@
 
 	Finally we prove that \cref{3.1} is true for a type 3 column operation.
 	Let \(i, j \in \set{1, \dots, m}\) such that \(i \neq j\).
-	Let \(A, B \in \MS\) such that \(B\) is obtained by multiplying the \(i\)th column of \(A\) with \(c \in \F \setminus \set{0}\) and add it to the \(j\)th column of \(A\).
+	Let \(A, B \in \ms\) such that \(B\) is obtained by multiplying the \(i\)th column of \(A\) with \(c \in \F \setminus \set{0}\) and add it to the \(j\)th column of \(A\).
 	If \(E \in \ms[n][n][\F]\) is the elementary matrix performing the same operation, then by \cref{2.3.4} we have
 	\[
 		\forall p, q \in \set{1, \dots, n}, E_{p q} = \begin{dcases}
@@ -436,7 +436,7 @@
 \end{proof}
 
 \begin{ex}\label{ex:3.1.6}
-	Let \(A \in \MS\).
+	Let \(A \in \ms\).
 	Prove that if \(B\) can be obtained from \(A\) by an elementary row (column) operation, then \(\tp{B}\) can be obtained from \(\tp{A}\) by the corresponding elementary column (row) operation.
 \end{ex}
 
@@ -614,14 +614,14 @@
 \end{proof}
 
 \begin{ex}\label{ex:3.1.12}
-	Let \(A \in \MS\).
+	Let \(A \in \ms\).
 	Prove that there exists a sequence of elementary row operations of types 1 and 3 that transforms \(A\) into an upper triangular matrix.
 \end{ex}
 
 \begin{proof}[\pf{ex:3.1.12}]
 	We use induction on \(m\).
 	For \(m = 1\), by \cref{ex:1.3.12} every \(A \in \ms[1][n][\F]\) is an upper triangular matrix and thus the base case holds.
-	Suppose inductive that for some \(m \geq 1\), every \(A \in \MS\) can be transformed into an upper triangular matrix.
+	Suppose inductive that for some \(m \geq 1\), every \(A \in \ms\) can be transformed into an upper triangular matrix.
 	Let \(B \in \ms[(m + 1)][n][\F]\).
 	By induction hypothesis we can transform the first \(m\) rows of \(B\) into an upper triangular matrix with row operations of type 1 and type 3.
 	Call the transformed matrix as \(C\).
