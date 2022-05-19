@@ -347,7 +347,7 @@
 \end{eg}
 
 \begin{defn}\label{6.5.13}
-	We know that, for a complex normal (real symmetric) matrix \(A\), there exists an orthonormal basis \(\beta\) for \(\vs{F}^n\) consisting of eigenvectors of \(A\).
+	We know by \cref{6.16,6.17} that, for a complex normal (real symmetric) matrix \(A\), there exists an orthonormal basis \(\beta\) for \(\vs{F}^n\) consisting of eigenvectors of \(A\).
 	Hence \(A\) is similar to a diagonal matrix \(D\).
 	By \cref{2.5.3}, the matrix \(Q\) whose columns are the vectors in \(\beta\) is such that \(D = Q^{-1} A Q\).
 	But since the columns of \(Q\) are an orthonormal basis for \(\vs{F}^n\), it follows that \(Q\) is unitary (orthogonal) (see \cref{ex:6.1.23}(c)).
@@ -356,6 +356,67 @@
 	It is easily seen (see \cref{ex:6.5.18}) that this relation is an equivalence relation on \(\ms[n][n][\C]\) (\(\ms[n][n][\R]\)).
 	More generally, \(A\) and \(B\) are unitarily equivalent (orthogonally equivalent) iff there exists a unitary (orthogonal) matrix \(P\) such that \(A = P^* B P\).
 \end{defn}
+
+\begin{thm}\label{6.19}
+	Let \(A \in \ms[n][n][\C]\).
+	Then \(A\) is normal iff \(A\) is unitarily equivalent to a diagonal matrix.
+\end{thm}
+
+\begin{proof}[\pf{6.19}]
+	By \cref{6.5.13}, we need only prove that if \(A\) is unitarily equivalent to a diagonal matrix, then \(A\) is normal.
+
+	Suppose that \(A = P^* D P\), where \(P\) is a unitary matrix and \(D\) is a diagonal matrix.
+	Then
+	\begin{align*}
+		A A^* & = (P^* D P) (P^* D P)^*                        \\
+		      & = (P^* D P) (P^* D^* P) &  & \by{6.3.2}[c]     \\
+		      & = P^* D I_n D^* P       &  & \by{ex:6.1.23}[c] \\
+		      & = P^* D D^* P.
+	\end{align*}
+	Similarly, \(A^* A = P^* D^* D P\).
+	Since \(D\) is a diagonal matrix, however, we have \(D D^* = D^* D\).
+	Thus \(A A^* = A^* A\).
+\end{proof}
+
+\begin{thm}\label{6.20}
+	Let \(A \in \ms[n][n][\R]\).
+	Then \(A\) is symmetric iff \(A\) is orthogonally equivalent to a real diagonal matrix.
+\end{thm}
+
+\begin{proof}[\pf{6.20}]
+	By \cref{6.5.13}, we need only prove that if \(A\) is orthogonally equivalent to a diagonal matrix, then \(A\) is symmetric.
+
+	Suppose that \(A = \tp{P} D P\), where \(P\) is a orthogonal matrix and \(D\) is a diagonal matrix.
+	Then
+	\begin{align*}
+		\tp{A} & = \tp{(\tp{P} D P)}                                                    \\
+		       & = \tp{P} \tp{D} \tp{(\tp{P})} &  & \by{2.3.2}                          \\
+		       & = \tp{P} \tp{D} P             &  & \by{ex:1.3.4}                       \\
+		       & = \tp{P} D P                  &  & \text{(\(D\) is a diagonal matrix)} \\
+		       & = A.
+	\end{align*}
+\end{proof}
+
+\begin{thm}[Schur's Theorem]\label{6.21}
+	Let \(A \in \ms[n][n][\F]\) be a matrix whose characteristic polynomial splits over \(\F\).
+	\begin{itemize}
+		\item If \(\F = \C\), then \(A\) is unitarily equivalent to a complex upper triangular matrix.
+		\item If \(\F = \R\), then \(A\) is orthogonally equivalent to a real upper triangular matrix.
+	\end{itemize}
+\end{thm}
+
+\begin{proof}[\pf{6.21}]
+	Let \(\beta\) be the standard ordered basis for \(\vs{F}^n\) over \(\F\).
+	By \cref{6.14}, there exists an orthonormal basis \(\gamma\) for \(\vs{F}^n\) over \(\F\) such that \([\L_A]_{\gamma}\) is upper triangular.
+	Let \(Q = [\IT[\vs{F}^n]]_{\gamma}^{\beta}\).
+	Then we have
+	\begin{align*}
+		[\L_A]_{\gamma} & = Q^{-1} [\L_A]_{\beta} Q &  & \by{2.23}         \\
+		                & = Q^{-1} A Q              &  & \by{2.15}[a]      \\
+		                & = Q^* A Q.                &  & \by{ex:6.1.23}[c]
+	\end{align*}
+	Thus by \cref{6.5.13} \(A\) is unitarily (orthogonally) equivalent to an complex (real) upper triangular matrix.
+\end{proof}
 
 \exercisesection
 
@@ -367,7 +428,7 @@
 	Let \(A, B, C \in \ms[n][n][\C]\).
 	For reflexivity, we have
 	\begin{align*}
-		         & A = I_n A I_n = I_n^* A I_n              &  & \by{6.3.2}(e) \\
+		         & A = I_n A I_n = I_n^* A I_n              &  & \by{6.3.2}[e] \\
 		\implies & A \text{ is unitarily equivalent to } A. &  & \by{6.5.13}
 	\end{align*}
 	For symmetric, we have
