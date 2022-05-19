@@ -100,7 +100,7 @@
 	Otherwise, discard any zero rows from \((A' | b')\), and write the corresponding system of equations.
 	Solve this system as described above to obtain an arbitrary solution of the form
 	\[
-		s = s_0 + \seq[+]{t,u}{1,2,,n-r},
+		s = s_0 + \seq[+]{t,u}{1,,n-r},
 	\]
 	where \(r\) is the number of nonzero rows in \(A'\) (\(r \leq m\)).
 	The preceding equation is called a \textbf{general solution} of the system \(Ax = b\).
@@ -116,7 +116,7 @@
 		\item \(\rk{A} = r\).
 		\item If the general solution obtained by the procedure above is of the form
 		      \[
-			      s = s_0 + \seq[+]{t,u}{1,2,,n-r},
+			      s = s_0 + \seq[+]{t,u}{1,,n-r},
 		      \]
 		      then \(\set{\seq{u}{1,,n-r}}\) is a basis for the solution set of the corresponding homogeneous system, and \(s_0\) is a solution to the original system.
 	\end{enumerate}

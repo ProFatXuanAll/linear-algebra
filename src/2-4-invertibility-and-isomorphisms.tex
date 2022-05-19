@@ -1,896 +1,896 @@
 \section{Invertibility and Isomorphisms}\label{sec:2.4}
 
 \begin{defn}\label{2.4.1}
-	Let \(\V\) and \(\W\) be sets, and let \(\T : \V \to \W\) be a function.
-	A function \(\U : \W \to \V\) is said to be a \textbf{inverse} of \(\T\) if \(\T \U = \IT[\W]\) and \(\U \T = \IT[\V]\).
-	If \(\T\) has an inverse, then \(\T\) is said to be \textbf{invertible}.
-	If \(\T\) is invertible, then the inverse of \(\T\) is denoted by \(\T^{-1}\).
-	The following facts hold for invertible functions \(\T\) and \(\U\).
-	\begin{itemize}
-		\item \((\T \U)^{-1} = \U^{-1} \T^{-1}\).
-		\item \((\T^{-1})^{-1} = \T\);
-		      in particular, \(\T^{-1}\) is invertible.
-	\end{itemize}
-	We often use the fact that a function is invertible iff it is both one-to-one and onto.
-	We can therefore restate \cref{2.5} as follows.
-	\begin{itemize}
-		\item Let \(\T \in \ls(\V, \W)\) where \(\V\) and \(\W\) are finite-dimensional spaces over \(\F\) of equal dimension.
-		      Then \(\T\) is invertible iff \(\rk{\T} = \dim(\V)\).
-	\end{itemize}
+  Let \(\V\) and \(\W\) be sets, and let \(\T : \V \to \W\) be a function.
+  A function \(\U : \W \to \V\) is said to be a \textbf{inverse} of \(\T\) if \(\T \U = \IT[\W]\) and \(\U \T = \IT[\V]\).
+  If \(\T\) has an inverse, then \(\T\) is said to be \textbf{invertible}.
+  If \(\T\) is invertible, then the inverse of \(\T\) is denoted by \(\T^{-1}\).
+  The following facts hold for invertible functions \(\T\) and \(\U\).
+  \begin{itemize}
+    \item \((\T \U)^{-1} = \U^{-1} \T^{-1}\).
+    \item \((\T^{-1})^{-1} = \T\);
+          in particular, \(\T^{-1}\) is invertible.
+  \end{itemize}
+  We often use the fact that a function is invertible iff it is both one-to-one and onto.
+  We can therefore restate \cref{2.5} as follows.
+  \begin{itemize}
+    \item Let \(\T \in \ls(\V, \W)\) where \(\V\) and \(\W\) are finite-dimensional spaces over \(\F\) of equal dimension.
+          Then \(\T\) is invertible iff \(\rk{\T} = \dim(\V)\).
+  \end{itemize}
 \end{defn}
 
 \begin{thm}\label{2.17}
-	Let \(\V\) and \(\W\) be vector spaces over \(\F\), and let \(\T : \V \to \W\) be linear and invertible.
-	Then \(\T^{-1} : \W \to \V\) is linear.
+  Let \(\V\) and \(\W\) be vector spaces over \(\F\), and let \(\T : \V \to \W\) be linear and invertible.
+  Then \(\T^{-1} : \W \to \V\) is linear.
 \end{thm}
 
 \begin{proof}[\pf{2.17}]
-	Let \(y_1, y_2 \in \W\) and \(c \in \F\).
-	Since \(\T\) is onto and one-to-one, there exist unique vectors \(x_1\) and \(x_2\) such that \(\T(x_1) = y_1\) and \(\T(x_2) = y_2\).
-	Thus \(x_1 = \T^{-1}(y_1)\) and \(x_2 = \T^{-1}(y_2)\);
-	so
-	\begin{align*}
-		\T^{-1}(c y_1 + y_2) & = \T^{-1}(c \T(x_1) + \T(x_2))   &  & \by{2.4.1}    \\
-		                     & = \T^{-1}(\T(c x_1 + x_2))       &  & \by{2.1.2}[b] \\
-		                     & = c x_1 + x_2                    &  & \by{2.4.1}    \\
-		                     & = c \T^{-1}(x_1) + \T^{-1}(x_2). &  & \by{2.4.1}
-	\end{align*}
+  Let \(y_1, y_2 \in \W\) and \(c \in \F\).
+  Since \(\T\) is onto and one-to-one, there exist unique vectors \(x_1\) and \(x_2\) such that \(\T(x_1) = y_1\) and \(\T(x_2) = y_2\).
+  Thus \(x_1 = \T^{-1}(y_1)\) and \(x_2 = \T^{-1}(y_2)\);
+  so
+  \begin{align*}
+    \T^{-1}(c y_1 + y_2) & = \T^{-1}(c \T(x_1) + \T(x_2))   &  & \by{2.4.1}    \\
+                         & = \T^{-1}(\T(c x_1 + x_2))       &  & \by{2.1.2}[b] \\
+                         & = c x_1 + x_2                    &  & \by{2.4.1}    \\
+                         & = c \T^{-1}(x_1) + \T^{-1}(x_2). &  & \by{2.4.1}
+  \end{align*}
 \end{proof}
 
 \begin{cor}\label{2.4.2}
-	If \(\T\) is a linear transformation between vector spaces of equal (finite) dimension, then the conditions of being invertible, one-to-one, and onto are all equivalent.
+  If \(\T\) is a linear transformation between vector spaces of equal (finite) dimension, then the conditions of being invertible, one-to-one, and onto are all equivalent.
 \end{cor}
 
 \begin{proof}[\pf{2.4.2}]
-	By \cref{2.5} we see that this is true.
+  By \cref{2.5} we see that this is true.
 \end{proof}
 
 \begin{defn}\label{2.4.3}
-	Let \(A \in \ms[n][n][\F]\).
-	Then \(A\) is \textbf{invertible} if there exists an \(B \in \ms[n][n][\F]\) such that \(AB = BA = I_n\).
+  Let \(A \in \ms[n][n][\F]\).
+  Then \(A\) is \textbf{invertible} if there exists an \(B \in \ms[n][n][\F]\) such that \(AB = BA = I_n\).
 \end{defn}
 
 \begin{cor}\label{2.4.4}
-	If \(A\) is invertible, then the matrix \(B\) such that \(AB = BA = I\) is unique.
-	The matrix \(B\) is called the \textbf{inverse} of \(A\) and is denoted by \(A^{-1}\).
+  If \(A\) is invertible, then the matrix \(B\) such that \(AB = BA = I\) is unique.
+  The matrix \(B\) is called the \textbf{inverse} of \(A\) and is denoted by \(A^{-1}\).
 \end{cor}
 
 \begin{proof}[\pf{2.4.4}]
-	If \(C\) were another such matrix, then
-	\[
-		C = CI = C(AB) = (CA)B = IB = B.
-	\]
-	Thus \(B\) is unique.
+  If \(C\) were another such matrix, then
+  \[
+    C = CI = C(AB) = (CA)B = IB = B.
+  \]
+  Thus \(B\) is unique.
 \end{proof}
 
 \begin{lem}\label{2.4.5}
-	Let \(\T\) be an invertible linear transformation from \(\V\) to \(\W\).
-	Then \(\V\) is finite-dimensional iff \(\W\) is finite-dimensional.
-	In this case, \(\dim(\V) = \dim(\W)\).
+  Let \(\T\) be an invertible linear transformation from \(\V\) to \(\W\).
+  Then \(\V\) is finite-dimensional iff \(\W\) is finite-dimensional.
+  In this case, \(\dim(\V) = \dim(\W)\).
 \end{lem}
 
 \begin{proof}[\pf{2.4.5}]
-	Suppose that \(\V\) is finite-dimensional.
-	Let \(\beta = \set{\seq{x}{1,,n}}\) be a basis for \(\V\) over \(\F\).
-	By \cref{2.2} \(\T(\beta)\) spans \(\rg{\T} = \W\);
-	hence \(\W\) is finite-dimensional by \cref{1.9}.
-	Conversely, if \(\W\) is finite-dimensional, then so is \(\V\) by a similar argument, using \(\T^{-1}\).
+  Suppose that \(\V\) is finite-dimensional.
+  Let \(\beta = \set{\seq{x}{1,,n}}\) be a basis for \(\V\) over \(\F\).
+  By \cref{2.2} \(\T(\beta)\) spans \(\rg{\T} = \W\);
+  hence \(\W\) is finite-dimensional by \cref{1.9}.
+  Conversely, if \(\W\) is finite-dimensional, then so is \(\V\) by a similar argument, using \(\T^{-1}\).
 
-	Now suppose that \(\V\) and \(\W\) are finite-dimensional.
-	Because \(\T\) is one-to-one and onto, we have
-	\[
-		\nt{\T} = 0 \quad \text{and} \quad \rk{\T} = \dim(\rg{\T}) = \dim(\W).
-	\]
-	So by the dimension theorem (\cref{2.3}), it follows that \(\dim(\V) = \dim(\W)\).
+  Now suppose that \(\V\) and \(\W\) are finite-dimensional.
+  Because \(\T\) is one-to-one and onto, we have
+  \[
+    \nt{\T} = 0 \quad \text{and} \quad \rk{\T} = \dim(\rg{\T}) = \dim(\W).
+  \]
+  So by the dimension theorem (\cref{2.3}), it follows that \(\dim(\V) = \dim(\W)\).
 \end{proof}
 
 \begin{thm}\label{2.18}
-	Let \(\V\) and \(\W\) be finite-dimensional vector spaces over \(\F\) with ordered bases \(\beta\) and \(\gamma\) over \(\F\), respectively.
-	Let \(\T \in \ls(\V, \W)\).
-	Then \(\T\) is invertible iff \([\T]_{\beta}^{\gamma}\) is invertible.
-	Furthermore, \([\T^{-1}]_{\gamma}^{\beta} = ([\T]_{\beta}^{\gamma})^{-1}\).
+  Let \(\V\) and \(\W\) be finite-dimensional vector spaces over \(\F\) with ordered bases \(\beta\) and \(\gamma\) over \(\F\), respectively.
+  Let \(\T \in \ls(\V, \W)\).
+  Then \(\T\) is invertible iff \([\T]_{\beta}^{\gamma}\) is invertible.
+  Furthermore, \([\T^{-1}]_{\gamma}^{\beta} = ([\T]_{\beta}^{\gamma})^{-1}\).
 \end{thm}
 
 \begin{proof}[\pf{2.18}]
-	Suppose that \(\T\) is invertible.
-	By \cref{2.4.5}, we have \(\dim(\V) = \dim(\W)\).
-	Let \(n = \dim(\V)\).
-	So \([\T]_{\beta}^{\gamma} \in \ms[n][n][\F]\).
-	Now \(\T^{-1} : \W \to \V\) satisfies \(\T \T^{-1} = \IT[\W]\) and \(\T^{-1} \T = \IT[\V]\).
-	Thus
-	\[
-		I_n = [\IT[\V]]_{\beta} = [\T^{-1} \T]_{\beta} = [\T^{-1}]_{\gamma}^{\beta} [\T]_{\beta}^{\gamma}.
-	\]
-	Similarly, \([\T]_{\beta}^{\gamma} [\T^{-1}]_{\gamma}^{\beta} = I_n\).
-	So \([\T]_{\beta}^{\gamma}\) is invertible and \(\pa{[\T]_{\beta}^{\gamma}}^{-1} = [\T^{-1}]_{\gamma}^{\beta}\).
+  Suppose that \(\T\) is invertible.
+  By \cref{2.4.5}, we have \(\dim(\V) = \dim(\W)\).
+  Let \(n = \dim(\V)\).
+  So \([\T]_{\beta}^{\gamma} \in \ms[n][n][\F]\).
+  Now \(\T^{-1} : \W \to \V\) satisfies \(\T \T^{-1} = \IT[\W]\) and \(\T^{-1} \T = \IT[\V]\).
+  Thus
+  \[
+    I_n = [\IT[\V]]_{\beta} = [\T^{-1} \T]_{\beta} = [\T^{-1}]_{\gamma}^{\beta} [\T]_{\beta}^{\gamma}.
+  \]
+  Similarly, \([\T]_{\beta}^{\gamma} [\T^{-1}]_{\gamma}^{\beta} = I_n\).
+  So \([\T]_{\beta}^{\gamma}\) is invertible and \(\pa{[\T]_{\beta}^{\gamma}}^{-1} = [\T^{-1}]_{\gamma}^{\beta}\).
 
-	Now suppose that \(A = [\T]_{\beta}^{\gamma}\) is invertible.
-	Then there exists an \(B \in \ms[n][n][\F]\) such that \(AB = BA = I_n\).
-	By \cref{2.6} there exists \(U \in \ls(\W, \V)\) such that
-	\[
-		\U(w_j) = \sum_{i = 1}^n B_{i j} v_i \quad \text{for } j \in \set{1, \dots, n},
-	\]
-	where \(\gamma = \set{\seq{w}{1,,n}}\) and \(\beta = \set{\seq{v}{1,,n}}\).
-	It follows that \([\U]_{\gamma}^{\beta} = B\).
-	To show that \(\U = \T^{-1}\), observe that
-	\[
-		[\U \T]_{\beta} = [\U]_{\gamma}^{\beta} [\T]_{\beta}^{\gamma} = BA = I_n = [\IT[\V]]_{\beta}
-	\]
-	by \cref{2.11}.
-	So \(\U \T = \IT[\V]\), and similarly, \(\T \U = \IT[\W]\).
+  Now suppose that \(A = [\T]_{\beta}^{\gamma}\) is invertible.
+  Then there exists an \(B \in \ms[n][n][\F]\) such that \(AB = BA = I_n\).
+  By \cref{2.6} there exists \(U \in \ls(\W, \V)\) such that
+  \[
+    \U(w_j) = \sum_{i = 1}^n B_{i j} v_i \quad \text{for } j \in \set{1, \dots, n},
+  \]
+  where \(\gamma = \set{\seq{w}{1,,n}}\) and \(\beta = \set{\seq{v}{1,,n}}\).
+  It follows that \([\U]_{\gamma}^{\beta} = B\).
+  To show that \(\U = \T^{-1}\), observe that
+  \[
+    [\U \T]_{\beta} = [\U]_{\gamma}^{\beta} [\T]_{\beta}^{\gamma} = BA = I_n = [\IT[\V]]_{\beta}
+  \]
+  by \cref{2.11}.
+  So \(\U \T = \IT[\V]\), and similarly, \(\T \U = \IT[\W]\).
 \end{proof}
 
 \begin{cor}\label{2.4.6}
-	Let \(\V\) be a finite-dimensional vector space over \(\F\) with an ordered basis \(\beta\), and let \(\T \in \ls(\V)\).
-	Then \(\T\) is invertible iff \([\T]_{\beta}\) is invertible.
-	Furthermore, \([\T^{-1}]_{\beta} = ([\T]_{\beta})^{-1}\).
+  Let \(\V\) be a finite-dimensional vector space over \(\F\) with an ordered basis \(\beta\), and let \(\T \in \ls(\V)\).
+  Then \(\T\) is invertible iff \([\T]_{\beta}\) is invertible.
+  Furthermore, \([\T^{-1}]_{\beta} = ([\T]_{\beta})^{-1}\).
 \end{cor}
 
 \begin{proof}[\pf{2.4.6}]
-	This is done by \cref{2.18}.
+  This is done by \cref{2.18}.
 \end{proof}
 
 \begin{cor}\label{2.4.7}
-	Let \(A \in \ms[n][n][\F]\).
-	Then \(A\) is invertible iff \(\L_A\) is invertible.
-	Furthermore, \((\L_A)^{-1} = \L_{A^{-1}}\).
+  Let \(A \in \ms[n][n][\F]\).
+  Then \(A\) is invertible iff \(\L_A\) is invertible.
+  Furthermore, \((\L_A)^{-1} = \L_{A^{-1}}\).
 \end{cor}
 
 \begin{proof}[\pf{2.4.7}]
-	By \cref{2.15} we know that \(\L_A\) is linear and \([\L_A]_{\beta} = A\) where \(\beta\) is the standard ordered basis for \(\vs{F}^n\) over \(\F\).
-	Thus by \cref{2.4.7} \(A\) is invertible iff \([\L_A]_{\beta}\) is invertible iff \(\L_A\) is invertible.
-	And we have \([\L_A^{-1}]_{\beta} = ([\L_A]_{\beta})^{-1} = A^{-1} = [\L_{A^{-1}}]_{\beta}\).
-	By \cref{2.1.13} this means \((\L_A)^{-1} = \L_{A^{-1}}\).
+  By \cref{2.15} we know that \(\L_A\) is linear and \([\L_A]_{\beta} = A\) where \(\beta\) is the standard ordered basis for \(\vs{F}^n\) over \(\F\).
+  Thus by \cref{2.4.7} \(A\) is invertible iff \([\L_A]_{\beta}\) is invertible iff \(\L_A\) is invertible.
+  And we have \([\L_A^{-1}]_{\beta} = ([\L_A]_{\beta})^{-1} = A^{-1} = [\L_{A^{-1}}]_{\beta}\).
+  By \cref{2.1.13} this means \((\L_A)^{-1} = \L_{A^{-1}}\).
 \end{proof}
 
 \begin{defn}\label{2.4.8}
-	Let \(\V\) and \(\W\) be vector spaces over \(\F\).
-	We say that \(\V\) is \textbf{isomorphic} to \(\W\) if there exists a linear transformation \(\T : \V \to \W\) that is invertible.
-	Such a linear transformation is called an \textbf{isomorphism} from \(\V\) onto \(\W\).
+  Let \(\V\) and \(\W\) be vector spaces over \(\F\).
+  We say that \(\V\) is \textbf{isomorphic} to \(\W\) if there exists a linear transformation \(\T : \V \to \W\) that is invertible.
+  Such a linear transformation is called an \textbf{isomorphism} from \(\V\) onto \(\W\).
 \end{defn}
 
 \begin{note}
-	``Is isomorphic to'' is an equivalence relation (See \cref{ex:2.4.13}).
-	So we need only say that \(\V\) and \(\W\) are isomorphic.
+  ``Is isomorphic to'' is an equivalence relation (See \cref{ex:2.4.13}).
+  So we need only say that \(\V\) and \(\W\) are isomorphic.
 \end{note}
 
 \begin{thm}\label{2.19}
-	Let \(\V\) and \(\W\) be finite-dimensional vector spaces (over the same field).
-	Then \(\V\) and \(\W\) are isomorphic iff \(\dim(\V) = \dim(\W)\).
+  Let \(\V\) and \(\W\) be finite-dimensional vector spaces (over the same field).
+  Then \(\V\) and \(\W\) are isomorphic iff \(\dim(\V) = \dim(\W)\).
 \end{thm}
 
 \begin{proof}[\pf{2.19}]
-	Suppose that \(\V\) and \(\W\) are isomorphic and that \(\T : \V \to \W\) is an isomorphism from \(\V\) to \(\W\).
-	By \cref{2.4.5} we have that \(\dim(\V) = \dim(\W)\).
+  Suppose that \(\V\) and \(\W\) are isomorphic and that \(\T : \V \to \W\) is an isomorphism from \(\V\) to \(\W\).
+  By \cref{2.4.5} we have that \(\dim(\V) = \dim(\W)\).
 
-	Now suppose that \(\dim(\V) = \dim(\W)\), and let \(\beta = \set{\seq{v}{1,,n}}\) and \(\gamma = \set{\seq{w}{1,,n}}\) be bases for \(\V\) and \(\W\) over \(\F\), respectively.
-	By \cref{2.6} there exists \(\T : \V \to \W\) such that \(\T\) is linear and \(\T(v_i) = w_i\) for \(i = 1, 2, \dots, n\).
-	Using \cref{2.2} we have
-	\[
-		\rg{\T} = \spn{\T(\beta)} = \spn{\gamma} = \W.
-	\]
-	So \(\T\) is onto.
-	From \cref{2.5} we have that \(\T\) is also one-to-one.
-	Hence \(\T\) is an isomorphism.
+  Now suppose that \(\dim(\V) = \dim(\W)\), and let \(\beta = \set{\seq{v}{1,,n}}\) and \(\gamma = \set{\seq{w}{1,,n}}\) be bases for \(\V\) and \(\W\) over \(\F\), respectively.
+  By \cref{2.6} there exists \(\T : \V \to \W\) such that \(\T\) is linear and \(\T(v_i) = w_i\) for \(i = 1, 2, \dots, n\).
+  Using \cref{2.2} we have
+  \[
+    \rg{\T} = \spn{\T(\beta)} = \spn{\gamma} = \W.
+  \]
+  So \(\T\) is onto.
+  From \cref{2.5} we have that \(\T\) is also one-to-one.
+  Hence \(\T\) is an isomorphism.
 \end{proof}
 
 \begin{note}
-	By \cref{2.4.5} if \(\V\) and \(\W\) are isomorphic, then either both of \(\V\) and \(\W\) are finite-dimensional or both are infinite-dimensional.
+  By \cref{2.4.5} if \(\V\) and \(\W\) are isomorphic, then either both of \(\V\) and \(\W\) are finite-dimensional or both are infinite-dimensional.
 \end{note}
 
 \begin{cor}\label{2.4.9}
-	Let \(\V\) be a vector space over \(\F\).
-	Then \(\V\) and \(\vs{F}^n\) are isomorphic iff \(\dim(\V) = n\).
+  Let \(\V\) be a vector space over \(\F\).
+  Then \(\V\) and \(\vs{F}^n\) are isomorphic iff \(\dim(\V) = n\).
 \end{cor}
 
 \begin{proof}[\pf{2.4.9}]
-	We have
-	\begin{align*}
-		     & \V \text{ and } \vs{F}^n \text{ are isomorphic} &  & \by{2.19}   \\
-		\iff & \dim(\V) = \dim(\vs{F}^n) = n.                  &  & \by{1.6.10}
-	\end{align*}
+  We have
+  \begin{align*}
+         & \V \text{ and } \vs{F}^n \text{ are isomorphic} &  & \by{2.19}   \\
+    \iff & \dim(\V) = \dim(\vs{F}^n) = n.                  &  & \by{1.6.10}
+  \end{align*}
 \end{proof}
 
 \begin{thm}\label{2.20}
-	Let \(\V\) and \(\W\) be finite-dimensional vector spaces over \(\F\) of dimensions \(n\) and \(m\), respectively, and let \(\beta\) and \(\gamma\) be ordered bases for \(\V\) and \(\W\) over \(\F\), respectively.
-	Then the function \(\Phi : \ls(\V, \W) \to \ms\), defined by \(\Phi(\T) = [\T]_{\beta}^{\gamma}\) for \(\T \in \ls(\V, \W)\), is an isomorphism.
+  Let \(\V\) and \(\W\) be finite-dimensional vector spaces over \(\F\) of dimensions \(n\) and \(m\), respectively, and let \(\beta\) and \(\gamma\) be ordered bases for \(\V\) and \(\W\) over \(\F\), respectively.
+  Then the function \(\Phi : \ls(\V, \W) \to \ms\), defined by \(\Phi(\T) = [\T]_{\beta}^{\gamma}\) for \(\T \in \ls(\V, \W)\), is an isomorphism.
 \end{thm}
 
 \begin{proof}[\pf{2.20}]
-	By \cref{2.8} \(\Phi\) is linear.
-	Hence we must show that \(\Phi\) is one-to-one and onto.
-	This is accomplished if we show that for every \(A \in \ms\), there exists a unique linear transformation \(\T : \V \to \W\) such that \(\Phi(\T) = A\).
-	Let \(\beta = \set{\seq{v}{1,,n}}\), \(\gamma = \set{\seq{w}{1,,m}}\), and let \(A \in \ms\).
-	By \cref{2.6} there exists a unique linear transformation \(\T : \V \to \W\) such that
-	\[
-		\T(v_j) = \sum_{i = 1}^m A_{i j} w_i \quad \text{for } 1 \leq j \leq n.
-	\]
-	But this means that \([\T]_{\beta}^{\gamma} = A\), or \(\Phi(\T) = A\).
-	Thus \(\Phi\) is an isomorphism.
+  By \cref{2.8} \(\Phi\) is linear.
+  Hence we must show that \(\Phi\) is one-to-one and onto.
+  This is accomplished if we show that for every \(A \in \ms\), there exists a unique linear transformation \(\T : \V \to \W\) such that \(\Phi(\T) = A\).
+  Let \(\beta = \set{\seq{v}{1,,n}}\), \(\gamma = \set{\seq{w}{1,,m}}\), and let \(A \in \ms\).
+  By \cref{2.6} there exists a unique linear transformation \(\T : \V \to \W\) such that
+  \[
+    \T(v_j) = \sum_{i = 1}^m A_{i j} w_i \quad \text{for } 1 \leq j \leq n.
+  \]
+  But this means that \([\T]_{\beta}^{\gamma} = A\), or \(\Phi(\T) = A\).
+  Thus \(\Phi\) is an isomorphism.
 \end{proof}
 
 \begin{cor}\label{2.4.10}
-	Let \(\V\) and \(\W\) be finite-dimensional vector spaces over \(\F\) of dimensions \(n\) and \(m\), respectively.
-	Then \(\ls(\V, \W)\) is finite-dimensional of dimension \(mn\).
+  Let \(\V\) and \(\W\) be finite-dimensional vector spaces over \(\F\) of dimensions \(n\) and \(m\), respectively.
+  Then \(\ls(\V, \W)\) is finite-dimensional of dimension \(mn\).
 \end{cor}
 
 \begin{proof}[\pf{2.4.10}]
-	The proof follows from \cref{2.20} and \cref{2.19} and the fact that \(\dim(\ms) = mn\).
+  The proof follows from \cref{2.20} and \cref{2.19} and the fact that \(\dim(\ms) = mn\).
 \end{proof}
 
 \begin{defn}\label{2.4.11}
-	Let \(\beta\) be an ordered basis for an \(n\)-dimensional vector space \(\V\) over the field \(\F\).
-	The \textbf{standard representation of \(\V\) with respect to \(\beta\)} is the function \(\phi_{\beta} : \V \to \vs{F}^n\) defined by \(\phi_{\beta}(x) = [x]_{\beta}\) for each \(x \in \V\).
+  Let \(\beta\) be an ordered basis for an \(n\)-dimensional vector space \(\V\) over the field \(\F\).
+  The \textbf{standard representation of \(\V\) with respect to \(\beta\)} is the function \(\phi_{\beta} : \V \to \vs{F}^n\) defined by \(\phi_{\beta}(x) = [x]_{\beta}\) for each \(x \in \V\).
 \end{defn}
 
 \begin{thm}\label{2.21}
-	For any finite-dimensional vector space \(\V\) with ordered basis \(\beta\) over \(\F\), \(\phi_{\beta}\) is an isomorphism.
+  For any finite-dimensional vector space \(\V\) with ordered basis \(\beta\) over \(\F\), \(\phi_{\beta}\) is an isomorphism.
 \end{thm}
 
 \begin{proof}[\pf{2.21}]
-	First we show that \(\phi_{\beta} \in \ls(\V, \vs{F}^n)\).
-	Let \(x, y \in \V\) and let \(c \in \F\).
-	Since
-	\begin{align*}
-		\phi_{\beta}(cx + y) & = [cx + y]_{\beta}                     &  & \by{2.4.11} \\
-		                     & = c [x]_{\beta} + [y]_{\beta}          &  & \by{1.2.4}  \\
-		                     & = c \phi_{\beta}(x) + \phi_{\beta}(y), &  & \by{2.4.11}
-	\end{align*}
-	by \cref{2.1.2}(b) we know that \(\phi_{\beta} \in \ls(\V, \vs{F}^n)\).
+  First we show that \(\phi_{\beta} \in \ls(\V, \vs{F}^n)\).
+  Let \(x, y \in \V\) and let \(c \in \F\).
+  Since
+  \begin{align*}
+    \phi_{\beta}(cx + y) & = [cx + y]_{\beta}                     &  & \by{2.4.11} \\
+                         & = c [x]_{\beta} + [y]_{\beta}          &  & \by{1.2.4}  \\
+                         & = c \phi_{\beta}(x) + \phi_{\beta}(y), &  & \by{2.4.11}
+  \end{align*}
+  by \cref{2.1.2}(b) we know that \(\phi_{\beta} \in \ls(\V, \vs{F}^n)\).
 
-	Now we show that \(\phi_{\beta}\) is an isomorphism.
-	Let \(n = \dim(\V)\), let \(\beta = \set{\seq{v}{1,,n}}\), let \(\tuple{a}{1,,n} \in \vs{F}^n\) and let \(x = \sum_{i = 1}^n a_i v_i\).
-	Since \(x \in \V\), by \cref{2.2.3} we know that \([x]_{\beta} = \tp{\tuple{a}{1,,n}}\) and thus \(\phi_{\beta}\) is onto.
-	Since \(\sum_{i = 1}^n a_i v_i\) is unique, we know that \(\phi_{\beta}\) is one-to-one.
-	Thus by \cref{2.4.8} \(\phi_{\beta}\) is an isomorphism from \(\V\) onto \(\vs{\F}^n\).
+  Now we show that \(\phi_{\beta}\) is an isomorphism.
+  Let \(n = \dim(\V)\), let \(\beta = \set{\seq{v}{1,,n}}\), let \(\tuple{a}{1,,n} \in \vs{F}^n\) and let \(x = \sum_{i = 1}^n a_i v_i\).
+  Since \(x \in \V\), by \cref{2.2.3} we know that \([x]_{\beta} = \tp{\tuple{a}{1,,n}}\) and thus \(\phi_{\beta}\) is onto.
+  Since \(\sum_{i = 1}^n a_i v_i\) is unique, we know that \(\phi_{\beta}\) is one-to-one.
+  Thus by \cref{2.4.8} \(\phi_{\beta}\) is an isomorphism from \(\V\) onto \(\vs{\F}^n\).
 \end{proof}
 
 \begin{note}
-	\cref{2.21} provides us with an alternate proof that an \(n\)-dimensional vector space is isomorphic to \(\vs{F}^n\)
-	(See \cref{2.4.9}).
+  \cref{2.21} provides us with an alternate proof that an \(n\)-dimensional vector space is isomorphic to \(\vs{F}^n\)
+  (See \cref{2.4.9}).
 \end{note}
 
 \begin{cor}\label{2.4.12}
-	Let \(\V\) and \(\W\) be vector spaces of dimension \(n\) and \(m\) over \(\F\), respectively, and let \(\T \in \ls(\V, \W)\).
-	Define \(A = [\T]_{\beta}^{\gamma}\), where \(\beta\) and \(\gamma\) are arbitrary ordered bases of \(\V\) and \(\W\) over \(\F\), respectively.
-	We are now able to use \(\phi_{\beta}\) and \(\phi_{\gamma}\) to study the relationship between the linear transformations \(\T\) and \(\L_A : \vs{F}^n \to \vs{F}^m\).
-	There are two composites of linear transformations that map \(\V\) into \(\vs{F}^m\):
-	\begin{itemize}
-		\item Map \(\V\) into \(\vs{F}^n\) with \(\phi_{\beta}\) and follow this transformation with \(\L_A\);
-		      this yields the composite \(\L_A \phi_{\beta}\).
-		\item Map \(\V\) into \(\W\) with \(\T\) and follow it by \(\phi_{\gamma}\) to obtain the composite \(\phi_{\gamma} \T\).
-	\end{itemize}
-	By a simple reformulation of \cref{2.14}, we may conclude that
-	\[
-		\L_A \phi_{\beta} = \phi_{\gamma} \T.
-	\]
-	Heuristically, this relationship indicates that after \(\V\) and \(\W\) are identified with \(\vs{F}^n\) and \(\vs{F}^m\) via \(\phi_{\beta}\) and \(\phi_{\gamma}\), respectively, we may ``identify'' \(\T\) with \(\L_A\).
+  Let \(\V\) and \(\W\) be vector spaces of dimension \(n\) and \(m\) over \(\F\), respectively, and let \(\T \in \ls(\V, \W)\).
+  Define \(A = [\T]_{\beta}^{\gamma}\), where \(\beta\) and \(\gamma\) are arbitrary ordered bases of \(\V\) and \(\W\) over \(\F\), respectively.
+  We are now able to use \(\phi_{\beta}\) and \(\phi_{\gamma}\) to study the relationship between the linear transformations \(\T\) and \(\L_A : \vs{F}^n \to \vs{F}^m\).
+  There are two composites of linear transformations that map \(\V\) into \(\vs{F}^m\):
+  \begin{itemize}
+    \item Map \(\V\) into \(\vs{F}^n\) with \(\phi_{\beta}\) and follow this transformation with \(\L_A\);
+          this yields the composite \(\L_A \phi_{\beta}\).
+    \item Map \(\V\) into \(\W\) with \(\T\) and follow it by \(\phi_{\gamma}\) to obtain the composite \(\phi_{\gamma} \T\).
+  \end{itemize}
+  By a simple reformulation of \cref{2.14}, we may conclude that
+  \[
+    \L_A \phi_{\beta} = \phi_{\gamma} \T.
+  \]
+  Heuristically, this relationship indicates that after \(\V\) and \(\W\) are identified with \(\vs{F}^n\) and \(\vs{F}^m\) via \(\phi_{\beta}\) and \(\phi_{\gamma}\), respectively, we may ``identify'' \(\T\) with \(\L_A\).
 \end{cor}
 
 \begin{proof}[\pf{2.4.12}]
-	For all \(x \in \V\), we have
-	\begin{align*}
-		(\L_A \phi_{\beta})(x) & = \L_A(\phi_{\beta}(x))                              \\
-		                       & = \L_A([x]_{\beta})                 &  & \by{2.4.11} \\
-		                       & = A [x]_{\beta}                     &  & \by{2.3.8}  \\
-		                       & = [\T]_{\beta}^{\gamma} [x]_{\beta}                  \\
-		                       & = [\T(x)]_{\gamma}                  &  & \by{2.14}   \\
-		                       & = \phi_{\gamma}(\T(x))              &  & \by{2.4.11} \\
-		                       & = (\phi_{\gamma} \T)(x).
-	\end{align*}
-	Thus \(\L_A \phi_{\beta} = \phi_{\gamma} \T\).
+  For all \(x \in \V\), we have
+  \begin{align*}
+    (\L_A \phi_{\beta})(x) & = \L_A(\phi_{\beta}(x))                              \\
+                           & = \L_A([x]_{\beta})                 &  & \by{2.4.11} \\
+                           & = A [x]_{\beta}                     &  & \by{2.3.8}  \\
+                           & = [\T]_{\beta}^{\gamma} [x]_{\beta}                  \\
+                           & = [\T(x)]_{\gamma}                  &  & \by{2.14}   \\
+                           & = \phi_{\gamma}(\T(x))              &  & \by{2.4.11} \\
+                           & = (\phi_{\gamma} \T)(x).
+  \end{align*}
+  Thus \(\L_A \phi_{\beta} = \phi_{\gamma} \T\).
 \end{proof}
 
 \exercisesection
 
 \setcounter{ex}{3}
 \begin{ex}\label{ex:2.4.4}
-	Let \(A, B \in \ms[n][n][\F]\) be invertible.
-	Prove that \(AB\) is invertible and \((AB)^{-1} = B^{-1} A^{-1}\).
+  Let \(A, B \in \ms[n][n][\F]\) be invertible.
+  Prove that \(AB\) is invertible and \((AB)^{-1} = B^{-1} A^{-1}\).
 \end{ex}
 
 \begin{proof}[\pf{ex:2.4.4}]
-	Since
-	\begin{align*}
-		(AB) (B^{-1} A^{-1}) & = A (B B^{-1}) A^{-1} &  & \by{2.16}    \\
-		                     & = A I_n A^{-1}        &  & \by{2.4.3}   \\
-		                     & = A A^{-1}            &  & \by{2.12}[c] \\
-		                     & = I_n
-	\end{align*}
-	and
-	\begin{align*}
-		(B^{-1} A^{-1}) (AB) & = B^{-1} (A^{-1} A) B &  & \by{2.16}    \\
-		                     & = B^{-1} I_n B        &  & \by{2.4.3}   \\
-		                     & = B^{-1} B            &  & \by{2.12}[c] \\
-		                     & = I_n,
-	\end{align*}
-	by \cref{2.4.3} we see that \(AB\) is invertible and \((AB)^{-1} = B^{-1} A^{-1}\).
+  Since
+  \begin{align*}
+    (AB) (B^{-1} A^{-1}) & = A (B B^{-1}) A^{-1} &  & \by{2.16}    \\
+                         & = A I_n A^{-1}        &  & \by{2.4.3}   \\
+                         & = A A^{-1}            &  & \by{2.12}[c] \\
+                         & = I_n
+  \end{align*}
+  and
+  \begin{align*}
+    (B^{-1} A^{-1}) (AB) & = B^{-1} (A^{-1} A) B &  & \by{2.16}    \\
+                         & = B^{-1} I_n B        &  & \by{2.4.3}   \\
+                         & = B^{-1} B            &  & \by{2.12}[c] \\
+                         & = I_n,
+  \end{align*}
+  by \cref{2.4.3} we see that \(AB\) is invertible and \((AB)^{-1} = B^{-1} A^{-1}\).
 \end{proof}
 
 \begin{ex}\label{ex:2.4.5}
-	Let \(A\) be invertible.
-	Prove that \(\tp{A}\) is invertible and \((\tp{A})^{-1} = \tp{(A^{-1})}\).
+  Let \(A\) be invertible.
+  Prove that \(\tp{A}\) is invertible and \((\tp{A})^{-1} = \tp{(A^{-1})}\).
 \end{ex}
 
 \begin{proof}[\pf{ex:2.4.5}]
-	Since
-	\begin{align*}
-		\tp{A} \tp{(A^{-1})} & = \tp{(A^{-1} A)} &  & \by{2.3.2} \\
-		                     & = \tp{I_n}        &  & \by{2.4.3} \\
-		                     & = I_n             &  & \by{2.3.4}
-	\end{align*}
-	and
-	\begin{align*}
-		\tp{(A^{-1})} \tp{A} & = \tp{(A A^{-1})} &  & \by{2.3.2} \\
-		                     & = \tp{I_n}        &  & \by{2.4.3} \\
-		                     & = I_n,            &  & \by{2.3.4}
-	\end{align*}
-	by \cref{2.4.3} we see that \(\tp{A}\) is invertible and \((\tp{A})^{-1} = \tp{(A^{-1})}\).
+  Since
+  \begin{align*}
+    \tp{A} \tp{(A^{-1})} & = \tp{(A^{-1} A)} &  & \by{2.3.2} \\
+                         & = \tp{I_n}        &  & \by{2.4.3} \\
+                         & = I_n             &  & \by{2.3.4}
+  \end{align*}
+  and
+  \begin{align*}
+    \tp{(A^{-1})} \tp{A} & = \tp{(A A^{-1})} &  & \by{2.3.2} \\
+                         & = \tp{I_n}        &  & \by{2.4.3} \\
+                         & = I_n,            &  & \by{2.3.4}
+  \end{align*}
+  by \cref{2.4.3} we see that \(\tp{A}\) is invertible and \((\tp{A})^{-1} = \tp{(A^{-1})}\).
 \end{proof}
 
 \begin{ex}\label{ex:2.4.6}
-	Prove that if \(A\) is invertible and \(AB = \zm\), then \(B = \zm\).
+  Prove that if \(A\) is invertible and \(AB = \zm\), then \(B = \zm\).
 \end{ex}
 
 \begin{proof}[\pf{ex:2.4.6}]
-	We have
-	\begin{align*}
-		         & AB = \zm                                     \\
-		\implies & A^{-1} AB = A^{-1} \zm = \zm &  & \by{2.3.1} \\
-		\implies & IB = B = \zm.                &  & \by{2.3.4}
-	\end{align*}
+  We have
+  \begin{align*}
+             & AB = \zm                                     \\
+    \implies & A^{-1} AB = A^{-1} \zm = \zm &  & \by{2.3.1} \\
+    \implies & IB = B = \zm.                &  & \by{2.3.4}
+  \end{align*}
 \end{proof}
 
 \begin{ex}\label{ex:2.4.7}
-	Let \(A \in \ms[n][n][\F]\).
-	\begin{enumerate}
-		\item Suppose that \(A^2 = \zm\).
-		      Prove that \(A\) is not invertible.
-		\item Suppose that \(AB = \zm\) for some \(B \in \ms[n][n][\F] \setminus \set{\zm}\).
-		      Could \(A\) be invertible?
-		      Explain.
-	\end{enumerate}
+  Let \(A \in \ms[n][n][\F]\).
+  \begin{enumerate}
+    \item Suppose that \(A^2 = \zm\).
+          Prove that \(A\) is not invertible.
+    \item Suppose that \(AB = \zm\) for some \(B \in \ms[n][n][\F] \setminus \set{\zm}\).
+          Could \(A\) be invertible?
+          Explain.
+  \end{enumerate}
 \end{ex}
 
 \begin{proof}[\pf{ex:2.4.7}(a)]
-	Suppose for sake of contradiction that \(A\) is invertible.
-	Then we have
-	\begin{align*}
-		         & A^2 = \zm                                     \\
-		\implies & A^{-1} A^2 = A^{-1} \zm = \zm &  & \by{2.3.1} \\
-		\implies & (A^{-1} A) A = \zm            &  & \by{2.16}  \\
-		\implies & I_n A = A = \zm.              &  & \by{2.3.4}
-	\end{align*}
-	But we know that \(\zm\) is not invertible since \(B \zm = \zm B = \zm \neq I_n\) for all \(B \in \ms[n][n][\F]\).
-	Thus \(A\) is not invertible.
+  Suppose for sake of contradiction that \(A\) is invertible.
+  Then we have
+  \begin{align*}
+             & A^2 = \zm                                     \\
+    \implies & A^{-1} A^2 = A^{-1} \zm = \zm &  & \by{2.3.1} \\
+    \implies & (A^{-1} A) A = \zm            &  & \by{2.16}  \\
+    \implies & I_n A = A = \zm.              &  & \by{2.3.4}
+  \end{align*}
+  But we know that \(\zm\) is not invertible since \(B \zm = \zm B = \zm \neq I_n\) for all \(B \in \ms[n][n][\F]\).
+  Thus \(A\) is not invertible.
 \end{proof}
 
 \begin{proof}[\pf{ex:2.4.7}(b)]
-	\(A\) cannot be invertible for which it contradicts to \cref{ex:2.4.6}.
+  \(A\) cannot be invertible for which it contradicts to \cref{ex:2.4.6}.
 \end{proof}
 
 \setcounter{ex}{8}
 \begin{ex}\label{ex:2.4.9}
-	Let \(A, B \in \ms[n][n][\F]\) such that \(AB\) is invertible.
-	Prove that \(A\) and \(B\) are invertible.
-	Give an example to show that arbitrary matrices \(A\) and \(B\) need not be invertible if \(AB\) is invertible.
+  Let \(A, B \in \ms[n][n][\F]\) such that \(AB\) is invertible.
+  Prove that \(A\) and \(B\) are invertible.
+  Give an example to show that arbitrary matrices \(A\) and \(B\) need not be invertible if \(AB\) is invertible.
 \end{ex}
 
 \begin{proof}[\pf{ex:2.4.9}]
-	First we show that if \(A, B \in \ms[n][n][\F]\) and \(AB\) is invertible, then \(A, B\) are invertible.
-	This is true since
-	\begin{align*}
-		         & AB \text{ is invertible}                                               \\
-		\implies & \L_{AB} \text{ is invertible}                        &  & \by{2.4.7}   \\
-		\implies & \L_A \L_B \text{ is invertible}                      &  & \by{2.15}[e] \\
-		\implies & \L_A \text{ is onto and } \L_B \text{ is one-to-one}                   \\
-		\implies & \L_A, \L_B \text{ are invertible}                    &  & \by{2.4.2}   \\
-		\implies & A, B \text{ are invertible}.                         &  & \by{2.4.7}
-	\end{align*}
+  First we show that if \(A, B \in \ms[n][n][\F]\) and \(AB\) is invertible, then \(A, B\) are invertible.
+  This is true since
+  \begin{align*}
+             & AB \text{ is invertible}                                               \\
+    \implies & \L_{AB} \text{ is invertible}                        &  & \by{2.4.7}   \\
+    \implies & \L_A \L_B \text{ is invertible}                      &  & \by{2.15}[e] \\
+    \implies & \L_A \text{ is onto and } \L_B \text{ is one-to-one}                   \\
+    \implies & \L_A, \L_B \text{ are invertible}                    &  & \by{2.4.2}   \\
+    \implies & A, B \text{ are invertible}.                         &  & \by{2.4.7}
+  \end{align*}
 
-	Now we show that if \(A \in \ms[n][m][\F]\) and \(B \in \ms\), then \(AB\) can be invertible.
-	We define \(A, B\) as follow:
-	\[
-		A = \begin{pmatrix}
-			1 & 0 & 0 \\
-			0 & 1 & 0
-		\end{pmatrix} \quad \text{and} \quad B = \begin{pmatrix}
-			1 & 0 \\
-			0 & 1 \\
-			0 & 0
-		\end{pmatrix}.
-	\]
-	Then we see that \(AB = I_2\) which is invertible.
+  Now we show that if \(A \in \ms[n][m][\F]\) and \(B \in \ms\), then \(AB\) can be invertible.
+  We define \(A, B\) as follow:
+  \[
+    A = \begin{pmatrix}
+      1 & 0 & 0 \\
+      0 & 1 & 0
+    \end{pmatrix} \quad \text{and} \quad B = \begin{pmatrix}
+      1 & 0 \\
+      0 & 1 \\
+      0 & 0
+    \end{pmatrix}.
+  \]
+  Then we see that \(AB = I_2\) which is invertible.
 \end{proof}
 
 \begin{ex}\label{ex:2.4.10}
-	Let \(A, B \in \ms[n][n][\F]\) such that \(AB = I_n\).
-	\begin{enumerate}
-		\item Use \cref{ex:2.4.9} to conclude that \(A\) and \(B\) are invertible.
-		\item Prove \(A = B^{-1}\) (and hence \(B = A^{-1}\)).
-		      (We are, in effect, saying that for square matrices, a ``one-sided'' inverse is a ``two-sided'' inverse.)
-		\item State and prove analogous results for linear transformations defined on finite-dimensional vector spaces.
-	\end{enumerate}
+  Let \(A, B \in \ms[n][n][\F]\) such that \(AB = I_n\).
+  \begin{enumerate}
+    \item Use \cref{ex:2.4.9} to conclude that \(A\) and \(B\) are invertible.
+    \item Prove \(A = B^{-1}\) (and hence \(B = A^{-1}\)).
+          (We are, in effect, saying that for square matrices, a ``one-sided'' inverse is a ``two-sided'' inverse.)
+    \item State and prove analogous results for linear transformations defined on finite-dimensional vector spaces.
+  \end{enumerate}
 \end{ex}
 
 \begin{proof}[\pf{ex:2.4.10}(a)]
-	Since \(I_n\) is invertible, by \cref{ex:2.4.9} we see that \(A, B\) are invertible.
+  Since \(I_n\) is invertible, by \cref{ex:2.4.9} we see that \(A, B\) are invertible.
 \end{proof}
 
 \begin{proof}[\pf{ex:2.4.10}(b)]
-	We have
-	\begin{align*}
-		B^{-1} & = I_n B^{-1} = (AB) B^{-1} &  & \by{2.12}[c] \\
-		       & = A (B B^{-1})             &  & \by{2.16}    \\
-		       & = A I_n                    &  & \by{2.4.3}   \\
-		       & = A                        &  & \by{2.12}[c]
-	\end{align*}
-	and
-	\begin{align*}
-		A^{-1} & = A^{-1} I_n = A^{-1} (AB) &  & \by{2.12}[c] \\
-		       & = (A^{-1} A) B             &  & \by{2.16}    \\
-		       & = I_n B                    &  & \by{2.4.3}   \\
-		       & = B.                       &  & \by{2.12}[c]
-	\end{align*}
+  We have
+  \begin{align*}
+    B^{-1} & = I_n B^{-1} = (AB) B^{-1} &  & \by{2.12}[c] \\
+           & = A (B B^{-1})             &  & \by{2.16}    \\
+           & = A I_n                    &  & \by{2.4.3}   \\
+           & = A                        &  & \by{2.12}[c]
+  \end{align*}
+  and
+  \begin{align*}
+    A^{-1} & = A^{-1} I_n = A^{-1} (AB) &  & \by{2.12}[c] \\
+           & = (A^{-1} A) B             &  & \by{2.16}    \\
+           & = I_n B                    &  & \by{2.4.3}   \\
+           & = B.                       &  & \by{2.12}[c]
+  \end{align*}
 \end{proof}
 
 \begin{proof}[\pf{ex:2.4.10}(c)]
-	Let \(\V, \W\) be finite dimensional vector spaces over \(\F\) with equal dimension.
-	Let \(\T \in \ls(\V, \W), \U \in \ls(\W, \V)\) such that \(\U \T = \IT[\V]\) and \(\T \U = \IT[\W]\).
-	We claim that \(\T, \U\) are invertible and \(\T = \U^{-1}\).
-	Let \(\beta\) and \(\gamma\) be bases for \(\V\) and \(\W\) over \(\F\), respectively.
-	Since
-	\begin{align*}
-		         & \U \T = \IT[\V]                                                                      \\
-		\implies & [\U \T]_{\beta} = [\U]_{\gamma}^{\beta} [\T]_{\beta}^{\gamma} &  & \by{2.11}         \\
-		         & = [\IT[\V]]_{\beta} = I_n                                     &  & \by{2.12}[d]      \\
-		\implies & [\U]_{\gamma}^{\beta} = ([\T]_{\beta}^{\gamma})^{-1}          &  & \by{ex:2.4.10}[b] \\
-		\implies & \U = \T^{-1},                                                 &  & \by{2.18}
-	\end{align*}
-	we see that \(\T = \U^{-1}\).
+  Let \(\V, \W\) be finite dimensional vector spaces over \(\F\) with equal dimension.
+  Let \(\T \in \ls(\V, \W), \U \in \ls(\W, \V)\) such that \(\U \T = \IT[\V]\) and \(\T \U = \IT[\W]\).
+  We claim that \(\T, \U\) are invertible and \(\T = \U^{-1}\).
+  Let \(\beta\) and \(\gamma\) be bases for \(\V\) and \(\W\) over \(\F\), respectively.
+  Since
+  \begin{align*}
+             & \U \T = \IT[\V]                                                                      \\
+    \implies & [\U \T]_{\beta} = [\U]_{\gamma}^{\beta} [\T]_{\beta}^{\gamma} &  & \by{2.11}         \\
+             & = [\IT[\V]]_{\beta} = I_n                                     &  & \by{2.12}[d]      \\
+    \implies & [\U]_{\gamma}^{\beta} = ([\T]_{\beta}^{\gamma})^{-1}          &  & \by{ex:2.4.10}[b] \\
+    \implies & \U = \T^{-1},                                                 &  & \by{2.18}
+  \end{align*}
+  we see that \(\T = \U^{-1}\).
 \end{proof}
 
 \setcounter{ex}{12}
 \begin{ex}\label{ex:2.4.13}
-	Let \(\sim\) mean ``is isomorphic to.''
-	Prove that \(\sim\) is an equivalence relation on the class of vector spaces over \(\F\).
+  Let \(\sim\) mean ``is isomorphic to.''
+  Prove that \(\sim\) is an equivalence relation on the class of vector spaces over \(\F\).
 \end{ex}
 
 \begin{proof}[\pf{ex:2.4.13}]
-	To show that \(\sim\) is an equivalence relation, we need to show that \(\sim\) is reflexive, symmetric and transitive.
-	\begin{description}
-		\item[For reflexive:]
-			Let \(\V\) be a vector spaces over \(\F\).
-			Since \(\IT[\V] \in \ls(\V)\) and \(\IT[\V]\) is invertible, by \cref{2.4.8} we see that \(\IT[\V]\) is an isomorphism from \(\V\) onto \(\V\).
-			Thus \(\V \sim \V\).
-		\item[For symmetric:]
-			Let \(\V, \W\) be vector spaces over \(\F\) such that \(\V \sim \W\).
-			By \cref{2.4.8} there exists a \(\T \in \ls(\V, \W)\) such that \(\T\) is invertible.
-			Since \(\T\) is invertible, by \cref{2.17} we know that \(\T^{-1} \in \ls(\W, \V)\).
-			Since \(\T^{-1}\) is invertible, by \cref{2.4.8} \(\T^{-1}\) is an isomorphism from \(\W\) onto \(\V\) and thus \(\W \sim \V\).
-		\item[For transitive:]
-			Let \(\V, \W, \vs{X}\) be vector spaces over \(\F\) such that \(\V \sim \W\) and \(\W \sim \vs{X}\).
-			By \cref{2.4.8} there exist \(\T \in \ls(\V, \W)\) and \(\U \in \ls(\W, \vs{X})\) such that \(\T, \U\) are invertible.
-			By \cref{2.9} we know that \(\U \T \in \ls(\V, \vs{X})\).
-			Since \(\U \T\) is invertible, by \cref{2.4.8} \(\U \T\) is an isomorphism from \(\V\) onto \(\vs{X}\) and thus \(\V \sim \vs{X}\).
-	\end{description}
-	From proof above we see that \(\sim\) is an equivalence relation.
+  To show that \(\sim\) is an equivalence relation, we need to show that \(\sim\) is reflexive, symmetric and transitive.
+  \begin{description}
+    \item[For reflexive:]
+      Let \(\V\) be a vector spaces over \(\F\).
+      Since \(\IT[\V] \in \ls(\V)\) and \(\IT[\V]\) is invertible, by \cref{2.4.8} we see that \(\IT[\V]\) is an isomorphism from \(\V\) onto \(\V\).
+      Thus \(\V \sim \V\).
+    \item[For symmetric:]
+      Let \(\V, \W\) be vector spaces over \(\F\) such that \(\V \sim \W\).
+      By \cref{2.4.8} there exists a \(\T \in \ls(\V, \W)\) such that \(\T\) is invertible.
+      Since \(\T\) is invertible, by \cref{2.17} we know that \(\T^{-1} \in \ls(\W, \V)\).
+      Since \(\T^{-1}\) is invertible, by \cref{2.4.8} \(\T^{-1}\) is an isomorphism from \(\W\) onto \(\V\) and thus \(\W \sim \V\).
+    \item[For transitive:]
+      Let \(\V, \W, \vs{X}\) be vector spaces over \(\F\) such that \(\V \sim \W\) and \(\W \sim \vs{X}\).
+      By \cref{2.4.8} there exist \(\T \in \ls(\V, \W)\) and \(\U \in \ls(\W, \vs{X})\) such that \(\T, \U\) are invertible.
+      By \cref{2.9} we know that \(\U \T \in \ls(\V, \vs{X})\).
+      Since \(\U \T\) is invertible, by \cref{2.4.8} \(\U \T\) is an isomorphism from \(\V\) onto \(\vs{X}\) and thus \(\V \sim \vs{X}\).
+  \end{description}
+  From proof above we see that \(\sim\) is an equivalence relation.
 \end{proof}
 
 \setcounter{ex}{14}
 \begin{ex}\label{ex:2.4.15}
-	Let \(\V\) and \(\W\) be finite-dimensional vector spaces over \(\F\), and let \(\T \in \ls(\V, \W)\).
-	Suppose that \(\beta\) is a basis for \(\V\) over \(\F\).
-	Prove that \(\T\) is an isomorphism iff \(\T(\beta)\) is a basis for \(\W\) over \(\F\).
+  Let \(\V\) and \(\W\) be finite-dimensional vector spaces over \(\F\), and let \(\T \in \ls(\V, \W)\).
+  Suppose that \(\beta\) is a basis for \(\V\) over \(\F\).
+  Prove that \(\T\) is an isomorphism iff \(\T(\beta)\) is a basis for \(\W\) over \(\F\).
 \end{ex}
 
 \begin{proof}[\pf{ex:2.4.15}]
-	We have
-	\begin{align*}
-		     & \T \text{ is an isomorphism from } \V \text{ onto } \W                     \\
-		\iff & \begin{dcases}
-			       \dim(\V) = \dim(\W) \\
-			       \T \text{ is one-to-one}
-		       \end{dcases}                               &  & \by{2.19}                  \\
-		\iff & \dim(\W) = \rk{\T}                                     &  & \by{2.5}[c]    \\
-		\iff & \dim(\W) = \dim(\spn{\T(\beta)})                       &  & \by{2.2}       \\
-		\iff & \T(\beta) \text{ is a basis for } \W \text{ over } \F. &  & \by{1.6.15}[a]
-	\end{align*}
+  We have
+  \begin{align*}
+         & \T \text{ is an isomorphism from } \V \text{ onto } \W                     \\
+    \iff & \begin{dcases}
+             \dim(\V) = \dim(\W) \\
+             \T \text{ is one-to-one}
+           \end{dcases}                               &  & \by{2.19}                  \\
+    \iff & \dim(\W) = \rk{\T}                                     &  & \by{2.5}[c]    \\
+    \iff & \dim(\W) = \dim(\spn{\T(\beta)})                       &  & \by{2.2}       \\
+    \iff & \T(\beta) \text{ is a basis for } \W \text{ over } \F. &  & \by{1.6.15}[a]
+  \end{align*}
 \end{proof}
 
 \begin{ex}\label{ex:2.4.16}
-	Let \(B \in \ms[n][n][\F]\) be invertible.
-	Define \(\Phi : \ms[n][n][\F] \to \ms[n][n][\F]\) by \(\Phi(A) = B^{-1} AB\).
-	Prove that \(\Phi\) is an isomorphism.
+  Let \(B \in \ms[n][n][\F]\) be invertible.
+  Define \(\Phi : \ms[n][n][\F] \to \ms[n][n][\F]\) by \(\Phi(A) = B^{-1} AB\).
+  Prove that \(\Phi\) is an isomorphism.
 \end{ex}
 
 \begin{proof}[\pf{ex:2.4.16}]
-	First we show that \(\Phi\) is linear.
-	Let \(A, C \in \ms[n][n][\F]\) and let \(c \in \F\).
-	Since
-	\begin{align*}
-		\Phi(cA + C) & = B^{-1} (cA + C) B                                 \\
-		             & = (B^{-1} (cA + C)) B             &  & \by{2.16}    \\
-		             & = ((B^{-1} c A) + (B^{-1} C)) B   &  & \by{2.12}[a] \\
-		             & = (B^{-1} c A) B + (B^{-1} C) B   &  & \by{2.12}[a] \\
-		             & = (c (B^{-1} A)) B + (B^{-1} C) B &  & \by{2.12}[b] \\
-		             & = c ((B^{-1} A) B) + (B^{-1} C) B &  & \by{2.12}[b] \\
-		             & = c (B^{-1} A B) + B^{-1} CB      &  & \by{2.16}    \\
-		             & = c \Phi(A) + \Phi(C),
-	\end{align*}
-	by \cref{2.1.2}(b) we see that \(\Phi\) is linear.
+  First we show that \(\Phi\) is linear.
+  Let \(A, C \in \ms[n][n][\F]\) and let \(c \in \F\).
+  Since
+  \begin{align*}
+    \Phi(cA + C) & = B^{-1} (cA + C) B                                 \\
+                 & = (B^{-1} (cA + C)) B             &  & \by{2.16}    \\
+                 & = ((B^{-1} c A) + (B^{-1} C)) B   &  & \by{2.12}[a] \\
+                 & = (B^{-1} c A) B + (B^{-1} C) B   &  & \by{2.12}[a] \\
+                 & = (c (B^{-1} A)) B + (B^{-1} C) B &  & \by{2.12}[b] \\
+                 & = c ((B^{-1} A) B) + (B^{-1} C) B &  & \by{2.12}[b] \\
+                 & = c (B^{-1} A B) + B^{-1} CB      &  & \by{2.16}    \\
+                 & = c \Phi(A) + \Phi(C),
+  \end{align*}
+  by \cref{2.1.2}(b) we see that \(\Phi\) is linear.
 
-	Now we show that \(\Phi\) is invertible.
-	We define \(\phi : \ms[n][n][\F] \to \ms[n][n][\F]\) as follow:
-	\[
-		\forall A \in \ms[n][n][\F], \phi(A) = BAB^{-1}.
-	\]
-	Since
-	\begin{align*}
-		\forall A \in \ms[n][n][\F], (\phi \Phi)(A) & = \phi(\Phi(A))                             \\
-		                                            & = \phi(B^{-1} AB)                           \\
-		                                            & = B(B^{-1} AB) B^{-1}                       \\
-		                                            & = (BB^{-1}) A (BB^{-1})   &  & \by{2.16}    \\
-		                                            & = I_n A I_n               &  & \by{2.4.4}   \\
-		                                            & = A                       &  & \by{2.12}[c] \\
-		                                            & = (B^{-1} B) A (B^{-1} B) &  & \by{2.4.4}   \\
-		                                            & = B^{-1} (BAB^{-1}) B     &  & \by{2.16}    \\
-		                                            & = \Phi(BAB^{-1})                            \\
-		                                            & = \Phi(\phi(A))                             \\
-		                                            & = (\Phi \phi)(A),
-	\end{align*}
-	we know that \(\Phi^{-1} = \phi\) and thus by \cref{2.4.8} \(\Phi\) is an isomorphism from \(\ms[n][n][\F]\) onto \(\ms[n][n][\F]\).
+  Now we show that \(\Phi\) is invertible.
+  We define \(\phi : \ms[n][n][\F] \to \ms[n][n][\F]\) as follow:
+  \[
+    \forall A \in \ms[n][n][\F], \phi(A) = BAB^{-1}.
+  \]
+  Since
+  \begin{align*}
+    \forall A \in \ms[n][n][\F], (\phi \Phi)(A) & = \phi(\Phi(A))                             \\
+                                                & = \phi(B^{-1} AB)                           \\
+                                                & = B(B^{-1} AB) B^{-1}                       \\
+                                                & = (BB^{-1}) A (BB^{-1})   &  & \by{2.16}    \\
+                                                & = I_n A I_n               &  & \by{2.4.4}   \\
+                                                & = A                       &  & \by{2.12}[c] \\
+                                                & = (B^{-1} B) A (B^{-1} B) &  & \by{2.4.4}   \\
+                                                & = B^{-1} (BAB^{-1}) B     &  & \by{2.16}    \\
+                                                & = \Phi(BAB^{-1})                            \\
+                                                & = \Phi(\phi(A))                             \\
+                                                & = (\Phi \phi)(A),
+  \end{align*}
+  we know that \(\Phi^{-1} = \phi\) and thus by \cref{2.4.8} \(\Phi\) is an isomorphism from \(\ms[n][n][\F]\) onto \(\ms[n][n][\F]\).
 \end{proof}
 
 \begin{ex}\label{ex:2.4.17}
-	Let \(\V\) and \(\W\) be finite-dimensional vector spaces over \(\F\) and \(\T : \V \to \W\) be an isomorphism.
-	Let \(\V_0\) be a subspace of \(\V\) over \(\F\).
-	\begin{enumerate}
-		\item Prove that \(\T(\V_0)\) is a subspace of \(\W\) over \(\F\).
-		\item Prove that \(\dim(\V_0) = \dim(\T(\V_0))\).
-	\end{enumerate}
+  Let \(\V\) and \(\W\) be finite-dimensional vector spaces over \(\F\) and \(\T : \V \to \W\) be an isomorphism.
+  Let \(\V_0\) be a subspace of \(\V\) over \(\F\).
+  \begin{enumerate}
+    \item Prove that \(\T(\V_0)\) is a subspace of \(\W\) over \(\F\).
+    \item Prove that \(\dim(\V_0) = \dim(\T(\V_0))\).
+  \end{enumerate}
 \end{ex}
 
 \begin{proof}[\pf{ex:2.4.17}(a)]
-	Let \(x, y \in \T(\V_0)\) and let \(c \in \F\).
-	Since
-	\begin{align*}
-		         & x, y \in \T(\V_0)                                         \\
-		\implies & \exists u, v \in \V_0 : \begin{dcases}
-			                                   \T(u) = x \\
-			                                   \T(v) = y
-		                                   \end{dcases}                     \\
-		\implies & \exists u, v \in \V_0 : \begin{dcases}
-			                                   \T(u + v) = \T(u) + \T(v) = x + y \\
-			                                   \T(cu) = c \T(u) = cx
-		                                   \end{dcases} &  & \by{2.1.1} \\
-		\implies & \begin{dcases}
-			           x + y \in \T(\V_0) \\
-			           cx \in \T(\V_0)
-		           \end{dcases}                  &  & \by{1.3}[bc]
-	\end{align*}
-	and
-	\begin{align*}
-		         & \zv_{\V} \in \V_0                     &  & \by{1.3}[a]   \\
-		\implies & \T(\zv_{\V}) = \zv_{\W} \in \T(\V_0), &  & \by{2.1.2}[a]
-	\end{align*}
-	by \cref{1.3} we know that \(\T(\V_0)\) is a subspace of \(\W\) over \(\F\).
+  Let \(x, y \in \T(\V_0)\) and let \(c \in \F\).
+  Since
+  \begin{align*}
+             & x, y \in \T(\V_0)                                         \\
+    \implies & \exists u, v \in \V_0 : \begin{dcases}
+                                         \T(u) = x \\
+                                         \T(v) = y
+                                       \end{dcases}                     \\
+    \implies & \exists u, v \in \V_0 : \begin{dcases}
+                                         \T(u + v) = \T(u) + \T(v) = x + y \\
+                                         \T(cu) = c \T(u) = cx
+                                       \end{dcases} &  & \by{2.1.1} \\
+    \implies & \begin{dcases}
+                 x + y \in \T(\V_0) \\
+                 cx \in \T(\V_0)
+               \end{dcases}                  &  & \by{1.3}[b,c]
+  \end{align*}
+  and
+  \begin{align*}
+             & \zv_{\V} \in \V_0                     &  & \by{1.3}[a]   \\
+    \implies & \T(\zv_{\V}) = \zv_{\W} \in \T(\V_0), &  & \by{2.1.2}[a]
+  \end{align*}
+  by \cref{1.3} we know that \(\T(\V_0)\) is a subspace of \(\W\) over \(\F\).
 \end{proof}
 
 \begin{proof}[\pf{ex:2.4.17}(b)]
-	Since \(\T\) is an isomorphism from \(\V\) onto \(\W\), by \cref{2.4.8} we know that \(\T\) is invertible.
-	Since \(\T\) is invertible, we know that \(\T|_{\V_0}\) is also invertible.
-	Since \(\V\) is finite-dimensional, we know that \(\V_0\) is finite-dimensional.
-	Thus by \cref{2.4.8} \(\T|_{\V_0}\) is an isomorphism from \(\V_0\) onto \(\T(\V_0)\).
-	By \cref{2.19} we have \(\dim(\V_0) = \dim(\T(\V_0))\).
+  Since \(\T\) is an isomorphism from \(\V\) onto \(\W\), by \cref{2.4.8} we know that \(\T\) is invertible.
+  Since \(\T\) is invertible, we know that \(\T|_{\V_0}\) is also invertible.
+  Since \(\V\) is finite-dimensional, we know that \(\V_0\) is finite-dimensional.
+  Thus by \cref{2.4.8} \(\T|_{\V_0}\) is an isomorphism from \(\V_0\) onto \(\T(\V_0)\).
+  By \cref{2.19} we have \(\dim(\V_0) = \dim(\T(\V_0))\).
 \end{proof}
 
 \setcounter{ex}{19}
 \begin{ex}\label{ex:2.4.20}
-	Let \(\T \in \ls(\V, \W)\) where \(\V\) is an \(n\)-dimensional vector space over \(\F\) and \(\W\) is an \(m\)-dimensional vector space over \(\F\).
-	Let \(\beta\) and \(\gamma\) be ordered bases for \(\V\) and \(\W\) over \(\F\), respectively.
-	Prove that \(\rk{\T} = \rk{\L_A}\) and that \(\nt{\T} = \nt{\L_A}\), where \(A = [\T]_{\beta}^{\gamma}\).
+  Let \(\T \in \ls(\V, \W)\) where \(\V\) is an \(n\)-dimensional vector space over \(\F\) and \(\W\) is an \(m\)-dimensional vector space over \(\F\).
+  Let \(\beta\) and \(\gamma\) be ordered bases for \(\V\) and \(\W\) over \(\F\), respectively.
+  Prove that \(\rk{\T} = \rk{\L_A}\) and that \(\nt{\T} = \nt{\L_A}\), where \(A = [\T]_{\beta}^{\gamma}\).
 \end{ex}
 
 \begin{proof}[\pf{ex:2.4.20}]
-	By \cref{2.4.12} we have \(\L_A \phi_{\beta} = \phi_{\gamma} \T\).
-	By \cref{2.9,2.21} we know that \(\phi_{\gamma} \T\) is linear.
-	Since
-	\begin{align*}
-		         & \phi_{\gamma} \text{ is an isomorphism from } \V \text{ onto } \vs{F}^n &  & \by{2.21}         \\
-		\implies & \rk{\T} = \dim(\T(\V))                                                  &  & \by{2.1.12}       \\
-		         & = \dim(\phi_{\gamma}(\T(\V)))                                           &  & \by{ex:2.4.17}[b] \\
-		         & = \dim(\L_A(\phi_{\beta}(\V)))                                          &  & \by{2.4.12}       \\
-		         & = \dim(\L_A(\vs{F}^n))                                                  &  & \by{2.21}         \\
-		         & = \rk{\L_A},                                                            &  & \by{2.1.12,2.3.8}
-	\end{align*}
-	we know that
-	\begin{align*}
-		         & \dim(\V) = \dim(\phi_{\beta}(\V)) = \dim(\vs{F}^n) &  & \by{ex:2.4.17}[b]     \\
-		\implies & \rk{\T} + \nt{\T} = \rk{\L_A} + \nt{\L_A}          &  & \by{2.3}              \\
-		\implies & \nt{\T} = \nt{\L_A}.                               &  & (\rk{\T} = \rk{\L_A})
-	\end{align*}
+  By \cref{2.4.12} we have \(\L_A \phi_{\beta} = \phi_{\gamma} \T\).
+  By \cref{2.9,2.21} we know that \(\phi_{\gamma} \T\) is linear.
+  Since
+  \begin{align*}
+             & \phi_{\gamma} \text{ is an isomorphism from } \V \text{ onto } \vs{F}^n &  & \by{2.21}         \\
+    \implies & \rk{\T} = \dim(\T(\V))                                                  &  & \by{2.1.12}       \\
+             & = \dim(\phi_{\gamma}(\T(\V)))                                           &  & \by{ex:2.4.17}[b] \\
+             & = \dim(\L_A(\phi_{\beta}(\V)))                                          &  & \by{2.4.12}       \\
+             & = \dim(\L_A(\vs{F}^n))                                                  &  & \by{2.21}         \\
+             & = \rk{\L_A},                                                            &  & \by{2.1.12,2.3.8}
+  \end{align*}
+  we know that
+  \begin{align*}
+             & \dim(\V) = \dim(\phi_{\beta}(\V)) = \dim(\vs{F}^n) &  & \by{ex:2.4.17}[b]     \\
+    \implies & \rk{\T} + \nt{\T} = \rk{\L_A} + \nt{\L_A}          &  & \by{2.3}              \\
+    \implies & \nt{\T} = \nt{\L_A}.                               &  & (\rk{\T} = \rk{\L_A})
+  \end{align*}
 \end{proof}
 
 \begin{ex}\label{ex:2.4.21}
-	Let \(\V\) and \(\W\) be finite-dimensional vector spaces over \(\F\) with ordered bases \(\beta = \set{\seq{v}{1,,n}}\) and \(\gamma = \set{\seq{w}{1,,m}}\) over \(\F\), respectively.
-	By \cref{2.6} there exist linear transformations \(\T_{i j} : \V \to \W\) such that
-	\[
-		\T_{i j}(v_k) = \begin{dcases}
-			w_i      & \text{if } k = j    \\
-			\zv_{\W} & \text{if } k \neq j
-		\end{dcases}.
-	\]
-	First prove that \(\set{\T_{i j} : 1 \leq i \leq m, 1 \leq j \leq n}\) is a basis for \(\ls(\V, \W)\) over \(\F\).
-	Then let \(E^{i j} \in \ms\) with \(1\) in the \(i\)th row and \(j\)th column and \(0\) elsewhere, and prove that \([\T_{i j}]_{\beta}^{\gamma} = E^{i j}\).
-	Again by \cref{2.6}, there exists a linear transformation \(\Phi : \ls(\V, \W) \to \ms\) such that \(\Phi(\T_{i j}) = E^{i j}\).
-	Prove that \(\Phi\) is an isomorphism.
+  Let \(\V\) and \(\W\) be finite-dimensional vector spaces over \(\F\) with ordered bases \(\beta = \set{\seq{v}{1,,n}}\) and \(\gamma = \set{\seq{w}{1,,m}}\) over \(\F\), respectively.
+  By \cref{2.6} there exist linear transformations \(\T_{i j} : \V \to \W\) such that
+  \[
+    \T_{i j}(v_k) = \begin{dcases}
+      w_i      & \text{if } k = j    \\
+      \zv_{\W} & \text{if } k \neq j
+    \end{dcases}.
+  \]
+  First prove that \(\set{\T_{i j} : 1 \leq i \leq m, 1 \leq j \leq n}\) is a basis for \(\ls(\V, \W)\) over \(\F\).
+  Then let \(E^{i j} \in \ms\) with \(1\) in the \(i\)th row and \(j\)th column and \(0\) elsewhere, and prove that \([\T_{i j}]_{\beta}^{\gamma} = E^{i j}\).
+  Again by \cref{2.6}, there exists a linear transformation \(\Phi : \ls(\V, \W) \to \ms\) such that \(\Phi(\T_{i j}) = E^{i j}\).
+  Prove that \(\Phi\) is an isomorphism.
 \end{ex}
 
 \begin{proof}[\pf{ex:2.4.21}]
-	First we show that \(S = \set{\T_{i j} : 1 \leq i \leq m, 1 \leq j \leq n}\) is a basis for \(\ls(\V, \W)\) over \(\F\).
-	For all \(i \in \set{1, \dots, m}\) and \(j \in \set{1, \dots, n}\), let \(a_{i j} \in \F\) such that
-	\[
-		\sum_{i = 1}^m \sum_{j = 1}^n a_{i j} \T_{i j} = \zT.
-	\]
-	Note that \(\zT\) is the zero function in \(\ls(\V, \W)\).
-	Since
-	\begin{align*}
-		         & \forall k \in \set{1, \dots, n}, \T_{i j}(v_k) = \begin{dcases}
-			                                                            w_i      & \text{if } k = j    \\
-			                                                            \zv_{\W} & \text{if } k \neq j
-		                                                            \end{dcases}                                        \\
-		\implies & \forall k \in \set{1, \dots, n}, \T_{i j}(a_{i j} v_k) = a_{i j} \T_{i j}(v_k) = \begin{dcases}
-			                                                                                            a_{i k} w_i & \text{if } k = j    \\
-			                                                                                            \zv_{\W}    & \text{if } k \neq j
-		                                                                                            \end{dcases}        &  & \by{2.1.1}   \\
-		\implies & \forall k \in \set{1, \dots, n}, \sum_{j = 1}^n a_{i j} \T_{i j}(v_k) = a_{i k} w_i                                    \\
-		\implies & \forall k \in \set{1, \dots, n},                                                                                       \\
-		         & \sum_{i = 1}^m \sum_{j = 1}^n a_{i j} \T_{i j}(v_k) = \sum_{i = 1}^m a_{i k} w_i = \zT(v_k) = \zv_{\W}                 \\
-		\implies & \forall (i, k) \in \set{1, \dots, m} \times \set{1, \dots, n}, a_{i k} = 0                             &  & \by{1.6.1}
-	\end{align*}
-	and \(\#(S) = mn\), by \cref{1.6.15}(a) and \cref{2.4.10} we know that \(S\) is a basis for \(\ls(\V, \W)\) over \(\F\).
+  First we show that \(S = \set{\T_{i j} : 1 \leq i \leq m, 1 \leq j \leq n}\) is a basis for \(\ls(\V, \W)\) over \(\F\).
+  For all \(i \in \set{1, \dots, m}\) and \(j \in \set{1, \dots, n}\), let \(a_{i j} \in \F\) such that
+  \[
+    \sum_{i = 1}^m \sum_{j = 1}^n a_{i j} \T_{i j} = \zT.
+  \]
+  Note that \(\zT\) is the zero function in \(\ls(\V, \W)\).
+  Since
+  \begin{align*}
+             & \forall k \in \set{1, \dots, n}, \T_{i j}(v_k) = \begin{dcases}
+                                                                  w_i      & \text{if } k = j    \\
+                                                                  \zv_{\W} & \text{if } k \neq j
+                                                                \end{dcases}                                        \\
+    \implies & \forall k \in \set{1, \dots, n}, \T_{i j}(a_{i j} v_k) = a_{i j} \T_{i j}(v_k) = \begin{dcases}
+                                                                                                  a_{i k} w_i & \text{if } k = j    \\
+                                                                                                  \zv_{\W}    & \text{if } k \neq j
+                                                                                                \end{dcases}        &  & \by{2.1.1}   \\
+    \implies & \forall k \in \set{1, \dots, n}, \sum_{j = 1}^n a_{i j} \T_{i j}(v_k) = a_{i k} w_i                                    \\
+    \implies & \forall k \in \set{1, \dots, n},                                                                                       \\
+             & \sum_{i = 1}^m \sum_{j = 1}^n a_{i j} \T_{i j}(v_k) = \sum_{i = 1}^m a_{i k} w_i = \zT(v_k) = \zv_{\W}                 \\
+    \implies & \forall (i, k) \in \set{1, \dots, m} \times \set{1, \dots, n}, a_{i k} = 0                             &  & \by{1.6.1}
+  \end{align*}
+  and \(\#(S) = mn\), by \cref{1.6.15}(a) and \cref{2.4.10} we know that \(S\) is a basis for \(\ls(\V, \W)\) over \(\F\).
 
-	Next we show that \([\T_{i j}]_{\beta}^{\gamma} = E^{i j}\).
-	This is true since
-	\begin{align*}
-		         & \forall k \in \set{1, \dots, n}, [\T_{i j}(v_k)]_{\gamma} = \begin{dcases}
-			                                                                       [w_i]_{\gamma} = e_i                 & \text{if } k = j    \\
-			                                                                       [\zv_{\W}]_{\gamma} = \zv_{\vs{F}^m} & \text{if } k \neq j
-		                                                                       \end{dcases} &  & \by{2.2.3} \\
-		\implies & [\T_{i j}]_{\beta}^{\gamma} = E^{i j}.                                       &  & \by{2.2.4}
-	\end{align*}
+  Next we show that \([\T_{i j}]_{\beta}^{\gamma} = E^{i j}\).
+  This is true since
+  \begin{align*}
+             & \forall k \in \set{1, \dots, n}, [\T_{i j}(v_k)]_{\gamma} = \begin{dcases}
+                                                                             [w_i]_{\gamma} = e_i                 & \text{if } k = j    \\
+                                                                             [\zv_{\W}]_{\gamma} = \zv_{\vs{F}^m} & \text{if } k \neq j
+                                                                           \end{dcases} &  & \by{2.2.3} \\
+    \implies & [\T_{i j}]_{\beta}^{\gamma} = E^{i j}.                                       &  & \by{2.2.4}
+  \end{align*}
 
-	Finally we show that \(\Phi\) is an isomorphism from \(\ls(\V, \W)\) onto \(\ms\).
-	Let \(\U \in \ls(\V, \W)\).
-	Since
-	\begin{align*}
-		         & \U \in \ls(\V, \W)                                                                                                                                 \\
-		\implies & \forall (i, j) \in \set{1, \dots, m} \times \set{1, \dots, n}, \exists a_{i j} \in \F :                                                            \\
-		         & \U = \sum_{i = 1}^m \sum_{j = 1}^n a_{i j} \T_{i j}                                                             &  & \by{1.6.1}                    \\
-		\implies & \forall (i, j) \in \set{1, \dots, m} \times \set{1, \dots, n}, \exists a_{i j} \in \F :                                                            \\
-		         & \Phi(\U) = \sum_{i = 1}^m \sum_{j = 1}^n a_{i j} \Phi(\T_{i j}) = \sum_{i = 1}^m \sum_{j = 1}^n a_{i j} E^{i j} &  & \by{2.1.2}[d]                 \\
-		         & = \sum_{i = 1}^m \sum_{j = 1}^n a_{i j} [\T_{i j}]_{\beta}^{\gamma}                                             &  & \text{(from the proof above)} \\
-		         & = \br{\sum_{i = 1}^m \sum_{j = 1}^n a_{i j} \T_{i j}}_{\beta}^{\gamma} = [\U]_{\beta}^{\gamma},                 &  & \by{2.8}
-	\end{align*}
-	by \cref{2.20} we see that \(\Phi\) is an isomorphism from \(\ls(\V, \W)\) onto \(\ms\).
+  Finally we show that \(\Phi\) is an isomorphism from \(\ls(\V, \W)\) onto \(\ms\).
+  Let \(\U \in \ls(\V, \W)\).
+  Since
+  \begin{align*}
+             & \U \in \ls(\V, \W)                                                                                                                                 \\
+    \implies & \forall (i, j) \in \set{1, \dots, m} \times \set{1, \dots, n}, \exists a_{i j} \in \F :                                                            \\
+             & \U = \sum_{i = 1}^m \sum_{j = 1}^n a_{i j} \T_{i j}                                                             &  & \by{1.6.1}                    \\
+    \implies & \forall (i, j) \in \set{1, \dots, m} \times \set{1, \dots, n}, \exists a_{i j} \in \F :                                                            \\
+             & \Phi(\U) = \sum_{i = 1}^m \sum_{j = 1}^n a_{i j} \Phi(\T_{i j}) = \sum_{i = 1}^m \sum_{j = 1}^n a_{i j} E^{i j} &  & \by{2.1.2}[d]                 \\
+             & = \sum_{i = 1}^m \sum_{j = 1}^n a_{i j} [\T_{i j}]_{\beta}^{\gamma}                                             &  & \text{(from the proof above)} \\
+             & = \br{\sum_{i = 1}^m \sum_{j = 1}^n a_{i j} \T_{i j}}_{\beta}^{\gamma} = [\U]_{\beta}^{\gamma},                 &  & \by{2.8}
+  \end{align*}
+  by \cref{2.20} we see that \(\Phi\) is an isomorphism from \(\ls(\V, \W)\) onto \(\ms\).
 \end{proof}
 
 \begin{ex}\label{ex:2.4.22}
-	Let \(\seq{c}{0,1,,n}\) be distinct scalars from an infinite field \(\F\).
-	Define \(\T : \ps[n]{\F} \to \vs{F}^{n + 1}\) by \(\T(f) = (f(c_0), f(c_1), \dots, f(c_n))\).
-	Prove that \(\T\) is an isomorphism.
+  Let \(\seq{c}{0,1,,n}\) be distinct scalars from an infinite field \(\F\).
+  Define \(\T : \ps[n]{\F} \to \vs{F}^{n + 1}\) by \(\T(f) = (f(c_0), f(c_1), \dots, f(c_n))\).
+  Prove that \(\T\) is an isomorphism.
 \end{ex}
 
 \begin{proof}[\pf{ex:2.4.22}]
-	First we show that \(\T \in \ls(\ps[n]{\F}, \vs{F}^{n + 1})\).
-	Let \(f, g \in \ps[n]{\F}\) and let \(a \in \F\).
-	Since
-	\begin{align*}
-		\T(af + g) & = ((af + g)(c_0), \dots, (af + g)(c_n))               &  & \by{ex:2.4.22} \\
-		           & = (af(c_0) + g(c_0), \dots, af(c_n) + g(c_n))         &  & \by{1.2.12}    \\
-		           & = a (f(c_0), \dots, f(c_n)) + (g(c_0), \dots, g(c_n)) &  & \by{1.2.4}     \\
-		           & = a \T(f) + \T(g),                                    &  & \by{ex:2.4.22}
-	\end{align*}
-	by \cref{2.1.2}(b) we know that \(\T \in \ls(\ps[n]{\F}, \vs{F}^{n + 1})\).
+  First we show that \(\T \in \ls(\ps[n]{\F}, \vs{F}^{n + 1})\).
+  Let \(f, g \in \ps[n]{\F}\) and let \(a \in \F\).
+  Since
+  \begin{align*}
+    \T(af + g) & = ((af + g)(c_0), \dots, (af + g)(c_n))               &  & \by{ex:2.4.22} \\
+               & = (af(c_0) + g(c_0), \dots, af(c_n) + g(c_n))         &  & \by{1.2.12}    \\
+               & = a (f(c_0), \dots, f(c_n)) + (g(c_0), \dots, g(c_n)) &  & \by{1.2.4}     \\
+               & = a \T(f) + \T(g),                                    &  & \by{ex:2.4.22}
+  \end{align*}
+  by \cref{2.1.2}(b) we know that \(\T \in \ls(\ps[n]{\F}, \vs{F}^{n + 1})\).
 
-	Next we show that \(\T\) is an isomorphism from \(\ps[n]{\F}\) onto \(\vs{F}^{n + 1}\).
-	By \cref{1.6.10,1.6.12} we know that \(\dim(\ps[n]{\F}) = \dim(\vs{F}^{n + 1}) = n + 1\).
-	Since \(\T \in \ls(\ps[n]{\F}, \vs{F}^{n + 1})\), by \cref{2.4.8} we only need to show that \(\T\) is invertible.
-	For each \(i \in \set{0, \dots, n}\), let \(f_i \in \ps[n]{\F}\) be the Lagrange polynomials with respect to \(\seq{c}{0,,n}\) as defined in \cref{1.6.20}.
-	To be precise, we define \(f_i\) as follow:
-	\[
-		\forall x \in \F, f_i(x) = \frac{(x - c_0) \cdots (x - c_{i - 1}) (x - c_{i + 1}) \cdots (x - c_n)}{(c_i - c_0) \cdots (c_i - c_{i - 1}) (c_i - c_{i + 1}) \cdots (c_i - c_n)} = \prod_{\substack{k = 0 \\ k \neq i}}^n \frac{x - c_k}{c_i - c_k}.
-	\]
-	By \cref{1.6.20} we have \(\spn{\set{f_i : 0 \leq i \leq n}} = \ps[n]{\F}\).
-	Then we have
-	\begin{align*}
-		         & \forall i \in \set{0, \dots, n}, \T(f_i) = (f_i(c_0), \dots, f_i(c_i), \dots, f_i(c_n)) &  & \by{ex:2.4.22} \\
-		         & = (0, \dots, 1, \dots, 0) = e_{i + 1}                                                   &  & \by{2.2.2}     \\
-		\implies & \spn{\T(\set{f_i : 0 \leq i \leq n})} = \spn{\set{\seq{e}{1,,n+1}}} = \vs{F}^{n + 1},   &  & \by{1.6.3}     \\
-		\implies & \T \text{ is onto}                                                                      &  & \by{2.2}       \\
-		\implies & \T \text{ is invertible}.                                                               &  & \by{2.4.2}
-	\end{align*}
+  Next we show that \(\T\) is an isomorphism from \(\ps[n]{\F}\) onto \(\vs{F}^{n + 1}\).
+  By \cref{1.6.10,1.6.12} we know that \(\dim(\ps[n]{\F}) = \dim(\vs{F}^{n + 1}) = n + 1\).
+  Since \(\T \in \ls(\ps[n]{\F}, \vs{F}^{n + 1})\), by \cref{2.4.8} we only need to show that \(\T\) is invertible.
+  For each \(i \in \set{0, \dots, n}\), let \(f_i \in \ps[n]{\F}\) be the Lagrange polynomials with respect to \(\seq{c}{0,,n}\) as defined in \cref{1.6.20}.
+  To be precise, we define \(f_i\) as follow:
+  \[
+    \forall x \in \F, f_i(x) = \frac{(x - c_0) \cdots (x - c_{i - 1}) (x - c_{i + 1}) \cdots (x - c_n)}{(c_i - c_0) \cdots (c_i - c_{i - 1}) (c_i - c_{i + 1}) \cdots (c_i - c_n)} = \prod_{\substack{k = 0 \\ k \neq i}}^n \frac{x - c_k}{c_i - c_k}.
+  \]
+  By \cref{1.6.20} we have \(\spn{\set{f_i : 0 \leq i \leq n}} = \ps[n]{\F}\).
+  Then we have
+  \begin{align*}
+             & \forall i \in \set{0, \dots, n}, \T(f_i) = (f_i(c_0), \dots, f_i(c_i), \dots, f_i(c_n)) &  & \by{ex:2.4.22} \\
+             & = (0, \dots, 1, \dots, 0) = e_{i + 1}                                                   &  & \by{2.2.2}     \\
+    \implies & \spn{\T(\set{f_i : 0 \leq i \leq n})} = \spn{\set{\seq{e}{1,,n+1}}} = \vs{F}^{n + 1},   &  & \by{1.6.3}     \\
+    \implies & \T \text{ is onto}                                                                      &  & \by{2.2}       \\
+    \implies & \T \text{ is invertible}.                                                               &  & \by{2.4.2}
+  \end{align*}
 \end{proof}
 
 \begin{ex}\label{ex:2.4.23}
-	Let \(\V\) denote the vector space defined in \cref{1.2.13}, and let \(\W = \ps{\F}\).
-	Define
-	\[
-		\T : \V \to \W \quad \text{by} \quad \T(\set{a_n}) = \sum_{i \in \N} a_i x^i.
-	\]
-	Prove that \(\T\) is an isomorphism.
+  Let \(\V\) denote the vector space defined in \cref{1.2.13}, and let \(\W = \ps{\F}\).
+  Define
+  \[
+    \T : \V \to \W \quad \text{by} \quad \T(\set{a_n}) = \sum_{i \in \N} a_i x^i.
+  \]
+  Prove that \(\T\) is an isomorphism.
 \end{ex}
 
 \begin{proof}[\pf{ex:2.4.23}]
-	First we show that \(\T \in \ls(\V, \ps{\F})\).
-	Let \(\set{a_n}, \set{b_n} \in \V\) and let \(c \in \F\).
-	Since
-	\begin{align*}
-		\T(c \set{a_n} + \set{b_n}) & = \T(\set{c a_n + b_n})                                    &  & \by{1.2.13}                           \\
-		                            & = \sum_{i \in \N} (c a_i + b_i) x^i                        &  & \by{ex:2.4.23}                        \\
-		                            & = c \pa{\sum_{i \in \N} a_i x^i} + \sum_{i \in \N} b_i x^i &  & \text{(finitely many non-zero terms)} \\
-		                            & = c \T(\set{a_n}) + \T(\set{b_n}),
-	\end{align*}
-	by \cref{2.1.2}(b) we know that \(\T \in \ls(\V, \ps{\F})\).
+  First we show that \(\T \in \ls(\V, \ps{\F})\).
+  Let \(\set{a_n}, \set{b_n} \in \V\) and let \(c \in \F\).
+  Since
+  \begin{align*}
+    \T(c \set{a_n} + \set{b_n}) & = \T(\set{c a_n + b_n})                                    &  & \by{1.2.13}                           \\
+                                & = \sum_{i \in \N} (c a_i + b_i) x^i                        &  & \by{ex:2.4.23}                        \\
+                                & = c \pa{\sum_{i \in \N} a_i x^i} + \sum_{i \in \N} b_i x^i &  & \text{(finitely many non-zero terms)} \\
+                                & = c \T(\set{a_n}) + \T(\set{b_n}),
+  \end{align*}
+  by \cref{2.1.2}(b) we know that \(\T \in \ls(\V, \ps{\F})\).
 
-	Now we show that \(\T\) is an isomorphism from \(\V\) onto \(\ps{\F}\).
-	We already show that \(\T \in \ls(\V, \ps{\F})\), thus by \cref{2.4.8} we only need to show that \(\T\) is invertible.
-	This can be done by showing that every \(f \in \ps{\F}\) there exists a unique \(\set{b_n} \in \V\) such that \(\T(\set{b_n}) = f\).
-	Let \(f \in \ps{\F}\).
-	By \cref{1.2.12} we know that there exists an \(m \in \N\) such that
-	\[
-		\forall x \in \F, f(x) = \sum_{i = 0}^m a_i x^i
-	\]
-	for some \(\seq{a}{0,,m} \in \F\).
-	Now we define a sequence \(\set{b_n}\) where
-	\[
-		\forall n \in \N, b_n = \begin{dcases}
-			a_n & \text{if } n \leq m \\
-			0   & \text{if } n > m
-		\end{dcases}.
-	\]
-	By \cref{1.2.13} we see that \(\set{b_n} \in \V\).
-	Since \(\seq{a}{0,,m} \in \F\) are unique (by \cref{1.8}), we know that \(\set{b_n}\) is unique.
-	Thus \(\T\) is invertible.
+  Now we show that \(\T\) is an isomorphism from \(\V\) onto \(\ps{\F}\).
+  We already show that \(\T \in \ls(\V, \ps{\F})\), thus by \cref{2.4.8} we only need to show that \(\T\) is invertible.
+  This can be done by showing that every \(f \in \ps{\F}\) there exists a unique \(\set{b_n} \in \V\) such that \(\T(\set{b_n}) = f\).
+  Let \(f \in \ps{\F}\).
+  By \cref{1.2.12} we know that there exists an \(m \in \N\) such that
+  \[
+    \forall x \in \F, f(x) = \sum_{i = 0}^m a_i x^i
+  \]
+  for some \(\seq{a}{0,,m} \in \F\).
+  Now we define a sequence \(\set{b_n}\) where
+  \[
+    \forall n \in \N, b_n = \begin{dcases}
+      a_n & \text{if } n \leq m \\
+      0   & \text{if } n > m
+    \end{dcases}.
+  \]
+  By \cref{1.2.13} we see that \(\set{b_n} \in \V\).
+  Since \(\seq{a}{0,,m} \in \F\) are unique (by \cref{1.8}), we know that \(\set{b_n}\) is unique.
+  Thus \(\T\) is invertible.
 \end{proof}
 
 \begin{ex}\label{ex:2.4.24}
-	Let \(\T \in \ls(\V, \W)\) where \(\V, \W\) are vector spaces over \(\F\) and \(\T\) is onto.
-	Define the mapping
-	\[
-		\overline{\T} : \V / \ns{\T} \to \W \quad \text{by} \quad \overline{\T}(v + \ns{\T}) = \T(v)
-	\]
-	for any coset \(v + \ns{\T}\) in \(\V / \ns{\T}\).
-	\begin{enumerate}
-		\item Prove that \(\overline{\T}\) is well-defined;
-		      that is, prove that if \(v + \ns{\T} = v' + \ns{\T}\), then \(\T(v) = \T(v')\).
-		\item Prove that \(\overline{\T}\) is linear.
-		\item Prove that \(\overline{\T}\) is an isomorphism.
-		\item Prove that \(\T = \overline{\T} \eta\) where \(\eta : \V \to \V / \ns{\T}\) is defined by \(\eta(v) = v + \ns{\T}\) for \(v \in \V\).
-	\end{enumerate}
+  Let \(\T \in \ls(\V, \W)\) where \(\V, \W\) are vector spaces over \(\F\) and \(\T\) is onto.
+  Define the mapping
+  \[
+    \overline{\T} : \V / \ns{\T} \to \W \quad \text{by} \quad \overline{\T}(v + \ns{\T}) = \T(v)
+  \]
+  for any coset \(v + \ns{\T}\) in \(\V / \ns{\T}\).
+  \begin{enumerate}
+    \item Prove that \(\overline{\T}\) is well-defined;
+          that is, prove that if \(v + \ns{\T} = v' + \ns{\T}\), then \(\T(v) = \T(v')\).
+    \item Prove that \(\overline{\T}\) is linear.
+    \item Prove that \(\overline{\T}\) is an isomorphism.
+    \item Prove that \(\T = \overline{\T} \eta\) where \(\eta : \V \to \V / \ns{\T}\) is defined by \(\eta(v) = v + \ns{\T}\) for \(v \in \V\).
+  \end{enumerate}
 \end{ex}
 
 \begin{proof}[\pf{ex:2.4.24}(a)]
-	We have
-	\begin{align*}
-		         & v + \ns{\T} = v' + \ns{\T}                                                       \\
-		\implies & v - v' \in \ns{\T}                                        &  & \by{ex:1.3.31}[b] \\
-		\implies & \T(v - v') = \zv_{\W}                                     &  & \by{2.1.10}       \\
-		\implies & \T(v) = \T(v')                                            &  & \by{2.1.2}[c]     \\
-		\implies & \overline{\T}(v + \ns{\T}) = \overline{\T}(v' + \ns{\T}). &  & \by{ex:2.4.24}
-	\end{align*}
+  We have
+  \begin{align*}
+             & v + \ns{\T} = v' + \ns{\T}                                                       \\
+    \implies & v - v' \in \ns{\T}                                        &  & \by{ex:1.3.31}[b] \\
+    \implies & \T(v - v') = \zv_{\W}                                     &  & \by{2.1.10}       \\
+    \implies & \T(v) = \T(v')                                            &  & \by{2.1.2}[c]     \\
+    \implies & \overline{\T}(v + \ns{\T}) = \overline{\T}(v' + \ns{\T}). &  & \by{ex:2.4.24}
+  \end{align*}
 \end{proof}
 
 \begin{proof}[\pf{ex:2.4.24}(b)]
-	Let \(x + \ns{\T}, y + \ns{\T} \in \V / \ns{\T}\) and let \(c \in \F\).
-	Then we have
-	\begin{align*}
-		 & \overline{\T}(c (x + \ns{\T}) + (y + \ns{\T}))                                     \\
-		 & = \overline{\T}((cx + y) + \ns{\T})                         &  & \by{ex:1.3.31}[c] \\
-		 & = \T(cx + y)                                                &  & \by{ex:2.4.24}    \\
-		 & = c \T(x) + \T(y)                                           &  & \by{2.1.2}[b]     \\
-		 & = c \overline{\T}(x + \ns{\T}) + \overline{\T}(y + \ns{\T}) &  & \by{ex:2.4.24}
-	\end{align*}
-	and thus by \cref{2.1.2}(b) \(\overline{\T} \in \ls(\V / \ns{\T}, \W)\).
+  Let \(x + \ns{\T}, y + \ns{\T} \in \V / \ns{\T}\) and let \(c \in \F\).
+  Then we have
+  \begin{align*}
+     & \overline{\T}(c (x + \ns{\T}) + (y + \ns{\T}))                                     \\
+     & = \overline{\T}((cx + y) + \ns{\T})                         &  & \by{ex:1.3.31}[c] \\
+     & = \T(cx + y)                                                &  & \by{ex:2.4.24}    \\
+     & = c \T(x) + \T(y)                                           &  & \by{2.1.2}[b]     \\
+     & = c \overline{\T}(x + \ns{\T}) + \overline{\T}(y + \ns{\T}) &  & \by{ex:2.4.24}
+  \end{align*}
+  and thus by \cref{2.1.2}(b) \(\overline{\T} \in \ls(\V / \ns{\T}, \W)\).
 \end{proof}
 
 \begin{proof}[\pf{ex:2.4.24}(c)]
-	First we show that \(\overline{\T}\) is one-to-one.
-	Let \(x + \ns{\T}, y + \ns{\T} \in \V / \ns{\T}\) such that \(\overline{\T}(x + \ns{\T}) = \overline{\T}(y + \ns{\T})\).
-	Then we have
-	\begin{align*}
-		         & \overline{\T}(x + \ns{\T}) - \overline{\T}(y + \ns{\T}) = \T(x) - \T(y) &  & \by{ex:2.4.24}    \\
-		         & = \T(x - y) = \zv_{\W}                                                  &  & \by{2.1.2}[c]     \\
-		\implies & x - y \in \ns{\T}                                                                              \\
-		\implies & x + \ns{\T} = y + \ns{\T}                                               &  & \by{ex:1.3.31}[b]
-	\end{align*}
-	and thus \(\overline{\T}\) is one-to-one.
+  First we show that \(\overline{\T}\) is one-to-one.
+  Let \(x + \ns{\T}, y + \ns{\T} \in \V / \ns{\T}\) such that \(\overline{\T}(x + \ns{\T}) = \overline{\T}(y + \ns{\T})\).
+  Then we have
+  \begin{align*}
+             & \overline{\T}(x + \ns{\T}) - \overline{\T}(y + \ns{\T}) = \T(x) - \T(y) &  & \by{ex:2.4.24}    \\
+             & = \T(x - y) = \zv_{\W}                                                  &  & \by{2.1.2}[c]     \\
+    \implies & x - y \in \ns{\T}                                                                              \\
+    \implies & x + \ns{\T} = y + \ns{\T}                                               &  & \by{ex:1.3.31}[b]
+  \end{align*}
+  and thus \(\overline{\T}\) is one-to-one.
 
-	Next we show that \(\overline{T}\) is onto.
-	Let \(y \in \W\).
-	By hypothesis we know that \(\T\) is onto, thus there exists a \(x \in \V\) such that \(\T(x) = y\).
-	Since \(x \in \V\), by definition we know that \(\overline{\T}(x + \ns{\T}) = \T(x) = y\).
-	Thus \(\overline{\T}\) is onto.
+  Next we show that \(\overline{T}\) is onto.
+  Let \(y \in \W\).
+  By hypothesis we know that \(\T\) is onto, thus there exists a \(x \in \V\) such that \(\T(x) = y\).
+  Since \(x \in \V\), by definition we know that \(\overline{\T}(x + \ns{\T}) = \T(x) = y\).
+  Thus \(\overline{\T}\) is onto.
 
-	Finally we show that \(\overline{\T}\) is an isomorphism from \(\V / \ns{\T}\) onto \(\W\).
-	From the proofs above we know that \(\overline{\T}\) is invertible.
-	By \cref{ex:2.4.24}(b) we also know that \(\overline{\T} \in \ls(\V / \ns{\T}, \W)\), thus by \cref{2.4.8} \(\overline{\T}\) is an isomorphism from \(\V / \ns{\T}\) onto \(\W\).
+  Finally we show that \(\overline{\T}\) is an isomorphism from \(\V / \ns{\T}\) onto \(\W\).
+  From the proofs above we know that \(\overline{\T}\) is invertible.
+  By \cref{ex:2.4.24}(b) we also know that \(\overline{\T} \in \ls(\V / \ns{\T}, \W)\), thus by \cref{2.4.8} \(\overline{\T}\) is an isomorphism from \(\V / \ns{\T}\) onto \(\W\).
 \end{proof}
 
 \begin{proof}[\pf{ex:2.4.24}(d)]
-	We have
-	\begin{align*}
-		\forall v \in \V, (\overline{\T} \eta)(v) & = \overline{\T}(\eta(v))                         \\
-		                                          & = \overline{\T}(v + \ns{\T}) &  & \by{ex:2.1.40} \\
-		                                          & = \T(v)                      &  & \by{ex:2.4.24}
-	\end{align*}
-	and thus \(\T = \overline{\T} \eta\).
+  We have
+  \begin{align*}
+    \forall v \in \V, (\overline{\T} \eta)(v) & = \overline{\T}(\eta(v))                         \\
+                                              & = \overline{\T}(v + \ns{\T}) &  & \by{ex:2.1.40} \\
+                                              & = \T(v)                      &  & \by{ex:2.4.24}
+  \end{align*}
+  and thus \(\T = \overline{\T} \eta\).
 \end{proof}
 
 \begin{ex}\label{ex:2.4.25}
-	Let \(\V\) be a nonzero vector space over a field \(\F\), and suppose that \(S\) is a basis for \(\V\) over \(\F\)
-	(By \cref{1.7.10} every vector space has a basis).
-	Let \(\cvs(S, \F)\) denote the vector space of all functions \(f \in \FS\) such that \(f(s) = 0\) for all but a finite number of vectors in \(S\)
-	(See \cref{ex:1.3.14}).
-	Let \(\Psi : \cvs(S, \F) \to \V\) be the function defined by
-	\[
-		\Psi(f) = \sum_{s \in S, f(s) \neq 0} f(s) s.
-	\]
-	Prove that \(\Psi\) is an isomorphism.
-	Thus every nonzero vector space can be viewed as a space of functions.
+  Let \(\V\) be a nonzero vector space over a field \(\F\), and suppose that \(S\) is a basis for \(\V\) over \(\F\)
+  (By \cref{1.7.10} every vector space has a basis).
+  Let \(\cvs(S, \F)\) denote the vector space of all functions \(f \in \FS\) such that \(f(s) = 0\) for all but a finite number of vectors in \(S\)
+  (See \cref{ex:1.3.14}).
+  Let \(\Psi : \cvs(S, \F) \to \V\) be the function defined by
+  \[
+    \Psi(f) = \sum_{s \in S, f(s) \neq 0} f(s) s.
+  \]
+  Prove that \(\Psi\) is an isomorphism.
+  Thus every nonzero vector space can be viewed as a space of functions.
 \end{ex}
 
 \begin{proof}[\pf{ex:2.4.25}]
-	First we show that \(\Psi \in \ls(\cvs(S, \F), \V)\).
-	Let \(f, g \in \cvs(S, \F)\) and let \(c \in \F\).
-	Since
-	\begin{align*}
-		 & \Psi(cf + g)                                                                                                                            \\
-		 & = \sum_{s \in S, (cf + g)(s) \neq 0} (cf + g)(s) s                                           &  & \by{ex:2.4.25}                        \\
-		 & = \sum_{s \in S, cf(s) + g(s) \neq 0} (cf(s)) s + g(s) s                                                                                \\
-		 & = \sum_{s \in S, cf(s) + g(s) \neq 0} (cf(s)) s + \sum_{s \in S, cf(s) + g(s) \neq 0} g(s) s &  & \text{(finitely many non-zero terms)} \\
-		 & = \sum_{s \in S, cf(s) \neq 0} (cf(s)) s + \sum_{s \in S, g(s) \neq 0} g(s) s                                                           \\
-		 & = c \pa{\sum_{s \in S, f(s) \neq 0} f(s) s} + \sum_{s \in S, g(s) \neq 0} g(s) s             &  & \text{(finitely many non-zero terms)} \\
-		 & = c \Psi(f) + \Psi(g),                                                                       &  & \by{ex:2.4.25}
-	\end{align*}
-	by \cref{2.1.2}(b) we know that \(\Psi \in \ls(\cvs(S, \F), \V)\).
+  First we show that \(\Psi \in \ls(\cvs(S, \F), \V)\).
+  Let \(f, g \in \cvs(S, \F)\) and let \(c \in \F\).
+  Since
+  \begin{align*}
+     & \Psi(cf + g)                                                                                                                            \\
+     & = \sum_{s \in S, (cf + g)(s) \neq 0} (cf + g)(s) s                                           &  & \by{ex:2.4.25}                        \\
+     & = \sum_{s \in S, cf(s) + g(s) \neq 0} (cf(s)) s + g(s) s                                                                                \\
+     & = \sum_{s \in S, cf(s) + g(s) \neq 0} (cf(s)) s + \sum_{s \in S, cf(s) + g(s) \neq 0} g(s) s &  & \text{(finitely many non-zero terms)} \\
+     & = \sum_{s \in S, cf(s) \neq 0} (cf(s)) s + \sum_{s \in S, g(s) \neq 0} g(s) s                                                           \\
+     & = c \pa{\sum_{s \in S, f(s) \neq 0} f(s) s} + \sum_{s \in S, g(s) \neq 0} g(s) s             &  & \text{(finitely many non-zero terms)} \\
+     & = c \Psi(f) + \Psi(g),                                                                       &  & \by{ex:2.4.25}
+  \end{align*}
+  by \cref{2.1.2}(b) we know that \(\Psi \in \ls(\cvs(S, \F), \V)\).
 
-	Next we show that \(\Psi\) is one-to-one.
-	Let \(f, g \in \cvs(S, \F)\) such that \(\Psi(f) = \Psi(g)\).
-	Since
-	\begin{align*}
-		         & \sum_{s \in S, f(s) \neq 0} f(s) s = \sum_{s \in S, g(s) \neq 0} g(s) s            &  & \by{ex:2.4.25}                        \\
-		\implies & \sum_{s \in S, f(s) \neq 0} f(s) s - \sum_{s \in S, g(s) \neq 0} g(s) s = \zv_{\V}                                            \\
-		\implies & \sum_{s \in S, (f(s) \neq 0) \lor (g(s) \neq 0)} f(s) s - g(s) s = \zv_{\V}        &  & \text{(finitely many non-zero terms)} \\
-		\implies & \sum_{s \in S, (f(s) \neq 0) \lor (g(s) \neq 0)} (f(s) - g(s)) s = \zv_{\V}        &  & \by{1.2.1}                            \\
-		\implies & \forall s \in S,                                                                                                              \\
-		         & \begin{dcases}
-			           f(s) - g(s) = 0 & \text{if } (f(s) \neq 0) \lor (g(s) \neq 0) \\
-			           f(s) = 0 = g(s) & \text{if } (f(s) = 0) \land (g(s) = 0)
-		           \end{dcases}                   &  & \by{1.6.1}                                                                 \\
-		\implies & \forall s \in S, f(s) = g(s)                                                                                                  \\
-		\implies & f = g,
-	\end{align*}
-	we know that \(\Psi\) is one-to-one.
+  Next we show that \(\Psi\) is one-to-one.
+  Let \(f, g \in \cvs(S, \F)\) such that \(\Psi(f) = \Psi(g)\).
+  Since
+  \begin{align*}
+             & \sum_{s \in S, f(s) \neq 0} f(s) s = \sum_{s \in S, g(s) \neq 0} g(s) s            &  & \by{ex:2.4.25}                        \\
+    \implies & \sum_{s \in S, f(s) \neq 0} f(s) s - \sum_{s \in S, g(s) \neq 0} g(s) s = \zv_{\V}                                            \\
+    \implies & \sum_{s \in S, (f(s) \neq 0) \lor (g(s) \neq 0)} f(s) s - g(s) s = \zv_{\V}        &  & \text{(finitely many non-zero terms)} \\
+    \implies & \sum_{s \in S, (f(s) \neq 0) \lor (g(s) \neq 0)} (f(s) - g(s)) s = \zv_{\V}        &  & \by{1.2.1}                            \\
+    \implies & \forall s \in S,                                                                                                              \\
+             & \begin{dcases}
+                 f(s) - g(s) = 0 & \text{if } (f(s) \neq 0) \lor (g(s) \neq 0) \\
+                 f(s) = 0 = g(s) & \text{if } (f(s) = 0) \land (g(s) = 0)
+               \end{dcases}                   &  & \by{1.6.1}                                                                 \\
+    \implies & \forall s \in S, f(s) = g(s)                                                                                                  \\
+    \implies & f = g,
+  \end{align*}
+  we know that \(\Psi\) is one-to-one.
 
-	Next we show that \(\Psi\) is onto.
-	Let \(x \in \V\).
-	By \cref{1.6.1} we know that there exist some \(\seq{v}{1,,n} \in S\) and \(\seq{a}{1,,n} \in \F\) such that \(x = \sum_{i = 1}^n a_i v_i\).
-	By \cref{1.8} we know that such \(\seq{v}{1,,n}\) and \(\seq{a}{1,,n}\) are unique.
-	Now we define \(f \in \cvs(S, \F)\) as follow:
-	\[
-		\forall s \in S, f(s) = \begin{dcases}
-			a_i & \text{if } s = v_i                               \\
-			0   & \text{if } s \in S \setminus \set{\seq{v}{1,,n}}
-		\end{dcases}.
-	\]
-	Clearly we have
-	\[
-		\Psi(f) = \sum_{s \in S, f(s) \neq 0} f(s) s = \sum_{i = 1}^n f(v_i) v_i = \sum_{i = 1}^n a_i v_i = x.
-	\]
-	Thus \(\Psi\) is onto.
+  Next we show that \(\Psi\) is onto.
+  Let \(x \in \V\).
+  By \cref{1.6.1} we know that there exist some \(\seq{v}{1,,n} \in S\) and \(\seq{a}{1,,n} \in \F\) such that \(x = \sum_{i = 1}^n a_i v_i\).
+  By \cref{1.8} we know that such \(\seq{v}{1,,n}\) and \(\seq{a}{1,,n}\) are unique.
+  Now we define \(f \in \cvs(S, \F)\) as follow:
+  \[
+    \forall s \in S, f(s) = \begin{dcases}
+      a_i & \text{if } s = v_i                               \\
+      0   & \text{if } s \in S \setminus \set{\seq{v}{1,,n}}
+    \end{dcases}.
+  \]
+  Clearly we have
+  \[
+    \Psi(f) = \sum_{s \in S, f(s) \neq 0} f(s) s = \sum_{i = 1}^n f(v_i) v_i = \sum_{i = 1}^n a_i v_i = x.
+  \]
+  Thus \(\Psi\) is onto.
 
-	Finally we show that \(\Psi\) is an isomorphism from \(\cvs(S, \F)\) onto \(\V\).
-	From all proofs above we see that \(\Psi \in \ls(\cvs(S, \F), \V)\) and \(\Psi\) is invertible, thus by \cref{2.4.8} \(\Psi\) is an isomorphism from \(\cvs(S, \F)\) onto \(\V\).
+  Finally we show that \(\Psi\) is an isomorphism from \(\cvs(S, \F)\) onto \(\V\).
+  From all proofs above we see that \(\Psi \in \ls(\cvs(S, \F), \V)\) and \(\Psi\) is invertible, thus by \cref{2.4.8} \(\Psi\) is an isomorphism from \(\cvs(S, \F)\) onto \(\V\).
 \end{proof}

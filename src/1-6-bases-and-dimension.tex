@@ -11,13 +11,13 @@
 
 \begin{eg}\label{1.6.3}
 	In \(\vs{F}^n\), let \(e_1 = (1, 0, 0, \dots, 0)\), \(e_2 = (0, 1, 0, \dots, 0)\), \dots, \(e_n = (0, 0, \dots, 0, 1)\);
-	\(\set{\seq{e}{1,2,,n}}\) is readily seen to be a basis for \(\vs{F}^n\) over \(\F\) and is called the \textbf{standard basis} for \(\vs{F}^n\) over \(\F\).
+	\(\set{\seq{e}{1,,n}}\) is readily seen to be a basis for \(\vs{F}^n\) over \(\F\) and is called the \textbf{standard basis} for \(\vs{F}^n\) over \(\F\).
 \end{eg}
 
 \begin{proof}[\pf{1.6.3}]
-	By \cref{ex:1.5.4} we know that \(\set{\seq{e}{1,2,,n}}\) is linearly independent.
-	By \cref{ex:1.4.7} we know that \(\vs{F}^n = \spn{\set{\seq{e}{1,2,,n}}}\).
-	Thus by \cref{1.6.1} \(\set{\seq{e}{1,2,,n}}\) is a basis for \(\vs{F}^n\) over \(\F\).
+	By \cref{ex:1.5.4} we know that \(\set{\seq{e}{1,,n}}\) is linearly independent.
+	By \cref{ex:1.4.7} we know that \(\vs{F}^n = \spn{\set{\seq{e}{1,,n}}}\).
+	Thus by \cref{1.6.1} \(\set{\seq{e}{1,,n}}\) is a basis for \(\vs{F}^n\) over \(\F\).
 \end{proof}
 
 \begin{eg}\label{1.6.4}
@@ -103,12 +103,12 @@
 \end{note}
 
 \begin{thm}\label{1.8}
-	Let \(\V\) be a vector space over \(\F\) and \(\beta = \set{\seq{u}{1,2,,n}}\) be a subset of \(\V\).
+	Let \(\V\) be a vector space over \(\F\) and \(\beta = \set{\seq{u}{1,,n}}\) be a subset of \(\V\).
 	Then \(\beta\) is a basis for \(\V\) over \(\F\) iff each \(v \in \V\) can be uniquely expressed as a linear combination of vectors of \(\beta\), that is, can be expressed in the form
 	\[
-		v = \seq[+]{a,u}{1,2,,n}
+		v = \seq[+]{a,u}{1,,n}
 	\]
-	for unique scalars \(\seq{a}{1,2,,n} \in \F\).
+	for unique scalars \(\seq{a}{1,,n} \in \F\).
 \end{thm}
 
 \begin{proof}[\pf{1.8}]
@@ -117,7 +117,7 @@
 	Thus \(v\) is a linear combination of the vectors of \(\beta\).
 	Suppose that
 	\[
-		v = \seq[+]{a,u}{1,2,,n} \quad \text{and} \quad v = \seq[+]{b,u}{1,2,,n}
+		v = \seq[+]{a,u}{1,,n} \quad \text{and} \quad v = \seq[+]{b,u}{1,,n}
 	\]
 	are two such representations of \(v\).
 	Subtracting the second equation from the first gives
@@ -132,21 +132,21 @@
 	Thus to show that \(\beta\) is a basis for \(\V\) over \(\F\), by \cref{1.6.1} we need to show that \(\beta\) is linearly independent.
 	This is true since
 	\begin{align*}
-		         & \zv \in \V                                             &  & \text{(by \ref{vs3})}  \\
-		\implies & \exists! \seq{a}{1,2,,n} \in \F :                                                  \\
-		         & \zv = \seq[+]{a,u}{1,2,,n} = \seq[+]{0u}{1,2,,n}       &  & \text{(by hypothesis)} \\
-		\implies & \seq[=]{a}{1,2,,n} = 0                                                             \\
-		\implies & \set{\seq{u}{1,2,,n}} \text{ is linearly independent}. &  & \by{1.5.3}
+		         & \zv \in \V                                           &  & \text{(by \ref{vs3})}  \\
+		\implies & \exists! \seq{a}{1,,n} \in \F :                                                  \\
+		         & \zv = \seq[+]{a,u}{1,,n} = \seq[+]{0u}{1,,n}         &  & \text{(by hypothesis)} \\
+		\implies & \seq[=]{a}{1,,n} = 0                                                             \\
+		\implies & \set{\seq{u}{1,,n}} \text{ is linearly independent}. &  & \by{1.5.3}
 	\end{align*}
 \end{proof}
 
 \begin{note}
-	\cref{1.8} shows that if the vectors \(\seq{u}{1,2,,n}\) form a basis for a vector space \(\V\) over \(\F\), then every vector in \(\V\) can be uniquely expressed in the form
+	\cref{1.8} shows that if the vectors \(\seq{u}{1,,n}\) form a basis for a vector space \(\V\) over \(\F\), then every vector in \(\V\) can be uniquely expressed in the form
 	\[
-		v = \seq[+]{a,u}{1,2,,n}
+		v = \seq[+]{a,u}{1,,n}
 	\]
-	for appropriately chosen scalars \(\seq{a}{1,2,,n}\).
-	Thus \(v\) determines a unique \(n\)-tuple of scalars \(\tuple{a}{1,2,,n}\) and, conversely, each \(n\)-tuple of scalars determines a unique vector \(v \in \V\) by using the entries of the \(n\)-tuple as the coefficients of a linear combination of \(\seq{u}{1,2,,n}\).
+	for appropriately chosen scalars \(\seq{a}{1,,n}\).
+	Thus \(v\) determines a unique \(n\)-tuple of scalars \(\tuple{a}{1,,n}\) and, conversely, each \(n\)-tuple of scalars determines a unique vector \(v \in \V\) by using the entries of the \(n\)-tuple as the coefficients of a linear combination of \(\seq{u}{1,,n}\).
 	This fact suggests that \(\V\) is like the vector space \(\vs{F}^n\), where \(n\) is the number of vectors in the basis for \(\V\) over \(\F\).
 	We see in \cref{sec:2.4} that this is indeed the case.
 \end{note}
@@ -160,8 +160,8 @@
 	If \(S = \varnothing\) or \(S = \set{\zv}\), then \(\V = \set{\zv}\) and \(\varnothing\) is a subset of \(S\) that is a basis for \(\V\) over \(\F\).
 	Otherwise \(S\) contains a nonzero vector \(u_1\).
 	By \cref{1.5.4}(b), \(\set{u_1}\) is a linearly independent set.
-	Continue, if possible, choosing vectors \(\seq{u}{2,,k}\) in \(S\) such that \(\set{\seq{u}{1,2,,k}}\) is linearly independent.
-	Since \(S\) is a finite set, we must eventually reach a stage at which \(\beta = \set{\seq{u}{1,2,,k}}\) is a linearly independent subset of \(S\), but adjoining to \(\beta\) any vector in \(S \setminus \beta\) produces a linearly dependent set.
+	Continue, if possible, choosing vectors \(\seq{u}{2,,k}\) in \(S\) such that \(\set{\seq{u}{1,,k}}\) is linearly independent.
+	Since \(S\) is a finite set, we must eventually reach a stage at which \(\beta = \set{\seq{u}{1,,k}}\) is a linearly independent subset of \(S\), but adjoining to \(\beta\) any vector in \(S \setminus \beta\) produces a linearly dependent set.
 	We claim that \(\beta\) is a basis for \(\V\) over \(\F\).
 	Because \(\beta\) is linearly independent by construction, it suffices to show that \(\beta\) spans \(\V\).
 	By \cref{1.5} we need to show that \(S \subseteq \spn{\beta}\).
@@ -188,13 +188,13 @@
 
 	Now suppose that the theorem is true for some integer \(m \geq 0\).
 	We prove that the theorem is true for \(m + 1\).
-	Let \(L = \set{\seq{v}{1,2,,m + 1}}\) be a linearly independent subset of \(\V\) consisting of \(m + 1\) vectors.
-	By \cref{1.5.6} \(\set{\seq{v}{1,2,,m}} \subseteq L\) is linearly independent, and so we may apply the induction hypothesis to conclude that \(m \leq n\) and that there is a subset \(\set{\seq{u}{1,2,,n - m}}\) of \(G\) such that \(\set{\seq{v}{1,2,,m}} \cup \set{\seq{u}{1,2,,n - m}}\) generates \(\V\).
-	Thus there exist scalars \(\seq{a}{1,2,,m}, \seq{b}{1,2,,n - m} \in \F\) such that
+	Let \(L = \set{\seq{v}{1,,m + 1}}\) be a linearly independent subset of \(\V\) consisting of \(m + 1\) vectors.
+	By \cref{1.5.6} \(\set{\seq{v}{1,,m}} \subseteq L\) is linearly independent, and so we may apply the induction hypothesis to conclude that \(m \leq n\) and that there is a subset \(\set{\seq{u}{1,,n - m}}\) of \(G\) such that \(\set{\seq{v}{1,,m}} \cup \set{\seq{u}{1,,n - m}}\) generates \(\V\).
+	Thus there exist scalars \(\seq{a}{1,,m}, \seq{b}{1,,n - m} \in \F\) such that
 	\begin{equation}\label{eq:1.6.1}
-		\seq[+]{a,v}{1,2,,m} + \seq[+]{b,u}{1,2,,n - m} = v_{m + 1}
+		\seq[+]{a,v}{1,,m} + \seq[+]{b,u}{1,,n - m} = v_{m + 1}
 	\end{equation}
-	Note that \(n - m > 0\), otherwise \(n - m = 0\) implies \(v_{m + 1}\) is a linear combination of \(\seq{v}{1,2,,m}\), which by \cref{1.7} contradicts the assumption that \(L\) is linearly independent.
+	Note that \(n - m > 0\), otherwise \(n - m = 0\) implies \(v_{m + 1}\) is a linear combination of \(\seq{v}{1,,m}\), which by \cref{1.7} contradicts the assumption that \(L\) is linearly independent.
 	Hence \(n > m\);
 	that is, \(n \geq m + 1\).
 	Moreover, some \(b_i\), say \(b_1\), is nonzero, for otherwise we obtain the same contradiction.
@@ -204,12 +204,12 @@
 		+ (-b_1^{-1} b_2) u_2 + \cdots + (-b_1^{-1} b_{n - m}) u_{n - m}.
 	\end{multline*}
 	Let \(H = \set{\seq{u}{2,,n - m}}\).
-	Then \(u_1 \in \spn{L \cup H}\), and because \(\seq{v}{1,2,,m}\), \\
+	Then \(u_1 \in \spn{L \cup H}\), and because \(\seq{v}{1,,m}\), \\
 	\(\seq{u}{2,,n - m}\) are clearly in \(\spn{L \cup H}\), it follows that
 	\[
-		\set{\seq{v}{1,2,,m}, \seq{u}{1,2,,n - m}} \subseteq \spn{L \cup H}.
+		\set{\seq{v}{1,,m}, \seq{u}{1,,n - m}} \subseteq \spn{L \cup H}.
 	\]
-	Because \(\set{\seq{v}{1,2,,m}, \seq{u}{1,2,n - m}}\) generates \(\V\), \cref{1.5} implies that \\
+	Because \(\set{\seq{v}{1,,m}, \seq{u}{1,2,n - m}}\) generates \(\V\), \cref{1.5} implies that \\
 	\(\spn{L \cup H} = \V\).
 	Since \(H\) is a subset of \(G\) that contains \((n - m) - 1 = n - (m + 1)\) vectors, the theorem is true for \(m + 1\).
 	This completes the induction.
@@ -358,9 +358,9 @@
 	If \(\W = \set{\zv}\), then \(\W\) is finite-dimensional and \(\dim(\W) = 0 \leq n\).
 	Otherwise, \(\W\) contains a nonzero vector \(x_1\);
 	so \(\set{x_1}\) is a linearly independent set.
-	Continue choosing vectors, \(\seq{x}{1,2,,k}\) in \(\W\) such that \(\set{\seq{x}{1,2,,k}}\) is linearly independent.
-	Since no linearly independent subset of \(\V\) can contain more than \(n\) vectors, this process must stop at a stage where \(k \leq n\) and \(\set{\seq{x}{1,2,,k}}\) is linearly independent but adjoining any other vector from \(\W\) produces a linearly dependent set.
-	\cref{1.7} implies that \(\set{\seq{x}{1,2,,k}}\) generates \(\W\), and hence it is a basis for \(\W\) over \(\F\).
+	Continue choosing vectors, \(\seq{x}{1,,k}\) in \(\W\) such that \(\set{\seq{x}{1,,k}}\) is linearly independent.
+	Since no linearly independent subset of \(\V\) can contain more than \(n\) vectors, this process must stop at a stage where \(k \leq n\) and \(\set{\seq{x}{1,,k}}\) is linearly independent but adjoining any other vector from \(\W\) produces a linearly dependent set.
+	\cref{1.7} implies that \(\set{\seq{x}{1,,k}}\) generates \(\W\), and hence it is a basis for \(\W\) over \(\F\).
 	Therefore \(\dim(\W) = k \leq n\).
 
 	If \(\dim(\W) = n\), then a basis for \(\W\) over \(\F\) is a linearly independent subset of \(\V\) containing \(n\) vectors.
@@ -690,7 +690,7 @@
 	So such \(v_1\) exists and we let \(\beta_1 = \beta_0 \cup v_1\).
 	Again we must have \(\beta_1 \neq S\), \(\V \neq \spn{\beta_1}\) and \(\#(\beta_1) \leq n\).
 	Using the same argument as above there must exist a \(v_2 \in S\) such that \(v_2 \cup \beta_1\) is linearly independent.
-	Continue this definition we can define \(\beta_n = \set{\seq{v}{1,2,,n}}\).
+	Continue this definition we can define \(\beta_n = \set{\seq{v}{1,,n}}\).
 	But by \cref{1.6.15}(b) we know that \(\beta_n\) must be a basis for \(\V\) over \(\F\), a contradiction.
 	Thus there must exists a subset of \(S\) which is a basis for \(\V\) over \(\F\).
 \end{proof}
@@ -737,7 +737,7 @@
 \end{proof}
 
 \begin{ex}\label{ex:1.6.23}
-	Let \(\seq{v}{1,2,,k}, v\) be vectors in a vector space \(\V\) over \(\F\), and define \(W_1 = \spn{\set{\seq{v}{1,2,,k}}}\), and \(\W_2 = \spn{\set{\seq{v}{1,2,,k}, v}}\).
+	Let \(\seq{v}{1,,k}, v\) be vectors in a vector space \(\V\) over \(\F\), and define \(W_1 = \spn{\set{\seq{v}{1,,k}}}\), and \(\W_2 = \spn{\set{\seq{v}{1,,k}, v}}\).
 	\begin{enumerate}
 		\item Find necessary and sufficient conditions on \(v\) such that \(\dim(\W_1) = \dim(\W_2)\).
 		\item State and prove a relationship involving \(\dim(\W_1)\) and \(\dim(\W_2)\) in the case that \(\dim(\W_1) \neq \dim(\W_2)\).
@@ -750,10 +750,10 @@
 		     & \begin{dcases}
 			       \W_1 \subseteq \W_2 \\
 			       \dim(\W_1) = \dim(\W_2)
-		       \end{dcases}                                     &  & \by{ex:1.4.13}        \\
-		\iff & \W_1 = \W_2                                                 &  & \by{1.11}  \\
-		\iff & v \in \spn{\set{\seq{v}{1,2,,k}}}                           &  & \by{1.4.3} \\
-		\iff & v \cup \set{\seq{v}{1,2,,k}} \text{ is linearly dependent}. &  & \by{1.7}
+		       \end{dcases}                                   &  & \by{ex:1.4.13}        \\
+		\iff & \W_1 = \W_2                                               &  & \by{1.11}  \\
+		\iff & v \in \spn{\set{\seq{v}{1,,k}}}                           &  & \by{1.4.3} \\
+		\iff & v \cup \set{\seq{v}{1,,k}} \text{ is linearly dependent}. &  & \by{1.7}
 	\end{align*}
 \end{proof}
 
@@ -791,7 +791,7 @@
 \end{ex}
 
 \begin{proof}[\pf{ex:1.6.25}]
-	Let \(\beta_v = \set{\seq{v}{1,2,,m}}, \beta_w = \set{\seq{w}{1,2,n}}\) be a basis for \(\V, \W\) over \(\F\), respectively.
+	Let \(\beta_v = \set{\seq{v}{1,,m}}, \beta_w = \set{\seq{w}{1,2,n}}\) be a basis for \(\V, \W\) over \(\F\), respectively.
 	Let \(\zv_{\V}, \zv_{\W}\) be the zero vectors of \(\V, \W\), respectively.
 	Then we claim the set
 	\[
@@ -801,18 +801,18 @@
 	Clearly \(\beta \subseteq \V \times \W\).
 	Since
 	\begin{align*}
-		         & \forall \seq{a}{1,2,,m + n} \in \F, \sum_{i = 1}^m a_i (v_i, \zv_{\W}) + \sum_{i = 1}^n a_{m + i} (\zv_{\V}, w_i)                     \\
-		         & = (\sum_{i = 1}^m a_i v_i, \sum_{i = 1}^n a_{m + i} w_i) = (\zv_{\V}, \zv_{\W})                                   &  & \by{ex:1.2.21} \\
+		         & \forall \seq{a}{1,,m + n} \in \F, \sum_{i = 1}^m a_i (v_i, \zv_{\W}) + \sum_{i = 1}^n a_{m + i} (\zv_{\V}, w_i)                     \\
+		         & = (\sum_{i = 1}^m a_i v_i, \sum_{i = 1}^n a_{m + i} w_i) = (\zv_{\V}, \zv_{\W})                                 &  & \by{ex:1.2.21} \\
 		\implies & \begin{dcases}
 			           \sum_{i = 1}^m a_i v_i = \zv_{\V} \\
 			           \sum_{i = 1}^n a_{m + i} w_i = \zv_{\W}
-		           \end{dcases}                                                                                                \\
-		\implies & \seq[=]{a}{1,2,,m + n} = 0,
+		           \end{dcases}                                                                                              \\
+		\implies & \seq[=]{a}{1,,m + n} = 0,
 	\end{align*}
 	by \cref{1.5.3} we know that \(\beta\) is linearly independent.
 	Since
 	\begin{align*}
-		         & \forall (v, w) \in \V \times \W, \exists \seq{a}{1,2,,m + n} \in \F :                               \\
+		         & \forall (v, w) \in \V \times \W, \exists \seq{a}{1,,m + n} \in \F :                                 \\
 		         & (v, w) = (\sum_{i = 1}^m a_i v_i, \sum_{i = 1}^n a_{m + i} w_i)                                     \\
 		         & = \sum_{i = 1}^m a_i (v_i, \zv_{\W}) + \sum_{i = 1}^n a_{m + i} (\zv_{\V}, w_i) &  & \by{ex:1.2.21} \\
 		\implies & \forall (v, w) \in \V \times \W, (v, w) \in \spn{\beta}                                             \\
@@ -832,7 +832,7 @@
 	\]
 	is linearly independent (by \cref{ex:1.5.5}) and
 	\begin{align*}
-		         & \forall g \in \set{f \in \ps[n]{\R} : f(a) = 0}, \exists \seq{c}{1,2,,n} \in \R :                 \\
+		         & \forall g \in \set{f \in \ps[n]{\R} : f(a) = 0}, \exists \seq{c}{1,,n} \in \R :                   \\
 		         & \forall x \in \R, g(x) = c_1 (x - a) + c_2 (x^2 - a^2) + \cdots + c_n (x^n - a^n)                 \\
 		\implies & \forall g \in \set{f \in \ps[n]{\R} : f(a) = 0}, g \in \spn{\beta}                &  & \by{1.4.3} \\
 		\implies & \set{f \in \ps[n]{\R} : f(a) = 0} = \spn{\beta},                                  &  & \by{1.5}
@@ -885,25 +885,25 @@
 \end{ex}
 
 \begin{proof}[\pf{ex:1.6.28}]
-	Let \(\beta = \set{\seq{v}{1,2,,n}}\) be a basis for \(\V\) over \(\C\).
+	Let \(\beta = \set{\seq{v}{1,,n}}\) be a basis for \(\V\) over \(\C\).
 	Since
 	\begin{align*}
 		         & \spn{\beta} = \V                                                           &  & \by{1.6.1}                  \\
-		\implies & \forall v \in \V, \exists \seq{a}{1,2,,n} \in \C :                                                          \\
+		\implies & \forall v \in \V, \exists \seq{a}{1,,n} \in \C :                                                            \\
 		         & v = \sum_{j = 1}^n a_j v_j = \sum_{j = 1}^n \pa{\Re(a_j) + i \Im(a_j)} v_j                                  \\
 		         & = \sum_{j = 1}^n \Re(a_j) (1 v_j) + \sum_{j = 1}^n \Im(a_j) (i v_j)        &  & \by{1.4.3}                  \\
-		\implies & \forall v \in \V, \exists \seq{b}{1,2,,2n} \in \R :                                                         \\
+		\implies & \forall v \in \V, \exists \seq{b}{1,,2n} \in \R :                                                           \\
 		         & v = \sum_{j = 1}^n b_j v_j + \sum_{j = 1}^n b_{n + j} (i v_j)              &  & (\Re(a_j), \Im(a_j) \in \R) \\
-		\implies & \spn{\set{\seq{v}{1,2,,n}, \seq{iv}{1,2,,n}}} = \V                         &  & \by{1.4.3}
+		\implies & \spn{\set{\seq{v}{1,,n}, \seq{iv}{1,,n}}} = \V                             &  & \by{1.4.3}
 	\end{align*}
 	and
 	\begin{align*}
-		         & \forall \seq{b}{1,2,,2n} \in \R, \sum_{j = 1}^n b_j v_j + \sum_{j = 1}^n b_{n + j} (i v_j) = \zv                                            \\
-		\implies & \sum_{j = 1}^n (b_j + i b_{n + j}) v_j = \zv                                                                                                \\
-		\implies & b_1 + i b_{n + 1} = b_2 + i b_{n + 2} = \cdots = b_n + i b_{2n} = 0                              &  & \by{1.5.3}                            \\
-		\implies & \seq[=]{b}{1,2,,2n} = 0,                                                                         &  & (\set{\seq{b}{1,2,,2n}} \subseteq \R)
+		         & \forall \seq{b}{1,,2n} \in \R, \sum_{j = 1}^n b_j v_j + \sum_{j = 1}^n b_{n + j} (i v_j) = \zv                                          \\
+		\implies & \sum_{j = 1}^n (b_j + i b_{n + j}) v_j = \zv                                                                                            \\
+		\implies & b_1 + i b_{n + 1} = b_2 + i b_{n + 2} = \cdots = b_n + i b_{2n} = 0                            &  & \by{1.5.3}                          \\
+		\implies & \seq[=]{b}{1,,2n} = 0,                                                                         &  & (\set{\seq{b}{1,,2n}} \subseteq \R)
 	\end{align*}
-	by \cref{1.6.1} we know that \(\set{\seq{v}{1,2,,n}, \seq{iv}{1,2,,n}}\) is a basis for \(\V\) over \(\R\) with dimension \(2n\).
+	by \cref{1.6.1} we know that \(\set{\seq{v}{1,,n}, \seq{iv}{1,,n}}\) is a basis for \(\V\) over \(\R\) with dimension \(2n\).
 \end{proof}
 
 \begin{ex}\label{ex:1.6.29}
@@ -1126,8 +1126,8 @@
 \end{proof}
 
 \begin{ex}\label{ex:1.6.35}
-	Let \(\W\) be a subspace of a finite-dimensional vector space \(\V\) over \(\F\), and consider the basis \(\set{\seq{u}{1,2,,k}}\) for \(\W\) over \(\F\).
-	Let \(\set{\seq{u}{1,2,,k,k + 1,,n}}\) be an extension of this basis to a basis for \(\V\) over \(\F\).
+	Let \(\W\) be a subspace of a finite-dimensional vector space \(\V\) over \(\F\), and consider the basis \(\set{\seq{u}{1,,k}}\) for \(\W\) over \(\F\).
+	Let \(\set{\seq{u}{1,,k,k + 1,,n}}\) be an extension of this basis to a basis for \(\V\) over \(\F\).
 	\begin{enumerate}
 		\item Prove that \(\set{u_{k + 1} + \W, u_{k + 2} + \W, \dots , u_n + \W}\) is a basis for \(\V / \W\) over \(\F\).
 		\item Derive a formula relating \(\dim(\V)\), \(\dim(\W)\), and \(\dim(\V / \W)\).
@@ -1141,12 +1141,12 @@
 		         & \forall v + \W \in \V / \W, \begin{dcases}
 			                                       v \in \V \\
 			                                       v + \W = \set{v + w : w \in \W}
-		                                       \end{dcases}                   &  & \by{ex:1.3.31}             \\
-		\implies & \forall v + \W \in \V / \W, \exists \seq{a}{1,2,,n} \in \F :                               \\
-		         & v + \W = \pa{\sum_{i = 1}^n a_i u_i} + \W                    &  & \by{1.4.3}               \\
-		         & = \sum_{i = 1}^n a_i (u_i + \W)                              &  & \by{ex:1.3.31}           \\
-		         & = \sum_{i = k + 1}^n a_i (u_i + \W)                          &  & (\seq{u}{1,2,,k} \in \W) \\
-		\implies & \spn{\beta} = \V / \W.                                       &  & \by{1.4.3}.
+		                                       \end{dcases}                 &  & \by{ex:1.3.31}           \\
+		\implies & \forall v + \W \in \V / \W, \exists \seq{a}{1,,n} \in \F :                             \\
+		         & v + \W = \pa{\sum_{i = 1}^n a_i u_i} + \W                  &  & \by{1.4.3}             \\
+		         & = \sum_{i = 1}^n a_i (u_i + \W)                            &  & \by{ex:1.3.31}         \\
+		         & = \sum_{i = k + 1}^n a_i (u_i + \W)                        &  & (\seq{u}{1,,k} \in \W) \\
+		\implies & \spn{\beta} = \V / \W.                                     &  & \by{1.4.3}.
 	\end{align*}
 	Now we show that \(\beta\) is linearly independent.
 	\begin{align*}

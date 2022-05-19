@@ -229,12 +229,12 @@
 	Next suppose that \(s > r + 1\), and let the rows of \(A\) be \(\seq{a}{1,,n}\).
 	Beginning with \(a_r\) and \(a_{r + 1}\), successively interchange \(a_r\) with the row that follows it until the rows are in the sequence
 	\[
-		\seq{a}{1,2,,r-1,r+1,,s,r,s+1,,n}.
+		\seq{a}{1,,r-1,r+1,,s,r,s+1,,n}.
 	\]
 	In all, \(s - r\) interchanges of adjacent rows are needed to produce this sequence.
 	Then successively interchange \(a_s\) with the row that precedes it until the rows are in the order
 	\[
-		\seq{a}{1,2,,r-1,s,r+1,,s-1,r,s+1,,n}.
+		\seq{a}{1,,r-1,s,r+1,,s-1,r,s+1,,n}.
 	\]
 	This process requires an additional \(s - r - 1\) interchanges of adjacent rows and produces the matrix \(B\).
 	It follows from the preceding paragraph that

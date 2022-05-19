@@ -13,7 +13,7 @@
 	We wish to show that \(\set{\seq{v}{1,,k+1}}\) is linearly independent.
 	Suppose that \(\seq{a}{1,,k+1} \in \F\) such that
 	\[
-		\seq[+]{a,v}{1,2,,k+1} = \zv.
+		\seq[+]{a,v}{1,,k+1} = \zv.
 	\]
 	Applying \(\T - \lambda_{k + 1} \IT[\V]\) to both sides of the above equation, we obtain
 	\[
@@ -851,8 +851,8 @@
 	For each \(i \in \set{1, \dots, k}\), let \(\beta_i\) be an ordered basis for \(\W_i\) over \(\F\).
 	Then we have
 	\begin{align*}
-		         & \V = \W_1 \oplus \cdots \oplus \W_k                                                                &  & \by{5.2.7}    \\
-		\implies & \bigcup_{i = 1}^k \beta_i \text{ is an ordered basis for } \V \text{ over } \F                     &  & \by{5.10}[ad] \\
+		         & \V = \W_1 \oplus \cdots \oplus \W_k                                                                &  & \by{5.2.7}     \\
+		\implies & \bigcup_{i = 1}^k \beta_i \text{ is an ordered basis for } \V \text{ over } \F                     &  & \by{5.10}[a,d] \\
 		\implies & \dim(\V) = \#(\bigcup_{i = 1}^k \beta_i) = \sum_{i = 1}^k \#(\beta_i) = \sum_{i = 1}^k \dim(\W_i). &  & \by{1.6.8}
 	\end{align*}
 
@@ -869,8 +869,8 @@
 	But this contradicts to the fact that \(\V = \sum_{i = 1}^k \W_i\).
 	Thus we have
 	\begin{align*}
-		         & \beta = \bigcup_{i = 1}^k \beta_i                       \\
-		\implies & \V = \W_1 \oplus \cdots \oplus \W_k. &  & \by{5.10}[ad]
+		         & \beta = \bigcup_{i = 1}^k \beta_i                        \\
+		\implies & \V = \W_1 \oplus \cdots \oplus \W_k. &  & \by{5.10}[a,d]
 	\end{align*}
 \end{proof}
 

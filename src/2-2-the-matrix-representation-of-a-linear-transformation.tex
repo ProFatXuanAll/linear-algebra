@@ -13,13 +13,13 @@
 \end{defn}
 
 \begin{defn}\label{2.2.2}
-	For the vector space \(\vs{F}^n\), we call \(\set{\seq{e}{1,2,,n}}\) the \textbf{standard ordered basis} for \(\vs{F}^n\) over \(\F\).
+	For the vector space \(\vs{F}^n\), we call \(\set{\seq{e}{1,,n}}\) the \textbf{standard ordered basis} for \(\vs{F}^n\) over \(\F\).
 	Similarly, for the vector space \(\ps[n]{\F}\), we call \(\set{1, x, \dots, x^n}\) the \textbf{standard ordered basis} for \(\ps[n]{\F}\) over \(\F\).
 \end{defn}
 
 \begin{defn}\label{2.2.3}
-	Let \(\beta = \set{\seq{u}{1,2,,n}}\) be an ordered basis for a finite-dimensional vector space \(\V\) over \(\F\).
-	For \(x \in \V\), let \(\seq{a}{1,2,,n} \in \F\) be the unique scalars such that
+	Let \(\beta = \set{\seq{u}{1,,n}}\) be an ordered basis for a finite-dimensional vector space \(\V\) over \(\F\).
+	For \(x \in \V\), let \(\seq{a}{1,,n} \in \F\) be the unique scalars such that
 	\[
 		x = \sum_{i = 1}^n a_i u_i.
 	\]
@@ -35,7 +35,7 @@
 \end{defn}
 
 \begin{defn}\label{2.2.4}
-	Suppose that \(\V\) and \(\W\) are finite-dimensional vector spaces over \(\F\) with ordered bases \(\beta = \set{\seq{v}{1,2,,n}}\) and \(\gamma = \set{\seq{w}{1,2,,m}}\) over \(\F\), respectively.
+	Suppose that \(\V\) and \(\W\) are finite-dimensional vector spaces over \(\F\) with ordered bases \(\beta = \set{\seq{v}{1,,n}}\) and \(\gamma = \set{\seq{w}{1,,m}}\) over \(\F\), respectively.
 	Let \(\T : \V \to \W\) be linear.
 	Then for each \(j\), \(1 \leq j \leq n\), there exist unique scalars \(a_{i j} \in \F\), \(1 \leq i \leq m\), such that
 	\[
@@ -174,7 +174,7 @@
 \end{thm}
 
 \begin{proof}[\pf{2.8}]
-	Let \(\beta = \set{\seq{v}{1,2,,n}}\) and \(\gamma = \set{\seq{w}{1,2,,m}}\).
+	Let \(\beta = \set{\seq{v}{1,,n}}\) and \(\gamma = \set{\seq{w}{1,,m}}\).
 	There exist unique scalars \(a_{i j}\) and \(b_{i j}\) (\(1 \leq i \leq m\), \(1 \leq j \leq n\)) such that
 	\[
 		\T(v_j) = \sum_{i = 1}^m a_{i j} w_i \quad \text{and} \quad \U(v_j) = \sum_{i = 1}^m b_{i j} w_i \quad \text{for } 1 \leq j \leq n.
@@ -201,19 +201,19 @@
 \end{ex}
 
 \begin{proof}[\pf{ex:2.2.8}]
-	Let \(\beta = \set{\seq{v}{1,2,,n}}\), let \(x, y \in \V\) and let \(c \in \F\).
+	Let \(\beta = \set{\seq{v}{1,,n}}\), let \(x, y \in \V\) and let \(c \in \F\).
 	Since
 	\begin{align*}
-		         & \exists \seq{a}{1,2,,n}, \seq{b}{1,2,,n} \in \F : \begin{dcases}
-			                                                             x = \sum_{i = 1}^n a_i v_i \\
-			                                                             y = \sum_{i = 1}^n b_i v_i
-		                                                             \end{dcases} &  & \by{1.8}       \\
-		\implies & cx + y = \sum_{i = 1}^n (ca_i + b_i) v_i                         &  & \by{1.2.1}   \\
+		         & \exists \seq{a}{1,,n}, \seq{b}{1,,n} \in \F : \begin{dcases}
+			                                                         x = \sum_{i = 1}^n a_i v_i \\
+			                                                         y = \sum_{i = 1}^n b_i v_i
+		                                                         \end{dcases} &  & \by{1.8}       \\
+		\implies & cx + y = \sum_{i = 1}^n (ca_i + b_i) v_i                     &  & \by{1.2.1}   \\
 		\implies & \T(cx + y) = [cx + y]_{\beta} = \begin{pmatrix}
 			                                           ca_1 + b_1 \\
 			                                           \vdots     \\
 			                                           ca_n + b_n
-		                                           \end{pmatrix}                  &  & \by{2.2.3}     \\
+		                                           \end{pmatrix}              &  & \by{2.2.3}     \\
 		         & = c \begin{pmatrix}
 			               a_1    \\
 			               \vdots \\
@@ -222,8 +222,8 @@
 			                               b_1    \\
 			                               \vdots \\
 			                               b_n
-		                               \end{pmatrix}                                  &  & \by{1.2.9} \\
-		         & = c [x]_{\beta} + [y]_{\beta} = c \T(x) + \T(y),                 &  & \by{2.2.3}
+		                               \end{pmatrix}                              &  & \by{1.2.9} \\
+		         & = c [x]_{\beta} + [y]_{\beta} = c \T(x) + \T(y),             &  & \by{2.2.3}
 	\end{align*}
 	by \cref{2.1.2}(b) we know that \(\T\) is linear.
 \end{proof}
@@ -261,7 +261,7 @@
 \end{proof}
 
 \begin{ex}\label{ex:2.2.10}
-	Let \(\V\) be a vector space over \(\F\) with the ordered basis \(\beta = \set{\seq{v}{1,2,,n}}\) over \(\F\).
+	Let \(\V\) be a vector space over \(\F\) with the ordered basis \(\beta = \set{\seq{v}{1,,n}}\) over \(\F\).
 	Define \(v_0 = 0\).
 	By \cref{2.6} there exists a \(\T \in \ls(\V)\) such that \(\T(v_j) = v_j + v_{j - 1}\) for \(j = 1, 2, \dots, n\).
 	Compute \([\T]_{\beta}\).
@@ -296,8 +296,8 @@
 \end{ex}
 
 \begin{proof}[\pf{ex:2.2.11}]
-	Let \(\beta_{\W} = \set{\seq{v}{1,2,,k}}\) be a basis for \(\W\) over \(\F\).
-	By \cref{1.6.19} we can extend \(\beta_{\W}\) to \(\beta = \set{\seq{v}{1,2,,n}}\) such that \(\beta\) is a basis for \(\V\) over \(\F\).
+	Let \(\beta_{\W} = \set{\seq{v}{1,,k}}\) be a basis for \(\W\) over \(\F\).
+	By \cref{1.6.19} we can extend \(\beta_{\W}\) to \(\beta = \set{\seq{v}{1,,n}}\) such that \(\beta\) is a basis for \(\V\) over \(\F\).
 	Since \(\W\) is \(\T\)-invariant, we know that
 	\begin{align*}
 		         & \T(\W) \subseteq \W                                                                                               &  & \by{2.1.15} \\
@@ -360,8 +360,8 @@
 \end{ex}
 
 \begin{proof}[\pf{ex:2.2.12}]
-	Let \(\beta_{\W} = \set{\seq{v}{1,2,,k}}\) be a basis for \(\W\) over \(\F\).
-	By \cref{1.6.19} we can extend \(\beta_{\W}\) to \(\beta = \set{\seq{v}{1,2,,n}}\) such that \(\beta\) is a basis for \(\V\) over \(\F\).
+	Let \(\beta_{\W} = \set{\seq{v}{1,,k}}\) be a basis for \(\W\) over \(\F\).
+	By \cref{1.6.19} we can extend \(\beta_{\W}\) to \(\beta = \set{\seq{v}{1,,n}}\) such that \(\beta\) is a basis for \(\V\) over \(\F\).
 	Since
 	\begin{align*}
 		         & \begin{dcases}
@@ -420,7 +420,7 @@
 
 \begin{ex}\label{ex:2.2.14}
 	Let \(f \in \ps{\R}\), and for \(j \geq 1\) define \(\T_j(f) = f^{(j)}\), where \(f^{(j)}\) is the \(j\)th derivative of \(f\).
-	Prove that the set \(\set{\seq{\T}{1,2,,n}}\) is a linearly independent subset of \(\ls(\ps{\R})\) for any positive integer \(n\).
+	Prove that the set \(\set{\seq{\T}{1,,n}}\) is a linearly independent subset of \(\ls(\ps{\R})\) for any positive integer \(n\).
 \end{ex}
 
 \begin{proof}[\pf{ex:2.2.14}]
@@ -435,8 +435,8 @@
 	\]
 	by \cref{2.1.2}(b) we know that \(\T_i \in \ls(\ps{\R})\) for all \(i \in \Z^+\).
 
-	Now we show that \(\set{\seq{\T}{1,2,,n}}\) is linearly independent.
-	Let \(\seq{b}{1,2,,n} \in \R\) such that
+	Now we show that \(\set{\seq{\T}{1,,n}}\) is linearly independent.
+	Let \(\seq{b}{1,,n} \in \R\) such that
 	\[
 		\sum_{i = 1}^n b_i \T_i = \zT
 	\]
@@ -447,7 +447,7 @@
 		\implies & \forall i \in \set{1, \dots, n}, b_i \cdot \prod_{k = 0}^{i - 1} (n - k) = 0                                  &  & \by{1.6.5}  \\
 		\implies & b_i = 0,                                                                                                      &  & (n - k > 0)
 	\end{align*}
-	by \cref{1.5.3} we know that \(\set{\seq{\T}{1,2,,n}}\) is linearly independent.
+	by \cref{1.5.3} we know that \(\set{\seq{\T}{1,,n}}\) is linearly independent.
 \end{proof}
 
 \begin{ex}\label{ex:2.2.15}
@@ -542,11 +542,11 @@
 	Fix such \(\gamma_1\).
 	By \cref{2.3} we know that \(\#(\gamma_1) \leq \#(\beta_1)\) for all \(\beta_1 \subseteq \beta\) and \(\T(\beta_1) = \gamma_1\).
 	Thus we can define \(\beta_1 \subseteq \beta\) such that \(\T(\beta_1) = \gamma_1\) and \(\#(\beta_1) = \#(\gamma_1)\).
-	Let \(k = \#(\beta_1)\) and we can write \(\beta_1 = \set{\seq{v}{1,2,,k}}\) and \(\gamma_1 = \set{\seq{w}{1,2,,k}}\) such that
+	Let \(k = \#(\beta_1)\) and we can write \(\beta_1 = \set{\seq{v}{1,,k}}\) and \(\gamma_1 = \set{\seq{w}{1,,k}}\) such that
 	\[
 		\forall i \in \set{1, \dots, k}, \T(v_i) = w_i.
 	\]
-	If we let \(\beta\) follow this ordered and we extend \(\gamma_1\) to a basis \(\gamma\) for \(\W\) over \(\F\) (this can be done by \cref{1.6.19}), then we see that (by setting \(n = \dim(\V)\) and \(\beta = \set{\seq{v}{1,2,,n}}\))
+	If we let \(\beta\) follow this ordered and we extend \(\gamma_1\) to a basis \(\gamma\) for \(\W\) over \(\F\) (this can be done by \cref{1.6.19}), then we see that (by setting \(n = \dim(\V)\) and \(\beta = \set{\seq{v}{1,,n}}\))
 	\begin{align*}
 		         & \forall v_i \in \beta, [\T(v_i)]_{\gamma} = \begin{dcases}
 			                                                       \zv_{\W}           & \text{if } i \notin \set{1, \dots, k} \\

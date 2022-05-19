@@ -41,17 +41,17 @@
 \end{note}
 
 \begin{defn}\label{1.2.3}
-	An object of the form \(\tuple{a}{1,2,,n}\), where the entries \(\seq{a}{1,2,,n}\) are elements of a field \(\F\), is called an \textbf{\(n\)-tuple} with entries from \(\F\).
-	The elements \(\seq{a}{1,2,,n}\) are called the \textbf{entries} or \textbf{components} of the \(n\)-tuple.
-	Two \(n\)-tuples \(\tuple{a}{1,2,,n}\) and \(\tuple{b}{1,2,,n}\) with entries from a field \(\F\) are called \textbf{equal} if \(a_i = b_i\) for \(i = 1, 2, \dots, n\).
+	An object of the form \(\tuple{a}{1,,n}\), where the entries \(\seq{a}{1,,n}\) are elements of a field \(\F\), is called an \textbf{\(n\)-tuple} with entries from \(\F\).
+	The elements \(\seq{a}{1,,n}\) are called the \textbf{entries} or \textbf{components} of the \(n\)-tuple.
+	Two \(n\)-tuples \(\tuple{a}{1,,n}\) and \(\tuple{b}{1,,n}\) with entries from a field \(\F\) are called \textbf{equal} if \(a_i = b_i\) for \(i = 1, 2, \dots, n\).
 \end{defn}
 
 \begin{eg}\label{1.2.4}
 	The set of all \(n\)-tuples with entries from a field \(\F\) is denoted by \(\vs{F}^n\).
 	This set is a vector space over \(\F\) with the operations of coordinatewise addition and scalar multiplication;
-	that is, if \(u = \tuple{a}{1,2,,n} \in \vs{F}^n\), \(v = \tuple{b}{1,2,,n} \in \vs{F}^n\), and \(c \in \F\), then
+	that is, if \(u = \tuple{a}{1,,n} \in \vs{F}^n\), \(v = \tuple{b}{1,,n} \in \vs{F}^n\), and \(c \in \F\), then
 	\[
-		u + v = (a_1 + b_1, a_2 + b_2, \dots, a_n + b_n) \quad \text{and} \quad cu = \tuple{ca}{1,2,,n}.
+		u + v = (a_1 + b_1, a_2 + b_2, \dots, a_n + b_n) \quad \text{and} \quad cu = \tuple{ca}{1,,n}.
 	\]
 \end{eg}
 
@@ -131,7 +131,7 @@
 			Then for all \(u \in \vs{F}^n\), we have
 			\begin{align*}
 				u + (0, \dots, 0) & = (u_1 + 0, u_2 + 0, \dots, u_n + 0) &  & \by{1.2.4}                 \\
-				                  & = \tuple{u}{1,2,,n}                  &  & \text{(\(\F\) is a field)} \\
+				                  & = \tuple{u}{1,,n}                    &  & \text{(\(\F\) is a field)} \\
 				                  & = u.
 			\end{align*}
 			We denote \(\zv = (0, \dots, 0)\).
@@ -140,7 +140,7 @@
 			\begin{align*}
 				         & \forall i \in I_n, u_i \in \F                                                                     \\
 				\implies & \forall i \in I_n, \exists v_i \in \F : u_i + v_i = 0          &  & \text{(\(\F\) is a field)}    \\
-				\implies & \exists \seq{v}{1,2,,n} \in \F :                                                                  \\
+				\implies & \exists \seq{v}{1,,n} \in \F :                                                                    \\
 				         & (u_1 + v_1, u_2 + v_2, \dots, u_n + v_n) = (0, \dots, 0) = \zv                                    \\
 				\implies & \exists y \in \vs{F}^n : u + v = \zv.                          &  & \text{(from the proof above)}
 			\end{align*}
@@ -148,16 +148,16 @@
 			Since \(\F\) is a field, we know that \(1 \in \F\).
 			Then for all \(u \in \vs{F}^n\), we have
 			\begin{align*}
-				1u & = \tuple{1u}{1,2,,n} &  & \by{1.2.4}                 \\
-				   & = \tuple{u}{1,2,,n}  &  & \text{(\(\F\) is a field)} \\
+				1u & = \tuple{1u}{1,,n} &  & \by{1.2.4}                 \\
+				   & = \tuple{u}{1,,n}  &  & \text{(\(\F\) is a field)} \\
 				   & = u.
 			\end{align*}
 		\item[For \ref{vs6}:]
 			For all \(a, b \in \F\) and \(u \in \vs{F}^n\), we have
 			\begin{align*}
-				(ab) u & = \tuple{(ab) u}{1,2,,n}                   &  & \by{1.2.4}                 \\
+				(ab) u & = \tuple{(ab) u}{1,,n}                     &  & \by{1.2.4}                 \\
 				       & = (a (b u_1), a (b u_2), \dots, a (b u_n)) &  & \text{(\(\F\) is a field)} \\
-				       & = a \tuple{bu}{1,2,,n}                     &  & \by{1.2.4}                 \\
+				       & = a \tuple{bu}{1,,n}                       &  & \by{1.2.4}                 \\
 				       & = a (bu).                                  &  & \by{1.2.4}
 			\end{align*}
 		\item[For \ref{vs7}:]
@@ -166,15 +166,15 @@
 				a (u + v) & = a (u_1 + v_1, u_2 + v_2, \dots, u_n + v_n)           &  & \by{1.2.4}                 \\
 				          & = (a (u_1 + v_1), a (u_2 + v_2), \dots, a (u_n + v_n)) &  & \by{1.2.4}                 \\
 				          & = (a u_1 + a v_1, a u_2 + a v_2, \dots, a u_n + a v_n) &  & \text{(\(\F\) is a field)} \\
-				          & = \tuple{au}{1,2,,n} + \tuple{av}{1,2,,n}              &  & \by{1.2.4}                 \\
+				          & = \tuple{au}{1,,n} + \tuple{av}{1,,n}                  &  & \by{1.2.4}                 \\
 				          & = a u + a v.                                           &  & \by{1.2.4}
 			\end{align*}
 		\item[For \ref{vs8}:]
 			For all \(a, b \in \F\) and \(u \in \vs{F}^n\), we have
 			\begin{align*}
-				(a + b) u & = \tuple{(a + b) u}{1,2,,n}                            &  & \by{1.2.4}                 \\
+				(a + b) u & = \tuple{(a + b) u}{1,,n}                              &  & \by{1.2.4}                 \\
 				          & = (a u_1 + b u_1, a u_2 + b u_2, \dots, a u_n + b u_n) &  & \text{(\(\F\) is a field)} \\
-				          & = \tuple{au}{1,2,,n} + \tuple{bu}{1,2,,n}              &  & \by{1.2.4}                 \\
+				          & = \tuple{au}{1,,n} + \tuple{bu}{1,,n}                  &  & \by{1.2.4}                 \\
 				          & = a u + b u.                                           &  & \by{1.2.4}
 			\end{align*}
 	\end{description}
@@ -191,7 +191,7 @@
 			a_n
 		\end{pmatrix}
 	\]
-	rather than as \textbf{row vectors} \(\tuple{a}{1,2,,n}\).
+	rather than as \textbf{row vectors} \(\tuple{a}{1,,n}\).
 	Since a \(1\)-tuple whose only entry is from \(\F\) can be regarded as an element of \(\F\), we usually write \(\F\) rather than \(\vs{F}^1\) for the vector space of \(1\)-tuples with entry from \(\F\).
 \end{defn}
 

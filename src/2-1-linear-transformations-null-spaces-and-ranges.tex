@@ -20,7 +20,7 @@
 		\item If \(\T\) is linear, then \(\T(\zv_{\V}) = \zv_{\W}\).
 		\item \(\T\) is linear iff \(\T(cx + y) = c\T(x) + \T(y)\) for all \(x, y \in \V\) and \(c \in \F\).
 		\item If \(\T\) is linear, then \(\T(x - y) = \T(x) - \T(y)\) for all \(x, y \in \V\).
-		\item \(\T\) is linear iff, for \(\seq{x}{1,2,,n} \in \V\) and \(\seq{a}{1,2,,n} \in F\), we have
+		\item \(\T\) is linear iff, for \(\seq{x}{1,,n} \in \V\) and \(\seq{a}{1,,n} \in F\), we have
 		      \[
 			      \T\pa{\sum_{i = 1}^n a_i x_i} = \sum_{i = 1}^n a_i \T(x_i).
 		      \]
@@ -99,17 +99,17 @@
 	\begin{align*}
 		         & \T \text{ is linear}                                                                                    \\
 		\implies & \begin{dcases}
-			           \forall \seq{x}{1,2,,n} \in \V \\
-			           \forall \seq{a}{1,2,,n} \in \F
-		           \end{dcases},                                                                          \\
+			           \forall \seq{x}{1,,n} \in \V \\
+			           \forall \seq{a}{1,,n} \in \F
+		           \end{dcases},                                                                            \\
 		         & \T\pa{\sum_{i = 1}^n a_i x_i} = \sum_{i = 1}^n \T(a_i x_i) = \sum_{i = 1}^n a_i \T(x_i) &  & \by{2.1.1}
 	\end{align*}
 	and
 	\begin{align*}
 		         & \begin{dcases}
-			           \forall \seq{x}{1,2,,n} \in \V \\
-			           \forall \seq{a}{1,2,,n} \in \F
-		           \end{dcases},                                                        \\
+			           \forall \seq{x}{1,,n} \in \V \\
+			           \forall \seq{a}{1,,n} \in \F
+		           \end{dcases},                                                          \\
 		         & \T\pa{\sum_{i = 1}^n a_i x_i} = \sum_{i = 1}^n a_i \T(x_i) &  & \by{2.1.1}            \\
 		\implies & \begin{dcases}
 			           \forall x, y \in \V \\
@@ -121,8 +121,8 @@
 	Thus
 	\[
 		\T \text{ is linear} \iff \begin{dcases}
-			\forall \seq{x}{1,2,,n} \in \V \\
-			\forall \seq{a}{1,2,,n} \in \F
+			\forall \seq{x}{1,,n} \in \V \\
+			\forall \seq{a}{1,,n} \in \F
 		\end{dcases}, \T\pa{\sum_{i = 1}^n a_i x_i} = \sum_{i = 1}^n a_i \T(x_i).
 	\]
 \end{proof}
@@ -302,7 +302,7 @@
 
 \begin{thm}\label{2.2}
 	Let \(\V\) and \(\W\) be vector spaces over \(\F\), and let \(\T : \V \to \W\) be linear.
-	If \(\beta = \set{\seq{v}{1,2,,n}}\) is a basis for \(\V\) over \(\F\), then
+	If \(\beta = \set{\seq{v}{1,,n}}\) is a basis for \(\V\) over \(\F\), then
 	\[
 		\rg{\T} = \spn{\T(\beta)} = \spn{\set{\T(v_1), \T(v_2), \dots, \T(v_n)}}.
 	\]
@@ -316,7 +316,7 @@
 	Then \(w = \T(v)\) for some \(v \in \V\).
 	Because \(\beta\) is a basis for \(\V\) over \(\F\), we have
 	\[
-		v = \sum_{i = 1}^n a_i v_i \quad \text{for some } \seq{a}{1,2,,n} \in \F.
+		v = \sum_{i = 1}^n a_i v_i \quad \text{for some } \seq{a}{1,,n} \in \F.
 	\]
 	Since \(\T\) is linear, it follows that
 	\[
@@ -350,8 +350,8 @@
 \end{thm}
 
 \begin{proof}[\pf{2.3}]
-	Suppose that \(\dim(\V) = n\), \(\dim(\ns{\T}) = k\), and \(\set{\seq{v}{1,2,,k}}\) is a basis for \(\ns{\T}\) over \(\F\).
-	By the \cref{1.6.19} we may extend \(\set{\seq{v}{1,2,,k}}\) to a basis \(\beta = \set{\seq{v}{1,2,,n}}\) for \(\V\) over \(\F\).
+	Suppose that \(\dim(\V) = n\), \(\dim(\ns{\T}) = k\), and \(\set{\seq{v}{1,,k}}\) is a basis for \(\ns{\T}\) over \(\F\).
+	By the \cref{1.6.19} we may extend \(\set{\seq{v}{1,,k}}\) to a basis \(\beta = \set{\seq{v}{1,,n}}\) for \(\V\) over \(\F\).
 	We claim that \(S = \set{\T(v_{k + 1}), \T(v_{k + 2}), \dots, \T(v_n)}\) is a basis for \(\rg{\T}\) over \(\F\).
 
 	First we prove that \(S\) generates \(\rg{\T}\).
@@ -374,7 +374,7 @@
 	\[
 		\sum_{i = k + 1}^n b_i v_i \in \ns{\T}.
 	\]
-	Hence there exist \(\seq{c}{1,2,,k} \in \F\) such that
+	Hence there exist \(\seq{c}{1,,k} \in \F\) such that
 	\[
 		\sum_{i = k + 1}^n b_i v_i = \sum_{i = 1}^k c_i v_i \quad \text{or} \quad \sum_{i = 1}^k (-c_i) v_i + \sum_{i = k + 1}^n b_i v_i = \zv.
 	\]
@@ -428,8 +428,8 @@
 \end{note}
 
 \begin{thm}\label{2.6}
-	Let \(\V\) and \(\W\) be vector spaces over \(\F\), and suppose that \(\set{\seq{v}{1,2,,n}}\) is a basis for \(\V\) over \(\F\).
-	For \(\seq{w}{1,2,,n}\) in \(\W\), there exists exactly one linear transformation \(\T : \V \to \W\) such that \(\T(v_i) = w_i\) for \(i = 1, 2, \dots, n\).
+	Let \(\V\) and \(\W\) be vector spaces over \(\F\), and suppose that \(\set{\seq{v}{1,,n}}\) is a basis for \(\V\) over \(\F\).
+	For \(\seq{w}{1,,n}\) in \(\W\), there exists exactly one linear transformation \(\T : \V \to \W\) such that \(\T(v_i) = w_i\) for \(i = 1, 2, \dots, n\).
 \end{thm}
 
 \begin{proof}[\pf{2.6}]
@@ -438,7 +438,7 @@
 	\[
 		x = \sum_{i = 1}^n a_i v_i
 	\]
-	where \(\seq{a}{1,2,,n}\) are unique scalars.
+	where \(\seq{a}{1,,n}\) are unique scalars.
 	Define
 	\[
 		\T : \V \to \W \quad \text{by} \quad \T(x) = \sum_{i = 1}^n a_i w_i.
@@ -450,7 +450,7 @@
 		      \[
 			      u = \sum_{i = 1}^n b_i v_i \quad \text{and} \quad v = \sum_{i = 1}^n c_i v_i
 		      \]
-		      for some scalars \(\seq{b}{1,2,,n}, \seq{c}{1,2,,n}\).
+		      for some scalars \(\seq{b}{1,,n}, \seq{c}{1,,n}\).
 		      Thus
 		      \[
 			      du + v = \sum_{i = 1}^n (db_i + c_i) v_i.
@@ -478,7 +478,7 @@
 \end{proof}
 
 \begin{cor}\label{2.1.13}
-	Let \(\V\) and \(\W\) be vector spaces over \(\F\), and suppose that \(\V\) has a finite basis \(\set{\seq{v}{1,2,,n}}\) over \(\F\).
+	Let \(\V\) and \(\W\) be vector spaces over \(\F\), and suppose that \(\V\) has a finite basis \(\set{\seq{v}{1,,n}}\) over \(\F\).
 	If \(\U, \T : \V \to \W\) are linear and \(\U(v_i) = \T(v_i)\) for \(i = 1, 2, \dots, n\), then \(\U = \T\).
 \end{cor}
 
@@ -540,21 +540,21 @@
 
 \setcounter{ex}{12}
 \begin{ex}\label{ex:2.1.13}
-	Let \(\V\) and \(\W\) be vector spaces over \(\F\), let \(\T : \V \to \W\) be linear, and let \(\set{\seq{w}{1,2,,k}}\) be a linearly independent subset of \(\rg{\T}\).
-	Prove that if \(S = \set{\seq{v}{1,2,,k}}\) is chosen so that \(\T(v_i) = w_i\) for \(i = 1, 2, \dots, k\), then \(S\) is linearly independent.
+	Let \(\V\) and \(\W\) be vector spaces over \(\F\), let \(\T : \V \to \W\) be linear, and let \(\set{\seq{w}{1,,k}}\) be a linearly independent subset of \(\rg{\T}\).
+	Prove that if \(S = \set{\seq{v}{1,,k}}\) is chosen so that \(\T(v_i) = w_i\) for \(i = 1, 2, \dots, k\), then \(S\) is linearly independent.
 \end{ex}
 
 \begin{proof}[\pf{ex:2.1.13}]
-	Let \(\seq{a}{1,2,,k} \in \F\).
+	Let \(\seq{a}{1,,k} \in \F\).
 	Since
 	\begin{align*}
 		         & \sum_{i = 1}^k a_i v_i = \zv_{\V}                           \\
 		\implies & \T\pa{\sum_{i = 1}^k a_i v_i} = \zv_{\W} &  & \by{2.1.2}[a] \\
 		\implies & \sum_{i = 1}^k a_i \T(v_i) = \zv_{\W}    &  & \by{2.1.2}[d] \\
 		\implies & \sum_{i = 1}^k a_i w_i = \zv_{\W}                           \\
-		\implies & \seq[=]{a}{1,2,,k} = 0,                  &  & \by{1.5.3}
+		\implies & \seq[=]{a}{1,,k} = 0,                    &  & \by{1.5.3}
 	\end{align*}
-	by \cref{1.5.3} we know that \(\set{\seq{v}{1,2,,k}}\) is linearly independent.
+	by \cref{1.5.3} we know that \(\set{\seq{v}{1,,k}}\) is linearly independent.
 \end{proof}
 
 \begin{ex}\label{ex:2.1.14}
@@ -563,7 +563,7 @@
 		\item Prove that \(\T\) is one-to-one iff \(\T\) carries linearly independent subsets of \(\V\) onto linearly independent subsets of \(\W\).
 		\item Suppose that \(\T\) is one-to-one and that \(S\) is a subset of \(\V\).
 		      Prove that \(S\) is linearly independent iff \(\T(S)\) is linearly independent.
-		\item Suppose \(\beta = \set{\seq{v}{1,2,,n}}\) is a basis for \(\V\) over \(\F\) and \(\T\) is one-to-one and onto.
+		\item Suppose \(\beta = \set{\seq{v}{1,,n}}\) is a basis for \(\V\) over \(\F\) and \(\T\) is one-to-one and onto.
 		      Prove that \(\T(\beta)\) is a basis for \(\W\) over \(\F\).
 	\end{enumerate}
 \end{ex}
@@ -575,16 +575,16 @@
 	Since
 	\begin{align*}
 		         & \begin{dcases}
-			           \forall \seq{w}{1,2,,k} \in \T(S) \\
-			           \forall \seq{a}{1,2,,k} \in \F
+			           \forall \seq{w}{1,,k} \in \T(S) \\
+			           \forall \seq{a}{1,,k} \in \F
 		           \end{dcases}, \sum_{i = 1}^k a_i w_i = \zv_{\W}                                                                                                             \\
-		\implies & \exists \seq{v}{1,2,,k} \in S :                                                                                                                             \\
+		\implies & \exists \seq{v}{1,,k} \in S :                                                                                                                               \\
 		         & \begin{dcases}
 			           \forall i \in \set{1, 2, \dots, k}, \T(v_i) = w_i \\
 			           \sum_{i = 1}^k a_i w_i = \sum_{i = 1}^k a_i \T(v_i) = \T\pa{\sum_{i = 1}^k a_i v_i} = \zv_{\W} = \T(\zv_{\V})
 		           \end{dcases} &  & \by{2.1.2}                                     \\
 		\implies & \sum_{i = 1}^k a_i v_i = \zv_{\V}                                                                                        &  & \text{(\(\T\) is one-to-one)} \\
-		\implies & \seq[=]{a}{1,2,,k} = 0,                                                                                                  &  & \by{1.5.3}
+		\implies & \seq[=]{a}{1,,k} = 0,                                                                                                    &  & \by{1.5.3}
 	\end{align*}
 	by \cref{1.5.3} we know that \(\T(S)\) is linearly independent.
 	Since \(S\) is arbitrary, we conclude that \(\T\) carries linearly independent subsets of \(\V\) onto linearly independent subsets of \(\W\).
@@ -690,8 +690,8 @@
 \begin{proof}[\pf{ex:2.1.17}(a)]
 	Suppose that \(\dim(\V) < \dim(\W)\).
 	Suppose for sake of contradiction that \(\T\) is onto.
-	Let \(\beta_{\W} = \set{\seq{w}{1,2,,n}}\) be a basis for \(\W\) over \(\F\).
-	Since \(\T\) is onto, there exists a set \(\beta_{\V} = \set{\seq{v}{1,2,,n}}\) such that \(\T(v_i) = w_i\) for all \(i \in \set{1, 2, \dots, n}\).
+	Let \(\beta_{\W} = \set{\seq{w}{1,,n}}\) be a basis for \(\W\) over \(\F\).
+	Since \(\T\) is onto, there exists a set \(\beta_{\V} = \set{\seq{v}{1,,n}}\) such that \(\T(v_i) = w_i\) for all \(i \in \set{1, 2, \dots, n}\).
 	But by \cref{ex:2.1.13} we know that \(\beta_{\V}\) is linearly independent, by \cref{1.6.8} this means \(\dim(\V) \geq \dim(\W)\), a contradiction.
 	Thus \(\T\) cannot be onto.
 \end{proof}
@@ -728,15 +728,15 @@
 	\end{align*}
 	and
 	\begin{align*}
-		         & w_1, w_2 \in \T(\V_1)                                                  \\
+		         & w_1, w_2 \in \T(\V_1)                                                   \\
 		\implies & \exists v_1, v_2 \in \V_1 : \begin{dcases}
 			                                       \T(v_1) = w_1 \\
 			                                       \T(v_2) = w_2
-		                                       \end{dcases}                              \\
+		                                       \end{dcases}                               \\
 		\implies & \begin{dcases}
 			           v_1 + v_2 \in \V_1 \\
 			           c v_1 \in \V_1
-		           \end{dcases}                                         &  & \by{1.3}[bc] \\
+		           \end{dcases}                                         &  & \by{1.3}[b,c] \\
 		\implies & \begin{dcases}
 			           w_1 + w_2 = \T(v_1) + \T(v_2) = \T(v_1 + v_2) \in \T(\V_1) \\
 			           c w_1 = c \T(v_1) = \T(c v_1) \in \T(\V_1)
@@ -755,16 +755,16 @@
 	\end{align*}
 	and
 	\begin{align*}
-		         & v_1, v_2 \in \V'                               \\
-		\implies & \T(v_1), \T(v_2) \in \W_1                      \\
+		         & v_1, v_2 \in \V'                                \\
+		\implies & \T(v_1), \T(v_2) \in \W_1                       \\
 		\implies & \begin{dcases}
 			           \T(v_1) + \T(v_2) \in \W_1 \\
 			           c \T(v_1) \in \W_1
-		           \end{dcases}                 &  & \by{1.3}[bc] \\
+		           \end{dcases}                 &  & \by{1.3}[b,c] \\
 		\implies & \begin{dcases}
 			           \T(v_1) + \T(v_2) = \T(v_1 + v_2) \in \W_1 \\
 			           c \T(v_1) = \T(c v_1) \in \W_1
-		           \end{dcases} &  & \by{2.1.1}     \\
+		           \end{dcases} &  & \by{2.1.1}      \\
 		\implies & \begin{dcases}
 			           v_1 + v_2 \in \V' \\
 			           c v_1 \in \V'
@@ -844,7 +844,7 @@
 	Let \(\T: \vs{F}^n \to \F\) be linear.
 	Show that
 	\[
-		\forall x = \tuple{x}{1,2,,n} \in \vs{F}^n, \exists \seq{a}{1,2,,n} \in \F : \T(\seq{x}{1,2,,n}) = \sum_{i = 1}^n a_i x_i.
+		\forall x = \tuple{x}{1,,n} \in \vs{F}^n, \exists \seq{a}{1,,n} \in \F : \T(\seq{x}{1,,n}) = \sum_{i = 1}^n a_i x_i.
 	\]
 	State and prove an analogous result for \(\T : \vs{F}^n \to \vs{F}^m\).
 \end{ex}
@@ -853,18 +853,18 @@
 	For all \(i \in \set{1, \dots, n}\), defined \(e_i \in \vs{F}^n\) as in \cref{1.6.3}.
 	We claim that if \(\T : \vs{F}^n \to \vs{F}^m\) is linear, then
 	\[
-		\forall x \in \vs{F}^n, \exists \seq{a}{1,2,,n} \in \vs{F}^m : \T(x) = \sum_{i = 1}^n x_i a_i.
+		\forall x \in \vs{F}^n, \exists \seq{a}{1,,n} \in \vs{F}^m : \T(x) = \sum_{i = 1}^n x_i a_i.
 	\]
 	Since
 	\begin{align*}
-		         & \vs{F}^n = \spn{\seq{e}{1,2,,n}}                                       &  & \by{1.6.3}    \\
-		\implies & \forall x \in \vs{F}^n, x = \tuple{x}{1,2,,n} = \sum_{i = 1}^n x_i e_i &  & \by{1.4.3}    \\
-		\implies & \forall x \in \vs{F}^n, \T(x) = \sum_{i = 1}^n x_i \T(e_i),            &  & \by{2.1.2}[d]
+		         & \vs{F}^n = \spn{\seq{e}{1,,n}}                                       &  & \by{1.6.3}    \\
+		\implies & \forall x \in \vs{F}^n, x = \tuple{x}{1,,n} = \sum_{i = 1}^n x_i e_i &  & \by{1.4.3}    \\
+		\implies & \forall x \in \vs{F}^n, \T(x) = \sum_{i = 1}^n x_i \T(e_i),          &  & \by{2.1.2}[d]
 	\end{align*}
 	by setting \(\T(e_i) = a_i\) for all \(i \in \set{1, 2, \dots, n}\) we see that our claim is true.
 	In particular, when \(m = 1\) we see that
 	\[
-		\forall x \in \vs{F}^n, \exists \seq{a}{1,2,,n} \in \F : \T(x) = \sum_{i = 1}^n x_i a_i = \sum_{i = 1}^n a_i x_i.
+		\forall x \in \vs{F}^n, \exists \seq{a}{1,,n} \in \F : \T(x) = \sum_{i = 1}^n x_i a_i = \sum_{i = 1}^n a_i x_i.
 	\]
 \end{proof}
 
@@ -985,8 +985,8 @@
 \end{ex}
 
 \begin{proof}[\pf{ex:2.1.27}(a)]
-	Let \(\beta_{\W} = \set{\seq{v}{1,2,,k}}\) be a basis for \(\W\) over \(\F\).
-	By \cref{1.6.19} we can extend \(\beta_{\W}\) to \(\beta = \set{\seq{v}{1,2,,n}}\) such that \(\beta\) is a basis for \(\V\) over \(\F\).
+	Let \(\beta_{\W} = \set{\seq{v}{1,,k}}\) be a basis for \(\W\) over \(\F\).
+	By \cref{1.6.19} we can extend \(\beta_{\W}\) to \(\beta = \set{\seq{v}{1,,n}}\) such that \(\beta\) is a basis for \(\V\) over \(\F\).
 	Let \(\beta_{\W'} = \beta \setminus \beta_{\W}\) and let \(\W' = \spn{\beta_{\W'}}\).
 	By \cref{1.5} we know that \(\W'\) is a subspace of \(\V\) over \(\F\).
 
@@ -994,30 +994,30 @@
 	Let \(v \in \W \cap \W'\).
 	Then we have
 	\begin{align*}
-		         & v \in \W \cap \W'                                                                                                  \\
-		\implies & \exists \seq{a}{1,2,,k,k + 1,,n} \in \F : v = \sum_{i = 1}^k a_i v_i = \sum_{i = k + 1}^n a_i v_i &  & \by{1.4.3}  \\
-		\implies & \exists \seq{a}{1,2,,k,k + 1,,n} \in \F :                                                                          \\
-		         & \sum_{i = 1}^k a_i v_i + \sum_{i = k + 1}^n (-a_i) v_i = \zv                                      &  & \by{1.2.1}  \\
-		\implies & \seq[=]{a}{1,2,,n} = 0                                                                            &  & \by{1.5.3}  \\
-		\implies & v = \zv                                                                                           &  & \by{1.2}[a] \\
-		\implies & \W \cap \W' \subseteq \set{\zv}                                                                                    \\
-		\implies & \W \cap \W' = \set{\zv}.                                                                          &  & \by{1.3}[a]
+		         & v \in \W \cap \W'                                                                                                \\
+		\implies & \exists \seq{a}{1,,k,k + 1,,n} \in \F : v = \sum_{i = 1}^k a_i v_i = \sum_{i = k + 1}^n a_i v_i &  & \by{1.4.3}  \\
+		\implies & \exists \seq{a}{1,,k,k + 1,,n} \in \F :                                                                          \\
+		         & \sum_{i = 1}^k a_i v_i + \sum_{i = k + 1}^n (-a_i) v_i = \zv                                    &  & \by{1.2.1}  \\
+		\implies & \seq[=]{a}{1,,n} = 0                                                                            &  & \by{1.5.3}  \\
+		\implies & v = \zv                                                                                         &  & \by{1.2}[a] \\
+		\implies & \W \cap \W' \subseteq \set{\zv}                                                                                  \\
+		\implies & \W \cap \W' = \set{\zv}.                                                                        &  & \by{1.3}[a]
 	\end{align*}
 
 	Next we claim that \(\V = \W \oplus \W'\).
 	Since
 	\begin{align*}
-		         & \forall v \in \V, \exists \seq{a}{1,2,,n} \in \F : v = \sum_{i = 1}^n a_i v_i &  & \by{1.6.1}        \\
-		         & = \sum_{i = 1}^k a_i v_i + \sum_{i = k + 1}^n a_i v_i                         &  & \by{1.2.1}        \\
-		\implies & \forall v \in \V, \exists (u, u') \in \W \times \W' : v = u + u'              &  & \by{1.4.3}        \\
-		\implies & \V \subseteq \W + \W'                                                         &  & \by{1.3.10}       \\
-		\implies & \V = \W + \W'                                                                 &  & \by{ex:1.3.23}[a]
+		         & \forall v \in \V, \exists \seq{a}{1,,n} \in \F : v = \sum_{i = 1}^n a_i v_i &  & \by{1.6.1}        \\
+		         & = \sum_{i = 1}^k a_i v_i + \sum_{i = k + 1}^n a_i v_i                       &  & \by{1.2.1}        \\
+		\implies & \forall v \in \V, \exists (u, u') \in \W \times \W' : v = u + u'            &  & \by{1.4.3}        \\
+		\implies & \V \subseteq \W + \W'                                                       &  & \by{1.3.10}       \\
+		\implies & \V = \W + \W'                                                               &  & \by{ex:1.3.23}[a]
 	\end{align*}
 	and \(\W \cap \W' = \set{\zv}\), by \cref{1.3.11} we know that \(\V = \W \oplus \W'\).
 
 	Since \(\beta\) is a basis for \(\V\) over \(\F\), by \cref{1.8} we know that
 	\[
-		\forall v \in \V, \exists \seq{a}{1,2,,n} \in \F : v = \sum_{i = 1}^n a_i v_i.
+		\forall v \in \V, \exists \seq{a}{1,,n} \in \F : v = \sum_{i = 1}^n a_i v_i.
 	\]
 	Now we define a function \(\T\) as follow:
 	\[
@@ -1082,7 +1082,7 @@
 	Let \(x, y \in \W\) and let \(c \in \F\).
 	Since
 	\begin{align*}
-		         & cx + y \in \W                &  & \by{1.3}[bc]  \\
+		         & cx + y \in \W                &  & \by{1.3}[b,c] \\
 		\implies & \T_{\W}(cx + y) = \T(cx + y) &  & \by{2.1.15}   \\
 		         & = c \T(x) + \T(y)            &  & \by{2.1.2}[b] \\
 		         & = c \T_{\W}(x) + \T_{\W}(y), &  & \by{2.1.15}
@@ -1204,7 +1204,7 @@
 	\]
 	Let \(y \in \rg{\T}\).
 	By \cref{2.1.10} there exists an \(x \in \V\) such that \(\T(x) = y\).
-	Since \(\beta\) is a basis for \(\V\) over \(\F\), by \cref{1.6.1} there exist some \(\seq{v}{1,2,,n} \in \beta\) and \(\seq{a}{1,2,,n} \in \F\) such that \(x = \sum_{i = 1}^n a_i v_i\).
+	Since \(\beta\) is a basis for \(\V\) over \(\F\), by \cref{1.6.1} there exist some \(\seq{v}{1,,n} \in \beta\) and \(\seq{a}{1,,n} \in \F\) such that \(x = \sum_{i = 1}^n a_i v_i\).
 	Since \(\T\) is linear, by \cref{2.1.2}(d) we know that
 	\[
 		\T(x) = \T\pa{\sum_{i = 1}^n a_i v_i} = \sum_{i = 1}^n a_i \T(v_i) \in \spn{\T(\beta)}.

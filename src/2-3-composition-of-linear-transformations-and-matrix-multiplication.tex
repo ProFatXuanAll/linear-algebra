@@ -159,9 +159,9 @@
 \begin{proof}[\pf{2.11}]
 	Define
 	\begin{align*}
-		\alpha & = \set{\seq{v}{1,2,,n}}; \\
-		\beta  & = \set{\seq{w}{1,2,,m}}; \\
-		\gamma & = \set{\seq{z}{1,2,,p}}.
+		\alpha & = \set{\seq{v}{1,,n}}; \\
+		\beta  & = \set{\seq{w}{1,,m}}; \\
+		\gamma & = \set{\seq{z}{1,,p}}.
 	\end{align*}
 	For \(1 \leq j \leq n\), we have
 	\begin{align*}
@@ -261,7 +261,7 @@
 \end{proof}
 
 \begin{proof}[\pf{2.12}(d)]
-	Let \(\beta = \set{\seq{v}{1,2,,n}}\).
+	Let \(\beta = \set{\seq{v}{1,,n}}\).
 	For all \(j \in \set{1, 2, \dots, n}\), we have
 	\begin{align*}
 		         & \IT[\V](v_j) = v_j                                                                          &  & \by{2.1.9} \\
@@ -281,10 +281,10 @@
 \begin{cor}\label{2.3.5}
 	Let
 	\begin{align*}
-		A               & \in \ms;           \\
-		\seq{B}{1,2,,k} & \in \ms[n][p][\F]; \\
-		\seq{C}{1,2,,k} & \in \ms[q][m][\F]; \\
-		\seq{a}{1,2,,k} & \in \F.
+		A             & \in \ms;           \\
+		\seq{B}{1,,k} & \in \ms[n][p][\F]; \\
+		\seq{C}{1,,k} & \in \ms[q][m][\F]; \\
+		\seq{a}{1,,k} & \in \F.
 	\end{align*}
 	Then
 	\begin{align*}
@@ -733,7 +733,7 @@
 	\begin{enumerate}
 		\item Suppose that \(z\) is a (column) vector in \(\vs{F}^p\).
 		      Use \cref{2.13}(b) to prove that \(Bz\) is a linear combination of the columns of \(B\).
-		      In particular, if \(z = \tp{\tuple{a}{1,2,,p}}\), then show that
+		      In particular, if \(z = \tp{\tuple{a}{1,,p}}\), then show that
 		      \[
 			      Bz = \sum_{j = 1}^p a_j v_j.
 		      \]
@@ -820,7 +820,7 @@
 	For all \(i \in \set{1, 2, \dots, p}\) we define \(v_i\) to be the \(i\)th column of \(A\).
 	By hypothesis we know that
 	\[
-		\exists \seq{c}{1,2,,p} \in \F : v_j = \sum_{i = 1}^p c_i v_i.
+		\exists \seq{c}{1,,p} \in \F : v_j = \sum_{i = 1}^p c_i v_i.
 	\]
 	Then we have
 	\begin{align*}
@@ -862,19 +862,19 @@
 		           \end{dcases} &  & \by{2.1.10}                   \\
 		\implies & \rg{\T^2} = \rg{\T}.                                                               &  & \by{1.11}
 	\end{align*}
-	Let \(\beta = \set{\seq{v}{1,2,,n}}\) be a basis for \(\rg{\T}\) over \(\F\).
+	Let \(\beta = \set{\seq{v}{1,,n}}\) be a basis for \(\rg{\T}\) over \(\F\).
 	Since \(\rg{\T^2} = \rg{\T}\), by \cref{2.2} we know that \(\T(\beta)\) is also a basis for \(\rg{\T}\) over \(\F\).
 	Let \(x \in \rg{\T} \cap \ns{\T}\).
 	Since \(x \in \rg{\T}\), by \cref{1.6.1} we know that
 	\[
-		\exists \seq{a}{1,2,,n} \in \F : x = \sum_{i = 1}^n a_i v_i.
+		\exists \seq{a}{1,,n} \in \F : x = \sum_{i = 1}^n a_i v_i.
 	\]
-	By fixing \(\seq{a}{1,2,,n}\) we see that
+	By fixing \(\seq{a}{1,,n}\) we see that
 	\begin{align*}
 		         & x \in \ns{\T}                                                                       \\
 		\implies & \T(x) = \zv                                                      &  & \by{2.1.10}   \\
 		\implies & \T\pa{\sum_{i = 1}^n a_i v_i} = \sum_{i = 1}^n a_i \T(v_i) = \zv &  & \by{2.1.2}[d] \\
-		\implies & \seq[=]{a}{1,2,,n} = 0                                           &  & \by{1.5.3}    \\
+		\implies & \seq[=]{a}{1,,n} = 0                                             &  & \by{1.5.3}    \\
 		\implies & x = \zv.                                                         &  & \by{1.2}[a]
 	\end{align*}
 	Since \(x\) is arbitrary, we conclude that \(\rg{\T} \cap \ns{\T} = \set{\zv}\).

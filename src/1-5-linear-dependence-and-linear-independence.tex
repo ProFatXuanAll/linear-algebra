@@ -15,16 +15,16 @@
 \end{note}
 
 \begin{defn}\label{1.5.1}
-	A subset \(S\) of a vector space \(\V\) over \(\F\) is called \textbf{linearly dependent} if there exist a finite number of distinct vectors \(\seq{u}{1,2,,n}\) in \(S\) and scalars \(\seq{a}{1,2,,n}\) in \(\F\), not all zero, such that
+	A subset \(S\) of a vector space \(\V\) over \(\F\) is called \textbf{linearly dependent} if there exist a finite number of distinct vectors \(\seq{u}{1,,n}\) in \(S\) and scalars \(\seq{a}{1,,n}\) in \(\F\), not all zero, such that
 	\[
-		\seq[+]{a,u}{1,2,,n} = \zv.
+		\seq[+]{a,u}{1,,n} = \zv.
 	\]
 	In this case we also say that the vectors of \(S\) are linearly dependent.
 \end{defn}
 
 \begin{defn}\label{1.5.2}
-	For any vectors \(\seq{u}{1,2,,n}\), we have \(\seq[+]{a,u}{1,2,,n} = \zv\) if \(\seq[=]{a}{1,2,,n} = 0\).
-	We call this the \textbf{trivial representation} of \(\zv\) as a linear combination of \(\seq{u}{1,2,,n}\).
+	For any vectors \(\seq{u}{1,,n}\), we have \(\seq[+]{a,u}{1,,n} = \zv\) if \(\seq[=]{a}{1,,n} = 0\).
+	We call this the \textbf{trivial representation} of \(\zv\) as a linear combination of \(\seq{u}{1,,n}\).
 	Thus, for a set to be linearly dependent, there must exist a nontrivial representation of \(\zv\) as a linear combination of vectors in the set.
 	Consequently, any subset of a vector space that contains the zero vector is linearly dependent, because \(\zv = 1 \cdot \zv\) is a nontrivial representation of \(\zv\) as a linear combination of vectors in the set.
 \end{defn}
@@ -87,16 +87,16 @@
 		         & \begin{dcases}
 			           S_1 \subseteq S_2 \\
 			           S_1 \text{ is linearly dependent}
-		           \end{dcases}                                 \\
+		           \end{dcases}                               \\
 		\implies & \begin{dcases}
-			           \exists \seq{u}{1,2,,n} \in S_1 \subseteq S_2 \\
-			           \exists \seq{a}{1,2,,n} \in \F
+			           \exists \seq{u}{1,,n} \in S_1 \subseteq S_2 \\
+			           \exists \seq{a}{1,,n} \in \F
 		           \end{dcases} :                    \\
 		         & \begin{dcases}
-			           \seq[+]{a,u}{1,2,,n} = \zv \\
-			           \lnot (\seq[=]{a}{1,2,,n} = 0)
-		           \end{dcases}                   &  & \by{1.5.1}                   \\
-		\implies & S_2 \text{ is linearly dependent}.               &  & \by{1.5.1}
+			           \seq[+]{a,u}{1,,n} = \zv \\
+			           \lnot (\seq[=]{a}{1,,n} = 0)
+		           \end{dcases}                   &  & \by{1.5.1}                 \\
+		\implies & S_2 \text{ is linearly dependent}.             &  & \by{1.5.1}
 	\end{align*}
 \end{proof}
 
@@ -130,32 +130,32 @@
 	So suppose that \(v \neq \zv\).
 
 	If \(S \cup \set{v}\) is linearly dependent, then there are vectors \\
-	\(\seq{u}{1,2,,n}\) in \(S\) such that \(a_0 v + \seq[+]{a,u}{1,2,,n} = \zv\) for some nonzero scalars \(\seq{a}{0,1,2,,n}\) in \(\F\).
+	\(\seq{u}{1,,n}\) in \(S\) such that \(a_0 v + \seq[+]{a,u}{1,,n} = \zv\) for some nonzero scalars \(\seq{a}{0,1,2,,n}\) in \(\F\).
 	We claim that \(a_0 \neq 0\).
 	So suppose for sake of contradiction that \(a_0 = 0\).
 	Because \(S\) is linearly independent, we know that
 	\begin{align*}
-		         & a_0 v + \seq[+]{a,u}{1,2,,n}                            \\
-		         & = 0v + \seq[+]{a,u}{1,2,,n}                             \\
-		         & = \zv + \seq[+]{a,u}{1,2,,n} &  & \by{1.2}[a]           \\
-		         & = \seq[+]{a,u}{1,2,,n}       &  & \text{(by \ref{vs3})} \\
-		         & = \zv                                                   \\
-		\implies & \seq[=]{a}{1,2,,n} = 0.      &  & \by{1.5.3}
+		         & a_0 v + \seq[+]{a,u}{1,,n}                            \\
+		         & = 0v + \seq[+]{a,u}{1,,n}                             \\
+		         & = \zv + \seq[+]{a,u}{1,,n} &  & \by{1.2}[a]           \\
+		         & = \seq[+]{a,u}{1,,n}       &  & \text{(by \ref{vs3})} \\
+		         & = \zv                                                 \\
+		\implies & \seq[=]{a}{1,,n} = 0.      &  & \by{1.5.3}
 	\end{align*}
 	But this means \(\seq[=]{a}{0,1,2,,n} = 0\), a contradiction.
 	Thus we must have \(a_0 \neq 0\), and so
 	\[
-		v = a_0^{-1} (-\seq[-]{a,u}{1,2,,n}) = -(a_0^{-1} a_1) u_1 - (a_0^{-1} a_2) u_2 - \cdots - (a_0^{-1} a_n) u_n.
+		v = a_0^{-1} (-\seq[-]{a,u}{1,,n}) = -(a_0^{-1} a_1) u_1 - (a_0^{-1} a_2) u_2 - \cdots - (a_0^{-1} a_n) u_n.
 	\]
-	Since \(v\) is a linear combination of \(\seq{u}{1,2,,n}\), which are in \(S\), we have \(v \in \spn{S}\).
+	Since \(v\) is a linear combination of \(\seq{u}{1,,n}\), which are in \(S\), we have \(v \in \spn{S}\).
 
 	Conversely, let \(v \in \spn{S}\).
-	Then there exist vectors \(\seq{v}{1,2,,m}\) in \(S\) and scalars \(\seq{b}{1,2,,m}\) such that \(v = \seq[+]{b,v}{1,2,,m}\).
+	Then there exist vectors \(\seq{v}{1,,m}\) in \(S\) and scalars \(\seq{b}{1,,m}\) such that \(v = \seq[+]{b,v}{1,,m}\).
 	Hence
 	\[
-		\zv = \seq[+]{b,v}{1,2,,m} + (-1)v.
+		\zv = \seq[+]{b,v}{1,,m} + (-1)v.
 	\]
-	Since \(v \neq v_i\) for \(i = 1, 2, \dots, m\), the coefficient of \(v\) in this linear combination is nonzero, and so the set \(\set{\seq{v}{1,2,,m}, v}\) is linearly dependent.
+	Since \(v \neq v_i\) for \(i = 1, 2, \dots, m\), the coefficient of \(v\) in this linear combination is nonzero, and so the set \(\set{\seq{v}{1,,m}, v}\) is linearly dependent.
 	Therefore \(S \cup \set{v}\) is linearly dependent by \cref{1.6}.
 \end{proof}
 
@@ -164,14 +164,14 @@
 \setcounter{ex}{3}
 \begin{ex}\label{ex:1.5.4}
 	In \(\vs{F}^n\), let \(e_j\) denote the vector whose \(j\)th coordinate is \(1\) and whose other coordinates are \(0\).
-	Prove that \(\set{\seq{e}{1,2,,n}}\) is linearly independent.
+	Prove that \(\set{\seq{e}{1,,n}}\) is linearly independent.
 \end{ex}
 
 \begin{proof}[\pf{ex:1.5.4}]
-	Let \(\seq{a}{1,2,,n} \in \F\).
+	Let \(\seq{a}{1,,n} \in \F\).
 	Since
 	\begin{align*}
-		         & \seq[+]{a,e}{1,2,,n} = \zv                        \\
+		         & \seq[+]{a,e}{1,,n} = \zv                          \\
 		\implies & \begin{dcases}
 			           a_1 1 + a_2 0 + \cdots + a_n 0 = 0 \\
 			           a_1 0 + a_2 1 + \cdots + a_n 0 = 0 \\
@@ -180,7 +180,7 @@
 		           \end{dcases}             &  & \by{1.2.4}          \\
 		\implies & \forall i \in \set{1, \dots, n}, a_i 1 = a_i = 0,
 	\end{align*}
-	by \cref{1.5.3} we know that \(\set{\seq{e}{1,2,,n}}\) is linearly independent.
+	by \cref{1.5.3} we know that \(\set{\seq{e}{1,,n}}\) is linearly independent.
 \end{proof}
 
 \begin{ex}\label{ex:1.5.5}
@@ -286,7 +286,7 @@
 
 \setcounter{ex}{10}
 \begin{ex}\label{ex:1.5.11}
-	Let \(S = \set{\seq{u}{1,2,,n}}\) be a linearly independent subset of a vector space \(\V\) over the field \(\Z_2\).
+	Let \(S = \set{\seq{u}{1,,n}}\) be a linearly independent subset of a vector space \(\V\) over the field \(\Z_2\).
 	How many vectors are there in \(\spn{S}\)?
 	Justify your answer.
 \end{ex}
@@ -294,7 +294,7 @@
 \begin{proof}[\pf{ex:1.5.11}]
 	We have
 	\[
-		\forall v \in \spn{S}, \exists \seq{a}{1,2,,n} \in \Z_2 : \seq[+]{a,u}{1,2,,n} = v.
+		\forall v \in \spn{S}, \exists \seq{a}{1,,n} \in \Z_2 : \seq[+]{a,u}{1,,n} = v.
 	\]
 	Since \(a_i \in \Z_2\) for all \(i \in \set{1, \dots, n}\), \(a_i\) has only two choices, which are \(0\) or \(1\).
 	Since there are \(n\) variables with \(2\) choices for each, there are \(2^n\) vectors in \(\spn{S}\).
@@ -339,7 +339,7 @@
 \end{proof}
 
 \begin{ex}\label{ex:1.5.14}
-	Prove that a set \(S\) is linearly dependent iff \(S = \set{\zv}\) or there exist distinct vectors \(v, \seq{u}{1,2,,n}\) in \(S\) such that \(v\) is a linear combination of \(\seq{u}{1,2,,n}\).
+	Prove that a set \(S\) is linearly dependent iff \(S = \set{\zv}\) or there exist distinct vectors \(v, \seq{u}{1,,n}\) in \(S\) such that \(v\) is a linear combination of \(\seq{u}{1,,n}\).
 \end{ex}
 
 \begin{proof}[\pf{ex:1.5.14}]
@@ -352,58 +352,58 @@
 	\begin{align*}
 		     & S \text{ is linearly dependent}                                                      \\
 		\iff & \begin{dcases}
-			       \exists v \in S                                 \\
-			       \exists \seq{u}{1,2,,n} \in S \setminus \set{v} \\
-			       \exists a_0 \in \F \setminus \set{0}            \\
-			       \exists \seq{a}{1,2,,n} \in \F
-		       \end{dcases} :                                      \\
-		     & a_0 v + \seq[+]{a,u}{1,2,,n} = \zv                                   &  & \by{1.5.1} \\
+			       \exists v \in S                               \\
+			       \exists \seq{u}{1,,n} \in S \setminus \set{v} \\
+			       \exists a_0 \in \F \setminus \set{0}          \\
+			       \exists \seq{a}{1,,n} \in \F
+		       \end{dcases} :                                        \\
+		     & a_0 v + \seq[+]{a,u}{1,,n} = \zv                                     &  & \by{1.5.1} \\
 		\iff & \begin{dcases}
-			       \exists v \in S                                 \\
-			       \exists \seq{u}{1,2,,n} \in S \setminus \set{v} \\
-			       \exists a_0 \in \F \setminus \set{0}            \\
-			       \exists \seq{a}{1,2,,n} \in \F
-		       \end{dcases} :                                      \\
+			       \exists v \in S                               \\
+			       \exists \seq{u}{1,,n} \in S \setminus \set{v} \\
+			       \exists a_0 \in \F \setminus \set{0}          \\
+			       \exists \seq{a}{1,,n} \in \F
+		       \end{dcases} :                                        \\
 		     & v = -a_0^{-1} a_1 u_1 - a_0^{-1} a_2 u_2 - \cdots - a_0^{-1} a_n u_n                 \\
-		\iff & \exists v, \seq{u}{1,2,,n} \in S :                                                   \\
-		     & v \text{ is a linear combination of } \seq{u}{1,2,,n}.               &  & \by{1.4.1}
+		\iff & \exists v, \seq{u}{1,,n} \in S :                                                     \\
+		     & v \text{ is a linear combination of } \seq{u}{1,,n}.                 &  & \by{1.4.1}
 	\end{align*}
-	Combine all proofs above we conclude that \(S\) is linearly dependent iff \(S = \set{\zv}\) or there exist distinct vectors \(v, \seq{u}{1,2,,n}\) in \(S\) such that \(v\) is a linear combination of \(\seq{u}{1,2,,n}\).
+	Combine all proofs above we conclude that \(S\) is linearly dependent iff \(S = \set{\zv}\) or there exist distinct vectors \(v, \seq{u}{1,,n}\) in \(S\) such that \(v\) is a linear combination of \(\seq{u}{1,,n}\).
 \end{proof}
 
 \begin{ex}\label{ex:1.5.15}
-	Let \(S = \set{\seq{u}{1,2,,n}}\) be a finite set of vectors.
-	Prove that \(S\) is linearly dependent iff \(u_1 = \zv\) or \(u_{k + 1} \in \spn{\set{\seq{u}{1,2,,k}}}\) for some \(k\) (\(1 \leq k < n\)).
+	Let \(S = \set{\seq{u}{1,,n}}\) be a finite set of vectors.
+	Prove that \(S\) is linearly dependent iff \(u_1 = \zv\) or \(u_{k + 1} \in \spn{\set{\seq{u}{1,,k}}}\) for some \(k\) (\(1 \leq k < n\)).
 \end{ex}
 
 \begin{proof}[\pf{ex:1.5.15}]
-	By \cref{1.5.1} and \cref{1.5.2} we know that if \(u_1 = \zv\) or \(u_{k + 1} \in \spn{\set{\seq{u}{1,2,,k}}}\) for some \(k\) (\(1 \leq k < n\)), then \(S\) is linearly dependent.
+	By \cref{1.5.1} and \cref{1.5.2} we know that if \(u_1 = \zv\) or \(u_{k + 1} \in \spn{\set{\seq{u}{1,,k}}}\) for some \(k\) (\(1 \leq k < n\)), then \(S\) is linearly dependent.
 	So we only need to show the converse is also true.
 
-	Let \(S = \set{\seq{u}{1,2,,n}}\) be linearly dependent.
+	Let \(S = \set{\seq{u}{1,,n}}\) be linearly dependent.
 	Suppose for sake of contradiction that \(u_1 \neq \zv\) and
 	\[
-		\forall k \in \set{1, \dots, n - 1}, u_{k + 1} \notin \spn{\set{\seq{u}{1,2,,k}}}.
+		\forall k \in \set{1, \dots, n - 1}, u_{k + 1} \notin \spn{\set{\seq{u}{1,,k}}}.
 	\]
 	By \cref{1.4.2} we know that \(u_k \neq \zv\) for all \(k \in \set{1, \dots, n}\).
 	But then we have
 	\begin{align*}
-		         & u_n \notin \spn{\set{\seq{u}{1,2,,n - 1}}}                                  \\
-		\implies & \forall \seq{a}{1,2,,n - 1} \in \F,                                         \\
-		         & \seq[+]{a,u}{1,2,,n - 1} \neq u_n                           &  & \by{1.4.3} \\
+		         & u_n \notin \spn{\set{\seq{u}{1,,n - 1}}}                                \\
+		\implies & \forall \seq{a}{1,,n - 1} \in \F,                                       \\
+		         & \seq[+]{a,u}{1,,n - 1} \neq u_n                         &  & \by{1.4.3} \\
 		\implies & \begin{dcases}
-			           \forall \seq{a}{1,2,,n - 1} \in \F \\
+			           \forall \seq{a}{1,,n - 1} \in \F \\
 			           \forall a_n \in \F \setminus \set{0}
-		           \end{dcases},                                         \\
-		         & \seq[+]{a,u}{1,2,,n - 1} \neq a_n u_n                                       \\
+		           \end{dcases},                                     \\
+		         & \seq[+]{a,u}{1,,n - 1} \neq a_n u_n                                     \\
 		\implies & \begin{dcases}
-			           \forall \seq{a}{1,2,,n - 1} \in \F \\
+			           \forall \seq{a}{1,,n - 1} \in \F \\
 			           \forall a_n \in \F \setminus \set{0}
-		           \end{dcases},                                         \\
-		         & \seq[+]{a,u}{1,2,,n} \neq \zv                                               \\
-		\implies & \forall \seq{a}{1,2,,n} \in \F, [\seq[+]{a,u}{1,2,,n} = \zv                 \\
-		         & \iff \seq[=]{a}{1,2,,n} = 0]                                                \\
-		\implies & S \text{ is linearly independent},                          &  & \by{1.5.3}
+		           \end{dcases},                                     \\
+		         & \seq[+]{a,u}{1,,n} \neq \zv                                             \\
+		\implies & \forall \seq{a}{1,,n} \in \F, [\seq[+]{a,u}{1,,n} = \zv                 \\
+		         & \iff \seq[=]{a}{1,,n} = 0]                                              \\
+		\implies & S \text{ is linearly independent},                      &  & \by{1.5.3}
 	\end{align*}
 	a contradiction.
 	Thus the converse must be true.
@@ -419,11 +419,11 @@
 
 	Now suppose that every finite subset of \(S\) is linearly independent.
 	Suppose for sake of contradiction that \(S\) is linearly dependent.
-	Then by \cref{ex:1.5.14} we know that \(S = \set{\zv}\) or there exist \(v, \seq{u}{1,2,,n} \in S\) such that \(v\) is a linear combination of \(\seq{u}{1,2,,n}\).
+	Then by \cref{ex:1.5.14} we know that \(S = \set{\zv}\) or there exist \(v, \seq{u}{1,,n} \in S\) such that \(v\) is a linear combination of \(\seq{u}{1,,n}\).
 	Clearly \(S \neq \set{\zv}\) since \(\set{\zv}\) is a finite subset of \(S\) but \(\set{\zv}\) is linearly dependent.
-	So we must have \(v\) as a linear combination of \(\seq{u}{1,2,,n}\).
-	Since the set \(\set{v,\seq{u}{1,2,,n}}\) is finite, by hypothese it is linearly independent.
-	But this contradicts to the fact that \(v\) is a linear combination of \(\seq{u}{1,2,,n}\).
+	So we must have \(v\) as a linear combination of \(\seq{u}{1,,n}\).
+	Since the set \(\set{v,\seq{u}{1,,n}}\) is finite, by hypothese it is linearly independent.
+	But this contradicts to the fact that \(v\) is a linear combination of \(\seq{u}{1,,n}\).
 	Thus \(S\) is linearly independent.
 \end{proof}
 
@@ -442,9 +442,9 @@
 			M_{n i}
 		\end{pmatrix} = M_{1 i} \cdot e_1 + M_{2 i} \cdot e_2 + \cdots + M_{n i} \cdot e_n = \sum_{j = 1}^n M_{j i} \cdot e_j,
 	\]
-	where \(\seq{e}{1,2,,n}\) are defined as in \cref{ex:1.5.4}.
+	where \(\seq{e}{1,,n}\) are defined as in \cref{ex:1.5.4}.
 	We now show that the set of column vectors of \(M\) is linearly independent.
-	Let \(\seq{a}{1,2,,n} \in \F\).
+	Let \(\seq{a}{1,,n} \in \F\).
 	Since
 	\begin{align*}
 		         & \sum_{i = 1}^n \br{a_i \cdot \pa{\sum_{j = 1}^n M_{j i} \cdot e_j}} = \zv                                                        \\
@@ -453,7 +453,7 @@
 		\implies & \sum_{j = 1}^n \pa{\sum_{i = 1}^n a_i \cdot M_{j i}} \cdot e_j = \zv                                                             \\
 		\implies & \forall j \in \set{1, \dots, n}, \sum_{i = 1}^n a_i \cdot M_{j i} = 0     &  & \by{ex:1.5.4}                                     \\
 		\implies & \forall j \in \set{1, \dots, n}, \sum_{i = j}^n a_i \cdot M_{j i} = 0     &  & \by{ex:1.3.12}                                    \\
-		\implies & \seq[=]{a}{1,2,,n} = 0,                                                   &  & (\forall j \in \set{1, \dots, n}, M_{j j} \neq 0)
+		\implies & \seq[=]{a}{1,,n} = 0,                                                     &  & (\forall j \in \set{1, \dots, n}, M_{j j} \neq 0)
 	\end{align*}
 	by \cref{1.5.3} we know that the column vectors of \(M\) is linearly independent.
 \end{proof}
@@ -468,11 +468,11 @@
 	Then by \cref{ex:1.5.14} we know that
 	\[
 		\begin{dcases}
-			\exists g, \seq{f}{1,2,,n} \in S \\
-			\exists \seq{a}{1,2,,n} \in \F
+			\exists g, \seq{f}{1,,n} \in S \\
+			\exists \seq{a}{1,,n} \in \F
 		\end{dcases} : \begin{dcases}
-			g = \seq[+]{a,f}{1,2,,n} \\
-			\lnot (\seq[=]{a}{1,2,,n} = 0)
+			g = \seq[+]{a,f}{1,,n} \\
+			\lnot (\seq[=]{a}{1,,n} = 0)
 		\end{dcases}.
 	\]
 	Let \(\deg(h)\) be the degree of any function \(h \in \ps{\F}\) and let \(m = \deg(g)\).
@@ -496,19 +496,19 @@
 \end{proof}
 
 \begin{ex}\label{ex:1.5.19}
-	Prove that if \(\set{\seq{A}{1,2,,k}}\) is a linearly independent subset of \(\ms[n][n][\F]\), then \(\set{\tp{A}_1, \tp{A}_2, \dots, \tp{A}_k}\) is also linearly independent.
+	Prove that if \(\set{\seq{A}{1,,k}}\) is a linearly independent subset of \(\ms[n][n][\F]\), then \(\set{\tp{A}_1, \tp{A}_2, \dots, \tp{A}_k}\) is also linearly independent.
 \end{ex}
 
 \begin{proof}[\pf{ex:1.5.19}]
 	Let \(i, j \in \set{1, \dots, n}\).
 	Then we have
 	\begin{align*}
-		         & \set{\seq{A}{1,2,,k}} \text{ is linearly independent}                                                         \\
-		\implies & \br{\forall \seq{c}{1,2,,k} \in \F, \sum_{p = 1}^k c_p A_p = \zm \implies c_p = 0}            &  & \by{1.5.3} \\
-		\implies & \br{\forall \seq{c}{1,2,,k} \in \F, \sum_{p = 1}^k c_p (A_p)_{i j} = 0 \implies c_p = 0}      &  & \by{1.2.9} \\
-		\implies & \br{\forall \seq{c}{1,2,,k} \in \F, \sum_{p = 1}^k c_p \tp{(A_p)}_{j i} = 0 \implies c_p = 0} &  & \by{1.3.3} \\
-		\implies & \br{\forall \seq{c}{1,2,,k} \in \F, \sum_{p = 1}^k c_p \tp{(A_p)} = \zm \implies c_p = 0}     &  & \by{1.2.9} \\
-		\implies & \set{\tp{A}_1, \tp{A}_2, \dots, \tp{A}_k} \text{ is linearly independent}.                    &  & \by{1.5.3}
+		         & \set{\seq{A}{1,,k}} \text{ is linearly independent}                                                         \\
+		\implies & \br{\forall \seq{c}{1,,k} \in \F, \sum_{p = 1}^k c_p A_p = \zm \implies c_p = 0}            &  & \by{1.5.3} \\
+		\implies & \br{\forall \seq{c}{1,,k} \in \F, \sum_{p = 1}^k c_p (A_p)_{i j} = 0 \implies c_p = 0}      &  & \by{1.2.9} \\
+		\implies & \br{\forall \seq{c}{1,,k} \in \F, \sum_{p = 1}^k c_p \tp{(A_p)}_{j i} = 0 \implies c_p = 0} &  & \by{1.3.3} \\
+		\implies & \br{\forall \seq{c}{1,,k} \in \F, \sum_{p = 1}^k c_p \tp{(A_p)} = \zm \implies c_p = 0}     &  & \by{1.2.9} \\
+		\implies & \set{\tp{A}_1, \tp{A}_2, \dots, \tp{A}_k} \text{ is linearly independent}.                  &  & \by{1.5.3}
 	\end{align*}
 \end{proof}
 

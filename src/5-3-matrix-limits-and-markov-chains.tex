@@ -1,1036 +1,1036 @@
 \section{Matrix Limits and Markov Chains}\label{sec:5.3}
 
 \begin{defn}\label{5.3.1}
-	Let \(L, \seq{A}{1,2,}\) be \(n \times p\) matrices having complex entries.
-	The sequence \(\seq{A}{1,2,}\) is said to \textbf{converge} to the \(n \times p\) matrix \(L\), called the \textbf{limit} of the sequence, if
-	\[
-		\lim_{m \to \infty} (A_m)_{i j} = L_{i j}
-	\]
-	for all \(i \in \set{1, \dots, n}\) and \(j \in \set{1, \dots, p}\).
-	To designate that \(L\) is the limit of the sequence, we write
-	\[
-		\lim_{m \to \infty} A_m = L.
-	\]
+  Let \(L, \seq{A}{1,2,}\) be \(n \times p\) matrices having complex entries.
+  The sequence \(\seq{A}{1,2,}\) is said to \textbf{converge} to the \(n \times p\) matrix \(L\), called the \textbf{limit} of the sequence, if
+  \[
+    \lim_{m \to \infty} (A_m)_{i j} = L_{i j}
+  \]
+  for all \(i \in \set{1, \dots, n}\) and \(j \in \set{1, \dots, p}\).
+  To designate that \(L\) is the limit of the sequence, we write
+  \[
+    \lim_{m \to \infty} A_m = L.
+  \]
 \end{defn}
 
 \begin{thm}\label{5.12}
-	Let \(\seq{A}{1,2,}\) be a sequence of \(n \times p\) matrices with complex entries that converges to the matrix \(L\).
-	Then for any \(P \in \ms[r][n][\C]\) and \(Q \in \ms[p][s][\C]\),
-	\[
-		\lim_{m \to \infty} P A_m = PL \quad \text{and} \quad \lim_{m \to \infty} A_m Q = LQ.
-	\]
+  Let \(\seq{A}{1,2,}\) be a sequence of \(n \times p\) matrices with complex entries that converges to the matrix \(L\).
+  Then for any \(P \in \ms[r][n][\C]\) and \(Q \in \ms[p][s][\C]\),
+  \[
+    \lim_{m \to \infty} P A_m = PL \quad \text{and} \quad \lim_{m \to \infty} A_m Q = LQ.
+  \]
 \end{thm}
 
 \begin{proof}[\pf{5.12}]
-	For any \(i \in \set{1, \dots, r}\) and \(j \in \set{1, \dots, p}\),
-	\begin{align*}
-		\lim_{m \to \infty} (P A_m)_{i j} & = \lim_{m \to \infty} \sum_{k = 1}^n P_{i k} (A_m)_{k j}      &  & \by{2.3.1} \\
-		                                  & = \sum_{k = 1}^n P_{i k} \pa{\lim_{m \to \infty} (A_m)_{k j}}                 \\
-		                                  & = \sum_{k = 1}^n P_{i k} L_{k j}                              &  & \by{5.3.1} \\
-		                                  & = (PL)_{i j}.                                                 &  & \by{2.3.1}
-	\end{align*}
-	Hence \(\lim_{m \to \infty} P A_m = PL\).
-	The proof that \(\lim_{m \to \infty} A_m Q = LQ\) is similar.
+  For any \(i \in \set{1, \dots, r}\) and \(j \in \set{1, \dots, p}\),
+  \begin{align*}
+    \lim_{m \to \infty} (P A_m)_{i j} & = \lim_{m \to \infty} \sum_{k = 1}^n P_{i k} (A_m)_{k j}      &  & \by{2.3.1} \\
+                                      & = \sum_{k = 1}^n P_{i k} \pa{\lim_{m \to \infty} (A_m)_{k j}}                 \\
+                                      & = \sum_{k = 1}^n P_{i k} L_{k j}                              &  & \by{5.3.1} \\
+                                      & = (PL)_{i j}.                                                 &  & \by{2.3.1}
+  \end{align*}
+  Hence \(\lim_{m \to \infty} P A_m = PL\).
+  The proof that \(\lim_{m \to \infty} A_m Q = LQ\) is similar.
 \end{proof}
 
 \begin{cor}\label{5.3.2}
-	Let \(A \in \ms[n][n][\C]\) be such that \(\lim_{m \to \infty} A^m = L\).
-	Then for any invertible matrix \(Q \in \ms[n][n][\C]\),
-	\[
-		\lim_{m \to \infty} (Q A Q^{-1})^m = Q L Q^{-1}.
-	\]
+  Let \(A \in \ms[n][n][\C]\) be such that \(\lim_{m \to \infty} A^m = L\).
+  Then for any invertible matrix \(Q \in \ms[n][n][\C]\),
+  \[
+    \lim_{m \to \infty} (Q A Q^{-1})^m = Q L Q^{-1}.
+  \]
 \end{cor}
 
 \begin{proof}[\pf{5.3.2}]
-	Since
-	\[
-		(Q A Q^{-1})^m = (Q A Q^{-1}) (Q A Q^{-1}) \cdots (Q A Q^{-1}) = Q A^m Q^{-1},
-	\]
-	we have
-	\[
-		\lim_{m \to \infty} (Q A Q^{-1})^m = \lim_{m \to \infty} Q A^m Q^{-1} = Q \pa{\lim_{m \to \infty} A^m} Q^{-1} = Q L Q^{-1}
-	\]
-	by applying \cref{5.12} twice.
+  Since
+  \[
+    (Q A Q^{-1})^m = (Q A Q^{-1}) (Q A Q^{-1}) \cdots (Q A Q^{-1}) = Q A^m Q^{-1},
+  \]
+  we have
+  \[
+    \lim_{m \to \infty} (Q A Q^{-1})^m = \lim_{m \to \infty} Q A^m Q^{-1} = Q \pa{\lim_{m \to \infty} A^m} Q^{-1} = Q L Q^{-1}
+  \]
+  by applying \cref{5.12} twice.
 \end{proof}
 
 \begin{defn}\label{5.3.3}
-	In the discussion that follows, we frequently encounter the set
-	\[
-		S = \set{\lambda \in \C : \abs{\lambda} < 1 \text{ or } \lambda = 1}.
-	\]
-	Geometrically, this set consists of the complex number \(1\) and the interior of the unit disk (the disk of radius \(1\) centered at the origin).
-	This set is of interest because if \(\lambda\) is a complex number, then \(\lim_{m \to \infty} \lambda^m\) exists iff \(\lambda \in S\).
-	This fact, which is obviously true if \(\lambda\) is real, can be shown to be true for complex numbers also.
+  In the discussion that follows, we frequently encounter the set
+  \[
+    S = \set{\lambda \in \C : \abs{\lambda} < 1 \text{ or } \lambda = 1}.
+  \]
+  Geometrically, this set consists of the complex number \(1\) and the interior of the unit disk (the disk of radius \(1\) centered at the origin).
+  This set is of interest because if \(\lambda\) is a complex number, then \(\lim_{m \to \infty} \lambda^m\) exists iff \(\lambda \in S\).
+  This fact, which is obviously true if \(\lambda\) is real, can be shown to be true for complex numbers also.
 \end{defn}
 
 \begin{thm}\label{5.13}
-	Let \(A\) be a square matrix with complex entries.
-	Then \(\lim_{m \to \infty} A^m\) exists iff both of the following conditions hold.
-	\begin{enumerate}
-		\item Every eigenvalue of \(A\) is contained in \(S\).
-		\item If \(1\) is an eigenvalue of \(A\), then the dimension of the eigenspace corresponding to \(1\) equals the multiplicity of \(1\) as an eigenvalue of \(A\).
-	\end{enumerate}
+  Let \(A\) be a square matrix with complex entries.
+  Then \(\lim_{m \to \infty} A^m\) exists iff both of the following conditions hold.
+  \begin{enumerate}
+    \item Every eigenvalue of \(A\) is contained in \(S\).
+    \item If \(1\) is an eigenvalue of \(A\), then the dimension of the eigenspace corresponding to \(1\) equals the multiplicity of \(1\) as an eigenvalue of \(A\).
+  \end{enumerate}
 \end{thm}
 
 \begin{proof}[\pf{5.13}]
-	The necessity of condition (a) is easily justified.
-	For suppose that \(\lambda\) is an eigenvalue of \(A\) such that \(\lambda \notin S\).
-	Let \(v\) be an eigenvector of \(A\) corresponding to \(\lambda\).
-	Regarding \(v\) as an \(n \times 1\) matrix, we see that
-	\[
-		\lim_{m \to \infty} (A^m v) = \pa{\lim_{m \to \infty} A^m} v = Lv
-	\]
-	by \cref{5.12}, where \(L = \lim_{m \to \infty} A^m\).
-	But \(\lim_{m \to \infty} (A^m v) = \lim_{m \to \infty} (\lambda^m v)\) diverges because \(\lim_{m \to \infty} \lambda^m\) does not exist.
-	Hence if \(\lim_{m \to \infty} A^m\) exists, then condition (a) of \cref{5.13} must hold.
+  The necessity of condition (a) is easily justified.
+  For suppose that \(\lambda\) is an eigenvalue of \(A\) such that \(\lambda \notin S\).
+  Let \(v\) be an eigenvector of \(A\) corresponding to \(\lambda\).
+  Regarding \(v\) as an \(n \times 1\) matrix, we see that
+  \[
+    \lim_{m \to \infty} (A^m v) = \pa{\lim_{m \to \infty} A^m} v = Lv
+  \]
+  by \cref{5.12}, where \(L = \lim_{m \to \infty} A^m\).
+  But \(\lim_{m \to \infty} (A^m v) = \lim_{m \to \infty} (\lambda^m v)\) diverges because \(\lim_{m \to \infty} \lambda^m\) does not exist.
+  Hence if \(\lim_{m \to \infty} A^m\) exists, then condition (a) of \cref{5.13} must hold.
 
-	We see in \cref{ch:7} that if \(A\) is a matrix for which condition (b) fails, then \(A\) is similar to a matrix whose upper left \(2 \times 2\) submatrix is precisely this matrix \(B = \begin{pmatrix}
-		1 & 1 \\
-		0 & 1
-	\end{pmatrix}\).
+  We see in \cref{ch:7} that if \(A\) is a matrix for which condition (b) fails, then \(A\) is similar to a matrix whose upper left \(2 \times 2\) submatrix is precisely this matrix \(B = \begin{pmatrix}
+    1 & 1 \\
+    0 & 1
+  \end{pmatrix}\).
 \end{proof}
 
 \begin{thm}\label{5.14}
-	Let \(A \in \ms[n][n][\C]\) satisfy the following two conditions.
-	\begin{enumerate}
-		\item Every eigenvalue of \(A\) is contained in \(S\).
-		\item \(A\) is diagonalizable.
-	\end{enumerate}
-	Then \(\lim_{m \to \infty} A^m\) exists.
+  Let \(A \in \ms[n][n][\C]\) satisfy the following two conditions.
+  \begin{enumerate}
+    \item Every eigenvalue of \(A\) is contained in \(S\).
+    \item \(A\) is diagonalizable.
+  \end{enumerate}
+  Then \(\lim_{m \to \infty} A^m\) exists.
 \end{thm}
 
 \begin{proof}[\pf{5.14}]
-	Since \(A\) is diagonalizable, there exists an invertible matrix \(Q\) such that \(Q^{-1} A Q = D\) is a diagonal matrix.
-	Suppose that
-	\[
-		D = \begin{pmatrix}
-			\lambda_1 & 0         & \cdots & 0         \\
-			0         & \lambda_2 & \cdots & 0         \\
-			\vdots    & \vdots    &        & \vdots    \\
-			0         & 0         & \cdots & \lambda_n
-		\end{pmatrix}.
-	\]
-	Because \(\seq{\lambda}{1,,n}\) are the eigenvalues of \(A\), condition (i) requires that for each \(i \in \set{1, \dots, n}\), either \(\lambda_i = 1\) or \(\abs{\lambda_i} < 1\).
-	Thus
-	\[
-		\lim_{m \to \infty} \lambda_i^m = \begin{dcases}
-			1 & \text{if } \lambda_i = 1 \\
-			0 & \text{otherwise}
-		\end{dcases}.
-	\]
-	But since
-	\[
-		D^m = \begin{pmatrix}
-			\lambda_1^m & 0           & \cdots & 0           \\
-			0           & \lambda_2^m & \cdots & 0           \\
-			\vdots      & \vdots      &        & \vdots      \\
-			0           & 0           & \cdots & \lambda_n^m
-		\end{pmatrix},
-	\]
-	the sequence \(D, D^2, \cdots\) converges to a limit \(L\).
-	Hence
-	\[
-		\lim_{m \to \infty} A^m = \lim_{m \to \infty} (Q D Q^{-1})^m = Q L Q^{-1}
-	\]
-	by \cref{5.3.2}.
+  Since \(A\) is diagonalizable, there exists an invertible matrix \(Q\) such that \(Q^{-1} A Q = D\) is a diagonal matrix.
+  Suppose that
+  \[
+    D = \begin{pmatrix}
+      \lambda_1 & 0         & \cdots & 0         \\
+      0         & \lambda_2 & \cdots & 0         \\
+      \vdots    & \vdots    &        & \vdots    \\
+      0         & 0         & \cdots & \lambda_n
+    \end{pmatrix}.
+  \]
+  Because \(\seq{\lambda}{1,,n}\) are the eigenvalues of \(A\), condition (i) requires that for each \(i \in \set{1, \dots, n}\), either \(\lambda_i = 1\) or \(\abs{\lambda_i} < 1\).
+  Thus
+  \[
+    \lim_{m \to \infty} \lambda_i^m = \begin{dcases}
+      1 & \text{if } \lambda_i = 1 \\
+      0 & \text{otherwise}
+    \end{dcases}.
+  \]
+  But since
+  \[
+    D^m = \begin{pmatrix}
+      \lambda_1^m & 0           & \cdots & 0           \\
+      0           & \lambda_2^m & \cdots & 0           \\
+      \vdots      & \vdots      &        & \vdots      \\
+      0           & 0           & \cdots & \lambda_n^m
+    \end{pmatrix},
+  \]
+  the sequence \(D, D^2, \cdots\) converges to a limit \(L\).
+  Hence
+  \[
+    \lim_{m \to \infty} A^m = \lim_{m \to \infty} (Q D Q^{-1})^m = Q L Q^{-1}
+  \]
+  by \cref{5.3.2}.
 \end{proof}
 
 \begin{defn}\label{5.3.4}
-	Any square matrix having these two properties (nonnegative entries and columns that sum to \(1\)) is called a \textbf{transition matrix} or a \textbf{stochastic matrix}.
-	For an arbitrary \(n \times n\) transition matrix \(M\), the rows and columns correspond to \(n\) \textbf{states}, and the entry \(M_{i j}\) represents the probability of moving from state \(j\) to state \(i\) in one \textbf{stage}.
-	In general, for any transition matrix \(M\), the entry \((M^m)_{i j}\) represents the probability of moving from state \(j\) to state \(i\) in \(m\) stages.
+  Any square matrix having these two properties (nonnegative entries and columns that sum to \(1\)) is called a \textbf{transition matrix} or a \textbf{stochastic matrix}.
+  For an arbitrary \(n \times n\) transition matrix \(M\), the rows and columns correspond to \(n\) \textbf{states}, and the entry \(M_{i j}\) represents the probability of moving from state \(j\) to state \(i\) in one \textbf{stage}.
+  In general, for any transition matrix \(M\), the entry \((M^m)_{i j}\) represents the probability of moving from state \(j\) to state \(i\) in \(m\) stages.
 
-	A column vector \(P\) contains nonnegative entries that sum to \(1\) is called a \textbf{probability vector}.
-	In this terminology, each column of a transition matrix is a probability vector.
-	It is often convenient to regard the entries of a transition matrix or a probability vector as proportions or percentages instead of probabilities.
+  A column vector \(P\) contains nonnegative entries that sum to \(1\) is called a \textbf{probability vector}.
+  In this terminology, each column of a transition matrix is a probability vector.
+  It is often convenient to regard the entries of a transition matrix or a probability vector as proportions or percentages instead of probabilities.
 \end{defn}
 
 \begin{thm}\label{5.15}
-	Let \(M \in \ms[n][n][\R]\) having real nonnegative entries, let \(v \in \R^n\) having nonnegative coordinates, and let \(u \in \R^n\) be the column vector in which each coordinate equals \(1\).
-	Then
-	\begin{enumerate}
-		\item \(M\) is a transition matrix iff \(\tp{M} u = u\);
-		\item \(v\) is a probability vector iff \(\tp{u} v = (1)\).
-	\end{enumerate}
+  Let \(M \in \ms[n][n][\R]\) having real nonnegative entries, let \(v \in \R^n\) having nonnegative coordinates, and let \(u \in \R^n\) be the column vector in which each coordinate equals \(1\).
+  Then
+  \begin{enumerate}
+    \item \(M\) is a transition matrix iff \(\tp{M} u = u\);
+    \item \(v\) is a probability vector iff \(\tp{u} v = (1)\).
+  \end{enumerate}
 \end{thm}
 
 \begin{proof}[\pf{5.15}]
-	We have
-	\begin{align*}
-		     & M \text{ is a transition matrix}                                                                                                 \\
-		\iff & \forall j \in \set{1, \dots, n}, \sum_{i = 1}^n M_{i j} = 1              &  & \by{5.3.4}                                         \\
-		\iff & \forall j \in \set{1, \dots, n}, \sum_{i = 1}^n (\tp{M})_{j i} = 1       &  & \by{1.3.3}                                         \\
-		\iff & \forall j \in \set{1, \dots, n}, \sum_{i = 1}^n (\tp{M})_{j i} u_i = u_i &  & (u_i = 1 \text{ for all } i \in \set{1, \dots, n}) \\
-		\iff & \tp{M} u = u                                                             &  & \by{2.3.1}
-	\end{align*}
-	and
-	\begin{align*}
-		     & v \text{ is a probability vector}                                                         \\
-		\iff & \sum_{i = 1}^n v_i = 1            &  & \by{5.3.4}                                         \\
-		\iff & \sum_{i = 1}^n (\tp{v})_i = 1     &  & \by{1.3.3}                                         \\
-		\iff & \sum_{i = 1}^n (\tp{v})_i u_i = 1 &  & (u_i = 1 \text{ for all } i \in \set{1, \dots, n}) \\
-		\iff & \tp{v} u = (1).                   &  & \by{2.3.1}
-	\end{align*}
+  We have
+  \begin{align*}
+         & M \text{ is a transition matrix}                                                                                                 \\
+    \iff & \forall j \in \set{1, \dots, n}, \sum_{i = 1}^n M_{i j} = 1              &  & \by{5.3.4}                                         \\
+    \iff & \forall j \in \set{1, \dots, n}, \sum_{i = 1}^n (\tp{M})_{j i} = 1       &  & \by{1.3.3}                                         \\
+    \iff & \forall j \in \set{1, \dots, n}, \sum_{i = 1}^n (\tp{M})_{j i} u_i = u_i &  & (u_i = 1 \text{ for all } i \in \set{1, \dots, n}) \\
+    \iff & \tp{M} u = u                                                             &  & \by{2.3.1}
+  \end{align*}
+  and
+  \begin{align*}
+         & v \text{ is a probability vector}                                                         \\
+    \iff & \sum_{i = 1}^n v_i = 1            &  & \by{5.3.4}                                         \\
+    \iff & \sum_{i = 1}^n (\tp{v})_i = 1     &  & \by{1.3.3}                                         \\
+    \iff & \sum_{i = 1}^n (\tp{v})_i u_i = 1 &  & (u_i = 1 \text{ for all } i \in \set{1, \dots, n}) \\
+    \iff & \tp{v} u = (1).                   &  & \by{2.3.1}
+  \end{align*}
 \end{proof}
 
 \begin{cor}\label{5.3.5}
-	\begin{enumerate}
-		\item The product of two \(n \times n\) transition matrices is an \(n \times n\) transition matrix.
-		      In particular, any power of a transition matrix is a transition matrix.
-		\item The product of a transition matrix and a probability vector is a probability vector.
-	\end{enumerate}
+  \begin{enumerate}
+    \item The product of two \(n \times n\) transition matrices is an \(n \times n\) transition matrix.
+          In particular, any power of a transition matrix is a transition matrix.
+    \item The product of a transition matrix and a probability vector is a probability vector.
+  \end{enumerate}
 \end{cor}
 
 \begin{proof}[\pf{5.3.5}]
-	Let \(A, B \in \ms[n][n][\R]\) be transition matrices, let \(v \in \R^n\) be a probability vector and let \(u \in \R^n\) such that \(u_i = 1\) for all \(i \in \set{1, \dots, n}\).
-	Since
-	\begin{align*}
-		\tp{(AB)} u & = (\tp{B} \tp{A}) u &  & \by{2.3.2}   \\
-		            & = \tp{B} (\tp{A} u) &  & \by{2.16}    \\
-		            & = \tp{B} u          &  & \by{5.15}[a] \\
-		            & = u,                &  & \by{5.15}[a]
-	\end{align*}
-	by \cref{5.15} we see that \(AB\) is a transition matrix.
-	Since
-	\begin{align*}
-		\tp{(Av)} u & = (\tp{v} \tp{A}) u &  & \by{2.3.2}   \\
-		            & = \tp{v} (\tp{A} u) &  & \by{2.16}    \\
-		            & = \tp{v} u          &  & \by{5.15}[a] \\
-		            & = 1,                &  & \by{5.15}[b]
-	\end{align*}
-	by \cref{5.15} we see that \(Av\) is a probability vector.
+  Let \(A, B \in \ms[n][n][\R]\) be transition matrices, let \(v \in \R^n\) be a probability vector and let \(u \in \R^n\) such that \(u_i = 1\) for all \(i \in \set{1, \dots, n}\).
+  Since
+  \begin{align*}
+    \tp{(AB)} u & = (\tp{B} \tp{A}) u &  & \by{2.3.2}   \\
+                & = \tp{B} (\tp{A} u) &  & \by{2.16}    \\
+                & = \tp{B} u          &  & \by{5.15}[a] \\
+                & = u,                &  & \by{5.15}[a]
+  \end{align*}
+  by \cref{5.15} we see that \(AB\) is a transition matrix.
+  Since
+  \begin{align*}
+    \tp{(Av)} u & = (\tp{v} \tp{A}) u &  & \by{2.3.2}   \\
+                & = \tp{v} (\tp{A} u) &  & \by{2.16}    \\
+                & = \tp{v} u          &  & \by{5.15}[a] \\
+                & = 1,                &  & \by{5.15}[b]
+  \end{align*}
+  by \cref{5.15} we see that \(Av\) is a probability vector.
 \end{proof}
 
 \begin{defn}\label{5.3.6}
-	The city--suburb problem is an example of a process in which elements of a set are each classified as being in one of several fixed states that can switch over time.
-	In general, such a process is called a \textbf{stochastic process}.
-	The switching to a particular state is described by a probability, and in general this probability depends on such factors as the state in question, the time in question, some or all of the previous states in which the object has been (including the current state), and the states that other objects are in or have been in.
+  The city--suburb problem is an example of a process in which elements of a set are each classified as being in one of several fixed states that can switch over time.
+  In general, such a process is called a \textbf{stochastic process}.
+  The switching to a particular state is described by a probability, and in general this probability depends on such factors as the state in question, the time in question, some or all of the previous states in which the object has been (including the current state), and the states that other objects are in or have been in.
 
-	If, however, the probability that an object in one state changes to a different state in a fixed interval of time depends only on the two states (and not on the time, earlier states, or other factors), then the stochastic process is called a \textbf{Markov process}.
-	If, in addition, the number of possible states is finite, then the Markov process is called a \textbf{Markov chain}.
-	Of course, a Markov process is usually only an idealization of reality because the probabilities involved are almost never constant over time.
+  If, however, the probability that an object in one state changes to a different state in a fixed interval of time depends only on the two states (and not on the time, earlier states, or other factors), then the stochastic process is called a \textbf{Markov process}.
+  If, in addition, the number of possible states is finite, then the Markov process is called a \textbf{Markov chain}.
+  Of course, a Markov process is usually only an idealization of reality because the probabilities involved are almost never constant over time.
 
-	The vector that describes the initial probability of being in each state is called the \textbf{initial probability vector} for the Markov chain.
-	We saw that \(\lim_{m \to \infty} A^m P\), where \(A\) is the transition matrix and \(P\) is the initial probability vector of the Markov chain, gives the eventual proportions in each state.
-	In general, however, the limit of powers of a transition matrix need not exist.
-	In fact, it can be shown (\cref{ex:7.2.20}) that the only transition matrices \(A\) such that \(\lim_{m \to \infty} A^m\) does not exist are precisely those matrices for which condition (a) of \cref{5.13} fails to hold.
+  The vector that describes the initial probability of being in each state is called the \textbf{initial probability vector} for the Markov chain.
+  We saw that \(\lim_{m \to \infty} A^m P\), where \(A\) is the transition matrix and \(P\) is the initial probability vector of the Markov chain, gives the eventual proportions in each state.
+  In general, however, the limit of powers of a transition matrix need not exist.
+  In fact, it can be shown (\cref{ex:7.2.20}) that the only transition matrices \(A\) such that \(\lim_{m \to \infty} A^m\) does not exist are precisely those matrices for which condition (a) of \cref{5.13} fails to hold.
 \end{defn}
 
 \begin{note}
-	Even if the limit of powers of the transition matrix exists, the computation of the limit may be quite difficult.
-	Fortunately, there is a large and important class of transition matrices for which this limit exists and is easily computed
-	--- this is the class of regular transition matrices.
+  Even if the limit of powers of the transition matrix exists, the computation of the limit may be quite difficult.
+  Fortunately, there is a large and important class of transition matrices for which this limit exists and is easily computed
+  --- this is the class of regular transition matrices.
 \end{note}
 
 \begin{defn}\label{5.3.7}
-	A transition matrix is called \textbf{regular} if some power of the matrix contains only positive entries.
+  A transition matrix is called \textbf{regular} if some power of the matrix contains only positive entries.
 \end{defn}
 
 \begin{defn}\label{5.3.8}
-	Let \(A \in \ms[n][n][\C]\).
-	For \(i, j \in \set{1, \dots, n}\), define \(\rho_i(A)\) to be the sum of the absolute values of the entries of row \(i\) of \(A\), and define \(\nu_j(A)\) to be equal to the sum of the absolute values of the entries of column \(j\) of \(A\).
-	Thus
-	\[
-		\rho_i(A) = \sum_{j = 1}^n \abs{A_{i j}} \quad \text{for } i \in \set{1, \dots, n}
-	\]
-	and
-	\[
-		\nu_j(A) = \sum_{i = 1}^n \abs{A_{i j}} \quad \text{for } j \in \set{1, \dots, n}.
-	\]
-	The \textbf{row sum} of \(A\), denoted \(\rho(A)\), and the \textbf{column sum} of \(A\), denoted \(\nu(A)\), are defined as
-	\[
-		\rho(A) = \max\set{\rho_i(A) : i \in \set{1, \dots, n}} \quad \text{and} \quad \nu(A) = \max\set{\nu_j(A) : j \in \set{1, \dots, n}}.
-	\]
+  Let \(A \in \ms[n][n][\C]\).
+  For \(i, j \in \set{1, \dots, n}\), define \(\rho_i(A)\) to be the sum of the absolute values of the entries of row \(i\) of \(A\), and define \(\nu_j(A)\) to be equal to the sum of the absolute values of the entries of column \(j\) of \(A\).
+  Thus
+  \[
+    \rho_i(A) = \sum_{j = 1}^n \abs{A_{i j}} \quad \text{for } i \in \set{1, \dots, n}
+  \]
+  and
+  \[
+    \nu_j(A) = \sum_{i = 1}^n \abs{A_{i j}} \quad \text{for } j \in \set{1, \dots, n}.
+  \]
+  The \textbf{row sum} of \(A\), denoted \(\rho(A)\), and the \textbf{column sum} of \(A\), denoted \(\nu(A)\), are defined as
+  \[
+    \rho(A) = \max\set{\rho_i(A) : i \in \set{1, \dots, n}} \quad \text{and} \quad \nu(A) = \max\set{\nu_j(A) : j \in \set{1, \dots, n}}.
+  \]
 \end{defn}
 
 \begin{defn}\label{5.3.9}
-	For \(A \in \ms[n][n][\C]\), we define the \(i\)th \textbf{Gerschgorin disk} \(C_i\) to be the disk in the complex plane with center \(A_{i i}\) and radius \(r_i = \rho_i(A) - \abs{A_{i i}}\);
-	that is,
-	\[
-		C_i = \set{z \in \C : \abs{z - A_{i i}} \leq r_i}
-	\]
+  For \(A \in \ms[n][n][\C]\), we define the \(i\)th \textbf{Gerschgorin disk} \(C_i\) to be the disk in the complex plane with center \(A_{i i}\) and radius \(r_i = \rho_i(A) - \abs{A_{i i}}\);
+  that is,
+  \[
+    C_i = \set{z \in \C : \abs{z - A_{i i}} \leq r_i}
+  \]
 \end{defn}
 
 \begin{thm}[Gerschgorin's Disk Theorem]\label{5.16}
-	Let \(A \in \ms[n][n][\C]\).
-	Then every eigenvalue of \(A\) is contained in a Gerschgorin disk.
+  Let \(A \in \ms[n][n][\C]\).
+  Then every eigenvalue of \(A\) is contained in a Gerschgorin disk.
 \end{thm}
 
 \begin{proof}[\pf{5.16}]
-	Let \(\lambda\) be an eigenvalue of \(A\) with the corresponding eigenvector
-	\[
-		v = \begin{pmatrix}
-			v_1    \\
-			\vdots \\
-			v_n
-		\end{pmatrix}.
-	\]
-	Then \(v\) satisfies the matrix equation \(Av = \lambda v\), which can be written
-	\[
-		\sum_{j = 1}^n A_{i j} v_j = \lambda v_i \quad \text{for } i \in \set{1, \dots, n}.
-	\]
-	Suppose that \(v_k\) is the coordinate of \(v\) having the largest absolute value;
-	note that \(v_k \neq 0\) because \(v\) is an eigenvector of \(A\).
+  Let \(\lambda\) be an eigenvalue of \(A\) with the corresponding eigenvector
+  \[
+    v = \begin{pmatrix}
+      v_1    \\
+      \vdots \\
+      v_n
+    \end{pmatrix}.
+  \]
+  Then \(v\) satisfies the matrix equation \(Av = \lambda v\), which can be written
+  \[
+    \sum_{j = 1}^n A_{i j} v_j = \lambda v_i \quad \text{for } i \in \set{1, \dots, n}.
+  \]
+  Suppose that \(v_k\) is the coordinate of \(v\) having the largest absolute value;
+  note that \(v_k \neq 0\) because \(v\) is an eigenvector of \(A\).
 
-	We show that \(\lambda\) lies in \(C_k\), that is, \(\abs{\lambda - A_{k k}} \leq r_k\).
-	For \(i = k\), it follows from above equation that
-	\begin{align*}
-		\abs{\lambda v_k - A_{k k} v_k} & = \abs{\sum_{j = 1}^n A_{k j} v_j - A_{k k} v_k}                 \\
-		                                & = \abs{\sum_{\substack{j = 1                                     \\ j \neq k}}^n A_{k j} v_j}              \\
-		                                & \leq \sum_{\substack{j = 1                                       \\ j \neq k}}^n \abs{A_{k j}} \abs{v_j}    && \by{d.3}[ac] \\
-		                                & \leq \sum_{\substack{j = 1                                       \\ j \neq k}}^n \abs{A_{k j}} \abs{v_k}     \\
-		                                & = \abs{v_k} \sum_{\substack{j = 1                                \\ j \neq k}}^n \abs{A_{k j}}        \\
-		                                & = \abs{v_k} r_k.                                 &  & \by{5.3.9}
-	\end{align*}
-	Thus
-	\[
-		\abs{v_k} \abs{\lambda - A_{k k}} \leq \abs{v_k} r_k;
-	\]
-	so
-	\[
-		\abs{\lambda - A_{k k}} \leq r_k
-	\]
-	because \(\abs{v_k} > 0\).
+  We show that \(\lambda\) lies in \(C_k\), that is, \(\abs{\lambda - A_{k k}} \leq r_k\).
+  For \(i = k\), it follows from above equation that
+  \begin{align*}
+    \abs{\lambda v_k - A_{k k} v_k} & = \abs{\sum_{j = 1}^n A_{k j} v_j - A_{k k} v_k}                 \\
+                                    & = \abs{\sum_{\substack{j = 1                                     \\ j \neq k}}^n A_{k j} v_j}              \\
+                                    & \leq \sum_{\substack{j = 1                                       \\ j \neq k}}^n \abs{A_{k j}} \abs{v_j}    && \by{d.3}[a,c] \\
+                                    & \leq \sum_{\substack{j = 1                                       \\ j \neq k}}^n \abs{A_{k j}} \abs{v_k}     \\
+                                    & = \abs{v_k} \sum_{\substack{j = 1                                \\ j \neq k}}^n \abs{A_{k j}}        \\
+                                    & = \abs{v_k} r_k.                                 &  & \by{5.3.9}
+  \end{align*}
+  Thus
+  \[
+    \abs{v_k} \abs{\lambda - A_{k k}} \leq \abs{v_k} r_k;
+  \]
+  so
+  \[
+    \abs{\lambda - A_{k k}} \leq r_k
+  \]
+  because \(\abs{v_k} > 0\).
 \end{proof}
 
 \begin{cor}\label{5.3.10}
-	Let \(\lambda\) be any eigenvalue of \(A \in \ms[n][n][\C]\).
-	Then \(\abs{\lambda} \leq \rho(A)\).
+  Let \(\lambda\) be any eigenvalue of \(A \in \ms[n][n][\C]\).
+  Then \(\abs{\lambda} \leq \rho(A)\).
 \end{cor}
 
 \begin{proof}[\pf{5.3.10}]
-	By Gerschgorin's disk theorem (\cref{5.16}), \(\abs{\lambda - A_{k k}} \leq r_k\) for some \(k\).
-	Hence
-	\begin{align*}
-		\abs{\lambda} & = \abs{(\lambda - A_{k k}) + A_{k k}}                         \\
-		              & \leq \abs{\lambda - A_{k k}} + \abs{A_{k k}} &  & \by{d.3}[c] \\
-		              & \leq r_k + \abs{A_{k k}}                     &  & \by{5.16}   \\
-		              & = \rho_k(A)                                  &  & \by{5.3.9}  \\
-		              & \leq \rho(A).                                &  & \by{5.3.8}
-	\end{align*}
+  By Gerschgorin's disk theorem (\cref{5.16}), \(\abs{\lambda - A_{k k}} \leq r_k\) for some \(k\).
+  Hence
+  \begin{align*}
+    \abs{\lambda} & = \abs{(\lambda - A_{k k}) + A_{k k}}                         \\
+                  & \leq \abs{\lambda - A_{k k}} + \abs{A_{k k}} &  & \by{d.3}[c] \\
+                  & \leq r_k + \abs{A_{k k}}                     &  & \by{5.16}   \\
+                  & = \rho_k(A)                                  &  & \by{5.3.9}  \\
+                  & \leq \rho(A).                                &  & \by{5.3.8}
+  \end{align*}
 \end{proof}
 
 \begin{cor}\label{5.3.11}
-	Let \(\lambda\) be any eigenvalue of \(A \in \ms[n][n][\C]\).
-	Then
-	\[
-		\abs{\lambda} \leq \min\set{\rho(A), \nu(A)}.
-	\]
+  Let \(\lambda\) be any eigenvalue of \(A \in \ms[n][n][\C]\).
+  Then
+  \[
+    \abs{\lambda} \leq \min\set{\rho(A), \nu(A)}.
+  \]
 \end{cor}
 
 \begin{proof}[\pf{5.3.11}]
-	Since \(\abs{\lambda} \leq \rho(A)\) by \cref{5.3.10}, it suffices to show that \(\abs{\lambda} \leq \nu(A)\).
-	By \cref{ex:5.1.14}, \(\lambda\) is an eigenvalue of \(\tp{A}\), and so \(\abs{\lambda} \leq \rho(\tp{A})\) by \cref{5.3.10}.
-	But the rows of \(\tp{A}\) are the columns of \(A\);
-	consequently \(\rho(\tp{A}) = \nu(A)\).
-	Therefore \(\abs{\lambda} \leq \nu(A)\).
+  Since \(\abs{\lambda} \leq \rho(A)\) by \cref{5.3.10}, it suffices to show that \(\abs{\lambda} \leq \nu(A)\).
+  By \cref{ex:5.1.14}, \(\lambda\) is an eigenvalue of \(\tp{A}\), and so \(\abs{\lambda} \leq \rho(\tp{A})\) by \cref{5.3.10}.
+  But the rows of \(\tp{A}\) are the columns of \(A\);
+  consequently \(\rho(\tp{A}) = \nu(A)\).
+  Therefore \(\abs{\lambda} \leq \nu(A)\).
 \end{proof}
 
 \begin{cor}\label{5.3.12}
-	If \(\lambda\) is an eigenvalue of a transition matrix, then \(\abs{\lambda} \leq 1\).
+  If \(\lambda\) is an eigenvalue of a transition matrix, then \(\abs{\lambda} \leq 1\).
 \end{cor}
 
 \begin{proof}[\pf{5.3.12}]
-	This is the immediate consequence of \cref{5.3.4} and \cref{5.3.11}.
+  This is the immediate consequence of \cref{5.3.4} and \cref{5.3.11}.
 \end{proof}
 
 \begin{thm}\label{5.17}
-	Every transition matrix has \(1\) as an eigenvalue.
+  Every transition matrix has \(1\) as an eigenvalue.
 \end{thm}
 
 \begin{proof}[\pf{5.17}]
-	Let \(A \in \ms[n][n][\R]\) be a transition matrix, and let \(u \in \R^n\) be the column vector in which each coordinate is \(1\).
-	Then \(\tp{A} u = u\) by \cref{5.15}, and hence \(u\) is an eigenvector of \(\tp{A}\) corresponding to the eigenvalue \(1\).
-	But since \(A\) and \(\tp{A}\) have the same eigenvalues (\cref{ex:5.1.14}), it follows that \(1\) is also an eigenvalue of \(A\).
+  Let \(A \in \ms[n][n][\R]\) be a transition matrix, and let \(u \in \R^n\) be the column vector in which each coordinate is \(1\).
+  Then \(\tp{A} u = u\) by \cref{5.15}, and hence \(u\) is an eigenvector of \(\tp{A}\) corresponding to the eigenvalue \(1\).
+  But since \(A\) and \(\tp{A}\) have the same eigenvalues (\cref{ex:5.1.14}), it follows that \(1\) is also an eigenvalue of \(A\).
 \end{proof}
 
 \begin{note}
-	Suppose that \(A\) is a transition matrix for which some eigenvector corresponding to the eigenvalue \(1\) has only nonnegative coordinates.
-	Then some multiple of this vector is a probability vector \(P\) as well as an eigenvector of \(A\) corresponding to eigenvalue \(1\).
-	It is interesting to observe that if \(P\) is the initial probability vector of a Markov chain having \(A\) as its transition matrix, then the Markov chain is completely static.
-	For in this situation, \(A^m P = P\) for every positive integer \(m\);
-	hence the probability of being in each state never changes.
+  Suppose that \(A\) is a transition matrix for which some eigenvector corresponding to the eigenvalue \(1\) has only nonnegative coordinates.
+  Then some multiple of this vector is a probability vector \(P\) as well as an eigenvector of \(A\) corresponding to eigenvalue \(1\).
+  It is interesting to observe that if \(P\) is the initial probability vector of a Markov chain having \(A\) as its transition matrix, then the Markov chain is completely static.
+  For in this situation, \(A^m P = P\) for every positive integer \(m\);
+  hence the probability of being in each state never changes.
 \end{note}
 
 \begin{thm}\label{5.18}
-	Let \(A \in \ms[n][n][\C]\) be a matrix in which each entry is positive, and let \(\lambda\) be an eigenvalue of \(A\) such that \(\abs{\lambda} = \rho(A)\).
-	Then \(\lambda = \rho(A)\) and \(\set{u}\) is a basis for \(E_{\lambda}\) over \(\C\), where \(u \in \C^n\) is the column vector in which each coordinate equals \(1\).
+  Let \(A \in \ms[n][n][\C]\) be a matrix in which each entry is positive, and let \(\lambda\) be an eigenvalue of \(A\) such that \(\abs{\lambda} = \rho(A)\).
+  Then \(\lambda = \rho(A)\) and \(\set{u}\) is a basis for \(E_{\lambda}\) over \(\C\), where \(u \in \C^n\) is the column vector in which each coordinate equals \(1\).
 \end{thm}
 
 \begin{proof}[\pf{5.18}]
-	Let \(v\) be an eigenvector of \(A\) corresponding to \(\lambda\), with coordinates \(\seq{v}{1,,n}\).
-	Suppose that \(v_k\) is the coordinate of \(v\) having the largest absolute value, and let \(b = \abs{v_k}\).
-	Then
-	\begin{align*}
-		\abs{\lambda} b & = \abs{\lambda} \abs{v_k}                                 \\
-		                & = \abs{\lambda v_k}                      &  & \by{d.3}[a] \\
-		                & = \abs{\sum_{j = 1}^n A_{k j} v_j}       &  & \by{5.1.2}  \\
-		                & \leq \sum_{j = 1}^n \abs{A_{k j} v_j}    &  & \by{d.3}[c] \\
-		                & = \sum_{j = 1}^n \abs{A_{k j}} \abs{v_j} &  & \by{d.3}[a] \\
-		                & \leq \sum_{j = 1}^n \abs{A_{k j}} b                       \\
-		                & = \rho_k(A) b                            &  & \by{5.3.8}  \\
-		                & \leq \rho(A) b.                          &  & \by{5.3.8}
-	\end{align*}
-	Since \(\abs{\lambda} = \rho(A)\), the three inequalities above are actually equalities;
-	that is,
-	\begin{enumerate}
-		\item \(\abs{\sum_{j = 1}^n A_{k j} v_j} = \sum_{j = 1}^n \abs{A_{k j} v_j}\),
-		\item \(\sum_{j = 1}^n \abs{A_{k j}} \abs{v_j} = \sum_{j = 1}^n \abs{A_{k j}} b\), and
-		\item \(\rho_k(A) = \rho(A)\).
-	\end{enumerate}
+  Let \(v\) be an eigenvector of \(A\) corresponding to \(\lambda\), with coordinates \(\seq{v}{1,,n}\).
+  Suppose that \(v_k\) is the coordinate of \(v\) having the largest absolute value, and let \(b = \abs{v_k}\).
+  Then
+  \begin{align*}
+    \abs{\lambda} b & = \abs{\lambda} \abs{v_k}                                 \\
+                    & = \abs{\lambda v_k}                      &  & \by{d.3}[a] \\
+                    & = \abs{\sum_{j = 1}^n A_{k j} v_j}       &  & \by{5.1.2}  \\
+                    & \leq \sum_{j = 1}^n \abs{A_{k j} v_j}    &  & \by{d.3}[c] \\
+                    & = \sum_{j = 1}^n \abs{A_{k j}} \abs{v_j} &  & \by{d.3}[a] \\
+                    & \leq \sum_{j = 1}^n \abs{A_{k j}} b                       \\
+                    & = \rho_k(A) b                            &  & \by{5.3.8}  \\
+                    & \leq \rho(A) b.                          &  & \by{5.3.8}
+  \end{align*}
+  Since \(\abs{\lambda} = \rho(A)\), the three inequalities above are actually equalities;
+  that is,
+  \begin{enumerate}
+    \item \(\abs{\sum_{j = 1}^n A_{k j} v_j} = \sum_{j = 1}^n \abs{A_{k j} v_j}\),
+    \item \(\sum_{j = 1}^n \abs{A_{k j}} \abs{v_j} = \sum_{j = 1}^n \abs{A_{k j}} b\), and
+    \item \(\rho_k(A) = \rho(A)\).
+  \end{enumerate}
 
-	We see in \cref{ex:6.1.15}(b) that (a) holds iff all the terms \(A_{k j} v_j\) (\(j \in \set{1, \dots, n}\)) are nonnegative multiples of some nonzero complex number \(z\).
-	Without loss of generality, we assume that \(\abs{z} = 1\).
-	Thus there exist nonnegative real numbers \(\seq{c}{1,,n}\) such that
-	\[
-		A_{k j} v_j = c_j z
-	\]
+  We see in \cref{ex:6.1.15}(b) that (a) holds iff all the terms \(A_{k j} v_j\) (\(j \in \set{1, \dots, n}\)) are nonnegative multiples of some nonzero complex number \(z\).
+  Without loss of generality, we assume that \(\abs{z} = 1\).
+  Thus there exist nonnegative real numbers \(\seq{c}{1,,n}\) such that
+  \[
+    A_{k j} v_j = c_j z
+  \]
 
-	By (b) and the assumption that \(A_{k j} \neq 0\) for all \(k, j \in \set{1, \dots, n}\), we have
-	\[
-		\abs{v_j} = b \quad \text{for } j \in \set{1, \dots, n}.
-	\]
-	Combining equations above, we obtain
-	\[
-		b = \abs{v_j} = \abs{\frac{c_j}{A_{k j}} z} = \frac{c_j}{A_{k j}} \quad \text{for } j \in \set{1, \dots, n},
-	\]
-	and therefore we have \(v_j = bz\) for all \(j\).
-	So
-	\[
-		v = \begin{pmatrix}
-			v_1    \\
-			\vdots \\
-			v_n
-		\end{pmatrix} = \begin{pmatrix}
-			bz     \\
-			\vdots \\
-			bz
-		\end{pmatrix} = bzu,
-	\]
-	and hence \(\set{u}\) is a basis for \(E_{\lambda}\) over \(\C\).
+  By (b) and the assumption that \(A_{k j} \neq 0\) for all \(k, j \in \set{1, \dots, n}\), we have
+  \[
+    \abs{v_j} = b \quad \text{for } j \in \set{1, \dots, n}.
+  \]
+  Combining equations above, we obtain
+  \[
+    b = \abs{v_j} = \abs{\frac{c_j}{A_{k j}} z} = \frac{c_j}{A_{k j}} \quad \text{for } j \in \set{1, \dots, n},
+  \]
+  and therefore we have \(v_j = bz\) for all \(j\).
+  So
+  \[
+    v = \begin{pmatrix}
+      v_1    \\
+      \vdots \\
+      v_n
+    \end{pmatrix} = \begin{pmatrix}
+      bz     \\
+      \vdots \\
+      bz
+    \end{pmatrix} = bzu,
+  \]
+  and hence \(\set{u}\) is a basis for \(E_{\lambda}\) over \(\C\).
 
-	Finally, observe that all of the entries of \(Au\) are positive because the same is true for the entries of both \(A\) and \(u\).
-	But \(Au = \lambda u\), and hence \(\lambda > 0\).
-	Therefore, \(\lambda = \abs{\lambda} = \rho(A)\).
+  Finally, observe that all of the entries of \(Au\) are positive because the same is true for the entries of both \(A\) and \(u\).
+  But \(Au = \lambda u\), and hence \(\lambda > 0\).
+  Therefore, \(\lambda = \abs{\lambda} = \rho(A)\).
 \end{proof}
 
 \begin{cor}\label{5.3.13}
-	Let \(A \in \ms[n][n][\C]\) be a matrix in which each entry is positive, and let \(\lambda\) be an eigenvalue of \(A\) such that \(\abs{\lambda} = \nu(A)\).
-	Then \(\lambda = \nu(A)\), and the dimension of \(E_{\lambda} = 1\).
+  Let \(A \in \ms[n][n][\C]\) be a matrix in which each entry is positive, and let \(\lambda\) be an eigenvalue of \(A\) such that \(\abs{\lambda} = \nu(A)\).
+  Then \(\lambda = \nu(A)\), and the dimension of \(E_{\lambda} = 1\).
 \end{cor}
 
 \begin{proof}[\pf{5.3.13}]
-	We have
-	\begin{align*}
-		         & \abs{\lambda} = \nu(A) = \rho(\tp{A})                                                       &  & \by{5.3.8} \\
-		\implies & \begin{dcases}
-			           \lambda = \rho(\tp{A}) = \nu(A) \\
-			           \set{u} \text{ is a basis for } \ns{\tp{A} - \lambda I_n} \text{ over } \C
-		           \end{dcases} &  & \by{5.18}                  \\
-		\implies & \begin{dcases}
-			           \lambda = \nu(A) \\
-			           \dim(\ns{\tp{A} - \lambda I_n}) = 1
-		           \end{dcases}                          &  & \by{1.6.8}                                           \\
-		\implies & \begin{dcases}
-			           \lambda = \nu(A) \\
-			           \dim(\ns{A - \lambda I_n}) = 1
-		           \end{dcases}.                                                              &  & \by{ex:5.2.13}[b]
-	\end{align*}
+  We have
+  \begin{align*}
+             & \abs{\lambda} = \nu(A) = \rho(\tp{A})                                                       &  & \by{5.3.8} \\
+    \implies & \begin{dcases}
+                 \lambda = \rho(\tp{A}) = \nu(A) \\
+                 \set{u} \text{ is a basis for } \ns{\tp{A} - \lambda I_n} \text{ over } \C
+               \end{dcases} &  & \by{5.18}                  \\
+    \implies & \begin{dcases}
+                 \lambda = \nu(A) \\
+                 \dim(\ns{\tp{A} - \lambda I_n}) = 1
+               \end{dcases}                          &  & \by{1.6.8}                                           \\
+    \implies & \begin{dcases}
+                 \lambda = \nu(A) \\
+                 \dim(\ns{A - \lambda I_n}) = 1
+               \end{dcases}.                                                              &  & \by{ex:5.2.13}[b]
+  \end{align*}
 \end{proof}
 
 \begin{cor}\label{5.3.14}
-	Let \(A \in \ms[n][n][\C]\) be a transition matrix in which each entry is positive, and let \(\lambda\) be any eigenvalue of \(A\) other than \(1\).
-	Then \(\abs{\lambda} < 1\).
-	Moreover, the eigenspace corresponding to the eigenvalue \(1\) has dimension \(1\).
+  Let \(A \in \ms[n][n][\C]\) be a transition matrix in which each entry is positive, and let \(\lambda\) be any eigenvalue of \(A\) other than \(1\).
+  Then \(\abs{\lambda} < 1\).
+  Moreover, the eigenspace corresponding to the eigenvalue \(1\) has dimension \(1\).
 \end{cor}
 
 \begin{proof}[\pf{5.3.14}]
-	By \cref{5.3.12} we see that \(\abs{\lambda} \leq 1\).
-	We claim that \(\abs{\lambda} < 1\).
-	Suppose for sake of contradiction that \(\abs{\lambda} = 1\).
-	Then by \cref{5.3.4,5.3.13} we know that \(\lambda = 1\).
-	But by hypothesis we know that \(\lambda \neq 1\), a contradiction.
-	Thus we must have \(\abs{\lambda} < 1\).
-	The other statement follows from \cref{5.18}.
+  By \cref{5.3.12} we see that \(\abs{\lambda} \leq 1\).
+  We claim that \(\abs{\lambda} < 1\).
+  Suppose for sake of contradiction that \(\abs{\lambda} = 1\).
+  Then by \cref{5.3.4,5.3.13} we know that \(\lambda = 1\).
+  But by hypothesis we know that \(\lambda \neq 1\), a contradiction.
+  Thus we must have \(\abs{\lambda} < 1\).
+  The other statement follows from \cref{5.18}.
 \end{proof}
 
 \begin{thm}\label{5.19}
-	Let \(A\) be a regular transition matrix, and let \(\lambda\) be an eigenvalue of \(A\).
-	Then
-	\begin{enumerate}
-		\item \(\abs{\lambda} \leq 1\).
-		\item If \(\abs{\lambda} = 1\), then \(\lambda = 1\), and \(\dim(E_{\lambda}) = 1\).
-	\end{enumerate}
+  Let \(A\) be a regular transition matrix, and let \(\lambda\) be an eigenvalue of \(A\).
+  Then
+  \begin{enumerate}
+    \item \(\abs{\lambda} \leq 1\).
+    \item If \(\abs{\lambda} = 1\), then \(\lambda = 1\), and \(\dim(E_{\lambda}) = 1\).
+  \end{enumerate}
 \end{thm}
 
 \begin{proof}[\pf{5.19}]
-	Statement (a) was proved as \cref{5.3.12}.
+  Statement (a) was proved as \cref{5.3.12}.
 
-	Since \(A\) is regular, by \cref{5.3.7} there exists a positive integer \(s\) such that \(A^s\) has only positive entries.
-	Because \(A\) is a transition matrix and the entries of \(A^s\) are positive, the entries of \(A^{s + 1} = A^s (A)\) are positive.
-	Suppose that \(\abs{\lambda} = 1\).
-	Then \(\lambda^s\) and \(\lambda^{s + 1}\) are eigenvalues of \(A^s\) and \(A^{s + 1}\), respectively, having absolute value \(1\).
-	So by \cref{5.3.14}, \(\lambda^s = \lambda^{s + 1} = 1\).
-	Thus \(\lambda = 1\).
-	Let \(E_{\lambda}\) and \(E_{\lambda}'\) denote the eigenspaces of \(A\) and \(A^s\), respectively, corresponding to \(\lambda = 1\).
-	Then \(E_{\lambda} \subseteq E_{\lambda}'\) and, by \cref{5.3.14}, \(\dim(E_{\lambda}') = 1\).
-	Hence \(E_{\lambda} = E_{\lambda}'\), and \(\dim(E_{\lambda}) = 1\).
+  Since \(A\) is regular, by \cref{5.3.7} there exists a positive integer \(s\) such that \(A^s\) has only positive entries.
+  Because \(A\) is a transition matrix and the entries of \(A^s\) are positive, the entries of \(A^{s + 1} = A^s (A)\) are positive.
+  Suppose that \(\abs{\lambda} = 1\).
+  Then \(\lambda^s\) and \(\lambda^{s + 1}\) are eigenvalues of \(A^s\) and \(A^{s + 1}\), respectively, having absolute value \(1\).
+  So by \cref{5.3.14}, \(\lambda^s = \lambda^{s + 1} = 1\).
+  Thus \(\lambda = 1\).
+  Let \(E_{\lambda}\) and \(E_{\lambda}'\) denote the eigenspaces of \(A\) and \(A^s\), respectively, corresponding to \(\lambda = 1\).
+  Then \(E_{\lambda} \subseteq E_{\lambda}'\) and, by \cref{5.3.14}, \(\dim(E_{\lambda}') = 1\).
+  Hence \(E_{\lambda} = E_{\lambda}'\), and \(\dim(E_{\lambda}) = 1\).
 \end{proof}
 
 \begin{cor}\label{5.3.15}
-	Let \(A\) be a regular transition matrix that is diagonalizable.
-	Then \(\lim_{m \to \infty} A^m\) exists.
+  Let \(A\) be a regular transition matrix that is diagonalizable.
+  Then \(\lim_{m \to \infty} A^m\) exists.
 \end{cor}
 
 \begin{proof}[\pf{5.3.15}]
-	By \cref{5.19} and \cref{5.14}(b) we see that this is true.
+  By \cref{5.19} and \cref{5.14}(b) we see that this is true.
 \end{proof}
 
 \begin{note}
-	In fact, it can be shown that if \(A\) is a regular transition matrix, then the multiplicity of \(1\) as an eigenvalue of \(A\) is \(1\).
-	Thus, by \cref{5.7}, condition (b) of \cref{5.13} is satisfied.
-	So if \(A\) is a regular transition matrix, \(\lim_{m \to \infty} A^m\) exists regardless of whether \(A\) is or is not diagonalizable.
-	As with \cref{5.13}, however, the fact that the multiplicity of \(1\) as an eigenvalue of \(A\) is \(1\) cannot be proved at this time.
-	Nevertheless, we state this result here (leaving the proof until \cref{ex:7.2.21}) and deduce further facts about \(\lim_{m \to \infty} A^m\) when \(A\) is a regular transition matrix.
+  In fact, it can be shown that if \(A\) is a regular transition matrix, then the multiplicity of \(1\) as an eigenvalue of \(A\) is \(1\).
+  Thus, by \cref{5.7}, condition (b) of \cref{5.13} is satisfied.
+  So if \(A\) is a regular transition matrix, \(\lim_{m \to \infty} A^m\) exists regardless of whether \(A\) is or is not diagonalizable.
+  As with \cref{5.13}, however, the fact that the multiplicity of \(1\) as an eigenvalue of \(A\) is \(1\) cannot be proved at this time.
+  Nevertheless, we state this result here (leaving the proof until \cref{ex:7.2.21}) and deduce further facts about \(\lim_{m \to \infty} A^m\) when \(A\) is a regular transition matrix.
 \end{note}
 
 \begin{thm}\label{5.20}
-	Let \(A \in \ms[n][n][\C]\) be a regular transition matrix.
-	Then
-	\begin{enumerate}
-		\item The multiplicity of \(1\) as an eigenvalue of \(A\) is \(1\).
-		\item \(\lim_{m \to \infty} A^m\) exists.
-		\item \(L = \lim_{m \to \infty} A^m\) is a transition matrix.
-		\item \(AL = LA = L\).
-		\item The columns of \(L\) are identical.
-		      In fact, each column of \(L\) is equal to the unique probability vector \(v\) that is also an eigenvector of \(A\) corresponding to the eigenvalue \(1\).
-		\item For any probability vector \(w\), \(\lim_{m \to \infty} (A^m w) = v\).
-	\end{enumerate}
+  Let \(A \in \ms[n][n][\C]\) be a regular transition matrix.
+  Then
+  \begin{enumerate}
+    \item The multiplicity of \(1\) as an eigenvalue of \(A\) is \(1\).
+    \item \(\lim_{m \to \infty} A^m\) exists.
+    \item \(L = \lim_{m \to \infty} A^m\) is a transition matrix.
+    \item \(AL = LA = L\).
+    \item The columns of \(L\) are identical.
+          In fact, each column of \(L\) is equal to the unique probability vector \(v\) that is also an eigenvector of \(A\) corresponding to the eigenvalue \(1\).
+    \item For any probability vector \(w\), \(\lim_{m \to \infty} (A^m w) = v\).
+  \end{enumerate}
 \end{thm}
 
 \begin{proof}[\pf{5.20}(a)]
-	See \cref{ex:7.2.21}.
+  See \cref{ex:7.2.21}.
 \end{proof}
 
 \begin{proof}[\pf{5.20}(b)]
-	This follows from \cref{5.20}(a), \cref{5.19,5.13}.
+  This follows from \cref{5.20}(a), \cref{5.19,5.13}.
 \end{proof}
 
 \begin{proof}[\pf{5.20}(c)]
-	By \cref{5.15}(a), we must show that \(\tp{u} L = \tp{u}\).
-	Now \(A^m\) is a transition matrix by \cref{5.3.5}(a), so
-	\[
-		\tp{u} L = \tp{u} \lim_{m \to \infty} A^m = \lim_{m \to \infty} \tp{u} A^m = \lim_{m \to \infty} \tp{u} = \tp{u},
-	\]
-	and it follows that \(L\) is a transition matrix.
+  By \cref{5.15}(a), we must show that \(\tp{u} L = \tp{u}\).
+  Now \(A^m\) is a transition matrix by \cref{5.3.5}(a), so
+  \[
+    \tp{u} L = \tp{u} \lim_{m \to \infty} A^m = \lim_{m \to \infty} \tp{u} A^m = \lim_{m \to \infty} \tp{u} = \tp{u},
+  \]
+  and it follows that \(L\) is a transition matrix.
 \end{proof}
 
 \begin{proof}[\pf{5.20}(d)]
-	By \cref{5.12},
-	\[
-		AL = A \lim_{m \to \infty} A^m = \lim_{m \to \infty} AA^m = \lim_{m \to \infty} A^{m + 1} = L.
-	\]
-	Similarly, \(LA = L\).
+  By \cref{5.12},
+  \[
+    AL = A \lim_{m \to \infty} A^m = \lim_{m \to \infty} AA^m = \lim_{m \to \infty} A^{m + 1} = L.
+  \]
+  Similarly, \(LA = L\).
 \end{proof}
 
 \begin{proof}[\pf{5.20}(e)]
-	Since \(AL = L\) by \cref{5.20}(d), each column of \(L\) is an eigenvector of \(A\) corresponding to the eigenvalue \(1\).
-	Moreover, by \cref{5.20}(c), each column of \(L\) is a probability vector.
-	Thus, by \cref{5.20}(a), each column of \(L\) is equal to the unique probability vector \(v\) corresponding to the eigenvalue \(1\) of \(A\).
+  Since \(AL = L\) by \cref{5.20}(d), each column of \(L\) is an eigenvector of \(A\) corresponding to the eigenvalue \(1\).
+  Moreover, by \cref{5.20}(c), each column of \(L\) is a probability vector.
+  Thus, by \cref{5.20}(a), each column of \(L\) is equal to the unique probability vector \(v\) corresponding to the eigenvalue \(1\) of \(A\).
 \end{proof}
 
 \begin{proof}[\pf{5.20}(f)]
-	Let \(w\) be any probability vector, and set \(y = \lim_{m \to \infty} A^m w = Lw\).
-	Then \(y\) is a probability vector by \cref{5.3.5}(b), and also \(Ay = ALw = Lw = y\) by \cref{5.20}(d).
-	Hence \(y\) is also an eigenvector corresponding to the eigenvalue \(1\) of \(A\).
-	So \(y = v\) by \cref{5.20}(e).
+  Let \(w\) be any probability vector, and set \(y = \lim_{m \to \infty} A^m w = Lw\).
+  Then \(y\) is a probability vector by \cref{5.3.5}(b), and also \(Ay = ALw = Lw = y\) by \cref{5.20}(d).
+  Hence \(y\) is also an eigenvector corresponding to the eigenvalue \(1\) of \(A\).
+  So \(y = v\) by \cref{5.20}(e).
 \end{proof}
 
 \begin{defn}\label{5.3.16}
-	The vector \(v\) in \cref{5.20}(e) is called the \textbf{fixed probability vector} or \textbf{stationary vector} of the regular transition matrix \(A\).
+  The vector \(v\) in \cref{5.20}(e) is called the \textbf{fixed probability vector} or \textbf{stationary vector} of the regular transition matrix \(A\).
 \end{defn}
 
 \begin{note}
-	\cref{5.20} can be used to deduce information about the eventual distribution in each state of a Markov chain having a regular transition matrix.
+  \cref{5.20} can be used to deduce information about the eventual distribution in each state of a Markov chain having a regular transition matrix.
 \end{note}
 
 \begin{defn}\label{5.3.17}
-	There is another interesting class of transition matrices that can be represented in the form
-	\[
-		\begin{pmatrix}
-			I   & B \\
-			\zm & C
-		\end{pmatrix},
-	\]
-	where \(I\) is an identity matrix and \(\zm\) is a zero matrix.
-	(Such transition matrices are not regular since the lower left block remains \(\zm\) in any power of the matrix.)
-	The states corresponding to the identity submatrix are called \textbf{absorbing states} because such a state is never left once it is entered.
-	A Markov chain is called an \textbf{absorbing Markov chain} if it is possible to go from an arbitrary state into an absorbing state in a finite number of stages.
+  There is another interesting class of transition matrices that can be represented in the form
+  \[
+    \begin{pmatrix}
+      I   & B \\
+      \zm & C
+    \end{pmatrix},
+  \]
+  where \(I\) is an identity matrix and \(\zm\) is a zero matrix.
+  (Such transition matrices are not regular since the lower left block remains \(\zm\) in any power of the matrix.)
+  The states corresponding to the identity submatrix are called \textbf{absorbing states} because such a state is never left once it is entered.
+  A Markov chain is called an \textbf{absorbing Markov chain} if it is possible to go from an arbitrary state into an absorbing state in a finite number of stages.
 \end{defn}
 
 \exercisesection
 
 \setcounter{ex}{2}
 \begin{ex}\label{ex:5.3.3}
-	Prove that if \(\seq{A}{1,2,}\) is a sequence of \(n \times p\) matrices with complex entries such that \(\lim_{m \to \infty} A_m = L\), then \(\lim_{m \to \infty} \tp{(A_m)} = \tp{L}\).
+  Prove that if \(\seq{A}{1,2,}\) is a sequence of \(n \times p\) matrices with complex entries such that \(\lim_{m \to \infty} A_m = L\), then \(\lim_{m \to \infty} \tp{(A_m)} = \tp{L}\).
 \end{ex}
 
 \begin{proof}[\pf{ex:5.3.3}]
-	We have
-	\begin{align*}
-		     & \lim_{m \to \infty} A_m = L                                                                                                                   \\
-		\iff & \forall i \in \set{1, \dots, n} \text{ and } j \in \set{1, \dots, p}, \lim_{m \to \infty} (A_m)_{i j} = L_{i j}               &  & \by{5.3.1} \\
-		\iff & \forall i \in \set{1, \dots, n} \text{ and } j \in \set{1, \dots, p}, \lim_{m \to \infty} (\tp{(A_m)})_{j i} = (\tp{L})_{j i} &  & \by{1.3.3} \\
-		\iff & \lim_{m \to \infty} \tp{(A_m)} = \tp{L}.                                                                                      &  & \by{5.3.1}
-	\end{align*}
+  We have
+  \begin{align*}
+         & \lim_{m \to \infty} A_m = L                                                                                                                   \\
+    \iff & \forall i \in \set{1, \dots, n} \text{ and } j \in \set{1, \dots, p}, \lim_{m \to \infty} (A_m)_{i j} = L_{i j}               &  & \by{5.3.1} \\
+    \iff & \forall i \in \set{1, \dots, n} \text{ and } j \in \set{1, \dots, p}, \lim_{m \to \infty} (\tp{(A_m)})_{j i} = (\tp{L})_{j i} &  & \by{1.3.3} \\
+    \iff & \lim_{m \to \infty} \tp{(A_m)} = \tp{L}.                                                                                      &  & \by{5.3.1}
+  \end{align*}
 \end{proof}
 
 \begin{ex}\label{ex:5.3.4}
-	Prove that if \(A \in \ms[n][n][\C]\) is diagonalizable and \(L = \lim_{m \to \infty} A^m\) exists, then either \(L = I_n\) or \(\rk{L} < n\).
+  Prove that if \(A \in \ms[n][n][\C]\) is diagonalizable and \(L = \lim_{m \to \infty} A^m\) exists, then either \(L = I_n\) or \(\rk{L} < n\).
 \end{ex}
 
 \begin{proof}[\pf{ex:5.3.4}]
-	Since \(A\) is diagonalizable, there exists some \(Q \in \ms[n][n][\C]\) such that \(D = Q^{-1} A Q\) is a diagonal matrix.
-	Then we have
-	\begin{align*}
-		L & = \lim_{m \to \infty} A^m                                                                     \\
-		  & = \lim_{m \to \infty} (Q D Q^{-1})^m                                                          \\
-		  & = Q \pa{\lim_{m \to \infty} D^m} Q^{-1}                                       &  & \by{5.3.2} \\
-		  & = Q \begin{pmatrix}
-			        \lim_{m \to \infty} (D_{1 1})^m & \cdots & 0                               \\
-			        \vdots                          & \ddots & \vdots                          \\
-			        0                               & \cdots & \lim_{m \to \infty} (D_{n n})^m
-		        \end{pmatrix} Q^{-1}. &  & \by{5.3.1}                \\
-	\end{align*}
-	Since \(D_{i i} \in \C\) for all \(i \in \set{1, \dots, n}\), by \cref{5.3.3} we see that \(\lim_{m \to \infty} D^m\) exists iff \(\abs{D_{i i}} < 1\) or \(D_{i i} = 1\).
-	Now we split into two cases:
-	\begin{itemize}
-		\item If \(D_{i i} = 1\) for all \(i \in \set{1, \dots, n}\), then we have
-		      \begin{align*}
-			               & D = I_n                                                                 \\
-			      \implies & \lim_{m \to \infty} D^m = \lim_{m \to \infty} I_n = I_n &  & \by{5.3.1} \\
-			      \implies & L = Q I_n Q^{-1} = I_n.
-		      \end{align*}
-		\item If \(\abs{D_{j j}} < 1\) for some \(j \in \set{1, \dots, n}\), then we have
-		      \begin{align*}
-			               & \lim_{m \to \infty} D_{j j}^m = 0                   \\
-			      \implies & \rk{\lim_{m \to \infty} D} < n    &  & \by{3.5}     \\
-			      \implies & \rk{L} < n.                       &  & \by{3.7}[cd]
-		      \end{align*}
-	\end{itemize}
-	From all cases above we conclude that \cref{ex:5.3.4} is true.
+  Since \(A\) is diagonalizable, there exists some \(Q \in \ms[n][n][\C]\) such that \(D = Q^{-1} A Q\) is a diagonal matrix.
+  Then we have
+  \begin{align*}
+    L & = \lim_{m \to \infty} A^m                                                                     \\
+      & = \lim_{m \to \infty} (Q D Q^{-1})^m                                                          \\
+      & = Q \pa{\lim_{m \to \infty} D^m} Q^{-1}                                       &  & \by{5.3.2} \\
+      & = Q \begin{pmatrix}
+              \lim_{m \to \infty} (D_{1 1})^m & \cdots & 0                               \\
+              \vdots                          & \ddots & \vdots                          \\
+              0                               & \cdots & \lim_{m \to \infty} (D_{n n})^m
+            \end{pmatrix} Q^{-1}. &  & \by{5.3.1}                \\
+  \end{align*}
+  Since \(D_{i i} \in \C\) for all \(i \in \set{1, \dots, n}\), by \cref{5.3.3} we see that \(\lim_{m \to \infty} D^m\) exists iff \(\abs{D_{i i}} < 1\) or \(D_{i i} = 1\).
+  Now we split into two cases:
+  \begin{itemize}
+    \item If \(D_{i i} = 1\) for all \(i \in \set{1, \dots, n}\), then we have
+          \begin{align*}
+                     & D = I_n                                                                 \\
+            \implies & \lim_{m \to \infty} D^m = \lim_{m \to \infty} I_n = I_n &  & \by{5.3.1} \\
+            \implies & L = Q I_n Q^{-1} = I_n.
+          \end{align*}
+    \item If \(\abs{D_{j j}} < 1\) for some \(j \in \set{1, \dots, n}\), then we have
+          \begin{align*}
+                     & \lim_{m \to \infty} D_{j j}^m = 0                    \\
+            \implies & \rk{\lim_{m \to \infty} D} < n    &  & \by{3.5}      \\
+            \implies & \rk{L} < n.                       &  & \by{3.7}[c,d]
+          \end{align*}
+  \end{itemize}
+  From all cases above we conclude that \cref{ex:5.3.4} is true.
 \end{proof}
 
 \begin{ex}\label{ex:5.3.5}
-	Find \(A, B \in \ms[2][2][\R]\) such that
-	\begin{align*}
-		 & \lim_{m \to \infty} A^m \in \ms[2][2][\R]    \\
-		 & \lim_{m \to \infty} B^m \in \ms[2][2][\R]    \\
-		 & \lim_{m \to \infty} (AB)^m \in \ms[2][2][\R]
-	\end{align*}
-	but
-	\[
-		\lim_{m \to \infty} (AB)^m \neq (\lim_{m \to \infty} A^m) (\lim_{m \to \infty} B^m).
-	\]
+  Find \(A, B \in \ms[2][2][\R]\) such that
+  \begin{align*}
+     & \lim_{m \to \infty} A^m \in \ms[2][2][\R]    \\
+     & \lim_{m \to \infty} B^m \in \ms[2][2][\R]    \\
+     & \lim_{m \to \infty} (AB)^m \in \ms[2][2][\R]
+  \end{align*}
+  but
+  \[
+    \lim_{m \to \infty} (AB)^m \neq (\lim_{m \to \infty} A^m) (\lim_{m \to \infty} B^m).
+  \]
 \end{ex}
 
 \begin{proof}[\pf{ex:5.3.5}]
-	Let
-	\[
-		A = \begin{pmatrix}
-			\frac{1}{2} & \frac{1}{2} \\
-			0           & 0
-		\end{pmatrix} \quad \text{and} \quad B = \begin{pmatrix}
-			1 & 0 \\
-			1 & 0
-		\end{pmatrix}.
-	\]
-	Then we have
-	\begin{align*}
-		\lim_{m \to \infty} A^m    & = \lim_{m \to \infty} \begin{pmatrix}
-			                                                   \frac{1}{2^m} & \frac{1}{2^m} \\
-			                                                   0             & 0
-		                                                   \end{pmatrix} = \begin{pmatrix}
-			                                                                   0 & 0 \\
-			                                                                   0 & 0
-		                                                                   \end{pmatrix} \\
-		\lim_{m \to \infty} B^m    & = \lim_{m \to \infty} \begin{pmatrix}
-			                                                   1 & 0 \\
-			                                                   1 & 0
-		                                                   \end{pmatrix} = \begin{pmatrix}
-			                                                                   1 & 0 \\
-			                                                                   1 & 0
-		                                                                   \end{pmatrix} \\
-		\lim_{m \to \infty} (AB)^m & = \lim_{m \to \infty} \begin{pmatrix}
-			                                                   1 & 0 \\
-			                                                   0 & 0
-		                                                   \end{pmatrix} = \begin{pmatrix}
-			                                                                   1 & 0 \\
-			                                                                   0 & 0
-		                                                                   \end{pmatrix}
-	\end{align*}
-	and thus
-	\[
-		(\lim_{m \to \infty} A^m) (\lim_{m \to \infty} B^m) = \begin{pmatrix}
-			0 & 0 \\
-			0 & 0
-		\end{pmatrix} \neq \begin{pmatrix}
-			1 & 0 \\
-			0 & 0
-		\end{pmatrix} = \lim_{m \to \infty} (AB)^m.
-	\]
+  Let
+  \[
+    A = \begin{pmatrix}
+      \frac{1}{2} & \frac{1}{2} \\
+      0           & 0
+    \end{pmatrix} \quad \text{and} \quad B = \begin{pmatrix}
+      1 & 0 \\
+      1 & 0
+    \end{pmatrix}.
+  \]
+  Then we have
+  \begin{align*}
+    \lim_{m \to \infty} A^m    & = \lim_{m \to \infty} \begin{pmatrix}
+                                                         \frac{1}{2^m} & \frac{1}{2^m} \\
+                                                         0             & 0
+                                                       \end{pmatrix} = \begin{pmatrix}
+                                                                         0 & 0 \\
+                                                                         0 & 0
+                                                                       \end{pmatrix} \\
+    \lim_{m \to \infty} B^m    & = \lim_{m \to \infty} \begin{pmatrix}
+                                                         1 & 0 \\
+                                                         1 & 0
+                                                       \end{pmatrix} = \begin{pmatrix}
+                                                                         1 & 0 \\
+                                                                         1 & 0
+                                                                       \end{pmatrix} \\
+    \lim_{m \to \infty} (AB)^m & = \lim_{m \to \infty} \begin{pmatrix}
+                                                         1 & 0 \\
+                                                         0 & 0
+                                                       \end{pmatrix} = \begin{pmatrix}
+                                                                         1 & 0 \\
+                                                                         0 & 0
+                                                                       \end{pmatrix}
+  \end{align*}
+  and thus
+  \[
+    (\lim_{m \to \infty} A^m) (\lim_{m \to \infty} B^m) = \begin{pmatrix}
+      0 & 0 \\
+      0 & 0
+    \end{pmatrix} \neq \begin{pmatrix}
+      1 & 0 \\
+      0 & 0
+    \end{pmatrix} = \lim_{m \to \infty} (AB)^m.
+  \]
 \end{proof}
 
 \setcounter{ex}{14}
 \begin{ex}\label{ex:5.3.15}
-	Prove that if a \(1\)-dimensional subspace \(\W\) of \(\R^n\) over \(\R\) contains a nonzero vector with all nonnegative entries, then \(\W\) contains a unique probability vector.
+  Prove that if a \(1\)-dimensional subspace \(\W\) of \(\R^n\) over \(\R\) contains a nonzero vector with all nonnegative entries, then \(\W\) contains a unique probability vector.
 \end{ex}
 
 \begin{proof}[\pf{ex:5.3.15}]
-	Let \(v \in \R^n\) such that \(v \neq \zv\) and all entries in \(v\) are nonzero.
-	If we denote the \(i\)th entry of \(v\) as \(v_i\), then we have \(k = \sum_{i = 1}^n v_i > 0\).
-	By \cref{5.3.4} we see that \(\frac{1}{k} v\) is a probability vector.
-	Since \(\W\) is \(1\)-dimensional, we see that \(\set{v}\) is a basis for \(\W\) over \(\R\) and by \cref{1.8} we see that \(\frac{1}{k} v\) is the unique probability vector.
+  Let \(v \in \R^n\) such that \(v \neq \zv\) and all entries in \(v\) are nonzero.
+  If we denote the \(i\)th entry of \(v\) as \(v_i\), then we have \(k = \sum_{i = 1}^n v_i > 0\).
+  By \cref{5.3.4} we see that \(\frac{1}{k} v\) is a probability vector.
+  Since \(\W\) is \(1\)-dimensional, we see that \(\set{v}\) is a basis for \(\W\) over \(\R\) and by \cref{1.8} we see that \(\frac{1}{k} v\) is the unique probability vector.
 \end{proof}
 
 \setcounter{ex}{18}
 \begin{ex}\label{ex:5.3.19}
-	Suppose that \(M, M' \in \ms[n][n][\R]\) are transition matrices.
-	\begin{enumerate}
-		\item Prove that if \(M\) is regular, \(N\) is any \(n \times n\) transition matrix, and \(c\) is a real number such that \(0 < c \leq 1\), then \(cM + (1 - c)N\) is a regular transition matrix.
-		\item Suppose that for all \(i, j \in \set{1, \dots, n}\), we have that \(M_{i j}' > 0\) whenever \(M_{i j} > 0\).
-		      Prove that there exists a transition matrix \(N\) and a real number \(c\) with \(0 < c \leq 1\) such that \(M' = cM + (1 - c)N\).
-		\item Deduce that if the nonzero entries of \(M\) and \(M'\) occur in the same positions, then \(M\) is regular iff \(M'\) is regular.
-	\end{enumerate}
+  Suppose that \(M, M' \in \ms[n][n][\R]\) are transition matrices.
+  \begin{enumerate}
+    \item Prove that if \(M\) is regular, \(N\) is any \(n \times n\) transition matrix, and \(c\) is a real number such that \(0 < c \leq 1\), then \(cM + (1 - c)N\) is a regular transition matrix.
+    \item Suppose that for all \(i, j \in \set{1, \dots, n}\), we have that \(M_{i j}' > 0\) whenever \(M_{i j} > 0\).
+          Prove that there exists a transition matrix \(N\) and a real number \(c\) with \(0 < c \leq 1\) such that \(M' = cM + (1 - c)N\).
+    \item Deduce that if the nonzero entries of \(M\) and \(M'\) occur in the same positions, then \(M\) is regular iff \(M'\) is regular.
+  \end{enumerate}
 \end{ex}
 
 \begin{proof}[\pf{ex:5.3.19}(a)]
-	First we show that \(cM + (1 - c)N\) is a transition matrix.
-	Let \(u \in \R^n\) such that all entries in \(u\) are \(1\).
-	Since
-	\begin{align*}
-		\tp{(cM + (1 - c)N)} u & = (c \tp{M} + (1 - c) \tp{N}) u &  & \by{ex:1.3.3} \\
-		                       & = c \tp{M} u + (1 - c) \tp{N} u &  & \by{2.3.5}    \\
-		                       & = c u + (1 - c) u               &  & \by{5.15}[a]  \\
-		                       & = u
-	\end{align*}
-	and each entries in \(cM + (1 - c)N\) are nonnegative, by \cref{5.15}(a) we see that \(cM + (1 - c)N\) is a transition matrix.
+  First we show that \(cM + (1 - c)N\) is a transition matrix.
+  Let \(u \in \R^n\) such that all entries in \(u\) are \(1\).
+  Since
+  \begin{align*}
+    \tp{(cM + (1 - c)N)} u & = (c \tp{M} + (1 - c) \tp{N}) u &  & \by{ex:1.3.3} \\
+                           & = c \tp{M} u + (1 - c) \tp{N} u &  & \by{2.3.5}    \\
+                           & = c u + (1 - c) u               &  & \by{5.15}[a]  \\
+                           & = u
+  \end{align*}
+  and each entries in \(cM + (1 - c)N\) are nonnegative, by \cref{5.15}(a) we see that \(cM + (1 - c)N\) is a transition matrix.
 
-	Now we show that \(cM + (1 - c)N\) is regular.
-	Since \(M\) is regular, by \cref{5.3.7} there exists a \(m \in \Z^+\) such that \((M^m)_{i j} > 0\) for all \(i, j \in \set{1, \dots, n}\).
-	Then we have
-	\[
-		(cM + (1 - c)N)^m = (cM)^m + P
-	\]
-	where \(P \in \ms[n][n][\R]\) and \(P\) has nonnegative entries.
-	Since
-	\begin{align*}
-		         & \begin{dcases}
-			           c > 0 \\
-			           \forall i, j \in \set{1, \dots, n}, (M^m)_{i j} > 0
-		           \end{dcases}          \\
-		\implies & \forall i, j \in \set{1, \dots, n}, c^m (M^m)_{i j} > 0     \\
-		\implies & \forall i, j \in \set{1, \dots, n}, ((cM)^m)_{i j} > 0      \\
-		\implies & \forall i, j \in \set{1, \dots, n}, ((cM)^m + P)_{i j} > 0,
-	\end{align*}
-	by \cref{5.3.7} we see that \(cM + (1 - c)N\) is regular.
+  Now we show that \(cM + (1 - c)N\) is regular.
+  Since \(M\) is regular, by \cref{5.3.7} there exists a \(m \in \Z^+\) such that \((M^m)_{i j} > 0\) for all \(i, j \in \set{1, \dots, n}\).
+  Then we have
+  \[
+    (cM + (1 - c)N)^m = (cM)^m + P
+  \]
+  where \(P \in \ms[n][n][\R]\) and \(P\) has nonnegative entries.
+  Since
+  \begin{align*}
+             & \begin{dcases}
+                 c > 0 \\
+                 \forall i, j \in \set{1, \dots, n}, (M^m)_{i j} > 0
+               \end{dcases}          \\
+    \implies & \forall i, j \in \set{1, \dots, n}, c^m (M^m)_{i j} > 0     \\
+    \implies & \forall i, j \in \set{1, \dots, n}, ((cM)^m)_{i j} > 0      \\
+    \implies & \forall i, j \in \set{1, \dots, n}, ((cM)^m + P)_{i j} > 0,
+  \end{align*}
+  by \cref{5.3.7} we see that \(cM + (1 - c)N\) is regular.
 \end{proof}
 
 \begin{proof}[\pf{ex:5.3.19}(b)]
-	Let \(k \in \R^+\) such that \(k M_{i j}' > M_{i j}\) for all \(i, j \in \set{1, \dots, n}\).
-	Such \(k\) must exist since \(M_{i j} > 0 \implies M_{i j}' > 0\).
-	In particular, we pick \(k\) such that \(k > 1\).
-	Then we have
-	\begin{align*}
-		         & \forall i, j \in \set{1, \dots, n}, k M_{i j}' > M_{i j}                                                                   \\
-		\implies & \forall i, j \in \set{1, \dots, n}, M_{i j}' > \frac{1}{k} M_{i j}                                                         \\
-		\implies & \forall i, j \in \set{1, \dots, n}, M_{i j}' - \frac{1}{k} M_{i j} > 0                                                     \\
-		\implies & \forall i, j \in \set{1, \dots, n}, \frac{1}{1 - \frac{1}{k}} (M_{i j}' - \frac{1}{k} M_{i j}) > 0. &  & (\frac{1}{k} < 1)
-	\end{align*}
-	Now let \(c = \frac{1}{k}\) and let \(N = \frac{1}{1 - c} (M' - cM)\).
-	Clearly \(c \in (0, 1]\).
-	So we only need to show that \(N\) is a transition matrix.
-	Let \(u \in \R^n\) such that all entries of \(u\) are \(1\).
-	Then we have
-	\begin{align*}
-		\tp{N} u & = \tp{\pa{\frac{1}{1 - c} (M' - cM)}} u                                        \\
-		         & = \pa{\frac{1}{1 - c} \tp{(M')} - \frac{c}{1 - c} \tp{M}} u &  & \by{ex:1.3.3} \\
-		         & = \frac{1}{1 - c} \tp{(M')} u - \frac{c}{1 - c} \tp{M} u    &  & \by{2.3.5}    \\
-		         & = \frac{1}{1 - c} u - \frac{c}{1 - c} u                     &  & \by{5.15}[a]  \\
-		         & = u
-	\end{align*}
-	and thus by \cref{5.15}(a) \(N\) is a transition matrix.
+  Let \(k \in \R^+\) such that \(k M_{i j}' > M_{i j}\) for all \(i, j \in \set{1, \dots, n}\).
+  Such \(k\) must exist since \(M_{i j} > 0 \implies M_{i j}' > 0\).
+  In particular, we pick \(k\) such that \(k > 1\).
+  Then we have
+  \begin{align*}
+             & \forall i, j \in \set{1, \dots, n}, k M_{i j}' > M_{i j}                                                                   \\
+    \implies & \forall i, j \in \set{1, \dots, n}, M_{i j}' > \frac{1}{k} M_{i j}                                                         \\
+    \implies & \forall i, j \in \set{1, \dots, n}, M_{i j}' - \frac{1}{k} M_{i j} > 0                                                     \\
+    \implies & \forall i, j \in \set{1, \dots, n}, \frac{1}{1 - \frac{1}{k}} (M_{i j}' - \frac{1}{k} M_{i j}) > 0. &  & (\frac{1}{k} < 1)
+  \end{align*}
+  Now let \(c = \frac{1}{k}\) and let \(N = \frac{1}{1 - c} (M' - cM)\).
+  Clearly \(c \in (0, 1]\).
+  So we only need to show that \(N\) is a transition matrix.
+  Let \(u \in \R^n\) such that all entries of \(u\) are \(1\).
+  Then we have
+  \begin{align*}
+    \tp{N} u & = \tp{\pa{\frac{1}{1 - c} (M' - cM)}} u                                        \\
+             & = \pa{\frac{1}{1 - c} \tp{(M')} - \frac{c}{1 - c} \tp{M}} u &  & \by{ex:1.3.3} \\
+             & = \frac{1}{1 - c} \tp{(M')} u - \frac{c}{1 - c} \tp{M} u    &  & \by{2.3.5}    \\
+             & = \frac{1}{1 - c} u - \frac{c}{1 - c} u                     &  & \by{5.15}[a]  \\
+             & = u
+  \end{align*}
+  and thus by \cref{5.15}(a) \(N\) is a transition matrix.
 \end{proof}
 
 \begin{proof}[\pf{ex:5.3.19}(c)]
-	This is the immediate consequence of \cref{ex:5.3.19}(a)(b).
+  This is the immediate consequence of \cref{ex:5.3.19}(a)(b).
 \end{proof}
 
 \begin{defn}\label{5.3.18}
-	For \(A \in \ms[n][n][\C]\), define \(e^A = \lim_{m \to \infty} B_m\), where
-	\[
-		B_m = I_n + A + \frac{A^2}{2!} + \cdots + \frac{A^m}{m!}.
-	\]
-	Thus \(e^A\) is the sum of the infinite series
-	\[
-		I_n + A + \frac{A^2}{2!} + \frac{A^3}{3!} + \cdots,
-	\]
-	and \(B_m\) is the \(m\)th partial sum of this series.
-	Note the analogy with the power series
-	\[
-		e^a = 1 + a + \frac{a^2}{2!} + \frac{a^3}{3!} + \cdots,
-	\]
-	which is valid for all complex numbers \(a\).
+  For \(A \in \ms[n][n][\C]\), define \(e^A = \lim_{m \to \infty} B_m\), where
+  \[
+    B_m = I_n + A + \frac{A^2}{2!} + \cdots + \frac{A^m}{m!}.
+  \]
+  Thus \(e^A\) is the sum of the infinite series
+  \[
+    I_n + A + \frac{A^2}{2!} + \frac{A^3}{3!} + \cdots,
+  \]
+  and \(B_m\) is the \(m\)th partial sum of this series.
+  Note the analogy with the power series
+  \[
+    e^a = 1 + a + \frac{a^2}{2!} + \frac{a^3}{3!} + \cdots,
+  \]
+  which is valid for all complex numbers \(a\).
 \end{defn}
 
 \begin{ex}\label{ex:5.3.20}
-	Compute \(e^{\zm}\) and \(e^{I_n}\), where \(\zm\) and \(I_n\) are zero and identity matrices in \(\ms[n][n][\C]\), respectively.
+  Compute \(e^{\zm}\) and \(e^{I_n}\), where \(\zm\) and \(I_n\) are zero and identity matrices in \(\ms[n][n][\C]\), respectively.
 \end{ex}
 
 \begin{proof}[\pf{ex:5.3.20}]
-	Since \(\zm^m = \zm\) and \((I_n)^m = I_n\) for all \(m \in \Z^+\), we have
-	\begin{align*}
-		e^{\zm} & = \sum_{m = 0}^\infty \frac{\zm^m}{m!}       &  & \by{5.3.18} \\
-		        & = I_n + \sum_{m = 1}^\infty \frac{\zm^m}{m!} &  & \by{2.3.6}  \\
-		        & = I_n + \sum_{m = 1}^\infty \zm                               \\
-		        & = I_n + \zm                                                   \\
-		        & = I_n
-	\end{align*}
-	and
-	\begin{align*}
-		e^{I_n} & = \sum_{m = 0}^\infty \frac{(I_n)^m}{m!}                                                                      &  & \by{5.3.18} \\
-		        & = \sum_{m = 0}^\infty \frac{I_n}{m!}                                                                                           \\
-		        & = \lim_{M \to \infty} \sum_{m = 0}^M \begin{pmatrix}
-			                                               \frac{1}{m!} & \cdots & 0            \\
-			                                               \vdots       & \ddots & \vdots       \\
-			                                               0            & \cdots & \frac{1}{m!}
-		                                               \end{pmatrix}                                                      \\
-		        & = \lim_{M \to \infty} \begin{pmatrix}
-			                                \sum_{m = 0}^M  \frac{1}{m!} & \cdots & 0                           \\
-			                                \vdots                       & \ddots & \vdots                      \\
-			                                0                            & \cdots & \sum_{m = 0}^M \frac{1}{m!}
-		                                \end{pmatrix}                                        &  & \by{1.2.9}                                     \\
-		        & = \begin{pmatrix}
-			            \lim_{M \to \infty} \sum_{m = 0}^M  \frac{1}{m!} & \cdots & 0                                              \\
-			            \vdots                                           & \ddots & \vdots                                         \\
-			            0                                                & \cdots & \lim_{M \to \infty}\sum_{m = 0}^M \frac{1}{m!}
-		            \end{pmatrix} &  & \by{5.3.1}                   \\
-		        & = \begin{pmatrix}
-			            \sum_{m = 0}^\infty \frac{1}{m!} & \cdots & 0                                \\
-			            \vdots                           & \ddots & \vdots                           \\
-			            0                                & \cdots & \sum_{m = 0}^\infty \frac{1}{m!}
-		            \end{pmatrix}                               &  & \by{1.2.9}                                                 \\
-		        & = \begin{pmatrix}
-			            e      & \cdots & 0      \\
-			            \vdots & \ddots & \vdots \\
-			            0      & \cdots & e
-		            \end{pmatrix}                                                                                                     \\
-		        & = e I_n.                                                                                                      &  & \by{1.2.9}
-	\end{align*}
+  Since \(\zm^m = \zm\) and \((I_n)^m = I_n\) for all \(m \in \Z^+\), we have
+  \begin{align*}
+    e^{\zm} & = \sum_{m = 0}^\infty \frac{\zm^m}{m!}       &  & \by{5.3.18} \\
+            & = I_n + \sum_{m = 1}^\infty \frac{\zm^m}{m!} &  & \by{2.3.6}  \\
+            & = I_n + \sum_{m = 1}^\infty \zm                               \\
+            & = I_n + \zm                                                   \\
+            & = I_n
+  \end{align*}
+  and
+  \begin{align*}
+    e^{I_n} & = \sum_{m = 0}^\infty \frac{(I_n)^m}{m!}                                                                      &  & \by{5.3.18} \\
+            & = \sum_{m = 0}^\infty \frac{I_n}{m!}                                                                                           \\
+            & = \lim_{M \to \infty} \sum_{m = 0}^M \begin{pmatrix}
+                                                     \frac{1}{m!} & \cdots & 0            \\
+                                                     \vdots       & \ddots & \vdots       \\
+                                                     0            & \cdots & \frac{1}{m!}
+                                                   \end{pmatrix}                                                      \\
+            & = \lim_{M \to \infty} \begin{pmatrix}
+                                      \sum_{m = 0}^M  \frac{1}{m!} & \cdots & 0                           \\
+                                      \vdots                       & \ddots & \vdots                      \\
+                                      0                            & \cdots & \sum_{m = 0}^M \frac{1}{m!}
+                                    \end{pmatrix}                                        &  & \by{1.2.9}                                     \\
+            & = \begin{pmatrix}
+                  \lim_{M \to \infty} \sum_{m = 0}^M  \frac{1}{m!} & \cdots & 0                                              \\
+                  \vdots                                           & \ddots & \vdots                                         \\
+                  0                                                & \cdots & \lim_{M \to \infty}\sum_{m = 0}^M \frac{1}{m!}
+                \end{pmatrix} &  & \by{5.3.1}                   \\
+            & = \begin{pmatrix}
+                  \sum_{m = 0}^\infty \frac{1}{m!} & \cdots & 0                                \\
+                  \vdots                           & \ddots & \vdots                           \\
+                  0                                & \cdots & \sum_{m = 0}^\infty \frac{1}{m!}
+                \end{pmatrix}                               &  & \by{1.2.9}                                                 \\
+            & = \begin{pmatrix}
+                  e      & \cdots & 0      \\
+                  \vdots & \ddots & \vdots \\
+                  0      & \cdots & e
+                \end{pmatrix}                                                                                                     \\
+            & = e I_n.                                                                                                      &  & \by{1.2.9}
+  \end{align*}
 \end{proof}
 
 \begin{ex}\label{ex:5.3.21}
-	Let \(P^{-1} A P = D\) be a diagonal matrix.
-	Prove that \(e^A = P e^D P^{-1}\).
+  Let \(P^{-1} A P = D\) be a diagonal matrix.
+  Prove that \(e^A = P e^D P^{-1}\).
 \end{ex}
 
 \begin{proof}[\pf{ex:5.3.21}]
-	Let \(A \in \ms[n][n][\C]\).
-	Since
-	\begin{align*}
-		e^D & = \sum_{m = 0}^\infty \frac{D^m}{m!}                                                                                                                     &  & \by{5.3.18} \\
-		    & = \lim_{M \to \infty} \sum_{m = 0}^M \frac{D^m}{m!}                                                                                                                       \\
-		    & = \lim_{M \to \infty} \begin{pmatrix}
-			                            \sum_{m = 0}^M \frac{(D_{1 1})^m}{m!} & \cdots & 0                                     \\
-			                            \vdots                                & \ddots & \vdots                                \\
-			                            0                                     & \cdots & \sum_{m = 0}^M \frac{(D_{n n})^m}{m!}
-		                            \end{pmatrix}                                         &  & \by{2.3.5}                                       \\
-		    & = \begin{pmatrix}
-			        \lim_{M \to \infty} \sum_{m = 0}^M \frac{(D_{1 1})^m}{m!} & \cdots & 0                                                         \\
-			        \vdots                                                    & \ddots & \vdots                                                    \\
-			        0                                                         & \cdots & \lim_{M \to \infty} \sum_{m = 0}^M \frac{(D_{n n})^m}{m!}
-		        \end{pmatrix} &  & \by{5.3.1}                   \\
-		    & = \begin{pmatrix}
-			        e^{D_{1 1}} & \cdots & 0           \\
-			        \vdots      & \ddots & \vdots      \\
-			        0           & \cdots & e^{D_{n n}}
-		        \end{pmatrix},
-	\end{align*}
-	we have
-	\begin{align*}
-		e^A & = \sum_{m = 0}^\infty \frac{A^m}{m!}                                   &  & \by{5.3.18} \\
-		    & = \sum_{m = 0}^\infty \frac{P D^m P^{-1}}{m!}                                           \\
-		    & = \lim_{M \to \infty} \sum_{m = 0}^M \frac{P D^m P^{-1}}{m!}                            \\
-		    & = \lim_{M \to \infty} P \pa{\sum_{m = 0}^M \frac{D^m}{m!}} P^{-1}      &  & \by{2.3.5}  \\
-		    & = P \pa{\lim_{M \to \infty} \pa{\sum_{m = 0}^M \frac{D^m}{m!}}} P^{-1} &  & \by{5.3.2}  \\
-		    & = P \pa{\sum_{m = 0}^\infty \frac{D^m}{m!}} P^{-1}                                      \\
-		    & = P e^D P^{-1}.                                                        &  & \by{5.3.18}
-	\end{align*}
+  Let \(A \in \ms[n][n][\C]\).
+  Since
+  \begin{align*}
+    e^D & = \sum_{m = 0}^\infty \frac{D^m}{m!}                                                                                                                     &  & \by{5.3.18} \\
+        & = \lim_{M \to \infty} \sum_{m = 0}^M \frac{D^m}{m!}                                                                                                                       \\
+        & = \lim_{M \to \infty} \begin{pmatrix}
+                                  \sum_{m = 0}^M \frac{(D_{1 1})^m}{m!} & \cdots & 0                                     \\
+                                  \vdots                                & \ddots & \vdots                                \\
+                                  0                                     & \cdots & \sum_{m = 0}^M \frac{(D_{n n})^m}{m!}
+                                \end{pmatrix}                                         &  & \by{2.3.5}                                       \\
+        & = \begin{pmatrix}
+              \lim_{M \to \infty} \sum_{m = 0}^M \frac{(D_{1 1})^m}{m!} & \cdots & 0                                                         \\
+              \vdots                                                    & \ddots & \vdots                                                    \\
+              0                                                         & \cdots & \lim_{M \to \infty} \sum_{m = 0}^M \frac{(D_{n n})^m}{m!}
+            \end{pmatrix} &  & \by{5.3.1}                   \\
+        & = \begin{pmatrix}
+              e^{D_{1 1}} & \cdots & 0           \\
+              \vdots      & \ddots & \vdots      \\
+              0           & \cdots & e^{D_{n n}}
+            \end{pmatrix},
+  \end{align*}
+  we have
+  \begin{align*}
+    e^A & = \sum_{m = 0}^\infty \frac{A^m}{m!}                                   &  & \by{5.3.18} \\
+        & = \sum_{m = 0}^\infty \frac{P D^m P^{-1}}{m!}                                           \\
+        & = \lim_{M \to \infty} \sum_{m = 0}^M \frac{P D^m P^{-1}}{m!}                            \\
+        & = \lim_{M \to \infty} P \pa{\sum_{m = 0}^M \frac{D^m}{m!}} P^{-1}      &  & \by{2.3.5}  \\
+        & = P \pa{\lim_{M \to \infty} \pa{\sum_{m = 0}^M \frac{D^m}{m!}}} P^{-1} &  & \by{5.3.2}  \\
+        & = P \pa{\sum_{m = 0}^\infty \frac{D^m}{m!}} P^{-1}                                      \\
+        & = P e^D P^{-1}.                                                        &  & \by{5.3.18}
+  \end{align*}
 \end{proof}
 
 \begin{ex}\label{ex:5.3.22}
-	Let \(A \in \ms[n][n][\C]\) be diagonalizable.
-	Use the result of \cref{ex:5.3.21} to show that \(e^A\) exists.
-	(\cref{ex:7.2.21} shows that \(e^A\) exists for every \(A \in \ms[n][n][\C]\).)
+  Let \(A \in \ms[n][n][\C]\) be diagonalizable.
+  Use the result of \cref{ex:5.3.21} to show that \(e^A\) exists.
+  (\cref{ex:7.2.21} shows that \(e^A\) exists for every \(A \in \ms[n][n][\C]\).)
 \end{ex}
 
 \begin{proof}[\pf{ex:5.3.22}]
-	Since \(A\) is diagonalizable, by \cref{5.1.1} there exists some \(Q \in \ms[n][n][\C]\) such that \(D = Q^{-1} A Q\) is a diagonal matrix.
-	Then by \cref{ex:5.3.21} we have \(e^A = Q e^D Q^{-1}\).
+  Since \(A\) is diagonalizable, by \cref{5.1.1} there exists some \(Q \in \ms[n][n][\C]\) such that \(D = Q^{-1} A Q\) is a diagonal matrix.
+  Then by \cref{ex:5.3.21} we have \(e^A = Q e^D Q^{-1}\).
 \end{proof}
 
 \begin{ex}\label{ex:5.3.23}
-	Find \(A, B \in \ms[2][2][\R]\) such that \(e^A e^B \neq e^{A + B}\).
+  Find \(A, B \in \ms[2][2][\R]\) such that \(e^A e^B \neq e^{A + B}\).
 \end{ex}
 
 \begin{proof}[\pf{ex:5.3.23}]
-	Let
-	\[
-		A = \begin{pmatrix}
-			1 & 0 \\
-			0 & 0
-		\end{pmatrix} \quad \text{and} \quad B = \begin{pmatrix}
-			0 & 0 \\
-			0 & 1
-		\end{pmatrix}.
-	\]
-	Observe that \(A^m = A\) and \(B^m = B\) for all \(m \in \Z^+\).
-	Then we have
-	\begin{align*}
-		e^A       & = \sum_{m = 0}^\infty \frac{A^m}{m!} = \sum_{m = 0}^\infty \frac{A}{m!} = \begin{pmatrix}
-			                                                                                      e & 0 \\
-			                                                                                      0 & 0
-		                                                                                      \end{pmatrix} &  & \by{5.3.18}                           \\
-		e^B       & = \sum_{m = 0}^\infty \frac{B^m}{m!} = \sum_{m = 0}^\infty \frac{B}{m!} = \begin{pmatrix}
-			                                                                                      0 & 0 \\
-			                                                                                      0 & e
-		                                                                                      \end{pmatrix} &  & \by{5.3.18}                           \\
-		e^{A + B} & = e^{I_2} = \begin{pmatrix}
-			                        e & 0 \\
-			                        0 & e
-		                        \end{pmatrix} \neq \begin{pmatrix}
-			                                           0 & 0 \\
-			                                           0 & 0
-		                                           \end{pmatrix} = e^A e^B.                                                        &  & \by{ex:5.3.20}
-	\end{align*}
+  Let
+  \[
+    A = \begin{pmatrix}
+      1 & 0 \\
+      0 & 0
+    \end{pmatrix} \quad \text{and} \quad B = \begin{pmatrix}
+      0 & 0 \\
+      0 & 1
+    \end{pmatrix}.
+  \]
+  Observe that \(A^m = A\) and \(B^m = B\) for all \(m \in \Z^+\).
+  Then we have
+  \begin{align*}
+    e^A       & = \sum_{m = 0}^\infty \frac{A^m}{m!} = \sum_{m = 0}^\infty \frac{A}{m!} = \begin{pmatrix}
+                                                                                            e & 0 \\
+                                                                                            0 & 0
+                                                                                          \end{pmatrix} &  & \by{5.3.18}                           \\
+    e^B       & = \sum_{m = 0}^\infty \frac{B^m}{m!} = \sum_{m = 0}^\infty \frac{B}{m!} = \begin{pmatrix}
+                                                                                            0 & 0 \\
+                                                                                            0 & e
+                                                                                          \end{pmatrix} &  & \by{5.3.18}                           \\
+    e^{A + B} & = e^{I_2} = \begin{pmatrix}
+                              e & 0 \\
+                              0 & e
+                            \end{pmatrix} \neq \begin{pmatrix}
+                                                 0 & 0 \\
+                                                 0 & 0
+                                               \end{pmatrix} = e^A e^B.                                                        &  & \by{ex:5.3.20}
+  \end{align*}
 \end{proof}
 
 \begin{ex}\label{ex:5.3.24}
-	Prove that a differentiable function \(x : \R \to \R^n\) is a solution to the system of differential equations defined in \cref{ex:5.2.15} iff \(x(t) = e^{tA} v\) for some \(v \in \R^n\), where \(A\) is defined in that exercise.
+  Prove that a differentiable function \(x : \R \to \R^n\) is a solution to the system of differential equations defined in \cref{ex:5.2.15} iff \(x(t) = e^{tA} v\) for some \(v \in \R^n\), where \(A\) is defined in that exercise.
 \end{ex}
 
 \begin{proof}[\pf{ex:5.3.24}]
-	Let \(\seq{\lambda}{1,,k} \in \R\) be distinct eigenvalues of \(A\) and let \(\seq{m}{1,,k}\) be multiplicities of \(\seq{\lambda}{1,,k}\).
-	Since \(A\) is diagonalizable, by \cref{5.1.1} there exists some \(Q \in \ms[n][n][\R]\) such that \(D = Q^{-1} A Q\).
-	We can ordered \(Q\) and \(D\) in the way that the \((1 + \sum_{i = 1}^{j - 1} m_i)\)-th column to the \((\sum_{i = 1}^j m_i)\)-th column of \(Q\) and \(D\) are eigenvectors of \(\lambda_j\) and eigenvalue \(\lambda_j\), respectively.
-	By \cref{ex:5.2.15} we know that \(x\) is a solution to \(Ax = x'\) iff
-	\[
-		x(t) = e^{\lambda_1 t} z_1 + \cdots + e^{\lambda_k t} z_k
-	\]
-	where \(z_j \in E_{\lambda_j}\) for all \(j \in \set{1, \dots, k}\).
-	Then we can rewrite the above equation as follow:
-	\begin{align*}
-		x(t) & = e^{\lambda_1 t} z_1 + \cdots + e^{\lambda_k t} z_k                                               \\
-		     & = e^{\lambda_1 t} (\seq[+]{c,q}{1,,m_1}) + \cdots + e^{\lambda_k t} (\seq[+]{c,q}{n - m_k + 1,,n}) \\
-		     & = \begin{pmatrix}
-			         c_1 q_1 & \cdots & c_n q_n
-		         \end{pmatrix} \begin{pmatrix}
-			                       e^{\lambda_1 t} & \cdots & 0             \\
-			                       \vdots          & \ddots & \vdots        \\
-			                       0               & \cdots & e^{\lambda_k}
-		                       \end{pmatrix} \begin{pmatrix}
-			                                     1      \\
-			                                     \vdots \\
-			                                     1
-		                                     \end{pmatrix}                                           \\
-		     & = Q \begin{pmatrix}
-			           c_1    & \cdots & 0      \\
-			           \vdots & \ddots & \vdots \\
-			           0      & \cdots & c_n
-		           \end{pmatrix} \begin{pmatrix}
-			                         e^{\lambda_1 t} & \cdots & 0             \\
-			                         \vdots          & \ddots & \vdots        \\
-			                         0               & \cdots & e^{\lambda_k}
-		                         \end{pmatrix} \begin{pmatrix}
-			                                       1      \\
-			                                       \vdots \\
-			                                       1
-		                                       \end{pmatrix}                                         \\
-		     & = Q \begin{pmatrix}
-			           e^{\lambda_1 t} & \cdots & 0             \\
-			           \vdots          & \ddots & \vdots        \\
-			           0               & \cdots & e^{\lambda_k}
-		           \end{pmatrix} \begin{pmatrix}
-			                         c_1    & \cdots & 0      \\
-			                         \vdots & \ddots & \vdots \\
-			                         0      & \cdots & c_n
-		                         \end{pmatrix} \begin{pmatrix}
-			                                       1      \\
-			                                       \vdots \\
-			                                       1
-		                                       \end{pmatrix}
-	\end{align*}
-	where \(\seq{c}{1,,n} \in \R\) and \(q_i\) is the \(i\)th column of \(Q\).
-	By \cref{5.3.18} we see that
-	\[
-		e^{tD} = \begin{pmatrix}
-			e^{\lambda_1 t} & \cdots & 0             \\
-			\vdots          & \ddots & \vdots        \\
-			0               & \cdots & e^{\lambda_k}
-		\end{pmatrix}.
-	\]
-	Thus we have
-	\begin{align*}
-		x(t) & = Q e^{tD} \begin{pmatrix}
-			                  c_1    & \cdots & 0      \\
-			                  \vdots & \ddots & \vdots \\
-			                  0      & \cdots & c_n
-		                  \end{pmatrix} \begin{pmatrix}
-			                                1      \\
-			                                \vdots \\
-			                                1
-		                                \end{pmatrix}                               \\
-		     & = Q e^{tD} Q^{-1} Q \begin{pmatrix}
-			                           c_1    & \cdots & 0      \\
-			                           \vdots & \ddots & \vdots \\
-			                           0      & \cdots & c_n
-		                           \end{pmatrix} \begin{pmatrix}
-			                                         1      \\
-			                                         \vdots \\
-			                                         1
-		                                         \end{pmatrix}                      \\
-		     & = e^{Q (tD) Q^{-1}} Q \begin{pmatrix}
-			                             c_1    & \cdots & 0      \\
-			                             \vdots & \ddots & \vdots \\
-			                             0      & \cdots & c_n
-		                             \end{pmatrix} \begin{pmatrix}
-			                                           1      \\
-			                                           \vdots \\
-			                                           1
-		                                           \end{pmatrix} &  & \by{ex:5.3.21} \\
-		     & = e^{t Q D Q^{-1}} Q \begin{pmatrix}
-			                            c_1    & \cdots & 0      \\
-			                            \vdots & \ddots & \vdots \\
-			                            0      & \cdots & c_n
-		                            \end{pmatrix} \begin{pmatrix}
-			                                          1      \\
-			                                          \vdots \\
-			                                          1
-		                                          \end{pmatrix}  &  & \by{2.3.5}     \\
-		     & = e^{tA} Q \begin{pmatrix}
-			                  c_1    & \cdots & 0      \\
-			                  \vdots & \ddots & \vdots \\
-			                  0      & \cdots & c_n
-		                  \end{pmatrix} \begin{pmatrix}
-			                                1      \\
-			                                \vdots \\
-			                                1
-		                                \end{pmatrix}         &  & (Q^{-1} A Q = D)  \\
-		     & = e^{tA} (\seq[+]{c,q}{1,,n}).
-	\end{align*}
-	Since \(\seq{q}{1,,n}\) is a basis for \(\R^n\) over \(\R\), we can simply rewrite as
-	\[
-		x(t) = e^{tA} v
-	\]
-	for all \(v \in \R^n\).
+  Let \(\seq{\lambda}{1,,k} \in \R\) be distinct eigenvalues of \(A\) and let \(\seq{m}{1,,k}\) be multiplicities of \(\seq{\lambda}{1,,k}\).
+  Since \(A\) is diagonalizable, by \cref{5.1.1} there exists some \(Q \in \ms[n][n][\R]\) such that \(D = Q^{-1} A Q\).
+  We can ordered \(Q\) and \(D\) in the way that the \((1 + \sum_{i = 1}^{j - 1} m_i)\)-th column to the \((\sum_{i = 1}^j m_i)\)-th column of \(Q\) and \(D\) are eigenvectors of \(\lambda_j\) and eigenvalue \(\lambda_j\), respectively.
+  By \cref{ex:5.2.15} we know that \(x\) is a solution to \(Ax = x'\) iff
+  \[
+    x(t) = e^{\lambda_1 t} z_1 + \cdots + e^{\lambda_k t} z_k
+  \]
+  where \(z_j \in E_{\lambda_j}\) for all \(j \in \set{1, \dots, k}\).
+  Then we can rewrite the above equation as follow:
+  \begin{align*}
+    x(t) & = e^{\lambda_1 t} z_1 + \cdots + e^{\lambda_k t} z_k                                               \\
+         & = e^{\lambda_1 t} (\seq[+]{c,q}{1,,m_1}) + \cdots + e^{\lambda_k t} (\seq[+]{c,q}{n - m_k + 1,,n}) \\
+         & = \begin{pmatrix}
+               c_1 q_1 & \cdots & c_n q_n
+             \end{pmatrix} \begin{pmatrix}
+                             e^{\lambda_1 t} & \cdots & 0             \\
+                             \vdots          & \ddots & \vdots        \\
+                             0               & \cdots & e^{\lambda_k}
+                           \end{pmatrix} \begin{pmatrix}
+                                           1      \\
+                                           \vdots \\
+                                           1
+                                         \end{pmatrix}                                           \\
+         & = Q \begin{pmatrix}
+                 c_1    & \cdots & 0      \\
+                 \vdots & \ddots & \vdots \\
+                 0      & \cdots & c_n
+               \end{pmatrix} \begin{pmatrix}
+                               e^{\lambda_1 t} & \cdots & 0             \\
+                               \vdots          & \ddots & \vdots        \\
+                               0               & \cdots & e^{\lambda_k}
+                             \end{pmatrix} \begin{pmatrix}
+                                             1      \\
+                                             \vdots \\
+                                             1
+                                           \end{pmatrix}                                         \\
+         & = Q \begin{pmatrix}
+                 e^{\lambda_1 t} & \cdots & 0             \\
+                 \vdots          & \ddots & \vdots        \\
+                 0               & \cdots & e^{\lambda_k}
+               \end{pmatrix} \begin{pmatrix}
+                               c_1    & \cdots & 0      \\
+                               \vdots & \ddots & \vdots \\
+                               0      & \cdots & c_n
+                             \end{pmatrix} \begin{pmatrix}
+                                             1      \\
+                                             \vdots \\
+                                             1
+                                           \end{pmatrix}
+  \end{align*}
+  where \(\seq{c}{1,,n} \in \R\) and \(q_i\) is the \(i\)th column of \(Q\).
+  By \cref{5.3.18} we see that
+  \[
+    e^{tD} = \begin{pmatrix}
+      e^{\lambda_1 t} & \cdots & 0             \\
+      \vdots          & \ddots & \vdots        \\
+      0               & \cdots & e^{\lambda_k}
+    \end{pmatrix}.
+  \]
+  Thus we have
+  \begin{align*}
+    x(t) & = Q e^{tD} \begin{pmatrix}
+                        c_1    & \cdots & 0      \\
+                        \vdots & \ddots & \vdots \\
+                        0      & \cdots & c_n
+                      \end{pmatrix} \begin{pmatrix}
+                                      1      \\
+                                      \vdots \\
+                                      1
+                                    \end{pmatrix}                               \\
+         & = Q e^{tD} Q^{-1} Q \begin{pmatrix}
+                                 c_1    & \cdots & 0      \\
+                                 \vdots & \ddots & \vdots \\
+                                 0      & \cdots & c_n
+                               \end{pmatrix} \begin{pmatrix}
+                                               1      \\
+                                               \vdots \\
+                                               1
+                                             \end{pmatrix}                      \\
+         & = e^{Q (tD) Q^{-1}} Q \begin{pmatrix}
+                                   c_1    & \cdots & 0      \\
+                                   \vdots & \ddots & \vdots \\
+                                   0      & \cdots & c_n
+                                 \end{pmatrix} \begin{pmatrix}
+                                                 1      \\
+                                                 \vdots \\
+                                                 1
+                                               \end{pmatrix} &  & \by{ex:5.3.21} \\
+         & = e^{t Q D Q^{-1}} Q \begin{pmatrix}
+                                  c_1    & \cdots & 0      \\
+                                  \vdots & \ddots & \vdots \\
+                                  0      & \cdots & c_n
+                                \end{pmatrix} \begin{pmatrix}
+                                                1      \\
+                                                \vdots \\
+                                                1
+                                              \end{pmatrix}  &  & \by{2.3.5}     \\
+         & = e^{tA} Q \begin{pmatrix}
+                        c_1    & \cdots & 0      \\
+                        \vdots & \ddots & \vdots \\
+                        0      & \cdots & c_n
+                      \end{pmatrix} \begin{pmatrix}
+                                      1      \\
+                                      \vdots \\
+                                      1
+                                    \end{pmatrix}         &  & (Q^{-1} A Q = D)  \\
+         & = e^{tA} (\seq[+]{c,q}{1,,n}).
+  \end{align*}
+  Since \(\seq{q}{1,,n}\) is a basis for \(\R^n\) over \(\R\), we can simply rewrite as
+  \[
+    x(t) = e^{tA} v
+  \]
+  for all \(v \in \R^n\).
 \end{proof}

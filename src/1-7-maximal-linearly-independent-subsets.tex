@@ -162,12 +162,12 @@
 	(i.e., that \(U\) is a linearly independent subset of \(\V\) that contains \(S\)).
 	Because each member of \(\mathcal{C}\) is a subset of \(\V\) containing \(S\), we have \(S \subseteq U \subseteq \V\).
 	Thus we only need to prove that \(U\) is linearly independent.
-	Let \(\seq{u}{1,2,,n}\) be in \(U\) and \(\seq{a}{1,2,,n}\) be scalars in \(\F\) such that \(\seq[+]{a,u}{1,2,,n} = 0\).
+	Let \(\seq{u}{1,,n}\) be in \(U\) and \(\seq{a}{1,,n}\) be scalars in \(\F\) such that \(\seq[+]{a,u}{1,,n} = 0\).
 	Because \(u_i \in U\) for \(i = 1, 2, \dots, n\), there exists a set \(A_i\) in \(\mathcal{C}\) such that \(u_i \in A_i\).
 	But since \(\mathcal{C}\) is a chain, one of these sets, say \(A_k\), contains all the others.
 	Thus \(u_i \in A_k\) for \(i = 1, 2, \dots, n\).
 	However, \(A_k\) is a linearly independent set;
-	so \(\seq[+]{a,u}{1,2,,n} = 0\) implies that \(\seq[=]{a}{1,2,,n} = 0\).
+	so \(\seq[+]{a,u}{1,,n} = 0\) implies that \(\seq[=]{a}{1,,n} = 0\).
 	It follows that \(U\) is linearly independent.
 
 	The maximal principle implies that \(\mathcal{F}\) has a maximal element.
@@ -253,7 +253,7 @@
 \begin{ex}\label{ex:1.7.5}
 	Prove the following infinite-dimensional version of \cref{1.8}:
 	Let \(\beta\) be a subset of an infinite-dimensional vector space \(\V\) over \(\F\).
-	Then \(\beta\) is a basis for \(\V\) over \(\F\) iff for each nonzero vector \(v\) in \(\V\), there exist unique vectors \(\seq{u}{1,2,,n}\) in \(\beta\) and unique nonzero scalars \(\seq{c}{1,2,,n} \in \F\) such that \(v = \seq[+]{c,u}{1,2,,n}\).
+	Then \(\beta\) is a basis for \(\V\) over \(\F\) iff for each nonzero vector \(v\) in \(\V\), there exist unique vectors \(\seq{u}{1,,n}\) in \(\beta\) and unique nonzero scalars \(\seq{c}{1,,n} \in \F\) such that \(v = \seq[+]{c,u}{1,,n}\).
 \end{ex}
 
 \begin{proof}[\pf{ex:1.7.5}]
@@ -262,56 +262,56 @@
 	Then by \cref{1.6.1} we know that
 	\[
 		\begin{dcases}
-			\exists \seq{u}{1,2,,n} \in \V \\
-			\exists \seq{a}{1,2,,n} \in \F
+			\exists \seq{u}{1,,n} \in \V \\
+			\exists \seq{a}{1,,n} \in \F
 		\end{dcases} : \begin{dcases}
-			v = \seq[+]{a,u}{1,2,,n} \\
-			\lnot (\seq[=]{a}{1,2,,n} = 0)
+			v = \seq[+]{a,u}{1,,n} \\
+			\lnot (\seq[=]{a}{1,,n} = 0)
 		\end{dcases}.
 	\]
 	Suppose for sake of contradiction that
 	\[
 		\begin{dcases}
-			\exists \seq{u}{1,2,,m} \in \V \\
-			\exists \seq{b}{1,2,,m} \in \F \\
+			\exists \seq{u}{1,,m} \in \V \\
+			\exists \seq{b}{1,,m} \in \F \\
 			\exists i \in \set{1, \dots, n}
 		\end{dcases} : \begin{dcases}
-			v = \seq[+]{b,u}{1,2,,m}       \\
-			\lnot (\seq[=]{b}{1,2,,m} = 0) \\
+			v = \seq[+]{b,u}{1,,m}       \\
+			\lnot (\seq[=]{b}{1,,m} = 0) \\
 			a_i \neq b_i
 		\end{dcases}.
 	\]
 	If \(n \geq m\), then we have
 	\begin{align*}
 		         & \begin{dcases}
-			           v = \seq[+]{a,u}{1,2,,n} \\
-			           v = \seq[+]{b,u}{1,2,,m}
-		           \end{dcases}                                                     \\
-		\implies & \seq[+]{a,u}{1,2,,n} - \seq[-]{b,u}{1,2,,m} = \zv            &  & \by{1.2.1} \\
+			           v = \seq[+]{a,u}{1,,n} \\
+			           v = \seq[+]{b,u}{1,,m}
+		           \end{dcases}                                                       \\
+		\implies & \seq[+]{a,u}{1,,n} - \seq[-]{b,u}{1,,m} = \zv                &  & \by{1.2.1} \\
 		\implies & (a_1 - b_1) u_1 + (a_2 - b_2) u_2 + \cdots + (a_m - b_m) u_m                 \\
 		         & + \seq[+]{a,u}{m + 1,,n} = \zv                               &  & \by{1.2.1} \\
 		\implies & a_1 - b_1 = a_2 - b_2 = \cdots = a_m - b_m                                   \\
 		         & = \seq[=]{a}{m + 1,,n} = 0                                   &  & \by{1.5.3} \\
 		\implies & \begin{dcases}
-			           v = \seq[+]{a,u}{1,2,,m} \\
-			           v = \seq[+]{b,u}{1,2,,m}
+			           v = \seq[+]{a,u}{1,,m} \\
+			           v = \seq[+]{b,u}{1,,m}
 		           \end{dcases}
 	\end{align*}
 	Similar arguments show that when \(n \leq m\) we have
 	\[
 		\begin{dcases}
-			v = \seq[+]{a,u}{1,2,,n} \\
-			v = \seq[+]{b,u}{1,2,,n}
+			v = \seq[+]{a,u}{1,,n} \\
+			v = \seq[+]{b,u}{1,,n}
 		\end{dcases}.
 	\]
 	Thus we can safely assume that \(n = m\).
 	But then we have
 	\begin{align*}
 		         & \begin{dcases}
-			           v = \seq[+]{a,u}{1,2,,n} \\
-			           v = \seq[+]{b,u}{1,2,,n}
-		           \end{dcases}                                                           \\
-		\implies & \seq[+]{a,u}{1,2,,n} - \seq[-]{b,u}{1,2,,n} = \zv                  &  & \by{1.2.1} \\
+			           v = \seq[+]{a,u}{1,,n} \\
+			           v = \seq[+]{b,u}{1,,n}
+		           \end{dcases}                                                             \\
+		\implies & \seq[+]{a,u}{1,,n} - \seq[-]{b,u}{1,,n} = \zv                      &  & \by{1.2.1} \\
 		\implies & (a_1 - b_1) u_1 + (a_2 - b_2) u_2 + \cdots + (a_n - b_n) u_n = \zv &  & \by{1.2.1} \\
 		\implies & a_1 - b_1 = a_2 - b_2 = \cdots = a_n - b_n = 0                     &  & \by{1.5.3} \\
 		\implies & \forall j \in \set{1, \dots, n}, a_j = b_j,
@@ -326,9 +326,9 @@
 	By \cref{1.5.1} this means
 	\[
 		\begin{dcases}
-			\exists \seq{u}{1,2,,n} \in \beta \setminus \set{\zv} \\
-			\exists \seq{a}{1,2,,n} \in \F \setminus \set{0}
-		\end{dcases} : \seq[+]{a,u}{1,2,,n} = \zv.
+			\exists \seq{u}{1,,n} \in \beta \setminus \set{\zv} \\
+			\exists \seq{a}{1,,n} \in \F \setminus \set{0}
+		\end{dcases} : \seq[+]{a,u}{1,,n} = \zv.
 	\]
 	Then we have
 	\begin{align*}
@@ -360,12 +360,12 @@
 	(i.e., that \(U\) is a linearly independent subset of \(S_2\) that contains \(S_1\)).
 	Because each member of \(\mathcal{C}\) is a subset of \(S_2\) containing \(S_1\), we have \(S_1 \subseteq U \subseteq S_2\).
 	Thus we only need to prove that \(U\) is linearly independent.
-	Let \(\seq{u}{1,2,,n}\) be in \(U\) and \(\seq{a}{1,2,,n}\) be scalars in \(\F\) such that \(\seq[+]{a,u}{1,2,,n} = 0\).
+	Let \(\seq{u}{1,,n}\) be in \(U\) and \(\seq{a}{1,,n}\) be scalars in \(\F\) such that \(\seq[+]{a,u}{1,,n} = 0\).
 	Because \(u_i \in U\) for \(i = 1, 2, \dots, n\), there exists a set \(A_i\) in \(\mathcal{C}\) such that \(u_i \in A_i\).
 	But since \(\mathcal{C}\) is a chain, one of these sets, say \(A_k\), contains all the others.
 	Thus \(u_i \in A_k\) for \(i = 1, 2, \dots, n\).
 	However, \(A_k\) is a linearly independent set;
-	so \(\seq[+]{a,u}{1,2,,n} = 0\) implies that \(\seq[=]{a}{1,2,,n} = 0\).
+	so \(\seq[+]{a,u}{1,,n} = 0\) implies that \(\seq[=]{a}{1,,n} = 0\).
 	It follows that \(U\) is linearly independent.
 
 	The maximal principle implies that \(\mathcal{F}\) has a maximal element \(\beta\).

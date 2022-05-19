@@ -1,1433 +1,1433 @@
 \section{Normal and Self-Adjoint Operators}\label{sec:6.4}
 
 \begin{lem}\label{6.4.1}
-	Let \(\T\) be a linear operator on a finite-dimensional inner product space \(\V\) over \(\F\).
-	If \(\T\) has an eigenvector, then so does \(\T^*\).
+  Let \(\T\) be a linear operator on a finite-dimensional inner product space \(\V\) over \(\F\).
+  If \(\T\) has an eigenvector, then so does \(\T^*\).
 \end{lem}
 
 \begin{proof}[\pf{6.4.1}]
-	Suppose that \(v\) is an eigenvector of \(\T\) with corresponding eigenvalue \(\lambda\).
-	Then for any \(x \in \V\),
-	\begin{align*}
-		0 & = \inn{\zv, x}                                 &  & \by{6.1}[c]    \\
-		  & = \inn{(\T - \lambda \IT[\V])(v), x}           &  & \by{5.2.4}     \\
-		  & = \inn{v, (\T - \lambda \IT[\V])^*(x)}         &  & \by{6.9}       \\
-		  & = \inn{v, (\T^* - \conj{\lambda} \IT[\V])(x)}, &  & \by{6.11}[abe]
-	\end{align*}
-	and hence \(v\) is orthogonal to the range of \(\T^* - \conj{\lambda} \IT[\V]\).
-	So \(\T^* - \conj{\lambda} \IT[\V]\) is not onto (\(v \notin \rg{\T^* - \conj{\lambda} \IT[\V]}\)) and hence is not one-to-one (by \cref{2.5}).
-	Thus \(\T^* - \conj{\lambda} \IT[\V]\) has a nonzero null space, and any nonzero vector in this null space is an eigenvector of \(\T^*\) with corresponding eigenvalue \(\conj{\lambda}\).
+  Suppose that \(v\) is an eigenvector of \(\T\) with corresponding eigenvalue \(\lambda\).
+  Then for any \(x \in \V\),
+  \begin{align*}
+    0 & = \inn{\zv, x}                                 &  & \by{6.1}[c]      \\
+      & = \inn{(\T - \lambda \IT[\V])(v), x}           &  & \by{5.2.4}       \\
+      & = \inn{v, (\T - \lambda \IT[\V])^*(x)}         &  & \by{6.9}         \\
+      & = \inn{v, (\T^* - \conj{\lambda} \IT[\V])(x)}, &  & \by{6.11}[a,b,e]
+  \end{align*}
+  and hence \(v\) is orthogonal to the range of \(\T^* - \conj{\lambda} \IT[\V]\).
+  So \(\T^* - \conj{\lambda} \IT[\V]\) is not onto (\(v \notin \rg{\T^* - \conj{\lambda} \IT[\V]}\)) and hence is not one-to-one (by \cref{2.5}).
+  Thus \(\T^* - \conj{\lambda} \IT[\V]\) has a nonzero null space, and any nonzero vector in this null space is an eigenvector of \(\T^*\) with corresponding eigenvalue \(\conj{\lambda}\).
 \end{proof}
 
 \begin{thm}[Schur's theorem]\label{6.14}
-	Let \(\T\) be a linear operator on a finite-dimensional inner product space \(\V\) over \(\F\).
-	Suppose that the characteristic polynomial of \(\T\) splits.
-	Then there exists an orthonormal basis \(\beta\) for \(\V\) over \(\F\) such that the matrix \([\T]_{\beta}\) is upper triangular.
+  Let \(\T\) be a linear operator on a finite-dimensional inner product space \(\V\) over \(\F\).
+  Suppose that the characteristic polynomial of \(\T\) splits.
+  Then there exists an orthonormal basis \(\beta\) for \(\V\) over \(\F\) such that the matrix \([\T]_{\beta}\) is upper triangular.
 \end{thm}
 
 \begin{proof}[\pf{6.14}]
-	The proof is by mathematical induction on the dimension \(n\) of \(\V\).
-	The result is immediate if \(n = 1\).
-	So suppose that the result is true for linear operators on \(n\)-dimensional inner product spaces whose characteristic polynomials split.
-	By \cref{6.4.1}, we can assume that \(\T^*\) has a unit eigenvector \(z\).
-	Suppose that \(\T^*(z) = \lambda z\) and that \(\W = \spn{\set{z}}\).
-	We show that \(\W^{\perp}\) is \(\T\)-invariant.
-	If \(y \in \W^{\perp}\) and \(x = cz \in \W\), then
-	\begin{align*}
-		\inn{\T(y), x} & = \inn{\T(y), cz}                                \\
-		               & = \inn{y, \T^*(cz)}           &  & \by{6.9}      \\
-		               & = \inn{y, c \T^*(z)}          &  & \by{2.1.1}[b] \\
-		               & = \inn{y, c \lambda z}        &  & \by{5.1.2}    \\
-		               & = \conj{c \lambda} \inn{y, z} &  & \by{6.1}[b]   \\
-		               & = \conj{c \lambda} (0)        &  & \by{6.2.9}    \\
-		               & = 0.
-	\end{align*}
-	So \(\T(y) \in \W^{\perp}\).
-	It is easy to show (see \cref{5.21}, or as a consequence of \cref{ex:4.4.6}) that the characteristic polynomial of \(\T_{\W^{\perp}}\) divides the characteristic polynomial of \(\T\) and hence splits.
-	By \cref{6.7}(c), \(\dim(\W^{\perp}) = n\), so we may apply the induction hypothesis to \(\T_{\W^{\perp}}\) and obtain an orthonormal basis \(\gamma\) for \(\W^{\perp}\) over \(\F\) such that \([\T_{\W^{\perp}}]_{\gamma}\) is upper triangular.
-	Clearly, \(\beta = \gamma \cup \set{z}\) is an orthonormal basis for \(\V\) over \(\F\) (by \cref{1.6.15,6.2.4}) such that \([\T]_{\beta}\) is upper triangular.
+  The proof is by mathematical induction on the dimension \(n\) of \(\V\).
+  The result is immediate if \(n = 1\).
+  So suppose that the result is true for linear operators on \(n\)-dimensional inner product spaces whose characteristic polynomials split.
+  By \cref{6.4.1}, we can assume that \(\T^*\) has a unit eigenvector \(z\).
+  Suppose that \(\T^*(z) = \lambda z\) and that \(\W = \spn{\set{z}}\).
+  We show that \(\W^{\perp}\) is \(\T\)-invariant.
+  If \(y \in \W^{\perp}\) and \(x = cz \in \W\), then
+  \begin{align*}
+    \inn{\T(y), x} & = \inn{\T(y), cz}                                \\
+                   & = \inn{y, \T^*(cz)}           &  & \by{6.9}      \\
+                   & = \inn{y, c \T^*(z)}          &  & \by{2.1.1}[b] \\
+                   & = \inn{y, c \lambda z}        &  & \by{5.1.2}    \\
+                   & = \conj{c \lambda} \inn{y, z} &  & \by{6.1}[b]   \\
+                   & = \conj{c \lambda} (0)        &  & \by{6.2.9}    \\
+                   & = 0.
+  \end{align*}
+  So \(\T(y) \in \W^{\perp}\).
+  It is easy to show (see \cref{5.21}, or as a consequence of \cref{ex:4.4.6}) that the characteristic polynomial of \(\T_{\W^{\perp}}\) divides the characteristic polynomial of \(\T\) and hence splits.
+  By \cref{6.7}(c), \(\dim(\W^{\perp}) = n\), so we may apply the induction hypothesis to \(\T_{\W^{\perp}}\) and obtain an orthonormal basis \(\gamma\) for \(\W^{\perp}\) over \(\F\) such that \([\T_{\W^{\perp}}]_{\gamma}\) is upper triangular.
+  Clearly, \(\beta = \gamma \cup \set{z}\) is an orthonormal basis for \(\V\) over \(\F\) (by \cref{1.6.15,6.2.4}) such that \([\T]_{\beta}\) is upper triangular.
 \end{proof}
 
 \begin{cor}\label{6.4.2}
-	Let \(\V\) be a finite-dimensional inner product space over \(\F\) and let \(\T \in \ls(\V)\).
-	Suppose that there exists an orthonormal basis of eigenvectors of \(\T\).
-	Then \(\T \T^* = \T^* \T\).
+  Let \(\V\) be a finite-dimensional inner product space over \(\F\) and let \(\T \in \ls(\V)\).
+  Suppose that there exists an orthonormal basis of eigenvectors of \(\T\).
+  Then \(\T \T^* = \T^* \T\).
 \end{cor}
 
 \begin{proof}[\pf{6.4.2}]
-	If such an orthonormal basis \(\beta\) exists, then \([\T]_{\beta}\) is a diagonal matrix, and hence \([\T^*]_{\beta} = [\T]_{\beta}^*\) is also a diagonal matrix.
-	Because diagonal matrices commute, we conclude that \(\T\) and \(\T^*\) commute.
+  If such an orthonormal basis \(\beta\) exists, then \([\T]_{\beta}\) is a diagonal matrix, and hence \([\T^*]_{\beta} = [\T]_{\beta}^*\) is also a diagonal matrix.
+  Because diagonal matrices commute, we conclude that \(\T\) and \(\T^*\) commute.
 \end{proof}
 
 \begin{defn}\label{6.4.3}
-	Let \(\V\) be an inner product space over \(\F\), and let \(\T \in \ls(\V)\).
-	We say that \(\T\) is \textbf{normal} if \(\T \T^* = \T^* \T\).
-	An \(n \times n\) real or complex matrix \(A\) is \textbf{normal} if \(A A^* = A^* A\).
+  Let \(\V\) be an inner product space over \(\F\), and let \(\T \in \ls(\V)\).
+  We say that \(\T\) is \textbf{normal} if \(\T \T^* = \T^* \T\).
+  An \(n \times n\) real or complex matrix \(A\) is \textbf{normal} if \(A A^* = A^* A\).
 \end{defn}
 
 \begin{cor}\label{6.4.4}
-	Let \(\V\) be an inner product space over \(\F\), and let \(\T \in \ls(\V)\).
-	\(\T\) is normal iff \([\T]_{\beta}\) is normal, where \(\beta\) is an orthonormal basis.
+  Let \(\V\) be an inner product space over \(\F\), and let \(\T \in \ls(\V)\).
+  \(\T\) is normal iff \([\T]_{\beta}\) is normal, where \(\beta\) is an orthonormal basis.
 \end{cor}
 
 \begin{proof}[\pf{6.4.4}]
-	We have
-	\begin{align*}
-		     & \T \text{ is normal}                                                      \\
-		\iff & \T \T^* = \T^* \T                                         &  & \by{6.4.3} \\
-		\iff & [\T]_{\beta} [\T]_{\beta}^* = [\T]_{\beta}^* [\T]_{\beta} &  & \by{6.10}  \\
-		\iff & [\T]_{\beta} \text{ is normal}.                           &  & \by{6.4.3}
-	\end{align*}
+  We have
+  \begin{align*}
+         & \T \text{ is normal}                                                      \\
+    \iff & \T \T^* = \T^* \T                                         &  & \by{6.4.3} \\
+    \iff & [\T]_{\beta} [\T]_{\beta}^* = [\T]_{\beta}^* [\T]_{\beta} &  & \by{6.10}  \\
+    \iff & [\T]_{\beta} \text{ is normal}.                           &  & \by{6.4.3}
+  \end{align*}
 \end{proof}
 
 \begin{eg}\label{6.4.5}
-	Let \(\T : \R^2 \to \R^2\) be rotation by \(\theta\), where \(0 < \theta < \pi\).
-	The matrix representation of \(\T\) in the standard ordered basis is given by
-	\[
-		A = \begin{pmatrix}
-			\cos\theta & -\sin\theta \\
-			\sin\theta & \cos\theta
-		\end{pmatrix}.
-	\]
-	Note that \(A A^* = I_2 = A^* A\);
-	so \(A\), and hence \(\T\), is normal.
+  Let \(\T : \R^2 \to \R^2\) be rotation by \(\theta\), where \(0 < \theta < \pi\).
+  The matrix representation of \(\T\) in the standard ordered basis is given by
+  \[
+    A = \begin{pmatrix}
+      \cos\theta & -\sin\theta \\
+      \sin\theta & \cos\theta
+    \end{pmatrix}.
+  \]
+  Note that \(A A^* = I_2 = A^* A\);
+  so \(A\), and hence \(\T\), is normal.
 \end{eg}
 
 \begin{eg}\label{6.4.6}
-	Suppose that \(A\) is a real skew-symmetric matrix;
-	that is, \(\tp{A} = -A\).
-	Then \(A\) is normal because both \(A \tp{A}\) and \(\tp{A} A\) are equal to \(-A^2\).
+  Suppose that \(A\) is a real skew-symmetric matrix;
+  that is, \(\tp{A} = -A\).
+  Then \(A\) is normal because both \(A \tp{A}\) and \(\tp{A} A\) are equal to \(-A^2\).
 \end{eg}
 
 \begin{note}
-	Clearly, the operator \(\T\) in \cref{6.4.5} does not even possess one eigenvector.
-	So in the case of a real inner product space, we see that normality is not sufficient to guarantee an orthonormal basis of eigenvectors.
-	All is not lost, however.
-	We show that normality suffices if \(\V\) is a complex inner product space.
+  Clearly, the operator \(\T\) in \cref{6.4.5} does not even possess one eigenvector.
+  So in the case of a real inner product space, we see that normality is not sufficient to guarantee an orthonormal basis of eigenvectors.
+  All is not lost, however.
+  We show that normality suffices if \(\V\) is a complex inner product space.
 \end{note}
 
 \begin{thm}\label{6.15}
-	Let \(\V\) be an inner product space over \(\F\), and let \(\T\) be a normal operator on \(\V\).
-	Then the following statements are true.
-	\begin{enumerate}
-		\item \(\norm{\T(x)} = \norm{\T^*(x)}\) for all \(x \in \V\).
-		\item \(\T - c \IT[\V]\) is normal for every \(c \in \F\).
-		\item If \(x\) is an eigenvector of \(\T\), then \(x\) is also an eigenvector of \(\T^*\).
-		      In fact, if \(\T(x) = \lambda x\), then \(\T^*(x) = \conj{\lambda} x\).
-		\item If \(\lambda_1\) and \(\lambda_2\) are distinct eigenvalues of \(\T\) with corresponding eigenvectors \(x_1\) and \(x_2\), then \(x_1\) and \(x_2\) are orthogonal.
-	\end{enumerate}
+  Let \(\V\) be an inner product space over \(\F\), and let \(\T\) be a normal operator on \(\V\).
+  Then the following statements are true.
+  \begin{enumerate}
+    \item \(\norm{\T(x)} = \norm{\T^*(x)}\) for all \(x \in \V\).
+    \item \(\T - c \IT[\V]\) is normal for every \(c \in \F\).
+    \item If \(x\) is an eigenvector of \(\T\), then \(x\) is also an eigenvector of \(\T^*\).
+          In fact, if \(\T(x) = \lambda x\), then \(\T^*(x) = \conj{\lambda} x\).
+    \item If \(\lambda_1\) and \(\lambda_2\) are distinct eigenvalues of \(\T\) with corresponding eigenvectors \(x_1\) and \(x_2\), then \(x_1\) and \(x_2\) are orthogonal.
+  \end{enumerate}
 \end{thm}
 
 \begin{proof}[\pf{6.15}(a)]
-	For any \(x \in \V\), we have
-	\begin{align*}
-		\norm{\T(x)}^2 & = \inn{\T(x), \T(x)}     &  & \by{6.1.9} \\
-		               & = \inn{\T^* \T(x), x}    &  & \by{6.9}   \\
-		               & = \inn{\T \T^*(x), x}    &  & \by{6.4.3} \\
-		               & = \inn{\T^*(x), \T^*(x)} &  & \by{6.9}   \\
-		               & = \norm{\T^*(x)}^2.      &  & \by{6.1.9}
-	\end{align*}
+  For any \(x \in \V\), we have
+  \begin{align*}
+    \norm{\T(x)}^2 & = \inn{\T(x), \T(x)}     &  & \by{6.1.9} \\
+                   & = \inn{\T^* \T(x), x}    &  & \by{6.9}   \\
+                   & = \inn{\T \T^*(x), x}    &  & \by{6.4.3} \\
+                   & = \inn{\T^*(x), \T^*(x)} &  & \by{6.9}   \\
+                   & = \norm{\T^*(x)}^2.      &  & \by{6.1.9}
+  \end{align*}
 \end{proof}
 
 \begin{proof}[\pf{6.15}(b)]
-	We have
-	\begin{align*}
-		(\T - c \IT[\V]) (\T - c \IT[\V])^* & = (\T - c \IT[\V]) (\T^* - \conj{c} \IT[\V])                                  &  & \by{6.11}[abe] \\
-		                                    & = \T \T^* - \conj{c} \T \IT[\V] - c \IT[\V] \T^* + c \conj{c} \IT[\V] \IT[\V] &  & \by{2.10}      \\
-		                                    & = \T^* \T - \conj{c} \IT[\V] \T - c \T^* \IT[\V] + c \conj{c} \IT[\V] \IT[\V] &  & \by{6.4.3}     \\
-		                                    & = (\T^* - \conj{c} \IT[\V]) (\T - c \IT[\V])                                  &  & \by{2.10}      \\
-		                                    & = (\T - c \IT[\V])^* (\T - c \IT[\V])                                         &  & \by{6.11}[abe]
-	\end{align*}
-	and thus by \cref{6.4.3} \(\T - c \IT[\V]\) is normal for all \(c \in \F\).
+  We have
+  \begin{align*}
+    (\T - c \IT[\V]) (\T - c \IT[\V])^* & = (\T - c \IT[\V]) (\T^* - \conj{c} \IT[\V])                                  &  & \by{6.11}[a,b,e] \\
+                                        & = \T \T^* - \conj{c} \T \IT[\V] - c \IT[\V] \T^* + c \conj{c} \IT[\V] \IT[\V] &  & \by{2.10}        \\
+                                        & = \T^* \T - \conj{c} \IT[\V] \T - c \T^* \IT[\V] + c \conj{c} \IT[\V] \IT[\V] &  & \by{6.4.3}       \\
+                                        & = (\T^* - \conj{c} \IT[\V]) (\T - c \IT[\V])                                  &  & \by{2.10}        \\
+                                        & = (\T - c \IT[\V])^* (\T - c \IT[\V])                                         &  & \by{6.11}[a,b,e]
+  \end{align*}
+  and thus by \cref{6.4.3} \(\T - c \IT[\V]\) is normal for all \(c \in \F\).
 \end{proof}
 
 \begin{proof}[\pf{6.15}(c)]
-	Suppose that \(\T(x) = \lambda x\) for some \(x \in \V\).
-	Let \(\U = \T - \lambda \IT[\V]\).
-	Then \(\U(x) = \zv\), and \(\U\) is normal by (b).
-	Thus (a) implies that
-	\begin{align*}
-		0 & = \norm{\U(x)}                              &  & \by{6.2}[b]    \\
-		  & = \norm{\U^*(x)}                            &  & \by{6.15}[a]   \\
-		  & = \norm{(\T^* - \conj{\lambda} \IT[\V])(x)} &  & \by{6.11}[abe] \\
-		  & = \norm{\T^*(x) - \conj{\lambda} x}.        &  & \by{2.2.5}
-	\end{align*}
-	Hence by \cref{6.2}(b) \(\T^*(x) = \conj{\lambda} x\).
-	So \(x\) is an eigenvector of \(\T^*\).
+  Suppose that \(\T(x) = \lambda x\) for some \(x \in \V\).
+  Let \(\U = \T - \lambda \IT[\V]\).
+  Then \(\U(x) = \zv\), and \(\U\) is normal by (b).
+  Thus (a) implies that
+  \begin{align*}
+    0 & = \norm{\U(x)}                              &  & \by{6.2}[b]      \\
+      & = \norm{\U^*(x)}                            &  & \by{6.15}[a]     \\
+      & = \norm{(\T^* - \conj{\lambda} \IT[\V])(x)} &  & \by{6.11}[a,b,e] \\
+      & = \norm{\T^*(x) - \conj{\lambda} x}.        &  & \by{2.2.5}
+  \end{align*}
+  Hence by \cref{6.2}(b) \(\T^*(x) = \conj{\lambda} x\).
+  So \(x\) is an eigenvector of \(\T^*\).
 \end{proof}
 
 \begin{proof}[\pf{6.15}(d)]
-	Let \(\lambda_1\) and \(\lambda_2\) be distinct eigenvalues of \(\T\) with corresponding eigenvectors \(x_1\) and \(x_2\).
-	Then, using (c), we have
-	\begin{align*}
-		\lambda_1 \inn{x_1, x_2} & = \inn{\lambda_1 x_1, x_2}        &  & \by{6.1.1}[b] \\
-		                         & = \inn{\T(x_1), x_2}              &  & \by{5.1.2}    \\
-		                         & = \inn{x_1, \T^*(x_2)}            &  & \by{6.9}      \\
-		                         & = \inn{x_1, \conj{\lambda_2} x_2} &  & \by{6.15}[c]  \\
-		                         & = \lambda_2 \inn{x_1, x_2}.       &  & \by{6.1}[b]
-	\end{align*}
-	Since \(\lambda_1 \neq \lambda_2\), we conclude that \(\inn{x_1, x_2} = 0\).
+  Let \(\lambda_1\) and \(\lambda_2\) be distinct eigenvalues of \(\T\) with corresponding eigenvectors \(x_1\) and \(x_2\).
+  Then, using (c), we have
+  \begin{align*}
+    \lambda_1 \inn{x_1, x_2} & = \inn{\lambda_1 x_1, x_2}        &  & \by{6.1.1}[b] \\
+                             & = \inn{\T(x_1), x_2}              &  & \by{5.1.2}    \\
+                             & = \inn{x_1, \T^*(x_2)}            &  & \by{6.9}      \\
+                             & = \inn{x_1, \conj{\lambda_2} x_2} &  & \by{6.15}[c]  \\
+                             & = \lambda_2 \inn{x_1, x_2}.       &  & \by{6.1}[b]
+  \end{align*}
+  Since \(\lambda_1 \neq \lambda_2\), we conclude that \(\inn{x_1, x_2} = 0\).
 \end{proof}
 
 \begin{thm}\label{6.16}
-	Let \(\T\) be a linear operator on a finite-dimensional complex inner product space \(\V\).
-	Then \(\T\) is normal iff there exists an orthonormal basis for \(\V\) consisting of eigenvectors of \(\T\).
+  Let \(\T\) be a linear operator on a finite-dimensional complex inner product space \(\V\).
+  Then \(\T\) is normal iff there exists an orthonormal basis for \(\V\) consisting of eigenvectors of \(\T\).
 \end{thm}
 
 \begin{proof}[\pf{6.16}]
-	Suppose that \(\T\) is normal.
-	By the fundamental theorem of algebra (\cref{d.4}), the characteristic polynomial of \(\T\) splits.
-	So we may apply Schur's theorem (\cref{6.14}) to obtain an orthonormal basis \(\beta = \set{\seq{v}{1,,n}}\) for \(\V\) over \(\F\) such that \([\T]_{\beta} = A\) is upper triangular.
-	We know that \(v_1\) is an eigenvector of \(\T\) because \(A\) is upper triangular.
-	Assume that \(\seq{v}{1,,k-1}\) are eigenvectors of \(\T\).
-	We claim that \(v_k\) is also an eigenvector of \(\T\).
-	It then follows by mathematical induction on \(k\) that all of the \(v_i\)'s are eigenvectors of \(\T\).
-	Consider any \(j < k\), and let \(\lambda_j\) denote the eigenvalue of \(\T\) corresponding to \(v_j\).
-	By \cref{6.15}(c), \(\T^*(v_j) = \conj{\lambda_j} v_j\).
-	Since \(A\) is upper triangular, by \cref{2.2.4} we have
-	\[
-		\T(v_k) = A_{1 k} v_1 + \cdots + A_{j k} v_j + \cdots + A_{k k} v_k.
-	\]
-	Furthermore,
-	\begin{align*}
-		A_{j k} & = \inn{\T(v_k), v_j}              &  & \by{6.2.6}   \\
-		        & = \inn{v_k, \T^*(v_j)}            &  & \by{6.9}     \\
-		        & = \inn{v_k, \conj{\lambda_j} v_j} &  & \by{6.15}[c] \\
-		        & = \lambda_j \inn{v_k, v_j}        &  & \by{6.1}[b]  \\
-		        & = 0.                              &  & \by{6.1.12}
-	\end{align*}
-	It follows that \(\T(v_k) = A_{k k} v_k\), and hence \(v_k\) is an eigenvector of \(\T\).
-	So by induction, all the vectors in \(\beta\) are eigenvectors of \(\T\).
+  Suppose that \(\T\) is normal.
+  By the fundamental theorem of algebra (\cref{d.4}), the characteristic polynomial of \(\T\) splits.
+  So we may apply Schur's theorem (\cref{6.14}) to obtain an orthonormal basis \(\beta = \set{\seq{v}{1,,n}}\) for \(\V\) over \(\F\) such that \([\T]_{\beta} = A\) is upper triangular.
+  We know that \(v_1\) is an eigenvector of \(\T\) because \(A\) is upper triangular.
+  Assume that \(\seq{v}{1,,k-1}\) are eigenvectors of \(\T\).
+  We claim that \(v_k\) is also an eigenvector of \(\T\).
+  It then follows by mathematical induction on \(k\) that all of the \(v_i\)'s are eigenvectors of \(\T\).
+  Consider any \(j < k\), and let \(\lambda_j\) denote the eigenvalue of \(\T\) corresponding to \(v_j\).
+  By \cref{6.15}(c), \(\T^*(v_j) = \conj{\lambda_j} v_j\).
+  Since \(A\) is upper triangular, by \cref{2.2.4} we have
+  \[
+    \T(v_k) = A_{1 k} v_1 + \cdots + A_{j k} v_j + \cdots + A_{k k} v_k.
+  \]
+  Furthermore,
+  \begin{align*}
+    A_{j k} & = \inn{\T(v_k), v_j}              &  & \by{6.2.6}   \\
+            & = \inn{v_k, \T^*(v_j)}            &  & \by{6.9}     \\
+            & = \inn{v_k, \conj{\lambda_j} v_j} &  & \by{6.15}[c] \\
+            & = \lambda_j \inn{v_k, v_j}        &  & \by{6.1}[b]  \\
+            & = 0.                              &  & \by{6.1.12}
+  \end{align*}
+  It follows that \(\T(v_k) = A_{k k} v_k\), and hence \(v_k\) is an eigenvector of \(\T\).
+  So by induction, all the vectors in \(\beta\) are eigenvectors of \(\T\).
 
-	The converse was already proved by \cref{6.4.2}.
+  The converse was already proved by \cref{6.4.2}.
 \end{proof}
 
 \begin{note}
-	Interestingly, as \cref{6.4.7} shows, \cref{6.16} does not extend to infinite-dimensional complex inner product spaces.
+  Interestingly, as \cref{6.4.7} shows, \cref{6.16} does not extend to infinite-dimensional complex inner product spaces.
 \end{note}
 
 \begin{eg}\label{6.4.7}
-	Consider the inner product space \(\vs{H}\) with the orthonormal set \(S\) from \cref{6.1.13}.
-	Let \(\V = \spn{S}\), and let \(\T, \U \in \ls(\V)\) defined by \(\T(f) = f_1 f\) and \(\U(f) = f_{-1} f\).
-	Then
-	\[
-		\T(f_n) = f_{n + 1} \quad \text{and} \quad \U(f_n) = f_{n - 1}
-	\]
-	for all integers \(n\).
-	Thus
-	\begin{align*}
-		\inn{\T(f_m), f_n} & = \inn{f_{m + 1}, f_n}                  \\
-		                   & = \delta_{(m + 1), n}  &  & \by{6.1.13} \\
-		                   & = \delta_{m, (n - 1)}                   \\
-		                   & = \inn{f_m, f_{n - 1}} &  & \by{6.1.13} \\
-		                   & = \inn{f_m, \U(f_n)}.
-	\end{align*}
-	It follows that \(\U = \T^*\).
-	Furthermore, \(\T \T^* = \IT[\V] = \T^* \T\);
-	so \(\T\) is normal.
+  Consider the inner product space \(\vs{H}\) with the orthonormal set \(S\) from \cref{6.1.13}.
+  Let \(\V = \spn{S}\), and let \(\T, \U \in \ls(\V)\) defined by \(\T(f) = f_1 f\) and \(\U(f) = f_{-1} f\).
+  Then
+  \[
+    \T(f_n) = f_{n + 1} \quad \text{and} \quad \U(f_n) = f_{n - 1}
+  \]
+  for all integers \(n\).
+  Thus
+  \begin{align*}
+    \inn{\T(f_m), f_n} & = \inn{f_{m + 1}, f_n}                  \\
+                       & = \delta_{(m + 1), n}  &  & \by{6.1.13} \\
+                       & = \delta_{m, (n - 1)}                   \\
+                       & = \inn{f_m, f_{n - 1}} &  & \by{6.1.13} \\
+                       & = \inn{f_m, \U(f_n)}.
+  \end{align*}
+  It follows that \(\U = \T^*\).
+  Furthermore, \(\T \T^* = \IT[\V] = \T^* \T\);
+  so \(\T\) is normal.
 
-	We show that \(\T\) has no eigenvectors.
-	Suppose that \(f\) is an eigenvector of \(\T\), say, \(\T(f) = \lambda f\) for some \(\lambda\).
-	Since \(\V\) equals the span of \(S\), we may write
-	\[
-		f = \sum_{i = n}^m a_i f_i, \quad \text{where } a_m \neq 0.
-	\]
-	Hence
-	\[
-		\sum_{i = n}^m a_i f_{i + 1} = \T(f) = \lambda f = \sum_{i = n}^m \lambda a_i f_i.
-	\]
-	Since \(a_m \neq 0\), we can write \(f_{m + 1}\) as a linear combination of \(\seq{f}{n,n+1,,m}\).
-	But this is a contradiction because \(S\) is linearly independent.
+  We show that \(\T\) has no eigenvectors.
+  Suppose that \(f\) is an eigenvector of \(\T\), say, \(\T(f) = \lambda f\) for some \(\lambda\).
+  Since \(\V\) equals the span of \(S\), we may write
+  \[
+    f = \sum_{i = n}^m a_i f_i, \quad \text{where } a_m \neq 0.
+  \]
+  Hence
+  \[
+    \sum_{i = n}^m a_i f_{i + 1} = \T(f) = \lambda f = \sum_{i = n}^m \lambda a_i f_i.
+  \]
+  Since \(a_m \neq 0\), we can write \(f_{m + 1}\) as a linear combination of \(\seq{f}{n,n+1,,m}\).
+  But this is a contradiction because \(S\) is linearly independent.
 \end{eg}
 
 \begin{note}
-	\cref{6.4.5} illustrates that normality is not sufficient to guarantee the existence of an orthonormal basis of eigenvectors for real inner product spaces.
-	For real inner product spaces, we must replace normality by the stronger condition that \(\T = \T^*\) in order to guarantee such a basis.
+  \cref{6.4.5} illustrates that normality is not sufficient to guarantee the existence of an orthonormal basis of eigenvectors for real inner product spaces.
+  For real inner product spaces, we must replace normality by the stronger condition that \(\T = \T^*\) in order to guarantee such a basis.
 \end{note}
 
 \begin{defn}\label{6.4.8}
-	Let \(\T\) be a linear operator on an inner product space \(\V\) over \(\F\).
-	We say that \(\T\) is \textbf{self-adjoint} (\textbf{Hermitian}) if \(\T = \T^*\).
-	An \(n \times n\) real or complex matrix \(A\) is \textbf{self-adjoint} (\textbf{Hermitian}) if \(A = A^*\).
+  Let \(\T\) be a linear operator on an inner product space \(\V\) over \(\F\).
+  We say that \(\T\) is \textbf{self-adjoint} (\textbf{Hermitian}) if \(\T = \T^*\).
+  An \(n \times n\) real or complex matrix \(A\) is \textbf{self-adjoint} (\textbf{Hermitian}) if \(A = A^*\).
 \end{defn}
 
 \begin{cor}\label{6.4.9}
-	If \(\beta\) is an orthonormal basis, then \(\T\) is self-adjoint iff \([\T]_{\beta}\) is self-adjoint.
-	For real matrices, this condition reduces to the requirement that \(A\) be symmetric.
+  If \(\beta\) is an orthonormal basis, then \(\T\) is self-adjoint iff \([\T]_{\beta}\) is self-adjoint.
+  For real matrices, this condition reduces to the requirement that \(A\) be symmetric.
 \end{cor}
 
 \begin{proof}[\pf{6.4.9}]
-	We have
-	\begin{align*}
-		     & \T \text{ is self-adjoint}                                     \\
-		\iff & \T = \T^*                                      &  & \by{6.4.8} \\
-		\iff & [\T]_{\beta} = [\T^*]_{\beta} = [\T]_{\beta}^* &  & \by{6.10}  \\
-		\iff & [\T]_{\beta} \text{ is self-adjoint}.          &  & \by{6.4.8}
-	\end{align*}
+  We have
+  \begin{align*}
+         & \T \text{ is self-adjoint}                                     \\
+    \iff & \T = \T^*                                      &  & \by{6.4.8} \\
+    \iff & [\T]_{\beta} = [\T^*]_{\beta} = [\T]_{\beta}^* &  & \by{6.10}  \\
+    \iff & [\T]_{\beta} \text{ is self-adjoint}.          &  & \by{6.4.8}
+  \end{align*}
 \end{proof}
 
 \begin{lem}\label{6.4.10}
-	Let \(\T\) be a self-adjoint operator on a finite-dimensional inner product space \(\V\) over \(\F\).
-	Then
-	\begin{enumerate}
-		\item Every eigenvalue of \(\T\) is real.
-		\item Suppose that \(\V\) is a real inner product space.
-		      Then the characteristic polynomial of \(\T\) splits.
-	\end{enumerate}
+  Let \(\T\) be a self-adjoint operator on a finite-dimensional inner product space \(\V\) over \(\F\).
+  Then
+  \begin{enumerate}
+    \item Every eigenvalue of \(\T\) is real.
+    \item Suppose that \(\V\) is a real inner product space.
+          Then the characteristic polynomial of \(\T\) splits.
+  \end{enumerate}
 \end{lem}
 
 \begin{proof}[\pf{6.4.10}(a)]
-	Suppose that \(\T(x) = \lambda x\) for \(x \neq \zv\).
-	Because a self-adjoint operator is also normal, we have
-	\begin{align*}
-		\lambda x & = \T(x)             &  & \by{5.1.2}   \\
-		          & = \T^*(x)           &  & \by{6.4.8}   \\
-		          & = \conj{\lambda} x. &  & \by{6.15}[c]
-	\end{align*}
-	So \(\lambda = \conj{\lambda}\);
-	that is, \(\lambda\) is real.
+  Suppose that \(\T(x) = \lambda x\) for \(x \neq \zv\).
+  Because a self-adjoint operator is also normal, we have
+  \begin{align*}
+    \lambda x & = \T(x)             &  & \by{5.1.2}   \\
+              & = \T^*(x)           &  & \by{6.4.8}   \\
+              & = \conj{\lambda} x. &  & \by{6.15}[c]
+  \end{align*}
+  So \(\lambda = \conj{\lambda}\);
+  that is, \(\lambda\) is real.
 \end{proof}
 
 \begin{proof}[\pf{6.4.10}(b)]
-	Let \(n = \dim(\V)\), \(\beta\) be an orthonormal basis for \(\V\) over \(\R\), and \(A = [\T]_{\beta}\).
-	Then \(A\) is self-adjoint by \cref{6.4.9}.
-	Let \(\T_A\) be the linear operator on \(\C^n\) defined by \(\T_A(x) = Ax\) for all \(x \in \C^n\).
-	Note that \(\T_A\) is self-adjoint because \([\T_A]_{\gamma} = A\), where \(\gamma\) is the standard ordered (orthonormal) basis for \(\C^n\) over \(\C\) (see \cref{2.15}(a)).
-	So, by (a), the eigenvalues of \(\T_A\) are real.
-	By the fundamental theorem of algebra (\cref{d.4}), the characteristic polynomial of \(\T_A\) splits into factors of the form \(t - \lambda\).
-	Since each \(\lambda\) is real, the characteristic polynomial splits over \(\R\).
-	But \(\T_A\) has the same characteristic polynomial as \(A\), which has the same characteristic polynomial as \(\T\) (see \cref{5.1.6}).
-	Therefore the characteristic polynomial of \(\T\) splits.
+  Let \(n = \dim(\V)\), \(\beta\) be an orthonormal basis for \(\V\) over \(\R\), and \(A = [\T]_{\beta}\).
+  Then \(A\) is self-adjoint by \cref{6.4.9}.
+  Let \(\T_A\) be the linear operator on \(\C^n\) defined by \(\T_A(x) = Ax\) for all \(x \in \C^n\).
+  Note that \(\T_A\) is self-adjoint because \([\T_A]_{\gamma} = A\), where \(\gamma\) is the standard ordered (orthonormal) basis for \(\C^n\) over \(\C\) (see \cref{2.15}(a)).
+  So, by (a), the eigenvalues of \(\T_A\) are real.
+  By the fundamental theorem of algebra (\cref{d.4}), the characteristic polynomial of \(\T_A\) splits into factors of the form \(t - \lambda\).
+  Since each \(\lambda\) is real, the characteristic polynomial splits over \(\R\).
+  But \(\T_A\) has the same characteristic polynomial as \(A\), which has the same characteristic polynomial as \(\T\) (see \cref{5.1.6}).
+  Therefore the characteristic polynomial of \(\T\) splits.
 \end{proof}
 
 \begin{thm}\label{6.17}
-	Let \(\T\) be a linear operator on a finite-dimensional real inner product space \(\V\).
-	Then \(\T\) is self-adjoint iff there exists an orthonormal basis \(\beta\) for \(\V\) over \(\R\) consisting of eigenvectors of \(\T\).
+  Let \(\T\) be a linear operator on a finite-dimensional real inner product space \(\V\).
+  Then \(\T\) is self-adjoint iff there exists an orthonormal basis \(\beta\) for \(\V\) over \(\R\) consisting of eigenvectors of \(\T\).
 \end{thm}
 
 \begin{proof}[\pf{6.17}]
-	Suppose that \(\T\) is self-adjoint.
-	By \cref{6.4.10}(b), we may apply Schur's theorem (\cref{6.14}) to obtain an orthonormal basis \(\beta\) for \(\V\) over \(\R\) such that the matrix \(A = [\T]_{\beta}\) is upper triangular.
-	But
-	\begin{align*}
-		A^* & = [\T]_{\beta}^*                 \\
-		    & = [\T^*]_{\beta} &  & \by{6.10}  \\
-		    & = [\T]_{\beta}   &  & \by{6.4.8} \\
-		    & = A.
-	\end{align*}
-	So \(A\) and \(A^*\) are both upper triangular, and therefore \(A\) is a diagonal matrix.
-	Thus \(\beta\) must consist of eigenvectors of \(\T\).
+  Suppose that \(\T\) is self-adjoint.
+  By \cref{6.4.10}(b), we may apply Schur's theorem (\cref{6.14}) to obtain an orthonormal basis \(\beta\) for \(\V\) over \(\R\) such that the matrix \(A = [\T]_{\beta}\) is upper triangular.
+  But
+  \begin{align*}
+    A^* & = [\T]_{\beta}^*                 \\
+        & = [\T^*]_{\beta} &  & \by{6.10}  \\
+        & = [\T]_{\beta}   &  & \by{6.4.8} \\
+        & = A.
+  \end{align*}
+  So \(A\) and \(A^*\) are both upper triangular, and therefore \(A\) is a diagonal matrix.
+  Thus \(\beta\) must consist of eigenvectors of \(\T\).
 
-	Now suppose that there exists an orthonormal basis \(\beta\) for \(\V\) over \(\R\) consisting of eigenvectors of \(\T\).
-	By \cref{5.1.1} we know that \([\T]_{\beta}\) is a diagonal matrix.
-	Since \(\V\) is over \(\R\), we have
-	\begin{align*}
-		[\T^*]_{\beta} & = [\T]_{\beta}^*      &  & \by{6.10}                                      \\
-		               & = \tp{([\T]_{\beta})} &  & \text{(\(\V\) is over \(\R\))}                 \\
-		               & = [\T]_{\beta}.       &  & \text{(\([\T]_{\beta}\) is a diagonal matrix)}
-	\end{align*}
-	Thus by \cref{6.4.8} \([\T]_{\beta}\) is self-adjoint and by \cref{6.4.9} \(\T\) is self-adjoint.
+  Now suppose that there exists an orthonormal basis \(\beta\) for \(\V\) over \(\R\) consisting of eigenvectors of \(\T\).
+  By \cref{5.1.1} we know that \([\T]_{\beta}\) is a diagonal matrix.
+  Since \(\V\) is over \(\R\), we have
+  \begin{align*}
+    [\T^*]_{\beta} & = [\T]_{\beta}^*      &  & \by{6.10}                                      \\
+                   & = \tp{([\T]_{\beta})} &  & \text{(\(\V\) is over \(\R\))}                 \\
+                   & = [\T]_{\beta}.       &  & \text{(\([\T]_{\beta}\) is a diagonal matrix)}
+  \end{align*}
+  Thus by \cref{6.4.8} \([\T]_{\beta}\) is self-adjoint and by \cref{6.4.9} \(\T\) is self-adjoint.
 \end{proof}
 
 \begin{note}
-	\cref{6.17} is used extensively in many areas of mathematics and statistics.
-	We restate this theorem in matrix form in \cref{sec:6.5}.
+  \cref{6.17} is used extensively in many areas of mathematics and statistics.
+  We restate this theorem in matrix form in \cref{sec:6.5}.
 \end{note}
 
 \exercisesection
 
 \setcounter{ex}{3}
 \begin{ex}\label{ex:6.4.4}
-	Let \(\T\) and \(\U\) be self-adjoint operators on an inner product space \(\V\) over \(\F\).
-	Prove that \(\T \U\) is self-adjoint iff \(\T \U = \U \T\).
+  Let \(\T\) and \(\U\) be self-adjoint operators on an inner product space \(\V\) over \(\F\).
+  Prove that \(\T \U\) is self-adjoint iff \(\T \U = \U \T\).
 \end{ex}
 
 \begin{proof}[\pf{ex:6.4.4}]
-	We have
-	\begin{align*}
-		     & \T \U \text{ is self-adjoint}                   \\
-		\iff & \T \U = (\T \U)^*             &  & \by{6.4.8}   \\
-		     & = \U^* \T^*                   &  & \by{6.11}[c] \\
-		     & = \U \T.                      &  & \by{6.4.8}
-	\end{align*}
+  We have
+  \begin{align*}
+         & \T \U \text{ is self-adjoint}                   \\
+    \iff & \T \U = (\T \U)^*             &  & \by{6.4.8}   \\
+         & = \U^* \T^*                   &  & \by{6.11}[c] \\
+         & = \U \T.                      &  & \by{6.4.8}
+  \end{align*}
 \end{proof}
 
 \setcounter{ex}{5}
 \begin{ex}\label{ex:6.4.6}
-	Let \(\V\) be a complex inner product space, and let \(\T \in \ls(\V)\).
-	Define
-	\[
-		\T_1 = \frac{1}{2} (\T + \T^*) \quad \text{and} \quad \T_2 = \frac{1}{2i} (\T - \T^*).
-	\]
-	\begin{enumerate}
-		\item Prove that \(\T_1\) and \(\T_2\) are self-adjoint and that \(\T = \T_1 + i \T_2\).
-		\item Suppose also that \(\T = \U_1 + i \U_2\), where \(\U_1\) and \(\U_2\) are self-adjoint.
-		      Prove that \(\U_1 = \T_1\) and \(\U_2 = \T_2\).
-		\item Prove that \(\T\) is normal iff \(\T_1 \T_2 =  \T_2 \T_1\).
-	\end{enumerate}
+  Let \(\V\) be a complex inner product space, and let \(\T \in \ls(\V)\).
+  Define
+  \[
+    \T_1 = \frac{1}{2} (\T + \T^*) \quad \text{and} \quad \T_2 = \frac{1}{2i} (\T - \T^*).
+  \]
+  \begin{enumerate}
+    \item Prove that \(\T_1\) and \(\T_2\) are self-adjoint and that \(\T = \T_1 + i \T_2\).
+    \item Suppose also that \(\T = \U_1 + i \U_2\), where \(\U_1\) and \(\U_2\) are self-adjoint.
+          Prove that \(\U_1 = \T_1\) and \(\U_2 = \T_2\).
+    \item Prove that \(\T\) is normal iff \(\T_1 \T_2 =  \T_2 \T_1\).
+  \end{enumerate}
 \end{ex}
 
 \begin{proof}[\pf{ex:6.4.6}(a)]
-	We have
-	\begin{align*}
-		\T_1^* & = \pa{\frac{1}{2} (\T + \T^*)}^*                      \\
-		       & = \frac{1}{2} (\T^* + \T)         &  & \by{6.11}[abd] \\
-		       & = \T_1                                                \\
-		\T_2^* & = \pa{\frac{1}{2i} (\T - \T^*)}^*                     \\
-		       & = \frac{-1}{2i} (\T^* - \T)       &  & \by{6.11}[abd] \\
-		       & = \frac{1}{2i} (\T - \T^*)                            \\
-		       & = \T_2.
-	\end{align*}
-	Thus by \cref{6.4.8} \(\T_1, \T_2\) are self-adjoint.
-	By definition we have
-	\begin{align*}
-		\T_1 + i \T_2 & = \frac{1}{2} (\T + \T^*) + \frac{i}{2i} (\T - \T^*) \\
-		              & = \T.
-	\end{align*}
+  We have
+  \begin{align*}
+    \T_1^* & = \pa{\frac{1}{2} (\T + \T^*)}^*                        \\
+           & = \frac{1}{2} (\T^* + \T)         &  & \by{6.11}[a,b,d] \\
+           & = \T_1                                                  \\
+    \T_2^* & = \pa{\frac{1}{2i} (\T - \T^*)}^*                       \\
+           & = \frac{-1}{2i} (\T^* - \T)       &  & \by{6.11}[a,b,d] \\
+           & = \frac{1}{2i} (\T - \T^*)                              \\
+           & = \T_2.
+  \end{align*}
+  Thus by \cref{6.4.8} \(\T_1, \T_2\) are self-adjoint.
+  By definition we have
+  \begin{align*}
+    \T_1 + i \T_2 & = \frac{1}{2} (\T + \T^*) + \frac{i}{2i} (\T - \T^*) \\
+                  & = \T.
+  \end{align*}
 \end{proof}
 
 \begin{proof}[\pf{ex:6.4.6}(b)]
-	We have
-	\begin{align*}
-		         & \T = \begin{dcases}
-			                \T_1 + i \T_2 \\
-			                \U_1 + i \U_2
-		                \end{dcases}                      &  & \by{ex:6.4.6}[a] \\
-		\implies & \T^* = \begin{dcases}
-			                  \T_1^* - i \T_2^* \\
-			                  \U_1^* - i \U_2^*
-		                  \end{dcases}                    &  & \by{6.11}[ab]    \\
-		         & = \begin{dcases}
-			             \T_1 - i \T_2 \\
-			             \U_1 - i \U_2
-		             \end{dcases}                         &  & \by{6.4.8}       \\
-		\implies & \begin{dcases}
-			           \T_1 = \frac{1}{2} (\T + \T^*) = \U_1 \\
-			           \T_2 = \frac{1}{2i} (\T - \T^*) = \U_2
-		           \end{dcases}.
-	\end{align*}
+  We have
+  \begin{align*}
+             & \T = \begin{dcases}
+                      \T_1 + i \T_2 \\
+                      \U_1 + i \U_2
+                    \end{dcases}                      &  & \by{ex:6.4.6}[a] \\
+    \implies & \T^* = \begin{dcases}
+                        \T_1^* - i \T_2^* \\
+                        \U_1^* - i \U_2^*
+                      \end{dcases}                    &  & \by{6.11}[a,b]   \\
+             & = \begin{dcases}
+                   \T_1 - i \T_2 \\
+                   \U_1 - i \U_2
+                 \end{dcases}                         &  & \by{6.4.8}       \\
+    \implies & \begin{dcases}
+                 \T_1 = \frac{1}{2} (\T + \T^*) = \U_1 \\
+                 \T_2 = \frac{1}{2i} (\T - \T^*) = \U_2
+               \end{dcases}.
+  \end{align*}
 \end{proof}
 
 \begin{proof}[\pf{ex:6.4.6}(c)]
-	We have
-	\begin{align*}
-		     & \T \text{ is normal}                                                            \\
-		\iff & \T \T^* = \T^* \T                                               &  & \by{6.4.3} \\
-		\iff & (\T + \T^*) (\T - \T^*) = \T^2 - \T \T^* + \T^* \T - (\T^*)^2                   \\
-		     & = \T^2 + \T \T^* - \T^* \T - (\T^*)^2 = (\T - \T^*) (\T + \T^*) &  & \by{2.10}  \\
-		\iff & \T_1 \T_2 = \frac{1}{4i} (\T + \T^*) (\T - \T^*)                                \\
-		     & = \frac{1}{4i} (\T - \T^*) (\T + \T^*) = \T_2 \T_1.
-	\end{align*}
+  We have
+  \begin{align*}
+         & \T \text{ is normal}                                                            \\
+    \iff & \T \T^* = \T^* \T                                               &  & \by{6.4.3} \\
+    \iff & (\T + \T^*) (\T - \T^*) = \T^2 - \T \T^* + \T^* \T - (\T^*)^2                   \\
+         & = \T^2 + \T \T^* - \T^* \T - (\T^*)^2 = (\T - \T^*) (\T + \T^*) &  & \by{2.10}  \\
+    \iff & \T_1 \T_2 = \frac{1}{4i} (\T + \T^*) (\T - \T^*)                                \\
+         & = \frac{1}{4i} (\T - \T^*) (\T + \T^*) = \T_2 \T_1.
+  \end{align*}
 \end{proof}
 
 \begin{ex}\label{ex:6.4.7}
-	Let \(\T\) be a linear operator on an inner product space \(\V\) over \(\F\), and let \(\W\) be a \(\T\)-invariant subspace of \(\V\) over \(\F\).
-	Prove the following results.
-	\begin{enumerate}
-		\item If \(\T\) is self-adjoint, then \(\T_{\W}\) is self-adjoint.
-		\item \(\W^{\perp}\) is \(\T^*\)-invariant.
-		\item If \(\W\) is both \(\T\)- and \(\T^*\)-invariant, then \((\T_{\W})^* = (\T^*)_{\W}\).
-		\item If \(\W\) is both \(\T\)- and \(\T^*\)-invariant and \(\T\) is normal, then \(\T_{\W}\) is normal.
-	\end{enumerate}
+  Let \(\T\) be a linear operator on an inner product space \(\V\) over \(\F\), and let \(\W\) be a \(\T\)-invariant subspace of \(\V\) over \(\F\).
+  Prove the following results.
+  \begin{enumerate}
+    \item If \(\T\) is self-adjoint, then \(\T_{\W}\) is self-adjoint.
+    \item \(\W^{\perp}\) is \(\T^*\)-invariant.
+    \item If \(\W\) is both \(\T\)- and \(\T^*\)-invariant, then \((\T_{\W})^* = (\T^*)_{\W}\).
+    \item If \(\W\) is both \(\T\)- and \(\T^*\)-invariant and \(\T\) is normal, then \(\T_{\W}\) is normal.
+  \end{enumerate}
 \end{ex}
 
 \begin{proof}[\pf{ex:6.4.7}(a)]
-	We have
-	\begin{align*}
-		\forall x, y \in \W, \inn{x, (\T_{\W})^*(y)} & = \inn{\T_{\W}(x), y} &  & \by{6.9}   \\
-		                                             & = \inn{\T(x), y}      &  & \by{5.4.1} \\
-		                                             & = \inn{x, \T^*(y)}    &  & \by{6.9}   \\
-		                                             & = \inn{x, \T(y)}      &  & \by{6.4.8} \\
-		                                             & = \inn{x, \T_{\W}(y)} &  & \by{5.4.1}
-	\end{align*}
-	and thus by \cref{6.1}(e) \(\T_{\W} = (\T_{\W})^*\).
-	By \cref{6.4.8} this means \(\T_{\W}\) is self-adjoint.
+  We have
+  \begin{align*}
+    \forall x, y \in \W, \inn{x, (\T_{\W})^*(y)} & = \inn{\T_{\W}(x), y} &  & \by{6.9}   \\
+                                                 & = \inn{\T(x), y}      &  & \by{5.4.1} \\
+                                                 & = \inn{x, \T^*(y)}    &  & \by{6.9}   \\
+                                                 & = \inn{x, \T(y)}      &  & \by{6.4.8} \\
+                                                 & = \inn{x, \T_{\W}(y)} &  & \by{5.4.1}
+  \end{align*}
+  and thus by \cref{6.1}(e) \(\T_{\W} = (\T_{\W})^*\).
+  By \cref{6.4.8} this means \(\T_{\W}\) is self-adjoint.
 \end{proof}
 
 \begin{proof}[\pf{ex:6.4.7}(b)]
-	Since
-	\begin{align*}
-		         & v \in \W^{\perp}                                       \\
-		\implies & \forall x \in \W, \inn{v, x} = 0       &  & \by{6.2.9} \\
-		\implies & \forall x \in \W, \inn{v, \T(x)} = 0   &  & \by{5.4.1} \\
-		\implies & \forall x \in \W, \inn{\T^*(v), x} = 0 &  & \by{6.9}   \\
-		\implies & \T^*(v) \in \W^{\perp},                &  & \by{6.2.9}
-	\end{align*}
-	by \cref{5.4.1} we see that \(\W^{\perp}\) is \(\T^*\)-invariant.
+  Since
+  \begin{align*}
+             & v \in \W^{\perp}                                       \\
+    \implies & \forall x \in \W, \inn{v, x} = 0       &  & \by{6.2.9} \\
+    \implies & \forall x \in \W, \inn{v, \T(x)} = 0   &  & \by{5.4.1} \\
+    \implies & \forall x \in \W, \inn{\T^*(v), x} = 0 &  & \by{6.9}   \\
+    \implies & \T^*(v) \in \W^{\perp},                &  & \by{6.2.9}
+  \end{align*}
+  by \cref{5.4.1} we see that \(\W^{\perp}\) is \(\T^*\)-invariant.
 \end{proof}
 
 \begin{proof}[\pf{ex:6.4.7}(c)]
-	Since
-	\begin{align*}
-		\forall x, y \in \W, \inn{x, (\T^*)_{\W}(y)} & = \inn{x, \T^*(y)}         &  & \by{5.4.1} \\
-		                                             & = \inn{\T(x), y}           &  & \by{6.9}   \\
-		                                             & = \inn{\T_{\W}(x), y}      &  & \by{5.4.1} \\
-		                                             & = \inn{x, (\T_{\W})^*(y)}, &  & \by{6.9}
-	\end{align*}
-	by \cref{6.1}(e) we see that \((\T^*)_{\W} = (\T_{\W})^*\).
+  Since
+  \begin{align*}
+    \forall x, y \in \W, \inn{x, (\T^*)_{\W}(y)} & = \inn{x, \T^*(y)}         &  & \by{5.4.1} \\
+                                                 & = \inn{\T(x), y}           &  & \by{6.9}   \\
+                                                 & = \inn{\T_{\W}(x), y}      &  & \by{5.4.1} \\
+                                                 & = \inn{x, (\T_{\W})^*(y)}, &  & \by{6.9}
+  \end{align*}
+  by \cref{6.1}(e) we see that \((\T^*)_{\W} = (\T_{\W})^*\).
 \end{proof}
 
 \begin{proof}[\pf{ex:6.4.7}(d)]
-	We have
-	\begin{align*}
-		\forall x \in \W, (\T_{\W} (\T_{\W})^*)(x) & = (\T_{\W} (\T^*)_{\W})(x) &  & \by{ex:6.4.7}[c] \\
-		                                           & = (\T \T^*)(x)             &  & \by{5.4.1}       \\
-		                                           & = (\T^* \T)(x)             &  & \by{6.4.5}       \\
-		                                           & = ((\T^*)_{\W} \T_{\W})(x) &  & \by{5.4.1}       \\
-		                                           & = ((\T_{\W})^* \T_{\W})(x) &  & \by{ex:6.4.7}[c]
-	\end{align*}
-	and thus \(\T_{\W} (\T_{\W})^* = (\T_{\W})^* \T_{\W}\).
-	By \cref{6.4.5} this means \(\T_{\W}\) is normal.
+  We have
+  \begin{align*}
+    \forall x \in \W, (\T_{\W} (\T_{\W})^*)(x) & = (\T_{\W} (\T^*)_{\W})(x) &  & \by{ex:6.4.7}[c] \\
+                                               & = (\T \T^*)(x)             &  & \by{5.4.1}       \\
+                                               & = (\T^* \T)(x)             &  & \by{6.4.5}       \\
+                                               & = ((\T^*)_{\W} \T_{\W})(x) &  & \by{5.4.1}       \\
+                                               & = ((\T_{\W})^* \T_{\W})(x) &  & \by{ex:6.4.7}[c]
+  \end{align*}
+  and thus \(\T_{\W} (\T_{\W})^* = (\T_{\W})^* \T_{\W}\).
+  By \cref{6.4.5} this means \(\T_{\W}\) is normal.
 \end{proof}
 
 \begin{ex}\label{ex:6.4.8}
-	Let \(\T\) be a normal operator on a finite-dimensional complex inner product space \(\V\), and let \(\W\) be a subspace of \(\V\) over \(\C\).
-	Prove that if \(\W\) is \(\T\)-invariant, then \(\W\) is also \(\T^*\)-invariant.
+  Let \(\T\) be a normal operator on a finite-dimensional complex inner product space \(\V\), and let \(\W\) be a subspace of \(\V\) over \(\C\).
+  Prove that if \(\W\) is \(\T\)-invariant, then \(\W\) is also \(\T^*\)-invariant.
 \end{ex}
 
 \begin{proof}[\pf{ex:6.4.8}]
-	If \(\W = \set{\zv}\), then by \cref{2.1.2}(a) we have \(\T^*(\set{\zv}) = \set{\zv}\) (this is true since \(\T^* \in \ls(\V)\) by \cref{6.9}).
-	Thus \(\W\) is \(\T^*\)-invariant in this case.
+  If \(\W = \set{\zv}\), then by \cref{2.1.2}(a) we have \(\T^*(\set{\zv}) = \set{\zv}\) (this is true since \(\T^* \in \ls(\V)\) by \cref{6.9}).
+  Thus \(\W\) is \(\T^*\)-invariant in this case.
 
-	Now suppose that \(\W \neq \set{\zv}\).
-	Since \(\T\) is normal and \(\V\) is over \(\C\), by \cref{6.16} there exists an orthonormal basis \(\beta\) for \(\V\) over \(\C\) consisting of eigenvectors of \(\T\).
-	By \cref{ex:5.4.24} this means \(\T_{\W}\) is diagonalizable.
-	If we let \(\beta_{\W} = \beta \cap \W\), then by \cref{ex:5.4.24} we know that \(\beta_{\W}\) is an orthonormal basis for \(\W\) over \(\C\) consisting of eigenvectors of \(\T_{\W}\).
-	By \cref{6.15}(c) we know that \(\beta_{\W}\) is a set of eigenvectors of \(\T^*\).
-	Thus by \cref{5.4.2}(e) we see that \(\W\) is \(\T^*\)-invariant.
+  Now suppose that \(\W \neq \set{\zv}\).
+  Since \(\T\) is normal and \(\V\) is over \(\C\), by \cref{6.16} there exists an orthonormal basis \(\beta\) for \(\V\) over \(\C\) consisting of eigenvectors of \(\T\).
+  By \cref{ex:5.4.24} this means \(\T_{\W}\) is diagonalizable.
+  If we let \(\beta_{\W} = \beta \cap \W\), then by \cref{ex:5.4.24} we know that \(\beta_{\W}\) is an orthonormal basis for \(\W\) over \(\C\) consisting of eigenvectors of \(\T_{\W}\).
+  By \cref{6.15}(c) we know that \(\beta_{\W}\) is a set of eigenvectors of \(\T^*\).
+  Thus by \cref{5.4.2}(e) we see that \(\W\) is \(\T^*\)-invariant.
 \end{proof}
 
 \begin{ex}\label{ex:6.4.9}
-	Let \(\T\) be a normal operator on a finite-dimensional inner product space \(\V\) over \(\F\).
-	Prove that \(\ns{\T} = \ns{\T^*}\) and \(\rg{\T} = \rg{\T^*}\).
+  Let \(\T\) be a normal operator on a finite-dimensional inner product space \(\V\) over \(\F\).
+  Prove that \(\ns{\T} = \ns{\T^*}\) and \(\rg{\T} = \rg{\T^*}\).
 \end{ex}
 
 \begin{proof}[\pf{ex:6.4.9}]
-	Since
-	\begin{align*}
-		     & x \in \ns{\T}                        \\
-		\iff & \T(x) = \zv        &  & \by{2.1.10}  \\
-		\iff & \norm{\T(x)} = 0   &  & \by{6.2}[b]  \\
-		\iff & \norm{\T^*(x)} = 0 &  & \by{6.15}[a] \\
-		\iff & \T^*(x) = \zv      &  & \by{6.2}[b]  \\
-		\iff & x \in \ns{\T^*},   &  & \by{2.1.10}
-	\end{align*}
-	we have \(\ns{\T} = \ns{\T^*}\).
-	Thus
-	\begin{align*}
-		\rg{\T^*} & = \ns{\T}^{\perp}   &  & \by{ex:6.3.12}[b]             \\
-		          & = \ns{\T^*}^{\perp} &  & \text{(from the proof above)} \\
-		          & = \rg{\T^{**}}      &  & \by{ex:6.3.12}[b]             \\
-		          & = \rg{\T}.          &  & \by{6.11}[d]
-	\end{align*}
+  Since
+  \begin{align*}
+         & x \in \ns{\T}                        \\
+    \iff & \T(x) = \zv        &  & \by{2.1.10}  \\
+    \iff & \norm{\T(x)} = 0   &  & \by{6.2}[b]  \\
+    \iff & \norm{\T^*(x)} = 0 &  & \by{6.15}[a] \\
+    \iff & \T^*(x) = \zv      &  & \by{6.2}[b]  \\
+    \iff & x \in \ns{\T^*},   &  & \by{2.1.10}
+  \end{align*}
+  we have \(\ns{\T} = \ns{\T^*}\).
+  Thus
+  \begin{align*}
+    \rg{\T^*} & = \ns{\T}^{\perp}   &  & \by{ex:6.3.12}[b]             \\
+              & = \ns{\T^*}^{\perp} &  & \text{(from the proof above)} \\
+              & = \rg{\T^{**}}      &  & \by{ex:6.3.12}[b]             \\
+              & = \rg{\T}.          &  & \by{6.11}[d]
+  \end{align*}
 \end{proof}
 
 \begin{ex}\label{ex:6.4.10}
-	Let \(\T\) be a self-adjoint operator on a finite-dimensional inner product space \(\V\) over \(\F\).
-	Prove that for all \(x \in \V\)
-	\[
-		\norm{\T(x) \pm ix}^2 = \norm{\T(x)}^2 + \norm{x}^2.
-	\]
-	Deduce that \(\T - i \IT[\V]\) is invertible and that \(\pa{(\T - i \IT[\V])^{-1}}^* = (\T + i \IT[\V])^{-1}\).
+  Let \(\T\) be a self-adjoint operator on a finite-dimensional inner product space \(\V\) over \(\F\).
+  Prove that for all \(x \in \V\)
+  \[
+    \norm{\T(x) \pm ix}^2 = \norm{\T(x)}^2 + \norm{x}^2.
+  \]
+  Deduce that \(\T - i \IT[\V]\) is invertible and that \(\pa{(\T - i \IT[\V])^{-1}}^* = (\T + i \IT[\V])^{-1}\).
 \end{ex}
 
 \begin{proof}[\pf{ex:6.4.10}]
-	Since
-	\begin{align*}
-		\inn{\T(x), x} & = \inn{\T^*(x), x}       &  & \by{6.4.8}    \\
-		               & = \inn{x, \T(x)}         &  & \by{6.9}      \\
-		               & = \conj{\inn{\T(x), x}}, &  & \by{6.1.1}[c]
-	\end{align*}
-	we know that \(\inn{\T(x), x} \in \R\) for all \(x \in \V\).
-	Thus
-	\begin{align*}
-		\norm{\T(x) \pm ix}^2 & = \norm{\T(x)}^2 \pm 2 \Re(\inn{\T(x), ix}) + \norm{ix}^2   &  & \by{ex:6.1.19}[a]             \\
-		                      & = \norm{\T(x)}^2 \pm 2 \Re(-i \inn{\T(x), x}) + \norm{ix}^2 &  & \by{6.1}[b]                   \\
-		                      & = \norm{\T(x)}^2 + \norm{ix}^2                              &  & \text{(from the proof above)} \\
-		                      & = \norm{\T(x)}^2 + \norm{x}^2.                              &  & \by{6.2}[a]
-	\end{align*}
+  Since
+  \begin{align*}
+    \inn{\T(x), x} & = \inn{\T^*(x), x}       &  & \by{6.4.8}    \\
+                   & = \inn{x, \T(x)}         &  & \by{6.9}      \\
+                   & = \conj{\inn{\T(x), x}}, &  & \by{6.1.1}[c]
+  \end{align*}
+  we know that \(\inn{\T(x), x} \in \R\) for all \(x \in \V\).
+  Thus
+  \begin{align*}
+    \norm{\T(x) \pm ix}^2 & = \norm{\T(x)}^2 \pm 2 \Re(\inn{\T(x), ix}) + \norm{ix}^2   &  & \by{ex:6.1.19}[a]             \\
+                          & = \norm{\T(x)}^2 \pm 2 \Re(-i \inn{\T(x), x}) + \norm{ix}^2 &  & \by{6.1}[b]                   \\
+                          & = \norm{\T(x)}^2 + \norm{ix}^2                              &  & \text{(from the proof above)} \\
+                          & = \norm{\T(x)}^2 + \norm{x}^2.                              &  & \by{6.2}[a]
+  \end{align*}
 
-	Next we show that \(\T - i \IT[\V]\) is invertible.
-	Observe that
-	\begin{align*}
-		         & x \in \ns{\T - i \IT[\V]}                                          \\
-		\implies & \T(x) - ix = \zv                &  & \by{2.1.10}                   \\
-		\implies & \norm{\T(x) - ix} = 0           &  & \by{6.2}[b]                   \\
-		\implies & \norm{\T(x)}^2 + \norm{x}^2 = 0 &  & \text{(from the proof above)} \\
-		\implies & \norm{\T(x)}^2 = \norm{x}^2 = 0 &  & \by{6.2}[b]                   \\
-		\implies & x = 0.                          &  & \by{6.2}[b]
-	\end{align*}
-	Thus by \cref{2.5} \(\T - i \IT[\V]\) is invertible.
+  Next we show that \(\T - i \IT[\V]\) is invertible.
+  Observe that
+  \begin{align*}
+             & x \in \ns{\T - i \IT[\V]}                                          \\
+    \implies & \T(x) - ix = \zv                &  & \by{2.1.10}                   \\
+    \implies & \norm{\T(x) - ix} = 0           &  & \by{6.2}[b]                   \\
+    \implies & \norm{\T(x)}^2 + \norm{x}^2 = 0 &  & \text{(from the proof above)} \\
+    \implies & \norm{\T(x)}^2 = \norm{x}^2 = 0 &  & \by{6.2}[b]                   \\
+    \implies & x = 0.                          &  & \by{6.2}[b]
+  \end{align*}
+  Thus by \cref{2.5} \(\T - i \IT[\V]\) is invertible.
 
-	Finally we show that \(\pa{(\T - i \IT[\V])^{-1}}^* = (\T + i \IT[\V])^{-1}\).
-	Since
-	\begin{align*}
-		\forall x, y \in \V, & \inn{x, \pa{\pa{(\T - i \IT[\V])^{-1}}^* (\T + i \IT[\V])}(y)}                     \\
-		                     & = \inn{(\T - i \IT[\V])^{-1}(x), (\T + i \IT[\V])(y)}          &  & \by{6.9}       \\
-		                     & = \inn{(\T - i \IT[\V])^{-1}(x), (\T^* + i \IT[\V])(y)}        &  & \by{6.4.8}     \\
-		                     & = \inn{(\T - i \IT[\V])^{-1}(x), (\T - i \IT[\V])^*(y)}        &  & \by{6.11}[abe] \\
-		                     & = \inn{\pa{(\T - i \IT[\V]) (\T - i \IT[\V])^{-1}}(x), y}      &  & \by{6.9}       \\
-		                     & = \inn{x, y}                                                                       \\
-		                     & = \inn{x, \IT[\V](y)},
-	\end{align*}
-	by \cref{6.1}(e) we have \(\pa{(\T - i \IT[\V])^{-1}}^* (\T + i \IT[\V]) = \IT[\V]\).
-	Thus \(\pa{(\T - i \IT[\V])^{-1}}^* = (\T + i \IT[\V])^{-1}\).
+  Finally we show that \(\pa{(\T - i \IT[\V])^{-1}}^* = (\T + i \IT[\V])^{-1}\).
+  Since
+  \begin{align*}
+    \forall x, y \in \V, & \inn{x, \pa{\pa{(\T - i \IT[\V])^{-1}}^* (\T + i \IT[\V])}(y)}                       \\
+                         & = \inn{(\T - i \IT[\V])^{-1}(x), (\T + i \IT[\V])(y)}          &  & \by{6.9}         \\
+                         & = \inn{(\T - i \IT[\V])^{-1}(x), (\T^* + i \IT[\V])(y)}        &  & \by{6.4.8}       \\
+                         & = \inn{(\T - i \IT[\V])^{-1}(x), (\T - i \IT[\V])^*(y)}        &  & \by{6.11}[a,b,e] \\
+                         & = \inn{\pa{(\T - i \IT[\V]) (\T - i \IT[\V])^{-1}}(x), y}      &  & \by{6.9}         \\
+                         & = \inn{x, y}                                                                         \\
+                         & = \inn{x, \IT[\V](y)},
+  \end{align*}
+  by \cref{6.1}(e) we have \(\pa{(\T - i \IT[\V])^{-1}}^* (\T + i \IT[\V]) = \IT[\V]\).
+  Thus \(\pa{(\T - i \IT[\V])^{-1}}^* = (\T + i \IT[\V])^{-1}\).
 \end{proof}
 
 \begin{ex}\label{ex:6.4.11}
-	Assume that \(\T\) is a linear operator on a complex (not necessarily finite-dimensional) inner product space \(\V\) with an adjoint \(\T^*\).
-	Prove the following results.
-	\begin{enumerate}
-		\item If \(\T\) is self-adjoint, then \(\inn{\T(x), x}\) is real for all \(x \in \V\).
-		\item If \(\T\) satisfies \(\inn{\T(x), x} = 0\) for all \(x \in \V\), then \(\T = \zT\).
-		\item If \(\inn{\T(x), x}\) is real for all \(x \in \V\), then \(\T = \T^*\).
-	\end{enumerate}
+  Assume that \(\T\) is a linear operator on a complex (not necessarily finite-dimensional) inner product space \(\V\) with an adjoint \(\T^*\).
+  Prove the following results.
+  \begin{enumerate}
+    \item If \(\T\) is self-adjoint, then \(\inn{\T(x), x}\) is real for all \(x \in \V\).
+    \item If \(\T\) satisfies \(\inn{\T(x), x} = 0\) for all \(x \in \V\), then \(\T = \zT\).
+    \item If \(\inn{\T(x), x}\) is real for all \(x \in \V\), then \(\T = \T^*\).
+  \end{enumerate}
 \end{ex}
 
 \begin{proof}[\pf{ex:6.4.11}(a)]
-	Since
-	\begin{align*}
-		\forall x \in \V, \inn{\T(x), x} & = \inn{\T^*(x), x}       &  & \by{6.4.8}    \\
-		                                 & = \inn{x, \T(x)}         &  & \by{6.9}      \\
-		                                 & = \conj{\inn{\T(x), x}}, &  & \by{6.1.1}[c]
-	\end{align*}
-	we see that \(\inn{\T(x), x} \in \R\) for all \(x \in \V\).
+  Since
+  \begin{align*}
+    \forall x \in \V, \inn{\T(x), x} & = \inn{\T^*(x), x}       &  & \by{6.4.8}    \\
+                                     & = \inn{x, \T(x)}         &  & \by{6.9}      \\
+                                     & = \conj{\inn{\T(x), x}}, &  & \by{6.1.1}[c]
+  \end{align*}
+  we see that \(\inn{\T(x), x} \in \R\) for all \(x \in \V\).
 \end{proof}
 
 \begin{proof}[\pf{ex:6.4.11}(b)]
-	Let \(x, y \in \V\).
-	Since
-	\begin{align*}
-		0 & = \inn{\T(x + y), x + y}                                                               \\
-		  & = \inn{\T(x) + \T(y), x + y}                                        &  & \by{2.1.1}[a] \\
-		  & = \inn{\T(x), x + y} + \inn{\T(y), x + y}                           &  & \by{6.1.1}[a] \\
-		  & = \inn{\T(x), x} + \inn{\T(x), y} + \inn{\T(y), x} + \inn{\T(y), y} &  & \by{6.1}[a]   \\
-		  & = \inn{\T(x), y} + \inn{\T(y), x},
-	\end{align*}
-	we have \(\inn{\T(x), y} = - \inn{\T(y), x}\).
-	Since
-	\begin{align*}
-		0 & = \inn{\T(x + iy), x + iy}                                                                  \\
-		  & = \inn{\T(x) + i \T(y), x + iy}                                         &  & \by{2.1.2}[b]  \\
-		  & = \inn{\T(x), x + iy} + i \inn{\T(y), x + iy}                           &  & \by{6.1.1}[ab] \\
-		  & = \inn{\T(x), x} - i \inn{\T(x), y} + i \inn{\T(y), x} + \inn{\T(y), y} &  & \by{6.1}[ab]   \\
-		  & = -i \inn{\T(x), y} + i \inn{\T(y), x},
-	\end{align*}
-	we have \(\inn{\T(x), y} = \inn{\T(y), x}\).
-	Thus
-	\begin{align*}
-		         & \forall x, y \in \V, \begin{dcases}
-			                                \inn{\T(x), y} = - \inn{\T(y), x} \\
-			                                \inn{\T(x), y} = \inn{\T(y), x}
-		                                \end{dcases}                    \\
-		\implies & \forall x, y \in \V, \inn{\T(x), y} = \inn{\T(y), x} = 0                  \\
-		\implies & \T = \zT.                                                &  & \by{6.1}[e]
-	\end{align*}
+  Let \(x, y \in \V\).
+  Since
+  \begin{align*}
+    0 & = \inn{\T(x + y), x + y}                                                               \\
+      & = \inn{\T(x) + \T(y), x + y}                                        &  & \by{2.1.1}[a] \\
+      & = \inn{\T(x), x + y} + \inn{\T(y), x + y}                           &  & \by{6.1.1}[a] \\
+      & = \inn{\T(x), x} + \inn{\T(x), y} + \inn{\T(y), x} + \inn{\T(y), y} &  & \by{6.1}[a]   \\
+      & = \inn{\T(x), y} + \inn{\T(y), x},
+  \end{align*}
+  we have \(\inn{\T(x), y} = - \inn{\T(y), x}\).
+  Since
+  \begin{align*}
+    0 & = \inn{\T(x + iy), x + iy}                                                                   \\
+      & = \inn{\T(x) + i \T(y), x + iy}                                         &  & \by{2.1.2}[b]   \\
+      & = \inn{\T(x), x + iy} + i \inn{\T(y), x + iy}                           &  & \by{6.1.1}[a,b] \\
+      & = \inn{\T(x), x} - i \inn{\T(x), y} + i \inn{\T(y), x} + \inn{\T(y), y} &  & \by{6.1}[a,b]   \\
+      & = -i \inn{\T(x), y} + i \inn{\T(y), x},
+  \end{align*}
+  we have \(\inn{\T(x), y} = \inn{\T(y), x}\).
+  Thus
+  \begin{align*}
+             & \forall x, y \in \V, \begin{dcases}
+                                      \inn{\T(x), y} = - \inn{\T(y), x} \\
+                                      \inn{\T(x), y} = \inn{\T(y), x}
+                                    \end{dcases}                    \\
+    \implies & \forall x, y \in \V, \inn{\T(x), y} = \inn{\T(y), x} = 0                  \\
+    \implies & \T = \zT.                                                &  & \by{6.1}[e]
+  \end{align*}
 \end{proof}
 
 \begin{proof}[\pf{ex:6.4.11}(c)]
-	We have
-	\begin{align*}
-		\forall x \in \V, \inn{x, \T(x)} & = \conj{\inn{\T(x), x}} &  & \by{6.1.1}[c]           \\
-		                                 & = \inn{\T(x), x}        &  & (\inn{\T(x), x} \in \R) \\
-		                                 & = \inn{x, \T^*(x)}      &  & \by{6.9}
-	\end{align*}
-	and
-	\begin{align*}
-		\forall x \in \V, 0 & = \inn{x, \T(x)} - \inn{x, \T^*(x)} &  & \text{(from the proof above)} \\
-		                    & = \inn{x, \T(x) - \T^*(x)}          &  & \by{6.1}[ab]                  \\
-		                    & = \inn{x, (\T - \T^*)(x)}           &  & \by{2.10}                     \\
-		                    & = \inn{(\T - \T^*)(x), x}.          &  & \by{6.1.1}[c]
-	\end{align*}
-	Thus
-	\begin{align*}
-		         & \T - \T^* = \zT &  & \by{ex:6.4.11}[b] \\
-		\implies & \T = \T^*.
-	\end{align*}
+  We have
+  \begin{align*}
+    \forall x \in \V, \inn{x, \T(x)} & = \conj{\inn{\T(x), x}} &  & \by{6.1.1}[c]           \\
+                                     & = \inn{\T(x), x}        &  & (\inn{\T(x), x} \in \R) \\
+                                     & = \inn{x, \T^*(x)}      &  & \by{6.9}
+  \end{align*}
+  and
+  \begin{align*}
+    \forall x \in \V, 0 & = \inn{x, \T(x)} - \inn{x, \T^*(x)} &  & \text{(from the proof above)} \\
+                        & = \inn{x, \T(x) - \T^*(x)}          &  & \by{6.1}[a,b]                 \\
+                        & = \inn{x, (\T - \T^*)(x)}           &  & \by{2.10}                     \\
+                        & = \inn{(\T - \T^*)(x), x}.          &  & \by{6.1.1}[c]
+  \end{align*}
+  Thus
+  \begin{align*}
+             & \T - \T^* = \zT &  & \by{ex:6.4.11}[b] \\
+    \implies & \T = \T^*.
+  \end{align*}
 \end{proof}
 
 \begin{ex}\label{ex:6.4.12}
-	Let \(\T\) be a normal operator on a finite-dimensional real inner product space \(\V\) whose characteristic polynomial splits.
-	Prove that \(\V\) has an orthonormal basis of eigenvectors of \(\T\).
-	Hence prove that \(\T\) is self-adjoint.
+  Let \(\T\) be a normal operator on a finite-dimensional real inner product space \(\V\) whose characteristic polynomial splits.
+  Prove that \(\V\) has an orthonormal basis of eigenvectors of \(\T\).
+  Hence prove that \(\T\) is self-adjoint.
 \end{ex}
 
 \begin{proof}[\pf{ex:6.4.12}]
-	By \cref{6.14} we know that there exists an orthonormal basis \(\beta = \set{\seq{v}{1,,n}}\) for \(\V\) over \(\F\) such that \([\T]_{\beta}\) is upper triangular.
-	We claim that for all \(k \in \set{1, \dots, n}\), the set \(\set{\seq{v}{1,,k}} \subseteq \beta\) is consist of eigenvectors of \(\T\).
-	We use induction on \(k\) to proof the claim.
-	For \(k = 1\), since \([\T]_{\beta}\) is upper triangular, by \cref{2.2.4} this means \(v_1\) is an eigenvector of \(\T\).
-	Thus the base case holds.
-	Suppose inductively that \(\set{\seq{v}{1,,k}}\) is consist of eigenvectors of \(\T\) for some \(k \geq 1\).
-	We show that the claim is true for \(k + 1\).
-	By induction hypothesis we know that \(\seq{v}{1,,k}\) are eigenvectors of \(\T\) corresponding to eigenvalues \(\seq{\lambda}{1,,k} \in \R\).
-	Since \(\T\) is normal, by \cref{6.15}(c) we know that \(\T^*(v_i) = \conj{\lambda_i} v_i\) for all \(i \in \set{1, \dots, k}\).
-	Then we have
-	\begin{align*}
-		\T(v_{k + 1}) & = \sum_{j = 1}^n \inn{\T(v_{k + 1}), v_j} v_j                                                           &  & \by{6.2.6}                       \\
-		              & = \sum_{j = 1}^{k + 1} \inn{\T(v_{k + 1}), v_j} v_j                                                     &  & \by{6.14}                        \\
-		              & = \sum_{j = 1}^{k + 1} \inn{v_{k + 1}, \T^*(v_j)} v_j                                                   &  & \by{6.9}                         \\
-		              & = \inn{v_{k + 1}, \T^*(v_{k + 1})} v_{k + 1} + \sum_{j = 1}^k \inn{v_{k + 1}, \T^*(v_j)} v_j                                                  \\
-		              & = \inn{v_{k + 1}, \T^*(v_{k + 1})} v_{k + 1} + \sum_{j = 1}^k \inn{v_{k + 1}, \conj{\lambda_j} v_j} v_j &  & \text{(by induction hypothesis)} \\
-		              & = \inn{v_{k + 1}, \T^*(v_{k + 1})} v_{k + 1} + \sum_{j = 1}^k \lambda_j \inn{v_{k + 1}, v_j} v_j        &  & \by{6.1}[b]                      \\
-		              & = \inn{v_{k + 1}, \T^*(v_{k + 1})} v_{k + 1}                                                            &  & \by{6.1.12}
-	\end{align*}
-	and thus \(v_{k + 1}\) is an eigenvector of \(\T\).
-	This closes the induction.
-	Hence \(\beta\) is consist of eigenvectors of \(\T\).
-	By \cref{5.1.1} this means \([\T]_{\beta}\) is a diagonal matrix.
-	Thus \([\T]_{\beta}^* = [\T]_{\beta}\) and by \cref{6.4.9} \(\T\) is self-adjoint.
+  By \cref{6.14} we know that there exists an orthonormal basis \(\beta = \set{\seq{v}{1,,n}}\) for \(\V\) over \(\F\) such that \([\T]_{\beta}\) is upper triangular.
+  We claim that for all \(k \in \set{1, \dots, n}\), the set \(\set{\seq{v}{1,,k}} \subseteq \beta\) is consist of eigenvectors of \(\T\).
+  We use induction on \(k\) to proof the claim.
+  For \(k = 1\), since \([\T]_{\beta}\) is upper triangular, by \cref{2.2.4} this means \(v_1\) is an eigenvector of \(\T\).
+  Thus the base case holds.
+  Suppose inductively that \(\set{\seq{v}{1,,k}}\) is consist of eigenvectors of \(\T\) for some \(k \geq 1\).
+  We show that the claim is true for \(k + 1\).
+  By induction hypothesis we know that \(\seq{v}{1,,k}\) are eigenvectors of \(\T\) corresponding to eigenvalues \(\seq{\lambda}{1,,k} \in \R\).
+  Since \(\T\) is normal, by \cref{6.15}(c) we know that \(\T^*(v_i) = \conj{\lambda_i} v_i\) for all \(i \in \set{1, \dots, k}\).
+  Then we have
+  \begin{align*}
+    \T(v_{k + 1}) & = \sum_{j = 1}^n \inn{\T(v_{k + 1}), v_j} v_j                                                           &  & \by{6.2.6}                       \\
+                  & = \sum_{j = 1}^{k + 1} \inn{\T(v_{k + 1}), v_j} v_j                                                     &  & \by{6.14}                        \\
+                  & = \sum_{j = 1}^{k + 1} \inn{v_{k + 1}, \T^*(v_j)} v_j                                                   &  & \by{6.9}                         \\
+                  & = \inn{v_{k + 1}, \T^*(v_{k + 1})} v_{k + 1} + \sum_{j = 1}^k \inn{v_{k + 1}, \T^*(v_j)} v_j                                                  \\
+                  & = \inn{v_{k + 1}, \T^*(v_{k + 1})} v_{k + 1} + \sum_{j = 1}^k \inn{v_{k + 1}, \conj{\lambda_j} v_j} v_j &  & \text{(by induction hypothesis)} \\
+                  & = \inn{v_{k + 1}, \T^*(v_{k + 1})} v_{k + 1} + \sum_{j = 1}^k \lambda_j \inn{v_{k + 1}, v_j} v_j        &  & \by{6.1}[b]                      \\
+                  & = \inn{v_{k + 1}, \T^*(v_{k + 1})} v_{k + 1}                                                            &  & \by{6.1.12}
+  \end{align*}
+  and thus \(v_{k + 1}\) is an eigenvector of \(\T\).
+  This closes the induction.
+  Hence \(\beta\) is consist of eigenvectors of \(\T\).
+  By \cref{5.1.1} this means \([\T]_{\beta}\) is a diagonal matrix.
+  Thus \([\T]_{\beta}^* = [\T]_{\beta}\) and by \cref{6.4.9} \(\T\) is self-adjoint.
 \end{proof}
 
 \begin{ex}\label{ex:6.4.13}
-	An \(A \in \ms[n][n][\R]\) is said to be a \textbf{Gramian} matrix if there exists a \(B \in \ms[n][n][\R]\) such that \(A = \tp{B} B\).
-	Prove that \(A\) is a Gramian matrix iff \(A\) is symmetric and all of its eigenvalues are nonnegative.
+  An \(A \in \ms[n][n][\R]\) is said to be a \textbf{Gramian} matrix if there exists a \(B \in \ms[n][n][\R]\) such that \(A = \tp{B} B\).
+  Prove that \(A\) is a Gramian matrix iff \(A\) is symmetric and all of its eigenvalues are nonnegative.
 \end{ex}
 
 \begin{proof}[\pf{ex:6.4.13}]
-	First suppose that \(A\) is Gramian.
-	By \cref{ex:6.4.13} there exists a \(B \in \ms[n][n][\R]\) such that \(A = \tp{B} B\).
-	Then we have
-	\begin{align*}
-		\tp{A} & = \tp{(\tp{B} B)}                         \\
-		       & = \tp{B} \tp{(\tp{B})} &  & \by{2.3.2}    \\
-		       & = \tp{B} B             &  & \by{ex:1.3.4} \\
-		       & = A.
-	\end{align*}
-	Thus by \cref{1.3.4} \(A\) is symmetric.
-	If \(\lambda\) is an eigenvalue of \(A\) and \(x\) is an eigenvector corresponding to \(\lambda\) with unit length, then we have
-	\begin{align*}
-		\lambda & = \lambda \norm{x}^2  &  & \by{6.1.12}   \\
-		        & = \lambda \inn{x, x}  &  & \by{6.1.9}    \\
-		        & = \inn{\lambda x, x}  &  & \by{6.1.1}[b] \\
-		        & = \inn{Ax, x}         &  & \by{5.1.2}    \\
-		        & = \inn{\tp{B} B x, x}                    \\
-		        & = \inn{B^* B x, x}    &  & \by{6.1.5}    \\
-		        & = \inn{Bx, Bx}        &  & \by{6.9}      \\
-		        & = \norm{Bx}^2         &  & \by{6.1.9}    \\
-		        & \geq 0.               &  & \by{6.2}[b]
-	\end{align*}
-	Thus all eigenvalues of \(A\) are nonnegative.
+  First suppose that \(A\) is Gramian.
+  By \cref{ex:6.4.13} there exists a \(B \in \ms[n][n][\R]\) such that \(A = \tp{B} B\).
+  Then we have
+  \begin{align*}
+    \tp{A} & = \tp{(\tp{B} B)}                         \\
+           & = \tp{B} \tp{(\tp{B})} &  & \by{2.3.2}    \\
+           & = \tp{B} B             &  & \by{ex:1.3.4} \\
+           & = A.
+  \end{align*}
+  Thus by \cref{1.3.4} \(A\) is symmetric.
+  If \(\lambda\) is an eigenvalue of \(A\) and \(x\) is an eigenvector corresponding to \(\lambda\) with unit length, then we have
+  \begin{align*}
+    \lambda & = \lambda \norm{x}^2  &  & \by{6.1.12}   \\
+            & = \lambda \inn{x, x}  &  & \by{6.1.9}    \\
+            & = \inn{\lambda x, x}  &  & \by{6.1.1}[b] \\
+            & = \inn{Ax, x}         &  & \by{5.1.2}    \\
+            & = \inn{\tp{B} B x, x}                    \\
+            & = \inn{B^* B x, x}    &  & \by{6.1.5}    \\
+            & = \inn{Bx, Bx}        &  & \by{6.9}      \\
+            & = \norm{Bx}^2         &  & \by{6.1.9}    \\
+            & \geq 0.               &  & \by{6.2}[b]
+  \end{align*}
+  Thus all eigenvalues of \(A\) are nonnegative.
 
-	Now suppose that \(A\) is symmetric and all eigenvalues of \(A\) are nonnegative.
-	Since
-	\begin{align*}
-		A & = \tp{A} &  & \by{1.3.4} \\
-		  & = A^*,   &  & \by{6.1.5}
-	\end{align*}
-	by \cref{6.4.8} we know that \(A\) is self-adjoint.
-	By \cref{6.17} there exists an orthonormal basis \(\beta = \set{\seq{v}{1,,n}}\) for \(\vs{\R}^n\) over \(\R\) consisting of eigenvectors of \(A\).
-	For each \(i \in \set{1, \dots, n}\), let \(\lambda_i\) be an eigenvalue of \(A\) such that \(A v_i = \lambda v_i\).
-	By \cref{2.6} we can define an \(\U \in \ls(\vs{\R}^n)\) such that \(\U(v_i) = \sqrt{v_i} v_i\) for all \(i \in \set{1, \dots, n}\).
-	Then we have
-	\begin{align*}
-		         & [\U]_{\beta} = \begin{pmatrix}
-			                          \sqrt{v_1} & 0          & \cdots & 0          \\
-			                          0          & \sqrt{v_2} & \cdots & 0          \\
-			                          \vdots     & \vdots     &        & \vdots     \\
-			                          0          & 0          & \cdots & \sqrt{v_n}
-		                          \end{pmatrix}                      &  & \by{2.2.4}                     \\
-		\implies & [\U]_{\beta}^* = \tp{([\U]_{\beta})} = [\U]_{\beta}                   &  & \by{6.1.5} \\
-		\implies & \tp{([\U]_{\beta})} [\U]_{\beta} = ([\U]_{\beta})^2 = [\L_A]_{\beta}. &  & \by{2.2.4}
-	\end{align*}
-	If \(\gamma\) is the standard ordered basis for \(\vs{\R}^n\) over \(\R\) (which is orthonormal), then we have
-	\begin{align*}
-		A & = [\L_A]_{\gamma}                                                                                              &  & \by{2.15}[a]                  \\
-		  & = \pa{[\IT[\vs{F}^n]]_{\gamma}^{\beta}}^{-1} [\L_A]_{\beta} [\IT[\vs{F}^n]]_{\gamma}^{\beta}                   &  & \by{2.23}                     \\
-		  & = \pa{[\IT[\vs{F}^n]]_{\gamma}^{\beta}}^{-1} \tp{([\U]_{\beta})} [\U]_{\beta} [\IT[\vs{F}^n]]_{\gamma}^{\beta} &  & \text{(from the proof above)} \\
-		  & = \pa{[\IT[\vs{F}^n]]_{\gamma}^{\beta}}^* \tp{([\U]_{\beta})} [\U]_{\beta} [\IT[\vs{F}^n]]_{\gamma}^{\beta}    &  & \by{ex:6.1.23}[c]             \\
-		  & = \tp{\pa{[\IT[\vs{F}^n]]_{\gamma}^{\beta}}} \tp{([\U]_{\beta})} [\U]_{\beta} [\IT[\vs{F}^n]]_{\gamma}^{\beta} &  & \by{6.1.5}                    \\
-		  & = \tp{\pa{[\U]_{\beta} [\IT[\vs{F}^n]]_{\gamma}^{\beta}}} [\U]_{\beta} [\IT[\vs{F}^n]]_{\gamma}^{\beta}.       &  & \by{2.3.2}
-	\end{align*}
-	Thus \(A\) is Gramian.
+  Now suppose that \(A\) is symmetric and all eigenvalues of \(A\) are nonnegative.
+  Since
+  \begin{align*}
+    A & = \tp{A} &  & \by{1.3.4} \\
+      & = A^*,   &  & \by{6.1.5}
+  \end{align*}
+  by \cref{6.4.8} we know that \(A\) is self-adjoint.
+  By \cref{6.17} there exists an orthonormal basis \(\beta = \set{\seq{v}{1,,n}}\) for \(\vs{\R}^n\) over \(\R\) consisting of eigenvectors of \(A\).
+  For each \(i \in \set{1, \dots, n}\), let \(\lambda_i\) be an eigenvalue of \(A\) such that \(A v_i = \lambda v_i\).
+  By \cref{2.6} we can define an \(\U \in \ls(\vs{\R}^n)\) such that \(\U(v_i) = \sqrt{v_i} v_i\) for all \(i \in \set{1, \dots, n}\).
+  Then we have
+  \begin{align*}
+             & [\U]_{\beta} = \begin{pmatrix}
+                                \sqrt{v_1} & 0          & \cdots & 0          \\
+                                0          & \sqrt{v_2} & \cdots & 0          \\
+                                \vdots     & \vdots     &        & \vdots     \\
+                                0          & 0          & \cdots & \sqrt{v_n}
+                              \end{pmatrix}                      &  & \by{2.2.4}                     \\
+    \implies & [\U]_{\beta}^* = \tp{([\U]_{\beta})} = [\U]_{\beta}                   &  & \by{6.1.5} \\
+    \implies & \tp{([\U]_{\beta})} [\U]_{\beta} = ([\U]_{\beta})^2 = [\L_A]_{\beta}. &  & \by{2.2.4}
+  \end{align*}
+  If \(\gamma\) is the standard ordered basis for \(\vs{\R}^n\) over \(\R\) (which is orthonormal), then we have
+  \begin{align*}
+    A & = [\L_A]_{\gamma}                                                                                              &  & \by{2.15}[a]                  \\
+      & = \pa{[\IT[\vs{F}^n]]_{\gamma}^{\beta}}^{-1} [\L_A]_{\beta} [\IT[\vs{F}^n]]_{\gamma}^{\beta}                   &  & \by{2.23}                     \\
+      & = \pa{[\IT[\vs{F}^n]]_{\gamma}^{\beta}}^{-1} \tp{([\U]_{\beta})} [\U]_{\beta} [\IT[\vs{F}^n]]_{\gamma}^{\beta} &  & \text{(from the proof above)} \\
+      & = \pa{[\IT[\vs{F}^n]]_{\gamma}^{\beta}}^* \tp{([\U]_{\beta})} [\U]_{\beta} [\IT[\vs{F}^n]]_{\gamma}^{\beta}    &  & \by{ex:6.1.23}[c]             \\
+      & = \tp{\pa{[\IT[\vs{F}^n]]_{\gamma}^{\beta}}} \tp{([\U]_{\beta})} [\U]_{\beta} [\IT[\vs{F}^n]]_{\gamma}^{\beta} &  & \by{6.1.5}                    \\
+      & = \tp{\pa{[\U]_{\beta} [\IT[\vs{F}^n]]_{\gamma}^{\beta}}} [\U]_{\beta} [\IT[\vs{F}^n]]_{\gamma}^{\beta}.       &  & \by{2.3.2}
+  \end{align*}
+  Thus \(A\) is Gramian.
 \end{proof}
 
 \begin{ex}[Simultaneous Diagonalization]\label{ex:6.4.14}
-	Let \(\V\) be a finite-dimensional real inner product space, and let \(\U\) and \(\T\) be self-adjoint linear operators on \(\V\) such that \(\U \T = \T \U\).
-	Prove that there exists an orthonormal basis for \(\V\) over \(\R\) consisting of vectors that are eigenvectors of both \(\U\) and \(\T\).
-	(The complex version of this result appears as \cref{ex:6.6.10}.)
+  Let \(\V\) be a finite-dimensional real inner product space, and let \(\U\) and \(\T\) be self-adjoint linear operators on \(\V\) such that \(\U \T = \T \U\).
+  Prove that there exists an orthonormal basis for \(\V\) over \(\R\) consisting of vectors that are eigenvectors of both \(\U\) and \(\T\).
+  (The complex version of this result appears as \cref{ex:6.6.10}.)
 \end{ex}
 
 \begin{proof}[\pf{ex:6.4.14}]
-	Let \(n = \dim(\V)\).
-	We use induction on \(n\).
-	For \(n = 1\), any orthonormal basis for \(\V\) over \(\R\) makes \([\T]_{\beta}\) and \([\U]_{\beta}\) diagonal matrices.
-	Thus by \cref{5.2.8} \(\T, \U\) are simultaneously diagonalizable by some orthonormal bases and the base case holds.
-	Suppose inductively that for some \(n \geq 1\), self-adjoint linear operators on \(\V\) which commute are simultaneously diagonalizable by some orthonormal bases.
-	We need to show that this is true for \(n + 1\).
-	Let \(\dim(\V) = n + 1\), let \(\T, \U \in \ls(\V)\) such that \(\T^* = \T\), \(\U^* = \U\) and \(\U \T = \T \U\).
-	Since \(\T\) is self-adjoint, by \cref{6.17} there exists an orthonormal basis \(\beta\) for \(\V\) over \(\R\) consisting of eigenvectors of \(\T\).
-	Let \(\lambda \in \R\) be an eigenvalue of \(\T\) and let \(E_{\lambda}\) be the eigenspace of \(\lambda\).
-	Now we split into two cases:
-	\begin{itemize}
-		\item If \(E_{\lambda} = \V\), then any basis for \(\V\) over \(\R\) is consist of eigenvectors of \(\T\).
-		      Since \(\U\) is self-adjoint, by \cref{6.17} we know that there exists an orthonormal basis for \(\V\) over \(\R\) consist of eigenvectors of \(\U\).
-		      Thus by \cref{5.2.8} \(\T, \U\) are simultaneously diagonalizable by some orthonormal bases for \(\V\) over \(\R\).
-		\item If \(E_{\lambda} \neq \V\), then by \cref{5.7} we have \(1 \leq \dim(E_{\lambda}) < n + 1\).
-		      By \cref{5.4.2}(e) we know that \(E_{\lambda}\) is \(\T\)-invariant.
-		      we claim that \(E_{\lambda}\) is \(\U\)-invariant.
-		      Since
-		      \begin{align*}
-			               & \forall v \in E_{\lambda}, \T(v) = \lambda v             &  & \by{5.2.4}    \\
-			      \implies & \forall v \in E_{\lambda}, \lambda \U(v) = \U(\lambda v) &  & \by{2.1.1}[b] \\
-			               & = \U(\T(v)) = \T(\U(v))                                  &  & \by{5.1.2}    \\
-			      \implies & \forall v \in E_{\lambda}, \U(v) \in E_{\lambda}         &  & \by{5.1.2}    \\
-			      \implies & \U(E_{\lambda}) \subseteq E_{\lambda},
-		      \end{align*}
-		      by \cref{5.4.1} we know that \(E_{\lambda}\) is \(\U\)-invariant.
-		      Since \(\T, \U\) are self-adjoint, by \cref{ex:6.4.7}(b) we know that \(E_{\lambda}^{\perp}\) is both \(\T\)- and \(\U\)-invariant.
-		      By \cref{6.7}(c) we know that \(\dim(E_{\lambda}^{\perp}) < n + 1\).
-		      Thus by induction hypothesis we can find some orthonormal bases \(\beta_1\) and \(\beta_2\) for \(E_{\lambda}\) and \(E_{\lambda}^{\perp}\) over \(\R\), respectively, consist of eigenvectors of both \(\T\) and \(\U\).
-		      By \cref{5.10}(d) and \cref{6.7}(c) we know that \(\beta = \beta_1 \cup \beta_2\) is an orthonormal basis for \(\V\) over \(\R\) consist of eigenvectors of both \(\T\) and \(\U\).
-		      Thus by \cref{5.2.8} \(\T, \U\) are simultaneously diagonalizable by some orthonormal bases for \(\V\) over \(\R\).
-	\end{itemize}
-	From all cases above the induction is closed.
+  Let \(n = \dim(\V)\).
+  We use induction on \(n\).
+  For \(n = 1\), any orthonormal basis for \(\V\) over \(\R\) makes \([\T]_{\beta}\) and \([\U]_{\beta}\) diagonal matrices.
+  Thus by \cref{5.2.8} \(\T, \U\) are simultaneously diagonalizable by some orthonormal bases and the base case holds.
+  Suppose inductively that for some \(n \geq 1\), self-adjoint linear operators on \(\V\) which commute are simultaneously diagonalizable by some orthonormal bases.
+  We need to show that this is true for \(n + 1\).
+  Let \(\dim(\V) = n + 1\), let \(\T, \U \in \ls(\V)\) such that \(\T^* = \T\), \(\U^* = \U\) and \(\U \T = \T \U\).
+  Since \(\T\) is self-adjoint, by \cref{6.17} there exists an orthonormal basis \(\beta\) for \(\V\) over \(\R\) consisting of eigenvectors of \(\T\).
+  Let \(\lambda \in \R\) be an eigenvalue of \(\T\) and let \(E_{\lambda}\) be the eigenspace of \(\lambda\).
+  Now we split into two cases:
+  \begin{itemize}
+    \item If \(E_{\lambda} = \V\), then any basis for \(\V\) over \(\R\) is consist of eigenvectors of \(\T\).
+          Since \(\U\) is self-adjoint, by \cref{6.17} we know that there exists an orthonormal basis for \(\V\) over \(\R\) consist of eigenvectors of \(\U\).
+          Thus by \cref{5.2.8} \(\T, \U\) are simultaneously diagonalizable by some orthonormal bases for \(\V\) over \(\R\).
+    \item If \(E_{\lambda} \neq \V\), then by \cref{5.7} we have \(1 \leq \dim(E_{\lambda}) < n + 1\).
+          By \cref{5.4.2}(e) we know that \(E_{\lambda}\) is \(\T\)-invariant.
+          we claim that \(E_{\lambda}\) is \(\U\)-invariant.
+          Since
+          \begin{align*}
+                     & \forall v \in E_{\lambda}, \T(v) = \lambda v             &  & \by{5.2.4}    \\
+            \implies & \forall v \in E_{\lambda}, \lambda \U(v) = \U(\lambda v) &  & \by{2.1.1}[b] \\
+                     & = \U(\T(v)) = \T(\U(v))                                  &  & \by{5.1.2}    \\
+            \implies & \forall v \in E_{\lambda}, \U(v) \in E_{\lambda}         &  & \by{5.1.2}    \\
+            \implies & \U(E_{\lambda}) \subseteq E_{\lambda},
+          \end{align*}
+          by \cref{5.4.1} we know that \(E_{\lambda}\) is \(\U\)-invariant.
+          Since \(\T, \U\) are self-adjoint, by \cref{ex:6.4.7}(b) we know that \(E_{\lambda}^{\perp}\) is both \(\T\)- and \(\U\)-invariant.
+          By \cref{6.7}(c) we know that \(\dim(E_{\lambda}^{\perp}) < n + 1\).
+          Thus by induction hypothesis we can find some orthonormal bases \(\beta_1\) and \(\beta_2\) for \(E_{\lambda}\) and \(E_{\lambda}^{\perp}\) over \(\R\), respectively, consist of eigenvectors of both \(\T\) and \(\U\).
+          By \cref{5.10}(d) and \cref{6.7}(c) we know that \(\beta = \beta_1 \cup \beta_2\) is an orthonormal basis for \(\V\) over \(\R\) consist of eigenvectors of both \(\T\) and \(\U\).
+          Thus by \cref{5.2.8} \(\T, \U\) are simultaneously diagonalizable by some orthonormal bases for \(\V\) over \(\R\).
+  \end{itemize}
+  From all cases above the induction is closed.
 \end{proof}
 
 \begin{ex}\label{ex:6.4.15}
-	Let \(A, B \in \ms[n][n][\R]\) be symmetric such that \(AB = BA\).
-	Use \cref{ex:6.4.14} to prove that there exists an orthogonal matrix \(P\) such that \(\tp{P} A P\) and \(\tp{P} B P\) are both diagonal matrices.
+  Let \(A, B \in \ms[n][n][\R]\) be symmetric such that \(AB = BA\).
+  Use \cref{ex:6.4.14} to prove that there exists an orthogonal matrix \(P\) such that \(\tp{P} A P\) and \(\tp{P} B P\) are both diagonal matrices.
 \end{ex}
 
 \begin{proof}[\pf{ex:6.4.15}]
-	Since
-	\begin{align*}
-		A & = \tp{A} &  & \by{1.3.4} \\
-		  & = A^*    &  & \by{6.1.5} \\
-		B & = \tp{B} &  & \by{1.3.4} \\
-		  & = B^*    &  & \by{6.1.5}
-	\end{align*}
-	and
-	\begin{align*}
-		\L_A \L_B & = \L_{AB}    &  & \by{2.15}[e] \\
-		          & = \L_{BA}                      \\
-		          & = \L_B \L_A, &  & \by{2.15}[e]
-	\end{align*}
-	by \cref{ex:6.4.14} there exists an orthonormal basis \(\gamma\) for \(\vs{R}^n\) over \(\R\) such that \([\L_A]_{\gamma}, [\L_B]_{\gamma}\) are diagonal matrices.
-	If we let \(\beta\) be the standard ordered basis for \(\vs{R}^n\) over \(\R\) (which is orthonormal), then we have
-	\begin{align*}
-		[\L_A]_{\gamma} & = \pa{[\IT[\vs{F}^n]]_{\gamma}^{\beta}}^{-1} [\L_A]_{\beta} [\IT[\vs{F}^n]]_{\gamma}^{\beta} &  & \by{2.23}         \\
-		                & = \pa{[\IT[\vs{F}^n]]_{\gamma}^{\beta}}^{-1} A [\IT[\vs{F}^n]]_{\gamma}^{\beta}              &  & \by{2.15}[a]      \\
-		                & = \pa{[\IT[\vs{F}^n]]_{\gamma}^{\beta}}^* A [\IT[\vs{F}^n]]_{\gamma}^{\beta}                 &  & \by{ex:6.1.23}[c] \\
-		                & = \tp{\pa{[\IT[\vs{F}^n]]_{\gamma}^{\beta}}} A [\IT[\vs{F}^n]]_{\gamma}^{\beta}.             &  & \by{6.1.5}
-	\end{align*}
-	Similarly we have \([\L_A]_{\gamma} = \tp{\pa{[\IT[\vs{F}^n]]_{\gamma}^{\beta}}} A [\IT[\vs{F}^n]]_{\gamma}^{\beta}\).
-	By setting \(P = [\IT[\vs{F}^n]]_{\gamma}^{\beta}\) we are done.
+  Since
+  \begin{align*}
+    A & = \tp{A} &  & \by{1.3.4} \\
+      & = A^*    &  & \by{6.1.5} \\
+    B & = \tp{B} &  & \by{1.3.4} \\
+      & = B^*    &  & \by{6.1.5}
+  \end{align*}
+  and
+  \begin{align*}
+    \L_A \L_B & = \L_{AB}    &  & \by{2.15}[e] \\
+              & = \L_{BA}                      \\
+              & = \L_B \L_A, &  & \by{2.15}[e]
+  \end{align*}
+  by \cref{ex:6.4.14} there exists an orthonormal basis \(\gamma\) for \(\vs{R}^n\) over \(\R\) such that \([\L_A]_{\gamma}, [\L_B]_{\gamma}\) are diagonal matrices.
+  If we let \(\beta\) be the standard ordered basis for \(\vs{R}^n\) over \(\R\) (which is orthonormal), then we have
+  \begin{align*}
+    [\L_A]_{\gamma} & = \pa{[\IT[\vs{F}^n]]_{\gamma}^{\beta}}^{-1} [\L_A]_{\beta} [\IT[\vs{F}^n]]_{\gamma}^{\beta} &  & \by{2.23}         \\
+                    & = \pa{[\IT[\vs{F}^n]]_{\gamma}^{\beta}}^{-1} A [\IT[\vs{F}^n]]_{\gamma}^{\beta}              &  & \by{2.15}[a]      \\
+                    & = \pa{[\IT[\vs{F}^n]]_{\gamma}^{\beta}}^* A [\IT[\vs{F}^n]]_{\gamma}^{\beta}                 &  & \by{ex:6.1.23}[c] \\
+                    & = \tp{\pa{[\IT[\vs{F}^n]]_{\gamma}^{\beta}}} A [\IT[\vs{F}^n]]_{\gamma}^{\beta}.             &  & \by{6.1.5}
+  \end{align*}
+  Similarly we have \([\L_A]_{\gamma} = \tp{\pa{[\IT[\vs{F}^n]]_{\gamma}^{\beta}}} A [\IT[\vs{F}^n]]_{\gamma}^{\beta}\).
+  By setting \(P = [\IT[\vs{F}^n]]_{\gamma}^{\beta}\) we are done.
 \end{proof}
 
 \begin{ex}\label{ex:6.4.16}
-	Prove the \emph{Cayley--Hamilton theorem} for a complex \(n \times n\) matrix \(A\).
-	That is, if \(f\) is the characteristic polynomial of \(A\), prove that \(f(A) = \zm\).
-	(The general case is proved in \cref{5.23}.)
+  Prove the \emph{Cayley--Hamilton theorem} for a complex \(n \times n\) matrix \(A\).
+  That is, if \(f\) is the characteristic polynomial of \(A\), prove that \(f(A) = \zm\).
+  (The general case is proved in \cref{5.23}.)
 \end{ex}
 
 \begin{proof}[\pf{ex:6.4.16}]
-	Since \(A \in \ms[n][n][\C]\), by \cref{d.4} we know that \(\det(A - t I_n)\) splits.
-	By \cref{6.14} there exists an orthonormal basis \(\gamma\) for \(\vs{C}^n\) over \(\C\) such that \([\L_A]_{\gamma}\) is upper triangular.
-	By \cref{ex:4.2.23} we have
-	\[
-		\forall t \in \C, f(t) = \prod_{i = 1}^n (([\L_A]_{\gamma})_{i i} - t)
-	\]
-	and thus by \cref{e.0.7}
-	\[
-		f([\L_A]_{\gamma}) = \prod_{i = 1}^n (([\L_A]_{\gamma})_{i i} I_n - [\L_A]_{\gamma}).
-	\]
-	Observe that for each \(j \in \set{1, \dots, n}\), we have
-	\begin{align*}
-		 & f([\L_A]_{\gamma})(e_j)                         \\
-		 & = \pa{\prod_{\substack{i = 1                    \\ i \neq j}}^n (([\L_A]_{\gamma})_{i i} I_n - [\L_A]_{\gamma})} \cdot (([\L_A]_{\gamma})_{j j} I_n - [\L_A]_{\gamma} e_j))         \\
-		 & = \pa{\prod_{\substack{i = 1                    \\ i \neq j}}^n (([\L_A]_{\gamma})_{i i} I_n - [\L_A]_{\gamma})} \cdot (([\L_A]_{\gamma})_{j j} e_j - ([\L_A]_{\gamma})_{j j} e_j)) && \text{(\([\L_A]_{\gamma}\) is diagonal)} \\
-		 & = \pa{\prod_{\substack{i = 1                    \\ i \neq j}}^n (([\L_A]_{\gamma})_{i i} I_n - [\L_A]_{\gamma})} \cdot \zv \\
-		 & = \zv.                       &  & \by{2.1.2}[a]
-	\end{align*}
-	Thus
-	\begin{align*}
-		         & \forall j \in \set{1, \dots, n}, f([\L_A]_{\gamma})(e_j) = \zv                  \\
-		\implies & f([\L_A]_{\gamma}) = \zm.                                      &  & \by{2.1.13}
-	\end{align*}
-	If we let \(\beta\) be the standard ordered basis for \(\C^n\) over \(\C\), then we have
-	\begin{align*}
-		f(A) & = f([\L_A]_{\beta})                                                                                                                                                               &  & \by{2.15}[a]                  \\
-		     & = f([\IT[\C^n]]_{\gamma}^{\beta} [\L_A]_{\gamma} [\IT[\C^n]]_{\beta}^{\gamma})                                                                                                    &  & \by{2.23}                     \\
-		     & = \prod_{i = 1}^n (([\L_A]_{\gamma})_{i i} I_n - [\IT[\C^n]]_{\gamma}^{\beta} [\L_A]_{\gamma} [\IT[\C^n]]_{\beta}^{\gamma})                                                                                          \\
-		     & = \prod_{i = 1}^n (([\L_A]_{\gamma})_{i i} [\IT[\C^n]]_{\gamma}^{\beta} [\IT[\C^n]]_{\beta}^{\gamma} - [\IT[\C^n]]_{\gamma}^{\beta} [\L_A]_{\gamma} [\IT[\C^n]]_{\beta}^{\gamma}) &  & \by{2.23}                     \\
-		     & = \prod_{i = 1}^n [\IT[\C^n]]_{\gamma}^{\beta} (([\L_A]_{\gamma})_{i i} I_n - [\L_A]_{\gamma}) [\IT[\C^n]]_{\beta}^{\gamma}                                                                                          \\
-		     & = [\IT[\C^n]]_{\gamma}^{\beta} \pa{\prod_{i = 1}^n (([\L_A]_{\gamma})_{i i} I_n - [\L_A]_{\gamma})} [\IT[\C^n]]_{\beta}^{\gamma}                                                                                     \\
-		     & = [\IT[\C^n]]_{\gamma}^{\beta} f([\L_A]_{\gamma}) [\IT[\C^n]]_{\beta}^{\gamma}                                                                                                                                       \\
-		     & = \zm.                                                                                                                                                                            &  & \text{(from the proof above)}
-	\end{align*}
+  Since \(A \in \ms[n][n][\C]\), by \cref{d.4} we know that \(\det(A - t I_n)\) splits.
+  By \cref{6.14} there exists an orthonormal basis \(\gamma\) for \(\vs{C}^n\) over \(\C\) such that \([\L_A]_{\gamma}\) is upper triangular.
+  By \cref{ex:4.2.23} we have
+  \[
+    \forall t \in \C, f(t) = \prod_{i = 1}^n (([\L_A]_{\gamma})_{i i} - t)
+  \]
+  and thus by \cref{e.0.7}
+  \[
+    f([\L_A]_{\gamma}) = \prod_{i = 1}^n (([\L_A]_{\gamma})_{i i} I_n - [\L_A]_{\gamma}).
+  \]
+  Observe that for each \(j \in \set{1, \dots, n}\), we have
+  \begin{align*}
+     & f([\L_A]_{\gamma})(e_j)                         \\
+     & = \pa{\prod_{\substack{i = 1                    \\ i \neq j}}^n (([\L_A]_{\gamma})_{i i} I_n - [\L_A]_{\gamma})} \cdot (([\L_A]_{\gamma})_{j j} I_n - [\L_A]_{\gamma} e_j))         \\
+     & = \pa{\prod_{\substack{i = 1                    \\ i \neq j}}^n (([\L_A]_{\gamma})_{i i} I_n - [\L_A]_{\gamma})} \cdot (([\L_A]_{\gamma})_{j j} e_j - ([\L_A]_{\gamma})_{j j} e_j)) && \text{(\([\L_A]_{\gamma}\) is diagonal)} \\
+     & = \pa{\prod_{\substack{i = 1                    \\ i \neq j}}^n (([\L_A]_{\gamma})_{i i} I_n - [\L_A]_{\gamma})} \cdot \zv \\
+     & = \zv.                       &  & \by{2.1.2}[a]
+  \end{align*}
+  Thus
+  \begin{align*}
+             & \forall j \in \set{1, \dots, n}, f([\L_A]_{\gamma})(e_j) = \zv                  \\
+    \implies & f([\L_A]_{\gamma}) = \zm.                                      &  & \by{2.1.13}
+  \end{align*}
+  If we let \(\beta\) be the standard ordered basis for \(\C^n\) over \(\C\), then we have
+  \begin{align*}
+    f(A) & = f([\L_A]_{\beta})                                                                                                                                                               &  & \by{2.15}[a]                  \\
+         & = f([\IT[\C^n]]_{\gamma}^{\beta} [\L_A]_{\gamma} [\IT[\C^n]]_{\beta}^{\gamma})                                                                                                    &  & \by{2.23}                     \\
+         & = \prod_{i = 1}^n (([\L_A]_{\gamma})_{i i} I_n - [\IT[\C^n]]_{\gamma}^{\beta} [\L_A]_{\gamma} [\IT[\C^n]]_{\beta}^{\gamma})                                                                                          \\
+         & = \prod_{i = 1}^n (([\L_A]_{\gamma})_{i i} [\IT[\C^n]]_{\gamma}^{\beta} [\IT[\C^n]]_{\beta}^{\gamma} - [\IT[\C^n]]_{\gamma}^{\beta} [\L_A]_{\gamma} [\IT[\C^n]]_{\beta}^{\gamma}) &  & \by{2.23}                     \\
+         & = \prod_{i = 1}^n [\IT[\C^n]]_{\gamma}^{\beta} (([\L_A]_{\gamma})_{i i} I_n - [\L_A]_{\gamma}) [\IT[\C^n]]_{\beta}^{\gamma}                                                                                          \\
+         & = [\IT[\C^n]]_{\gamma}^{\beta} \pa{\prod_{i = 1}^n (([\L_A]_{\gamma})_{i i} I_n - [\L_A]_{\gamma})} [\IT[\C^n]]_{\beta}^{\gamma}                                                                                     \\
+         & = [\IT[\C^n]]_{\gamma}^{\beta} f([\L_A]_{\gamma}) [\IT[\C^n]]_{\beta}^{\gamma}                                                                                                                                       \\
+         & = \zm.                                                                                                                                                                            &  & \text{(from the proof above)}
+  \end{align*}
 \end{proof}
 
 \begin{defn}\label{6.4.11}
-	A linear operator \(\T\) on a finite-dimensional inner product space is called \textbf{positive definite} (\textbf{positive semidefinite}) if \(\T\) is self-adjoint and \(\inn{\T(x), x} > 0\) (\(\inn{\T(x), x} \geq 0\)) for all \(x \neq \zv\).
+  A linear operator \(\T\) on a finite-dimensional inner product space is called \textbf{positive definite} (\textbf{positive semidefinite}) if \(\T\) is self-adjoint and \(\inn{\T(x), x} > 0\) (\(\inn{\T(x), x} \geq 0\)) for all \(x \neq \zv\).
 
-	An \(n \times n\) matrix \(A\) with entries from \(\R\) or \(\C\) is called \textbf{positive definite} (\textbf{positive semidefinite}) if \(\L_A\) is positive definite (positive semidefinite).
+  An \(n \times n\) matrix \(A\) with entries from \(\R\) or \(\C\) is called \textbf{positive definite} (\textbf{positive semidefinite}) if \(\L_A\) is positive definite (positive semidefinite).
 \end{defn}
 
 \begin{ex}\label{ex:6.4.17}
-	Let \(\T\) and \(\U\) be a self-adjoint linear operators on an \(n\)-dimensional inner product space \(\V\) over \(\F\), and let \(A = [\T]_{\beta}\), where \(\beta\) is an orthonormal basis for \(\V\) over \(\F\).
-	Prove the following results.
-	\begin{enumerate}
-		\item \(\T\) is positive definite (semidefinite) iff all of its eigenvalues are positive (nonnegative).
-		\item \(\T\) is positive definite (semidefinite) iff
-		      \[
-			      \sum_{i = 1}^n \sum_{j = 1}^n A_{i j} a_j \conj{a_i} > 0 \; (\geq 0) \text{ for all nonzero } n\text{-tuples } \tuple{a}{1,,n}.
-		      \]
-		\item \(\T\) is positive semidefinite iff \(A = B^* B\) for some square matrix \(B\).
-		\item If \(\T\) and \(\U\) are positive semidefinite operators such that \(\T^2 = \U^2\), then \(\T = \U\).
-		\item If \(\T\) and \(\U\) are positive definite operators such that \(\T \U = \U \T\), then \(\T \U\) is positive definite.
-		\item \(\T\) is positive definite (semidefinite) iff \(A\) is positive definite (semidefinite).
-	\end{enumerate}
-	Because of (f), results analogous to items (a) through (d) hold for matrices as well as operators.
+  Let \(\T\) and \(\U\) be a self-adjoint linear operators on an \(n\)-dimensional inner product space \(\V\) over \(\F\), and let \(A = [\T]_{\beta}\), where \(\beta\) is an orthonormal basis for \(\V\) over \(\F\).
+  Prove the following results.
+  \begin{enumerate}
+    \item \(\T\) is positive definite (semidefinite) iff all of its eigenvalues are positive (nonnegative).
+    \item \(\T\) is positive definite (semidefinite) iff
+          \[
+            \sum_{i = 1}^n \sum_{j = 1}^n A_{i j} a_j \conj{a_i} > 0 \; (\geq 0) \text{ for all nonzero } n\text{-tuples } \tuple{a}{1,,n}.
+          \]
+    \item \(\T\) is positive semidefinite iff \(A = B^* B\) for some square matrix \(B\).
+    \item If \(\T\) and \(\U\) are positive semidefinite operators such that \(\T^2 = \U^2\), then \(\T = \U\).
+    \item If \(\T\) and \(\U\) are positive definite operators such that \(\T \U = \U \T\), then \(\T \U\) is positive definite.
+    \item \(\T\) is positive definite (semidefinite) iff \(A\) is positive definite (semidefinite).
+  \end{enumerate}
+  Because of (f), results analogous to items (a) through (d) hold for matrices as well as operators.
 \end{ex}
 
 \begin{proof}[\pf{ex:6.4.17}(a)]
-	First suppose that \(\T\) is positive definite (semidefinite).
-	Suppose that \(\lambda \in \F\) is an eigenvalue of \(\T\) and \(v \in \V\) is an eigenvector of \(\T\) corresponding to \(\lambda\).
-	Then we have
-	\begin{align*}
-		\lambda & = \lambda \frac{\norm{v}^2}{\norm{v}^2}                &  & (v \neq \zv)  \\
-		        & = \frac{\lambda \inn{v, v}}{\norm{v}^2}                &  & \by{6.1.9}    \\
-		        & = \frac{\inn{\lambda v, v}}{\norm{v}^2}                &  & \by{6.1.1}[b] \\
-		        & = \frac{\inn{\T(v), v}}{\norm{v}^2}                    &  & \by{5.1.2}    \\
-		        & \begin{dcases}
-			          > 0    & \text{if } \T \text{ is positive definite} \\
-			          \geq 0 & \text{if } \T \text{ is semidefinite}
-		          \end{dcases}. &  & \by{6.2}(b) and \cref{6.4.11}
-	\end{align*}
+  First suppose that \(\T\) is positive definite (semidefinite).
+  Suppose that \(\lambda \in \F\) is an eigenvalue of \(\T\) and \(v \in \V\) is an eigenvector of \(\T\) corresponding to \(\lambda\).
+  Then we have
+  \begin{align*}
+    \lambda & = \lambda \frac{\norm{v}^2}{\norm{v}^2}                &  & (v \neq \zv)  \\
+            & = \frac{\lambda \inn{v, v}}{\norm{v}^2}                &  & \by{6.1.9}    \\
+            & = \frac{\inn{\lambda v, v}}{\norm{v}^2}                &  & \by{6.1.1}[b] \\
+            & = \frac{\inn{\T(v), v}}{\norm{v}^2}                    &  & \by{5.1.2}    \\
+            & \begin{dcases}
+                > 0    & \text{if } \T \text{ is positive definite} \\
+                \geq 0 & \text{if } \T \text{ is semidefinite}
+              \end{dcases}. &  & \by{6.2}(b) and \cref{6.4.11}
+  \end{align*}
 
-	Now suppose that eigenvalues of \(\T\) are positive (nonnegative).
-	Since \(\T\) is self-adjoint (by hypothesis), by \cref{6.4.8} we have \(\T = \T^*\).
-	Thus we have \(\T^* \T = \T^2 = \T \T^*\) and by \cref{6.4.3} \(\T\) is normal.
-	By \cref{6.16} we know that there exists an orthonormal basis \(\gamma = \set{\seq{v}{1,,n}}\) for \(\V\) over \(\F\) consist of eigenvectors of \(\T\).
-	For each \(i \in \set{1, \dots, n}\), let \(\lambda_i\) be the eigenvalue of \(\T\) correspond to \(v_i\).
-	Then we have
-	\begin{align*}
-		 & \forall x \in \V \setminus \set{\zv}, \inn{\T(x), x}                                                   \\
-		 & = \inn{\T\pa{\sum_{i = 1}^n \inn{x, v_i} v_i}, \sum_{j = 1}^n \inn{x, v_j} v_j}    &  & \by{6.5}       \\
-		 & = \inn{\sum_{i = 1}^n \inn{x, v_i} \T(v_i), \sum_{j = 1}^n \inn{x, v_j} v_j}       &  & \by{2.1.2}[d]  \\
-		 & = \inn{\sum_{i = 1}^n \inn{x, v_i} \lambda_i v_i, \sum_{j = 1}^n \inn{x, v_j} v_j} &  & \by{5.1.2}     \\
-		 & = \sum_{i = 1}^n \inn{x, v_i} \lambda_i \inn{v_i, \sum_{j = 1}^n \inn{x, v_j} v_j} &  & \by{6.1.1}[ab] \\
-		 & = \sum_{i = 1}^n \inn{x, v_i} \lambda_i \inn{v_i, \inn{x, v_i} v_i}                &  & \by{6.1.12}    \\
-		 & = \sum_{i = 1}^n \abs{\inn{x, v_i}}^2 \lambda_i \inn{v_i, v_i}                     &  & \by{6.1}[b]    \\
-		 & = \sum_{i = 1}^n \abs{\inn{x, v_i}}^2 \lambda_i \norm{v_i}^2                       &  & \by{6.1.9}     \\
-		 & = \sum_{i = 1}^n \abs{\inn{x, v_i}}^2 \lambda_i                                    &  & \by{6.1.12}    \\
-		 & \begin{dcases}
-			   > 0    & \text{if } \lambda_i > 0 \text{ for all } i \in \set{1, \dots, n}    \\
-			   \geq 0 & \text{if } \lambda_i \geq 0 \text{ for all } i \in \set{1, \dots, n}
-		   \end{dcases}.   &  & (x \neq \zv)
-	\end{align*}
-	Thus by \cref{6.4.11} \(\T\) is positive definite (semidefinite).
-	We conclude that \(\T\) is positive definite (semidefinite) iff all of its eigenvalues are positive (nonnegative).
+  Now suppose that eigenvalues of \(\T\) are positive (nonnegative).
+  Since \(\T\) is self-adjoint (by hypothesis), by \cref{6.4.8} we have \(\T = \T^*\).
+  Thus we have \(\T^* \T = \T^2 = \T \T^*\) and by \cref{6.4.3} \(\T\) is normal.
+  By \cref{6.16} we know that there exists an orthonormal basis \(\gamma = \set{\seq{v}{1,,n}}\) for \(\V\) over \(\F\) consist of eigenvectors of \(\T\).
+  For each \(i \in \set{1, \dots, n}\), let \(\lambda_i\) be the eigenvalue of \(\T\) correspond to \(v_i\).
+  Then we have
+  \begin{align*}
+     & \forall x \in \V \setminus \set{\zv}, \inn{\T(x), x}                                                    \\
+     & = \inn{\T\pa{\sum_{i = 1}^n \inn{x, v_i} v_i}, \sum_{j = 1}^n \inn{x, v_j} v_j}    &  & \by{6.5}        \\
+     & = \inn{\sum_{i = 1}^n \inn{x, v_i} \T(v_i), \sum_{j = 1}^n \inn{x, v_j} v_j}       &  & \by{2.1.2}[d]   \\
+     & = \inn{\sum_{i = 1}^n \inn{x, v_i} \lambda_i v_i, \sum_{j = 1}^n \inn{x, v_j} v_j} &  & \by{5.1.2}      \\
+     & = \sum_{i = 1}^n \inn{x, v_i} \lambda_i \inn{v_i, \sum_{j = 1}^n \inn{x, v_j} v_j} &  & \by{6.1.1}[a,b] \\
+     & = \sum_{i = 1}^n \inn{x, v_i} \lambda_i \inn{v_i, \inn{x, v_i} v_i}                &  & \by{6.1.12}     \\
+     & = \sum_{i = 1}^n \abs{\inn{x, v_i}}^2 \lambda_i \inn{v_i, v_i}                     &  & \by{6.1}[b]     \\
+     & = \sum_{i = 1}^n \abs{\inn{x, v_i}}^2 \lambda_i \norm{v_i}^2                       &  & \by{6.1.9}      \\
+     & = \sum_{i = 1}^n \abs{\inn{x, v_i}}^2 \lambda_i                                    &  & \by{6.1.12}     \\
+     & \begin{dcases}
+         > 0    & \text{if } \lambda_i > 0 \text{ for all } i \in \set{1, \dots, n}    \\
+         \geq 0 & \text{if } \lambda_i \geq 0 \text{ for all } i \in \set{1, \dots, n}
+       \end{dcases}.   &  & (x \neq \zv)
+  \end{align*}
+  Thus by \cref{6.4.11} \(\T\) is positive definite (semidefinite).
+  We conclude that \(\T\) is positive definite (semidefinite) iff all of its eigenvalues are positive (nonnegative).
 \end{proof}
 
 \begin{proof}[\pf{ex:6.4.17}(b)]
-	Let \(\beta = \set{\seq{v}{1,,n}}\).
-	Observe that
-	\begin{align*}
-		 & \inn{\T\pa{\sum_{j = 1}^n a_j v_j}, \sum_{k = 1}^n a_k v_k}                                            \\
-		 & = \inn{\sum_{j = 1}^n a_j \T(v_j), \sum_{k = 1}^n a_k v_k}                         &  & \by{2.1.2}[d]  \\
-		 & = \inn{\sum_{j = 1}^n a_j \pa{\sum_{i = 1}^n A_{i j} v_i}, \sum_{k = 1}^n a_k v_k} &  & \by{2.2.4}     \\
-		 & = \sum_{j = 1}^n \sum_{i = 1}^n a_j A_{i j} \inn{v_i, \sum_{k = 1}^n a_k v_k}      &  & \by{6.1.1}[ab] \\
-		 & = \sum_{j = 1}^n \sum_{i = 1}^n a_j A_{i j} \inn{v_i, a_i v_i}                     &  & \by{6.1.12}    \\
-		 & = \sum_{j = 1}^n \sum_{i = 1}^n a_j A_{i j} \conj{a_i} \inn{v_i, v_i}              &  & \by{6.1}[b]    \\
-		 & = \sum_{j = 1}^n \sum_{i = 1}^n a_j A_{i j} \conj{a_i}.                            &  & \by{6.1.12}
-	\end{align*}
-	Thus we have
-	\begin{align*}
-		     & \T \text{ is positive definite (semidefinite)}                                                                                                  \\
-		\iff & \forall x \in \V \setminus \set{\zv}, 0 < (\leq) \inn{\T(x), x}                                              &  & \by{6.4.11}                   \\
-		     & = \inn{\T\pa{\sum_{j = 1}^n \inn{x, v_j} v_j}, \sum_{k = 1}^n \inn{x, v_k} v_k}                              &  & \by{6.5}                      \\
-		     & = \sum_{j = 1}^n \sum_{i = 1}^n \inn{x, v_j} A_{i j} \conj{\inn{x, v_i}}                                     &  & \text{(from the proof above)} \\
-		\iff & \forall a \in \vs{F}^n \setminus \set{\zv}, \sum_{i = 1}^n \sum_{j = 1}^n A_{i j} a_j \conj{a_i} > (\geq) 0.
-	\end{align*}
+  Let \(\beta = \set{\seq{v}{1,,n}}\).
+  Observe that
+  \begin{align*}
+     & \inn{\T\pa{\sum_{j = 1}^n a_j v_j}, \sum_{k = 1}^n a_k v_k}                                             \\
+     & = \inn{\sum_{j = 1}^n a_j \T(v_j), \sum_{k = 1}^n a_k v_k}                         &  & \by{2.1.2}[d]   \\
+     & = \inn{\sum_{j = 1}^n a_j \pa{\sum_{i = 1}^n A_{i j} v_i}, \sum_{k = 1}^n a_k v_k} &  & \by{2.2.4}      \\
+     & = \sum_{j = 1}^n \sum_{i = 1}^n a_j A_{i j} \inn{v_i, \sum_{k = 1}^n a_k v_k}      &  & \by{6.1.1}[a,b] \\
+     & = \sum_{j = 1}^n \sum_{i = 1}^n a_j A_{i j} \inn{v_i, a_i v_i}                     &  & \by{6.1.12}     \\
+     & = \sum_{j = 1}^n \sum_{i = 1}^n a_j A_{i j} \conj{a_i} \inn{v_i, v_i}              &  & \by{6.1}[b]     \\
+     & = \sum_{j = 1}^n \sum_{i = 1}^n a_j A_{i j} \conj{a_i}.                            &  & \by{6.1.12}
+  \end{align*}
+  Thus we have
+  \begin{align*}
+         & \T \text{ is positive definite (semidefinite)}                                                                                                  \\
+    \iff & \forall x \in \V \setminus \set{\zv}, 0 < (\leq) \inn{\T(x), x}                                              &  & \by{6.4.11}                   \\
+         & = \inn{\T\pa{\sum_{j = 1}^n \inn{x, v_j} v_j}, \sum_{k = 1}^n \inn{x, v_k} v_k}                              &  & \by{6.5}                      \\
+         & = \sum_{j = 1}^n \sum_{i = 1}^n \inn{x, v_j} A_{i j} \conj{\inn{x, v_i}}                                     &  & \text{(from the proof above)} \\
+    \iff & \forall a \in \vs{F}^n \setminus \set{\zv}, \sum_{i = 1}^n \sum_{j = 1}^n A_{i j} a_j \conj{a_i} > (\geq) 0.
+  \end{align*}
 \end{proof}
 
 \begin{proof}[\pf{ex:6.4.17}(c)]
-	First suppose that \(\T\) is positive semidefinite.
-	As in the proof of \cref{ex:6.4.17}(a), \(\T\) is self-adjoint implies there exists an orthonormal basis \(\gamma = \set{\seq{v}{1,,n}}\) for \(\V\) over \(\F\) consist of eigenvectors of \(\T\).
-	For each \(i \in \set{1, \dots, n}\), let \(\lambda_i\) be the eigenvalue of \(\T\) corresponding to \(v_i\).
-	By \cref{ex:6.4.17}(a) we know that \(\lambda_i \geq 0\) for all \(i \in \set{1, \dots, n}\).
-	If we let \(\alpha\) be the standard ordered basis for \(\vs{F}^n\) over \(\F\) and
-	\[
-		C = \begin{pmatrix}
-			\sqrt{\lambda_1} & 0                & \cdots & 0                \\
-			0                & \sqrt{\lambda_2} & \cdots & 0                \\
-			\vdots           & \vdots           &        & \vdots           \\
-			0                & 0                & \cdots & \sqrt{\lambda_n}
-		\end{pmatrix},
-	\]
-	then we have
-	\begin{align*}
-		         & C^* = \tp{C} = C                                                                                                                          &  & \by{6.1.5}                    \\
-		\implies & [\T]_{\gamma} = C^* C                                                                                                                     &  & \by{5.1.1}                    \\
-		\implies & A = [\T]_{\beta} = \pa{[\IT[\V]]_{\beta}^{\gamma}}^{-1} [\T]_{\gamma} [\IT[\V]]_{\beta}^{\gamma}                                          &  & \by{2.23}                     \\
-		         & = \pa{[\IT[\V]]_{\beta}^{\gamma}}^{-1} C^* C [\IT[\V]]_{\beta}^{\gamma}                                                                   &  & \text{(from the proof above)} \\
-		         & = \pa{[\IT[\V]]_{\alpha}^{\gamma} [\IT[\V]]_{\beta}^{\alpha}}^{-1} C^* C [\IT[\V]]_{\alpha}^{\gamma} [\IT[\V]]_{\beta}^{\alpha}           &  & \by{2.11}                     \\
-		         & = \pa{[\IT[\V]]_{\beta}^{\alpha}}^{-1} \pa{[\IT[\V]]_{\alpha}^{\gamma}}^{-1} C^* C [\IT[\V]]_{\alpha}^{\gamma} [\IT[\V]]_{\beta}^{\alpha} &  & \by{ex:2.4.4}                 \\
-		         & = \pa{[\IT[\V]]_{\beta}^{\alpha}}^* \pa{[\IT[\V]]_{\alpha}^{\gamma}}^* C^* C [\IT[\V]]_{\alpha}^{\gamma} [\IT[\V]]_{\beta}^{\alpha}       &  & \by{ex:6.1.23}                \\
-		         & = (C [\IT[\V]]_{\alpha}^{\gamma} [\IT[\V]]_{\beta}^{\alpha})^* C [\IT[\V]]_{\alpha}^{\gamma} [\IT[\V]]_{\beta}^{\alpha}.                  &  & \by{6.3.2}[c]
-	\end{align*}
-	By setting \(B = C [\IT[\V]]_{\alpha}^{\gamma} [\IT[\V]]_{\beta}^{\alpha}\) we see that \(A = B^* B\).
+  First suppose that \(\T\) is positive semidefinite.
+  As in the proof of \cref{ex:6.4.17}(a), \(\T\) is self-adjoint implies there exists an orthonormal basis \(\gamma = \set{\seq{v}{1,,n}}\) for \(\V\) over \(\F\) consist of eigenvectors of \(\T\).
+  For each \(i \in \set{1, \dots, n}\), let \(\lambda_i\) be the eigenvalue of \(\T\) corresponding to \(v_i\).
+  By \cref{ex:6.4.17}(a) we know that \(\lambda_i \geq 0\) for all \(i \in \set{1, \dots, n}\).
+  If we let \(\alpha\) be the standard ordered basis for \(\vs{F}^n\) over \(\F\) and
+  \[
+    C = \begin{pmatrix}
+      \sqrt{\lambda_1} & 0                & \cdots & 0                \\
+      0                & \sqrt{\lambda_2} & \cdots & 0                \\
+      \vdots           & \vdots           &        & \vdots           \\
+      0                & 0                & \cdots & \sqrt{\lambda_n}
+    \end{pmatrix},
+  \]
+  then we have
+  \begin{align*}
+             & C^* = \tp{C} = C                                                                                                                          &  & \by{6.1.5}                    \\
+    \implies & [\T]_{\gamma} = C^* C                                                                                                                     &  & \by{5.1.1}                    \\
+    \implies & A = [\T]_{\beta} = \pa{[\IT[\V]]_{\beta}^{\gamma}}^{-1} [\T]_{\gamma} [\IT[\V]]_{\beta}^{\gamma}                                          &  & \by{2.23}                     \\
+             & = \pa{[\IT[\V]]_{\beta}^{\gamma}}^{-1} C^* C [\IT[\V]]_{\beta}^{\gamma}                                                                   &  & \text{(from the proof above)} \\
+             & = \pa{[\IT[\V]]_{\alpha}^{\gamma} [\IT[\V]]_{\beta}^{\alpha}}^{-1} C^* C [\IT[\V]]_{\alpha}^{\gamma} [\IT[\V]]_{\beta}^{\alpha}           &  & \by{2.11}                     \\
+             & = \pa{[\IT[\V]]_{\beta}^{\alpha}}^{-1} \pa{[\IT[\V]]_{\alpha}^{\gamma}}^{-1} C^* C [\IT[\V]]_{\alpha}^{\gamma} [\IT[\V]]_{\beta}^{\alpha} &  & \by{ex:2.4.4}                 \\
+             & = \pa{[\IT[\V]]_{\beta}^{\alpha}}^* \pa{[\IT[\V]]_{\alpha}^{\gamma}}^* C^* C [\IT[\V]]_{\alpha}^{\gamma} [\IT[\V]]_{\beta}^{\alpha}       &  & \by{ex:6.1.23}                \\
+             & = (C [\IT[\V]]_{\alpha}^{\gamma} [\IT[\V]]_{\beta}^{\alpha})^* C [\IT[\V]]_{\alpha}^{\gamma} [\IT[\V]]_{\beta}^{\alpha}.                  &  & \by{6.3.2}[c]
+  \end{align*}
+  By setting \(B = C [\IT[\V]]_{\alpha}^{\gamma} [\IT[\V]]_{\beta}^{\alpha}\) we see that \(A = B^* B\).
 
-	Now suppose that there exists a \(B \in \ms[n][n][\F]\) such that \(A = B^* B\).
-	Let \(\beta = \set{\seq{v}{1,,n}}\) and let \([\cdot, \cdot]\) be the standard inner product on \(\vs{F}^n\) over \(\F\) as defined in \cref{6.1.2}.
-	For each \(i \in \set{1, \dots, n}\), let \(b_i\) denote the \(i\)th column of \(B\).
-	Then we have
-	\begin{align*}
-		 & \forall x \in \V \setminus \set{\zv}, \inn{\T(x), x}                                                                               \\
-		 & = \inn{\T\pa{\sum_{j = 1}^n \inn{x, v_j} v_j}, \sum_{k = 1}^n \inn{x, v_k} v_k}                        &  & \by{6.5}               \\
-		 & = \inn{\sum_{j = 1}^n \inn{x, v_j} \T(v_j), \sum_{k = 1}^n \inn{x, v_k} v_k}                           &  & \by{2.1.2}[d]          \\
-		 & = \inn{\sum_{j = 1}^n \inn{x, v_j} \pa{\sum_{i = 1}^n A_{i j} v_i}, \sum_{k = 1}^n \inn{x, v_k} v_k}   &  & \by{2.2.4}             \\
-		 & = \sum_{i = 1}^n \sum_{j = 1}^n \inn{x, v_j} A_{i j} \inn{v_i, \sum_{k = 1}^n \inn{x, v_k} v_k}        &  & \by{6.1.1}[ab]         \\
-		 & = \sum_{i = 1}^n \sum_{j = 1}^n \inn{x, v_j} A_{i j} \inn{v_i, \inn{x, v_i} v_i}                       &  & \by{6.1.12}            \\
-		 & = \sum_{i = 1}^n \sum_{j = 1}^n \inn{x, v_j} A_{i j} \conj{\inn{x, v_i}} \inn{v_i, v_i}                &  & \by{6.1}[b]            \\
-		 & = \sum_{i = 1}^n \sum_{j = 1}^n \inn{x, v_j} A_{i j} \conj{\inn{x, v_i}}                               &  & \by{6.1.12}            \\
-		 & = \sum_{i = 1}^n \sum_{j = 1}^n \inn{x, v_j} (B^* B)_{i j} \conj{\inn{x, v_i}}                         &  & \text{(by hypothesis)} \\
-		 & = \sum_{i = 1}^n \sum_{j = 1}^n \sum_{k = 1}^n \inn{x, v_j} (B^*)_{i k} B_{k j} \conj{\inn{x, v_i}}    &  & \by{2.3.1}             \\
-		 & = \sum_{i = 1}^n \sum_{j = 1}^n \sum_{k = 1}^n \inn{x, v_j} \conj{B_{k i}} B_{k j} \conj{\inn{x, v_i}} &  & \by{6.1.5}             \\
-		 & = \sum_{i = 1}^n \sum_{j = 1}^n \sum_{k = 1}^n \inn{x, v_j} B_{k j} \conj{\inn{x, v_i} B_{k i}}        &  & \by{d.2}[c]            \\
-		 & = \sum_{i = 1}^n \sum_{j = 1}^n [\inn{x, v_j} b_j, \inn{x, v_i} b_i]                                   &  & \by{6.1.2}             \\
-		 & = \sum_{i = 1}^n \br{\sum_{j = 1}^n \inn{x, v_j} b_j, \inn{x, v_i} b_i}                                &  & \by{6.1.1}[a]          \\
-		 & = \br{\sum_{j = 1}^n \inn{x, v_j} b_j, \sum_{i = 1}^n \inn{x, v_i} b_i}                                &  & \by{6.1}[a]            \\
-		 & = \norm{\sum_{i = 1}^n \inn{x, v_i} b_i}^2                                                             &  & \by{6.1.9}             \\
-		 & \geq 0.                                                                                                &  & \by{6.2}[b]
-	\end{align*}
-	Thus by \cref{6.4.11} \(\T\) is positive semidefinite.
+  Now suppose that there exists a \(B \in \ms[n][n][\F]\) such that \(A = B^* B\).
+  Let \(\beta = \set{\seq{v}{1,,n}}\) and let \([\cdot, \cdot]\) be the standard inner product on \(\vs{F}^n\) over \(\F\) as defined in \cref{6.1.2}.
+  For each \(i \in \set{1, \dots, n}\), let \(b_i\) denote the \(i\)th column of \(B\).
+  Then we have
+  \begin{align*}
+     & \forall x \in \V \setminus \set{\zv}, \inn{\T(x), x}                                                                               \\
+     & = \inn{\T\pa{\sum_{j = 1}^n \inn{x, v_j} v_j}, \sum_{k = 1}^n \inn{x, v_k} v_k}                        &  & \by{6.5}               \\
+     & = \inn{\sum_{j = 1}^n \inn{x, v_j} \T(v_j), \sum_{k = 1}^n \inn{x, v_k} v_k}                           &  & \by{2.1.2}[d]          \\
+     & = \inn{\sum_{j = 1}^n \inn{x, v_j} \pa{\sum_{i = 1}^n A_{i j} v_i}, \sum_{k = 1}^n \inn{x, v_k} v_k}   &  & \by{2.2.4}             \\
+     & = \sum_{i = 1}^n \sum_{j = 1}^n \inn{x, v_j} A_{i j} \inn{v_i, \sum_{k = 1}^n \inn{x, v_k} v_k}        &  & \by{6.1.1}[a,b]        \\
+     & = \sum_{i = 1}^n \sum_{j = 1}^n \inn{x, v_j} A_{i j} \inn{v_i, \inn{x, v_i} v_i}                       &  & \by{6.1.12}            \\
+     & = \sum_{i = 1}^n \sum_{j = 1}^n \inn{x, v_j} A_{i j} \conj{\inn{x, v_i}} \inn{v_i, v_i}                &  & \by{6.1}[b]            \\
+     & = \sum_{i = 1}^n \sum_{j = 1}^n \inn{x, v_j} A_{i j} \conj{\inn{x, v_i}}                               &  & \by{6.1.12}            \\
+     & = \sum_{i = 1}^n \sum_{j = 1}^n \inn{x, v_j} (B^* B)_{i j} \conj{\inn{x, v_i}}                         &  & \text{(by hypothesis)} \\
+     & = \sum_{i = 1}^n \sum_{j = 1}^n \sum_{k = 1}^n \inn{x, v_j} (B^*)_{i k} B_{k j} \conj{\inn{x, v_i}}    &  & \by{2.3.1}             \\
+     & = \sum_{i = 1}^n \sum_{j = 1}^n \sum_{k = 1}^n \inn{x, v_j} \conj{B_{k i}} B_{k j} \conj{\inn{x, v_i}} &  & \by{6.1.5}             \\
+     & = \sum_{i = 1}^n \sum_{j = 1}^n \sum_{k = 1}^n \inn{x, v_j} B_{k j} \conj{\inn{x, v_i} B_{k i}}        &  & \by{d.2}[c]            \\
+     & = \sum_{i = 1}^n \sum_{j = 1}^n [\inn{x, v_j} b_j, \inn{x, v_i} b_i]                                   &  & \by{6.1.2}             \\
+     & = \sum_{i = 1}^n \br{\sum_{j = 1}^n \inn{x, v_j} b_j, \inn{x, v_i} b_i}                                &  & \by{6.1.1}[a]          \\
+     & = \br{\sum_{j = 1}^n \inn{x, v_j} b_j, \sum_{i = 1}^n \inn{x, v_i} b_i}                                &  & \by{6.1}[a]            \\
+     & = \norm{\sum_{i = 1}^n \inn{x, v_i} b_i}^2                                                             &  & \by{6.1.9}             \\
+     & \geq 0.                                                                                                &  & \by{6.2}[b]
+  \end{align*}
+  Thus by \cref{6.4.11} \(\T\) is positive semidefinite.
 \end{proof}
 
 \begin{proof}[\pf{ex:6.4.17}(d)]
-	As in the proof of \cref{ex:6.4.17}(a), \(\T\) is self-adjoint implies there exists an orthonormal basis \(\gamma\) for \(\V\) over \(\F\) consist of eigenvectors of \(\T\).
-	Let \(v \in \gamma\) and let \(\lambda \in \F\) be an eigenvalue of \(\T\) corresponding to \(v\).
-	By \cref{ex:6.4.17}(a) we know that \(\lambda \geq 0\).
-	Now we split into two cases:
-	\begin{itemize}
-		\item If \(\lambda = 0\), then we have
-		      \begin{align*}
-			               & \T(v) = 0v = \zv                  &  & \by{5.1.2}    \\
-			      \implies & \U^2(v) = \T^2(v) = \T(\zv) = \zv &  & \by{2.1.2}[a] \\
-			      \implies & 0 = \inn{\U^2(v), v}              &  & \by{6.1}[c]   \\
-			               & = \inn{(\U^* \U)(v), v}           &  & \by{6.4.8}    \\
-			               & = \inn{\U(v), \U(v)}              &  & \by{6.9}      \\
-			      \implies & \U(v) = \zv = \T(v).              &  & \by{6.1}[d]
-		      \end{align*}
-		\item If \(\lambda > 0\), then we have
-		      \begin{align*}
-			               & \U^2(v) = \T^2(v) = \lambda^2 v                                                                         &  & \by{5.1.2} \\
-			      \implies & \zv = \U^2(v) - \lambda^2 v = ((\U + \lambda \IT[\V]) (\U - \lambda \IT[\V]))(v)                        &  & \by{2.10}  \\
-			      \implies & \begin{dcases}
-				                 \ns{\U - (-\lambda) \IT[\V]} = \ns{\U + \lambda \IT[\V]} = \set{\zv} \\
-				                 (\U - \lambda \IT[\V])(v) \in \ns{\U + \lambda \IT[\V]}
-			                 \end{dcases} &  & \by{ex:6.4.17}[a]                    \\
-			      \implies & (\U - \lambda \IT[\V])(v) = \zv                                                                                         \\
-			      \implies & \U(v) = \lambda v = \T(v).
-		      \end{align*}
-	\end{itemize}
-	From all cases above we see that \(\U(v) = \T(v)\).
-	Since \(v\) is arbitrary, we see that \(\T, \U\) argee on \(\gamma\).
-	Thus by \cref{2.1.13} we have \(\T = \U\).
+  As in the proof of \cref{ex:6.4.17}(a), \(\T\) is self-adjoint implies there exists an orthonormal basis \(\gamma\) for \(\V\) over \(\F\) consist of eigenvectors of \(\T\).
+  Let \(v \in \gamma\) and let \(\lambda \in \F\) be an eigenvalue of \(\T\) corresponding to \(v\).
+  By \cref{ex:6.4.17}(a) we know that \(\lambda \geq 0\).
+  Now we split into two cases:
+  \begin{itemize}
+    \item If \(\lambda = 0\), then we have
+          \begin{align*}
+                     & \T(v) = 0v = \zv                  &  & \by{5.1.2}    \\
+            \implies & \U^2(v) = \T^2(v) = \T(\zv) = \zv &  & \by{2.1.2}[a] \\
+            \implies & 0 = \inn{\U^2(v), v}              &  & \by{6.1}[c]   \\
+                     & = \inn{(\U^* \U)(v), v}           &  & \by{6.4.8}    \\
+                     & = \inn{\U(v), \U(v)}              &  & \by{6.9}      \\
+            \implies & \U(v) = \zv = \T(v).              &  & \by{6.1}[d]
+          \end{align*}
+    \item If \(\lambda > 0\), then we have
+          \begin{align*}
+                     & \U^2(v) = \T^2(v) = \lambda^2 v                                                                         &  & \by{5.1.2} \\
+            \implies & \zv = \U^2(v) - \lambda^2 v = ((\U + \lambda \IT[\V]) (\U - \lambda \IT[\V]))(v)                        &  & \by{2.10}  \\
+            \implies & \begin{dcases}
+                         \ns{\U - (-\lambda) \IT[\V]} = \ns{\U + \lambda \IT[\V]} = \set{\zv} \\
+                         (\U - \lambda \IT[\V])(v) \in \ns{\U + \lambda \IT[\V]}
+                       \end{dcases} &  & \by{ex:6.4.17}[a]                    \\
+            \implies & (\U - \lambda \IT[\V])(v) = \zv                                                                                         \\
+            \implies & \U(v) = \lambda v = \T(v).
+          \end{align*}
+  \end{itemize}
+  From all cases above we see that \(\U(v) = \T(v)\).
+  Since \(v\) is arbitrary, we see that \(\T, \U\) argee on \(\gamma\).
+  Thus by \cref{2.1.13} we have \(\T = \U\).
 \end{proof}
 
 \begin{proof}[\pf{ex:6.4.17}(e)]
-	Since \(\T, \U\) are self-adjoint and \(\T \U = \U \T\), by \cref{ex:6.4.14} there exists an orthonormal basis \(\gamma\) for \(\V\) over \(\F\) consist of eigenvectors of \(\T\) and \(\U\).
-	Let \(v \in \gamma\) and let \(\lambda_{\T}, \lambda_{\U} \in \F\) be eigenvalues of \(\T\) and \(\U\) corresponding to \(v\), respectively.
-	Since
-	\begin{align*}
-		\U(\T(v)) & = \U(\lambda_{\T} v)           &  & \by{5.1.2}    \\
-		          & = \lambda_{\T} \U(v)           &  & \by{2.1.1}[b] \\
-		          & = \lambda_{\T} \lambda_{\U} v, &  & \by{5.1.2}
-	\end{align*}
-	we know that \(v\) is an eigenvector of \(\U \T\) corresponding to eigenvalue \(\lambda_{\T} \lambda_{\U}\).
-	By \cref{ex:6.4.17}(a) we know that \(\lambda_{\T} > 0\) and \(\lambda_{\U} > 0\), thus \(\lambda_{\T} \lambda_{\U} > 0\).
-	Since \(v\) is arbitrary, we know that \(\gamma\) is consist of eigenvectors of \(\U \T\) and all eigenvalues of \(\U \T\) are positive.
-	Since
-	\begin{align*}
-		(\U \T)^* & = \T^* \U^* &  & \by{6.11}[c] \\
-		          & = \T \U     &  & \by{6.4.8}   \\
-		          & = \U \T,
-	\end{align*}
-	by \cref{6.4.8} we know that \(\U \T\) is self-adjoint.
-	Thus by \cref{ex:6.4.17}(a) \(\U \T = \T \U\) is positive definite.
+  Since \(\T, \U\) are self-adjoint and \(\T \U = \U \T\), by \cref{ex:6.4.14} there exists an orthonormal basis \(\gamma\) for \(\V\) over \(\F\) consist of eigenvectors of \(\T\) and \(\U\).
+  Let \(v \in \gamma\) and let \(\lambda_{\T}, \lambda_{\U} \in \F\) be eigenvalues of \(\T\) and \(\U\) corresponding to \(v\), respectively.
+  Since
+  \begin{align*}
+    \U(\T(v)) & = \U(\lambda_{\T} v)           &  & \by{5.1.2}    \\
+              & = \lambda_{\T} \U(v)           &  & \by{2.1.1}[b] \\
+              & = \lambda_{\T} \lambda_{\U} v, &  & \by{5.1.2}
+  \end{align*}
+  we know that \(v\) is an eigenvector of \(\U \T\) corresponding to eigenvalue \(\lambda_{\T} \lambda_{\U}\).
+  By \cref{ex:6.4.17}(a) we know that \(\lambda_{\T} > 0\) and \(\lambda_{\U} > 0\), thus \(\lambda_{\T} \lambda_{\U} > 0\).
+  Since \(v\) is arbitrary, we know that \(\gamma\) is consist of eigenvectors of \(\U \T\) and all eigenvalues of \(\U \T\) are positive.
+  Since
+  \begin{align*}
+    (\U \T)^* & = \T^* \U^* &  & \by{6.11}[c] \\
+              & = \T \U     &  & \by{6.4.8}   \\
+              & = \U \T,
+  \end{align*}
+  by \cref{6.4.8} we know that \(\U \T\) is self-adjoint.
+  Thus by \cref{ex:6.4.17}(a) \(\U \T = \T \U\) is positive definite.
 \end{proof}
 
 \begin{proof}[\pf{ex:6.4.17}(f)]
-	Let \([\cdot, \cdot]\) be the standard inner product on \(\vs{F}^n\) over \(\F\).
-	Then we have
-	\begin{align*}
-		     & \T \text{ is positive definite (semidefinite)}                                                                 \\
-		\iff & \forall x \in \V, \inn{\T(x), x} > (\geq) 0                                             &  & \by{6.4.11}       \\
-		\iff & \forall x \in \vs{F}^n, \sum_{i = 1}^n \sum_{j = 1}^n A_{i j} x_j \conj{x_i} > (\geq) 0 &  & \by{ex:6.4.17}[b] \\
-		\iff & \forall x \in \vs{F}^n, [Ax, x] > (\geq) 0                                              &  & \by{6.1.2}        \\
-		\iff & \forall x \in \vs{F}^n, [\L_A(x), x] > (\geq) 0                                         &  & \by{2.3.8}        \\
-		\iff & A \text{ is positive definite (semidefinite)}.                                          &  & \by{6.4.11}
-	\end{align*}
+  Let \([\cdot, \cdot]\) be the standard inner product on \(\vs{F}^n\) over \(\F\).
+  Then we have
+  \begin{align*}
+         & \T \text{ is positive definite (semidefinite)}                                                                 \\
+    \iff & \forall x \in \V, \inn{\T(x), x} > (\geq) 0                                             &  & \by{6.4.11}       \\
+    \iff & \forall x \in \vs{F}^n, \sum_{i = 1}^n \sum_{j = 1}^n A_{i j} x_j \conj{x_i} > (\geq) 0 &  & \by{ex:6.4.17}[b] \\
+    \iff & \forall x \in \vs{F}^n, [Ax, x] > (\geq) 0                                              &  & \by{6.1.2}        \\
+    \iff & \forall x \in \vs{F}^n, [\L_A(x), x] > (\geq) 0                                         &  & \by{2.3.8}        \\
+    \iff & A \text{ is positive definite (semidefinite)}.                                          &  & \by{6.4.11}
+  \end{align*}
 \end{proof}
 
 \begin{ex}\label{ex:6.4.18}
-	Let \(\T \in \ls(\V, \W)\) where \(\V\) and \(\W\) are finite-dimensional inner product spaces.
-	Prove the following results.
-	\begin{enumerate}
-		\item \(\T^* \T\) and \(\T \T^*\) are positive semidefinite.
-		\item \(\rk{\T^* \T} = \rk{\T \T^*} = \rk{\T}\).
-	\end{enumerate}
+  Let \(\T \in \ls(\V, \W)\) where \(\V\) and \(\W\) are finite-dimensional inner product spaces.
+  Prove the following results.
+  \begin{enumerate}
+    \item \(\T^* \T\) and \(\T \T^*\) are positive semidefinite.
+    \item \(\rk{\T^* \T} = \rk{\T \T^*} = \rk{\T}\).
+  \end{enumerate}
 \end{ex}
 
 \begin{proof}[\pf{ex:6.4.18}(a)]
-	Let \(\inn{\cdot, \cdot}_1, \inn{\cdot, \cdot}_2\) be inner products on \(\V\) and \(\W\) over \(\F\), respectively.
-	Since
-	\begin{align*}
-		(\T^* \T)^* & = \T^* \T^{**} &  & \by{ex:6.3.16}[c] \\
-		            & = \T^* \T      &  & \by{ex:6.3.16}[d] \\
-		(\T \T^*)^* & = \T^{**} \T^* &  & \by{ex:6.3.16}[c] \\
-		            & = \T \T^*      &  & \by{ex:6.3.16}[d]
-	\end{align*}
-	and
-	\begin{align*}
-		\forall x \in \V \setminus \set{\zv}, \inn{(\T^* \T)(x), x}_1 & = \inn{\T^*(\T(x)), x}_1                          \\
-		                                                              & = \inn{\T(x), \T(x)}_2     &  & \by{ex:6.3.15}[a] \\
-		                                                              & \geq 0                     &  & \by{6.1}[d]       \\
-		\forall y \in \W \setminus \set{\zv}, \inn{(\T \T^*)(y), y}_2 & = \inn{\T(\T^*(y)), y}_2                          \\
-		                                                              & = \inn{\T^*(y), \T^*(y)}_1 &  & \by{ex:6.3.15}[a] \\
-		                                                              & \geq 0,                    &  & \by{6.1}[d]
-	\end{align*}
-	by \cref{6.4.11} we know that \(\T^* \T\) and \(\T \T^*\) are positive semidefinite.
+  Let \(\inn{\cdot, \cdot}_1, \inn{\cdot, \cdot}_2\) be inner products on \(\V\) and \(\W\) over \(\F\), respectively.
+  Since
+  \begin{align*}
+    (\T^* \T)^* & = \T^* \T^{**} &  & \by{ex:6.3.16}[c] \\
+                & = \T^* \T      &  & \by{ex:6.3.16}[d] \\
+    (\T \T^*)^* & = \T^{**} \T^* &  & \by{ex:6.3.16}[c] \\
+                & = \T \T^*      &  & \by{ex:6.3.16}[d]
+  \end{align*}
+  and
+  \begin{align*}
+    \forall x \in \V \setminus \set{\zv}, \inn{(\T^* \T)(x), x}_1 & = \inn{\T^*(\T(x)), x}_1                          \\
+                                                                  & = \inn{\T(x), \T(x)}_2     &  & \by{ex:6.3.15}[a] \\
+                                                                  & \geq 0                     &  & \by{6.1}[d]       \\
+    \forall y \in \W \setminus \set{\zv}, \inn{(\T \T^*)(y), y}_2 & = \inn{\T(\T^*(y)), y}_2                          \\
+                                                                  & = \inn{\T^*(y), \T^*(y)}_1 &  & \by{ex:6.3.15}[a] \\
+                                                                  & \geq 0,                    &  & \by{6.1}[d]
+  \end{align*}
+  by \cref{6.4.11} we know that \(\T^* \T\) and \(\T \T^*\) are positive semidefinite.
 \end{proof}
 
 \begin{proof}[\pf{ex:6.4.18}(b)]
-	By \cref{ex:6.3.15}(e) we have \(\ns{\T^* \T} = \ns{\T}\).
-	Since
-	\begin{align*}
-		         & \dim(\V) = \begin{dcases}
-			                      \rk{\T} + \nt{\T} \\
-			                      \rk{\T^* \T} + \nt{\T^* \T}
-		                      \end{dcases} &  & \by{2.3}                          \\
-		\implies & \rk{\T} = \rk{\T^* \T},     &  & \text{(from the proof above)}
-	\end{align*}
-	we have
-	\begin{align*}
-		\rk{\T \T^*} & = \rk{\T^{**} \T^*} &  & \by{ex:6.3.16}[d]             \\
-		             & = \rk{\T^*}         &  & \text{(from the proof above)} \\
-		             & = \rk{\T}.          &  & \by{ex:6.3.15}[c]
-	\end{align*}
+  By \cref{ex:6.3.15}(e) we have \(\ns{\T^* \T} = \ns{\T}\).
+  Since
+  \begin{align*}
+             & \dim(\V) = \begin{dcases}
+                            \rk{\T} + \nt{\T} \\
+                            \rk{\T^* \T} + \nt{\T^* \T}
+                          \end{dcases} &  & \by{2.3}                          \\
+    \implies & \rk{\T} = \rk{\T^* \T},     &  & \text{(from the proof above)}
+  \end{align*}
+  we have
+  \begin{align*}
+    \rk{\T \T^*} & = \rk{\T^{**} \T^*} &  & \by{ex:6.3.16}[d]             \\
+                 & = \rk{\T^*}         &  & \text{(from the proof above)} \\
+                 & = \rk{\T}.          &  & \by{ex:6.3.15}[c]
+  \end{align*}
 \end{proof}
 
 \begin{ex}\label{ex:6.4.19}
-	Let \(\T\) and \(\U\) be positive definite operators on an inner product space \(\V\) over \(\F\).
-	Prove the following results.
-	\begin{enumerate}
-		\item \(\T + \U\) is positive definite.
-		\item If \(c > 0\), then \(c \T\) is positive definite.
-		\item \(\T^{-1}\) is positive definite.
-	\end{enumerate}
+  Let \(\T\) and \(\U\) be positive definite operators on an inner product space \(\V\) over \(\F\).
+  Prove the following results.
+  \begin{enumerate}
+    \item \(\T + \U\) is positive definite.
+    \item If \(c > 0\), then \(c \T\) is positive definite.
+    \item \(\T^{-1}\) is positive definite.
+  \end{enumerate}
 \end{ex}
 
 \begin{proof}[\pf{ex:6.4.19}(a)]
-	We have
-	\begin{align*}
-		(\T + \U)^* & = \T^* + \U^* &  & \by{6.11}[a] \\
-		            & = \T + \U     &  & \by{6.4.11}
-	\end{align*}
-	and
-	\begin{align*}
-		\forall x \in \V \setminus \set{\zv}, \inn{(\T + \U)(x), x} & = \inn{\T(x) + \U(x), x}                             \\
-		                                                            & = \inn{\T(x), x} + \inn{\U(x), x} &  & \by{6.1.1}[a] \\
-		                                                            & > 0.                              &  & \by{6.4.11}
-	\end{align*}
-	Thus by \cref{6.4.11} \(\T + \U\) is positive definite.
+  We have
+  \begin{align*}
+    (\T + \U)^* & = \T^* + \U^* &  & \by{6.11}[a] \\
+                & = \T + \U     &  & \by{6.4.11}
+  \end{align*}
+  and
+  \begin{align*}
+    \forall x \in \V \setminus \set{\zv}, \inn{(\T + \U)(x), x} & = \inn{\T(x) + \U(x), x}                             \\
+                                                                & = \inn{\T(x), x} + \inn{\U(x), x} &  & \by{6.1.1}[a] \\
+                                                                & > 0.                              &  & \by{6.4.11}
+  \end{align*}
+  Thus by \cref{6.4.11} \(\T + \U\) is positive definite.
 \end{proof}
 
 \begin{proof}[\pf{ex:6.4.19}(b)]
-	We have
-	\begin{align*}
-		(c\T)^* & = \conj{c} \T^* &  & \by{6.11}[b] \\
-		        & = \conj{c} \T   &  & \by{6.4.11}  \\
-		        & = c \T          &  & (c > 0)
-	\end{align*}
-	and
-	\begin{align*}
-		\forall x \in \V \setminus \set{\zv}, \inn{(c \T)(x), x} & = \inn{c \T(x), x}                    \\
-		                                                         & = c \inn{\T(x), x} &  & \by{6.1.1}[b] \\
-		                                                         & > 0.               &  & \by{6.4.11}
-	\end{align*}
-	Thus by \cref{6.4.11} \(c \T\) is positive definite.
+  We have
+  \begin{align*}
+    (c\T)^* & = \conj{c} \T^* &  & \by{6.11}[b] \\
+            & = \conj{c} \T   &  & \by{6.4.11}  \\
+            & = c \T          &  & (c > 0)
+  \end{align*}
+  and
+  \begin{align*}
+    \forall x \in \V \setminus \set{\zv}, \inn{(c \T)(x), x} & = \inn{c \T(x), x}                    \\
+                                                             & = c \inn{\T(x), x} &  & \by{6.1.1}[b] \\
+                                                             & > 0.               &  & \by{6.4.11}
+  \end{align*}
+  Thus by \cref{6.4.11} \(c \T\) is positive definite.
 \end{proof}
 
 \begin{proof}[\pf{ex:6.4.19}(c)]
-	We have
-	\begin{align*}
-		(\T^{-1})^* & = (\T^*)^{-1} &  & \by{ex:6.3.8} \\
-		            & = \T^{-1}     &  & \by{6.4.11}
-	\end{align*}
-	and
-	\begin{align*}
-		         & \lambda \in \F \text{ is an eigenvalue of } \T^{-1}                        \\
-		\implies & \lambda^{-1} \in \F \text{ is an eigenvalue of } \T &  & \by{ex:5.1.8}[b]  \\
-		\implies & \lambda^{-1} > 0                                    &  & \by{ex:6.4.17}[a] \\
-		\implies & \lambda > 0.
-	\end{align*}
-	Thus by \cref{ex:6.4.17}(a) \(\T^{-1}\) is positive definite.
+  We have
+  \begin{align*}
+    (\T^{-1})^* & = (\T^*)^{-1} &  & \by{ex:6.3.8} \\
+                & = \T^{-1}     &  & \by{6.4.11}
+  \end{align*}
+  and
+  \begin{align*}
+             & \lambda \in \F \text{ is an eigenvalue of } \T^{-1}                        \\
+    \implies & \lambda^{-1} \in \F \text{ is an eigenvalue of } \T &  & \by{ex:5.1.8}[b]  \\
+    \implies & \lambda^{-1} > 0                                    &  & \by{ex:6.4.17}[a] \\
+    \implies & \lambda > 0.
+  \end{align*}
+  Thus by \cref{ex:6.4.17}(a) \(\T^{-1}\) is positive definite.
 \end{proof}
 
 \begin{ex}\label{ex:6.4.20}
-	Let \(\V\) be an inner product space over \(\F\) with inner product \(\inn{\cdot, \cdot}\), and let \(\T\) be a positive definite linear operator on \(\V\).
-	Prove that \(\inn{x, y}' = \inn{\T(x), y}\) defines another inner product on \(\V\) over \(\F\).
+  Let \(\V\) be an inner product space over \(\F\) with inner product \(\inn{\cdot, \cdot}\), and let \(\T\) be a positive definite linear operator on \(\V\).
+  Prove that \(\inn{x, y}' = \inn{\T(x), y}\) defines another inner product on \(\V\) over \(\F\).
 \end{ex}
 
 \begin{proof}[\pf{ex:6.4.20}]
-	Let \(x, y, z \in \V\) and let \(c \in \F\).
-	Then we have
-	\begin{align*}
-		\inn{x + y, z}'    & = \inn{\T(x + y), z}              &  & \by{ex:6.4.20} \\
-		                   & = \inn{\T(x) + \T(y), z}          &  & \by{2.1.1}[a]  \\
-		                   & = \inn{\T(x), z} + \inn{\T(y), z} &  & \by{6.1.1}[a]  \\
-		                   & = \inn{x, z}' + \inn{y, z}'       &  & \by{ex:6.4.20} \\
-		\inn{cx, y}'       & = \inn{\T(cx), y}                 &  & \by{ex:6.4.20} \\
-		                   & = \inn{c \T(x), y}                &  & \by{2.1.1}[b]  \\
-		                   & = c \inn{\T(x), y}                &  & \by{6.1.1}[b]  \\
-		                   & = c \inn{x, y}'                   &  & \by{ex:6.4.20} \\
-		\conj{\inn{x, y}'} & = \conj{\inn{\T(x), y}}           &  & \by{ex:6.4.20} \\
-		                   & = \inn{y, \T(x)}                  &  & \by{6.1.1}[c]  \\
-		                   & = \inn{\T^*(y), x}                &  & \by{6.9}       \\
-		                   & = \inn{\T(y), x}                  &  & \by{6.4.11}    \\
-		                   & = \inn{y, x}'.                    &  & \by{ex:6.4.20}
-	\end{align*}
-	If \(x \neq \zv\), then we have
-	\begin{align*}
-		\inn{x, x}' & = \inn{\T(x), x} &  & \by{ex:6.4.20} \\
-		            & > 0.             &  & \by{6.4.11}
-	\end{align*}
-	Thus by \cref{6.1.1} \(\inn{\cdot, \cdot}'\) is an inner product on \(\V\) over \(\F\).
+  Let \(x, y, z \in \V\) and let \(c \in \F\).
+  Then we have
+  \begin{align*}
+    \inn{x + y, z}'    & = \inn{\T(x + y), z}              &  & \by{ex:6.4.20} \\
+                       & = \inn{\T(x) + \T(y), z}          &  & \by{2.1.1}[a]  \\
+                       & = \inn{\T(x), z} + \inn{\T(y), z} &  & \by{6.1.1}[a]  \\
+                       & = \inn{x, z}' + \inn{y, z}'       &  & \by{ex:6.4.20} \\
+    \inn{cx, y}'       & = \inn{\T(cx), y}                 &  & \by{ex:6.4.20} \\
+                       & = \inn{c \T(x), y}                &  & \by{2.1.1}[b]  \\
+                       & = c \inn{\T(x), y}                &  & \by{6.1.1}[b]  \\
+                       & = c \inn{x, y}'                   &  & \by{ex:6.4.20} \\
+    \conj{\inn{x, y}'} & = \conj{\inn{\T(x), y}}           &  & \by{ex:6.4.20} \\
+                       & = \inn{y, \T(x)}                  &  & \by{6.1.1}[c]  \\
+                       & = \inn{\T^*(y), x}                &  & \by{6.9}       \\
+                       & = \inn{\T(y), x}                  &  & \by{6.4.11}    \\
+                       & = \inn{y, x}'.                    &  & \by{ex:6.4.20}
+  \end{align*}
+  If \(x \neq \zv\), then we have
+  \begin{align*}
+    \inn{x, x}' & = \inn{\T(x), x} &  & \by{ex:6.4.20} \\
+                & > 0.             &  & \by{6.4.11}
+  \end{align*}
+  Thus by \cref{6.1.1} \(\inn{\cdot, \cdot}'\) is an inner product on \(\V\) over \(\F\).
 \end{proof}
 
 \begin{ex}\label{ex:6.4.21}
-	Let \(\V\) be a finite-dimensional inner product space over \(\F\), and let \(\T\) and \(\U\) be self-adjoint operators on \(\V\) such that \(\T\) is positive definite.
-	Prove that both \(\T \U\) and \(\U \T\) are diagonalizable linear operators that have only real eigenvalues.
+  Let \(\V\) be a finite-dimensional inner product space over \(\F\), and let \(\T\) and \(\U\) be self-adjoint operators on \(\V\) such that \(\T\) is positive definite.
+  Prove that both \(\T \U\) and \(\U \T\) are diagonalizable linear operators that have only real eigenvalues.
 \end{ex}
 
 \begin{proof}[\pf{ex:6.4.21}]
-	Let \(\inn{\cdot, \cdot}\) be an inner product on \(\V\) over \(\F\).
-	For each \(\lt{S} \in \ls(\V)\), we denote the adjoint of \(\lt{S}\) with respect to \(\inn{\cdot, \cdot}\) as \(\vs{S}^*\).
-	Suppose that \(\T, \U\) are self-adjoint with respect to \(\inn{\cdot, \cdot}\) and \(\T\) is positive definite with respect to \(\inn{\cdot, \cdot}\).
+  Let \(\inn{\cdot, \cdot}\) be an inner product on \(\V\) over \(\F\).
+  For each \(\lt{S} \in \ls(\V)\), we denote the adjoint of \(\lt{S}\) with respect to \(\inn{\cdot, \cdot}\) as \(\vs{S}^*\).
+  Suppose that \(\T, \U\) are self-adjoint with respect to \(\inn{\cdot, \cdot}\) and \(\T\) is positive definite with respect to \(\inn{\cdot, \cdot}\).
 
-	Define inner product \(\inn{\cdot, \cdot}'\) on \(\V\) over \(\F\) by setting \(\inn{x, y}' = \inn{\T(x), y}\) for all \(x, y \in \V\).
-	By \cref{ex:6.4.20} we see that \(\inn{\cdot, \cdot}'\) is indeed an inner product on \(\V\) over \(\F\).
-	For each \(\lt{S} \in \ls(\V)\), we denote the adjoint of \(\lt{S}\) with respect to \(\inn{\cdot, \cdot}'\) as \(\vs{S}^{\dag}\).
-	These adjoint operators are well-defined thanks to \cref{6.9}.
-	Now we show that \(\U \T\) is self-adjoint with respect to \(\inn{\cdot, \cdot}'\).
-	Since
-	\begin{align*}
-		\forall x, y \in \V, \inn{x, (\U \T)^{\dag}(y)}' & = \inn{(\U \T)(x), y}'       &  & \by{6.9}   \\
-		                                                 & = \inn{\T(\U(\T(x))), y}                     \\
-		                                                 & = \inn{\T(x), \U^*(\T^*(y))} &  & \by{6.9}   \\
-		                                                 & = \inn{\T(x), \U(\T(y))}     &  & \by{6.4.8} \\
-		                                                 & = \inn{x, (\U \T)(y)}',
-	\end{align*}
-	by \cref{6.1}(e) we have \((\U \T)^{\dag} = \U \T\).
-	Thus by \cref{6.4.8} \(\U \T\) is self-adjoint with respect to \(\inn{\cdot, \cdot}'\), and by \cref{6.16,6.17} we know that \(\U \T\) is diagonalizable.
-	By \cref{6.4.10}(a) this means \(\U \T\) has only real eigenvalues.
+  Define inner product \(\inn{\cdot, \cdot}'\) on \(\V\) over \(\F\) by setting \(\inn{x, y}' = \inn{\T(x), y}\) for all \(x, y \in \V\).
+  By \cref{ex:6.4.20} we see that \(\inn{\cdot, \cdot}'\) is indeed an inner product on \(\V\) over \(\F\).
+  For each \(\lt{S} \in \ls(\V)\), we denote the adjoint of \(\lt{S}\) with respect to \(\inn{\cdot, \cdot}'\) as \(\vs{S}^{\dag}\).
+  These adjoint operators are well-defined thanks to \cref{6.9}.
+  Now we show that \(\U \T\) is self-adjoint with respect to \(\inn{\cdot, \cdot}'\).
+  Since
+  \begin{align*}
+    \forall x, y \in \V, \inn{x, (\U \T)^{\dag}(y)}' & = \inn{(\U \T)(x), y}'       &  & \by{6.9}   \\
+                                                     & = \inn{\T(\U(\T(x))), y}                     \\
+                                                     & = \inn{\T(x), \U^*(\T^*(y))} &  & \by{6.9}   \\
+                                                     & = \inn{\T(x), \U(\T(y))}     &  & \by{6.4.8} \\
+                                                     & = \inn{x, (\U \T)(y)}',
+  \end{align*}
+  by \cref{6.1}(e) we have \((\U \T)^{\dag} = \U \T\).
+  Thus by \cref{6.4.8} \(\U \T\) is self-adjoint with respect to \(\inn{\cdot, \cdot}'\), and by \cref{6.16,6.17} we know that \(\U \T\) is diagonalizable.
+  By \cref{6.4.10}(a) this means \(\U \T\) has only real eigenvalues.
 
-	Since \(\T\) is self-adjoint with respect to \(\inn{\cdot, \cdot}\), by \cref{6.16,6.17} we know that there exists an orthonormal basis for \(\V\) over \(\F\) consist of eigenvectors of \(\T\).
-	Since \(\T\) is positive definite with respect to \(\inn{\cdot, \cdot}\), by \cref{ex:6.4.17}(a) we know that every eigenvalue of \(\T\) is positive.
-	Thus \(\T\) is invertible, and we can define inner product \(\inn{x, y}'' = \inn{\T^{-1}(x), y}\) for all \(x, y\).
-	By \cref{ex:6.4.19}(c) we know that \(\T^{-1}\) is positive definite with respect to \(\inn{\cdot, \cdot}\), thus by \cref{ex:6.4.20} \(\inn{\cdot, \cdot}''\) is indeed an inner product on \(\V\) over \(\F\).
-	For each \(\lt{S} \in \ls(\V)\), we denote the adjoint of \(\lt{S}\) with respect to \(\inn{\cdot, \cdot}''\) as \(\vs{S}^{\ddag}\).
-	These adjoint operators are well-defined thanks to \cref{6.9}.
-	Now we show that \(\T \U\) is self-adjoint with respect to \(\inn{\cdot, \cdot}''\).
-	Since
-	\begin{align*}
-		\forall x, y \in \V, \inn{x, (\T \U)^{\ddag}(y)}'' & = \inn{(\T \U)(x), y}''           &  & \by{6.9}      \\
-		                                                   & = \inn{\T^{-1}(\T(\U(x))), y}                        \\
-		                                                   & = \inn{\U(x), y}                                     \\
-		                                                   & = \inn{x, \U^*(y)}                &  & \by{6.9}      \\
-		                                                   & = \inn{x, \U(y)}                  &  & \by{6.4.8}    \\
-		                                                   & = \inn{x, \T^{-1}(\T(\U(y)))}                        \\
-		                                                   & = \inn{(\T^{-1})^*(x), \T(\U(y))} &  & \by{6.9}      \\
-		                                                   & = \inn{(\T^*)^{-1}(x), \T(\U(y))} &  & \by{ex:6.3.8} \\
-		                                                   & = \inn{\T^{-1}(x), \T(\U(y))}     &  & \by{6.4.8}    \\
-		                                                   & = \inn{x, (\T \U)(y)}'',
-	\end{align*}
-	by \cref{6.1}(e) we have \((\T \U)^{\ddag} = \T \U\).
-	Thus by \cref{6.4.8} \(\T \U\) is self-adjoint with respect to \(\inn{\cdot, \cdot}''\), and by \cref{6.16,6.17} we know that \(\T \U\) is diagonalizable.
-	By \cref{6.4.10}(a) this means \(\T \U\) has only real eigenvalues.
+  Since \(\T\) is self-adjoint with respect to \(\inn{\cdot, \cdot}\), by \cref{6.16,6.17} we know that there exists an orthonormal basis for \(\V\) over \(\F\) consist of eigenvectors of \(\T\).
+  Since \(\T\) is positive definite with respect to \(\inn{\cdot, \cdot}\), by \cref{ex:6.4.17}(a) we know that every eigenvalue of \(\T\) is positive.
+  Thus \(\T\) is invertible, and we can define inner product \(\inn{x, y}'' = \inn{\T^{-1}(x), y}\) for all \(x, y\).
+  By \cref{ex:6.4.19}(c) we know that \(\T^{-1}\) is positive definite with respect to \(\inn{\cdot, \cdot}\), thus by \cref{ex:6.4.20} \(\inn{\cdot, \cdot}''\) is indeed an inner product on \(\V\) over \(\F\).
+  For each \(\lt{S} \in \ls(\V)\), we denote the adjoint of \(\lt{S}\) with respect to \(\inn{\cdot, \cdot}''\) as \(\vs{S}^{\ddag}\).
+  These adjoint operators are well-defined thanks to \cref{6.9}.
+  Now we show that \(\T \U\) is self-adjoint with respect to \(\inn{\cdot, \cdot}''\).
+  Since
+  \begin{align*}
+    \forall x, y \in \V, \inn{x, (\T \U)^{\ddag}(y)}'' & = \inn{(\T \U)(x), y}''           &  & \by{6.9}      \\
+                                                       & = \inn{\T^{-1}(\T(\U(x))), y}                        \\
+                                                       & = \inn{\U(x), y}                                     \\
+                                                       & = \inn{x, \U^*(y)}                &  & \by{6.9}      \\
+                                                       & = \inn{x, \U(y)}                  &  & \by{6.4.8}    \\
+                                                       & = \inn{x, \T^{-1}(\T(\U(y)))}                        \\
+                                                       & = \inn{(\T^{-1})^*(x), \T(\U(y))} &  & \by{6.9}      \\
+                                                       & = \inn{(\T^*)^{-1}(x), \T(\U(y))} &  & \by{ex:6.3.8} \\
+                                                       & = \inn{\T^{-1}(x), \T(\U(y))}     &  & \by{6.4.8}    \\
+                                                       & = \inn{x, (\T \U)(y)}'',
+  \end{align*}
+  by \cref{6.1}(e) we have \((\T \U)^{\ddag} = \T \U\).
+  Thus by \cref{6.4.8} \(\T \U\) is self-adjoint with respect to \(\inn{\cdot, \cdot}''\), and by \cref{6.16,6.17} we know that \(\T \U\) is diagonalizable.
+  By \cref{6.4.10}(a) this means \(\T \U\) has only real eigenvalues.
 \end{proof}
 
 \begin{ex}\label{ex:6.4.22}
-	This exercise provides a converse to \cref{ex:6.4.20}.
-	Let \(\V\) be a finite-dimensional inner product space over \(\F\) with inner product \(\inn{\cdot, \cdot}\) on \(\V\) over \(\F\), and let \(\inn{\cdot, \cdot}'\) be any other inner product on \(\V\) over \(\F\).
-	\begin{enumerate}
-		\item Prove that there exists a unique \(\T \in \ls(\V)\) such that \(\inn{x, y}' = \inn{\T(x), y}\) for all \(x, y \in \V\).
-		\item Prove that the operator \(\T\) of (a) is positive definite with respect to both inner products.
-	\end{enumerate}
+  This exercise provides a converse to \cref{ex:6.4.20}.
+  Let \(\V\) be a finite-dimensional inner product space over \(\F\) with inner product \(\inn{\cdot, \cdot}\) on \(\V\) over \(\F\), and let \(\inn{\cdot, \cdot}'\) be any other inner product on \(\V\) over \(\F\).
+  \begin{enumerate}
+    \item Prove that there exists a unique \(\T \in \ls(\V)\) such that \(\inn{x, y}' = \inn{\T(x), y}\) for all \(x, y \in \V\).
+    \item Prove that the operator \(\T\) of (a) is positive definite with respect to both inner products.
+  \end{enumerate}
 \end{ex}
 
 \begin{proof}[\pf{ex:6.4.22}(a)]
-	Let \(\beta = \set{\seq{v}{1,,n}}\) be an orthonormal basis for \(\V\) over \(\F\) with respect to \(\inn{\cdot, \cdot}\).
-	Define \(A \in \ms[n][n][\F]\) by setting \(A_{i j} = \inn{v_j, v_i}'\) for all \(i, j \in \set{1, \dots, n}\).
-	Let \(\T \in \ls(\V)\) such that \([\T]_{\beta} = A\).
-	Now we show that \(\inn{x, y}' = \inn{\T(x), y}\) for all \(x, y \in \V\).
-	This is true since
-	\begin{align*}
-		\forall x, y \in \V, \inn{\T(x), y} & = \inn{\T\pa{\sum_{j = 1}^n \inn{x, v_j} v_j}, y}                              &  & \by{6.5}       \\
-		                                    & = \inn{\sum_{j = 1}^n \inn{x, v_j} \T(v_j), y}                                 &  & \by{2.1.2}[d]  \\
-		                                    & = \inn{\sum_{j = 1}^n \inn{x, v_j} \pa{\sum_{i = 1}^n A_{i j} v_i}, y}         &  & \by{2.2.4}     \\
-		                                    & = \sum_{i = 1}^n \sum_{j = 1}^n A_{i j} \inn{x, v_j} \inn{v_i, y}              &  & \by{6.1.1}[ab] \\
-		                                    & = \sum_{i = 1}^n \sum_{j = 1}^n \inn{v_j, v_i}' \inn{x, v_j} \inn{v_i, y}                          \\
-		                                    & = \sum_{i = 1}^n \pa{\inn{\sum_{j = 1}^n \inn{x, v_j} v_j, v_i}'} \inn{v_i, y} &  & \by{6.1.1}[ab] \\
-		                                    & = \sum_{i = 1}^n \inn{x, v_i}' \inn{v_i, y}                                    &  & \by{6.5}       \\
-		                                    & = \inn{x, \sum_{i = 1}^n \conj{\inn{v_i, y}} v_i}'                             &  & \by{6.1}[ab]   \\
-		                                    & = \inn{x, \sum_{i = 1}^n \inn{y, v_i} v_i}'                                    &  & \by{6.1.1}[c]  \\
-		                                    & = \inn{x, y}'.                                                                 &  & \by{6.5}
-	\end{align*}
+  Let \(\beta = \set{\seq{v}{1,,n}}\) be an orthonormal basis for \(\V\) over \(\F\) with respect to \(\inn{\cdot, \cdot}\).
+  Define \(A \in \ms[n][n][\F]\) by setting \(A_{i j} = \inn{v_j, v_i}'\) for all \(i, j \in \set{1, \dots, n}\).
+  Let \(\T \in \ls(\V)\) such that \([\T]_{\beta} = A\).
+  Now we show that \(\inn{x, y}' = \inn{\T(x), y}\) for all \(x, y \in \V\).
+  This is true since
+  \begin{align*}
+    \forall x, y \in \V, \inn{\T(x), y} & = \inn{\T\pa{\sum_{j = 1}^n \inn{x, v_j} v_j}, y}                              &  & \by{6.5}        \\
+                                        & = \inn{\sum_{j = 1}^n \inn{x, v_j} \T(v_j), y}                                 &  & \by{2.1.2}[d]   \\
+                                        & = \inn{\sum_{j = 1}^n \inn{x, v_j} \pa{\sum_{i = 1}^n A_{i j} v_i}, y}         &  & \by{2.2.4}      \\
+                                        & = \sum_{i = 1}^n \sum_{j = 1}^n A_{i j} \inn{x, v_j} \inn{v_i, y}              &  & \by{6.1.1}[a,b] \\
+                                        & = \sum_{i = 1}^n \sum_{j = 1}^n \inn{v_j, v_i}' \inn{x, v_j} \inn{v_i, y}                           \\
+                                        & = \sum_{i = 1}^n \pa{\inn{\sum_{j = 1}^n \inn{x, v_j} v_j, v_i}'} \inn{v_i, y} &  & \by{6.1.1}[a,b] \\
+                                        & = \sum_{i = 1}^n \inn{x, v_i}' \inn{v_i, y}                                    &  & \by{6.5}        \\
+                                        & = \inn{x, \sum_{i = 1}^n \conj{\inn{v_i, y}} v_i}'                             &  & \by{6.1}[a,b]   \\
+                                        & = \inn{x, \sum_{i = 1}^n \inn{y, v_i} v_i}'                                    &  & \by{6.1.1}[c]   \\
+                                        & = \inn{x, y}'.                                                                 &  & \by{6.5}
+  \end{align*}
 
-	Now we show that \(\T\) is unique.
-	Suppose that there exists another \(\U \in \ls(\V)\) such that \(\inn{x, y}' = \inn{\U(x), y}\) for all \(x, y \in \V\).
-	Then we have
-	\begin{align*}
-		         & \forall x, y \in \V, \inn{x, y}' = \inn{\T(x), y} = \inn{\U(x), y}                     \\
-		\implies & \forall x, y \in \V, \inn{\T(x) - \U(x), y} = 0                    &  & \by{6.1.1}[ab] \\
-		\implies & \forall x \in \V, \T(x) - \U(x) = 0                                &  & \by{6.1}[d]    \\
-		\implies & \T = \U.
-	\end{align*}
-	Thus \(\T\) is unique.
+  Now we show that \(\T\) is unique.
+  Suppose that there exists another \(\U \in \ls(\V)\) such that \(\inn{x, y}' = \inn{\U(x), y}\) for all \(x, y \in \V\).
+  Then we have
+  \begin{align*}
+             & \forall x, y \in \V, \inn{x, y}' = \inn{\T(x), y} = \inn{\U(x), y}                      \\
+    \implies & \forall x, y \in \V, \inn{\T(x) - \U(x), y} = 0                    &  & \by{6.1.1}[a,b] \\
+    \implies & \forall x \in \V, \T(x) - \U(x) = 0                                &  & \by{6.1}[d]     \\
+    \implies & \T = \U.
+  \end{align*}
+  Thus \(\T\) is unique.
 \end{proof}
 
 \begin{proof}[\pf{ex:6.4.22}(b)]
-	For each \(\U \in \ls(\V)\), we denote the self-adjoint of \(\U\) with respect to \(\inn{\cdot, \cdot}\) as \(\U^*\), and denote the self-adjoint of \(\U\) with respect to \(\inn{\cdot, \cdot}'\) as \(\U^{\dag}\).
-	First we show that \(\T\) is self-adjoint with respect to \(\inn{\cdot, \cdot}\).
-	Since
-	\begin{align*}
-		\forall x, y \in \V, \inn{x, \T^*(y)} & = \inn{\T(x), y}        &  & \by{6.9}      \\
-		                                      & = \inn{x, y}'                              \\
-		                                      & = \conj{\inn{y, x}'}    &  & \by{6.1.1}[c] \\
-		                                      & = \conj{\inn{\T(y), x}}                    \\
-		                                      & = \inn{x, \T(y)},       &  & \by{6.1.1}[c]
-	\end{align*}
-	by \cref{6.1}(e) we know that \(\T^* = \T\).
-	Thus by \cref{6.4.8} \(\T\) is self-adjoint with respect to \(\inn{\cdot, \cdot}\).
+  For each \(\U \in \ls(\V)\), we denote the self-adjoint of \(\U\) with respect to \(\inn{\cdot, \cdot}\) as \(\U^*\), and denote the self-adjoint of \(\U\) with respect to \(\inn{\cdot, \cdot}'\) as \(\U^{\dag}\).
+  First we show that \(\T\) is self-adjoint with respect to \(\inn{\cdot, \cdot}\).
+  Since
+  \begin{align*}
+    \forall x, y \in \V, \inn{x, \T^*(y)} & = \inn{\T(x), y}        &  & \by{6.9}      \\
+                                          & = \inn{x, y}'                              \\
+                                          & = \conj{\inn{y, x}'}    &  & \by{6.1.1}[c] \\
+                                          & = \conj{\inn{\T(y), x}}                    \\
+                                          & = \inn{x, \T(y)},       &  & \by{6.1.1}[c]
+  \end{align*}
+  by \cref{6.1}(e) we know that \(\T^* = \T\).
+  Thus by \cref{6.4.8} \(\T\) is self-adjoint with respect to \(\inn{\cdot, \cdot}\).
 
-	Next we show that \(\T\) is positive definite with respect to \(\inn{\cdot, \cdot}\).
-	This is true since
-	\begin{align*}
-		         & \forall x \in \V \setminus \set{\zv}, \inn{\T(x), x} = \inn{x, x}' > 0 &  & \by{6.1.1}[d] \\
-		\implies & \T \text{ is positive definite with respect to } \inn{\cdot, \cdot}.   &  & \by{6.4.11}
-	\end{align*}
+  Next we show that \(\T\) is positive definite with respect to \(\inn{\cdot, \cdot}\).
+  This is true since
+  \begin{align*}
+             & \forall x \in \V \setminus \set{\zv}, \inn{\T(x), x} = \inn{x, x}' > 0 &  & \by{6.1.1}[d] \\
+    \implies & \T \text{ is positive definite with respect to } \inn{\cdot, \cdot}.   &  & \by{6.4.11}
+  \end{align*}
 
-	Finally we show that \(\T\) is positive definite with respect to \(\inn{\cdot, \cdot}'\).
-	Since \(\T\) is positive definite with respect to \(\inn{\cdot, \cdot}\), by \cref{ex:6.4.17}(a) we know that \(\T\) is invertible.
-	Thus we have
-	\begin{align*}
-		\forall x, y \in \V, \inn{x, (\T^{-1})^{\dag}(y)}' & = \inn{\T^{-1}(x), y}'        &  & \by{6.9}      \\
-		                                                   & = \inn{x, y}                                     \\
-		                                                   & = \conj{\inn{y, x}}           &  & \by{6.1.1}[c] \\
-		                                                   & = \conj{\inn{\T^{-1}(y), x}'}                    \\
-		                                                   & = \inn{x, \T^{-1}(y)}'        &  & \by{6.1.1}[c]
-	\end{align*}
-	and by \cref{6.1}(e) we have \(\T^{-1} = (\T^{-1})^{\dag}\).
-	By \cref{6.4.8} this means \(\T^{-1}\) is self-adjoint with respect to \(\inn{\cdot, \cdot}'\).
-	Then we have
-	\begin{align*}
-		         & \forall x \in \V \setminus \set{\zv}, \inn{\T^{-1}(x), x}' = \inn{x, x} > 0            &  & \by{6.1.1}[d]     \\
-		\implies & \T^{-1} \text{ is positive definite with respect to } \inn{\cdot, \cdot}'              &  & \by{6.4.11}       \\
-		\implies & \T = (\T^{-1})^{-1} \text{ is positive definite with respect to } \inn{\cdot, \cdot}'. &  & \by{ex:6.4.19}[c]
-	\end{align*}
+  Finally we show that \(\T\) is positive definite with respect to \(\inn{\cdot, \cdot}'\).
+  Since \(\T\) is positive definite with respect to \(\inn{\cdot, \cdot}\), by \cref{ex:6.4.17}(a) we know that \(\T\) is invertible.
+  Thus we have
+  \begin{align*}
+    \forall x, y \in \V, \inn{x, (\T^{-1})^{\dag}(y)}' & = \inn{\T^{-1}(x), y}'        &  & \by{6.9}      \\
+                                                       & = \inn{x, y}                                     \\
+                                                       & = \conj{\inn{y, x}}           &  & \by{6.1.1}[c] \\
+                                                       & = \conj{\inn{\T^{-1}(y), x}'}                    \\
+                                                       & = \inn{x, \T^{-1}(y)}'        &  & \by{6.1.1}[c]
+  \end{align*}
+  and by \cref{6.1}(e) we have \(\T^{-1} = (\T^{-1})^{\dag}\).
+  By \cref{6.4.8} this means \(\T^{-1}\) is self-adjoint with respect to \(\inn{\cdot, \cdot}'\).
+  Then we have
+  \begin{align*}
+             & \forall x \in \V \setminus \set{\zv}, \inn{\T^{-1}(x), x}' = \inn{x, x} > 0            &  & \by{6.1.1}[d]     \\
+    \implies & \T^{-1} \text{ is positive definite with respect to } \inn{\cdot, \cdot}'              &  & \by{6.4.11}       \\
+    \implies & \T = (\T^{-1})^{-1} \text{ is positive definite with respect to } \inn{\cdot, \cdot}'. &  & \by{ex:6.4.19}[c]
+  \end{align*}
 \end{proof}
 
 \begin{ex}\label{ex:6.4.23}
-	Let \(\U\) be a diagonalizable linear operator on a finite-dimensional inner product space \(\V\) over \(\F\) such that all of the eigenvalues of \(\U\) are real.
-	Prove that there exist positive definite linear operators \(\T_1\) and \(\T_1'\) and self-adjoint linear operators \(\T_2\) and \(\T_2'\) such that \(\U = \T_2 \T_1 = \T_1' \T_2'\).
+  Let \(\U\) be a diagonalizable linear operator on a finite-dimensional inner product space \(\V\) over \(\F\) such that all of the eigenvalues of \(\U\) are real.
+  Prove that there exist positive definite linear operators \(\T_1\) and \(\T_1'\) and self-adjoint linear operators \(\T_2\) and \(\T_2'\) such that \(\U = \T_2 \T_1 = \T_1' \T_2'\).
 \end{ex}
 
 \begin{proof}[\pf{ex:6.4.23}]
-	Let \(\inn{\cdot, \cdot}, \inn{\cdot, \cdot}'\) be inner products on \(\V\) over \(\F\).
-	For each \(\lt{S} \in \ls(\V)\), we denote the adjoint of \(\lt{S}\) with respect to \(\inn{\cdot, \cdot}\) as \(\lt{S}^*\), and denote the adjoint of \(\lt{S}\) with respect to \(\inn{\cdot, \cdot}'\) as \(\lt{S}^{\dag}\).
+  Let \(\inn{\cdot, \cdot}, \inn{\cdot, \cdot}'\) be inner products on \(\V\) over \(\F\).
+  For each \(\lt{S} \in \ls(\V)\), we denote the adjoint of \(\lt{S}\) with respect to \(\inn{\cdot, \cdot}\) as \(\lt{S}^*\), and denote the adjoint of \(\lt{S}\) with respect to \(\inn{\cdot, \cdot}'\) as \(\lt{S}^{\dag}\).
 
-	Since \(\U\) is diagonalizable, by \cref{5.1.1} there exists an ordered basis \(\beta'\) for \(\V\) over \(\F\) such that \([\U]_{\beta'}\) is a diagonal matrix.
-	In particular, we can normalize \(\beta'\) by \(\inn{\cdot, \cdot}'\) to get \(\beta\) so that \(\beta\) is orthonormal with respect to \(\inn{\cdot, \cdot}'\).
-	Since all eigenvalues of \(\U\) are real, we have
-	\begin{align*}
-		[\U]_{\beta} & = [\U]_{\beta}^{\dag}  &  & \by{6.1.5} \\
-		             & = [\U^{\dag}]_{\beta}. &  & \by{6.10}
-	\end{align*}
-	Thus by \cref{2.1.13} we have \(\U^{\dag} = \U\) and by \cref{6.4.8} \(\U\) is self-adjoint with respect to \(\inn{\cdot, \cdot}'\).
+  Since \(\U\) is diagonalizable, by \cref{5.1.1} there exists an ordered basis \(\beta'\) for \(\V\) over \(\F\) such that \([\U]_{\beta'}\) is a diagonal matrix.
+  In particular, we can normalize \(\beta'\) by \(\inn{\cdot, \cdot}'\) to get \(\beta\) so that \(\beta\) is orthonormal with respect to \(\inn{\cdot, \cdot}'\).
+  Since all eigenvalues of \(\U\) are real, we have
+  \begin{align*}
+    [\U]_{\beta} & = [\U]_{\beta}^{\dag}  &  & \by{6.1.5} \\
+                 & = [\U^{\dag}]_{\beta}. &  & \by{6.10}
+  \end{align*}
+  Thus by \cref{2.1.13} we have \(\U^{\dag} = \U\) and by \cref{6.4.8} \(\U\) is self-adjoint with respect to \(\inn{\cdot, \cdot}'\).
 
-	By \cref{ex:6.4.22}(a) there exists a unique \(\T_1 \in \ls(\V)\) such that \(\inn{x, y}' = \inn{\T_1(x), y}\) for all \(x, y \in \V\).
-	By \cref{ex:6.4.22}(b) we also know that \(\T_1\) is positive definite with respect to both \(\inn{\cdot, \cdot}\) and \(\inn{\cdot, \cdot}'\).
-	Since \(\T_1\) is positive definite, by \cref{ex:6.4.17}(a) we know that \(\T_1\) is invertible.
-	Now we show that \(\U = \T_1^{-1} \U^* \T_1\).
-	Since
-	\begin{align*}
-		\forall x, y \in \V, \inn{x, \U(y)}' & = \inn{x, \U^{\dag}(y)}'                      &  & \by{6.4.8}        \\
-		                                     & = \inn{\U(x), y}'                             &  & \by{6.9}          \\
-		                                     & = \inn{\T_1(\U(x)), y}                        &  & \by{ex:6.4.22}[a] \\
-		                                     & = \inn{x, \U^*(\T_1^*(y))}                    &  & \by{6.9}          \\
-		                                     & = \inn{x, \U^*(\T_1(y))}                      &  & \by{6.4.11}       \\
-		                                     & = \inn{\T_1^{-1}(\T(x)), \U^*(\T_1(y))}                              \\
-		                                     & = \inn{\T_1(x), (\T_1^{-1})^*(\U^*(\T_1(y)))} &  & \by{6.9}          \\
-		                                     & = \inn{\T_1(x), (\T_1^*)^{-1}(\U^*(\T_1(y)))} &  & \by{ex:6.3.8}     \\
-		                                     & = \inn{\T_1(x), \T_1^{-1}(\U^*(\T_1(y)))}     &  & \by{6.4.11}       \\
-		                                     & = \inn{x, \T_1^{-1}(\U^*(\T_1(y)))}'          &  & \by{ex:6.4.22}[a]
-	\end{align*}
-	by \cref{6.1}(e) we know that \(\U = \T_1^{-1} \U^* \T_1\).
+  By \cref{ex:6.4.22}(a) there exists a unique \(\T_1 \in \ls(\V)\) such that \(\inn{x, y}' = \inn{\T_1(x), y}\) for all \(x, y \in \V\).
+  By \cref{ex:6.4.22}(b) we also know that \(\T_1\) is positive definite with respect to both \(\inn{\cdot, \cdot}\) and \(\inn{\cdot, \cdot}'\).
+  Since \(\T_1\) is positive definite, by \cref{ex:6.4.17}(a) we know that \(\T_1\) is invertible.
+  Now we show that \(\U = \T_1^{-1} \U^* \T_1\).
+  Since
+  \begin{align*}
+    \forall x, y \in \V, \inn{x, \U(y)}' & = \inn{x, \U^{\dag}(y)}'                      &  & \by{6.4.8}        \\
+                                         & = \inn{\U(x), y}'                             &  & \by{6.9}          \\
+                                         & = \inn{\T_1(\U(x)), y}                        &  & \by{ex:6.4.22}[a] \\
+                                         & = \inn{x, \U^*(\T_1^*(y))}                    &  & \by{6.9}          \\
+                                         & = \inn{x, \U^*(\T_1(y))}                      &  & \by{6.4.11}       \\
+                                         & = \inn{\T_1^{-1}(\T(x)), \U^*(\T_1(y))}                              \\
+                                         & = \inn{\T_1(x), (\T_1^{-1})^*(\U^*(\T_1(y)))} &  & \by{6.9}          \\
+                                         & = \inn{\T_1(x), (\T_1^*)^{-1}(\U^*(\T_1(y)))} &  & \by{ex:6.3.8}     \\
+                                         & = \inn{\T_1(x), \T_1^{-1}(\U^*(\T_1(y)))}     &  & \by{6.4.11}       \\
+                                         & = \inn{x, \T_1^{-1}(\U^*(\T_1(y)))}'          &  & \by{ex:6.4.22}[a]
+  \end{align*}
+  by \cref{6.1}(e) we know that \(\U = \T_1^{-1} \U^* \T_1\).
 
-	Define \(\T_2 = \T_1^{-1} \U^*\).
-	Then we have \(\U = \T_2 \T_1\).
-	By \cref{2.9,2.17,6.9} we know that \(\T_2 \in \ls(\V)\).
-	Now we show that \(\T_2\) is self-adjoint with respect to \(\inn{\cdot, \cdot}\).
-	Since
-	\begin{align*}
-		\forall x, y \in \V, \inn{x, \T_2^*(y)} & = \inn{\T_2(x), y}                            &  & \by{6.9}                      \\
-		                                        & = \inn{(\T_1^{-1} \U^*)(x), y}                                                   \\
-		                                        & = \inn{x, (\U (\T_1^{-1})^*)(y)}              &  & \by{6.11}[c]                  \\
-		                                        & = \inn{x, (\U (\T_1^*)^{-1})(y)}              &  & \by{ex:6.3.8}                 \\
-		                                        & = \inn{x, (\U \T_1^{-1})(y)}                  &  & \by{6.4.11}                   \\
-		                                        & = \inn{x, (\T_1^{-1} \U^* \T_1 \T_1^{-1})(y)} &  & \text{(from the proof above)} \\
-		                                        & = \inn{x, (\T_1^{-1} \U^*)(y)}                                                   \\
-		                                        & = \inn{x, \T_2(y)},
-	\end{align*}
-	by \cref{6.1}(e) we have \(\T_2^* = \T_2\).
-	Thus by \cref{6.4.8} \(\T_2\) is self-adjoint with respect to \(\inn{\cdot, \cdot}\).
+  Define \(\T_2 = \T_1^{-1} \U^*\).
+  Then we have \(\U = \T_2 \T_1\).
+  By \cref{2.9,2.17,6.9} we know that \(\T_2 \in \ls(\V)\).
+  Now we show that \(\T_2\) is self-adjoint with respect to \(\inn{\cdot, \cdot}\).
+  Since
+  \begin{align*}
+    \forall x, y \in \V, \inn{x, \T_2^*(y)} & = \inn{\T_2(x), y}                            &  & \by{6.9}                      \\
+                                            & = \inn{(\T_1^{-1} \U^*)(x), y}                                                   \\
+                                            & = \inn{x, (\U (\T_1^{-1})^*)(y)}              &  & \by{6.11}[c]                  \\
+                                            & = \inn{x, (\U (\T_1^*)^{-1})(y)}              &  & \by{ex:6.3.8}                 \\
+                                            & = \inn{x, (\U \T_1^{-1})(y)}                  &  & \by{6.4.11}                   \\
+                                            & = \inn{x, (\T_1^{-1} \U^* \T_1 \T_1^{-1})(y)} &  & \text{(from the proof above)} \\
+                                            & = \inn{x, (\T_1^{-1} \U^*)(y)}                                                   \\
+                                            & = \inn{x, \T_2(y)},
+  \end{align*}
+  by \cref{6.1}(e) we have \(\T_2^* = \T_2\).
+  Thus by \cref{6.4.8} \(\T_2\) is self-adjoint with respect to \(\inn{\cdot, \cdot}\).
 
-	Now we define \(\T_1' = \T_1^{-1}\) and \(\T_2' = \U^* \T_1\).
-	Clearly we have \(\U = \T_1' \T_2'\).
-	By \cref{ex:6.4.19}(c) we know that \(\T_1'\) is positive definite with respect to both \(\inn{\cdot, \cdot}\) and \(\inn{\cdot, \cdot}'\).
-	So we are left to show that \(\T_2'\) is self-adjoint with respect to \(\inn{\cdot, \cdot}\).
-	Since
-	\begin{align*}
-		\forall x, y \in \V, \inn{x, (\T_2')^*(y)} & = \inn{x, (\U^* \T_1)^*(y)}                                                 \\
-		                                           & = \inn{x, (\T_1^* \U)(y)}                &  & \by{6.11}[cd]                 \\
-		                                           & = \inn{x, (\T_1 \U)(y)}                  &  & \by{6.4.11}                   \\
-		                                           & = \inn{x, (\T_1 \T_1^{-1} \U^* \T_1)(y)} &  & \text{(from the proof above)} \\
-		                                           & = \inn{x, (\U^* \T_1)(y)}                                                   \\
-		                                           & = \inn{x, (\T_2')(y)},
-	\end{align*}
-	by \cref{6.1}(e) we see that \((\T_2')^* = \T_2'\).
-	Thus by \cref{6.4.8} \(\T_2'\) is self-adjoint with respect to \(\inn{\cdot, \cdot}\).
+  Now we define \(\T_1' = \T_1^{-1}\) and \(\T_2' = \U^* \T_1\).
+  Clearly we have \(\U = \T_1' \T_2'\).
+  By \cref{ex:6.4.19}(c) we know that \(\T_1'\) is positive definite with respect to both \(\inn{\cdot, \cdot}\) and \(\inn{\cdot, \cdot}'\).
+  So we are left to show that \(\T_2'\) is self-adjoint with respect to \(\inn{\cdot, \cdot}\).
+  Since
+  \begin{align*}
+    \forall x, y \in \V, \inn{x, (\T_2')^*(y)} & = \inn{x, (\U^* \T_1)^*(y)}                                                 \\
+                                               & = \inn{x, (\T_1^* \U)(y)}                &  & \by{6.11}[c,d]                \\
+                                               & = \inn{x, (\T_1 \U)(y)}                  &  & \by{6.4.11}                   \\
+                                               & = \inn{x, (\T_1 \T_1^{-1} \U^* \T_1)(y)} &  & \text{(from the proof above)} \\
+                                               & = \inn{x, (\U^* \T_1)(y)}                                                   \\
+                                               & = \inn{x, (\T_2')(y)},
+  \end{align*}
+  by \cref{6.1}(e) we see that \((\T_2')^* = \T_2'\).
+  Thus by \cref{6.4.8} \(\T_2'\) is self-adjoint with respect to \(\inn{\cdot, \cdot}\).
 \end{proof}
 
 \begin{ex}\label{ex:6.4.24}
-	This argument gives another proof of Schur's theorem (\cref{6.14}).
-	Let \(\T\) be a linear operator on a finite dimensional inner product space \(\V\) over \(\F\).
-	\begin{enumerate}
-		\item Suppose that \(\beta\) is an ordered basis for \(\V\) such that \([\T]_{\beta}\) is an upper triangular matrix.
-		      Let \(\gamma\) be the orthonormal basis for \(\V\) obtained by applying the Gram--Schmidt orthogonalization process to \(\beta\) and then normalizing the resulting vectors.
-		      Prove that \([\T]_{\gamma}\) is an upper triangular matrix.
-		\item Use \cref{ex:5.4.32} and (a) to obtain an alternate proof of Schur's theorem.
-	\end{enumerate}
+  This argument gives another proof of Schur's theorem (\cref{6.14}).
+  Let \(\T\) be a linear operator on a finite dimensional inner product space \(\V\) over \(\F\).
+  \begin{enumerate}
+    \item Suppose that \(\beta\) is an ordered basis for \(\V\) such that \([\T]_{\beta}\) is an upper triangular matrix.
+          Let \(\gamma\) be the orthonormal basis for \(\V\) obtained by applying the Gram--Schmidt orthogonalization process to \(\beta\) and then normalizing the resulting vectors.
+          Prove that \([\T]_{\gamma}\) is an upper triangular matrix.
+    \item Use \cref{ex:5.4.32} and (a) to obtain an alternate proof of Schur's theorem.
+  \end{enumerate}
 \end{ex}
 
 \begin{proof}[\pf{ex:6.4.24}(a)]
-	Let \(\beta = \set{\seq{v}{1,,n}}\) and let \(\gamma = \set{\seq{w}{1,,n}}\).
-	Since \([\T]_{\beta}\) is upper triangular, by \cref{ex:1.3.12} we know that \(([\T]_{\beta})_{i j} = 0\) for all \(i, j \in \set{1, \dots, n}\) and \(i > j\).
-	Then we have
-	\begin{align*}
-		         & \forall i \in \set{1, \dots, n}, w_i \in \spn{\set{\seq{v}{1,,i}}}                                     &  & \by{6.4}       \\
-		\implies & \forall i, j \in \set{1, \dots, n}, ([\T]_{\gamma})_{i j} = ([\T]_{\beta})_{i j} = 0 \text{ if } i > j                     \\
-		\implies & [\T]_{\gamma} \text{ is upper triangular}.                                                             &  & \by{ex:1.3.12}
-	\end{align*}
+  Let \(\beta = \set{\seq{v}{1,,n}}\) and let \(\gamma = \set{\seq{w}{1,,n}}\).
+  Since \([\T]_{\beta}\) is upper triangular, by \cref{ex:1.3.12} we know that \(([\T]_{\beta})_{i j} = 0\) for all \(i, j \in \set{1, \dots, n}\) and \(i > j\).
+  Then we have
+  \begin{align*}
+             & \forall i \in \set{1, \dots, n}, w_i \in \spn{\set{\seq{v}{1,,i}}}                                     &  & \by{6.4}       \\
+    \implies & \forall i, j \in \set{1, \dots, n}, ([\T]_{\gamma})_{i j} = ([\T]_{\beta})_{i j} = 0 \text{ if } i > j                     \\
+    \implies & [\T]_{\gamma} \text{ is upper triangular}.                                                             &  & \by{ex:1.3.12}
+  \end{align*}
 \end{proof}
 
 \begin{proof}[\pf{ex:6.4.24}(b)]
-	By \cref{ex:5.4.32} we know that the characteristic polynomial of \(\T\) split implies there exists an order basis \(\beta\) for \(\V\) over \(\F\) such that \([\T]_{\beta}\) is upper triangular.
-	By \cref{ex:6.4.24}(a) we know that there exists an orthonormal basis \(\gamma\) for \(\V\) over \(\F\) such that \([\T]_{\gamma}\) is upper triangular.
-	Thus \cref{6.14} is true.
+  By \cref{ex:5.4.32} we know that the characteristic polynomial of \(\T\) split implies there exists an order basis \(\beta\) for \(\V\) over \(\F\) such that \([\T]_{\beta}\) is upper triangular.
+  By \cref{ex:6.4.24}(a) we know that there exists an orthonormal basis \(\gamma\) for \(\V\) over \(\F\) such that \([\T]_{\gamma}\) is upper triangular.
+  Thus \cref{6.14} is true.
 \end{proof}

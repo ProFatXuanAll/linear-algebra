@@ -2,8 +2,8 @@
 
 \begin{defn}\label{1.4.1}
 	Let \(\V\) be a vector space over \(\F\) and \(S\) a nonempty subset of \(\V\).
-	A vector \(v \in \V\) is called a \textbf{linear combination} of vectors of \(S\) if there exist a finite number of vectors \(\seq{u}{1,2,,n}\) in \(S\) and scalars \(\seq{a}{1,2,,n}\) in \(\F\) such that \(v = \seq[+]{a,u}{1,2,,n}\).
-	In this case we also say that \(v\) is a linear combination of \(\seq{u}{1,2,,n}\) and call \(\seq{a}{1,2,,n}\) the \textbf{coefficients} of the linear combination.
+	A vector \(v \in \V\) is called a \textbf{linear combination} of vectors of \(S\) if there exist a finite number of vectors \(\seq{u}{1,,n}\) in \(S\) and scalars \(\seq{a}{1,,n}\) in \(\F\) such that \(v = \seq[+]{a,u}{1,,n}\).
+	In this case we also say that \(v\) is a linear combination of \(\seq{u}{1,,n}\) and call \(\seq{a}{1,,n}\) the \textbf{coefficients} of the linear combination.
 \end{defn}
 
 \begin{eg}\label{1.4.2}
@@ -29,13 +29,13 @@
 	If \(S \neq \varnothing\), then \(S\) contains a vector \(z\).
 	So \(0z = \zv\) is in \(\spn{S}\).
 	Let \(x, y \in \spn{S}\).
-	Then there exist vectors \(\seq{u}{1,2,,m}\), \(\seq{v}{1,2,,n}\) in \(S\) and scalars \(\seq{a}{1,2,,m}\), \(\seq{b}{1,2,,n}\) in \(\F\) such that
+	Then there exist vectors \(\seq{u}{1,,m}\), \(\seq{v}{1,,n}\) in \(S\) and scalars \(\seq{a}{1,,m}\), \(\seq{b}{1,,n}\) in \(\F\) such that
 	\[
-		x = \seq[+]{a,u}{1,2,,m} \quad \text{and} \quad y = \seq[+]{b,v}{1,2,,n}
+		x = \seq[+]{a,u}{1,,m} \quad \text{and} \quad y = \seq[+]{b,v}{1,,n}
 	\]
 	Then
 	\[
-		x + y = \seq[+]{a,u}{1,2,,m} + \seq[+]{b,v}{1,2,,n}
+		x + y = \seq[+]{a,u}{1,,m} + \seq[+]{b,v}{1,,n}
 	\]
 	and, for any scalar \(c \in \F\),
 	\[
@@ -46,9 +46,9 @@
 	Thus \(\spn{S}\) is a subspace of \(\V\) over \(\F\) (by \cref{1.3}).
 
 	Now let \(\W\) denote any subspace of \(\V\) over \(\F\) that contains \(S\).
-	If \(w \in \spn{S}\), then \(w\) has the form \(w = \seq[+]{c,w}{1,2,,k}\) for some vectors \(\seq{w}{1,2,,k}\) in \(S\) and some scalars \(\seq{c}{1,2,,k}\).
-	Since \(S \subseteq \W\), we have \(\seq{w}{1,2,,k} \in \W\).
-	Therefore \(w = \seq[+]{c,w}{1,2,,k}\) is in \(\W\) by \cref{ex:1.3.20} of \cref{sec:1.3}.
+	If \(w \in \spn{S}\), then \(w\) has the form \(w = \seq[+]{c,w}{1,,k}\) for some vectors \(\seq{w}{1,,k}\) in \(S\) and some scalars \(\seq{c}{1,,k}\).
+	Since \(S \subseteq \W\), we have \(\seq{w}{1,,k} \in \W\).
+	Therefore \(w = \seq[+]{c,w}{1,,k}\) is in \(\W\) by \cref{ex:1.3.20} of \cref{sec:1.3}.
 	Because \(w\), an arbitrary vector in \(\spn{S}\), belongs to \(\W\), it follows that \(\spn{S} \subseteq \W\).
 \end{proof}
 
@@ -67,7 +67,7 @@
 \setcounter{ex}{6}
 \begin{ex}\label{ex:1.4.7}
 	In \(\vs{F}^n\), let \(e_j\) denote the vector whose \(j\)th coordinate is \(1\) and whose other coordinates are \(0\).
-	Prove that \(\set{\seq{e}{1,2,,n}}\) generates \(\vs{F}^n\).
+	Prove that \(\set{\seq{e}{1,,n}}\) generates \(\vs{F}^n\).
 \end{ex}
 
 \begin{proof}[\pf{ex:1.4.7}]
@@ -79,15 +79,15 @@
 		\implies & \vs{F}^1 = \spn{\set{e_1}}                                  &  & \by{1.5}
 	\end{align*}
 	and thus the base case holds.
-	Suppose inductively that \(\vs{F}^n = \spn{\set{\seq{e}{1,2,,n}}}\) for some \(n \geq 1\).
+	Suppose inductively that \(\vs{F}^n = \spn{\set{\seq{e}{1,,n}}}\) for some \(n \geq 1\).
 	Then for \(n + 1\), we have
 	\begin{align*}
-		         & \forall x \in \vs{F}^{n + 1}, x = \tuple{x}{1,2,,n,n + 1}  &  & \by{1.2.4}                       \\
-		         & = (\seq{x}{1,2,,n}, 0) + (0, 0, \dots, 0, x_{n + 1})                                             \\
-		         & = (\seq[+]{x,e}{1,2,,n}) + x_{n + 1} e_{n + 1}             &  & \text{(by induction hypothesis)} \\
-		         & \in \spn{\set{\seq{x}{1,2,,n,n + 1}}}                      &  & \by{1.4.3}                       \\
-		\implies & \vs{F}^{n + 1} \subseteq \spn{\set{\seq{x}{1,2,,n,n + 1}}}                                       \\
-		\implies & \vs{F}^{n + 1} = \spn{\set{\seq{x}{1,2,,n,n + 1}}}         &  & \by{1.5}
+		         & \forall x \in \vs{F}^{n + 1}, x = \tuple{x}{1,,n,n + 1}  &  & \by{1.2.4}                       \\
+		         & = (\seq{x}{1,,n}, 0) + (0, 0, \dots, 0, x_{n + 1})                                             \\
+		         & = (\seq[+]{x,e}{1,,n}) + x_{n + 1} e_{n + 1}             &  & \text{(by induction hypothesis)} \\
+		         & \in \spn{\set{\seq{x}{1,,n,n + 1}}}                      &  & \by{1.4.3}                       \\
+		\implies & \vs{F}^{n + 1} \subseteq \spn{\set{\seq{x}{1,,n,n + 1}}}                                       \\
+		\implies & \vs{F}^{n + 1} = \spn{\set{\seq{x}{1,,n,n + 1}}}         &  & \by{1.5}
 	\end{align*}
 	and this closes the induction.
 \end{proof}
@@ -99,10 +99,10 @@
 \begin{proof}[\pf{ex:1.4.8}]
 	By \cref{1.3.6} we know that \(\ps[n]{\F}\) is a vector space over \(\F\), and we have
 	\begin{align*}
-		         & \forall f \in \ps[n]{\F}, \exists \seq{a}{0,1,2,,n} \in \F :                 \\
-		         & \forall x \in \F, f(x) = a_0 1 + a_1 x + \cdots + a_n x^n                    \\
-		\implies & \ps[n]{\F} \subseteq \spn{\set{1, x, \dots, x_n}}            &  & \by{1.4.3} \\
-		\implies & \ps[n]{\F} = \spn{\set{1, x, \dots, x_n}}                    &  & \by{1.5}
+		         & \forall f \in \ps[n]{\F}, \exists \seq{a}{0,1,,n} \in \F :                 \\
+		         & \forall x \in \F, f(x) = a_0 1 + a_1 x + \cdots + a_n x^n                  \\
+		\implies & \ps[n]{\F} \subseteq \spn{\set{1, x, \dots, x_n}}          &  & \by{1.4.3} \\
+		\implies & \ps[n]{\F} = \spn{\set{1, x, \dots, x_n}}                  &  & \by{1.5}
 	\end{align*}
 \end{proof}
 
@@ -116,12 +116,12 @@
 	We have
 	\begin{align*}
 		         & \forall v \in \spn{\set{x}}, \begin{dcases}
-			                                        \exists \seq{x}{1,2,,n} \in \set{x} \\
-			                                        \exists \seq{a}{1,2,,n} \in \F
-		                                        \end{dcases} :                                           \\
-		         & v = \seq[+]{a,x}{1,2,,n} \in \spn{\set{x}}                                      &  & \by{1.4.3}            \\
-		\implies & \forall v \in \spn{\set{x}}, \exists \seq{a}{1,2,,n} \in \F :                                              \\
-		         & v = a_1 x + a_2 x + \cdots a_n x = (\seq[+]{a}{1,2,,n}) x                       &  & \text{(by \ref{vs8})} \\
+			                                        \exists \seq{x}{1,,n} \in \set{x} \\
+			                                        \exists \seq{a}{1,,n} \in \F
+		                                        \end{dcases} :                                             \\
+		         & v = \seq[+]{a,x}{1,,n} \in \spn{\set{x}}                                        &  & \by{1.4.3}            \\
+		\implies & \forall v \in \spn{\set{x}}, \exists \seq{a}{1,,n} \in \F :                                                \\
+		         & v = a_1 x + a_2 x + \cdots a_n x = (\seq[+]{a}{1,,n}) x                         &  & \text{(by \ref{vs8})} \\
 		\implies & \forall v \in \spn{\set{x}}, \exists a \in \F : v = (a + 0 + \cdots + 0) x = ax                            \\
 		\implies & \spn{\set{x}} = \set{ax : a \in \F}.
 	\end{align*}
@@ -157,10 +157,10 @@
 	We have
 	\begin{align*}
 		         & \forall v \in \spn{S_1}, \begin{dcases}
-			                                    \exists \seq{u}{1,2,,n} \in S_1 \subseteq S_2 \\
-			                                    \exists \seq{a}{1,2,,n} \in \F
+			                                    \exists \seq{u}{1,,n} \in S_1 \subseteq S_2 \\
+			                                    \exists \seq{a}{1,,n} \in \F
 		                                    \end{dcases} : \\
-		         & v = \seq[+]{a,u}{1,2,,n} \in \spn{S_2}           &  & \by{1.4.3}       \\
+		         & v = \seq[+]{a,u}{1,,n} \in \spn{S_2}           &  & \by{1.4.3}       \\
 		\implies & \spn{S_1} \subseteq \spn{S_2}.
 	\end{align*}
 
@@ -182,17 +182,17 @@
 	\begin{align*}
 		     & v \in \spn{S_1 \cup S_2}                                                                     \\
 		\iff & \begin{dcases}
-			       \exists \seq{u}{1,2,,n + m} \in S_1 \cup S_2 \\
-			       \exists \seq{a}{1,2,,n + m} \in \F
-		       \end{dcases} :                                                 \\
-		     & v = \seq[+]{a,u}{1,2,,n + m}                                                &  & \by{1.4.3}  \\
+			       \exists \seq{u}{1,,n + m} \in S_1 \cup S_2 \\
+			       \exists \seq{a}{1,,n + m} \in \F
+		       \end{dcases} :                                                   \\
+		     & v = \seq[+]{a,u}{1,,n + m}                                                  &  & \by{1.4.3}  \\
 		\iff & \begin{dcases}
-			       \exists \seq{u}{1,2,,n} \in S_1             \\
+			       \exists \seq{u}{1,,n} \in S_1               \\
 			       \exists \seq{u}{n + 1,n + 2,,n + m} \in S_2 \\
-			       \exists \seq{a}{1,2,,n + m} \in \F
+			       \exists \seq{a}{1,,n + m} \in \F
 		       \end{dcases} :                                                  \\
 		     & \begin{dcases}
-			       v_1 = \seq[+]{a,u}{1,2,,n}             \\
+			       v_1 = \seq[+]{a,u}{1,,n}               \\
 			       v_2 = \seq[+]{a,u}{n + 1,n + 2,,n + m} \\
 			       v = v_1 + v_2
 		       \end{dcases}                                   &  & \by{1.4.3}                               \\
@@ -213,14 +213,14 @@
 	We have
 	\begin{align*}
 		         & \forall v \in \spn{S_1 \cap S_2}, \begin{dcases}
-			                                             \exists \seq{u}{1,2,,n} \in S_1 \cap S_2 \\
-			                                             \exists \seq{a}{1,2,,n} \in \F
+			                                             \exists \seq{u}{1,,n} \in S_1 \cap S_2 \\
+			                                             \exists \seq{a}{1,,n} \in \F
 		                                             \end{dcases} : \\
 		         & \begin{dcases}
-			           \seq[+]{a,u}{1,2,,n} \in \spn{S_1} \\
-			           \seq[+]{a,u}{1,2,,n} \in \spn{S_2} \\
-			           v = \seq[+]{a,u}{1,2,,n}
-		           \end{dcases}                  &  & \by{1.4.3}                              \\
+			           \seq[+]{a,u}{1,,n} \in \spn{S_1} \\
+			           \seq[+]{a,u}{1,,n} \in \spn{S_2} \\
+			           v = \seq[+]{a,u}{1,,n}
+		           \end{dcases}                    &  & \by{1.4.3}                          \\
 		\implies & \spn{S_1 \cap S_2} \subseteq \spn{S_1} \cap \spn{S_2}.
 	\end{align*}
 
@@ -245,7 +245,7 @@
 \end{proof}
 
 \begin{ex}\label{ex:1.4.16}
-	Let \(\V\) be a vector space over \(\F\) and \(S\) a subset of \(\V\) with the property that whenever \(\seq{v}{1,2,,n} \in S\) and \(\seq[+]{a,v}{1,2,,n} = \zv\), then \(\seq[=]{a}{1,2,,n} = 0\).
+	Let \(\V\) be a vector space over \(\F\) and \(S\) a subset of \(\V\) with the property that whenever \(\seq{v}{1,,n} \in S\) and \(\seq[+]{a,v}{1,,n} = \zv\), then \(\seq[=]{a}{1,,n} = 0\).
 	Prove that every vector in the span of \(S\) can be \emph{uniquely} written as a linear combination of vectors of \(S\).
 \end{ex}
 
@@ -254,10 +254,10 @@
 	If \(x = \zv\), then by hypothesis we know that
 	\begin{align*}
 		         & \begin{dcases}
-			           \forall \seq{v}{1,2,,n} \in S \\
-			           \forall \seq{a}{1,2,,n} \in \F
-		           \end{dcases}, \seq[+]{a,v}{1,2,,n} = \zv \\
-		\implies & \seq[=]{a}{1,2,,n} = 0
+			           \forall \seq{v}{1,,n} \in S \\
+			           \forall \seq{a}{1,,n} \in \F
+		           \end{dcases}, \seq[+]{a,v}{1,,n} = \zv \\
+		\implies & \seq[=]{a}{1,,n} = 0
 	\end{align*}
 	and thus \(\zv\) can be uniquely written as a linear combination of vectors of \(S\).
 
@@ -266,26 +266,26 @@
 	By \cref{1.4.3} this means
 	\[
 		\begin{dcases}
-			\exists \seq{v}{1,2,,n} \in S  \\
-			\exists \seq{a}{1,2,,n} \in \F \\
-			\exists \seq{u}{1,2,,m} \in S  \\
-			\exists \seq{b}{1,2,,m} \in \F
+			\exists \seq{v}{1,,n} \in S  \\
+			\exists \seq{a}{1,,n} \in \F \\
+			\exists \seq{u}{1,,m} \in S  \\
+			\exists \seq{b}{1,,m} \in \F
 		\end{dcases} : \begin{dcases}
-			x = \seq[+]{a,v}{1,2,,n} \\
-			x = \seq[+]{b,u}{1,2,,m}
+			x = \seq[+]{a,v}{1,,n} \\
+			x = \seq[+]{b,u}{1,,m}
 		\end{dcases}.
 	\]
 	But then we have
 	\begin{align*}
-		         & x = \seq[+]{a,v}{1,2,,n}                                       \\
-		         & \quad = \seq[+]{b,u}{1,2,,m}                                   \\
-		\implies & \seq[+]{a,v}{1,2,,n}                                           \\
-		         & \quad - \seq[+]{b,u}{1,2,,m} = \zv                             \\
-		\implies & \seq[=]{a}{1,2,,n}                                             \\
-		         & \quad = \seq[=]{b}{1,2,,m} = 0     &  & \text{(by hypothesis)} \\
-		\implies & x = 0v_1 + 0v_2 + \cdots + 0v_n                                \\
-		         & = \zv + \zv + \cdots + \zv         &  & \by{1.2}               \\
-		         & = \zv,                             &  & \text{(by \ref{vs3})}
+		         & x = \seq[+]{a,v}{1,,n}                                       \\
+		         & \quad = \seq[+]{b,u}{1,,m}                                   \\
+		\implies & \seq[+]{a,v}{1,,n}                                           \\
+		         & \quad - \seq[+]{b,u}{1,,m} = \zv                             \\
+		\implies & \seq[=]{a}{1,,n}                                             \\
+		         & \quad = \seq[=]{b}{1,,m} = 0     &  & \text{(by hypothesis)} \\
+		\implies & x = 0v_1 + 0v_2 + \cdots + 0v_n                              \\
+		         & = \zv + \zv + \cdots + \zv       &  & \by{1.2}               \\
+		         & = \zv,                           &  & \text{(by \ref{vs3})}
 	\end{align*}
 	a contradiction.
 	Thus \(x\) can be uniquely written as a linear combination of vectors of \(S\).
