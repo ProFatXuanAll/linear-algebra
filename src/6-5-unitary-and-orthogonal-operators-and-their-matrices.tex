@@ -526,6 +526,53 @@
   Any translation is also a special case, in which the orthogonal operator is the identity operator.
 \end{note}
 
+\begin{thm}\label{6.23}
+  Let \(\T\) be an orthogonal operator on \(\R^2\), and let \(A = [\T]_{\beta}\), where \(\beta\) is the standard ordered basis for \(\R^2\) over \(\R\).
+  Then exactly one of the following conditions is satisfied:
+  \begin{enumerate}
+    \item \(\T\) is a rotation, and \(\det(A) = 1\).
+    \item \(\T\) is a reflection about a line through the origin, and \(\det(A) = -1\).
+  \end{enumerate}
+\end{thm}
+
+\begin{proof}[\pf{6.23}]
+  Because \(\T\) is an orthogonal operator, \(\T(\beta) = \set{\T(e_1), \T(e_2)}\) is an orthonormal basis for \(\R^2\) over \(\R\) by \cref{6.18}(c).
+  Since \(\T(e_1)\) is a unit vector, there is a unique angle \(\theta \in [0, 2 \pi)\) such that \(\T(e_1) = (\cos(\theta), \sin(\theta))\).
+  Since \(\T(e_2)\) is a unit vector and is orthogonal to \(\T(e_1)\), there are only two possible choices for \(\T(e_2)\).
+  Either
+  \[
+    \T(e_2) = (-\sin(\theta), \cos(\theta)) \quad \text{or} \quad \T(e_2) = (\sin(\theta), -\cos(\theta)).
+  \]
+  First, suppose that \(\T(e_2) = (-\sin(\theta), \cos(\theta))\).
+  Then \(A = \begin{pmatrix}
+    \cos(\theta) & -\sin(\theta) \\
+    \sin(\theta) & \cos(\theta)
+  \end{pmatrix}\).
+  It follows from \cref{6.4.5} that \(\T\) is a rotation by the angle \(\theta\).
+  Also
+  \[
+    \det(A) = (\cos(\theta))^2 + (\sin(\theta))^2 = 1.
+  \]
+  Now suppose that \(\T(e_2) = (\sin(\theta), -\cos(\theta))\).
+  Then \(A = \begin{pmatrix}
+    \cos(\theta) & \sin(\theta)  \\
+    \sin(\theta) & -\cos(\theta)
+  \end{pmatrix}\).
+  Comparing this matrix to the matrix \(A\) of \cref{6.5.12}, we see that \(\T\) is the reflection of \(\R^2\) about a line \(\L\), so that \(\alpha = \theta / 2\) is the angle from the positive \(x\)-axis to \(\L\).
+  Furthermore,
+  \[
+    \det(A) = - (\cos(\theta))^2 - (\sin(\theta))^2 = -1.
+  \]
+\end{proof}
+
+\begin{cor}\label{6.5.17}
+  Any rigid motion on \(\R^2\) is either a rotation followed by a translation or a reflection about a line through the origin followed by a translation.
+\end{cor}
+
+\begin{proof}[\pf{6.5.17}]
+  Combining \cref{6.22,6.23} we are done.
+\end{proof}
+
 \exercisesection
 
 \begin{ex}\label{ex:6.5.18}
