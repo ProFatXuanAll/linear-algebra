@@ -1,967 +1,967 @@
 \section{Vector Spaces}\label{sec:1.2}
 
 \begin{defn}\label{1.2.1}
-	A \textbf{vector space} (or \textbf{linear space}) \(\V\) over a field \(\F\) consists of a set on which two operations (called \textbf{addition} and \textbf{scalar multiplication}, respectively) are defined so that for each pair of elements \(x\), \(y\) in \(\V\) there is a unique element \(x + y\) in \(\V\), and for each element \(a\) in \(\F\) and each element \(x\) in \(\V\) there is a unique element \(ax\) in \(\V\), such that the following conditions hold.
-	\begin{enumerate}[label=(VS \arabic*), ref=VS \arabic*]
-		\item\label{vs1}
-		For all \(x, y\) in \(\V\), \(x + y = y + x\)
-		(commutativity of addition).
-		\item\label{vs2}
-		For all \(x, y, z\) in \(\V\), \((x + y) + z = x + (y + z)\)
-		(associativity of addition).
-		\item\label{vs3}
-		There exists an element in \(\V\) denoted by \(\zv\) such that \(x + \zv = x\) for each \(x\) in \(\V\).
-		\item\label{vs4}
-		For each element \(x\) in \(\V\) there exists an element \(y\) in \(\V\) such that \(x + y = \zv\).
-		\item\label{vs5}
-		For each element \(x\) in \(\V\), \(1x = x\).
-		\item\label{vs6}
-		For each pair of elements \(a, b\) in \(\F\) and each element \(x\) in \(\V\), \((ab) x = a (bx)\).
-		\item\label{vs7}
-		For each element \(a\) in \(\F\) and each pair of elements \(x, y\) in \(\V\), \(a (x + y) = ax + ay\).
-		\item\label{vs8}
-		For each pair of elements \(a, b\) in \(\F\) and each element \(x\) in \(\V\), \((a + b) x = ax + bx\).
-	\end{enumerate}
-	The elements \(x + y\) and \(ax\) are called the \textbf{sum} of \(x\) and \(y\) and the \textbf{product} of \(a\) and \(x\), respectively.
+  A \textbf{vector space} (or \textbf{linear space}) \(\V\) over a field \(\F\) consists of a set on which two operations (called \textbf{addition} and \textbf{scalar multiplication}, respectively) are defined so that for each pair of elements \(x\), \(y\) in \(\V\) there is a unique element \(x + y\) in \(\V\), and for each element \(a\) in \(\F\) and each element \(x\) in \(\V\) there is a unique element \(ax\) in \(\V\), such that the following conditions hold.
+  \begin{enumerate}[label=(VS \arabic*), ref=VS \arabic*]
+    \item\label{vs1}
+    For all \(x, y\) in \(\V\), \(x + y = y + x\)
+    (commutativity of addition).
+    \item\label{vs2}
+    For all \(x, y, z\) in \(\V\), \((x + y) + z = x + (y + z)\)
+    (associativity of addition).
+    \item\label{vs3}
+    There exists an element in \(\V\) denoted by \(\zv\) such that \(x + \zv = x\) for each \(x\) in \(\V\).
+    \item\label{vs4}
+    For each element \(x\) in \(\V\) there exists an element \(y\) in \(\V\) such that \(x + y = \zv\).
+    \item\label{vs5}
+    For each element \(x\) in \(\V\), \(1x = x\).
+    \item\label{vs6}
+    For each pair of elements \(a, b\) in \(\F\) and each element \(x\) in \(\V\), \((ab) x = a (bx)\).
+    \item\label{vs7}
+    For each element \(a\) in \(\F\) and each pair of elements \(x, y\) in \(\V\), \(a (x + y) = ax + ay\).
+    \item\label{vs8}
+    For each pair of elements \(a, b\) in \(\F\) and each element \(x\) in \(\V\), \((a + b) x = ax + bx\).
+  \end{enumerate}
+  The elements \(x + y\) and \(ax\) are called the \textbf{sum} of \(x\) and \(y\) and the \textbf{product} of \(a\) and \(x\), respectively.
 \end{defn}
 
 \begin{defn}\label{1.2.2}
-	The elements of the field \(\F\) are called \textbf{scalars} and the elements of the vector space \(\V\) are called \textbf{vectors}.
+  The elements of the field \(\F\) are called \textbf{scalars} and the elements of the vector space \(\V\) are called \textbf{vectors}.
 \end{defn}
 
 \begin{note}
-	A vector space is frequently discussed in the text without explicitly mentioning its field of scalars.
-	The reader is cautioned to remember, however, that \emph{every vector space is regarded as a vector space over a given field, which is denoted by \(\F\)}.
-	Occasionally we restrict our attention to the fields of real and complex numbers, which are denoted \(\R\) and \(\C\), respectively.
+  A vector space is frequently discussed in the text without explicitly mentioning its field of scalars.
+  The reader is cautioned to remember, however, that \emph{every vector space is regarded as a vector space over a given field, which is denoted by \(\F\)}.
+  Occasionally we restrict our attention to the fields of real and complex numbers, which are denoted \(\R\) and \(\C\), respectively.
 \end{note}
 
 \begin{note}
-	\ref{vs2} permits us to unambiguously define the addition of any finite number of vectors
-	(without the use of parentheses).
+  \ref{vs2} permits us to unambiguously define the addition of any finite number of vectors
+  (without the use of parentheses).
 \end{note}
 
 \begin{defn}\label{1.2.3}
-	An object of the form \(\tuple{a}{1,,n}\), where the entries \(\seq{a}{1,,n}\) are elements of a field \(\F\), is called an \textbf{\(n\)-tuple} with entries from \(\F\).
-	The elements \(\seq{a}{1,,n}\) are called the \textbf{entries} or \textbf{components} of the \(n\)-tuple.
-	Two \(n\)-tuples \(\tuple{a}{1,,n}\) and \(\tuple{b}{1,,n}\) with entries from a field \(\F\) are called \textbf{equal} if \(a_i = b_i\) for \(i = 1, 2, \dots, n\).
+  An object of the form \(\tuple{a}{1,,n}\), where the entries \(\seq{a}{1,,n}\) are elements of a field \(\F\), is called an \textbf{\(n\)-tuple} with entries from \(\F\).
+  The elements \(\seq{a}{1,,n}\) are called the \textbf{entries} or \textbf{components} of the \(n\)-tuple.
+  Two \(n\)-tuples \(\tuple{a}{1,,n}\) and \(\tuple{b}{1,,n}\) with entries from a field \(\F\) are called \textbf{equal} if \(a_i = b_i\) for \(i = 1, 2, \dots, n\).
 \end{defn}
 
 \begin{eg}\label{1.2.4}
-	The set of all \(n\)-tuples with entries from a field \(\F\) is denoted by \(\vs{F}^n\).
-	This set is a vector space over \(\F\) with the operations of coordinatewise addition and scalar multiplication;
-	that is, if \(u = \tuple{a}{1,,n} \in \vs{F}^n\), \(v = \tuple{b}{1,,n} \in \vs{F}^n\), and \(c \in \F\), then
-	\[
-		u + v = (a_1 + b_1, a_2 + b_2, \dots, a_n + b_n) \quad \text{and} \quad cu = \tuple{ca}{1,,n}.
-	\]
+  The set of all \(n\)-tuples with entries from a field \(\F\) is denoted by \(\vs{F}^n\).
+  This set is a vector space over \(\F\) with the operations of coordinatewise addition and scalar multiplication;
+  that is, if \(u = \tuple{a}{1,,n} \in \vs{F}^n\), \(v = \tuple{b}{1,,n} \in \vs{F}^n\), and \(c \in \F\), then
+  \[
+    u + v = (a_1 + b_1, a_2 + b_2, \dots, a_n + b_n) \quad \text{and} \quad cu = \tuple{ca}{1,,n}.
+  \]
 \end{eg}
 
 \begin{proof}[\pf{1.2.4}]
-	Clearly we have
-	\[
-		\forall u, v \in \vs{F}^n, u + v \in \vs{F}^n
-	\]
-	and
-	\[
-		\begin{dcases}
-			\forall u \in \vs{F}^n \\
-			\forall c \in \F
-		\end{dcases}, cu \in \vs{F}^n.
-	\]
+  Clearly we have
+  \[
+    \forall u, v \in \vs{F}^n, u + v \in \vs{F}^n
+  \]
+  and
+  \[
+    \begin{dcases}
+      \forall u \in \vs{F}^n \\
+      \forall c \in \F
+    \end{dcases}, cu \in \vs{F}^n.
+  \]
 
-	Let \(I_n = \set{i \in \N : 1 \leq i \leq n}\).
-	First we show that addition in \(\vs{F}^n\) over \(\F\) is unique.
-	Let \(u, v \in \vs{F}^n\).
-	Suppose for sake of contradiction that
-	\[
-		\begin{dcases}
-			u + v = w \in \vs{F}^n  \\
-			u + v = w' \in \vs{F}^n \\
-			w \neq w'
-		\end{dcases}.
-	\]
-	Then we have
-	\begin{align*}
-		         & w \neq w'                                                    \\
-		\implies & \exists i \in I_n : w_i \neq w_i'            &  & \by{1.2.3} \\
-		\implies & \exists i \in I_n : u_i + v_i \neq u_i + v_i &  & \by{1.2.4}
-	\end{align*}
-	which contradicts to the fact that \(u_i + v_i \in \F\) is unique.
-	Thus addition in \(\vs{F}^n\) over \(\F\) is unique.
+  Let \(I_n = \set{i \in \N : 1 \leq i \leq n}\).
+  First we show that addition in \(\vs{F}^n\) over \(\F\) is unique.
+  Let \(u, v \in \vs{F}^n\).
+  Suppose for sake of contradiction that
+  \[
+    \begin{dcases}
+      u + v = w \in \vs{F}^n  \\
+      u + v = w' \in \vs{F}^n \\
+      w \neq w'
+    \end{dcases}.
+  \]
+  Then we have
+  \begin{align*}
+             & w \neq w'                                                    \\
+    \implies & \exists i \in I_n : w_i \neq w_i'            &  & \by{1.2.3} \\
+    \implies & \exists i \in I_n : u_i + v_i \neq u_i + v_i &  & \by{1.2.4}
+  \end{align*}
+  which contradicts to the fact that \(u_i + v_i \in \F\) is unique.
+  Thus addition in \(\vs{F}^n\) over \(\F\) is unique.
 
-	Next we show that scalar multiplication in \(\vs{F}^n\) over \(\F\) is unique.
-	Let \(u \in \vs{F}^n\) and \(c \in \F\).
-	Suppose for sake of contradiction that
-	\[
-		\begin{dcases}
-			cu = w \in \vs{F}^n  \\
-			cu = w' \in \vs{F}^n \\
-			w \neq w'
-		\end{dcases}.
-	\]
-	Then we have
-	\begin{align*}
-		         & w \neq w'                                            \\
-		\implies & \exists i \in I_n : w_i \neq w_i'    &  & \by{1.2.3} \\
-		\implies & \exists i \in I_n : c u_i \neq c u_i &  & \by{1.2.4}
-	\end{align*}
-	which contradicts to the fact that \(c u_i \in \F\) is unique.
-	Thus scalar multiplication in \(\vs{F}^n\) over \(\F\) is unique.
+  Next we show that scalar multiplication in \(\vs{F}^n\) over \(\F\) is unique.
+  Let \(u \in \vs{F}^n\) and \(c \in \F\).
+  Suppose for sake of contradiction that
+  \[
+    \begin{dcases}
+      cu = w \in \vs{F}^n  \\
+      cu = w' \in \vs{F}^n \\
+      w \neq w'
+    \end{dcases}.
+  \]
+  Then we have
+  \begin{align*}
+             & w \neq w'                                            \\
+    \implies & \exists i \in I_n : w_i \neq w_i'    &  & \by{1.2.3} \\
+    \implies & \exists i \in I_n : c u_i \neq c u_i &  & \by{1.2.4}
+  \end{align*}
+  which contradicts to the fact that \(c u_i \in \F\) is unique.
+  Thus scalar multiplication in \(\vs{F}^n\) over \(\F\) is unique.
 
-	Now we show that \ref{vs1}--\ref{vs8} holds for \cref{1.2.4}.
-	\begin{description}
-		\item[For \ref{vs1}:]
-			For all \(u, v \in \vs{F}^n\), we have
-			\begin{align*}
-				u + v & = (u_1 + v_1, u_2 + v_2, \dots, u_n + v_n) &  & \by{1.2.4}                 \\
-				      & = (v_1 + u_1, v_2 + u_2, \dots, v_n + u_n) &  & \text{(\(\F\) is a field)} \\
-				      & = v + u.                                   &  & \by{1.2.4}
-			\end{align*}
-		\item[For \ref{vs2}:]
-			For all \(u, v, w \in \vs{F}^n\), we have
-			\begin{align*}
-				 & (u + v) + w                                                                                        \\
-				 & = (u_1 + v_1, u_2 + v_2, \dots, u_n + v_n) + w                     &  & \by{1.2.4}                 \\
-				 & = ((u_1 + v_1) + w_1, (u_2 + v_2) + w_2, \dots, (u_n + v_n) + w_n) &  & \by{1.2.4}                 \\
-				 & = (u_1 + (v_1 + w_1), u_2 + (v_2 + w_2), \dots, u_n + (v_n + w_n)) &  & \text{(\(\F\) is a field)} \\
-				 & = u + (v_1 + w_1, v_2 + w_2, \dots, v_n + w_n)                     &  & \by{1.2.4}                 \\
-				 & = u + (v + w).                                                     &  & \by{1.2.4}
-			\end{align*}
-		\item[For \ref{vs3}:]
-			Since \(\F\) is a field, we know that \(0 \in \F\) and thus \((0, \dots, 0) \in \vs{F}^n\).
-			Then for all \(u \in \vs{F}^n\), we have
-			\begin{align*}
-				u + (0, \dots, 0) & = (u_1 + 0, u_2 + 0, \dots, u_n + 0) &  & \by{1.2.4}                 \\
-				                  & = \tuple{u}{1,,n}                    &  & \text{(\(\F\) is a field)} \\
-				                  & = u.
-			\end{align*}
-			We denote \(\zv = (0, \dots, 0)\).
-		\item[For \ref{vs4}:]
-			For all \(u \in \vs{F}^n\), we have
-			\begin{align*}
-				         & \forall i \in I_n, u_i \in \F                                                                     \\
-				\implies & \forall i \in I_n, \exists v_i \in \F : u_i + v_i = 0          &  & \text{(\(\F\) is a field)}    \\
-				\implies & \exists \seq{v}{1,,n} \in \F :                                                                    \\
-				         & (u_1 + v_1, u_2 + v_2, \dots, u_n + v_n) = (0, \dots, 0) = \zv                                    \\
-				\implies & \exists y \in \vs{F}^n : u + v = \zv.                          &  & \text{(from the proof above)}
-			\end{align*}
-		\item[For \ref{vs5}:]
-			Since \(\F\) is a field, we know that \(1 \in \F\).
-			Then for all \(u \in \vs{F}^n\), we have
-			\begin{align*}
-				1u & = \tuple{1u}{1,,n} &  & \by{1.2.4}                 \\
-				   & = \tuple{u}{1,,n}  &  & \text{(\(\F\) is a field)} \\
-				   & = u.
-			\end{align*}
-		\item[For \ref{vs6}:]
-			For all \(a, b \in \F\) and \(u \in \vs{F}^n\), we have
-			\begin{align*}
-				(ab) u & = \tuple{(ab) u}{1,,n}                     &  & \by{1.2.4}                 \\
-				       & = (a (b u_1), a (b u_2), \dots, a (b u_n)) &  & \text{(\(\F\) is a field)} \\
-				       & = a \tuple{bu}{1,,n}                       &  & \by{1.2.4}                 \\
-				       & = a (bu).                                  &  & \by{1.2.4}
-			\end{align*}
-		\item[For \ref{vs7}:]
-			For all \(a \in \F\) and \(u, v \in \vs{F}^n\), we have
-			\begin{align*}
-				a (u + v) & = a (u_1 + v_1, u_2 + v_2, \dots, u_n + v_n)           &  & \by{1.2.4}                 \\
-				          & = (a (u_1 + v_1), a (u_2 + v_2), \dots, a (u_n + v_n)) &  & \by{1.2.4}                 \\
-				          & = (a u_1 + a v_1, a u_2 + a v_2, \dots, a u_n + a v_n) &  & \text{(\(\F\) is a field)} \\
-				          & = \tuple{au}{1,,n} + \tuple{av}{1,,n}                  &  & \by{1.2.4}                 \\
-				          & = a u + a v.                                           &  & \by{1.2.4}
-			\end{align*}
-		\item[For \ref{vs8}:]
-			For all \(a, b \in \F\) and \(u \in \vs{F}^n\), we have
-			\begin{align*}
-				(a + b) u & = \tuple{(a + b) u}{1,,n}                              &  & \by{1.2.4}                 \\
-				          & = (a u_1 + b u_1, a u_2 + b u_2, \dots, a u_n + b u_n) &  & \text{(\(\F\) is a field)} \\
-				          & = \tuple{au}{1,,n} + \tuple{bu}{1,,n}                  &  & \by{1.2.4}                 \\
-				          & = a u + b u.                                           &  & \by{1.2.4}
-			\end{align*}
-	\end{description}
-	From all proofs above we conclude by \cref{1.2.1} that \cref{1.2.4} is indeed a vector space over \(\F\).
+  Now we show that \ref{vs1}--\ref{vs8} holds for \cref{1.2.4}.
+  \begin{description}
+    \item[For \ref{vs1}:]
+      For all \(u, v \in \vs{F}^n\), we have
+      \begin{align*}
+        u + v & = (u_1 + v_1, u_2 + v_2, \dots, u_n + v_n) &  & \by{1.2.4}                 \\
+              & = (v_1 + u_1, v_2 + u_2, \dots, v_n + u_n) &  & \text{(\(\F\) is a field)} \\
+              & = v + u.                                   &  & \by{1.2.4}
+      \end{align*}
+    \item[For \ref{vs2}:]
+      For all \(u, v, w \in \vs{F}^n\), we have
+      \begin{align*}
+         & (u + v) + w                                                                                        \\
+         & = (u_1 + v_1, u_2 + v_2, \dots, u_n + v_n) + w                     &  & \by{1.2.4}                 \\
+         & = ((u_1 + v_1) + w_1, (u_2 + v_2) + w_2, \dots, (u_n + v_n) + w_n) &  & \by{1.2.4}                 \\
+         & = (u_1 + (v_1 + w_1), u_2 + (v_2 + w_2), \dots, u_n + (v_n + w_n)) &  & \text{(\(\F\) is a field)} \\
+         & = u + (v_1 + w_1, v_2 + w_2, \dots, v_n + w_n)                     &  & \by{1.2.4}                 \\
+         & = u + (v + w).                                                     &  & \by{1.2.4}
+      \end{align*}
+    \item[For \ref{vs3}:]
+      Since \(\F\) is a field, we know that \(0 \in \F\) and thus \((0, \dots, 0) \in \vs{F}^n\).
+      Then for all \(u \in \vs{F}^n\), we have
+      \begin{align*}
+        u + (0, \dots, 0) & = (u_1 + 0, u_2 + 0, \dots, u_n + 0) &  & \by{1.2.4}                 \\
+                          & = \tuple{u}{1,,n}                    &  & \text{(\(\F\) is a field)} \\
+                          & = u.
+      \end{align*}
+      We denote \(\zv = (0, \dots, 0)\).
+    \item[For \ref{vs4}:]
+      For all \(u \in \vs{F}^n\), we have
+      \begin{align*}
+                 & \forall i \in I_n, u_i \in \F                                                                     \\
+        \implies & \forall i \in I_n, \exists v_i \in \F : u_i + v_i = 0          &  & \text{(\(\F\) is a field)}    \\
+        \implies & \exists \seq{v}{1,,n} \in \F :                                                                    \\
+                 & (u_1 + v_1, u_2 + v_2, \dots, u_n + v_n) = (0, \dots, 0) = \zv                                    \\
+        \implies & \exists y \in \vs{F}^n : u + v = \zv.                          &  & \text{(from the proof above)}
+      \end{align*}
+    \item[For \ref{vs5}:]
+      Since \(\F\) is a field, we know that \(1 \in \F\).
+      Then for all \(u \in \vs{F}^n\), we have
+      \begin{align*}
+        1u & = \tuple{1u}{1,,n} &  & \by{1.2.4}                 \\
+           & = \tuple{u}{1,,n}  &  & \text{(\(\F\) is a field)} \\
+           & = u.
+      \end{align*}
+    \item[For \ref{vs6}:]
+      For all \(a, b \in \F\) and \(u \in \vs{F}^n\), we have
+      \begin{align*}
+        (ab) u & = \tuple{(ab) u}{1,,n}                     &  & \by{1.2.4}                 \\
+               & = (a (b u_1), a (b u_2), \dots, a (b u_n)) &  & \text{(\(\F\) is a field)} \\
+               & = a \tuple{bu}{1,,n}                       &  & \by{1.2.4}                 \\
+               & = a (bu).                                  &  & \by{1.2.4}
+      \end{align*}
+    \item[For \ref{vs7}:]
+      For all \(a \in \F\) and \(u, v \in \vs{F}^n\), we have
+      \begin{align*}
+        a (u + v) & = a (u_1 + v_1, u_2 + v_2, \dots, u_n + v_n)           &  & \by{1.2.4}                 \\
+                  & = (a (u_1 + v_1), a (u_2 + v_2), \dots, a (u_n + v_n)) &  & \by{1.2.4}                 \\
+                  & = (a u_1 + a v_1, a u_2 + a v_2, \dots, a u_n + a v_n) &  & \text{(\(\F\) is a field)} \\
+                  & = \tuple{au}{1,,n} + \tuple{av}{1,,n}                  &  & \by{1.2.4}                 \\
+                  & = a u + a v.                                           &  & \by{1.2.4}
+      \end{align*}
+    \item[For \ref{vs8}:]
+      For all \(a, b \in \F\) and \(u \in \vs{F}^n\), we have
+      \begin{align*}
+        (a + b) u & = \tuple{(a + b) u}{1,,n}                              &  & \by{1.2.4}                 \\
+                  & = (a u_1 + b u_1, a u_2 + b u_2, \dots, a u_n + b u_n) &  & \text{(\(\F\) is a field)} \\
+                  & = \tuple{au}{1,,n} + \tuple{bu}{1,,n}                  &  & \by{1.2.4}                 \\
+                  & = a u + b u.                                           &  & \by{1.2.4}
+      \end{align*}
+  \end{description}
+  From all proofs above we conclude by \cref{1.2.1} that \cref{1.2.4} is indeed a vector space over \(\F\).
 \end{proof}
 
 \begin{defn}\label{1.2.5}
-	Vectors in \(\vs{F}^n\) may be written as \textbf{column vectors}
-	\[
-		\begin{pmatrix}
-			a_1    \\
-			a_2    \\
-			\vdots \\
-			a_n
-		\end{pmatrix}
-	\]
-	rather than as \textbf{row vectors} \(\tuple{a}{1,,n}\).
-	Since a \(1\)-tuple whose only entry is from \(\F\) can be regarded as an element of \(\F\), we usually write \(\F\) rather than \(\vs{F}^1\) for the vector space of \(1\)-tuples with entry from \(\F\).
+  Vectors in \(\vs{F}^n\) may be written as \textbf{column vectors}
+  \[
+    \begin{pmatrix}
+      a_1    \\
+      a_2    \\
+      \vdots \\
+      a_n
+    \end{pmatrix}
+  \]
+  rather than as \textbf{row vectors} \(\tuple{a}{1,,n}\).
+  Since a \(1\)-tuple whose only entry is from \(\F\) can be regarded as an element of \(\F\), we usually write \(\F\) rather than \(\vs{F}^1\) for the vector space of \(1\)-tuples with entry from \(\F\).
 \end{defn}
 
 \begin{defn}\label{1.2.6}
-	An \(m \times n\) \textbf{matrix} with entries from a field \(\F\) is a rectangular array of the form
-	\[
-		\begin{pmatrix}
-			a_{1 1} & a_{1 2} & \cdots & a_{1 n} \\
-			a_{2 1} & a_{2 2} & \cdots & a_{2 n} \\
-			\vdots  & \vdots  & \ddots & \vdots  \\
-			a_{m 1} & a_{m 2} & \cdots & a_{m n}
-		\end{pmatrix},
-	\]
-	where each entry \(a_{i j}\) (\(1 \leq i \leq m\), \(1 \leq j \leq n\)) is an element of \(\F\).
-	We call the entries \(a_{i j}\) with \(i = j\) the \textbf{diagonal entries} of the matrix.
-	The entries \(a_{i 1} ,a_{i 2} , \dots, a_{i n}\) compose the \textbf{\(i\)th row} of the matrix, and the entries \(a_{1 j}, a_{2 j}, \dots, a_{m j}\) compose the \textbf{\(j\)th column} of the matrix.
-	The rows of the preceding matrix are regarded as vectors in \(\vs{F}^n\), and the columns are regarded as vectors in \(\vs{F}^m\).
-	The \(m \times n\) matrix in which each entry equals zero is called the \textbf{zero matrix} and is denoted by \(\zm\).
+  An \(m \times n\) \textbf{matrix} with entries from a field \(\F\) is a rectangular array of the form
+  \[
+    \begin{pmatrix}
+      a_{1 1} & a_{1 2} & \cdots & a_{1 n} \\
+      a_{2 1} & a_{2 2} & \cdots & a_{2 n} \\
+      \vdots  & \vdots  & \ddots & \vdots  \\
+      a_{m 1} & a_{m 2} & \cdots & a_{m n}
+    \end{pmatrix},
+  \]
+  where each entry \(a_{i j}\) (\(1 \leq i \leq m\), \(1 \leq j \leq n\)) is an element of \(\F\).
+  We call the entries \(a_{i j}\) with \(i = j\) the \textbf{diagonal entries} of the matrix.
+  The entries \(a_{i 1} ,a_{i 2} , \dots, a_{i n}\) compose the \textbf{\(i\)th row} of the matrix, and the entries \(a_{1 j}, a_{2 j}, \dots, a_{m j}\) compose the \textbf{\(j\)th column} of the matrix.
+  The rows of the preceding matrix are regarded as vectors in \(\vs{F}^n\), and the columns are regarded as vectors in \(\vs{F}^m\).
+  The \(m \times n\) matrix in which each entry equals zero is called the \textbf{zero matrix} and is denoted by \(\zm\).
 \end{defn}
 
 \begin{defn}\label{1.2.7}
-	In this book, we denote matrices by capital italic letters (e.g., \(A\), \(B\), and \(C\)), and we denote the entry of a matrix \(A\) that lies in row \(i\) and column \(j\) by \(A_{i j}\).
-	In addition, if the number of rows and columns of a matrix are equal, the matrix is called \textbf{square}.
+  In this book, we denote matrices by capital italic letters (e.g., \(A\), \(B\), and \(C\)), and we denote the entry of a matrix \(A\) that lies in row \(i\) and column \(j\) by \(A_{i j}\).
+  In addition, if the number of rows and columns of a matrix are equal, the matrix is called \textbf{square}.
 \end{defn}
 
 \begin{defn}\label{1.2.8}
-	Two \(m \times n\) matrices \(A\) and \(B\) are called \textbf{equal} if all their corresponding entries are equal, that is, if \(A_{i j} = B_{i j}\) for \(1 \leq i \leq m\) and \(1 \leq j \leq n\).
+  Two \(m \times n\) matrices \(A\) and \(B\) are called \textbf{equal} if all their corresponding entries are equal, that is, if \(A_{i j} = B_{i j}\) for \(1 \leq i \leq m\) and \(1 \leq j \leq n\).
 \end{defn}
 
 \begin{eg}\label{1.2.9}
-	The set of all \(m \times n\) matrices with entries from a field \(\F\) is a vector space over \(\F\), which we denote by \(\ms\), with the following operations of \textbf{matrix addition} and \textbf{scalar multiplication}:
-	For \(A, B \in \ms\) and \(c \in \F\),
-	\[
-		(A + B)_{i j} = A_{i j} + B_{i j} \quad \text{and} \quad (c A)_{i j} = c A_{i j}
-	\]
-	for \(1 \leq i \leq m\) and \(1 \leq j \leq n\).
+  The set of all \(m \times n\) matrices with entries from a field \(\F\) is a vector space over \(\F\), which we denote by \(\ms\), with the following operations of \textbf{matrix addition} and \textbf{scalar multiplication}:
+  For \(A, B \in \ms\) and \(c \in \F\),
+  \[
+    (A + B)_{i j} = A_{i j} + B_{i j} \quad \text{and} \quad (c A)_{i j} = c A_{i j}
+  \]
+  for \(1 \leq i \leq m\) and \(1 \leq j \leq n\).
 \end{eg}
 
 \begin{proof}[\pf{1.2.9}]
-	Clearly we have
-	\[
-		\forall A, B \in \ms, A + B \in \ms
-	\]
-	and
-	\[
-		\begin{dcases}
-			\forall A \in \ms \\
-			\forall c \in \F
-		\end{dcases}, cA \in \ms.
-	\]
+  Clearly we have
+  \[
+    \forall A, B \in \ms, A + B \in \ms
+  \]
+  and
+  \[
+    \begin{dcases}
+      \forall A \in \ms \\
+      \forall c \in \F
+    \end{dcases}, cA \in \ms.
+  \]
 
-	Let \(I_m = \set{i \in \N : 1 \leq i \leq m}\) and \(J_n = \set{j \in \N : 1 \leq j \leq n}\).
-	First we show that addition in \(\ms\) over \(\F\) is unique.
-	Let \(A, B \in \ms\).
-	Suppose for sake of contradiction that
-	\[
-		\begin{dcases}
-			A + B = C \in \ms  \\
-			A + B = C' \in \ms \\
-			C \neq C'
-		\end{dcases}.
-	\]
-	Then we have
-	\begin{align*}
-		         & C \neq C'                                                                                     \\
-		\implies & \exists (i, j) \in I_m \times J_n :  C_{i j} \neq C_{i j}'                    &  & \by{1.2.8} \\
-		\implies & \exists (i, j) \in I_m \times J_n :  A_{i j} + B_{i j} \neq A_{i j} + B_{i j} &  & \by{1.2.9}
-	\end{align*}
-	which contradicts to the fact that \(A_{i j} + B_{i j} \in \F\) is unique.
-	Thus addition in \(\ms\) over \(\F\) is unique.
+  Let \(I_m = \set{i \in \N : 1 \leq i \leq m}\) and \(J_n = \set{j \in \N : 1 \leq j \leq n}\).
+  First we show that addition in \(\ms\) over \(\F\) is unique.
+  Let \(A, B \in \ms\).
+  Suppose for sake of contradiction that
+  \[
+    \begin{dcases}
+      A + B = C \in \ms  \\
+      A + B = C' \in \ms \\
+      C \neq C'
+    \end{dcases}.
+  \]
+  Then we have
+  \begin{align*}
+             & C \neq C'                                                                                     \\
+    \implies & \exists (i, j) \in I_m \times J_n :  C_{i j} \neq C_{i j}'                    &  & \by{1.2.8} \\
+    \implies & \exists (i, j) \in I_m \times J_n :  A_{i j} + B_{i j} \neq A_{i j} + B_{i j} &  & \by{1.2.9}
+  \end{align*}
+  which contradicts to the fact that \(A_{i j} + B_{i j} \in \F\) is unique.
+  Thus addition in \(\ms\) over \(\F\) is unique.
 
-	Next we show that scalar multiplication in \(\ms\) over \(\F\) is unique.
-	Let \(A \in \ms\) and \(c \in \F\).
-	Suppose for sake of contradiction that
-	\[
-		\begin{dcases}
-			cA = B \in \ms  \\
-			cA = B' \in \ms \\
-			B \neq B'
-		\end{dcases}.
-	\]
-	Then we have
-	\begin{align*}
-		         & B \neq B'                                                                    \\
-		\implies & \exists (i, j) \in I_m \times J_n : B_{i j} \neq B_{i j}     &  & \by{1.2.8} \\
-		\implies & \exists (i, j) \in I_m \times J_n : c A_{i j} \neq c A_{i j} &  & \by{1.2.9}
-	\end{align*}
-	which contradicts to the fact that \(c A_{i j} \in \F\) is unique.
-	Thus scalar multiplication in \(\ms\) over \(\F\) is unique.
+  Next we show that scalar multiplication in \(\ms\) over \(\F\) is unique.
+  Let \(A \in \ms\) and \(c \in \F\).
+  Suppose for sake of contradiction that
+  \[
+    \begin{dcases}
+      cA = B \in \ms  \\
+      cA = B' \in \ms \\
+      B \neq B'
+    \end{dcases}.
+  \]
+  Then we have
+  \begin{align*}
+             & B \neq B'                                                                    \\
+    \implies & \exists (i, j) \in I_m \times J_n : B_{i j} \neq B_{i j}     &  & \by{1.2.8} \\
+    \implies & \exists (i, j) \in I_m \times J_n : c A_{i j} \neq c A_{i j} &  & \by{1.2.9}
+  \end{align*}
+  which contradicts to the fact that \(c A_{i j} \in \F\) is unique.
+  Thus scalar multiplication in \(\ms\) over \(\F\) is unique.
 
-	Now we show that \ref{vs1}--\ref{vs8} holds for \cref{1.2.9}.
-	\begin{description}
-		\item[For \ref{vs1}:]
-			For all \(A, B \in \ms\) and \((i, j) \in I_m \times J_n\), we have
-			\begin{align*}
-				(A + B)_{i j} & = A_{i j} + B_{i j} &  & \by{1.2.9}                 \\
-				              & = B_{i j} + A_{i j} &  & \text{(\(\F\) is a field)} \\
-				              & = (B + A)_{i j}     &  & \by{1.2.9}
-			\end{align*}
-			and thus by \cref{1.2.8} \(A + B = B + A\).
-		\item[For \ref{vs2}:]
-			For all \(A, B, C \in \ms\) and \((i, j) \in I_m \times J_n\), we have
-			\begin{align*}
-				((A + B) + C)_{i j} & = (A + B)_{i j} + C_{i + j}     &  & \by{1.2.9}                 \\
-				                    & = (A_{i j} + B_{i j}) + C_{i j} &  & \by{1.2.9}                 \\
-				                    & = A_{i j} + (B_{i j} + C_{i j}) &  & \text{(\(\F\) is a field)} \\
-				                    & = A_{i j} + (B + C)_{i j}       &  & \by{1.2.9}                 \\
-				                    & = (A + (B + C))_{i j}           &  & \by{1.2.9}
-			\end{align*}
-			and thus by \cref{1.2.8} \((A + B) + C = A + (B + C)\).
-		\item[For \ref{vs3}:]
-			Since \(\F\) is a field, we know that \(0 \in \F\) and thus
-			\[
-				\zm = \begin{pmatrix}
-					0      & 0      & \cdots & 0      \\
-					0      & 0      & \cdots & 0      \\
-					\vdots & \vdots & \ddots & \vdots \\
-					0      & 0      & \cdots & 0
-				\end{pmatrix} \in \ms.
-			\]
-			Then for all \(A \in \ms\) and \((i, j) \in I_m \times J_n\), we have
-			\begin{align*}
-				(A + \zm)_{i j} & = A_{i j} + \zm_{i j} &  & \by{1.2.9}                 \\
-				                & = A_{i j} + 0         &  & \by{1.2.6}                 \\
-				                & = A_{i j}             &  & \text{(\(\F\) is a field)}
-			\end{align*}
-			and thus by \cref{1.2.8} \(A + \zm = A\).
-		\item[For \ref{vs4}:]
-			For all \(A \in \ms\), we have
-			\begin{align*}
-				         & \forall (i, j) \in I_m \times J_n, A_{i j} \in \F                                                                    \\
-				\implies & \forall (i, j) \in I_m \times J_n, \exists B_{i j} \in \F : A_{i j} + B_{i j} = 0 &  & \text{(\(\F\) is a field)}    \\
-				\implies & \exists B \in \ms : A + B = \zm.                                                  &  & \text{(from the proof above)}
-			\end{align*}
-		\item[For \ref{vs5}:]
-			Since \(\F\) is a field, we know that \(1 \in \F\).
-			Then for all \(A \in \ms\) and \((i, j) \in I_m \times J_n\), we have
-			\begin{align*}
-				(1A)_{i j} & = 1 A_{i j} &  & \by{1.2.9}                 \\
-				           & = A_{i j}   &  & \text{(\(\F\) is a field)}
-			\end{align*}
-			and thus by \cref{1.2.8} \(1A = A\).
-		\item[For \ref{vs6}:]
-			For all \(c, d \in \F\), \(A \in \ms\) and \((i, j) \in I_m \times J_n\), we have
-			\begin{align*}
-				((cd) A)_{i j} & = (cd) A_{i j}    &  & \by{1.2.9}                 \\
-				               & = c (d A_{i j})   &  & \text{(\(\F\) is a field)} \\
-				               & = c (d A)_{i j}   &  & \by{1.2.9}                 \\
-				               & = (c (d A))_{i j} &  & \by{1.2.9}
-			\end{align*}
-			and thus by \cref{1.2.8} \((cd) A = c (dA)\).
-		\item[For \ref{vs7}:]
-			For all \(c \in \F\), \(A, B \in \ms\) and \((i, j) \in I_m \times J_n\), we have
-			\begin{align*}
-				(c (A + B))_{i j} & = c (A + B)_{i j}         &  & \by{1.2.9}                 \\
-				                  & = c (A_{i j} + B_{i j})   &  & \by{1.2.9}                 \\
-				                  & = c A_{i j} + c B_{i j}   &  & \text{(\(\F\) is a field)} \\
-				                  & = (cA)_{i j} + (cB)_{i j} &  & \by{1.2.9}
-			\end{align*}
-			and thus by \cref{1.2.8} \(c (A + B) = cA + cB\).
-		\item[For \ref{vs8}:]
-			For all \(c, d \in \F\), \(A \in \ms\) and \((i, j) \in I_m \times J_n\), we have
-			\begin{align*}
-				((c + d) A)_{i j} & = (c + d) A_{i j}         &  & \by{1.2.9}                 \\
-				                  & = c A_{i j} + d A_{i j}   &  & \text{(\(\F\) is a field)} \\
-				                  & = (cA)_{i j} + (dA)_{i j} &  & \by{1.2.9}
-			\end{align*}
-			and thus by \cref{1.2.8} \((c + d) A = cA + dA\).
-	\end{description}
-	From all proofs above we conclude by \cref{1.2.1} that \cref{1.2.9} is indeed a vector space over \(\F\).
+  Now we show that \ref{vs1}--\ref{vs8} holds for \cref{1.2.9}.
+  \begin{description}
+    \item[For \ref{vs1}:]
+      For all \(A, B \in \ms\) and \((i, j) \in I_m \times J_n\), we have
+      \begin{align*}
+        (A + B)_{i j} & = A_{i j} + B_{i j} &  & \by{1.2.9}                 \\
+                      & = B_{i j} + A_{i j} &  & \text{(\(\F\) is a field)} \\
+                      & = (B + A)_{i j}     &  & \by{1.2.9}
+      \end{align*}
+      and thus by \cref{1.2.8} \(A + B = B + A\).
+    \item[For \ref{vs2}:]
+      For all \(A, B, C \in \ms\) and \((i, j) \in I_m \times J_n\), we have
+      \begin{align*}
+        ((A + B) + C)_{i j} & = (A + B)_{i j} + C_{i + j}     &  & \by{1.2.9}                 \\
+                            & = (A_{i j} + B_{i j}) + C_{i j} &  & \by{1.2.9}                 \\
+                            & = A_{i j} + (B_{i j} + C_{i j}) &  & \text{(\(\F\) is a field)} \\
+                            & = A_{i j} + (B + C)_{i j}       &  & \by{1.2.9}                 \\
+                            & = (A + (B + C))_{i j}           &  & \by{1.2.9}
+      \end{align*}
+      and thus by \cref{1.2.8} \((A + B) + C = A + (B + C)\).
+    \item[For \ref{vs3}:]
+      Since \(\F\) is a field, we know that \(0 \in \F\) and thus
+      \[
+        \zm = \begin{pmatrix}
+          0      & 0      & \cdots & 0      \\
+          0      & 0      & \cdots & 0      \\
+          \vdots & \vdots & \ddots & \vdots \\
+          0      & 0      & \cdots & 0
+        \end{pmatrix} \in \ms.
+      \]
+      Then for all \(A \in \ms\) and \((i, j) \in I_m \times J_n\), we have
+      \begin{align*}
+        (A + \zm)_{i j} & = A_{i j} + \zm_{i j} &  & \by{1.2.9}                 \\
+                        & = A_{i j} + 0         &  & \by{1.2.6}                 \\
+                        & = A_{i j}             &  & \text{(\(\F\) is a field)}
+      \end{align*}
+      and thus by \cref{1.2.8} \(A + \zm = A\).
+    \item[For \ref{vs4}:]
+      For all \(A \in \ms\), we have
+      \begin{align*}
+                 & \forall (i, j) \in I_m \times J_n, A_{i j} \in \F                                                                    \\
+        \implies & \forall (i, j) \in I_m \times J_n, \exists B_{i j} \in \F : A_{i j} + B_{i j} = 0 &  & \text{(\(\F\) is a field)}    \\
+        \implies & \exists B \in \ms : A + B = \zm.                                                  &  & \text{(from the proof above)}
+      \end{align*}
+    \item[For \ref{vs5}:]
+      Since \(\F\) is a field, we know that \(1 \in \F\).
+      Then for all \(A \in \ms\) and \((i, j) \in I_m \times J_n\), we have
+      \begin{align*}
+        (1A)_{i j} & = 1 A_{i j} &  & \by{1.2.9}                 \\
+                   & = A_{i j}   &  & \text{(\(\F\) is a field)}
+      \end{align*}
+      and thus by \cref{1.2.8} \(1A = A\).
+    \item[For \ref{vs6}:]
+      For all \(c, d \in \F\), \(A \in \ms\) and \((i, j) \in I_m \times J_n\), we have
+      \begin{align*}
+        ((cd) A)_{i j} & = (cd) A_{i j}    &  & \by{1.2.9}                 \\
+                       & = c (d A_{i j})   &  & \text{(\(\F\) is a field)} \\
+                       & = c (d A)_{i j}   &  & \by{1.2.9}                 \\
+                       & = (c (d A))_{i j} &  & \by{1.2.9}
+      \end{align*}
+      and thus by \cref{1.2.8} \((cd) A = c (dA)\).
+    \item[For \ref{vs7}:]
+      For all \(c \in \F\), \(A, B \in \ms\) and \((i, j) \in I_m \times J_n\), we have
+      \begin{align*}
+        (c (A + B))_{i j} & = c (A + B)_{i j}         &  & \by{1.2.9}                 \\
+                          & = c (A_{i j} + B_{i j})   &  & \by{1.2.9}                 \\
+                          & = c A_{i j} + c B_{i j}   &  & \text{(\(\F\) is a field)} \\
+                          & = (cA)_{i j} + (cB)_{i j} &  & \by{1.2.9}
+      \end{align*}
+      and thus by \cref{1.2.8} \(c (A + B) = cA + cB\).
+    \item[For \ref{vs8}:]
+      For all \(c, d \in \F\), \(A \in \ms\) and \((i, j) \in I_m \times J_n\), we have
+      \begin{align*}
+        ((c + d) A)_{i j} & = (c + d) A_{i j}         &  & \by{1.2.9}                 \\
+                          & = c A_{i j} + d A_{i j}   &  & \text{(\(\F\) is a field)} \\
+                          & = (cA)_{i j} + (dA)_{i j} &  & \by{1.2.9}
+      \end{align*}
+      and thus by \cref{1.2.8} \((c + d) A = cA + dA\).
+  \end{description}
+  From all proofs above we conclude by \cref{1.2.1} that \cref{1.2.9} is indeed a vector space over \(\F\).
 \end{proof}
 
 \begin{eg}\label{1.2.10}
-	Let \(S\) be any nonempty set and \(\F\) be any field, and let \(\FS\) denote the set of all functions from \(S\) to \(\F\).
-	Two functions \(f\) and \(g\) in \(\FS\) are called \textbf{equal} if \(f(s) = g(s)\) for each \(s \in S\).
-	The set \(\FS\) is a vector space over \(\F\) with the operations of addition and scalar multiplication defined for \(f, g \in \FS\) and \(c \in \F\) by
-	\[
-		(f + g)(s) = f(s) + g(s) \quad \text{and} \quad (cf)(s) = cf(s)
-	\]
-	for each \(s \in S\).
+  Let \(S\) be any nonempty set and \(\F\) be any field, and let \(\FS\) denote the set of all functions from \(S\) to \(\F\).
+  Two functions \(f\) and \(g\) in \(\FS\) are called \textbf{equal} if \(f(s) = g(s)\) for each \(s \in S\).
+  The set \(\FS\) is a vector space over \(\F\) with the operations of addition and scalar multiplication defined for \(f, g \in \FS\) and \(c \in \F\) by
+  \[
+    (f + g)(s) = f(s) + g(s) \quad \text{and} \quad (cf)(s) = cf(s)
+  \]
+  for each \(s \in S\).
 \end{eg}
 
 \begin{proof}[\pf{1.2.10}]
-	Clearly we have
-	\[
-		\forall f, g \in \FS, f + g \in \FS
-	\]
-	and
-	\[
-		\begin{dcases}
-			\forall f \in \FS \\
-			\forall c \in \F
-		\end{dcases}, cf \in \FS.
-	\]
+  Clearly we have
+  \[
+    \forall f, g \in \FS, f + g \in \FS
+  \]
+  and
+  \[
+    \begin{dcases}
+      \forall f \in \FS \\
+      \forall c \in \F
+    \end{dcases}, cf \in \FS.
+  \]
 
-	First we show that addition in \(\FS\) over \(\F\) is unique.
-	Let \(f, g \in \FS\).
-	Suppose for sake of contradiction that
-	\[
-		\begin{dcases}
-			f + g = h \in \FS  \\
-			f + g = h' \in \FS \\
-			h \neq h'
-		\end{dcases}.
-	\]
-	Then we have
-	\begin{align*}
-		         & h \neq h'                                                       \\
-		\implies & \exists s \in S : h(s) \neq h'(s)              &  & \by{1.2.10} \\
-		\implies & \exists s \in S : (f + g)(s) \neq (f + g)(s)   &  & \by{1.2.10} \\
-		\implies & \exists s \in S : f(s) + g(s) \neq f(s) + g(s) &  & \by{1.2.10}
-	\end{align*}
-	which contradicts to the fact that \(f(s) + g(s) \in \F\) is unique.
-	Thus addition in \(\FS\) over \(\F\) is unique.
+  First we show that addition in \(\FS\) over \(\F\) is unique.
+  Let \(f, g \in \FS\).
+  Suppose for sake of contradiction that
+  \[
+    \begin{dcases}
+      f + g = h \in \FS  \\
+      f + g = h' \in \FS \\
+      h \neq h'
+    \end{dcases}.
+  \]
+  Then we have
+  \begin{align*}
+             & h \neq h'                                                       \\
+    \implies & \exists s \in S : h(s) \neq h'(s)              &  & \by{1.2.10} \\
+    \implies & \exists s \in S : (f + g)(s) \neq (f + g)(s)   &  & \by{1.2.10} \\
+    \implies & \exists s \in S : f(s) + g(s) \neq f(s) + g(s) &  & \by{1.2.10}
+  \end{align*}
+  which contradicts to the fact that \(f(s) + g(s) \in \F\) is unique.
+  Thus addition in \(\FS\) over \(\F\) is unique.
 
-	Next we show that scalar multiplication in \(\FS\) over \(\F\) is unique.
-	Let \(f \in \FS\) and \(c \in \F\).
-	Suppose for sake of contradiction that
-	\[
-		\begin{dcases}
-			cf = h \in \FS  \\
-			cf = h' \in \FS \\
-			h \neq h'
-		\end{dcases}.
-	\]
-	Then we have
-	\begin{align*}
-		         & h \neq h'                                               \\
-		\implies & \exists s \in S : h(s) \neq h'(s)      &  & \by{1.2.10} \\
-		\implies & \exists s \in S : (cf)(s) \neq (cf)(s) &  & \by{1.2.10} \\
-		\implies & \exists s \in S : cf(s) \neq cf(s)     &  & \by{1.2.10}
-	\end{align*}
-	which contradicts to the fact that \(cf(s) \in \F\) is unique.
-	Thus scalar multiplication in \(\FS\) over \(\F\) is unique.
+  Next we show that scalar multiplication in \(\FS\) over \(\F\) is unique.
+  Let \(f \in \FS\) and \(c \in \F\).
+  Suppose for sake of contradiction that
+  \[
+    \begin{dcases}
+      cf = h \in \FS  \\
+      cf = h' \in \FS \\
+      h \neq h'
+    \end{dcases}.
+  \]
+  Then we have
+  \begin{align*}
+             & h \neq h'                                               \\
+    \implies & \exists s \in S : h(s) \neq h'(s)      &  & \by{1.2.10} \\
+    \implies & \exists s \in S : (cf)(s) \neq (cf)(s) &  & \by{1.2.10} \\
+    \implies & \exists s \in S : cf(s) \neq cf(s)     &  & \by{1.2.10}
+  \end{align*}
+  which contradicts to the fact that \(cf(s) \in \F\) is unique.
+  Thus scalar multiplication in \(\FS\) over \(\F\) is unique.
 
-	Now we show that \ref{vs1}--\ref{vs8} holds for \cref{1.2.10}.
-	\begin{description}
-		\item[For \ref{vs1}:]
-			For all \(f, g \in \FS\) and \(s \in S\), we have
-			\begin{align*}
-				(f + g)(s) & = f(s) + g(s) &  & \by{1.2.10}                \\
-				           & = g(s) + f(s) &  & \text{(\(\F\) is a field)} \\
-				           & = (g + f)(s)  &  & \by{1.2.10}
-			\end{align*}
-			and thus by \cref{1.2.10} \(f + g = g + f\).
-		\item[For \ref{vs2}:]
-			For all \(f, g, h \in \FS\) and \(s \in S\), we have
-			\begin{align*}
-				 & ((f + g) + h)(s)                                       \\
-				 & = (f + g)(s) + h(s)    &  & \by{1.2.10}                \\
-				 & = (f(s) + g(s)) + h(s) &  & \by{1.2.10}                \\
-				 & = f(s) + (g(s) + h(s)) &  & \text{(\(\F\) is a field)} \\
-				 & = f(s) + (g + h)(s)    &  & \by{1.2.10}                \\
-				 & = (f + (g + h))(s)     &  & \by{1.2.10}
-			\end{align*}
-			and thus by \cref{1.2.10} \((f + g) + h = f + (g + h)\).
-		\item[For \ref{vs3}:]
-			Since \(\F\) is a field, we know that \(0 \in \F\).
-			If we define \(\zv : S \to \{0\}\), then we know that \(\zv \in \F\).
-			Thus for all \(f \in \FS\) and \(s \in S\), we have
-			\begin{align*}
-				(f + \zv)(s) & = f(s) + \zv(s) &  & \by{1.2.10}                \\
-				             & = f(s) + 0                                      \\
-				             & = f(s)          &  & \text{(\(\F\) is a field)}
-			\end{align*}
-			and by \cref{1.2.10} \(f + \zv = f\).
-		\item[For \ref{vs4}:]
-			For all \(f \in \FS\), we have
-			\begin{align*}
-				         & \forall s \in S, f(s) \in \F                                                          \\
-				\implies & \forall s \in S, \exists s' \in \F : f(s) + s' = 0 &  & \text{(\(\F\) is a field)}    \\
-				\implies & \exists g \in \FS : \begin{dcases}
-					                               g = s \mapsto s' \\
-					                               f(s) + g(s) = 0
-				                               \end{dcases}                                                  \\
-				\implies & \exists g \in \FS : (f + g)(s) = 0                 &  & \by{1.2.10}                   \\
-				\implies & \exists g \in \FS : f + g = \zv.                   &  & \text{(from the proof above)}
-			\end{align*}
-		\item[For \ref{vs5}:]
-			Since \(\F\) is a field, we know that \(1 \in \F\).
-			Then for all \(f \in \FS\) and \(s \in S\), we have
-			\begin{align*}
-				(1f)(s) & = 1f(s) &  & \by{1.2.10}                \\
-				        & = f(s)  &  & \text{(\(\F\) is a field)}
-			\end{align*}
-			and thus by \cref{1.2.10} \(1f = f\).
-		\item[For \ref{vs6}:]
-			For all \(a, b \in \F\), \(f \in \FS\) and \(s \in S\), we have
-			\begin{align*}
-				((ab) f)(s) & = (ab) f(s)   &  & \by{1.2.10}                \\
-				            & = a (b f(s))  &  & \text{(\(\F\) is a field)} \\
-				            & = a ((bf)(s)) &  & \by{1.2.10}                \\
-				            & = (a (bf))(s) &  & \by{1.2.10}
-			\end{align*}
-			and thus by \cref{1.2.10} \((ab) f = a (bf)\).
-		\item[For \ref{vs7}:]
-			For all \(a \in \F\), \(f, g \in \FS\) and \(s \in S\), we have
-			\begin{align*}
-				(a (f + g))(s) & = a ((f + g)(s))    &  & \by{1.2.10}                \\
-				               & = a (f(s) + g(s))   &  & \by{1.2.10}                \\
-				               & = af(s) + ag(s)     &  & \text{(\(\F\) is a field)} \\
-				               & = (af)(s) + (ag)(s) &  & \by{1.2.10}                \\
-				               & = (af + ag)(s)      &  & \by{1.2.10}
-			\end{align*}
-			and thus by \cref{1.2.10} \(a (f + g) = af + ag\).
-		\item[For \ref{vs8}:]
-			For all \(a, b \in \F\), \(f \in \FS\) and \(s \in S\), we have
-			\begin{align*}
-				((a + b) f)(s) & = (a + b) f(s)      &  & \by{1.2.10}                \\
-				               & = af(s) + bf(s)     &  & \text{(\(\F\) is a field)} \\
-				               & = (af)(s) + (bf)(s) &  & \by{1.2.10}                \\
-				               & = (af + bf)(s)      &  & \by{1.2.10}
-			\end{align*}
-			and thus by \cref{1.2.10} \((a + b) f = af + bf\).
-	\end{description}
-	From all proofs above we conclude by \cref{1.2.1} that \cref{1.2.10} is indeed a vector space over \(\F\).
+  Now we show that \ref{vs1}--\ref{vs8} holds for \cref{1.2.10}.
+  \begin{description}
+    \item[For \ref{vs1}:]
+      For all \(f, g \in \FS\) and \(s \in S\), we have
+      \begin{align*}
+        (f + g)(s) & = f(s) + g(s) &  & \by{1.2.10}                \\
+                   & = g(s) + f(s) &  & \text{(\(\F\) is a field)} \\
+                   & = (g + f)(s)  &  & \by{1.2.10}
+      \end{align*}
+      and thus by \cref{1.2.10} \(f + g = g + f\).
+    \item[For \ref{vs2}:]
+      For all \(f, g, h \in \FS\) and \(s \in S\), we have
+      \begin{align*}
+         & ((f + g) + h)(s)                                       \\
+         & = (f + g)(s) + h(s)    &  & \by{1.2.10}                \\
+         & = (f(s) + g(s)) + h(s) &  & \by{1.2.10}                \\
+         & = f(s) + (g(s) + h(s)) &  & \text{(\(\F\) is a field)} \\
+         & = f(s) + (g + h)(s)    &  & \by{1.2.10}                \\
+         & = (f + (g + h))(s)     &  & \by{1.2.10}
+      \end{align*}
+      and thus by \cref{1.2.10} \((f + g) + h = f + (g + h)\).
+    \item[For \ref{vs3}:]
+      Since \(\F\) is a field, we know that \(0 \in \F\).
+      If we define \(\zv : S \to \{0\}\), then we know that \(\zv \in \F\).
+      Thus for all \(f \in \FS\) and \(s \in S\), we have
+      \begin{align*}
+        (f + \zv)(s) & = f(s) + \zv(s) &  & \by{1.2.10}                \\
+                     & = f(s) + 0                                      \\
+                     & = f(s)          &  & \text{(\(\F\) is a field)}
+      \end{align*}
+      and by \cref{1.2.10} \(f + \zv = f\).
+    \item[For \ref{vs4}:]
+      For all \(f \in \FS\), we have
+      \begin{align*}
+                 & \forall s \in S, f(s) \in \F                                                          \\
+        \implies & \forall s \in S, \exists s' \in \F : f(s) + s' = 0 &  & \text{(\(\F\) is a field)}    \\
+        \implies & \exists g \in \FS : \begin{dcases}
+                                         g = s \mapsto s' \\
+                                         f(s) + g(s) = 0
+                                       \end{dcases}                                                  \\
+        \implies & \exists g \in \FS : (f + g)(s) = 0                 &  & \by{1.2.10}                   \\
+        \implies & \exists g \in \FS : f + g = \zv.                   &  & \text{(from the proof above)}
+      \end{align*}
+    \item[For \ref{vs5}:]
+      Since \(\F\) is a field, we know that \(1 \in \F\).
+      Then for all \(f \in \FS\) and \(s \in S\), we have
+      \begin{align*}
+        (1f)(s) & = 1f(s) &  & \by{1.2.10}                \\
+                & = f(s)  &  & \text{(\(\F\) is a field)}
+      \end{align*}
+      and thus by \cref{1.2.10} \(1f = f\).
+    \item[For \ref{vs6}:]
+      For all \(a, b \in \F\), \(f \in \FS\) and \(s \in S\), we have
+      \begin{align*}
+        ((ab) f)(s) & = (ab) f(s)   &  & \by{1.2.10}                \\
+                    & = a (b f(s))  &  & \text{(\(\F\) is a field)} \\
+                    & = a ((bf)(s)) &  & \by{1.2.10}                \\
+                    & = (a (bf))(s) &  & \by{1.2.10}
+      \end{align*}
+      and thus by \cref{1.2.10} \((ab) f = a (bf)\).
+    \item[For \ref{vs7}:]
+      For all \(a \in \F\), \(f, g \in \FS\) and \(s \in S\), we have
+      \begin{align*}
+        (a (f + g))(s) & = a ((f + g)(s))    &  & \by{1.2.10}                \\
+                       & = a (f(s) + g(s))   &  & \by{1.2.10}                \\
+                       & = af(s) + ag(s)     &  & \text{(\(\F\) is a field)} \\
+                       & = (af)(s) + (ag)(s) &  & \by{1.2.10}                \\
+                       & = (af + ag)(s)      &  & \by{1.2.10}
+      \end{align*}
+      and thus by \cref{1.2.10} \(a (f + g) = af + ag\).
+    \item[For \ref{vs8}:]
+      For all \(a, b \in \F\), \(f \in \FS\) and \(s \in S\), we have
+      \begin{align*}
+        ((a + b) f)(s) & = (a + b) f(s)      &  & \by{1.2.10}                \\
+                       & = af(s) + bf(s)     &  & \text{(\(\F\) is a field)} \\
+                       & = (af)(s) + (bf)(s) &  & \by{1.2.10}                \\
+                       & = (af + bf)(s)      &  & \by{1.2.10}
+      \end{align*}
+      and thus by \cref{1.2.10} \((a + b) f = af + bf\).
+  \end{description}
+  From all proofs above we conclude by \cref{1.2.1} that \cref{1.2.10} is indeed a vector space over \(\F\).
 \end{proof}
 
 \begin{defn}\label{1.2.11}
-	A \textbf{polynomial} with coefficients from a field \(\F\) is an expression of the form
-	\[
-		f(x) = a_n x^n + a_{n - 1} x^{n - 1} + \cdots + a_1 x + a_0,
-	\]
-	where \(n\) is a nonnegative integer and each \(a_k\), called the \textbf{coefficient} of \(x^k\), is in \(\F\).
-	If \(f(x) = 0\), that is, if \(a_n = a_{n - 1} = \cdots = a_0 = 0\), then \(f(x)\) is called the \textbf{zero polynomial} and, for convenience, its degree is defined to be \(-1\);
-	otherwise, the \textbf{degree} of a polynomial is defined to be the largest exponent of \(x\) that appears in the representation
-	\[
-		f(x) = a_n x^n + a_{n - 1} x^{n - 1} + \cdots + a_1 x + a_0
-	\]
-	with a nonzero coefficient.
-	Note that the polynomials of degree zero may be written in the form \(f(x) = c\) for some nonzero scalar \(c\).
-	Two polynomials,
-	\[
-		f(x) = a_n x^n + a_{n - 1} x^{n - 1} + \cdots + a_1 x + a_0
-	\]
-	and
-	\[
-		g(x) = b_m x^m + b_{m - 1} x^{m - 1} + \cdots + b_1 x + b_0,
-	\]
-	are called \textbf{equal} if \(m = n\) and \(a_i = b_i\) for \(i = 0, 1, \dots, n\).
+  A \textbf{polynomial} with coefficients from a field \(\F\) is an expression of the form
+  \[
+    f(x) = a_n x^n + a_{n - 1} x^{n - 1} + \cdots + a_1 x + a_0,
+  \]
+  where \(n\) is a nonnegative integer and each \(a_k\), called the \textbf{coefficient} of \(x^k\), is in \(\F\).
+  If \(f(x) = 0\), that is, if \(a_n = a_{n - 1} = \cdots = a_0 = 0\), then \(f(x)\) is called the \textbf{zero polynomial} and, for convenience, its degree is defined to be \(-1\);
+  otherwise, the \textbf{degree} of a polynomial is defined to be the largest exponent of \(x\) that appears in the representation
+  \[
+    f(x) = a_n x^n + a_{n - 1} x^{n - 1} + \cdots + a_1 x + a_0
+  \]
+  with a nonzero coefficient.
+  Note that the polynomials of degree zero may be written in the form \(f(x) = c\) for some nonzero scalar \(c\).
+  Two polynomials,
+  \[
+    f(x) = a_n x^n + a_{n - 1} x^{n - 1} + \cdots + a_1 x + a_0
+  \]
+  and
+  \[
+    g(x) = b_m x^m + b_{m - 1} x^{m - 1} + \cdots + b_1 x + b_0,
+  \]
+  are called \textbf{equal} if \(m = n\) and \(a_i = b_i\) for \(i = 0, 1, \dots, n\).
 \end{defn}
 
 \begin{eg}\label{1.2.12}
-	Let
-	\[
-		f(x) = a_n x^n + a_{n - 1} x^{n - 1} + \cdots + a_1 x + a_0
-	\]
-	and
-	\[
-		g(x) = b_m x^m + b_{m - 1} x^{m - 1} + \cdots + b_1 x + b_0
-	\]
-	be polynomials with coefficients from a field \(\F\).
-	Suppose that \(m \leq n\), and define \(b_{m + 1} = b_{m + 2} = \cdots = b_n = 0\).
-	Then \(g(x)\) can be written as
-	\[
-		g(x) = b_n x^n + b_{n - 1} x^{n - 1} + \cdots + b_1 x + b_0.
-	\]
+  Let
+  \[
+    f(x) = a_n x^n + a_{n - 1} x^{n - 1} + \cdots + a_1 x + a_0
+  \]
+  and
+  \[
+    g(x) = b_m x^m + b_{m - 1} x^{m - 1} + \cdots + b_1 x + b_0
+  \]
+  be polynomials with coefficients from a field \(\F\).
+  Suppose that \(m \leq n\), and define \(b_{m + 1} = b_{m + 2} = \cdots = b_n = 0\).
+  Then \(g(x)\) can be written as
+  \[
+    g(x) = b_n x^n + b_{n - 1} x^{n - 1} + \cdots + b_1 x + b_0.
+  \]
 
-	Define
-	\[
-		f(x) + g(x) = (a_n + b_n) x^n + (a_{n - 1} + b_{n - 1}) x^{n - 1} + \cdots + (a_1 + b_1) x^1 + (a_0 + b_0)
-	\]
-	and for any scalar \(c \in \F\), define
-	\[
-		cf(x) = ca_n x^n + ca_{n - 1} x^{n - 1} + \cdots + ca_1 x + ca_0.
-	\]
-	With these operations of addition and scalar multiplication, the set of all polynomials with coefficients from \(\F\) is a vector space over \(\F\), which we denote by \(\ps{\F}\).
+  Define
+  \[
+    f(x) + g(x) = (a_n + b_n) x^n + (a_{n - 1} + b_{n - 1}) x^{n - 1} + \cdots + (a_1 + b_1) x^1 + (a_0 + b_0)
+  \]
+  and for any scalar \(c \in \F\), define
+  \[
+    cf(x) = ca_n x^n + ca_{n - 1} x^{n - 1} + \cdots + ca_1 x + ca_0.
+  \]
+  With these operations of addition and scalar multiplication, the set of all polynomials with coefficients from \(\F\) is a vector space over \(\F\), which we denote by \(\ps{\F}\).
 \end{eg}
 
 \begin{proof}[\pf{1.2.12}]
-	Note that we prove \cref{1.2.12} without circularity.
-	Observe that \(\ps{\F} \subseteq \fs(\F, \F)\) (see \cref{1.2.10}), thus we can use \cref{1.3} to prove \cref{1.2.12}.
-	Since \(\F\) is a field, we know that \(0 \in F\).
-	Let \(\zv\) be the zero vector in \(\fs(\F, \F)\) (cf. \cref{1.2.10}).
-	Then we have
-	\begin{align*}
-		         & \forall f \in \fs(\F, \F), \forall s \in \F, (f + \zv)(s) = f(s) \\
-		\implies & \forall p \in \ps{\F}, \forall s \in \F, (p + \zv)(s) = p(s).
-	\end{align*}
-	Now we define \(\zv' \in \ps{F}\) as follow:
-	\[
-		\forall s \in \F, \zv'(s) = 0.
-	\]
-	Since
-	\begin{align*}
-		         & \forall p \in \ps{\F}, \forall s \in \F, p(s) + \zv'(s) = p(s) = p(s) + \zv(s)                    \\
-		\implies & \forall s \in \F, \zv'(s) = \zv(s)                                             &  & (p(s) \in \F) \\
-		\implies & \zv' = \zv,                                                                    &  & \by{1.2.10}
-	\end{align*}
-	we know that \(\zv \in \ps{\F}\).
-	Since \(\ps{\F}\) is closed under addition and scalar multiplication for obvious reason, by \cref{1.3} we conclude that \(\ps{\F}\) is a subspace of \(\fs(\F, \F)\) over \(\F\) and thus \(\ps{\F}\) is a vector space over \(\F\).
+  Note that we prove \cref{1.2.12} without circularity.
+  Observe that \(\ps{\F} \subseteq \fs(\F, \F)\) (see \cref{1.2.10}), thus we can use \cref{1.3} to prove \cref{1.2.12}.
+  Since \(\F\) is a field, we know that \(0 \in F\).
+  Let \(\zv\) be the zero vector in \(\fs(\F, \F)\) (cf. \cref{1.2.10}).
+  Then we have
+  \begin{align*}
+             & \forall f \in \fs(\F, \F), \forall s \in \F, (f + \zv)(s) = f(s) \\
+    \implies & \forall p \in \ps{\F}, \forall s \in \F, (p + \zv)(s) = p(s).
+  \end{align*}
+  Now we define \(\zv' \in \ps{F}\) as follow:
+  \[
+    \forall s \in \F, \zv'(s) = 0.
+  \]
+  Since
+  \begin{align*}
+             & \forall p \in \ps{\F}, \forall s \in \F, p(s) + \zv'(s) = p(s) = p(s) + \zv(s)                    \\
+    \implies & \forall s \in \F, \zv'(s) = \zv(s)                                             &  & (p(s) \in \F) \\
+    \implies & \zv' = \zv,                                                                    &  & \by{1.2.10}
+  \end{align*}
+  we know that \(\zv \in \ps{\F}\).
+  Since \(\ps{\F}\) is closed under addition and scalar multiplication for obvious reason, by \cref{1.3} we conclude that \(\ps{\F}\) is a subspace of \(\fs(\F, \F)\) over \(\F\) and thus \(\ps{\F}\) is a vector space over \(\F\).
 \end{proof}
 
 \begin{eg}\label{1.2.13}
-	Let \(\F\) be any field.
-	A sequence in \(\F\) is a function \(\sigma\) from the positive integers into \(\F\).
-	In this book, the sequence \(\sigma\) such that \(\sigma(n) = a_n\) for \(n = 1, 2, \dots\) is denoted \(\set{a_n}\).
-	Let \(\V\) consist of all sequences \(\set{a_n}\) in \(\F\) that have only a finite number of nonzero terms \(a_n\).
-	If \(\set{a_n}\) and \(\set{b_n}\) are in \(\V\) and \(t \in \F\), define
-	\[
-		\set{a_n} + \set{b_n} = \set{a_n + b_n} \quad \text{and} \quad t\set{a_n} = \set{ta_n}.
-	\]
-	With these operations \(\V\) is a vector space over \(\F\).
+  Let \(\F\) be any field.
+  A sequence in \(\F\) is a function \(\sigma\) from the positive integers into \(\F\).
+  In this book, the sequence \(\sigma\) such that \(\sigma(n) = a_n\) for \(n = 1, 2, \dots\) is denoted \(\set{a_n}\).
+  Let \(\V\) consist of all sequences \(\set{a_n}\) in \(\F\) that have only a finite number of nonzero terms \(a_n\).
+  If \(\set{a_n}\) and \(\set{b_n}\) are in \(\V\) and \(t \in \F\), define
+  \[
+    \set{a_n} + \set{b_n} = \set{a_n + b_n} \quad \text{and} \quad t\set{a_n} = \set{ta_n}.
+  \]
+  With these operations \(\V\) is a vector space over \(\F\).
 \end{eg}
 
 \begin{proof}[\pf{1.2.13}]
-	First observe that \(\V \subseteq \fs(\N, \F)\).
-	We know by \cref{1.2.10} that there exists a function \(\zv \in \fs(\N, \F)\) such that \(\zv(n) = 0\) for all \(n \in \N\).
-	Since \(\zv\) only have finite number of nonzero terms (actually, \(\zv\) has \(0\) nonzero term), we know that \(\zv \in \V\).
+  First observe that \(\V \subseteq \fs(\N, \F)\).
+  We know by \cref{1.2.10} that there exists a function \(\zv \in \fs(\N, \F)\) such that \(\zv(n) = 0\) for all \(n \in \N\).
+  Since \(\zv\) only have finite number of nonzero terms (actually, \(\zv\) has \(0\) nonzero term), we know that \(\zv \in \V\).
 
-	Let \(\B{a_n}, \B{b_n} \in \V\) and \(c \in \R\).
-	Since \(\B{a_n}, \B{b_n}\) have finite numbers of nonzero terms, we know that \(\B{a_n} + \B{b_n} = \B{a_n + b_n}\) also has a finite number of nonzero terms and thus \(\B{a_n} + \B{b_n} \in \V\).
-	Similarly we know that \(c\B{a_n} = \B{ca_n}\) also has a finite number of nonzero terms and thus \(c\B{a_n} \in \V\).
-	Therefore by \cref{1.3} we know that \(\V\) is a subspace of \(\fs(\N, \F)\) over \(\F\) and \(\V\) is a vector space over \(\F\).
+  Let \(\B{a_n}, \B{b_n} \in \V\) and \(c \in \R\).
+  Since \(\B{a_n}, \B{b_n}\) have finite numbers of nonzero terms, we know that \(\B{a_n} + \B{b_n} = \B{a_n + b_n}\) also has a finite number of nonzero terms and thus \(\B{a_n} + \B{b_n} \in \V\).
+  Similarly we know that \(c\B{a_n} = \B{ca_n}\) also has a finite number of nonzero terms and thus \(c\B{a_n} \in \V\).
+  Therefore by \cref{1.3} we know that \(\V\) is a subspace of \(\fs(\N, \F)\) over \(\F\) and \(\V\) is a vector space over \(\F\).
 \end{proof}
 
 \begin{thm}[Cancellation Law for Vector Addition]\label{1.1}
-	If \(x, y\), and \(z\) are vectors in a vector space \(\V\) over \(\F\) such that \(x + z = y + z\), then \(x = y\).
+  If \(x, y\), and \(z\) are vectors in a vector space \(\V\) over \(\F\) such that \(x + z = y + z\), then \(x = y\).
 \end{thm}
 
 \begin{proof}[\pf{1.1}]
-	There exists a vector \(v\) in \(\V\) such that \(z + v = \zv\) (\ref{vs4}).
-	Thus
-	\begin{align*}
-		x & = x + \zv = x + (z + v) = (x + z) + v     \\
-		  & = (y + z) + v = y + (z + v) = y + \zv = y
-	\end{align*}
-	by \ref{vs2} and \ref{vs3}.
+  There exists a vector \(v\) in \(\V\) such that \(z + v = \zv\) (\ref{vs4}).
+  Thus
+  \begin{align*}
+    x & = x + \zv = x + (z + v) = (x + z) + v     \\
+      & = (y + z) + v = y + (z + v) = y + \zv = y
+  \end{align*}
+  by \ref{vs2} and \ref{vs3}.
 \end{proof}
 
 \begin{cor}\label{1.2.14}
-	The vector \(\zv\) described in \ref{vs3} is unique.
+  The vector \(\zv\) described in \ref{vs3} is unique.
 \end{cor}
 
 \begin{proof}[\pf{1.2.14}]
-	Suppose for sake of contradiction that
-	\[
-		\exists \zv' \in \V : \begin{dcases}
-			\zv \neq \zv' \\
-			\forall x \in \V, x + \zv' = x
-		\end{dcases}.
-	\]
-	But then we have
-	\begin{align*}
-		         & x + \zv = x = x + \zv' &  & \text{(by \ref{vs3})} \\
-		\implies & \zv = \zv',            &  & \by{1.1}
-	\end{align*}
-	a contradiction.
-	Thus \(\zv \in \V\) is unique.
+  Suppose for sake of contradiction that
+  \[
+    \exists \zv' \in \V : \begin{dcases}
+      \zv \neq \zv' \\
+      \forall x \in \V, x + \zv' = x
+    \end{dcases}.
+  \]
+  But then we have
+  \begin{align*}
+             & x + \zv = x = x + \zv' &  & \text{(by \ref{vs3})} \\
+    \implies & \zv = \zv',            &  & \by{1.1}
+  \end{align*}
+  a contradiction.
+  Thus \(\zv \in \V\) is unique.
 \end{proof}
 
 \begin{cor}\label{1.2.15}
-	The vector \(y\) described in \ref{vs4} is unique.
+  The vector \(y\) described in \ref{vs4} is unique.
 \end{cor}
 
 \begin{proof}[\pf{1.2.15}]
-	Suppose for sake of contradiction that
-	\[
-		\forall x \in \V, \exists y, y' \in \V : \begin{dcases}
-			y \neq y' \\
-			x + y = 0 = x + y'
-		\end{dcases}.
-	\]
-	But then we have
-	\begin{align*}
-		         & x + y = x + y'               \\
-		\implies & y = y',        &  & \by{1.1}
-	\end{align*}
-	a contradiction.
-	Thus \(y\) described in \ref{vs4} is unique.
+  Suppose for sake of contradiction that
+  \[
+    \forall x \in \V, \exists y, y' \in \V : \begin{dcases}
+      y \neq y' \\
+      x + y = 0 = x + y'
+    \end{dcases}.
+  \]
+  But then we have
+  \begin{align*}
+             & x + y = x + y'               \\
+    \implies & y = y',        &  & \by{1.1}
+  \end{align*}
+  a contradiction.
+  Thus \(y\) described in \ref{vs4} is unique.
 \end{proof}
 
 \begin{defn}\label{1.2.16}
-	The vector \(\zv\) in \ref{vs3} is called the \textbf{zero vector} of \(\V\), and the vector \(y\) in \ref{vs4} (that is, the unique vector such that \(x + y = \zv\)) is called the \textbf{additive inverse} of \(x\) and is denoted by \(-x\).
+  The vector \(\zv\) in \ref{vs3} is called the \textbf{zero vector} of \(\V\), and the vector \(y\) in \ref{vs4} (that is, the unique vector such that \(x + y = \zv\)) is called the \textbf{additive inverse} of \(x\) and is denoted by \(-x\).
 \end{defn}
 
 \begin{thm}\label{1.2}
-	In any vector space \(\V\) over \(\F\), the following statements are true:
-	\begin{enumerate}
-		\item \(0x = \zv\) for each \(x \in \V\).
-		\item \((-a)x = -(ax) = a(-x)\) for each \(a \in \F\) and each \(x \in \V\).
-		\item \(a\zv = \zv\) for each \(a \in F\).
-	\end{enumerate}
+  In any vector space \(\V\) over \(\F\), the following statements are true:
+  \begin{enumerate}
+    \item \(0x = \zv\) for each \(x \in \V\).
+    \item \((-a)x = -(ax) = a(-x)\) for each \(a \in \F\) and each \(x \in \V\).
+    \item \(a\zv = \zv\) for each \(a \in F\).
+  \end{enumerate}
 \end{thm}
 
 \begin{proof}[\pf{1.2}(a)]
-	By \ref{vs8}, \ref{vs3}, and \ref{vs1}, it follows that
-	\[
-		0x + 0x = (0 + 0) x = 0x = 0x + \zv = \zv + 0x.
-	\]
-	Hence \(0x = \zv\) by \cref{1.1}.
+  By \ref{vs8}, \ref{vs3}, and \ref{vs1}, it follows that
+  \[
+    0x + 0x = (0 + 0) x = 0x = 0x + \zv = \zv + 0x.
+  \]
+  Hence \(0x = \zv\) by \cref{1.1}.
 \end{proof}
 
 \begin{proof}[\pf{1.2}(b)]
-	The vector \(-(ax)\) is the unique element of \(\V\) such that \(ax + [-(ax)] = \zv\).
-	Thus if \(ax + (-a)x = 0\), \cref{1.2.15} to \cref{1.1} implies that \((-a)x = -(ax)\).
-	But by \ref{vs8},
-	\[
-		ax + (-a)x = [a + (-a)]x = 0x = \zv
-	\]
-	by \cref{1.2}(a).
-	Consequently \((-a)x = -(ax)\).
-	In particular, \((-1)x = -x\).
-	So, by \ref{vs6},
-	\[
-		a(-x) = a[(-1)x] = [a(-1)]x = (-a)x.
-	\]
+  The vector \(-(ax)\) is the unique element of \(\V\) such that \(ax + [-(ax)] = \zv\).
+  Thus if \(ax + (-a)x = 0\), \cref{1.2.15} to \cref{1.1} implies that \((-a)x = -(ax)\).
+  But by \ref{vs8},
+  \[
+    ax + (-a)x = [a + (-a)]x = 0x = \zv
+  \]
+  by \cref{1.2}(a).
+  Consequently \((-a)x = -(ax)\).
+  In particular, \((-1)x = -x\).
+  So, by \ref{vs6},
+  \[
+    a(-x) = a[(-1)x] = [a(-1)]x = (-a)x.
+  \]
 \end{proof}
 
 \begin{proof}[\pf{1.2}(c)]
-	We have
-	\begin{align*}
-		a\zv + \zv & = a\zv         &  & \text{(by \ref{vs3})} \\
-		           & = a(\zv + \zv) &  & \text{(by \ref{vs3})} \\
-		           & = a\zv + a\zv  &  & \text{(by \ref{vs7})}
-	\end{align*}
-	and thus by \cref{1.1} \(a\zv = \zv\).
+  We have
+  \begin{align*}
+    a\zv + \zv & = a\zv         &  & \text{(by \ref{vs3})} \\
+               & = a(\zv + \zv) &  & \text{(by \ref{vs3})} \\
+               & = a\zv + a\zv  &  & \text{(by \ref{vs7})}
+  \end{align*}
+  and thus by \cref{1.1} \(a\zv = \zv\).
 \end{proof}
 
 \exercisesection
 
 \setcounter{ex}{7}
 \begin{ex}\label{ex:1.2.8}
-	In any vector space \(\V\) over \(\F\), show that \((a + b)(x + y) = ax + ay + bx + by\) for any \(x, y \in \V\) and any \(a, b \in \F\).
+  In any vector space \(\V\) over \(\F\), show that \((a + b)(x + y) = ax + ay + bx + by\) for any \(x, y \in \V\) and any \(a, b \in \F\).
 \end{ex}
 
 \begin{proof}[\pf{ex:1.2.8}]
-	We have
-	\begin{align*}
-		(a + b)(x + y) & = (a + b) x + (a + b) y &  & \text{(by \ref{vs7})} \\
-		               & = ax + bx + ay + by     &  & \text{(by \ref{vs8})} \\
-		               & = ax + ay + bx + by.    &  & \text{(by \ref{vs1})}
-	\end{align*}
+  We have
+  \begin{align*}
+    (a + b)(x + y) & = (a + b) x + (a + b) y &  & \text{(by \ref{vs7})} \\
+                   & = ax + bx + ay + by     &  & \text{(by \ref{vs8})} \\
+                   & = ax + ay + bx + by.    &  & \text{(by \ref{vs1})}
+  \end{align*}
 \end{proof}
 
 \setcounter{ex}{9}
 \begin{ex}\label{ex:1.2.10}
-	Let \(\V\) denote the set of all differentiable real-valued functions defined on the real line.
-	Prove that \(\V\) is a vector space over \(\R\) with the operations of addition and scalar multiplication defined in \cref{1.2.10}.
+  Let \(\V\) denote the set of all differentiable real-valued functions defined on the real line.
+  Prove that \(\V\) is a vector space over \(\R\) with the operations of addition and scalar multiplication defined in \cref{1.2.10}.
 \end{ex}
 
 \begin{proof}[\pf{ex:1.2.10}]
-	First observe that \(\V \subseteq \fs(S, \R)\) for arbitrary domain \(S\).
-	Since \(\zv \in \fs(S, \R)\) defined by \(\zv(x) = 0\) is differentiable on \(\R\), we know that \(\zv \in \V\).
+  First observe that \(\V \subseteq \fs(S, \R)\) for arbitrary domain \(S\).
+  Since \(\zv \in \fs(S, \R)\) defined by \(\zv(x) = 0\) is differentiable on \(\R\), we know that \(\zv \in \V\).
 
-	Let \(f, g \in \V\) and \(c \in \R\).
-	Since
-	\[
-		f' + g' = (f + g)' \in \V
-	\]
-	and
-	\[
-		cf' = (cf)' \in \V,
-	\]
-	by \cref{1.3} we know that \(\V\) is a subspace of \(\fs(S, \R)\) over \(\R\) and thus \(\V\) is a vector space over \(\R\).
+  Let \(f, g \in \V\) and \(c \in \R\).
+  Since
+  \[
+    f' + g' = (f + g)' \in \V
+  \]
+  and
+  \[
+    cf' = (cf)' \in \V,
+  \]
+  by \cref{1.3} we know that \(\V\) is a subspace of \(\fs(S, \R)\) over \(\R\) and thus \(\V\) is a vector space over \(\R\).
 \end{proof}
 
 \begin{ex}\label{ex:1.2.11}
-	Let \(\V = \set{\zv}\) consist of a single vector \(\zv\) and define \(\zv + \zv = \zv\) and \(c\zv = \zv\) for each scalar \(c\) in \(\F\).
-	Prove that \(\V\) is a vector space over \(\F\).
-	(\(\V\) is called the \textbf{zero vector space}.)
+  Let \(\V = \set{\zv}\) consist of a single vector \(\zv\) and define \(\zv + \zv = \zv\) and \(c\zv = \zv\) for each scalar \(c\) in \(\F\).
+  Prove that \(\V\) is a vector space over \(\F\).
+  (\(\V\) is called the \textbf{zero vector space}.)
 \end{ex}
 
 \begin{proof}[\pf{ex:1.2.11}]
-	Clearly addition and scalar multiplication result in one unique element in \(\V\), namely \(\zv\).
-	We only need to show that \ref{vs1}--\ref{vs8} holds for \cref{ex:1.2.11}.
-	\begin{description}
-		\item[For \ref{vs1}:]
-			By definition we have
-			\[
-				\zv + \zv = \zv = \zv + \zv.
-			\]
-		\item[For \ref{vs2}:]
-			We have
-			\[
-				(\zv + \zv) + \zv = \zv + \zv = \zv + (\zv + \zv).
-			\]
-		\item[For \ref{vs3}:]
-			By definition we have
-			\[
-				\zv + \zv = \zv.
-			\]
-		\item[For \ref{vs4}:]
-			By definition we have
-			\[
-				\zv + \zv = \zv.
-			\]
-		\item[For \ref{vs5}:]
-			By definition we have
-			\[
-				1\zv = \zv.
-			\]
-		\item[For \ref{vs6}:]
-			For all \(a, b \in \F\), we have
-			\begin{align*}
-				(ab) \zv & = \zv      &  & \text{(by definition)} \\
-				         & = b\zv     &  & (b \in \F)             \\
-				         & = a(b\zv). &  & (a \in \F)
-			\end{align*}
-		\item[For \ref{vs7}:]
-			For all \(a \in \F\), we have
-			\begin{align*}
-				a(\zv + \zv) & = a\zv         &  & \text{(by definition)} \\
-				             & = \zv          &  & \text{(by definition)} \\
-				             & = \zv + \zv    &  & \text{(by definition)} \\
-				             & = a\zv + a\zv. &  & (a \in \F)
-			\end{align*}
-		\item[For \ref{vs8}:]
-			For all \(a, b \in \F\), \(f \in \FS\) and \(s \in S\), we have
-			\begin{align*}
-				(a + b) \zv & = \zv          &  & \text{(by definition)} \\
-				            & = \zv + \zv    &  & \text{(by definition)} \\
-				            & = a\zv + b\zv. &  & (a, b \in \F)
-			\end{align*}
-	\end{description}
-	From all proofs above we conclude by \cref{1.2.1} that \cref{ex:1.2.11} is indeed a vector space.
+  Clearly addition and scalar multiplication result in one unique element in \(\V\), namely \(\zv\).
+  We only need to show that \ref{vs1}--\ref{vs8} holds for \cref{ex:1.2.11}.
+  \begin{description}
+    \item[For \ref{vs1}:]
+      By definition we have
+      \[
+        \zv + \zv = \zv = \zv + \zv.
+      \]
+    \item[For \ref{vs2}:]
+      We have
+      \[
+        (\zv + \zv) + \zv = \zv + \zv = \zv + (\zv + \zv).
+      \]
+    \item[For \ref{vs3}:]
+      By definition we have
+      \[
+        \zv + \zv = \zv.
+      \]
+    \item[For \ref{vs4}:]
+      By definition we have
+      \[
+        \zv + \zv = \zv.
+      \]
+    \item[For \ref{vs5}:]
+      By definition we have
+      \[
+        1\zv = \zv.
+      \]
+    \item[For \ref{vs6}:]
+      For all \(a, b \in \F\), we have
+      \begin{align*}
+        (ab) \zv & = \zv      &  & \text{(by definition)} \\
+                 & = b\zv     &  & (b \in \F)             \\
+                 & = a(b\zv). &  & (a \in \F)
+      \end{align*}
+    \item[For \ref{vs7}:]
+      For all \(a \in \F\), we have
+      \begin{align*}
+        a(\zv + \zv) & = a\zv         &  & \text{(by definition)} \\
+                     & = \zv          &  & \text{(by definition)} \\
+                     & = \zv + \zv    &  & \text{(by definition)} \\
+                     & = a\zv + a\zv. &  & (a \in \F)
+      \end{align*}
+    \item[For \ref{vs8}:]
+      For all \(a, b \in \F\), \(f \in \FS\) and \(s \in S\), we have
+      \begin{align*}
+        (a + b) \zv & = \zv          &  & \text{(by definition)} \\
+                    & = \zv + \zv    &  & \text{(by definition)} \\
+                    & = a\zv + b\zv. &  & (a, b \in \F)
+      \end{align*}
+  \end{description}
+  From all proofs above we conclude by \cref{1.2.1} that \cref{ex:1.2.11} is indeed a vector space.
 \end{proof}
 
 \begin{ex}\label{ex:1.2.12}
-	A real-valued function \(f\) defined on the real line is called an \textbf{even function} if \(f(-t) = f(t)\) for each real number \(t\).
-	Prove that the set of even functions defined on the real line with the operations of addition and scalar multiplication defined in \cref{1.2.10} is a vector space over \(\R\).
+  A real-valued function \(f\) defined on the real line is called an \textbf{even function} if \(f(-t) = f(t)\) for each real number \(t\).
+  Prove that the set of even functions defined on the real line with the operations of addition and scalar multiplication defined in \cref{1.2.10} is a vector space over \(\R\).
 \end{ex}
 
 \begin{proof}[\pf{ex:1.2.12}]
-	First observe that \(\V \subseteq \fs(\R, \R)\).
-	We know by \cref{1.2.10} that there exists a function \(\zv \in \fs(\R, \R)\) such that \(\zv(x) = 0\) for all \(x \in \R\).
-	Since \(\zv(t) = 0 = \zv(-t)\) for all \(t \in \R\), we know that \(\zv \in \V\).
+  First observe that \(\V \subseteq \fs(\R, \R)\).
+  We know by \cref{1.2.10} that there exists a function \(\zv \in \fs(\R, \R)\) such that \(\zv(x) = 0\) for all \(x \in \R\).
+  Since \(\zv(t) = 0 = \zv(-t)\) for all \(t \in \R\), we know that \(\zv \in \V\).
 
-	Let \(f, g \in \V\) and \(t, c \in \R\).
-	Since
-	\begin{align*}
-		(f + g)(t) & = f(t) + g(t)   &  & \by{1.2.10}    \\
-		           & = f(-t) + g(-t) &  & \by{ex:1.2.12} \\
-		           & = (f + g)(-t)   &  & \by{1.2.10}
-	\end{align*}
-	and
-	\begin{align*}
-		(cf)(t) & = cf(t)     &  & \by{1.2.10}    \\
-		        & = cf(-t)    &  & \by{ex:1.2.12} \\
-		        & = (cf)(-t), &  & \by{1.2.10}
-	\end{align*}
-	we know that \(f + g \in \V\) and \(cf \in \V\).
-	Thus by \cref{1.3} we know that \(\V\) is a subspace of \(\fs(\R, \R)\) over \(\R\) and \(\V\) is a vector space over \(\R\).
+  Let \(f, g \in \V\) and \(t, c \in \R\).
+  Since
+  \begin{align*}
+    (f + g)(t) & = f(t) + g(t)   &  & \by{1.2.10}    \\
+               & = f(-t) + g(-t) &  & \by{ex:1.2.12} \\
+               & = (f + g)(-t)   &  & \by{1.2.10}
+  \end{align*}
+  and
+  \begin{align*}
+    (cf)(t) & = cf(t)     &  & \by{1.2.10}    \\
+            & = cf(-t)    &  & \by{ex:1.2.12} \\
+            & = (cf)(-t), &  & \by{1.2.10}
+  \end{align*}
+  we know that \(f + g \in \V\) and \(cf \in \V\).
+  Thus by \cref{1.3} we know that \(\V\) is a subspace of \(\fs(\R, \R)\) over \(\R\) and \(\V\) is a vector space over \(\R\).
 \end{proof}
 
 \setcounter{ex}{20}
 \begin{ex}\label{ex:1.2.21}
-	Let \(\V\) and \(\W\) be vector spaces over a field \(\F\).
-	Let
-	\[
-		\V \times \W = \set{(v, w) : v \in \V \land w \in \W}.
-	\]
-	Prove that \(\V \times \W\) is a vector space over \(\F\) with the operations
-	\[
-		(v_1, w_1) + (v_2, w_2) = (v_1 + v_2, w_1 + w_2) \quad \text{and} \quad c(v_1, w_1) = (cv_1, cw_1).
-	\]
+  Let \(\V\) and \(\W\) be vector spaces over a field \(\F\).
+  Let
+  \[
+    \V \times \W = \set{(v, w) : v \in \V \land w \in \W}.
+  \]
+  Prove that \(\V \times \W\) is a vector space over \(\F\) with the operations
+  \[
+    (v_1, w_1) + (v_2, w_2) = (v_1 + v_2, w_1 + w_2) \quad \text{and} \quad c(v_1, w_1) = (cv_1, cw_1).
+  \]
 \end{ex}
 
 \begin{proof}[\pf{ex:1.2.21}]
-	Clearly we have
-	\[
-		\forall (v_1, w_1), (v_2, w_2) \in \V \times \W, (v_1, w_1) + (v_2, w_2) \in \V \times \W
-	\]
-	and
-	\[
-		\begin{dcases}
-			\forall (v, w) \in \V \times \W \\
-			\forall c \in \F
-		\end{dcases}, c (v, w) \in \V \times \W.
-	\]
+  Clearly we have
+  \[
+    \forall (v_1, w_1), (v_2, w_2) \in \V \times \W, (v_1, w_1) + (v_2, w_2) \in \V \times \W
+  \]
+  and
+  \[
+    \begin{dcases}
+      \forall (v, w) \in \V \times \W \\
+      \forall c \in \F
+    \end{dcases}, c (v, w) \in \V \times \W.
+  \]
 
-	First we show that addition in \(\V \times \W\) over \(\F\) is unique.
-	Let \((v_1, w_1), (v_2, w_2) \in \V \times \W\).
-	Suppose for sake of contradiction that
-	\[
-		(v_1, w_1) + (v_2, w_2) \neq (v_1, w_1) + (v_2, w_2).
-	\]
-	Then we have
-	\begin{align*}
-		         & (v_1, w_1) + (v_2, w_2) \neq (v_1, w_1) + (v_2, w_2)                                                                \\
-		\implies & (v_1 + v_2, w_1 + w_2) \neq (v_1 + v_2, w_1 + w_2)         &  & \by{ex:1.2.21}                                      \\
-		\implies & (v_1 + v_2 \neq v_1 + v_2) \lor (w_1 + w_2 \neq w_1 + w_2) &  & \text{(this is the definition of \(\V \times \W\))}
-	\end{align*}
-	which contradicts to the fact that \(v_1 + v_2 \in \V\) is unique and \(w_1 + w_2 \in \W\) is unique.
-	Thus addition in \(\V \times \W\) over \(\F\) is unique.
+  First we show that addition in \(\V \times \W\) over \(\F\) is unique.
+  Let \((v_1, w_1), (v_2, w_2) \in \V \times \W\).
+  Suppose for sake of contradiction that
+  \[
+    (v_1, w_1) + (v_2, w_2) \neq (v_1, w_1) + (v_2, w_2).
+  \]
+  Then we have
+  \begin{align*}
+             & (v_1, w_1) + (v_2, w_2) \neq (v_1, w_1) + (v_2, w_2)                                                                \\
+    \implies & (v_1 + v_2, w_1 + w_2) \neq (v_1 + v_2, w_1 + w_2)         &  & \by{ex:1.2.21}                                      \\
+    \implies & (v_1 + v_2 \neq v_1 + v_2) \lor (w_1 + w_2 \neq w_1 + w_2) &  & \text{(this is the definition of \(\V \times \W\))}
+  \end{align*}
+  which contradicts to the fact that \(v_1 + v_2 \in \V\) is unique and \(w_1 + w_2 \in \W\) is unique.
+  Thus addition in \(\V \times \W\) over \(\F\) is unique.
 
-	Next we show that scalar multiplication in \(\V \times \W\) over \(\F\) is unique.
-	Let \((v, w) \in \V \times \W\) and \(c \in \F\).
-	Suppose for sake of contradiction that
-	\[
-		c(v, w) \neq c(v, w).
-	\]
-	Then we have
-	\begin{align*}
-		         & c(v, w) \neq c(v, w)                                                                    \\
-		\implies & (cv, cw) \neq (cv, cw)         &  & \by{ex:1.2.21}                                      \\
-		\implies & (cv \neq cv) \lor (cw \neq cw) &  & \text{(this is the definition of \(\V \times \W\))}
-	\end{align*}
-	which contradicts to the fact that \(cv \in \V\) is unique and \(cw \in \W\) is unique.
-	Thus scalar multiplication in \(\V \times \W\) over \(\F\) is unique.
+  Next we show that scalar multiplication in \(\V \times \W\) over \(\F\) is unique.
+  Let \((v, w) \in \V \times \W\) and \(c \in \F\).
+  Suppose for sake of contradiction that
+  \[
+    c(v, w) \neq c(v, w).
+  \]
+  Then we have
+  \begin{align*}
+             & c(v, w) \neq c(v, w)                                                                    \\
+    \implies & (cv, cw) \neq (cv, cw)         &  & \by{ex:1.2.21}                                      \\
+    \implies & (cv \neq cv) \lor (cw \neq cw) &  & \text{(this is the definition of \(\V \times \W\))}
+  \end{align*}
+  which contradicts to the fact that \(cv \in \V\) is unique and \(cw \in \W\) is unique.
+  Thus scalar multiplication in \(\V \times \W\) over \(\F\) is unique.
 
-	Now we show that \ref{vs1}--\ref{vs8} holds for \cref{ex:1.2.21}.
-	\begin{description}
-		\item[For \ref{vs1}:]
-			For all \((v_1, w_1), (v_2, w_2) \in \V \times \W\), we have
-			\begin{align*}
-				(v_1, w_1) + (v_2, w_2) & = (v_1 + v_2, w_1 + w_2)   &  & \by{ex:1.2.21}        \\
-				                        & = (v_2 + v_1, w_2 + w_1)   &  & \text{(bt \ref{vs1})} \\
-				                        & = (v_2, w_2) + (v_1, w_1). &  & \by{ex:1.2.21}
-			\end{align*}
-		\item[For \ref{vs2}:]
-			For all \((v_1, w_1), (v_2, w_2), (v_3, w_3) \in \V \times \W\), we have
-			\begin{align*}
-				 & ((v_1, w_1) + (v_2, w_2)) + (v_3, w_3)                               \\
-				 & = (v_1 + v_2, w_1 + w_2) + (v_3, w_3)     &  & \by{ex:1.2.21}        \\
-				 & = ((v_1 + v_2) + v_3, (w_1 + w_2) + w_3)  &  & \by{ex:1.2.21}        \\
-				 & = (v_1 + (v_2 + v_3), w_1 + (w_2 + w_3))  &  & \text{(by \ref{vs2})} \\
-				 & = (v_1, w_1) + (v_2 + v_3, w_2 + w_3)     &  & \by{ex:1.2.21}        \\
-				 & = (v_1, w_1) + ((v_2, w_2) + (v_3, w_3)). &  & \by{ex:1.2.21}
-			\end{align*}
-		\item[For \ref{vs3}:]
-			Since \(\V, \W\) are vector spaces, we know that \(\zv_{\V} \in \V\) and \(\zv_{\W} \in \W\).
-			Thus for all \((v, w) \in \V \times \W\), we have
-			\begin{align*}
-				(v, w) + (\zv_{\V}, \zv_{\W}) & = (v + \zv_{\V}, w + \zv_{\W}) &  & \by{ex:1.2.21}        \\
-				                              & = (v, w).                      &  & \text{(by \ref{vs3})}
-			\end{align*}
-			We denote \(\zv = (\zv_{\V}, \zv_{\W})\).
-		\item[For \ref{vs4}:]
-			For all \((v_1, w_1) \in \V \times \W\), we have
-			\begin{align*}
-				         & (v_1 \in \V) \land (w_1 \in \W)                                      &  & \by{ex:1.2.21}                \\
-				\implies & \begin{dcases}
-					           \exists v_2 \in \V : v_1 + v_2 = \zv_{\V} \\
-					           \exists w_2 \in \V : w_1 + w_2 = \zv_{\W}
-				           \end{dcases}                         &  & \text{(by \ref{vs4})}                                         \\
-				\implies & \exists (v_2, w_2) \in \V \times \W : (v_1, w_1) + (v_2, w_2) = \zv. &  & \text{(from the proof above)}
-			\end{align*}
-		\item[For \ref{vs5}:]
-			Since \(\F\) is a field, we know that \(1 \in \F\).
-			Thus for all \((v, w) \in \V \times \W\), we have
-			\begin{align*}
-				1(v, w) & = (1v, 1w) &  & \by{ex:1.2.21}        \\
-				        & = (v, w).  &  & \text{(by \ref{vs5})}
-			\end{align*}
-		\item[For \ref{vs6}:]
-			For all \(c, d \in \F\), \((v, w) \in \V \times \W\), we have
-			\begin{align*}
-				(cd) (v, w) & = ((cd) v, (cd) w) &  & \by{ex:1.2.21}        \\
-				            & = (c(dv), c(dw))   &  & \text{(by \ref{vs6})} \\
-				            & = c (dv, dw)       &  & \by{ex:1.2.21}        \\
-				            & = c(d(v, w)).      &  & \by{ex:1.2.21}
-			\end{align*}
-		\item[For \ref{vs7}:]
-			For all \(c \in \F\), \((v_1, w_1), (v_2, w_2) \in \V \times \W\), we have
-			\begin{align*}
-				c ((v_1, w_1) + (v_2, w_2)) & = c (v_1 + v_2, w_1, w_2)     &  & \by{ex:1.2.21}        \\
-				                            & = (c(v_1 + v_2), c(w_1, w_2)) &  & \by{ex:1.2.21}        \\
-				                            & = (cv_1 + cv_2, cw_1 + cw_2)  &  & \text{(by \ref{vs7})} \\
-				                            & = (cv_1, cw_1) + (cv_2, cw_2) &  & \by{ex:1.2.21}        \\
-				                            & = c(v_1, w_1) + c(v_2, w_2).  &  & \by{ex:1.2.21}
-			\end{align*}
-		\item[For \ref{vs8}:]
-			For all \(c, d \in \F\), \((v, w) \in \V \times \W\), we have
-			\begin{align*}
-				(c + d) (v, w) & = ((c + d) v, (c + d) w) &  & \by{ex:1.2.21}        \\
-				               & = (cv + dv, cw + dw)     &  & \text{(by \ref{vs8})} \\
-				               & = (cv, cw) + (dv, dw)    &  & \by{ex:1.2.21}        \\
-				               & = c(v, w) + d(v, w).     &  & \by{ex:1.2.21}
-			\end{align*}
-	\end{description}
-	From all proofs above we conclude by \cref{1.2.1} that \cref{ex:1.2.21} is indeed a vector space over \(\F\).
+  Now we show that \ref{vs1}--\ref{vs8} holds for \cref{ex:1.2.21}.
+  \begin{description}
+    \item[For \ref{vs1}:]
+      For all \((v_1, w_1), (v_2, w_2) \in \V \times \W\), we have
+      \begin{align*}
+        (v_1, w_1) + (v_2, w_2) & = (v_1 + v_2, w_1 + w_2)   &  & \by{ex:1.2.21}        \\
+                                & = (v_2 + v_1, w_2 + w_1)   &  & \text{(bt \ref{vs1})} \\
+                                & = (v_2, w_2) + (v_1, w_1). &  & \by{ex:1.2.21}
+      \end{align*}
+    \item[For \ref{vs2}:]
+      For all \((v_1, w_1), (v_2, w_2), (v_3, w_3) \in \V \times \W\), we have
+      \begin{align*}
+         & ((v_1, w_1) + (v_2, w_2)) + (v_3, w_3)                               \\
+         & = (v_1 + v_2, w_1 + w_2) + (v_3, w_3)     &  & \by{ex:1.2.21}        \\
+         & = ((v_1 + v_2) + v_3, (w_1 + w_2) + w_3)  &  & \by{ex:1.2.21}        \\
+         & = (v_1 + (v_2 + v_3), w_1 + (w_2 + w_3))  &  & \text{(by \ref{vs2})} \\
+         & = (v_1, w_1) + (v_2 + v_3, w_2 + w_3)     &  & \by{ex:1.2.21}        \\
+         & = (v_1, w_1) + ((v_2, w_2) + (v_3, w_3)). &  & \by{ex:1.2.21}
+      \end{align*}
+    \item[For \ref{vs3}:]
+      Since \(\V, \W\) are vector spaces, we know that \(\zv_{\V} \in \V\) and \(\zv_{\W} \in \W\).
+      Thus for all \((v, w) \in \V \times \W\), we have
+      \begin{align*}
+        (v, w) + (\zv_{\V}, \zv_{\W}) & = (v + \zv_{\V}, w + \zv_{\W}) &  & \by{ex:1.2.21}        \\
+                                      & = (v, w).                      &  & \text{(by \ref{vs3})}
+      \end{align*}
+      We denote \(\zv = (\zv_{\V}, \zv_{\W})\).
+    \item[For \ref{vs4}:]
+      For all \((v_1, w_1) \in \V \times \W\), we have
+      \begin{align*}
+                 & (v_1 \in \V) \land (w_1 \in \W)                                      &  & \by{ex:1.2.21}                \\
+        \implies & \begin{dcases}
+                     \exists v_2 \in \V : v_1 + v_2 = \zv_{\V} \\
+                     \exists w_2 \in \V : w_1 + w_2 = \zv_{\W}
+                   \end{dcases}                         &  & \text{(by \ref{vs4})}                                         \\
+        \implies & \exists (v_2, w_2) \in \V \times \W : (v_1, w_1) + (v_2, w_2) = \zv. &  & \text{(from the proof above)}
+      \end{align*}
+    \item[For \ref{vs5}:]
+      Since \(\F\) is a field, we know that \(1 \in \F\).
+      Thus for all \((v, w) \in \V \times \W\), we have
+      \begin{align*}
+        1(v, w) & = (1v, 1w) &  & \by{ex:1.2.21}        \\
+                & = (v, w).  &  & \text{(by \ref{vs5})}
+      \end{align*}
+    \item[For \ref{vs6}:]
+      For all \(c, d \in \F\), \((v, w) \in \V \times \W\), we have
+      \begin{align*}
+        (cd) (v, w) & = ((cd) v, (cd) w) &  & \by{ex:1.2.21}        \\
+                    & = (c(dv), c(dw))   &  & \text{(by \ref{vs6})} \\
+                    & = c (dv, dw)       &  & \by{ex:1.2.21}        \\
+                    & = c(d(v, w)).      &  & \by{ex:1.2.21}
+      \end{align*}
+    \item[For \ref{vs7}:]
+      For all \(c \in \F\), \((v_1, w_1), (v_2, w_2) \in \V \times \W\), we have
+      \begin{align*}
+        c ((v_1, w_1) + (v_2, w_2)) & = c (v_1 + v_2, w_1, w_2)     &  & \by{ex:1.2.21}        \\
+                                    & = (c(v_1 + v_2), c(w_1, w_2)) &  & \by{ex:1.2.21}        \\
+                                    & = (cv_1 + cv_2, cw_1 + cw_2)  &  & \text{(by \ref{vs7})} \\
+                                    & = (cv_1, cw_1) + (cv_2, cw_2) &  & \by{ex:1.2.21}        \\
+                                    & = c(v_1, w_1) + c(v_2, w_2).  &  & \by{ex:1.2.21}
+      \end{align*}
+    \item[For \ref{vs8}:]
+      For all \(c, d \in \F\), \((v, w) \in \V \times \W\), we have
+      \begin{align*}
+        (c + d) (v, w) & = ((c + d) v, (c + d) w) &  & \by{ex:1.2.21}        \\
+                       & = (cv + dv, cw + dw)     &  & \text{(by \ref{vs8})} \\
+                       & = (cv, cw) + (dv, dw)    &  & \by{ex:1.2.21}        \\
+                       & = c(v, w) + d(v, w).     &  & \by{ex:1.2.21}
+      \end{align*}
+  \end{description}
+  From all proofs above we conclude by \cref{1.2.1} that \cref{ex:1.2.21} is indeed a vector space over \(\F\).
 \end{proof}

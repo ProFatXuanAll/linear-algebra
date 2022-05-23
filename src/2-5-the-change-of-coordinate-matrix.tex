@@ -1,294 +1,294 @@
 \section{The Change of Coordinate Matrix}\label{sec:2.5}
 
 \begin{note}
-	Geometrically, the change of variable
-	\[
-		\begin{pmatrix}
-			x \\
-			y
-		\end{pmatrix} \to \begin{pmatrix}
-			x' \\
-			y'
-		\end{pmatrix}
-	\]
-	is a change in the way that the position of a point \(P\) in the plane is described.
-	This is done by introducing a new frame of reference, an \(x' y'\)-coordinate system with coordinate axes rotated from the original \(xy\)-coordinate axes.
+  Geometrically, the change of variable
+  \[
+    \begin{pmatrix}
+      x \\
+      y
+    \end{pmatrix} \to \begin{pmatrix}
+      x' \\
+      y'
+    \end{pmatrix}
+  \]
+  is a change in the way that the position of a point \(P\) in the plane is described.
+  This is done by introducing a new frame of reference, an \(x' y'\)-coordinate system with coordinate axes rotated from the original \(xy\)-coordinate axes.
 \end{note}
 
 \begin{thm}\label{2.22}
-	Let \(\beta\) and \(\beta'\) be two ordered bases over \(\F\) for a finite-dimensional vector space \(\V\) over \(\F\), and let \(Q = [\IT[\V]]_{\beta'}^{\beta}\).
-	Then
-	\begin{enumerate}
-		\item \(Q\) is invertible.
-		\item For any \(v \in \V\), \([v]_{\beta} = Q [v]_{\beta'}\).
-	\end{enumerate}
+  Let \(\beta\) and \(\beta'\) be two ordered bases over \(\F\) for a finite-dimensional vector space \(\V\) over \(\F\), and let \(Q = [\IT[\V]]_{\beta'}^{\beta}\).
+  Then
+  \begin{enumerate}
+    \item \(Q\) is invertible.
+    \item For any \(v \in \V\), \([v]_{\beta} = Q [v]_{\beta'}\).
+  \end{enumerate}
 \end{thm}
 
 \begin{proof}[\pf{2.22}(a)]
-	Since \(\IT[\V]\) is invertible, \(Q\) is invertible by \cref{2.18}.
+  Since \(\IT[\V]\) is invertible, \(Q\) is invertible by \cref{2.18}.
 \end{proof}
 
 \begin{proof}[\pf{2.22}(b)]
-	For any \(v \in \V\),
-	\[
-		[v]_{\beta} = [\IT[\V](v)]_{\beta} = [\IT[\V]]_{\beta'}^{\beta} [v]_{\beta'} = Q [v]_{\beta'}
-	\]
-	by \cref{2.14}.
+  For any \(v \in \V\),
+  \[
+    [v]_{\beta} = [\IT[\V](v)]_{\beta} = [\IT[\V]]_{\beta'}^{\beta} [v]_{\beta'} = Q [v]_{\beta'}
+  \]
+  by \cref{2.14}.
 \end{proof}
 
 \begin{defn}\label{2.5.1}
-	The matrix \(Q = [\IT[\V]]_{\beta'}^{\beta}\) defined in \cref{2.22} is called a \textbf{change of coordinate matrix}.
-	Because of \cref{2.22}(b), we say that \(Q\) \textbf{changes \(\beta'\)-coordinates into \(\beta\)-coordinates}.
-	Observe that if \(\beta = \set{\seq{x}{1,,n}}\) and \(\beta' = \set{x_1', x_2', \dots, x_n'}\), then
-	\[
-		x_j' = \sum_{i = 1}^n Q_{i j} x_i
-	\]
-	for \(j \in \set{1, 2, \dots, n}\);
-	that is, the \(j\)th column of \(Q\) is \([x_j']_{\beta}\).
+  The matrix \(Q = [\IT[\V]]_{\beta'}^{\beta}\) defined in \cref{2.22} is called a \textbf{change of coordinate matrix}.
+  Because of \cref{2.22}(b), we say that \(Q\) \textbf{changes \(\beta'\)-coordinates into \(\beta\)-coordinates}.
+  Observe that if \(\beta = \set{\seq{x}{1,,n}}\) and \(\beta' = \set{x_1', x_2', \dots, x_n'}\), then
+  \[
+    x_j' = \sum_{i = 1}^n Q_{i j} x_i
+  \]
+  for \(j \in \set{1, 2, \dots, n}\);
+  that is, the \(j\)th column of \(Q\) is \([x_j']_{\beta}\).
 \end{defn}
 
 \begin{note}
-	If \(Q\) changes \(\beta'\)-coordinates into \(\beta\)-coordinates, then \(Q^{-1}\) changes \(\beta\)-coordinates into \(\beta'\)-coordinates
-	(See \cref{ex:2.5.11}).
+  If \(Q\) changes \(\beta'\)-coordinates into \(\beta\)-coordinates, then \(Q^{-1}\) changes \(\beta\)-coordinates into \(\beta'\)-coordinates
+  (See \cref{ex:2.5.11}).
 \end{note}
 
 \begin{defn}\label{2.5.2}
-	For the remainder of this section, we consider only linear transformations that map a vector space \(\V\) over \(\F\) into itself.
-	Such a linear transformation is called a \textbf{linear operator} on \(\V\) over \(\F\).
-	Suppose now that \(\T\) is a linear operator on a finite-dimensional vector space \(\V\) over \(\F\) and that \(\beta\) and \(\beta'\) are ordered bases for \(\V\) over \(\F\).
-	Then \(\V\) can be represented by the matrices \([\T]_{\beta}\) and \([\T]_{\beta'}\)
-	(See \cref{2.2.4}).
+  For the remainder of this section, we consider only linear transformations that map a vector space \(\V\) over \(\F\) into itself.
+  Such a linear transformation is called a \textbf{linear operator} on \(\V\) over \(\F\).
+  Suppose now that \(\T\) is a linear operator on a finite-dimensional vector space \(\V\) over \(\F\) and that \(\beta\) and \(\beta'\) are ordered bases for \(\V\) over \(\F\).
+  Then \(\V\) can be represented by the matrices \([\T]_{\beta}\) and \([\T]_{\beta'}\)
+  (See \cref{2.2.4}).
 \end{defn}
 
 \begin{thm}\label{2.23}
-	Let \(\T\) be a linear operator on a finite-dimensional vector space \(\V\) over \(\F\), and let \(\beta\) and \(\beta'\) be ordered bases for \(\V\) over \(\F\).
-	Suppose that \(Q\) is the change of coordinate matrix that changes \(\beta'\)-coordinates into \(\beta\)-coordinates.
-	Then
-	\[
-		[\T]_{\beta'} = Q^{-1} [\T]_{\beta} Q.
-	\]
+  Let \(\T\) be a linear operator on a finite-dimensional vector space \(\V\) over \(\F\), and let \(\beta\) and \(\beta'\) be ordered bases for \(\V\) over \(\F\).
+  Suppose that \(Q\) is the change of coordinate matrix that changes \(\beta'\)-coordinates into \(\beta\)-coordinates.
+  Then
+  \[
+    [\T]_{\beta'} = Q^{-1} [\T]_{\beta} Q.
+  \]
 \end{thm}
 
 \begin{proof}[\pf{2.23}]
-	Let \(\IT[\V]\) be the identity transformation on \(\V\).
-	Then \(\T = \IT[\V] \T = \T \IT[\V]\);
-	hence, by \cref{2.11},
-	\[
-		Q [\T]_{\beta'} = [\IT[\V]]_{\beta'}^{\beta} [\T]_{\beta'}^{\beta'} = [\IT[\V] \T]_{\beta'}^{\beta} = [\T \IT[\V]]_{\beta'}^{\beta} = [\T]_{\beta}^{\beta} [\IT[\V]]_{\beta'}^{\beta} = [\T] Q.
-	\]
-	Therefore \([\T]_{\beta'} = Q^{-1} [\T]_{\beta} Q\).
+  Let \(\IT[\V]\) be the identity transformation on \(\V\).
+  Then \(\T = \IT[\V] \T = \T \IT[\V]\);
+  hence, by \cref{2.11},
+  \[
+    Q [\T]_{\beta'} = [\IT[\V]]_{\beta'}^{\beta} [\T]_{\beta'}^{\beta'} = [\IT[\V] \T]_{\beta'}^{\beta} = [\T \IT[\V]]_{\beta'}^{\beta} = [\T]_{\beta}^{\beta} [\IT[\V]]_{\beta'}^{\beta} = [\T] Q.
+  \]
+  Therefore \([\T]_{\beta'} = Q^{-1} [\T]_{\beta} Q\).
 \end{proof}
 
 \begin{cor}\label{2.5.3}
-	Let \(A \in \ms[n][n][\F]\), and let \(\gamma\) be an ordered basis for \(\vs{F}^n\) over \(\F\).
-	Then \([\L_A]_{\gamma} = Q^{-1} A Q\), where \(Q \in \ms[n][n][\F]\) and the \(j\)th column of \(Q\) is the \(j\)th vector of \(\gamma\).
+  Let \(A \in \ms[n][n][\F]\), and let \(\gamma\) be an ordered basis for \(\vs{F}^n\) over \(\F\).
+  Then \([\L_A]_{\gamma} = Q^{-1} A Q\), where \(Q \in \ms[n][n][\F]\) and the \(j\)th column of \(Q\) is the \(j\)th vector of \(\gamma\).
 \end{cor}
 
 \begin{proof}[\pf{2.5.3}]
-	Let \(\gamma = \set{\seq{v}{1,,n}}\) and let \(\beta = \set{\seq{e}{1,,n}}\) be the standard ordered basis for \(\vs{F}^n\) over \(\F\).
-	Then we have
-	\begin{align*}
-		         & \forall j \in \set{1, \dots, n}, v_j = \begin{pmatrix}
-			                                                  Q_{1 j} \\
-			                                                  \vdots  \\
-			                                                  Q_{n j}
-		                                                  \end{pmatrix} = \sum_{i = 1}^n Q_{i j} e_i &  & \by{1.6.3} \\
-		\implies & Q = [\IT_{\vs{F}^n}]_{\gamma}^{\beta}                  &  & \by{2.5.1}                            \\
-		\implies & [\L_A]_{\gamma} = Q^{-1} [\L_A]_{\beta} Q              &  & \by{2.23}                             \\
-		         & = Q^{-1} A Q.                                          &  & \by{2.15}[a]
-	\end{align*}
+  Let \(\gamma = \set{\seq{v}{1,,n}}\) and let \(\beta = \set{\seq{e}{1,,n}}\) be the standard ordered basis for \(\vs{F}^n\) over \(\F\).
+  Then we have
+  \begin{align*}
+             & \forall j \in \set{1, \dots, n}, v_j = \begin{pmatrix}
+                                                        Q_{1 j} \\
+                                                        \vdots  \\
+                                                        Q_{n j}
+                                                      \end{pmatrix} = \sum_{i = 1}^n Q_{i j} e_i &  & \by{1.6.3} \\
+    \implies & Q = [\IT_{\vs{F}^n}]_{\gamma}^{\beta}                  &  & \by{2.5.1}                            \\
+    \implies & [\L_A]_{\gamma} = Q^{-1} [\L_A]_{\beta} Q              &  & \by{2.23}                             \\
+             & = Q^{-1} A Q.                                          &  & \by{2.15}[a]
+  \end{align*}
 \end{proof}
 
 \begin{defn}\label{2.5.4}
-	Let \(A, B \in \ms[n][n][\F]\).
-	We say that \(B\) is \textbf{similar} to \(A\) if there exists an invertible matrix \(Q\) such that \(B = Q^{-1} A Q\).
+  Let \(A, B \in \ms[n][n][\F]\).
+  We say that \(B\) is \textbf{similar} to \(A\) if there exists an invertible matrix \(Q\) such that \(B = Q^{-1} A Q\).
 \end{defn}
 
 \begin{note}
-	Observe that the relation of similarity is an equivalence relation
-	(see \cref{ex:2.5.9}).
-	So we need only say that \(A\) and \(B\) are similar.
+  Observe that the relation of similarity is an equivalence relation
+  (see \cref{ex:2.5.9}).
+  So we need only say that \(A\) and \(B\) are similar.
 \end{note}
 
 \begin{note}
-	In term of \cref{2.5.4}, \cref{2.23} can be stated as follows:
-	If \(\T\) is a linear operator on a finite-dimensional vector space \(\V\) over \(\F\), and if \(\beta\) and \(\beta'\) are any ordered bases for \(\V\) over \(\F\), then \([\T]_{\beta}\) and \([\T]_{\beta'}\) are similar.
+  In term of \cref{2.5.4}, \cref{2.23} can be stated as follows:
+  If \(\T\) is a linear operator on a finite-dimensional vector space \(\V\) over \(\F\), and if \(\beta\) and \(\beta'\) are any ordered bases for \(\V\) over \(\F\), then \([\T]_{\beta}\) and \([\T]_{\beta'}\) are similar.
 \end{note}
 
 \begin{note}
-	\cref{2.23} can be generalized to allow \(\T \in \ls(\V, \W)\), where \(\V, \W\) are vector spaces over \(\F\) and \(\V\) is distinct from \(\W\).
-	In this case, we can change bases in \(\V\) as well as in \(\W\)
-	(see \cref{ex:2.5.8}).
+  \cref{2.23} can be generalized to allow \(\T \in \ls(\V, \W)\), where \(\V, \W\) are vector spaces over \(\F\) and \(\V\) is distinct from \(\W\).
+  In this case, we can change bases in \(\V\) as well as in \(\W\)
+  (see \cref{ex:2.5.8}).
 \end{note}
 
 \exercisesection
 
 \setcounter{ex}{7}
 \begin{ex}\label{ex:2.5.8}
-	Prove the following generalization of \cref{2.23}.
-	Let \(\T \in \ls(\V, \W)\) where \(\V, \W\) are finite-dimensional vector spaces over \(\F\).
-	Let \(\beta\) and \(\beta'\) be ordered bases for \(\V\) over \(\F\), and let \(\gamma\) and \(\gamma'\) be ordered bases for \(\W\) over \(\F\).
-	Then \([\T]_{\beta'}^{\gamma'} = P^{-1} [\T]_{\beta}^{\gamma} Q\), where \(Q\) is the matrix that changes \(\beta'\)-coordinates into \(\beta\)-coordinates and \(P\) is the matrix that changes \(\gamma'\)-coordinates into \(\gamma\)-coordinates.
+  Prove the following generalization of \cref{2.23}.
+  Let \(\T \in \ls(\V, \W)\) where \(\V, \W\) are finite-dimensional vector spaces over \(\F\).
+  Let \(\beta\) and \(\beta'\) be ordered bases for \(\V\) over \(\F\), and let \(\gamma\) and \(\gamma'\) be ordered bases for \(\W\) over \(\F\).
+  Then \([\T]_{\beta'}^{\gamma'} = P^{-1} [\T]_{\beta}^{\gamma} Q\), where \(Q\) is the matrix that changes \(\beta'\)-coordinates into \(\beta\)-coordinates and \(P\) is the matrix that changes \(\gamma'\)-coordinates into \(\gamma\)-coordinates.
 \end{ex}
 
 \begin{proof}[\pf{ex:2.5.8}]
-	We have
-	\begin{align*}
-		P [\T]_{\beta'}^{\gamma'} & = [\IT[\W]]_{\gamma'}^{\gamma} [\T]_{\beta'}^{\gamma'} &  & \by{2.5.1} \\
-		                          & = [\IT[\W] \T]_{\beta'}^{\gamma}                       &  & \by{2.11}  \\
-		                          & = [\T]_{\beta'}^{\gamma}                               &  & \by{2.1.9} \\
-		                          & = [\T \IT[\V]]_{\beta'}^{\gamma}                       &  & \by{2.1.9} \\
-		                          & = [\T]_{\beta}^{\gamma} [\IT[\V]]_{\beta'}^{\beta}     &  & \by{2.11}  \\
-		                          & = [\T]_{\beta}^{\gamma} Q                              &  & \by{2.5.1}
-	\end{align*}
-	and thus
-	\begin{align*}
-		         & P [\T]_{\beta'}^{\gamma'} = [\T]_{\beta}^{\gamma} Q                                 \\
-		\implies & P^{-1} P [\T]_{\beta'}^{\gamma'} = P^{-1} [\T]_{\beta}^{\gamma} Q &  & \by{2.22}[a] \\
-		\implies & [\T]_{\beta'}^{\gamma'} = P^{-1} [\T]_{\beta}^{\gamma} Q.         &  & \by{2.4.3}
-	\end{align*}
+  We have
+  \begin{align*}
+    P [\T]_{\beta'}^{\gamma'} & = [\IT[\W]]_{\gamma'}^{\gamma} [\T]_{\beta'}^{\gamma'} &  & \by{2.5.1} \\
+                              & = [\IT[\W] \T]_{\beta'}^{\gamma}                       &  & \by{2.11}  \\
+                              & = [\T]_{\beta'}^{\gamma}                               &  & \by{2.1.9} \\
+                              & = [\T \IT[\V]]_{\beta'}^{\gamma}                       &  & \by{2.1.9} \\
+                              & = [\T]_{\beta}^{\gamma} [\IT[\V]]_{\beta'}^{\beta}     &  & \by{2.11}  \\
+                              & = [\T]_{\beta}^{\gamma} Q                              &  & \by{2.5.1}
+  \end{align*}
+  and thus
+  \begin{align*}
+             & P [\T]_{\beta'}^{\gamma'} = [\T]_{\beta}^{\gamma} Q                                 \\
+    \implies & P^{-1} P [\T]_{\beta'}^{\gamma'} = P^{-1} [\T]_{\beta}^{\gamma} Q &  & \by{2.22}[a] \\
+    \implies & [\T]_{\beta'}^{\gamma'} = P^{-1} [\T]_{\beta}^{\gamma} Q.         &  & \by{2.4.3}
+  \end{align*}
 \end{proof}
 
 \begin{ex}\label{ex:2.5.9}
-	Prove that ``is similar to'' is an equivalence relation on \(\ms[n][n][\F]\).
+  Prove that ``is similar to'' is an equivalence relation on \(\ms[n][n][\F]\).
 \end{ex}
 
 \begin{proof}[\pf{ex:2.5.9}]
-	Let \(A, B, C \in \ms[n][n][\F]\).
-	\begin{description}
-		\item[For reflexive:]
-			We have
-			\[
-				A = I_n A I_n = I_n^{-1} A I_n.
-			\]
-		\item[For symmetric:]
-			Suppose that \(B = Q^{-1} A Q\).
-			Let \(P = Q^{-1}\).
-			Then we have
-			\begin{align*}
-				     & B = Q^{-1} A Q                                                   \\
-				\iff & Q B Q^{-1} = Q Q^{-1} A Q Q^{-1} = I_n A I_n = A &  & \by{2.4.3} \\
-				\iff & P^{-1} B P = A.                                  &  & \by{2.4.3}
-			\end{align*}
-		\item[For transitive:]
-			Suppose that \(B = Q^{-1} A Q\) and \(C = P^{-1} B P\).
-			Then we have
-			\begin{align*}
-				C & = P^{-1} B P                             \\
-				  & = P^{-1} Q^{-1} A Q P                    \\
-				  & = (QP)^{-1} A (QP).   &  & \by{ex:2.4.4}
-			\end{align*}
-	\end{description}
-	From all cases above we see that ``is similar to'' defined in \cref{2.5.4} is an equivalence relation on \(\ms[n][n][\F]\).
+  Let \(A, B, C \in \ms[n][n][\F]\).
+  \begin{description}
+    \item[For reflexive:]
+      We have
+      \[
+        A = I_n A I_n = I_n^{-1} A I_n.
+      \]
+    \item[For symmetric:]
+      Suppose that \(B = Q^{-1} A Q\).
+      Let \(P = Q^{-1}\).
+      Then we have
+      \begin{align*}
+             & B = Q^{-1} A Q                                                   \\
+        \iff & Q B Q^{-1} = Q Q^{-1} A Q Q^{-1} = I_n A I_n = A &  & \by{2.4.3} \\
+        \iff & P^{-1} B P = A.                                  &  & \by{2.4.3}
+      \end{align*}
+    \item[For transitive:]
+      Suppose that \(B = Q^{-1} A Q\) and \(C = P^{-1} B P\).
+      Then we have
+      \begin{align*}
+        C & = P^{-1} B P                             \\
+          & = P^{-1} Q^{-1} A Q P                    \\
+          & = (QP)^{-1} A (QP).   &  & \by{ex:2.4.4}
+      \end{align*}
+  \end{description}
+  From all cases above we see that ``is similar to'' defined in \cref{2.5.4} is an equivalence relation on \(\ms[n][n][\F]\).
 \end{proof}
 
 \begin{ex}\label{ex:2.5.10}
-	Prove that if \(A, B \in \ms[n][n][\F]\) and \(A, B\) are similar, then \(\tr[A] = \tr[B]\).
+  Prove that if \(A, B \in \ms[n][n][\F]\) and \(A, B\) are similar, then \(\tr[A] = \tr[B]\).
 \end{ex}
 
 \begin{proof}[\pf{ex:2.5.10}]
-	By \cref{2.5.4} we know that there exists a \(Q \in \ms[n][n][\F]\) such that \(B = Q^{-1} A Q\).
-	Thus we have
-	\begin{align*}
-		\tr[B] & = \tr[Q^{-1} A Q]                       \\
-		       & = \tr[(Q^{-1} A) Q] &  & \by{2.16}      \\
-		       & = \tr[Q (Q^{-1} A)] &  & \by{ex:2.3.13} \\
-		       & = \tr[(Q Q^{-1}) A] &  & \by{2.16}      \\
-		       & = \tr[I_n A]        &  & \by{2.4.3}     \\
-		       & = \tr[A].           &  & \by{2.4.3}
-	\end{align*}
+  By \cref{2.5.4} we know that there exists a \(Q \in \ms[n][n][\F]\) such that \(B = Q^{-1} A Q\).
+  Thus we have
+  \begin{align*}
+    \tr[B] & = \tr[Q^{-1} A Q]                       \\
+           & = \tr[(Q^{-1} A) Q] &  & \by{2.16}      \\
+           & = \tr[Q (Q^{-1} A)] &  & \by{ex:2.3.13} \\
+           & = \tr[(Q Q^{-1}) A] &  & \by{2.16}      \\
+           & = \tr[I_n A]        &  & \by{2.4.3}     \\
+           & = \tr[A].           &  & \by{2.4.3}
+  \end{align*}
 \end{proof}
 
 \begin{ex}\label{ex:2.5.11}
-	Let \(\V\) be a finite-dimensional vector space over \(\F\) with ordered bases \(\alpha\), \(\beta\), and \(\gamma\).
-	\begin{enumerate}
-		\item Prove that if \(Q\) and \(R\) are the change of coordinate matrices that change \(\alpha\)-coordinates into \(\beta\)-coordinates and \(\beta\)-coordinates into \(\gamma\)-coordinates, respectively, then \(RQ\) is the change of coordinate matrix that changes \(\alpha\)-coordinates into \(\gamma\)-coordinates.
-		\item Prove that if \(Q\) changes \(\alpha\)-coordinates into \(\beta\)-coordinates, then \(Q^{-1}\) changes \(\beta\)-coordinates into \(\alpha\)-coordinates.
-	\end{enumerate}
+  Let \(\V\) be a finite-dimensional vector space over \(\F\) with ordered bases \(\alpha\), \(\beta\), and \(\gamma\).
+  \begin{enumerate}
+    \item Prove that if \(Q\) and \(R\) are the change of coordinate matrices that change \(\alpha\)-coordinates into \(\beta\)-coordinates and \(\beta\)-coordinates into \(\gamma\)-coordinates, respectively, then \(RQ\) is the change of coordinate matrix that changes \(\alpha\)-coordinates into \(\gamma\)-coordinates.
+    \item Prove that if \(Q\) changes \(\alpha\)-coordinates into \(\beta\)-coordinates, then \(Q^{-1}\) changes \(\beta\)-coordinates into \(\alpha\)-coordinates.
+  \end{enumerate}
 \end{ex}
 
 \begin{proof}[\pf{ex:2.5.11}(a)]
-	We have
-	\begin{align*}
-		QR & = [\IT[\V]]_{\alpha}^{\beta} [\IT[\V]]_{\beta}^{\gamma} &  & \by{2.5.1} \\
-		   & = [\IT[\V] \IT[\V]]_{\alpha}^{\gamma}                   &  & \by{2.11}  \\
-		   & = [\IT[\V]]_{\alpha}^{\gamma}                           &  & \by{2.1.9}
-	\end{align*}
-	and thus by \cref{2.5.1} \(QR\) is the change of coordinate matrix that changes \(\alpha\)-coordinates into \(\gamma\)-coordinates.
+  We have
+  \begin{align*}
+    QR & = [\IT[\V]]_{\alpha}^{\beta} [\IT[\V]]_{\beta}^{\gamma} &  & \by{2.5.1} \\
+       & = [\IT[\V] \IT[\V]]_{\alpha}^{\gamma}                   &  & \by{2.11}  \\
+       & = [\IT[\V]]_{\alpha}^{\gamma}                           &  & \by{2.1.9}
+  \end{align*}
+  and thus by \cref{2.5.1} \(QR\) is the change of coordinate matrix that changes \(\alpha\)-coordinates into \(\gamma\)-coordinates.
 \end{proof}
 
 \begin{proof}[\pf{ex:2.5.11}(b)]
-	We have
-	\begin{align*}
-		Q^{-1} & = \pa{[\IT[\V]]_{\alpha}^{\beta}}^{-1} &  & \by{2.5.1} \\
-		       & = [\IT[\V]^{-1}]_{\beta}^{\alpha}      &  & \by{2.18}  \\
-		       & = [\IT[\V]]_{\beta}^{\alpha}.          &  & \by{2.1.9}
-	\end{align*}
+  We have
+  \begin{align*}
+    Q^{-1} & = \pa{[\IT[\V]]_{\alpha}^{\beta}}^{-1} &  & \by{2.5.1} \\
+           & = [\IT[\V]^{-1}]_{\beta}^{\alpha}      &  & \by{2.18}  \\
+           & = [\IT[\V]]_{\beta}^{\alpha}.          &  & \by{2.1.9}
+  \end{align*}
 \end{proof}
 
 \setcounter{ex}{12}
 \begin{ex}\label{ex:2.5.13}
-	Let \(\V\) be a finite-dimensional vector space over a field \(\F\), and let \(\beta = \set{\seq{x}{1,,n}}\) be an ordered basis for \(\V\) over \(\F\).
-	Let \(Q \in \ms[n][n][\F]\) and \(Q\) is invertible.
-	Define
-	\[
-		x_j' = \sum_{i = 1}^n Q_{i j} x_i \quad \text{for } 1 \leq j \leq n,
-	\]
-	and set \(\beta' = \set{x_1', x_2', \dots, x_n'}\).
-	Prove that \(\beta'\) is a basis for \(\V\) over \(\F\) and hence that \(Q\) is the change of coordinate matrix changing \(\beta'\)-coordinates into \(\beta\)-coordinates.
+  Let \(\V\) be a finite-dimensional vector space over a field \(\F\), and let \(\beta = \set{\seq{x}{1,,n}}\) be an ordered basis for \(\V\) over \(\F\).
+  Let \(Q \in \ms[n][n][\F]\) and \(Q\) is invertible.
+  Define
+  \[
+    x_j' = \sum_{i = 1}^n Q_{i j} x_i \quad \text{for } 1 \leq j \leq n,
+  \]
+  and set \(\beta' = \set{x_1', x_2', \dots, x_n'}\).
+  Prove that \(\beta'\) is a basis for \(\V\) over \(\F\) and hence that \(Q\) is the change of coordinate matrix changing \(\beta'\)-coordinates into \(\beta\)-coordinates.
 \end{ex}
 
 \begin{proof}[\pf{ex:2.5.13}]
-	Let \(a = \tp{\tuple{a}{1,,n}} \in \vs{F}^n\) such that
-	\[
-		\sum_{j = 1}^n a_j x_j' = \zv.
-	\]
-	Since
-	\begin{align*}
-		         & \sum_{j = 1}^n a_j x_j' = \sum_{j = 1}^n \pa{a_j \sum_{i = 1}^n Q_{i j} x_i}                                                             \\
-		         & = \sum_{j = 1}^n \pa{\sum_{i = 1}^n a_j Q_{i j} x_i} = \sum_{i = 1}^n \pa{\sum_{j = 1}^n a_j Q_{i j}} x_i = \zv &  & \by{1.2.1}          \\
-		\implies & \forall i \in \set{1, \dots, n}, \sum_{j = 1}^n a_j Q_{i j} = 0                                                 &  & \by{1.6.1}          \\
-		\implies & Qa = \begin{pmatrix}
-			                Q_{1 1} & \cdots & Q_{1 n} \\
-			                \vdots  & \ddots & \vdots  \\
-			                Q_{n 1} & \cdots & Q_{n n}
-		                \end{pmatrix} \cdot \begin{pmatrix}
-			                                    a_1    \\
-			                                    \vdots \\
-			                                    a_n
-		                                    \end{pmatrix} = \zm                                                                             &  & \by{2.3.1} \\
-		\implies & a = \zv,                                                                                                        &  & \by{ex:2.4.6}
-	\end{align*}
-	by \cref{1.5.3} we know that \(\beta'\) is linearly independent.
-	Thus by \cref{1.6.15}(b) \(\beta'\) is a basis for \(\V\) over \(\F\).
-	We conclude by \cref{2.5.1} that \(Q\) is the change of coordinate matrix changin \(\beta'\)-coordinates into \(\beta\)-coordinates.
+  Let \(a = \tp{\tuple{a}{1,,n}} \in \vs{F}^n\) such that
+  \[
+    \sum_{j = 1}^n a_j x_j' = \zv.
+  \]
+  Since
+  \begin{align*}
+             & \sum_{j = 1}^n a_j x_j' = \sum_{j = 1}^n \pa{a_j \sum_{i = 1}^n Q_{i j} x_i}                                                             \\
+             & = \sum_{j = 1}^n \pa{\sum_{i = 1}^n a_j Q_{i j} x_i} = \sum_{i = 1}^n \pa{\sum_{j = 1}^n a_j Q_{i j}} x_i = \zv &  & \by{1.2.1}          \\
+    \implies & \forall i \in \set{1, \dots, n}, \sum_{j = 1}^n a_j Q_{i j} = 0                                                 &  & \by{1.6.1}          \\
+    \implies & Qa = \begin{pmatrix}
+                      Q_{1 1} & \cdots & Q_{1 n} \\
+                      \vdots  & \ddots & \vdots  \\
+                      Q_{n 1} & \cdots & Q_{n n}
+                    \end{pmatrix} \cdot \begin{pmatrix}
+                                          a_1    \\
+                                          \vdots \\
+                                          a_n
+                                        \end{pmatrix} = \zm                                                                             &  & \by{2.3.1} \\
+    \implies & a = \zv,                                                                                                        &  & \by{ex:2.4.6}
+  \end{align*}
+  by \cref{1.5.3} we know that \(\beta'\) is linearly independent.
+  Thus by \cref{1.6.15}(b) \(\beta'\) is a basis for \(\V\) over \(\F\).
+  We conclude by \cref{2.5.1} that \(Q\) is the change of coordinate matrix changin \(\beta'\)-coordinates into \(\beta\)-coordinates.
 \end{proof}
 
 \begin{ex}\label{ex:2.5.14}
-	Prove the converse of \cref{ex:2.5.8}:
-	If \(A, B \in \ms\), and if there exist invertible matrices \(P \in \ms[m][m][\F]\) and \(Q \in \ms[n][n][\F]\) such that \(B = P^{-1} A Q\), then there exist an \(n\)-dimensional vector space \(\V\) and an \(m\)-dimensional vector space \(\W\) (both over \(\F\)), ordered bases \(\beta, \beta'\) for \(\V\) and \(\gamma, \gamma'\) for \(\W\) (all over \(\F\)), and a \(\T \in \ls(\V, \W)\) such that
-	\[
-		A = [\T]_{\beta}^{\gamma} \quad \text{and} \quad B = [\T]_{\beta'}^{\gamma'}.
-	\]
+  Prove the converse of \cref{ex:2.5.8}:
+  If \(A, B \in \ms\), and if there exist invertible matrices \(P \in \ms[m][m][\F]\) and \(Q \in \ms[n][n][\F]\) such that \(B = P^{-1} A Q\), then there exist an \(n\)-dimensional vector space \(\V\) and an \(m\)-dimensional vector space \(\W\) (both over \(\F\)), ordered bases \(\beta, \beta'\) for \(\V\) and \(\gamma, \gamma'\) for \(\W\) (all over \(\F\)), and a \(\T \in \ls(\V, \W)\) such that
+  \[
+    A = [\T]_{\beta}^{\gamma} \quad \text{and} \quad B = [\T]_{\beta'}^{\gamma'}.
+  \]
 \end{ex}
 
 \begin{proof}[\pf{ex:2.5.14}]
-	Let \(\beta\) and \(\gamma\) be the standard ordered bases for \(\vs{F}^n\) and \(\vs{F}^m\) over \(\F\), respectively.
-	We define \(\beta'\) and \(\gamma'\) as follow:
-	\begin{align*}
-		 & \beta' = \set{\sum_{i = 1}^n \pa{Q^{-1}}_{i j} e_i : (j \in \set{1, \dots, n}) \land (e_i \in \beta)};   \\
-		 & \gamma' = \set{\sum_{i = 1}^n \pa{P}^{-1}_{i j} e_i : (j \in \set{1, \dots, m}) \land (e_i \in \gamma)}.
-	\end{align*}
-	By \cref{ex:2.5.13} we see that \(\beta'\) and \(\gamma'\) are bases of \(\vs{F}^n\) and \(\vs{F}^m\) over \(\F\), respectively.
-	By \cref{2.5.1} we see that \(Q^{-1}\) changes \(\beta\)-coordinates into \(\beta'\)-coordinates and \(P^{-1}\) changes \(\gamma\)-coordinates into \(\gamma'\)-coordinates.
-	By \cref{ex:2.5.11}(b) we see that \(Q\) changes \(\beta'\)-coordinates into \(\beta\)-coordinates.
-	If we set \(\V = \vs{F}^n\), \(\W = \vs{F}^m\) and \(\T = \L_A\), then we have
-	\begin{align*}
-		B & = P^{-1} A Q                                                                                  &  & \text{(by hypothesis)}         \\
-		  & = [\IT[\vs{F}^m]]_{\gamma}^{\gamma'} A [\IT[\vs{F}^n]]_{\beta'}^{\beta}                       &  & \text{(from the proofs above)} \\
-		  & = [\IT[\vs{F}^m]]_{\gamma}^{\gamma'} [\L_A]_{\beta}^{\gamma} [\IT[\vs{F}^n]]_{\beta'}^{\beta} &  & \by{2.15}[a]                   \\
-		  & = [\IT[\vs{F}^m]]_{\gamma}^{\gamma'} [\T]_{\beta}^{\gamma} [\IT[\vs{F}^n]]_{\beta'}^{\beta}                                       \\
-		  & = [\IT[\vs{F}^m] \T \IT[\vs{F}^n]]_{\beta'}^{\gamma'}                                         &  & \by{2.11}                      \\
-		  & = [\T]_{\beta'}^{\gamma'}.                                                                    &  & \by{2.1.9}
-	\end{align*}
+  Let \(\beta\) and \(\gamma\) be the standard ordered bases for \(\vs{F}^n\) and \(\vs{F}^m\) over \(\F\), respectively.
+  We define \(\beta'\) and \(\gamma'\) as follow:
+  \begin{align*}
+     & \beta' = \set{\sum_{i = 1}^n \pa{Q^{-1}}_{i j} e_i : (j \in \set{1, \dots, n}) \land (e_i \in \beta)};   \\
+     & \gamma' = \set{\sum_{i = 1}^n \pa{P}^{-1}_{i j} e_i : (j \in \set{1, \dots, m}) \land (e_i \in \gamma)}.
+  \end{align*}
+  By \cref{ex:2.5.13} we see that \(\beta'\) and \(\gamma'\) are bases of \(\vs{F}^n\) and \(\vs{F}^m\) over \(\F\), respectively.
+  By \cref{2.5.1} we see that \(Q^{-1}\) changes \(\beta\)-coordinates into \(\beta'\)-coordinates and \(P^{-1}\) changes \(\gamma\)-coordinates into \(\gamma'\)-coordinates.
+  By \cref{ex:2.5.11}(b) we see that \(Q\) changes \(\beta'\)-coordinates into \(\beta\)-coordinates.
+  If we set \(\V = \vs{F}^n\), \(\W = \vs{F}^m\) and \(\T = \L_A\), then we have
+  \begin{align*}
+    B & = P^{-1} A Q                                                                                  &  & \text{(by hypothesis)}         \\
+      & = [\IT[\vs{F}^m]]_{\gamma}^{\gamma'} A [\IT[\vs{F}^n]]_{\beta'}^{\beta}                       &  & \text{(from the proofs above)} \\
+      & = [\IT[\vs{F}^m]]_{\gamma}^{\gamma'} [\L_A]_{\beta}^{\gamma} [\IT[\vs{F}^n]]_{\beta'}^{\beta} &  & \by{2.15}[a]                   \\
+      & = [\IT[\vs{F}^m]]_{\gamma}^{\gamma'} [\T]_{\beta}^{\gamma} [\IT[\vs{F}^n]]_{\beta'}^{\beta}                                       \\
+      & = [\IT[\vs{F}^m] \T \IT[\vs{F}^n]]_{\beta'}^{\gamma'}                                         &  & \by{2.11}                      \\
+      & = [\T]_{\beta'}^{\gamma'}.                                                                    &  & \by{2.1.9}
+  \end{align*}
 \end{proof}

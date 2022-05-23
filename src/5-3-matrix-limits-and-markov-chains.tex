@@ -4,12 +4,12 @@
   Let \(L, \seq{A}{1,2,}\) be \(n \times p\) matrices having complex entries.
   The sequence \(\seq{A}{1,2,}\) is said to \textbf{converge} to the \(n \times p\) matrix \(L\), called the \textbf{limit} of the sequence, if
   \[
-    \lim_{m \to \infty} (A_m)_{i j} = L_{i j}
+    \Lim_{m \to \infty} (A_m)_{i j} = L_{i j}
   \]
   for all \(i \in \set{1, \dots, n}\) and \(j \in \set{1, \dots, p}\).
   To designate that \(L\) is the limit of the sequence, we write
   \[
-    \lim_{m \to \infty} A_m = L.
+    \Lim_{m \to \infty} A_m = L.
   \]
 \end{defn}
 
@@ -17,27 +17,27 @@
   Let \(\seq{A}{1,2,}\) be a sequence of \(n \times p\) matrices with complex entries that converges to the matrix \(L\).
   Then for any \(P \in \ms[r][n][\C]\) and \(Q \in \ms[p][s][\C]\),
   \[
-    \lim_{m \to \infty} P A_m = PL \quad \text{and} \quad \lim_{m \to \infty} A_m Q = LQ.
+    \Lim_{m \to \infty} P A_m = PL \quad \text{and} \quad \Lim_{m \to \infty} A_m Q = LQ.
   \]
 \end{thm}
 
 \begin{proof}[\pf{5.12}]
   For any \(i \in \set{1, \dots, r}\) and \(j \in \set{1, \dots, p}\),
   \begin{align*}
-    \lim_{m \to \infty} (P A_m)_{i j} & = \lim_{m \to \infty} \sum_{k = 1}^n P_{i k} (A_m)_{k j}      &  & \by{2.3.1} \\
-                                      & = \sum_{k = 1}^n P_{i k} \pa{\lim_{m \to \infty} (A_m)_{k j}}                 \\
+    \Lim_{m \to \infty} (P A_m)_{i j} & = \Lim_{m \to \infty} \sum_{k = 1}^n P_{i k} (A_m)_{k j}      &  & \by{2.3.1} \\
+                                      & = \sum_{k = 1}^n P_{i k} \pa{\Lim_{m \to \infty} (A_m)_{k j}}                 \\
                                       & = \sum_{k = 1}^n P_{i k} L_{k j}                              &  & \by{5.3.1} \\
                                       & = (PL)_{i j}.                                                 &  & \by{2.3.1}
   \end{align*}
-  Hence \(\lim_{m \to \infty} P A_m = PL\).
-  The proof that \(\lim_{m \to \infty} A_m Q = LQ\) is similar.
+  Hence \(\Lim_{m \to \infty} P A_m = PL\).
+  The proof that \(\Lim_{m \to \infty} A_m Q = LQ\) is similar.
 \end{proof}
 
 \begin{cor}\label{5.3.2}
-  Let \(A \in \ms[n][n][\C]\) be such that \(\lim_{m \to \infty} A^m = L\).
+  Let \(A \in \ms[n][n][\C]\) be such that \(\Lim_{m \to \infty} A^m = L\).
   Then for any invertible matrix \(Q \in \ms[n][n][\C]\),
   \[
-    \lim_{m \to \infty} (Q A Q^{-1})^m = Q L Q^{-1}.
+    \Lim_{m \to \infty} (Q A Q^{-1})^m = Q L Q^{-1}.
   \]
 \end{cor}
 
@@ -48,7 +48,7 @@
   \]
   we have
   \[
-    \lim_{m \to \infty} (Q A Q^{-1})^m = \lim_{m \to \infty} Q A^m Q^{-1} = Q \pa{\lim_{m \to \infty} A^m} Q^{-1} = Q L Q^{-1}
+    \Lim_{m \to \infty} (Q A Q^{-1})^m = \Lim_{m \to \infty} Q A^m Q^{-1} = Q \pa{\Lim_{m \to \infty} A^m} Q^{-1} = Q L Q^{-1}
   \]
   by applying \cref{5.12} twice.
 \end{proof}
@@ -59,13 +59,13 @@
     S = \set{\lambda \in \C : \abs{\lambda} < 1 \text{ or } \lambda = 1}.
   \]
   Geometrically, this set consists of the complex number \(1\) and the interior of the unit disk (the disk of radius \(1\) centered at the origin).
-  This set is of interest because if \(\lambda\) is a complex number, then \(\lim_{m \to \infty} \lambda^m\) exists iff \(\lambda \in S\).
+  This set is of interest because if \(\lambda\) is a complex number, then \(\Lim_{m \to \infty} \lambda^m\) exists iff \(\lambda \in S\).
   This fact, which is obviously true if \(\lambda\) is real, can be shown to be true for complex numbers also.
 \end{defn}
 
 \begin{thm}\label{5.13}
   Let \(A\) be a square matrix with complex entries.
-  Then \(\lim_{m \to \infty} A^m\) exists iff both of the following conditions hold.
+  Then \(\Lim_{m \to \infty} A^m\) exists iff both of the following conditions hold.
   \begin{enumerate}
     \item Every eigenvalue of \(A\) is contained in \(S\).
     \item If \(1\) is an eigenvalue of \(A\), then the dimension of the eigenspace corresponding to \(1\) equals the multiplicity of \(1\) as an eigenvalue of \(A\).
@@ -78,11 +78,11 @@
   Let \(v\) be an eigenvector of \(A\) corresponding to \(\lambda\).
   Regarding \(v\) as an \(n \times 1\) matrix, we see that
   \[
-    \lim_{m \to \infty} (A^m v) = \pa{\lim_{m \to \infty} A^m} v = Lv
+    \Lim_{m \to \infty} (A^m v) = \pa{\Lim_{m \to \infty} A^m} v = Lv
   \]
-  by \cref{5.12}, where \(L = \lim_{m \to \infty} A^m\).
-  But \(\lim_{m \to \infty} (A^m v) = \lim_{m \to \infty} (\lambda^m v)\) diverges because \(\lim_{m \to \infty} \lambda^m\) does not exist.
-  Hence if \(\lim_{m \to \infty} A^m\) exists, then condition (a) of \cref{5.13} must hold.
+  by \cref{5.12}, where \(L = \Lim_{m \to \infty} A^m\).
+  But \(\Lim_{m \to \infty} (A^m v) = \Lim_{m \to \infty} (\lambda^m v)\) diverges because \(\Lim_{m \to \infty} \lambda^m\) does not exist.
+  Hence if \(\Lim_{m \to \infty} A^m\) exists, then condition (a) of \cref{5.13} must hold.
 
   We see in \cref{ch:7} that if \(A\) is a matrix for which condition (b) fails, then \(A\) is similar to a matrix whose upper left \(2 \times 2\) submatrix is precisely this matrix \(B = \begin{pmatrix}
     1 & 1 \\
@@ -96,7 +96,7 @@
     \item Every eigenvalue of \(A\) is contained in \(S\).
     \item \(A\) is diagonalizable.
   \end{enumerate}
-  Then \(\lim_{m \to \infty} A^m\) exists.
+  Then \(\Lim_{m \to \infty} A^m\) exists.
 \end{thm}
 
 \begin{proof}[\pf{5.14}]
@@ -113,7 +113,7 @@
   Because \(\seq{\lambda}{1,,n}\) are the eigenvalues of \(A\), condition (i) requires that for each \(i \in \set{1, \dots, n}\), either \(\lambda_i = 1\) or \(\abs{\lambda_i} < 1\).
   Thus
   \[
-    \lim_{m \to \infty} \lambda_i^m = \begin{dcases}
+    \Lim_{m \to \infty} \lambda_i^m = \begin{dcases}
       1 & \text{if } \lambda_i = 1 \\
       0 & \text{otherwise}
     \end{dcases}.
@@ -130,7 +130,7 @@
   the sequence \(D, D^2, \cdots\) converges to a limit \(L\).
   Hence
   \[
-    \lim_{m \to \infty} A^m = \lim_{m \to \infty} (Q D Q^{-1})^m = Q L Q^{-1}
+    \Lim_{m \to \infty} A^m = \Lim_{m \to \infty} (Q D Q^{-1})^m = Q L Q^{-1}
   \]
   by \cref{5.3.2}.
 \end{proof}
@@ -211,9 +211,9 @@
   Of course, a Markov process is usually only an idealization of reality because the probabilities involved are almost never constant over time.
 
   The vector that describes the initial probability of being in each state is called the \textbf{initial probability vector} for the Markov chain.
-  We saw that \(\lim_{m \to \infty} A^m P\), where \(A\) is the transition matrix and \(P\) is the initial probability vector of the Markov chain, gives the eventual proportions in each state.
+  We saw that \(\Lim_{m \to \infty} A^m P\), where \(A\) is the transition matrix and \(P\) is the initial probability vector of the Markov chain, gives the eventual proportions in each state.
   In general, however, the limit of powers of a transition matrix need not exist.
-  In fact, it can be shown (\cref{ex:7.2.20}) that the only transition matrices \(A\) such that \(\lim_{m \to \infty} A^m\) does not exist are precisely those matrices for which condition (a) of \cref{5.13} fails to hold.
+  In fact, it can be shown (\cref{ex:7.2.20}) that the only transition matrices \(A\) such that \(\Lim_{m \to \infty} A^m\) does not exist are precisely those matrices for which condition (a) of \cref{5.13} fails to hold.
 \end{defn}
 
 \begin{note}
@@ -479,7 +479,7 @@
 
 \begin{cor}\label{5.3.15}
   Let \(A\) be a regular transition matrix that is diagonalizable.
-  Then \(\lim_{m \to \infty} A^m\) exists.
+  Then \(\Lim_{m \to \infty} A^m\) exists.
 \end{cor}
 
 \begin{proof}[\pf{5.3.15}]
@@ -489,9 +489,9 @@
 \begin{note}
   In fact, it can be shown that if \(A\) is a regular transition matrix, then the multiplicity of \(1\) as an eigenvalue of \(A\) is \(1\).
   Thus, by \cref{5.7}, condition (b) of \cref{5.13} is satisfied.
-  So if \(A\) is a regular transition matrix, \(\lim_{m \to \infty} A^m\) exists regardless of whether \(A\) is or is not diagonalizable.
+  So if \(A\) is a regular transition matrix, \(\Lim_{m \to \infty} A^m\) exists regardless of whether \(A\) is or is not diagonalizable.
   As with \cref{5.13}, however, the fact that the multiplicity of \(1\) as an eigenvalue of \(A\) is \(1\) cannot be proved at this time.
-  Nevertheless, we state this result here (leaving the proof until \cref{ex:7.2.21}) and deduce further facts about \(\lim_{m \to \infty} A^m\) when \(A\) is a regular transition matrix.
+  Nevertheless, we state this result here (leaving the proof until \cref{ex:7.2.21}) and deduce further facts about \(\Lim_{m \to \infty} A^m\) when \(A\) is a regular transition matrix.
 \end{note}
 
 \begin{thm}\label{5.20}
@@ -499,12 +499,12 @@
   Then
   \begin{enumerate}
     \item The multiplicity of \(1\) as an eigenvalue of \(A\) is \(1\).
-    \item \(\lim_{m \to \infty} A^m\) exists.
-    \item \(L = \lim_{m \to \infty} A^m\) is a transition matrix.
+    \item \(\Lim_{m \to \infty} A^m\) exists.
+    \item \(L = \Lim_{m \to \infty} A^m\) is a transition matrix.
     \item \(AL = LA = L\).
     \item The columns of \(L\) are identical.
           In fact, each column of \(L\) is equal to the unique probability vector \(v\) that is also an eigenvector of \(A\) corresponding to the eigenvalue \(1\).
-    \item For any probability vector \(w\), \(\lim_{m \to \infty} (A^m w) = v\).
+    \item For any probability vector \(w\), \(\Lim_{m \to \infty} (A^m w) = v\).
   \end{enumerate}
 \end{thm}
 
@@ -520,7 +520,7 @@
   By \cref{5.15}(a), we must show that \(\tp{u} L = \tp{u}\).
   Now \(A^m\) is a transition matrix by \cref{5.3.5}(a), so
   \[
-    \tp{u} L = \tp{u} \lim_{m \to \infty} A^m = \lim_{m \to \infty} \tp{u} A^m = \lim_{m \to \infty} \tp{u} = \tp{u},
+    \tp{u} L = \tp{u} \Lim_{m \to \infty} A^m = \Lim_{m \to \infty} \tp{u} A^m = \Lim_{m \to \infty} \tp{u} = \tp{u},
   \]
   and it follows that \(L\) is a transition matrix.
 \end{proof}
@@ -528,7 +528,7 @@
 \begin{proof}[\pf{5.20}(d)]
   By \cref{5.12},
   \[
-    AL = A \lim_{m \to \infty} A^m = \lim_{m \to \infty} AA^m = \lim_{m \to \infty} A^{m + 1} = L.
+    AL = A \Lim_{m \to \infty} A^m = \Lim_{m \to \infty} AA^m = \Lim_{m \to \infty} A^{m + 1} = L.
   \]
   Similarly, \(LA = L\).
 \end{proof}
@@ -540,7 +540,7 @@
 \end{proof}
 
 \begin{proof}[\pf{5.20}(f)]
-  Let \(w\) be any probability vector, and set \(y = \lim_{m \to \infty} A^m w = Lw\).
+  Let \(w\) be any probability vector, and set \(y = \Lim_{m \to \infty} A^m w = Lw\).
   Then \(y\) is a probability vector by \cref{5.3.5}(b), and also \(Ay = ALw = Lw = y\) by \cref{5.20}(d).
   Hence \(y\) is also an eigenvector corresponding to the eigenvalue \(1\) of \(A\).
   So \(y = v\) by \cref{5.20}(e).
@@ -572,49 +572,49 @@
 
 \setcounter{ex}{2}
 \begin{ex}\label{ex:5.3.3}
-  Prove that if \(\seq{A}{1,2,}\) is a sequence of \(n \times p\) matrices with complex entries such that \(\lim_{m \to \infty} A_m = L\), then \(\lim_{m \to \infty} \tp{(A_m)} = \tp{L}\).
+  Prove that if \(\seq{A}{1,2,}\) is a sequence of \(n \times p\) matrices with complex entries such that \(\Lim_{m \to \infty} A_m = L\), then \(\Lim_{m \to \infty} \tp{(A_m)} = \tp{L}\).
 \end{ex}
 
 \begin{proof}[\pf{ex:5.3.3}]
   We have
   \begin{align*}
-         & \lim_{m \to \infty} A_m = L                                                                                                                   \\
-    \iff & \forall i \in \set{1, \dots, n} \text{ and } j \in \set{1, \dots, p}, \lim_{m \to \infty} (A_m)_{i j} = L_{i j}               &  & \by{5.3.1} \\
-    \iff & \forall i \in \set{1, \dots, n} \text{ and } j \in \set{1, \dots, p}, \lim_{m \to \infty} (\tp{(A_m)})_{j i} = (\tp{L})_{j i} &  & \by{1.3.3} \\
-    \iff & \lim_{m \to \infty} \tp{(A_m)} = \tp{L}.                                                                                      &  & \by{5.3.1}
+         & \Lim_{m \to \infty} A_m = L                                                                                                                   \\
+    \iff & \forall i \in \set{1, \dots, n} \text{ and } j \in \set{1, \dots, p}, \Lim_{m \to \infty} (A_m)_{i j} = L_{i j}               &  & \by{5.3.1} \\
+    \iff & \forall i \in \set{1, \dots, n} \text{ and } j \in \set{1, \dots, p}, \Lim_{m \to \infty} (\tp{(A_m)})_{j i} = (\tp{L})_{j i} &  & \by{1.3.3} \\
+    \iff & \Lim_{m \to \infty} \tp{(A_m)} = \tp{L}.                                                                                      &  & \by{5.3.1}
   \end{align*}
 \end{proof}
 
 \begin{ex}\label{ex:5.3.4}
-  Prove that if \(A \in \ms[n][n][\C]\) is diagonalizable and \(L = \lim_{m \to \infty} A^m\) exists, then either \(L = I_n\) or \(\rk{L} < n\).
+  Prove that if \(A \in \ms[n][n][\C]\) is diagonalizable and \(L = \Lim_{m \to \infty} A^m\) exists, then either \(L = I_n\) or \(\rk{L} < n\).
 \end{ex}
 
 \begin{proof}[\pf{ex:5.3.4}]
   Since \(A\) is diagonalizable, there exists some \(Q \in \ms[n][n][\C]\) such that \(D = Q^{-1} A Q\) is a diagonal matrix.
   Then we have
   \begin{align*}
-    L & = \lim_{m \to \infty} A^m                                                                     \\
-      & = \lim_{m \to \infty} (Q D Q^{-1})^m                                                          \\
-      & = Q \pa{\lim_{m \to \infty} D^m} Q^{-1}                                       &  & \by{5.3.2} \\
+    L & = \Lim_{m \to \infty} A^m                                                                     \\
+      & = \Lim_{m \to \infty} (Q D Q^{-1})^m                                                          \\
+      & = Q \pa{\Lim_{m \to \infty} D^m} Q^{-1}                                       &  & \by{5.3.2} \\
       & = Q \begin{pmatrix}
-              \lim_{m \to \infty} (D_{1 1})^m & \cdots & 0                               \\
+              \Lim_{m \to \infty} (D_{1 1})^m & \cdots & 0                               \\
               \vdots                          & \ddots & \vdots                          \\
-              0                               & \cdots & \lim_{m \to \infty} (D_{n n})^m
+              0                               & \cdots & \Lim_{m \to \infty} (D_{n n})^m
             \end{pmatrix} Q^{-1}. &  & \by{5.3.1}                \\
   \end{align*}
-  Since \(D_{i i} \in \C\) for all \(i \in \set{1, \dots, n}\), by \cref{5.3.3} we see that \(\lim_{m \to \infty} D^m\) exists iff \(\abs{D_{i i}} < 1\) or \(D_{i i} = 1\).
+  Since \(D_{i i} \in \C\) for all \(i \in \set{1, \dots, n}\), by \cref{5.3.3} we see that \(\Lim_{m \to \infty} D^m\) exists iff \(\abs{D_{i i}} < 1\) or \(D_{i i} = 1\).
   Now we split into two cases:
   \begin{itemize}
     \item If \(D_{i i} = 1\) for all \(i \in \set{1, \dots, n}\), then we have
           \begin{align*}
                      & D = I_n                                                                 \\
-            \implies & \lim_{m \to \infty} D^m = \lim_{m \to \infty} I_n = I_n &  & \by{5.3.1} \\
+            \implies & \Lim_{m \to \infty} D^m = \Lim_{m \to \infty} I_n = I_n &  & \by{5.3.1} \\
             \implies & L = Q I_n Q^{-1} = I_n.
           \end{align*}
     \item If \(\abs{D_{j j}} < 1\) for some \(j \in \set{1, \dots, n}\), then we have
           \begin{align*}
-                     & \lim_{m \to \infty} D_{j j}^m = 0                    \\
-            \implies & \rk{\lim_{m \to \infty} D} < n    &  & \by{3.5}      \\
+                     & \Lim_{m \to \infty} D_{j j}^m = 0                    \\
+            \implies & \rk{\Lim_{m \to \infty} D} < n    &  & \by{3.5}      \\
             \implies & \rk{L} < n.                       &  & \by{3.7}[c,d]
           \end{align*}
   \end{itemize}
@@ -624,13 +624,13 @@
 \begin{ex}\label{ex:5.3.5}
   Find \(A, B \in \ms[2][2][\R]\) such that
   \begin{align*}
-     & \lim_{m \to \infty} A^m \in \ms[2][2][\R]    \\
-     & \lim_{m \to \infty} B^m \in \ms[2][2][\R]    \\
-     & \lim_{m \to \infty} (AB)^m \in \ms[2][2][\R]
+     & \Lim_{m \to \infty} A^m \in \ms[2][2][\R]    \\
+     & \Lim_{m \to \infty} B^m \in \ms[2][2][\R]    \\
+     & \Lim_{m \to \infty} (AB)^m \in \ms[2][2][\R]
   \end{align*}
   but
   \[
-    \lim_{m \to \infty} (AB)^m \neq (\lim_{m \to \infty} A^m) (\lim_{m \to \infty} B^m).
+    \Lim_{m \to \infty} (AB)^m \neq (\Lim_{m \to \infty} A^m) (\Lim_{m \to \infty} B^m).
   \]
 \end{ex}
 
@@ -647,21 +647,21 @@
   \]
   Then we have
   \begin{align*}
-    \lim_{m \to \infty} A^m    & = \lim_{m \to \infty} \begin{pmatrix}
+    \Lim_{m \to \infty} A^m    & = \Lim_{m \to \infty} \begin{pmatrix}
                                                          \frac{1}{2^m} & \frac{1}{2^m} \\
                                                          0             & 0
                                                        \end{pmatrix} = \begin{pmatrix}
                                                                          0 & 0 \\
                                                                          0 & 0
                                                                        \end{pmatrix} \\
-    \lim_{m \to \infty} B^m    & = \lim_{m \to \infty} \begin{pmatrix}
+    \Lim_{m \to \infty} B^m    & = \Lim_{m \to \infty} \begin{pmatrix}
                                                          1 & 0 \\
                                                          1 & 0
                                                        \end{pmatrix} = \begin{pmatrix}
                                                                          1 & 0 \\
                                                                          1 & 0
                                                                        \end{pmatrix} \\
-    \lim_{m \to \infty} (AB)^m & = \lim_{m \to \infty} \begin{pmatrix}
+    \Lim_{m \to \infty} (AB)^m & = \Lim_{m \to \infty} \begin{pmatrix}
                                                          1 & 0 \\
                                                          0 & 0
                                                        \end{pmatrix} = \begin{pmatrix}
@@ -671,13 +671,13 @@
   \end{align*}
   and thus
   \[
-    (\lim_{m \to \infty} A^m) (\lim_{m \to \infty} B^m) = \begin{pmatrix}
+    (\Lim_{m \to \infty} A^m) (\Lim_{m \to \infty} B^m) = \begin{pmatrix}
       0 & 0 \\
       0 & 0
     \end{pmatrix} \neq \begin{pmatrix}
       1 & 0 \\
       0 & 0
-    \end{pmatrix} = \lim_{m \to \infty} (AB)^m.
+    \end{pmatrix} = \Lim_{m \to \infty} (AB)^m.
   \]
 \end{proof}
 
@@ -767,7 +767,7 @@
 \end{proof}
 
 \begin{defn}\label{5.3.18}
-  For \(A \in \ms[n][n][\C]\), define \(e^A = \lim_{m \to \infty} B_m\), where
+  For \(A \in \ms[n][n][\C]\), define \(e^A = \Lim_{m \to \infty} B_m\), where
   \[
     B_m = I_n + A + \frac{A^2}{2!} + \cdots + \frac{A^m}{m!}.
   \]
@@ -800,20 +800,20 @@
   \begin{align*}
     e^{I_n} & = \sum_{m = 0}^\infty \frac{(I_n)^m}{m!}                                                                      &  & \by{5.3.18} \\
             & = \sum_{m = 0}^\infty \frac{I_n}{m!}                                                                                           \\
-            & = \lim_{M \to \infty} \sum_{m = 0}^M \begin{pmatrix}
+            & = \Lim_{M \to \infty} \sum_{m = 0}^M \begin{pmatrix}
                                                      \frac{1}{m!} & \cdots & 0            \\
                                                      \vdots       & \ddots & \vdots       \\
                                                      0            & \cdots & \frac{1}{m!}
                                                    \end{pmatrix}                                                      \\
-            & = \lim_{M \to \infty} \begin{pmatrix}
+            & = \Lim_{M \to \infty} \begin{pmatrix}
                                       \sum_{m = 0}^M  \frac{1}{m!} & \cdots & 0                           \\
                                       \vdots                       & \ddots & \vdots                      \\
                                       0                            & \cdots & \sum_{m = 0}^M \frac{1}{m!}
                                     \end{pmatrix}                                        &  & \by{1.2.9}                                     \\
             & = \begin{pmatrix}
-                  \lim_{M \to \infty} \sum_{m = 0}^M  \frac{1}{m!} & \cdots & 0                                              \\
+                  \Lim_{M \to \infty} \sum_{m = 0}^M  \frac{1}{m!} & \cdots & 0                                              \\
                   \vdots                                           & \ddots & \vdots                                         \\
-                  0                                                & \cdots & \lim_{M \to \infty}\sum_{m = 0}^M \frac{1}{m!}
+                  0                                                & \cdots & \Lim_{M \to \infty}\sum_{m = 0}^M \frac{1}{m!}
                 \end{pmatrix} &  & \by{5.3.1}                   \\
             & = \begin{pmatrix}
                   \sum_{m = 0}^\infty \frac{1}{m!} & \cdots & 0                                \\
@@ -839,16 +839,16 @@
   Since
   \begin{align*}
     e^D & = \sum_{m = 0}^\infty \frac{D^m}{m!}                                                                                                                     &  & \by{5.3.18} \\
-        & = \lim_{M \to \infty} \sum_{m = 0}^M \frac{D^m}{m!}                                                                                                                       \\
-        & = \lim_{M \to \infty} \begin{pmatrix}
+        & = \Lim_{M \to \infty} \sum_{m = 0}^M \frac{D^m}{m!}                                                                                                                       \\
+        & = \Lim_{M \to \infty} \begin{pmatrix}
                                   \sum_{m = 0}^M \frac{(D_{1 1})^m}{m!} & \cdots & 0                                     \\
                                   \vdots                                & \ddots & \vdots                                \\
                                   0                                     & \cdots & \sum_{m = 0}^M \frac{(D_{n n})^m}{m!}
                                 \end{pmatrix}                                         &  & \by{2.3.5}                                       \\
         & = \begin{pmatrix}
-              \lim_{M \to \infty} \sum_{m = 0}^M \frac{(D_{1 1})^m}{m!} & \cdots & 0                                                         \\
+              \Lim_{M \to \infty} \sum_{m = 0}^M \frac{(D_{1 1})^m}{m!} & \cdots & 0                                                         \\
               \vdots                                                    & \ddots & \vdots                                                    \\
-              0                                                         & \cdots & \lim_{M \to \infty} \sum_{m = 0}^M \frac{(D_{n n})^m}{m!}
+              0                                                         & \cdots & \Lim_{M \to \infty} \sum_{m = 0}^M \frac{(D_{n n})^m}{m!}
             \end{pmatrix} &  & \by{5.3.1}                   \\
         & = \begin{pmatrix}
               e^{D_{1 1}} & \cdots & 0           \\
@@ -860,9 +860,9 @@
   \begin{align*}
     e^A & = \sum_{m = 0}^\infty \frac{A^m}{m!}                                   &  & \by{5.3.18} \\
         & = \sum_{m = 0}^\infty \frac{P D^m P^{-1}}{m!}                                           \\
-        & = \lim_{M \to \infty} \sum_{m = 0}^M \frac{P D^m P^{-1}}{m!}                            \\
-        & = \lim_{M \to \infty} P \pa{\sum_{m = 0}^M \frac{D^m}{m!}} P^{-1}      &  & \by{2.3.5}  \\
-        & = P \pa{\lim_{M \to \infty} \pa{\sum_{m = 0}^M \frac{D^m}{m!}}} P^{-1} &  & \by{5.3.2}  \\
+        & = \Lim_{M \to \infty} \sum_{m = 0}^M \frac{P D^m P^{-1}}{m!}                            \\
+        & = \Lim_{M \to \infty} P \pa{\sum_{m = 0}^M \frac{D^m}{m!}} P^{-1}      &  & \by{2.3.5}  \\
+        & = P \pa{\Lim_{M \to \infty} \pa{\sum_{m = 0}^M \frac{D^m}{m!}}} P^{-1} &  & \by{5.3.2}  \\
         & = P \pa{\sum_{m = 0}^\infty \frac{D^m}{m!}} P^{-1}                                      \\
         & = P e^D P^{-1}.                                                        &  & \by{5.3.18}
   \end{align*}

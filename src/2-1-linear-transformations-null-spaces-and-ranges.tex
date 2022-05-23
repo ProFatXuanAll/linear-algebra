@@ -1,1481 +1,1481 @@
 \section{Linear Transformations, Null Spaces and Ranges}\label{sec:2.1}
 
 \begin{defn}\label{2.1.1}
-	Let \(\V\) and \(\W\) be vector spaces over \(\F\).
-	We call a function \(\T : \V \to \W\) a \textbf{linear transformation from \(\V\) to \(\W\)} if, for all \(x, y \in \V\) and \(c \in \F\), we have
-	\begin{enumerate}
-		\item \(\T(x + y) = \T(x) + \T(y)\) and
-		\item \(\T(cx) = c\T(x)\).
-	\end{enumerate}
-	We often simply call \(\T\) \textbf{linear}.
+  Let \(\V\) and \(\W\) be vector spaces over \(\F\).
+  We call a function \(\T : \V \to \W\) a \textbf{linear transformation from \(\V\) to \(\W\)} if, for all \(x, y \in \V\) and \(c \in \F\), we have
+  \begin{enumerate}
+    \item \(\T(x + y) = \T(x) + \T(y)\) and
+    \item \(\T(cx) = c\T(x)\).
+  \end{enumerate}
+  We often simply call \(\T\) \textbf{linear}.
 \end{defn}
 
 \begin{note}
-	If the underlying field \(\F\) is the field of rational numbers, then \cref{2.1.1}(a) implies \cref{2.1.1}(b) (see \cref{ex:2.1.37}), but, in general \cref{2.1.1}(a)(b) are logically independent.
+  If the underlying field \(\F\) is the field of rational numbers, then \cref{2.1.1}(a) implies \cref{2.1.1}(b) (see \cref{ex:2.1.37}), but, in general \cref{2.1.1}(a)(b) are logically independent.
 \end{note}
 
 \begin{prop}\label{2.1.2}
-	Let \(\V\) and \(\W\) be vector spaces over \(\F\) and let \(\T : \V \to \W\) be a function.
-	\begin{enumerate}
-		\item If \(\T\) is linear, then \(\T(\zv_{\V}) = \zv_{\W}\).
-		\item \(\T\) is linear iff \(\T(cx + y) = c\T(x) + \T(y)\) for all \(x, y \in \V\) and \(c \in \F\).
-		\item If \(\T\) is linear, then \(\T(x - y) = \T(x) - \T(y)\) for all \(x, y \in \V\).
-		\item \(\T\) is linear iff, for \(\seq{x}{1,,n} \in \V\) and \(\seq{a}{1,,n} \in F\), we have
-		      \[
-			      \T\pa{\sum_{i = 1}^n a_i x_i} = \sum_{i = 1}^n a_i \T(x_i).
-		      \]
-	\end{enumerate}
+  Let \(\V\) and \(\W\) be vector spaces over \(\F\) and let \(\T : \V \to \W\) be a function.
+  \begin{enumerate}
+    \item If \(\T\) is linear, then \(\T(\zv_{\V}) = \zv_{\W}\).
+    \item \(\T\) is linear iff \(\T(cx + y) = c\T(x) + \T(y)\) for all \(x, y \in \V\) and \(c \in \F\).
+    \item If \(\T\) is linear, then \(\T(x - y) = \T(x) - \T(y)\) for all \(x, y \in \V\).
+    \item \(\T\) is linear iff, for \(\seq{x}{1,,n} \in \V\) and \(\seq{a}{1,,n} \in F\), we have
+          \[
+            \T\pa{\sum_{i = 1}^n a_i x_i} = \sum_{i = 1}^n a_i \T(x_i).
+          \]
+  \end{enumerate}
 \end{prop}
 
 \begin{proof}[\pf{2.1.2}(a)]
-	We have
-	\begin{align*}
-		         & \T \text{ is linear}                                                             \\
-		\implies & \T(\zv_{\V}) + \T(\zv_{\V}) = \T(\zv_{\V} + \zv_{\V}) &  & \by{2.1.1}[a]         \\
-		         & = \T(\zv_{\V}) = \T(\zv_{\V}) + \zv_{\W}              &  & \text{(by \ref{vs3})} \\
-		\implies & \T(\zv_{\V}) = \zv_{\W}.                              &  & \by{1.1}
-	\end{align*}
+  We have
+  \begin{align*}
+             & \T \text{ is linear}                                                             \\
+    \implies & \T(\zv_{\V}) + \T(\zv_{\V}) = \T(\zv_{\V} + \zv_{\V}) &  & \by{2.1.1}[a]         \\
+             & = \T(\zv_{\V}) = \T(\zv_{\V}) + \zv_{\W}              &  & \text{(by \ref{vs3})} \\
+    \implies & \T(\zv_{\V}) = \zv_{\W}.                              &  & \by{1.1}
+  \end{align*}
 \end{proof}
 
 \begin{proof}[\pf{2.1.2}(b)]
-	We have
-	\begin{align*}
-		         & \T \text{ is linear}                                                       \\
-		\implies & \begin{dcases}
-			           \forall x, y \in \V \\
-			           \forall c \in \F
-		           \end{dcases}, \begin{dcases}
-			                         \T(x + y) = \T(x) + \T(y) \\
-			                         \T(cx) = c\T(x)
-		                         \end{dcases}                               &  & \by{2.1.1}   \\
-		\implies & \begin{dcases}
-			           \forall x, y \in \V \\
-			           \forall c \in \F
-		           \end{dcases}, \T(cx + y) = \T(cx) + \T(y) = c\T(x) + \T(y) &  & \by{2.1.1}
-	\end{align*}
-	and
-	\begin{align*}
-		         & \begin{dcases}
-			           \forall x, y \in \V \\
-			           \forall c \in \F
-		           \end{dcases}, \T(cx + y) = c\T(x) + \T(y)                                          \\
-		\implies & \begin{dcases}
-			           \forall x, y \in \V \\
-			           \forall c \in \F
-		           \end{dcases}, \begin{dcases}
-			                         \T(x + y) = \T(x) + \T(y)             & \text{if } c = 0        \\
-			                         \T(cx + \zv_{\V}) = c\T(x) + \zv_{\W} & \text{if } y = \zv_{\V}
-		                         \end{dcases} &  & \by{2.1.2}[a]      \\
-		\implies & \begin{dcases}
-			           \forall x, y \in \V \\
-			           \forall c \in \F
-		           \end{dcases}, \begin{dcases}
-			                         \T(x + y) = \T(x) + \T(y) & \text{if } c = 0        \\
-			                         \T(cx) = c\T(x)           & \text{if } y = \zv_{\V}
-		                         \end{dcases}             &  & \text{(by \ref{vs3})}                  \\
-		\implies & \T \text{ is linear}.                                              &  & \by{2.1.1}
-	\end{align*}
-	Thus
-	\[
-		\T \text{ is linear} \iff \begin{dcases}
-			\forall x, y \in \V \\
-			\forall c \in \F
-		\end{dcases}, \T(cx + y) = c\T(x) + \T(y).
-	\]
+  We have
+  \begin{align*}
+             & \T \text{ is linear}                                                       \\
+    \implies & \begin{dcases}
+                 \forall x, y \in \V \\
+                 \forall c \in \F
+               \end{dcases}, \begin{dcases}
+                               \T(x + y) = \T(x) + \T(y) \\
+                               \T(cx) = c\T(x)
+                             \end{dcases}                               &  & \by{2.1.1}   \\
+    \implies & \begin{dcases}
+                 \forall x, y \in \V \\
+                 \forall c \in \F
+               \end{dcases}, \T(cx + y) = \T(cx) + \T(y) = c\T(x) + \T(y) &  & \by{2.1.1}
+  \end{align*}
+  and
+  \begin{align*}
+             & \begin{dcases}
+                 \forall x, y \in \V \\
+                 \forall c \in \F
+               \end{dcases}, \T(cx + y) = c\T(x) + \T(y)                                          \\
+    \implies & \begin{dcases}
+                 \forall x, y \in \V \\
+                 \forall c \in \F
+               \end{dcases}, \begin{dcases}
+                               \T(x + y) = \T(x) + \T(y)             & \text{if } c = 0        \\
+                               \T(cx + \zv_{\V}) = c\T(x) + \zv_{\W} & \text{if } y = \zv_{\V}
+                             \end{dcases} &  & \by{2.1.2}[a]      \\
+    \implies & \begin{dcases}
+                 \forall x, y \in \V \\
+                 \forall c \in \F
+               \end{dcases}, \begin{dcases}
+                               \T(x + y) = \T(x) + \T(y) & \text{if } c = 0        \\
+                               \T(cx) = c\T(x)           & \text{if } y = \zv_{\V}
+                             \end{dcases}             &  & \text{(by \ref{vs3})}                  \\
+    \implies & \T \text{ is linear}.                                              &  & \by{2.1.1}
+  \end{align*}
+  Thus
+  \[
+    \T \text{ is linear} \iff \begin{dcases}
+      \forall x, y \in \V \\
+      \forall c \in \F
+    \end{dcases}, \T(cx + y) = c\T(x) + \T(y).
+  \]
 \end{proof}
 
 \begin{proof}[\pf{2.1.2}(c)]
-	For all \(x, y \in \V\), we have
-	\begin{align*}
-		\T(x - y) & = \T(x + (-1)y)      &  & \by{1.2}[b]   \\
-		          & = \T(x) + \T((-1)y)  &  & \by{2.1.1}[a] \\
-		          & = \T(x) + (-1) \T(y) &  & \by{2.1.1}[b] \\
-		          & = \T(x) - \T(y).     &  & \by{1.2}[b]
-	\end{align*}
+  For all \(x, y \in \V\), we have
+  \begin{align*}
+    \T(x - y) & = \T(x + (-1)y)      &  & \by{1.2}[b]   \\
+              & = \T(x) + \T((-1)y)  &  & \by{2.1.1}[a] \\
+              & = \T(x) + (-1) \T(y) &  & \by{2.1.1}[b] \\
+              & = \T(x) - \T(y).     &  & \by{1.2}[b]
+  \end{align*}
 \end{proof}
 
 \begin{proof}[\pf{2.1.2}(d)]
-	We have
-	\begin{align*}
-		         & \T \text{ is linear}                                                                                    \\
-		\implies & \begin{dcases}
-			           \forall \seq{x}{1,,n} \in \V \\
-			           \forall \seq{a}{1,,n} \in \F
-		           \end{dcases},                                                                            \\
-		         & \T\pa{\sum_{i = 1}^n a_i x_i} = \sum_{i = 1}^n \T(a_i x_i) = \sum_{i = 1}^n a_i \T(x_i) &  & \by{2.1.1}
-	\end{align*}
-	and
-	\begin{align*}
-		         & \begin{dcases}
-			           \forall \seq{x}{1,,n} \in \V \\
-			           \forall \seq{a}{1,,n} \in \F
-		           \end{dcases},                                                          \\
-		         & \T\pa{\sum_{i = 1}^n a_i x_i} = \sum_{i = 1}^n a_i \T(x_i) &  & \by{2.1.1}            \\
-		\implies & \begin{dcases}
-			           \forall x, y \in \V \\
-			           \forall c \in \F
-		           \end{dcases},                                                                   \\
-		         & \T(cx + 1y) = c\T(x) + 1\T(y) = c\T(x) + \T(y)             &  & \text{(by \ref{vs5})} \\
-		\implies & \T \text{ is linear}.                                      &  & \by{2.1.2}[b]
-	\end{align*}
-	Thus
-	\[
-		\T \text{ is linear} \iff \begin{dcases}
-			\forall \seq{x}{1,,n} \in \V \\
-			\forall \seq{a}{1,,n} \in \F
-		\end{dcases}, \T\pa{\sum_{i = 1}^n a_i x_i} = \sum_{i = 1}^n a_i \T(x_i).
-	\]
+  We have
+  \begin{align*}
+             & \T \text{ is linear}                                                                                    \\
+    \implies & \begin{dcases}
+                 \forall \seq{x}{1,,n} \in \V \\
+                 \forall \seq{a}{1,,n} \in \F
+               \end{dcases},                                                                            \\
+             & \T\pa{\sum_{i = 1}^n a_i x_i} = \sum_{i = 1}^n \T(a_i x_i) = \sum_{i = 1}^n a_i \T(x_i) &  & \by{2.1.1}
+  \end{align*}
+  and
+  \begin{align*}
+             & \begin{dcases}
+                 \forall \seq{x}{1,,n} \in \V \\
+                 \forall \seq{a}{1,,n} \in \F
+               \end{dcases},                                                          \\
+             & \T\pa{\sum_{i = 1}^n a_i x_i} = \sum_{i = 1}^n a_i \T(x_i) &  & \by{2.1.1}            \\
+    \implies & \begin{dcases}
+                 \forall x, y \in \V \\
+                 \forall c \in \F
+               \end{dcases},                                                                   \\
+             & \T(cx + 1y) = c\T(x) + 1\T(y) = c\T(x) + \T(y)             &  & \text{(by \ref{vs5})} \\
+    \implies & \T \text{ is linear}.                                      &  & \by{2.1.2}[b]
+  \end{align*}
+  Thus
+  \[
+    \T \text{ is linear} \iff \begin{dcases}
+      \forall \seq{x}{1,,n} \in \V \\
+      \forall \seq{a}{1,,n} \in \F
+    \end{dcases}, \T\pa{\sum_{i = 1}^n a_i x_i} = \sum_{i = 1}^n a_i \T(x_i).
+  \]
 \end{proof}
 
 \begin{note}
-	We generally use \cref{2.1.2}(b) to prove that a given transformation is linear.
+  We generally use \cref{2.1.2}(b) to prove that a given transformation is linear.
 \end{note}
 
 \begin{eg}\label{2.1.3}
-	For any angle \(\theta\), define \(\T_{\theta} : \R^2 \to \R^2\) by the rule: \(\T_{\theta}(a_1, a_2)\) is the vector obtained by rotating \((a_1, a_2)\) counterclockwise by \(\theta\) if \((a_1, a_2) \neq (0, 0)\), and \(\T_{\theta}(0, 0) = (0, 0)\).
-	Then \(\T_{\theta} : \R^2 \to \R^2\) is a linear transformation that is called the \textbf{rotation by \(\theta\)}.
+  For any angle \(\theta\), define \(\T_{\theta} : \R^2 \to \R^2\) by the rule: \(\T_{\theta}(a_1, a_2)\) is the vector obtained by rotating \((a_1, a_2)\) counterclockwise by \(\theta\) if \((a_1, a_2) \neq (0, 0)\), and \(\T_{\theta}(0, 0) = (0, 0)\).
+  Then \(\T_{\theta} : \R^2 \to \R^2\) is a linear transformation that is called the \textbf{rotation by \(\theta\)}.
 
-	We determine an explicit formula for \(\T_{\theta}\).
-	Fix a nonzero vector \((a_1, a_2) \in \R^2\).
-	Let \(\alpha\) be the angle that \((a_1, a_2)\) makes with the positive \(x\)-axis, and let \(r = \sqrt{a_1^2 +a_2^2}\).
-	Then \(a_1 = r \cos(\alpha)\) and \(a_2 = r \sin(\alpha)\).
-	Also, \(\T_{\theta}(a_1, a_2)\) has length \(r\) and makes an angle \(\alpha + \theta\) with the positive \(x\)-axis.
-	It follows that
-	\begin{align*}
-		\T_{\theta}(a_1, a_2) & = (r \cos(\alpha + \theta), r \sin(\alpha + \theta))                                                                     \\
-		                      & = (r \cos(\alpha) \cos(\theta) - r \sin(\alpha) \sin(\theta), r \cos(\alpha) \sin(\theta) + r \sin(\alpha) \cos(\theta)) \\
-		                      & = (a_1 \cos(\theta) - a_2 \sin(\theta), a_1 \sin(\theta) + a_2 \cos(\theta)).
-	\end{align*}
-	Finally, observe that this same formula is valid for \((a_1 ,a_2) = (0, 0)\).
-	It is now easy to show that \(\T_{\theta}\) is linear.
+  We determine an explicit formula for \(\T_{\theta}\).
+  Fix a nonzero vector \((a_1, a_2) \in \R^2\).
+  Let \(\alpha\) be the angle that \((a_1, a_2)\) makes with the positive \(x\)-axis, and let \(r = \sqrt{a_1^2 +a_2^2}\).
+  Then \(a_1 = r \cos(\alpha)\) and \(a_2 = r \sin(\alpha)\).
+  Also, \(\T_{\theta}(a_1, a_2)\) has length \(r\) and makes an angle \(\alpha + \theta\) with the positive \(x\)-axis.
+  It follows that
+  \begin{align*}
+    \T_{\theta}(a_1, a_2) & = (r \cos(\alpha + \theta), r \sin(\alpha + \theta))                                                                     \\
+                          & = (r \cos(\alpha) \cos(\theta) - r \sin(\alpha) \sin(\theta), r \cos(\alpha) \sin(\theta) + r \sin(\alpha) \cos(\theta)) \\
+                          & = (a_1 \cos(\theta) - a_2 \sin(\theta), a_1 \sin(\theta) + a_2 \cos(\theta)).
+  \end{align*}
+  Finally, observe that this same formula is valid for \((a_1 ,a_2) = (0, 0)\).
+  It is now easy to show that \(\T_{\theta}\) is linear.
 \end{eg}
 
 \begin{proof}[\pf{2.1.3}]
-	For all \(x, y \in \R^2\) and \(c \in \R\), we have
-	\begin{align*}
-		\T_{\theta}(cx + y) & = \T_{\theta}(cx_1 + y_1, cx_2 + y_2)                                              &  & \by{1.2.4} \\
-		                    & = ((cx_1 + y_1) \cos(\theta) - (cx_2 + y_2)\sin(\theta),                                           \\
-		                    & \quad (cx_1 + y_1) \sin(\theta) + (cx_2 + y_2) \cos(\theta))                       &  & \by{2.1.3} \\
-		                    & = c (x_1 \cos(\theta) - x_2 \sin(\theta), x_1 \sin(\theta) + x_2 \cos(\theta))     &  & \by{1.2.1} \\
-		                    & \quad + (y_1 \cos(\theta) - y_2 \sin(\theta), y_1 \sin(\theta) + y_2 \cos(\theta))                 \\
-		                    & = c\T(x_1, x_2) + \T(y_1, y_2)                                                     &  & \by{2.1.3} \\
-		                    & = c\T_{\theta}(x) + \T_{\theta}(y).                                                &  & \by{1.2.4}
-	\end{align*}
-	Thus by \cref{2.1.2}(b) \(\T_{\theta}\) is linear.
+  For all \(x, y \in \R^2\) and \(c \in \R\), we have
+  \begin{align*}
+    \T_{\theta}(cx + y) & = \T_{\theta}(cx_1 + y_1, cx_2 + y_2)                                              &  & \by{1.2.4} \\
+                        & = ((cx_1 + y_1) \cos(\theta) - (cx_2 + y_2)\sin(\theta),                                           \\
+                        & \quad (cx_1 + y_1) \sin(\theta) + (cx_2 + y_2) \cos(\theta))                       &  & \by{2.1.3} \\
+                        & = c (x_1 \cos(\theta) - x_2 \sin(\theta), x_1 \sin(\theta) + x_2 \cos(\theta))     &  & \by{1.2.1} \\
+                        & \quad + (y_1 \cos(\theta) - y_2 \sin(\theta), y_1 \sin(\theta) + y_2 \cos(\theta))                 \\
+                        & = c\T(x_1, x_2) + \T(y_1, y_2)                                                     &  & \by{2.1.3} \\
+                        & = c\T_{\theta}(x) + \T_{\theta}(y).                                                &  & \by{1.2.4}
+  \end{align*}
+  Thus by \cref{2.1.2}(b) \(\T_{\theta}\) is linear.
 \end{proof}
 
 \begin{eg}\label{2.1.4}
-	Define \(\T : \R^2 \to \R^2\) by \(\T(a_1, a_2) = (a_1, -a_2)\).
-	\(\T\) is called the \textbf{reflection about the \(x\)-axis} and \(\T\) is linear.
+  Define \(\T : \R^2 \to \R^2\) by \(\T(a_1, a_2) = (a_1, -a_2)\).
+  \(\T\) is called the \textbf{reflection about the \(x\)-axis} and \(\T\) is linear.
 \end{eg}
 
 \begin{proof}[\pf{2.1.4}]
-	For all \(x, y \in \R^2\) and \(c \in \R\), we have
-	\begin{align*}
-		\T(cx + y) & = \T(cx_1 + y_1, cx_2 + y_2)   &  & \by{1.2.4} \\
-		           & = (cx_1 + y_1, -cx_2 - y_2)    &  & \by{2.1.4} \\
-		           & = c(x_1, -x_2) + (y_1, -y_2)   &  & \by{1.2.1} \\
-		           & = c\T(x_1, x_2) + \T(y_1, y_2) &  & \by{2.1.4} \\
-		           & = c\T(x) + \T(y).              &  & \by{1.2.4}
-	\end{align*}
-	Thus by \cref{2.1.2}(b) \(\T\) is linear.
+  For all \(x, y \in \R^2\) and \(c \in \R\), we have
+  \begin{align*}
+    \T(cx + y) & = \T(cx_1 + y_1, cx_2 + y_2)   &  & \by{1.2.4} \\
+               & = (cx_1 + y_1, -cx_2 - y_2)    &  & \by{2.1.4} \\
+               & = c(x_1, -x_2) + (y_1, -y_2)   &  & \by{1.2.1} \\
+               & = c\T(x_1, x_2) + \T(y_1, y_2) &  & \by{2.1.4} \\
+               & = c\T(x) + \T(y).              &  & \by{1.2.4}
+  \end{align*}
+  Thus by \cref{2.1.2}(b) \(\T\) is linear.
 \end{proof}
 
 \begin{eg}\label{2.1.5}
-	Define \(\T : \R^2 \to \R^2\) by \(\T(a_1, a_2) = (a_1, 0)\).
-	\(\T\) is called the \textbf{projection on the \(x\)-axis} and \(\T\) is linear.
+  Define \(\T : \R^2 \to \R^2\) by \(\T(a_1, a_2) = (a_1, 0)\).
+  \(\T\) is called the \textbf{projection on the \(x\)-axis} and \(\T\) is linear.
 \end{eg}
 
 \begin{proof}[\pf{2.1.5}]
-	For all \(x, y \in \R^2\) and \(c \in \R\), we have
-	\begin{align*}
-		\T(cx + y) & = \T(cx_1 + y_1, cx_2 + y_2)   &  & \by{1.2.4} \\
-		           & = (cx_1 + y_1, 0)              &  & \by{2.1.5} \\
-		           & = c(x_1, 0) + (y_1, 0)         &  & \by{1.2.1} \\
-		           & = c\T(x_1, x_2) + \T(y_1, y_2) &  & \by{2.1.5} \\
-		           & = c\T(x) + \T(y).              &  & \by{1.2.4}
-	\end{align*}
-	Thus by \cref{2.1.2}(b) \(\T\) is linear.
+  For all \(x, y \in \R^2\) and \(c \in \R\), we have
+  \begin{align*}
+    \T(cx + y) & = \T(cx_1 + y_1, cx_2 + y_2)   &  & \by{1.2.4} \\
+               & = (cx_1 + y_1, 0)              &  & \by{2.1.5} \\
+               & = c(x_1, 0) + (y_1, 0)         &  & \by{1.2.1} \\
+               & = c\T(x_1, x_2) + \T(y_1, y_2) &  & \by{2.1.5} \\
+               & = c\T(x) + \T(y).              &  & \by{1.2.4}
+  \end{align*}
+  Thus by \cref{2.1.2}(b) \(\T\) is linear.
 \end{proof}
 
 \begin{eg}\label{2.1.6}
-	Define \(\T : \ms[m][n][\F] \to \ms[n][m][\F]\) by \(\T(A) = \tp{A}\), where \(\tp{A}\) is the transpose of \(A\), defined in \cref{1.3.3}.
-	Then \(\T\) is linear.
+  Define \(\T : \ms[m][n][\F] \to \ms[n][m][\F]\) by \(\T(A) = \tp{A}\), where \(\tp{A}\) is the transpose of \(A\), defined in \cref{1.3.3}.
+  Then \(\T\) is linear.
 \end{eg}
 
 \begin{proof}[\pf{2.1.6}]
-	By \cref{ex:1.3.3} and \cref{2.1.2}(b) we see that \(\T\) is linear.
+  By \cref{ex:1.3.3} and \cref{2.1.2}(b) we see that \(\T\) is linear.
 \end{proof}
 
 \begin{eg}\label{2.1.7}
-	Define \(\T : \ps{\R} \to \ps{\R}\) by \(\T(f) = f'\), where \(f'\) denotes the derivative of \(f\).
-	Then \(\T\) is linear.
+  Define \(\T : \ps{\R} \to \ps{\R}\) by \(\T(f) = f'\), where \(f'\) denotes the derivative of \(f\).
+  Then \(\T\) is linear.
 \end{eg}
 
 \begin{proof}[\pf{2.1.7}]
-	Let \(g, h \in \ps{\R}\) and \(a \in \R\).
-	Now
-	\[
-		\T(ag + h) = (ag + h)' = ag' + h' = a\T(g) + \T(h).
-	\]
-	So by \cref{2.1.2}(b) \(\T\) is linear.
+  Let \(g, h \in \ps{\R}\) and \(a \in \R\).
+  Now
+  \[
+    \T(ag + h) = (ag + h)' = ag' + h' = a\T(g) + \T(h).
+  \]
+  So by \cref{2.1.2}(b) \(\T\) is linear.
 \end{proof}
 
 \begin{eg}\label{2.1.8}
-	Let \(\V = \cfs(\R)\), the vector space of continuous real-valued functions on \(\R\).
-	Let \(a, b \in \R\), \(a < b\).
-	Define \(\T : \V \to \R\) by
-	\[
-		\T(f) = \int_a^b f(t) \; dt
-	\]
-	for all \(f \in \V\).
-	Then \(\T\) is linear.
+  Let \(\V = \cfs(\R)\), the vector space of continuous real-valued functions on \(\R\).
+  Let \(a, b \in \R\), \(a < b\).
+  Define \(\T : \V \to \R\) by
+  \[
+    \T(f) = \int_a^b f(t) \; dt
+  \]
+  for all \(f \in \V\).
+  Then \(\T\) is linear.
 \end{eg}
 
 \begin{proof}[\pf{2.1.8}]
-	Let \(g, h \in \cfs(\R)\) and \(a \in \R\).
-	Now
-	\begin{align*}
-		\T(cg + h) & = \int_a^b (cg + h)(t) \; dt                  &  & \by{2.1.8}  \\
-		           & = \int_a^b cg(t) + h(t) \; dt                 &  & \by{1.2.10} \\
-		           & = c \int_a^b g(t) \; dt + \int_a^b h(t) \; dt                  \\
-		           & = c \T(g) + \T(h).                            &  & \by{2.1.8}
-	\end{align*}
-	So by \cref{2.1.2}(b) \(\T\) is linear.
+  Let \(g, h \in \cfs(\R)\) and \(a \in \R\).
+  Now
+  \begin{align*}
+    \T(cg + h) & = \int_a^b (cg + h)(t) \; dt                  &  & \by{2.1.8}  \\
+               & = \int_a^b cg(t) + h(t) \; dt                 &  & \by{1.2.10} \\
+               & = c \int_a^b g(t) \; dt + \int_a^b h(t) \; dt                  \\
+               & = c \T(g) + \T(h).                            &  & \by{2.1.8}
+  \end{align*}
+  So by \cref{2.1.2}(b) \(\T\) is linear.
 \end{proof}
 
 \begin{eg}\label{2.1.9}
-	For vector spaces \(\V\) and \(\W\) over \(\F\), we define the \textbf{identity transformation} \(\IT[\V] : \V \to \V\) by \(\IT[\V](x) = x\) for all \(x \in \V\) and the \textbf{zero transformation} \(\zT : \V \to \W\) by \(\zT(x) = \zv_{\W}\) for all \(x \in \V\).
-	It is clear that both of these transformations are linear.
-	We often write \(\IT\) instead of \(\IT[\V]\).
+  For vector spaces \(\V\) and \(\W\) over \(\F\), we define the \textbf{identity transformation} \(\IT[\V] : \V \to \V\) by \(\IT[\V](x) = x\) for all \(x \in \V\) and the \textbf{zero transformation} \(\zT : \V \to \W\) by \(\zT(x) = \zv_{\W}\) for all \(x \in \V\).
+  It is clear that both of these transformations are linear.
+  We often write \(\IT\) instead of \(\IT[\V]\).
 \end{eg}
 
 \begin{proof}[\pf{2.1.9}]
-	For all \(x, y \in \V\) and \(c \in \F\), we have
-	\begin{align*}
-		\IT[\V](cx + y) & = cx + y                    &  & \by{2.1.9} \\
-		                & = c \IT[\V](x) + \IT[\V](y) &  & \by{2.1.9}
-	\end{align*}
-	and
-	\begin{align*}
-		\zT(cx + y) & = \zv_{\W}              &  & \by{2.1.9}            \\
-		            & = c \zv_{\W}            &  & \by{1.2}[c]           \\
-		            & = c \zv_{\W} + \zv_{\W} &  & \text{(by \ref{vs3})} \\
-		            & = c\T(x) + \T(y).       &  & \by{2.1.9}
-	\end{align*}
-	Thus by \cref{2.1.2}(b) \(\IT[\V], \zT\) are linear.
+  For all \(x, y \in \V\) and \(c \in \F\), we have
+  \begin{align*}
+    \IT[\V](cx + y) & = cx + y                    &  & \by{2.1.9} \\
+                    & = c \IT[\V](x) + \IT[\V](y) &  & \by{2.1.9}
+  \end{align*}
+  and
+  \begin{align*}
+    \zT(cx + y) & = \zv_{\W}              &  & \by{2.1.9}            \\
+                & = c \zv_{\W}            &  & \by{1.2}[c]           \\
+                & = c \zv_{\W} + \zv_{\W} &  & \text{(by \ref{vs3})} \\
+                & = c\T(x) + \T(y).       &  & \by{2.1.9}
+  \end{align*}
+  Thus by \cref{2.1.2}(b) \(\IT[\V], \zT\) are linear.
 \end{proof}
 
 \begin{defn}\label{2.1.10}
-	Let \(\V\) and \(\W\) be vector spaces over \(\F\), and let \(\T : \V \to \W\) be linear.
-	We define the \textbf{null space} (or \textbf{kernel}) \(\ns{\T}\) of \(\T\) to be the set of all vectors \(x\) in \(\V\) such that \(\T(x) = \zv_{\W}\);
-	that is, \(\ns{\T} = \set{x \in \V : \T(x) = \zv_{\W}}\).
+  Let \(\V\) and \(\W\) be vector spaces over \(\F\), and let \(\T : \V \to \W\) be linear.
+  We define the \textbf{null space} (or \textbf{kernel}) \(\ns{\T}\) of \(\T\) to be the set of all vectors \(x\) in \(\V\) such that \(\T(x) = \zv_{\W}\);
+  that is, \(\ns{\T} = \set{x \in \V : \T(x) = \zv_{\W}}\).
 
-	We define the \textbf{range} (or \textbf{image}) \(\rg{\T}\) of \(\T\) to be the subset of \(\W\) consisting of all images (under \(\T\)) of vectors in \(\V\);
-	that is, \(\rg{\T} = \set{\T(x) : x \in V}\).
+  We define the \textbf{range} (or \textbf{image}) \(\rg{\T}\) of \(\T\) to be the subset of \(\W\) consisting of all images (under \(\T\)) of vectors in \(\V\);
+  that is, \(\rg{\T} = \set{\T(x) : x \in V}\).
 \end{defn}
 
 \begin{eg}\label{2.1.11}
-	Let \(\V\) and \(\W\) be vector spaces over \(\F\), and let \(\IT : \V \to \V\) and \(\zT : \V \to \W\) be the identity and zero transformations, respectively.
-	Then \(\ns{\IT} = \set{\zv_{\V}}\), \(\rg{\IT} = \V\), \(\ns{\zT} = \V\), and \(\rg{\zT} = \set{\zv_{\W}}\).
+  Let \(\V\) and \(\W\) be vector spaces over \(\F\), and let \(\IT : \V \to \V\) and \(\zT : \V \to \W\) be the identity and zero transformations, respectively.
+  Then \(\ns{\IT} = \set{\zv_{\V}}\), \(\rg{\IT} = \V\), \(\ns{\zT} = \V\), and \(\rg{\zT} = \set{\zv_{\W}}\).
 \end{eg}
 
 \begin{thm}\label{2.1}
-	Let \(\V\) and \(\W\) be vector spaces over \(\F\) and \(\T : \V \to \W\) be linear.
-	Then \(\ns{\T}\) and \(\rg{\T}\) are subspaces of \(\V\) and \(\W\) over \(\F\), respectively.
+  Let \(\V\) and \(\W\) be vector spaces over \(\F\) and \(\T : \V \to \W\) be linear.
+  Then \(\ns{\T}\) and \(\rg{\T}\) are subspaces of \(\V\) and \(\W\) over \(\F\), respectively.
 \end{thm}
 
 \begin{proof}[\pf{2.1}]
-	To clarify the notation, we use the symbols \(\zv_{\V}\) and \(\zv_{\W}\) to denote the zero vectors of \(\V\) and \(\W\), respectively.
+  To clarify the notation, we use the symbols \(\zv_{\V}\) and \(\zv_{\W}\) to denote the zero vectors of \(\V\) and \(\W\), respectively.
 
-	Since \(\T(\zv_{\V}) = \zv_{\W}\), we have that \(\zv_{\V} \in \ns{\T}\).
-	Let \(x, y \in \ns{\T}\) and \(c \in \F\).
-	Then \(\T(x + y) = \T(x) + \T(y) = \zv_{\W} +\zv_{\W} = \zv_{\W}\), and \(\T(cx) = c \T(x) = c \zv_{\W} = \zv_{\W}\).
-	Hence \(x + y \in \ns{\T}\) and \(cx \in \ns{\T}\), so that \(\ns{\T}\) is a subspace of \(\V\) over \(\F\) (See \cref{1.3}).
+  Since \(\T(\zv_{\V}) = \zv_{\W}\), we have that \(\zv_{\V} \in \ns{\T}\).
+  Let \(x, y \in \ns{\T}\) and \(c \in \F\).
+  Then \(\T(x + y) = \T(x) + \T(y) = \zv_{\W} +\zv_{\W} = \zv_{\W}\), and \(\T(cx) = c \T(x) = c \zv_{\W} = \zv_{\W}\).
+  Hence \(x + y \in \ns{\T}\) and \(cx \in \ns{\T}\), so that \(\ns{\T}\) is a subspace of \(\V\) over \(\F\) (See \cref{1.3}).
 
-	Because \(\T(\zv_{\V}) = \zv_{\W}\), we have that \(\zv_{\W} \in \rg{\T}\).
-	Now let \(x, y \in \rg{\T}\) and \(c \in \F\).
-	Then there exist \(v\) and \(w\) in \(\V\) such that \(\T(v) = x\) and \(\T(w) = y\).
-	So \(\T(v + w) = \T(v) + \T(w) = x + y\), and \(\T(cv) = c \T(v) = cx\).
-	Thus \(x + y \in \rg{\T}\) and \(cx \in \rg{\T}\), so \(\rg{\T}\) is a subspace of \(\W\) over \(\F\) (See \cref{1.3}).
+  Because \(\T(\zv_{\V}) = \zv_{\W}\), we have that \(\zv_{\W} \in \rg{\T}\).
+  Now let \(x, y \in \rg{\T}\) and \(c \in \F\).
+  Then there exist \(v\) and \(w\) in \(\V\) such that \(\T(v) = x\) and \(\T(w) = y\).
+  So \(\T(v + w) = \T(v) + \T(w) = x + y\), and \(\T(cv) = c \T(v) = cx\).
+  Thus \(x + y \in \rg{\T}\) and \(cx \in \rg{\T}\), so \(\rg{\T}\) is a subspace of \(\W\) over \(\F\) (See \cref{1.3}).
 \end{proof}
 
 \begin{thm}\label{2.2}
-	Let \(\V\) and \(\W\) be vector spaces over \(\F\), and let \(\T : \V \to \W\) be linear.
-	If \(\beta = \set{\seq{v}{1,,n}}\) is a basis for \(\V\) over \(\F\), then
-	\[
-		\rg{\T} = \spn{\T(\beta)} = \spn{\set{\T(v_1), \T(v_2), \dots, \T(v_n)}}.
-	\]
+  Let \(\V\) and \(\W\) be vector spaces over \(\F\), and let \(\T : \V \to \W\) be linear.
+  If \(\beta = \set{\seq{v}{1,,n}}\) is a basis for \(\V\) over \(\F\), then
+  \[
+    \rg{\T} = \spn{\T(\beta)} = \spn{\set{\T(v_1), \T(v_2), \dots, \T(v_n)}}.
+  \]
 \end{thm}
 
 \begin{proof}[\pf{2.2}]
-	Clearly \(\T(v_i) \in \rg{\T}\) for each \(i\).
-	Because \(\rg{\T}\) is a subspace, \(\rg{\T}\) contains \(\spn{\set{\T(v_1), \T(v_2), \dots, \T(v_n)}} = \spn{\T(\beta)}\) by \cref{1.5}.
+  Clearly \(\T(v_i) \in \rg{\T}\) for each \(i\).
+  Because \(\rg{\T}\) is a subspace, \(\rg{\T}\) contains \(\spn{\set{\T(v_1), \T(v_2), \dots, \T(v_n)}} = \spn{\T(\beta)}\) by \cref{1.5}.
 
-	Now suppose that \(w \in \rg{\T}\).
-	Then \(w = \T(v)\) for some \(v \in \V\).
-	Because \(\beta\) is a basis for \(\V\) over \(\F\), we have
-	\[
-		v = \sum_{i = 1}^n a_i v_i \quad \text{for some } \seq{a}{1,,n} \in \F.
-	\]
-	Since \(\T\) is linear, it follows that
-	\[
-		w = \T(v) = \sum_{i = 1}^n a_i \T(v_i) \in \spn{T(\beta)}.
-	\]
-	So \(\rg{\T}\) is contained in \(\spn{\T(\beta)}\).
+  Now suppose that \(w \in \rg{\T}\).
+  Then \(w = \T(v)\) for some \(v \in \V\).
+  Because \(\beta\) is a basis for \(\V\) over \(\F\), we have
+  \[
+    v = \sum_{i = 1}^n a_i v_i \quad \text{for some } \seq{a}{1,,n} \in \F.
+  \]
+  Since \(\T\) is linear, it follows that
+  \[
+    w = \T(v) = \sum_{i = 1}^n a_i \T(v_i) \in \spn{T(\beta)}.
+  \]
+  So \(\rg{\T}\) is contained in \(\spn{\T(\beta)}\).
 \end{proof}
 
 \begin{note}
-	\cref{2.2} is true if \(\beta\) is infinite.
-	(See \cref{ex:2.1.33}.)
+  \cref{2.2} is true if \(\beta\) is infinite.
+  (See \cref{ex:2.1.33}.)
 \end{note}
 
 \begin{defn}\label{2.1.12}
-	Let \(\V\) and \(\W\) be vector spaces over \(\F\), and let \(\T : \V \to \W\) be linear.
-	If \(\ns{\T}\) and \(\rg{\T}\) are finite-dimensional, then we define the \textbf{nullity} of \(\T\), denoted \(\nt{\T}\), and the \textbf{rank} of \(\T\), denoted \(\rk{\T}\), to be the dimensions of \(\ns{\T}\) and \(\rg{\T}\), respectively.
+  Let \(\V\) and \(\W\) be vector spaces over \(\F\), and let \(\T : \V \to \W\) be linear.
+  If \(\ns{\T}\) and \(\rg{\T}\) are finite-dimensional, then we define the \textbf{nullity} of \(\T\), denoted \(\nt{\T}\), and the \textbf{rank} of \(\T\), denoted \(\rk{\T}\), to be the dimensions of \(\ns{\T}\) and \(\rg{\T}\), respectively.
 \end{defn}
 
 \begin{note}
-	Reflecting on the action of a linear transformation, we see intuitively that the larger the nullity, the smaller the rank.
-	In other words, the more vectors that are carried into \(\zv\), the smaller the range.
-	The same heuristic reasoning tells us that the larger the rank, the smaller the nullity.
+  Reflecting on the action of a linear transformation, we see intuitively that the larger the nullity, the smaller the rank.
+  In other words, the more vectors that are carried into \(\zv\), the smaller the range.
+  The same heuristic reasoning tells us that the larger the rank, the smaller the nullity.
 \end{note}
 
 \begin{thm}[Dimension Theorem]\label{2.3}
-	Let \(\V\) and \(\W\) be vector spaces over \(\F\), and let \(\T : \V \to \W\) be linear.
-	If \(\V\) is finite-dimensional, then
-	\[
-		\nt{\T} + \rk{\T} = \dim(\V).
-	\]
+  Let \(\V\) and \(\W\) be vector spaces over \(\F\), and let \(\T : \V \to \W\) be linear.
+  If \(\V\) is finite-dimensional, then
+  \[
+    \nt{\T} + \rk{\T} = \dim(\V).
+  \]
 \end{thm}
 
 \begin{proof}[\pf{2.3}]
-	Suppose that \(\dim(\V) = n\), \(\dim(\ns{\T}) = k\), and \(\set{\seq{v}{1,,k}}\) is a basis for \(\ns{\T}\) over \(\F\).
-	By the \cref{1.6.19} we may extend \(\set{\seq{v}{1,,k}}\) to a basis \(\beta = \set{\seq{v}{1,,n}}\) for \(\V\) over \(\F\).
-	We claim that \(S = \set{\T(v_{k + 1}), \T(v_{k + 2}), \dots, \T(v_n)}\) is a basis for \(\rg{\T}\) over \(\F\).
+  Suppose that \(\dim(\V) = n\), \(\dim(\ns{\T}) = k\), and \(\set{\seq{v}{1,,k}}\) is a basis for \(\ns{\T}\) over \(\F\).
+  By the \cref{1.6.19} we may extend \(\set{\seq{v}{1,,k}}\) to a basis \(\beta = \set{\seq{v}{1,,n}}\) for \(\V\) over \(\F\).
+  We claim that \(S = \set{\T(v_{k + 1}), \T(v_{k + 2}), \dots, \T(v_n)}\) is a basis for \(\rg{\T}\) over \(\F\).
 
-	First we prove that \(S\) generates \(\rg{\T}\).
-	Using \cref{2.2} and the fact that \(\T(v_i) = \zv\) for \(1 \leq i \leq k\), we have
-	\begin{align*}
-		\rg{\T} & = \spn{\set{\T(v_1), \T(v_2), \dots, \T(v_n)}}             \\
-		        & = \spn{\set{\T(v_{k + 1}), \T(v_{k + 2}), \dots, \T(v_n)}} \\
-		        & = \spn{S}.
-	\end{align*}
-	Now we prove that \(S\) is linearly independent.
-	Suppose that
-	\[
-		\sum_{i = k + 1}^n b_i \T(v_i) = \zv \quad \text{for } \seq{b}{k + 1,k + 2,,n} \in \F.
-	\]
-	Using the fact that \(\T\) is linear, we have
-	\[
-		\T\pa{\sum_{i = k + 1}^n b_i v_i} = \zv.
-	\]
-	So
-	\[
-		\sum_{i = k + 1}^n b_i v_i \in \ns{\T}.
-	\]
-	Hence there exist \(\seq{c}{1,,k} \in \F\) such that
-	\[
-		\sum_{i = k + 1}^n b_i v_i = \sum_{i = 1}^k c_i v_i \quad \text{or} \quad \sum_{i = 1}^k (-c_i) v_i + \sum_{i = k + 1}^n b_i v_i = \zv.
-	\]
-	Since \(\beta\) is a basis for \(\V\) over \(\F\), we have \(b_i = 0\) for all \(i\).
-	Hence \(S\) is linearly independent.
-	Notice that this argument also shows that \(\T(v_{k + 1}), \T(v_{k + 2}), \dots, \T(v_n)\) are distinct;
-	therefore \(\rk{\T} = n - k\).
+  First we prove that \(S\) generates \(\rg{\T}\).
+  Using \cref{2.2} and the fact that \(\T(v_i) = \zv\) for \(1 \leq i \leq k\), we have
+  \begin{align*}
+    \rg{\T} & = \spn{\set{\T(v_1), \T(v_2), \dots, \T(v_n)}}             \\
+            & = \spn{\set{\T(v_{k + 1}), \T(v_{k + 2}), \dots, \T(v_n)}} \\
+            & = \spn{S}.
+  \end{align*}
+  Now we prove that \(S\) is linearly independent.
+  Suppose that
+  \[
+    \sum_{i = k + 1}^n b_i \T(v_i) = \zv \quad \text{for } \seq{b}{k + 1,k + 2,,n} \in \F.
+  \]
+  Using the fact that \(\T\) is linear, we have
+  \[
+    \T\pa{\sum_{i = k + 1}^n b_i v_i} = \zv.
+  \]
+  So
+  \[
+    \sum_{i = k + 1}^n b_i v_i \in \ns{\T}.
+  \]
+  Hence there exist \(\seq{c}{1,,k} \in \F\) such that
+  \[
+    \sum_{i = k + 1}^n b_i v_i = \sum_{i = 1}^k c_i v_i \quad \text{or} \quad \sum_{i = 1}^k (-c_i) v_i + \sum_{i = k + 1}^n b_i v_i = \zv.
+  \]
+  Since \(\beta\) is a basis for \(\V\) over \(\F\), we have \(b_i = 0\) for all \(i\).
+  Hence \(S\) is linearly independent.
+  Notice that this argument also shows that \(\T(v_{k + 1}), \T(v_{k + 2}), \dots, \T(v_n)\) are distinct;
+  therefore \(\rk{\T} = n - k\).
 \end{proof}
 
 \begin{thm}\label{2.4}
-	Let \(\V\) and \(\W\) be vector spaces over \(\F\), and let \(\T : \V \to \W\) be linear.
-	Then \(\T\) is one-to-one iff \(\ns{\T} = \set{\zv_{\V}}\).
+  Let \(\V\) and \(\W\) be vector spaces over \(\F\), and let \(\T : \V \to \W\) be linear.
+  Then \(\T\) is one-to-one iff \(\ns{\T} = \set{\zv_{\V}}\).
 \end{thm}
 
 \begin{proof}[\pf{2.4}]
-	Suppose that \(\T\) is one-to-one and \(x \in \ns{\T}\).
-	Then \(\T(x) = \zv_{\W} = \T(\zv_{\V})\).
-	Since \(\T\) is one-to-one, we have \(x = \zv_{\V}\).
-	Hence \(\ns{\T} = \set{\zv_{\V}}\).
+  Suppose that \(\T\) is one-to-one and \(x \in \ns{\T}\).
+  Then \(\T(x) = \zv_{\W} = \T(\zv_{\V})\).
+  Since \(\T\) is one-to-one, we have \(x = \zv_{\V}\).
+  Hence \(\ns{\T} = \set{\zv_{\V}}\).
 
-	Now assume that \(\ns{\T} = \set{\zv_{\V}}\), and suppose that \(\T(x) = \T(y)\).
-	Then \(\zv_{\W} = \T(x) - \T(y) = \T(x - y)\) by \cref{2.1.2}(c).
-	Therefore \(x - y \in \ns{\T} = \set{\zv_{\V}}\).
-	So \(x - y = \zv_{\V}\), or \(x = y\).
-	This means that \(\T\) is one-to-one.
+  Now assume that \(\ns{\T} = \set{\zv_{\V}}\), and suppose that \(\T(x) = \T(y)\).
+  Then \(\zv_{\W} = \T(x) - \T(y) = \T(x - y)\) by \cref{2.1.2}(c).
+  Therefore \(x - y \in \ns{\T} = \set{\zv_{\V}}\).
+  So \(x - y = \zv_{\V}\), or \(x = y\).
+  This means that \(\T\) is one-to-one.
 \end{proof}
 
 \begin{thm}\label{2.5}
-	Let \(\V\) and \(\W\) be vector spaces over \(\F\) of equal (finite) dimension, and let \(\T : \V \to \W\) be linear.
-	Then the following are equivalent.
-	\begin{enumerate}
-		\item \(\T\) is one-to-one.
-		\item \(\T\) is onto.
-		\item \(\rk{\T} = \dim(\V)\)
-	\end{enumerate}
+  Let \(\V\) and \(\W\) be vector spaces over \(\F\) of equal (finite) dimension, and let \(\T : \V \to \W\) be linear.
+  Then the following are equivalent.
+  \begin{enumerate}
+    \item \(\T\) is one-to-one.
+    \item \(\T\) is onto.
+    \item \(\rk{\T} = \dim(\V)\)
+  \end{enumerate}
 \end{thm}
 
 \begin{proof}[\pf{2.5}]
-	From the dimension theorem (\cref{2.3}), we have
-	\[
-		\nt{\T} + \rk{\T} = \dim(\V).
-	\]
-	Now, with the use of \cref{2.4}, we have that \(\T\) is one-to-one iff \(\ns{\T} = \set{\zv_{\V}}\), iff \(\nt{\T} = 0\), iff \(\rk{\T} = \dim(\V)\), iff \(\rk{\T} = \dim(\W)\), and iff \(\dim(\rg{\T}) = \dim(\W)\).
-	By \cref{1.11} this equality is equivalent to \(\rg{\T} = \W\), the definition of \(\T\) being onto.
+  From the dimension theorem (\cref{2.3}), we have
+  \[
+    \nt{\T} + \rk{\T} = \dim(\V).
+  \]
+  Now, with the use of \cref{2.4}, we have that \(\T\) is one-to-one iff \(\ns{\T} = \set{\zv_{\V}}\), iff \(\nt{\T} = 0\), iff \(\rk{\T} = \dim(\V)\), iff \(\rk{\T} = \dim(\W)\), and iff \(\dim(\rg{\T}) = \dim(\W)\).
+  By \cref{1.11} this equality is equivalent to \(\rg{\T} = \W\), the definition of \(\T\) being onto.
 \end{proof}
 
 \begin{note}
-	If \(\V\) is not finite-dimensional and \(\T : \V \to \V\) is linear, then it does \emph{not} follow that one-to-one and onto are equivalent.
+  If \(\V\) is not finite-dimensional and \(\T : \V \to \V\) is linear, then it does \emph{not} follow that one-to-one and onto are equivalent.
 
-	The linearity of \(\T\) in \cref{2.4} and \cref{2.5} is essential, for it is easy to construct examples of functions from \(\R\) into \(\R\) that are not one-to-one, but are onto, and vice versa.
+  The linearity of \(\T\) in \cref{2.4} and \cref{2.5} is essential, for it is easy to construct examples of functions from \(\R\) into \(\R\) that are not one-to-one, but are onto, and vice versa.
 \end{note}
 
 \begin{thm}\label{2.6}
-	Let \(\V\) and \(\W\) be vector spaces over \(\F\), and suppose that \(\set{\seq{v}{1,,n}}\) is a basis for \(\V\) over \(\F\).
-	For \(\seq{w}{1,,n}\) in \(\W\), there exists exactly one linear transformation \(\T : \V \to \W\) such that \(\T(v_i) = w_i\) for \(i = 1, 2, \dots, n\).
+  Let \(\V\) and \(\W\) be vector spaces over \(\F\), and suppose that \(\set{\seq{v}{1,,n}}\) is a basis for \(\V\) over \(\F\).
+  For \(\seq{w}{1,,n}\) in \(\W\), there exists exactly one linear transformation \(\T : \V \to \W\) such that \(\T(v_i) = w_i\) for \(i = 1, 2, \dots, n\).
 \end{thm}
 
 \begin{proof}[\pf{2.6}]
-	Let \(x \in \V\).
-	Then
-	\[
-		x = \sum_{i = 1}^n a_i v_i
-	\]
-	where \(\seq{a}{1,,n}\) are unique scalars.
-	Define
-	\[
-		\T : \V \to \W \quad \text{by} \quad \T(x) = \sum_{i = 1}^n a_i w_i.
-	\]
-	\begin{enumerate}
-		\item \(\T\) is linear:
-		      Suppose that \(u, v \in \V\) and \(d \in \F\).
-		      Then we may write
-		      \[
-			      u = \sum_{i = 1}^n b_i v_i \quad \text{and} \quad v = \sum_{i = 1}^n c_i v_i
-		      \]
-		      for some scalars \(\seq{b}{1,,n}, \seq{c}{1,,n}\).
-		      Thus
-		      \[
-			      du + v = \sum_{i = 1}^n (db_i + c_i) v_i.
-		      \]
-		      So
-		      \[
-			      \T(du + v) = \sum_{i = 1}^n (db_i + c_i) w_i = d \sum_{i = 1}^n b_i w_i + \sum_{i = 1}^n c_i w_i = d \T(u) + \T(v).
-		      \]
-		\item Clearly
-		      \[
-			      \T(v_i) = w_i \quad \text{for } i = 1, 2, \dots, n.
-		      \]
-		\item \(\T\) is unique:
-		      Suppose that \(\U : \V \to \W\) is linear and \(\U(v_i) = w_i\) for \(i = 1, 2, \dots, n\).
-		      Then for \(x \in \V\) with
-		      \[
-			      x = \sum_{i = 1}^n a_i v_i,
-		      \]
-		      we have
-		      \[
-			      \U(x) = \sum_{i = 1}^n a_i \U(v_i) = \sum_{i = 1}^n a_i w_i = \T(x).
-		      \]
-		      Hence \(\U = \T\).
-	\end{enumerate}
+  Let \(x \in \V\).
+  Then
+  \[
+    x = \sum_{i = 1}^n a_i v_i
+  \]
+  where \(\seq{a}{1,,n}\) are unique scalars.
+  Define
+  \[
+    \T : \V \to \W \quad \text{by} \quad \T(x) = \sum_{i = 1}^n a_i w_i.
+  \]
+  \begin{enumerate}
+    \item \(\T\) is linear:
+          Suppose that \(u, v \in \V\) and \(d \in \F\).
+          Then we may write
+          \[
+            u = \sum_{i = 1}^n b_i v_i \quad \text{and} \quad v = \sum_{i = 1}^n c_i v_i
+          \]
+          for some scalars \(\seq{b}{1,,n}, \seq{c}{1,,n}\).
+          Thus
+          \[
+            du + v = \sum_{i = 1}^n (db_i + c_i) v_i.
+          \]
+          So
+          \[
+            \T(du + v) = \sum_{i = 1}^n (db_i + c_i) w_i = d \sum_{i = 1}^n b_i w_i + \sum_{i = 1}^n c_i w_i = d \T(u) + \T(v).
+          \]
+    \item Clearly
+          \[
+            \T(v_i) = w_i \quad \text{for } i = 1, 2, \dots, n.
+          \]
+    \item \(\T\) is unique:
+          Suppose that \(\U : \V \to \W\) is linear and \(\U(v_i) = w_i\) for \(i = 1, 2, \dots, n\).
+          Then for \(x \in \V\) with
+          \[
+            x = \sum_{i = 1}^n a_i v_i,
+          \]
+          we have
+          \[
+            \U(x) = \sum_{i = 1}^n a_i \U(v_i) = \sum_{i = 1}^n a_i w_i = \T(x).
+          \]
+          Hence \(\U = \T\).
+  \end{enumerate}
 \end{proof}
 
 \begin{cor}\label{2.1.13}
-	Let \(\V\) and \(\W\) be vector spaces over \(\F\), and suppose that \(\V\) has a finite basis \(\set{\seq{v}{1,,n}}\) over \(\F\).
-	If \(\U, \T : \V \to \W\) are linear and \(\U(v_i) = \T(v_i)\) for \(i = 1, 2, \dots, n\), then \(\U = \T\).
+  Let \(\V\) and \(\W\) be vector spaces over \(\F\), and suppose that \(\V\) has a finite basis \(\set{\seq{v}{1,,n}}\) over \(\F\).
+  If \(\U, \T : \V \to \W\) are linear and \(\U(v_i) = \T(v_i)\) for \(i = 1, 2, \dots, n\), then \(\U = \T\).
 \end{cor}
 
 \begin{proof}[\pf{2.1.13}]
-	Since \(\U(v_i) = \T(v_i)\) for all \(i = 1, 2, \dots, n\), by \cref{2.6} we know that \(\U = \T\).
+  Since \(\U(v_i) = \T(v_i)\) for all \(i = 1, 2, \dots, n\), by \cref{2.6} we know that \(\U = \T\).
 \end{proof}
 
 \exercisesection
 
 \setcounter{ex}{5}
 \begin{ex}\label{ex:2.1.6}
-	Define \(\T : \ms[n][n][\F] \to \F\) by \(\T(A) = \tr[A]\).
-	Prove that \(\T\) is a linear transformation, and find bases for both \(\ns{\T}\) and \(\rg{\T}\) over \(\F\).
-	Then compute the nullity and rank of \(\T\), and verify the dimension theorem.
-	Finally, use the appropriate theorems in \cref{sec:2.1} to determine whether \(\T\) is one-to-one or onto.
+  Define \(\T : \ms[n][n][\F] \to \F\) by \(\T(A) = \tr[A]\).
+  Prove that \(\T\) is a linear transformation, and find bases for both \(\ns{\T}\) and \(\rg{\T}\) over \(\F\).
+  Then compute the nullity and rank of \(\T\), and verify the dimension theorem.
+  Finally, use the appropriate theorems in \cref{sec:2.1} to determine whether \(\T\) is one-to-one or onto.
 \end{ex}
 
 \begin{proof}[\pf{ex:2.1.6}]
-	Let \(A, B \in \ms[n][n][\F]\) and let \(c \in \F\).
-	First we show that \(\T\) is linear.
-	Since
-	\begin{align*}
-		\T(cA + B) & = \tr[cA + B]                                       &  & \by{ex:2.1.6}                \\
-		           & = \sum_{i = 1}^n \pa{cA + B}_{i i}                  &  & \by{1.3.9}                   \\
-		           & = \sum_{i = 1}^n \pa{cA_{i i} + B_{i i}}            &  & \by{1.2.9}                   \\
-		           & = c \sum_{i = 1}^n A_{i i} + \sum_{i = 1}^n B_{i i} &  & (A_{i i}, B_{i i}, c \in \F) \\
-		           & = c \tr[A] + \tr[B]                                 &  & \by{1.3.9}                   \\
-		           & = c \T(A) + \T(B),                                  &  & \by{ex:2.1.6}
-	\end{align*}
-	by \cref{2.1.2}(b) we know that \(\T\) is linear.
+  Let \(A, B \in \ms[n][n][\F]\) and let \(c \in \F\).
+  First we show that \(\T\) is linear.
+  Since
+  \begin{align*}
+    \T(cA + B) & = \tr[cA + B]                                       &  & \by{ex:2.1.6}                \\
+               & = \sum_{i = 1}^n \pa{cA + B}_{i i}                  &  & \by{1.3.9}                   \\
+               & = \sum_{i = 1}^n \pa{cA_{i i} + B_{i i}}            &  & \by{1.2.9}                   \\
+               & = c \sum_{i = 1}^n A_{i i} + \sum_{i = 1}^n B_{i i} &  & (A_{i i}, B_{i i}, c \in \F) \\
+               & = c \tr[A] + \tr[B]                                 &  & \by{1.3.9}                   \\
+               & = c \T(A) + \T(B),                                  &  & \by{ex:2.1.6}
+  \end{align*}
+  by \cref{2.1.2}(b) we know that \(\T\) is linear.
 
-	Next we find a basis for \(\ns{\T}\) over \(\F\).
-	Let \(\W\) and \(\beta\) be the sets defined in \cref{ex:1.6.15}.
-	From \cref{ex:1.6.15} we see that \(\W = \ns{\T}\) and \(\beta\) is a basis for \(\ns{\T}\) over \(\F\).
-	Thus we have \(\dim(\ns{\T}) = \nt{\T} = n^2 - 1\).
+  Next we find a basis for \(\ns{\T}\) over \(\F\).
+  Let \(\W\) and \(\beta\) be the sets defined in \cref{ex:1.6.15}.
+  From \cref{ex:1.6.15} we see that \(\W = \ns{\T}\) and \(\beta\) is a basis for \(\ns{\T}\) over \(\F\).
+  Thus we have \(\dim(\ns{\T}) = \nt{\T} = n^2 - 1\).
 
-	Next we find a basis for \(\rg{\T}\) over \(\F\).
-	Since \(\tr[A] \in \F\) for all \(A \in \ms[n][n][\F]\), we know that \(\tr[\ms[n][n][\F]] \subseteq \F\).
-	Since
-	\[
-		\forall c \in \F, \tr\begin{pmatrix}
-			c      & 0      & \cdots & 0      \\
-			0      & 0      & \cdots & 0      \\
-			\vdots & \vdots & \ddots & \vdots \\
-			0      & 0      & \cdots & 0
-		\end{pmatrix} = c,
-	\]
-	we know that \(\F \subseteq \tr[\ms[n][n][\F]]\).
-	Thus we have \(\rg{\T} = \T(\ms[n][n][\F]) = \tr[\ms[n][n][\F]] = \F\), and \(\dim(\rg{\T}) = \rk{\T} = 1\).
+  Next we find a basis for \(\rg{\T}\) over \(\F\).
+  Since \(\tr[A] \in \F\) for all \(A \in \ms[n][n][\F]\), we know that \(\tr[\ms[n][n][\F]] \subseteq \F\).
+  Since
+  \[
+    \forall c \in \F, \tr\begin{pmatrix}
+      c      & 0      & \cdots & 0      \\
+      0      & 0      & \cdots & 0      \\
+      \vdots & \vdots & \ddots & \vdots \\
+      0      & 0      & \cdots & 0
+    \end{pmatrix} = c,
+  \]
+  we know that \(\F \subseteq \tr[\ms[n][n][\F]]\).
+  Thus we have \(\rg{\T} = \T(\ms[n][n][\F]) = \tr[\ms[n][n][\F]] = \F\), and \(\dim(\rg{\T}) = \rk{\T} = 1\).
 
-	From the proofs above we see that
-	\[
-		\dim(\ms[n][n][\F]) = n^2 = (n^2 - 1) + 1 = \nt{\T} + \rk{\T},
-	\]
-	thus the dimension theorem (\cref{2.3}) holds.
-	Since \(\ns{\T} \neq \set{\zm}\), by \cref{2.4} we know that \(\T\) is not one-to-one.
-	Since \(\rg{\T} = \F\), we know that \(\T\) is onto.
+  From the proofs above we see that
+  \[
+    \dim(\ms[n][n][\F]) = n^2 = (n^2 - 1) + 1 = \nt{\T} + \rk{\T},
+  \]
+  thus the dimension theorem (\cref{2.3}) holds.
+  Since \(\ns{\T} \neq \set{\zm}\), by \cref{2.4} we know that \(\T\) is not one-to-one.
+  Since \(\rg{\T} = \F\), we know that \(\T\) is onto.
 \end{proof}
 
 \setcounter{ex}{12}
 \begin{ex}\label{ex:2.1.13}
-	Let \(\V\) and \(\W\) be vector spaces over \(\F\), let \(\T : \V \to \W\) be linear, and let \(\set{\seq{w}{1,,k}}\) be a linearly independent subset of \(\rg{\T}\).
-	Prove that if \(S = \set{\seq{v}{1,,k}}\) is chosen so that \(\T(v_i) = w_i\) for \(i = 1, 2, \dots, k\), then \(S\) is linearly independent.
+  Let \(\V\) and \(\W\) be vector spaces over \(\F\), let \(\T : \V \to \W\) be linear, and let \(\set{\seq{w}{1,,k}}\) be a linearly independent subset of \(\rg{\T}\).
+  Prove that if \(S = \set{\seq{v}{1,,k}}\) is chosen so that \(\T(v_i) = w_i\) for \(i = 1, 2, \dots, k\), then \(S\) is linearly independent.
 \end{ex}
 
 \begin{proof}[\pf{ex:2.1.13}]
-	Let \(\seq{a}{1,,k} \in \F\).
-	Since
-	\begin{align*}
-		         & \sum_{i = 1}^k a_i v_i = \zv_{\V}                           \\
-		\implies & \T\pa{\sum_{i = 1}^k a_i v_i} = \zv_{\W} &  & \by{2.1.2}[a] \\
-		\implies & \sum_{i = 1}^k a_i \T(v_i) = \zv_{\W}    &  & \by{2.1.2}[d] \\
-		\implies & \sum_{i = 1}^k a_i w_i = \zv_{\W}                           \\
-		\implies & \seq[=]{a}{1,,k} = 0,                    &  & \by{1.5.3}
-	\end{align*}
-	by \cref{1.5.3} we know that \(\set{\seq{v}{1,,k}}\) is linearly independent.
+  Let \(\seq{a}{1,,k} \in \F\).
+  Since
+  \begin{align*}
+             & \sum_{i = 1}^k a_i v_i = \zv_{\V}                           \\
+    \implies & \T\pa{\sum_{i = 1}^k a_i v_i} = \zv_{\W} &  & \by{2.1.2}[a] \\
+    \implies & \sum_{i = 1}^k a_i \T(v_i) = \zv_{\W}    &  & \by{2.1.2}[d] \\
+    \implies & \sum_{i = 1}^k a_i w_i = \zv_{\W}                           \\
+    \implies & \seq[=]{a}{1,,k} = 0,                    &  & \by{1.5.3}
+  \end{align*}
+  by \cref{1.5.3} we know that \(\set{\seq{v}{1,,k}}\) is linearly independent.
 \end{proof}
 
 \begin{ex}\label{ex:2.1.14}
-	Let \(\V\) and \(\W\) be vector spaces over \(\F\) and \(\T : \V \to \W\) be linear.
-	\begin{enumerate}
-		\item Prove that \(\T\) is one-to-one iff \(\T\) carries linearly independent subsets of \(\V\) onto linearly independent subsets of \(\W\).
-		\item Suppose that \(\T\) is one-to-one and that \(S\) is a subset of \(\V\).
-		      Prove that \(S\) is linearly independent iff \(\T(S)\) is linearly independent.
-		\item Suppose \(\beta = \set{\seq{v}{1,,n}}\) is a basis for \(\V\) over \(\F\) and \(\T\) is one-to-one and onto.
-		      Prove that \(\T(\beta)\) is a basis for \(\W\) over \(\F\).
-	\end{enumerate}
+  Let \(\V\) and \(\W\) be vector spaces over \(\F\) and \(\T : \V \to \W\) be linear.
+  \begin{enumerate}
+    \item Prove that \(\T\) is one-to-one iff \(\T\) carries linearly independent subsets of \(\V\) onto linearly independent subsets of \(\W\).
+    \item Suppose that \(\T\) is one-to-one and that \(S\) is a subset of \(\V\).
+          Prove that \(S\) is linearly independent iff \(\T(S)\) is linearly independent.
+    \item Suppose \(\beta = \set{\seq{v}{1,,n}}\) is a basis for \(\V\) over \(\F\) and \(\T\) is one-to-one and onto.
+          Prove that \(\T(\beta)\) is a basis for \(\W\) over \(\F\).
+  \end{enumerate}
 \end{ex}
 
 \begin{proof}[\pf{ex:2.1.14}(a)]
-	First suppose that \(\T\) is one-to-one.
-	Let \(S\) be a linearly independent subset of \(\V\).
-	Note that \(\V\) can be infinite-dimensional and thus \(S\) can be infinite.
-	Since
-	\begin{align*}
-		         & \begin{dcases}
-			           \forall \seq{w}{1,,k} \in \T(S) \\
-			           \forall \seq{a}{1,,k} \in \F
-		           \end{dcases}, \sum_{i = 1}^k a_i w_i = \zv_{\W}                                                                                                             \\
-		\implies & \exists \seq{v}{1,,k} \in S :                                                                                                                               \\
-		         & \begin{dcases}
-			           \forall i \in \set{1, 2, \dots, k}, \T(v_i) = w_i \\
-			           \sum_{i = 1}^k a_i w_i = \sum_{i = 1}^k a_i \T(v_i) = \T\pa{\sum_{i = 1}^k a_i v_i} = \zv_{\W} = \T(\zv_{\V})
-		           \end{dcases} &  & \by{2.1.2}                                     \\
-		\implies & \sum_{i = 1}^k a_i v_i = \zv_{\V}                                                                                        &  & \text{(\(\T\) is one-to-one)} \\
-		\implies & \seq[=]{a}{1,,k} = 0,                                                                                                    &  & \by{1.5.3}
-	\end{align*}
-	by \cref{1.5.3} we know that \(\T(S)\) is linearly independent.
-	Since \(S\) is arbitrary, we conclude that \(\T\) carries linearly independent subsets of \(\V\) onto linearly independent subsets of \(\W\).
+  First suppose that \(\T\) is one-to-one.
+  Let \(S\) be a linearly independent subset of \(\V\).
+  Note that \(\V\) can be infinite-dimensional and thus \(S\) can be infinite.
+  Since
+  \begin{align*}
+             & \begin{dcases}
+                 \forall \seq{w}{1,,k} \in \T(S) \\
+                 \forall \seq{a}{1,,k} \in \F
+               \end{dcases}, \sum_{i = 1}^k a_i w_i = \zv_{\W}                                                                                                             \\
+    \implies & \exists \seq{v}{1,,k} \in S :                                                                                                                               \\
+             & \begin{dcases}
+                 \forall i \in \set{1, 2, \dots, k}, \T(v_i) = w_i \\
+                 \sum_{i = 1}^k a_i w_i = \sum_{i = 1}^k a_i \T(v_i) = \T\pa{\sum_{i = 1}^k a_i v_i} = \zv_{\W} = \T(\zv_{\V})
+               \end{dcases} &  & \by{2.1.2}                                     \\
+    \implies & \sum_{i = 1}^k a_i v_i = \zv_{\V}                                                                                        &  & \text{(\(\T\) is one-to-one)} \\
+    \implies & \seq[=]{a}{1,,k} = 0,                                                                                                    &  & \by{1.5.3}
+  \end{align*}
+  by \cref{1.5.3} we know that \(\T(S)\) is linearly independent.
+  Since \(S\) is arbitrary, we conclude that \(\T\) carries linearly independent subsets of \(\V\) onto linearly independent subsets of \(\W\).
 
-	Now suppose that \(\T\) carries linearly independent subsets of \(\V\) onto linearly independent subsets of \(\W\).
-	Since
-	\begin{align*}
-		         & \forall x, y \in \V, x \neq y                                               \\
-		\implies & x - y \neq \zv_{\V}                                                         \\
-		\implies & \set{x - y} \text{ is linearly independent}     &  & \by{1.5.4}[b]          \\
-		\implies & \set{\T(x - y)} \text{ is linearly independent} &  & \text{(by hypothesis)} \\
-		\implies & \T(x - y) \neq \zv_{\W}                         &  & \by{1.5.2}             \\
-		\implies & \T(x) - \T(y) \neq \zv_{\W}                     &  & \by{2.1.2}[c]          \\
-		\implies & \T(x) \neq \T(y),
-	\end{align*}
-	we know that \(\T\) is one-to-one.
-	From all proofs above we conclude that \(\T\) is one-to-one iff \(\T\) carries linearly independent subsets of \(\V\) onto linearly independent subsets of \(\W\).
+  Now suppose that \(\T\) carries linearly independent subsets of \(\V\) onto linearly independent subsets of \(\W\).
+  Since
+  \begin{align*}
+             & \forall x, y \in \V, x \neq y                                               \\
+    \implies & x - y \neq \zv_{\V}                                                         \\
+    \implies & \set{x - y} \text{ is linearly independent}     &  & \by{1.5.4}[b]          \\
+    \implies & \set{\T(x - y)} \text{ is linearly independent} &  & \text{(by hypothesis)} \\
+    \implies & \T(x - y) \neq \zv_{\W}                         &  & \by{1.5.2}             \\
+    \implies & \T(x) - \T(y) \neq \zv_{\W}                     &  & \by{2.1.2}[c]          \\
+    \implies & \T(x) \neq \T(y),
+  \end{align*}
+  we know that \(\T\) is one-to-one.
+  From all proofs above we conclude that \(\T\) is one-to-one iff \(\T\) carries linearly independent subsets of \(\V\) onto linearly independent subsets of \(\W\).
 \end{proof}
 
 \begin{proof}[\pf{ex:2.1.14}(b)]
-	By \cref{ex:2.1.14}(a) and \cref{ex:2.1.13} we are done.
+  By \cref{ex:2.1.14}(a) and \cref{ex:2.1.13} we are done.
 \end{proof}
 
 \begin{proof}[\pf{ex:2.1.14}(c)]
-	Since \(\T\) is one-to-one, by \cref{ex:2.1.14}(b) we know that \(\T(\beta)\) is linearly independent.
-	Since \(\T\) is onto, by \cref{2.2} we know that \(\spn{\T(\beta)} = \rg{\T} = \W\).
-	Thus by \cref{1.6.1} \(\T(\beta)\) is a basis for \(\W\) over \(\F\).
+  Since \(\T\) is one-to-one, by \cref{ex:2.1.14}(b) we know that \(\T(\beta)\) is linearly independent.
+  Since \(\T\) is onto, by \cref{2.2} we know that \(\spn{\T(\beta)} = \rg{\T} = \W\).
+  Thus by \cref{1.6.1} \(\T(\beta)\) is a basis for \(\W\) over \(\F\).
 \end{proof}
 
 \begin{ex}\label{ex:2.1.15}
-	Define
-	\[
-		\T : \ps{\R} \to \ps{\R} \quad \text{by} \quad \T(f) = \int_0^x f(t) \; dt.
-	\]
-	Prove that \(\T\) is linear and one-to-one, but not onto.
+  Define
+  \[
+    \T : \ps{\R} \to \ps{\R} \quad \text{by} \quad \T(f) = \int_0^x f(t) \; dt.
+  \]
+  Prove that \(\T\) is linear and one-to-one, but not onto.
 \end{ex}
 
 \begin{proof}[\pf{ex:2.1.15}]
-	First we show that \(\T\) is linear.
-	Let \(f, g \in \ps{\R}\) and let \(c \in \R\).
-	Since
-	\begin{align*}
-		\T(cf + g) & = \int_0^x (cf + g)(t) \; dt                  &  & \by{ex:2.1.15} \\
-		           & = \int_0^x cf(t) + g(t) \; dt                 &  & \by{1.2.10}    \\
-		           & = c \int_0^x f(t) \; dt + \int_0^x g(t) \; dt                     \\
-		           & = c \T(f) + \T(g),
-	\end{align*}
-	by \cref{2.1.2}(b) we know that \(\T\) is linear.
+  First we show that \(\T\) is linear.
+  Let \(f, g \in \ps{\R}\) and let \(c \in \R\).
+  Since
+  \begin{align*}
+    \T(cf + g) & = \int_0^x (cf + g)(t) \; dt                  &  & \by{ex:2.1.15} \\
+               & = \int_0^x cf(t) + g(t) \; dt                 &  & \by{1.2.10}    \\
+               & = c \int_0^x f(t) \; dt + \int_0^x g(t) \; dt                     \\
+               & = c \T(f) + \T(g),
+  \end{align*}
+  by \cref{2.1.2}(b) we know that \(\T\) is linear.
 
-	Next we show that \(\T\) is one-to-one.
-	Let \(\zv : \R \to \R\) denote the zero function.
-	Since
-	\[
-		\forall f \in \ps{\R}, \int_0^x f(t) \; dt = \zv \implies f = \zv \implies \ns{\T} = \set{\zv},
-	\]
-	by \cref{2.4} we know that \(\T\) is one-to-one.
+  Next we show that \(\T\) is one-to-one.
+  Let \(\zv : \R \to \R\) denote the zero function.
+  Since
+  \[
+    \forall f \in \ps{\R}, \int_0^x f(t) \; dt = \zv \implies f = \zv \implies \ns{\T} = \set{\zv},
+  \]
+  by \cref{2.4} we know that \(\T\) is one-to-one.
 
-	Now we show that \(\T\) is not onto.
-	Let \(c \in \F \setminus \set{0}\).
-	Since \(c \in \ps{\R}\) and no polynomial function has indefinite integral equals to \(c\), we know that \(\T\) is not onto.
+  Now we show that \(\T\) is not onto.
+  Let \(c \in \F \setminus \set{0}\).
+  Since \(c \in \ps{\R}\) and no polynomial function has indefinite integral equals to \(c\), we know that \(\T\) is not onto.
 \end{proof}
 
 \begin{ex}\label{ex:2.1.16}
-	Let \(\T : \ps{\R} \to \ps{\R}\) be defined by \(\T(f) = f'\).
-	Recall that \(\T\) is linear (\cref{2.1.7}).
-	Prove that \(\T\) is onto, but not one-to-one.
+  Let \(\T : \ps{\R} \to \ps{\R}\) be defined by \(\T(f) = f'\).
+  Recall that \(\T\) is linear (\cref{2.1.7}).
+  Prove that \(\T\) is onto, but not one-to-one.
 \end{ex}
 
 \begin{proof}[\pf{ex:2.1.16}]
-	First we show that \(\T\) is onto.
-	Let \(f \in \ps{\R}\).
-	Since
-	\begin{align*}
-		         & f \in \ps{\R}                                                                          \\
-		\implies & \exists \seq{a}{0,1,,n} \in \R : f(x) = a_0 + a_1 x + \cdots + a_n x^n                 \\
-		\implies & \begin{dcases}
-			           x \mapsto a_0 x + \frac{a_1}{2} x^2 + \cdots + \frac{a_n}{n + 1} x^{n + 1} \in \ps{\R} \\
-			           (x \mapsto a_0 x + \frac{a_1}{2} x^2 + \cdots + \frac{a_n}{n + 1} x^{n + 1})' = f
-		           \end{dcases}
-	\end{align*}
-	and \(f\) is arbitrary, we know that \(\T\) is onto.
+  First we show that \(\T\) is onto.
+  Let \(f \in \ps{\R}\).
+  Since
+  \begin{align*}
+             & f \in \ps{\R}                                                                          \\
+    \implies & \exists \seq{a}{0,1,,n} \in \R : f(x) = a_0 + a_1 x + \cdots + a_n x^n                 \\
+    \implies & \begin{dcases}
+                 x \mapsto a_0 x + \frac{a_1}{2} x^2 + \cdots + \frac{a_n}{n + 1} x^{n + 1} \in \ps{\R} \\
+                 (x \mapsto a_0 x + \frac{a_1}{2} x^2 + \cdots + \frac{a_n}{n + 1} x^{n + 1})' = f
+               \end{dcases}
+  \end{align*}
+  and \(f\) is arbitrary, we know that \(\T\) is onto.
 
-	Now we show that \(\T\) is not one-to-one.
-	Observe that
-	\begin{align*}
-		 & x \mapsto x \in \ps{\R};          \\
-		 & x \mapsto x + 1 \in \ps{\R};      \\
-		 & (x \mapsto x)' = 1;               \\
-		 & (x \mapsto x + 1)' = 1;           \\
-		 & x \mapsto x \neq x \mapsto x + 1.
-	\end{align*}
-	Thus \(\T\) is not one-to-one.
+  Now we show that \(\T\) is not one-to-one.
+  Observe that
+  \begin{align*}
+     & x \mapsto x \in \ps{\R};          \\
+     & x \mapsto x + 1 \in \ps{\R};      \\
+     & (x \mapsto x)' = 1;               \\
+     & (x \mapsto x + 1)' = 1;           \\
+     & x \mapsto x \neq x \mapsto x + 1.
+  \end{align*}
+  Thus \(\T\) is not one-to-one.
 \end{proof}
 
 \begin{ex}\label{ex:2.1.17}
-	Let \(\V\) and \(\W\) be finite-dimensional vector spaces over \(\F\) and \(\T : \V \to \W\) be linear.
-	\begin{enumerate}
-		\item Prove that if \(\dim(\V) < \dim(\W)\), then \(\T\) cannot be onto.
-		\item Prove that if \(\dim(\V) > \dim(\W)\), then \(\T\) cannot be one-to-one.
-	\end{enumerate}
+  Let \(\V\) and \(\W\) be finite-dimensional vector spaces over \(\F\) and \(\T : \V \to \W\) be linear.
+  \begin{enumerate}
+    \item Prove that if \(\dim(\V) < \dim(\W)\), then \(\T\) cannot be onto.
+    \item Prove that if \(\dim(\V) > \dim(\W)\), then \(\T\) cannot be one-to-one.
+  \end{enumerate}
 \end{ex}
 
 \begin{proof}[\pf{ex:2.1.17}(a)]
-	Suppose that \(\dim(\V) < \dim(\W)\).
-	Suppose for sake of contradiction that \(\T\) is onto.
-	Let \(\beta_{\W} = \set{\seq{w}{1,,n}}\) be a basis for \(\W\) over \(\F\).
-	Since \(\T\) is onto, there exists a set \(\beta_{\V} = \set{\seq{v}{1,,n}}\) such that \(\T(v_i) = w_i\) for all \(i \in \set{1, 2, \dots, n}\).
-	But by \cref{ex:2.1.13} we know that \(\beta_{\V}\) is linearly independent, by \cref{1.6.8} this means \(\dim(\V) \geq \dim(\W)\), a contradiction.
-	Thus \(\T\) cannot be onto.
+  Suppose that \(\dim(\V) < \dim(\W)\).
+  Suppose for sake of contradiction that \(\T\) is onto.
+  Let \(\beta_{\W} = \set{\seq{w}{1,,n}}\) be a basis for \(\W\) over \(\F\).
+  Since \(\T\) is onto, there exists a set \(\beta_{\V} = \set{\seq{v}{1,,n}}\) such that \(\T(v_i) = w_i\) for all \(i \in \set{1, 2, \dots, n}\).
+  But by \cref{ex:2.1.13} we know that \(\beta_{\V}\) is linearly independent, by \cref{1.6.8} this means \(\dim(\V) \geq \dim(\W)\), a contradiction.
+  Thus \(\T\) cannot be onto.
 \end{proof}
 
 \begin{proof}[\pf{ex:2.1.17}(b)]
-	Suppose that \(\dim(\V) > \dim(\W)\).
-	Suppose for sake of contradiction that \(\T\) is one-to-one.
-	Since \(\T\) is one-to-one, by \cref{2.4} we know that \(\ns{\T} = \set{\zv_{\V}}\).
-	Thus we have
-	\begin{align*}
-		\dim(\V) & = \rk{\T} + \nt{\T} &  & \by{2.3}    \\
-		         & = \rk{\T} + 0       &  & \by{1.6.9}  \\
-		         & = \rk{\T}                            \\
-		         & = \dim(\rg{\T})     &  & \by{2.1.12} \\
-		         & \leq \dim(\W).      &  & \by{1.11}
-	\end{align*}
-	But this contradicts to the fact that \(\dim(\V) > \dim(\W)\).
-	Thus \(\T\) cannot be one-to-one.
+  Suppose that \(\dim(\V) > \dim(\W)\).
+  Suppose for sake of contradiction that \(\T\) is one-to-one.
+  Since \(\T\) is one-to-one, by \cref{2.4} we know that \(\ns{\T} = \set{\zv_{\V}}\).
+  Thus we have
+  \begin{align*}
+    \dim(\V) & = \rk{\T} + \nt{\T} &  & \by{2.3}    \\
+             & = \rk{\T} + 0       &  & \by{1.6.9}  \\
+             & = \rk{\T}                            \\
+             & = \dim(\rg{\T})     &  & \by{2.1.12} \\
+             & \leq \dim(\W).      &  & \by{1.11}
+  \end{align*}
+  But this contradicts to the fact that \(\dim(\V) > \dim(\W)\).
+  Thus \(\T\) cannot be one-to-one.
 \end{proof}
 
 \setcounter{ex}{19}
 \begin{ex}\label{ex:2.1.20}
-	Let \(\V\) and \(\W\) be vector spaces over \(\F\) with subspaces \(\V_1\) and \(\W_1\) over \(\F\), respectively.
-	If \(\T : \V \to \W\) is linear, prove that \(\T(\V_1)\) is a subspace of \(\W\) over \(\F\) and that \(\set{x \in \V : \T(x) \in \W_1}\) is a subspace of \(\V\) over \(\F\).
+  Let \(\V\) and \(\W\) be vector spaces over \(\F\) with subspaces \(\V_1\) and \(\W_1\) over \(\F\), respectively.
+  If \(\T : \V \to \W\) is linear, prove that \(\T(\V_1)\) is a subspace of \(\W\) over \(\F\) and that \(\set{x \in \V : \T(x) \in \W_1}\) is a subspace of \(\V\) over \(\F\).
 \end{ex}
 
 \begin{proof}[\pf{ex:2.1.20}]
-	First we show that \(\T(\V_1)\) is a subspace of \(\W\) over \(\F\).
-	Let \(w_1, w_2 \in \T(\V_1)\) and let \(c \in \F\).
-	Since
-	\begin{align*}
-		         & \zv_{\V} \in \V_1                    &  & \by{1.3}[a]   \\
-		\implies & \T(\zv_{\V}) = \zv_{\W} \in \T(\V_1) &  & \by{2.1.2}[a]
-	\end{align*}
-	and
-	\begin{align*}
-		         & w_1, w_2 \in \T(\V_1)                                                   \\
-		\implies & \exists v_1, v_2 \in \V_1 : \begin{dcases}
-			                                       \T(v_1) = w_1 \\
-			                                       \T(v_2) = w_2
-		                                       \end{dcases}                               \\
-		\implies & \begin{dcases}
-			           v_1 + v_2 \in \V_1 \\
-			           c v_1 \in \V_1
-		           \end{dcases}                                         &  & \by{1.3}[b,c] \\
-		\implies & \begin{dcases}
-			           w_1 + w_2 = \T(v_1) + \T(v_2) = \T(v_1 + v_2) \in \T(\V_1) \\
-			           c w_1 = c \T(v_1) = \T(c v_1) \in \T(\V_1)
-		           \end{dcases}, &  & \by{2.1.1}
-	\end{align*}
-	by \cref{1.3} we know that \(\T(\V_1)\) is a subspace of \(\W\) over \(\F\).
+  First we show that \(\T(\V_1)\) is a subspace of \(\W\) over \(\F\).
+  Let \(w_1, w_2 \in \T(\V_1)\) and let \(c \in \F\).
+  Since
+  \begin{align*}
+             & \zv_{\V} \in \V_1                    &  & \by{1.3}[a]   \\
+    \implies & \T(\zv_{\V}) = \zv_{\W} \in \T(\V_1) &  & \by{2.1.2}[a]
+  \end{align*}
+  and
+  \begin{align*}
+             & w_1, w_2 \in \T(\V_1)                                                   \\
+    \implies & \exists v_1, v_2 \in \V_1 : \begin{dcases}
+                                             \T(v_1) = w_1 \\
+                                             \T(v_2) = w_2
+                                           \end{dcases}                               \\
+    \implies & \begin{dcases}
+                 v_1 + v_2 \in \V_1 \\
+                 c v_1 \in \V_1
+               \end{dcases}                                         &  & \by{1.3}[b,c] \\
+    \implies & \begin{dcases}
+                 w_1 + w_2 = \T(v_1) + \T(v_2) = \T(v_1 + v_2) \in \T(\V_1) \\
+                 c w_1 = c \T(v_1) = \T(c v_1) \in \T(\V_1)
+               \end{dcases}, &  & \by{2.1.1}
+  \end{align*}
+  by \cref{1.3} we know that \(\T(\V_1)\) is a subspace of \(\W\) over \(\F\).
 
-	Now we show that \(\V' = \set{x \in \V : \T(x) \in \W_1}\) is a subspace of \(\V\) over \(\F\).
-	Let \(v_1, v_2 \in \V'\) and let \(c \in \F\).
-	Since
-	\begin{align*}
-		         & \zv_{\V} \in \V                  &  & \by{1.3}[a]   \\
-		\implies & \T(\zv_{\V}) = \zv_{\W} \in \W   &  & \by{2.1.2}[a] \\
-		\implies & \T(\zv_{\V}) = \zv_{\W} \in \W_1 &  & \by{1.3}[a]   \\
-		\implies & \zv_{\V} \in \V'
-	\end{align*}
-	and
-	\begin{align*}
-		         & v_1, v_2 \in \V'                                \\
-		\implies & \T(v_1), \T(v_2) \in \W_1                       \\
-		\implies & \begin{dcases}
-			           \T(v_1) + \T(v_2) \in \W_1 \\
-			           c \T(v_1) \in \W_1
-		           \end{dcases}                 &  & \by{1.3}[b,c] \\
-		\implies & \begin{dcases}
-			           \T(v_1) + \T(v_2) = \T(v_1 + v_2) \in \W_1 \\
-			           c \T(v_1) = \T(c v_1) \in \W_1
-		           \end{dcases} &  & \by{2.1.1}      \\
-		\implies & \begin{dcases}
-			           v_1 + v_2 \in \V' \\
-			           c v_1 \in \V'
-		           \end{dcases},
-	\end{align*}
-	by \cref{1.3} we know that \(\V'\) is a subspace of \(\V\) over \(\F\).
+  Now we show that \(\V' = \set{x \in \V : \T(x) \in \W_1}\) is a subspace of \(\V\) over \(\F\).
+  Let \(v_1, v_2 \in \V'\) and let \(c \in \F\).
+  Since
+  \begin{align*}
+             & \zv_{\V} \in \V                  &  & \by{1.3}[a]   \\
+    \implies & \T(\zv_{\V}) = \zv_{\W} \in \W   &  & \by{2.1.2}[a] \\
+    \implies & \T(\zv_{\V}) = \zv_{\W} \in \W_1 &  & \by{1.3}[a]   \\
+    \implies & \zv_{\V} \in \V'
+  \end{align*}
+  and
+  \begin{align*}
+             & v_1, v_2 \in \V'                                \\
+    \implies & \T(v_1), \T(v_2) \in \W_1                       \\
+    \implies & \begin{dcases}
+                 \T(v_1) + \T(v_2) \in \W_1 \\
+                 c \T(v_1) \in \W_1
+               \end{dcases}                 &  & \by{1.3}[b,c] \\
+    \implies & \begin{dcases}
+                 \T(v_1) + \T(v_2) = \T(v_1 + v_2) \in \W_1 \\
+                 c \T(v_1) = \T(c v_1) \in \W_1
+               \end{dcases} &  & \by{2.1.1}      \\
+    \implies & \begin{dcases}
+                 v_1 + v_2 \in \V' \\
+                 c v_1 \in \V'
+               \end{dcases},
+  \end{align*}
+  by \cref{1.3} we know that \(\V'\) is a subspace of \(\V\) over \(\F\).
 \end{proof}
 
 \begin{ex}\label{ex:2.1.21}
-	Let \(\V\) be the vector space of sequences over \(\F\) described in \cref{1.2.13}.
-	Define the functions \(\T, \U : \V \to \V\) by
-	\[
-		\T(\seq{a}{1,2,}) = \tuple{a}{2,3,} \quad \text{and} \quad \U(\seq{a}{1,2,}) = (0, \seq{a}{1,2,}).
-	\]
-	\(\T\) and \(\U\) are called the \textbf{left shift} and \textbf{right shift} operators on \(\V\), respectively.
-	\begin{enumerate}
-		\item Prove that \(\T\) and \(\U\) are linear.
-		\item Prove that \(\T\) is onto, but not one-to-one.
-		\item Prove that \(\U\) is one-to-one, but not onto.
-	\end{enumerate}
+  Let \(\V\) be the vector space of sequences over \(\F\) described in \cref{1.2.13}.
+  Define the functions \(\T, \U : \V \to \V\) by
+  \[
+    \T(\seq{a}{1,2,}) = \tuple{a}{2,3,} \quad \text{and} \quad \U(\seq{a}{1,2,}) = (0, \seq{a}{1,2,}).
+  \]
+  \(\T\) and \(\U\) are called the \textbf{left shift} and \textbf{right shift} operators on \(\V\), respectively.
+  \begin{enumerate}
+    \item Prove that \(\T\) and \(\U\) are linear.
+    \item Prove that \(\T\) is onto, but not one-to-one.
+    \item Prove that \(\U\) is one-to-one, but not onto.
+  \end{enumerate}
 \end{ex}
 
 \begin{proof}[\pf{ex:2.1.21}(a)]
-	Let \(\set{a_n}, \set{b_n} \in \V\) and let \(t \in \F\).
-	Since
-	\begin{align*}
-		\T(c \set{a_n} + \set{b_n}) & = \T(\set{c a_n + b_n})                   &  & \by{1.2.13}    \\
-		                            & = \T(c a_1 + b_1, c a_2 + b_2, \dots)                         \\
-		                            & = (c a_2 + b_2, c a_3 + b_3, \dots)       &  & \by{ex:2.1.21} \\
-		                            & = c \tuple{a}{2,3,} + \tuple{b}{2,3,}     &  & \by{1.2.13}    \\
-		                            & = c \T(\seq{a}{1,2,}) + \T(\seq{b}{1,2,}) &  & \by{ex:2.1.21} \\
-		                            & = c \T(\set{a_n}) + \T(\set{b_n}),
-	\end{align*}
-	by \cref{2.1.2}(b) we know that \(\T\) is linear.
-	Since
-	\begin{align*}
-		\U(c \set{a_n} + \set{b_n}) & = \U(\set{c a_n + b_n})                     &  & \by{1.2.13}    \\
-		                            & = \U(c a_1 + b_1, c a_2 + b_2, \dots)                           \\
-		                            & = (0, c a_1 + b_1, c a_2 + b_2, \dots)      &  & \by{ex:2.1.21} \\
-		                            & = c (0, \seq{a}{1,2,}) + (0, \seq{b}{1,2,}) &  & \by{1.2.13}    \\
-		                            & = c \U(\seq{a}{1,2,}) + \U(\seq{b}{1,2,})   &  & \by{ex:2.1.21} \\
-		                            & = c \U(\set{a_n}) + \U(\set{b_n}),
-	\end{align*}
-	by \cref{2.1.2}(b) we know that \(\U\) is linear.
+  Let \(\set{a_n}, \set{b_n} \in \V\) and let \(t \in \F\).
+  Since
+  \begin{align*}
+    \T(c \set{a_n} + \set{b_n}) & = \T(\set{c a_n + b_n})                   &  & \by{1.2.13}    \\
+                                & = \T(c a_1 + b_1, c a_2 + b_2, \dots)                         \\
+                                & = (c a_2 + b_2, c a_3 + b_3, \dots)       &  & \by{ex:2.1.21} \\
+                                & = c \tuple{a}{2,3,} + \tuple{b}{2,3,}     &  & \by{1.2.13}    \\
+                                & = c \T(\seq{a}{1,2,}) + \T(\seq{b}{1,2,}) &  & \by{ex:2.1.21} \\
+                                & = c \T(\set{a_n}) + \T(\set{b_n}),
+  \end{align*}
+  by \cref{2.1.2}(b) we know that \(\T\) is linear.
+  Since
+  \begin{align*}
+    \U(c \set{a_n} + \set{b_n}) & = \U(\set{c a_n + b_n})                     &  & \by{1.2.13}    \\
+                                & = \U(c a_1 + b_1, c a_2 + b_2, \dots)                           \\
+                                & = (0, c a_1 + b_1, c a_2 + b_2, \dots)      &  & \by{ex:2.1.21} \\
+                                & = c (0, \seq{a}{1,2,}) + (0, \seq{b}{1,2,}) &  & \by{1.2.13}    \\
+                                & = c \U(\seq{a}{1,2,}) + \U(\seq{b}{1,2,})   &  & \by{ex:2.1.21} \\
+                                & = c \U(\set{a_n}) + \U(\set{b_n}),
+  \end{align*}
+  by \cref{2.1.2}(b) we know that \(\U\) is linear.
 \end{proof}
 
 \begin{proof}[\pf{ex:2.1.21}(b)]
-	Since
-	\[
-		\forall \set{a_n} \in \V, \T(0, \seq{a}{1,2,}) = \tuple{a}{1,2,},
-	\]
-	we know that \(\T\) is onto.
-	Since
-	\[
-		\forall \set{a_n} \in \V, \T(0, \seq{a}{1,2,}) = \tuple{a}{1,2,} = \T(1, \seq{a}{1,2,}),
-	\]
-	we know that \(\T\) is not one-to-one.
+  Since
+  \[
+    \forall \set{a_n} \in \V, \T(0, \seq{a}{1,2,}) = \tuple{a}{1,2,},
+  \]
+  we know that \(\T\) is onto.
+  Since
+  \[
+    \forall \set{a_n} \in \V, \T(0, \seq{a}{1,2,}) = \tuple{a}{1,2,} = \T(1, \seq{a}{1,2,}),
+  \]
+  we know that \(\T\) is not one-to-one.
 \end{proof}
 
 \begin{proof}[\pf{ex:2.1.21}(c)]
-	Since
-	\begin{align*}
-		         & \forall \set{a_n}, \set{b_n} \in \V, \set{a_n} \neq \set{b_n} \\
-		\implies & \tuple{a}{1,2,} \neq \tuple{b}{1,2,}                          \\
-		\implies & (0, \seq{a}{1,2,}) \neq (0, \seq{b}{1,2,})                    \\
-		\implies & \U(\seq{a}{1,2,}) \neq \U(\seq{b}{1,2,}),
-	\end{align*}
-	we know that \(\U\) is one-to-one.
-	Since
-	\[
-		\forall \set{a_n} \in \V, (1, \seq{a}{1,2,}) \notin \U(\V),
-	\]
-	we know that \(\U\) is not onto.
+  Since
+  \begin{align*}
+             & \forall \set{a_n}, \set{b_n} \in \V, \set{a_n} \neq \set{b_n} \\
+    \implies & \tuple{a}{1,2,} \neq \tuple{b}{1,2,}                          \\
+    \implies & (0, \seq{a}{1,2,}) \neq (0, \seq{b}{1,2,})                    \\
+    \implies & \U(\seq{a}{1,2,}) \neq \U(\seq{b}{1,2,}),
+  \end{align*}
+  we know that \(\U\) is one-to-one.
+  Since
+  \[
+    \forall \set{a_n} \in \V, (1, \seq{a}{1,2,}) \notin \U(\V),
+  \]
+  we know that \(\U\) is not onto.
 \end{proof}
 
 \begin{ex}\label{ex:2.1.22}
-	Let \(\T: \vs{F}^n \to \F\) be linear.
-	Show that
-	\[
-		\forall x = \tuple{x}{1,,n} \in \vs{F}^n, \exists \seq{a}{1,,n} \in \F : \T(\seq{x}{1,,n}) = \sum_{i = 1}^n a_i x_i.
-	\]
-	State and prove an analogous result for \(\T : \vs{F}^n \to \vs{F}^m\).
+  Let \(\T: \vs{F}^n \to \F\) be linear.
+  Show that
+  \[
+    \forall x = \tuple{x}{1,,n} \in \vs{F}^n, \exists \seq{a}{1,,n} \in \F : \T(\seq{x}{1,,n}) = \sum_{i = 1}^n a_i x_i.
+  \]
+  State and prove an analogous result for \(\T : \vs{F}^n \to \vs{F}^m\).
 \end{ex}
 
 \begin{proof}[\pf{ex:2.1.22}]
-	For all \(i \in \set{1, \dots, n}\), defined \(e_i \in \vs{F}^n\) as in \cref{1.6.3}.
-	We claim that if \(\T : \vs{F}^n \to \vs{F}^m\) is linear, then
-	\[
-		\forall x \in \vs{F}^n, \exists \seq{a}{1,,n} \in \vs{F}^m : \T(x) = \sum_{i = 1}^n x_i a_i.
-	\]
-	Since
-	\begin{align*}
-		         & \vs{F}^n = \spn{\seq{e}{1,,n}}                                       &  & \by{1.6.3}    \\
-		\implies & \forall x \in \vs{F}^n, x = \tuple{x}{1,,n} = \sum_{i = 1}^n x_i e_i &  & \by{1.4.3}    \\
-		\implies & \forall x \in \vs{F}^n, \T(x) = \sum_{i = 1}^n x_i \T(e_i),          &  & \by{2.1.2}[d]
-	\end{align*}
-	by setting \(\T(e_i) = a_i\) for all \(i \in \set{1, 2, \dots, n}\) we see that our claim is true.
-	In particular, when \(m = 1\) we see that
-	\[
-		\forall x \in \vs{F}^n, \exists \seq{a}{1,,n} \in \F : \T(x) = \sum_{i = 1}^n x_i a_i = \sum_{i = 1}^n a_i x_i.
-	\]
+  For all \(i \in \set{1, \dots, n}\), defined \(e_i \in \vs{F}^n\) as in \cref{1.6.3}.
+  We claim that if \(\T : \vs{F}^n \to \vs{F}^m\) is linear, then
+  \[
+    \forall x \in \vs{F}^n, \exists \seq{a}{1,,n} \in \vs{F}^m : \T(x) = \sum_{i = 1}^n x_i a_i.
+  \]
+  Since
+  \begin{align*}
+             & \vs{F}^n = \spn{\seq{e}{1,,n}}                                       &  & \by{1.6.3}    \\
+    \implies & \forall x \in \vs{F}^n, x = \tuple{x}{1,,n} = \sum_{i = 1}^n x_i e_i &  & \by{1.4.3}    \\
+    \implies & \forall x \in \vs{F}^n, \T(x) = \sum_{i = 1}^n x_i \T(e_i),          &  & \by{2.1.2}[d]
+  \end{align*}
+  by setting \(\T(e_i) = a_i\) for all \(i \in \set{1, 2, \dots, n}\) we see that our claim is true.
+  In particular, when \(m = 1\) we see that
+  \[
+    \forall x \in \vs{F}^n, \exists \seq{a}{1,,n} \in \F : \T(x) = \sum_{i = 1}^n x_i a_i = \sum_{i = 1}^n a_i x_i.
+  \]
 \end{proof}
 
 \begin{defn}\label{2.1.14}
-	Let \(\V\) be a vector space over \(\F\) and \(\W_1\) and \(\W_2\) be subspaces of \(\V\) over \(\F\) such that \(\V = \W_1 \oplus \W_2\).
-	(See \cref{1.3.11}.)
-	A function \(\T : \V \to \V\) is called a \textbf{projection on \(\W_1\) along \(\W_2\)} if, for \(x = x_1 + x_2\) with \(x_1 \in \W_1\) and \(x_2 \in \W_2\), we have \(\T(x) = x_1\).
+  Let \(\V\) be a vector space over \(\F\) and \(\W_1\) and \(\W_2\) be subspaces of \(\V\) over \(\F\) such that \(\V = \W_1 \oplus \W_2\).
+  (See \cref{1.3.11}.)
+  A function \(\T : \V \to \V\) is called a \textbf{projection on \(\W_1\) along \(\W_2\)} if, for \(x = x_1 + x_2\) with \(x_1 \in \W_1\) and \(x_2 \in \W_2\), we have \(\T(x) = x_1\).
 \end{defn}
 
 \setcounter{ex}{25}
 \begin{ex}\label{ex:2.1.26}
-	Using the notation in \cref{2.1.14}, assume that \(\T : \V \to \V\) is the projection on \(\W_1\) along \(\W_2\).
-	\begin{enumerate}
-		\item Prove that \(\T\) is linear and \(\W_1 = \set{x \in \V : \T(x) = x}\).
-		\item Prove that \(\W_1 = \rg{\T}\) and \(\W_2 = \ns{\T}\).
-		\item Describe \(\T\) if \(\W_1 = \V\).
-		\item Describe \(\T\) if \(\W_1\) is the zero subspace.
-	\end{enumerate}
+  Using the notation in \cref{2.1.14}, assume that \(\T : \V \to \V\) is the projection on \(\W_1\) along \(\W_2\).
+  \begin{enumerate}
+    \item Prove that \(\T\) is linear and \(\W_1 = \set{x \in \V : \T(x) = x}\).
+    \item Prove that \(\W_1 = \rg{\T}\) and \(\W_2 = \ns{\T}\).
+    \item Describe \(\T\) if \(\W_1 = \V\).
+    \item Describe \(\T\) if \(\W_1\) is the zero subspace.
+  \end{enumerate}
 \end{ex}
 
 \begin{proof}[\pf{ex:2.1.26}(a)]
-	First we show that \(\T\) is linear.
-	Let \(x, y \in \V\) and let \(c \in \F\).
-	Since
-	\begin{align*}
-		         & \V = \W_1 \oplus \W_2                                                                 \\
-		\implies & \exists (x_1, x_2), (y_1, y_2) \in \W_1 \times \W_2 : \begin{dcases}
-			                                                                 x = x_1 + x_2 \\
-			                                                                 y = y_1 + y_2
-		                                                                 \end{dcases} &  & \by{1.3.11}   \\
-		\implies & \T(cx + y) = \T(c (x_1 + x_2) + y_1 + y_2)                                            \\
-		         & = \T(c x_1 + y_1 + c x_2 + y_2) = c x_1 + y_1 = c \T(x) + \T(y),     &  & \by{2.1.14}
-	\end{align*}
-	by \cref{2.1.2}(b) we know that \(\T\) is linear.
+  First we show that \(\T\) is linear.
+  Let \(x, y \in \V\) and let \(c \in \F\).
+  Since
+  \begin{align*}
+             & \V = \W_1 \oplus \W_2                                                                 \\
+    \implies & \exists (x_1, x_2), (y_1, y_2) \in \W_1 \times \W_2 : \begin{dcases}
+                                                                       x = x_1 + x_2 \\
+                                                                       y = y_1 + y_2
+                                                                     \end{dcases} &  & \by{1.3.11}   \\
+    \implies & \T(cx + y) = \T(c (x_1 + x_2) + y_1 + y_2)                                            \\
+             & = \T(c x_1 + y_1 + c x_2 + y_2) = c x_1 + y_1 = c \T(x) + \T(y),     &  & \by{2.1.14}
+  \end{align*}
+  by \cref{2.1.2}(b) we know that \(\T\) is linear.
 
-	Now we show that \(\W_1 = \set{x \in \V : \T(x) = x}\).
-	Since
-	\begin{align*}
-		         & \zv \in \W_2                                &  & \by{1.3}[a]           \\
-		\implies & \forall x \in \W_1, x = x + \zv             &  & \text{(by \ref{vs3})} \\
-		\implies & \forall x \in \W_1, \T(x) = \T(x + \zv) = x &  & \by{2.1.14}           \\
-		\implies & \W_1 \subseteq \set{x \in \V : \T(x) = x}
-	\end{align*}
-	and
-	\begin{align*}
-		         & \forall x \in \V, \T(x) = x \in \W_1       &  & \by{2.1.14} \\
-		\implies & \set{x \in \V : \T(x) = x} \subseteq \W_1,
-	\end{align*}
-	we know that \(\W_1 = \set{x \in \V : \T(x) = x}\).
+  Now we show that \(\W_1 = \set{x \in \V : \T(x) = x}\).
+  Since
+  \begin{align*}
+             & \zv \in \W_2                                &  & \by{1.3}[a]           \\
+    \implies & \forall x \in \W_1, x = x + \zv             &  & \text{(by \ref{vs3})} \\
+    \implies & \forall x \in \W_1, \T(x) = \T(x + \zv) = x &  & \by{2.1.14}           \\
+    \implies & \W_1 \subseteq \set{x \in \V : \T(x) = x}
+  \end{align*}
+  and
+  \begin{align*}
+             & \forall x \in \V, \T(x) = x \in \W_1       &  & \by{2.1.14} \\
+    \implies & \set{x \in \V : \T(x) = x} \subseteq \W_1,
+  \end{align*}
+  we know that \(\W_1 = \set{x \in \V : \T(x) = x}\).
 \end{proof}
 
 \begin{proof}[\pf{ex:2.1.26}(b)]
-	First we show that \(\W_1 = \rg{\T}\).
-	Since
-	\begin{align*}
-		         & \W_1 = \set{x \in \V : \T(x) = x} &  & \by{ex:2.1.26}[a] \\
-		\implies & \W_1 \subseteq \rg{\T}            &  & \by{2.1.10}
-	\end{align*}
-	and
-	\begin{align*}
-		         & \forall x \in \V, \T(x) \in \W_1 &  & \by{2.1.14} \\
-		\implies & \rg{\T} \subseteq \W_1,
-	\end{align*}
-	we know that \(\W_1 = \rg{\T}\).
+  First we show that \(\W_1 = \rg{\T}\).
+  Since
+  \begin{align*}
+             & \W_1 = \set{x \in \V : \T(x) = x} &  & \by{ex:2.1.26}[a] \\
+    \implies & \W_1 \subseteq \rg{\T}            &  & \by{2.1.10}
+  \end{align*}
+  and
+  \begin{align*}
+             & \forall x \in \V, \T(x) \in \W_1 &  & \by{2.1.14} \\
+    \implies & \rg{\T} \subseteq \W_1,
+  \end{align*}
+  we know that \(\W_1 = \rg{\T}\).
 
-	Now we show that \(\W_2 = \ns{\T}\).
-	Since
-	\begin{align*}
-		         & \zv \in \W_1                    &  & \by{1.3}[a]           \\
-		\implies & \forall x \in \W_2, x = \zv + x &  & \text{(by \ref{vs3})} \\
-		\implies & \forall x \in \W_2, \T(x) = \zv &  & \by{2.1.14}           \\
-		\implies & \W_2 \subseteq \ns{\T}          &  & \by{2.1.10}
-	\end{align*}
-	and
-	\begin{align*}
-		         & \ns{\T} \subseteq \V                                                           &  & \by{2.1.10}           \\
-		\implies & \forall x \in \ns{\T}, \exists (x_1, x_2) \in \W_1 \times \W_2 : x = x_1 + x_2 &  & \by{1.3.11}           \\
-		\implies & \forall x \in \ns{\T}, \exists (x_1, x_2) \in \W_1 \times \W_2 :                                          \\
-		         & \T(x) = \T(x_1 + x_2) = \zv = x_1                                              &  & \by{2.1.14}           \\
-		\implies & \forall x \in \ns{\T}, \exists (x_1, x_2) \in \W_1 \times \W_2 :                                          \\
-		         & x = x_1 + x_2 = \zv + x_2 = x_2 \in \W_2                                       &  & \text{(by \ref{vs3})} \\
-		\implies & \ns{\T} \subseteq \W_2,
-	\end{align*}
-	we know that \(\W_2 = \ns{\T}\).
+  Now we show that \(\W_2 = \ns{\T}\).
+  Since
+  \begin{align*}
+             & \zv \in \W_1                    &  & \by{1.3}[a]           \\
+    \implies & \forall x \in \W_2, x = \zv + x &  & \text{(by \ref{vs3})} \\
+    \implies & \forall x \in \W_2, \T(x) = \zv &  & \by{2.1.14}           \\
+    \implies & \W_2 \subseteq \ns{\T}          &  & \by{2.1.10}
+  \end{align*}
+  and
+  \begin{align*}
+             & \ns{\T} \subseteq \V                                                           &  & \by{2.1.10}           \\
+    \implies & \forall x \in \ns{\T}, \exists (x_1, x_2) \in \W_1 \times \W_2 : x = x_1 + x_2 &  & \by{1.3.11}           \\
+    \implies & \forall x \in \ns{\T}, \exists (x_1, x_2) \in \W_1 \times \W_2 :                                          \\
+             & \T(x) = \T(x_1 + x_2) = \zv = x_1                                              &  & \by{2.1.14}           \\
+    \implies & \forall x \in \ns{\T}, \exists (x_1, x_2) \in \W_1 \times \W_2 :                                          \\
+             & x = x_1 + x_2 = \zv + x_2 = x_2 \in \W_2                                       &  & \text{(by \ref{vs3})} \\
+    \implies & \ns{\T} \subseteq \W_2,
+  \end{align*}
+  we know that \(\W_2 = \ns{\T}\).
 \end{proof}
 
 \begin{proof}[\pf{ex:2.1.26}(c)]
-	We have
-	\begin{align*}
-		         & \begin{dcases}
-			           \V = \W_1 \oplus \W_2 \\
-			           \V = \W_1
-		           \end{dcases}                                                   \\
-		\implies & \W_1 \cap \W_2 = \V \cap \W_2 = \W_2 = \set{\zv} &  & \by{1.3.11}       \\
-		\implies & \ns{\T} = \W_2 = \set{\zv}                       &  & \by{ex:2.1.26}[b] \\
-		\implies & \T \text{ is one-to-one}                         &  & \by{2.4}          \\
-		\implies & \T \text{ is onto}.                              &  & \by{2.5}
-	\end{align*}
+  We have
+  \begin{align*}
+             & \begin{dcases}
+                 \V = \W_1 \oplus \W_2 \\
+                 \V = \W_1
+               \end{dcases}                                                   \\
+    \implies & \W_1 \cap \W_2 = \V \cap \W_2 = \W_2 = \set{\zv} &  & \by{1.3.11}       \\
+    \implies & \ns{\T} = \W_2 = \set{\zv}                       &  & \by{ex:2.1.26}[b] \\
+    \implies & \T \text{ is one-to-one}                         &  & \by{2.4}          \\
+    \implies & \T \text{ is onto}.                              &  & \by{2.5}
+  \end{align*}
 \end{proof}
 
 \begin{proof}[\pf{ex:2.1.26}(d)]
-	We have
-	\begin{align*}
-		         & \W_1 = \set{\zv}                                              \\
-		\implies & \V = \W_1 \oplus \W_2 = \W_2           &  & \by{1.3.11}       \\
-		         & = \ns{\T}                              &  & \by{ex:2.1.26}[b] \\
-		\implies & \forall x \in \V, \T(x) = \zv          &  & \by{2.1.10}       \\
-		\implies & \T \text{ is the zero transformation}. &  & \by{2.1.9}
-	\end{align*}
+  We have
+  \begin{align*}
+             & \W_1 = \set{\zv}                                              \\
+    \implies & \V = \W_1 \oplus \W_2 = \W_2           &  & \by{1.3.11}       \\
+             & = \ns{\T}                              &  & \by{ex:2.1.26}[b] \\
+    \implies & \forall x \in \V, \T(x) = \zv          &  & \by{2.1.10}       \\
+    \implies & \T \text{ is the zero transformation}. &  & \by{2.1.9}
+  \end{align*}
 \end{proof}
 
 \begin{ex}\label{ex:2.1.27}
-	Suppose that \(\W\) is a subspace of a finite-dimensional vector space \(\V\) over \(\F\).
-	\begin{enumerate}
-		\item Prove that there exists a subspace \(\W'\) and a function \(\T : \V \to \V\) such that \(\T\) is a projection on \(\W\) along \(\W'\).
-		\item Give an example of a subspace \(\W\) of a vector space \(\V\) over \(\F\) such that there are two projections on \(\W\) along two (distinct) subspaces.
-	\end{enumerate}
+  Suppose that \(\W\) is a subspace of a finite-dimensional vector space \(\V\) over \(\F\).
+  \begin{enumerate}
+    \item Prove that there exists a subspace \(\W'\) and a function \(\T : \V \to \V\) such that \(\T\) is a projection on \(\W\) along \(\W'\).
+    \item Give an example of a subspace \(\W\) of a vector space \(\V\) over \(\F\) such that there are two projections on \(\W\) along two (distinct) subspaces.
+  \end{enumerate}
 \end{ex}
 
 \begin{proof}[\pf{ex:2.1.27}(a)]
-	Let \(\beta_{\W} = \set{\seq{v}{1,,k}}\) be a basis for \(\W\) over \(\F\).
-	By \cref{1.6.19} we can extend \(\beta_{\W}\) to \(\beta = \set{\seq{v}{1,,n}}\) such that \(\beta\) is a basis for \(\V\) over \(\F\).
-	Let \(\beta_{\W'} = \beta \setminus \beta_{\W}\) and let \(\W' = \spn{\beta_{\W'}}\).
-	By \cref{1.5} we know that \(\W'\) is a subspace of \(\V\) over \(\F\).
+  Let \(\beta_{\W} = \set{\seq{v}{1,,k}}\) be a basis for \(\W\) over \(\F\).
+  By \cref{1.6.19} we can extend \(\beta_{\W}\) to \(\beta = \set{\seq{v}{1,,n}}\) such that \(\beta\) is a basis for \(\V\) over \(\F\).
+  Let \(\beta_{\W'} = \beta \setminus \beta_{\W}\) and let \(\W' = \spn{\beta_{\W'}}\).
+  By \cref{1.5} we know that \(\W'\) is a subspace of \(\V\) over \(\F\).
 
-	First we claim that \(\W \cap \W' = \set{\zv}\).
-	Let \(v \in \W \cap \W'\).
-	Then we have
-	\begin{align*}
-		         & v \in \W \cap \W'                                                                                                \\
-		\implies & \exists \seq{a}{1,,k,k + 1,,n} \in \F : v = \sum_{i = 1}^k a_i v_i = \sum_{i = k + 1}^n a_i v_i &  & \by{1.4.3}  \\
-		\implies & \exists \seq{a}{1,,k,k + 1,,n} \in \F :                                                                          \\
-		         & \sum_{i = 1}^k a_i v_i + \sum_{i = k + 1}^n (-a_i) v_i = \zv                                    &  & \by{1.2.1}  \\
-		\implies & \seq[=]{a}{1,,n} = 0                                                                            &  & \by{1.5.3}  \\
-		\implies & v = \zv                                                                                         &  & \by{1.2}[a] \\
-		\implies & \W \cap \W' \subseteq \set{\zv}                                                                                  \\
-		\implies & \W \cap \W' = \set{\zv}.                                                                        &  & \by{1.3}[a]
-	\end{align*}
+  First we claim that \(\W \cap \W' = \set{\zv}\).
+  Let \(v \in \W \cap \W'\).
+  Then we have
+  \begin{align*}
+             & v \in \W \cap \W'                                                                                                \\
+    \implies & \exists \seq{a}{1,,k,k + 1,,n} \in \F : v = \sum_{i = 1}^k a_i v_i = \sum_{i = k + 1}^n a_i v_i &  & \by{1.4.3}  \\
+    \implies & \exists \seq{a}{1,,k,k + 1,,n} \in \F :                                                                          \\
+             & \sum_{i = 1}^k a_i v_i + \sum_{i = k + 1}^n (-a_i) v_i = \zv                                    &  & \by{1.2.1}  \\
+    \implies & \seq[=]{a}{1,,n} = 0                                                                            &  & \by{1.5.3}  \\
+    \implies & v = \zv                                                                                         &  & \by{1.2}[a] \\
+    \implies & \W \cap \W' \subseteq \set{\zv}                                                                                  \\
+    \implies & \W \cap \W' = \set{\zv}.                                                                        &  & \by{1.3}[a]
+  \end{align*}
 
-	Next we claim that \(\V = \W \oplus \W'\).
-	Since
-	\begin{align*}
-		         & \forall v \in \V, \exists \seq{a}{1,,n} \in \F : v = \sum_{i = 1}^n a_i v_i &  & \by{1.6.1}        \\
-		         & = \sum_{i = 1}^k a_i v_i + \sum_{i = k + 1}^n a_i v_i                       &  & \by{1.2.1}        \\
-		\implies & \forall v \in \V, \exists (u, u') \in \W \times \W' : v = u + u'            &  & \by{1.4.3}        \\
-		\implies & \V \subseteq \W + \W'                                                       &  & \by{1.3.10}       \\
-		\implies & \V = \W + \W'                                                               &  & \by{ex:1.3.23}[a]
-	\end{align*}
-	and \(\W \cap \W' = \set{\zv}\), by \cref{1.3.11} we know that \(\V = \W \oplus \W'\).
+  Next we claim that \(\V = \W \oplus \W'\).
+  Since
+  \begin{align*}
+             & \forall v \in \V, \exists \seq{a}{1,,n} \in \F : v = \sum_{i = 1}^n a_i v_i &  & \by{1.6.1}        \\
+             & = \sum_{i = 1}^k a_i v_i + \sum_{i = k + 1}^n a_i v_i                       &  & \by{1.2.1}        \\
+    \implies & \forall v \in \V, \exists (u, u') \in \W \times \W' : v = u + u'            &  & \by{1.4.3}        \\
+    \implies & \V \subseteq \W + \W'                                                       &  & \by{1.3.10}       \\
+    \implies & \V = \W + \W'                                                               &  & \by{ex:1.3.23}[a]
+  \end{align*}
+  and \(\W \cap \W' = \set{\zv}\), by \cref{1.3.11} we know that \(\V = \W \oplus \W'\).
 
-	Since \(\beta\) is a basis for \(\V\) over \(\F\), by \cref{1.8} we know that
-	\[
-		\forall v \in \V, \exists \seq{a}{1,,n} \in \F : v = \sum_{i = 1}^n a_i v_i.
-	\]
-	Now we define a function \(\T\) as follow:
-	\[
-		\forall v \in \V, \T(v) = \sum_{i = 1}^k a_i v_i.
-	\]
-	We claim that \(\T\) is a projection on \(\W\) along \(\W'\).
-	Since
-	\begin{align*}
-		         & \forall v \in \V, \T(v) = \T\pa{\sum_{i = 1}^n a_i v_i}                                               \\
-		         & = \T\pa{\sum_{i = 1}^k a_i v_i + \sum_{i = k + 1}^n a_i v_i} = \sum_{i = 1}^k a_i v_i                 \\
-		\implies & \forall v \in \V, \exists (u, u') \in \W \times \W' : \T(v) = \T(u + u') = u,         &  & \by{1.4.3}
-	\end{align*}
-	by \cref{2.1.14} we know that \(\T\) is a projection on \(\W\) along \(\W'\).
+  Since \(\beta\) is a basis for \(\V\) over \(\F\), by \cref{1.8} we know that
+  \[
+    \forall v \in \V, \exists \seq{a}{1,,n} \in \F : v = \sum_{i = 1}^n a_i v_i.
+  \]
+  Now we define a function \(\T\) as follow:
+  \[
+    \forall v \in \V, \T(v) = \sum_{i = 1}^k a_i v_i.
+  \]
+  We claim that \(\T\) is a projection on \(\W\) along \(\W'\).
+  Since
+  \begin{align*}
+             & \forall v \in \V, \T(v) = \T\pa{\sum_{i = 1}^n a_i v_i}                                               \\
+             & = \T\pa{\sum_{i = 1}^k a_i v_i + \sum_{i = k + 1}^n a_i v_i} = \sum_{i = 1}^k a_i v_i                 \\
+    \implies & \forall v \in \V, \exists (u, u') \in \W \times \W' : \T(v) = \T(u + u') = u,         &  & \by{1.4.3}
+  \end{align*}
+  by \cref{2.1.14} we know that \(\T\) is a projection on \(\W\) along \(\W'\).
 \end{proof}
 
 \begin{proof}[\pf{ex:2.1.27}(b)]
-	See Exercise 2.1.24.
+  See Exercise 2.1.24.
 \end{proof}
 
 \begin{defn}\label{2.1.15}
-	Let \(\V\) be a vector space over \(\F\), and let \(\T : \V \to \V\) be linear.
-	A subspace \(\W\) of \(\V\) over \(\F\) is said to be \textbf{\(\T\)-invariant} if \(\T(x) \in \W\) for every \(x \in \W\), that is, \(\T(\W) \subseteq \W\).
-	If \(\W\) is \(\T\)-invariant, we define the \textbf{restriction of \(\T\) on \(\W\)} to be the function \(\T_{\W} : \W \to \W\) defined by \(\T_{\W}(x) = \T(x)\) for all \(x \in \W\).
+  Let \(\V\) be a vector space over \(\F\), and let \(\T : \V \to \V\) be linear.
+  A subspace \(\W\) of \(\V\) over \(\F\) is said to be \textbf{\(\T\)-invariant} if \(\T(x) \in \W\) for every \(x \in \W\), that is, \(\T(\W) \subseteq \W\).
+  If \(\W\) is \(\T\)-invariant, we define the \textbf{restriction of \(\T\) on \(\W\)} to be the function \(\T_{\W} : \W \to \W\) defined by \(\T_{\W}(x) = \T(x)\) for all \(x \in \W\).
 \end{defn}
 
 \cref{ex:2.1.28,ex:2.1.29,ex:2.1.30,ex:2.1.31,ex:2.1.32} assume that \(\W\) is a subspace of a vector space \(\V\) over \(\F\) and that \(\T : \V \to \V\) is linear.
 
 \begin{ex}\label{ex:2.1.28}
-	Prove that the subspaces \(\set{\zv}\), \(\V\), \(\rg{\T}\), and \(\ns{\T}\) are all \(\T\)-invariant.
+  Prove that the subspaces \(\set{\zv}\), \(\V\), \(\rg{\T}\), and \(\ns{\T}\) are all \(\T\)-invariant.
 \end{ex}
 
 \begin{proof}[\pf{ex:2.1.28}]
-	First we show that \(\set{\zv}\) is \(\T\)-invariant.
-	By \cref{2.1.2}(a) we know that \(\T(\set{\zv}) = \set{\zv} \subseteq \set{\zv}\), thus by \cref{2.1.15} \(\set{\zv}\) is \(\T\)-invariant.
+  First we show that \(\set{\zv}\) is \(\T\)-invariant.
+  By \cref{2.1.2}(a) we know that \(\T(\set{\zv}) = \set{\zv} \subseteq \set{\zv}\), thus by \cref{2.1.15} \(\set{\zv}\) is \(\T\)-invariant.
 
-	Next we show that \(\V\) is \(\T\)-invariant.
-	Obviously \(\T(\V) \subseteq \T(\V)\), thus by \cref{2.1.15} \(\V\) is \(\T\)-invariant.
+  Next we show that \(\V\) is \(\T\)-invariant.
+  Obviously \(\T(\V) \subseteq \T(\V)\), thus by \cref{2.1.15} \(\V\) is \(\T\)-invariant.
 
-	Next we show that \(\rg{\T}\) is \(\T\)-invariant.
-	Since
-	\begin{align*}
-		         & \forall y \in \rg{\T}, y \in \V          &  & (\T : \V \to \V) \\
-		\implies & \forall y \in \rg{\T}, \T(y) \in \rg{\T} &  & \by{2.1.10}      \\
-		\implies & \T(\rg{\T}) \subseteq \rg{\T},
-	\end{align*}
-	by \cref{2.1.15} we know that \(\rg{\T}\) is \(\T\)-invariant.
+  Next we show that \(\rg{\T}\) is \(\T\)-invariant.
+  Since
+  \begin{align*}
+             & \forall y \in \rg{\T}, y \in \V          &  & (\T : \V \to \V) \\
+    \implies & \forall y \in \rg{\T}, \T(y) \in \rg{\T} &  & \by{2.1.10}      \\
+    \implies & \T(\rg{\T}) \subseteq \rg{\T},
+  \end{align*}
+  by \cref{2.1.15} we know that \(\rg{\T}\) is \(\T\)-invariant.
 
-	Finally we show that \(\ns{\T}\) is \(\T\)-invariant.
-	Since
-	\begin{align*}
-		         & \forall x \in \ns{\T}, \T(x) = \zv                 &  & \by{2.1.10} \\
-		\implies & \T(\ns{\T}) \subseteq \set{\zv} \subseteq \ns{\T}, &  & \by{1.3}[a]
-	\end{align*}
-	by \cref{2.1.15} we know that \(\ns{\T}\) is \(\T\)-invariant.
+  Finally we show that \(\ns{\T}\) is \(\T\)-invariant.
+  Since
+  \begin{align*}
+             & \forall x \in \ns{\T}, \T(x) = \zv                 &  & \by{2.1.10} \\
+    \implies & \T(\ns{\T}) \subseteq \set{\zv} \subseteq \ns{\T}, &  & \by{1.3}[a]
+  \end{align*}
+  by \cref{2.1.15} we know that \(\ns{\T}\) is \(\T\)-invariant.
 \end{proof}
 
 \begin{ex}\label{ex:2.1.29}
-	If \(\W\) is \(\T\)-invariant, prove that \(\T_{\W}\) is linear.
+  If \(\W\) is \(\T\)-invariant, prove that \(\T_{\W}\) is linear.
 \end{ex}
 
 \begin{proof}[\pf{ex:2.1.29}]
-	Let \(x, y \in \W\) and let \(c \in \F\).
-	Since
-	\begin{align*}
-		         & cx + y \in \W                &  & \by{1.3}[b,c] \\
-		\implies & \T_{\W}(cx + y) = \T(cx + y) &  & \by{2.1.15}   \\
-		         & = c \T(x) + \T(y)            &  & \by{2.1.2}[b] \\
-		         & = c \T_{\W}(x) + \T_{\W}(y), &  & \by{2.1.15}
-	\end{align*}
-	by \cref{2.1.2}(b) we know that \(\T_{\W}\) is linear.
+  Let \(x, y \in \W\) and let \(c \in \F\).
+  Since
+  \begin{align*}
+             & cx + y \in \W                &  & \by{1.3}[b,c] \\
+    \implies & \T_{\W}(cx + y) = \T(cx + y) &  & \by{2.1.15}   \\
+             & = c \T(x) + \T(y)            &  & \by{2.1.2}[b] \\
+             & = c \T_{\W}(x) + \T_{\W}(y), &  & \by{2.1.15}
+  \end{align*}
+  by \cref{2.1.2}(b) we know that \(\T_{\W}\) is linear.
 \end{proof}
 
 \begin{ex}\label{ex:2.1.30}
-	Suppose that \(\T\) is a projection on \(\W\) along some subspace \(\W'\).
-	Prove that \(\W\) is \(\T\)-invariant and that \(\T_{\W} = \IT[\W]\).
+  Suppose that \(\T\) is a projection on \(\W\) along some subspace \(\W'\).
+  Prove that \(\W\) is \(\T\)-invariant and that \(\T_{\W} = \IT[\W]\).
 \end{ex}
 
 \begin{proof}[\pf{ex:2.1.30}]
-	We have
-	\begin{align*}
-		         & \T \text{ is a projection on } \W \text{ along } \W'                                                   \\
-		\implies & \begin{dcases}
-			           \V = \W \oplus \W' \\
-			           \forall x \in \V, \exists (x_1, x_2) \in \W \times \W' : \T(x) = \T(x_1 + x_2) = x_1
-		           \end{dcases}  &  & \by{2.1.14}                    \\
-		\implies & \forall x \in \W, \exists (x, \zv) \in \W \times \W' : \T(x) = \T(x + \zv) = x \in \W &  & \by{1.3}[a] \\
-		\implies & \T(\W) \subseteq \W                                                                                    \\
-		\implies & \W \text{ is } \T\text{-invariant}                                                    &  & \by{2.1.15}
-	\end{align*}
-	and
-	\begin{align*}
-		         & \forall x \in \W, \T(x) = x                       \\
-		\implies & \forall x \in \W, \T_{\W}(x) = x &  & \by{2.1.15} \\
-		\implies & \T_{\W} = \IT[\W].               &  & \by{2.1.9}
-	\end{align*}
+  We have
+  \begin{align*}
+             & \T \text{ is a projection on } \W \text{ along } \W'                                                   \\
+    \implies & \begin{dcases}
+                 \V = \W \oplus \W' \\
+                 \forall x \in \V, \exists (x_1, x_2) \in \W \times \W' : \T(x) = \T(x_1 + x_2) = x_1
+               \end{dcases}  &  & \by{2.1.14}                    \\
+    \implies & \forall x \in \W, \exists (x, \zv) \in \W \times \W' : \T(x) = \T(x + \zv) = x \in \W &  & \by{1.3}[a] \\
+    \implies & \T(\W) \subseteq \W                                                                                    \\
+    \implies & \W \text{ is } \T\text{-invariant}                                                    &  & \by{2.1.15}
+  \end{align*}
+  and
+  \begin{align*}
+             & \forall x \in \W, \T(x) = x                       \\
+    \implies & \forall x \in \W, \T_{\W}(x) = x &  & \by{2.1.15} \\
+    \implies & \T_{\W} = \IT[\W].               &  & \by{2.1.9}
+  \end{align*}
 \end{proof}
 
 \begin{ex}\label{ex:2.1.31}
-	Suppose that \(\V = \rg{\T} \oplus \W\) and \(\W\) is \(\T\)-invariant.
-	(See \cref{1.3.11}.)
-	\begin{enumerate}
-		\item Prove that \(\W \subseteq \ns{\T}\).
-		\item Show that if \(\V\) is finite-dimensional, then \(\W = \ns{\T}\).
-		\item Show by example that the conclusion of (b) is not necessarily true if \(\V\) is not finite-dimensional.
-	\end{enumerate}
+  Suppose that \(\V = \rg{\T} \oplus \W\) and \(\W\) is \(\T\)-invariant.
+  (See \cref{1.3.11}.)
+  \begin{enumerate}
+    \item Prove that \(\W \subseteq \ns{\T}\).
+    \item Show that if \(\V\) is finite-dimensional, then \(\W = \ns{\T}\).
+    \item Show by example that the conclusion of (b) is not necessarily true if \(\V\) is not finite-dimensional.
+  \end{enumerate}
 \end{ex}
 
 \begin{proof}[\pf{ex:2.1.31}(a)]
-	We have
-	\begin{align*}
-		         & \begin{dcases}
-			           \V = \rg{\T} \oplus \W \\
-			           \T(\W) \subseteq \W
-		           \end{dcases}                                 &  & \by{2.1.15}              \\
-		\implies & \rg{\T} \cap \T(\W) \subseteq \rg{\T} \cap \W = \set{\zv} &  & \by{1.3.11} \\
-		\implies & \T(\W) = \rg{\T} \cap \T(\W) \subseteq \set{\zv}          &  & \by{2.1.10} \\
-		\implies & \forall x \in \W, \T(x) = \zv                                              \\
-		\implies & \W \subseteq \ns{\T}.                                     &  & \by{2.1.10}
-	\end{align*}
+  We have
+  \begin{align*}
+             & \begin{dcases}
+                 \V = \rg{\T} \oplus \W \\
+                 \T(\W) \subseteq \W
+               \end{dcases}                                 &  & \by{2.1.15}              \\
+    \implies & \rg{\T} \cap \T(\W) \subseteq \rg{\T} \cap \W = \set{\zv} &  & \by{1.3.11} \\
+    \implies & \T(\W) = \rg{\T} \cap \T(\W) \subseteq \set{\zv}          &  & \by{2.1.10} \\
+    \implies & \forall x \in \W, \T(x) = \zv                                              \\
+    \implies & \W \subseteq \ns{\T}.                                     &  & \by{2.1.10}
+  \end{align*}
 \end{proof}
 
 \begin{proof}[\pf{ex:2.1.31}(b)]
-	Since \(\V = \rg{\T} \oplus \W\), by \cref{ex:1.6.29}(b) we know that \(\dim(\V) = \rk{\T} + \dim(\W)\).
-	By dimension theorem (\cref{2.3}) we know that \(\nt{\T} = \dim(\V) - \rk{\T} = \dim(\W)\).
-	By \cref{ex:2.1.31}(a) we know that \(\W \subseteq \ns{\T}\), thus by \cref{1.11} we have \(\W = \ns{\T}\).
+  Since \(\V = \rg{\T} \oplus \W\), by \cref{ex:1.6.29}(b) we know that \(\dim(\V) = \rk{\T} + \dim(\W)\).
+  By dimension theorem (\cref{2.3}) we know that \(\nt{\T} = \dim(\V) - \rk{\T} = \dim(\W)\).
+  By \cref{ex:2.1.31}(a) we know that \(\W \subseteq \ns{\T}\), thus by \cref{1.11} we have \(\W = \ns{\T}\).
 \end{proof}
 
 \begin{proof}[\pf{ex:2.1.31}(c)]
-	Let \(\V\) and \(\T\) defined as in \cref{ex:2.1.21}.
-	Let \(\W = \set{(0, 0, \dots)}\).
-	By \cref{ex:2.1.21}(b) we know that \(\V = \rg{\T} = \rg{\T} \oplus \W\).
-	But then we have
-	\begin{align*}
-		         & (1, 0, 0, \dots) \in \V                                       \\
-		\implies & \T(1, 0, 0, \dots) = (0, 0, \dots)        &  & \by{ex:2.1.21} \\
-		\implies & (1, 0, 0, \dots) \in \ns{\T} \setminus \W                     \\
-		\implies & \ns{\T} \neq \W.
-	\end{align*}
+  Let \(\V\) and \(\T\) defined as in \cref{ex:2.1.21}.
+  Let \(\W = \set{(0, 0, \dots)}\).
+  By \cref{ex:2.1.21}(b) we know that \(\V = \rg{\T} = \rg{\T} \oplus \W\).
+  But then we have
+  \begin{align*}
+             & (1, 0, 0, \dots) \in \V                                       \\
+    \implies & \T(1, 0, 0, \dots) = (0, 0, \dots)        &  & \by{ex:2.1.21} \\
+    \implies & (1, 0, 0, \dots) \in \ns{\T} \setminus \W                     \\
+    \implies & \ns{\T} \neq \W.
+  \end{align*}
 \end{proof}
 
 \begin{ex}\label{ex:2.1.32}
-	Suppose that \(\W\) is \(\T\)-invariant.
-	Prove that \(\ns{\T_{\W}} = \ns{\T} \cap \W\) and \(\rg{\T_{\W}} = \T(\W)\).
+  Suppose that \(\W\) is \(\T\)-invariant.
+  Prove that \(\ns{\T_{\W}} = \ns{\T} \cap \W\) and \(\rg{\T_{\W}} = \T(\W)\).
 \end{ex}
 
 \begin{proof}[\pf{ex:2.1.32}]
-	First we show that \(\ns{\T_{\W}} = \ns{\T} \cap \W\).
-	Since
-	\begin{align*}
-		     & x \in \ns{\T_{\W}}                    \\
-		\iff & \begin{dcases}
-			       x \in \W \\
-			       \T_{\W}(x) = \zv
-		       \end{dcases}       &  & \by{2.1.10}   \\
-		\iff & \begin{dcases}
-			       x \in \W \\
-			       \T(x) = \zv
-		       \end{dcases}         &  & \by{2.1.15} \\
-		\iff & \begin{dcases}
-			       x \in \W \\
-			       x \in \ns{\T}
-		       \end{dcases}         &  & \by{2.1.15} \\
-		\iff & x \in \ns{\T} \cap \W,
-	\end{align*}
-	we know that \(\ns{\T_{\W}} = \ns{\T} \cap \W\).
+  First we show that \(\ns{\T_{\W}} = \ns{\T} \cap \W\).
+  Since
+  \begin{align*}
+         & x \in \ns{\T_{\W}}                    \\
+    \iff & \begin{dcases}
+             x \in \W \\
+             \T_{\W}(x) = \zv
+           \end{dcases}       &  & \by{2.1.10}   \\
+    \iff & \begin{dcases}
+             x \in \W \\
+             \T(x) = \zv
+           \end{dcases}         &  & \by{2.1.15} \\
+    \iff & \begin{dcases}
+             x \in \W \\
+             x \in \ns{\T}
+           \end{dcases}         &  & \by{2.1.15} \\
+    \iff & x \in \ns{\T} \cap \W,
+  \end{align*}
+  we know that \(\ns{\T_{\W}} = \ns{\T} \cap \W\).
 
-	Now we show that \(\rg{\T_{\W}} = \T(\W)\).
-	This is true since
-	\begin{align*}
-		\T(\W) & = \T_{\W}(\W)   &  & \by{2.1.15} \\
-		       & = \rg{\T_{\W}}. &  & \by{2.1.10}
-	\end{align*}
+  Now we show that \(\rg{\T_{\W}} = \T(\W)\).
+  This is true since
+  \begin{align*}
+    \T(\W) & = \T_{\W}(\W)   &  & \by{2.1.15} \\
+           & = \rg{\T_{\W}}. &  & \by{2.1.10}
+  \end{align*}
 \end{proof}
 
 \begin{ex}\label{ex:2.1.33}
-	Prove \cref{2.2} for the case that \(\beta\) is infinite, that is, \(\rg{\T} = \spn{\T(\beta)}\).
+  Prove \cref{2.2} for the case that \(\beta\) is infinite, that is, \(\rg{\T} = \spn{\T(\beta)}\).
 \end{ex}
 
 \begin{proof}[\pf{ex:2.1.33}]
-	Clearly we have \(\T(\beta) \subseteq \rg{\T}\).
-	By \cref{2.1} we know that \(\rg{\T}\) is a vector space over \(\F\), thus by \cref{1.5} we have
-	\[
-		\spn{\T(\beta)} \subseteq \rg{\T}.
-	\]
-	Let \(y \in \rg{\T}\).
-	By \cref{2.1.10} there exists an \(x \in \V\) such that \(\T(x) = y\).
-	Since \(\beta\) is a basis for \(\V\) over \(\F\), by \cref{1.6.1} there exist some \(\seq{v}{1,,n} \in \beta\) and \(\seq{a}{1,,n} \in \F\) such that \(x = \sum_{i = 1}^n a_i v_i\).
-	Since \(\T\) is linear, by \cref{2.1.2}(d) we know that
-	\[
-		\T(x) = \T\pa{\sum_{i = 1}^n a_i v_i} = \sum_{i = 1}^n a_i \T(v_i) \in \spn{\T(\beta)}.
-	\]
-	Since \(y\) is arbitrary, this means \(\rg{\T} \subseteq \spn{\T(\beta)}\).
-	Thus we have \(\rg{\T} = \spn{\T(\beta)}\).
+  Clearly we have \(\T(\beta) \subseteq \rg{\T}\).
+  By \cref{2.1} we know that \(\rg{\T}\) is a vector space over \(\F\), thus by \cref{1.5} we have
+  \[
+    \spn{\T(\beta)} \subseteq \rg{\T}.
+  \]
+  Let \(y \in \rg{\T}\).
+  By \cref{2.1.10} there exists an \(x \in \V\) such that \(\T(x) = y\).
+  Since \(\beta\) is a basis for \(\V\) over \(\F\), by \cref{1.6.1} there exist some \(\seq{v}{1,,n} \in \beta\) and \(\seq{a}{1,,n} \in \F\) such that \(x = \sum_{i = 1}^n a_i v_i\).
+  Since \(\T\) is linear, by \cref{2.1.2}(d) we know that
+  \[
+    \T(x) = \T\pa{\sum_{i = 1}^n a_i v_i} = \sum_{i = 1}^n a_i \T(v_i) \in \spn{\T(\beta)}.
+  \]
+  Since \(y\) is arbitrary, this means \(\rg{\T} \subseteq \spn{\T(\beta)}\).
+  Thus we have \(\rg{\T} = \spn{\T(\beta)}\).
 \end{proof}
 
 \begin{ex}\label{ex:2.1.34}
-	Prove the following generalization of \cref{2.6}:
-	Let \(\V\) and \(\W\) be vector spaces over a common field \(\F\), and let \(\beta\) be a basis for \(\V\) over \(\F\).
-	Then for any function \(f : \beta \to \W\) there exists exactly one linear transformation \(\T : \V \to \W\) such that \(\T(x) = f(x)\) for all \(x \in \beta\).
+  Prove the following generalization of \cref{2.6}:
+  Let \(\V\) and \(\W\) be vector spaces over a common field \(\F\), and let \(\beta\) be a basis for \(\V\) over \(\F\).
+  Then for any function \(f : \beta \to \W\) there exists exactly one linear transformation \(\T : \V \to \W\) such that \(\T(x) = f(x)\) for all \(x \in \beta\).
 \end{ex}
 
 \begin{proof}[\pf{ex:2.1.34}]
-	Note that \(\V\) can be infinite-dimensional.
-	Let \(x \in \V\).
-	Since \(\beta\) is a basis for \(\V\) over \(\F\), there exists some \(v_1^x, v_2^x, \dots, v_{n^x}^x \in \beta\) and \(a_1^x, a_2^x, \dots, a_{n^x}^x \in \F\) such that \(x = \sum_{i = 1}^{n^x} a_i^x v_i^x\).
-	Here we use \(v_i^x, a_i^x\) and \(n^x\) to emphasis the choice of \(v_i^x, a_i^x, n^x\) depends on \(x\).
-	Now we define \(\T : \V \to \W\) as follow:
-	\[
-		\forall x \in \V, \T(x) = \sum_{i = 1}^n a_i^x f(v_i^x).
-	\]
-	\begin{itemize}
-		\item \(\T\) is linear:
-		      Suppose that \(x, y \in \V\) and \(c \in \F\).
-		      Then we may write
-		      \[
-			      x = \sum_{i = 1}^{n^x} a_i^x v_i^x \quad \text{and} \quad y = \sum_{i = 1}^{n^y} a_i^y v_i^y.
-		      \]
-		      Since \(\set{v_1^x, \dots, v_{n^x}^x}\) and \(\set{v_1^y, \dots, v_{n^y}^y}\) are finite, we know that \(\gamma = \set{v_1^x, \dots, v_{n^x}^x} \cup \set{v_1^y, \dots, v_{n^y}^y}\) is also finite.
-		      Let \(n = \#(\gamma)\).
-		      By relabeling vectors in \(\gamma\) as \(v_1, \dots v_n\) we have
-		      \[
-			      x = \sum_{i = 1}^n a_i^x v_i \quad \text{and} \quad y = \sum_{i = 1}^n a_i^y v_i
-		      \]
-		      where \(a_i^x = 0\) if \(v_i \notin \set{v_1^x, \dots, v_{n^x}^x}\) and \(a_i^y = 0\) if \(v_i \notin \set{v_1^y, \dots, v_{n^y}^y}\).
-		      Thus
-		      \[
-			      cx + y = \sum_{i = 1}^n c a_i^x v_i + \sum_{i = 1}^n a_i^y v_i = \sum_{i = 1}^n (c a_i^x + a_i^y) v_i.
-		      \]
-		      So
-		      \[
-			      \T(cx + y) = \sum_{i = 1}^n (c a_i^x + a_i^y) f(v_i) = c \sum_{i = 1}^n a_i^x f(v_i) + \sum_{i = 1}^n a_i^y f(v_i) = c \T(x) + \T(y).
-		      \]
-		\item Clearly
-		      \[
-			      \forall v \in \beta, \T(v) = f(v).
-		      \]
-		\item \(\T\) is unique:
-		      Suppose that \(\U : \V \to \W\) is linear and \(\U(v) = f(v)\) for all \(v \in \beta\).
-		      Then for \(x \in \V\) with
-		      \[
-			      x = \sum_{i = 1}^n a_i^x v_i^x,
-		      \]
-		      we have
-		      \[
-			      \U(x) = \sum_{i = 1}^n a_i^x \U(v_i^x) = \sum_{i = 1}^n a_i^x f(v_i^x) = \T(x).
-		      \]
-		      Hence \(\U = \T\).
-	\end{itemize}
+  Note that \(\V\) can be infinite-dimensional.
+  Let \(x \in \V\).
+  Since \(\beta\) is a basis for \(\V\) over \(\F\), there exists some \(v_1^x, v_2^x, \dots, v_{n^x}^x \in \beta\) and \(a_1^x, a_2^x, \dots, a_{n^x}^x \in \F\) such that \(x = \sum_{i = 1}^{n^x} a_i^x v_i^x\).
+  Here we use \(v_i^x, a_i^x\) and \(n^x\) to emphasis the choice of \(v_i^x, a_i^x, n^x\) depends on \(x\).
+  Now we define \(\T : \V \to \W\) as follow:
+  \[
+    \forall x \in \V, \T(x) = \sum_{i = 1}^n a_i^x f(v_i^x).
+  \]
+  \begin{itemize}
+    \item \(\T\) is linear:
+          Suppose that \(x, y \in \V\) and \(c \in \F\).
+          Then we may write
+          \[
+            x = \sum_{i = 1}^{n^x} a_i^x v_i^x \quad \text{and} \quad y = \sum_{i = 1}^{n^y} a_i^y v_i^y.
+          \]
+          Since \(\set{v_1^x, \dots, v_{n^x}^x}\) and \(\set{v_1^y, \dots, v_{n^y}^y}\) are finite, we know that \(\gamma = \set{v_1^x, \dots, v_{n^x}^x} \cup \set{v_1^y, \dots, v_{n^y}^y}\) is also finite.
+          Let \(n = \#(\gamma)\).
+          By relabeling vectors in \(\gamma\) as \(v_1, \dots v_n\) we have
+          \[
+            x = \sum_{i = 1}^n a_i^x v_i \quad \text{and} \quad y = \sum_{i = 1}^n a_i^y v_i
+          \]
+          where \(a_i^x = 0\) if \(v_i \notin \set{v_1^x, \dots, v_{n^x}^x}\) and \(a_i^y = 0\) if \(v_i \notin \set{v_1^y, \dots, v_{n^y}^y}\).
+          Thus
+          \[
+            cx + y = \sum_{i = 1}^n c a_i^x v_i + \sum_{i = 1}^n a_i^y v_i = \sum_{i = 1}^n (c a_i^x + a_i^y) v_i.
+          \]
+          So
+          \[
+            \T(cx + y) = \sum_{i = 1}^n (c a_i^x + a_i^y) f(v_i) = c \sum_{i = 1}^n a_i^x f(v_i) + \sum_{i = 1}^n a_i^y f(v_i) = c \T(x) + \T(y).
+          \]
+    \item Clearly
+          \[
+            \forall v \in \beta, \T(v) = f(v).
+          \]
+    \item \(\T\) is unique:
+          Suppose that \(\U : \V \to \W\) is linear and \(\U(v) = f(v)\) for all \(v \in \beta\).
+          Then for \(x \in \V\) with
+          \[
+            x = \sum_{i = 1}^n a_i^x v_i^x,
+          \]
+          we have
+          \[
+            \U(x) = \sum_{i = 1}^n a_i^x \U(v_i^x) = \sum_{i = 1}^n a_i^x f(v_i^x) = \T(x).
+          \]
+          Hence \(\U = \T\).
+  \end{itemize}
 \end{proof}
 
 \begin{ex}\label{ex:2.1.35}
-	Let \(\V\) be a finite-dimensional vector space over \(\F\) and \(\T : \V \to \V\) be linear.
-	\begin{enumerate}
-		\item Suppose that \(\V = \rg{\T} + \ns{\T}\).
-		      Prove that \(\V = \rg{\T} \oplus \ns{\T}\).
-		\item Suppose that \(\rg{\T} \cap \ns{\T} = \set{\zv}\).
-		      Prove that \(\V = \rg{\T} \oplus \ns{\T}\).
-	\end{enumerate}
+  Let \(\V\) be a finite-dimensional vector space over \(\F\) and \(\T : \V \to \V\) be linear.
+  \begin{enumerate}
+    \item Suppose that \(\V = \rg{\T} + \ns{\T}\).
+          Prove that \(\V = \rg{\T} \oplus \ns{\T}\).
+    \item Suppose that \(\rg{\T} \cap \ns{\T} = \set{\zv}\).
+          Prove that \(\V = \rg{\T} \oplus \ns{\T}\).
+  \end{enumerate}
 \end{ex}
 
 \begin{proof}[\pf{ex:2.1.35}(a)]
-	We have
-	\begin{align*}
-		         & \begin{dcases}
-			           \V = \rg{\T} + \ns{\T} \\
-			           \dim(\V) = \rk{\T} + \nt{\T}
-		           \end{dcases} &  & \by{2.3}                         \\
-		\implies & \V = \rg{\T} \oplus \ns{\T}. &  & \by{ex:1.6.29}[b]
-	\end{align*}
+  We have
+  \begin{align*}
+             & \begin{dcases}
+                 \V = \rg{\T} + \ns{\T} \\
+                 \dim(\V) = \rk{\T} + \nt{\T}
+               \end{dcases} &  & \by{2.3}                         \\
+    \implies & \V = \rg{\T} \oplus \ns{\T}. &  & \by{ex:1.6.29}[b]
+  \end{align*}
 \end{proof}
 
 \begin{proof}[\pf{ex:2.1.35}(b)]
-	By \cref{ex:1.3.23}(a) we know that \(\rg{\T} + \ns{\T} \subseteq \V\).
-	Since
-	\begin{align*}
-		 & \dim(\rg{\T} + \ns{\T})                                                      \\
-		 & = \rk{\T} + \nt{\T} - \dim(\rg{\T} \cap \ns{\T}) &  & \by{ex:1.6.29}[a]      \\
-		 & = \rk{\T} + \nt{\T} - 0                          &  & \text{(by hypothesis)} \\
-		 & = \dim(\V),                                      &  & \by{2.3}
-	\end{align*}
-	by \cref{1.11} we know that \(\V = \rg{\T} + \ns{\T}\).
-	Thus by \cref{ex:2.1.35}(a) we know that \(\V = \rg{\T} \oplus \ns{\T}\).
+  By \cref{ex:1.3.23}(a) we know that \(\rg{\T} + \ns{\T} \subseteq \V\).
+  Since
+  \begin{align*}
+     & \dim(\rg{\T} + \ns{\T})                                                      \\
+     & = \rk{\T} + \nt{\T} - \dim(\rg{\T} \cap \ns{\T}) &  & \by{ex:1.6.29}[a]      \\
+     & = \rk{\T} + \nt{\T} - 0                          &  & \text{(by hypothesis)} \\
+     & = \dim(\V),                                      &  & \by{2.3}
+  \end{align*}
+  by \cref{1.11} we know that \(\V = \rg{\T} + \ns{\T}\).
+  Thus by \cref{ex:2.1.35}(a) we know that \(\V = \rg{\T} \oplus \ns{\T}\).
 \end{proof}
 
 \begin{ex}\label{ex:2.1.36}
-	Let \(\V\) and \(\T\) be as defined in \cref{ex:2.1.21}.
-	\begin{enumerate}
-		\item Prove that \(\V = \rg{\T} + \ns{\T}\), but \(\V\) is not a direct sum of these two spaces.
-		      Thus the result of \cref{ex:2.1.35}(a) cannot be proved without assuming that \(\V\) is finite-dimensional.
-		\item Find a linear operator \(\T_1\) on \(\V\) such that \(\rg{\T_1} \cap \ns{\T_1} = \set{\zv}\) but \(\V\) is not a direct sum of \(\rg{\T_1}\) and \(\ns{\T_1}\).
-		      Conclude that \(\V\) being finite-dimensional is also essential in \cref{ex:2.1.35}(b).
-	\end{enumerate}
+  Let \(\V\) and \(\T\) be as defined in \cref{ex:2.1.21}.
+  \begin{enumerate}
+    \item Prove that \(\V = \rg{\T} + \ns{\T}\), but \(\V\) is not a direct sum of these two spaces.
+          Thus the result of \cref{ex:2.1.35}(a) cannot be proved without assuming that \(\V\) is finite-dimensional.
+    \item Find a linear operator \(\T_1\) on \(\V\) such that \(\rg{\T_1} \cap \ns{\T_1} = \set{\zv}\) but \(\V\) is not a direct sum of \(\rg{\T_1}\) and \(\ns{\T_1}\).
+          Conclude that \(\V\) being finite-dimensional is also essential in \cref{ex:2.1.35}(b).
+  \end{enumerate}
 \end{ex}
 
 \begin{proof}[\pf{ex:2.1.36}(a)]
-	We have
-	\begin{align*}
-		         & \T \text{ is onto}                                                   &  & \by{ex:2.1.21}[b] \\
-		\implies & \V = \rg{\T}                                                         &  & \by{2.1.10}       \\
-		\implies & \rg{\T} + \ns{\T} \subseteq \V = \rg{\T} \subseteq \rg{\T} + \ns{\T} &  & \by{ex:1.3.23}[a] \\
-		\implies & \V = \rg{\T} + \ns{\T}.
-	\end{align*}
-	Since \(\T(1, 0, 0, \dots) = (0, 0, \dots)\), we know that \((1, 0, 0, \dots) \in \ns{\T}\).
-	Thus \((1, 0, 0, \dots) \in \rg{\T} \cap \ns{\T}\) and \(\rg{\T} \cap \ns{\T} \neq \set{(0, 0, \dots)}\).
-	By \cref{1.3.11} this means \(\V\) is not a direct sum of \(\rg{\T}\) and \(\ns{\T}\).
+  We have
+  \begin{align*}
+             & \T \text{ is onto}                                                   &  & \by{ex:2.1.21}[b] \\
+    \implies & \V = \rg{\T}                                                         &  & \by{2.1.10}       \\
+    \implies & \rg{\T} + \ns{\T} \subseteq \V = \rg{\T} \subseteq \rg{\T} + \ns{\T} &  & \by{ex:1.3.23}[a] \\
+    \implies & \V = \rg{\T} + \ns{\T}.
+  \end{align*}
+  Since \(\T(1, 0, 0, \dots) = (0, 0, \dots)\), we know that \((1, 0, 0, \dots) \in \ns{\T}\).
+  Thus \((1, 0, 0, \dots) \in \rg{\T} \cap \ns{\T}\) and \(\rg{\T} \cap \ns{\T} \neq \set{(0, 0, \dots)}\).
+  By \cref{1.3.11} this means \(\V\) is not a direct sum of \(\rg{\T}\) and \(\ns{\T}\).
 \end{proof}
 
 \begin{proof}[\pf{ex:2.1.36}(b)]
-	Define \(\U\) as in \cref{ex:2.1.21}.
-	By \cref{ex:2.1.21}(c) we know that \(\U\) is one-to-one, thus by \cref{2.4} we know that \(\ns{\U} = \set{\zv}\) and therefore \(\rg{\U} \cap \ns{\U} = \set{\zv}\).
-	By \cref{ex:2.1.21}(c) we know that \(\U\) is not onto, thus \(\V \neq \rg{\U} \cup \ns{\U}\).
-	By \cref{1.3.11} this means \(\V\) is not a direct sum of \(\rg{\U}\) and \(\ns{\U}\).
+  Define \(\U\) as in \cref{ex:2.1.21}.
+  By \cref{ex:2.1.21}(c) we know that \(\U\) is one-to-one, thus by \cref{2.4} we know that \(\ns{\U} = \set{\zv}\) and therefore \(\rg{\U} \cap \ns{\U} = \set{\zv}\).
+  By \cref{ex:2.1.21}(c) we know that \(\U\) is not onto, thus \(\V \neq \rg{\U} \cup \ns{\U}\).
+  By \cref{1.3.11} this means \(\V\) is not a direct sum of \(\rg{\U}\) and \(\ns{\U}\).
 \end{proof}
 
 \begin{ex}\label{ex:2.1.37}
-	A function \(\T : \V \to \W\) between vector spaces \(\V\) and \(\W\) over \(\F\) is called \textbf{additive} if \(\T(x + y) = \T(x) + \T(y)\) for all \(x, y \in \V\).
-	Prove that if \(\V\) and \(\W\) are vector spaces over the field of rational numbers \(\Q\), then any additive function from \(\V\) into \(\W\) is a linear transformation.
+  A function \(\T : \V \to \W\) between vector spaces \(\V\) and \(\W\) over \(\F\) is called \textbf{additive} if \(\T(x + y) = \T(x) + \T(y)\) for all \(x, y \in \V\).
+  Prove that if \(\V\) and \(\W\) are vector spaces over the field of rational numbers \(\Q\), then any additive function from \(\V\) into \(\W\) is a linear transformation.
 \end{ex}
 
 \begin{proof}[\pf{ex:2.1.37}]
-	First observe that for all \(b \in \Z^+\) we have
-	\begin{align*}
-		         & \forall x \in \V, \T(x) = \T\pa{b \frac{1}{b} x} = \T\pa{\sum_{i = 1}^b \frac{1}{b} x} &  & \by{1.2.1}     \\
-		         & = \sum_{i = 1}^b \T\pa{\frac{1}{b} x} = b \T\pa{\frac{1}{b} x}                         &  & \by{ex:2.1.37} \\
-		\implies & \forall x \in \V, \frac{1}{b} \T(x) = \T\pa{\frac{1}{b} x}.                            &  & \by{1.2.1}
-	\end{align*}
-	Let \(q \in \Q\).
-	Then there exists some \((a, b) \in \Z \times \Z^+\) such that \(q = a / b\).
-	Now we split into three cases:
-	\begin{itemize}
-		\item If \(a = 0\), then we have
-		      \begin{align*}
-			               & \forall x \in \V, \T\pa{\frac{0}{b} x} = \T(0x) = \T(0x + \zv_{\V}) &  & \text{(by \ref{vs3})} \\
-			               & = \T(0x + 0x)                                                       &  & \by{1.2}[a]           \\
-			               & = \T(0x) + \T(0x) = \T(0x) + \T\pa{\frac{0}{b} x}                   &  & \by{ex:2.1.37}        \\
-			               & = \T(0x) + \zv_{\W}                                                 &  & \text{(by \ref{vs3})} \\
-			               & = \T(0x) + 0 \T(x) = \T(0x) + \frac{0}{b} \T(x)                     &  & \by{1.2}[a]           \\
-			      \implies & \forall x \in \V, \T\pa{\frac{0}{b}x} = \frac{0}{b} \T(x).          &  & \by{1.1}
-		      \end{align*}
-		\item If \(a > 0\), then we have
-		      \begin{align*}
-			      \forall x \in \V, \frac{a}{b} \T(x) & = \sum_{i = 1}^a \frac{1}{b} \T(x)    &  & \by{1.2.1}                    \\
-			                                          & = \sum_{i = 1}^a \T\pa{\frac{1}{b} x} &  & \text{(from the proof above)} \\
-			                                          & = \T\pa{\sum_{i = 1}^a \frac{1}{b} x} &  & \by{ex:2.1.37}                \\
-			                                          & = \T\pa{\frac{a}{b} x}.               &  & \by{1.2.1}
-		      \end{align*}
-		\item If \(a < 0\), then we have
-		      \begin{align*}
-			               & \forall x \in \V, \T\pa{\frac{a}{b} x} + \T\pa{\frac{-a}{b} x} = \T\pa{\frac{a}{b} x + \frac{-a}{b} x} &  & \by{ex:2.1.37}                \\
-			               & = \T(\zv_{\V})                                                                                         &  & \by{1.2.1}                    \\
-			               & = \zv_{\W}                                                                                             &  & \text{(from the proof above)} \\
-			      \implies & \forall x \in \V, \T\pa{\frac{a}{b} x} + \frac{-a}{b} \T(x) = \zv_{\W}                                 &  & \text{(from the proof above)} \\
-			      \implies & \forall x \in \V, \T\pa{\frac{a}{b} x} = \frac{a}{b} \T(x).
-		      \end{align*}
-	\end{itemize}
-	From all cases above we conclude that \(\T(qx) = q \T(x)\).
-	Since \(q\) is arbitrary and \(\T\) is additive, by \cref{2.1.1} we know that \(\T\) is linear.
+  First observe that for all \(b \in \Z^+\) we have
+  \begin{align*}
+             & \forall x \in \V, \T(x) = \T\pa{b \frac{1}{b} x} = \T\pa{\sum_{i = 1}^b \frac{1}{b} x} &  & \by{1.2.1}     \\
+             & = \sum_{i = 1}^b \T\pa{\frac{1}{b} x} = b \T\pa{\frac{1}{b} x}                         &  & \by{ex:2.1.37} \\
+    \implies & \forall x \in \V, \frac{1}{b} \T(x) = \T\pa{\frac{1}{b} x}.                            &  & \by{1.2.1}
+  \end{align*}
+  Let \(q \in \Q\).
+  Then there exists some \((a, b) \in \Z \times \Z^+\) such that \(q = a / b\).
+  Now we split into three cases:
+  \begin{itemize}
+    \item If \(a = 0\), then we have
+          \begin{align*}
+                     & \forall x \in \V, \T\pa{\frac{0}{b} x} = \T(0x) = \T(0x + \zv_{\V}) &  & \text{(by \ref{vs3})} \\
+                     & = \T(0x + 0x)                                                       &  & \by{1.2}[a]           \\
+                     & = \T(0x) + \T(0x) = \T(0x) + \T\pa{\frac{0}{b} x}                   &  & \by{ex:2.1.37}        \\
+                     & = \T(0x) + \zv_{\W}                                                 &  & \text{(by \ref{vs3})} \\
+                     & = \T(0x) + 0 \T(x) = \T(0x) + \frac{0}{b} \T(x)                     &  & \by{1.2}[a]           \\
+            \implies & \forall x \in \V, \T\pa{\frac{0}{b}x} = \frac{0}{b} \T(x).          &  & \by{1.1}
+          \end{align*}
+    \item If \(a > 0\), then we have
+          \begin{align*}
+            \forall x \in \V, \frac{a}{b} \T(x) & = \sum_{i = 1}^a \frac{1}{b} \T(x)    &  & \by{1.2.1}                    \\
+                                                & = \sum_{i = 1}^a \T\pa{\frac{1}{b} x} &  & \text{(from the proof above)} \\
+                                                & = \T\pa{\sum_{i = 1}^a \frac{1}{b} x} &  & \by{ex:2.1.37}                \\
+                                                & = \T\pa{\frac{a}{b} x}.               &  & \by{1.2.1}
+          \end{align*}
+    \item If \(a < 0\), then we have
+          \begin{align*}
+                     & \forall x \in \V, \T\pa{\frac{a}{b} x} + \T\pa{\frac{-a}{b} x} = \T\pa{\frac{a}{b} x + \frac{-a}{b} x} &  & \by{ex:2.1.37}                \\
+                     & = \T(\zv_{\V})                                                                                         &  & \by{1.2.1}                    \\
+                     & = \zv_{\W}                                                                                             &  & \text{(from the proof above)} \\
+            \implies & \forall x \in \V, \T\pa{\frac{a}{b} x} + \frac{-a}{b} \T(x) = \zv_{\W}                                 &  & \text{(from the proof above)} \\
+            \implies & \forall x \in \V, \T\pa{\frac{a}{b} x} = \frac{a}{b} \T(x).
+          \end{align*}
+  \end{itemize}
+  From all cases above we conclude that \(\T(qx) = q \T(x)\).
+  Since \(q\) is arbitrary and \(\T\) is additive, by \cref{2.1.1} we know that \(\T\) is linear.
 \end{proof}
 
 \begin{ex}\label{ex:2.1.38}
-	Let \(\T : \C \to \C\) be the function defined by \(\T(z) = \conj{z}\).
-	Prove that \(\T\) is additive (as defined in \cref{ex:2.1.37}) but not linear.
+  Let \(\T : \C \to \C\) be the function defined by \(\T(z) = \conj{z}\).
+  Prove that \(\T\) is additive (as defined in \cref{ex:2.1.37}) but not linear.
 \end{ex}
 
 \begin{proof}[\pf{ex:2.1.38}]
-	First we show that \(\T\) is additive.
-	Since
-	\begin{align*}
-		\forall x, y \in \C, \T(x + y) & = \T(\Re(x) + \Re(y) + i (\Im(x) + \Im(y)))                         \\
-		                               & = \Re(x) + \Re(y) - i (\Im(x) + \Im(y))         &  & \by{ex:2.1.38} \\
-		                               & = \Re(x) - i \Im(x) + \Re(y) - i \Im(y)                             \\
-		                               & = \T(\Re(x) + i \Im(x)) + \T(\Re(y) + i \Im(y)) &  & \by{ex:2.1.38} \\
-		                               & = \T(x) + \T(y),
-	\end{align*}
-	by \cref{ex:2.1.37} we know that \(\T\) is additive.
+  First we show that \(\T\) is additive.
+  Since
+  \begin{align*}
+    \forall x, y \in \C, \T(x + y) & = \T(\Re(x) + \Re(y) + i (\Im(x) + \Im(y)))                         \\
+                                   & = \Re(x) + \Re(y) - i (\Im(x) + \Im(y))         &  & \by{ex:2.1.38} \\
+                                   & = \Re(x) - i \Im(x) + \Re(y) - i \Im(y)                             \\
+                                   & = \T(\Re(x) + i \Im(x)) + \T(\Re(y) + i \Im(y)) &  & \by{ex:2.1.38} \\
+                                   & = \T(x) + \T(y),
+  \end{align*}
+  by \cref{ex:2.1.37} we know that \(\T\) is additive.
 
-	Now we show that \(\T\) is not linear.
-	Since
-	\begin{align*}
-		 & \T(i \cdot i) = \T(-1) = -1      \\
-		 & \neq i \T(i) = i \cdot (-i) = 1,
-	\end{align*}
-	by \cref{2.1.1} we know that \(\T\) is not linear.
+  Now we show that \(\T\) is not linear.
+  Since
+  \begin{align*}
+     & \T(i \cdot i) = \T(-1) = -1      \\
+     & \neq i \T(i) = i \cdot (-i) = 1,
+  \end{align*}
+  by \cref{2.1.1} we know that \(\T\) is not linear.
 \end{proof}
 
 \begin{ex}\label{ex:2.1.39}
-	Prove that there is an additive function \(\T : \R \to \R\) (as defined in \cref{ex:2.1.37}) that is not linear.
+  Prove that there is an additive function \(\T : \R \to \R\) (as defined in \cref{ex:2.1.37}) that is not linear.
 \end{ex}
 
 \begin{proof}[\pf{ex:2.1.39}]
-	Let \(\V\) be the set of real numbers regarded as a vector space over the field of rational numbers.
-	By the \cref{1.7.10}, \(\V\) has a basis \(\beta\) over \(\Q\).
-	Let \(x\) and \(y\) be two distinct vectors in \(\beta\), and define \(f : \beta \to \V\) by \(f(x) = y\), \(f(y) = x\), and \(f(z) = z\) for all \(z \in \beta \setminus \set{x, y}\).
-	By \cref{ex:2.1.34} there exists a linear transformation \(\T : \V \to \V\) such that \(\T(u) = f(u)\) for all \(u \in \beta\).
+  Let \(\V\) be the set of real numbers regarded as a vector space over the field of rational numbers.
+  By the \cref{1.7.10}, \(\V\) has a basis \(\beta\) over \(\Q\).
+  Let \(x\) and \(y\) be two distinct vectors in \(\beta\), and define \(f : \beta \to \V\) by \(f(x) = y\), \(f(y) = x\), and \(f(z) = z\) for all \(z \in \beta \setminus \set{x, y}\).
+  By \cref{ex:2.1.34} there exists a linear transformation \(\T : \V \to \V\) such that \(\T(u) = f(u)\) for all \(u \in \beta\).
 
-	Fix such \(\T\).
-	Now we show that when \(\V\) is regarded as a vector space over the field of real number, then \(\T\) is not linear.
-	Since \(\T\) is linear over \(\Q\), by \cref{2.1.1,ex:2.1.37} we know that \(\T\) additive.
-	But for \(c = y / x \in \R\), we have
-	\begin{align*}
-		 & \T(cx) = \T\pa{\frac{y}{x} x} = \T(y) = x                         \\
-		 & \neq c \T(x) = \frac{y}{x} \T(x) = \frac{y}{x} y = \frac{y^2}{x}.
-	\end{align*}
-	Thus by \cref{2.1.1} \(\T\) is additive but not linear over \(\R\).
+  Fix such \(\T\).
+  Now we show that when \(\V\) is regarded as a vector space over the field of real number, then \(\T\) is not linear.
+  Since \(\T\) is linear over \(\Q\), by \cref{2.1.1,ex:2.1.37} we know that \(\T\) additive.
+  But for \(c = y / x \in \R\), we have
+  \begin{align*}
+     & \T(cx) = \T\pa{\frac{y}{x} x} = \T(y) = x                         \\
+     & \neq c \T(x) = \frac{y}{x} \T(x) = \frac{y}{x} y = \frac{y^2}{x}.
+  \end{align*}
+  Thus by \cref{2.1.1} \(\T\) is additive but not linear over \(\R\).
 \end{proof}
 
 \begin{ex}\label{ex:2.1.40}
-	Let \(\V\) be a vector space over \(\F\) and \(\W\) be a subspace of \(\V\) over \(\F\).
-	Define the mapping \(\eta : \V \to \V / \W\) by \(\eta(v) = v + \W\) for \(v \in \V\).
-	\begin{enumerate}
-		\item Prove that \(\eta\) is a linear transformation from \(\V\) onto \(\V / \W\) and that \(\ns{\eta} = \W\).
-		\item Suppose that \(\V\) is finite-dimensional.
-		      Use (a) and the dimension theorem to derive a formula relating \(\dim(\V)\), \(\dim(\W)\), and \(\dim(\V / \W)\).
-		\item Read the proof of the dimension theorem.
-		      Compare the method of solving (b) with the method of deriving the same result as outlined in \cref{ex:1.6.35}.
-	\end{enumerate}
+  Let \(\V\) be a vector space over \(\F\) and \(\W\) be a subspace of \(\V\) over \(\F\).
+  Define the mapping \(\eta : \V \to \V / \W\) by \(\eta(v) = v + \W\) for \(v \in \V\).
+  \begin{enumerate}
+    \item Prove that \(\eta\) is a linear transformation from \(\V\) onto \(\V / \W\) and that \(\ns{\eta} = \W\).
+    \item Suppose that \(\V\) is finite-dimensional.
+          Use (a) and the dimension theorem to derive a formula relating \(\dim(\V)\), \(\dim(\W)\), and \(\dim(\V / \W)\).
+    \item Read the proof of the dimension theorem.
+          Compare the method of solving (b) with the method of deriving the same result as outlined in \cref{ex:1.6.35}.
+  \end{enumerate}
 \end{ex}
 
 \begin{proof}[\pf{ex:2.1.40}(a)]
-	First we show that \(\eta\) is linear.
-	Let \(x, y \in \V\) and let \(c \in \F\).
-	Since
-	\begin{align*}
-		\eta(cx + y) & = (cx + y) + \W         &  & \by{ex:2.1.40} \\
-		             & = (cx + \W) + (y + \W)  &  & \by{ex:1.3.31} \\
-		             & = c (x + \W) + (y + \W) &  & \by{ex:1.3.31} \\
-		             & = c \eta(x) + \eta(y),  &  & \by{ex:2.1.40}
-	\end{align*}
-	by \cref{2.1.2}(b) we know that \(\eta\) is linear.
+  First we show that \(\eta\) is linear.
+  Let \(x, y \in \V\) and let \(c \in \F\).
+  Since
+  \begin{align*}
+    \eta(cx + y) & = (cx + y) + \W         &  & \by{ex:2.1.40} \\
+                 & = (cx + \W) + (y + \W)  &  & \by{ex:1.3.31} \\
+                 & = c (x + \W) + (y + \W) &  & \by{ex:1.3.31} \\
+                 & = c \eta(x) + \eta(y),  &  & \by{ex:2.1.40}
+  \end{align*}
+  by \cref{2.1.2}(b) we know that \(\eta\) is linear.
 
-	Next we show that \(\eta\) is onto.
-	Since
-	\begin{align*}
-		         & \forall S \in \V / \W, \exists x \in \V : x + \W = S   &  & \by{ex:1.3.31} \\
-		\implies & \forall S \in \V / \W, \exists x \in \V : \eta(x) = S, &  & \by{ex:2.1.40}
-	\end{align*}
-	we know that \(\eta\) is onto.
+  Next we show that \(\eta\) is onto.
+  Since
+  \begin{align*}
+             & \forall S \in \V / \W, \exists x \in \V : x + \W = S   &  & \by{ex:1.3.31} \\
+    \implies & \forall S \in \V / \W, \exists x \in \V : \eta(x) = S, &  & \by{ex:2.1.40}
+  \end{align*}
+  we know that \(\eta\) is onto.
 
-	Now we show that \(\ns{\eta} = \W\).
-	Since
-	\begin{align*}
-		     & x \in \ns{\eta}                                    \\
-		\iff & \eta(x) = x + \W = \zv + \W &  & \by{ex:1.3.31}[d] \\
-		\iff & x - \zv \in \W              &  & \by{ex:1.3.31}[b] \\
-		\iff & x \in \W,                   &  & \by{1.2.1}
-	\end{align*}
-	we know that \(\ns{\eta} = \W\).
+  Now we show that \(\ns{\eta} = \W\).
+  Since
+  \begin{align*}
+         & x \in \ns{\eta}                                    \\
+    \iff & \eta(x) = x + \W = \zv + \W &  & \by{ex:1.3.31}[d] \\
+    \iff & x - \zv \in \W              &  & \by{ex:1.3.31}[b] \\
+    \iff & x \in \W,                   &  & \by{1.2.1}
+  \end{align*}
+  we know that \(\ns{\eta} = \W\).
 \end{proof}
 
 \begin{proof}[\pf{ex:2.1.40}(b)]
-	We have
-	\begin{align*}
-		\dim(\V) & = \rk{\eta} + \nt{\eta}             &  & \by{2.3}          \\
-		         & = \dim(\rg{\eta}) + \dim(\ns{\eta}) &  & \by{2.1.12}       \\
-		         & = \dim(\V / \W) + \dim(\W).         &  & \by{ex:2.1.40}[a]
-	\end{align*}
+  We have
+  \begin{align*}
+    \dim(\V) & = \rk{\eta} + \nt{\eta}             &  & \by{2.3}          \\
+             & = \dim(\rg{\eta}) + \dim(\ns{\eta}) &  & \by{2.1.12}       \\
+             & = \dim(\V / \W) + \dim(\W).         &  & \by{ex:2.1.40}[a]
+  \end{align*}
 \end{proof}
 
 \begin{proof}[\pf{ex:2.1.40}(c)]
-	See \cref{2.3} and \cref{ex:1.6.35}.
+  See \cref{2.3} and \cref{ex:1.6.35}.
 \end{proof}

@@ -1,1061 +1,1061 @@
 \section{Homogeneous Linear Differential Equations with Constant Coefficients}\label{sec:2.7}
 
 \begin{defn}\label{2.7.1}
-	A \textbf{differential equation} in an unknown function \(y = y(t)\) is an equation involving \(y\), \(t\), and derivatives of \(y\).
-	If the differential equation is of the form
-	\begin{equation}\label{eq:2.7.1}
-		a_n y^{(n)} + a_{n - 1} y^{(n - 1)} + \cdots + a_1 y^{(1)} + a_0 y = f,
-	\end{equation}
-	where \(\seq{a}{0,,n}\) and \(f\) are functions of \(t\) and \(y^{(k)}\) denotes the \(k\)th derivative of \(y\), then the equation is said to be \textbf{linear}.
-	The functions \(a_i\) are called the \textbf{coefficients} of the differential equation \cref{eq:2.7.1}.
-	When \(f\) is identically zero, \cref{eq:2.7.1} is called \textbf{homogeneous}.
+  A \textbf{differential equation} in an unknown function \(y = y(t)\) is an equation involving \(y\), \(t\), and derivatives of \(y\).
+  If the differential equation is of the form
+  \begin{equation}\label{eq:2.7.1}
+    a_n y^{(n)} + a_{n - 1} y^{(n - 1)} + \cdots + a_1 y^{(1)} + a_0 y = f,
+  \end{equation}
+  where \(\seq{a}{0,,n}\) and \(f\) are functions of \(t\) and \(y^{(k)}\) denotes the \(k\)th derivative of \(y\), then the equation is said to be \textbf{linear}.
+  The functions \(a_i\) are called the \textbf{coefficients} of the differential equation \cref{eq:2.7.1}.
+  When \(f\) is identically zero, \cref{eq:2.7.1} is called \textbf{homogeneous}.
 
-	If \(a_n \neq 0\), we say that differential equation \cref{eq:2.7.1} is of \textbf{order \(n\)}.
-	In this case, we divide both sides by \(a_n\) to obtain a new, but equivalent, equation
-	\[
-		y^{(n)} + b_{n - 1} y^{(n - 1)} + \cdots + b_1 y^{(1)} + b_0 y = \zv,
-	\]
-	where \(b_i = a_i / a_n\) for \(i \in \set{0, \dots, n - 1}\).
-	Because of this observation, we always assume that the coefficient \(a_n\) in \cref{eq:2.7.1} is \(1\).
+  If \(a_n \neq 0\), we say that differential equation \cref{eq:2.7.1} is of \textbf{order \(n\)}.
+  In this case, we divide both sides by \(a_n\) to obtain a new, but equivalent, equation
+  \[
+    y^{(n)} + b_{n - 1} y^{(n - 1)} + \cdots + b_1 y^{(1)} + b_0 y = \zv,
+  \]
+  where \(b_i = a_i / a_n\) for \(i \in \set{0, \dots, n - 1}\).
+  Because of this observation, we always assume that the coefficient \(a_n\) in \cref{eq:2.7.1} is \(1\).
 
-	A \textbf{solution} to \cref{eq:2.7.1} is a function that when substituted for \(y\) reduces \cref{eq:2.7.1} to an identity.
+  A \textbf{solution} to \cref{eq:2.7.1} is a function that when substituted for \(y\) reduces \cref{eq:2.7.1} to an identity.
 \end{defn}
 
 \begin{defn}\label{2.7.2}
-	In our study of differential equations, it is useful to regard solutions as complex-valued functions of a real variable even though the solutions that are meaningful to us in a physical sense are real-valued.
-	The convenience of this viewpoint will become clear later.
-	Thus we are concerned with the vector space \(\fs(\R, \C)\).
-	In order to consider complex-valued functions of a real variable as solutions to differential equations, we must define what it means to differentiate such functions.
-	Given a complex-valued function \(x \in \fs(\R, \C)\) of a real variable \(t\), there exist unique real-valued functions \(x_1\) and \(x_2\) of \(t\), such that
-	\[
-		x(t) = x_1(t) + i x_2(t) \quad \text{for} \quad t \in \R,
-	\]
-	where \(i\) is the imaginary number such that \(i^2 = -1\).
-	We call \(x_1\) the \textbf{real part} and \(x_2\) the \textbf{imaginary part} of \(x\).
+  In our study of differential equations, it is useful to regard solutions as complex-valued functions of a real variable even though the solutions that are meaningful to us in a physical sense are real-valued.
+  The convenience of this viewpoint will become clear later.
+  Thus we are concerned with the vector space \(\fs(\R, \C)\).
+  In order to consider complex-valued functions of a real variable as solutions to differential equations, we must define what it means to differentiate such functions.
+  Given a complex-valued function \(x \in \fs(\R, \C)\) of a real variable \(t\), there exist unique real-valued functions \(x_1\) and \(x_2\) of \(t\), such that
+  \[
+    x(t) = x_1(t) + i x_2(t) \quad \text{for} \quad t \in \R,
+  \]
+  where \(i\) is the imaginary number such that \(i^2 = -1\).
+  We call \(x_1\) the \textbf{real part} and \(x_2\) the \textbf{imaginary part} of \(x\).
 \end{defn}
 
 \begin{defn}\label{2.7.3}
-	Given a function \(x \in \fs(\R, \C)\) with real part \(x_1\) and imaginary part \(x_2\), we say that \(x\) is \textbf{differentiable} if \(x_1\) and \(x_2\) are differentiable.
-	If \(x\) is differentiable, we define the derivative \(x'\) of \(x\) by
-	\[
-		x' = x_1' + i x_2'.
-	\]
+  Given a function \(x \in \fs(\R, \C)\) with real part \(x_1\) and imaginary part \(x_2\), we say that \(x\) is \textbf{differentiable} if \(x_1\) and \(x_2\) are differentiable.
+  If \(x\) is differentiable, we define the derivative \(x'\) of \(x\) by
+  \[
+    x' = x_1' + i x_2'.
+  \]
 \end{defn}
 
 \begin{thm}\label{2.27}
-	Any solution to a homogeneous linear differential equation with constant coefficients has derivatives of all orders;
-	that is, if \(x\) is a solution to such an equation, then \(x^{(k)}\) exists for every positive integer \(k\).
+  Any solution to a homogeneous linear differential equation with constant coefficients has derivatives of all orders;
+  that is, if \(x\) is a solution to such an equation, then \(x^{(k)}\) exists for every positive integer \(k\).
 \end{thm}
 
 \begin{proof}[\pf{2.27}]
-	Let
-	\[
-		y^{(n)} + a_{n - 1} y^{(n - 1)} + \cdots + a_1 y^{(1)} + a_0 y = 0
-	\]
-	be a homogeneous linear differential equation of order \(n\) with constant coefficients.
-	Clearly \(y^{(k)}\) exists for all \(k \in \set{0, \dots, n}\).
-	Now we prove that \(y^{(k)}\) exists for all \(k \in \N \setminus \set{0, \dots, n}\).
-	We can rewrite the equation above as
-	\[
-		y^{(n)} = -a_{n - 1} y^{(n - 1)} - \cdots - a_1 y^{(1)} - a_0 y.
-	\]
-	Since \(y^{(n)}\) exists, each term on the right hand side of the above equation can be differentiated at least one more time.
-	Thus \(y^{(n + 1)}\) must exist and is equal to the follow:
-	\[
-		y^{(n + 1)} = (y^{(n)})' = -a_{n - 1} y^{(n)} - \cdots - a_1 y^{(2)} - a_0 y^{(1)}.
-	\]
-	But again \(y^{(n + 1)}\) exists, therefore each term on the right hand side of the above equation can be differentiated at least one more time.
-	Thus \(y^{(n + 2)}\) must exist and is equal to the follow:
-	\[
-		y^{(n + 2)} = (y^{(n + 1)})' = -a_{n - 1} y^{(n + 1)} - \cdots - a_1 y^{(3)} - a_0 y^{(2)}.
-	\]
-	In general we see that for all \(k \in \N\), we have
-	\[
-		y^{(n + k)} = (y^{(n)})^{(k)} = -a_{n - 1} y^{(n - 1 + k)} - \cdots - a_1 y^{(1 + k)} - a_0 y^{(k)}.
-	\]
+  Let
+  \[
+    y^{(n)} + a_{n - 1} y^{(n - 1)} + \cdots + a_1 y^{(1)} + a_0 y = 0
+  \]
+  be a homogeneous linear differential equation of order \(n\) with constant coefficients.
+  Clearly \(y^{(k)}\) exists for all \(k \in \set{0, \dots, n}\).
+  Now we prove that \(y^{(k)}\) exists for all \(k \in \N \setminus \set{0, \dots, n}\).
+  We can rewrite the equation above as
+  \[
+    y^{(n)} = -a_{n - 1} y^{(n - 1)} - \cdots - a_1 y^{(1)} - a_0 y.
+  \]
+  Since \(y^{(n)}\) exists, each term on the right hand side of the above equation can be differentiated at least one more time.
+  Thus \(y^{(n + 1)}\) must exist and is equal to the follow:
+  \[
+    y^{(n + 1)} = (y^{(n)})' = -a_{n - 1} y^{(n)} - \cdots - a_1 y^{(2)} - a_0 y^{(1)}.
+  \]
+  But again \(y^{(n + 1)}\) exists, therefore each term on the right hand side of the above equation can be differentiated at least one more time.
+  Thus \(y^{(n + 2)}\) must exist and is equal to the follow:
+  \[
+    y^{(n + 2)} = (y^{(n + 1)})' = -a_{n - 1} y^{(n + 1)} - \cdots - a_1 y^{(3)} - a_0 y^{(2)}.
+  \]
+  In general we see that for all \(k \in \N\), we have
+  \[
+    y^{(n + k)} = (y^{(n)})^{(k)} = -a_{n - 1} y^{(n - 1 + k)} - \cdots - a_1 y^{(1 + k)} - a_0 y^{(k)}.
+  \]
 \end{proof}
 
 \begin{defn}\label{2.7.4}
-	We use \(\cfs[\infty](\R, \C)\) to denote the set of all functions in \(\fs(\R, \C)\) that have derivatives of all orders.
-	By \cref{ex:2.7.5} \(\cfs[\infty](\R, \C)\) is a subspace of \(\fs(\R, \C)\) over \(\C\) and hence is a vector space over \(\C\).
+  We use \(\cfs[\infty](\R, \C)\) to denote the set of all functions in \(\fs(\R, \C)\) that have derivatives of all orders.
+  By \cref{ex:2.7.5} \(\cfs[\infty](\R, \C)\) is a subspace of \(\fs(\R, \C)\) over \(\C\) and hence is a vector space over \(\C\).
 \end{defn}
 
 \begin{defn}\label{2.7.5}
-	For \(x \in \cfs[\infty](\R, \C)\), the derivative \(x'\) of \(x\) also lies in \(\cfs[\infty](\R, \C)\).
-	We can use the derivative operation to define a mapping \(\Dop : \cfs[\infty](\R, \C) \to \cfs[\infty](\R, \C)\) by
-	\[
-		\Dop(x) = x' \quad \text{for } x \in \cfs[\infty](\R, \C).
-	\]
-	It is easy to show that \(\Dop\) is a linear operator.
-	More generally, consider any polynomial over \(\C\) of the form
-	\[
-		p(t) = a_n t^n + a_{n - 1} t^{n - 1} + \cdots + a_1 t + a_0.
-	\]
-	If we define
-	\[
-		p(\Dop) = a_n \Dop^n + a_{n - 1} \Dop^{n - 1} + \cdots + a_1 \Dop + a_0 \IT,
-	\]
-	then \(p(\Dop)\) is a linear operator on \(\cfs[\infty](\R, \C)\).
-	(See \cref{e.0.7,ex:2.7.6}.)
+  For \(x \in \cfs[\infty](\R, \C)\), the derivative \(x'\) of \(x\) also lies in \(\cfs[\infty](\R, \C)\).
+  We can use the derivative operation to define a mapping \(\Dop : \cfs[\infty](\R, \C) \to \cfs[\infty](\R, \C)\) by
+  \[
+    \Dop(x) = x' \quad \text{for } x \in \cfs[\infty](\R, \C).
+  \]
+  It is easy to show that \(\Dop\) is a linear operator.
+  More generally, consider any polynomial over \(\C\) of the form
+  \[
+    p(t) = a_n t^n + a_{n - 1} t^{n - 1} + \cdots + a_1 t + a_0.
+  \]
+  If we define
+  \[
+    p(\Dop) = a_n \Dop^n + a_{n - 1} \Dop^{n - 1} + \cdots + a_1 \Dop + a_0 \IT,
+  \]
+  then \(p(\Dop)\) is a linear operator on \(\cfs[\infty](\R, \C)\).
+  (See \cref{e.0.7,ex:2.7.6}.)
 
-	For any polynomial \(p\) over \(\C\) of positive degree, \(p(\Dop)\) is called a \textbf{differential operator}.
-	The \textbf{order} of the differential operator \(p(\Dop)\) is the degree of the polynomial \(p\).
+  For any polynomial \(p\) over \(\C\) of positive degree, \(p(\Dop)\) is called a \textbf{differential operator}.
+  The \textbf{order} of the differential operator \(p(\Dop)\) is the degree of the polynomial \(p\).
 
-	Differential operators are useful since they provide us with a means of reformulating a differential equation in the context of linear algebra.
-	Any homogeneous linear differential equation with constant coefficients,
-	\[
-		y^{(n)} + a_{n - 1} y^{(n - 1)} + \cdots + a_1 y^{(1)} + a_0 y = \zv,
-	\]
-	can be rewritten using differential operators as
-	\[
-		\pa{\Dop^{(n)} + a_{n - 1} \Dop^{(n - 1)} + \cdots + a_1 \Dop^{(1)} + a_0 \IT}(y) = \zv.
-	\]
-	Given the differential equation above, the complex polynomial
-	\[
-		p(t) = t^n + a_{n - 1} t^{n - 1} + \cdots + a_1 t + a_0
-	\]
-	is called the \textbf{auxiliary polynomial} associated with the equation.
-	Any homogeneous linear differential equation with constant coefficients can be rewritten as
-	\[
-		p(\Dop)(y) = \zv,
-	\]
-	where \(p(t)\) is the auxiliary polynomial associated with the equation.
+  Differential operators are useful since they provide us with a means of reformulating a differential equation in the context of linear algebra.
+  Any homogeneous linear differential equation with constant coefficients,
+  \[
+    y^{(n)} + a_{n - 1} y^{(n - 1)} + \cdots + a_1 y^{(1)} + a_0 y = \zv,
+  \]
+  can be rewritten using differential operators as
+  \[
+    \pa{\Dop^{(n)} + a_{n - 1} \Dop^{(n - 1)} + \cdots + a_1 \Dop^{(1)} + a_0 \IT}(y) = \zv.
+  \]
+  Given the differential equation above, the complex polynomial
+  \[
+    p(t) = t^n + a_{n - 1} t^{n - 1} + \cdots + a_1 t + a_0
+  \]
+  is called the \textbf{auxiliary polynomial} associated with the equation.
+  Any homogeneous linear differential equation with constant coefficients can be rewritten as
+  \[
+    p(\Dop)(y) = \zv,
+  \]
+  where \(p(t)\) is the auxiliary polynomial associated with the equation.
 \end{defn}
 
 \begin{thm}\label{2.28}
-	The set of all solutions to a homogeneous linear differential equation with constant coefficients coincides with the null space of \(p(\Dop)\), where \(p(t)\) is the auxiliary polynomial associated with the equation.
+  The set of all solutions to a homogeneous linear differential equation with constant coefficients coincides with the null space of \(p(\Dop)\), where \(p(t)\) is the auxiliary polynomial associated with the equation.
 \end{thm}
 
 \begin{proof}[\pf{2.28}]
-	Let
-	\[
-		y^{(n)} + a_{n - 1} y^{(n - 1)} + \cdots + a_1 y^{(1)} + a_0 y = \zv
-	\]
-	be a homogeneous linear differential equation where \(\seq{a}{0,,n-1} \in \C\).
-	By \cref{2.7.5}
-	\[
-		p(t) = t^n + a_{n - 1} t^{n - 1} + \cdots + a_1 t + a_0
-	\]
-	is the auxiliary polynomial associated with the above homogeneous linear differential equation.
-	Then we have
-	\begin{align*}
-		     & x \in \cfs[\infty](\R, \C) \text{ is a solution of }                                  \\
-		     & y^{(n)} + a_{n - 1} y^{(n - 1)} + \cdots + a_1 y^{(1)} + a_0 y = \zv                  \\
-		\iff & x^{(n)} + a_{n - 1} x^{(n - 1)} + \cdots + a_1 x^{(1)} + a_0 x = \zv &  & \by{2.7.1}  \\
-		\iff & p(\Dop)(x) = \zv                                                     &  & \by{2.7.5}  \\
-		\iff & x \in \ns{p(\Dop)}                                                   &  & \by{2.1.10}
-	\end{align*}
-	and thus \(\set{x \in \cfs[\infty](\R, \C) : x^{(n)} + a_{n - 1} x^{(n - 1)} + \cdots + a_1 x^{(1)} + a_0 x = \zv} = \ns{p(\Dop)}\).
+  Let
+  \[
+    y^{(n)} + a_{n - 1} y^{(n - 1)} + \cdots + a_1 y^{(1)} + a_0 y = \zv
+  \]
+  be a homogeneous linear differential equation where \(\seq{a}{0,,n-1} \in \C\).
+  By \cref{2.7.5}
+  \[
+    p(t) = t^n + a_{n - 1} t^{n - 1} + \cdots + a_1 t + a_0
+  \]
+  is the auxiliary polynomial associated with the above homogeneous linear differential equation.
+  Then we have
+  \begin{align*}
+         & x \in \cfs[\infty](\R, \C) \text{ is a solution of }                                  \\
+         & y^{(n)} + a_{n - 1} y^{(n - 1)} + \cdots + a_1 y^{(1)} + a_0 y = \zv                  \\
+    \iff & x^{(n)} + a_{n - 1} x^{(n - 1)} + \cdots + a_1 x^{(1)} + a_0 x = \zv &  & \by{2.7.1}  \\
+    \iff & p(\Dop)(x) = \zv                                                     &  & \by{2.7.5}  \\
+    \iff & x \in \ns{p(\Dop)}                                                   &  & \by{2.1.10}
+  \end{align*}
+  and thus \(\set{x \in \cfs[\infty](\R, \C) : x^{(n)} + a_{n - 1} x^{(n - 1)} + \cdots + a_1 x^{(1)} + a_0 x = \zv} = \ns{p(\Dop)}\).
 \end{proof}
 
 \begin{cor}\label{2.7.6}
-	The set of all solutions to a homogeneous linear differential equation with constant coefficients is a subspace of \(\cfs[\infty](\R, \C)\).
+  The set of all solutions to a homogeneous linear differential equation with constant coefficients is a subspace of \(\cfs[\infty](\R, \C)\).
 \end{cor}
 
 \begin{proof}[\pf{2.7.6}]
-	By \cref{2.1,2.28} we see that this is true.
+  By \cref{2.1,2.28} we see that this is true.
 \end{proof}
 
 \begin{defn}\label{2.7.7}
-	In view of \cref{2.7.6}, we call the set of solutions to a homogeneous linear differential equation with constant coefficients the \textbf{solution space} of the equation.
-	A practical way of describing such a space is in terms of a basis.
+  In view of \cref{2.7.6}, we call the set of solutions to a homogeneous linear differential equation with constant coefficients the \textbf{solution space} of the equation.
+  A practical way of describing such a space is in terms of a basis.
 \end{defn}
 
 \begin{defn}\label{2.7.8}
-	Let \(c = a + ib\) be a complex number with real part \(a\) and imaginary part \(b\).
-	Define
-	\[
-		e^c = e^a (\cos(b) + i \sin(b)).
-	\]
-	The special case
-	\[
-		e^{ib} = \cos(b) + i \sin(b)
-	\]
-	is called \textbf{Euler's formula}.
-	Clearly, if \(c\) is real (\(b = 0\)), then we obtain the usual result:
-	\(e^c = e^a\).
-	We can show by the use of trigonometric identities that
-	\[
-		e^{c + d} = e^c e^d \quad \text{and} \quad e^{-c} = \frac{1}{e^c}
-	\]
-	for any complex number \(c\) and \(d\).
+  Let \(c = a + ib\) be a complex number with real part \(a\) and imaginary part \(b\).
+  Define
+  \[
+    e^c = e^a (\cos(b) + i \sin(b)).
+  \]
+  The special case
+  \[
+    e^{ib} = \cos(b) + i \sin(b)
+  \]
+  is called \textbf{Euler's formula}.
+  Clearly, if \(c\) is real (\(b = 0\)), then we obtain the usual result:
+  \(e^c = e^a\).
+  We can show by the use of trigonometric identities that
+  \[
+    e^{c + d} = e^c e^d \quad \text{and} \quad e^{-c} = \frac{1}{e^c}
+  \]
+  for any complex number \(c\) and \(d\).
 \end{defn}
 
 \begin{defn}\label{2.7.9}
-	A function \(f : \R \to \C\) defined by \(f(t) = e^{ct}\) for a fixed complex number \(c\) is called an \textbf{exponential function}.
+  A function \(f : \R \to \C\) defined by \(f(t) = e^{ct}\) for a fixed complex number \(c\) is called an \textbf{exponential function}.
 \end{defn}
 
 \begin{thm}\label{2.29}
-	For any exponential function \(f(t) = e^{ct}\), \(f'(t) = c e^{ct}\).
+  For any exponential function \(f(t) = e^{ct}\), \(f'(t) = c e^{ct}\).
 \end{thm}
 
 \begin{proof}[\pf{2.29}]
-	We have
-	\begin{align*}
-		f'(t) & = (e^{ct})'                                                                                                 \\
-		      & = (e^{\Re(ct) + i \Im(ct)})'                                                      &  & \by{2.7.2}           \\
-		      & = (e^{\Re(ct)} \cdot (\cos(\Im(ct)) + i \cdot \sin(\Im(ct))))'                    &  & \by{2.7.8}           \\
-		      & = (e^{\Re(ct)} \cdot \cos(\Im(ct)) + i \cdot e^{\Re(ct)} \cdot \sin(\Im(ct)))'                              \\
-		      & = (e^{\Re(ct)} \cdot \cos(\Im(ct)))' + i \cdot (e^{\Re(ct)} \cdot \sin(\Im(ct)))' &  & \by{2.7.3}           \\
-		      & = e^{\Re(ct)} \cdot (\Re(ct))' \cdot \cos(\Im(ct))                                                          \\
-		      & \quad - e^{\Re(ct)} \cdot \sin(\Im(ct)) \cdot (\Im(ct))'                                                    \\
-		      & \quad + i \cdot e^{\Re(ct)} \cdot (\Re(ct))' \cdot \sin(\Im(ct))                                            \\
-		      & \quad + i \cdot e^{\Re(ct)} \cdot \cos(\Im(ct)) \cdot (\Im(ct))'                                            \\
-		      & = e^{\Re(ct)} \cdot \Re(c) \cdot \cos(\Im(ct))                                    &  & \by{2.7.3}           \\
-		      & \quad - e^{\Re(ct)} \cdot \sin(\Im(ct)) \cdot \Im(c)                              &  & (\Re(ct) = t \Re(c)) \\
-		      & \quad + i \cdot e^{\Re(ct)} \cdot \Re(c) \cdot \sin(\Im(ct))                      &  & (\Im(ct) = t \Im(c)) \\
-		      & \quad + i \cdot e^{\Re(ct)} \cdot \cos(\Im(ct)) \cdot \Im(c)                                                \\
-		      & = e^{\Re(ct)} \cdot \Re(c) \cdot (\cos(\Im(ct)) + i \sin(\Im(ct)))                                          \\
-		      & \quad + e^{\Re(ct)} \cdot \Im(c) \cdot (i \cos(\Im(ct)) - \sin(\Im(ct)))                                    \\
-		      & = e^{\Re(ct)} \cdot \Re(c) \cdot (\cos(\Im(ct)) + i \sin(\Im(ct)))                                          \\
-		      & \quad + e^{\Re(ct)} \cdot i \cdot \Im(c) \cdot (\cos(\Im(ct)) + i \sin(\Im(ct)))                            \\
-		      & = e^{\Re(ct)} \cdot (\Re(c) + i \Im(c)) \cdot (\cos(\Im(ct)) + i \sin(\Im(ct)))                             \\
-		      & = c \cdot e^{ct}.                                                                 &  & \by{2.7.8}
-	\end{align*}
+  We have
+  \begin{align*}
+    f'(t) & = (e^{ct})'                                                                                                 \\
+          & = (e^{\Re(ct) + i \Im(ct)})'                                                      &  & \by{2.7.2}           \\
+          & = (e^{\Re(ct)} \cdot (\cos(\Im(ct)) + i \cdot \sin(\Im(ct))))'                    &  & \by{2.7.8}           \\
+          & = (e^{\Re(ct)} \cdot \cos(\Im(ct)) + i \cdot e^{\Re(ct)} \cdot \sin(\Im(ct)))'                              \\
+          & = (e^{\Re(ct)} \cdot \cos(\Im(ct)))' + i \cdot (e^{\Re(ct)} \cdot \sin(\Im(ct)))' &  & \by{2.7.3}           \\
+          & = e^{\Re(ct)} \cdot (\Re(ct))' \cdot \cos(\Im(ct))                                                          \\
+          & \quad - e^{\Re(ct)} \cdot \sin(\Im(ct)) \cdot (\Im(ct))'                                                    \\
+          & \quad + i \cdot e^{\Re(ct)} \cdot (\Re(ct))' \cdot \sin(\Im(ct))                                            \\
+          & \quad + i \cdot e^{\Re(ct)} \cdot \cos(\Im(ct)) \cdot (\Im(ct))'                                            \\
+          & = e^{\Re(ct)} \cdot \Re(c) \cdot \cos(\Im(ct))                                    &  & \by{2.7.3}           \\
+          & \quad - e^{\Re(ct)} \cdot \sin(\Im(ct)) \cdot \Im(c)                              &  & (\Re(ct) = t \Re(c)) \\
+          & \quad + i \cdot e^{\Re(ct)} \cdot \Re(c) \cdot \sin(\Im(ct))                      &  & (\Im(ct) = t \Im(c)) \\
+          & \quad + i \cdot e^{\Re(ct)} \cdot \cos(\Im(ct)) \cdot \Im(c)                                                \\
+          & = e^{\Re(ct)} \cdot \Re(c) \cdot (\cos(\Im(ct)) + i \sin(\Im(ct)))                                          \\
+          & \quad + e^{\Re(ct)} \cdot \Im(c) \cdot (i \cos(\Im(ct)) - \sin(\Im(ct)))                                    \\
+          & = e^{\Re(ct)} \cdot \Re(c) \cdot (\cos(\Im(ct)) + i \sin(\Im(ct)))                                          \\
+          & \quad + e^{\Re(ct)} \cdot i \cdot \Im(c) \cdot (\cos(\Im(ct)) + i \sin(\Im(ct)))                            \\
+          & = e^{\Re(ct)} \cdot (\Re(c) + i \Im(c)) \cdot (\cos(\Im(ct)) + i \sin(\Im(ct)))                             \\
+          & = c \cdot e^{ct}.                                                                 &  & \by{2.7.8}
+  \end{align*}
 \end{proof}
 
 \begin{thm}\label{2.30}
-	The solution space for
-	\[
-		y' + a_0 y = \zv
-	\]
-	(homogeneous linear differential equation with order \(1\)) is of dimension \(1\) and has \(\set{e^{-a_0 t}}\) as a basis.
+  The solution space for
+  \[
+    y' + a_0 y = \zv
+  \]
+  (homogeneous linear differential equation with order \(1\)) is of dimension \(1\) and has \(\set{e^{-a_0 t}}\) as a basis.
 \end{thm}
 
 \begin{proof}[\pf{2.30}]
-	Since
-	\begin{align*}
-		(e^{-a_0 t})' + a_0 e^{-a_0 t} & = -a_0 e^{-a_0 t} + a_0 e^{-a_0 t} &  & \by{2.29} \\
-		                               & = 0,
-	\end{align*}
-	we know that \(e^{-a_0 t}\) is a solution of \(y' + a_0 y = \zv\).
-	Suppose that \(x(t)\) is any solution to \(y' + a_0 y = \zv\).
-	Then
-	\[
-		\forall t \in \R, x'(t) = -a_0 x(t).
-	\]
-	Define
-	\[
-		\forall t \in \R, z(t) = e^{a_0 t} x(t).
-	\]
-	Differentiating \(z\) yields
-	\[
-		\forall t \in \R, z'(t) = (e^{a_0 t})' x(t) + e^{a_0 t} x'(t) = a_0 e^{a_0 t} x(t) - a_0 e^{a_0 t} x(t) = 0.
-	\]
-	(Notice that the familiar product rule for differentiation holds for complex-valued functions of a real variable.
-	A justification of this involves a lengthy, although direct, computation.)
+  Since
+  \begin{align*}
+    (e^{-a_0 t})' + a_0 e^{-a_0 t} & = -a_0 e^{-a_0 t} + a_0 e^{-a_0 t} &  & \by{2.29} \\
+                                   & = 0,
+  \end{align*}
+  we know that \(e^{-a_0 t}\) is a solution of \(y' + a_0 y = \zv\).
+  Suppose that \(x(t)\) is any solution to \(y' + a_0 y = \zv\).
+  Then
+  \[
+    \forall t \in \R, x'(t) = -a_0 x(t).
+  \]
+  Define
+  \[
+    \forall t \in \R, z(t) = e^{a_0 t} x(t).
+  \]
+  Differentiating \(z\) yields
+  \[
+    \forall t \in \R, z'(t) = (e^{a_0 t})' x(t) + e^{a_0 t} x'(t) = a_0 e^{a_0 t} x(t) - a_0 e^{a_0 t} x(t) = 0.
+  \]
+  (Notice that the familiar product rule for differentiation holds for complex-valued functions of a real variable.
+  A justification of this involves a lengthy, although direct, computation.)
 
-	Since \(z'\) is identically zero, \(z\) is a constant function.
-	(Again, this fact, well known for real-valued functions, is also true for complex-valued functions.
-	The proof, which relies on the real case, involves looking separately at the real and imaginary parts of \(z\).)
-	Thus there exists a complex number \(k\) such that
-	\[
-		\forall t \in \R, z(t) = e^{a_0 t} x(t) = k
-	\]
-	So
-	\[
-		x(t) = k e^{-a_0 t}.
-	\]
-	We conclude that any solution to \(y' + a_0 y = \zv\) is a linear combination of \(e^{-a_0 t}\).
+  Since \(z'\) is identically zero, \(z\) is a constant function.
+  (Again, this fact, well known for real-valued functions, is also true for complex-valued functions.
+  The proof, which relies on the real case, involves looking separately at the real and imaginary parts of \(z\).)
+  Thus there exists a complex number \(k\) such that
+  \[
+    \forall t \in \R, z(t) = e^{a_0 t} x(t) = k
+  \]
+  So
+  \[
+    x(t) = k e^{-a_0 t}.
+  \]
+  We conclude that any solution to \(y' + a_0 y = \zv\) is a linear combination of \(e^{-a_0 t}\).
 \end{proof}
 
 \begin{cor}\label{2.7.10}
-	For any complex number \(c\), the null space of the differential operator \(\Dop - c \IT\) has \(\set{e^{ct}}\) as a basis.
+  For any complex number \(c\), the null space of the differential operator \(\Dop - c \IT\) has \(\set{e^{ct}}\) as a basis.
 \end{cor}
 
 \begin{proof}[\pf{2.7.10}]
-	This is simply another way of stating \cref{2.30}.
+  This is simply another way of stating \cref{2.30}.
 \end{proof}
 
 \begin{thm}\label{2.31}
-	Let \(p\) be the auxiliary polynomial for a homogeneous linear differential equation with constant coefficients.
-	For any complex number \(c\), if \(c\) is a zero of \(p\), then \(e^{ct}\) is a solution to the differential equation.
+  Let \(p\) be the auxiliary polynomial for a homogeneous linear differential equation with constant coefficients.
+  For any complex number \(c\), if \(c\) is a zero of \(p\), then \(e^{ct}\) is a solution to the differential equation.
 \end{thm}
 
 \begin{proof}[\pf{2.31}]
-	Given an \(n\)th order homogeneous linear differential equation with constant coefficients,
-	\[
-		y^{(n)} + a_{n - 1} y^{(n - 1)} + \cdots + a_1 y^{(1)} + a_0 y = \zv,
-	\]
-	its auxiliary polynomial
-	\[
-		p(t) = t^n + a_{n - 1} t^{n - 1} + \cdots + a_1 t + a_0
-	\]
-	factors into a product of polynomials of degree \(1\), that is,
-	\[
-		p(t) = (t - c_1) (t - c_2) \cdots (t - c_n),
-	\]
-	where \(\seq{c}{1,,n}\) are (not necessarily distinct) complex numbers.
-	(This follows from the fundamental theorem of algebra, see \cref{d.0.7}.)
-	Thus
-	\[
-		p(\Dop) = (\Dop - c_1 \IT) (\Dop - c_2 \IT) \cdots (\Dop - c_n \IT).
-	\]
-	The operators \(\Dop - c_i \IT\) commute, and so, by \cref{ex:2.7.9}, we have that
-	\[
-		\ns{\Dop - c_i \IT} \subseteq \ns{p(\Dop)} \quad \text{for all } i \in \set{1, \dots, n}.
-	\]
-	Since \(\ns{p(\Dop)}\) coincides with the solution space of the given differential equation, we conclude by \cref{2.7.10} that \cref{2.31} is true.
+  Given an \(n\)th order homogeneous linear differential equation with constant coefficients,
+  \[
+    y^{(n)} + a_{n - 1} y^{(n - 1)} + \cdots + a_1 y^{(1)} + a_0 y = \zv,
+  \]
+  its auxiliary polynomial
+  \[
+    p(t) = t^n + a_{n - 1} t^{n - 1} + \cdots + a_1 t + a_0
+  \]
+  factors into a product of polynomials of degree \(1\), that is,
+  \[
+    p(t) = (t - c_1) (t - c_2) \cdots (t - c_n),
+  \]
+  where \(\seq{c}{1,,n}\) are (not necessarily distinct) complex numbers.
+  (This follows from the fundamental theorem of algebra, see \cref{d.0.7}.)
+  Thus
+  \[
+    p(\Dop) = (\Dop - c_1 \IT) (\Dop - c_2 \IT) \cdots (\Dop - c_n \IT).
+  \]
+  The operators \(\Dop - c_i \IT\) commute, and so, by \cref{ex:2.7.9}, we have that
+  \[
+    \ns{\Dop - c_i \IT} \subseteq \ns{p(\Dop)} \quad \text{for all } i \in \set{1, \dots, n}.
+  \]
+  Since \(\ns{p(\Dop)}\) coincides with the solution space of the given differential equation, we conclude by \cref{2.7.10} that \cref{2.31} is true.
 \end{proof}
 
 \begin{lem}\label{2.7.11}
-	The differential operator \(\Dop - c \IT : \cfs[\infty](\R, \C) \to \cfs[\infty](\R, \C)\) is onto for any complex number \(c\).
+  The differential operator \(\Dop - c \IT : \cfs[\infty](\R, \C) \to \cfs[\infty](\R, \C)\) is onto for any complex number \(c\).
 \end{lem}
 
 \begin{proof}[\pf{2.7.11}]
-	Let \(v \in \cfs[\infty](\R, \C)\).
-	We wish to find a \(u \in \cfs[\infty](\R, \C)\) such that \((\Dop - c \IT) u = v\).
-	Let \(w(t) = v(t) e^{-ct}\) for \(t \in \R\).
-	Clearly, \(w \in \cfs[\infty](\R, \C)\) because both \(v\) and \(e^{-ct}\) lie in \(\cfs[\infty](\R, \C)\).
-	Let \(w_1\) and \(w_2\) be the real and imaginary parts of \(w\).
-	Then \(w_1\) and \(w_2\) are continuous because they are differentiable.
-	Hence they have antiderivatives, say, \(W_1\) and \(W_2\), respectively.
-	Let \(W : \R \to \C\) be defined by
-	\[
-		\forall t \in \R, W(t) = W_1(t) + i W_2(t).
-	\]
-	Then \(W \in \cfs[\infty](\R, \C)\), and the real and imaginary parts of \(W\) are \(W_1\) and \(W_2\), respectively.
-	Furthermore, \(W' = w\).
-	Finally, let \(u : \R \to \C\) be defined by \(u(t) = W(t) e^{ct}\) for \(t \in \R\).
-	Clearly \(u \in \cfs[\infty](\R, \C)\), and since
-	\begin{align*}
-		(\Dop - c \IT) u(t) & = u'(t) - cu(t)                                               \\
-		                    & = W'(t) e^{ct} + W(t) c e^{ct} - c W(t) e^{ct} &  & \by{2.29} \\
-		                    & = w(t) e^{ct}                                                 \\
-		                    & = v(t) e^{-ct} e^{ct}                                         \\
-		                    & = v(t),
-	\end{align*}
-	we have \((\Dop - c \IT) u = v\).
+  Let \(v \in \cfs[\infty](\R, \C)\).
+  We wish to find a \(u \in \cfs[\infty](\R, \C)\) such that \((\Dop - c \IT) u = v\).
+  Let \(w(t) = v(t) e^{-ct}\) for \(t \in \R\).
+  Clearly, \(w \in \cfs[\infty](\R, \C)\) because both \(v\) and \(e^{-ct}\) lie in \(\cfs[\infty](\R, \C)\).
+  Let \(w_1\) and \(w_2\) be the real and imaginary parts of \(w\).
+  Then \(w_1\) and \(w_2\) are continuous because they are differentiable.
+  Hence they have antiderivatives, say, \(W_1\) and \(W_2\), respectively.
+  Let \(W : \R \to \C\) be defined by
+  \[
+    \forall t \in \R, W(t) = W_1(t) + i W_2(t).
+  \]
+  Then \(W \in \cfs[\infty](\R, \C)\), and the real and imaginary parts of \(W\) are \(W_1\) and \(W_2\), respectively.
+  Furthermore, \(W' = w\).
+  Finally, let \(u : \R \to \C\) be defined by \(u(t) = W(t) e^{ct}\) for \(t \in \R\).
+  Clearly \(u \in \cfs[\infty](\R, \C)\), and since
+  \begin{align*}
+    (\Dop - c \IT) u(t) & = u'(t) - cu(t)                                               \\
+                        & = W'(t) e^{ct} + W(t) c e^{ct} - c W(t) e^{ct} &  & \by{2.29} \\
+                        & = w(t) e^{ct}                                                 \\
+                        & = v(t) e^{-ct} e^{ct}                                         \\
+                        & = v(t),
+  \end{align*}
+  we have \((\Dop - c \IT) u = v\).
 \end{proof}
 
 \begin{lem}\label{2.7.12}
-	Let \(\V\) be a vector space over \(\F\), and suppose that \(\T\) and \(\U\) are linear operators on \(\V\) such that \(\U\) is onto and the null spaces of \(\T\) and \(\U\) are finite-dimensional.
-	Then the null space of \(\T \U\) is finite-dimensional, and
-	\[
-		\dim(\ns{\T \U}) = \dim(\ns{\T}) + \dim(\ns{\U}).
-	\]
+  Let \(\V\) be a vector space over \(\F\), and suppose that \(\T\) and \(\U\) are linear operators on \(\V\) such that \(\U\) is onto and the null spaces of \(\T\) and \(\U\) are finite-dimensional.
+  Then the null space of \(\T \U\) is finite-dimensional, and
+  \[
+    \dim(\ns{\T \U}) = \dim(\ns{\T}) + \dim(\ns{\U}).
+  \]
 \end{lem}
 
 \begin{proof}[\pf{2.7.12}]
-	Let \(p = \dim(\ns{\T})\), \(q = \dim(\ns{\U})\), and \(\set{\seq{u}{1,,p}}\) and \(\set{\seq{v}{1,,q}}\) be bases for \(\ns{\T}\) and \(\ns{\U}\) over \(\F\), respectively.
-	Since \(\U\) is onto, we can choose for each \(i \in \set{1, \dots, p}\) a vector \(w_i \in \V\) such that \(\U(w_i) = u_i\).
-	Note that the \(w_i\)'s are distinct.
-	Furthermore, for any \(i\) and \(j\), \(w_i \neq v_j\), for otherwise \(u_i = \U(w_i) = \U(v_j) = \zv\) --- a contradiction.
-	Hence the set
-	\[
-		\beta = \set{\seq{w}{1,,p}, \seq{v}{1,,q}}
-	\]
-	contains \(p + q\) distinct vectors.
-	To complete the proof of the lemma, it suffices to show that \(\beta\) is a basis for \(\ns{\T \U}\) over \(\F\).
+  Let \(p = \dim(\ns{\T})\), \(q = \dim(\ns{\U})\), and \(\set{\seq{u}{1,,p}}\) and \(\set{\seq{v}{1,,q}}\) be bases for \(\ns{\T}\) and \(\ns{\U}\) over \(\F\), respectively.
+  Since \(\U\) is onto, we can choose for each \(i \in \set{1, \dots, p}\) a vector \(w_i \in \V\) such that \(\U(w_i) = u_i\).
+  Note that the \(w_i\)'s are distinct.
+  Furthermore, for any \(i\) and \(j\), \(w_i \neq v_j\), for otherwise \(u_i = \U(w_i) = \U(v_j) = \zv\) --- a contradiction.
+  Hence the set
+  \[
+    \beta = \set{\seq{w}{1,,p}, \seq{v}{1,,q}}
+  \]
+  contains \(p + q\) distinct vectors.
+  To complete the proof of the lemma, it suffices to show that \(\beta\) is a basis for \(\ns{\T \U}\) over \(\F\).
 
-	We first show that \(\beta\) generates \(\ns{\T \U}\).
-	Since for any \(w_i\) and \(v_j\) in \(\beta\), \(\T \U(w_i) = \T(u_i) = \zv\) and \(\T \U(v_j) = \T(\zv) = \zv\), it follows that \(\beta \subseteq \ns{\T \U}\).
-	Now suppose that \(v \in \ns{\T \U}\).
-	Then \(\zv = \T \U(v) = \T(\U(v))\).
-	Thus \(\U(v) \in \ns{\T}\).
-	So there exist scalars \(\seq{a}{1,,p} \in \F\) such that
-	\begin{align*}
-		\U(v) & = \seq[+]{a,u}{1,,p}                 \\
-		      & = a_1 \U(w_1) + \cdots + a_p \U(w_p) \\
-		      & = \U(\seq[+]{a,w}{1,,p}).
-	\end{align*}
-	Hence
-	\[
-		\U(v - (\seq[+]{a,w}{1,,p})) = \zv.
-	\]
-	Consequently, \(v - (\seq[+]{a,w}{1,,p})\) lies in \(\ns{\U}\).
-	It follows that there exist scalars \(\seq{b}{1,,q} \in \F\) such that
-	\[
-		v - (\seq[+]{a,w}{1,,p}) = \seq[+]{b,v}{1,,q}
-	\]
-	or
-	\[
-		v = \seq[+]{a,w}{1,,p} + \seq[+]{b,v}{1,,q}.
-	\]
-	Therefore \(\beta\) spans \(\ns{\T \U}\).
+  We first show that \(\beta\) generates \(\ns{\T \U}\).
+  Since for any \(w_i\) and \(v_j\) in \(\beta\), \(\T \U(w_i) = \T(u_i) = \zv\) and \(\T \U(v_j) = \T(\zv) = \zv\), it follows that \(\beta \subseteq \ns{\T \U}\).
+  Now suppose that \(v \in \ns{\T \U}\).
+  Then \(\zv = \T \U(v) = \T(\U(v))\).
+  Thus \(\U(v) \in \ns{\T}\).
+  So there exist scalars \(\seq{a}{1,,p} \in \F\) such that
+  \begin{align*}
+    \U(v) & = \seq[+]{a,u}{1,,p}                 \\
+          & = a_1 \U(w_1) + \cdots + a_p \U(w_p) \\
+          & = \U(\seq[+]{a,w}{1,,p}).
+  \end{align*}
+  Hence
+  \[
+    \U(v - (\seq[+]{a,w}{1,,p})) = \zv.
+  \]
+  Consequently, \(v - (\seq[+]{a,w}{1,,p})\) lies in \(\ns{\U}\).
+  It follows that there exist scalars \(\seq{b}{1,,q} \in \F\) such that
+  \[
+    v - (\seq[+]{a,w}{1,,p}) = \seq[+]{b,v}{1,,q}
+  \]
+  or
+  \[
+    v = \seq[+]{a,w}{1,,p} + \seq[+]{b,v}{1,,q}.
+  \]
+  Therefore \(\beta\) spans \(\ns{\T \U}\).
 
-	To prove that \(\beta\) is linearly independent, let \(\seq{a}{1,,p}, \seq{b}{1,,q} \in \F\) be any scalars such that
-	\[
-		\seq[+]{a,w}{1,,p} + \seq[+]{b,v}{1,,q} = \zv.
-	\]
-	Applying \(\U\) to both sides of the above equation, we obtain
-	\[
-		\seq[+]{a,u}{1,,p} = \zv.
-	\]
-	Since \(\set{\seq{u}{1,,p}}\) is linearly independent, the \(a_i\)'s are all zero.
-	Thus the original equation reduces to
-	\[
-		\seq[+]{b,v}{1,,q} = \zv.
-	\]
-	Again, the linear independence of \(\set{\seq{v}{1,,q}}\) implies that the \(b_i\)'s are all zero.
-	We conclude that \(\beta\) is a basis for \(\ns{\T \U}\) over \(\F\).
-	Hence \(\ns{\T \U}\) is finite-dimensional, and \(\dim(\ns{\T \U}) = p + q = \dim(\ns{\T}) + \dim(\ns{\U})\).
+  To prove that \(\beta\) is linearly independent, let \(\seq{a}{1,,p}, \seq{b}{1,,q} \in \F\) be any scalars such that
+  \[
+    \seq[+]{a,w}{1,,p} + \seq[+]{b,v}{1,,q} = \zv.
+  \]
+  Applying \(\U\) to both sides of the above equation, we obtain
+  \[
+    \seq[+]{a,u}{1,,p} = \zv.
+  \]
+  Since \(\set{\seq{u}{1,,p}}\) is linearly independent, the \(a_i\)'s are all zero.
+  Thus the original equation reduces to
+  \[
+    \seq[+]{b,v}{1,,q} = \zv.
+  \]
+  Again, the linear independence of \(\set{\seq{v}{1,,q}}\) implies that the \(b_i\)'s are all zero.
+  We conclude that \(\beta\) is a basis for \(\ns{\T \U}\) over \(\F\).
+  Hence \(\ns{\T \U}\) is finite-dimensional, and \(\dim(\ns{\T \U}) = p + q = \dim(\ns{\T}) + \dim(\ns{\U})\).
 \end{proof}
 
 \begin{thm}\label{2.32}
-	For any differential operator \(p(\Dop)\) of order \(n\), the null space of \(p(\Dop)\) is an \(n\)-dimensional subspace of \(\cfs[\infty](\R, \C)\).
+  For any differential operator \(p(\Dop)\) of order \(n\), the null space of \(p(\Dop)\) is an \(n\)-dimensional subspace of \(\cfs[\infty](\R, \C)\).
 \end{thm}
 
 \begin{proof}[\pf{2.32}]
-	The proof is by mathematical induction on the order of the differential operator \(p(\Dop)\).
-	The first-order case coincides with \cref{2.30}.
-	For some integer \(n > 1\), suppose that \cref{2.32} holds for any differential operator of order less than \(n\), and consider a differential operator \(p(\Dop)\) of order \(n\).
-	The polynomial \(p\) can be factored into a product of two polynomials as follows:
-	\[
-		\forall t \in \R, p(t) = q(t) (t - c),
-	\]
-	where \(q\) is a polynomial of degree \(n - 1\) and \(c\) is a complex number.
-	Thus the given differential operator may be rewritten as
-	\[
-		p(\Dop) = q(\Dop) (\Dop - c \IT).
-	\]
-	Now, by \cref{2.7.11}, \(\Dop - c \IT\) is onto, and by \cref{2.7.10}, \(\dim(\ns{\Dop - c \IT}) = 1\).
-	Also, by the induction hypothesis, \(\dim(\ns{q(\Dop)}) = n - 1\).
-	Thus, by \cref{2.7.12} we conclude that
-	\[
-		\dim(\ns{p(\Dop)}) = \dim(\ns{q(\Dop)}) + \dim(\ns{\Dop - c \IT}) = (n - 1) + 1 = n.
-	\]
+  The proof is by mathematical induction on the order of the differential operator \(p(\Dop)\).
+  The first-order case coincides with \cref{2.30}.
+  For some integer \(n > 1\), suppose that \cref{2.32} holds for any differential operator of order less than \(n\), and consider a differential operator \(p(\Dop)\) of order \(n\).
+  The polynomial \(p\) can be factored into a product of two polynomials as follows:
+  \[
+    \forall t \in \R, p(t) = q(t) (t - c),
+  \]
+  where \(q\) is a polynomial of degree \(n - 1\) and \(c\) is a complex number.
+  Thus the given differential operator may be rewritten as
+  \[
+    p(\Dop) = q(\Dop) (\Dop - c \IT).
+  \]
+  Now, by \cref{2.7.11}, \(\Dop - c \IT\) is onto, and by \cref{2.7.10}, \(\dim(\ns{\Dop - c \IT}) = 1\).
+  Also, by the induction hypothesis, \(\dim(\ns{q(\Dop)}) = n - 1\).
+  Thus, by \cref{2.7.12} we conclude that
+  \[
+    \dim(\ns{p(\Dop)}) = \dim(\ns{q(\Dop)}) + \dim(\ns{\Dop - c \IT}) = (n - 1) + 1 = n.
+  \]
 \end{proof}
 
 \begin{cor}\label{2.7.13}
-	The solution space of any \(n\)th-order homogeneous linear differential equation with constant coefficients is an \(n\)-dimensional subspace of \(\cfs[\infty](\R, \C)\).
+  The solution space of any \(n\)th-order homogeneous linear differential equation with constant coefficients is an \(n\)-dimensional subspace of \(\cfs[\infty](\R, \C)\).
 \end{cor}
 
 \begin{proof}[\pf{2.7.13}]
-	By \cref{2.28,2.32} we conclude that \cref{2.7.13} is true.
+  By \cref{2.28,2.32} we conclude that \cref{2.7.13} is true.
 \end{proof}
 
 \begin{note}
-	\cref{2.7.13} reduces the problem of finding all solutions to an \(n\)th-order homogeneous linear differential equation with constant coefficients to finding a set of \(n\) linearly independent solutions to the equation.
-	By the results of \cref{ch:1}, any such set must be a basis for the solution space.
+  \cref{2.7.13} reduces the problem of finding all solutions to an \(n\)th-order homogeneous linear differential equation with constant coefficients to finding a set of \(n\) linearly independent solutions to the equation.
+  By the results of \cref{ch:1}, any such set must be a basis for the solution space.
 \end{note}
 
 \begin{thm}\label{2.33}
-	Given \(n\) distinct complex numbers \(\seq{c}{1,,n}\), the set of exponential functions \(\set{e^{c_1 t}, \dots, e^{c_n t}}\) is linearly independent.
+  Given \(n\) distinct complex numbers \(\seq{c}{1,,n}\), the set of exponential functions \(\set{e^{c_1 t}, \dots, e^{c_n t}}\) is linearly independent.
 \end{thm}
 
 \begin{proof}[\pf{2.33}]
-	We use induction on \(n\).
-	For \(n = 1\), let \(b_1, c_1 \in \C\) such that
-	\[
-		\forall t \in \R, b_1 e^{c_1 t} = 0.
-	\]
-	By substituting \(t\) with \(0\) we have \(b_1 e^{c_1 0} = b_1 e^0 = b_1 = 0\).
-	Thus by \cref{1.5.3} we know that the set \(\set{e^{c_1 t}}\) is linearly independent and the base case holds.
-	Suppose inductively that \cref{2.33} is true for some \(n \geq 1\).
-	We want to show that it is also true for \(n + 1\).
-	Let \(\seq{c}{1,,n+1} \in \C\) be distinct and let \(\seq{b}{1,,n+1} \in \C\) such that
-	\[
-		\forall t \in \R, \sum_{i = 1}^{n + 1} b_i e^{c_i t} = 0.
-	\]
-	By applying the operator \(\Dop - c_{n + 1} \IT\) we have
-	\begin{align*}
-		         & \forall t \in \R, \sum_{i = 1}^{n + 1} b_i c_i e^{c_i t} - \sum_{i = 1}^{n + 1} b_i c_{n + 1} e^{c_i t} = 0                                             \\
-		\implies & \forall t \in \R, \sum_{i = 1}^n b_i c_i e^{c_i t} + b_{n + 1} c_{n + 1} e^{c_{n + 1} t}                                                                \\
-		         & - \sum_{i = 1}^n b_i c_{n + 1} e^{c_i t} - b_{n + 1} c_{n + 1} e^{c_{n + 1} t} = 0                                                                      \\
-		\implies & \forall t \in \R, \sum_{i = 1}^n b_i c_i e^{c_i t} - \sum_{i = 1}^n b_i c_{n + 1} e^{c_i t} = 0                                                         \\
-		\implies & \forall t \in \R, \sum_{i = 1}^n b_i (c_i - c_{n + 1}) e^{c_i t} = 0                                                                                    \\
-		\implies & \seq[=]{b}{1,,n} = 0                                                                                        &  & \text{(by induction hypothesis)}       \\
-		\implies & \forall t \in \R, \sum_{t = 1}^{n + 1} b_i e^{c_i t} = b_{n + 1} e^{c_{n + 1} t} = 0                                                                    \\
-		\implies & b_{n + 1} = 0.                                                                                              &  & \text{(substituting \(t\) with \(0\))}
-	\end{align*}
-	Thus by \cref{1.5.3} we know that the set \(\set{e^{c_1 t}, \dots, e^{c_{n + 1} t}}\) is linearly independent and this closes the induction.
+  We use induction on \(n\).
+  For \(n = 1\), let \(b_1, c_1 \in \C\) such that
+  \[
+    \forall t \in \R, b_1 e^{c_1 t} = 0.
+  \]
+  By substituting \(t\) with \(0\) we have \(b_1 e^{c_1 0} = b_1 e^0 = b_1 = 0\).
+  Thus by \cref{1.5.3} we know that the set \(\set{e^{c_1 t}}\) is linearly independent and the base case holds.
+  Suppose inductively that \cref{2.33} is true for some \(n \geq 1\).
+  We want to show that it is also true for \(n + 1\).
+  Let \(\seq{c}{1,,n+1} \in \C\) be distinct and let \(\seq{b}{1,,n+1} \in \C\) such that
+  \[
+    \forall t \in \R, \sum_{i = 1}^{n + 1} b_i e^{c_i t} = 0.
+  \]
+  By applying the operator \(\Dop - c_{n + 1} \IT\) we have
+  \begin{align*}
+             & \forall t \in \R, \sum_{i = 1}^{n + 1} b_i c_i e^{c_i t} - \sum_{i = 1}^{n + 1} b_i c_{n + 1} e^{c_i t} = 0                                             \\
+    \implies & \forall t \in \R, \sum_{i = 1}^n b_i c_i e^{c_i t} + b_{n + 1} c_{n + 1} e^{c_{n + 1} t}                                                                \\
+             & - \sum_{i = 1}^n b_i c_{n + 1} e^{c_i t} - b_{n + 1} c_{n + 1} e^{c_{n + 1} t} = 0                                                                      \\
+    \implies & \forall t \in \R, \sum_{i = 1}^n b_i c_i e^{c_i t} - \sum_{i = 1}^n b_i c_{n + 1} e^{c_i t} = 0                                                         \\
+    \implies & \forall t \in \R, \sum_{i = 1}^n b_i (c_i - c_{n + 1}) e^{c_i t} = 0                                                                                    \\
+    \implies & \seq[=]{b}{1,,n} = 0                                                                                        &  & \text{(by induction hypothesis)}       \\
+    \implies & \forall t \in \R, \sum_{t = 1}^{n + 1} b_i e^{c_i t} = b_{n + 1} e^{c_{n + 1} t} = 0                                                                    \\
+    \implies & b_{n + 1} = 0.                                                                                              &  & \text{(substituting \(t\) with \(0\))}
+  \end{align*}
+  Thus by \cref{1.5.3} we know that the set \(\set{e^{c_1 t}, \dots, e^{c_{n + 1} t}}\) is linearly independent and this closes the induction.
 \end{proof}
 
 \begin{cor}\label{2.7.14}
-	For any \(n\)th-order homogeneous linear differential equation with constant coefficients, if the auxiliary polynomial has \(n\) distinct zeros \(\seq{c}{1,,n}\), then \(\set{e^{c_1 t}, \dots, e^{c_n t}}\) is a basis for the solution space of the differential equation.
+  For any \(n\)th-order homogeneous linear differential equation with constant coefficients, if the auxiliary polynomial has \(n\) distinct zeros \(\seq{c}{1,,n}\), then \(\set{e^{c_1 t}, \dots, e^{c_n t}}\) is a basis for the solution space of the differential equation.
 \end{cor}
 
 \begin{proof}[\pf{2.7.14}]
-	By \cref{2.7.13,2.33} we see that this is true.
+  By \cref{2.7.13,2.33} we see that this is true.
 \end{proof}
 
 \begin{lem}\label{2.7.15}
-	For a given complex number \(c\) and positive integer \(n\), suppose that \((t - c)^n\) is the auxiliary polynomial of a homogeneous linear differential equation with constant coefficients.
-	Then the set
-	\[
-		\beta = \set{e^{ct}, t e^{ct}, \dots, t^{n - 1} e^{ct}}
-	\]
-	is a basis for the solution space of the equation.
+  For a given complex number \(c\) and positive integer \(n\), suppose that \((t - c)^n\) is the auxiliary polynomial of a homogeneous linear differential equation with constant coefficients.
+  Then the set
+  \[
+    \beta = \set{e^{ct}, t e^{ct}, \dots, t^{n - 1} e^{ct}}
+  \]
+  is a basis for the solution space of the equation.
 \end{lem}
 
 \begin{proof}[\pf{2.7.15}]
-	Since the solution space is \(n\)-dimensional, we need only show that \(\beta\) is linearly independent and lies in the solution space.
-	First, observe that for any positive integer \(k\),
-	\[
-		(\Dop - c \IT)(t^k e^{ct}) = k t^{k - 1} e^{ct} + c t^k e^{ct} - c t^k e^{ct} = k t^{k - 1} e^{ct}.
-	\]
-	Hence for \(k < n\),
-	\[
-		(\Dop - c \IT)^n (t^k e^{ct}) = \zv.
-	\]
-	It follows that \(\beta\) is a subset of the solution space.
+  Since the solution space is \(n\)-dimensional, we need only show that \(\beta\) is linearly independent and lies in the solution space.
+  First, observe that for any positive integer \(k\),
+  \[
+    (\Dop - c \IT)(t^k e^{ct}) = k t^{k - 1} e^{ct} + c t^k e^{ct} - c t^k e^{ct} = k t^{k - 1} e^{ct}.
+  \]
+  Hence for \(k < n\),
+  \[
+    (\Dop - c \IT)^n (t^k e^{ct}) = \zv.
+  \]
+  It follows that \(\beta\) is a subset of the solution space.
 
-	We next show that \(\beta\) is linearly independent.
-	Consider any linear combination of vectors in \(\beta\) such that
-	\[
-		b_0 e^{ct} + b_1 t e^{ct} + \cdots + b_{n - 1} t^{n - 1} e^{ct} = \zv
-	\]
-	for some scalars \(\seq{b}{0,,n-1}\).
-	Dividing by \(e^{ct}\) in the above equation, we obtain
-	\[
-		b_0 + b_1 t + \cdots + b_{n - 1} t^{n - 1} = \zv.
-	\]
-	Thus the left side of the above equation must be the zero polynomial function.
-	We conclude that the coefficients \(\seq{b}{0,,n-1}\) are all zero.
-	So \(\beta\) is linearly independent and hence is a basis for the solution space.
+  We next show that \(\beta\) is linearly independent.
+  Consider any linear combination of vectors in \(\beta\) such that
+  \[
+    b_0 e^{ct} + b_1 t e^{ct} + \cdots + b_{n - 1} t^{n - 1} e^{ct} = \zv
+  \]
+  for some scalars \(\seq{b}{0,,n-1}\).
+  Dividing by \(e^{ct}\) in the above equation, we obtain
+  \[
+    b_0 + b_1 t + \cdots + b_{n - 1} t^{n - 1} = \zv.
+  \]
+  Thus the left side of the above equation must be the zero polynomial function.
+  We conclude that the coefficients \(\seq{b}{0,,n-1}\) are all zero.
+  So \(\beta\) is linearly independent and hence is a basis for the solution space.
 \end{proof}
 
 \begin{thm}\label{2.34}
-	Given a homogeneous linear differential equation with constant coefficients and auxiliary polynomial
-	\[
-		p(\Dop) = (t - c_1)^{n_1} (t - c_2)^{n_2} \cdots (t - c_k)^{n_k}
-	\]
-	where \(\seq{n}{1,,k}\) are positive integers and \(\seq{c}{1,,k}\) are distinct complex numbers, the following set is a basis for the solution space of the equation:
-	\[
-		\beta = \set{e^{c_1 t}, t e^{c_1 t}, \dots, t^{n_1 - 1} e^{c_1 t}, \dots, e^{c_k t}, t e^{c_k t}, \dots, t^{n_k - 1} e^{c_k t}}.
-	\]
+  Given a homogeneous linear differential equation with constant coefficients and auxiliary polynomial
+  \[
+    p(\Dop) = (t - c_1)^{n_1} (t - c_2)^{n_2} \cdots (t - c_k)^{n_k}
+  \]
+  where \(\seq{n}{1,,k}\) are positive integers and \(\seq{c}{1,,k}\) are distinct complex numbers, the following set is a basis for the solution space of the equation:
+  \[
+    \beta = \set{e^{c_1 t}, t e^{c_1 t}, \dots, t^{n_1 - 1} e^{c_1 t}, \dots, e^{c_k t}, t e^{c_k t}, \dots, t^{n_k - 1} e^{c_k t}}.
+  \]
 \end{thm}
 
 \begin{proof}[\pf{2.34}]
-	For any \(k \in \Z^+\), let \(\beta_k = \set{e^{c_k t}, \dots, t^{n_k - 1} e^{c_k t}}\).
-	Observe that \(\beta = \bigcup_{i = 1}^k \beta_i\) and \(\#(\beta) = \seq[+]{n}{1,,k} = \sum_{i = 1}^k \#(\beta_i)\).
-	Thus by \cref{2.7.13} we only need to show that \(\bigcup_{i = 1}^k \beta_i \subseteq \ns{p(\Dop)}\) and \(\bigcup_{i = 1}^k \beta_i\) is linearly independent.
+  For any \(k \in \Z^+\), let \(\beta_k = \set{e^{c_k t}, \dots, t^{n_k - 1} e^{c_k t}}\).
+  Observe that \(\beta = \bigcup_{i = 1}^k \beta_i\) and \(\#(\beta) = \seq[+]{n}{1,,k} = \sum_{i = 1}^k \#(\beta_i)\).
+  Thus by \cref{2.7.13} we only need to show that \(\bigcup_{i = 1}^k \beta_i \subseteq \ns{p(\Dop)}\) and \(\bigcup_{i = 1}^k \beta_i\) is linearly independent.
 
-	First we show that \(\bigcup_{i = 1}^k \beta_i \subseteq \ns{p(\Dop)}\).
-	This is true since
-	\begin{align*}
-		         & \forall i \in \set{1, \dots, k}, \beta_i \subseteq \ns{(\Dop - c_i \IT)^{n_i}} &  & \by{2.7.14}   \\
-		\implies & \forall i \in \set{1, \dots, k}, \beta_i \subseteq \ns{p(\Dop)}                &  & \by{ex:2.7.9} \\
-		\implies & \bigcup_{i = 1}^k \beta_i \subseteq \ns{p(\Dop)}.
-	\end{align*}
+  First we show that \(\bigcup_{i = 1}^k \beta_i \subseteq \ns{p(\Dop)}\).
+  This is true since
+  \begin{align*}
+             & \forall i \in \set{1, \dots, k}, \beta_i \subseteq \ns{(\Dop - c_i \IT)^{n_i}} &  & \by{2.7.14}   \\
+    \implies & \forall i \in \set{1, \dots, k}, \beta_i \subseteq \ns{p(\Dop)}                &  & \by{ex:2.7.9} \\
+    \implies & \bigcup_{i = 1}^k \beta_i \subseteq \ns{p(\Dop)}.
+  \end{align*}
 
-	Now we show that \(\bigcup_{i = 1}^k \beta_i\) is linearly independent.
-	We use induction on \(k\).
-	For \(k = 1\), we have
-	\[
-		p(\Dop) = (t - c_1)^{n_1} \quad \text{and} \quad \beta_1 = \set{e^{c_1 t}, t e^{c_1 t}, \dots, t^{n_1 - 1} e^{c_1 t}}.
-	\]
-	By \cref{2.7.15} we know that \(\beta_1\) is linearly independent and thus the base case holds.
-	Suppose inductively that \(\bigcup_{i = 1}^k \beta_i\) is linearly independent for some \(k \geq 1\).
-	We need to show that when \(\bigcup_{i = 1}^{k + 1} \beta_i\) is also linearly independent.
-	For each \(i \in \set{1, \dots, k + 1}\) and \(j \in \set{0, \dots, n_i - 1}\), let \(b_{i j} \in \C\) such that
-	\[
-		\sum_{i = 1}^{k + 1} \sum_{j = 0}^{n_i - 1} b_{i j} t^j e^{c_i t} = \zv.
-	\]
-	Observe that
-	\begin{align*}
-		         & (\Dop - c_{k + 1} \IT)(t^j e^{c_i t}) = j t^{j - 1} e^{c_i t} + (c_i - c_{k + 1}) t^j e^{c_i t}                                                                                                             \\
-		\implies & (\Dop - c_{k + 1} \IT)^{n_{k + 1}} \pa{t^j e^{c_i t}} = \sum_{q = 0}^{\min(n_{k + 1} - 1, j)} \binom{n_{k + 1}}{q} (c_i - c_{k + 1})^{n_{k + 1} - q} \frac{j!}{(j - q)!} t^{j - q} e^{c_i t}                \\
-		\implies & \zv = (\Dop - c_{k + 1} \IT)^{n_{k + 1}} \pa{\sum_{i = 1}^{k + 1} \sum_{j = 0}^{n_i - 1} b_{i j} t^j e^{c_i t}} = \sum_{i = 1}^{k + 1} \sum_{j = 0}^{n_i - 1} b_{i j} (\Dop - c_{k + 1} \IT)(t^j e^{c_i t}) \\
-		         & = \sum_{i = 1}^{k + 1} \sum_{j = 0}^{n_i - 1} \sum_{q = 0}^{\min(n_{k + 1} - 1, j)} b_{i j} \binom{n_{k + 1}}{q} (c_i - c_{k + 1})^{n_{k + 1} - q} \frac{j!}{(j - q)!} t^{j - q} e^{c_i t}                  \\
-		         & = \sum_{i = 1}^k \sum_{j = 0}^{n_i - 1} \sum_{q = 0}^{\min(n_{k + 1} - 1, j)} b_{i j} \binom{n_{k + 1}}{q} (c_i - c_{k + 1})^{n_{k + 1} - q} \frac{j!}{(j - q)!} t^{j - q} e^{c_i t}.
-	\end{align*}
-	Note that the last line follow since \(q \leq n_{k + 1} - 1 < n_{k + 1}\).
-	Since \(c_i - c_{k + 1} \neq 0\) for all \(i \in \set{1, \dots, k}\) and factorials are positive, by induction hypothesis we must have \(b_{i j} = 0\) for all \(i \in \set{1, \dots, k}\) and \(j \in \set{0, \dots n_i - 1}\).
-	Thus we have
-	\[
-		\zv = \sum_{i = 1}^{k + 1} \sum_{j = 0}^{n_i - 1} b_{i j} t^j e^{c_i t} = \sum_{j = 0}^{n_{k + 1} - 1} b_{(k + 1) j} t^j e^{c_{k + 1} t}.
-	\]
-	By \cref{2.7.15} we know that \(b_{(k + 1) j} = 0\) for all \(j \in \set{0, \dots, n_{k + 1} - 1}\).
-	Thus by \cref{1.5.3} \(\bigcup_{i = 1}^{k + 1} \beta_i\) is linearly independent and this closes the induction.
+  Now we show that \(\bigcup_{i = 1}^k \beta_i\) is linearly independent.
+  We use induction on \(k\).
+  For \(k = 1\), we have
+  \[
+    p(\Dop) = (t - c_1)^{n_1} \quad \text{and} \quad \beta_1 = \set{e^{c_1 t}, t e^{c_1 t}, \dots, t^{n_1 - 1} e^{c_1 t}}.
+  \]
+  By \cref{2.7.15} we know that \(\beta_1\) is linearly independent and thus the base case holds.
+  Suppose inductively that \(\bigcup_{i = 1}^k \beta_i\) is linearly independent for some \(k \geq 1\).
+  We need to show that when \(\bigcup_{i = 1}^{k + 1} \beta_i\) is also linearly independent.
+  For each \(i \in \set{1, \dots, k + 1}\) and \(j \in \set{0, \dots, n_i - 1}\), let \(b_{i j} \in \C\) such that
+  \[
+    \sum_{i = 1}^{k + 1} \sum_{j = 0}^{n_i - 1} b_{i j} t^j e^{c_i t} = \zv.
+  \]
+  Observe that
+  \begin{align*}
+             & (\Dop - c_{k + 1} \IT)(t^j e^{c_i t}) = j t^{j - 1} e^{c_i t} + (c_i - c_{k + 1}) t^j e^{c_i t}                                                                                                             \\
+    \implies & (\Dop - c_{k + 1} \IT)^{n_{k + 1}} \pa{t^j e^{c_i t}} = \sum_{q = 0}^{\min(n_{k + 1} - 1, j)} \binom{n_{k + 1}}{q} (c_i - c_{k + 1})^{n_{k + 1} - q} \frac{j!}{(j - q)!} t^{j - q} e^{c_i t}                \\
+    \implies & \zv = (\Dop - c_{k + 1} \IT)^{n_{k + 1}} \pa{\sum_{i = 1}^{k + 1} \sum_{j = 0}^{n_i - 1} b_{i j} t^j e^{c_i t}} = \sum_{i = 1}^{k + 1} \sum_{j = 0}^{n_i - 1} b_{i j} (\Dop - c_{k + 1} \IT)(t^j e^{c_i t}) \\
+             & = \sum_{i = 1}^{k + 1} \sum_{j = 0}^{n_i - 1} \sum_{q = 0}^{\min(n_{k + 1} - 1, j)} b_{i j} \binom{n_{k + 1}}{q} (c_i - c_{k + 1})^{n_{k + 1} - q} \frac{j!}{(j - q)!} t^{j - q} e^{c_i t}                  \\
+             & = \sum_{i = 1}^k \sum_{j = 0}^{n_i - 1} \sum_{q = 0}^{\min(n_{k + 1} - 1, j)} b_{i j} \binom{n_{k + 1}}{q} (c_i - c_{k + 1})^{n_{k + 1} - q} \frac{j!}{(j - q)!} t^{j - q} e^{c_i t}.
+  \end{align*}
+  Note that the last line follow since \(q \leq n_{k + 1} - 1 < n_{k + 1}\).
+  Since \(c_i - c_{k + 1} \neq 0\) for all \(i \in \set{1, \dots, k}\) and factorials are positive, by induction hypothesis we must have \(b_{i j} = 0\) for all \(i \in \set{1, \dots, k}\) and \(j \in \set{0, \dots n_i - 1}\).
+  Thus we have
+  \[
+    \zv = \sum_{i = 1}^{k + 1} \sum_{j = 0}^{n_i - 1} b_{i j} t^j e^{c_i t} = \sum_{j = 0}^{n_{k + 1} - 1} b_{(k + 1) j} t^j e^{c_{k + 1} t}.
+  \]
+  By \cref{2.7.15} we know that \(b_{(k + 1) j} = 0\) for all \(j \in \set{0, \dots, n_{k + 1} - 1}\).
+  Thus by \cref{1.5.3} \(\bigcup_{i = 1}^{k + 1} \beta_i\) is linearly independent and this closes the induction.
 \end{proof}
 
 \exercisesection
 
 \setcounter{ex}{4}
 \begin{ex}\label{ex:2.7.5}
-	Show that \(\cfs[\infty](\R, \C)\) is a subspace of \(\fs(\R, \C)\).
+  Show that \(\cfs[\infty](\R, \C)\) is a subspace of \(\fs(\R, \C)\).
 \end{ex}
 
 \begin{proof}[\pf{ex:2.7.5}]
-	Clearly we have \(\cfs[\infty](\R, \C) \subseteq \fs(\R, \C)\).
-	Since the zero function \(\zv\) is continously differentiable and \(\zv' = \zv\), we know that \(\zv \in \cfs[\infty](\R, \C)\).
-	Thus by \cref{ex:1.3.18} we only need to show that \(cf + g \in \cfs[\infty](\R, \C)\) for any \(f, g \in \cfs[\infty](\R, \C)\) and \(c \in \C\).
-	Since
-	\[
-		\forall k \in \N, (cf + g)^{(k)} = c f^{(k)} + g^{(k)},
-	\]
-	we see that \(cf + g \in \cfs[\infty](\R, \C)\).
+  Clearly we have \(\cfs[\infty](\R, \C) \subseteq \fs(\R, \C)\).
+  Since the zero function \(\zv\) is continously differentiable and \(\zv' = \zv\), we know that \(\zv \in \cfs[\infty](\R, \C)\).
+  Thus by \cref{ex:1.3.18} we only need to show that \(cf + g \in \cfs[\infty](\R, \C)\) for any \(f, g \in \cfs[\infty](\R, \C)\) and \(c \in \C\).
+  Since
+  \[
+    \forall k \in \N, (cf + g)^{(k)} = c f^{(k)} + g^{(k)},
+  \]
+  we see that \(cf + g \in \cfs[\infty](\R, \C)\).
 \end{proof}
 
 \begin{ex}\label{ex:2.7.6}
-	\begin{enumerate}
-		\item Show that \(\Dop : \cfs[\infty](\R, \C) \to \cfs[\infty](\R, \C)\) is a linear operator.
-		\item Show that any differential operator is a linear operator on \(\cfs[\infty](\R, \C)\).
-	\end{enumerate}
+  \begin{enumerate}
+    \item Show that \(\Dop : \cfs[\infty](\R, \C) \to \cfs[\infty](\R, \C)\) is a linear operator.
+    \item Show that any differential operator is a linear operator on \(\cfs[\infty](\R, \C)\).
+  \end{enumerate}
 \end{ex}
 
 \begin{proof}[\pf{ex:2.7.6}(a)]
-	Let \(f, g \in \cfs[\infty](\R, \C)\) and let \(c \in \C\).
-	Since
-	\begin{align*}
-		\Dop(cf + g) & = (cf + g)'            &  & \by{2.7.5} \\
-		             & = c f' + g'                            \\
-		             & = c \Dop(f) + \Dop(g), &  & \by{2.7.5}
-	\end{align*}
-	by \cref{2.1.2}(b) we know that \(\Dop \in \ls(\cfs[\infty](\R, \C))\).
+  Let \(f, g \in \cfs[\infty](\R, \C)\) and let \(c \in \C\).
+  Since
+  \begin{align*}
+    \Dop(cf + g) & = (cf + g)'            &  & \by{2.7.5} \\
+                 & = c f' + g'                            \\
+                 & = c \Dop(f) + \Dop(g), &  & \by{2.7.5}
+  \end{align*}
+  by \cref{2.1.2}(b) we know that \(\Dop \in \ls(\cfs[\infty](\R, \C))\).
 \end{proof}
 
 \begin{proof}[\pf{ex:2.7.6}(b)]
-	Let
-	\[
-		p(\Dop) = a_n \Dop^n + \cdots + a_1 \Dop + a_0 \IT
-	\]
-	be a differential operator where \(\seq{a}{0,,n} \in \C\).
-	Let \(f, g \in \cfs[\infty](\R, \C)\) and let \(c \in \C\).
-	Since
-	\begin{align*}
-		 & p(\Dop)(cf + g)                                                                                                       \\
-		 & = \pa{a_n \Dop^n + \cdots + a_1 \Dop + a_0 \IT}(cf + g)                                               &  & \by{2.7.5} \\
-		 & = a_n \Dop^n(cf + g) + \cdots + a_1 \Dop(cf + g) + a_0 \IT(cf + g)                                    &  & \by{2.2.5} \\
-		 & = a_n (cf + g)^{(n)} + \cdots + a_1 (cf + g)^{(1)} + a_0 (cf + g)                                                     \\
-		 & = c a_n f^{(n)} + a_n g^{(n)} + \cdots + c a_1 f^{(1)} + a_1 g^{(1)} + c a_0 f + a_0 g                                \\
-		 & = c \pa{a_n f^{(n)} + \cdots + a_1 f^{(1)} + a_0 f} + \pa{a_n g^{(n)} + \cdots + a_1 g^{(1)} + a_0 g}                 \\
-		 & = c p(\Dop)(f) + p(\Dop)(g),                                                                          &  & \by{2.7.5}
-	\end{align*}
-	by \cref{2.1.2}(b) we know that \(p(\Dop) \in \ls(\cfs[\infty](\R, \C))\).
+  Let
+  \[
+    p(\Dop) = a_n \Dop^n + \cdots + a_1 \Dop + a_0 \IT
+  \]
+  be a differential operator where \(\seq{a}{0,,n} \in \C\).
+  Let \(f, g \in \cfs[\infty](\R, \C)\) and let \(c \in \C\).
+  Since
+  \begin{align*}
+     & p(\Dop)(cf + g)                                                                                                       \\
+     & = \pa{a_n \Dop^n + \cdots + a_1 \Dop + a_0 \IT}(cf + g)                                               &  & \by{2.7.5} \\
+     & = a_n \Dop^n(cf + g) + \cdots + a_1 \Dop(cf + g) + a_0 \IT(cf + g)                                    &  & \by{2.2.5} \\
+     & = a_n (cf + g)^{(n)} + \cdots + a_1 (cf + g)^{(1)} + a_0 (cf + g)                                                     \\
+     & = c a_n f^{(n)} + a_n g^{(n)} + \cdots + c a_1 f^{(1)} + a_1 g^{(1)} + c a_0 f + a_0 g                                \\
+     & = c \pa{a_n f^{(n)} + \cdots + a_1 f^{(1)} + a_0 f} + \pa{a_n g^{(n)} + \cdots + a_1 g^{(1)} + a_0 g}                 \\
+     & = c p(\Dop)(f) + p(\Dop)(g),                                                                          &  & \by{2.7.5}
+  \end{align*}
+  by \cref{2.1.2}(b) we know that \(p(\Dop) \in \ls(\cfs[\infty](\R, \C))\).
 \end{proof}
 
 \begin{ex}\label{ex:2.7.7}
-	Prove that if \(\set{x, y}\) is a basis for a vector space \(\V\) over \(\C\), then so is
-	\[
-		\set{\frac{1}{2} (x + y), \frac{1}{2i} (x - y)}.
-	\]
+  Prove that if \(\set{x, y}\) is a basis for a vector space \(\V\) over \(\C\), then so is
+  \[
+    \set{\frac{1}{2} (x + y), \frac{1}{2i} (x - y)}.
+  \]
 \end{ex}
 
 \begin{proof}[\pf{ex:2.7.7}]
-	Let \(v \in \V\).
-	By \cref{1.6.1} there exist \(\seq{c}{1,2} \in \C\) such that \(v = c_1 x + c_2 y\).
-	Then we have
-	\begin{align*}
-		v & = c_1 x + c_2 y                                                                      \\
-		  & = \frac{c_1}{2} x + \frac{c_2}{2} y + \frac{c_1 i}{2 i} x - \frac{-c_2 i}{2 i} y     \\
-		  & \quad + \frac{c_2}{2} x + \frac{c_1}{2} y - \frac{c_2 i}{2 i} x - \frac{c_1 i}{2i} y \\
-		  & = \pa{\frac{c_1 + c_2}{2}} (x + y) + i \pa{\frac{c_1 - c_2}{2i}} (x - y).
-	\end{align*}
-	Thus by \cref{1.6.15}(a) we know that \(\set{\frac{1}{2} (x + y), \frac{1}{2i} (x - y)}\) is a basis for \(\V\) over \(\C\).
+  Let \(v \in \V\).
+  By \cref{1.6.1} there exist \(\seq{c}{1,2} \in \C\) such that \(v = c_1 x + c_2 y\).
+  Then we have
+  \begin{align*}
+    v & = c_1 x + c_2 y                                                                      \\
+      & = \frac{c_1}{2} x + \frac{c_2}{2} y + \frac{c_1 i}{2 i} x - \frac{-c_2 i}{2 i} y     \\
+      & \quad + \frac{c_2}{2} x + \frac{c_1}{2} y - \frac{c_2 i}{2 i} x - \frac{c_1 i}{2i} y \\
+      & = \pa{\frac{c_1 + c_2}{2}} (x + y) + i \pa{\frac{c_1 - c_2}{2i}} (x - y).
+  \end{align*}
+  Thus by \cref{1.6.15}(a) we know that \(\set{\frac{1}{2} (x + y), \frac{1}{2i} (x - y)}\) is a basis for \(\V\) over \(\C\).
 \end{proof}
 
 \begin{ex}\label{ex:2.7.8}
-	Consider a second-order homogeneous linear differential equation with constant coefficients in which the auxiliary polynomial has distinct conjugate complex roots \(a + ib\) and \(a - ib\), where \(a, b \in \R\).
-	Show that \(\set{e^{at} \cos(bt), e^{at} \sin(bt)}\) is a basis for the solution space.
+  Consider a second-order homogeneous linear differential equation with constant coefficients in which the auxiliary polynomial has distinct conjugate complex roots \(a + ib\) and \(a - ib\), where \(a, b \in \R\).
+  Show that \(\set{e^{at} \cos(bt), e^{at} \sin(bt)}\) is a basis for the solution space.
 \end{ex}
 
 \begin{proof}[\pf{ex:2.7.8}]
-	By \cref{2.7.14} we know that \(\set{e^{(a + ib) t}, e^{(a - ib) t}}\) is a basis for the solution space.
-	Since
-	\begin{align*}
-		e^{(a + ib) t} & = e^{at + ibt}                                     \\
-		               & = e^{at} (\cos(bt) + i \sin(bt))   &  & \by{2.7.8} \\
-		e^{(a - ib) t} & = e^{at - ibt}                                     \\
-		               & = e^{at} (\cos(-bt) + i \sin(-bt)) &  & \by{2.7.8} \\
-		               & = e^{at} (\cos(bt) - i \sin(bt))
-	\end{align*}
-	By \cref{ex:2.7.7} we know that the set
-	\[
-		\set{\frac{1}{2} (e^{(a + ib) t} + e^{(a - ib) t}), \frac{1}{2i} (e^{(a + ib) t} - e^{(a - ib) t})} = \set{e^{at} \cos(bt), e^{at} \sin(bt)}
-	\]
-	is also a basis for the solution space.
+  By \cref{2.7.14} we know that \(\set{e^{(a + ib) t}, e^{(a - ib) t}}\) is a basis for the solution space.
+  Since
+  \begin{align*}
+    e^{(a + ib) t} & = e^{at + ibt}                                     \\
+                   & = e^{at} (\cos(bt) + i \sin(bt))   &  & \by{2.7.8} \\
+    e^{(a - ib) t} & = e^{at - ibt}                                     \\
+                   & = e^{at} (\cos(-bt) + i \sin(-bt)) &  & \by{2.7.8} \\
+                   & = e^{at} (\cos(bt) - i \sin(bt))
+  \end{align*}
+  By \cref{ex:2.7.7} we know that the set
+  \[
+    \set{\frac{1}{2} (e^{(a + ib) t} + e^{(a - ib) t}), \frac{1}{2i} (e^{(a + ib) t} - e^{(a - ib) t})} = \set{e^{at} \cos(bt), e^{at} \sin(bt)}
+  \]
+  is also a basis for the solution space.
 \end{proof}
 
 \begin{ex}\label{ex:2.7.9}
-	Suppose that \(\set{\seq{\U}{1,,n}}\) is a collection of pairwise commutative linear operators on a vector space \(\V\) over \(\F\)
-	(i.e., operators such that \(\U_i \U_j = \U_j \U_i\) for all \(i, j \in \set{1, \dots, n}\)).
-	Prove that, for any \(i \in \set{1, \dots, n}\),
-	\[
-		\ns{\U_i} \subseteq \ns{\U_1 \cdots \U_n}.
-	\]
+  Suppose that \(\set{\seq{\U}{1,,n}}\) is a collection of pairwise commutative linear operators on a vector space \(\V\) over \(\F\)
+  (i.e., operators such that \(\U_i \U_j = \U_j \U_i\) for all \(i, j \in \set{1, \dots, n}\)).
+  Prove that, for any \(i \in \set{1, \dots, n}\),
+  \[
+    \ns{\U_i} \subseteq \ns{\U_1 \cdots \U_n}.
+  \]
 \end{ex}
 
 \begin{proof}[\pf{ex:2.7.9}]
-	Let \(i \in \set{1, \dots, n}\) and let \(x \in \ns{\U_i}\).
-	Then we have
-	\begin{align*}
-		         & \U_i(x) = \zv                                                                   &  & \by{2.1.10}                   \\
-		\implies & (\U_1 \cdots \U_n)(x) = (\U_1 \cdots \U_{i - 1} \U_{i + 1} \cdots \U_n \U_i)(x) &  & \text{(pairwise commutative)} \\
-		         & = (\U_1 \cdots \U_{i - 1} \U_{i + 1} \cdots \U_n)(\U_i(x))                                                         \\
-		         & = (\U_1 \cdots \U_{i - 1} \U_{i + 1} \cdots \U_n)(\zv)                                                             \\
-		         & = \zv                                                                           &  & \by{2.1.2}[a]                 \\
-		\implies & x \in \ns{\U_1 \cdots \U_n}                                                     &  & \by{2.1.10}
-	\end{align*}
-	and thus \(\ns{\U_i} \subseteq \ns{\U_1 \cdots \U_n}\).
+  Let \(i \in \set{1, \dots, n}\) and let \(x \in \ns{\U_i}\).
+  Then we have
+  \begin{align*}
+             & \U_i(x) = \zv                                                                   &  & \by{2.1.10}                   \\
+    \implies & (\U_1 \cdots \U_n)(x) = (\U_1 \cdots \U_{i - 1} \U_{i + 1} \cdots \U_n \U_i)(x) &  & \text{(pairwise commutative)} \\
+             & = (\U_1 \cdots \U_{i - 1} \U_{i + 1} \cdots \U_n)(\U_i(x))                                                         \\
+             & = (\U_1 \cdots \U_{i - 1} \U_{i + 1} \cdots \U_n)(\zv)                                                             \\
+             & = \zv                                                                           &  & \by{2.1.2}[a]                 \\
+    \implies & x \in \ns{\U_1 \cdots \U_n}                                                     &  & \by{2.1.10}
+  \end{align*}
+  and thus \(\ns{\U_i} \subseteq \ns{\U_1 \cdots \U_n}\).
 \end{proof}
 
 \setcounter{ex}{11}
 \begin{ex}\label{ex:2.7.12}
-	Let \(\V\) be the solution space of an \(n\)th-order homogeneous linear differential equation with constant coefficients having auxiliary polynomial \(p\).
-	Prove that if \(p(t)\) = \(g(t) h(t)\) for all \(t \in \R\), where \(g\) and \(h\) are polynomials of positive degree, then
-	\[
-		\ns{h(\Dop)} = \rg{g(\Dop_{\V})} = g(\Dop)(\V),
-	\]
-	where \(\Dop_{\V} : \V \to \V\) is defined by \(\Dop_{\V}(x) = x'\) for \(x \in \V\).
+  Let \(\V\) be the solution space of an \(n\)th-order homogeneous linear differential equation with constant coefficients having auxiliary polynomial \(p\).
+  Prove that if \(p(t)\) = \(g(t) h(t)\) for all \(t \in \R\), where \(g\) and \(h\) are polynomials of positive degree, then
+  \[
+    \ns{h(\Dop)} = \rg{g(\Dop_{\V})} = g(\Dop)(\V),
+  \]
+  where \(\Dop_{\V} : \V \to \V\) is defined by \(\Dop_{\V}(x) = x'\) for \(x \in \V\).
 \end{ex}
 
 \begin{proof}[\pf{ex:2.7.12}]
-	By \cref{2.28} we have \(\V = \ns{p(\Dop)}\).
-	By \cref{e.0.7} we have \(\rg{g(\Dop_{\V})} = g(\Dop)(\V) = g(\Dop)(\ns{p(\Dop)})\).
-	Since
-	\begin{align*}
-		         & y \in g(\Dop)(\ns{p(\Dop)})                                                    \\
-		\implies & \exists x \in \ns{p(\Dop)} : g(\Dop)(x) = y                                    \\
-		\implies & \exists x \in \ns{p(\Dop)} : h(\Dop)(y) = h(\Dop)(g(\Dop)(x))                  \\
-		         & = (h(\Dop) g(\Dop))(x) = p(\Dop)(x) = \zv                     &  & \by{2.1.10} \\
-		\implies & y \in \ns{h(\Dop)},                                           &  & \by{2.1.10}
-	\end{align*}
-	we know that \(g(\Dop)(\ns{p(\Dop)}) \subseteq \ns{h(\Dop)}\).
-	By \cref{1.11} if we can show that \(\dim(g(\Dop)(\ns{p(\Dop)})) = \dim(\ns{h(\Dop)})\), then we can prove that \(g(\Dop)(\ns{p(\Dop)}) = \ns{h(\Dop)}\).
-	This is true since
-	\begin{align*}
-		 & \dim(g(\Dop)(\ns{p(\Dop)}))                                                     \\
-		 & = \rk{g(\Dop_{\V})}                                            &  & \by{2.1.10} \\
-		 & = \dim(\ns{p(\Dop)}) - \nt{g(\Dop_{\V})}                       &  & \by{2.3}    \\
-		 & = (\text{order of } p(\Dop)) - (\text{order of } g(\Dop_{\V})) &  & \by{2.32}   \\
-		 & = (\text{degree of } p) - (\text{degree of } g)                                 \\
-		 & = \text{order of } h(\Dop)                                                      \\
-		 & = \dim(\ns{h(\Dop)}).                                          &  & \by{2.32}
-	\end{align*}
+  By \cref{2.28} we have \(\V = \ns{p(\Dop)}\).
+  By \cref{e.0.7} we have \(\rg{g(\Dop_{\V})} = g(\Dop)(\V) = g(\Dop)(\ns{p(\Dop)})\).
+  Since
+  \begin{align*}
+             & y \in g(\Dop)(\ns{p(\Dop)})                                                    \\
+    \implies & \exists x \in \ns{p(\Dop)} : g(\Dop)(x) = y                                    \\
+    \implies & \exists x \in \ns{p(\Dop)} : h(\Dop)(y) = h(\Dop)(g(\Dop)(x))                  \\
+             & = (h(\Dop) g(\Dop))(x) = p(\Dop)(x) = \zv                     &  & \by{2.1.10} \\
+    \implies & y \in \ns{h(\Dop)},                                           &  & \by{2.1.10}
+  \end{align*}
+  we know that \(g(\Dop)(\ns{p(\Dop)}) \subseteq \ns{h(\Dop)}\).
+  By \cref{1.11} if we can show that \(\dim(g(\Dop)(\ns{p(\Dop)})) = \dim(\ns{h(\Dop)})\), then we can prove that \(g(\Dop)(\ns{p(\Dop)}) = \ns{h(\Dop)}\).
+  This is true since
+  \begin{align*}
+     & \dim(g(\Dop)(\ns{p(\Dop)}))                                                     \\
+     & = \rk{g(\Dop_{\V})}                                            &  & \by{2.1.10} \\
+     & = \dim(\ns{p(\Dop)}) - \nt{g(\Dop_{\V})}                       &  & \by{2.3}    \\
+     & = (\text{order of } p(\Dop)) - (\text{order of } g(\Dop_{\V})) &  & \by{2.32}   \\
+     & = (\text{degree of } p) - (\text{degree of } g)                                 \\
+     & = \text{order of } h(\Dop)                                                      \\
+     & = \dim(\ns{h(\Dop)}).                                          &  & \by{2.32}
+  \end{align*}
 \end{proof}
 
 \begin{defn}\label{2.7.16}
-	A differential equation
-	\[
-		y^{(n)} + a_{n - 1} y^{(n - 1)} + \cdots + a_1 y^{(1)} + a_0 y = x
-	\]
-	is called a \textbf{nonhomogeneous} linear differential equation with constant coefficients if the \(a_i\)'s are constant and \(x\) is a function that is not identically zero.
+  A differential equation
+  \[
+    y^{(n)} + a_{n - 1} y^{(n - 1)} + \cdots + a_1 y^{(1)} + a_0 y = x
+  \]
+  is called a \textbf{nonhomogeneous} linear differential equation with constant coefficients if the \(a_i\)'s are constant and \(x\) is a function that is not identically zero.
 \end{defn}
 
 \begin{ex}\label{ex:2.7.13}
-	Let
-	\[
-		y^{(n)} + a_{n - 1} y^{(n - 1)} + \cdots + a_1 y^{(1)} + a_0 y = x
-	\]
-	be a nonhomogeneous linear differential equation with constant coefficients.
-	\begin{enumerate}
-		\item Prove that for any \(x \in \cfs[\infty](\R, \C)\) there exists \(y \in \cfs[\infty](\R, \C)\) such that \(y\) is a solution to the differential equation.
-		\item Let \(\V\) be the solution space for the homogeneous linear equation
-		      \[
-			      y^{(n)} + a_{n - 1} y^{(n - 1)} + \cdots + a_1 y^{(1)} + a_0 y = \zv.
-		      \]
-		      Prove that if \(z\) is any solution to the associated nonhomogeneous linear differential equation, then the set of all solutions to the nonhomogeneous linear differential equation is
-		      \[
-			      \set{z + y : y \in \V}.
-		      \]
-	\end{enumerate}
+  Let
+  \[
+    y^{(n)} + a_{n - 1} y^{(n - 1)} + \cdots + a_1 y^{(1)} + a_0 y = x
+  \]
+  be a nonhomogeneous linear differential equation with constant coefficients.
+  \begin{enumerate}
+    \item Prove that for any \(x \in \cfs[\infty](\R, \C)\) there exists \(y \in \cfs[\infty](\R, \C)\) such that \(y\) is a solution to the differential equation.
+    \item Let \(\V\) be the solution space for the homogeneous linear equation
+          \[
+            y^{(n)} + a_{n - 1} y^{(n - 1)} + \cdots + a_1 y^{(1)} + a_0 y = \zv.
+          \]
+          Prove that if \(z\) is any solution to the associated nonhomogeneous linear differential equation, then the set of all solutions to the nonhomogeneous linear differential equation is
+          \[
+            \set{z + y : y \in \V}.
+          \]
+  \end{enumerate}
 \end{ex}
 
 \begin{proof}[\pf{ex:2.7.13}(a)]
-	By \cref{d.0.7} there exist some \(\seq{c}{1,,n} \in \C\) (not necessarily distinct) such that
-	\[
-		y^{(n)} + a_{n - 1} y^{(n - 1)} + \cdots + a_1 y^{(1)} + a_0 y = \pa{\prod_{i = 1}^n (\Dop - c_i \IT)}(y).
-	\]
-	Then we have
-	\begin{align*}
-		         & \forall i \in \set{1, \dots, n}, \Dop - c_i \IT \text{ is onto}                                                     &  & \by{2.7.11} \\
-		\implies & \prod_{i = 1}^n (\Dop - c_i \IT) = (\Dop - c_n \IT)(\Dop - c_{n - 1} \IT( \cdots (\Dop - c_1 \IT))) \text{ is onto}                  \\
-		\implies & y^{(n)} + a_{n - 1} y^{(n - 1)} + \cdots + a_1 y^{(1)} + a_0 y \text{ is onto}.
-	\end{align*}
+  By \cref{d.0.7} there exist some \(\seq{c}{1,,n} \in \C\) (not necessarily distinct) such that
+  \[
+    y^{(n)} + a_{n - 1} y^{(n - 1)} + \cdots + a_1 y^{(1)} + a_0 y = \pa{\prod_{i = 1}^n (\Dop - c_i \IT)}(y).
+  \]
+  Then we have
+  \begin{align*}
+             & \forall i \in \set{1, \dots, n}, \Dop - c_i \IT \text{ is onto}                                                     &  & \by{2.7.11} \\
+    \implies & \prod_{i = 1}^n (\Dop - c_i \IT) = (\Dop - c_n \IT)(\Dop - c_{n - 1} \IT( \cdots (\Dop - c_1 \IT))) \text{ is onto}                  \\
+    \implies & y^{(n)} + a_{n - 1} y^{(n - 1)} + \cdots + a_1 y^{(1)} + a_0 y \text{ is onto}.
+  \end{align*}
 \end{proof}
 
 \begin{proof}[\pf{ex:2.7.13}(b)]
-	We have
-	\begin{align*}
-		         & \begin{dcases}
-			           z^{(n)} + a_{n - 1} z^{(n - 1)} + \cdots + a_1 z^{(1)} + a_0 z = x \\
-			           y^{(n)} + a_{n - 1} y^{(n - 1)} + \cdots + a_1 y^{(1)} + a_0 y = \zv
-		           \end{dcases}                                                        \\
-		\implies & z^{(n)} + y^{(n)} + a_{n - 1} (z^{(n - 1)} + y^{(n - 1)}) + \cdots + a_1 (z^{(1)} + y^{(1)}) + a_0 (z^{(0)} + y^{(0)}) = x \\
-		\implies & (z + y)^{(n)} + a_{n - 1} (z + y)^{(n - 1)} + \cdots + a_1 (z + y)^{(1)} + a_0 (z + y) = x.
-	\end{align*}
-	Thus \(z + y\) is a solution to the nonhomogeneous linear differential equation with constant coefficients.
+  We have
+  \begin{align*}
+             & \begin{dcases}
+                 z^{(n)} + a_{n - 1} z^{(n - 1)} + \cdots + a_1 z^{(1)} + a_0 z = x \\
+                 y^{(n)} + a_{n - 1} y^{(n - 1)} + \cdots + a_1 y^{(1)} + a_0 y = \zv
+               \end{dcases}                                                        \\
+    \implies & z^{(n)} + y^{(n)} + a_{n - 1} (z^{(n - 1)} + y^{(n - 1)}) + \cdots + a_1 (z^{(1)} + y^{(1)}) + a_0 (z^{(0)} + y^{(0)}) = x \\
+    \implies & (z + y)^{(n)} + a_{n - 1} (z + y)^{(n - 1)} + \cdots + a_1 (z + y)^{(1)} + a_0 (z + y) = x.
+  \end{align*}
+  Thus \(z + y\) is a solution to the nonhomogeneous linear differential equation with constant coefficients.
 \end{proof}
 
 \begin{ex}\label{ex:2.7.14}
-	Given any \(n\)th-order homogeneous linear differential equation with constant coefficients, prove that, for any solution \(x\), if there exists a \(t_0 \in \R\) such that \(x(t_0) = x'(t_0) = \cdots = x^{(n - 1)}(t_0) = 0\), then \(x = 0\) (the zero function).
+  Given any \(n\)th-order homogeneous linear differential equation with constant coefficients, prove that, for any solution \(x\), if there exists a \(t_0 \in \R\) such that \(x(t_0) = x'(t_0) = \cdots = x^{(n - 1)}(t_0) = 0\), then \(x = 0\) (the zero function).
 \end{ex}
 
 \begin{proof}[\pf{ex:2.7.14}]
-	Let \(p\) be the auxiliary polynomial of the homogeneous linear differential equation with order \(n\).
-	We use induction on \(n\).
-	For \(n = 1\), we have
-	\begin{align*}
-		         & \exists c \in \C : \forall t \in \R, p(t) = t - c       &  & \by{d.0.7}         \\
-		\implies & \exists c \in \C : e^{ct} \in \ns{p(\Dop)}              &  & \by{2.31}          \\
-		\implies & \exists c, k \in \C : \forall t \in \R, x(t) = k e^{ct} &  & \by{2.7.13}        \\
-		\implies & \exists c, k \in \C : \begin{dcases}
-			                                 0 = x(t_0) = k e^{c t_0} \\
-			                                 0 = x'(t_0) = k c e^{c t_0}
-		                                 \end{dcases}                                \\
-		\implies & x(t_0) = 0                                              &  & (e^{c t_0} \neq 0)
-	\end{align*}
-	and thus the base case holds.
-	Suppose inductively that \cref{ex:2.7.14} is true for some \(n \geq 1\).
-	We need to show that for \(n + 1\) \cref{ex:2.7.14} is also true.
-	Let \(p\) be of order \(n + 1\).
-	By \cref{d.0.7} we know that there exist a polynomial \(q\) with order \(n\) and a \(c \in \C\) such that
-	\[
-		\forall t \in \R, p(t) = q(t) (t - c).
-	\]
-	Let \(z = q(\Dop)(x)\).
-	Since
-	\begin{align*}
-		(\Dop - c \IT)(z) & = (\Dop - c \IT)(q(\Dop)(x))                                   \\
-		                  & = 0                          &  & \text{(\(x\) is a solution)}
-	\end{align*}
-	we know that \(z \in \ns{\Dop - c \IT}\).
-	Since
-	\begin{align*}
-		z(t_0) & = (q(\Dop)(x))(t_0)                                                  \\
-		       & = 0                        &  & (x(t_0) = \cdots = x^{(n)}(t_0) = 0) \\
-		       & = ((\Dop - c \IT)(z))(t_0) &  & (z \in \ns{\Dop - c \IT})            \\
-		       & = z'(t_0) - c z(t_0)                                                 \\
-		       & = z'(t_0)                  &  & (z(t_0) = 0)
-	\end{align*}
-	and \(\Dop - c \IT\) has order \(1\), by induction hypothesis we know that \(z = \zv\).
-	Thus we have \(z = q(\Dop)(x) = \zv\).
-	Since \(q(\Dop)\) has order \(n\), by induction hypothesis we know that \(x = \zv\).
+  Let \(p\) be the auxiliary polynomial of the homogeneous linear differential equation with order \(n\).
+  We use induction on \(n\).
+  For \(n = 1\), we have
+  \begin{align*}
+             & \exists c \in \C : \forall t \in \R, p(t) = t - c       &  & \by{d.0.7}         \\
+    \implies & \exists c \in \C : e^{ct} \in \ns{p(\Dop)}              &  & \by{2.31}          \\
+    \implies & \exists c, k \in \C : \forall t \in \R, x(t) = k e^{ct} &  & \by{2.7.13}        \\
+    \implies & \exists c, k \in \C : \begin{dcases}
+                                       0 = x(t_0) = k e^{c t_0} \\
+                                       0 = x'(t_0) = k c e^{c t_0}
+                                     \end{dcases}                                \\
+    \implies & x(t_0) = 0                                              &  & (e^{c t_0} \neq 0)
+  \end{align*}
+  and thus the base case holds.
+  Suppose inductively that \cref{ex:2.7.14} is true for some \(n \geq 1\).
+  We need to show that for \(n + 1\) \cref{ex:2.7.14} is also true.
+  Let \(p\) be of order \(n + 1\).
+  By \cref{d.0.7} we know that there exist a polynomial \(q\) with order \(n\) and a \(c \in \C\) such that
+  \[
+    \forall t \in \R, p(t) = q(t) (t - c).
+  \]
+  Let \(z = q(\Dop)(x)\).
+  Since
+  \begin{align*}
+    (\Dop - c \IT)(z) & = (\Dop - c \IT)(q(\Dop)(x))                                   \\
+                      & = 0                          &  & \text{(\(x\) is a solution)}
+  \end{align*}
+  we know that \(z \in \ns{\Dop - c \IT}\).
+  Since
+  \begin{align*}
+    z(t_0) & = (q(\Dop)(x))(t_0)                                                  \\
+           & = 0                        &  & (x(t_0) = \cdots = x^{(n)}(t_0) = 0) \\
+           & = ((\Dop - c \IT)(z))(t_0) &  & (z \in \ns{\Dop - c \IT})            \\
+           & = z'(t_0) - c z(t_0)                                                 \\
+           & = z'(t_0)                  &  & (z(t_0) = 0)
+  \end{align*}
+  and \(\Dop - c \IT\) has order \(1\), by induction hypothesis we know that \(z = \zv\).
+  Thus we have \(z = q(\Dop)(x) = \zv\).
+  Since \(q(\Dop)\) has order \(n\), by induction hypothesis we know that \(x = \zv\).
 \end{proof}
 
 \begin{ex}\label{ex:2.7.15}
-	Let \(\V\) be the solution space of an \(n\)th-order homogeneous linear differential equation with constant coefficients.
-	Fix \(t_0 \in \R\), and define a mapping \(\Phi : \V \to \C^n\) by
-	\[
-		\Phi(x) = \begin{pmatrix}
-			x(t_0)  \\
-			x'(t_0) \\
-			\vdots  \\
-			x^{(n - 1)}(t_0)
-		\end{pmatrix} \text{ for each } x \in \V.
-	\]
-	\begin{enumerate}
-		\item Prove that \(\Phi\) is linear and its null space is the zero subspace of \(\V\).
-		      Deduce that \(\Phi\) is an isomorphism.
-		\item Prove the following:
-		      For any \(n\)th-order homogeneous linear differential equation with constant coefficients, any \(t_0 \in \R\), and any complex numbers \(\seq{c}{0,,n-1}\) (not necessarily distinct), there exists exactly one solution, \(x\), to the given differential equation such that \(x(t_0) = c_0\) and \(x^{(k)}(t_0) = c_k\) for \(k \in \set{1, \dots, n - 1}\).
-	\end{enumerate}
+  Let \(\V\) be the solution space of an \(n\)th-order homogeneous linear differential equation with constant coefficients.
+  Fix \(t_0 \in \R\), and define a mapping \(\Phi : \V \to \C^n\) by
+  \[
+    \Phi(x) = \begin{pmatrix}
+      x(t_0)  \\
+      x'(t_0) \\
+      \vdots  \\
+      x^{(n - 1)}(t_0)
+    \end{pmatrix} \text{ for each } x \in \V.
+  \]
+  \begin{enumerate}
+    \item Prove that \(\Phi\) is linear and its null space is the zero subspace of \(\V\).
+          Deduce that \(\Phi\) is an isomorphism.
+    \item Prove the following:
+          For any \(n\)th-order homogeneous linear differential equation with constant coefficients, any \(t_0 \in \R\), and any complex numbers \(\seq{c}{0,,n-1}\) (not necessarily distinct), there exists exactly one solution, \(x\), to the given differential equation such that \(x(t_0) = c_0\) and \(x^{(k)}(t_0) = c_k\) for \(k \in \set{1, \dots, n - 1}\).
+  \end{enumerate}
 \end{ex}
 
 \begin{proof}[\pf{ex:2.7.15}(a)]
-	Let \(x, y \in \V\) and let \(c \in \C\).
-	Since
-	\begin{align*}
-		\Phi(cx + y) & = \begin{pmatrix}
-			                 (cx + y)(t_0)  \\
-			                 (cx + y)'(t_0) \\
-			                 \vdots         \\
-			                 (cx + y)^{(n - 1)}(t_0)
-		                 \end{pmatrix}              \\
-		             & = \begin{pmatrix}
-			                 cx(t_0) + y(t_0)   \\
-			                 cx'(t_0) + y'(t_0) \\
-			                 \vdots             \\
-			                 cx^{(n - 1)}(t_0) + y^{(n - 1)}(t_0)
-		                 \end{pmatrix} \\
-		             & = c \begin{pmatrix}
-			                   x(t_0)  \\
-			                   x'(t_0) \\
-			                   \vdots  \\
-			                   x^{(n - 1)}(t_0)
-		                   \end{pmatrix} + \begin{pmatrix}
-			                                   y(t_0)  \\
-			                                   y'(t_0) \\
-			                                   \vdots  \\
-			                                   y^{(n - 1)}(t_0)
-		                                   \end{pmatrix}   \\
-		             & = c \Phi(x) + \Phi(y),
-	\end{align*}
-	by \cref{2.1.2}(b) we know that \(\Phi \in \ls(\V, \C^n)\).
-	By \cref{2.1.2}(a) and \cref{ex:2.7.14} we know that \(\Phi(x) = \zv_{\C^n}\) iff \(x\) is the zero function, thus by \cref{2.4} we know that \(\Phi\) is one-to-one.
-	By \cref{2.32} we know that \(\dim(\V) = n = \dim(\C^n)\), thus by \cref{2.5,2.4.8} we know that \(\Phi\) is an isomorphism.
+  Let \(x, y \in \V\) and let \(c \in \C\).
+  Since
+  \begin{align*}
+    \Phi(cx + y) & = \begin{pmatrix}
+                       (cx + y)(t_0)  \\
+                       (cx + y)'(t_0) \\
+                       \vdots         \\
+                       (cx + y)^{(n - 1)}(t_0)
+                     \end{pmatrix}              \\
+                 & = \begin{pmatrix}
+                       cx(t_0) + y(t_0)   \\
+                       cx'(t_0) + y'(t_0) \\
+                       \vdots             \\
+                       cx^{(n - 1)}(t_0) + y^{(n - 1)}(t_0)
+                     \end{pmatrix} \\
+                 & = c \begin{pmatrix}
+                         x(t_0)  \\
+                         x'(t_0) \\
+                         \vdots  \\
+                         x^{(n - 1)}(t_0)
+                       \end{pmatrix} + \begin{pmatrix}
+                                         y(t_0)  \\
+                                         y'(t_0) \\
+                                         \vdots  \\
+                                         y^{(n - 1)}(t_0)
+                                       \end{pmatrix}   \\
+                 & = c \Phi(x) + \Phi(y),
+  \end{align*}
+  by \cref{2.1.2}(b) we know that \(\Phi \in \ls(\V, \C^n)\).
+  By \cref{2.1.2}(a) and \cref{ex:2.7.14} we know that \(\Phi(x) = \zv_{\C^n}\) iff \(x\) is the zero function, thus by \cref{2.4} we know that \(\Phi\) is one-to-one.
+  By \cref{2.32} we know that \(\dim(\V) = n = \dim(\C^n)\), thus by \cref{2.5,2.4.8} we know that \(\Phi\) is an isomorphism.
 \end{proof}
 
 \begin{proof}[\pf{ex:2.7.15}(b)]
-	Since \(\Phi\) is an isomorphism (by \cref{ex:2.7.15}(a)), we know that there exists an \(x \in \V\) such that
-	\[
-		\Phi(x) = \begin{pmatrix}
-			x(t_0)  \\
-			x'(t_0) \\
-			\vdots  \\
-			x^{(n - 1)}(t_0)
-		\end{pmatrix} = \begin{pmatrix}
-			c_0    \\
-			c_1    \\
-			\vdots \\
-			c_{n - 1}
-		\end{pmatrix}.
-	\]
+  Since \(\Phi\) is an isomorphism (by \cref{ex:2.7.15}(a)), we know that there exists an \(x \in \V\) such that
+  \[
+    \Phi(x) = \begin{pmatrix}
+      x(t_0)  \\
+      x'(t_0) \\
+      \vdots  \\
+      x^{(n - 1)}(t_0)
+    \end{pmatrix} = \begin{pmatrix}
+      c_0    \\
+      c_1    \\
+      \vdots \\
+      c_{n - 1}
+    \end{pmatrix}.
+  \]
 \end{proof}
 
 \begin{ex}[Pendular Motion]\label{ex:2.7.16}
-	It is well known that the motion of a pendulum is approximated by the differential equation
-	\[
-		\theta'' + \frac{g}{l} \theta = \zv,
-	\]
-	where \(\theta(t)\) is the angle in radians that the pendulum makes with a vertical line at time \(t\), interpreted so that \(\theta\) is positive if the pendulum is to the right and negative if the pendulum is to the left of the vertical line as viewed by the reader.
-	Here \(l\) is the length of the pendulum and \(g\) is the magnitude of acceleration due to gravity.
-	The variable \(t\) and constants \(l\) and \(g\) must be in compatible units
-	(e.g., \(t\) in seconds, \(l\) in meters, and \(g\) in meters per second per second).
-	\begin{enumerate}
-		\item Express an arbitrary solution to this equation as a linear combination of two real-valued solutions.
-		\item Find the unique solution to the equation that satisfies the conditions
-		      \[
-			      \theta(0) = \theta_0 > 0 \quad \text{and} \quad \theta'(0) = 0.
-		      \]
-		      (The significance of these conditions is that at time \(t = 0\) the pendulum is released from a position displaced from the vertical by \(\theta_0\).)
-		\item Prove that it takes \(2 \pi \sqrt{l / g}\) units of time for the pendulum to make one circuit back and forth.
-		      (This time is called the \textbf{period} of the pendulum.)
-	\end{enumerate}
+  It is well known that the motion of a pendulum is approximated by the differential equation
+  \[
+    \theta'' + \frac{g}{l} \theta = \zv,
+  \]
+  where \(\theta(t)\) is the angle in radians that the pendulum makes with a vertical line at time \(t\), interpreted so that \(\theta\) is positive if the pendulum is to the right and negative if the pendulum is to the left of the vertical line as viewed by the reader.
+  Here \(l\) is the length of the pendulum and \(g\) is the magnitude of acceleration due to gravity.
+  The variable \(t\) and constants \(l\) and \(g\) must be in compatible units
+  (e.g., \(t\) in seconds, \(l\) in meters, and \(g\) in meters per second per second).
+  \begin{enumerate}
+    \item Express an arbitrary solution to this equation as a linear combination of two real-valued solutions.
+    \item Find the unique solution to the equation that satisfies the conditions
+          \[
+            \theta(0) = \theta_0 > 0 \quad \text{and} \quad \theta'(0) = 0.
+          \]
+          (The significance of these conditions is that at time \(t = 0\) the pendulum is released from a position displaced from the vertical by \(\theta_0\).)
+    \item Prove that it takes \(2 \pi \sqrt{l / g}\) units of time for the pendulum to make one circuit back and forth.
+          (This time is called the \textbf{period} of the pendulum.)
+  \end{enumerate}
 \end{ex}
 
 \begin{proof}[\pf{ex:2.7.16}(a)]
-	Since
-	\[
-		t^2 + \frac{g}{l} = \pa{t - i \sqrt{\frac{g}{l}}} \pa{t + i \sqrt{\frac{g}{l}}} = 0 \implies t = \pm i \sqrt{\frac{g}{l}},
-	\]
-	by \cref{2.7.14} we know that
-	\begin{align*}
-		\forall t \in \R, \theta(t) & = a e^{i \sqrt{\frac{g}{l}} t} + b e^{- i \sqrt{\frac{g}{l}} t}                        \\
-		                            & = a \cos\pa{\sqrt{\frac{g}{l}} t} + b \sin\pa{\sqrt{\frac{g}{l}} t} &  & \by{ex:2.7.8}
-	\end{align*}
-	for some \(a, b \in \C\).
+  Since
+  \[
+    t^2 + \frac{g}{l} = \pa{t - i \sqrt{\frac{g}{l}}} \pa{t + i \sqrt{\frac{g}{l}}} = 0 \implies t = \pm i \sqrt{\frac{g}{l}},
+  \]
+  by \cref{2.7.14} we know that
+  \begin{align*}
+    \forall t \in \R, \theta(t) & = a e^{i \sqrt{\frac{g}{l}} t} + b e^{- i \sqrt{\frac{g}{l}} t}                        \\
+                                & = a \cos\pa{\sqrt{\frac{g}{l}} t} + b \sin\pa{\sqrt{\frac{g}{l}} t} &  & \by{ex:2.7.8}
+  \end{align*}
+  for some \(a, b \in \C\).
 \end{proof}
 
 \begin{proof}[\pf{ex:2.7.16}(b)]
-	Since
-	\begin{align*}
-		\theta_0 & = \theta(0)                                                                                                                                               \\
-		         & = a \cos\pa{\sqrt{\frac{g}{l}} 0} + b \sin\pa{\sqrt{\frac{g}{l}} 0}                                                                &  & \by{ex:2.7.16}[a] \\
-		         & = a                                                                                                                                                       \\
-		0        & = \theta'(0)                                                                                                                                              \\
-		         & = -a \cdot \sin\pa{\sqrt{\frac{g}{l}} 0} \cdot \sqrt{\frac{g}{l}} + b \cdot \cos\pa{\sqrt{\frac{g}{l}} 0} \cdot \sqrt{\frac{g}{l}} &  & \by{ex:2.7.16}[a] \\
-		         & = b \sqrt{\frac{g}{l}},
-	\end{align*}
-	we know that \(a = \theta_0\) and \(b = 0\).
-	Thus we have
-	\[
-		\forall t \in \R, \theta(t) = \theta_0 \cos\pa{\sqrt{\frac{g}{l}} t}
-	\]
+  Since
+  \begin{align*}
+    \theta_0 & = \theta(0)                                                                                                                                               \\
+             & = a \cos\pa{\sqrt{\frac{g}{l}} 0} + b \sin\pa{\sqrt{\frac{g}{l}} 0}                                                                &  & \by{ex:2.7.16}[a] \\
+             & = a                                                                                                                                                       \\
+    0        & = \theta'(0)                                                                                                                                              \\
+             & = -a \cdot \sin\pa{\sqrt{\frac{g}{l}} 0} \cdot \sqrt{\frac{g}{l}} + b \cdot \cos\pa{\sqrt{\frac{g}{l}} 0} \cdot \sqrt{\frac{g}{l}} &  & \by{ex:2.7.16}[a] \\
+             & = b \sqrt{\frac{g}{l}},
+  \end{align*}
+  we know that \(a = \theta_0\) and \(b = 0\).
+  Thus we have
+  \[
+    \forall t \in \R, \theta(t) = \theta_0 \cos\pa{\sqrt{\frac{g}{l}} t}
+  \]
 \end{proof}
 
 \begin{proof}[\pf{ex:2.7.16}(c)]
-	Since
-	\begin{align*}
-		\theta(0) & = a \cos\pa{\sqrt{\frac{g}{l}} 0} + b \sin\pa{\sqrt{\frac{g}{l}} 0}                                                            &  & \by{ex:2.7.16}[a] \\
-		          & = a \cos(0) + b \sin(0)                                                                                                                               \\
-		          & = a \cos(2 \pi) + b \sin(2 \pi)                                                                                                                       \\
-		          & = a \cos\pa{\sqrt{\frac{g}{l}} \cdot 2 \pi \sqrt{\frac{l}{g}}} + b \sin\pa{\sqrt{\frac{g}{l}}  \cdot 2 \pi \sqrt{\frac{l}{g}}}                        \\
-		          & = \theta\pa{2 \pi \sqrt{\frac{l}{g}}},                                                                                         &  & \by{ex:2.7.16}[a]
-	\end{align*}
-	we know that the period of \(\theta\) is \(2 \pi \sqrt{\frac{l}{g}}\).
+  Since
+  \begin{align*}
+    \theta(0) & = a \cos\pa{\sqrt{\frac{g}{l}} 0} + b \sin\pa{\sqrt{\frac{g}{l}} 0}                                                            &  & \by{ex:2.7.16}[a] \\
+              & = a \cos(0) + b \sin(0)                                                                                                                               \\
+              & = a \cos(2 \pi) + b \sin(2 \pi)                                                                                                                       \\
+              & = a \cos\pa{\sqrt{\frac{g}{l}} \cdot 2 \pi \sqrt{\frac{l}{g}}} + b \sin\pa{\sqrt{\frac{g}{l}}  \cdot 2 \pi \sqrt{\frac{l}{g}}}                        \\
+              & = \theta\pa{2 \pi \sqrt{\frac{l}{g}}},                                                                                         &  & \by{ex:2.7.16}[a]
+  \end{align*}
+  we know that the period of \(\theta\) is \(2 \pi \sqrt{\frac{l}{g}}\).
 \end{proof}
 
 \begin{ex}[Periodic Motion of a Spring without Damping]\label{ex:2.7.17}
-	Find the general solution to
-	\[
-		y'' + \frac{k}{m} y = \zv,
-	\]
-	which describes the periodic motion of a spring, ignoring frictional forces.
+  Find the general solution to
+  \[
+    y'' + \frac{k}{m} y = \zv,
+  \]
+  which describes the periodic motion of a spring, ignoring frictional forces.
 \end{ex}
 
 \begin{proof}[\pf{ex:2.7.17}]
-	Since
-	\[
-		t^2 + \frac{k}{m} = \pa{t - i \sqrt{\frac{k}{m}}} \pa{t + i \sqrt{\frac{k}{m}}} = 0 \implies t = \pm i \sqrt{\frac{k}{m}},
-	\]
-	we know that
-	\begin{align*}
-		\forall t \in \R, y(t) & = a e^{i \sqrt{\frac{k}{m}} t} + b e^{-i \sqrt{\frac{k}{m}} t}      &  & \by{2.7.14}   \\
-		                       & = a \cos\pa{\sqrt{\frac{k}{m}} t} + b \sin\pa{\sqrt{\frac{k}{m}} t} &  & \by{ex:2.7.8}
-	\end{align*}
-	for some \(a, b \in \C\).
+  Since
+  \[
+    t^2 + \frac{k}{m} = \pa{t - i \sqrt{\frac{k}{m}}} \pa{t + i \sqrt{\frac{k}{m}}} = 0 \implies t = \pm i \sqrt{\frac{k}{m}},
+  \]
+  we know that
+  \begin{align*}
+    \forall t \in \R, y(t) & = a e^{i \sqrt{\frac{k}{m}} t} + b e^{-i \sqrt{\frac{k}{m}} t}      &  & \by{2.7.14}   \\
+                           & = a \cos\pa{\sqrt{\frac{k}{m}} t} + b \sin\pa{\sqrt{\frac{k}{m}} t} &  & \by{ex:2.7.8}
+  \end{align*}
+  for some \(a, b \in \C\).
 \end{proof}
 
 \begin{ex}[Periodic Motion of a Spring with Damping]\label{ex:2.7.18}
-	The ideal periodic motion described by solutions to \cref{ex:2.7.17} is due to the ignoring of frictional forces.
-	In reality, however, there is a frictional force acting on the motion that is proportional to the speed of motion, but that acts in the opposite direction.
-	The modification of \cref{ex:2.7.17} to account for the frictional force, called the \emph{damping force}, is given by
-	\[
-		m y'' + r y' + ky = \zv,
-	\]
-	where \(r > 0\) is the proportionality constant.
-	\begin{enumerate}
-		\item Find the general solution to this equation.
-		\item Find the unique solution in (a) that satisfies the initial conditions \(y(0) = 0\) and \(y'(0) = v_0\), the initial velocity.
-		\item For \(y(t)\) as in (b), show that the amplitude of the oscillation decreases to zero;
-		      that is, prove that \(\lim_{t \to \infty} y(t) = 0\).
-	\end{enumerate}
+  The ideal periodic motion described by solutions to \cref{ex:2.7.17} is due to the ignoring of frictional forces.
+  In reality, however, there is a frictional force acting on the motion that is proportional to the speed of motion, but that acts in the opposite direction.
+  The modification of \cref{ex:2.7.17} to account for the frictional force, called the \emph{damping force}, is given by
+  \[
+    m y'' + r y' + ky = \zv,
+  \]
+  where \(r > 0\) is the proportionality constant.
+  \begin{enumerate}
+    \item Find the general solution to this equation.
+    \item Find the unique solution in (a) that satisfies the initial conditions \(y(0) = 0\) and \(y'(0) = v_0\), the initial velocity.
+    \item For \(y(t)\) as in (b), show that the amplitude of the oscillation decreases to zero;
+          that is, prove that \(\Lim_{t \to \infty} y(t) = 0\).
+  \end{enumerate}
 \end{ex}
 
 \begin{proof}[\pf{ex:2.7.18}(a)]
-	Since
-	\[
-		t^2 + \frac{r}{m} t + \frac{k}{m} = 0 \implies t = \frac{-r \pm \sqrt{r^2 - 4mk}}{2m},
-	\]
-	by \cref{2.7.14} we know that
-	\[
-		\forall t \in \R, y(t) = a e^{\pa{\frac{-r + \sqrt{r^2 - 4mk}}{2m}} t} + b e^{\pa{\frac{-r - \sqrt{r^2 - 4mk}}{2m}} t}
-	\]
-	for some \(a, b \in \C\).
+  Since
+  \[
+    t^2 + \frac{r}{m} t + \frac{k}{m} = 0 \implies t = \frac{-r \pm \sqrt{r^2 - 4mk}}{2m},
+  \]
+  by \cref{2.7.14} we know that
+  \[
+    \forall t \in \R, y(t) = a e^{\pa{\frac{-r + \sqrt{r^2 - 4mk}}{2m}} t} + b e^{\pa{\frac{-r - \sqrt{r^2 - 4mk}}{2m}} t}
+  \]
+  for some \(a, b \in \C\).
 \end{proof}
 
 \begin{proof}[\pf{ex:2.7.18}(b)]
-	Since
-	\begin{align*}
-		0   & = y(0)                                                                                                      \\
-		    & = a + b                                                                              &  & \by{ex:2.7.18}[a] \\
-		v_0 & = y'(0)                                                                                                     \\
-		    & = a \pa{\frac{-r + \sqrt{r^2 - 4mk}}{2m}} + b \pa{\frac{-r - \sqrt{r^2 - 4mk}}{2m}},
-	\end{align*}
-	we have
-	\[
-		a = \frac{v_0 m}{\sqrt{r^2 - 4mk}} \quad \text{and} \quad b = \frac{-v_0 m}{\sqrt{r^2 - 4mk}}
-	\]
-	and thus
-	\[
-		\forall y \in \R, y(t) = \frac{v_0 m}{\sqrt{r^2 - 4mk}} e^{\pa{\frac{-r + \sqrt{r^2 - 4mk}}{2m}} t} - \frac{v_0 m}{\sqrt{r^2 - 4mk}} e^{\pa{\frac{-r - \sqrt{r^2 - 4mk}}{2m}} t}.
-	\]
+  Since
+  \begin{align*}
+    0   & = y(0)                                                                                                      \\
+        & = a + b                                                                              &  & \by{ex:2.7.18}[a] \\
+    v_0 & = y'(0)                                                                                                     \\
+        & = a \pa{\frac{-r + \sqrt{r^2 - 4mk}}{2m}} + b \pa{\frac{-r - \sqrt{r^2 - 4mk}}{2m}},
+  \end{align*}
+  we have
+  \[
+    a = \frac{v_0 m}{\sqrt{r^2 - 4mk}} \quad \text{and} \quad b = \frac{-v_0 m}{\sqrt{r^2 - 4mk}}
+  \]
+  and thus
+  \[
+    \forall y \in \R, y(t) = \frac{v_0 m}{\sqrt{r^2 - 4mk}} e^{\pa{\frac{-r + \sqrt{r^2 - 4mk}}{2m}} t} - \frac{v_0 m}{\sqrt{r^2 - 4mk}} e^{\pa{\frac{-r - \sqrt{r^2 - 4mk}}{2m}} t}.
+  \]
 \end{proof}
 
 \begin{proof}[\pf{ex:2.7.18}(c)]
-	We split into two cases:
-	\begin{itemize}
-		\item If \(r^2 - 4mk \geq 0\), then we have
-		      \begin{align*}
-			               & r^2 > r^2 - 4mk                                                                                                                       &  & (mk > 0)          \\
-			      \implies & r > \sqrt{r^2 - 4mk} \geq -\sqrt{r^2 - 4mk}                                                                                           &  & (r > 0)           \\
-			      \implies & 0 > -r + \sqrt{r^2 - 4mk} \geq -r - \sqrt{r^2 - 4mk}                                                                                                         \\
-			      \implies & 0 > \frac{-r + \sqrt{r^2 - 4mk}}{2m} \geq \frac{-r - \sqrt{r^2 - 4mk}}{2m}                                                            &  & (m > 0)           \\
-			      \implies & \lim_{t \to \infty} e^{\pa{\frac{-r + \sqrt{r^2 - 4mk}}{2m}} t} = \lim_{t \to \infty} e^{\pa{\frac{-r - \sqrt{r^2 - 4mk}}{2m}} t} = 0                        \\
-			      \implies & \lim_{t \to \infty} y(t) = 0.                                                                                                         &  & \by{ex:2.7.18}[b]
-		      \end{align*}
-		\item If \(r^2 - 4mk < 0\), then we have
-		      \begin{align*}
-			       & \abs{e^{\pa{\frac{-r + \sqrt{r^2 - 4mk}}{2m}} t}}                                                                                            \\
-			       & = \abs{e^{\frac{-rt}{2m}} \pa{\cos\pa{\frac{\sqrt{r^2 - 4mk}}{2m} t} + i \sin\pa{\frac{\sqrt{r^2 - 4mk}}{2m} t}}} &  & \by{2.7.8}            \\
-			       & \leq \abs{e^{\frac{-rt}{2m}}}                                                                                     &  & (\cos^2 + \sin^2 = 1)
-		      \end{align*}
-		      and
-		      \begin{align*}
-			       & \abs{e^{\pa{\frac{-r - \sqrt{r^2 - 4mk}}{2m}} t}}                                                                                              \\
-			       & = \abs{e^{\frac{-rt}{2m}} \pa{\cos\pa{\frac{-\sqrt{r^2 - 4mk}}{2m} t} + i \sin\pa{\frac{-\sqrt{r^2 - 4mk}}{2m} t}}} &  & \by{2.7.8}            \\
-			       & \leq \abs{e^{\frac{-rt}{2m}}}.                                                                                      &  & (\cos^2 + \sin^2 = 1)
-		      \end{align*}
-		      Thus
-		      \begin{align*}
-			               & \lim_{t \to \infty} \abs{e^{\pa{\frac{-r - \sqrt{r^2 - 4mk}}{2m}} t}} = \lim_{t \to \infty} \abs{e^{\pa{\frac{-r - \sqrt{r^2 - 4mk}}{2m}} t}} = 0 \\
-			      \implies & \lim_{t \to \infty} e^{\pa{\frac{-r - \sqrt{r^2 - 4mk}}{2m}} t} = \lim_{t \to \infty} e^{\pa{\frac{-r - \sqrt{r^2 - 4mk}}{2m}} t} = 0             \\
-			      \implies & \lim_{t \to \infty} y(t) = 0.
-		      \end{align*}
-	\end{itemize}
-	From all cases above we conclude that \(\lim_{t \to \infty} y(t) = 0\).
+  We split into two cases:
+  \begin{itemize}
+    \item If \(r^2 - 4mk \geq 0\), then we have
+          \begin{align*}
+                     & r^2 > r^2 - 4mk                                                                                                                       &  & (mk > 0)          \\
+            \implies & r > \sqrt{r^2 - 4mk} \geq -\sqrt{r^2 - 4mk}                                                                                           &  & (r > 0)           \\
+            \implies & 0 > -r + \sqrt{r^2 - 4mk} \geq -r - \sqrt{r^2 - 4mk}                                                                                                         \\
+            \implies & 0 > \frac{-r + \sqrt{r^2 - 4mk}}{2m} \geq \frac{-r - \sqrt{r^2 - 4mk}}{2m}                                                            &  & (m > 0)           \\
+            \implies & \Lim_{t \to \infty} e^{\pa{\frac{-r + \sqrt{r^2 - 4mk}}{2m}} t} = \Lim_{t \to \infty} e^{\pa{\frac{-r - \sqrt{r^2 - 4mk}}{2m}} t} = 0                        \\
+            \implies & \Lim_{t \to \infty} y(t) = 0.                                                                                                         &  & \by{ex:2.7.18}[b]
+          \end{align*}
+    \item If \(r^2 - 4mk < 0\), then we have
+          \begin{align*}
+             & \abs{e^{\pa{\frac{-r + \sqrt{r^2 - 4mk}}{2m}} t}}                                                                                            \\
+             & = \abs{e^{\frac{-rt}{2m}} \pa{\cos\pa{\frac{\sqrt{r^2 - 4mk}}{2m} t} + i \sin\pa{\frac{\sqrt{r^2 - 4mk}}{2m} t}}} &  & \by{2.7.8}            \\
+             & \leq \abs{e^{\frac{-rt}{2m}}}                                                                                     &  & (\cos^2 + \sin^2 = 1)
+          \end{align*}
+          and
+          \begin{align*}
+             & \abs{e^{\pa{\frac{-r - \sqrt{r^2 - 4mk}}{2m}} t}}                                                                                              \\
+             & = \abs{e^{\frac{-rt}{2m}} \pa{\cos\pa{\frac{-\sqrt{r^2 - 4mk}}{2m} t} + i \sin\pa{\frac{-\sqrt{r^2 - 4mk}}{2m} t}}} &  & \by{2.7.8}            \\
+             & \leq \abs{e^{\frac{-rt}{2m}}}.                                                                                      &  & (\cos^2 + \sin^2 = 1)
+          \end{align*}
+          Thus
+          \begin{align*}
+                     & \Lim_{t \to \infty} \abs{e^{\pa{\frac{-r - \sqrt{r^2 - 4mk}}{2m}} t}} = \Lim_{t \to \infty} \abs{e^{\pa{\frac{-r - \sqrt{r^2 - 4mk}}{2m}} t}} = 0 \\
+            \implies & \Lim_{t \to \infty} e^{\pa{\frac{-r - \sqrt{r^2 - 4mk}}{2m}} t} = \Lim_{t \to \infty} e^{\pa{\frac{-r - \sqrt{r^2 - 4mk}}{2m}} t} = 0             \\
+            \implies & \Lim_{t \to \infty} y(t) = 0.
+          \end{align*}
+  \end{itemize}
+  From all cases above we conclude that \(\Lim_{t \to \infty} y(t) = 0\).
 \end{proof}
 
 \begin{ex}\label{ex:2.7.19}
-	In our study of differential equations, we have regarded solutions as complex-valued functions even though functions that are useful in describing physical motion are real-valued.
-	Justify this approach.
+  In our study of differential equations, we have regarded solutions as complex-valued functions even though functions that are useful in describing physical motion are real-valued.
+  Justify this approach.
 \end{ex}
 
 \begin{proof}[\pf{ex:2.7.19}]
-	Every solution to a homogeneous linear differential equation with constant coefficients is in the space of \(\cfs[\infty](\R, \C)\), and we know that \(\cfs[\infty](\R, \R) \subseteq \cfs[\infty](\R, \C)\).
-	Therefore, if we are only interesting with real-valued solutions, we can just pick them from the solution space.
+  Every solution to a homogeneous linear differential equation with constant coefficients is in the space of \(\cfs[\infty](\R, \C)\), and we know that \(\cfs[\infty](\R, \R) \subseteq \cfs[\infty](\R, \C)\).
+  Therefore, if we are only interesting with real-valued solutions, we can just pick them from the solution space.
 \end{proof}

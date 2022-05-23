@@ -1,295 +1,295 @@
 \section{Systems of Linear Equations --- Computational Aspects}\label{sec:3.4}
 
 \begin{defn}\label{3.4.1}
-	Two systems of linear equations are called \textbf{equivalent} if they have the same solution set.
+  Two systems of linear equations are called \textbf{equivalent} if they have the same solution set.
 \end{defn}
 
 \begin{thm}\label{3.13}
-	Let \(Ax = b\) be a system of \(m\) linear equations in \(n\) unknowns, and let \(C \in \ms[m][m][\F]\) be invertible.
-	Then the system \((CA)x = Cb\) is equivalent to \(Ax = b\).
+  Let \(Ax = b\) be a system of \(m\) linear equations in \(n\) unknowns, and let \(C \in \ms[m][m][\F]\) be invertible.
+  Then the system \((CA)x = Cb\) is equivalent to \(Ax = b\).
 \end{thm}
 
 \begin{proof}[\pf{3.13}]
-	Let \(K\) be the solution set for \(Ax = b\) and \(K'\) the solution set for \((CA)x = Cb\).
-	If \(w \in K\), then \(Aw = b\).
-	So \((CA)w = Cb\), and hence \(w \in K'\).
-	Thus \(K \subseteq K'\).
+  Let \(K\) be the solution set for \(Ax = b\) and \(K'\) the solution set for \((CA)x = Cb\).
+  If \(w \in K\), then \(Aw = b\).
+  So \((CA)w = Cb\), and hence \(w \in K'\).
+  Thus \(K \subseteq K'\).
 
-	Conversely, if \(w \in K'\), then \((CA)w = Cb\).
-	Hence
-	\[
-		Aw = C^{-1} (CAw) = C^{-1} (Cb) = b;
-	\]
-	so \(w \in K\).
-	Thus \(K' \subseteq K\), and therefore, \(K = K'\).
+  Conversely, if \(w \in K'\), then \((CA)w = Cb\).
+  Hence
+  \[
+    Aw = C^{-1} (CAw) = C^{-1} (Cb) = b;
+  \]
+  so \(w \in K\).
+  Thus \(K' \subseteq K\), and therefore, \(K = K'\).
 \end{proof}
 
 \begin{cor}\label{3.4.2}
-	Let \(Ax = b\) be a system of \(m\) linear equations in \(n\) unknowns.
-	If \((A' | b')\) is obtained from \((A | b)\) by a finite number of elementary row operations, then the system \(A' x = b'\) is equivalent to the original system.
+  Let \(Ax = b\) be a system of \(m\) linear equations in \(n\) unknowns.
+  If \((A' | b')\) is obtained from \((A | b)\) by a finite number of elementary row operations, then the system \(A' x = b'\) is equivalent to the original system.
 \end{cor}
 
 \begin{proof}[\pf{3.4.2}]
-	Suppose that \((A' | b')\) is obtained from \((A | b)\) by elementary row operations.
-	These may be executed by multiplying \((A | b)\) by elementary \(m \times m\) matrices \(\seq{E}{1,,p}\).
-	Let \(C = \seq[]{E}{p,,1}\);
-	then by \cref{ex:3.2.15}
-	\[
-		(A' | b') = C (A | b) = (CA | Cb).
-	\]
-	Since each \(E_i\) is invertible, so is \(C\)
-	(see \cref{ex:2.4.4}).
-	Now \(A' = CA\) and \(b' = Cb\).
-	Thus by \cref{3.13}, the system \(A' x = b'\) is equivalent to the system \(Ax = b\).
+  Suppose that \((A' | b')\) is obtained from \((A | b)\) by elementary row operations.
+  These may be executed by multiplying \((A | b)\) by elementary \(m \times m\) matrices \(\seq{E}{1,,p}\).
+  Let \(C = \seq[]{E}{p,,1}\);
+  then by \cref{ex:3.2.15}
+  \[
+    (A' | b') = C (A | b) = (CA | Cb).
+  \]
+  Since each \(E_i\) is invertible, so is \(C\)
+  (see \cref{ex:2.4.4}).
+  Now \(A' = CA\) and \(b' = Cb\).
+  Thus by \cref{3.13}, the system \(A' x = b'\) is equivalent to the system \(Ax = b\).
 \end{proof}
 
 \begin{defn}\label{3.4.3}
-	A matrix is said to be in \textbf{reduced row echelon form} if the following three conditions are satisfied.
-	\begin{enumerate}
-		\item Any row containing a nonzero entry precedes any row in which all the entries are zero (if any).
-		\item The first nonzero entry in each row is the only nonzero entry in its column.
-		\item The first nonzero entry in each row is \(1\) and it occurs in a column to the right of the first nonzero entry in the preceding row.
-	\end{enumerate}
+  A matrix is said to be in \textbf{reduced row echelon form} if the following three conditions are satisfied.
+  \begin{enumerate}
+    \item Any row containing a nonzero entry precedes any row in which all the entries are zero (if any).
+    \item The first nonzero entry in each row is the only nonzero entry in its column.
+    \item The first nonzero entry in each row is \(1\) and it occurs in a column to the right of the first nonzero entry in the preceding row.
+  \end{enumerate}
 \end{defn}
 
 \begin{note}
-	It can be shown (see \cref{3.4.5}) that the reduced row echelon form of a matrix is unique;
-	that is, if different sequences of elementary row operations are used to transform a matrix into matrices \(Q\) and \(Q'\) in reduced row echelon form, then \(Q = Q'\).
-	Thus, although there are many different sequences of elementary row operations that can be used to transform a given matrix into reduced row echelon form, they all produce the same result.
+  It can be shown (see \cref{3.4.5}) that the reduced row echelon form of a matrix is unique;
+  that is, if different sequences of elementary row operations are used to transform a matrix into matrices \(Q\) and \(Q'\) in reduced row echelon form, then \(Q = Q'\).
+  Thus, although there are many different sequences of elementary row operations that can be used to transform a given matrix into reduced row echelon form, they all produce the same result.
 \end{note}
 
 \begin{defn}\label{3.4.4}
-	The following procedure for reducing an augmented matrix to reduced row echelon form is called \textbf{Gaussian-Jordan elimination}.
-	\begin{enumerate}[label=\arabic*.]
-		\item In the leftmost nonzero column, create a \(1\) in the first row.
-		\item By means of type 3 row operations, use the first row to obtain zeros in the remaining positions of the leftmost nonzero column.
-		\item Create a \(1\) in the next row in the leftmost possible column, without using previous row(s).
-		\item Now use type 3 elementary row operations to obtain zeros below the \(1\) created in the preceding step.
-		\item Repeat steps 3 and 4 on each succeeding row until no nonzero rows remain.
-		      (This creates zeros below the first nonzero entry in each row.)
-		\item Work upward, beginning with the last nonzero row, and add multiples of each row to the rows above.
-		\item Repeat the process described in step 6 for each preceding row until it is performed with the second row, at which time the reduction process is complete.
-	\end{enumerate}
-	Note that
-	\begin{itemize}
-		\item In the forward pass (steps 1 -- 5), the augmented matrix is transformed into an upper triangular matrix in which the first nonzero entry of each row is \(1\), and it occurs in a column to the right of the first nonzero entry of each preceding row.
-		\item In the backward pass or back-substitution (steps 6 -- 7), the upper triangular matrix is transformed into reduced row echelon form by making the first nonzero entry of each row the only nonzero entry of its column.
-	\end{itemize}
+  The following procedure for reducing an augmented matrix to reduced row echelon form is called \textbf{Gaussian-Jordan elimination}.
+  \begin{enumerate}[label=\arabic*.]
+    \item In the leftmost nonzero column, create a \(1\) in the first row.
+    \item By means of type 3 row operations, use the first row to obtain zeros in the remaining positions of the leftmost nonzero column.
+    \item Create a \(1\) in the next row in the leftmost possible column, without using previous row(s).
+    \item Now use type 3 elementary row operations to obtain zeros below the \(1\) created in the preceding step.
+    \item Repeat steps 3 and 4 on each succeeding row until no nonzero rows remain.
+          (This creates zeros below the first nonzero entry in each row.)
+    \item Work upward, beginning with the last nonzero row, and add multiples of each row to the rows above.
+    \item Repeat the process described in step 6 for each preceding row until it is performed with the second row, at which time the reduction process is complete.
+  \end{enumerate}
+  Note that
+  \begin{itemize}
+    \item In the forward pass (steps 1 -- 5), the augmented matrix is transformed into an upper triangular matrix in which the first nonzero entry of each row is \(1\), and it occurs in a column to the right of the first nonzero entry of each preceding row.
+    \item In the backward pass or back-substitution (steps 6 -- 7), the upper triangular matrix is transformed into reduced row echelon form by making the first nonzero entry of each row the only nonzero entry of its column.
+  \end{itemize}
 \end{defn}
 
 \begin{thm}\label{3.14}
-	Gaussian-Jordan elimination transforms any matrix into its reduced row echelon form.
+  Gaussian-Jordan elimination transforms any matrix into its reduced row echelon form.
 \end{thm}
 
 \begin{proof}[\pf{3.14}]
-	In the forward pass, we satisfy \cref{3.4.3}(a)(c) and thereby make zero all entries below the first nonzero entry in each row.
-	Then in the backward pass, we make zero all entries above the first nonzero entry in each row, thereby satisfying \cref{3.4.3}(b).
+  In the forward pass, we satisfy \cref{3.4.3}(a)(c) and thereby make zero all entries below the first nonzero entry in each row.
+  Then in the backward pass, we make zero all entries above the first nonzero entry in each row, thereby satisfying \cref{3.4.3}(b).
 \end{proof}
 
 \begin{note}
-	To solve a system for which the augmented matrix is in reduced row echelon form, divide the variables into two sets.
-	The first set consists of those variables that appear as leftmost variables in one of the equations of the system.
-	The second set consists of all the remaining variables.
-	To each variable in the second set, assign a parametric value \(\seq{t}{1,2,}\) and then solve for the variables of the first set in terms of those in the second set.
+  To solve a system for which the augmented matrix is in reduced row echelon form, divide the variables into two sets.
+  The first set consists of those variables that appear as leftmost variables in one of the equations of the system.
+  The second set consists of all the remaining variables.
+  To each variable in the second set, assign a parametric value \(\seq{t}{1,2,}\) and then solve for the variables of the first set in terms of those in the second set.
 
-	Therefore, in simplifying the augmented matrix of the system to reduced row echelon form, we are in effect simultaneously finding a particular solution to the original system and a basis for the solution set of the associated homogeneous system.
-	Moreover, this procedure detects when a system is inconsistent, for by \cref{ex:3.4.3}, solutions exist iff, in the reduction of the augmented matrix to reduced row echelon form, we do not obtain a row in which the only nonzero entry lies in the last column.
+  Therefore, in simplifying the augmented matrix of the system to reduced row echelon form, we are in effect simultaneously finding a particular solution to the original system and a basis for the solution set of the associated homogeneous system.
+  Moreover, this procedure detects when a system is inconsistent, for by \cref{ex:3.4.3}, solutions exist iff, in the reduction of the augmented matrix to reduced row echelon form, we do not obtain a row in which the only nonzero entry lies in the last column.
 
-	Thus to use this procedure for solving a system \(Ax = b\) of \(m\) linear equations in \(n\) unknowns, we need only begin to transform the augmented matrix \((A | b)\) into its reduced row echelon form \((A' | b')\) by means of Gaussian-Jordan elimination.
-	If a row is obtained in which the only nonzero entry lies in the last column, then the original system is inconsistent.
-	Otherwise, discard any zero rows from \((A' | b')\), and write the corresponding system of equations.
-	Solve this system as described above to obtain an arbitrary solution of the form
-	\[
-		s = s_0 + \seq[+]{t,u}{1,,n-r},
-	\]
-	where \(r\) is the number of nonzero rows in \(A'\) (\(r \leq m\)).
-	The preceding equation is called a \textbf{general solution} of the system \(Ax = b\).
-	It expresses an arbitrary solution \(s\) of \(Ax = b\) in terms of \(n - r\) parameters.
-	\cref{3.15} states that \(s\) cannot be expressed in fewer than \(n - r\) parameters.
+  Thus to use this procedure for solving a system \(Ax = b\) of \(m\) linear equations in \(n\) unknowns, we need only begin to transform the augmented matrix \((A | b)\) into its reduced row echelon form \((A' | b')\) by means of Gaussian-Jordan elimination.
+  If a row is obtained in which the only nonzero entry lies in the last column, then the original system is inconsistent.
+  Otherwise, discard any zero rows from \((A' | b')\), and write the corresponding system of equations.
+  Solve this system as described above to obtain an arbitrary solution of the form
+  \[
+    s = s_0 + \seq[+]{t,u}{1,,n-r},
+  \]
+  where \(r\) is the number of nonzero rows in \(A'\) (\(r \leq m\)).
+  The preceding equation is called a \textbf{general solution} of the system \(Ax = b\).
+  It expresses an arbitrary solution \(s\) of \(Ax = b\) in terms of \(n - r\) parameters.
+  \cref{3.15} states that \(s\) cannot be expressed in fewer than \(n - r\) parameters.
 \end{note}
 
 \begin{thm}\label{3.15}
-	Let \(Ax = b\) be a system of \(r\) nonzero equations in \(n\) unknowns.
-	Suppose that \(\rk{A} = \rk{A | b}\) and that \((A | b)\) is in reduced row echelon form.
-	Then
-	\begin{enumerate}
-		\item \(\rk{A} = r\).
-		\item If the general solution obtained by the procedure above is of the form
-		      \[
-			      s = s_0 + \seq[+]{t,u}{1,,n-r},
-		      \]
-		      then \(\set{\seq{u}{1,,n-r}}\) is a basis for the solution set of the corresponding homogeneous system, and \(s_0\) is a solution to the original system.
-	\end{enumerate}
+  Let \(Ax = b\) be a system of \(r\) nonzero equations in \(n\) unknowns.
+  Suppose that \(\rk{A} = \rk{A | b}\) and that \((A | b)\) is in reduced row echelon form.
+  Then
+  \begin{enumerate}
+    \item \(\rk{A} = r\).
+    \item If the general solution obtained by the procedure above is of the form
+          \[
+            s = s_0 + \seq[+]{t,u}{1,,n-r},
+          \]
+          then \(\set{\seq{u}{1,,n-r}}\) is a basis for the solution set of the corresponding homogeneous system, and \(s_0\) is a solution to the original system.
+  \end{enumerate}
 \end{thm}
 
 \begin{proof}[\pf{3.15}]
-	Since \((A | b)\) is in reduced row echelon form, \((A | b)\) must have \(r\) nonzero rows.
-	Clearly these rows are linearly independent by the definition of the reduced row echelon form, and so \(\rk{A | b} = r\).
-	Thus \(\rk{A} = r\).
+  Since \((A | b)\) is in reduced row echelon form, \((A | b)\) must have \(r\) nonzero rows.
+  Clearly these rows are linearly independent by the definition of the reduced row echelon form, and so \(\rk{A | b} = r\).
+  Thus \(\rk{A} = r\).
 
-	Let \(K\) be the solution set for \(Ax = b\), and let \(\vs{K}_{\vs{H}}\) be the solution set for \(Ax = \zv\).
-	Setting \(\seq[=]{t}{1,,n-r} = 0\), we see that \(s = s_0 \in K\).
-	But by \cref{3.9}, \(K = \set{s_0} + \vs{K}_{\vs{H}}\).
-	Hence
-	\[
-		\vs{K}_{\vs{H}} = \set{-s_0} + K = \spn{\set{\seq{u}{1,,u-r}}}.
-	\]
-	Because \(\rk{A} = r\), by \cref{3.8} we have \(\dim(\vs{K}_{\vs{H}}) = n - r\).
-	Thus since \(\dim(\vs{K}_{\vs{H}}) = n - r\) and \(\vs{K}_{\vs{H}}\) is generated by a set \(\set{\seq{u}{1,,n-r}}\) containing at most \(n - r\) vectors, we conclude that this set is a basis for \(\vs{K}_{\vs{H}}\).
+  Let \(K\) be the solution set for \(Ax = b\), and let \(\vs{K}_{\vs{H}}\) be the solution set for \(Ax = \zv\).
+  Setting \(\seq[=]{t}{1,,n-r} = 0\), we see that \(s = s_0 \in K\).
+  But by \cref{3.9}, \(K = \set{s_0} + \vs{K}_{\vs{H}}\).
+  Hence
+  \[
+    \vs{K}_{\vs{H}} = \set{-s_0} + K = \spn{\set{\seq{u}{1,,u-r}}}.
+  \]
+  Because \(\rk{A} = r\), by \cref{3.8} we have \(\dim(\vs{K}_{\vs{H}}) = n - r\).
+  Thus since \(\dim(\vs{K}_{\vs{H}}) = n - r\) and \(\vs{K}_{\vs{H}}\) is generated by a set \(\set{\seq{u}{1,,n-r}}\) containing at most \(n - r\) vectors, we conclude that this set is a basis for \(\vs{K}_{\vs{H}}\).
 \end{proof}
 
 \begin{thm}\label{3.16}
-	Let \(A \in \ms\) be of rank \(r\), where \(r > 0\), and let \(B\) be a reduced row echelon form of \(A\).
-	Denote columns of \(A\) (\(B\)) as \(\seq{a}{1,,n}\) (\(\seq{b}{1,,n}\)).
-	Then
-	\begin{enumerate}
-		\item The number of nonzero rows in \(B\) is \(r\).
-		\item For each \(i \in \set{1, \dots, r}\), there is a column \(b_{j_i}\) of \(B\) such that \(b_{j_i} = e_i\).
-		\item The columns of \(A\) numbered \(\seq{j}{1,,r}\) are linearly independent.
-		\item For each \(k \in \set{1, \dots, n}\), if column \(k\) of \(B\) is \(\seq[+]{d,e}{1,,r}\), then column \(k\) of \(A\) is \(d_1 a_{j_1} + \cdots + d_r a_{j_r}\).
-	\end{enumerate}
+  Let \(A \in \ms\) be of rank \(r\), where \(r > 0\), and let \(B\) be a reduced row echelon form of \(A\).
+  Denote columns of \(A\) (\(B\)) as \(\seq{a}{1,,n}\) (\(\seq{b}{1,,n}\)).
+  Then
+  \begin{enumerate}
+    \item The number of nonzero rows in \(B\) is \(r\).
+    \item For each \(i \in \set{1, \dots, r}\), there is a column \(b_{j_i}\) of \(B\) such that \(b_{j_i} = e_i\).
+    \item The columns of \(A\) numbered \(\seq{j}{1,,r}\) are linearly independent.
+    \item For each \(k \in \set{1, \dots, n}\), if column \(k\) of \(B\) is \(\seq[+]{d,e}{1,,r}\), then column \(k\) of \(A\) is \(d_1 a_{j_1} + \cdots + d_r a_{j_r}\).
+  \end{enumerate}
 \end{thm}
 
 \begin{proof}[\pf{3.16}]
-	If \(\rk{A} = r\), then \(\rk{B} = r\) by \cref{3.2.3}.
-	Because \(B\) is in reduced row echelon form, no nonzero row of \(B\) can be a linear combination of the other rows of \(B\).
-	Hence \(B\) must have exactly \(r\) nonzero rows.
-	The vectors \(\seq{e}{1,,r}\) must occur among the columns of \(B\).
-	For \(i \in \set{1, \dots, r}\), let \(j_i\) denote a column number of \(B\) such that \(b_{j_i} = e_i\).
-	We claim that \(a_{j_1}, \dots, a_{j_r}\), the columns of \(A\) corresponding to these columns of \(B\), are linearly independent.
-	For suppose that there are scalars \(\seq{c}{1,,r}\) such that
-	\[
-		c_1 a_{j_1} + \cdots + c_r a_{j_r} = \zv.
-	\]
-	Because \(B\) can be obtained from \(A\) by a sequence of elementary row operations, there exists (as in the proof of \cref{3.4.2}) an invertible matrix \(M \in \ms[m][m][\F]\) such that \(MA = B\).
-	Multiplying the preceding equation by \(M\) yields
-	\[
-		c_1 M a_{j_1} + \cdots + c_r M a_{j_r} = \zv.
-	\]
-	Since \(M a_{j_i} = b_{j_i} = e_i\), it follows that
-	\[
-		\seq[+]{c,e}{1,,r} = \zv.
-	\]
-	Hence \(\seq[=]{c}{1,,r} = 0\), proving that the vectors \(a_{j_1}, \dots, a_{j_r}\) are linearly independent.
+  If \(\rk{A} = r\), then \(\rk{B} = r\) by \cref{3.2.3}.
+  Because \(B\) is in reduced row echelon form, no nonzero row of \(B\) can be a linear combination of the other rows of \(B\).
+  Hence \(B\) must have exactly \(r\) nonzero rows.
+  The vectors \(\seq{e}{1,,r}\) must occur among the columns of \(B\).
+  For \(i \in \set{1, \dots, r}\), let \(j_i\) denote a column number of \(B\) such that \(b_{j_i} = e_i\).
+  We claim that \(a_{j_1}, \dots, a_{j_r}\), the columns of \(A\) corresponding to these columns of \(B\), are linearly independent.
+  For suppose that there are scalars \(\seq{c}{1,,r}\) such that
+  \[
+    c_1 a_{j_1} + \cdots + c_r a_{j_r} = \zv.
+  \]
+  Because \(B\) can be obtained from \(A\) by a sequence of elementary row operations, there exists (as in the proof of \cref{3.4.2}) an invertible matrix \(M \in \ms[m][m][\F]\) such that \(MA = B\).
+  Multiplying the preceding equation by \(M\) yields
+  \[
+    c_1 M a_{j_1} + \cdots + c_r M a_{j_r} = \zv.
+  \]
+  Since \(M a_{j_i} = b_{j_i} = e_i\), it follows that
+  \[
+    \seq[+]{c,e}{1,,r} = \zv.
+  \]
+  Hence \(\seq[=]{c}{1,,r} = 0\), proving that the vectors \(a_{j_1}, \dots, a_{j_r}\) are linearly independent.
 
-	Because \(B\) has only \(r\) nonzero rows, every column of \(B\) has the form
-	\[
-		\begin{pmatrix}
-			d_1    \\
-			\vdots \\
-			d_r    \\
-			0      \\
-			\vdots \\
-			0
-		\end{pmatrix}
-	\]
-	for scalars \(\seq{d}{1,,r}\).
-	The corresponding column of \(A\) must be
-	\begin{align*}
-		M^{-1} (\seq[+]{d,e}{1,,r}) & = d_1 M^{-1} e_1 + \cdots d_r M^{-1} e_r           \\
-		                            & = d_1 M^{-1} b_{j 1} + \cdots + d_r M^{-1} b_{j_r} \\
-		                            & = d_1 a_{j_1} + \cdots + d_r a_{j_r}.
-	\end{align*}
+  Because \(B\) has only \(r\) nonzero rows, every column of \(B\) has the form
+  \[
+    \begin{pmatrix}
+      d_1    \\
+      \vdots \\
+      d_r    \\
+      0      \\
+      \vdots \\
+      0
+    \end{pmatrix}
+  \]
+  for scalars \(\seq{d}{1,,r}\).
+  The corresponding column of \(A\) must be
+  \begin{align*}
+    M^{-1} (\seq[+]{d,e}{1,,r}) & = d_1 M^{-1} e_1 + \cdots d_r M^{-1} e_r           \\
+                                & = d_1 M^{-1} b_{j 1} + \cdots + d_r M^{-1} b_{j_r} \\
+                                & = d_1 a_{j_1} + \cdots + d_r a_{j_r}.
+  \end{align*}
 \end{proof}
 
 \begin{cor}\label{3.4.5}
-	The reduced row echelon form of a matrix is unique.
+  The reduced row echelon form of a matrix is unique.
 \end{cor}
 
 \begin{proof}[\pf{3.4.5}]
-	Let \(A \in \ms\).
-	If \(A = \zm\), then we are done.
-	So suppose that \(A \neq \zm\).
-	We use induction on \(n\).
-	For \(n = 1\), by \cref{3.4.3} we know that if \(B\) is a reduced row echelon form of \(A\), then
-	\[
-		B = \begin{pmatrix}
-			1      \\
-			0      \\
-			\vdots \\
-			0
-		\end{pmatrix} = e_1 \in \vs{F}^m.
-	\]
-	(if \(C \in \ms[m][1][\F]\) and \(C \neq e_1\), then \(C\) is not in reduced row echelon form.)
-	Thus the base case holds.
-	Suppose inductively that for some \(n \geq 1\), any matrix \(A \in \ms\) has unique reduced row echelon form.
-	Then we need to show that any matrix \(A \in \ms[m][(n + 1)][\F]\) has unique reduced row echelon form.
-	So let \(A \in \ms[m][(n + 1)][\F]\).
-	Let \(B, C\) be reduced row echelon forms of \(A\).
-	We denote the \(j\)th column of \(A, B, C\) as \(a_j, b_j, c_j\), respectively.
-	Then we have \(A = (a_1, \dots, a_n | a_{n + 1})\), \(B = (b_1, \dots, b_n | b_{n + 1})\) and \(C = (c_1, \dots, c_n | c_{n + 1})\).
-	Because \(B, C\) can be obtained from \(A\) by sequences of elementary row operations, there exists (as in the proof of \cref{3.4.2}) invertible matrices \(E, F \in \ms[m][m][\F]\) such that \(EA = B\) and \(FA = C\).
-	By \cref{ex:3.2.15} we have \(EA = (E (\seq{a}{1,,n}) | E a_{n + 1})\) and \(FA = (F (\seq{a}{1,,n}) | F a_{n + 1})\).
-	Since \(EA, FA\) are in reduced row echelon forms, we know that \(E (\seq{a}{1,,n}), F (\seq{a}{1,,n})\) are reduced row echelon forms of \((\seq{a}{1,,n})\).
-	Thus we have
-	\begin{align*}
-		         & E (\seq{a}{1,,n}) = F (\seq{a}{1,,n})       &  & \text{(by induction hypothesis)}  \\
-		\implies & (\seq{a}{1,,n}) = E^{-1} F (\seq{a}{1,,n}). &  & \text{(\(E^{-1}\) is invertible)}
-	\end{align*}
-	Now we split into two cases:
-	\begin{itemize}
-		\item If \(a_{n + 1} \in \spn{\set{\seq{a}{1,,n}}}\), then we have
-		      \begin{align*}
-			               & \exists \seq{d}{1,,n} \in \F : a_{n + 1} = \sum_{i = 1}^n d_i a_i &  & \by{1.5.3}                        \\
-			      \implies & (E^{-1} F) a_{n + 1} = (E^{-1} F) \pa{\sum_{i = 1}^n d_i a_i}                                            \\
-			               & = \sum_{i = 1}^n d_i (E^{-1} F a_i)                               &  & \by{2.3.5}                        \\
-			               & = \sum_{i = 1}^n d_i a_i = a_{n + 1}                              &  & \text{(from the proof above)}     \\
-			      \implies & E a_{n + 1} = F a_{n + 1}                                         &  & \text{(\(E^{-1}\) is invertible)}
-		      \end{align*}
-		      and thus \(B = EA = FA = C\).
-		\item If \(a_{n + 1} \notin \spn{\set{\seq{a}{1,,n}}}\), then by \cref{3.16}(b) we know that \(b_{n + 1} = e_{\rk{A}} = c_{n + 1}\) and thus \(B = C\).
-	\end{itemize}
-	From all cases above we conclude that \(B = C\).
-	This closes the induction.
+  Let \(A \in \ms\).
+  If \(A = \zm\), then we are done.
+  So suppose that \(A \neq \zm\).
+  We use induction on \(n\).
+  For \(n = 1\), by \cref{3.4.3} we know that if \(B\) is a reduced row echelon form of \(A\), then
+  \[
+    B = \begin{pmatrix}
+      1      \\
+      0      \\
+      \vdots \\
+      0
+    \end{pmatrix} = e_1 \in \vs{F}^m.
+  \]
+  (if \(C \in \ms[m][1][\F]\) and \(C \neq e_1\), then \(C\) is not in reduced row echelon form.)
+  Thus the base case holds.
+  Suppose inductively that for some \(n \geq 1\), any matrix \(A \in \ms\) has unique reduced row echelon form.
+  Then we need to show that any matrix \(A \in \ms[m][(n + 1)][\F]\) has unique reduced row echelon form.
+  So let \(A \in \ms[m][(n + 1)][\F]\).
+  Let \(B, C\) be reduced row echelon forms of \(A\).
+  We denote the \(j\)th column of \(A, B, C\) as \(a_j, b_j, c_j\), respectively.
+  Then we have \(A = (a_1, \dots, a_n | a_{n + 1})\), \(B = (b_1, \dots, b_n | b_{n + 1})\) and \(C = (c_1, \dots, c_n | c_{n + 1})\).
+  Because \(B, C\) can be obtained from \(A\) by sequences of elementary row operations, there exists (as in the proof of \cref{3.4.2}) invertible matrices \(E, F \in \ms[m][m][\F]\) such that \(EA = B\) and \(FA = C\).
+  By \cref{ex:3.2.15} we have \(EA = (E (\seq{a}{1,,n}) | E a_{n + 1})\) and \(FA = (F (\seq{a}{1,,n}) | F a_{n + 1})\).
+  Since \(EA, FA\) are in reduced row echelon forms, we know that \(E (\seq{a}{1,,n}), F (\seq{a}{1,,n})\) are reduced row echelon forms of \((\seq{a}{1,,n})\).
+  Thus we have
+  \begin{align*}
+             & E (\seq{a}{1,,n}) = F (\seq{a}{1,,n})       &  & \text{(by induction hypothesis)}  \\
+    \implies & (\seq{a}{1,,n}) = E^{-1} F (\seq{a}{1,,n}). &  & \text{(\(E^{-1}\) is invertible)}
+  \end{align*}
+  Now we split into two cases:
+  \begin{itemize}
+    \item If \(a_{n + 1} \in \spn{\set{\seq{a}{1,,n}}}\), then we have
+          \begin{align*}
+                     & \exists \seq{d}{1,,n} \in \F : a_{n + 1} = \sum_{i = 1}^n d_i a_i &  & \by{1.5.3}                        \\
+            \implies & (E^{-1} F) a_{n + 1} = (E^{-1} F) \pa{\sum_{i = 1}^n d_i a_i}                                            \\
+                     & = \sum_{i = 1}^n d_i (E^{-1} F a_i)                               &  & \by{2.3.5}                        \\
+                     & = \sum_{i = 1}^n d_i a_i = a_{n + 1}                              &  & \text{(from the proof above)}     \\
+            \implies & E a_{n + 1} = F a_{n + 1}                                         &  & \text{(\(E^{-1}\) is invertible)}
+          \end{align*}
+          and thus \(B = EA = FA = C\).
+    \item If \(a_{n + 1} \notin \spn{\set{\seq{a}{1,,n}}}\), then by \cref{3.16}(b) we know that \(b_{n + 1} = e_{\rk{A}} = c_{n + 1}\) and thus \(B = C\).
+  \end{itemize}
+  From all cases above we conclude that \(B = C\).
+  This closes the induction.
 \end{proof}
 
 \exercisesection
 
 \setcounter{ex}{2}
 \begin{ex}\label{ex:3.4.3}
-	Suppose that the augmented matrix of a system \(Ax = b\) is transformed into a matrix \((A' | b')\) in reduced row echelon form by a finite sequence of elementary row operations.
-	\begin{enumerate}
-		\item Prove that \(\rk{A'} \neq \rk{A' | b'}\) iff \((A' | b')\) contains a row in which the only nonzero entry lies in the last column.
-		\item Deduce that \(Ax = b\) is consistent iff \((A' | b')\) contains no row in which the only nonzero entry lies in the last column.
-	\end{enumerate}
+  Suppose that the augmented matrix of a system \(Ax = b\) is transformed into a matrix \((A' | b')\) in reduced row echelon form by a finite sequence of elementary row operations.
+  \begin{enumerate}
+    \item Prove that \(\rk{A'} \neq \rk{A' | b'}\) iff \((A' | b')\) contains a row in which the only nonzero entry lies in the last column.
+    \item Deduce that \(Ax = b\) is consistent iff \((A' | b')\) contains no row in which the only nonzero entry lies in the last column.
+  \end{enumerate}
 \end{ex}
 
 \begin{proof}[\pf{ex:3.4.3}(a)]
-	First suppose that \(\rk{A'} \neq \rk{A' | b'}\).
-	By \cref{3.5} we have \(\rk{A'} + 1 = \rk{A' | b'}\).
-	Since \((A' | b')\) is in reduced row echelon form, we know that \(A'\) is also in reduced row echelon form.
-	Let \(r\) be the number of nonzero rows in \(A'\).
-	By \cref{3.4.3} we know that these rows are linearly independent and thus by \cref{3.2.5}(b) \(\rk{A'} = r\).
-	But this means the first \(r\) rows of \((A' | b')\) is also linearly independent.
-	Thus to have \(\rk{A'} + 1 = \rk{A' | b'}\), we must have one more nonzero rows in the remaining \(n - r\) rows of \((A' | b')\).
-	By the definition of \(r\) we know that the extra nonzero row must have nonzero entry in the column of \(b'\).
-	Since \((A' | b')\) is in reduced row echelon form, we know that \(b_{r + 1} = 1\) and \(b_{r + 1}\) is the only nonzero entry in \(b\), i.e., the last column of \((A' | b')\).
+  First suppose that \(\rk{A'} \neq \rk{A' | b'}\).
+  By \cref{3.5} we have \(\rk{A'} + 1 = \rk{A' | b'}\).
+  Since \((A' | b')\) is in reduced row echelon form, we know that \(A'\) is also in reduced row echelon form.
+  Let \(r\) be the number of nonzero rows in \(A'\).
+  By \cref{3.4.3} we know that these rows are linearly independent and thus by \cref{3.2.5}(b) \(\rk{A'} = r\).
+  But this means the first \(r\) rows of \((A' | b')\) is also linearly independent.
+  Thus to have \(\rk{A'} + 1 = \rk{A' | b'}\), we must have one more nonzero rows in the remaining \(n - r\) rows of \((A' | b')\).
+  By the definition of \(r\) we know that the extra nonzero row must have nonzero entry in the column of \(b'\).
+  Since \((A' | b')\) is in reduced row echelon form, we know that \(b_{r + 1} = 1\) and \(b_{r + 1}\) is the only nonzero entry in \(b\), i.e., the last column of \((A' | b')\).
 
-	Now suppose that \((A' | b')\) contains a row in which the only nonzero entry lies in the last column.
-	Since \((A' | b')\) is in reduced row echelon form, we know that \(b' \notin \spn{\set{\text{columns of } A'}}\).
-	Thus by \cref{3.5} we have \(\rk{A'} \neq \rk{A' | b'}\).
+  Now suppose that \((A' | b')\) contains a row in which the only nonzero entry lies in the last column.
+  Since \((A' | b')\) is in reduced row echelon form, we know that \(b' \notin \spn{\set{\text{columns of } A'}}\).
+  Thus by \cref{3.5} we have \(\rk{A'} \neq \rk{A' | b'}\).
 \end{proof}
 
 \begin{proof}[\pf{ex:3.4.3}(b)]
-	This is the immediate consequence of \cref{3.11,ex:3.4.3}(a).
+  This is the immediate consequence of \cref{3.11,ex:3.4.3}(a).
 \end{proof}
 
 \setcounter{ex}{13}
 \begin{ex}\label{ex:3.4.14}
-	If \((A | b)\) is in reduced row echelon form, prove that \(A\) is also in reduced row echelon form.
+  If \((A | b)\) is in reduced row echelon form, prove that \(A\) is also in reduced row echelon form.
 \end{ex}
 
 \begin{proof}[\pf{ex:3.4.14}]
-	If not, then at least one conditions in \cref{3.4.3} is not satisfied by \(A\).
-	We split into three cases:
-	\begin{itemize}
-		\item If \cref{3.4.3}(a) is not satisfied, then there exists one row, say the \(i\)th row of \(A\) with nonzero entry \(A_{i j}\), is preceded by rows with only zeros.
-		      But this means the \((i - 1)\)th row of \((A | b)\) violate \cref{3.4.3}(a) if \(b_{i - 1} = 0\) and violate \cref{3.4.3}(c) if \(b_{i - 1} \neq 0\), a contradiction.
-		\item If \cref{3.4.3}(b) is not satisfied, then there exists one row, say the \(i\)th row of \(A\) with first nonzero entry \(A_{i j}\), is not the only nonzero entry in the \(j\)th column.
-		      But this means the \(j\)th column of \((A | b)\) violate \cref{3.4.3}(b), a contradiction.
-		\item If \cref{3.4.3}(c) is not satisfied, then there exists one row, say the \(i\)th row of \(A\) with first nonzero entry \(A_{i j}\), has \(A_{i j} \neq 1\) or the first nonzero entry in \((i - 1)\)th row is \(a_{(i - 1) k}\), where \(k \leq j\).
-		      But in either cases \((A | b)\) violate \cref{3.4.3}(c), a contradiction.
-	\end{itemize}
-	From all cases above we derive contradictions.
-	Thus \(A\) is also in reduced row echelon form.
+  If not, then at least one conditions in \cref{3.4.3} is not satisfied by \(A\).
+  We split into three cases:
+  \begin{itemize}
+    \item If \cref{3.4.3}(a) is not satisfied, then there exists one row, say the \(i\)th row of \(A\) with nonzero entry \(A_{i j}\), is preceded by rows with only zeros.
+          But this means the \((i - 1)\)th row of \((A | b)\) violate \cref{3.4.3}(a) if \(b_{i - 1} = 0\) and violate \cref{3.4.3}(c) if \(b_{i - 1} \neq 0\), a contradiction.
+    \item If \cref{3.4.3}(b) is not satisfied, then there exists one row, say the \(i\)th row of \(A\) with first nonzero entry \(A_{i j}\), is not the only nonzero entry in the \(j\)th column.
+          But this means the \(j\)th column of \((A | b)\) violate \cref{3.4.3}(b), a contradiction.
+    \item If \cref{3.4.3}(c) is not satisfied, then there exists one row, say the \(i\)th row of \(A\) with first nonzero entry \(A_{i j}\), has \(A_{i j} \neq 1\) or the first nonzero entry in \((i - 1)\)th row is \(a_{(i - 1) k}\), where \(k \leq j\).
+          But in either cases \((A | b)\) violate \cref{3.4.3}(c), a contradiction.
+  \end{itemize}
+  From all cases above we derive contradictions.
+  Thus \(A\) is also in reduced row echelon form.
 \end{proof}

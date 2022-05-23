@@ -1,255 +1,255 @@
 \section{Systems of Linear Equations --- Theoretical Aspects}\label{sec:3.3}
 
 \begin{defn}\label{3.3.1}
-	The system of equations
-	\[
-		(S) \quad \begin{matrix}
-			a_{1 1} x_1 + a_{1 2} x_2 + \cdots + a_{1 n} x_n = b_1 \\
-			a_{2 1} x_1 + a_{2 2} x_2 + \cdots + a_{2 n} x_n = b_2 \\
-			\vdots                                                 \\
-			a_{m 1} x_1 + a_{m 2} x_2 + \cdots + a_{m n} x_n = b_m
-		\end{matrix}
-	\]
-	where \(a_{i j}\) and \(b_i\) (\(1 \leq i \leq m\) and \(1 \leq j \leq n\)) are scalars in a field \(\F\) and \(\seq{x}{1,,n}\) are \(n\) variables taking values in \(\F\), is called a \textbf{system of \(m\) linear equations in \(n\) unknowns over the field \(\F\)}.
+  The system of equations
+  \[
+    (S) \quad \begin{matrix}
+      a_{1 1} x_1 + a_{1 2} x_2 + \cdots + a_{1 n} x_n = b_1 \\
+      a_{2 1} x_1 + a_{2 2} x_2 + \cdots + a_{2 n} x_n = b_2 \\
+      \vdots                                                 \\
+      a_{m 1} x_1 + a_{m 2} x_2 + \cdots + a_{m n} x_n = b_m
+    \end{matrix}
+  \]
+  where \(a_{i j}\) and \(b_i\) (\(1 \leq i \leq m\) and \(1 \leq j \leq n\)) are scalars in a field \(\F\) and \(\seq{x}{1,,n}\) are \(n\) variables taking values in \(\F\), is called a \textbf{system of \(m\) linear equations in \(n\) unknowns over the field \(\F\)}.
 
-	The \(m \times n\) matrix
-	\[
-		A = \begin{pmatrix}
-			a_{1 1} & a_{1 2} & \cdots & a_{1 n} \\
-			a_{2 1} & a_{2 2} & \cdots & a_{2 n} \\
-			\vdots  & \vdots  &        & \vdots  \\
-			a_{m 1} & a_{m 2} & \cdots & a_{m n}
-		\end{pmatrix}
-	\]
-	is called the \textbf{coefficient matrix} of the system \((S)\).
+  The \(m \times n\) matrix
+  \[
+    A = \begin{pmatrix}
+      a_{1 1} & a_{1 2} & \cdots & a_{1 n} \\
+      a_{2 1} & a_{2 2} & \cdots & a_{2 n} \\
+      \vdots  & \vdots  &        & \vdots  \\
+      a_{m 1} & a_{m 2} & \cdots & a_{m n}
+    \end{pmatrix}
+  \]
+  is called the \textbf{coefficient matrix} of the system \((S)\).
 
-	If we let
-	\[
-		x = \begin{pmatrix}
-			x_1    \\
-			x_2    \\
-			\vdots \\
-			x_n
-		\end{pmatrix} \quad \text{and} \quad b = \begin{pmatrix}
-			b_1    \\
-			b_2    \\
-			\vdots \\
-			b_m
-		\end{pmatrix},
-	\]
-	then the system \((S)\) may be rewritten as a single matrix equation
-	\[
-		Ax = b.
-	\]
-	To exploit the results that we have developed, we often consider a system of linear equations as a single matrix equation.
+  If we let
+  \[
+    x = \begin{pmatrix}
+      x_1    \\
+      x_2    \\
+      \vdots \\
+      x_n
+    \end{pmatrix} \quad \text{and} \quad b = \begin{pmatrix}
+      b_1    \\
+      b_2    \\
+      \vdots \\
+      b_m
+    \end{pmatrix},
+  \]
+  then the system \((S)\) may be rewritten as a single matrix equation
+  \[
+    Ax = b.
+  \]
+  To exploit the results that we have developed, we often consider a system of linear equations as a single matrix equation.
 
-	A \textbf{solution} to the system \((S)\) is an \(n\)-tuple
-	\[
-		s = \begin{pmatrix}
-			s_1    \\
-			s_2    \\
-			\vdots \\
-			s_n
-		\end{pmatrix} \in \vs{F}^n
-	\]
-	such that \(As = b\).
-	The set of all solutions to the system \((S)\) is called the \textbf{solution set} of the system.
-	System \((S)\) is called \textbf{consistent} if its solution set is nonempty;
-	otherwise it is called \textbf{inconsistent}.
+  A \textbf{solution} to the system \((S)\) is an \(n\)-tuple
+  \[
+    s = \begin{pmatrix}
+      s_1    \\
+      s_2    \\
+      \vdots \\
+      s_n
+    \end{pmatrix} \in \vs{F}^n
+  \]
+  such that \(As = b\).
+  The set of all solutions to the system \((S)\) is called the \textbf{solution set} of the system.
+  System \((S)\) is called \textbf{consistent} if its solution set is nonempty;
+  otherwise it is called \textbf{inconsistent}.
 \end{defn}
 
 \begin{defn}\label{3.3.2}
-	A system \(Ax = b\) of \(m\) linear equations in \(n\) unknowns is said to be \textbf{homogeneous} if \(b = \zv\).
-	Otherwise the system is said to be \textbf{nonhomogeneous}.
+  A system \(Ax = b\) of \(m\) linear equations in \(n\) unknowns is said to be \textbf{homogeneous} if \(b = \zv\).
+  Otherwise the system is said to be \textbf{nonhomogeneous}.
 \end{defn}
 
 \begin{note}
-	Any homogeneous system has at least one solution, namely, the zero vector.
+  Any homogeneous system has at least one solution, namely, the zero vector.
 \end{note}
 
 \begin{thm}\label{3.8}
-	Let \(Ax = \zv\) be a homogeneous system of \(m\) linear equations in \(n\) unknowns over a field \(\F\).
-	Let \(\vs{K}\) denote the set of all solutions to \(Ax = \zv\).
-	Then \(\vs{K} = \ns{\L_A}\);
-	hence \(\vs{K}\) is a subspace of \(\vs{F}^n\) of dimension \(n - \rk{\L_A} = n - \rk{A}\).
+  Let \(Ax = \zv\) be a homogeneous system of \(m\) linear equations in \(n\) unknowns over a field \(\F\).
+  Let \(\vs{K}\) denote the set of all solutions to \(Ax = \zv\).
+  Then \(\vs{K} = \ns{\L_A}\);
+  hence \(\vs{K}\) is a subspace of \(\vs{F}^n\) of dimension \(n - \rk{\L_A} = n - \rk{A}\).
 \end{thm}
 
 \begin{proof}[\pf{3.8}]
-	Clearly, \(\vs{K} = \set{s \in \vs{F}^n : As = \zv} = \ns{\L_A}\).
-	The second part now follows from the dimension theorem (\cref{2.3}).
+  Clearly, \(\vs{K} = \set{s \in \vs{F}^n : As = \zv} = \ns{\L_A}\).
+  The second part now follows from the dimension theorem (\cref{2.3}).
 \end{proof}
 
 \begin{cor}\label{3.3.3}
-	If \(m < n\), the system \(Ax = \zv\) has a nonzero solution.
+  If \(m < n\), the system \(Ax = \zv\) has a nonzero solution.
 \end{cor}
 
 \begin{proof}[\pf{3.3.3}]
-	Suppose that \(m < n\).
-	Then we have \(\rk{A} = \rk{\L_A} \leq m\) by \cref{3.6}.
-	Hence
-	\[
-		\dim(\vs{K}) = n - \rk{\L_A} \geq n - m > 0,
-	\]
-	where \(\vs{K} = \ns{\L_A}\).
-	Since \(\dim(\vs{K}) > 0\), \(\vs{K} \neq \set{\zv}\).
-	Thus there exists a nonzero vector \(s \in \vs{K}\);
-	so \(s\) is a nonzero solution to \(Ax = \zv\).
+  Suppose that \(m < n\).
+  Then we have \(\rk{A} = \rk{\L_A} \leq m\) by \cref{3.6}.
+  Hence
+  \[
+    \dim(\vs{K}) = n - \rk{\L_A} \geq n - m > 0,
+  \]
+  where \(\vs{K} = \ns{\L_A}\).
+  Since \(\dim(\vs{K}) > 0\), \(\vs{K} \neq \set{\zv}\).
+  Thus there exists a nonzero vector \(s \in \vs{K}\);
+  so \(s\) is a nonzero solution to \(Ax = \zv\).
 \end{proof}
 
 \begin{defn}\label{3.3.4}
-	We refer to the equation \(Ax = \zv\) as the \textbf{homogeneous system corresponding to} \(Ax = b\).
+  We refer to the equation \(Ax = \zv\) as the \textbf{homogeneous system corresponding to} \(Ax = b\).
 \end{defn}
 
 \begin{thm}\label{3.9}
-	Let \(K\) be the solution set of a system of linear equations \(Ax = b\), and let \(\vs{K}_{\vs{H}}\) be the solution set of the corresponding homogeneous system \(Ax = \zv\).
-	Then for any solution \(s\) to \(Ax = b\)
-	\[
-		K = \set{s} + \vs{K}_{\vs{H}} = \set{s + k : k \in \vs{K}_{\vs{H}}}.
-	\]
+  Let \(K\) be the solution set of a system of linear equations \(Ax = b\), and let \(\vs{K}_{\vs{H}}\) be the solution set of the corresponding homogeneous system \(Ax = \zv\).
+  Then for any solution \(s\) to \(Ax = b\)
+  \[
+    K = \set{s} + \vs{K}_{\vs{H}} = \set{s + k : k \in \vs{K}_{\vs{H}}}.
+  \]
 \end{thm}
 
 \begin{proof}[\pf{3.9}]
-	Let \(s\) be any solution to \(Ax = b\).
-	We must show that \(K = \set{s} + \vs{K}_{\vs{H}}\) .
-	If \(w \in K\), then \(Aw = b\).
-	Hence
-	\[
-		A(w - s) = Aw - As = b - b = \zv.
-	\]
-	So \(w - s \in \vs{K}_{\vs{H}}\).
-	Thus there exists \(k \in \vs{K}_{\vs{H}}\) such that \(w - s = k\).
-	It follows that \(w = s + k \in \set{s} + \vs{K}_{\vs{H}}\), and therefore
-	\[
-		K \subseteq \set{s} + \vs{K}_{\vs{H}}.
-	\]
+  Let \(s\) be any solution to \(Ax = b\).
+  We must show that \(K = \set{s} + \vs{K}_{\vs{H}}\) .
+  If \(w \in K\), then \(Aw = b\).
+  Hence
+  \[
+    A(w - s) = Aw - As = b - b = \zv.
+  \]
+  So \(w - s \in \vs{K}_{\vs{H}}\).
+  Thus there exists \(k \in \vs{K}_{\vs{H}}\) such that \(w - s = k\).
+  It follows that \(w = s + k \in \set{s} + \vs{K}_{\vs{H}}\), and therefore
+  \[
+    K \subseteq \set{s} + \vs{K}_{\vs{H}}.
+  \]
 
-	Conversely, suppose that \(w \in \set{s} + \vs{K}_{\vs{H}}\);
-	then \(w = s + k\) for some \(k \in \vs{K}_{\vs{H}}\).
-	But then \(Aw = A(s + k) = As + Ak = b + \zv = b\);
-	so \(w \in K\).
-	Therefore \(\set{s} + \vs{K}_{\vs{H}} \subseteq K\), and thus \(K = \set{s} + \vs{K}_{\vs{H}}\).
+  Conversely, suppose that \(w \in \set{s} + \vs{K}_{\vs{H}}\);
+  then \(w = s + k\) for some \(k \in \vs{K}_{\vs{H}}\).
+  But then \(Aw = A(s + k) = As + Ak = b + \zv = b\);
+  so \(w \in K\).
+  Therefore \(\set{s} + \vs{K}_{\vs{H}} \subseteq K\), and thus \(K = \set{s} + \vs{K}_{\vs{H}}\).
 \end{proof}
 
 \begin{thm}\label{3.10}
-	Let \(Ax = b\) be a system of \(n\) linear equations in \(n\) unknowns.
-	If \(A\) is invertible, then the system has exactly one solution, namely, \(A^{-1} b\).
-	Conversely, if the system has exactly one solution, then \(A\) is invertible.
+  Let \(Ax = b\) be a system of \(n\) linear equations in \(n\) unknowns.
+  If \(A\) is invertible, then the system has exactly one solution, namely, \(A^{-1} b\).
+  Conversely, if the system has exactly one solution, then \(A\) is invertible.
 \end{thm}
 
 \begin{proof}[\pf{3.10}]
-	Suppose that \(A\) is invertible.
-	Substituting \(A^{-1} b\) into the system, we have \(A (A^{-1} b) = (A A^{-1}) b = b\).
-	Thus \(A^{-1} b\) is a solution.
-	If \(s\) is an arbitrary solution, then \(As = b\).
-	Multiplying both sides by \(A^{-1}\) gives \(s = A^{-1} b\).
-	Thus the system has one and only one solution, namely, \(A^{-1} b\).
+  Suppose that \(A\) is invertible.
+  Substituting \(A^{-1} b\) into the system, we have \(A (A^{-1} b) = (A A^{-1}) b = b\).
+  Thus \(A^{-1} b\) is a solution.
+  If \(s\) is an arbitrary solution, then \(As = b\).
+  Multiplying both sides by \(A^{-1}\) gives \(s = A^{-1} b\).
+  Thus the system has one and only one solution, namely, \(A^{-1} b\).
 
-	Conversely, suppose that the system has exactly one solution \(s\).
-	Let \(\vs{K}_{\vs{H}}\) denote the solution set for the corresponding homogeneous system \(Ax = \zv\).
-	By \cref{3.9}, \(\set{s} = \set{s} + \vs{K}_{\vs{H}}\).
-	But this is so only if \(\vs{K}_{\vs{H}} = \set{\zv}\).
-	Thus \(\ns{\L_A} = \set{\zv}\), and hence \(A\) is invertible (by \cref{2.5}).
+  Conversely, suppose that the system has exactly one solution \(s\).
+  Let \(\vs{K}_{\vs{H}}\) denote the solution set for the corresponding homogeneous system \(Ax = \zv\).
+  By \cref{3.9}, \(\set{s} = \set{s} + \vs{K}_{\vs{H}}\).
+  But this is so only if \(\vs{K}_{\vs{H}} = \set{\zv}\).
+  Thus \(\ns{\L_A} = \set{\zv}\), and hence \(A\) is invertible (by \cref{2.5}).
 \end{proof}
 
 \begin{defn}\label{3.3.5}
-	The matrix \((A | b)\) is called the \textbf{augmented matrix of the system} \(Ax = b\).
+  The matrix \((A | b)\) is called the \textbf{augmented matrix of the system} \(Ax = b\).
 \end{defn}
 
 \begin{thm}\label{3.11}
-	Let \(Ax = b\) be a system of linear equations.
-	Then the system is consistent iff \(\rk{A} = \rk{A | b}\).
+  Let \(Ax = b\) be a system of linear equations.
+  Then the system is consistent iff \(\rk{A} = \rk{A | b}\).
 \end{thm}
 
 \begin{proof}[\pf{3.11}]
-	To say that \(Ax = b\) has a solution is equivalent to saying that \(b \in \rg{\L_A}\).
-	(See \cref{ex:3.3.9}.)
-	In the proof of \cref{3.5}, we saw that
-	\[
-		\rg{\L_A} = \spn{\set{\seq{a}{1,,n}}},
-	\]
-	the span of the columns of \(A\).
-	Thus \(Ax = b\) has a solution iff \(b \in \spn{\set{\seq{a}{1,,n}}}\).
-	But \(b \in \spn{\set{\seq{a}{1,,n}}}\) iff \(\spn{\set{\seq{a}{1,,n}}} = \spn{\set{\seq{a}{1,,n}, b}}\).
-	This last statement is equivalent to
-	\[
-		\dim(\spn{\set{\seq{a}{1,,n}}}) = \dim(\spn{\set{\seq{a}{1,,n}, b}}).
-	\]
-	So by \cref{3.5}, the preceding equation reduces to
-	\[
-		\rk{A} = \rk{A | b}.
-	\]
+  To say that \(Ax = b\) has a solution is equivalent to saying that \(b \in \rg{\L_A}\).
+  (See \cref{ex:3.3.9}.)
+  In the proof of \cref{3.5}, we saw that
+  \[
+    \rg{\L_A} = \spn{\set{\seq{a}{1,,n}}},
+  \]
+  the span of the columns of \(A\).
+  Thus \(Ax = b\) has a solution iff \(b \in \spn{\set{\seq{a}{1,,n}}}\).
+  But \(b \in \spn{\set{\seq{a}{1,,n}}}\) iff \(\spn{\set{\seq{a}{1,,n}}} = \spn{\set{\seq{a}{1,,n}, b}}\).
+  This last statement is equivalent to
+  \[
+    \dim(\spn{\set{\seq{a}{1,,n}}}) = \dim(\spn{\set{\seq{a}{1,,n}, b}}).
+  \]
+  So by \cref{3.5}, the preceding equation reduces to
+  \[
+    \rk{A} = \rk{A | b}.
+  \]
 \end{proof}
 
 \begin{defn}\label{3.3.6}
-	Let \(\F\) be an ordered field and let \(A \in \ms[n][n][\F]\) such that \(0 \leq A_{i j} \leq 1\) for all \(i, j \in \set{1, \dots, n}\).
-	If the sum of each column of \(A\) is less than or equal to \(1\), then \(A\) is called a \textbf{input-output (or consumption) matrix}.
-	\(A\) is said to be in the \textbf{closed model} if the sum of each column of \(A\) is \(1\), otherwise \(A\) is said to be in the \textbf{open model}.
-	If \(p \in \vs{F}^n\) such that \(Ap = p\), then \(Ap = p\) is called the \textbf{equilibrium condition}.
+  Let \(\F\) be an ordered field and let \(A \in \ms[n][n][\F]\) such that \(0 \leq A_{i j} \leq 1\) for all \(i, j \in \set{1, \dots, n}\).
+  If the sum of each column of \(A\) is less than or equal to \(1\), then \(A\) is called a \textbf{input-output (or consumption) matrix}.
+  \(A\) is said to be in the \textbf{closed model} if the sum of each column of \(A\) is \(1\), otherwise \(A\) is said to be in the \textbf{open model}.
+  If \(p \in \vs{F}^n\) such that \(Ap = p\), then \(Ap = p\) is called the \textbf{equilibrium condition}.
 \end{defn}
 
 \begin{defn}\label{3.3.7}
-	Let \(\F\) be an ordered field.
-	For vectors \(b = \tuple{b}{1,,n}\) and \(c = \tuple{c}{1,,n}\) in \(\vs{F}^n\), we use the notation \(b \geq c\) (\(b > c\)) to mean \(b_i \geq c_i\) (\(b_i > c_i\)) for all \(i \in \set{1, \dots, n}\).
-	The vector \(b\) is called \textbf{nonnegative} (\textbf{positive}) if \(b \geq 0\) (\(b > 0\)).
+  Let \(\F\) be an ordered field.
+  For vectors \(b = \tuple{b}{1,,n}\) and \(c = \tuple{c}{1,,n}\) in \(\vs{F}^n\), we use the notation \(b \geq c\) (\(b > c\)) to mean \(b_i \geq c_i\) (\(b_i > c_i\)) for all \(i \in \set{1, \dots, n}\).
+  The vector \(b\) is called \textbf{nonnegative} (\textbf{positive}) if \(b \geq 0\) (\(b > 0\)).
 \end{defn}
 
 \begin{prop}\label{3.3.8}
-	If \(A \in \ms[n][n][\F]\) is a input-output matrix in the closed model, then \(Ap \leq p\) implies \(Ap = p\).
+  If \(A \in \ms[n][n][\F]\) is a input-output matrix in the closed model, then \(Ap \leq p\) implies \(Ap = p\).
 \end{prop}
 
 \begin{proof}[\pf{3.3.8}]
-	For otherwise, there exists a \(k \in \set{1, \dots, n}\) for which
-	\[
-		p_k > \sum_{j = 1}^n A_{k j} p_j.
-	\]
-	Hence, since the columns of \(A\) sum to \(1\),
-	\[
-		\sum_{i = 1}^n p_i > \sum_{i = 1}^n \pa{\sum_{j = 1}^n A_{i j} p_j} = \sum_{j = 1}^n \pa{\pa{\sum_{i = 1}^n A_{i j}} p_j} = \sum_{j = 1}^n p_j,
-	\]
-	which is a contradiction.
+  For otherwise, there exists a \(k \in \set{1, \dots, n}\) for which
+  \[
+    p_k > \sum_{j = 1}^n A_{k j} p_j.
+  \]
+  Hence, since the columns of \(A\) sum to \(1\),
+  \[
+    \sum_{i = 1}^n p_i > \sum_{i = 1}^n \pa{\sum_{j = 1}^n A_{i j} p_j} = \sum_{j = 1}^n \pa{\pa{\sum_{i = 1}^n A_{i j}} p_j} = \sum_{j = 1}^n p_j,
+  \]
+  which is a contradiction.
 \end{proof}
 
 \begin{thm}\label{3.12}
-	Let \(\F\) be an ordered field, let \(A \in \ms[n][n][\F]\) be an input-output matrix having the form
-	\[
-		A = \begin{pmatrix}
-			B & C \\
-			D & E
-		\end{pmatrix},
-	\]
-	where \(D \in \ms[1][(n - 1)][\F]\) and \(C \in \ms[(n - 1)][1][\F]\) are positive vectors.
-	Then \((I - A)x = \zv\) has a one-dimensional solution set that is generated by a nonnegative vector.
+  Let \(\F\) be an ordered field, let \(A \in \ms[n][n][\F]\) be an input-output matrix having the form
+  \[
+    A = \begin{pmatrix}
+      B & C \\
+      D & E
+    \end{pmatrix},
+  \]
+  where \(D \in \ms[1][(n - 1)][\F]\) and \(C \in \ms[(n - 1)][1][\F]\) are positive vectors.
+  Then \((I - A)x = \zv\) has a one-dimensional solution set that is generated by a nonnegative vector.
 \end{thm}
 
 \exercisesection
 
 \setcounter{ex}{8}
 \begin{ex}\label{ex:3.3.9}
-	Prove that the system of linear equations \(Ax = b\) has a solution iff \(b \in \rg{\L_A}\).
+  Prove that the system of linear equations \(Ax = b\) has a solution iff \(b \in \rg{\L_A}\).
 \end{ex}
 
 \begin{proof}[\pf{ex:3.3.9}]
-	Let \(A \in \ms\) and let \(b \in \vs{F}^m\).
-	Then we have
-	\begin{align*}
-		     & \exists x \in \vs{F}^n : Ax = b                       \\
-		\iff & \exists x \in \vs{F}^n : \L_A(x) = b &  & \by{2.3.8}  \\
-		\iff & b \in \rg{\L_A}.                     &  & \by{2.1.10}
-	\end{align*}
+  Let \(A \in \ms\) and let \(b \in \vs{F}^m\).
+  Then we have
+  \begin{align*}
+         & \exists x \in \vs{F}^n : Ax = b                       \\
+    \iff & \exists x \in \vs{F}^n : \L_A(x) = b &  & \by{2.3.8}  \\
+    \iff & b \in \rg{\L_A}.                     &  & \by{2.1.10}
+  \end{align*}
 \end{proof}
 
 \begin{ex}\label{ex:3.3.10}
-	Prove or give a counterexample to the following statement:
-	If the coefficient matrix of a system of \(m\) linear equations in \(n\) unknowns has rank \(m\), then the system has a solution.
+  Prove or give a counterexample to the following statement:
+  If the coefficient matrix of a system of \(m\) linear equations in \(n\) unknowns has rank \(m\), then the system has a solution.
 \end{ex}
 
 \begin{proof}[\pf{ex:3.3.10}]
-	Let \(A \in \ms\) such that \(\rk{A} = m\).
-	Since
-	\begin{align*}
-		         & \rk{A} = \rk{\L_A} = m                                             &  & \by{3.2.1} \\
-		\implies & \rg{\L_A} = \vs{F}^m                                               &  & \by{1.11}  \\
-		\implies & \forall b \in \vs{F}^m, \exists x \in \vs{F}^n : \L_A(x) = Ax = b,
-	\end{align*}
-	we know that any system \(Ax = b\) has a solution.
+  Let \(A \in \ms\) such that \(\rk{A} = m\).
+  Since
+  \begin{align*}
+             & \rk{A} = \rk{\L_A} = m                                             &  & \by{3.2.1} \\
+    \implies & \rg{\L_A} = \vs{F}^m                                               &  & \by{1.11}  \\
+    \implies & \forall b \in \vs{F}^m, \exists x \in \vs{F}^n : \L_A(x) = Ax = b,
+  \end{align*}
+  we know that any system \(Ax = b\) has a solution.
 \end{proof}
