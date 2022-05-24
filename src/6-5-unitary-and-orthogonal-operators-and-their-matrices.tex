@@ -96,12 +96,12 @@
   \]
   for some scalars \(a_i \in \F\), and so
   \begin{align*}
-    \norm{x}^2 & = \inn{\sum_{i = 1}^n a_i v_i, \sum_{j = 1}^n a_j v_j}         &  & \by{6.1.9}      \\
-               & = \sum_{i = 1}^n  a_i \inn{v_i, \sum_{j = 1}^n \conj{a_j} v_j} &  & \by{6.1.1}[a,b] \\
-               & = \sum_{i = 1}^n \sum_{j = 1}^n a_i \conj{a_j} \inn{v_i, v_j}  &  & \by{6.1}[a,b]   \\
-               & = \sum_{i = 1}^n \sum_{j = 1}^n a_i \conj{a_j} \delta_{i j}    &  & \by{6.1.12}     \\
-               & = \sum_{i = 1}^n a_i \conj{a_i}                                &  & \by{2.3.4}      \\
-               & = \sum_{i = 1}^n \abs{a_i}^2                                   &  & \by{d.0.5}
+    \norm{x}^2 & = \inn{\sum_{i = 1}^n a_i v_i, \sum_{j = 1}^n a_j v_j}        &  & \by{6.1.9}      \\
+               & = \sum_{i = 1}^n  a_i \inn{v_i, \sum_{j = 1}^n a_j v_j}       &  & \by{6.1.1}[a,b] \\
+               & = \sum_{i = 1}^n \sum_{j = 1}^n a_i \conj{a_j} \inn{v_i, v_j} &  & \by{6.1}[a,b]   \\
+               & = \sum_{i = 1}^n \sum_{j = 1}^n a_i \conj{a_j} \delta_{i j}   &  & \by{6.1.12}     \\
+               & = \sum_{i = 1}^n a_i \conj{a_i}                               &  & \by{2.3.4}      \\
+               & = \sum_{i = 1}^n \abs{a_i}^2                                  &  & \by{d.0.5}
   \end{align*}
   since \(\beta\) is orthonormal.
 
@@ -147,7 +147,8 @@
                    & = v_i                     &  & (\abs{\lambda_i} = 1 \text{ and } \lambda_i \in \R)
   \end{align*}
   for each \(i \in \set{1, \dots, n}\).
-  So \(\T \T^* = \IT[\V]\), and again by \cref{ex:2.4.10}, \(\T\) is orthogonal by \cref{6.18}(a).
+  So \(\T \T^* = \IT[\V]\), and again by \cref{ex:2.4.10}, \(\T^* \T = \IT[\V]\).
+  Thus \(\T\) is orthogonal by \cref{6.18}(a).
 
   If \(\T\) is self-adjoint, then, by \cref{6.17}, we have that \(\V\) possesses an orthonormal basis \(\set{\seq{v}{1,,n}}\) over \(\R\) such that \(\T(v_i) = \lambda_i v_i\) for all \(i \in \set{1, \dots, n}\).
   If \(\T\) is also orthogonal, we have
@@ -192,7 +193,7 @@
 
 \begin{eg}\label{6.5.6}
   Let \(\T : \R^2 \to \R^2\) be a rotation by \(\theta\), where \(0 < \theta < \pi\).
-  It is clear geometrically that \(\T\) ``preserves length'', that is, that \(\norm{\T(x)} = \norm{x}\) for all \(x \in \R^2\).
+  It is geometrically clear that \(\T\) ``preserves length'', that is, that \(\norm{\T(x)} = \norm{x}\) for all \(x \in \R^2\).
   The fact that rotations by a fixed angle preserve perpendicularity not only can be seen geometrically but now follows from \cref{6.18}(b).
   Perhaps the fact that such a transformation preserves the inner product is not so obvious;
   however, we obtain this fact from \cref{6.18}(b) also.
@@ -428,7 +429,7 @@
 \end{defn}
 
 \begin{note}
-  One may think intuitively of such a motion as a transformation that does not affect the shape of a figure under its action, hence the term \emph{rigid}.
+  One may think intuitively of a rigid motion as a transformation that does not affect the shape of a figure under its action, hence the term \emph{rigid}.
   The key requirement for such a transformation is that it preserves distances.
 \end{note}
 
@@ -449,14 +450,14 @@
 \begin{defn}\label{6.5.16}
   Another class of rigid motions are the \emph{translations}.
   A function \(g : \V \to \V\), where \(\V\) is a real inner product space, is called a \textbf{translation} if there exists a vector \(v_0 \in \V\) such that \(g(x) = x + v_0\) for all \(x \in \V\).
-  We say that \(g\) is the translation by \(v_0\).
+  We say that \(g\) is the \emph{translation by} \(v_0\).
 \end{defn}
 
 \begin{note}
   It is a simple exercise to show that translations, as well as composites of rigid motions on a real inner product space, are also rigid motions.
   (See \cref{ex:6.5.22}.)
   Thus an orthogonal operator on a finite-dimensional real inner product space \(\V\) followed by a translation on \(\V\) is a rigid motion on \(\V\).
-  Remarkably, every rigid motion on \(\V\) may be characterized in this way by (see \cref{6.22}).
+  Remarkably, every rigid motion on \(\V\) may be characterized in this way (see \cref{6.22}).
 \end{note}
 
 \begin{thm}\label{6.22}
@@ -571,6 +572,81 @@
 
 \begin{proof}[\pf{6.5.17}]
   Combining \cref{6.22,6.23} we are done.
+\end{proof}
+
+\begin{defn}\label{6.5.18}
+  Consider the quadratic equation
+  \begin{equation}\label{eq:6.5.1}
+    ax^2 + 2bxy + cy^2 + dx + ey + f = 0.
+  \end{equation}
+  For special choices of the coefficients in the equation above, we obtain the various conic sections, namely, the circle, ellipse, parabola, and hyperbola.
+  If \(b = 0\), then it is easy to graph the equation by the method of completing the square because the \(xy\)-term is absent.
+  We now concentrate solely on the elimination of the \(xy\)-term.
+  To accomplish this, we consider the expression
+  \begin{equation}\label{eq:6.5.2}
+    ax^2 + 2bxy + cy^2,
+  \end{equation}
+  which is called the \textbf{associated quadratic form} of \cref{eq:6.5.1}.
+  Quadratic forms are studied in more generality in \cref{sec:6.8}.
+\end{defn}
+
+\begin{cor}[principal axis theorem]\label{6.5.19}
+  the \(xy\)-term in \cref{eq:6.5.2} may be eliminated by a rotation of the \(x\)-axis and \(y\)-axis to new axes \(x'\) and \(y'\) given by \(X = P X'\), where \(P\) is an orthogonal matrix and \(\det(P) = 1\).
+  Furthermore, the coefficients of \((x')^2\) and \((y')^2\) are the eigenvalues of
+  \[
+    A = \begin{pmatrix}
+      a & b \\
+      b & c
+    \end{pmatrix}.
+  \]
+\end{cor}
+
+\begin{proof}[\pf{6.5.19}]
+  Let
+  \[
+    A = \begin{pmatrix}
+      a & b \\
+      b & c
+    \end{pmatrix} \quad \text{and} \quad X = \begin{pmatrix}
+      x \\
+      y
+    \end{pmatrix}.
+  \]
+  Then \cref{eq:6.5.2} may be written as \(\tp{X} A X = \inn{AX, X}\).
+
+  The fact that \(A\) is symmetric is crucial in our discussion.
+  For, by \cref{6.20}, we may choose an orthogonal matrix \(P\) and a diagonal matrix \(D\) with real diagonal entries \(\lambda_1\) and \(\lambda_2\) such that \(\tp{P} A P = D\).
+  Now define
+  \[
+    X' = \begin{pmatrix}
+      x' \\
+      y'
+    \end{pmatrix}
+  \]
+  by \(X' = \tp{P} X\) or, equivalently, by \(P X' = P \tp{P} X = X\).
+  Then
+  \begin{align*}
+    \tp{X} A X & = \tp{(P X')} A (P X')                                 \\
+               & = \tp{(X')} (\tp{P} A P) X'            &  & \by{2.3.2} \\
+               & = \tp{(X')} D X'                                       \\
+               & = \lambda_1 (x')^2 + \lambda_2 (y')^2.
+  \end{align*}
+  Thus the transformation \((x, y) \mapsto (x', y')\) allows us to eliminate the \(xy\)-term in \cref{eq:6.5.2}, and hence in \cref{eq:6.5.1}.
+
+  Furthermore, since \(P\) is orthogonal, we have by \cref{6.23} (with \(\T = \L_P\)) that \(\det(P) = \pm 1\).
+  If \(\det(P) = -1\), we may interchange the columns of \(P\) to obtain a matrix \(Q\).
+  Because the columns of \(P\) form an orthonormal basis of eigenvectors of \(A\), the same is true of the columns of \(Q\).
+  Therefore,
+  \[
+    \tp{Q} A Q = \begin{pmatrix}
+      \lambda_2 & 0         \\
+      0         & \lambda_1
+    \end{pmatrix}.
+  \]
+  Notice that \(\det(Q) = -\det(P) = 1\) by \cref{4.5}.
+  So, if \(\det(P) = -1\), we can take \(Q\) for our new \(P\);
+  consequently, we may always choose \(P\) so that \(\det(P) = 1\).
+  By \cref{6.23}(a) (with \(\T = \L_P\)), it follows that matrix \(P\) represents a rotation.
 \end{proof}
 
 \exercisesection
