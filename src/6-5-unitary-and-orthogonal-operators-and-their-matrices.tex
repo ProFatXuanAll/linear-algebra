@@ -649,7 +649,77 @@
   By \cref{6.23}(a) (with \(\T = \L_P\)), it follows that matrix \(P\) represents a rotation.
 \end{proof}
 
+\begin{note}
+  The arguments above, of course, are easily extended to quadratic equations in \(n\) variables.
+  For example, in the case \(n = 3\), by special choices of the coefficients, we obtain the quadratic surfaces
+  --- the elliptic cone, the ellipsoid, the hyperbolic paraboloid, etc.
+\end{note}
+
 \exercisesection
+
+\setcounter{ex}{2}
+\begin{ex}\label{ex:6.5.3}
+  Prove that the composite of unitary (orthogonal) operators is unitary (orthogonal).
+\end{ex}
+
+\begin{proof}[\pf{ex:6.5.3}]
+  Let \(\V\) be a complex (real) vector space.
+  Let \(\T, \U \in \ls(\V)\) be unitary (orthogonal).
+  Then by \cref{2.9} we have \(\T \U \in \ls(\V)\) and
+  \begin{align*}
+    \forall x \in \V, \norm{(\T \U)(x)} & = \norm{\T(\U(x))}                 \\
+                                        & = \norm{\U(x)}     &  & \by{6.5.1} \\
+                                        & = \norm{x}.        &  & \by{6.5.1}
+  \end{align*}
+  Thus by \cref{6.5.1} \(\T \U\) is unitary (orthogonal).
+\end{proof}
+
+\begin{ex}\label{ex:6.5.4}
+  For \(z \in \C\), define \(\T_z : \C \to \C\) by \(\T_z(u) = zu\).
+  Characterize those \(z\) for which \(\T_z\) is normal, self-adjoint, or unitary.
+\end{ex}
+
+\begin{proof}[\pf{ex:6.5.4}]
+  Since
+  \begin{align*}
+    \forall x, y \in \C, \inn{x, \T_z^*(y)} & = \inn{\T_z(x), y}           &  & \by{6.9}      \\
+                                            & = \inn{zx, y}                                   \\
+                                            & = z \inn{x, y}               &  & \by{6.1.1}[b] \\
+                                            & = \inn{x, \conj{z} y}        &  & \by{6.1}[b]   \\
+                                            & = \inn{x, \T_{\conj{z}}(y)},
+  \end{align*}
+  by \cref{6.1}(e) we know that \(\T_z^* = \T_{\conj{z}}\) for all \(z \in \C\).
+
+  First we claim that \(\T_z\) is normal for all \(z \in \C\).
+  Since
+  \begin{align*}
+    \forall u, z \in \C, \T_z(\T_z^*(u)) & = \T_z(\T_{\conj{z}}(u)) &  & \text{(from the proof above)} \\
+                                         & = z \conj{z} u                                              \\
+                                         & = \conj{z} z u                                              \\
+                                         & = \T_{\conj{z}}(\T_z(u))                                    \\
+                                         & = \T_z^*(\T_z(u)),       &  & \text{(from the proof above)}
+  \end{align*}
+  by \cref{6.4.3} we know that \(\T_z\) is normal for all \(z \in \C\).
+
+  Next we claim that \(\T_z\) is self adjoint iff \(z \in \R\).
+  This is true since
+  \begin{align*}
+         & \T_z = \T_z^*                                                  &  & \by{6.4.8}                    \\
+    \iff & \T_z = \T_{\conj{z}}                                           &  & \text{(from the proof above)} \\
+    \iff & \forall u \in \C, zu = \T_z(u) = \T_{\conj{z}}(u) = \conj{z} u                                    \\
+    \iff & z = \conj{z}                                                                                      \\
+    \iff & z \in \R.
+  \end{align*}
+
+  Finally we claim that \(\T_z\) is unitary iff \(\abs{z} = 1\).
+  This is true since
+  \begin{align*}
+         & \T_z \text{ is unitary}                                         \\
+    \iff & \forall u \in \C, \abs{z} \norm{u} = \norm{zu} &  & \by{6.2}[a] \\
+         & = \norm{\T_z(u)} = \norm{u}                    &  & \by{6.5.1}  \\
+    \iff & \abs{z} = 1.
+  \end{align*}
+\end{proof}
 
 \begin{ex}\label{ex:6.5.18}
   Show that ``is unitarily equivalent to'' is an equivalence relation on \(\ms[n][n][\C]\).
