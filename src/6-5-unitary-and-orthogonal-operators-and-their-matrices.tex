@@ -788,6 +788,82 @@
   and thus by \cref{2.1.13} \(\T = \U^2\).
 \end{proof}
 
+\begin{ex}\label{ex:6.5.8}
+  Let \(\T\) be a self-adjoint linear operator on a finite-dimensional inner product space \(\V\) over \(\C\).
+  Prove that \((\T + i \IT[\V])(\T - i \IT[\V])^{-1}\) is unitary using \cref{ex:6.4.10}.
+\end{ex}
+
+\begin{proof}[\pf{ex:6.5.8}]
+  We have
+  \begin{align*}
+     & \pa{(\T + i \IT[\V]) (\T - i \IT[\V])^{-1}}^* (\T + i \IT[\V]) (\T - i \IT[\V])^{-1}                           \\
+     & = \pa{(\T - i \IT[\V])^{-1}}^* (\T + i \IT[\V])^* (\T + i \IT[\V]) (\T - i \IT[\V])^{-1} &  & \by{6.11}[c]     \\
+     & = \pa{(\T + i \IT[\V])^{-1}} (\T + i \IT[\V])^* (\T + i \IT[\V]) (\T - i \IT[\V])^{-1}   &  & \by{ex:6.4.10}   \\
+     & = (\T + i \IT[\V])^{-1} (\T + i \IT[\V]) (\T + i \IT[\V])^* (\T - i \IT[\V])^{-1}        &  & \by{6.15}[b]     \\
+     & = (\T + i \IT[\V])^{-1} (\T + i \IT[\V]) (\T^* - i \IT[\V]) (\T - i \IT[\V])^{-1}        &  & \by{6.11}[a,b,e] \\
+     & = (\T + i \IT[\V])^{-1} (\T + i \IT[\V]) (\T - i \IT[\V]) (\T - i \IT[\V])^{-1}          &  & \by{6.4.8}       \\
+     & = \IT[\V].
+  \end{align*}
+  Since \(\V\) is finite-dimensional, by \cref{ex:2.4.10}(b) we know that
+  \[
+    (\T + i \IT[\V]) (\T - i \IT[\V])^{-1} \pa{(\T + i \IT[\V]) (\T - i \IT[\V])^{-1}}^* = \IT[\V].
+  \]
+  Thus by \cref{6.18}(a)(e) we know that \(\T\) is unitary.
+\end{proof}
+
+\begin{ex}\label{ex:6.5.9}
+  Let \(\U\) be a linear operator on a finite-dimensional inner product space \(\V\) over \(\F\).
+  If \(\norm{\U(x)} = \norm{x}\) for all \(x\) in some orthonormal basis for \(\V\) over \(\F\), must \(\U\) be unitary?
+  Justify your answer with a proof or a counterexample.
+\end{ex}
+
+\begin{proof}[\pf{ex:6.5.9}]
+  We claim that \(\U\) may not be unitary.
+  Let \(A = (e_1, e_1)\) and let \(\U = \L_A\).
+  We know that \(\set{e_1, e_2}\) is an orthonormal basis for \(\vs{F}^2\) over \(\F\), and
+  \[
+    \norm{\U(e_1)} = \norm{e_1} = \norm{\U(e_2)} = 1.
+  \]
+  But \(\norm{\U(e_1 + e_2)} = \norm{2e_1} = 2 \neq \sqrt{2} = \norm{e_1 + e_2}\).
+\end{proof}
+
+\begin{ex}\label{ex:6.5.10}
+  Let \(A\) be an \(n \times n\) real symmetric or complex normal matrix.
+  Prove that
+  \[
+    \tr[A] = \sum_{i = 1}^n \lambda_i \quad \text{and} \quad \tr[A^* A] = \sum_{i = 1}^n \abs{\lambda_i}^2,
+  \]
+  where the \(\lambda_i\)'s are the (not necessarily distinct) eigenvalues of \(A\).
+\end{ex}
+
+\begin{proof}[\pf{ex:6.5.10}]
+  Let \(\beta\) be the standard ordered basis for \(\vs{F}^n\) over \(\F\).
+  By \cref{6.16,6.17} there exists an orthonormal basis \(\gamma\) for \(\vs{F}^n\) over \(\F\) such that \([\L_A]_{\gamma}\) is a diagonal matrix.
+  Then we have
+  \begin{align*}
+    \tr[A] & = \tr[[\L_A]_{\beta}]                                                                    &  & \by{2.15}[a]   \\
+           & = \tr[[\IT[\vs{F}^n]]_{\gamma}^{\beta} [\L_A]_{\gamma} [\IT[\vs{F}^n]]_{\beta}^{\gamma}] &  & \by{2.23}      \\
+           & = \tr[[\L_A]_{\gamma} [\IT[\vs{F}^n]]_{\gamma}^{\beta} [\IT[\vs{F}^n]]_{\beta}^{\gamma}] &  & \by{ex:2.3.13} \\
+           & = \tr[[\L_A]_{\gamma}]                                                                   &  & \by{2.23}      \\
+           & = \sum_{i = 1}^n \lambda_i                                                               &  & \by{5.1.2}
+  \end{align*}
+  and
+  \begin{align*}
+    \tr[A^* A] & = \tr[[\L_{A^*}]_{\beta} [\L_A]_{\beta}]                                                                                                                                                        &  & \by{2.15}[a]   \\
+               & = \tr[[\L_A^*]_{\beta} [\L_A]_{\beta}]                                                                                                                                                          &  & \by{6.3.1}     \\
+               & = \tr[[\L_A]_{\beta}^* [\L_A]_{\beta}]                                                                                                                                                          &  & \by{6.10}      \\
+               & = \tr[\pa{[\IT[\vs{F}^n]]_{\gamma}^{\beta} [\L_A]_{\gamma} [\IT[\vs{F}^n]]_{\beta}^{\gamma}}^* [\IT[\vs{F}^n]]_{\gamma}^{\beta} [\L_A]_{\gamma} [\IT[\vs{F}^n]]_{\beta}^{\gamma}]               &  & \by{2.23}      \\
+               & = \tr[\pa{[\IT[\vs{F}^n]]_{\beta}^{\gamma}}^* \pa{[\L_A]_{\gamma}}^* \pa{[\IT[\vs{F}^n]]_{\gamma}^{\beta}}^* [\IT[\vs{F}^n]]_{\gamma}^{\beta} [\L_A]_{\gamma} [\IT[\vs{F}^n]]_{\beta}^{\gamma}] &  & \by{6.3.2}[c]  \\
+               & = \tr[\pa{[\L_A]_{\gamma}}^* [\L_A]_{\gamma} \pa{[\IT[\vs{F}^n]]_{\beta}^{\gamma}}^* \pa{[\IT[\vs{F}^n]]_{\gamma}^{\beta}}^* [\IT[\vs{F}^n]]_{\gamma}^{\beta} [\IT[\vs{F}^n]]_{\beta}^{\gamma}] &  & \by{ex:2.3.13} \\
+               & = \tr[\pa{[\L_A]_{\gamma}}^* [\L_A]_{\gamma} \pa{[\IT[\vs{F}^n]]_{\gamma}^{\beta} [\IT[\vs{F}^n]]_{\beta}^{\gamma}}^* [\IT[\vs{F}^n]]_{\gamma}^{\beta} [\IT[\vs{F}^n]]_{\beta}^{\gamma}]        &  & \by{6.3.2}[c]  \\
+               & = \tr[\pa{[\L_A]_{\gamma}}^* [\L_A]_{\gamma} \pa{I_n}^* I_n]                                                                                                                                    &  & \by{2.23}      \\
+               & = \tr[\pa{[\L_A]_{\gamma}}^* [\L_A]_{\gamma}]                                                                                                                                                   &  & \by{6.3.2}[e]  \\
+               & = \tr[\conj{[\L_A]_{\gamma}} [\L_A]_{\gamma}]                                                                                                                                                   &  & \by{6.1.5}     \\
+               & = \sum_{i = 1}^n \conj{\lambda_i} \lambda_i                                                                                                                                                     &  & \by{5.1.2}     \\
+               & = \sum_{i = 1}^n \abs{\lambda_i}^2.                                                                                                                                                             &  & \by{d.0.5}
+  \end{align*}
+\end{proof}
+
 \begin{ex}\label{ex:6.5.18}
   Show that ``is unitarily equivalent to'' is an equivalence relation on \(\ms[n][n][\C]\).
 \end{ex}
