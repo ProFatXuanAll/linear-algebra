@@ -721,6 +721,73 @@
   \end{align*}
 \end{proof}
 
+\setcounter{ex}{5}
+\begin{ex}\label{ex:6.5.6}
+  Let \(\V\) be the inner product space of complex-valued continuous functions on \([0, 1]\) with the inner product
+  \[
+    \inn{f, g} = \int_0^1 f(t) \conj{g(t)} \; dt.
+  \]
+  Let \(h \in \V\), and define \(\T : \V \to \V\) by \(\T(f) = hf\).
+  Prove that \(\T\) is a unitary operator iff \(\abs{h(t)} = 1\) for \(t \in [0, 1]\).
+\end{ex}
+
+\begin{proof}[\pf{ex:6.5.6}]
+  First suppose that \(\T\) is unitary.
+  Then we have
+  \begin{align*}
+    \forall f \in \V, 0 & = \norm{\T(f)}^2 - \norm{f}^2                                                 &  & \by{6.5.1} \\
+                        & = \inn{\T(f), \T(f)} - \inn{f, f}                                             &  & \by{6.1.9} \\
+                        & = \inn{hf, hf} - \inn{f, f}                                                                   \\
+                        & = \int_0^1 h(t) f(t) \conj{h(t) f(t)} \; dt - \int_0^1 f(t) \conj{f(t)} \; dt                 \\
+                        & = \int_0^1 (h(t) \conj{h(t)} - 1) f(t) \conj{f(t)} \; dt                                      \\
+                        & = \int_0^1 (\abs{h(t)}^2 - 1) \abs{f(t)}^2 \; dt.                             &  & \by{d.0.5}
+  \end{align*}
+  Since \(h \in \V\), we can choose a \(f \in \V\) such that \(f(t) = (\abs{h(t)}^2 - 1)^{1 / 2}\), and we have
+  \begin{align*}
+             & \int_0^1 (\abs{h(t)}^2 - 1) \abs{\abs{h(t)}^2 - 1} \; dt = 0                                                 \\
+    \implies & \int_0^1 (\abs{h(t)}^2 - 1)^2 \; dt = 0                                                                      \\
+    \implies & \forall t \in [0, 1], \abs{h(t)}^2 - 1 = 0                   &  & \text{(\(h\) is continuous on \([0, 1]\))} \\
+    \implies & \forall t \in [0, 1], \abs{h(t)} = 1.
+  \end{align*}
+
+  Now suppose that \(\abs{h(t)} = 1\) for all \(t \in [0, 1]\).
+  Then we have
+  \begin{align*}
+    \forall f \in \V, \norm{\T(f)}^2 & = \inn{\T(f), \T(f)}                        &  & \by{6.1.9}       \\
+                                     & = \inn{hf, hf}                                                    \\
+                                     & = \int_0^1 h(t) f(t) \conj{h(t) f(t)} \; dt                       \\
+                                     & = \int_0^1 f(t) \conj{f(t)} \; dt           &  & (\abs{h(t)} = 1) \\
+                                     & = \inn{f, f}                                                      \\
+                                     & = \norm{f}^2.                               &  & \by{6.1.9}
+  \end{align*}
+  Thus by \cref{6.5.1} \(\T\) is unitary.
+\end{proof}
+
+\begin{ex}\label{ex:6.5.7}
+  Prove that if \(\T\) is a unitary operator on a finite-dimensional inner product space \(\V\) over \(\C\), then \(\T\) has a unitary \emph{square root};
+  that is, there exists a unitary operator \(\U\) such that \(\T = \U^2\).
+\end{ex}
+
+\begin{proof}[\pf{ex:6.5.7}]
+  Suppose that \(\dim(\V) = n\).
+  By \cref{6.5.5} there exists an orthonormal basis \(\beta\) for \(\V\) over \(\C\) such that \([\T]_{\beta}\) is a diagonal matrix.
+  Since \([\T]_{\beta} \in \ms[n][n][\C]\), we know that there exists some \(c_i \in \C\) such that \(c_i^2 = ([\T]_{\beta})_{i i}\) for all \(i \in \set{1, \dots, n}\).
+  Thus by \cref{2.6} there exists an \(\U \in \ls(\V)\) such that
+  \[
+    [\U]_{\beta} = \begin{pmatrix}
+      c_1    & 0      & \cdots & 0      \\
+      0      & c_2    & \cdots & 0      \\
+      \vdots & \vdots & \ddots & \vdots \\
+      0      & 0      & \cdots & c_n
+    \end{pmatrix}.
+  \]
+  By \cref{2.11} we have
+  \[
+    [\T]_{\beta} = [\U]_{\beta} [\U]_{\beta} = [\U^2]_{\beta}
+  \]
+  and thus by \cref{2.1.13} \(\T = \U^2\).
+\end{proof}
+
 \begin{ex}\label{ex:6.5.18}
   Show that ``is unitarily equivalent to'' is an equivalence relation on \(\ms[n][n][\C]\).
 \end{ex}
