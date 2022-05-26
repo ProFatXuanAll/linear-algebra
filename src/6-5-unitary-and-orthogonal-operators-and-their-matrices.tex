@@ -864,6 +864,71 @@
   \end{align*}
 \end{proof}
 
+\setcounter{ex}{11}
+\begin{ex}\label{ex:6.5.12}
+  Let \(A\) be an \(n \times n\) real symmetric or complex normal matrix.
+  Prove that
+  \[
+    \det(A) = \prod_{i = 1}^n \lambda_i,
+  \]
+  where the \(\lambda_i\)'s are the (not necessarily distinct) eigenvalues of \(A\).
+\end{ex}
+
+\begin{proof}[\pf{ex:6.5.12}]
+  Let \(\beta\) be the standard ordered basis for \(\vs{F}^n\) over \(\F\).
+  By \cref{6.16,6.17} there exists an orthonormal basis \(\gamma\) for \(\vs{F}^n\) over \(\F\) such that \([\L_A]_{\gamma}\) is a diagonal matrix.
+  Then we have
+  \begin{align*}
+    \det(A) & = \det([\L_A]_{\beta})                                                                                &  & \by{2.15}[a] \\
+            & = \det([\IT[\vs{F}^n]]_{\gamma}^{\beta} [\L_A]_{\gamma} [\IT[\vs{F}^n]]_{\beta}^{\gamma})             &  & \by{2.23}    \\
+            & = \det([\IT[\vs{F}^n]]_{\gamma}^{\beta}) \det([\L_A]_{\gamma}) \det([\IT[\vs{F}^n]]_{\beta}^{\gamma}) &  & \by{4.7}     \\
+            & = \det([\L_A]_{\gamma}) \det([\IT[\vs{F}^n]]_{\gamma}^{\beta} [\IT[\vs{F}^n]]_{\beta}^{\gamma})       &  & \by{4.7}     \\
+            & = \det([\L_A]_{\gamma}) \det(I_n)                                                                     &  & \by{2.23}    \\
+            & = \det([\L_A]_{\gamma})                                                                               &  & \by{4.2.3}   \\
+            & = \prod_{i = 1}^n \lambda_i.                                                                          &  & \by{5.1.2}
+  \end{align*}
+\end{proof}
+
+\begin{ex}\label{ex:6.5.13}
+  Suppose that \(A, B \in \ms[n][n][\F]\) are diagonalizable matrices.
+  Prove or disprove that \(A, B\) are similar iff \(A, B\) are unitarily equivalent.
+\end{ex}
+
+\begin{proof}[\pf{ex:6.5.13}]
+  We claim that \(A, B\) are similar may not imply \(A, B\) are unitary equivalent.
+  Let
+  \[
+    A = \begin{pmatrix}
+      1 & 0 \\
+      0 & 0
+    \end{pmatrix} \quad \text{and} \quad B = \begin{pmatrix}
+      1 & 1 \\
+      0 & 0
+    \end{pmatrix}.
+  \]
+  Then
+  \[
+    \begin{pmatrix}
+      1 & 0 \\
+      0 & 0
+    \end{pmatrix} = \begin{pmatrix}
+      1 & 1  \\
+      0 & -1
+    \end{pmatrix}^{-1} \begin{pmatrix}
+      1 & 1 \\
+      0 & 0
+    \end{pmatrix} \begin{pmatrix}
+      1 & 1  \\
+      0 & -1
+    \end{pmatrix}
+  \]
+  and thus by \cref{2.5.4} \(A, B\) are similar and diagonalizable.
+  But \(\begin{pmatrix}
+    1 & 1  \\
+    0 & -1
+  \end{pmatrix}\) is not unitary.
+\end{proof}
+
 \begin{ex}\label{ex:6.5.18}
   Show that ``is unitarily equivalent to'' is an equivalence relation on \(\ms[n][n][\C]\).
 \end{ex}
