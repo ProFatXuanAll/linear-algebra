@@ -717,16 +717,17 @@
   \end{align*}
   by \cref{6.4.8} we know that \(A\) is self-adjoint.
   By \cref{6.17} there exists an orthonormal basis \(\beta = \set{\seq{v}{1,,n}}\) for \(\vs{\R}^n\) over \(\R\) consisting of eigenvectors of \(A\).
-  For each \(i \in \set{1, \dots, n}\), let \(\lambda_i\) be an eigenvalue of \(A\) such that \(A v_i = \lambda v_i\).
-  By \cref{2.6} we can define an \(\U \in \ls(\vs{\R}^n)\) such that \(\U(v_i) = \sqrt{v_i} v_i\) for all \(i \in \set{1, \dots, n}\).
+  For each \(i \in \set{1, \dots, n}\), let \(\lambda_i\) be an eigenvalue of \(A\) such that \(A v_i = \lambda_i v_i\).
+  Since \(\lambda_i \geq 0\), we know that \(\sqrt{\lambda_i} \geq 0\) for all \(i \in \set{1, \dots, n}\).
+  By \cref{2.6} we can define an \(\U \in \ls(\vs{\R}^n)\) such that \(\U(v_i) = \sqrt{\lambda_i} v_i\) for all \(i \in \set{1, \dots, n}\).
   Then we have
   \begin{align*}
              & [\U]_{\beta} = \begin{pmatrix}
-                                \sqrt{v_1} & 0          & \cdots & 0          \\
-                                0          & \sqrt{v_2} & \cdots & 0          \\
-                                \vdots     & \vdots     &        & \vdots     \\
-                                0          & 0          & \cdots & \sqrt{v_n}
-                              \end{pmatrix}                      &  & \by{2.2.4}                     \\
+                                \sqrt{\lambda_1} & 0                & \cdots & 0                \\
+                                0                & \sqrt{\lambda_2} & \cdots & 0                \\
+                                \vdots           & \vdots           &        & \vdots           \\
+                                0                & 0                & \cdots & \sqrt{\lambda_n}
+                              \end{pmatrix}    &  & \by{2.2.4}        \\
     \implies & [\U]_{\beta}^* = \tp{([\U]_{\beta})} = [\U]_{\beta}                   &  & \by{6.1.5} \\
     \implies & \tp{([\U]_{\beta})} [\U]_{\beta} = ([\U]_{\beta})^2 = [\L_A]_{\beta}. &  & \by{2.2.4}
   \end{align*}
@@ -765,7 +766,7 @@
           Thus by \cref{5.2.8} \(\T, \U\) are simultaneously diagonalizable by some orthonormal bases for \(\V\) over \(\R\).
     \item If \(E_{\lambda} \neq \V\), then by \cref{5.7} we have \(1 \leq \dim(E_{\lambda}) < n + 1\).
           By \cref{5.4.2}(e) we know that \(E_{\lambda}\) is \(\T\)-invariant.
-          we claim that \(E_{\lambda}\) is \(\U\)-invariant.
+          We claim that \(E_{\lambda}\) is \(\U\)-invariant.
           Since
           \begin{align*}
                      & \forall v \in E_{\lambda}, \T(v) = \lambda v             &  & \by{5.2.4}    \\
@@ -803,15 +804,15 @@
               & = \L_{BA}                      \\
               & = \L_B \L_A, &  & \by{2.15}[e]
   \end{align*}
-  by \cref{ex:6.4.14} there exists an orthonormal basis \(\gamma\) for \(\vs{R}^n\) over \(\R\) such that \([\L_A]_{\gamma}, [\L_B]_{\gamma}\) are diagonal matrices.
-  If we let \(\beta\) be the standard ordered basis for \(\vs{R}^n\) over \(\R\) (which is orthonormal), then we have
+  by \cref{ex:6.4.14} there exists an orthonormal basis \(\gamma\) for \(\R^n\) over \(\R\) such that \([\L_A]_{\gamma}, [\L_B]_{\gamma}\) are diagonal matrices.
+  If we let \(\beta\) be the standard ordered basis for \(\R^n\) over \(\R\) (which is orthonormal), then we have
   \begin{align*}
     [\L_A]_{\gamma} & = \pa{[\IT[\vs{F}^n]]_{\gamma}^{\beta}}^{-1} [\L_A]_{\beta} [\IT[\vs{F}^n]]_{\gamma}^{\beta} &  & \by{2.23}         \\
                     & = \pa{[\IT[\vs{F}^n]]_{\gamma}^{\beta}}^{-1} A [\IT[\vs{F}^n]]_{\gamma}^{\beta}              &  & \by{2.15}[a]      \\
                     & = \pa{[\IT[\vs{F}^n]]_{\gamma}^{\beta}}^* A [\IT[\vs{F}^n]]_{\gamma}^{\beta}                 &  & \by{ex:6.1.23}[c] \\
                     & = \tp{\pa{[\IT[\vs{F}^n]]_{\gamma}^{\beta}}} A [\IT[\vs{F}^n]]_{\gamma}^{\beta}.             &  & \by{6.1.5}
   \end{align*}
-  Similarly we have \([\L_A]_{\gamma} = \tp{\pa{[\IT[\vs{F}^n]]_{\gamma}^{\beta}}} A [\IT[\vs{F}^n]]_{\gamma}^{\beta}\).
+  Similarly we have \([\L_B]_{\gamma} = \tp{\pa{[\IT[\vs{F}^n]]_{\gamma}^{\beta}}} B [\IT[\vs{F}^n]]_{\gamma}^{\beta}\).
   By setting \(P = [\IT[\vs{F}^n]]_{\gamma}^{\beta}\) we are done.
 \end{proof}
 
@@ -823,7 +824,7 @@
 
 \begin{proof}[\pf{ex:6.4.16}]
   Since \(A \in \ms[n][n][\C]\), by \cref{d.4} we know that \(\det(A - t I_n)\) splits.
-  By \cref{6.14} there exists an orthonormal basis \(\gamma\) for \(\vs{C}^n\) over \(\C\) such that \([\L_A]_{\gamma}\) is upper triangular.
+  By \cref{6.14} there exists an orthonormal basis \(\gamma\) for \(\C^n\) over \(\C\) such that \([\L_A]_{\gamma}\) is upper triangular.
   By \cref{ex:4.2.23} we have
   \[
     \forall t \in \C, f(t) = \prod_{i = 1}^n (([\L_A]_{\gamma})_{i i} - t)
@@ -936,10 +937,18 @@
   Thus we have
   \begin{align*}
          & \T \text{ is positive definite (semidefinite)}                                                                                                  \\
-    \iff & \forall x \in \V \setminus \set{\zv}, 0 < (\leq) \inn{\T(x), x}                                              &  & \by{6.4.11}                   \\
-         & = \inn{\T\pa{\sum_{j = 1}^n \inn{x, v_j} v_j}, \sum_{k = 1}^n \inn{x, v_k} v_k}                              &  & \by{6.5}                      \\
-         & = \sum_{j = 1}^n \sum_{i = 1}^n \inn{x, v_j} A_{i j} \conj{\inn{x, v_i}}                                     &  & \text{(from the proof above)} \\
-    \iff & \forall a \in \vs{F}^n \setminus \set{\zv}, \sum_{i = 1}^n \sum_{j = 1}^n A_{i j} a_j \conj{a_i} > (\geq) 0.
+    \iff & \forall x \in \V \setminus \set{\zv}, \sum_{j = 1}^n \sum_{i = 1}^n \inn{x, v_j} A_{i j} \conj{\inn{x, v_i}} &  & \text{(from the proof above)} \\
+         & = \inn{\T\pa{\sum_{j = 1}^n \inn{x, v_j} v_j}, \sum_{k = 1}^n \inn{x, v_k} v_k}                              &  & \text{(from the proof above)} \\
+         & = \inn{\T(x), x}                                                                                             &  & \by{6.5}                      \\
+         & \begin{dcases}
+             > 0    & \text{if } \T \text{ is positive definite}     \\
+             \geq 0 & \text{if } \T \text{ is positive semidefinite}
+           \end{dcases}                                                   &  & \by{6.4.11}                                                                 \\
+    \iff & \forall a \in \vs{F}^n \setminus \set{\zv},                                                                                                     \\
+         & \sum_{i = 1}^n \sum_{j = 1}^n A_{i j} a_j \conj{a_i} \begin{dcases}
+                                                                  > 0    & \text{if } \T \text{ is positive definite}     \\
+                                                                  \geq 0 & \text{if } \T \text{ is positive semidefinite}
+                                                                \end{dcases}.                                          &  & \by{1.4.3}
   \end{align*}
 \end{proof}
 
@@ -1018,7 +1027,7 @@
             \implies & \begin{dcases}
                          \ns{\U - (-\lambda) \IT[\V]} = \ns{\U + \lambda \IT[\V]} = \set{\zv} \\
                          (\U - \lambda \IT[\V])(v) \in \ns{\U + \lambda \IT[\V]}
-                       \end{dcases} &  & \by{ex:6.4.17}[a]                    \\
+                       \end{dcases} &  & \text{(\(\U\) is positive semidefinite)}                    \\
             \implies & (\U - \lambda \IT[\V])(v) = \zv                                                                                         \\
             \implies & \U(v) = \lambda v = \T(v).
           \end{align*}
@@ -1054,12 +1063,22 @@
   Let \([\cdot, \cdot]\) be the standard inner product on \(\vs{F}^n\) over \(\F\).
   Then we have
   \begin{align*}
-         & \T \text{ is positive definite (semidefinite)}                                                                 \\
-    \iff & \forall x \in \V, \inn{\T(x), x} > (\geq) 0                                             &  & \by{6.4.11}       \\
-    \iff & \forall x \in \vs{F}^n, \sum_{i = 1}^n \sum_{j = 1}^n A_{i j} x_j \conj{x_i} > (\geq) 0 &  & \by{ex:6.4.17}[b] \\
-    \iff & \forall x \in \vs{F}^n, [Ax, x] > (\geq) 0                                              &  & \by{6.1.2}        \\
-    \iff & \forall x \in \vs{F}^n, [\L_A(x), x] > (\geq) 0                                         &  & \by{2.3.8}        \\
-    \iff & A \text{ is positive definite (semidefinite)}.                                          &  & \by{6.4.11}
+         & \forall x \in \V, \inn{\T(x), x} \begin{dcases}
+                                              > 0    & \text{if } \T \text{ is positive definite}     \\
+                                              \geq 0 & \text{if } \T \text{ is positive semidefinite}
+                                            \end{dcases}                                  &  & \by{6.4.11}                                      \\
+    \iff & \forall x \in \vs{F}^n, \sum_{i = 1}^n \sum_{j = 1}^n A_{i j} x_j \conj{x_i} \begin{dcases}
+                                                                                          > 0    & \text{if } \T \text{ is positive definite}     \\
+                                                                                          \geq 0 & \text{if } \T \text{ is positive semidefinite}
+                                                                                        \end{dcases} &  & \by{ex:6.4.17}[b] \\
+    \iff & \forall x \in \vs{F}^n, [Ax, x] \begin{dcases}
+                                             > 0    & \text{if } \T \text{ is positive definite}     \\
+                                             \geq 0 & \text{if } \T \text{ is positive semidefinite}
+                                           \end{dcases}                                  &  & \by{6.1.2}                                        \\
+    \iff & \forall x \in \vs{F}^n, [\L_A(x), x] \begin{dcases}
+                                                  > 0    & \text{if } A \text{ is positive definite}     \\
+                                                  \geq 0 & \text{if } A \text{ is positive semidefinite}
+                                                \end{dcases}.                                   &  & \by{6.4.11}
   \end{align*}
 \end{proof}
 
@@ -1083,12 +1102,12 @@
   \end{align*}
   and
   \begin{align*}
-    \forall x \in \V \setminus \set{\zv}, \inn{(\T^* \T)(x), x}_1 & = \inn{\T^*(\T(x)), x}_1                          \\
-                                                                  & = \inn{\T(x), \T(x)}_2     &  & \by{ex:6.3.15}[a] \\
-                                                                  & \geq 0                     &  & \by{6.1}[d]       \\
-    \forall y \in \W \setminus \set{\zv}, \inn{(\T \T^*)(y), y}_2 & = \inn{\T(\T^*(y)), y}_2                          \\
-                                                                  & = \inn{\T^*(y), \T^*(y)}_1 &  & \by{ex:6.3.15}[a] \\
-                                                                  & \geq 0,                    &  & \by{6.1}[d]
+    \forall x \in \V \setminus \set{\zv}, \inn{(\T^* \T)(x), x}_1 & = \inn{\T^*(\T(x)), x}_1                                                      \\
+                                                                  & = \inn{\T(x), \T(x)}_2     &  & \by{ex:6.3.15}[a]                             \\
+                                                                  & > 0                        &  & \text{(by \cref{6.1.1}(d) and \cref{6.1}(d))} \\
+    \forall y \in \W \setminus \set{\zv}, \inn{(\T \T^*)(y), y}_2 & = \inn{\T(\T^*(y)), y}_2                                                      \\
+                                                                  & = \inn{\T^*(y), \T^*(y)}_1 &  & \by{ex:6.3.15}[a]                             \\
+                                                                  & > 0,                       &  & \text{(by \cref{6.1.1}(d) and \cref{6.1}(d))}
   \end{align*}
   by \cref{6.4.11} we know that \(\T^* \T\) and \(\T \T^*\) are positive semidefinite.
 \end{proof}
