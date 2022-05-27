@@ -555,7 +555,7 @@
     \implies & \norm{\T(x) - ix} = 0           &  & \by{6.2}[b]                   \\
     \implies & \norm{\T(x)}^2 + \norm{x}^2 = 0 &  & \text{(from the proof above)} \\
     \implies & \norm{\T(x)}^2 = \norm{x}^2 = 0 &  & \by{6.2}[b]                   \\
-    \implies & x = 0.                          &  & \by{6.2}[b]
+    \implies & x = \zv.                        &  & \by{6.2}[b]
   \end{align*}
   Thus by \cref{2.5} \(\T - i \IT[\V]\) is invertible.
 
@@ -886,21 +886,21 @@
   Suppose that \(\lambda \in \F\) is an eigenvalue of \(\T\) and \(v \in \V\) is an eigenvector of \(\T\) corresponding to \(\lambda\).
   Then we have
   \begin{align*}
-    \lambda & = \lambda \frac{\norm{v}^2}{\norm{v}^2}                &  & (v \neq \zv)  \\
-            & = \frac{\lambda \inn{v, v}}{\norm{v}^2}                &  & \by{6.1.9}    \\
-            & = \frac{\inn{\lambda v, v}}{\norm{v}^2}                &  & \by{6.1.1}[b] \\
-            & = \frac{\inn{\T(v), v}}{\norm{v}^2}                    &  & \by{5.1.2}    \\
+    \lambda & = \lambda \frac{\norm{v}^2}{\norm{v}^2}                    &  & (v \neq \zv)  \\
+            & = \frac{\lambda \inn{v, v}}{\norm{v}^2}                    &  & \by{6.1.9}    \\
+            & = \frac{\inn{\lambda v, v}}{\norm{v}^2}                    &  & \by{6.1.1}[b] \\
+            & = \frac{\inn{\T(v), v}}{\norm{v}^2}                        &  & \by{5.1.2}    \\
             & \begin{dcases}
-                > 0    & \text{if } \T \text{ is positive definite} \\
-                \geq 0 & \text{if } \T \text{ is semidefinite}
-              \end{dcases}. &  & \by{6.2}(b) and \cref{6.4.11}
+                > 0    & \text{if } \T \text{ is positive definite}     \\
+                \geq 0 & \text{if } \T \text{ is positive semidefinite}
+              \end{dcases}. &  & \text{(by \cref{6.2}(b) and \cref{6.4.11})}
   \end{align*}
 
   Now suppose that eigenvalues of \(\T\) are positive (nonnegative).
   Since \(\T\) is self-adjoint (by hypothesis), by \cref{6.4.8} we have \(\T = \T^*\).
   Thus we have \(\T^* \T = \T^2 = \T \T^*\) and by \cref{6.4.3} \(\T\) is normal.
-  By \cref{6.16} we know that there exists an orthonormal basis \(\gamma = \set{\seq{v}{1,,n}}\) for \(\V\) over \(\F\) consist of eigenvectors of \(\T\).
-  For each \(i \in \set{1, \dots, n}\), let \(\lambda_i\) be the eigenvalue of \(\T\) correspond to \(v_i\).
+  By \cref{6.16,6.17} we know that there exists an orthonormal basis \(\gamma = \set{\seq{v}{1,,n}}\) for \(\V\) over \(\F\) consist of eigenvectors of \(\T\).
+  For each \(i \in \set{1, \dots, n}\), let \(\lambda_i \in \F\) be the eigenvalue of \(\T\) correspond to \(v_i\).
   Then we have
   \begin{align*}
      & \forall x \in \V \setminus \set{\zv}, \inn{\T(x), x}                                                    \\

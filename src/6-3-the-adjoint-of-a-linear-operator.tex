@@ -633,7 +633,7 @@
   \begin{align*}
              & \T^* \T = \zT                                                                  \\
     \implies & \forall x, y \in \V, 0 = \inn{\zv, y} = \inn{(\T^* \T)(x), y} &  & \by{6.1}[c] \\
-             & = \inn{\T^*(\T(x)), \T(y)} = \inn{\T(x), \T(y)}               &  & \by{6.9}    \\
+             & = \inn{\T^*(\T(x)), y} = \inn{\T(x), \T(y)}                   &  & \by{6.9}    \\
     \implies & \forall x \in \V, \inn{\T(x), \T(x)} = 0                                       \\
     \implies & \forall x \in \V, \T(x) = \zv                                 &  & \by{6.1}[d] \\
     \implies & \T = \zT.
@@ -840,13 +840,13 @@
   Let \(i \in \set{1, \dots, m}\) and let \(j \in \set{1, \dots, n}\).
   Then we have
   \begin{align*}
-    ([\T^*]_{\gamma}^{\beta})_{i j} & = \inn{\T^*(w_j), v_i}_1               &  & \by{6.5}      \\
-                                    & = \conj{\inn{v_i, \T^*(w_j)}_1}        &  & \by{6.1.1}[c] \\
-                                    & = \conj{\inn{\T(v_i), w_j}_2}          &  & \by{6.3.8}    \\
-                                    & = \conj{([\T]_{\beta}^{\gamma})_{j i}} &  & \by{6.5}      \\
-                                    & = (([\T]_{\beta}^{\gamma})^*)_{i j}.   &  & \by{6.1.5}
+    \pa{[\T^*]_{\gamma}^{\beta}}_{i j} & = \inn{\T^*(w_j), v_i}_1                   &  & \by{6.5}      \\
+                                       & = \conj{\inn{v_i, \T^*(w_j)}_1}            &  & \by{6.1.1}[c] \\
+                                       & = \conj{\inn{\T(v_i), w_j}_2}              &  & \by{6.3.8}    \\
+                                       & = \conj{([\T]_{\beta}^{\gamma})_{j i}}     &  & \by{6.5}      \\
+                                       & = \pa{\pa{[\T]_{\beta}^{\gamma}}^*}_{i j}. &  & \by{6.1.5}
   \end{align*}
-  Hence \([\T^*]_{\gamma}^{\beta} = ([\T]_{\beta}^{\gamma})^*\).
+  Hence \([\T^*]_{\gamma}^{\beta} = \pa{[\T]_{\beta}^{\gamma}}^*\).
 \end{proof}
 
 \begin{proof}[\pf{ex:6.3.15}(c)]
@@ -1082,7 +1082,7 @@
   \[
     \T(\sigma)(k) = \sum_{i = k}^\infty \sigma(i) \quad \text{for } k \in \Z^+.
   \]
-  Notice that the infinite series in the definition of \(\T\) converges because \(\sigma(i) \neq 0\) for only finitely many \(i\).
+  Notice that the infinite series in the definition of \(\T\) converges because \(\sigma(i) \neq 0\) for only finitely many \(i \in \Z^+\).
   \begin{enumerate}
     \item Prove that \(\T \in \ls(\V)\).
     \item Prove that for any positive integer \(n\), \(\T(e_n) = \sum_{i = 1}^n e_i\).
@@ -1106,13 +1106,13 @@
   Let \(n \in \Z^+\).
   Then we have
   \begin{align*}
-    \forall k \in \Z^+, \T(e_n) & = \sum_{i = k}^\infty e_n(i)       &  & \by{ex:6.3.24}    \\
-                                & = \sum_{i = k}^\infty \delta_{n i} &  & \by{ex:6.2.23}[b] \\
-                                & = \begin{dcases}
-                                      1 & \text{if } k \leq n \\
-                                      0 & \text{if } k > n
-                                    \end{dcases}         &  & \by{2.3.4}                    \\
-                                & = \sum_{i = 1}^n e_i.              &  & \by{ex:6.2.23}[b]
+    \forall k \in \Z^+, \T(e_n)(k) & = \sum_{i = k}^\infty e_n(i)       &  & \by{ex:6.3.24}    \\
+                                   & = \sum_{i = k}^\infty \delta_{n i} &  & \by{ex:6.2.23}[b] \\
+                                   & = \begin{dcases}
+                                         1 & \text{if } k \leq n \\
+                                         0 & \text{if } k > n
+                                       \end{dcases}         &  & \by{2.3.4}                    \\
+                                   & = \sum_{i = 1}^n e_i(k).           &  & \by{ex:6.2.23}[b]
   \end{align*}
 \end{proof}
 
