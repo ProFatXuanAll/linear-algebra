@@ -1029,6 +1029,30 @@
   But \(\W^{\perp}\) is not \(\U\)-invariant since \(\U(e_1) = e_2 \notin \W^{\perp}\).
 \end{proof}
 
+\begin{ex}\label{ex:6.5.17}
+  Prove that a matrix that is both unitary and upper triangular must be a diagonal matrix.
+\end{ex}
+
+\begin{proof}[\pf{ex:6.5.17}]
+  Let \(A \in \ms[n][n][\F]\) and suppose that \(A\) is unitary and upper triangular.
+  For each \(i \in \set{1, \dots, n}\), let \(a_i\) be the \(i\)th column of \(A\).
+  We use induction on \(k\) to show that for all \(k \in \set{1, \dots, n}\), \(a_i = A_{i i} e_i\) for all \(i \in \set{1, \dots, k}\).
+  The case for \(n = 1\) is true since \(A\) is upper triangular.
+  So suppose that for some \(k \geq 1\), we have \(a_i = A_{i i} e_i\) for all \(i \in \set{1, \dots, k}\).
+  Then for \(k + 1\), we have
+  \begin{align*}
+             & A^* A = A A^* = I_n                                                                               &  & \by{6.5.9}                       \\
+    \implies & \forall i \in \set{1, \dots, k}, 0 = (A^* A)_{i, k + 1} = \sum_{j = 1}^n (A^*)_{i j} A_{j, k + 1} &  & \by{2.3.1}                       \\
+             & = \sum_{j = 1}^n \conj{A_{j i}} A_{j, k + 1}                                                      &  & \by{6.1.5}                       \\
+             & = \sum_{j = 1}^i \conj{A_{j i}} A_{j, k + 1}                                                      &  & \by{ex:1.3.12}                   \\
+             & = \conj{A_{i i}} A_{i, k + 1}                                                                     &  & \text{(by induction hypothesis)} \\
+    \implies & \forall i \in \set{1, \dots, k}, A_{i, k + 1} = 0                                                 &  & (A_{i i} \neq 0)                 \\
+    \implies & a_{k + 1} = A_{k + 1, k + 1} e_{k + 1}.
+  \end{align*}
+  And this closes the induction.
+  Therefore \(A\) is a diagonal matrix.
+\end{proof}
+
 \begin{ex}\label{ex:6.5.18}
   Show that ``is unitarily equivalent to'' is an equivalence relation on \(\ms[n][n][\C]\).
 \end{ex}
@@ -1066,6 +1090,58 @@
     \implies & A \text{ is unitarily equivalent to } C.        &  & \by{6.5.13}
   \end{align*}
   Thus ``is unitarily equivalent to'' is an equivalence relation on \(\ms[n][n][\C]\).
+\end{proof}
+
+\begin{ex}\label{ex:6.5.19}
+  Let \(\W\) be a finite-dimensional subspace of an inner product space \(\V\) over \(\F\).
+  By \cref{6.7}(c) and \cref{1.3.11}, \(\V = \W \oplus \W^{\perp}\).
+  Define \(\U : \V \to \V\) by \(\U(v_1 + v_2) = v_1 - v_2\), where \(v_1 \in \W\) and \(v_2 \in \W^{\perp}\).
+  Prove that \(\U\) is a self-adjoint unitary operator.
+\end{ex}
+
+\begin{proof}[\pf{ex:6.5.19}]
+  First we show that \(\U \in \ls(\V)\).
+  Let \(x, y \in \V\) and let \(c \in \F\).
+  Let \((x_1, x_2), (y_1, y_2) \in \W \times \W^{\perp}\) such that \(x = x_1 + x_2\) and \(y = y_1 + y_2\).
+  Since
+  \begin{align*}
+    \U(cx + y) & = \U(c(x_1 + x_2) + y_1 + y_2)    &  & \by{6.7}[c] \\
+               & = \U((cx_1 + y_1) + (cx_2 + y_2)) &  & \by{1.2.1}  \\
+               & = (cx_1 + y_1) - (cx_2 + y_2)     &  & \by{1.3}    \\
+               & = c (x_1 - x_2) + (y_1 - y_2)     &  & \by{1.2.1}  \\
+               & = c \U(x_1 + x_2) + \U(y_1 + y_2)                  \\
+               & = c \U(x) + \U(y),                &  & \by{6.7}[c]
+  \end{align*}
+  by \cref{2.1.2}(b) we know that \(\U \in \ls(\V)\).
+
+  Next we show that \(\U\) is self-adjoint.
+  Since
+  \begin{align*}
+    \forall x, y \in \V, \inn{x, \U^*(y)} & = \inn{\U(x), y}                                                    &  & \by{6.9}        \\
+                                          & = \inn{\U(x_1 + x_2), y_1 + y_2}                                    &  & \by{6.7}[c]     \\
+                                          & = \inn{x_1 - x_2, y_1 + y_2}                                                             \\
+                                          & = \inn{x_1, y_1 + y_2} - \inn{x_2, y_1 + y_2}                       &  & \by{6.1.1}[a,b] \\
+                                          & = \inn{x_1, y_1} + \inn{x_1, y_2} - \inn{x_2, y_1} - \inn{x_2, y_2} &  & \by{6.1}[a]     \\
+                                          & = \inn{x_1, y_1} - \inn{x_2, y_2}                                   &  & \by{6.7}[c]     \\
+                                          & = \inn{x_1, y_1} - \inn{x_1, y_2} + \inn{x_2, y_1} - \inn{x_2, y_2} &  & \by{6.7}[c]     \\
+                                          & = \inn{x_1, y_1 - y_2} + \inn{x_2, y_1 - y_2}                       &  & \by{6.1}[a,b]   \\
+                                          & = \inn{x_1 + x_2, y_1 - y_2}                                        &  & \by{6.1.1}[a]   \\
+                                          & = \inn{x_1 + x_2, \U(y_1 + y_2)}                                                         \\
+                                          & = \inn{x, \U(y)},                                                   &  & \by{6.7}[c]
+  \end{align*}
+  by \cref{6.1}(e) we know that \(\U^* = \U\).
+  Thus by \cref{6.4.8} \(\U\) is self-adjoint.
+
+  Finally we show that \(\U\) is unitary.
+  Since
+  \begin{align*}
+    \forall x \in \V, \norm{\U(x)}^2 & = \norm{\U(x_1 + x_2)}^2      &  & \by{6.7}[c]    \\
+                                     & = \norm{x_1 - x_2}^2                              \\
+                                     & = \norm{x_1}^2 + \norm{x_2}^2 &  & \by{ex:6.1.10} \\
+                                     & = \norm{x_1 + x_2}^2          &  & \by{ex:6.1.10} \\
+                                     & = \norm{x}^2,                 &  & \by{6.7}[c]
+  \end{align*}
+  by \cref{6.5.1} we know that \(\U\) is unitary.
 \end{proof}
 
 \begin{ex}\label{ex:6.5.22}
