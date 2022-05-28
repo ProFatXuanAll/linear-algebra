@@ -930,12 +930,103 @@
 \end{proof}
 
 \begin{ex}\label{ex:6.5.14}
-  Prove that if \(A\) and \(B\) are unitarily equivalent matrices, then \(A\) is positive definite (semidefinite) iff \(B\) is positive definite (semidefinite)
+  Prove that if \(A, B \in \ms[n][n][\F]\) are unitarily equivalent matrices, then \(A\) is positive definite (semidefinite) iff \(B\) is positive definite (semidefinite)
   (See \cref{6.4.11}).
 \end{ex}
 
 \begin{proof}[\pf{ex:6.5.14}]
+  Since \(A, B\) are unitarily equivalent, by \cref{6.5.13} we know that there exists a \(Q \in \ms[n][n][\F]\) such that \(Q\) is unitary and \(B = Q^* A Q\).
+  First suppose that \(A\) is positive definite.
+  Then we have
+  \begin{align*}
+    B^* & = (Q^* A Q)^*                         \\
+        & = Q^* A^* Q   &  & \by{ex:6.3.5}[c,d] \\
+        & = Q^* A Q     &  & \by{6.4.11}        \\
+        & = B
+  \end{align*}
+  and
+  \begin{align*}
+             & \forall x \in \vs{F}^n, x^* A x > 0           &  & \by{ex:6.4.17}[b]  \\
+    \implies & \forall x \in \vs{F}^n, x^* Q B Q^* x > 0     &  & \by{6.5.13}        \\
+    \implies & \forall x \in \vs{F}^n, (Q^* x)^* B Q^* x > 0 &  & \by{ex:6.3.5}[c,d] \\
+    \implies & \forall x \in \vs{F}^n, x^* B x > 0.          &  & (Q^* = Q^{-1})
+  \end{align*}
+  Thus by \cref{6.4.8} \(B\) is self-adjoint and by \cref{ex:6.4.17}(b) \(B\) is positive definite.
+  By reversing the role of \(B\) and \(A\) we see that \(A = Q B Q^*\) and \(B\) is positive definite implies \(A\) is positive definite.
+  Thus we conclude that \(A\) is positive definite iff \(B\) is positive definite.
+  Using similar arguments we can conclude that \(A\) is positive semidefinite iff \(B\) is positive semidefinite.
+\end{proof}
 
+\begin{ex}\label{ex:6.5.15}
+  Let \(\U\) be a unitary operator on an inner product space \(\V\) over \(\F\), and let \(\W\) be a finite-dimensional \(\U\)-invariant subspace of \(\V\) over \(\F\).
+  Prove that
+  \begin{enumerate}
+    \item \(\U(\W) = \W\);
+    \item \(\W^{\perp}\) is \(\U\)-invariant.
+  \end{enumerate}
+  Contrast (b) with \cref{ex:6.5.16}.
+\end{ex}
+
+\begin{proof}[\pf{ex:6.5.15}(a)]
+  Since
+  \begin{align*}
+             & \U \text{ is unitary}                                           \\
+    \implies & \forall x \in \V, \norm{\U(x)} = \norm{x}       &  & \by{6.5.1} \\
+    \implies & \forall x \in \W, \norm{\U_{\W}(x)} = \norm{x}, &  & \by{5.4.1}
+  \end{align*}
+  by \cref{6.18}(a)(e) we know that \(\U_{\W}\) is invertible.
+  Thus by \cref{5.4.1} we have \(\U(\W) = \U_{\W}(\W) = \W\).
+\end{proof}
+
+\begin{proof}[\pf{ex:6.5.15}(b)]
+  We have
+  \begin{align*}
+             & x \in \W^{\perp} \setminus \set{\zv}                            \\
+    \implies & x \notin \W                              &  & \by{ex:6.2.13}[d] \\
+    \implies & \U(x) \notin \W                          &  & \by{ex:6.5.15}[a] \\
+    \implies & \U(x) \in \W^{\perp} \setminus \set{\zv} &  & \by{ex:6.2.13}[d]
+  \end{align*}
+  and thus by \cref{5.4.1} \(\W^{\perp}\) is \(\U\)-invariant.
+\end{proof}
+
+\begin{ex}\label{ex:6.5.16}
+  Find an example of a unitary operator \(\U\) on an inner product space \(\V\) over \(\F\) and a \(\U\)-invariant subspace \(\W\) over \(\F\) such that \(\W^{\perp}\) is not \(\U\)-invariant.
+\end{ex}
+
+\begin{proof}[\pf{ex:6.5.16}]
+  The point is that \(\W\) is infinite-dimensional may not guarantee that \(\W^{\perp}\) is \(\U\)-invariant.
+  Let \(\V = \spn{\set{e_n : n \in \Z^+}}\) where \(e_n\) is defined as in \cref{ex:6.2.23}(b).
+  Now we use \cref{ex:2.1.34} to define \(\U \in \ls(\V)\) as follow:
+  \[
+    \forall n \in \Z^+, \U(e_n) = \begin{dcases}
+      e_2       & \text{if } n = 1 \\
+      e_{n + 2} & \text{if } n > 1
+    \end{dcases}.
+  \]
+  Since
+  \begin{align*}
+             & \forall x \in \V, \exists m \in \Z^+ : x \in \spn{\set{\seq{e}{1,,m}}}         &  & \by{1.7.10}       \\
+    \implies & \forall x \in \V, \exists \seq{a}{1,,m} \in \F : x = \sum_{i = 1}^m a_i e_i    &  & \by{1.6.1}        \\
+    \implies & \forall x \in \V, \norm{\U(x)}^2 = \inn{\U(x), \U(x)}                          &  & \by{6.1.9}        \\
+             & = \sum_{k = 1}^\infty \abs{(\U(x))(k)}^2                                       &  & \by{ex:6.2.23}    \\
+             & = \sum_{k = 1}^\infty \abs{\U\pa{\sum_{i = 1}^m a_i e_i}(k)}^2                                        \\
+             & = \sum_{k = 1}^\infty \abs{\pa{\sum_{i = 1}^m a_i \U(e_i)}(k)}^2               &  & \by{2.1.2}[d]     \\
+             & = \sum_{k = 1}^\infty \abs{\pa{a_1 \U(e_1) + \sum_{i = 2}^m a_i \U(e_i)}(k)}^2                        \\
+             & = \sum_{k = 1}^\infty \abs{\pa{a_1 e_2 + \sum_{i = 2}^m a_i e_{i + 2}}(k)}^2                          \\
+             & = \sum_{k = 1}^\infty \abs{a_1 e_2(k) + \sum_{i = 2}^m a_i e_{i + 2}(k)}^2                            \\
+             & = \abs{a_1}^2 + \sum_{i = 2}^m \abs{a_i}^2                                     &  & \by{ex:6.2.23}[b] \\
+             & = \sum_{i = 1}^m \abs{a_i}^2                                                                          \\
+             & = \sum_{k = 1}^\infty \abs{\pa{\sum_{i = 1}^m a_i e_i}(k)}^2                   &  & \by{ex:6.2.23}[b] \\
+             & = \sum_{k = 1}^\infty \abs{x(k)}^2                                                                    \\
+             & = \inn{x, x}                                                                   &  & \by{ex:6.2.23}    \\
+             & = \norm{x}^2                                                                   &  & \by{6.1.9}        \\
+    \implies & \forall x \in \V, \norm{\U(x)} = \norm{x},                                     &  & \by{6.2}[b]
+  \end{align*}
+  by \cref{6.5.1} we know that \(\U\) is unitary.
+  Let \(\W = \spn{\set{\seq{e}{2,4,}}}\).
+  Clearly \(\W\) is \(\U\)-invariant since \(\U(e_i) = e_{i + 2}\).
+  By \cref{ex:6.2.23}(b) we know that \(\W^{\perp} = \spn{\set{\seq{e}{1,3,}}}\).
+  But \(\W^{\perp}\) is not \(\U\)-invariant since \(\U(e_1) = e_2 \notin \W^{\perp}\).
 \end{proof}
 
 \begin{ex}\label{ex:6.5.18}
