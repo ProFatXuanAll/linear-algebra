@@ -1144,6 +1144,180 @@
   by \cref{6.5.1} we know that \(\U\) is unitary.
 \end{proof}
 
+\begin{ex}\label{ex:6.5.20}
+  Let \(\V\) be a finite-dimensional inner product space over \(\F\).
+  A linear operator \(\U\) on \(\V\) is called a \textbf{partial isometry} if there exists a subspace \(\W\) of \(\V\) over \(\F\) such that \(\norm{\U(x)} = \norm{x}\) for all \(x \in \W\) and \(\U(x) = \zv\) for all \(x \in \W^{\perp}\).
+  Observe that \(\W\) need \emph{not} to be \(\U\)-invariant.
+  Suppose that \(\U\) is such an operator and \(\set{\seq{v}{1,,k}}\) is an orthonormal basis for \(\W\) over \(\F\).
+  Prove the following results.
+  \begin{enumerate}
+    \item \(\inn{\U(x), \U(y)} = \inn{x, y}\) for all \(x, y \in \W\).
+    \item \(\set{\U(v_1), \dots, \U(v_k)}\) is an orthonormal basis for \(\rg{\U}\) over \(\F\).
+    \item There exists an orthonormal basis \(\gamma\) for \(\V\) over \(\F\) such that the first \(k\) columns of \([\U]_{\gamma}\) form an orthonormal set and the remaining columns are zero.
+    \item Let \(\set{\seq{w}{1,,j}}\) be an orthonormal basis for \(\rg{\U}^{\perp}\) and
+          \[
+            \beta = \set{\U(v_1), \dots, \U(v_k), \seq{w}{1,,j}}.
+          \]
+          Then \(\beta\) is an orthonormal basis for \(\V\) over \(\F\).
+    \item Let \(\T\) be the linear operator on \(\V\) that satisfies \(\T(\U(v_i)) = v_i\) where \(i \in \set{1, \dots, k}\) and \(\T(w_i) = \zv\) where \(i \in \set{1, \dots, j}\).
+          Then \(\T\) is well defined, and \(\T = \U^*\).
+    \item \(\U^*\) is a partial isometry.
+  \end{enumerate}
+  This exercise is continued in \cref{ex:6.6.9}.
+\end{ex}
+
+\begin{proof}[\pf{ex:6.5.20}(a)]
+  Let \(x, y \in \W\).
+  If \(\F = \R\), then we have
+  \begin{align*}
+    \inn{\U(x), \U(y)} & = \frac{1}{4} \norm{\U(x) + \U(y)}^2 - \frac{1}{4} \norm{\U(x) - \U(y)}^2 &  & \by{ex:6.1.20}  \\
+                       & = \frac{1}{4} \norm{\U(x + y)}^2 - \frac{1}{4} \norm{\U(x - y)}^2         &  & \by{2.1.2}[b,c] \\
+                       & = \frac{1}{4} \norm{x + y}^2 - \frac{1}{4} \norm{x - y}^2                 &  & \by{ex:6.5.20}  \\
+                       & = \inn{x, y}.                                                             &  & \by{ex:6.1.20}
+  \end{align*}
+  If \(\F = \C\), then we have
+  \begin{align*}
+    \inn{\U(x), \U(y)} & = \frac{1}{4} \sum_{k = 1}^4 i^k \norm{\U(x) + i^k \U(y)}^2 &  & \by{ex:6.1.20} \\
+                       & = \frac{1}{4} \sum_{k = 1}^4 i^k \norm{\U(x + i^k y)}^2     &  & \by{2.1.2}[b]  \\
+                       & = \frac{1}{4} \sum_{k = 1}^4 i^k \norm{x + i^k y}^2         &  & \by{ex:6.5.20} \\
+                       & = \inn{x, y}.                                               &  & \by{ex:6.1.20}
+  \end{align*}
+  Thus we conclude that \(\inn{\U(x), \U(y)} = \inn{x, y}\) for all \(x, y \in \W\).
+\end{proof}
+
+\begin{proof}[\pf{ex:6.5.20}(b)]
+  Since \(\alpha' = \set{\seq{v}{1,,k}}\) is a basis for \(\W\) over \(\F\), by \cref{1.6.15}(c) we can extend \(\alpha'\) to another basis \(\alpha\) for \(\V\) over \(\F\).
+  By \cref{6.7}(c) we know that \(\alpha \setminus \alpha'\) is a basis for \(\W^{\perp}\) over \(\F\).
+  By \cref{ex:6.5.20} we have \(\U(\alpha \setminus \alpha') = \set{\zv}\).
+  Since
+  \begin{align*}
+    \forall i, j \in \set{1, \dots, k}, \delta_{i j} & = \inn{v_i, v_j}          &  & \by{6.1.12}       \\
+                                                     & = \inn{\U(v_i), \U(v_j)}, &  & \by{ex:6.5.20}[a]
+  \end{align*}
+  by \cref{6.1.12} we know that \(\set{\U(v_1), \dots, \U(v_k)}\) is orthonormal with respect to \(\inn{\cdot, \cdot}\).
+  By \cref{2.2,6.2.4} we conclude that \(\set{\U(v_1), \dots, \U(v_k)}\) is an orthonormal basis for \(\rg{\U}\) over \(\F\).
+\end{proof}
+
+\begin{proof}[\pf{ex:6.5.20}(c)]
+  If \(\dim(\V) = \dim(\W)\), then by \cref{ex:6.5.20}(b) we are done.
+  So suppose that \(\dim(\V) > \dim(\W)\) (\cref{1.11}).
+  Since \(\V\) is finite-dimensional and \(\W^{\perp}\) is a subspace of \(\V\) over \(\F\) (\cref{6.2.10}), we know that there exists an orthonormal basis \(\alpha\) for \(\W^{\perp}\) over \(\F\) with respect to \(\inn{\cdot, \cdot}\) (\cref{6.5}).
+  Let \(\gamma = \set{\seq{v}{1,,k}} \cup \alpha\).
+  By \cref{6.2.4} and \cref{1.6.15}(b) we know that \(\gamma\) is an orthonormal basis for \(\V\) over \(\F\) with respect to \(\inn{\cdot, \cdot}\).
+  By definition we know that \(\U(\alpha) = \set{\zv}\).
+  Thus by \cref{ex:6.5.20}(b) we know that the first \(k\) column of \([\U]_{\gamma}\) form an orthonormal set and the remaining columns are zeros.
+\end{proof}
+
+\begin{proof}[\pf{ex:6.5.20}(d)]
+  By \cref{2.2}, \cref{6.7}(d) and \cref{ex:6.5.20}(b) we know that this is true.
+\end{proof}
+
+\begin{proof}[\pf{ex:6.5.20}(e)]
+  By \cref{2.6} we know that \(\T\) is well-defined.
+  Now we show that \(\T = \U^*\) where \(\U^*\) is the adjoint operator of \(\U\) with respect to \(\inn{\cdot, \cdot}\).
+  By \cref{ex:6.1.9}(b) we only need to show that \(\inn{x, \T(y)} = \inn{x, \U^*(y)}\) for all \(x, y \in \beta\).
+  We now split into four cases:
+  \begin{itemize}
+    \item If \(x, y \in \set{\U(v_1), \dots, \U(v_k)}\), then \(x = \U(v_p)\) and \(y = \U(v_q)\) for some \(p, q \in \set{1, \dots, k}\).
+          By \cref{6.7}(c) we can split into two further cases:
+          \begin{itemize}
+            \item If \(x = \U(v_p) \in \W\), then we have
+                  \begin{align*}
+                    \inn{x, \T(y)} & = \inn{\U(v_p), \T(\U(v_q))}                          \\
+                                   & = \inn{\U(v_p), v_q}           &  & \by{ex:6.5.20}[e] \\
+                                   & = \inn{\U^2(v_p), \U(v_q)}     &  & \by{ex:6.5.20}[a] \\
+                                   & = \inn{\U(v_p), \U^*(\U(v_q))} &  & \by{6.9}          \\
+                                   & = \inn{x, \U^*(y)}.
+                  \end{align*}
+            \item If \(x = \U(v_p) \in \W^{\perp}\), then we have
+                  \begin{align*}
+                    \inn{x, \U^*(y)} & = \inn{\U(x), y}       &  & \by{6.9}          \\
+                                     & = \inn{\zv, y}         &  & \by{ex:6.5.20}    \\
+                                     & = 0                    &  & \by{6.1}[c]       \\
+                                     & = \inn{x, v_q}         &  & \by{ex:6.5.20}    \\
+                                     & = \inn{x, \T(\U(v_q))} &  & \by{ex:6.5.20}[e] \\
+                                     & = \inn{x, \T(y)}.
+                  \end{align*}
+          \end{itemize}
+          Thus we have \(\inn{x, \U^*(y)} = \inn{x, \T(y)}\) for all \(x, y \in \set{\U(v_1), \dots, \U(v_k)}\).
+    \item If \(x \in \set{\U(v_1), \dots, \U(v_k)}\) and \(y \in \set{\seq{w}{1,,j}}\), then \(x = \U(v_p)\) and \(y = w_q\) for some \(p \in \set{1, \dots, k}\) and \(q \in \set{1, \dots, j}\).
+          Thus
+          \begin{align*}
+            \inn{x, \U^*(y)} & = \inn{\U(v_p), \U^*(w_q)}                        \\
+                             & = \inn{\U^2(v_p), w_q}     &  & \by{6.9}          \\
+                             & = 0                        &  & \by{ex:6.5.20}[d] \\
+                             & = \inn{\U(v_p), \zv}       &  & \by{6.1}[c]       \\
+                             & = \inn{\U(v_p), \T(w_q)}   &  & \by{ex:6.5.20}[e] \\
+                             & = \inn{x, \T(y)}.
+          \end{align*}
+    \item If \(x \in \set{\seq{w}{1,,j}}\) and \(y \in \set{\U(v_1), \dots, \U(v_k)}\), then \(x = w_p\) and \(y = \U(v_q)\) for some \(p \in \set{1, \dots, j}\) and \(q \in \set{1, \dots, k}\).
+          By \cref{6.7}(c) we can split into two further cases:
+          \begin{itemize}
+            \item If \(x = w_p \in \W\), then we have
+                  \begin{align*}
+                    \inn{x, \U^*(y)} & = \inn{w_p, \U^*(\U(v_q))}                        \\
+                                     & = \inn{\U(w_p), \U(v_q)}   &  & \by{6.9}          \\
+                                     & = \inn{w_p, v_q}           &  & \by{ex:6.5.20}[a] \\
+                                     & = \inn{w_p, \T(\U(v_q))}   &  & \by{ex:6.5.20}[e] \\
+                                     & = \inn{x, \T(y)}.
+                  \end{align*}
+            \item If \(x = w_p \in \W^{\perp}\), then we have
+                  \begin{align*}
+                    \inn{x, \U^*(y)} & = \inn{\U(x), y}       &  & \by{6.9}          \\
+                                     & = \inn{\zv, y}         &  & \by{ex:6.5.20}    \\
+                                     & = 0                    &  & \by{6.1}[c]       \\
+                                     & = \inn{x, v_q}         &  & \by{ex:6.5.20}    \\
+                                     & = \inn{x, \T(\U(v_q))} &  & \by{ex:6.5.20}[e] \\
+                                     & = \inn{x, \T(y)}.
+                  \end{align*}
+          \end{itemize}
+          Thus we have \(\inn{x, \U^*(y)} = \inn{x, \T(y)}\) for all \(x \in \set{\U(v_1), \dots, \U(v_k)}\) and \(y \in \set{\seq{w}{1,,j}}\).
+    \item If \(x, y \in \set{\seq{w}{1,,j}}\), then \(x = w_p\) and \(y = w_q\) for some \(p, q \in \set{1, \dots, j}\).
+          Thus
+          \begin{align*}
+            \inn{x, \U^*(y)} & = \inn{\U(x), y}                         \\
+                             & = 0               &  & \by{ex:6.5.20}[d] \\
+                             & = \inn{x, \zv}    &  & \by{6.1}[c]       \\
+                             & = \inn{x, \T(y)}. &  & \by{ex:6.5.20}[e]
+          \end{align*}
+  \end{itemize}
+  From all cases above we conclude that \(\inn{x, \U^*(y)} = \inn{x, \T(y)}\) for all \(x, y \in \beta\).
+  And thus \(\T = \U^*\).
+\end{proof}
+
+\begin{proof}[\pf{ex:6.5.20}(f)]
+  By \cref{ex:6.5.20} we need to find a subspace \(\vs{X}\) of \(\V\) such that \(\norm{U^*(x)} = \norm{x}\) for all \(x \in \vs{X}\) and \(\U^*(\vs{X}^{\perp}) = \set{\zv}\).
+  We claim that \(\rg{\U}\) is a subspace that makes \(\U^*\) partially isometry.
+  Let \(x \in \V\).
+  By \cref{ex:6.5.20}(d) we know that there exist some \(\seq{a}{1,,k}, \seq{b}{1,,j} \in \F\) such that \(x = \sum_{i = 1}^k a_i \U(v_i) + \sum_{i = 1}^j b_i w_j\).
+  Then we have
+  \begin{align*}
+    \norm{\U^*(x)} & = \norm{\U^*\pa{\sum_{i = 1}^k a_i \U(v_i) + \sum_{i = 1}^j b_i w_j}}                           \\
+                   & = \norm{\sum_{i = 1}^k a_i \U^*(\U(v_i)) + \sum_{i = 1}^j b_i \U^*(w_j)} &  & \by{2.1.2}[d]     \\
+                   & = \norm{\sum_{i = 1}^k a_i v_i}.                                         &  & \by{ex:6.5.20}[d]
+  \end{align*}
+  Now we split into two cases:
+  \begin{itemize}
+    \item If \(x \in \rg{\U}\), then \(\seq[=]{b}{1,,j} = 0\) and
+          \begin{align*}
+            \norm{\U^*(x)} & = \norm{\U^*\pa{\sum_{i = 1}^k a_i \U(v_i)}}                        \\
+                           & = \norm{\sum_{i = 1}^k a_i \U^*(\U(v_i))}    &  & \by{2.1.2}[d]     \\
+                           & = \norm{\sum_{i = 1}^k a_i v_i}              &  & \by{ex:6.5.20}[e] \\
+                           & = \norm{\U\pa{\sum_{i = 1}^k a_i v_i}}       &  & \by{ex:6.5.20}    \\
+                           & = \norm{\sum_{i = 1}^k a_i \U(v_i)}          &  & \by{2.1.2}[d]     \\
+                           & = \norm{x}.
+          \end{align*}
+    \item If \(x \in \rg{\U}^{\perp}\), then \(\seq[=]{a}{1,,k} = 0\) and
+          \begin{align*}
+            \norm{\U^*(x)} & = \norm{\U^*\pa{\sum_{i = 1}^j b_i w_i}}                        \\
+                           & = \norm{\sum_{i = 1}^k b_i \U^*(w_i)}    &  & \by{2.1.2}[d]     \\
+                           & = \norm{\zv}                             &  & \by{ex:6.5.20}[e] \\
+                           & = 0.                                     &  & \by{6.2}[b]
+          \end{align*}
+  \end{itemize}
+  From all cases above we see that \(\U^*\) is partially isometry.
+\end{proof}
+
 \begin{ex}\label{ex:6.5.22}
   Let \(\V\) be a real inner product space.
   \begin{enumerate}
