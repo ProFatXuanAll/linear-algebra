@@ -1493,3 +1493,87 @@
   \end{align*}
   by \cref{6.23}(b) we know that \(\U \T\) and \(\T \U\) are reflections about lines through origin on \(\R^2\) over \(\R\).
 \end{proof}
+
+\begin{ex}\label{ex:6.5.25}
+  Suppose that \(\T\) and \(\U\) are reflections of \(\R^2\) about the respective lines \(\L\) and \(\L'\) through the origin and that \(\phi\) and \(\psi\) are the angles from the positive \(x\)-axis to \(\L\) and \(\L'\), respectively.
+  By \cref{ex:6.5.24}(a), \(\U \T\) is a rotation.
+  Find its angle of rotation.
+\end{ex}
+
+\begin{proof}[\pf{ex:6.5.25}]
+  Let \(\beta\) be the standard ordered basis for \(\R^2\) over \(\R\).
+  Then we have
+  \begin{align*}
+    [\U \T]_{\beta} & = [\U]_{\beta} [\T]_{\beta}                       &  & \by{2.11} \\
+                    & = \begin{pmatrix}
+                          \cos(2 \psi) & \sin(2 \psi)  \\
+                          \sin(2 \psi) & -\cos(2 \psi)
+                        \end{pmatrix} \begin{pmatrix}
+                                        \cos(2 \phi) & \sin(2 \phi)  \\
+                                        \sin(2 \phi) & -\cos(2 \phi)
+                                      \end{pmatrix}                   &  & \by{6.5.12} \\
+                    & = \begin{pmatrix}
+                          \cos(2 \psi - 2 \phi) & -\sin(2 \psi - 2 \phi) \\
+                          \sin(2 \psi - 2 \phi) & \cos(2 \psi - 2 \phi)
+                        \end{pmatrix}. &  & \by{2.3.1}
+  \end{align*}
+  Thus the rotation angle is \(2 \psi - 2 \phi\).
+\end{proof}
+
+\begin{ex}\label{ex:6.5.26}
+  Suppose that \(\T\) and \(\U\) are orthogonal operators on \(\R^2\) such that \(\T\) is the rotation by the angle \(\phi\) and \(\U\) is the reflection about the line \(\L\) through the origin.
+  Let \(\psi\) be the angle from the positive \(x\)-axis to \(\L\).
+  By \cref{ex:6.5.24}(b), both \(\U \T\) and \(\T \U\) are reflections about lines \(\L_1\) and \(\L_2\), respectively, through the origin.
+  \begin{enumerate}
+    \item Find the angle \(\theta\) from the positive \(x\)-axis to \(\L_1\).
+    \item Find the angle \(\theta\) from the positive \(x\)-axis to \(\L_2\).
+  \end{enumerate}
+\end{ex}
+
+\begin{proof}[\pf{ex:6.5.26}(a)]
+  Let \(\beta\) be the standard ordered basis for \(\R^2\) over \(\R\).
+  Then we have
+  \begin{align*}
+    [\U \T]_{\beta} & = [\U]_{\beta} [\T]_{\beta}                   &  & \by{2.11} \\
+                    & = \begin{pmatrix}
+                          \cos(2 \psi) & \sin(2 \psi)  \\
+                          \sin(2 \psi) & -\cos(2 \psi)
+                        \end{pmatrix} [\T]_{\beta}               &  & \by{6.5.12}  \\
+                    & = \begin{pmatrix}
+                          \cos(2 \psi) & \sin(2 \psi)  \\
+                          \sin(2 \psi) & -\cos(2 \psi)
+                        \end{pmatrix} \begin{pmatrix}
+                                        \cos(\phi) & -\sin(\phi) \\
+                                        \sin(\phi) & \cos(\phi)
+                                      \end{pmatrix}               &  & \by{6.4.5}  \\
+                    & = \begin{pmatrix}
+                          \cos(2 \psi - \phi) & \sin(2 \psi - \phi)  \\
+                          \sin(2 \psi - \phi) & -\cos(2 \psi - \phi)
+                        \end{pmatrix}. &  & \by{2.3.1}
+  \end{align*}
+  Thus the angle from the positive \(x\)-axis to \(\L_1\) is \(\psi - \frac{1}{2} \phi\).
+\end{proof}
+
+\begin{proof}[\pf{ex:6.5.26}(b)]
+  Let \(\beta\) be the standard ordered basis for \(\R^2\) over \(\R\).
+  Then we have
+  \begin{align*}
+    [\T \U]_{\beta} & = [\T]_{\beta} [\U]_{\beta}                   &  & \by{2.11} \\
+                    & = [\T]_{\beta} \begin{pmatrix}
+                                       \cos(2 \psi) & \sin(2 \psi)  \\
+                                       \sin(2 \psi) & -\cos(2 \psi)
+                                     \end{pmatrix}               &  & \by{6.5.12}  \\
+                    & = \begin{pmatrix}
+                          \cos(\phi) & -\sin(\phi) \\
+                          \sin(\phi) & \cos(\phi)
+                        \end{pmatrix} \begin{pmatrix}
+                                        \cos(2 \psi) & \sin(2 \psi)  \\
+                                        \sin(2 \psi) & -\cos(2 \psi)
+                                      \end{pmatrix}               &  & \by{6.4.5}  \\
+                    & = \begin{pmatrix}
+                          \cos(\phi + 2 \psi) & \sin(\phi + 2 \psi)  \\
+                          \sin(\phi + 2 \psi) & -\cos(\phi + 2 \psi)
+                        \end{pmatrix}. &  & \by{2.3.1}
+  \end{align*}
+  Thus the angle from the positive \(x\)-axis to \(\L_2\) is \(\frac{1}{2} \phi + \psi\).
+\end{proof}
