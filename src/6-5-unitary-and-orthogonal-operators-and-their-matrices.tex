@@ -1318,6 +1318,65 @@
   From all cases above we see that \(\U^*\) is partially isometry.
 \end{proof}
 
+\begin{ex}\label{ex:6.5.21}
+  Let \(A, B \in \ms[n][n][\C]\) that are unitarily equivalent.
+  \begin{enumerate}
+    \item Prove that \(\tr[A^* A] = \tr[B^* B]\).
+    \item Use (a) to prove that
+          \[
+            \sum_{i = 1}^n \sum_{j = 1}^n \abs{A_{i j}}^2 = \sum_{i = 1}^n \sum_{j = 1}^n \abs{B_{i j}}^2.
+          \]
+    \item Use (b) to show that the matrices
+          \[
+            C = \begin{pmatrix}
+              1 & 2 \\
+              2 & i
+            \end{pmatrix} \quad \text{and} \quad D = \begin{pmatrix}
+              i & 4 \\
+              1 & 1
+            \end{pmatrix}
+          \]
+          are \emph{not} unitarily equivalent.
+  \end{enumerate}
+\end{ex}
+
+\begin{proof}[\pf{ex:6.5.21}(a)]
+  Since \(A, B\) are unitary equivalent, by \cref{6.5.13} there exists a \(Q \in \ms[n][n][\C]\) such that \(Q\) is unitary and \(B = Q^* A Q\).
+  Then we have
+  \begin{align*}
+    \tr[A^* A] & = \tr[(Q B Q^*)^* (Q B Q^*)] &  & \by{ex:6.1.23}[c] \\
+               & = \tr[Q B^* Q^* Q B Q^*]     &  & \by{6.3.2}[c]     \\
+               & = \tr[Q B^* B Q^*]           &  & \by{ex:6.1.23}[c] \\
+               & = \tr[B^* B Q Q^*]           &  & \by{ex:2.3.13}    \\
+               & = \tr[B^* B].                &  & \by{ex:6.1.23}[c]
+  \end{align*}
+\end{proof}
+
+\begin{proof}[\pf{ex:6.5.21}(b)]
+  We have
+  \begin{align*}
+    \sum_{i = 1}^n \sum_{j = 1}^n \abs{A_{i j}}^2 & = \sum_{i = 1}^n \sum_{j = 1}^n \conj{A_{i j}} A_{i j} &  & \by{d.0.5}        \\
+                                                  & = \sum_{i = 1}^n \sum_{j = 1}^n (A^*)_{j i} A_{i j}    &  & \by{6.1.5}        \\
+                                                  & = \sum_{j = 1}^n \sum_{i = 1}^n (A^*)_{j i} A_{i j}    &  & \by{1.2.1}        \\
+                                                  & = \sum_{j = 1}^n (A^* A)_{j j}                         &  & \by{2.3.1}        \\
+                                                  & = \tr[A^* A]                                           &  & \by{1.3.9}        \\
+                                                  & = \tr[B^* B]                                           &  & \by{ex:6.5.21}[a] \\
+                                                  & = \sum_{j = 1}^n (B^* B)_{j j}                         &  & \by{1.3.9}        \\
+                                                  & = \sum_{j = 1}^n \sum_{i = 1}^n (B^*)_{j i} B_{i j}    &  & \by{2.3.1}        \\
+                                                  & = \sum_{j = 1}^n \sum_{i = 1}^n \conj{B_{i j}} B_{i j} &  & \by{6.1.5}        \\
+                                                  & = \sum_{j = 1}^n \sum_{i = 1}^n \abs{B_{i j}}^2        &  & \by{d.0.5}        \\
+                                                  & = \sum_{i = 1}^n \sum_{j = 1}^n \abs{B_{i j}}^2.       &  & \by{1.2.1}
+  \end{align*}
+\end{proof}
+
+\begin{proof}[\pf{ex:6.5.21}(c)]
+  Since
+  \[
+    \sum_{i = 1}^n \sum_{j = 1}^n \abs{C_{i j}}^2 = 10 \neq 19 = \sum_{i = 1}^n \sum_{j = 1}^n \abs{D_{i j}}^2,
+  \]
+  by \cref{ex:6.5.21}(b) we know that \(A, B\) are not unitary equivalent.
+\end{proof}
+
 \begin{ex}\label{ex:6.5.22}
   Let \(\V\) be a real inner product space.
   \begin{enumerate}
@@ -1346,4 +1405,91 @@
                                                                 & = \norm{x - y}.            &  & \by{6.5.14}
   \end{align*}
   Thus \(g \circ h\) is a rigid motion.
+\end{proof}
+
+\begin{ex}\label{ex:6.5.23}
+  Prove the following variation of \cref{6.22}:
+  If \(f : \V \to \V\) is a rigid motion on a finite-dimensional real inner product space \(\V\) over \(\F\), then there exists a unique orthogonal operator \(\T\) on \(\V\) and a unique translation \(g\) on \(\V\) such that \(f = \T \circ g\).
+\end{ex}
+
+\begin{proof}[\pf{ex:6.5.23}]
+  Since \(f\) is a rigid motion, by \cref{6.22} we know that there exists an unique orthogonal operator \(\U\) on \(\V\) and a unique translation \(h\) on \(\V\) such that \(f = h \circ \U\).
+  Then we have
+  \begin{align*}
+    f & = h \circ \U                                          \\
+      & = \IT[\V] \circ h \circ \U        &  & \by{2.1.9}     \\
+      & = \U \circ \U^* \circ h \circ \U. &  & \by{6.18}[a,e]
+  \end{align*}
+  Now we show that \(\U^* \circ h \circ \U\) is a translation.
+  Since \(h\) is a translation, by \cref{6.5.16} there exists a \(v_0 \in \V\) such that \(h(x) = x + v_0\) for all \(x \in \V\).
+  Then we have
+  \begin{align*}
+    \forall x \in \V, (\U^* \circ h \circ \U)(x) & = \U^*(h(\U(x)))                              \\
+                                                 & = \U^*(\U(x) + v_0)       &  & \by{6.5.16}    \\
+                                                 & = \U^*(\U(x)) + \U^*(v_0) &  & \by{2.1.1}[a]  \\
+                                                 & = x + \U^*(v_0)           &  & \by{6.18}[a,e]
+  \end{align*}
+  and thus by \cref{6.5.16} \(\U^* \circ h \circ \U\) is a translation.
+  By setting \(\T = \U\) and \(g = \U^* \circ h \circ \U\) we see that \(f = \T \circ g\).
+
+  Now we show the uniqueness of \(\T\) and \(g\).
+  Suppose that \(u_0\) and \(v_0\) are in \(\V\) and \(\T\) and \(\U\) are orthogonal operators on \(\V\) such that
+  \[
+    \forall x \in \V, f(x) = \T(x + u_0) = \T(x) + \T(u_0) = \U(x + v_0) = \U(x) + \U(v_0).
+  \]
+  Substituting \(x = \zv\) in the preceding equation yields \(\T(u_0) = \U(v_0)\), and hence
+  \begin{align*}
+             & \forall x \in \V, \T(x) = \U(x)                     \\
+    \implies & \T = \U                                             \\
+    \implies & u_0 = v_0.                      &  & \by{6.18}[a,e]
+  \end{align*}
+\end{proof}
+
+\begin{ex}\label{ex:6.5.24}
+  Let \(\T\) and \(\U\) be orthogonal operators on \(\R^2\).
+  Use \cref{6.23} to prove the following results.
+  \begin{enumerate}
+    \item If \(\T\) and \(\U\) are both reflections about lines through the origin, then \(\U \T\) is a rotation.
+    \item If \(\T\) is a rotation and \(\U\) is a reflection about a line through the origin, then both \(\U \T\) and \(\T \U\) are reflections about lines through the origin.
+  \end{enumerate}
+\end{ex}
+
+\begin{proof}[\pf{ex:6.5.24}(a)]
+  Let \(\beta\) be the standard ordered basis for \(\R^2\) over \(\R\).
+  Then we have
+  \begin{align*}
+    \forall x \in \V, \norm{\T(\U(x))} & = \norm{\U(x)} &  & \by{6.5.1} \\
+                                       & = \norm{x}     &  & \by{6.5.1}
+  \end{align*}
+  and
+  \begin{align*}
+    \det([\U \T]_{\beta}) & = \det([\U]_{\beta} [\T]_{\beta})       &  & \by{2.11}    \\
+                          & = \det([\U]_{\beta}) \det([\T]_{\beta}) &  & \by{4.7}     \\
+                          & = (-1) (-1)                             &  & \by{6.23}[b] \\
+                          & = 1.
+  \end{align*}
+  Thus by \cref{6.23}(a) we know that \(\U \T\) is a rotation on \(\R^2\) over \(\R\).
+\end{proof}
+
+\begin{proof}[\pf{ex:6.5.24}(b)]
+  Let \(\beta\) be the standard ordered basis for \(\R^2\) over \(\R\).
+  Since
+  \begin{align*}
+    \forall x \in \V, \norm{\T(\U(x))} & = \norm{\U(x)}     &  & \by{6.5.1} \\
+                                       & = \norm{x}         &  & \by{6.5.1} \\
+                                       & = \norm{\T(x)}     &  & \by{6.5.1} \\
+                                       & = \norm{\U(\T(x))} &  & \by{6.5.1}
+  \end{align*}
+  and
+  \begin{align*}
+    \det([\U \T]_{\beta}) & = \det([\U]_{\beta} [\T]_{\beta})       &  & \by{2.11}      \\
+                          & = \det([\U]_{\beta}) \det([\T]_{\beta}) &  & \by{4.7}       \\
+                          & = (-1) 1                                &  & \by{6.23}[a,b] \\
+                          & = -1                                                        \\
+                          & = 1 (-1)                                                    \\
+                          & = \det([\T]_{\beta}) \det([\U]_{\beta}) &  & \by{6.23}[a,b] \\
+                          & = \det([\T]_{\beta} [\U]_{\beta})       &  & \by{4.7}       \\
+                          & = \det([\T \U]_{\beta}),                &  & \by{2.11}
+  \end{align*}
+  by \cref{6.23}(b) we know that \(\U \T\) and \(\T \U\) are reflections about lines through origin on \(\R^2\) over \(\R\).
 \end{proof}
