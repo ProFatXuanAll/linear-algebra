@@ -1577,3 +1577,89 @@
   \end{align*}
   Thus the angle from the positive \(x\)-axis to \(\L_2\) is \(\frac{1}{2} \phi + \psi\).
 \end{proof}
+
+\setcounter{ex}{28}
+\begin{ex}[\(QR\)-Factorization]\label{ex:6.5.29}
+  Let \(\seq{w}{1,,n}\) be linearly independent vectors in \(\vs{F}^n\), and let \(\seq{v}{1,,n}\) be the orthogonal vectors obtained from \(\seq{w}{1,,n}\) by the Gram--Schmidt process.
+  Let \(\seq{u}{1,,n}\) be the orthonormal basis obtained by normalizing the \(v_i\)'s.
+  \begin{enumerate}
+    \item Solving \cref{eq:6.2.1} for \(w_k\) in terms of \(u_k\), show that
+          \[
+            w_k = \norm{v_k} u_k + \sum_{j = 1}^{k - 1} \inn{w_k, u_j} u_j \quad \text{for all } k \in \set{1, \dots, n}.
+          \]
+    \item Let \(A\) and \(Q\) denote the \(n \times n\) matrices in which the \(k\)th columns are \(w_k\) and \(u_k\), respectively.
+          Define \(R \in \ms[n][n][\F]\) by
+          \[
+            R_{j k} = \begin{dcases}
+              \norm{v_j}     & \text{if } j = k \\
+              \inn{w_k, u_j} & \text{if } j < k \\
+              0              & \text{if } j > k
+            \end{dcases}.
+          \]
+          Prove \(A = QR\).
+    \item Since \(Q\) is unitary (orthogonal) and \(R\) is upper triangular in (b), we have shown that every invertible matrix is the product of a unitary (orthogonal) matrix and an upper triangular matrix.
+          Suppose that \(A \in \ms[n][n][\F]\) is invertible and \(A = Q_1 R_1 = Q_2 R_2\), where \(Q_1, Q_2 \in \ms[n][n][\F]\) are unitary and \(R_1, R_2 \in \ms[n][n][\F]\) are upper triangular.
+          Prove that \(D = R_2 R_1^{-1}\) is an unitary diagonal matrix.
+    \item The \(QR\) factorization described in (b) provides an orthogonalization method for solving a linear system \(Ax = b\) when \(A\) is invertible.
+          Decompose \(A\) to \(QR\), by the Gram--Schmidt process or other means, where \(Q\) is unitary and \(R\) is upper triangular.
+          Then \(QRx = b\), and hence \(Rx = Q^* b\).
+          This last system can be easily solved since \(R\) is upper triangular.
+  \end{enumerate}
+\end{ex}
+
+\begin{proof}[\pf{ex:6.5.29}(a)]
+  For all \(k \in \set{1, \dots, n}\), we have
+  \begin{align*}
+    w_k & = v_k + \sum_{j = 1}^{k - 1} \frac{\inn{w_k, v_j}}{\norm{v_j}^2} v_j                           &  & \by{6.4}    \\
+        & = v_k + \sum_{j = 1}^{k - 1} \inn{w_k, \frac{1}{\norm{v_j}} v_j} \pa{\frac{1}{\norm{v_j}} v_j} &  & \by{6.1}[b] \\
+        & = \norm{v_k} u_k + \sum_{j = 1}^{k - 1} \inn{w_k, u_j} u_j.                                    &  & \by{6.1.12}
+  \end{align*}
+\end{proof}
+
+\begin{proof}[\pf{ex:6.5.29}(b)]
+  Let \(i, k \in \set{1, \dots, n}\).
+  Then we have
+  \begin{align*}
+    (QR)_{i k} & = \sum_{j = 1}^n Q_{i j} R_{j k}                                                                            &  & \by{2.3.1}        \\
+               & = \sum_{j = 1}^n (u_j)_i R_{j k}                                                                                                   \\
+               & = \pa{\sum_{j = 1}^{k - 1} (u_j)_i R_{j k}} + (u_k)_i R_{k k} + \pa{\sum_{j = k + 1}^n (u_j)_i R_{j k}}                            \\
+               & = \pa{\sum_{j = 1}^{k - 1} (u_j)_i \inn{w_k, u_j}} + (u_k)_i \norm{v_k} + \pa{\sum_{j = k + 1}^n (u_j)_i 0}                        \\
+               & = \pa{\norm{v_k} u_k + \sum_{j = 1}^{k - 1} \inn{w_k, u_j} u_j}_i                                           &  & \by{1.2.4}        \\
+               & = (w_k)_i                                                                                                   &  & \by{ex:6.5.29}[a] \\
+               & = A_{i k}.
+  \end{align*}
+  Thus by \cref{1.2.8} we know that \(A = QR\).
+\end{proof}
+
+\begin{proof}[\pf{ex:6.5.29}(c)]
+  Since \(A\) is invertible, by \cref{3.2.2,3.4} we know that \(R_1\) is invertible.
+  Since
+  \begin{align*}
+    (Q_2^* Q_1)^* (Q_2^* Q_1) & = Q_1^* Q_2 Q_2^* Q_1       &  & \by{6.3.2}[c]   \\
+                              & = Q_1^* Q_1                 &  & \by{6.5.9}      \\
+                              & = I_n                       &  & \by{6.5.9}      \\
+                              & = (Q_2^* Q_1) (Q_2^* Q_1)^* &  & \by{6.3.2}[c,e]
+  \end{align*}
+  and
+  \begin{align*}
+             & Q_1 R_1 = Q_2 R_2                                  \\
+    \implies & Q_2^{-1} Q_1 = R_2 R_1^{-1} &  & \by{2.4.3}        \\
+    \implies & Q_2^* Q_1 = R_2 R_1^{-1},   &  & \by{ex:6.1.23}[c]
+  \end{align*}
+  by \cref{6.5.9} we know that \(Q_2^* Q_1 = R_2 R_1^{-1}\) is unitary.
+  Since \(R_1\) is upper triangular, by \cref{ex:4.3.27}(c) we know that \(R_1^{-1}\) is upper triangular.
+  If we can show that \(R_2 R_1^{-1}\) is upper triangular, then by \cref{ex:6.5.17} we know that \(D = R_2 R_1^{-1}\) is an unitary diagonal matrix.
+  So let \(i, j \in \set{1, \dots, n}\) such that \(i > j\).
+  Then we have
+  \begin{align*}
+    (R_2 R_1^{-1})_{i j} & = \sum_{k = 1}^n (R_2)_{i k} (R_1^{-1})_{k j} &  & \by{2.3.1}     \\
+                         & = \sum_{k = i}^j (R_2)_{i k} (R_1^{-1})_{k j} &  & \by{ex:1.3.12} \\
+                         & = 0.                                          &  & (i > j)
+  \end{align*}
+  Thus by \cref{ex:1.3.12} \(R_2 R_1^{-1}\) is upper triangular.
+\end{proof}
+
+\begin{note}
+  At one time, because of the great stability of QR factorization (\cref{ex:6.5.29}), this method for solving large systems of linear equations with a computer was being advocated as a better method than Gaussian elimination even though it requires about three times as much work.
+  (Later, however, J. H. Wilkinson showed that if Gaussian elimination is done ``properly,'' then it is nearly as stable as the orthogonalization method.)
+\end{note}
