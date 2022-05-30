@@ -1663,3 +1663,187 @@
   At one time, because of the great stability of QR factorization (\cref{ex:6.5.29}), this method for solving large systems of linear equations with a computer was being advocated as a better method than Gaussian elimination even though it requires about three times as much work.
   (Later, however, J. H. Wilkinson showed that if Gaussian elimination is done ``properly,'' then it is nearly as stable as the orthogonalization method.)
 \end{note}
+
+\begin{ex}\label{ex:6.5.30}
+  Suppose that \(\beta\) and \(\gamma\) are ordered bases for an \(n\)-dimensional real (complex) inner product space \(\V\).
+  Prove that if \(Q\) is an orthogonal (unitary) \(n \times n\) matrix that changes \(\gamma\)-coordinates into \(\beta\)-coordinates, then \(\beta\) is orthonormal iff \(\gamma\) is orthonormal.
+\end{ex}
+
+\begin{proof}[\pf{ex:6.5.30}]
+  Let \(\beta = \set{\seq{v}{1,,n}}\) and let \(\gamma = \set{\seq{u}{1,,n}}\).
+  By \cref{2.23} we have \(Q = [\IT[\V]]_{\gamma}^{\beta}\).
+  Since
+  \begin{align*}
+    \forall i, j \in \set{1, \dots, n}, \inn{u_i, u_j} & = \inn{\IT[\V](u_i), \IT[\V](u_j)}                                    &  & \by{2.1.9}      \\
+                                                       & = \inn{\sum_{k = 1}^n Q_{k i} v_k, \sum_{p = 1}^n Q_{p j} v_p}        &  & \by{2.2.4}      \\
+                                                       & = \sum_{k = 1}^n Q_{k i} \inn{v_k, \sum_{p = 1}^n Q_{p j} v_p}        &  & \by{6.1.1}[a,b] \\
+                                                       & = \sum_{k = 1}^n \sum_{p = 1}^n \conj{Q_{p j}} Q_{k i} \inn{v_k, v_p} &  & \by{6.1}[a,b]   \\
+                                                       & = \sum_{k = 1}^n \sum_{p = 1}^n (Q^*)_{j p} Q_{k i} \inn{v_k, v_p},   &  & \by{6.1.5}
+  \end{align*}
+  we know that
+  \begin{align*}
+             & \beta \text{ is orthonormal with respect to } \inn{\cdot, \cdot}                                                                       \\
+    \implies & \forall i, j \in \set{1, \dots, n}, \inn{u_i, u_j} = \sum_{k = 1}^n \sum_{p = 1}^n (Q^*)_{j p} Q_{k i} \inn{v_k, v_p}                  \\
+             & = \sum_{k = 1}^n \sum_{p = 1}^n (Q^*)_{j p} Q_{k i} \delta_{k p}                                                      &  & \by{6.1.12} \\
+             & = \sum_{k = 1}^n (Q^*)_{j k} Q_{k i}                                                                                  &  & \by{2.3.4}  \\
+             & = (Q^* Q)_{j i}                                                                                                       &  & \by{2.3.1}  \\
+             & = \delta_{j i}                                                                                                        &  & \by{6.5.9}  \\
+    \implies & \gamma \text{ is orthonormal with respect to } \inn{\cdot, \cdot}.                                                    &  & \by{6.1.12}
+  \end{align*}
+  Using the same argument and the fact that \(Q^* = Q^{-1} = [\IT[\V]]_{\beta}^{\gamma}\), we see that \(\gamma\) is orthonormal with respect to \(\inn{\dot, \cdot}\) implies \(\beta\) is orthonormal with respect to \(\inn{\dot, \cdot}\).
+\end{proof}
+
+\begin{defn}\label{6.5.20}
+  Let \(\V\) be a finite-dimensional complex (real) inner product space, and let \(u\) be a unit vector in \(\V\).
+  Define the \textbf{Householder} operator \(\lt{H}_u : \V \to \V\) by \(\lt{H}_u(x) = x - 2 \inn{x, u} u\) for all \(x \in \V\).
+\end{defn}
+
+\begin{ex}\label{ex:6.5.31}
+  Let \(\lt{H}_u\) be a Householder operator on a finite-dimensional inner product space \(\V\) over \(\F\).
+  Prove the following results.
+  \begin{enumerate}
+    \item \(\lt{H}_u\) is linear.
+    \item \(\lt{H}_u(x) = x\) iff \(x\) is orthogonal to \(u\).
+    \item \(\lt{H}_u(u) = -u\).
+    \item \(\lt{H}_u^* = \lt{H}_u\) and \(\lt{H}_u^2 = \IT[\V]\), and hence \(\lt{H}_u\) is a unitary (orthogonal) operator on \(\V\).
+  \end{enumerate}
+  (Note:
+  If \(\V\) is a real inner product space, then in the language of \cref{sec:6.11}, \(\lt{H}_u\) is a reflection.)
+\end{ex}
+
+\begin{proof}[\pf{ex:6.5.31}(a)]
+  Let \(x, y \in \V\) and let \(c \in \F\).
+  Then we have
+  \begin{align*}
+    \lt{H}_u(cx + y) & = cx + y - 2 \inn{cx + y, u} u                &  & \by{6.5.20}     \\
+                     & = cx + y - 2 (c \inn{x, u} + \inn{y, u}) u    &  & \by{6.1.1}[a,b] \\
+                     & = c (x - 2 \inn{x, u} u) + y - 2 \inn{y, u} u &  & \by{1.2.1}      \\
+                     & = c \lt{H}_u(x) + \lt{H}_u(y)                 &  & \by{6.5.20}
+  \end{align*}
+  and thus by \cref{2.1.2}(b) we know that \(\lt{H}_u \in \ls(\V)\).
+\end{proof}
+
+\begin{proof}[\pf{ex:6.5.31}(b)]
+  We have
+  \begin{align*}
+         & \lt{H}_u(x) = x                                \\
+    \iff & x - 2 \inn{x, u} u = x       &  & \by{6.5.20}  \\
+    \iff & \inn{x, u} u = \zv                             \\
+    \iff & \inn{x, u} = 0               &  & (u \neq \zv) \\
+    \iff & x, u \text{ are orthogonal}. &  & \by{6.1.12}
+  \end{align*}
+\end{proof}
+
+\begin{proof}[\pf{ex:6.5.31}(c)]
+  We have
+  \begin{align*}
+    \lt{H}_u(u) & = u - 2 \inn{u, u} u &  & \by{6.5.20} \\
+                & = u - 2u             &  & \by{6.1.12} \\
+                & = -u.
+  \end{align*}
+\end{proof}
+
+\begin{proof}[\pf{ex:6.5.31}(d)]
+  Let \(\lt{H}_u^*\) be the adjoint operator of \(\lt{H}_u\) with respect to \(\inn{\cdot, \cdot}\).
+  Then we have
+  \begin{align*}
+    \forall x, y \in \V, \inn{x, \lt{H}_u^*(y)} & = \inn{\lt{H}_u(x), y}                 &  & \by{6.9}        \\
+                                                & = \inn{x - 2 \inn{x, u} u, y}          &  & \by{6.5.20}     \\
+                                                & = \inn{x, y} - 2 \inn{x, u} \inn{u, y} &  & \by{6.1.1}[a,b] \\
+                                                & = \inn{x, y - 2 \conj{\inn{u, y}} u}   &  & \by{6.1}[a,b]   \\
+                                                & = \inn{x, y - 2 \inn{y, u} u}          &  & \by{6.1.1}[c]   \\
+                                                & = \inn{x, \lt{H}_u(y)}                 &  & \by{6.5.20}
+  \end{align*}
+  and thus by \cref{6.1}(e) we have \(\lt{H}_u^* = \lt{H}_u\).
+
+  Since
+  \begin{align*}
+    \forall x \in \V, \lt{H}_u^2(x) & = \lt{H}_u(\lt{H}_u(x))                                         \\
+                                    & = \lt{H}_u(x - 2 \inn{x, u} u)           &  & \by{6.5.20}       \\
+                                    & = \lt{H}_u(x) - 2 \inn{x, u} \lt{H}_u(u) &  & \by{ex:6.5.31}[a] \\
+                                    & = \lt{H}_u(x) + 2 \inn{x, u} u           &  & \by{ex:6.5.31}[c] \\
+                                    & = x - 2 \inn{x, u} u + 2 \inn{x, u} u    &  & \by{6.5.20}       \\
+                                    & = x,
+  \end{align*}
+  we have \(\lt{H}_u^2 = \lt{H}_u^* \lt{H}_u = \lt{H}_u \lt{H}_u^* = \IT[\V]\).
+  By \cref{6.5.1} \(\lt{H}_u\) is unitary.
+\end{proof}
+
+\begin{ex}\label{ex:6.5.32}
+  Let \(\V\) be a finite-dimensional inner product space over \(\F\).
+  Let \(x\) and \(y\) be linearly independent vectors in \(\V\) such that \(\norm{x} = \norm{y}\).
+  \begin{enumerate}
+    \item If \(\F = \C\), prove that there exists a unit vector \(u\) in \(\V\) and a complex number \(\theta\) with \(\abs{\theta} = 1\) such that \(\lt{H}_u(x) = \theta y\).
+    \item If \(\F = \R\), prove that there exists a unit vector \(u\) in \(\V\) such that \(\lt{H}_u(x) = y\).
+  \end{enumerate}
+\end{ex}
+
+\begin{proof}[\pf{ex:6.5.32}(a)]
+  Let \(\inn{\cdot, \cdot}\) be an inner product on \(\V\) over \(\C\) such that \(\norm{x} = \inn{x, x} = \inn{y, y} = \norm{y}\).
+  Since \(x, y\) are linearly independent, we know that \(x - \theta y \neq \zv\) for all \(\theta \in \C\).
+
+  First suppose that \(\inn{x, y} = 0\).
+  Let \(\theta = 1\) and let \(u = \frac{x - y}{\norm{x- y}}\).
+  Then we have
+  \begin{align*}
+    \lt{H}_u(x) & = x - 2 \inn{x, u} u                                                     &  & \by{6.5.20}            \\
+                & = x - \frac{2 \inn{x, \frac{x - y}{\norm{x - y}}}}{\norm{x - y}} (x - y)                             \\
+                & = x - \frac{2 \inn{x, x - y}}{\norm{x - y}^2} (x - y)                    &  & \by{6.1}[b]            \\
+                & = x - \frac{2 \inn{x, x} - 2 \inn{x, y}}{\norm{x - y}^2} (x - y)         &  & \by{6.1}[a,b]          \\
+                & = x - \frac{2 \inn{x, x}}{\norm{x - y}^2} (x - y)                        &  & \by{6.1.12}            \\
+                & = x - \frac{2 \inn{x, x}}{\norm{x}^2 + \norm{y}^2} (x - y)               &  & \by{ex:6.1.10}         \\
+                & = x - \frac{2 \norm{x}^2}{\norm{x}^2 + \norm{y}^2} (x - y)               &  & \by{6.1.9}             \\
+                & = x - \frac{\norm{x}^2 + \norm{y}^2}{\norm{x}^2 + \norm{y}^2} (x - y)    &  & \text{(by hypothesis)} \\
+                & = y.
+  \end{align*}
+
+  Now suppose that \(\inn{x, y} \neq 0\).
+  Let \(\theta = \frac{\inn{x, y}}{\abs{\inn{x, y}}}\) and let \(u = \frac{x - \theta y}{\norm{x - \theta y}}\).
+  Then we have
+  \begin{align*}
+    \abs{\theta} & = \abs{\frac{\inn{x, y}}{\abs{\inn{x, y}}}} \\
+                 & = \frac{\abs{\inn{x, y}}}{\abs{\inn{x, y}}} \\
+                 & = 1
+  \end{align*}
+  and
+  \begin{align*}
+    \inn{x, \theta y} & = \conj{\theta} \inn{x, y}                              &  & \by{6.1}[b]   \\
+                      & = \conj{\frac{\inn{x, y}}{\abs{\inn{x, y}}}} \inn{x, y}                    \\
+                      & = \frac{\inn{y, x}}{\abs{x, y}} \inn{x, y}              &  & \by{6.1.1}[c] \\
+                      & = \abs{x, y}                                            &  & \by{d.0.5}    \\
+                      & \in \R.
+  \end{align*}
+  Thus
+  \begin{align*}
+    \lt{H}_u(x) & = x - 2 \inn{x, u} u                                                                                               &  & \by{6.5.20}                \\
+                & = x - \frac{2 \inn{x, \frac{x - \theta y}{\norm{x - \theta y}}}}{\norm{x - \theta y}} (x - \theta y)                                               \\
+                & = x - \frac{2 \inn{x, x - \theta y}}{\norm{x - \theta y}^2} (x - \theta y)                                         &  & \by{6.1}[b]                \\
+                & = x - \frac{2 \inn{x, x} - 2 \conj{\theta} \inn{x, y}}{\norm{x - \theta y}^2} (x - \theta y)                       &  & \by{6.1}[a,b]              \\
+                & = x - \frac{2 \norm{x}^2 - 2 \conj{\theta} \inn{x, y}}{\norm{x - \theta y}^2} (x - \theta y)                       &  & \by{6.1.9}                 \\
+                & = x - \frac{\norm{x}^2 - 2 \conj{\theta} \inn{x, y} + \norm{y}^2}{\norm{x - \theta y}^2} (x - \theta y)            &  & \text{(by hypothesis)}     \\
+                & = x - \frac{\norm{x}^2 - 2 \inn{x, \theta y} + \norm{y}^2}{\norm{x - \theta y}^2} (x - \theta y)                   &  & \by{6.1}[b]                \\
+                & = x - \frac{\norm{x}^2 - 2 \Re(\inn{x, \theta y}) + \norm{y}^2}{\norm{x - \theta y}^2} (x - \theta y)              &  & (\inn{x, \theta y} \in \R) \\
+                & = x - \frac{\norm{x}^2 - 2 \Re(\inn{x, \theta y}) + \abs{\theta} \norm{y}^2}{\norm{x - \theta y}^2} (x - \theta y) &  & (\abs{\theta} = 1)         \\
+                & = x - \frac{\norm{x}^2 - 2 \Re(\inn{x, \theta y}) + \norm{\theta y}^2}{\norm{x - \theta y}^2} (x - \theta y)       &  & \by{6.2}[a]                \\
+                & = x - \frac{\norm{x - \theta y}^2}{\norm{x - \theta y}^2} (x - \theta y)                                           &  & \by{ex:6.1.19}[a]          \\
+                & = \theta y.
+  \end{align*}
+\end{proof}
+
+\begin{proof}[\pf{ex:6.5.32}(b)]
+  Let \(\inn{\cdot, \cdot}\) be an inner product on \(\V\) over \(\R\) such that \(\norm{x} = \inn{x, x} = \inn{y, y} = \norm{y}\).
+  Since \(x, y\) are linearly independent, we know that \(x - y \neq \zv\).
+  Let \(u = \frac{x - y}{\norm{x- y}}\).
+  Then we have
+  \begin{align*}
+    \lt{H}_u(x) & = x - 2 \inn{x, u} u                                                             &  & \by{6.5.20}            \\
+                & = x - \frac{2 \inn{x, \frac{x - y}{\norm{x - y}}}}{\norm{x - y}} (x - y)                                     \\
+                & = x - \frac{2 \inn{x, x - y}}{\norm{x - y}^2} (x - y)                            &  & \by{6.1}[b]            \\
+                & = x - \frac{2 \inn{x, x} - 2 \inn{x, y}}{\norm{x - y}^2} (x - y)                 &  & \by{6.1}[a,b]          \\
+                & = x - \frac{2 \norm{x}^2 - 2 \inn{x, y}}{\norm{x - y}^2} (x - y)                 &  & \by{6.1.9}             \\
+                & = x - \frac{\norm{x}^2 - 2 \inn{x, y} + \norm{y}^2}{\norm{x - y}^2} (x - y)      &  & \text{(by hypothesis)} \\
+                & = x - \frac{\norm{x}^2 - 2 \Re(\inn{x, y}) + \norm{y}^2}{\norm{x - y}^2} (x - y) &  & (\F = \R)              \\
+                & = x - \frac{\norm{x - y}^2}{\norm{x - y}^2} (x - y)                              &  & \by{ex:6.1.19}[a]      \\
+                & = y.
+  \end{align*}
+\end{proof}
