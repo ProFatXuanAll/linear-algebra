@@ -433,7 +433,7 @@
 \end{thm}
 
 \begin{proof}[\pf{2.15}(a)]
-  The fact that \(\L_A\) is linear follows immediately from \cref{2.12}(a)(b).
+  \(\L_A\) is linear follows immediately from \cref{2.12}(a)(b).
   By \cref{2.2.4} the \(j\)th column of \([\L_A]_{\beta}^{\gamma}\) is equal to \(\L_A(e_j)\).
   However by \cref{2.3.8} we have \(\L_A(e_j) = A e_j\), which is also the \(j\)th column of \(A\) by \cref{2.13}(b).
   So \([\L_A]_{\beta}^{\gamma} = A\).
@@ -912,17 +912,17 @@
   Suppose that \(\T = \T^2\).
   Then we have
   \begin{align*}
-             & \forall x \in \V, \T(x) = \T(\T(x))                                        \\
-    \implies & \forall x \in \V, \T(x - \T(x)) = \T(x) - \T(\T(x)) &  & \by{2.1.2}[c]     \\
-             & = \T(x) - \T(x) = \zv                                                      \\
+             & \forall x \in \V, \T(x) = \T(\T(x))                                                                       \\
+    \implies & \forall x \in \V, \T(x - \T(x)) = \T(x) - \T(\T(x)) = \zv                          &  & \by{2.1.2}[c]     \\
     \implies & \forall x \in \V, \begin{dcases}
                                    \T(x) \in \set{y \in \V : \T(y) = y} \\
                                    x - \T(x) \in \ns{\T}
-                                 \end{dcases}             &  & \by{2.1.10}                \\
-    \implies & \V \subseteq \set{y \in \V : \T(y) = y} + \ns{\T}   &  & \by{1.3.10}       \\
-    \implies & \V = \set{y \in \V : \T(y) = y} + \ns{\T}.          &  & \by{ex:1.3.23}[a]
+                                 \end{dcases}                                            &  & \by{2.1.10}                \\
+    \implies & \forall x \in \V, x = \T(x) + (x - \T(x)) \in \set{y \in \V : \T(y) = y} + \ns{\T} &  & \by{1.3.10}       \\
+    \implies & \V \subseteq \set{y \in \V : \T(y) = y} + \ns{\T}                                                         \\
+    \implies & \V = \set{y \in \V : \T(y) = y} + \ns{\T}                                          &  & \by{ex:1.3.23}[a]
   \end{align*}
-  Thus
+  and
   \begin{align*}
              & \forall x \in \set{y \in \V : \T(y) = y} \cap \ns{\T}, \begin{dcases}
                                                                         \T(x) = x \\
@@ -932,6 +932,7 @@
     \implies & \set{y \in \V : \T(y) = y} \cap \ns{\T} = \set{\zv}                                          \\
     \implies & \V = \set{y \in \V : \T(y) = y} \oplus \ns{\T}.                       &  & \by{ex:2.3.16}[a]
   \end{align*}
+  By \cref{ex:2.1.26} we see that \(\T\) is a projection.
 \end{proof}
 
 \begin{ex}\label{ex:2.3.18}

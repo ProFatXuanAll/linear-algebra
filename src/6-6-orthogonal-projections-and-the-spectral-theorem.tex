@@ -1,5 +1,79 @@
 \section{Orthogonal Projections and the Spectral Theorem}\label{sec:6.6}
 
+\begin{note}
+  In this section, we rely heavily on \cref{6.16,6.17} to develop an elegant representation of a normal (if \(\F = \C\)) or a self-adjoint (if \(\F = \R\)) operator \(\T\) on a finite-dimensional inner product space.
+  We prove that \(\T\) can be written in the form \(\seq[+]{\lambda,\T}{1,,k}\), where \(\seq{\lambda}{1,,k} \in \F\) are the distinct eigenvalues of \(\T\) and \(\seq{\T}{1,,k}\) are \emph{orthogonal projections}.
+
+  Recall from \cref{2.1.14} that if \(\V = \W_1 \oplus \W_2\), then a linear operator \(\T\) on \(\V\) is the \textbf{projection on \(\W_1\) along \(\W_2\)} if, whenever \(x = x_1 + x_2\), with \(x_1 \in \W_1\) and \(x_2 \in \W_2\), we have \(\T(x) = x_1\).
+  By \cref{ex:2.1.26}(a)(b), we have
+  \[
+    \rg{\T} = \W_1 = \set{x \in \V : \T(x) = x} \quad \text{and} \quad \ns{\T} = \W_2.
+  \]
+  So \(\V = \rg{\T} \oplus \ns{\T}\).
+  Thus there is no ambiguity if we refer to \(\T\) as a ``projection on \(\W_1\)'' or simply as a ``projection.''
+  In fact, it can be shown (see \cref{ex:2.3.17}) that \(\T\) is a projection iff \(\T = \T^2\).
+  Because \(\V = \W_1 \oplus \W_2 = \W_1 \oplus \W_3\) does \emph{not} imply that \(\W_2 = \W_3\), we see that \(\W_1\) does not uniquely determine \(\T\).
+  For an \emph{orthogonal} projection \(\T\), however, \(\T\) is uniquely determined by its range (see \cref{6.6.2}).
+\end{note}
+
+\begin{defn}\label{6.6.1}
+  Let \(\V\) be an inner product space over \(\F\), and let \(\T \in \ls(\V)\) be a projection.
+  We say that \(\T\) is an \textbf{orthogonal projection} if \(\rg{\T}^{\perp} = \ns{\T}\) and \(\ns{\T}^{\perp} = \rg{\T}\).
+\end{defn}
+
+\begin{note}
+  By \cref{ex:6.2.13}(c), if \(\V\) is finite-dimensional, we need only assume that one of the preceding conditions holds.
+  For example, if \(\rg{\T}^{\perp} = \ns{\T}\), then \(\rg{\T} = \rg{\T}^{\perp \perp} = \ns{\T}^{\perp}\).
+\end{note}
+
+\begin{prop}\label{6.6.2}
+  Assume that \(\W\) is a finite-dimensional subspace of an inner product space \(\V\) over \(\F\).
+  In the notation of \cref{6.6}, we can define a function \(\T : \V \to \V\) by \(\T(y) = u\).
+  Then \(\T\) is the unique orthogonal projection on \(\W\).
+  We call \(\T\) the \textbf{orthogonal projection} of \(\V\) on \(\W\).
+\end{prop}
+
+\begin{proof}[\pf{6.6.2}]
+  For convenience, for each \(v \in \V\), we define \((v_1, v_2) \in \W \times \W^{\perp}\) such that \(v = v_1 + v_2\) (such definition is well-defined thanks to \cref{6.6}).
+
+  First we show that \(\T\) is a orthogonal projection of \(\V\) on \(\W\).
+  By \cref{2.1.14}, \cref{6.6} and \cref{ex:6.2.13}(d) we see that \(\T\) is a projection on \(\W\) along \(\W^{\perp}\).
+  Thus by \cref{ex:2.1.26}(b) we have \(\W = \rg{\T}\) and \(\W^{\perp} = \ns{\T}\).
+  Since
+  \begin{align*}
+         & v \in \rg{\T}^{\perp}                                                       \\
+    \iff & \forall y \in \rg{\T}, \inn{v, y} = 0                    &  & \by{6.2.9}    \\
+    \iff & \forall x \in \V, 0 = \inn{v, \T(x)} = \inn{v, x_1}      &  & \by{2.1.10}   \\
+         & = \inn{v_1 + v_2, x_1} = \inn{v_1, x_1} + \inn{v_2, x_1} &  & \by{6.1.1}[a] \\
+         & = \inn{v_1, x_1} = \inn{v_1, x_1} + \inn{v_1, x_2}       &  & \by{6.2.9}    \\
+         & = \inn{v_1, x_1 + x_2} = \inn{v_1, x} = \inn{\T(v), x}   &  & \by{6.1.1}[a] \\
+    \iff & \T(v) = \zv                                              &  & \by{6.1}[c,d] \\
+    \iff & v \in \ns{\T}
+  \end{align*}
+  and
+  \begin{align*}
+         & v \in \ns{\T}^{\perp}                                                           \\
+    \iff & \forall x \in \ns{\T}, \inn{v, x} = 0                    &  & \by{6.2.9}        \\
+    \iff & \forall x \in \W^{\perp}, \inn{v, x} = 0                 &  & \by{ex:2.1.26}[b] \\
+    \iff & (v = \zv) \lor (v \notin \W^{\perp} \setminus \set{\zv}) &  & \by{6.1}[c,d]     \\
+    \iff & v \in \W                                                                        \\
+    \iff & v \in \rg{\T},                                           &  & \by{ex:2.1.26}[b]
+  \end{align*}
+  we know that \(\rg{\T}^{\perp} = \ns{\T}\) and \(\ns{\T}^{\perp} = \rg{\T}\).
+  Thus by \cref{6.6.1} \(\T\) is an orthogonal projection of \(\V\) on \(\W\).
+
+  Now we show that \(\T\) is unique.
+  For if \(\T\) and \(\U\) are orthogonal projections on \(\W\), then \(\rg{\T} = \W = \rg{\U}\).
+  Hence \(\ns{\T} = \rg{\T}^{\perp} = \rg{\U}^{\perp} = \ns{\U}\), and since every projection is uniquely determined by its range and null space, we have \(\T = \U\).
+\end{proof}
+
+\begin{note}
+  If \(\T\) is the orthogonal projection of \(\V\) on \(\W\), then \(\T(v)\) is the ``best approximation in \(\W\) to \(v\)'';
+  that is, if \(w \in \W\), then \(\norm{w - v} \geq \norm{\T(v) - v}\).
+  In fact, this approximation property characterizes \(\T\).
+  These results follow immediately from \cref{6.2.12}.
+\end{note}
+
 \exercisesection
 
 \begin{ex}\label{ex:6.6.9}
