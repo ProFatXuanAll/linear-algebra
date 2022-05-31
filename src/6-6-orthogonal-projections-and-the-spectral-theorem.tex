@@ -34,33 +34,59 @@
 \end{prop}
 
 \begin{proof}[\pf{6.6.2}]
-  For convenience, for each \(v \in \V\), we define \((v_1, v_2) \in \W \times \W^{\perp}\) such that \(v = v_1 + v_2\) (such definition is well-defined thanks to \cref{6.6}).
+  For convenience, for each \(v \in \V\), we define the unique tuple \((v_1, v_2) \in \W \times \W^{\perp}\) such that \(v = v_1 + v_2\) (such definition is well-defined thanks to \cref{6.6}).
 
-  First we show that \(\T\) is a orthogonal projection of \(\V\) on \(\W\).
+  First we show that \(\T\) is an orthogonal projection of \(\V\) on \(\W\).
   By \cref{2.1.14}, \cref{6.6} and \cref{ex:6.2.13}(d) we see that \(\T\) is a projection on \(\W\) along \(\W^{\perp}\).
-  Thus by \cref{ex:2.1.26}(b) we have \(\W = \rg{\T}\) and \(\W^{\perp} = \ns{\T}\).
+  We claim that \(\inn{\T(x), y} = \inn{x, \T(y)}\) for all \(x, y \in \V\).
+  This is true since
+  \begin{align*}
+    \forall x, y \in \V, \inn{x, \T(y)} & = \inn{x, y_1}                    &  & \by{2.1.14}   \\
+                                        & = \inn{x_1 + x_2, y_1}            &  & \by{6.6}      \\
+                                        & = \inn{x_1, y_1} + \inn{x_2, y_1} &  & \by{6.1.1}[a] \\
+                                        & = \inn{x_1, y_1}                  &  & \by{6.2.9}    \\
+                                        & = \inn{x_1, y_1} + \inn{x_1, y_2} &  & \by{6.2.9}    \\
+                                        & = \inn{x_1, y_1 + y_2}            &  & \by{6.1}[a]   \\
+                                        & = \inn{x_1, y}                    &  & \by{6.6}      \\
+                                        & = \inn{\T(x), y}.                 &  & \by{2.1.14}
+  \end{align*}
+  Now we use the claim to show that \(\T\) is an orthogonal projection of \(\V\) on \(\W\).
+  By \cref{ex:2.1.26}(b) we have \(\W = \rg{\T}\) and \(\W^{\perp} = \ns{\T}\).
   Since
   \begin{align*}
-         & v \in \rg{\T}^{\perp}                                                       \\
-    \iff & \forall y \in \rg{\T}, \inn{v, y} = 0                    &  & \by{6.2.9}    \\
-    \iff & \forall x \in \V, 0 = \inn{v, \T(x)} = \inn{v, x_1}      &  & \by{2.1.10}   \\
-         & = \inn{v_1 + v_2, x_1} = \inn{v_1, x_1} + \inn{v_2, x_1} &  & \by{6.1.1}[a] \\
-         & = \inn{v_1, x_1} = \inn{v_1, x_1} + \inn{v_1, x_2}       &  & \by{6.2.9}    \\
-         & = \inn{v_1, x_1 + x_2} = \inn{v_1, x} = \inn{\T(v), x}   &  & \by{6.1.1}[a] \\
-    \iff & \T(v) = \zv                                              &  & \by{6.1}[c,d] \\
-    \iff & v \in \ns{\T}
+         & v \in \rg{\T}^{\perp}                                                    \\
+    \iff & \forall y \in \rg{\T}, \inn{v, y} = 0 &  & \by{6.2.9}                    \\
+    \iff & \forall x \in \V, \inn{v, \T(x)} = 0  &  & \by{2.1.10}                   \\
+    \iff & \forall x \in \V, \inn{\T(v), x} = 0  &  & \text{(from the claim above)} \\
+    \iff & \inn{\T(v), \T(v)} = 0                &  & (\T(v) \in \V)                \\
+    \iff & \T(v) = \zv                           &  & \by{6.1}[d]                   \\
+    \iff & v \in \ns{\T},                        &  & \by{2.1.10}
+  \end{align*}
+  we have \(\rg{\T}^{\perp} = \ns{\T}\).
+  Since
+  \begin{align*}
+             & v \in \ns{\T}^{\perp}                                                                       \\
+    \implies & \forall x \in \ns{\T}, \inn{v, x} = 0                    &  & \by{6.2.9}                    \\
+    \implies & \forall x \in \ns{\T}, \inn{v, \T(x)} = \inn{v, \zv} = 0 &  & \by{2.1.10}                   \\
+    \implies & \forall x \in \ns{\T}, \inn{\T(v), x} = 0                &  & \text{(from the claim above)} \\
+    \implies & \forall x \in \ns{\T}, \inn{v - \T(v), x} = 0            &  & \by{6.1}[a,b]                 \\
+    \implies & \inn{v - \T(v), v - \T(v)} = 0                           &  & (v - \T(v) \in \ns{\T})       \\
+    \implies & v - \T(v) = \zv                                          &  & \by{6.1}[d]                   \\
+    \implies & \T(v) = v                                                                                   \\
+    \implies & v \in \rg{\T}                                            &  & \by{ex:2.1.26}[b]
   \end{align*}
   and
   \begin{align*}
-         & v \in \ns{\T}^{\perp}                                                           \\
-    \iff & \forall x \in \ns{\T}, \inn{v, x} = 0                    &  & \by{6.2.9}        \\
-    \iff & \forall x \in \W^{\perp}, \inn{v, x} = 0                 &  & \by{ex:2.1.26}[b] \\
-    \iff & (v = \zv) \lor (v \notin \W^{\perp} \setminus \set{\zv}) &  & \by{6.1}[c,d]     \\
-    \iff & v \in \W                                                                        \\
-    \iff & v \in \rg{\T},                                           &  & \by{ex:2.1.26}[b]
+             & v \in \rg{\T}                                                                         \\
+    \implies & \forall x \in \ns{\T}, \inn{v, x} = \inn{\T(v), x} &  & \by{ex:2.1.26}[b]             \\
+             & = \inn{v, \T(x)}                                   &  & \text{(from the claim above)} \\
+             & = \inn{v, \zv}                                     &  & \by{2.1.10}                   \\
+             & = 0                                                &  & \by{6.1}[c]                   \\
+    \implies & v \in \ns{\T}^{\perp},                             &  & \by{6.2.9}
   \end{align*}
-  we know that \(\rg{\T}^{\perp} = \ns{\T}\) and \(\ns{\T}^{\perp} = \rg{\T}\).
-  Thus by \cref{6.6.1} \(\T\) is an orthogonal projection of \(\V\) on \(\W\).
+  we have \(\ns{\T}^{\perp} \subseteq \rg{\T}\) and \(\rg{\T} \subseteq \ns{\T}^{\perp}\).
+  Thus \(\ns{\T}^{\perp} = \rg{\T}\).
+  By \cref{6.6.1} \(\T\) is an orthogonal projection of \(\V\) on \(\W\).
 
   Now we show that \(\T\) is unique.
   For if \(\T\) and \(\U\) are orthogonal projections on \(\W\), then \(\rg{\T} = \W = \rg{\U}\).
@@ -73,6 +99,96 @@
   In fact, this approximation property characterizes \(\T\).
   These results follow immediately from \cref{6.2.12}.
 \end{note}
+
+\begin{defn}\label{6.6.3}
+  As an application to Fourier analysis, recall the inner product space \(\vs{H}\) and the orthonormal set \(S\) in \cref{6.1.13}.
+  Define a \textbf{trigonometric polynomial of degree \(n\)} to be a function \(g \in \vs{H}\) of the form
+  \[
+    g(t) = \sum_{j = -n}^n a_j f_j(t) = \sum_{j = -n}^n a_j e^{i j t},
+  \]
+  where \(a_n\) or \(a_{-n}\) is nonzero.
+\end{defn}
+
+\begin{prop}\label{6.6.4}
+  Let \(f \in \vs{H}\).
+  The best approximation to \(f\) by a trigonometric polynomial of degree less than or equal to \(n\) is the trigonometric polynomial whose coefficients are the Fourier coefficients of \(f\) relative to the orthonormal set \(S\) (see \cref{6.1.13}).
+\end{prop}
+
+\begin{proof}[\pf{6.6.4}]
+  Let \(\W = \spn{\set{f_j : \abs{j} \leq n}}\), and let \(\T\) be the orthogonal projection of \(\vs{H}\) on \(\W\).
+  The \cref{6.2.12} tells us that the best approximation to \(f\) by a function in \(\W\) is
+  \[
+    \T(f) = \sum_{j = -n}^n \inn{f, f_i} f_j.
+  \]
+\end{proof}
+
+\begin{thm}\label{6.24}
+  Let \(\V\) be an inner product space over \(\F\), and let \(\T\) be a linear operator on \(\V\).
+  Then \(\T\) is an orthogonal projection iff \(\T\) has an adjoint \(\T^*\) and \(\T^2 = \T = \T^*\).
+\end{thm}
+
+\begin{proof}[\pf{6.24}]
+  Suppose that \(\T\) is an orthogonal projection.
+  Since \(\T^2 = \T\) because \(\T\) is a projection (see \cref{ex:2.3.17}), we only need to show that \(\T^*\) exists and \(\T = \T^*\).
+  Now \(\V = \rg{\T} \oplus \ns{\T}\) and \(\rg{\T}^{\perp} = \ns{\T}\) (see \cref{6.6.2}).
+  Let \(x, y \in \V\).
+  Then we can write \(x = x_1 + x_2\) and \(y = y_1 + y_2\), where \(x_1, y_1 \in \rg{\T}\) and \(x_2, y_2 \in \ns{\T}\).
+  Hence
+  \begin{align*}
+    \inn{x, \T(y)} & = \inn{x, y_1}                    &  & \by{2.1.14}   \\
+                   & = \inn{x_1 + x_2, y_1}            &  & \by{6.6}      \\
+                   & = \inn{x_1, y_1} + \inn{x_2, y_1} &  & \by{6.1.1}[a] \\
+                   & = \inn{x_1, y_1}                  &  & \by{6.2.9}
+  \end{align*}
+  and
+  \begin{align*}
+    \inn{\T(x), y} & = \inn{x_1, y}                    &  & \by{2.1.14} \\
+                   & = \inn{x_1, y_1 + y_2}            &  & \by{6.6}    \\
+                   & = \inn{x_1, y_1} + \inn{x_1, y_2} &  & \by{6.1}[a] \\
+                   & = \inn{x_1, y_1}.                 &  & \by{6.2.9}
+  \end{align*}
+  So \(\inn{x, \T(y)} = \inn{\T(x), y}\) for all \(x, y \in \V\);
+  thus \(\T^*\) exists and \(\T = \T^*\).
+
+  Now suppose that \(\T^2 = \T = \T^*\).
+  Then \(\T\) is a projection by \cref{ex:2.3.17}, and hence we must show that \(\rg{\T} = \ns{\T}^{\perp}\) and \(\rg{\T}^{\perp} = \ns{\T}\).
+  Let \(x \in \rg{\T}\) and \(y \in \ns{\T}\).
+  Then \(x = \T(x) = \T^*(x)\), and so
+  \begin{align*}
+    \inn{x, y} & = \inn{\T(x), y}   &  & \by{2.1.14} \\
+               & = \inn{\T^*(x), y}                  \\
+               & = \inn{x, \T(y)}   &  & \by{6.9}    \\
+               & = \inn{x, \zv}     &  & \by{2.1.14} \\
+               & = 0.
+  \end{align*}
+  Therefore \(x \in \ns{\T}^{\perp}\), from which it follows that \(\rg{\T} \subseteq \ns{\T}^{\perp}\).
+
+  Let \(y \in \ns{\T}^{\perp}\).
+  We must show that \(y \in \rg{\T}\), that is, \(\T(y) = y\).
+  Now
+  \begin{align*}
+    \norm{y - \T(y)}^2 & = \inn{y - \T(y), y - \T(y)}                   &  & \by{6.1.9}      \\
+                       & = \inn{y, y - \T(y)} - \inn{\T(y), y - \T(y)}. &  & \by{6.1.1}[a,b]
+  \end{align*}
+  Since \(y - \T(y) \in \ns{\T}\) (see \cref{ex:2.3.17}), the first term must equal zero.
+  But also
+  \begin{align*}
+    \inn{\T(y), y - \T(y)} & = \inn{y, \T^*(y - \T(y))} &  & \by{6.9}      \\
+                           & = \inn{y, \T(y - \T(y))}   &  & (\T = \T^*)   \\
+                           & = \inn{y, \T(y) - \T^2(y)} &  & \by{2.1.2}[c] \\
+                           & = \inn{y, \zv}             &  & (\T^2 = \T)   \\
+                           & = 0.                       &  & \by{6.1}[c]
+  \end{align*}
+  Thus by \cref{6.2}(b) \(y - \T(y) = \zv\);
+  that is, \(y = \T(y) \in \rg{\T}\).
+  Hence \(\rg{\T} = \ns{\T}^{\perp}\).
+
+  Using the preceding results, we have \(\rg{\T}^{\perp} = \ns{\T}^{\perp \perp} \supseteq \ns{\T}\) by \cref{ex:6.2.13}(b).
+  Now suppose that \(x \in \rg{\T}^{\perp}\).
+  For any \(y \in \V\), we have \(\inn{\T(x), y} = \inn{x, \T^*(y)} = \inn{x, \T(y)} = 0\).
+  So \(\T(x) = \zv\), and thus \(x \in \ns{\T}\).
+  Hence \(\rg{\T}^{\perp} = \ns{\T}\).
+\end{proof}
 
 \exercisesection
 
