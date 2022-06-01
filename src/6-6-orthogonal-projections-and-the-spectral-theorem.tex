@@ -516,6 +516,43 @@
   Thus we must have \(\W_2 = \W_1^{\perp}\), and by \cref{6.6.2} \(\T\) is the orthogonal projection of \(\V\) on \(\W_1\).
 \end{proof}
 
+\begin{ex}\label{ex:6.6.6}
+  Let \(\T\) be a normal operator on a finite-dimensional inner product space \(\V\) over \(\F\).
+  Prove that if \(\T\) is a projection, then \(\T\) is also an orthogonal projection.
+\end{ex}
+
+\begin{proof}[\pf{ex:6.6.6}]
+  By \cref{ex:2.1.26}(b) we have \(\V = \rg{\T} \oplus \ns{\T}\).
+  We claim that \(\rg{\T}^{\perp} = \ns{\T}\).
+  Since
+  \begin{align*}
+             & v \in \rg{\T}^{\perp}                                      \\
+    \implies & \inn{\T(v), \T(v)} = \inn{v, \T^*(\T(v))} &  & \by{6.9}    \\
+             & = \inn{v, \T(\T^*(v))}                    &  & \by{6.4.3}  \\
+             & = 0                                       &  & \by{6.2.9}  \\
+    \implies & \T(v) = \zv                               &  & \by{6.1}[d] \\
+    \implies & v \in \ns{\T}                             &  & \by{2.1.10}
+  \end{align*}
+  and
+  \begin{align*}
+             & v \in \ns{\T}                                                            \\
+    \implies & 0 = \inn{v, \zv}                                      &  & \by{6.1}[c]   \\
+             & = \inn{v, \T^*(\zv)}                                  &  & \by{2.1.2}[a] \\
+             & = \inn{v, \T^*(\T(v))}                                &  & \by{2.1.10}   \\
+             & = \inn{v, \T(\T^*(v))}                                &  & \by{6.4.3}    \\
+             & = \inn{\T^*(v), \T^*(v)}                              &  & \by{6.9}      \\
+    \implies & \T^*(v) = \zv                                         &  & \by{6.1}[d]   \\
+    \implies & \forall x \in \V, 0 = \inn{\zv, x} = \inn{\T^*(v), x} &  & \by{6.1}[d]   \\
+             & = \inn{v, \T(x)}                                      &  & \by{6.9}      \\
+    \implies & \forall y \in \rg{\T}, \inn{v, y} = 0                 &  & \by{2.1.10}   \\
+    \implies & v \in \rg{\T}^{\perp},                                &  & \by{6.2.9}
+  \end{align*}
+  we have \(\rg{\T}^{\perp} \subseteq \ns{\T}\) and \(\ns{\T} \subseteq \rg{\T}^{\perp}\).
+  Thus \(\rg{\T}^{\perp} = \ns{\T}\).
+  Since \(\V\) is finite-dimensional, by \cref{ex:6.2.13}(c) we have \(\rg{\T} = (\rg{\T}^{\perp})^{\perp} = \ns{\T}^{\perp}\).
+  Thus by \cref{6.6.1} \(\T\) is an orthogonal projection.
+\end{proof}
+
 \begin{ex}\label{ex:6.6.7}
   Let \(\T\) be a normal operator on a finite-dimensional complex inner product space \(\V\).
   Use the spectral decomposition \(\seq[+]{\lambda,\T}{1,,k}\) of \(\T\) to prove the following results.
@@ -575,29 +612,85 @@
 \end{proof}
 
 \begin{proof}[\pf{ex:6.6.7}(c)]
-  We have
+  First suppose that \(\U \T = \T \U\).
+  By \cref{6.6.10} we can define polynomial \(g_i\) such that \(g_i(\T) = \T_i\) for all \(i \in \set{1, \dots, k}\).
+  Then we have
   \begin{align*}
-         & \U \T = \T \U                                                                                  \\
-    \iff & \U (\seq[+]{\lambda,\T}{1,,k}) = (\seq[+]{\lambda,\T}{1,,k}) \U              &  & \by{6.25}[e] \\
-    \iff & \lambda_1 (\U \T_1 - \T_1 \U) + \cdots + \lambda_k (\U \T_k - \T_k \U) = \zT &  & \by{2.2.5}   \\
-    \iff &
+    \forall i \in \set{1, \dots, k}, \U \T_i & = \U g_i(\T) &  & \by{6.6.10}     \\
+                                             & = g_i(\T) \U &  & (\U \T = \T \U) \\
+                                             & = \T_i \U.   &  & \by{6.6.10}
+  \end{align*}
+
+  Now suppose that \(\U \T_i = \T_i \U\) for all \(i \in \set{1, \dots, k}\).
+  Then we have
+  \begin{align*}
+    \U \T & = \U (\seq[+]{\lambda,\T}{1,,k})                 &  & \by{6.25}[e] \\
+          & = \lambda_1 \U \T_1 + \cdots + \lambda_k \U \T_k &  & \by{2.2.5}   \\
+          & = \lambda_1 \T_1 \U + \cdots + \lambda_k \T_k \U                   \\
+          & = (\seq[+]{\lambda,\T}{1,,k}) \U                 &  & \by{2.2.5}   \\
+          & = \T \U.                                         &  & \by{6.25}[e]
   \end{align*}
 \end{proof}
 
 \begin{proof}[\pf{ex:6.6.7}(d)]
-
+  For each \(i \in \set{1, \dots, k}\), define \(\mu_i \in \C\) such that \(\mu_i^2 = \lambda_i\).
+  Let \(\U = \sum_{i = 1}^k \mu_i \T_i\).
+  Then we have
+  \begin{align*}
+    \U^2 & = \pa{\sum_{i = 1}^k \mu_i \T_i}^2                   \\
+         & = \sum_{i = 1}^k \mu_i^2 \T_i      &  & \by{6.25}[c] \\
+         & = \sum_{i = 1}^k \lambda_i \T_i                      \\
+         & = \T.                              &  & \by{6.25}[e]
+  \end{align*}
 \end{proof}
 
 \begin{proof}[\pf{ex:6.6.7}(e)]
-
+  We have
+  \begin{align*}
+         & \T \text{ is invertible}                                                                         \\
+    \iff & \ns{\T} = \set{\zv}                                                            &  & \by{2.4,2.5} \\
+    \iff & \forall x \in \V \setminus \set{\zv}, \T(x) \neq \zv                                             \\
+    \iff & \forall x \in \V \setminus \set{\zv}, (\seq[+]{\lambda,\T}{1,,k})(x) \neq \zv  &  & \by{6.25}[e] \\
+    \iff & \forall i \in \set{1, \dots, k}, \exists x \in \V : \lambda_i \T_i(x) \neq \zv &  & \by{6.25}[a] \\
+    \iff & \forall i \in \set{1, \dots, k}, \lambda_i \neq 0.                             &  & \by{5.1.2}
+  \end{align*}
 \end{proof}
 
 \begin{proof}[\pf{ex:6.6.7}(f)]
+  First suppose that \(\T\) is a projection.
+  By \cref{ex:6.6.6} we see that \(\T\) is an orthogonal projection.
+  By \cref{6.6.1,2.1.14} we see that \(\V = \rg{\T} \oplus \ns{\T}\) and \(\T_{\rg{\T}} = \IT[\rg{\T}]\).
+  Then by \cref{2.1.10,5.1.2} we see that eigenvalues of \(\T\) are \(0\) or \(1\).
 
+  Now suppose that eigenvalues of \(\T\) are \(0\) or \(1\).
+  Let \(\lambda_1 = 1\) and \(\lambda_2 = 0\).
+  Then by \cref{6.25}(e) we have \(\T = \seq[+]{\lambda,\T}{1,2} = \T_1\), where \(\T_1\) is a projection.
 \end{proof}
 
 \begin{proof}[\pf{ex:6.6.7}(g)]
+  First suppose that \(\T = -\T^*\).
+  Then we have
+  \begin{align*}
+             & \T = -\T^*                                                                                                           \\
+    \implies & \seq[+]{\lambda,\T}{1,,k} = -(\seq[+]{\lambda,\T}{1,,k})^*                                      &  & \by{6.25}[e]    \\
+             & = - (\conj{\lambda}_1 \T_1^* + \cdots + \conj{\lambda}_k \T_k^*)                                &  & \by{6.3.2}[a,b] \\
+             & = - (\seq[+]{\conj{\lambda},\T}{1,,k})                                                          &  & \by{6.24}       \\
+    \implies & (\lambda_1 + \conj{\lambda}_1) \T_1 + \cdots + (\lambda_k + \conj{\lambda}_k) \T_k = \zT                             \\
+    \implies & \forall i \in \set{1, \dots, k}, \forall x \in \V, (\lambda_i + \conj{\lambda}_i) \T_i(x) = \zv &  & \by{6.25}[a]    \\
+    \implies & \forall i \in \set{1, \dots, k}, \lambda_i + \conj{\lambda}_i = 0                                                    \\
+    \implies & \forall i \in \set{1, \dots, k}, \Re(\lambda_i) = 0.                                            &  & \by{d.0.4}
+  \end{align*}
 
+  Now suppose that \(\Re(\lambda_i) = 0\) for all \(i \in \set{1, \dots, k}\).
+  Then we have
+  \begin{align*}
+    -\T^* & = -(\seq[+]{\lambda,\T}{1,,k})^*                                 &  & \by{6.25}[e]    \\
+          & = - (\conj{\lambda}_1 \T_1^* + \cdots + \conj{\lambda}_k \T_k^*) &  & \by{6.3.2}[a,b] \\
+          & = - (\seq[+]{\conj{\lambda},\T}{1,,k})                           &  & \by{6.24}       \\
+          & = - ((-\lambda_1) \T_1 + \cdots + (-\lambda_k) \T_k)                                  \\
+          & = \seq[+]{\lambda,\T}{1,,k}                                      &  & \by{2.2.5}      \\
+          & = \T.                                                            &  & \by{6.25}[e]
+  \end{align*}
 \end{proof}
 
 \begin{ex}\label{ex:6.6.9}
