@@ -693,10 +693,89 @@
   \end{align*}
 \end{proof}
 
+\begin{ex}\label{ex:6.6.8}
+  Use \cref{6.6.7} to show that if \(\T\) is a normal operator on a complex finite-dimensional inner product space and \(\U\) is a linear operator that commutes with \(\T\), then \(\U\) commutes with \(\T^*\).
+\end{ex}
+
+\begin{proof}[\pf{ex:6.6.8}]
+  By \cref{6.6.7} there exists a polynomial \(g\) such that \(\T^* = g(\T)\).
+  Then we have
+  \begin{align*}
+    \U \T^* & = \U g(\T) &  & \by{6.6.7}      \\
+            & = g(\T) \U &  & (\U \T = \T \U) \\
+            & = \T^* \U. &  & \by{6.6.7}
+  \end{align*}
+\end{proof}
+
 \begin{ex}\label{ex:6.6.9}
-
+  Referring to \cref{ex:6.5.20}, prove the following facts about a partial isometry \(\U\).
+  \begin{enumerate}
+    \item \(\U^* \U\) is an orthogonal projection on \(\W\).
+    \item \(\U \U^* \U = \U\).
+  \end{enumerate}
 \end{ex}
 
-\begin{ex}\label{ex:6.6.10}
+\begin{proof}[\pf{ex:6.6.9}(a)]
+  Let \(\W\) be a subspace of \(\V\) over \(\F\) such that \(\norm{\U(x)} = \norm{x}\) for all \(x \in \W\) and \(\U(x) = \zv\) for all \(x \in \W^{\perp}\).
+  By \cref{2.1.2}(a) this means \((\U^* \U)(\W^{\perp}) = \set{\zv}\).
+  By \cref{ex:6.5.20}(e) we see that \((\U^* \U)_{\W} = \IT[\W]\).
+  Thus by \cref{6.6.1,6.6.2} \(\U^* \U\) is the orthogonal projection of \(\V\) on \(\W\).
+\end{proof}
 
+\begin{proof}[\pf{ex:6.6.9}(b)]
+  Continue from the proof of \cref{ex:6.6.9}(a), we see that
+  \begin{align*}
+    (\U \U^* \U)_{\W} & = \U((\U^* \U)_{\W})                       \\
+                      & = \U(\IT[\W])        &  & \by{ex:6.6.9}[a] \\
+                      & = \U_{\W}
+  \end{align*}
+  and
+  \begin{align*}
+    (\U \U^* \U)_{\W^{\perp}} & = \U((\U^* \U)_{\W^{\perp}})                       \\
+                              & = \U(\zT)                    &  & \by{ex:6.6.9}[a] \\
+                              & = \zT                        &  & \by{2.1.2}[a]    \\
+                              & = \U_{\W^{\perp}}.           &  & \by{ex:6.5.20}
+  \end{align*}
+  Thus \(\U \U^* \U = \U\).
+\end{proof}
+
+\begin{ex}[Simultaneous diagonalization]\label{ex:6.6.10}
+  Let \(\U\) and \(\T\) be normal operators on a finite-dimensional complex inner product space \(\V\) such that \(\T \U = \U \T\).
+  Prove that there exists an orthonormal basis for \(\V\) over \(\C\) consisting of vectors that are eigenvectors of both \(\T\) and \(\U\).
 \end{ex}
+
+\begin{proof}[\pf{ex:6.6.10}]
+  Let \(n = \dim(\V)\).
+  We use induction on \(n\).
+  For \(n = 1\), any orthonormal basis for \(\V\) over \(\C\) makes \([\T]_{\beta}\) and \([\U]_{\beta}\) diagonal matrices.
+  Thus by \cref{5.2.8} \(\T, \U\) are simultaneously diagonalizable by some orthonormal bases and the base case holds.
+  Suppose inductively that for some \(n \geq 1\), normal linear operators on \(\V\) which commute are simultaneously diagonalizable by some orthonormal bases.
+  We need to show that this is true for \(n + 1\).
+  Let \(\dim(\V) = n + 1\), let \(\T, \U \in \ls(\V)\) such that \(\T \T^* = \T^* \T\), \(\U \U^* = \U^* \U\) and \(\U \T = \T \U\).
+  Since \(\T\) is normal, by \cref{6.16} there exists an orthonormal basis \(\beta\) for \(\V\) over \(\C\) consisting of eigenvectors of \(\T\).
+  Let \(\lambda \in \C\) be an eigenvalue of \(\T\) and let \(E_{\lambda}\) be the eigenspace of \(\lambda\).
+  Now we split into two cases:
+  \begin{itemize}
+    \item If \(E_{\lambda} = \V\), then any basis for \(\V\) over \(\C\) is consist of eigenvectors of \(\T\).
+          Since \(\U\) is normal, by \cref{6.16} we know that there exists an orthonormal basis for \(\V\) over \(\C\) consist of eigenvectors of \(\U\).
+          Thus by \cref{5.2.8} \(\T, \U\) are simultaneously diagonalizable by some orthonormal bases for \(\V\) over \(\C\).
+    \item If \(E_{\lambda} \neq \V\), then by \cref{5.7} we have \(1 \leq \dim(E_{\lambda}) < n + 1\).
+          By \cref{5.4.2}(e) we know that \(E_{\lambda}\) is \(\T\)-invariant.
+          We claim that \(E_{\lambda}\) is \(\U\)-invariant.
+          Since
+          \begin{align*}
+                     & \forall v \in E_{\lambda}, \T(v) = \lambda v             &  & \by{5.2.4}    \\
+            \implies & \forall v \in E_{\lambda}, \lambda \U(v) = \U(\lambda v) &  & \by{2.1.1}[b] \\
+                     & = \U(\T(v)) = \T(\U(v))                                  &  & \by{5.1.2}    \\
+            \implies & \forall v \in E_{\lambda}, \U(v) \in E_{\lambda}         &  & \by{5.1.2}    \\
+            \implies & \U(E_{\lambda}) \subseteq E_{\lambda},
+          \end{align*}
+          by \cref{5.4.1} we know that \(E_{\lambda}\) is \(\U\)-invariant.
+          Since \(\T, \U\) are normal, by \cref{ex:6.4.7}(b) and \cref{ex:6.4.8} we know that \(E_{\lambda}^{\perp}\) is both \(\T\)- and \(\U\)-invariant.
+          By \cref{6.7}(c) we know that \(\dim(E_{\lambda}^{\perp}) < n + 1\).
+          Thus by induction hypothesis we can find some orthonormal bases \(\beta_1\) and \(\beta_2\) for \(E_{\lambda}\) and \(E_{\lambda}^{\perp}\) over \(\C\), respectively, consist of eigenvectors of both \(\T\) and \(\U\).
+          By \cref{5.10}(d) and \cref{6.7}(c) we know that \(\beta = \beta_1 \cup \beta_2\) is an orthonormal basis for \(\V\) over \(\C\) consist of eigenvectors of both \(\T\) and \(\U\).
+          Thus by \cref{5.2.8} \(\T, \U\) are simultaneously diagonalizable by some orthonormal bases for \(\V\) over \(\C\).
+  \end{itemize}
+  From all cases above the induction is closed.
+\end{proof}
