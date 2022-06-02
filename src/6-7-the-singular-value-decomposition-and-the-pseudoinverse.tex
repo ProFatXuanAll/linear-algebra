@@ -1,1 +1,138 @@
 \section{The Singular Value Decomposition and the Pseudoinverse}\label{sec:6.7}
+
+\begin{thm}[Singular Value Theorem for Linear Transformations]\label{6.26}
+  Let \(\V\) and \(\W\) be finite-dimensional inner product spaces over \(\F\), and let \(\T \in \ls(\V, \W)\) be of rank \(r\).
+  Then there exist orthonormal bases \(\set{\seq{v}{1,,n}}\) for \(\V\) over \(\F\) and \(\set{\seq{u}{1,,m}}\) for \(\W\) over \(\F\) and positive scalars \(\seq[\geq]{\sigma}{1,,r}\) such that
+  \[
+    \T(v_i) = \begin{dcases}
+      \sigma_i u_i & \text{if } i \in \set{1, \dots, r}     \\
+      \zv          & \text{if } i \in \set{r + 1, \dots, n}
+    \end{dcases}.
+  \]
+  Conversely, suppose that the preceding conditions are satisfied.
+  Then for \(i \in \set{1, \dots, n}\), \(v_i\) is an eigenvector of \(\T^* \T\) with corresponding eigenvalue \(\sigma_i^2\) if \(i \in \set{1, \dots, r}\) and \(0\) if \(i \in \set{r + 1, \dots, n}\).
+  Therefore the scalars \(\seq{\sigma}{1,,r}\) are uniquely determined by \(\T\).
+\end{thm}
+
+\begin{proof}[\pf{6.26}]
+  Let \(\inn{\cdot, \cdot}_{\V}\) and \(\inn{\cdot, \cdot}_{\W}\) be inner products on \(\V\) and \(\W\), respectively.
+  For each \(\T \in \ls(\V, \W)\), we denote the adjoint of \(\T\) with respect to \(\inn{\cdot, \cdot}_{\V}\) and \(\inn{\cdot, \cdot}_{\W}\) as \(\T^*\), i.e.,
+  \[
+    \forall (x, y) \in \V \times \W, \inn{\T(x), y}_{\W} = \inn{x, \T^*(y)}_{\V}.
+  \]
+  The existence and uniqueness of adjoint operator has been proved by \cref{ex:6.3.15}.
+
+  We first establish the existence of the bases and scalars.
+  By \cref{ex:6.4.18} and \cref{ex:6.3.15}(d), \(\T^* \T\) is a positive semidefinite linear operator of rank \(r\) on \(\V\);
+  hence there is an orthonormal basis \(\set{\seq{v}{1,,n}}\) for \(\V\) over \(\F\) with respect to \(\inn{\cdot, \cdot}_{\V}\) consisting of eigenvectors of \(\T^* \T\) with corresponding eigenvalues \(\lambda_i\), where \(\seq[\geq]{\lambda}{1,,r} > 0\), and \(\lambda_i = 0\) for \(i \in \set{r + 1, \dots, n}\).
+  For \(i \in \set{1, \dots, r}\), define \(\sigma_i = \sqrt{\lambda_i}\) and \(u_i = \frac{1}{\sigma_i} \T(v_i)\) (see \cref{ex:6.4.17}(a)).
+  We show that \(\set{\seq{u}{1,,r}}\) is an orthonormal subset of \(\W\) with respect to \(\inn{\cdot, \cdot}_{\W}\).
+  Suppose \(i, j \in \set{1, \dots, r}\).
+  Then
+  \begin{align*}
+    \inn{u_i, u_j}_{\W} & = \inn{\frac{1}{\sigma_i} \T(v_i), \frac{1}{\sigma_j} \T(v_j)}_{\W}                        \\
+                        & = \frac{1}{\sigma_i} \inn{\T(v_i), \frac{1}{\sigma_j} \T(v_j)}_{\W} &  & \by{6.1.1}[b]     \\
+                        & = \frac{1}{\sigma_i \sigma_j} \inn{\T(v_i), \T(v_j)}_{\W}           &  & \by{6.1}[b]       \\
+                        & = \frac{1}{\sigma_i \sigma_j} \inn{\T^*(\T(v_i)), v_j}_{\V}         &  & \by{ex:6.3.15}[a] \\
+                        & = \frac{1}{\sigma_i \sigma_j} \inn{\lambda_i v_i, v_j}_{\V}         &  & \by{5.1.2}        \\
+                        & = \frac{\sigma_i^2}{\sigma_i \sigma_j} \inn{v_i, v_j}_{\V}          &  & \by{6.1.1}[b]     \\
+                        & = \frac{\sigma_i^2}{\sigma_i \sigma_j} \delta_{i j}                 &  & \by{6.1.12}       \\
+                        & = \delta_{i j},                                                     &  & \by{2.3.4}
+  \end{align*}
+  and hence \(\set{\seq{u}{1,,r}}\) is orthonormal.
+  By \cref{6.7}(a), this set extends to an orthonormal basis \(\set{\seq{u}{1,,r,,m}}\) for \(\W\) over \(\F\).
+  Clearly \(\T(v_i) = \sigma_i u_i\) if \(i \in \set{1, \dots, r}\).
+  If \(i \in \set{r + 1, \dots, n}\), then \(\T^* \T(v_i) = \zv\), and so \(\T(v_i) = \zv\) by \cref{ex:6.3.15}(d).
+
+  To establish uniqueness, suppose that \(\set{\seq{v}{1,,n}}\), \(\set{\seq{u}{1,,m}}\), and \(\seq[\geq]{\sigma}{1,,r} > 0\) satisfy the properties stated in the first part of the theorem.
+  Then for \(i \in \set{1, \dots, m}\) and \(j \in \set{1, \dots, n}\),
+  \begin{align*}
+    \inn{\T^*(u_i), v_j}_{\V} & = \inn{u_i, \T(v_j)}_{\W}                                           &  & \by{ex:6.3.15}[a] \\
+                              & = \begin{dcases}
+                                    \inn{u_i, \sigma_j u_j} & \text{if } j \in \set{1, \dots, r}     \\
+                                    \inn{u_i, \zv}          & \text{if } j \in \set{r + 1, \dots, n}
+                                  \end{dcases}                         \\
+                              & = \begin{dcases}
+                                    \sigma_i & \text{if } i = j \leq r \\
+                                    0        & \text{otherwise}
+                                  \end{dcases},                               &  & \by{6.1}[b,c]
+  \end{align*}
+  and hence by \cref{6.5}, for any \(i \in \set{1, \dots, m}\),
+  \begin{equation}\label{eq:6.7.1}
+    \T^*(u_i) = \sum_{j = 1}^n \inn{\T^*(u_i), v_j} v_j = \begin{dcases}
+      \sigma_i v_i & \text{if } i = j \leq r \\
+      \zv          & \text{otherwise}
+    \end{dcases}.
+  \end{equation}
+  So for \(i \in \set{1, \dots, r}\),
+  \[
+    \T^* \T(v_i) = \T^*(\sigma_i u_i) = \sigma_i \T^*(u_i) = \sigma_i^2 v_i
+  \]
+  and \(\T^* \T(v_i) = \T^*(\zv) = \zv\) for \(i \in \set{r + 1, \dots, n}\).
+  Therefore each \(v_i\) is an eigenvector of \(\T^* \T\) with corresponding eigenvalue \(\sigma_i^2\) if \(i \in \set{1, \dots, r}\) and \(0\) if \(i \in \set{r + 1, \dots, n}\).
+\end{proof}
+
+\begin{defn}\label{6.7.1}
+  The unique scalars \(\seq{\sigma}{1,,r}\) in \cref{6.26} are called the \textbf{singular values} of \(\T\).
+  If \(r\) is less than both \(m\) and \(n\), then the term singular value is extended to include \(\seq[=]{\sigma}{r+1,,k} = 0\), where \(k\) is the minimum of \(m\) and \(n\).
+\end{defn}
+
+\begin{note}
+  Although the singular values of a linear transformation \(\T\) are uniquely determined by \(\T\), the orthonormal bases given in the statement of \cref{6.26} are not uniquely determined because there is more than one orthonormal basis of eigenvectors of \(\T^* \T\).
+
+  In view of \cref{eq:6.7.1}, the singular values of a linear transformation \(\T \in \ls(\V, \W)\) and its adjoint \(\T^* \in \ls(\W, \V)\) are identical.
+  Furthermore, the orthonormal bases for \(\V\) and \(\W\) given in \cref{6.26} are simply reversed for \(\T^*\).
+\end{note}
+
+\begin{defn}\label{6.7.2}
+  Let \(A \in \ms\).
+  We define the \textbf{singular values} of \(A\) to be the singular values of the linear transformation \(\L_A\).
+\end{defn}
+
+\begin{thm}[Singular Value Decomposition Theorem for Matrices]\label{6.27}
+  Let \(A \in \ms\) be of rank \(r\) with the positive singular values \(\seq[\geq]{\sigma}{1,,r}\), and let \(\Sigma \in \ms\) defined by
+  \[
+    \Sigma_{i j} = \begin{dcases}
+      \sigma_i & \text{if } i = j \leq r \\
+      0        & \text{otherwise}
+    \end{dcases}.
+  \]
+  Then there exists unitary matrices \(U \in \ms[m][m][\F]\) and \(\V \in \ms[n][n][\F]\) such that
+  \[
+    A = U \Sigma V^*.
+  \]
+\end{thm}
+
+\begin{proof}[\pf{6.27}]
+  Let \(\T = \L_A \in \ls(\vs{F}^n, \vs{F}^m)\).
+  By \cref{6.26}, there exist orthonormal bases \(\beta = \set{\seq{v}{1,,n}}\) for \(\vs{F}^n\) over \(\F\) and \(\gamma = \set{\seq{u}{1,,m}}\) for \(\vs{F}^m\) over \(\F\) such that \(\T(v_i) = \sigma_i u_i\) for \(i \in \set{1, \dots, r}\) and \(\T(v_i) = \zv\) for \(i \in \set{r + 1, \dots, n}\).
+  Let \(U \in \ms[m][m][\F]\) whose \(j\)th column is \(u_j\) for all \(j \in \set{1, \dots, m}\), and let \(V \in \ms[n][n][\F]\) whose \(j\)th column is \(v_j\) for all \(j \in \set{1, \dots, n}\).
+  Note that both \(U\) and \(V\) are unitary matrices.
+
+  By \cref{2.13}(a), the \(j\)th column of \(AV\) is \(A v_j = \sigma_j u_j\).
+  Observe that the \(j\)th column of \(\Sigma\) is \(\sigma_j e_j\), where \(e_j\) is the \(j\)th standard vector of \(\vs{F}^m\).
+  So by \cref{2.13}(a)(b), the \(j\)th column of \(U \Sigma\) is given by
+  \[
+    U(\sigma_j e_j) = \sigma_j (U e_j) = \sigma_j u_j.
+  \]
+  It follows that \(AV\) and \(U \Sigma\) are \(m \times n\) matrices whose corresponding columns are equal, and hence \(AV = U \Sigma\).
+  Therefore \(A = A V V^* = U \Sigma V^*\).
+\end{proof}
+
+\begin{defn}\label{6.7.3}
+  Let \(A \in \ms\) be of rank \(r\) with positive singular values \(\seq[\geq]{\sigma}{1,,r}\).
+  A factorization \(A = U \Sigma V^*\) where \(U\) and \(V\) are unitary matrices and \(\Sigma \in \ms\) is defined as in \cref{6.27} is called a \textbf{singular value decomposition} of \(A\).
+\end{defn}
+
+\begin{note}
+  In the proof of \cref{6.27}, the columns of \(V\) are the vectors in \(\beta\), and the columns of \(U\) are the vectors in \(\gamma\).
+  Furthermore, the nonzero singular values of \(A\) are the same as those of \(\L_A\);
+  hence they are the square roots of the nonzero eigenvalues of \(A^* A\) or of \(A A^*\).
+  (See \cref{ex:6.7.9}.)
+\end{note}
+
+\exercisesection
+
+\begin{ex}\label{ex:6.7.9}
+
+\end{ex}

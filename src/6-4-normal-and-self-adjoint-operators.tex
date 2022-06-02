@@ -1104,10 +1104,10 @@
   \begin{align*}
     \forall x \in \V \setminus \set{\zv}, \inn{(\T^* \T)(x), x}_1 & = \inn{\T^*(\T(x)), x}_1                                                      \\
                                                                   & = \inn{\T(x), \T(x)}_2     &  & \by{ex:6.3.15}[a]                             \\
-                                                                  & > 0                        &  & \text{(by \cref{6.1.1}(d) and \cref{6.1}(d))} \\
+                                                                  & \geq 0                     &  & \text{(by \cref{6.1.1}(d) and \cref{6.1}(d))} \\
     \forall y \in \W \setminus \set{\zv}, \inn{(\T \T^*)(y), y}_2 & = \inn{\T(\T^*(y)), y}_2                                                      \\
                                                                   & = \inn{\T^*(y), \T^*(y)}_1 &  & \by{ex:6.3.15}[a]                             \\
-                                                                  & > 0,                       &  & \text{(by \cref{6.1.1}(d) and \cref{6.1}(d))}
+                                                                  & \geq 0,                    &  & \text{(by \cref{6.1.1}(d) and \cref{6.1}(d))}
   \end{align*}
   by \cref{6.4.11} we know that \(\T^* \T\) and \(\T \T^*\) are positive semidefinite.
 \end{proof}
