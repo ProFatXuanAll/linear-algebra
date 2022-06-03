@@ -196,7 +196,8 @@
       & = \T(x_1 + x_2)      &  & \by{6.6}      \\
       & = \T(x_1) + \T(x_2)  &  & \by{2.1.2}[a] \\
       & = \zv_{\W} + \T(x_2) &  & \by{2.1.10}   \\
-      & = \T(x_2).
+      & = \T(x_2)                               \\
+      & = \lt{L}(x_2).
   \end{align*}
   Thus \(\lt{L}\) is onto.
   Since
@@ -218,7 +219,7 @@
       \zv            & \text{for } y \in \rg{\T}^{\perp}
     \end{dcases}.
   \]
-
+  The uniqueness of pseudoinverse is guaranteed by \cref{2.1.13}.
   The pseudoinverse of a linear transformation \(\T\) on a finite-dimensional inner product space exists even if \(\T\) is not invertible (see \cref{6.7.5}).
   Furthermore, if \(\T\) is invertible, then \(\T^{\dag} = \T^{-1}\) because \(\ns{\T}^{\perp} = \V\) (see \cref{2.4}), and \(\lt{L}\) (as just defined) coincides with \(\T\).
 \end{defn}
@@ -231,7 +232,7 @@
 \begin{prop}\label{6.7.8}
   We can use the singular value theorem to describe the pseudoinverse of a linear transformation.
   Suppose that \(\V\) and \(\W\) are finite-dimensional vector spaces and \(\T \in \ls(\V, \W)\) is of rank \(r\).
-  Let \(\set{\seq{v}{1,,n}}\) and \(\set{\seq{u}{1,,m}}\) be orthonormal bases for \(\V\) and \(\W\) over \(\F\), respectively, and let \(\seq[\leq]{\sigma}{1,,r}\) be the nonzero singular values of \(\T\) satisfying \cref{eq:6.7.1} in \cref{6.26}.
+  Let \(\set{\seq{v}{1,,n}}\) and \(\set{\seq{u}{1,,m}}\) be orthonormal bases for \(\V\) and \(\W\) over \(\F\), respectively, and let \(\seq[\geq]{\sigma}{1,,r}\) be the nonzero singular values of \(\T\) satisfying \cref{eq:6.7.1} in \cref{6.26}.
   Then \(\set{\seq{v}{1,,r}}\) is a basis for \(\ns{\T}^{\perp}\) over \(\F\), \(\set{\seq{v}{r+1,,n}}\) is a basis for \(\ns{\T}\) over \(\F\), \(\set{\seq{u}{1,,r}}\) is a basis for \(\rg{\T}\) over \(\F\), and \(\set{\seq{u}{r+1,,m}}\) is a basis for \(\rg{\T}^{\perp}\).
   Let \(\lt{L}\) be the restriction of \(\T\) to \(\ns{\T}^{\perp}\), as in the definition of pseudoinverse (\cref{6.7.6}).
   Then \(\lt{L}^{-1}(u_i) = \frac{1}{\sigma_i} v_i\) for \(i \in \set{1, \dots, r}\).
@@ -258,8 +259,149 @@
   \end{align*}
 \end{proof}
 
+\begin{defn}\label{6.7.9}
+  Let \(A \in \ms\).
+  Then there exists a unique \(B \in \ms[n][m][\F]\) such that \((\L_A)^{\dag} : \vs{F}^m \to \vs{F}^n\) is equal to the left-multiplication transformation \(\L_B\) (see \cref{2.20}).
+  We call \(B\) the \textbf{pseudoinverse} of \(A\) and denote it by \(B = A^{\dag}\).
+  Thus
+  \[
+    (\L_A)^{\dag} = \L_{A^{\dag}}.
+  \]
+\end{defn}
+
+\begin{thm}\label{6.29}
+  Let \(A \in \ms\) be of rank \(r\) with a singular value decomposition \(A = U \Sigma V^*\) and nonzero singular values \(\seq[\geq]{\sigma}{1,,r}\).
+  Let \(\Sigma^{\dag} \in \ms[n][m][\F]\) defined by
+  \[
+    \Sigma_{i j}^{\dag} = \begin{dcases}
+      \frac{1}{\sigma_i} & \text{if } i = j \leq r \\
+      0                  & \text{otherwise}
+    \end{dcases}.
+  \]
+  Then \(A^{\dag} = V \Sigma^{\dag} U^*\), and this is a singular value decomposition of \(A^{\dag}\).
+\end{thm}
+
+\begin{proof}[\pf{6.29}]
+  Let \(\beta\) and \(\gamma\) be the ordered bases whose vectors are the columns of \(V\) and \(U\), respectively.
+  Then \(\beta\) and \(\gamma\) are orthonormal bases for \(\vs{F}^n\) and \(\vs{F}^m\) over \(\F\), respectively, and \cref{eq:6.7.1,eq:6.7.3} are satisfied for \(\T = \L_A\).
+  Reversing the roles of \(\beta\) and \(\gamma\) in the proof of \cref{6.27}, we obtain the result.
+  Note that \(\Sigma^{\dag}\) is actually the pseudoinverse of \(\Sigma\).
+\end{proof}
+
+\begin{note}
+  Let \(A \in \ms\).
+  Then for any \(b \in \vs{F}^m\), the matrix equation \(Ax = b\) is a system of linear equations, and so it either has no solutions, a unique solution, or infinitely many solutions.
+  We know that the system has a unique solution for every \(b \in \vs{F}^m\) iff \(A\) is invertible, in which case the solution is given by \(A^{-1} b\).
+  Furthermore, if \(A\) is invertible, then \(A^{-1} = A^{\dag}\), and so the solution can be written as \(x = A^{\dag} b\).
+  If, on the other hand, \(A\) is not invertible or the system \(Ax = b\) is inconsistent, then \(A^{\dag} b\) still exists.
+  We therefore pose the following question:
+  In general, how is the vector \(A^{\dag} b\) related to the system of linear equations \(Ax = b\)?
+  In order to answer this question, we need the following lemma.
+\end{note}
+
+\begin{lem}\label{6.7.10}
+  Let \(\V\) and \(\W\) be finite-dimensional inner product spaces over \(\F\), and let \(\T \in \ls(\V, \W)\).
+  Then
+  \begin{enumerate}
+    \item \(\T^{\dag} \T\) is the orthogonal projection of \(\V\) on \(\ns{\T}^{\perp}\).
+    \item \(\T \T^{\dag}\) is the orthogonal projection of \(\W\) on \(\rg{\T}\).
+  \end{enumerate}
+\end{lem}
+
+\begin{proof}[\pf{6.7.10}(a)]
+  As in \cref{6.7.6}, we define \(\lt{L} \in \ls(\ns{\T}^{\perp}, \rg{\T})\) by \(\lt{L}(x) = \T(x)\) for all \(x \in \ns{\T}^{\perp}\).
+  Observe that
+  \begin{align*}
+    \forall x \in \ns{\T}^{\perp}, (\T^{\dag} \T)(x) & = \T^{\dag}(\T(x))                       \\
+                                                     & = \T^{\dag}(\lt{L}(x))   &  & \by{6.7.6} \\
+                                                     & = \lt{L}^{-1}(\lt{L}(x)) &  & \by{6.7.6} \\
+                                                     & = x,
+  \end{align*}
+  and
+  \begin{align*}
+    \forall x \in \ns{\T}, (\T^{\dag} \T)(x) & = \T^{\dag}(\T(x))                       \\
+                                             & = \T^{\dag}(\zv_{\W}) &  & \by{2.1.10}   \\
+                                             & = \zv_{\V}.           &  & \by{2.1.2}[a]
+  \end{align*}
+  Consequently \(\T^{\dag} \T\) is the orthogonal projection of \(\V\) on \(\ns{\T}^{\perp}\) (see \cref{6.6.1}).
+\end{proof}
+
+\begin{proof}[\pf{6.7.10}(b)]
+  Continue the proof of \cref{6.7.10}(a), we have
+  \begin{align*}
+    \forall x \in \rg{\T}, (\T \T^{\dag})(x) & = \T(\T^{\dag}(x))                                                 \\
+                                             & = \T(\lt{L}^{-1}(x))     &  & \by{6.7.6}                           \\
+                                             & = \lt{L}(\lt{L}^{-1}(x)) &  & (\lt{L}^{-1}(x) \in \ns{\T}^{\perp}) \\
+                                             & = x
+  \end{align*}
+  and
+  \begin{align*}
+    \forall x \in \rg{\T}^{\perp}, (\T \T^{\dag})(x) & = \T(\T^{\dag}(x))                    \\
+                                                     & = \T(\zv_{\V})     &  & \by{6.7.6}    \\
+                                                     & = \zv_{\W}.        &  & \by{2.1.2}[a]
+  \end{align*}
+  Thus by \cref{6.6.1} \(\T \T^{\dag}\) is the orthogonal projection of \(\W\) on \(\rg{\T}\).
+\end{proof}
+
+\begin{thm}\label{6.30}
+  Consider the system of linear equations \(Ax = b\), where \(A \in \ms\) and \(b \in \vs{F}^m\).
+  If \(z = A^{\dag} b\), then \(z\) has the following properties.
+  \begin{enumerate}
+    \item If \(Ax = b\) is consistent, then \(z\) is the unique solution to the system having minimum norm.
+          That is, \(z\) is a solution to the system, and if \(y\) is any solution to the system, then \(\norm{z} \leq \norm{y}\) with equality iff \(z = y\).
+    \item If \(Ax = b\) is inconsistent, then \(z\) is the unique best approximation to a solution having minimum norm.
+          That is, \(\norm{Az - b} \leq \norm{Ay - b}\) for any \(y \in \vs{F}^n\), with equality iff \(Az = Ay\).
+          Furthermore, if \(Az = Ay\), then \(\norm{z} \leq \norm{y}\) with equality iff \(z = y\).
+  \end{enumerate}
+\end{thm}
+
+\begin{proof}[\pf{6.30}(a)]
+  Suppose that \(Ax = b\) is consistent, and let \(z = A^{\dag} b\).
+  Observe that \(b \in \rg{\L_A}\), and therefore
+  \begin{align*}
+    Az & = A A^{\dag} b                             \\
+       & = \L_A(\L_A^{\dag}(b)) &  & \by{2.3.8}     \\
+       & = b.                   &  & \by{6.7.10}[b]
+  \end{align*}
+  Thus \(z\) is a solution to the system.
+  Now suppose that \(y\) is any solution to the system.
+  Then
+  \begin{align*}
+    \L_A^{\dag} \L_A(y) & = A^{\dag} A y &  & \by{2.3.8} \\
+                        & = A^{\dag} b   &  & (Ay = b)   \\
+                        & = z,
+  \end{align*}
+  and hence \(z\) is the orthogonal projection of \(y\) on \(\ns{\L_A}^{\perp}\) by \cref{6.7.10}(a).
+  Therefore, by \cref{6.2.12}, we have that \(\norm{z} \leq \norm{y}\) with equality iff \(z = y\).
+\end{proof}
+
+\begin{proof}[\pf{6.30}(b)]
+  Suppose that \(Ax = b\) is inconsistent.
+  By \cref{6.7.10}, \(Az = A A^{\dag} b = \L_A \L_A^{\dag}(b) = b\) is the orthogonal projection of \(b\) on \(\rg{\L_A}\);
+  therefore, by \cref{6.2.12}, \(Az\) is the vector in \(\rg{\L_A}\) nearest \(b\).
+  That is, if \(Ay\) is any other vector in \(\rg{\L_A}\), then \(\norm{Az - b} \leq \norm{Ay - b}\) with equality iff \(Az = Ay\).
+
+  Finally, suppose that \(y\) is any vector in \(\vs{F}^n\) such that \(Az = Ay = c\).
+  Then
+  \begin{align*}
+    A^{\dag} c & = A^{\dag} A z                              \\
+               & = A^{\dag} A A^{\dag} b                     \\
+               & = A^{\dag} b            &  & \by{ex:6.7.23} \\
+               & = z;
+  \end{align*}
+  hence we may apply \cref{6.30}(a) to the system \(Ax = c\) to conclude that \(\norm{z} \leq \norm{y}\) with equality iff \(z = y\).
+\end{proof}
+
+\begin{note}
+  The vector \(z = A^{\dag} b\) in \cref{6.30} is the vector \(x_0\) described in \cref{6.12} that arises in the least squares application.
+\end{note}
+
 \exercisesection
 
 \begin{ex}\label{ex:6.7.9}
+
+\end{ex}
+
+\begin{ex}\label{ex:6.7.23}
 
 \end{ex}
