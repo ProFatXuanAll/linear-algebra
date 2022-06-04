@@ -6,7 +6,7 @@
   \begin{equation}\label{eq:6.7.1}
     \T(v_i) = \begin{dcases}
       \sigma_i u_i & \text{if } i \in \set{1, \dots, r}     \\
-      \zv          & \text{if } i \in \set{r + 1, \dots, n}
+      \zv_{\W}     & \text{if } i \in \set{r + 1, \dots, n}
     \end{dcases}.
   \end{equation}
   Conversely, suppose that the preceding conditions are satisfied.
@@ -42,33 +42,33 @@
   and hence \(\set{\seq{u}{1,,r}}\) is orthonormal.
   By \cref{6.7}(a), this set extends to an orthonormal basis \(\set{\seq{u}{1,,r,,m}}\) for \(\W\) over \(\F\).
   Clearly \(\T(v_i) = \sigma_i u_i\) if \(i \in \set{1, \dots, r}\).
-  If \(i \in \set{r + 1, \dots, n}\), then \(\T^* \T(v_i) = \zv\), and so \(\T(v_i) = \zv\) by \cref{ex:6.3.15}(d).
+  If \(i \in \set{r + 1, \dots, n}\), then \(\T^* \T(v_i) = \zv_{\V}\), and so \(\T(v_i) = \zv_{\W}\) by \cref{ex:6.3.15}(d).
 
   To establish uniqueness, suppose that \(\set{\seq{v}{1,,n}}\), \(\set{\seq{u}{1,,m}}\), and \(\seq[\geq]{\sigma}{1,,r} > 0\) satisfy the properties stated in the first part of the theorem.
   Then for \(i \in \set{1, \dots, m}\) and \(j \in \set{1, \dots, n}\),
   \begin{align*}
-    \inn{\T^*(u_i), v_j}_{\V} & = \inn{u_i, \T(v_j)}_{\W}                                           &  & \by{ex:6.3.15}[a] \\
+    \inn{\T^*(u_i), v_j}_{\V} & = \inn{u_i, \T(v_j)}_{\W}                                                            &  & \by{ex:6.3.15}[a] \\
                               & = \begin{dcases}
-                                    \inn{u_i, \sigma_j u_j} & \text{if } j \in \set{1, \dots, r}     \\
-                                    \inn{u_i, \zv}          & \text{if } j \in \set{r + 1, \dots, n}
-                                  \end{dcases}                         \\
+                                    \inn{u_i, \sigma_j u_j}_{\W} & \text{if } j \in \set{1, \dots, r}     \\
+                                    \inn{u_i, \zv_{\W}}_{\W}     & \text{if } j \in \set{r + 1, \dots, n}
+                                  \end{dcases}                       \\
                               & = \begin{dcases}
                                     \sigma_i & \text{if } i = j \leq r \\
                                     0        & \text{otherwise}
-                                  \end{dcases},                               &  & \by{6.1}[b,c]
+                                  \end{dcases},                                                &  & \by{6.1}[b,c]
   \end{align*}
   and hence by \cref{6.5}, for any \(i \in \set{1, \dots, m}\),
   \begin{equation}\label{eq:6.7.2}
-    \T^*(u_i) = \sum_{j = 1}^n \inn{\T^*(u_i), v_j} v_j = \begin{dcases}
+    \T^*(u_i) = \sum_{j = 1}^n \inn{\T^*(u_i), v_j}_{\V} v_j = \begin{dcases}
       \sigma_i v_i & \text{if } i = j \leq r \\
-      \zv          & \text{otherwise}
+      \zv_{\V}     & \text{otherwise}
     \end{dcases}.
   \end{equation}
   So for \(i \in \set{1, \dots, r}\),
   \[
     \T^* \T(v_i) = \T^*(\sigma_i u_i) = \sigma_i \T^*(u_i) = \sigma_i^2 v_i
   \]
-  and \(\T^* \T(v_i) = \T^*(\zv) = \zv\) for \(i \in \set{r + 1, \dots, n}\).
+  and \(\T^* \T(v_i) = \T^*(\zv_{\W}) = \zv_{\V}\) for \(i \in \set{r + 1, \dots, n}\).
   Therefore each \(v_i\) is an eigenvector of \(\T^* \T\) with corresponding eigenvalue \(\sigma_i^2\) if \(i \in \set{1, \dots, r}\) and \(0\) if \(i \in \set{r + 1, \dots, n}\).
 \end{proof}
 
@@ -105,7 +105,7 @@
 
 \begin{proof}[\pf{6.27}]
   Let \(\T = \L_A \in \ls(\vs{F}^n, \vs{F}^m)\).
-  By \cref{6.26}, there exist orthonormal bases \(\beta = \set{\seq{v}{1,,n}}\) for \(\vs{F}^n\) over \(\F\) and \(\gamma = \set{\seq{u}{1,,m}}\) for \(\vs{F}^m\) over \(\F\) such that \(\T(v_i) = \sigma_i u_i\) for \(i \in \set{1, \dots, r}\) and \(\T(v_i) = \zv\) for \(i \in \set{r + 1, \dots, n}\).
+  By \cref{6.26}, there exist orthonormal bases \(\beta = \set{\seq{v}{1,,n}}\) for \(\vs{F}^n\) over \(\F\) and \(\gamma = \set{\seq{u}{1,,m}}\) for \(\vs{F}^m\) over \(\F\) such that \(\T(v_i) = \sigma_i u_i\) for \(i \in \set{1, \dots, r}\) and \(\T(v_i) = \zv_{\W}\) for \(i \in \set{r + 1, \dots, n}\).
   Let \(U \in \ms[m][m][\F]\) whose \(j\)th column is \(u_j\) for all \(j \in \set{1, \dots, m}\), and let \(V \in \ms[n][n][\F]\) whose \(j\)th column is \(v_j\) for all \(j \in \set{1, \dots, n}\).
   Note that both \(U\) and \(V\) are unitary matrices.
 
@@ -216,7 +216,7 @@
   \[
     \T^{\dag}(y) = \begin{dcases}
       \lt{L}^{-1}(y) & \text{for } y \in \rg{\T}         \\
-      \zv            & \text{for } y \in \rg{\T}^{\perp}
+      \zv_{\V}       & \text{for } y \in \rg{\T}^{\perp}
     \end{dcases}.
   \]
   The uniqueness of pseudoinverse is guaranteed by \cref{2.1.13}.
@@ -226,7 +226,7 @@
 
 \begin{eg}\label{6.7.7}
   Consider the zero transformation \(\zT \in \ls(\V, \W)\) between two finite-dimensional inner product spaces \(\V\) and \(\W\) over \(\F\).
-  Then \(\rg{\zT} = \set{\zv}\), and therefore \(\zT^{\dag}\) is the zero transformation from \(\W\) to \(\V\).
+  Then \(\rg{\zT} = \set{\zv_{\W}}\), and therefore \(\zT^{\dag}\) is the zero transformation from \(\W\) to \(\V\).
 \end{eg}
 
 \begin{prop}\label{6.7.8}
@@ -240,7 +240,7 @@
   \begin{equation}\label{eq:6.7.3}
     \T^{\dag}(u_i) = \begin{dcases}
       \frac{1}{\sigma_i} v_i & \text{if } i \in \set{1, \dots, r}     \\
-      \zv                    & \text{if } i \in \set{r + 1, \dots, m}
+      \zv_{\V}               & \text{if } i \in \set{r + 1, \dots, m}
     \end{dcases}.
   \end{equation}
 \end{prop}
@@ -254,7 +254,7 @@
     \implies & \forall i \in \set{1, \dots, r}, \lt{L}^{-1}(u_i) = \frac{1}{\sigma_i} v_i &  & \by{2.17}                         \\
     \implies & \forall i \in \set{1, \dots, m}, \T^{\dag}(u_i) = \begin{dcases}
                                                                    \frac{1}{\sigma_i} v_i & \text{if } i \in \set{1, \dots, r}     \\
-                                                                   \zv                    & \text{if } i \in \set{r + 1, \dots, m}
+                                                                   \zv_{\V}               & \text{if } i \in \set{r + 1, \dots, m}
                                                                  \end{dcases}.         &  & \by{6.7.6}
   \end{align*}
 \end{proof}
@@ -399,8 +399,60 @@
 \exercisesection
 
 \begin{ex}\label{ex:6.7.9}
-
+  Let \(\V\) and \(\W\) be finite-dimensional inner product spaces over \(\F\), and suppose that \(\set{\seq{v}{1,,n}}\) and \(\set{\seq{u}{1,,m}}\) are orthonormal bases for \(\V\) and \(\W\) over \(\F\), respectively.
+  Let \(\T \in \ls(\V, \W)\) be of rank \(r\), and suppose that \(\seq[\geq]{\sigma}{1,,r} > 0\) are such that
+  \[
+    \T(v_i) = \begin{dcases}
+      \sigma_i u_i & \text{if } i \in \set{1, \dots, r}     \\
+      \zv_{\W}     & \text{if } i \in \set{r + 1, \dots, n}
+    \end{dcases}.
+  \]
+  \begin{enumerate}
+    \item Prove that \(\set{\seq{u}{1,,m}}\) is a set of eigenvectors of \(\T \T^*\) with corresponding eigenvalues \(\seq{\lambda}{1,,m} \in \F\), where
+          \[
+            \lambda_i = \begin{dcases}
+              \sigma_i^2 & \text{if } i \in \set{1, \dots, r}     \\
+              0          & \text{if } i \in \set{r + 1, \dots, m}
+            \end{dcases}.
+          \]
+    \item Let \(A \in \ms\) with real or complex entries.
+          Prove that the nonzero singular values of \(A\) are the positive square roots of the nonzero eigenvalues of \(A A^*\), including repetitions.
+    \item Prove that \(\T \T^*\) and \(\T^* \T\) have the same nonzero eigenvalues, including repetitions.
+    \item State and prove a result for matrices analogous to (c).
+  \end{enumerate}
 \end{ex}
+
+\begin{proof}[\pf{ex:6.7.9}(a)]
+  By \cref{6.26} we see that \(\set{\seq{v}{1,,n}}\) is consist of eigenvectors of \(\T^* \T\), and \(\seq{\sigma}{1,,r}\) are singular values of \(\T\).
+  Since
+  \begin{align*}
+    \forall i \in \set{1, \dots, m}, (\T \T^*)(u_i) & = \T(\T^*(u_i))                                             \\
+                                                    & = \begin{dcases}
+                                                          \T(\sigma_i u_i) & \text{if } i \in \set{1, \dots, r}     \\
+                                                          \T(\zv_{\V})     & \text{if } i \in \set{r + 1, \dots, m}
+                                                        \end{dcases} &  & \by{eq:6.7.2} \\
+                                                    & = \begin{dcases}
+                                                          \sigma_i \T(u_i) & \text{if } i \in \set{1, \dots, r}     \\
+                                                          \zv_{\W}         & \text{if } i \in \set{r + 1, \dots, m}
+                                                        \end{dcases} &  & \by{2.1.2}[a,b] \\
+                                                    & = \begin{dcases}
+                                                          \sigma_i^2 v_i & \text{if } i \in \set{1, \dots, r}     \\
+                                                          \zv_{\V}       & \text{if } i \in \set{r + 1, \dots, m}
+                                                        \end{dcases}   &  & \by{eq:6.7.1}
+  \end{align*}
+\end{proof}
+
+\begin{proof}[\pf{ex:6.7.9}(b)]
+
+\end{proof}
+
+\begin{proof}[\pf{ex:6.7.9}(c)]
+
+\end{proof}
+
+\begin{proof}[\pf{ex:6.7.9}(d)]
+
+\end{proof}
 
 \begin{ex}\label{ex:6.7.23}
 

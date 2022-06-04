@@ -1230,18 +1230,18 @@
 
   Define inner product \(\inn{\cdot, \cdot}'\) on \(\V\) over \(\F\) by setting \(\inn{x, y}' = \inn{\T(x), y}\) for all \(x, y \in \V\).
   By \cref{ex:6.4.20} we see that \(\inn{\cdot, \cdot}'\) is indeed an inner product on \(\V\) over \(\F\).
-  For each \(\lt{S} \in \ls(\V)\), we denote the adjoint of \(\lt{S}\) with respect to \(\inn{\cdot, \cdot}'\) as \(\vs{S}^{\dag}\).
+  For each \(\lt{S} \in \ls(\V)\), we denote the adjoint of \(\lt{S}\) with respect to \(\inn{\cdot, \cdot}'\) as \(\vs{S}^{\bigstar}\).
   These adjoint operators are well-defined thanks to \cref{6.9}.
   Now we show that \(\U \T\) is self-adjoint with respect to \(\inn{\cdot, \cdot}'\).
   Since
   \begin{align*}
-    \forall x, y \in \V, \inn{x, (\U \T)^{\dag}(y)}' & = \inn{(\U \T)(x), y}'       &  & \by{6.9}   \\
-                                                     & = \inn{\T(\U(\T(x))), y}                     \\
-                                                     & = \inn{\T(x), \U^*(\T^*(y))} &  & \by{6.9}   \\
-                                                     & = \inn{\T(x), \U(\T(y))}     &  & \by{6.4.8} \\
-                                                     & = \inn{x, (\U \T)(y)}',
+    \forall x, y \in \V, \inn{x, (\U \T)^{\bigstar}(y)}' & = \inn{(\U \T)(x), y}'       &  & \by{6.9}   \\
+                                                         & = \inn{\T(\U(\T(x))), y}                     \\
+                                                         & = \inn{\T(x), \U^*(\T^*(y))} &  & \by{6.9}   \\
+                                                         & = \inn{\T(x), \U(\T(y))}     &  & \by{6.4.8} \\
+                                                         & = \inn{x, (\U \T)(y)}',
   \end{align*}
-  by \cref{6.1}(e) we have \((\U \T)^{\dag} = \U \T\).
+  by \cref{6.1}(e) we have \((\U \T)^{\bigstar} = \U \T\).
   Thus by \cref{6.4.8} \(\U \T\) is self-adjoint with respect to \(\inn{\cdot, \cdot}'\), and by \cref{6.16,6.17} we know that \(\U \T\) is diagonalizable.
   By \cref{6.4.10}(a) this means \(\U \T\) has only real eigenvalues.
 
@@ -1311,7 +1311,7 @@
 \end{proof}
 
 \begin{proof}[\pf{ex:6.4.22}(b)]
-  For each \(\U \in \ls(\V)\), we denote the adjoint of \(\U\) with respect to \(\inn{\cdot, \cdot}\) as \(\U^*\), and denote the adjoint of \(\U\) with respect to \(\inn{\cdot, \cdot}'\) as \(\U^{\dag}\).
+  For each \(\U \in \ls(\V)\), we denote the adjoint of \(\U\) with respect to \(\inn{\cdot, \cdot}\) as \(\U^*\), and denote the adjoint of \(\U\) with respect to \(\inn{\cdot, \cdot}'\) as \(\U^{\bigstar}\).
   First we show that \(\T\) is self-adjoint with respect to \(\inn{\cdot, \cdot}\).
   Since
   \begin{align*}
@@ -1335,13 +1335,13 @@
   Since \(\T\) is positive definite with respect to \(\inn{\cdot, \cdot}\), by \cref{ex:6.4.17}(a) we know that \(\T\) is invertible.
   Thus we have
   \begin{align*}
-    \forall x, y \in \V, \inn{x, (\T^{-1})^{\dag}(y)}' & = \inn{\T^{-1}(x), y}'        &  & \by{6.9}      \\
-                                                       & = \inn{x, y}                                     \\
-                                                       & = \conj{\inn{y, x}}           &  & \by{6.1.1}[c] \\
-                                                       & = \conj{\inn{\T^{-1}(y), x}'}                    \\
-                                                       & = \inn{x, \T^{-1}(y)}'        &  & \by{6.1.1}[c]
+    \forall x, y \in \V, \inn{x, (\T^{-1})^{\bigstar}(y)}' & = \inn{\T^{-1}(x), y}'        &  & \by{6.9}      \\
+                                                           & = \inn{x, y}                                     \\
+                                                           & = \conj{\inn{y, x}}           &  & \by{6.1.1}[c] \\
+                                                           & = \conj{\inn{\T^{-1}(y), x}'}                    \\
+                                                           & = \inn{x, \T^{-1}(y)}'        &  & \by{6.1.1}[c]
   \end{align*}
-  and by \cref{6.1}(e) we have \(\T^{-1} = (\T^{-1})^{\dag}\).
+  and by \cref{6.1}(e) we have \(\T^{-1} = (\T^{-1})^{\bigstar}\).
   By \cref{6.4.8} this means \(\T^{-1}\) is self-adjoint with respect to \(\inn{\cdot, \cdot}'\).
   Then we have
   \begin{align*}
@@ -1361,15 +1361,15 @@
   Since \(\U\) is diagonalizable, there exists an ordered basis \(\beta\) for \(\V\) over \(\F\) such that \([\U]_{\beta}\) is diagonal.
   Now we define another inner product \(\inn{\cdot, \cdot}'\) on \(\V\) over \(\F\) as in \cref{ex:6.1.22}.
   By \cref{ex:6.1.22}(a) we know that \(\beta\) is orthonormal with respect to \(\inn{\cdot, \cdot}'\).
-  For each \(\lt{S} \in \ls(\V)\), we denote the adjoint of \(\lt{S}\) with respect to \(\inn{\cdot, \cdot}\) as \(\lt{S}^*\), and denote the adjoint of \(\lt{S}\) with respect to \(\inn{\cdot, \cdot}'\) as \(\lt{S}^{\dag}\).
+  For each \(\lt{S} \in \ls(\V)\), we denote the adjoint of \(\lt{S}\) with respect to \(\inn{\cdot, \cdot}\) as \(\lt{S}^*\), and denote the adjoint of \(\lt{S}\) with respect to \(\inn{\cdot, \cdot}'\) as \(\lt{S}^{\bigstar}\).
 
   Since all eigenvalues of \(\U\) are real, we have
   \begin{align*}
-    [\U]_{\beta} & = \tp{([\U]_{\beta})}  &  & \by{1.3.4} \\
-                 & = [\U]_{\beta}^*       &  & \by{6.1.5} \\
-                 & = [\U^{\dag}]_{\beta}. &  & \by{6.10}
+    [\U]_{\beta} & = \tp{([\U]_{\beta})}      &  & \by{1.3.4} \\
+                 & = [\U]_{\beta}^*           &  & \by{6.1.5} \\
+                 & = [\U^{\bigstar}]_{\beta}. &  & \by{6.10}
   \end{align*}
-  Thus by \cref{2.1.13} we have \(\U^{\dag} = \U\) and by \cref{6.4.8} \(\U\) is self-adjoint with respect to \(\inn{\cdot, \cdot}'\).
+  Thus by \cref{2.1.13} we have \(\U^{\bigstar} = \U\) and by \cref{6.4.8} \(\U\) is self-adjoint with respect to \(\inn{\cdot, \cdot}'\).
 
   By \cref{ex:6.4.22}(a) there exists a unique \(\T_1 \in \ls(\V)\) such that \(\inn{x, y}' = \inn{\T_1(x), y}\) for all \(x, y \in \V\).
   By \cref{ex:6.4.22}(b) we also know that \(\T_1\) is positive definite with respect to both \(\inn{\cdot, \cdot}\) and \(\inn{\cdot, \cdot}'\).
@@ -1377,7 +1377,7 @@
   Now we show that \(\U = \T_1^{-1} \U^* \T_1\).
   Since
   \begin{align*}
-    \forall x, y \in \V, \inn{x, \U(y)}' & = \inn{x, \U^{\dag}(y)}'                      &  & \by{6.4.8}        \\
+    \forall x, y \in \V, \inn{x, \U(y)}' & = \inn{x, \U^{\bigstar}(y)}'                  &  & \by{6.4.8}        \\
                                          & = \inn{\U(x), y}'                             &  & \by{6.9}          \\
                                          & = \inn{\T_1(\U(x)), y}                        &  & \by{ex:6.4.22}[a] \\
                                          & = \inn{x, \U^*(\T_1^*(y))}                    &  & \by{6.9}          \\
