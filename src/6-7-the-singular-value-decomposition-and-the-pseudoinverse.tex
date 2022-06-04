@@ -24,8 +24,8 @@
 
   We first establish the existence of the bases and scalars.
   By \cref{ex:6.4.18} and \cref{ex:6.3.15}(d), \(\T^* \T\) is a positive semidefinite linear operator of rank \(r\) on \(\V\);
-  hence there is an orthonormal basis \(\set{\seq{v}{1,,n}}\) for \(\V\) over \(\F\) with respect to \(\inn{\cdot, \cdot}_{\V}\) consisting of eigenvectors of \(\T^* \T\) with corresponding eigenvalues \(\lambda_i\), where \(\seq[\geq]{\lambda}{1,,r} > 0\), and \(\lambda_i = 0\) for \(i \in \set{r + 1, \dots, n}\).
-  For \(i \in \set{1, \dots, r}\), define \(\sigma_i = \sqrt{\lambda_i}\) and \(u_i = \frac{1}{\sigma_i} \T(v_i)\) (see \cref{ex:6.4.17}(a)).
+  hence there is an orthonormal basis \(\set{\seq{v}{1,,n}}\) for \(\V\) over \(\F\) with respect to \(\inn{\cdot, \cdot}_{\V}\) consisting of eigenvectors of \(\T^* \T\) with corresponding eigenvalues \(\lambda_i\), where \(\seq[\geq]{\lambda}{1,,r} > 0\), and \(\lambda_i = 0\) for \(i \in \set{r + 1, \dots, n}\) (see \cref{ex:6.4.17}(a)).
+  For \(i \in \set{1, \dots, r}\), define \(\sigma_i = \sqrt{\lambda_i}\) and \(u_i = \frac{1}{\sigma_i} \T(v_i)\).
   We show that \(\set{\seq{u}{1,,r}}\) is an orthonormal subset of \(\W\) with respect to \(\inn{\cdot, \cdot}_{\W}\).
   Suppose \(i, j \in \set{1, \dots, r}\).
   Then
@@ -398,6 +398,7 @@
 
 \exercisesection
 
+\setcounter{ex}{8}
 \begin{ex}\label{ex:6.7.9}
   Let \(\V\) and \(\W\) be finite-dimensional inner product spaces over \(\F\), and suppose that \(\set{\seq{v}{1,,n}}\) and \(\set{\seq{u}{1,,m}}\) are orthonormal bases for \(\V\) and \(\W\) over \(\F\), respectively.
   Let \(\T \in \ls(\V, \W)\) be of rank \(r\), and suppose that \(\seq[\geq]{\sigma}{1,,r} > 0\) are such that
@@ -428,32 +429,46 @@
   \begin{align*}
     \forall i \in \set{1, \dots, m}, (\T \T^*)(u_i) & = \T(\T^*(u_i))                                             \\
                                                     & = \begin{dcases}
-                                                          \T(\sigma_i u_i) & \text{if } i \in \set{1, \dots, r}     \\
+                                                          \T(\sigma_i v_i) & \text{if } i \in \set{1, \dots, r}     \\
                                                           \T(\zv_{\V})     & \text{if } i \in \set{r + 1, \dots, m}
                                                         \end{dcases} &  & \by{eq:6.7.2} \\
                                                     & = \begin{dcases}
-                                                          \sigma_i \T(u_i) & \text{if } i \in \set{1, \dots, r}     \\
+                                                          \sigma_i \T(v_i) & \text{if } i \in \set{1, \dots, r}     \\
                                                           \zv_{\W}         & \text{if } i \in \set{r + 1, \dots, m}
                                                         \end{dcases} &  & \by{2.1.2}[a,b] \\
                                                     & = \begin{dcases}
-                                                          \sigma_i^2 v_i & \text{if } i \in \set{1, \dots, r}     \\
+                                                          \sigma_i^2 u_i & \text{if } i \in \set{1, \dots, r}     \\
                                                           \zv_{\V}       & \text{if } i \in \set{r + 1, \dots, m}
-                                                        \end{dcases}   &  & \by{eq:6.7.1}
+                                                        \end{dcases}   &  & \by{eq:6.7.1}   \\
+                                                    & = \begin{dcases}
+                                                          \sigma_i^2 u_i & \text{if } i \in \set{1, \dots, r}     \\
+                                                          0 u_i          & \text{if } i \in \set{r + 1, \dots, m}
+                                                        \end{dcases}   &  & \by{1.2}[a]   \\
+                                                    & = \begin{dcases}
+                                                          \lambda_i u_i & \text{if } i \in \set{1, \dots, r}     \\
+                                                          0 u_i         & \text{if } i \in \set{r + 1, \dots, m}
+                                                        \end{dcases},
   \end{align*}
+  by \cref{5.1.2} we know that \(\set{\seq{u}{1,,m}}\) is consist of eigenvectors of \(\T \T^*\).
 \end{proof}
 
 \begin{proof}[\pf{ex:6.7.9}(b)]
-
+  Since
+  \begin{align*}
+    \L_{A A^*} & = \L_A \L_{A^*}  &  & \by{2.15}[e] \\
+               & = \L_A (\L_A)^*, &  & \by{6.3.1}
+  \end{align*}
+  by \cref{5.1.2,6.7.2} and \cref{ex:6.7.9}(a) we see that the nonzero singular values of \(A\) are the positive square roots of the nonzero eigenvalues of \(A A^*\), including repetitions.
 \end{proof}
 
 \begin{proof}[\pf{ex:6.7.9}(c)]
-
+  By \cref{6.26} and \cref{ex:6.7.9}(a) we see that this is true.
 \end{proof}
 
 \begin{proof}[\pf{ex:6.7.9}(d)]
-
+  We claim that \(A A^*\) and \(A^* A\) have the same nonzero eigenvalues, including repetitions.
+  By \cref{6.7.2} and \cref{ex:6.7.9}(c) we see that the claim is true.
 \end{proof}
 
 \begin{ex}\label{ex:6.7.23}
-
 \end{ex}
