@@ -470,5 +470,66 @@
   By \cref{6.7.2} and \cref{ex:6.7.9}(c) we see that the claim is true.
 \end{proof}
 
+\begin{ex}\label{ex:6.7.10}
+  Use \cref{ex:2.5.8} to obtain another proof of \cref{6.27}, the singular value decomposition theorem for matrices.
+\end{ex}
+
+\begin{proof}[\pf{ex:6.7.10}]
+  Let \(A \in \ms\) be of rank \(r\).
+  By \cref{6.26} there exist orthonormal basis (with respect to standard inner product, \cref{6.1.2}) \(\beta = \set{\seq{v}{1,,n}}\) and \(\gamma = \set{\seq{u}{1,,m}}\) for \(\vs{F}^n\) and \(\vs{F}^m\) over \(\F\), respectively, such that
+  \[
+    \forall i \in \set{1, \dots, n}, \L_A(v_i) = \begin{dcases}
+      \sigma_i u_i   & \text{if } i \in \set{1, \dots, r}     \\
+      \zv_{\vs{F}^m} & \text{if } i \in \set{r + 1, \dots, n}
+    \end{dcases},
+  \]
+  where \(\seq[\geq]{\sigma}{1,,r}\) are the singular values of \(A\).
+  Let \(\beta'\) and \(\gamma'\) be the standard ordered basis for \(\vs{F}^n\) and \(\vs{F}^m\) over \(\F\), respectively.
+  Note that \(\beta'\) and \(\gamma'\) are orthonormal with respect to standard inner product (\cref{6.1.2}).
+  Then we have
+  \begin{align*}
+    A & = [\L_A]_{\beta'}^{\gamma'}                                                                          &  & \by{2.15}[a]        \\
+      & = [\IT[\vs{F}^m]]_{\gamma}^{\gamma'} [\L_A]_{\beta}^{\gamma} [\IT[\vs{F}^n]]_{\beta'}^{\beta}        &  & \by{ex:2.5.8}       \\
+      & = [\IT[\vs{F}^m]]_{\gamma}^{\gamma'} [\L_A]_{\beta}^{\gamma} \pa{[\IT[\vs{F}^n]]_{\beta}^{\beta'}}^* &  & \by{ex:6.1.23}[c]   \\
+      & = \begin{pmatrix}
+            u_1 & \cdots & u_m
+          \end{pmatrix} \begin{pmatrix}
+                          \sigma_1 & \cdots & 0        &     \\
+                          \vdots   & \ddots & \vdots   & \zm \\
+                          0        & \cdots & \sigma_r &     \\
+                                   & \zm    &          & \zm
+                        \end{pmatrix} \begin{pmatrix}
+                                        v_1 & \cdots & v_n
+                                      \end{pmatrix}^*.                                                                &  & \by{2.2.4}
+  \end{align*}
+\end{proof}
+
+\begin{ex}\label{ex:6.7.11}
+  This exercise relates the singular values of a well-behaved linear operator or matrix to its eigenvalues.
+  \begin{enumerate}
+    \item Let \(\T\) be a normal linear operator on an \(n\)-dimensional inner product space \(\V\) over \(\F\) with eigenvalues \(\seq{\lambda}{1,,n} \in \F\).
+          Prove that the singular values of \(\T\) are \(\abs{\lambda_1}, \dots, \abs{\lambda_n}\).
+    \item State and prove a result for matrices analogous to (a).
+  \end{enumerate}
+\end{ex}
+
+\begin{proof}[\pf{ex:6.7.11}(a)]
+  By \cref{6.26} we see that if \(\lambda_i\) is an eigenvalue of \(\T^* \T\), then \(\sqrt{\lambda_i}\) is a singular value of \(\T\).
+  Then we have
+  \begin{align*}
+             & \forall i \in \set{1, \dots, n}, \lambda_i \text{ is an eigenvalue of } \T                                                             \\
+    \implies & \forall i \in \set{1, \dots, n}, \conj{\lambda_i} \text{ is an eigenvalue of } \T^*                                  &  & \by{6.15}[c] \\
+    \implies & \forall i \in \set{1, \dots, n}, \abs{\lambda_i}^2 = \conj{\lambda_i} \lambda_i \text{ is an eigenvalue of } \T^* \T &  & \by{6.15}[c] \\
+    \implies & \forall i \in \set{1, \dots, n}, \abs{\lambda_i} \text{ is a singular value of } \T.                                 &  & \by{6.26}
+  \end{align*}
+\end{proof}
+
+\begin{proof}[\pf{ex:6.7.11}(b)]
+  Let \(A \in \ms[n][n][\F]\) be normal with eigenvalues \(\seq{\lambda}{1,,n} \in \F\).
+  We claim that the singular values of \(A\) are \(\abs{\lambda_1}, \dots, \abs{\lambda_n}\).
+  Since \(A\) is normal, by \cref{6.4.4} we see that \(\L_A\) is normal.
+  Thus by \cref{5.1.2,6.7.2,ex:6.7.11}(a) we see that the claim is true.
+\end{proof}
+
 \begin{ex}\label{ex:6.7.23}
 \end{ex}
