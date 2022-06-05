@@ -602,5 +602,59 @@
   Thus \(U = V\).
 \end{proof}
 
+\begin{ex}\label{ex:6.7.15}
+  Let \(A\) be a square matrix with a polar decomposition \(A = WP\).
+  \begin{enumerate}
+    \item Prove that \(A\) is normal iff \(W P^2 = P^2 W\).
+    \item Use (a) to prove that \(A\) is normal iff \(WP = PW\).
+  \end{enumerate}
+\end{ex}
+
+\begin{proof}[\pf{ex:6.7.15}(a)]
+  By \cref{6.7.4} we know that \(W\) is unitary and \(P\) is positive semidefinite.
+  Then we have
+  \begin{align*}
+         & A \text{ is normal}                              \\
+    \iff & A A^* = A^* A             &  & \by{6.4.3}        \\
+    \iff & WP (WP)^* = (WP)^* WP     &  & \by{6.28}         \\
+    \iff & W P P^* W^* = P^* W^* W P &  & \by{6.3.2}[c]     \\
+    \iff & W P P^* W^* = P^* P       &  & \by{ex:6.1.23}[c] \\
+    \iff & W P^2 W^* = P^2           &  & \by{6.4.11}       \\
+    \iff & W P^2 = P^2 W.            &  & \by{ex:6.1.23}[c]
+  \end{align*}
+\end{proof}
+
+\begin{proof}[\pf{ex:6.7.15}(b)]
+  By \cref{6.7.4} we know that \(W\) is unitary and \(P\) is positive semidefinite.
+  By \cref{ex:6.5.14} we know that \(W^* P W\) is positive semidefinite.
+  Then we have
+  \begin{align*}
+         & A \text{ is normal}                                        \\
+    \iff & W P^2 = P^2 W                       &  & \by{ex:6.7.15}[a] \\
+    \iff & P^2 = W^* P^2 W                     &  & \by{ex:6.1.23}[c] \\
+    \iff & P^2 = W^* P W W^* P W = (W^* P W)^2 &  & \by{ex:6.1.23}[c] \\
+    \iff & P = W^* P W                         &  & \by{ex:6.4.17}[d] \\
+    \iff & WP = PW.                            &  & \by{ex:6.1.23}[c]
+  \end{align*}
+\end{proof}
+
+\begin{ex}\label{ex:6.7.16}
+  Let \(A\) be a square matrix.
+  Prove an alternate form of the polar decomposition for \(A\):
+  There exists a unitary matrix \(W\) and a positive semidefinite matrix \(P\) such that \(A = PW\).
+\end{ex}
+
+\begin{proof}[\pf{ex:6.7.16}]
+  Let \(U \Sigma V^*\) be a singular value decomposition of \(A\).
+  Let \(P = U \Sigma U^*\) and let \(W = W V^*\).
+  By \cref{6.27} we know that \(U, V\) are unitary, thus we have
+  \begin{align*}
+    A & = U \Sigma V^*       &  & \by{6.27}  \\
+      & = U \Sigma U^* U V^* &  & \by{6.5.6} \\
+      & = PW.
+  \end{align*}
+  Since \(W\) is the product of unitary matrices, \(W\) is unitary (\cref{ex:6.5.3}), and since \(\Sigma\) is positive semidefinite (\cref{ex:6.4.17}(a)) and \(P\) is unitarily equivalent to \(\Sigma\), \(P\) is positive semidefinite by \cref{ex:6.5.14}.
+\end{proof}
+
 \begin{ex}\label{ex:6.7.23}
 \end{ex}
