@@ -946,12 +946,11 @@
   \end{align*}
   and
   \begin{align*}
-             & \forall x \in \vs{F}^n, x^* A x > 0           &  & \by{ex:6.4.17}[b]  \\
-    \implies & \forall x \in \vs{F}^n, x^* Q B Q^* x > 0     &  & \by{6.5.13}        \\
-    \implies & \forall x \in \vs{F}^n, (Q^* x)^* B Q^* x > 0 &  & \by{ex:6.3.5}[c,d] \\
-    \implies & \forall x \in \vs{F}^n, x^* B x > 0.          &  & (Q^* = Q^{-1})
+    \forall x \in \vs{F}^n, \inn{Bx, x} & = \inn{Q^* A Q x, x} &  & \by{6.5.13} \\
+                                        & = \inn{AQx, Qx}      &  & \by{6.3.4}  \\
+                                        & > 0.                 &  & \by{6.4.11}
   \end{align*}
-  Thus by \cref{6.4.8} \(B\) is self-adjoint and by \cref{ex:6.4.17}(b) \(B\) is positive definite.
+  Thus by \cref{6.4.8} \(B\) is self-adjoint and by \cref{6.4.11} \(B\) is positive definite.
   By reversing the role of \(B\) and \(A\) we see that \(A = Q B Q^*\) and \(B\) is positive definite implies \(A\) is positive definite.
   Thus we conclude that \(A\) is positive definite iff \(B\) is positive definite.
   Using similar arguments we can conclude that \(A\) is positive semidefinite iff \(B\) is positive semidefinite.
