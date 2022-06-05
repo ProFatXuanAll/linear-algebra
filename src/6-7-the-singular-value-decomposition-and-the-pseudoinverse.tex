@@ -531,5 +531,76 @@
   Thus by \cref{5.1.2,6.7.2,ex:6.7.11}(a) we see that the claim is true.
 \end{proof}
 
+\begin{ex}\label{ex:6.7.12}
+  Let \(A\) be a normal matrix with an orthonormal basis of eigenvectors \(\beta = \set{\seq{v}{1,,n}}\) and corresponding eigenvalues \(\seq{\lambda}{1,,n}\).
+  Let \(V \in \ms[n][n][\F]\) whose columns are the vectors in \(\beta\).
+  Prove that for each \(i \in \set{1, \dots, n}\) there is a scalar \(\theta_i\) of absolute value \(1\) such that if \(U\) is the \(n \times n\) matrix with \(\theta_i v_i\) as column \(i\) and \(\Sigma\) is the diagonal matrix such that \(\Sigma_{i i} = \abs{\lambda_i}\) for each \(i \in \set{1, \dots, n}\), then \(U \Sigma V^*\) is a singular value decomposition of \(A\).
+\end{ex}
+
+\begin{proof}[\pf{ex:6.7.12}]
+  Since \(A\) is normal, by \cref{ex:6.7.11}(b) we know that the singular values of \(A\) are \(\abs{\lambda_1}, \dots, \abs{\lambda_n}\).
+  Observe that
+  \begin{align*}
+    \forall i \in \set{1, \dots, n}, \L_A(v_i) & = A v_i                                                                                   &  & \by{2.3.8} \\
+                                               & = \lambda_i v_i                                                                           &  & \by{5.1.2} \\
+                                               & = \begin{dcases}
+                                                     \abs{\lambda_i} \pa{\frac{\lambda_i}{\abs{\lambda_i}} v_i} & \text{if } \lambda_i \neq 0 \\
+                                                     \zv                                                        & \text{if } \lambda_i = 0
+                                                   \end{dcases} &  & \by{1.2}[a]                \\
+                                               & = \begin{dcases}
+                                                     \abs{\lambda_i} \pa{\frac{\lambda_i}{\abs{\lambda_i}} v_i} & \text{if } \lambda_i \neq 0 \\
+                                                     1 \zv                                                      & \text{if } \lambda_i = 0
+                                                   \end{dcases}. &  & \by{1.2}[c]
+  \end{align*}
+  Now we define \(\theta_i\) as follow:
+  \[
+    \forall i \in \set{1, \dots, n}, \theta_i = \begin{dcases}
+      \frac{\lambda_i}{\abs{\lambda_i}} & \text{if } \lambda_i \neq 0 \\
+      1                                 & \text{if } \lambda_i = 0
+    \end{dcases}.
+  \]
+  Clearly \(\abs{\theta_i} = 1\) for all \(i \in \set{1, \dots, n}\).
+  If we can show that \(\set{\seq{\theta,v}{1,,n}}\) is orthonormal, then by \cref{6.26} we know that \(U \Sigma V^*\) is a singular value decomposition of \(A\).
+  This is true since
+  \begin{align*}
+    \forall i, j \in \set{1, \dots, n}, \inn{\theta_i v_i, \theta_j v_j} & = \theta_i \inn{v_i, \theta_j v_j}        &  & \by{6.1.1}[b]                                         \\
+                                                                         & = \theta_i \conj{\theta_j} \inn{v_i, v_j} &  & \by{6.1}[b]                                           \\
+                                                                         & = \theta_i \conj{\theta_j} \delta_{i j}   &  & \by{6.1.12}                                           \\
+                                                                         & = \delta_{i j}.                           &  & (\forall i \in \set{1, \dots, n}, \abs{\theta_i} = i)
+  \end{align*}
+\end{proof}
+
+\begin{ex}\label{ex:6.7.13}
+  Prove that if \(A \in \ms[n][n][\F]\) is a positive semidefinite matrix, then the singular values of \(A\) are the same as the eigenvalues of \(A\).
+\end{ex}
+
+\begin{proof}[\pf{ex:6.7.13}]
+  Since \(A\) is positive semidefinite, by \cref{6.4.11} we know that \(A\) is self-adjoint and by \cref{ex:6.4.17}(a) we know that the eigenvalues of \(A\) are nonnegative real numbers.
+  If \(v \in \vs{F}^n\) is an eigenvector corresponding to eigenvalue \(\lambda \in \F\) of \(A\), then
+  \begin{align*}
+    A^* A v & = A A v       &  & \by{6.4.8} \\
+            & = \lambda^2 v &  & \by{5.1.2}
+  \end{align*}
+  and thus by \cref{6.26} \(\sqrt{\lambda^2} = \lambda\) is a singular value of \(A\).
+  We conclude that eigenvalues of \(A\) are the same as the singular values of \(A\).
+\end{proof}
+
+\begin{ex}\label{ex:6.7.14}
+  Prove that if \(A \in \ms[n][n][\F]\) is a positive definite matrix and \(A = U \Sigma V^*\) is a singular value decomposition of \(A\), then \(U = V\).
+\end{ex}
+
+\begin{proof}[\pf{ex:6.7.14}]
+  For each \(i \in \set{1, \dots, n}\), let \(u_i\) and \(v_i\) be the \(i\)th column of \(U\) and \(V\), respectively.
+  Since \(A\) is positive definite, by \cref{6.4.11} we know that \(A\) is self-adjoint.
+  If \(\seq{\lambda}{1,,n} \in \F\) are eigenvalues of \(A\) corresponding to \(\seq{v}{1,,n}\), then by \cref{ex:6.4.17}(a) we know that \(\lambda_i > 0\) for all \(i \in \set{1, \dots, n}\).
+  Then we have
+  \begin{align*}
+    \forall i \in \set{1, \dots, n}, u_i & = \frac{1}{\lambda_i} \L_A(v_i)   &  & \by{ex:6.7.13} \\
+                                         & = \frac{\lambda_i}{\lambda_i} v_i &  & \by{5.1.2}     \\
+                                         & = v_i.
+  \end{align*}
+  Thus \(U = V\).
+\end{proof}
+
 \begin{ex}\label{ex:6.7.23}
 \end{ex}
