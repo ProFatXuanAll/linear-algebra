@@ -233,7 +233,7 @@
   We can use the singular value theorem to describe the pseudoinverse of a linear transformation.
   Suppose that \(\V\) and \(\W\) are finite-dimensional vector spaces and \(\T \in \ls(\V, \W)\) is of rank \(r\).
   Let \(\set{\seq{v}{1,,n}}\) and \(\set{\seq{u}{1,,m}}\) be orthonormal bases for \(\V\) and \(\W\) over \(\F\), respectively, and let \(\seq[\geq]{\sigma}{1,,r}\) be the nonzero singular values of \(\T\) satisfying \cref{eq:6.7.1} in \cref{6.26}.
-  Then \(\set{\seq{v}{1,,r}}\) is a basis for \(\ns{\T}^{\perp}\) over \(\F\), \(\set{\seq{v}{r+1,,n}}\) is a basis for \(\ns{\T}\) over \(\F\), \(\set{\seq{u}{1,,r}}\) is a basis for \(\rg{\T}\) over \(\F\), and \(\set{\seq{u}{r+1,,m}}\) is a basis for \(\rg{\T}^{\perp}\).
+  Then \(\set{\seq{v}{1,,r}}\) is a basis for \(\ns{\T}^{\perp}\) over \(\F\), \(\set{\seq{v}{r+1,,n}}\) is a basis for \(\ns{\T}\) over \(\F\), \(\set{\seq{u}{1,,r}}\) is a basis for \(\rg{\T}\) over \(\F\), and \(\set{\seq{u}{r+1,,m}}\) is a basis for \(\rg{\T}^{\perp}\) over \(\F\).
   Let \(\lt{L}\) be the restriction of \(\T\) to \(\ns{\T}^{\perp}\), as in the definition of pseudoinverse (\cref{6.7.6}).
   Then \(\lt{L}^{-1}(u_i) = \frac{1}{\sigma_i} v_i\) for \(i \in \set{1, \dots, r}\).
   Therefore
@@ -654,6 +654,116 @@
       & = PW.
   \end{align*}
   Since \(W\) is the product of unitary matrices, \(W\) is unitary (\cref{ex:6.5.3}), and since \(\Sigma\) is positive semidefinite (\cref{ex:6.4.17}(a)) and \(P\) is unitarily equivalent to \(\Sigma\), \(P\) is positive semidefinite by \cref{ex:6.5.14}.
+\end{proof}
+
+\setcounter{ex}{17}
+\begin{ex}\label{ex:6.7.18}
+  Let \(A \in \ms\).
+  Prove the following results.
+  \begin{enumerate}
+    \item For any \(m \times m\) unitary matrix \(G\), \((GA)^{\dag} = A^{\dag} G^*\).
+    \item For any \(n \times n\) unitary matrix \(H\), \((AH)^{\dag} = H^* A^{\dag}\).
+  \end{enumerate}
+\end{ex}
+
+\begin{proof}[\pf{ex:6.7.18}(a)]
+  Let \(U \Sigma V^*\) be a singular value decomposition of \(GA\).
+  By \cref{ex:6.1.23}(c) we know that \(A = G^* U \Sigma V^*\).
+  Since \(G\) is unitary, by \cref{6.5.9} we know that \(G^*\) is unitary.
+  By \cref{6.7.3} we know that \(U\) is unitary, thus by \cref{ex:6.5.3} \(G^* U\) is unitary and by \cref{6.7.3} \((G^* U) \Sigma V^*\) is a singular value decomposition of \(A\).
+  Then we have
+  \begin{align*}
+    (GA)^{\dag} & = (G G^* U \Sigma V^*)^{\dag}                        \\
+                & = (U \Sigma V^*)^{\dag}         &  & \by{6.5.9}      \\
+                & = V \Sigma^{\dag} U^*           &  & \by{6.29}       \\
+                & = V \Sigma^{\dag} U^* G G^*     &  & \by{6.5.9}      \\
+                & = V \Sigma^{\dag} (G^* U)^* G^* &  & \by{6.3.2}[c,d] \\
+                & = (G^* U \Sigma V^*)^{\dag} G^* &  & \by{6.29}       \\
+                & = A^{\dag} G^*.
+  \end{align*}
+\end{proof}
+
+\begin{proof}[\pf{ex:6.7.18}(b)]
+  Let \(U \Sigma V^*\) be a singular value decomposition of \(AH\).
+  By \cref{ex:6.1.23}(c) we know that \(A = U \Sigma V^* H^*\).
+  Since \(H, V\) are unitary (by \cref{6.7.3}), by \cref{ex:6.5.3} we know that \(HV\) is unitary.
+  By \cref{6.3.2}(c) we know that \((HV)^* = V^* H^*\), thus by \cref{6.7.3} \(U \Sigma V^* H^* = U \Sigma (HV)^*\) is a singular value decomposition of \(A\).
+  Then we have
+  \begin{align*}
+    (AH)^{\dag} & = (U \Sigma V^* H^* H)^{\dag}                  \\
+                & = (U \Sigma V^*)^{\dag}        &  & \by{6.5.9} \\
+                & = V \Sigma^{\dag} U^*          &  & \by{6.29}  \\
+                & = H^* H V \Sigma^{\dag} U^*    &  & \by{6.5.9} \\
+                & = H^* (U \Sigma (HV)^*)^{\dag} &  & \by{6.29}  \\
+                & = H^* A^{\dag}.
+  \end{align*}
+\end{proof}
+
+\begin{ex}\label{ex:6.7.19}
+  Let \(A\) be a matrix with real or complex entries.
+  Prove the following results.
+  \begin{enumerate}
+    \item The nonzero singular values of \(A\) are the same as the nonzero singular values of \(A^*\), which are the same as the nonzero singular values of \(\tp{A}\).
+    \item \((A^{\dag})^* = (A^*)^{\dag}\).
+    \item \(\tp{(A^{\dag})} = (\tp{A})^{\dag}\).
+  \end{enumerate}
+\end{ex}
+
+\begin{proof}[\pf{ex:6.7.19}(a)]
+  Let \(U \Sigma V^*\) be a singular value decomposition of \(A\).
+  Then we have
+  \begin{align*}
+    A^* & = (U \Sigma V^*)^*  &  & \by{6.27}        \\
+        & = V \Sigma^* U^*    &  & \by{ex:6.3.5}[c] \\
+        & = V \tp{\Sigma} U^* &  & \by{6.27}
+  \end{align*}
+  and
+  \begin{align*}
+    \tp{A} & = \tp{(U \Sigma V^*)}              &  & \by{6.27}  \\
+           & = \tp{(V^*)} \tp{\Sigma} \tp{U}    &  & \by{2.3.2} \\
+           & = \conj{V} \tp{\Sigma} \conj{U}^*. &  & \by{6.1.5}
+  \end{align*}
+  Since singular values are nonnegative, we know that the nonzero values of \(\Sigma\) and \(\tp{\Sigma}\) are the same.
+  By \cref{6.7.3} we know that \(V \tp{\Sigma} U^*\) is a singular value decomposition of \(A^*\).
+  If we can show that the complex conjugate of an unitary matrix is unitary, then by \cref{6.7.3} again we see that \(\conj{V} \tp{\Sigma} \conj{U}^*\) is a singular value decomposition of \(\tp{A}\).
+  So let \(B \in \ms[n][n][\F]\) be unitary.
+  Then we have
+  \begin{align*}
+    \conj{B} \, \conj{B}^* & = \conj{B B^*}        &  & \by{6.1.5} \\
+                           & = \conj{I}            &  & \by{6.5.9} \\
+                           & = I                   &  & \by{6.1.5} \\
+                           & = \conj{B^* B}        &  & \by{6.5.9} \\
+                           & = \conj{B}^* \conj{B} &  & \by{6.1.5}
+  \end{align*}
+  and thus by \cref{6.5.9} \(\conj{B}\) is unitary.
+\end{proof}
+
+\begin{proof}[\pf{ex:6.7.19}(b)]
+  Let \(U \Sigma V^*\) be a singular value decomposition of \(A\).
+  Then we have
+  \begin{align*}
+    (A^{\dag})^* & = (V \Sigma^{\dag} U^*)^*    &  & \by{6.29}        \\
+                 & = U (\Sigma^{\dag})^* V^*    &  & \by{ex:6.3.5}[c] \\
+                 & = U \tp{(\Sigma^{\dag})} V^* &  & \by{6.29}        \\
+                 & = U (\tp{\Sigma})^{\dag} V^* &  & \by{6.29}        \\
+                 & = (V \tp{\Sigma} U^*)^{\dag} &  & \by{6.29}        \\
+                 & = (V \Sigma^* U^*)^{\dag}    &  & \by{6.27}        \\
+                 & = (A^*)^{\dag}.              &  & \by{ex:6.3.5}[c]
+  \end{align*}
+\end{proof}
+
+\begin{proof}[\pf{ex:6.7.19}(c)]
+  Let \(U \Sigma V^*\) be a singular value decomposition of \(A\).
+  Then we have
+  \begin{align*}
+    \tp{(A^{\dag})} & = \tp{(V \Sigma^{\dag} U^*)}                              &  & \by{6.29}     \\
+                    & = \tp{(U^*)} \tp{(\Sigma^{\dag})} \tp{V}                  &  & \by{2.3.2}    \\
+                    & = \tp{(U^*)} (\tp{\Sigma})^{\dag} \tp{V}                  &  & \by{6.29}     \\
+                    & = \tp{(U^*)} (\tp{\Sigma})^{\dag} (\tp{V})^{**}           &  & \by{6.3.2}[d] \\
+                    & = \pa{\pa{\tp{V}}^* \tp{\Sigma} \pa{\tp{(U^*)}}^*}^{\dag} &  & \by{6.29}     \\
+                    & = \pa{\tp{\pa{V^*}} \tp{\Sigma} \tp{U}}^{\dag}            &  & \by{6.1.5}    \\
+                    & = (\tp{A})^{\dag}.                                        &  & \by{2.3.2}
+  \end{align*}
 \end{proof}
 
 \begin{ex}\label{ex:6.7.23}
