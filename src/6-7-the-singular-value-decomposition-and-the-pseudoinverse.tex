@@ -766,5 +766,188 @@
   \end{align*}
 \end{proof}
 
+\begin{ex}\label{ex:6.7.20}
+  Let \(A \in \ms[n][n][\F]\) such that \(A^2 = \zm\).
+  Prove that \((A^{\dag})^2 = \zm\).
+\end{ex}
+
+\begin{proof}[\pf{ex:6.7.20}]
+  Suppose that \(\rk{A} = r\).
+  Let \(U \Sigma V^*\) be a singular value decomposition of \(A\) such that the first \(r\) diagonal entries are positive.
+  For each \(i \in \set{1, \dots, n}\), define \(u_i\) and \(v_i\) to be the \(i\)th column of \(U\) and \(V\), respectively.
+  Let \(\inn{\cdot, \cdot}\) be the standard inner product as defined in \cref{6.1.2}.
+  Since
+  \begin{align*}
+             & (U \Sigma V^*) (U \Sigma V^*) = A^2 = \zm                               &  & \by{6.27}         \\
+    \implies & \zm = U^* \zm V = \Sigma V^* U \Sigma                                   &  & \by{ex:6.1.23}[c] \\
+             & = \Sigma^* V^* U \Sigma                                                 &  & \by{ex:6.7.19}[a] \\
+             & = (V \Sigma)^* U \Sigma                                                 &  & \by{6.3.2}[c]     \\
+    \implies & \forall i, j \in \set{1, \dots, n}, 0 = ((V \Sigma)^* U \Sigma)_{i j}   &  & \by{1.2.8}        \\
+             & = \sum_{k = 1}^n ((V \Sigma)^*)_{i k} (U \Sigma)_{k j}                  &  & \by{2.3.1}        \\
+             & = \sum_{k = 1}^n (\conj{V \Sigma})_{k i} (U \Sigma)_{k j}               &  & \by{6.1.5}        \\
+             & = \inn{\Sigma_{j j} u_j, \Sigma_{i i} v_i}                              &  & \by{6.1.2}        \\
+             & = \Sigma_{j j} \inn{u_j, \Sigma_{i i} v_i}                              &  & \by{6.1.1}[b]     \\
+             & = \Sigma_{i i} \Sigma_{j j} \inn{u_j, v_i}                              &  & \by{6.1}[b]       \\
+    \implies & \forall i, j \in \set{1, \dots, r}, \inn{u_j, v_i} = 0                  &  & \by{6.27}         \\
+             & = \inn{v_i, u_j}                                                        &  & \by{6.1.1}[c]     \\
+             & = \Sigma_{i i}^{\dag} \Sigma_{j j}^{\dag} \inn{v_i, u_j}                &  & \by{6.29}         \\
+             & = \Sigma_{j j}^{\dag} \inn{\Sigma_{i i}^{\dag} v_i, u_j}                &  & \by{6.1.1}[b]     \\
+             & = \inn{\Sigma_{i i}^{\dag} v_i, \Sigma_{j j}^{\dag} u_j}                &  & \by{6.1}[b]       \\
+             & = \sum_{k = 1}^n (\conj{U \Sigma^{\dag}})_{k j} (V \Sigma^{\dag})_{k i} &  & \by{6.1.2}        \\
+             & = \sum_{k = 1}^n ((U \Sigma^{\dag})^*)_{j k} (V \Sigma^{\dag})_{k i}    &  & \by{6.1.5}        \\
+             & = ((U \Sigma^{\dag})^* V \Sigma^{\dag})_{j i}                           &  & \by{2.3.1}        \\
+             & = ((\Sigma^{\dag})^* U^* V \Sigma^{\dag})_{j i}                         &  & \by{6.3.2}[c]     \\
+             & = (\Sigma^{\dag} U^* V \Sigma^{\dag})_{j i},                            &  & \by{6.29}
+  \end{align*}
+  we have
+  \begin{align*}
+     & \forall i, j \in \set{1, \dots, n}, (\Sigma^{\dag} U^* V \Sigma^{\dag})_{j i} = \inn{\Sigma_{i i}^{\dag} v_i, \Sigma_{j j}^{\dag} u_j}                  \\
+     & = \begin{dcases}
+           0                                    & \text{if } i, j \in \set{1, \dots, r}                                       \\
+           \inn{0 v_i, \Sigma_{j j}^{\dag} u_j} & \text{if } i \in \set{r + 1, \dots, n} \text{ and } j \in \set{1, \dots, r} \\
+           \inn{\Sigma_{i i}^{\dag} v_i, 0 u_j} & \text{if } i \in \set{1, \dots, r} \text{ and } j \in \set{r + 1, \dots, n} \\
+           \inn{0 v_i, 0 u_j}                   & \text{if } i, j \in \set{r + 1, \dots, n}
+         \end{dcases}              &  & \by{6.29}                                \\
+     & = 0.                                                                                                                                   &  & \by{6.1}[c]
+  \end{align*}
+  Thus
+  \begin{align*}
+             & \zm = \Sigma^{\dag} U^* V \Sigma^{\dag}                   &  & \by{1.2.8} \\
+    \implies & V \Sigma^{\dag} U^* V \Sigma^{\dag} U^* = V \zm U^* = \zm &  & \by{1.2.8} \\
+    \implies & (A^{\dag})^2 = \zm.                                       &  & \by{6.29}
+  \end{align*}
+\end{proof}
+
+\begin{ex}\label{ex:6.7.21}
+  Let \(\V\) and \(\W\) be finite-dimensional inner product spaces over \(\F\), and let \(\T \in \ls(\V, \W)\).
+  Prove the following results.
+  \begin{enumerate}
+    \item \(\T \T^{\dag} \T = \T\).
+    \item \(\T^{\dag} \T \T^{\dag} = \T^{\dag}\).
+    \item Both \(\T^{\dag} \T\) and \(\T \T^{\dag}\) are self-adjoin.
+  \end{enumerate}
+  The preceding three statements are called the \textbf{Penrose conditions}, and they characterize the pseudoinverse of a linear transformation as shown in \cref{ex:6.7.22}.
+\end{ex}
+
+\begin{proof}[\pf{ex:6.7.21}(a)]
+  Let \(n = \dim(\V)\), \(m = \dim(\W)\) and \(r = \rk{\T}\).
+  By \cref{6.26} there exist orthonormal bases \(\set{\seq{v}{1,,n}}\) and \(\set{\seq{u}{1,,m}}\) for \(\V\) and \(\W\) over \(\F\), respectively, such that
+  \[
+    \forall i \in \set{1, \dots, n}, \T(v_i) = \begin{dcases}
+      \sigma_i u_i & \text{if } i \in \set{1, \dots, r}     \\
+      \zv_{\W}     & \text{if } i \in \set{r + 1, \dots, n}
+    \end{dcases},
+  \]
+  where \(\seq{\sigma}{1,,r}\) are positive.
+  By \cref{6.7.8} we have
+  \[
+    \forall i \in \set{1, \dots, m}, \T^{\dag}(u_i) = \begin{dcases}
+      \frac{1}{\sigma_i} v_i & \text{if } i \in \set{1, \dots, r}     \\
+      \zv_{\V}               & \text{if } i \in \set{r + 1, \dots, m}
+    \end{dcases}.
+  \]
+  Thus we have
+  \begin{align*}
+    \forall i \in \set{1, \dots, r}, (\T \T^{\dag} \T)(v_i) & = \T(\T^{\dag}(\T(v_i)))                                 \\
+                                                            & = \T(\T^{\dag}(\sigma_i u_i))            &  & \by{6.26}  \\
+                                                            & = \T(\sigma_i \T^{\dag}(u_i))            &  & \by{6.7.6} \\
+                                                            & = \T\pa{\sigma_i \frac{1}{\sigma_i} v_i} &  & \by{6.7.8} \\
+                                                            & = \T(v_i)
+  \end{align*}
+  and
+  \begin{align*}
+    \forall i \in \set{r + 1, \dots, n}, (\T \T^{\dag} \T)(v_i) & = \T(\T^{\dag}(\T(v_i)))                     \\
+                                                                & = \T(\T^{\dag}(\zv_{\W})) &  & \by{6.26}     \\
+                                                                & = \T(\zv_{\V})            &  & \by{2.1.2}[a] \\
+                                                                & = \zv_{\W}                &  & \by{2.1.2}[a] \\
+                                                                & = \T(v_i).                &  & \by{6.26}
+  \end{align*}
+  Since \(\set{\seq{v}{1,,n}}\) is a basis for \(\V\) over \(\F\), by \cref{2.1.13} this means \(\T \T^{\dag} \T = \T\).
+\end{proof}
+
+\begin{proof}[\pf{ex:6.7.21}(b)]
+  Continue the proof of \cref{ex:6.7.21}(a), we have
+  \begin{align*}
+    \forall i \in \set{1, \dots, r}, (\T^{\dag} \T \T^{\dag})(u_i) & = \T^{\dag}(\T(\T^{\dag}(u_i)))                                    \\
+                                                                   & = \T^{\dag}\pa{\T\pa{\frac{1}{\sigma_i} v_i}}   &  & \by{6.7.8}    \\
+                                                                   & = \T^{\dag}\pa{\frac{1}{\sigma_i} \T(v_i)}      &  & \by{2.1.2}[b] \\
+                                                                   & = \T^{\dag}\pa{\frac{1}{\sigma_i} \sigma_i u_i} &  & \by{6.26}     \\
+                                                                   & = \T^{\dag}(u_i)
+  \end{align*}
+  and
+  \begin{align*}
+    \forall i \in \set{r + 1, \dots, m}, (\T^{\dag} \T \T^{\dag})(u_i) & = \T^{\dag}(\T(\T^{\dag}(u_i)))                    \\
+                                                                       & = \T^{\dag}(\T(\zv_{\V}))       &  & \by{6.7.8}    \\
+                                                                       & = \T^{\dag}(\zv_{\W})           &  & \by{2.1.2}[a] \\
+                                                                       & = \zv_{\V}                      &  & \by{2.1.2}[a] \\
+                                                                       & = \T^{\dag}(u_i).               &  & \by{6.7.8}
+  \end{align*}
+  Since \(\set{\seq{u}{1,,m}}\) is a basis for \(\W\) over \(\F\), by \cref{2.1.13} this means \(\T^{\dag} \T \T^{\dag} = \T^{\dag}\).
+\end{proof}
+
+\begin{proof}[\pf{ex:6.7.21}(c)]
+  By \cref{6.7.10} we know that \(\T^{\dag} \T\) and \(\T \T^{\dag}\) are orthogonal projections.
+  Thus by \cref{6.24} we know that \(\T^{\dag} \T\) and \(\T \T^{\dag}\) are self-adjoint.
+\end{proof}
+
+\begin{ex}\label{ex:6.7.22}
+  Let \(\V\) and \(\W\) be finite-dimensional inner product spaces over \(\F\).
+  Let \(\T \in \ls(\V, \W)\) and \(\U \in \ls(\W, \V)\) such that \(\T \U \T = \T\), \(\U \T \U = \U\), and both \(\U \T\) and \(\T \U\) are self-adjoint.
+  Prove that \(\U = \T^{\dag}\).
+\end{ex}
+
+\begin{proof}[\pf{ex:6.7.22}]
+  Let \(\inn{\cdot, \cdot}_{\V}\) and \(\inn{\cdot, \cdot}_{\W}\) be inner products on \(\V\) and \(\W\) over \(\F\), respectively.
+  For each \(\lt{S} \in \ls(\V, \W)\), we denote the adjoin of \(\lt{S}\) with respect to \(\inn{\cdot, \cdot}_{\V}\) and \(\inn{\cdot, \cdot}_{\W}\) as \(\lt{S}^*\).
+  Suppose that \(\U \T\) and \(\T \U\) are self-adjoint with respect to \(\inn{\cdot, \cdot}_{\V}\) and \(\inn{\cdot, \cdot}_{\W}\).
+
+  First we claim that \(\T^{\dag} \T = \U \T\).
+  Since
+  \begin{align*}
+    (\U \T)^2 & = \U \T \U \T                             \\
+              & = \U \T       &  & \text{(by hypothesis)} \\
+              & = (\U \T)^*,  &  & \by{6.4.8}
+  \end{align*}
+  by \cref{6.24} we know that \(\U \T\) is the orthogonal projection of \(\V\) on \(\rg{\U \T}\).
+  Since
+  \begin{align*}
+    \U \T \T^* & = (\U \T)^* \T^* &  & \by{6.4.8}             \\
+               & = \T^* \U^* \T^* &  & \by{ex:6.3.16}[c]      \\
+               & = (\T \U \T)^*   &  & \by{ex:6.3.16}[c]      \\
+               & = \T^*,          &  & \text{(by hypothesis)}
+  \end{align*}
+  we know that \(\rg{\T^*} = \rg{\U \T \T^*} \subseteq \rg{\U \T}\).
+  Since
+  \begin{align*}
+    \U \T & = (\U \T)^*  &  & \by{6.4.8}        \\
+          & = \T^* \U^*, &  & \by{ex:6.3.16}[c]
+  \end{align*}
+  we know that \(\rg{\U \T} = \rg{\T^* \U^*} \subseteq \rg{\T^*}\).
+  Thus we have \(\rg{\U \T} = \rg{\T^*}\) and \(\U \T\) is the orthogonal projection of \(\V\) on \(\rg{\T^*}\).
+  By \cref{6.7.10}(a) and \cref{ex:6.3.12}(b) we know that \(\T^{\dag} \T\) is the orthogonal projection of \(\V\) on \(\ns{\T}^{\perp} = \rg{\T^*}\), thus by \cref{6.6.2} we have \(\U \T = \T^{\dag} \T\).
+
+  Next we claim that \(\T \T^{\dag} = \T \U\).
+  Since
+  \begin{align*}
+    (\T \U)^2 & = \T \U \T \U                             \\
+              & = \T \U       &  & \text{(by hypothesis)} \\
+              & = (\T \U)^*,  &  & \by{6.4.8}
+  \end{align*}
+  by \cref{6.24} we know that \(\T \U\) is the orthogonal projection of \(\W\) on \(\rg{\T \U}\).
+  Since \(\T \U \T = \T\), we know that \(\rg{\T} = \rg{\T \U \T} \subseteq \rg{\T \U} \subseteq \rg{\T}\).
+  Thus we have \(\rg{\T \U} = \rg{\T}\) and \(\T \U\) is the orthogonal projection of \(\W\) on \(\rg{\T}\).
+  By \cref{6.7.10}(b) we know that \(\T \T^{\dag}\) is the orthogonal projection of \(\W\) on \(\rg{\T}\), thus by \cref{6.6.2} we have \(\T \U = \T \T^{\dag}\).
+
+  Finally we show that \(\U = \T^{\dag}\).
+  This is true since
+  \begin{align*}
+    \U & = \U \T \U                            &  & \text{(by hypothesis)}        \\
+       & = \U \T \T^{\dag} \T \U               &  & \by{ex:6.7.21}[a]             \\
+       & = \T^{\dag} \T \T^{\dag} \T \T^{\dag} &  & \text{(from the claim above)} \\
+       & = \T^{\dag} \T \T^{\dag}              &  & \by{ex:6.7.21}[b]             \\
+       & = \T^{\dag}.                          &  & \by{ex:6.7.21}[b]
+  \end{align*}
+\end{proof}
+
 \begin{ex}\label{ex:6.7.23}
 \end{ex}
