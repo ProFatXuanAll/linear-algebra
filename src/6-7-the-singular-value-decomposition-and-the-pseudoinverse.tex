@@ -950,4 +950,113 @@
 \end{proof}
 
 \begin{ex}\label{ex:6.7.23}
+  Let \(A \in \ms\).
+  Prove the following results.
+  \begin{enumerate}
+    \item \(A A^{\dag} A = A\).
+    \item \(A^{\dag} A A^{\dag} = A^{\dag}\).
+    \item Both \(A^{\dag} A\) and \(A A^{\dag}\) are self-adjoin.
+  \end{enumerate}
 \end{ex}
+
+\begin{proof}[\pf{ex:6.7.23}(a)]
+  Let \(r = \rk{A}\), let \(U \Sigma V^*\) be a singular value decomposition of \(A\), and let \(\seq{\sigma}{1,,r} \in \F\) be nonzero singular values of \(A\).
+  Let \(\zm_1 \in \ms[r][(n-r)][\F], \zm_2 \in \ms[(m-r)][r][\F], \zm_3 \in \ms[(m-r)][(n-r)][\F], \zm_4 \in \ms[(m-r)][(m-r)][\F]\) be zero matrices.
+  Since
+  \begin{align*}
+     & \Sigma \Sigma^{\dag} \Sigma = \begin{pmatrix}
+                                       \sigma_1 & \cdots & 0        &       \\
+                                       \vdots   & \ddots & \vdots   & \zm_1 \\
+                                       0        & \cdots & \sigma_r &       \\
+                                                & \zm_2  &          & \zm_3
+                                     \end{pmatrix} \begin{pmatrix}
+                                                     \sigma_1^{-1} & \cdots     & 0             &            \\
+                                                     \vdots        & \ddots     & \vdots        & \tp{\zm_2} \\
+                                                     0             & \cdots     & \sigma_r^{-1} &            \\
+                                                                   & \tp{\zm_1} &               & \tp{\zm_3}
+                                                   \end{pmatrix} \Sigma &  & \by{6.29} \\
+     & = \begin{pmatrix}
+           I_r   & \tp{\zm_2} \\
+           \zm_2 & \zm_4
+         \end{pmatrix} \begin{pmatrix}
+                         \sigma_1 & \cdots & 0        &       \\
+                         \vdots   & \ddots & \vdots   & \zm_1 \\
+                         0        & \cdots & \sigma_r &       \\
+                                  & \zm_2  &          & \zm_3
+                       \end{pmatrix} = \Sigma,                    &  & \by{2.3.1}
+  \end{align*}
+  we have
+  \begin{align*}
+    A A^{\dag} A & = U \Sigma V^* V \Sigma^{\dag} U^* U \Sigma V^* &  & \by{6.29}                     \\
+                 & = U \Sigma \Sigma^{\dag} \Sigma V^*             &  & \by{ex:6.1.23}[c]             \\
+                 & = U \Sigma V^*                                  &  & \text{(from the proof above)} \\
+                 & = A.                                            &  & \by{6.27}
+  \end{align*}
+\end{proof}
+
+\begin{proof}[\pf{ex:6.7.23}(b)]
+  Continue the proof of \cref{ex:6.7.23}(a). Let \(\zm_5 \in \ms[(n-r)][(n-r)][\F]\).
+  Since
+  \begin{align*}
+     & \Sigma^{\dag} \Sigma \Sigma^{\dag} = \begin{pmatrix}
+                                              \sigma_1^{-1} & \cdots     & 0             &            \\
+                                              \vdots        & \ddots     & \vdots        & \tp{\zm_2} \\
+                                              0             & \cdots     & \sigma_r^{-1} &            \\
+                                                            & \tp{\zm_1} &               & \tp{\zm_3}
+                                            \end{pmatrix} \begin{pmatrix}
+                                                            \sigma_1 & \cdots & 0        &       \\
+                                                            \vdots   & \ddots & \vdots   & \zm_1 \\
+                                                            0        & \cdots & \sigma_r &       \\
+                                                                     & \zm_2  &          & \zm_3
+                                                          \end{pmatrix} \Sigma^{\dag} &  & \by{6.29} \\
+     & = \begin{pmatrix}
+           I_r        & \zm_1 \\
+           \tp{\zm_1} & \zm_5
+         \end{pmatrix} \begin{pmatrix}
+                         \sigma_1^{-1} & \cdots     & 0             &            \\
+                         \vdots        & \ddots     & \vdots        & \tp{\zm_2} \\
+                         0             & \cdots     & \sigma_r^{-1} &            \\
+                                       & \tp{\zm_1} &               & \tp{\zm_3}
+                       \end{pmatrix} = \Sigma^{\dag},
+  \end{align*}
+  we have
+  \begin{align*}
+    A^{\dag} A A^{\dag} & = V \Sigma^{\dag} U^* U \Sigma V^* V \Sigma^{\dag} U^* &  & \by{6.29}                     \\
+                        & = V \Sigma^{\dag} \Sigma \Sigma^{\dag} U^*             &  & \by{ex:6.1.23}[c]             \\
+                        & = V \Sigma^{\dag} U^*                                  &  & \text{(from the proof above)} \\
+                        & = A^{\dag}.                                            &  & \by{6.29}
+  \end{align*}
+\end{proof}
+
+\begin{proof}[\pf{ex:6.7.23}(c)]
+  Let \(r = \rk{A}\) and let \(U \Sigma V^*\) be a singular value decomposition of \(A\).
+  Then we have
+  \begin{align*}
+    (A^{\dag} A)^* & = (V \Sigma^{\dag} U^* U \Sigma V^*)^* &  & \by{6.29}         \\
+                   & = (V \Sigma^{\dag} \Sigma V^*)^*       &  & \by{ex:6.1.23}[c] \\
+                   & = V \Sigma^* (\Sigma^{\dag})^* V^*     &  & \by{ex:6.3.5}[c]  \\
+                   & = V (\Sigma^{\dag} \Sigma)^* V^*       &  & \by{ex:6.3.5}[c]  \\
+                   & = V \begin{pmatrix}
+                           I_r & \zm \\
+                           \zm & \zm
+                         \end{pmatrix}^* V^*                    &  & \by{6.29}     \\
+                   & = V \Sigma^{\dag} \Sigma V^*           &  & \by{6.3.2}[e]     \\
+                   & = V \Sigma^{\dag} U^* U \Sigma V^*     &  & \by{ex:6.1.23}[c] \\
+                   & = A^{\dag} A                           &  & \by{6.29}
+  \end{align*}
+  and
+  \begin{align*}
+    (A A^{\dag})^* & = (U \Sigma V^* V \Sigma^{\dag} U^*)^* &  & \by{6.29}         \\
+                   & = (U \Sigma \Sigma^{\dag} U^*)^*       &  & \by{ex:6.1.23}[c] \\
+                   & = U (\Sigma^{\dag})^* \Sigma^* U^*     &  & \by{ex:6.3.5}[c]  \\
+                   & = U (\Sigma \Sigma^{\dag})^* U^*       &  & \by{ex:6.3.5}[c]  \\
+                   & = U \begin{pmatrix}
+                           I_r & \zm \\
+                           \zm & \zm
+                         \end{pmatrix}^* U^*                    &  & \by{6.29}     \\
+                   & = U \Sigma \Sigma^{\dag} U^*           &  & \by{6.3.2}[e]     \\
+                   & = U \Sigma V^* V \Sigma^{\dag} U^*     &  & \by{ex:6.1.23}[c] \\
+                   & = A A^{\dag}.                          &  & \by{6.29}
+  \end{align*}
+  Thus by \cref{6.4.8} \(A^{\dag} A\) and \(A A^{\dag}\) are self-adjoint.
+\end{proof}
