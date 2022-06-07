@@ -384,9 +384,9 @@
   Finally, suppose that \(y\) is any vector in \(\vs{F}^n\) such that \(Az = Ay = c\).
   Then
   \begin{align*}
-    A^{\dag} c & = A^{\dag} A z                              \\
-               & = A^{\dag} A A^{\dag} b                     \\
-               & = A^{\dag} b            &  & \by{ex:6.7.23} \\
+    A^{\dag} c & = A^{\dag} A z                                 \\
+               & = A^{\dag} A A^{\dag} b                        \\
+               & = A^{\dag} b            &  & \by{ex:6.7.23}[b] \\
                & = z;
   \end{align*}
   hence we may apply \cref{6.30}(a) to the system \(Ax = c\) to conclude that \(\norm{z} \leq \norm{y}\) with equality iff \(z = y\).
@@ -941,10 +941,10 @@
   Finally we show that \(\U = \T^{\dag}\).
   This is true since
   \begin{align*}
-    \U & = \U \T \U                            &  & \text{(by hypothesis)}        \\
-       & = \U \T \T^{\dag} \T \U               &  & \by{ex:6.7.21}[a]             \\
-       & = \T^{\dag} \T \T^{\dag} \T \T^{\dag} &  & \text{(from the claim above)} \\
-       & = \T^{\dag} \T \T^{\dag}              &  & \by{ex:6.7.21}[b]             \\
+    \U & = \U \T \U                            &  & \text{(by hypothesis)}         \\
+       & = \U \T \T^{\dag} \T \U               &  & \by{ex:6.7.21}[a]              \\
+       & = \T^{\dag} \T \T^{\dag} \T \T^{\dag} &  & \text{(from the claims above)} \\
+       & = \T^{\dag} \T \T^{\dag}              &  & \by{ex:6.7.21}[b]              \\
        & = \T^{\dag}.                          &  & \by{ex:6.7.21}[b]
   \end{align*}
 \end{proof}
@@ -1059,4 +1059,107 @@
                    & = A A^{\dag}.                          &  & \by{6.29}
   \end{align*}
   Thus by \cref{6.4.8} \(A^{\dag} A\) and \(A A^{\dag}\) are self-adjoint.
+\end{proof}
+
+\begin{ex}\label{ex:6.7.24}
+  Let \(A \in \ms\) and \(B \in \ms[n][m][\F]\) such that \(ABA = A\), \(BAB = B\), and both \(AB\) and \(BA\) are self-adjoint.
+  Prove that \(B = A^{\dag}\).
+\end{ex}
+
+\begin{proof}[\pf{ex:6.7.24}]
+  First we claim that \(AB = A A^{\dag}\).
+  This is true since
+  \begin{align*}
+    AB & = A A^{\dag} A B        &  & \by{ex:6.7.23}[a]      \\
+       & = (A A^{\dag})^* AB     &  & \by{ex:6.7.23}[c]      \\
+       & = (A A^{\dag})^* (AB)^* &  & \text{(by hypothesis)} \\
+       & = ((AB) (A A^{\dag}))^* &  & \by{ex:6.3.5}[c]       \\
+       & = ((ABA) A^{\dag})^*    &  & \by{2.16}              \\
+       & = (A A^{\dag})^*        &  & \text{(by hypothesis)} \\
+       & = A A^{\dag}.           &  & \by{ex:6.7.23}[c]
+  \end{align*}
+
+  Next we claim that \(BA = A^{\dag} A\).
+  This is true since
+  \begin{align*}
+    BA & = B A A^{\dag} A         &  & \by{ex:6.7.23}[a]      \\
+       & = (B A)^* A^{\dag} A     &  & \text{(by hypothesis)} \\
+       & = (B A)^* (A^{\dag} A)^* &  & \by{ex:6.7.23}[c]      \\
+       & = ((A^{\dag} A) (BA))^*  &  & \by{ex:6.3.5}[c]       \\
+       & = (A^{\dag} (ABA))^*     &  & \by{2.16}              \\
+       & = (A^{\dag} A)^*         &  & \text{(by hypothesis)} \\
+       & = A^{\dag} A.            &  & \by{ex:6.7.23}[c]
+  \end{align*}
+
+  Finally we show that \(B = A^{\dag}\).
+  This is true since
+  \begin{align*}
+    B & = BAB                            &  & \text{(by hypothesis)}         \\
+      & = B A A^{\dag} A B               &  & \by{ex:6.7.23}[a]              \\
+      & = A^{\dag} A A^{\dag} A A^{\dag} &  & \text{(from the claims above)} \\
+      & = A^{\dag} A A^{\dag}            &  & \by{ex:6.7.23}[b]              \\
+      & = A^{\dag}.                      &  & \by{ex:6.7.23}[b]
+  \end{align*}
+\end{proof}
+
+\begin{ex}\label{ex:6.7.25}
+  Let \(\V\) and \(\W\) be finite-dimensional inner product spaces over \(\F\), and let \(\T \in \ls(\V, \W)\).
+  Prove the following results.
+  \begin{enumerate}
+    \item If \(\T\) is one-to-one, then \(\T^* \T\) is invertible and \(\T^{\dag} = (\T^* \T)^{-1} \T^*\).
+    \item If \(\T\) is onto, then \(\T \T^*\) is invertible and \(\T^{\dag} = \T^* (\T \T^*)^{-1}\).
+  \end{enumerate}
+\end{ex}
+
+\begin{proof}[\pf{ex:6.7.25}(a)]
+  Since \(\T\) is one-to-one, by \cref{2.4} and \cref{ex:6.3.15}(e) we know that \(\T^* \T\) is also one-to-one.
+  Since \(\T^* \T \in \ls(\V)\), by \cref{2.5} we know that \(\T^* \T\) is invertible.
+  Now we define \(\U = (\T^* \T)^{-1} \T^*\).
+  Observe that
+  \begin{align*}
+    \T \U \T  & = \T (\T^* \T)^{-1} \T^* \T                                \\
+              & = \T;                                                      \\
+    \U \T \U  & = (\T^* \T)^{-1} \T^* \T \U                                \\
+              & = \U;                                                      \\
+    (\T \U)^* & = \U^* \T^*                       &  & \by{ex:6.3.16}[c]   \\
+              & = \pa{(\T^* \T)^{-1} \T^*}^* \T^*                          \\
+              & = \T \pa{(\T^* \T)^{-1}}^* \T^*   &  & \by{ex:6.3.16}[c,d] \\
+              & = \T \pa{(\T^* \T)^*}^{-1} \T^*   &  & \by{ex:6.3.8}       \\
+              & = \T (\T^* \T)^{-1} \T^*          &  & \by{ex:6.3.16}[c,d] \\
+              & = \T \U;                                                   \\
+    (\U \T)^* & = \T^* \U^*                       &  & \by{ex:6.3.16}[c]   \\
+              & = \T^* \pa{(\T^* \T)^{-1} \T^*}^*                          \\
+              & = \T^* \T \pa{(\T^* \T)^{-1}}^*   &  & \by{ex:6.3.16}[c,d] \\
+              & = \T^* \T \pa{(\T^* \T)^*}^{-1}   &  & \by{ex:6.3.8}       \\
+              & = \T^* \T (\T^* \T)^{-1}          &  & \by{ex:6.3.16}[c,d] \\
+              & = (\T^* \T)^{-1} \T^* \T                                   \\
+              & = \U \T.
+  \end{align*}
+  Then by \cref{ex:6.7.22} we have \(\T^{\dag} = \U = (\T^* \T)^{-1} \T^*\).
+\end{proof}
+
+\begin{proof}[\pf{ex:6.7.25}(b)]
+  Since \(\T\) is onto and \(\T \T^* \in \ls(\W)\), by \cref{2.5} we know that \(\T \T^*\) is invertible.
+  Define \(\U = \T^* (\T \T^*)^{-1}\).
+  Observe that
+  \begin{align*}
+    \T \U \T  & = \T \T^* (\T \T^*)^{-1} \T                                \\
+              & = \T;                                                      \\
+    \U \T \U  & = \U \T \T^* (\T \T^*)^{-1}                                \\
+              & = \U;                                                      \\
+    (\T \U)^* & = \U^* \T^*                       &  & \by{ex:6.3.16}[c]   \\
+              & = \pa{\T^* (\T \T^*)^{-1}}^* \T^*                          \\
+              & = \pa{(\T \T^*)^{-1}}^* \T \T^*   &  & \by{ex:6.3.16}[c,d] \\
+              & = \pa{(\T \T^*)^*}^{-1} \T \T^*   &  & \by{ex:6.3.8}       \\
+              & = (\T \T^*)^{-1} \T \T^*          &  & \by{ex:6.3.16}[c,d] \\
+              & = \T \T^* (\T \T^*)^{-1}                                   \\
+              & = \T \U;                                                   \\
+    (\U \T)^* & = \T^* \U^*                       &  & \by{ex:6.3.16}[c]   \\
+              & = \T^* \pa{\T^* (\T \T^*)^{-1}}^*                          \\
+              & = \T^* \pa{(\T \T^*)^{-1}}^* \T   &  & \by{ex:6.3.16}[c,d] \\
+              & = \T^* \pa{(\T \T^*)^*}^{-1} \T   &  & \by{ex:6.3.8}       \\
+              & = \T^* (\T \T^*)^{-1} \T          &  & \by{ex:6.3.16}[c,d] \\
+              & = \U \T.
+  \end{align*}
+  Then by \cref{ex:6.7.22} we have \(\T^{\dag} = \U = \T^* (\T \T^*)^{-1}\).
 \end{proof}
