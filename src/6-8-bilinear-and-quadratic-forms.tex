@@ -103,3 +103,49 @@
   \end{align*}
   by \cref{6.8.1} we know that \(J \in \bi(\V)\).
 \end{proof}
+
+\begin{defn}\label{6.8.4}
+  Let \(\V\) be a vector space over \(\F\), let \(H_1, H_2 \in \bi(\V)\), and let \(a \in \F\).
+  We define the \textbf{sum} \(H_1 + H_2\) and the \textbf{scalar product} \(a H_1\) by the equations
+  \[
+    (H_1 + H_2)(x, y) = H_1(x, y) + H_2(x, y)
+  \]
+  and
+  \[
+    (a H_1)(x, y) = a (H_1(x, y)) \quad \text{for all } x, y \in \V.
+  \]
+\end{defn}
+
+\begin{thm}\label{6.31}
+  For any vector space \(\V\) over \(\F\), the sum of two bilinear forms and the product of a scalar and a bilinear form on \(\V\) are again bilinear forms on \(\V\).
+  Furthermore, \(\bi(\V)\) is a vector space with respect to these operations.
+\end{thm}
+
+\begin{proof}[\pf{6.31}]
+  By \cref{1.2.10} we know that the set \(\fs(\V \times \V, \F)\) is a vector space and \(\bi(\V) \subseteq \fs(\V \times \V, \F)\).
+  Let \(\zT\) be the zero function of \(\fs(\V \times \V, \F)\).
+  Let \(f, g \in \bi(\V)\), let \(x, y, z \in \V\) and let \(a, c \in \F\).
+  Since
+  \begin{align*}
+    (cf + g)(ax + y, z) & = c f(ax + y, z) + g(ax + y, z)                 &  & \by{6.8.4}    \\
+                        & = c (a f(x, z) + f(y, z)) + a g(x, z) + g(y, z) &  & \by{6.8.1}[a] \\
+                        & = a (c f(x, z) + g(x, z)) + c f(y, z) + g(y, z)                    \\
+                        & = a (cf + g)(x, z) + (cf + g)(y, z);            &  & \by{6.8.4}    \\
+    (cf + g)(z, ax + y) & = c f(z, ax + y) + g(z, ax + y)                 &  & \by{6.8.4}    \\
+                        & = c (a f(z, x) + f(z, y)) + a g(z, x) + g(z, y) &  & \by{6.8.1}[b] \\
+                        & = a (c f(z, x) + g(z, x)) + c f(z, y) + g(z, y)                    \\
+                        & = a (cf + g)(z, x) + (cf + g)(z, y),            &  & \by{6.8.4}
+  \end{align*}
+  by \cref{6.8.1} we have \(cf + g \in \bi(\V)\).
+  Since
+  \begin{align*}
+    \zT(ax + y, z) & = 0                        \\
+                   & = a 0 + 0                  \\
+                   & = a \zT(x, z) + \zT(y, z); \\
+    \zT(z, ax + y) & = 0                        \\
+                   & = a 0 + 0                  \\
+                   & = a \zT(z, x) + \zT(z, y),
+  \end{align*}
+  by \cref{6.8.1} we have \(\zT \in \bi(\V)\).
+  Thus by \cref{ex:1.3.17} we know that \(\bi(\V)\) is a vector space over \(\F\).
+\end{proof}
