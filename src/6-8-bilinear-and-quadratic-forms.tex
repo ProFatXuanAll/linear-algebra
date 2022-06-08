@@ -246,3 +246,102 @@
 \begin{proof}[\pf{6.8.8}]
   This is an immediate consequence of \cref{6.8.7}.
 \end{proof}
+
+\begin{defn}\label{6.8.9}
+  Let \(A, B \in \ms[n][n][\F]\).
+  Then \(B\) is said to be \textbf{congruent} to \(A\) if there exists an invertible matrix \(Q \in \ms[n][n][\F]\) such that \(B = \tp{Q} A Q\).
+  Observe that the relation of congruence is an equivalence relation (see \cref{ex:6.8.12}).
+\end{defn}
+
+\begin{thm}\label{6.33}
+  Let \(\V\) be a finite-dimensional vector space over \(\F\) with ordered bases \(\beta = \set{\seq{v}{1,,n}}\) and \(\gamma = \set{\seq{w}{1,,n}}\), and let \(Q\) be the change of coordinate matrix changing \(\gamma\)-coordinates into \(\beta\)-coordinates.
+  Then, for any \(H \in \bi(\V)\), we have \(\psi_{\gamma}(H) = \tp{Q} \psi_{\beta}(H) Q\).
+  Therefore \(\psi_{\gamma}(H)\) is congruent to \(\psi_{\beta}(H)\).
+\end{thm}
+
+\begin{proof}[\pf{6.33}]
+  There are essentially two proofs of this theorem.
+  One involves a direct computation, while the other follows immediately from a clever observation.
+  We give the more direct proof here, leaving the other proof for the exercises (see \cref{ex:6.8.13}).
+
+  Suppose that \(A = \psi_{\beta}(H)\) and \(B = \psi_{\gamma}(H)\).
+  Then for \(i, j \in \set{1, \dots, n}\),
+  \[
+    w_i = \sum_{k = 1}^n Q_{k i} v_k \quad \text{and} \quad w_j = \sum_{r = 1}^n Q_{r j} v_r.
+  \]
+  (See \cref{2.2.4}.)
+  Thus
+  \begin{align*}
+    B_{i j} & = H(w_i, w_j)                                                  &  & \by{6.8.5}    \\
+            & = H\pa{\sum_{k = 1}^n Q_{k i} v_k, w_j}                        &  & \by{2.2.4}    \\
+            & = \sum_{k = 1}^n Q_{k i} H(v_k, w_j)                           &  & \by{6.8.1}[a] \\
+            & = \sum_{k = 1}^n Q_{k i} H\pa{v_k, \sum_{r = 1}^n Q_{r j} v_r} &  & \by{2.2.4}    \\
+            & = \sum_{k = 1}^n Q_{k i} \sum_{r = 1}^n Q_{r j} H(v_k, v_r)    &  & \by{6.8.1}[b] \\
+            & = \sum_{k = 1}^n Q_{k i} \sum_{r = 1}^n Q_{r j} A_{k r}        &  & \by{6.8.5}    \\
+            & = \sum_{k = 1}^n Q_{k i} \sum_{r=  1}^n A_{k r} Q_{r j}                           \\
+            & = \sum_{k = 1}^n Q_{k i} (AQ)_{k j}                            &  & \by{2.3.1}    \\
+            & = \sum_{k = 1}^n (\tp{Q})_{i k} (AQ)_{k j}                     &  & \by{1.3.3}    \\
+            & = (\tp{Q} A Q)_{i j}.                                          &  & \by{2.3.1}
+  \end{align*}
+  Hence by \cref{1.2.9} \(B = \tp{Q} A Q\).
+\end{proof}
+
+\begin{cor}\label{6.8.10}
+  Let \(\V\) be an \(n\)-dimensional vector space over \(\F\) with ordered basis \(\beta\), and let \(H \in \bi(\V)\).
+  For any \(B \in \ms[n][n][\F]\), if \(B\) is congruent to \(\psi_{\beta}(H)\), then there exists an ordered basis \(\gamma\) for \(\V\) over \(\F\) such that \(\psi_{\gamma}(H) = B\).
+  Furthermore, if \(B = \tp{Q} \psi_{\beta}(H) Q\) for some invertible matrix \(Q\), then \(Q\) changes \(\gamma\)-coordinates into \(\beta\)-coordinates.
+\end{cor}
+
+\begin{proof}[\pf{6.8.10}]
+  Suppose that \(B = \tp{Q} \psi_{\beta}(H) Q\) for some invertible matrix \(Q\) and that \(\beta = \set{\seq{v}{1,,n}}\).
+  Let \(\gamma = \set{\seq{w}{1,,n}}\), where
+  \[
+    w_j = \sum_{i = 1}^n Q_{i j} v_i \quad \text{for } j \in \set{1, \dots, n}.
+  \]
+  Since \(Q\) is invertible, \(\gamma\) is an ordered basis for \(\V\) over \(\F\) (\cref{2.2,2.3}), and \(Q\) is the change of coordinate matrix that changes \(\gamma\)-coordinates into \(\beta\)-coordinates (\cref{2.5.1}).
+  Therefore, by \cref{6.33},
+  \[
+    B = \tp{Q} \psi_{\beta}(H) Q = \psi_{\gamma}(H).
+  \]
+\end{proof}
+
+\exercisesection
+
+\begin{ex}\label{ex:6.8.12}
+  Prove that the relation of congruence is an equivalence relation.
+\end{ex}
+
+\begin{proof}[\pf{ex:6.8.12}]
+  Let \(A, B, C \in \ms[n][n][\F]\).
+  Since \(A = \tp{I_n} A I_n\), by \cref{6.8.9} we know that the congruence relation is reflexive.
+  Since
+  \begin{align*}
+             & B \text{ is congruent to } A                                           \\
+    \implies & \exists Q \in \ms[n][n][\F] : \begin{dcases}
+                                               Q \text{ is invertible} \\
+                                               B = \tp{Q} A Q
+                                             \end{dcases}        &  & \by{6.8.9}      \\
+    \implies & A = (\tp{Q})^{-1} B Q^{-1} = \tp{(Q^{-1})} B Q^{-1} &  & \by{ex:2.4.5} \\
+    \implies & A \text{ is congruent to } B,
+  \end{align*}
+  by \cref{6.8.9} we know that the congruence relation is symmetric.
+  Since
+  \begin{align*}
+             & \begin{dcases}
+                 B \text{ is congruent to } A \\
+                 C \text{ is congruent to } B
+               \end{dcases}                                    \\
+    \implies & \exists P, Q \in \ms[n][n][\F] : \begin{dcases}
+                                                  P, Q \text{ are invertible} \\
+                                                  B = \tp{Q} A Q              \\
+                                                  C = \tp{P} B P
+                                                \end{dcases} &  & \by{6.8.9}   \\
+    \implies & C = \tp{P} \tp{Q} A Q P = \tp{QP} A QP          &  & \by{2.3.2} \\
+    \implies & C \text{ is congruent to } A,                   &  & \by{6.8.9}
+  \end{align*}
+  by \cref{6.8.9} we know that the congruence relation is transitive.
+  Thus the congruence relation is an equivalence relation.
+\end{proof}
+
+\begin{ex}\label{ex:6.8.13}
+\end{ex}
