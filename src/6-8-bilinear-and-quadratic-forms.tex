@@ -149,3 +149,100 @@
   by \cref{6.8.1} we have \(\zT \in \bi(\V)\).
   Thus by \cref{ex:1.3.17} we know that \(\bi(\V)\) is a vector space over \(\F\).
 \end{proof}
+
+\begin{defn}\label{6.8.5}
+  Let \(\beta = \set{\seq{v}{1,,n}}\) be an ordered basis for an \(n\)-dimensional vector space \(\V\) over \(\F\), and let \(H \in \bi(\V)\).
+  We can associate \(H\) with an \(n \times n\) matrix \(A\) whose entry in row \(i\) and column \(j\) is defined by
+  \[
+    A_{i j} = H(v_i, v_j) \quad \text{for } i, j \in \set{1, \dots, n}.
+  \]
+  The matrix \(A\) above is called the \textbf{matrix representation} of \(H\) with respect to the ordered basis \(\beta\) and is denoted by \(\psi_{\beta}(H)\).
+  We can therefore regard \(\psi_{\beta}\) as a mapping from \(\bi(\V)\) to \(\ms[n][n][\F]\), where \(\F\) is the field of scalars for \(\V\), that takes a bilinear form \(H\) into its matrix representation \(\psi_{\beta}(H)\).
+\end{defn}
+
+\begin{thm}\label{6.32}
+  For any \(n\)-dimensional vector space \(\V\) over \(\F\) and any ordered basis \(\beta\) for \(\V\) over \(\F\), \(\psi_{\beta} : \bi(\V) \to \ms[n][n][\F]\) is an isomorphism.
+\end{thm}
+
+\begin{proof}[\pf{6.32}]
+  First we show that \(\psi_{\beta} \in \ls(\bi(\V), \ms[n][n][\F])\).
+  Let \(f, g \in \bi(\V)\) and let \(c \in \F\).
+  Since
+  \begin{align*}
+    \forall i, j \in \set{1, \dots, n}, \pa{\psi_{\beta}(cf + g)}_{i j} & = (cf + g)(v_i, v_j)                                        &  & \by{6.8.5} \\
+                                                                        & = c f(v_i, v_j) + g(v_i, v_j)                               &  & \by{6.8.4} \\
+                                                                        & = c \pa{\psi_{\beta}(f)}_{i j} + \pa{\psi_{\beta}(g)}_{i j} &  & \by{6.8.5} \\
+                                                                        & = \pa{c \psi_{\beta}(f) + \psi_{\beta}(g)}_{i j},           &  & \by{1.2.9}
+  \end{align*}
+  by \cref{1.2.8} we know that \(\psi_{\beta}(cf + g) = c \psi_{\beta}(f) + \psi_{\beta}(g)\) and thus by \cref{2.1.2}(b) \(\psi_{\beta} \in \ls(\bi(\V), \ms[n][n][\F])\).
+
+  To show that \(\psi_{\beta}\) is one-to-one, suppose that \(\psi_{\beta}(H) = \zm\) for some \(H \in \bi(\V)\).
+  Fix \(v_i \in \beta\), and recall the mapping \(\lt{L}_{v_i} : \V \to \F\), which is linear by \cref{6.8.3}(a).
+  By hypothesis, \(\lt{L}_{v_i}(v_j) = H(v_i, v_j) = 0\) for all \(v_j \in \beta\).
+  Hence \(\lt{L}_{v_i}\) is the zero transformation from \(\V\) to \(\F\) by \cref{2.1.13}.
+  So
+  \[
+    H(v_i, x) = \lt{L}_{v_i}(x) = 0 \quad \text{for all } x \in \V \text{ and } v_i \in \beta.
+  \]
+  Next fix an arbitrary \(y \in \V\), and recall the linear mapping \(\lt{R}_y : \V \to \F\) defined in \cref{6.8.3}(a).
+  From the equation above we have \(\lt{R}_y(v_i) = H(v_i, y) = 0\) for all \(v_i \in \beta\), and hence \(\lt{R}_y\) is the zero transformation by \cref{2.1.13}.
+  So \(H(x, y) = \lt{R}_y(x) = 0\) for all \(x, y \in \V\).
+  Thus \(H\) is the zero bilinear form, and therefore \(\psi_{\beta}\) is one-to-one by \cref{2.4}.
+
+  To show that \(\psi_{\beta}\) is onto, consider any \(A \in \ms[n][n][\F]\).
+  Recall the isomorphism \(\phi_{\beta} \in \ls(\V, \vs{\F}^n)\) defined in \cref{2.4.11}.
+  For \(x \in \V\), we view \(\phi_{\beta}(x) \in \vs{F}^n\) as a column vector.
+  Let \(H : \V \times \V \to \F\) be the mapping defined by
+  \[
+    H(x, y) = \tp{(\phi_{\beta}(x))} A (\phi_{\beta}(y)) \quad \text{for all } x, y \in \V.
+  \]
+  By \cref{6.8.2} we know that \(H \in \bi(\V)\).
+  We show that \(\psi_{\beta}(H) = A\).
+  Let \(v_i, v_j \in \beta\).
+  Then \(\phi_{\beta}(v_i) = e_i\) and \(\phi_{\beta}(v_j) = e_j\);
+  hence, for any \(i, j \in \set{1, \dots, n}\),
+  \[
+    H(v_i, v_j) = \tp{(\phi_{\beta}(v_i))} A (\phi_{\beta}(v_j)) = \tp{e_i} A e_j = A_{i j}.
+  \]
+  We conclude that \(\psi_{\beta}(H) = A\) and \(\psi_{\beta}\) is onto.
+\end{proof}
+
+\begin{cor}\label{6.8.6}
+  For any \(n\)-dimensional vector space \(\V\), \(\bi(\V)\) has dimension \(n^2\).
+\end{cor}
+
+\begin{proof}[\pf{6.8.6}]
+  By \cref{1.6.11,2.19,6.32} we see that this is true.
+\end{proof}
+
+\begin{cor}\label{6.8.7}
+  Let \(\V\) be an \(n\)-dimensional vector space over \(\F\) with ordered basis \(\beta\).
+  If \(H \in \bi(\V)\) and \(A \in \ms[n][n][\F]\), then \(\psi_{\beta}(H) = A\) iff \(H(x, y) = \tp{(\phi_{\beta}(x))} A (\phi_{\beta}(y))\) for all \(x, y \in \V\).
+\end{cor}
+
+\begin{proof}[\pf{6.8.7}]
+  Let \(\beta = \set{\seq{v}{1,,n}}\) and let \(x, y \in \V\).
+  Since \(\beta\) is a basis for \(\V\) over \(\F\), there exist \(\seq{a}{1,,n}, \seq{b}{1,,n} \in \F\) such that \(x = \sum_{i = 1}^n a_i v_i\) and \(y = \sum_{i = 1}^n b_i v_i\).
+  Then we have
+  \begin{align*}
+         & \psi_{\beta}(H) = A                                                                                                                   \\
+    \iff & H(x, y) = H\pa{\sum_{i = 1}^n a_i v_i, \sum_{j = 1}^n b_j v_j} = \sum_{i = 1}^n \sum_{j = 1}^n a_i b_j H(v_i, v_j) &  & \by{6.8.3}[c] \\
+         & = \sum_{i = 1}^n \sum_{j = 1}^n a_i b_j A_{i j}                                                                    &  & \by{6.32}     \\
+         & = \sum_{i = 1}^n \sum_{j = 1}^n a_i b_j \tp{e_i} A e_j                                                             &  & \by{2.3.1}    \\
+         & = \pa{\sum_{i = 1}^n a_i \tp{e_i}} A \pa{\sum_{j = 1}^n b_j e_j}                                                   &  & \by{2.3.5}    \\
+         & = \tp{\pa{\sum_{i = 1}^n a_i e_i}} A \pa{\sum_{j = 1}^n b_j e_j}                                                   &  & \by{ex:1.3.3} \\
+         & = \tp{(\phi_{\beta}(x))} A (\phi_{\beta}(y)).                                                                      &  & \by{2.4.11}
+  \end{align*}
+\end{proof}
+
+\begin{cor}\label{6.8.8}
+  Let \(\F\) be a field, \(n\) a positive integer, and \(\beta\) be the standard ordered basis for \(\vs{F}^n\) over \(\F\).
+  Then for any \(H \in \bi(\vs{F}^n)\), there exists a unique matrix \(A \in \ms[n][n][\F]\), namely, \(A = \psi_{\beta}(H)\), such that
+  \[
+    H(x, y) = \tp{x} A y \quad \text{for all } x, y \in \vs{F}^n.
+  \]
+\end{cor}
+
+\begin{proof}[\pf{6.8.8}]
+  This is an immediate consequence of \cref{6.8.7}.
+\end{proof}
