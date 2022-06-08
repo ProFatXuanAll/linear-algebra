@@ -283,7 +283,7 @@
             & = \sum_{k = 1}^n (\tp{Q})_{i k} (AQ)_{k j}                     &  & \by{1.3.3}    \\
             & = (\tp{Q} A Q)_{i j}.                                          &  & \by{2.3.1}
   \end{align*}
-  Hence by \cref{1.2.9} \(B = \tp{Q} A Q\).
+  Hence by \cref{1.2.8} \(B = \tp{Q} A Q\).
 \end{proof}
 
 \begin{cor}\label{6.8.10}
@@ -303,6 +303,207 @@
   \[
     B = \tp{Q} \psi_{\beta}(H) Q = \psi_{\gamma}(H).
   \]
+\end{proof}
+
+\begin{note}
+  \cref{6.8.10} is the converse of \cref{6.33}.
+\end{note}
+
+\begin{note}
+  Like the diagonalization problem for linear operators, there is an analogous \emph{diagonalization} problem for bilinear forms, namely, the problem of determining those bilinear forms for which there are diagonal matrix representations.
+  As we will see, there is a close relationship between \emph{diagonalizable} bilinear forms and those that are called \emph{symmetric}.
+\end{note}
+
+\begin{defn}\label{6.8.11}
+  A bilinear form \(H\) on a vector space \(\V\) over \(\F\) is \textbf{symmetric} if \(H(x, y) = H(y, x)\) for all \(x, y \in \V\).
+\end{defn}
+
+\begin{thm}\label{6.34}
+  Let \(H\) be a bilinear form on a finite-dimensional vector space \(\V\) over \(\F\), and let \(\beta\) be an ordered basis for \(\V\) over \(\F\).
+  Then \(H\) is symmetric iff \(\psi_{\beta}(H)\) is symmetric.
+\end{thm}
+
+\begin{proof}[\pf{6.34}]
+  Let \(\beta = \set{\seq{v}{1,,n}}\) and \(B = \psi_{\beta}(H)\).
+
+  First assume that \(H\) is symmetric.
+  Then for \(i, j \in \set{1, \dots, n}\),
+  \begin{align*}
+    B_{i j} & = H(v_i, v_j) &  & \by{6.8.5}  \\
+            & = H(v_j, v_i) &  & \by{6.8.11} \\
+            & = B_{j i},    &  & \by{6.8.5}
+  \end{align*}
+  and it follows that \(B\) is symmetric (\cref{1.3.4}).
+
+  Conversely, suppose that \(B\) is symmetric.
+  Let \(J : \V \times \V \to \F\) be the mapping defined by \(J(x, y) = H(y, x)\) for all \(x, y \in \V\).
+  By \cref{6.8.3}(d), \(J\) is a bilinear form.
+  Let \(C = \psi_{\beta}(J)\).
+  Then, for \(i, j \in \set{1, \dots, n}\),
+  \begin{align*}
+    C_{i j} & = J(v_i, v_j) &  & \by{6.8.5}    \\
+            & = H(v_j, v_i) &  & \by{6.8.3}[d] \\
+            & = B_{j i}     &  & \by{6.8.5}    \\
+            & = B_{i j}.    &  & \by{1.3.4}
+  \end{align*}
+  Thus \(C = B\) (\cref{1.2.8}).
+  Since \(\psi_{\beta}\) is one-to-one (\cref{6.32}), we have \(J = H\).
+  Hence \(H(y, x) = J(x, y) = H(x, y)\) for all \(x, y \in \V\), and therefore \(H\) is symmetric (\cref{6.8.11}).
+\end{proof}
+
+\begin{defn}\label{6.8.12}
+  A bilinear form \(H\) on a finite-dimensional vector space \(\V\) over \(\F\) is called \textbf{diagonalizable} if there is an ordered basis \(\beta\) for \(\V\) over \(\F\) such that \(\psi_{\beta}(H)\) is a diagonal matrix.
+\end{defn}
+
+\begin{cor}\label{6.8.13}
+  Let \(H\) be a diagonalizable bilinear form on a finite-dimensional vector space \(\V\) over \(\F\).
+  Then \(H\) is symmetric.
+\end{cor}
+
+\begin{proof}[\pf{6.8.13}]
+  Suppose that \(H\) is diagonalizable.
+  Then there is an ordered basis \(\beta\) for \(\V\) over \(\F\) such that \(\psi_{\beta}(H) = D\) is a diagonal matrix (\cref{6.8.12}).
+  Trivially, \(D\) is a symmetric matrix, and hence, by \cref{6.34}, \(H\) is symmetric.
+\end{proof}
+
+\begin{note}
+  Unfortunately, the converse of \cref{6.8.13} is not true, as is illustrated by \cref{6.8.14}.
+\end{note}
+
+\begin{eg}\label{6.8.14}
+  Let \(\F = \Z_2\), \(\V = \vs{F}^2\), and \(H : \V \times \V \to \F\) be the bilinear form defined by
+  \[
+    H\pa{\begin{pmatrix}
+        a_1 \\
+        a_2
+      \end{pmatrix}, \begin{pmatrix}
+        b_1 \\
+        b_2
+      \end{pmatrix}} = a_1 b_2 + a_2 b_1.
+  \]
+  Clearly \(H\) is symmetric.
+  In fact, if \(\beta\) is the standard ordered basis for \(\V\) over \(\F\), then
+  \[
+    A = \psi_{\beta}(H) = \begin{pmatrix}
+      0 & 1 \\
+      1 & 0
+    \end{pmatrix},
+  \]
+  a symmetric matrix.
+  We show that \(H\) is not diagonalizable.
+\end{eg}
+
+\begin{proof}[\pf{6.8.14}]
+  By way of contradiction, suppose that \(H\) is diagonalizable.
+  Then there is an ordered basis \(\gamma\) for \(\V\) over \(\F\) such that \(B = \psi_{\gamma}(H)\) is a diagonal matrix (\cref{6.8.12}).
+  So by \cref{6.33}, there exists an invertible matrix \(Q\) such that \(B = \tp{Q} A Q\).
+  Since \(Q\) is invertible, it follows that \(\rk{B} = \rk{A} = 2\) (\cref{3.4}(c)), and consequently the diagonal entries of \(B\) are nonzero.
+  Since the only nonzero scalar of \(\F\) is \(1\),
+  \[
+    B = \begin{pmatrix}
+      1 & 0 \\
+      0 & 1
+    \end{pmatrix}.
+  \]
+  Suppose that
+  \[
+    Q = \begin{pmatrix}
+      a & b \\
+      c & d
+    \end{pmatrix}.
+  \]
+  Then
+  \begin{align*}
+    \begin{pmatrix}
+      1 & 0 \\
+      0 & 1
+    \end{pmatrix} & = B                           &  & (\F = \Z_2) \\
+                    & = \tp{Q} A Q                  &  & \by{6.33} \\
+                    & = \begin{pmatrix}
+                          a & c \\
+                          b & d
+                        \end{pmatrix} \begin{pmatrix}
+                                        0 & 1 \\
+                                        1 & 0
+                                      \end{pmatrix} \begin{pmatrix}
+                                                      a & b \\
+                                                      c & d
+                                                    \end{pmatrix} \\
+                    & = \begin{pmatrix}
+                          ac + ac & bc + ad \\
+                          bc + ad & bd + bd
+                        \end{pmatrix}.          &  & \by{2.3.1}
+  \end{align*}
+  But \(p + p = 0\) for all \(p \in \F\);
+  hence \(ac + ac = 0\).
+  Thus, comparing the row \(1\), column \(1\) entries of the matrices in the equation above, we conclude that \(1 = 0\), a contradiction.
+  Therefore \(H\) is not diagonalizable.
+\end{proof}
+
+\begin{note}
+  The bilinear form of \cref{6.8.14} is an anomaly.
+  Its failure to be diagonalizable is due to the fact that the scalar field \(\Z_2\) is of characteristic two.
+  Recall from \cref{c.0.4} that a field \(\F\) is of \textbf{characteristic two} if \(1 + 1 = 0\) in \(\F\).
+  If \(\F\) is not of characteristic two, then \(1 + 1 = 2\) has a multiplicative inverse, which we denote by \(1 / 2\).
+\end{note}
+
+\begin{lem}\label{6.8.15}
+  Let \(H\) be a nonzero symmetric bilinear form on a vector space \(\V\) over a field \(\F\) not of characteristic two.
+  Then there is a vector \(x \in \V\) such that \(H(x, x) \neq 0\).
+\end{lem}
+
+\begin{proof}[\pf{6.8.15}]
+  Since \(H\) is nonzero, we can choose vectors \(u, v \in \V\) such that \(H(u, v) \neq 0\).
+  If \(H(u, u) \neq 0\) or \(H(v, v) \neq 0\), there is nothing to prove.
+  Otherwise, set \(x = u + v\).
+  Then
+  \begin{align*}
+    H(x, x) & = H(u, u) + H(u, v) + H(v, u) + H(v, v) &  & \by{6.8.3}[c]           \\
+            & = 2 H(u, v)                             &  & (H(u, u) = 0 = H(v, v)) \\
+            & \neq 0
+  \end{align*}
+  because \(2 \neq 0\) and \(H(u, v) \neq 0\).
+\end{proof}
+
+\begin{thm}\label{6.35}
+  Let \(\V\) be a finite-dimensional vector space over a field \(\F\) not of characteristic two.
+  Then every symmetric bilinear form on \(\V\) is diagonalizable.
+\end{thm}
+
+\begin{proof}[\pf{6.35}]
+  We use mathematical induction on \(n = \dim(\V)\).
+  If \(n = 1\), then every element of \(\bi(\V)\) is diagonalizable.
+  Now suppose that the theorem is valid for vector spaces of dimension less than \(n + 1\) for some fixed integer \(n \geq 1\), and suppose that \(\dim(\V) = n + 1\).
+  If \(H\) is the zero bilinear form on \(\V\), then trivially \(H\) is diagonalizable;
+  so suppose that \(H\) is a nonzero symmetric bilinear form on \(\V\).
+  By \cref{6.8.15}, there exists a nonzero vector \(x \in \V\) such that \(H(x, x) \neq 0\).
+  Recall the function \(\lt{L}_x : \V \to \F\) defined by \(\lt{L}_x(y) = H(x, y)\) for all \(y \in \V\).
+  By \cref{6.8.3}(a), \(\lt{L}_x \in \ls(\V, \F)\).
+  Furthermore, since \(\lt{L}_x(x) = H(x, x) \neq 0\), \(\lt{L}_x\) is nonzero.
+  Consequently, \(\rk{\lt{L}_x} = 1\), and hence \(\nt{\lt{L}_x} = n\) (\cref{2.3}).
+  The restriction of \(H\) to \(\ns{\lt{L}_x}\) is obviously a symmetric bilinear form on a vector space of dimension \(n\), i.e.,
+  \[
+    \forall y_1, y_2 \in \ns{\lt{L}_x}, H(y_1, y_2) = H(y_2, y_1).
+  \]
+  Thus, by the induction hypothesis, there exists an ordered basis \(\set{\seq{v}{1,,n}}\) for \(\ns{\lt{L}_x}\) such that \(H(v_i, v_j) = 0\) for \(i \neq j\) (\(i, j \in \set{1, \dots, n}\)).
+  Set \(v_{n + 1} = x\).
+  Then \(v_{n + 1} \notin \ns{\lt{L}_x}\), and so \(\beta = \set{\seq{v}{1,,n+1}}\) is an ordered basis for \(\V\) over \(\F\).
+  In addition, \(H(v_i, v_{n + 1}) = H(v_{n + 1}, v_i) = 0\) for \(i \in \set{1, \dots, n}\) (\cref{6.8.11}).
+  We conclude that \(\psi_{\beta}(H)\) is a diagonal matrix, and therefore \(H\) is diagonalizable (\cref{6.8.12}).
+\end{proof}
+
+\begin{cor}\label{6.8.16}
+  Let \(\F\) be a field that is not of characteristic two.
+  If \(A \in \ms[n][n][\F]\) is a symmetric matrix, then \(A\) is congruent to a diagonal matrix.
+\end{cor}
+
+\begin{proof}[\pf{6.8.16}]
+  Let \(\beta\) be an ordered basis for \(\vs{F}^n\) over \(\F\).
+  By \cref{6.32} there exists an unique \(H \in \bi(\V)\) such that \(\psi_{\beta}(H) = A\).
+  Since \(A\) is symmetric, by \cref{6.34} we know that \(H\) is symmetric.
+  Since \(\F \neq \Z_2\), by \cref{6.35} we know that \(H\) is diagonalizable.
+  By \cref{6.8.12} there exists an ordered basis \(\gamma\) for \(\vs{F}^n\) over \(\F\) such that \(\psi_{\gamma}(H)\) is a diagonal matrix.
+  Thus by \cref{6.33} \(A\) is congruent to \(\psi_{\gamma}(H)\).
 \end{proof}
 
 \exercisesection
