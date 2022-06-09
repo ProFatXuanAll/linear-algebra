@@ -481,6 +481,7 @@
   By \cref{6.8.3}(a), \(\lt{L}_x \in \ls(\V, \F)\).
   Furthermore, since \(\lt{L}_x(x) = H(x, x) \neq 0\), \(\lt{L}_x\) is nonzero.
   Consequently, \(\rk{\lt{L}_x} = 1\), and hence \(\nt{\lt{L}_x} = n\) (\cref{2.3}).
+
   The restriction of \(H\) to \(\ns{\lt{L}_x}\) is obviously a symmetric bilinear form on a vector space of dimension \(n\), i.e.,
   \[
     \forall y_1, y_2 \in \ns{\lt{L}_x}, H(y_1, y_2) = H(y_2, y_1).
@@ -504,6 +505,92 @@
   Since \(\F \neq \Z_2\), by \cref{6.35} we know that \(H\) is diagonalizable.
   By \cref{6.8.12} there exists an ordered basis \(\gamma\) for \(\vs{F}^n\) over \(\F\) such that \(\psi_{\gamma}(H)\) is a diagonal matrix.
   Thus by \cref{6.33} \(A\) is congruent to \(\psi_{\gamma}(H)\).
+\end{proof}
+
+\begin{prop}\label{6.8.17}
+  Let \(\F\) be a field and \(\F \neq \Z_2\).
+  By means of several elementary column operations and the corresponding row operations, \(A \in \ms[n][n][\F]\) can be transformed into a diagonal matrix \(D\).
+  Furthermore, if \(\seq{E}{1,,k}\) are the elementary matrices corresponding to these elementary column operations indexed in the order performed, and if \(Q = \seq[]{E}{1,,k}\), then \(\tp{Q} A Q = D\).
+\end{prop}
+
+\begin{proof}[\pf{6.8.17}]
+  If \(E\) is an elementary \(n \times n\) matrix, then \(AE\) can be obtained by performing an elementary column operation on \(A\) (\cref{3.1}).
+  By \cref{ex:6.8.21}, \(\tp{E} A\) can be obtained by performing the same operation on the rows of \(A\) rather than on its columns.
+  Thus \(\tp{E} A E\) can be obtained from \(A\) by performing an elementary operation on the columns of \(A\) and then performing the same operation on the rows of \(AE\).
+  (Note that the order of the operations can be reversed because of the associative property of matrix multiplication, see \cref{2.16}.)
+  Suppose that \(Q\) is an invertible matrix and \(D\) is a diagonal matrix such that \(\tp{Q} A Q = D\) (\cref{6.8.16}).
+  By \cref{3.2.6}, \(Q\) is a product of elementary matrices, say \(Q = \seq[]{E}{1,,k}\).
+  Thus
+  \[
+    D = \tp{Q} A Q = \tp{E_k} \cdots \tp{E_1} A \seq{E}{1,,k}.
+  \]
+\end{proof}
+
+\begin{prop}\label{6.8.18}
+  Let \(\F\) be a field and \(\F \neq \Z_2\).
+  Let \(A \in \ms[n][n][\F]\) be symmetric.
+  Then \((A | I_n)\) can be transformed into \((D | \tp{Q})\) where \(D = \tp{Q} A Q\).
+\end{prop}
+
+\begin{proof}[\pf{6.8.18}]
+  Since \(A\) is symmetric, by \cref{6.8.16} there exists a \(Q \in \ms[n][n][\F]\) such that \(D = \tp{Q} A Q\) is a diagonal matrix.
+  Let \(Q = \seq[]{E}{1,,k}\) where \(\seq{E}{1,,k}\) are elementary column operations.
+  By performing \(\seq{E}{1,,k}\) on the first \(n\) column of \((A | I_n)\) we have \((AQ | I_n)\).
+  Then by \cref{ex:3.2.15} we have
+  \[
+    \tp{Q} (AQ | I_n) = (\tp{Q} A Q | \tp{Q}) = (D | \tp{Q}).
+  \]
+\end{proof}
+
+\begin{defn}\label{6.8.19}
+  Let \(\V\) be a vector space over \(\F\).
+  A function \(K : \V \to \F\) is called a \textbf{quadratic form} if there exists a symmetric bilinear form \(H \in \bi(\V)\) such that
+  \begin{equation}\label{eq:6.8.1}
+    K(x) = H(x, x) \quad \text{for all } x \in \V.
+  \end{equation}
+  If \(\F \neq \Z_2\), then by \cref{6.32} there is a one-to-one correspondence between symmetric bilinear forms and quadratic forms given by \cref{eq:6.8.1}.
+  In fact, if \(K\) is a quadratic form on a vector space \(\V\) over a field \(\F\) not of characteristic two, and \(K(x) = H(x, x)\) for some symmetric bilinear form \(H\) on \(\V\), then we can recover \(H\) from \(K\) because
+  \begin{equation}\label{eq:6.8.2}
+    H(x, y) = \frac{1}{2} (K(x + y) - K(x) - K(y))
+  \end{equation}
+  (see \cref{ex:6.8.16}).
+\end{defn}
+
+\begin{eg}\label{6.8.20}
+  The classic example of a quadratic form is the homogeneous second-degree polynomial of several variables.
+  Given the variables \(\seq{x}{1,,n}\) that take values in a field \(\F\) not of characteristic two and given (not necessarily distinct) scalars \(a_{i j} \in \F\) (\(i, j \in \set{1, \dots, n}\) and \(i \leq j\)), define the polynomial
+  \[
+    f\tuple{x}{1,,n} = \sum_{i = 1}^n \sum_{j = i}^n a_{i j} x_i x_j.
+  \]
+  Any such polynomial is a quadratic form.
+  In fact, if \(\beta\) is the standard ordered basis for \(\vs{F}^n\) over \(\F\), then the symmetric bilinear form \(H\) corresponding to the quadratic form \(f\) has the matrix representation \(\psi_{\beta}(H) = A\), where
+  \[
+    A_{i j} = A_{j i} = \begin{dcases}
+      a_{i i}             & \text{if } i = j    \\
+      \frac{1}{2} a_{i j} & \text{if } i \neq j
+    \end{dcases}.
+  \]
+\end{eg}
+
+\begin{proof}[\pf{6.8.20}]
+  Let \(A \in \ms[n][n][\F]\) be defined as above.
+  Clearly \(A\) is symmetric.
+  By \cref{6.32} there exists an unique \(H \in \bi(\vs{F}^n)\) such that \(\psi_{\beta}(H) = A\).
+  By \cref{6.8.19} we can define \(K : \V \to \F\) to be the quadratic form associated with \(H\).
+  Now we show that \(K = f\).
+  This is true since
+  \begin{align*}
+     & \forall x \in \vs{F}^n, K(x) = H(x, x)                                                                                               &  & \by{6.8.19} \\
+     & = \tp{x} A x                                                                                                                         &  & \by{6.8.8}  \\
+     & = \sum_{i = 1}^n x_i (Ax)_{i}                                                                                                        &  & \by{2.3.1}  \\
+     & = \sum_{i = 1}^n \sum_{j = 1}^n x_i A_{i j} x_j                                                                                      &  & \by{2.3.1}  \\
+     & = \pa{\sum_{i = 1}^n x_i A_{i i} x_i} + \pa{\sum_{i = 1}^n \sum_{j = i + 1}^n x_i A_{i j} x_j + x_j A_{j i} x_i}                                      \\
+     & = \pa{\sum_{i = 1}^n x_i a_{i i} x_i} + \pa{\sum_{i = 1}^n \sum_{j = i + 1}^n x_i \frac{a_{i j}}{2} x_j + x_j \frac{a_{i j}}{2} x_i}                  \\
+     & = \pa{\sum_{i = 1}^n a_{i i} x_i x_i} + \pa{\sum_{i = 1}^n \sum_{j = i + 1}^n a_{i j} x_i x_j}                                                        \\
+     & = \sum_{i = 1}^n \sum_{j = i}^n a_{i j} x_i x_j                                                                                                       \\
+     & = f(x).
+  \end{align*}
+  Thus \(f\) is a quadratic form.
 \end{proof}
 
 \exercisesection
@@ -545,4 +632,26 @@
 \end{proof}
 
 \begin{ex}\label{ex:6.8.13}
+\end{ex}
+
+\begin{ex}\label{ex:6.8.16}
+  Let \(\V\) be a vector space over a field \(\F\) not of characteristic two, and let \(H\) be a symmetric bilinear form on \(\V\).
+  Prove that if \(K(x) = H(x, x)\) is the quadratic form associated with \(H\), then, for all \(x, y \in \V\),
+  \[
+    H(x, y) = \frac{1}{2} (K(x + y) - K(x) - K(y)).
+  \]
+\end{ex}
+
+\begin{proof}[\pf{ex:6.8.16}]
+  We have
+  \begin{align*}
+     & \forall x, y \in \V, \frac{1}{2} (K(x + y) - K(x) - K(y))                    \\
+     & = \frac{1}{2} (H(x + y, x + y) - H(x, x) - H(y, y))       &  & \by{6.8.19}   \\
+     & = \frac{1}{2} (H(x, y) + H(y, x))                         &  & \by{6.8.3}[c] \\
+     & = \frac{1}{2} 2 H(x, y)                                   &  & \by{6.8.11}   \\
+     & = H(x, y).
+  \end{align*}
+\end{proof}
+
+\begin{ex}\label{ex:6.8.21}
 \end{ex}
