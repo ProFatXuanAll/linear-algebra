@@ -593,6 +593,218 @@
   Thus \(f\) is a quadratic form.
 \end{proof}
 
+\begin{note}
+  Since symmetric matrices over \(\R\) are orthogonally diagonalizable (see \cref{6.20}), the theory of symmetric bilinear forms and quadratic forms on finite-dimensional vector spaces over \(\R\) is especially nice.
+  The following theorem (\cref{6.36}) and its corollary (\cref{6.8.21}) are useful.
+\end{note}
+
+\begin{thm}\label{6.36}
+  Let \(\V\) be a finite-dimensional real inner product space, and let \(H\) be a symmetric bilinear form on \(\V\).
+  Then there exists an orthonormal basis \(\beta\) for \(\V\) over \(\R\) such that \(\psi_{\beta}(H)\) is a diagonal matrix.
+\end{thm}
+
+\begin{proof}[\pf{6.36}]
+  Choose any orthonormal basis \(\gamma = \set{\seq{v}{1,,n}}\) for \(\V\) over \(\R\), and let \(A = \psi_{\gamma}(H)\).
+  Since \(A\) is symmetric, there exists an orthogonal matrix \(Q\) and a diagonal matrix \(D\) such that \(D = \tp{Q} A Q\) by \cref{6.20}.
+  Let \(\beta = \set{\seq{w}{1,,n}}\) be defined by
+  \[
+    w_j = \sum_{i = 1}^n Q_{i j} v_i \quad \text{for } j \in \set{1, \dots, n}.
+  \]
+  By \cref{6.33}, \(\psi_{\beta}(H) = D\).
+  Furthermore, since \(Q\) is orthogonal and \(\gamma\) is orthonormal, \(\beta\) is orthonormal by \cref{ex:6.5.30}.
+\end{proof}
+
+\begin{cor}\label{6.8.21}
+  Let \(K\) be a quadratic form on a finite-dimensional real inner product space \(\V\).
+  There exists an orthonormal basis \(\beta = \set{\seq{v}{1,,n}}\) for \(\V\) over \(\R\) and scalars \(\seq{\lambda}{1,,n} \in \R\) (not necessarily distinct) such that if \(x \in \V\) and
+  \[
+    x = \sum_{i = 1}^n s_i v_i, \quad s_i \in \R,
+  \]
+  then
+  \[
+    K(x) = \sum_{i = 1}^n \lambda_i s_i^2.
+  \]
+  In fact, if \(H\) is the symmetric bilinear form determined by \(K\), then \(\beta\) can be chosen to be any orthonormal basis for \(\V\) over \(\R\) such that \(\psi_{\beta}(H)\) is a diagonal matrix.
+\end{cor}
+
+\begin{proof}[\pf{6.8.21}]
+  Let \(H\) be the symmetric bilinear form for which \(K(x) = H(x, x)\) for all \(x \in \V\).
+  By \cref{6.36}, there exists an orthonormal basis \(\beta = \set{\seq{v}{1,,n}}\) for \(\V\) over \(\R\) such that \(\psi_{\beta}(H)\) is the diagonal matrix
+  \[
+    D = \begin{pmatrix}
+      \lambda_1 & 0         & \cdots & 0         \\
+      0         & \lambda_2 & \cdots & 0         \\
+      \vdots    & \vdots    &        & \vdots    \\
+      0         & 0         & \cdots & \lambda_n
+    \end{pmatrix}.
+  \]
+  Let \(x \in \V\), and suppose that \(x = \sum_{i = 1}^n s_i v_i\).
+  Then
+  \begin{align*}
+    K(x) & = H(x, x)                                     &  & \by{6.8.19} \\
+         & = \tp{\pa{\phi_{\beta}(x)}} D \phi_{\beta}(x) &  & \by{6.8.7}  \\
+         & = \begin{pmatrix}
+               s_1 & \cdots & s_n
+             \end{pmatrix} D \begin{pmatrix}
+                               s_1    \\
+                               \vdots \\
+                               s_n
+                             \end{pmatrix}               &  & \by{2.4.11} \\
+         & = \sum_{i = 1}^n \lambda_i s_i^2.             &  & \by{2.3.1}
+  \end{align*}
+\end{proof}
+
+\begin{defn}\label{6.8.22}
+  Let \(z = f\tuple{t}{1,,n}\) be a fixed real-valued function of \(n\) real variables for which all third-order partial derivatives exist and are continuous.
+  The function \(f\) is said to have a \textbf{local maximum} at a point \(p \in \R^n\) if there exists a \(\delta > 0\) such that \(f(p) \geq f(x)\) whenever \(\norm{x - p} < \delta\).
+  Likewise, \(f\) has a \textbf{local minimum} at \(p \in \R^n\) if there exists a \(\delta > 0\) such that \(f(p) \leq f(x)\) whenever \(\norm{x - p} < \delta\).
+  If \(f\) has either a local minimum or a local maximum at \(p\), we say that \(f\) has a \textbf{local extremum} at \(p\).
+  A point \(p \in \R^n\) is called a \textbf{critical point} of \(f\) if \(\frac{\partial f}{\partial t_i}(p) = 0\) for \(i \in \set{1, \dots, n}\).
+  It is a well-known fact that if \(f\) has a local extremum at a point \(p \in \R^n\), then \(p\) is a critical point of \(f\).
+  For, if \(f\) has a local extremum at \(p = \tuple{p}{1,,n}\), then for any \(i \in \set{1, \dots, n}\), the function \(\phi_i : \R \to \R\) defined by \(\phi_i(t) = f(\seq{p}{1,,i-1}, t, \seq{p}{i+1,,n})\) has a local extremum at \(t = p_i\).
+  So, by an elementary single-variable argument,
+  \[
+    \frac{\partial f}{\partial t_i}(p) = \frac{d \phi_i}{dt}(p_i) = 0.
+  \]
+  Thus \(p\) is a critical point of \(f\).
+  But critical points are not necessarily local extrema.
+
+  The second-order partial derivatives of \(f\) at a critical point \(p\) can often be used to test for a local extremum at \(p\).
+  These partials determine a matrix \(A(p)\) in which the row \(i\), column \(j\) entry is
+  \[
+    \frac{\partial^2 f}{\partial t_i \partial t_j}(p).
+  \]
+  This matrix is called the \textbf{Hessian matrix} of \(f\) at \(p\).
+  Note that if the third-order partial derivatives of \(f\) are continuous, then the mixed second-order partials of \(f\) at \(p\) are independent of the order in which they are taken, and hence \(A(p)\) is a symmetric matrix.
+  In this case, all of the eigenvalues of \(A(p)\) are real.
+\end{defn}
+
+\begin{thm}[The Second Derivative Test]\label{6.37}
+  Let \(f\tuple{t}{1,,n}\) be a real-valued function in \(n\) real variables for which all third-order partial derivatives exist and are continuous.
+  Let \(p = \tuple{p}{1,,n}\) be a critical point of \(f\), and let \(A(p)\) be the Hessian of \(f\) at \(p\).
+  \begin{enumerate}
+    \item If all eigenvalues of \(A(p)\) are positive, then \(f\) has a local minimum at \(p\).
+    \item If all eigenvalues of \(A(p)\) are negative, then \(f\) has a local maximum at \(p\).
+    \item If \(A(p)\) has at least one positive and at least one negative eigenvalue, then \(f\) has no local extremum at \(p\)
+          (\(p\) is called a \textbf{saddle-point} of \(f\)).
+    \item If \(\rk{A(p)} < n\) and \(A(p)\) does not have both positive and negative eigenvalues, then the second derivative test is inconclusive.
+  \end{enumerate}
+\end{thm}
+
+\begin{proof}[\pf{6.37}]
+  If \(p \neq \zv\), we may define a function \(g : \R^n \to \R\) by
+  \[
+    g\tuple{t}{1,,n} = f(t_1 + p_1, \dots, t_n + p_n) - f(p).
+  \]
+  The following facts are easily verified.
+  \begin{enumerate}[label=(\arabic*)]
+    \item The function \(f\) has a local maximum (minimum) at \(p\) iff \(g\) has a local maximum (minimum) at \(\zv = (0, \dots, 0)\).
+    \item The partial derivatives of \(g\) at \(\zv\) are equal to the corresponding partial derivatives of \(f\) at \(p\).
+    \item \(\zv\) is a critical point of \(g\).
+    \item \(A_{i j}(p) = \frac{\partial^2 g}{\partial t_i \partial t_j}(\zv)\) for all \(i, j \in \set{1, \dots, n}\).
+  \end{enumerate}
+
+  In view of these facts, we may assume without loss of generality that \(p = \zv\) and \(f(p) = 0\).
+
+  Now we apply Taylor's theorem to \(f\) to obtain the first-order approximation of \(f\) around \(\zv\).
+  We have
+  \begin{equation}\label{eq:6.8.3}
+    \begin{aligned}
+      f\tuple{t}{1,,n} & = f(\zv) + \sum_{i = 1}^n \frac{\partial f}{\partial t_i}(\zv) t_i + \frac{1}{2} \sum_{i = 1}^n \sum_{j = 1}^n \frac{\partial^2 f}{\partial t_i \partial t_j}(\zv) t_i t_j + S\tuple{t}{1,,n} \\
+                       & = \frac{1}{2} \sum_{i = 1}^n \sum_{j = 1}^n \frac{\partial^2 f}{\partial t_i \partial t_j}(\zv) t_i t_j + S\tuple{t}{1,,n},
+    \end{aligned}
+  \end{equation}
+  where \(S\) is a real-valued function on \(\R^n\) such that
+  \begin{equation}\label{eq:6.8.4}
+    \Lim_{x \to \zv} \frac{S(x)}{\norm{x}^2} = \Lim_{\tuple{t}{1,,n} \to \zv} \frac{S\tuple{t}{1,,n}}{t_1^2 + \cdots + t_n^2} = 0.
+  \end{equation}
+  Let \(K : \R^n \to \R\) be the quadratic form defined by
+  \begin{equation}\label{eq:6.8.5}
+    K \begin{pmatrix}
+      t_1    \\
+      \vdots \\
+      t_n
+    \end{pmatrix} = \frac{1}{2} \sum_{i = 1}^n \sum_{j = 1}^n \frac{\partial^2 f}{\partial t_i \partial t_j}(\zv) t_i t_j,
+  \end{equation}
+  let \(H\) be the symmetric bilinear form corresponding to \(K\), and \(\beta\) be the standard ordered basis for \(\R^n\) over \(\R\).
+  It is easy to verify that \(\psi_{\beta}(H) = \frac{1}{2} A(p)\).
+  Since \(A(p)\) is symmetric, \cref{6.20} implies that there exists an orthogonal matrix \(Q\) such that
+  \[
+    \tp{Q} A(p) Q = \begin{pmatrix}
+      \lambda_1 & 0         & \cdots & 0         \\
+      0         & \lambda_2 & \cdots & 0         \\
+      0         & 0         & \cdots & \lambda_n
+    \end{pmatrix}
+  \]
+  is a diagonal matrix whose diagonal entries are the eigenvalues of \(A(p)\).
+  Let \(\gamma = \set{\seq{v}{1,,n}}\) be the orthogonal basis for \(\R^n\) whose \(i\)th vector is the \(i\)th column of \(Q\).
+  Then \(Q\) is the change of coordinate matrix changing \(\gamma\)-coordinates into \(\beta\)-coordinates, and by \cref{6.33}
+  \[
+    \psi_{\gamma}(H) = \tp{Q} \psi_{\beta}(H) Q = \frac{1}{2} \tp{Q} A(p) Q = \begin{pmatrix}
+      \frac{\lambda_1}{2} & 0                   & \cdots & 0                   \\
+      0                   & \frac{\lambda_2}{2} & \cdots & 0                   \\
+      0                   & 0                   & \cdots & \frac{\lambda_n}{2}
+    \end{pmatrix}.
+  \]
+
+  Suppose that \(A(p)\) is not the zero matrix.
+  Then \(A(p)\) has nonzero eigenvalues.
+  Choose \(\epsilon > 0\) such that \(\epsilon < \abs{\lambda_i} / 2\) for all \(\lambda_i \neq 0\).
+  By \cref{eq:6.8.4}, there exists \(\delta > 0\) such that for any \(x \in \R^n\) satisfying \(0 < \norm{x} < \delta\), we have \(\abs{S(x)} < \epsilon \norm{x}^2\).
+  Consider any \(x \in \R^n\) such that \(0 < \norm{x} < \delta\).
+  Then, by \cref{eq:6.8.3,eq:6.8.5},
+  \[
+    \abs{f(x) - K(x)} = \abs{S(x)} < \epsilon \norm{x}^2,
+  \]
+  and hence
+  \begin{equation}\label{eq:6.8.6}
+    K(x) - \epsilon \norm{x}^2 < f(x) < K(x) + \epsilon \norm{x}^2.
+  \end{equation}
+  Suppose that \(x = \sum_{i = 1}^n s_i v_i\).
+  Then
+  \[
+    \norm{x}^2 = \sum_{i = 1}^n s_i^2 \quad \text{and} \quad K(x) = \frac{1}{2} \sum_{i = 1}^n \lambda_i s_i^2.
+  \]
+  Combining these equations with \cref{eq:6.8.6}, we obtain
+  \begin{equation}\label{eq:6.8.7}
+    \sum_{i = 1}^n \pa{\frac{1}{2} \lambda_i - \epsilon} s_i^2 < f(x) < \sum_{i = 1}^n \pa{\frac{1}{2} \lambda_i + \epsilon} s_i^2.
+  \end{equation}
+
+  Now suppose that all eigenvalues of \(A(p)\) are positive.
+  Then \(\frac{1}{2} \lambda_i - \epsilon > 0\) for all \(i \in \set{1, \dots, n}\), and hence, by the left inequality in \cref{eq:6.8.7},
+  \[
+    f(\zv) = 0 \leq \sum_{i = 1}^n \pa{\frac{1}{2} \lambda_i - \epsilon} s_i^2 < f(x).
+  \]
+  Thus \(f(\zv) \leq f(x)\) for \(\norm{x} < \delta\), and so \(f\) has a local minimum at \(\zv\).
+  By a similar argument using the right inequality in \cref{eq:6.8.7}, we have that if all of the eigenvalues of \(A(p)\) are negative, then \(f\) has a local maximum at \(\zv\).
+  This establishes (a) and (b) of the theorem.
+
+  Next, suppose that \(A(p)\) has both a positive and a negative eigenvalue, say, \(\lambda_i > 0\) and \(\lambda_j < 0\) for some \(i, j \in \set{1, \dots, n}\).
+  Then \(\frac{1}{2} \lambda_i - \epsilon > 0\) and \(\frac{1}{2} \lambda_j + \epsilon < 0\).
+  Let \(s\) be any real number such that \(0 < \abs{s} < \delta\).
+  Substituting \(x = s v_i\) and \(x = s v_j\) into the left inequality and the right inequality of \cref{eq:6.8.7}, respectively, we obtain
+  \[
+    f(\zv) = 0 < \pa{\frac{1}{2} \lambda_i - \epsilon} s^2 < f(s v_i) \quad \text{and} \quad f(s v_j) < \pa{\frac{1}{2} \lambda_j + \epsilon} s^2 < 0 = f(\zv).
+  \]
+  Thus \(f\) attains both positive and negative values arbitrarily close to \(\zv\);
+  so \(f\) has neither a local maximum nor a local minimum at \(\zv\).
+  This establishes (c).
+
+  To show that the second-derivative test is inconclusive under the conditions stated in (d), consider the functions
+  \[
+    f\tuple{t}{1,2} = t_1^2 - t_2^4 \quad \text{and} \quad g\tuple{t}{1,2} = t_1^2 + t_2^4
+  \]
+  at \(p = \zv\).
+  In both cases, the function has a critical point at \(p\), and
+  \[
+    A(p) = \begin{pmatrix}
+      2 & 0 \\
+      0 & 0
+    \end{pmatrix}.
+  \]
+  However, \(f\) does not have a local extremum at \(\zv\), whereas \(g\) has a local minimum at \(\zv\).
+\end{proof}
+
 \exercisesection
 
 \begin{ex}\label{ex:6.8.12}
