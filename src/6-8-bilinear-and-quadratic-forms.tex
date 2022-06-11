@@ -710,8 +710,12 @@
   We have
   \begin{equation}\label{eq:6.8.3}
     \begin{aligned}
-      f\tuple{t}{1,,n} & = f(\zv) + \sum_{i = 1}^n \frac{\partial f}{\partial t_i}(\zv) t_i + \frac{1}{2} \sum_{i = 1}^n \sum_{j = 1}^n \frac{\partial^2 f}{\partial t_i \partial t_j}(\zv) t_i t_j + S\tuple{t}{1,,n} \\
-                       & = \frac{1}{2} \sum_{i = 1}^n \sum_{j = 1}^n \frac{\partial^2 f}{\partial t_i \partial t_j}(\zv) t_i t_j + S\tuple{t}{1,,n},
+       & f\tuple{t}{1,,n}                                                                                                                                                 \\
+       & = f(\zv) + \sum_{i = 1}^n \frac{\partial f}{\partial t_i}(\zv) t_i                                                                                               \\
+       & \quad + \frac{1}{2} \sum_{i = 1}^n \sum_{j = 1}^n \frac{\partial^2 f}{\partial t_i \partial t_j}(\zv) t_i t_j + S\tuple{t}{1,,n}                                 \\
+       & = \sum_{i = 1}^n \frac{\partial f}{\partial t_i}(\zv) t_i                                                                                                        \\
+       & \quad + \frac{1}{2} \sum_{i = 1}^n \sum_{j = 1}^n \frac{\partial^2 f}{\partial t_i \partial t_j}(\zv) t_i t_j + S\tuple{t}{1,,n} &  & (f(p) = 0)                 \\
+       & = \frac{1}{2} \sum_{i = 1}^n \sum_{j = 1}^n \frac{\partial^2 f}{\partial t_i \partial t_j}(\zv) t_i t_j + S\tuple{t}{1,,n},      &  & \text{(\(p\) is critical)}
     \end{aligned}
   \end{equation}
   where \(S\) is a real-valued function on \(\R^n\) such that
@@ -733,6 +737,7 @@
     \tp{Q} A(p) Q = \begin{pmatrix}
       \lambda_1 & 0         & \cdots & 0         \\
       0         & \lambda_2 & \cdots & 0         \\
+      \vdots    & \vdots    &        & \vdots    \\
       0         & 0         & \cdots & \lambda_n
     \end{pmatrix}
   \]
@@ -741,9 +746,10 @@
   Then \(Q\) is the change of coordinate matrix changing \(\gamma\)-coordinates into \(\beta\)-coordinates, and by \cref{6.33}
   \[
     \psi_{\gamma}(H) = \tp{Q} \psi_{\beta}(H) Q = \frac{1}{2} \tp{Q} A(p) Q = \begin{pmatrix}
-      \frac{\lambda_1}{2} & 0                   & \cdots & 0                   \\
-      0                   & \frac{\lambda_2}{2} & \cdots & 0                   \\
-      0                   & 0                   & \cdots & \frac{\lambda_n}{2}
+      \dfrac{\lambda_1}{2} & 0                    & \cdots & 0                    \\
+      0                    & \dfrac{\lambda_2}{2} & \cdots & 0                    \\
+      \vdots               & \vdots               &        & \vdots               \\
+      0                    & 0                    & \cdots & \dfrac{\lambda_n}{2}
     \end{pmatrix}.
   \]
 
@@ -761,7 +767,7 @@
     K(x) - \epsilon \norm{x}^2 < f(x) < K(x) + \epsilon \norm{x}^2.
   \end{equation}
   Suppose that \(x = \sum_{i = 1}^n s_i v_i\).
-  Then
+  Then by \cref{ex:6.1.10,6.8.2} we have
   \[
     \norm{x}^2 = \sum_{i = 1}^n s_i^2 \quad \text{and} \quad K(x) = \frac{1}{2} \sum_{i = 1}^n \lambda_i s_i^2.
   \]
