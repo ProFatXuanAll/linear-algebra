@@ -811,6 +811,81 @@
   However, \(f\) does not have a local extremum at \(\zv\), whereas \(g\) has a local minimum at \(\zv\).
 \end{proof}
 
+\begin{defn}\label{6.8.23}
+  Any two matrix representations of a bilinear form have the same rank because rank is preserved under congruence (\cref{3.4,6.33}).
+  We can therefore define the \textbf{rank} of a bilinear form to be the rank of any of its matrix representations.
+  If a matrix representation is a diagonal matrix, then the rank is equal to the number of nonzero diagonal entries of the matrix.
+\end{defn}
+
+\begin{thm}[Sylvester's Law of Inertia]\label{6.38}
+  Let \(H\) be a symmetric bilinear form on a finite-dimensional real vector space \(\V\).
+  Then the number of positive diagonal entries and the number of negative diagonal entries in any diagonal matrix representation of \(H\) are each independent of the diagonal representation.
+\end{thm}
+
+\begin{proof}[\pf{6.38}]
+  Suppose that \(\beta\) and \(\gamma\) are ordered bases for \(\V\) over \(\R\) that determine diagonal representations of \(H\).
+  Without loss of generality, we may assume that \(\beta\) and \(\gamma\) are ordered so that on each diagonal the entries are in the order of positive, negative, and zero.
+  It suffices to show that both representations have the same number of positive entries because the number of negative entries is equal to the difference between the rank and the number of positive entries.
+  Let \(p\) and \(q\) be the number of positive diagonal entries in the matrix representations of \(H\) with respect to \(\beta\) and \(\gamma\), respectively.
+  We suppose that \(p \neq q\) and arrive at a contradiction.
+  Without loss of generality, assume that \(p < q\).
+  Let
+  \[
+    \beta = \set{\seq{v}{1,,p,,r,,n}} \quad \text{and} \quad \gamma = \set{\seq{w}{1,,q,,r,,n}},
+  \]
+  where \(r\) is the rank of \(H\) and \(n = \dim(\V)\).
+  Let \(\lt{L} : \V \to \R^{p + r - q}\) be the mapping defined by
+  \[
+    \lt{L}(x) = (H(x, v_1), \dots, H(x, v_p), H(x, w_{q + 1}), \dots, H(x, w_r)).
+  \]
+  It is easily verified that \(\lt{L}\) is linear (\cref{6.8.3}(a)) and \(\rk{\lt{L}} \leq p + r - q\).
+  Hence
+  \[
+    \nt{\lt{L}} \geq n - (p + r - q) > n - r.
+  \]
+  So there exists a nonzero vector \(v_0\) such that \(v_0 \notin \spn{\set{\seq{v}{r+1,,n}}}\), but \(v_0 \in \ns{\lt{L}}\).
+  Since \(v_0 \in \ns{\lt{L}}\), it follows that \(H(v_0, v_i) = 0\) for \(i \in \set{1, \dots, p}\) and \(H(v_0, w_i) = 0\) for \(i \in \set{q + 1, \dots, r}\).
+  Suppose that
+  \[
+    v_0 = \sum_{j = 1}^n a_j v_j = \sum_{j = 1}^n b_j w_j.
+  \]
+  For any \(i \in \set{1, \dots, p}\),
+  \begin{align*}
+    H(v_0, v_i) & = H\pa{\sum_{j = 1}^n a_j v_j, v_i} &  & \by{1.6.1}    \\
+                & = \sum_{j = 1}^n a_j H(v_j, v_i)    &  & \by{6.8.1}[a] \\
+                & = a_i H(v_i, v_i).                  &  & \by{6.8.5}
+  \end{align*}
+  But for \(i \in \set{1, \dots, p}\), we have \(H(v_i, v_i) > 0\) and \(H(v_0, v_i) = 0\), so that \(a_i = 0\).
+  Similarly, \(b_i = 0\) for \(i \in \set{q + 1, \dots, r}\).
+  Since \(v_0\) is not in the span of \(\set{\seq{v}{r+1,,n}}\), it follows that \(a_i \neq 0\) for some \(i \in \set{p + 1, \dots, r}\).
+  Thus
+  \begin{align*}
+    H(v_0, v_0) & = H\pa{\sum_{j = 1}^n a_j v_j, \sum_{i = 1}^n a_i v_i}                                          \\
+                & = \sum_{j = 1}^n \sum_{i = 1}^n a_j a_i H(v_j, v_i)    &  & \by{6.8.1}                          \\
+                & = \sum_{j = 1}^n a_j^2 H(v_j, v_j)                     &  & \by{6.8.5}                          \\
+                & = \sum_{j = p + 1}^r a_j^2 H(v_j, v_j)                                                          \\
+                & < 0.                                                   &  & \text{(by the definition of \(p\))}
+  \end{align*}
+  Furthermore,
+  \begin{align*}
+    H(v_0, v_0) & = H\pa{\sum_{j = 1}^n b_j w_j, \sum_{i = 1}^n b_i w_i}                 \\
+                & = \sum_{j = 1}^n \sum_{i = 1}^n b_j b_i H(w_j, w_i)    &  & \by{6.8.1} \\
+                & = \sum_{j = 1}^n b_j^2 H(w_j, w_j)                     &  & \by{6.8.5} \\
+                & = \sum_{j = p + 1}^r b_j^2 H(w_j, w_j)                                 \\
+                & \geq 0.                                                &  & (p < q)
+  \end{align*}
+  So \(H(v_0, v_0) < 0\) and \(H(v_0, v_0) \geq 0\), which is a contradiction.
+  We conclude that \(p = q\).
+\end{proof}
+
+\begin{defn}\label{6.8.24}
+  The number of positive diagonal entries in a diagonal representation of a symmetric bilinear form on a real vector space is called the \textbf{index} of the form.
+  The difference between the number of positive and the number of negative diagonal entries in a diagonal representation of a symmetric bilinear form is called the \textbf{signature} of the form.
+  The three terms \emph{rank}, \emph{index}, and \emph{signature} are called the \textbf{invariants} of the bilinear form because they are invariant with respect to matrix representations.
+  These same terms apply to the associated quadratic form.
+  Notice that the values of any two of these invariants determine the value of the third.
+\end{defn}
+
 \exercisesection
 
 \begin{ex}\label{ex:6.8.12}
