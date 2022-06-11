@@ -10,7 +10,7 @@
   Fix a function \(g \in \V\).
   The function \(h : \V \to \R\) defined by
   \[
-    h(x) = \frac{1}{2 \pi} \int_{0}^{2 \pi} x(t) g(t) \; dt
+    h(x) = \dfrac{1}{2 \pi} \int_{0}^{2 \pi} x(t) g(t) \; dt
   \]
   is a linear functional on \(\V\).
   In the cases that \(g(t)\) equals \(\sin(nt)\) or \(\cos(nt)\), \(h(x)\) is often called the \textbf{\(n\)th Fourier coefficient of \(x\)}.
@@ -20,10 +20,10 @@
   Let \(f_1, f_2 \in \V\) and let \(c \in \R\).
   Then we have
   \begin{align*}
-    h(cf_1 + f_2) & = \frac{1}{2 \pi} \int_{0}^{2 \pi} (cf_1 + f_2)(t) g(t) \; dt                                             &  & \by{2.6.2} \\
-                  & = \frac{1}{2 \pi} \int_{0}^{2 \pi} cf_1(t) g(t) + f_2(t) g(t) \; dt                                                       \\
-                  & = \frac{c}{2 \pi} \int_{0}^{2 \pi} f_1(t) g(t) \; dt + \frac{1}{2 \pi} \int_{0}^{2 \pi} f_2(t) g(t) \; dt                 \\
-                  & = c h(f_1) + h(f_2)                                                                                       &  & \by{2.6.2}
+    h(cf_1 + f_2) & = \dfrac{1}{2 \pi} \int_{0}^{2 \pi} (cf_1 + f_2)(t) g(t) \; dt                                              &  & \by{2.6.2} \\
+                  & = \dfrac{1}{2 \pi} \int_{0}^{2 \pi} cf_1(t) g(t) + f_2(t) g(t) \; dt                                                        \\
+                  & = \dfrac{c}{2 \pi} \int_{0}^{2 \pi} f_1(t) g(t) \; dt + \dfrac{1}{2 \pi} \int_{0}^{2 \pi} f_2(t) g(t) \; dt                 \\
+                  & = c h(f_1) + h(f_2)                                                                                         &  & \by{2.6.2}
   \end{align*}
   and thus by \cref{2.1.2}(b) \(h \in \ls(\V, \F)\).
 \end{proof}
@@ -341,7 +341,7 @@
           \]
           Suppose now that
           \[
-            c_i = a + \frac{i (b - a)}{n} \quad \text{for } i \in \set{0, \dots, n}.
+            c_i = a + \dfrac{i (b - a)}{n} \quad \text{for } i \in \set{0, \dots, n}.
           \]
           For \(n = 1\), the preceding result yields the trapezoidal rule for evaluating the definite integral of a polynomial.
           For \(n = 2\), this result yields Simpson's rule for evaluating the definite integral of a polynomial.
@@ -404,7 +404,7 @@
 
 \begin{proof}[\pf{ex:2.6.10}(c)]
   Defined \(\seq{p}{0,,n} \in \ps[n]{\F}\) as in \cref{ex:2.6.10}(b).
-  For any \(\seq{a}{0,,n} \in \F\), we can define \(q \in \ps[n]{\F}\) as follow:
+  For any scalars \(\seq{a}{0,,n} \in \F\), we can define \(q \in \ps[n]{\F}\) as follow:
   \[
     q = \sum_{j = 0}^n a_j p_j.
   \]

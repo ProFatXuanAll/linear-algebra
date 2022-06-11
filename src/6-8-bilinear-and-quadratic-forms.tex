@@ -551,7 +551,7 @@
   If \(\F \neq \Z_2\), then by \cref{6.32} there is a one-to-one correspondence between symmetric bilinear forms and quadratic forms given by \cref{eq:6.8.1}.
   In fact, if \(K\) is a quadratic form on a vector space \(\V\) over a field \(\F\) not of characteristic two, and \(K(x) = H(x, x)\) for some symmetric bilinear form \(H\) on \(\V\), then we can recover \(H\) from \(K\) because
   \begin{equation}\label{eq:6.8.2}
-    H(x, y) = \frac{1}{2} (K(x + y) - K(x) - K(y))
+    H(x, y) = \dfrac{1}{2} (K(x + y) - K(x) - K(y))
   \end{equation}
   (see \cref{ex:6.8.16}).
 \end{defn}
@@ -566,8 +566,8 @@
   In fact, if \(\beta\) is the standard ordered basis for \(\vs{F}^n\) over \(\F\), then the symmetric bilinear form \(H\) corresponding to the quadratic form \(f\) has the matrix representation \(\psi_{\beta}(H) = A\), where
   \[
     A_{i j} = A_{j i} = \begin{dcases}
-      a_{i i}             & \text{if } i = j    \\
-      \frac{1}{2} a_{i j} & \text{if } i \neq j
+      a_{i i}              & \text{if } i = j    \\
+      \dfrac{1}{2} a_{i j} & \text{if } i \neq j
     \end{dcases}.
   \]
 \end{eg}
@@ -580,14 +580,14 @@
   Now we show that \(K = f\).
   This is true since
   \begin{align*}
-     & \forall x \in \vs{F}^n, K(x) = H(x, x)                                                                                               &  & \by{6.8.19} \\
-     & = \tp{x} A x                                                                                                                         &  & \by{6.8.8}  \\
-     & = \sum_{i = 1}^n x_i (Ax)_{i}                                                                                                        &  & \by{2.3.1}  \\
-     & = \sum_{i = 1}^n \sum_{j = 1}^n x_i A_{i j} x_j                                                                                      &  & \by{2.3.1}  \\
-     & = \pa{\sum_{i = 1}^n x_i A_{i i} x_i} + \pa{\sum_{i = 1}^n \sum_{j = i + 1}^n x_i A_{i j} x_j + x_j A_{j i} x_i}                                      \\
-     & = \pa{\sum_{i = 1}^n x_i a_{i i} x_i} + \pa{\sum_{i = 1}^n \sum_{j = i + 1}^n x_i \frac{a_{i j}}{2} x_j + x_j \frac{a_{i j}}{2} x_i}                  \\
-     & = \pa{\sum_{i = 1}^n a_{i i} x_i x_i} + \pa{\sum_{i = 1}^n \sum_{j = i + 1}^n a_{i j} x_i x_j}                                                        \\
-     & = \sum_{i = 1}^n \sum_{j = i}^n a_{i j} x_i x_j                                                                                                       \\
+     & \forall x \in \vs{F}^n, K(x) = H(x, x)                                                                                                 &  & \by{6.8.19} \\
+     & = \tp{x} A x                                                                                                                           &  & \by{6.8.8}  \\
+     & = \sum_{i = 1}^n x_i (Ax)_{i}                                                                                                          &  & \by{2.3.1}  \\
+     & = \sum_{i = 1}^n \sum_{j = 1}^n x_i A_{i j} x_j                                                                                        &  & \by{2.3.1}  \\
+     & = \pa{\sum_{i = 1}^n x_i A_{i i} x_i} + \pa{\sum_{i = 1}^n \sum_{j = i + 1}^n x_i A_{i j} x_j + x_j A_{j i} x_i}                                        \\
+     & = \pa{\sum_{i = 1}^n x_i a_{i i} x_i} + \pa{\sum_{i = 1}^n \sum_{j = i + 1}^n x_i \dfrac{a_{i j}}{2} x_j + x_j \dfrac{a_{i j}}{2} x_i}                  \\
+     & = \pa{\sum_{i = 1}^n a_{i i} x_i x_i} + \pa{\sum_{i = 1}^n \sum_{j = i + 1}^n a_{i j} x_i x_j}                                                          \\
+     & = \sum_{i = 1}^n \sum_{j = i}^n a_{i j} x_i x_j                                                                                                         \\
      & = f(x).
   \end{align*}
   Thus \(f\) is a quadratic form.
@@ -659,12 +659,12 @@
   The function \(f\) is said to have a \textbf{local maximum} at a point \(p \in \R^n\) if there exists a \(\delta > 0\) such that \(f(p) \geq f(x)\) whenever \(\norm{x - p} < \delta\).
   Likewise, \(f\) has a \textbf{local minimum} at \(p \in \R^n\) if there exists a \(\delta > 0\) such that \(f(p) \leq f(x)\) whenever \(\norm{x - p} < \delta\).
   If \(f\) has either a local minimum or a local maximum at \(p\), we say that \(f\) has a \textbf{local extremum} at \(p\).
-  A point \(p \in \R^n\) is called a \textbf{critical point} of \(f\) if \(\frac{\partial f}{\partial t_i}(p) = 0\) for \(i \in \set{1, \dots, n}\).
+  A point \(p \in \R^n\) is called a \textbf{critical point} of \(f\) if \(\dfrac{\partial f}{\partial t_i}(p) = 0\) for \(i \in \set{1, \dots, n}\).
   It is a well-known fact that if \(f\) has a local extremum at a point \(p \in \R^n\), then \(p\) is a critical point of \(f\).
   For, if \(f\) has a local extremum at \(p = \tuple{p}{1,,n}\), then for any \(i \in \set{1, \dots, n}\), the function \(\phi_i : \R \to \R\) defined by \(\phi_i(t) = f(\seq{p}{1,,i-1}, t, \seq{p}{i+1,,n})\) has a local extremum at \(t = p_i\).
   So, by an elementary single-variable argument,
   \[
-    \frac{\partial f}{\partial t_i}(p) = \frac{d \phi_i}{dt}(p_i) = 0.
+    \dfrac{\partial f}{\partial t_i}(p) = \dfrac{d \phi_i}{dt}(p_i) = 0.
   \]
   Thus \(p\) is a critical point of \(f\).
   But critical points are not necessarily local extrema.
@@ -672,7 +672,7 @@
   The second-order partial derivatives of \(f\) at a critical point \(p\) can often be used to test for a local extremum at \(p\).
   These partials determine a matrix \(A(p)\) in which the row \(i\), column \(j\) entry is
   \[
-    \frac{\partial^2 f}{\partial t_i \partial t_j}(p).
+    \dfrac{\partial^2 f}{\partial t_i \partial t_j}(p).
   \]
   This matrix is called the \textbf{Hessian matrix} of \(f\) at \(p\).
   Note that if the third-order partial derivatives of \(f\) are continuous, then the mixed second-order partials of \(f\) at \(p\) are independent of the order in which they are taken, and hence \(A(p)\) is a symmetric matrix.
@@ -701,7 +701,7 @@
     \item The function \(f\) has a local maximum (minimum) at \(p\) iff \(g\) has a local maximum (minimum) at \(\zv = (0, \dots, 0)\).
     \item The partial derivatives of \(g\) at \(\zv\) are equal to the corresponding partial derivatives of \(f\) at \(p\).
     \item \(\zv\) is a critical point of \(g\).
-    \item \(A_{i j}(p) = \frac{\partial^2 g}{\partial t_i \partial t_j}(\zv)\) for all \(i, j \in \set{1, \dots, n}\).
+    \item \(A_{i j}(p) = \dfrac{\partial^2 g}{\partial t_i \partial t_j}(\zv)\) for all \(i, j \in \set{1, \dots, n}\).
   \end{enumerate}
 
   In view of these facts, we may assume without loss of generality that \(p = \zv\) and \(f(p) = 0\).
@@ -710,17 +710,17 @@
   We have
   \begin{equation}\label{eq:6.8.3}
     \begin{aligned}
-       & f\tuple{t}{1,,n}                                                                                                                                                 \\
-       & = f(\zv) + \sum_{i = 1}^n \frac{\partial f}{\partial t_i}(\zv) t_i                                                                                               \\
-       & \quad + \frac{1}{2} \sum_{i = 1}^n \sum_{j = 1}^n \frac{\partial^2 f}{\partial t_i \partial t_j}(\zv) t_i t_j + S\tuple{t}{1,,n}                                 \\
-       & = \sum_{i = 1}^n \frac{\partial f}{\partial t_i}(\zv) t_i                                                                                                        \\
-       & \quad + \frac{1}{2} \sum_{i = 1}^n \sum_{j = 1}^n \frac{\partial^2 f}{\partial t_i \partial t_j}(\zv) t_i t_j + S\tuple{t}{1,,n} &  & (f(p) = 0)                 \\
-       & = \frac{1}{2} \sum_{i = 1}^n \sum_{j = 1}^n \frac{\partial^2 f}{\partial t_i \partial t_j}(\zv) t_i t_j + S\tuple{t}{1,,n},      &  & \text{(\(p\) is critical)}
+       & f\tuple{t}{1,,n}                                                                                                                                                   \\
+       & = f(\zv) + \sum_{i = 1}^n \dfrac{\partial f}{\partial t_i}(\zv) t_i                                                                                                \\
+       & \quad + \dfrac{1}{2} \sum_{i = 1}^n \sum_{j = 1}^n \dfrac{\partial^2 f}{\partial t_i \partial t_j}(\zv) t_i t_j + S\tuple{t}{1,,n}                                 \\
+       & = \sum_{i = 1}^n \dfrac{\partial f}{\partial t_i}(\zv) t_i                                                                                                         \\
+       & \quad + \dfrac{1}{2} \sum_{i = 1}^n \sum_{j = 1}^n \dfrac{\partial^2 f}{\partial t_i \partial t_j}(\zv) t_i t_j + S\tuple{t}{1,,n} &  & (f(p) = 0)                 \\
+       & = \dfrac{1}{2} \sum_{i = 1}^n \sum_{j = 1}^n \dfrac{\partial^2 f}{\partial t_i \partial t_j}(\zv) t_i t_j + S\tuple{t}{1,,n},      &  & \text{(\(p\) is critical)}
     \end{aligned}
   \end{equation}
   where \(S\) is a real-valued function on \(\R^n\) such that
   \begin{equation}\label{eq:6.8.4}
-    \Lim_{x \to \zv} \frac{S(x)}{\norm{x}^2} = \Lim_{\tuple{t}{1,,n} \to \zv} \frac{S\tuple{t}{1,,n}}{t_1^2 + \cdots + t_n^2} = 0.
+    \Lim_{x \to \zv} \dfrac{S(x)}{\norm{x}^2} = \Lim_{\tuple{t}{1,,n} \to \zv} \dfrac{S\tuple{t}{1,,n}}{t_1^2 + \cdots + t_n^2} = 0.
   \end{equation}
   Let \(K : \R^n \to \R\) be the quadratic form defined by
   \begin{equation}\label{eq:6.8.5}
@@ -728,10 +728,10 @@
       t_1    \\
       \vdots \\
       t_n
-    \end{pmatrix} = \frac{1}{2} \sum_{i = 1}^n \sum_{j = 1}^n \frac{\partial^2 f}{\partial t_i \partial t_j}(\zv) t_i t_j,
+    \end{pmatrix} = \dfrac{1}{2} \sum_{i = 1}^n \sum_{j = 1}^n \dfrac{\partial^2 f}{\partial t_i \partial t_j}(\zv) t_i t_j,
   \end{equation}
   let \(H\) be the symmetric bilinear form corresponding to \(K\), and \(\beta\) be the standard ordered basis for \(\R^n\) over \(\R\).
-  It is easy to verify that \(\psi_{\beta}(H) = \frac{1}{2} A(p)\).
+  It is easy to verify that \(\psi_{\beta}(H) = \dfrac{1}{2} A(p)\).
   Since \(A(p)\) is symmetric, \cref{6.20} implies that there exists an orthogonal matrix \(Q\) such that
   \[
     \tp{Q} A(p) Q = \begin{pmatrix}
@@ -745,7 +745,7 @@
   Let \(\gamma = \set{\seq{v}{1,,n}}\) be the orthogonal basis for \(\R^n\) whose \(i\)th vector is the \(i\)th column of \(Q\).
   Then \(Q\) is the change of coordinate matrix changing \(\gamma\)-coordinates into \(\beta\)-coordinates, and by \cref{6.33}
   \[
-    \psi_{\gamma}(H) = \tp{Q} \psi_{\beta}(H) Q = \frac{1}{2} \tp{Q} A(p) Q = \begin{pmatrix}
+    \psi_{\gamma}(H) = \tp{Q} \psi_{\beta}(H) Q = \dfrac{1}{2} \tp{Q} A(p) Q = \begin{pmatrix}
       \dfrac{\lambda_1}{2} & 0                    & \cdots & 0                    \\
       0                    & \dfrac{\lambda_2}{2} & \cdots & 0                    \\
       \vdots               & \vdots               &        & \vdots               \\
@@ -769,28 +769,28 @@
   Suppose that \(x = \sum_{i = 1}^n s_i v_i\).
   Then by \cref{ex:6.1.10,6.8.2} we have
   \[
-    \norm{x}^2 = \sum_{i = 1}^n s_i^2 \quad \text{and} \quad K(x) = \frac{1}{2} \sum_{i = 1}^n \lambda_i s_i^2.
+    \norm{x}^2 = \sum_{i = 1}^n s_i^2 \quad \text{and} \quad K(x) = \dfrac{1}{2} \sum_{i = 1}^n \lambda_i s_i^2.
   \]
   Combining these equations with \cref{eq:6.8.6}, we obtain
   \begin{equation}\label{eq:6.8.7}
-    \sum_{i = 1}^n \pa{\frac{1}{2} \lambda_i - \epsilon} s_i^2 < f(x) < \sum_{i = 1}^n \pa{\frac{1}{2} \lambda_i + \epsilon} s_i^2.
+    \sum_{i = 1}^n \pa{\dfrac{1}{2} \lambda_i - \epsilon} s_i^2 < f(x) < \sum_{i = 1}^n \pa{\dfrac{1}{2} \lambda_i + \epsilon} s_i^2.
   \end{equation}
 
   Now suppose that all eigenvalues of \(A(p)\) are positive.
-  Then \(\frac{1}{2} \lambda_i - \epsilon > 0\) for all \(i \in \set{1, \dots, n}\), and hence, by the left inequality in \cref{eq:6.8.7},
+  Then \(\dfrac{1}{2} \lambda_i - \epsilon > 0\) for all \(i \in \set{1, \dots, n}\), and hence, by the left inequality in \cref{eq:6.8.7},
   \[
-    f(\zv) = 0 \leq \sum_{i = 1}^n \pa{\frac{1}{2} \lambda_i - \epsilon} s_i^2 < f(x).
+    f(\zv) = 0 \leq \sum_{i = 1}^n \pa{\dfrac{1}{2} \lambda_i - \epsilon} s_i^2 < f(x).
   \]
   Thus \(f(\zv) \leq f(x)\) for \(\norm{x} < \delta\), and so \(f\) has a local minimum at \(\zv\).
   By a similar argument using the right inequality in \cref{eq:6.8.7}, we have that if all of the eigenvalues of \(A(p)\) are negative, then \(f\) has a local maximum at \(\zv\).
   This establishes (a) and (b) of the theorem.
 
   Next, suppose that \(A(p)\) has both a positive and a negative eigenvalue, say, \(\lambda_i > 0\) and \(\lambda_j < 0\) for some \(i, j \in \set{1, \dots, n}\).
-  Then \(\frac{1}{2} \lambda_i - \epsilon > 0\) and \(\frac{1}{2} \lambda_j + \epsilon < 0\).
+  Then \(\dfrac{1}{2} \lambda_i - \epsilon > 0\) and \(\dfrac{1}{2} \lambda_j + \epsilon < 0\).
   Let \(s\) be any real number such that \(0 < \abs{s} < \delta\).
   Substituting \(x = s v_i\) and \(x = s v_j\) into the left inequality and the right inequality of \cref{eq:6.8.7}, respectively, we obtain
   \[
-    f(\zv) = 0 < \pa{\frac{1}{2} \lambda_i - \epsilon} s^2 < f(s v_i) \quad \text{and} \quad f(s v_j) < \pa{\frac{1}{2} \lambda_j + \epsilon} s^2 < 0 = f(\zv).
+    f(\zv) = 0 < \pa{\dfrac{1}{2} \lambda_i - \epsilon} s^2 < f(s v_i) \quad \text{and} \quad f(s v_j) < \pa{\dfrac{1}{2} \lambda_j + \epsilon} s^2 < 0 = f(\zv).
   \]
   Thus \(f\) attains both positive and negative values arbitrarily close to \(\zv\);
   so \(f\) has neither a local maximum nor a local minimum at \(\zv\).
@@ -856,17 +856,17 @@
   Let \(\V\) be a vector space over a field \(\F\) not of characteristic two, and let \(H\) be a symmetric bilinear form on \(\V\).
   Prove that if \(K(x) = H(x, x)\) is the quadratic form associated with \(H\), then, for all \(x, y \in \V\),
   \[
-    H(x, y) = \frac{1}{2} (K(x + y) - K(x) - K(y)).
+    H(x, y) = \dfrac{1}{2} (K(x + y) - K(x) - K(y)).
   \]
 \end{ex}
 
 \begin{proof}[\pf{ex:6.8.16}]
   We have
   \begin{align*}
-     & \forall x, y \in \V, \frac{1}{2} (K(x + y) - K(x) - K(y))                    \\
-     & = \frac{1}{2} (H(x + y, x + y) - H(x, x) - H(y, y))       &  & \by{6.8.19}   \\
-     & = \frac{1}{2} (H(x, y) + H(y, x))                         &  & \by{6.8.3}[c] \\
-     & = \frac{1}{2} 2 H(x, y)                                   &  & \by{6.8.11}   \\
+     & \forall x, y \in \V, \dfrac{1}{2} (K(x + y) - K(x) - K(y))                    \\
+     & = \dfrac{1}{2} (H(x + y, x + y) - H(x, x) - H(y, y))       &  & \by{6.8.19}   \\
+     & = \dfrac{1}{2} (H(x, y) + H(y, x))                         &  & \by{6.8.3}[c] \\
+     & = \dfrac{1}{2} 2 H(x, y)                                   &  & \by{6.8.11}   \\
      & = H(x, y).
   \end{align*}
 \end{proof}

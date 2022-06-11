@@ -327,12 +327,12 @@
 \begin{proof}[\pf{ex:5.1.7}(c)]
   We have
   \begin{align*}
-             & \T \text{ is invertible}                                                       \\
-    \implies & \det(\T) \neq 0                                          &  & \by{ex:5.1.7}[b] \\
-    \implies & \det([\T]_{\beta}) \neq 0                                &  & \by{ex:5.1.7}    \\
-    \implies & \det(([\T]_{\beta})^{-1}) = \frac{1}{\det([\T]_{\beta})} &  & \by{4.3.1}       \\
-    \implies & \det([\T^{-1}]_{\beta}) = \frac{1}{\det([\T]_{\beta})}   &  & \by{2.4.6}       \\
-    \implies & \det(\T^{-1}) = \frac{1}{\det(\T)}.                      &  & \by{ex:5.1.7}
+             & \T \text{ is invertible}                                                        \\
+    \implies & \det(\T) \neq 0                                           &  & \by{ex:5.1.7}[b] \\
+    \implies & \det([\T]_{\beta}) \neq 0                                 &  & \by{ex:5.1.7}    \\
+    \implies & \det(([\T]_{\beta})^{-1}) = \dfrac{1}{\det([\T]_{\beta})} &  & \by{4.3.1}       \\
+    \implies & \det([\T^{-1}]_{\beta}) = \dfrac{1}{\det([\T]_{\beta})}   &  & \by{2.4.6}       \\
+    \implies & \det(\T^{-1}) = \dfrac{1}{\det(\T)}.                      &  & \by{ex:5.1.7}
   \end{align*}
 \end{proof}
 
@@ -741,8 +741,8 @@
 \end{proof}
 
 \begin{proof}[\pf{ex:5.1.17}(d)]
-  By \cref{1.6.18} we can find a set of \(\frac{n(n + 1)}{2}\) linearly independent symmetric matrices in \(\ms[n][n][\R]\), called it \(\beta\).
-  By \cref{ex:1.6.17} we can find a set of \(\frac{n(n - 1)}{2}\) linearly independent skew-symmetric matrices in \(\ms[n][n][\R]\), called it \(\gamma\).
+  By \cref{1.6.18} we can find a set of \(\dfrac{n(n + 1)}{2}\) linearly independent symmetric matrices in \(\ms[n][n][\R]\), called it \(\beta\).
+  By \cref{ex:1.6.17} we can find a set of \(\dfrac{n(n - 1)}{2}\) linearly independent skew-symmetric matrices in \(\ms[n][n][\R]\), called it \(\gamma\).
   Since \(\#(\beta \cup \gamma) = n^2\), by \cref{1.6.11} and \cref{1.6.15}(b) we know that \(\beta \cup \gamma\) is a basis for \(\ms[n][n][\R]\) over \(\R\).
   By \cref{ex:5.1.17}(b) we see that \(\beta \cup \gamma\) is an ordered basis for \(\ms[n][n][\R]\) over \(\R\) which diagonalize \(\T\).
 \end{proof}

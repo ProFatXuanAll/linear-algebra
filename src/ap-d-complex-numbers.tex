@@ -46,7 +46,7 @@
   But also each complex number except \(0\) has a multiplicative inverse.
   In fact,
   \[
-    (a + bi)^{-1} = \frac{a}{a^2 + b^2} - \frac{b}{a^2 + b^2} i.
+    (a + bi)^{-1} = \dfrac{a}{a^2 + b^2} - \dfrac{b}{a^2 + b^2} i.
   \]
 \end{defn}
 
@@ -123,7 +123,7 @@
     \item \(\conj{\conj{z}} = z\).
     \item \(\conj{z + w} = \conj{z} + \conj{w}\).
     \item \(\conj{zw} = \conj{z} \cdot \conj{w}\).
-    \item \(\conj{\frac{z}{w}} = \frac{\conj{z}}{\conj{w}}\) if \(w \neq 0\).
+    \item \(\conj{\dfrac{z}{w}} = \dfrac{\conj{z}}{\conj{w}}\) if \(w \neq 0\).
     \item \(z \in \R\) iff \(\conj{z} = z\).
   \end{enumerate}
 \end{thm}
@@ -160,13 +160,13 @@
 \begin{proof}[\pf{d.2}(d)]
   We have
   \begin{align*}
-    \conj{\frac{z}{w}} & = \conj{z \cdot w^{-1}}                                                                                        &  & \by{d.0.3}  \\
-                       & = \conj{z} \cdot \conj{w^{-1}}                                                                                 &  & \by{d.2}[c] \\
-                       & = \conj{z} \cdot \pa{\conj{\frac{\Re(w)}{(\Re(w))^2 + (\Im(w))^2} - \frac{\Im(w)}{(\Re(w))^2 + (\Im(w))^2} i}} &  & \by{d.0.3}  \\
-                       & = \conj{z} \cdot \pa{\frac{\Re(w)}{(\Re(w))^2 + (\Im(w))^2} + \frac{\Im(w)}{(\Re(w))^2 + (\Im(w))^2} i}        &  & \by{d.0.4}  \\
-                       & = \conj{z} \cdot (\Re(w) - \Im(w))^{-1}                                                                        &  & \by{d.0.3}  \\
-                       & = \conj{z} \cdot \conj{w}^{-1}                                                                                 &  & \by{d.0.4}  \\
-                       & = \frac{\conj{z}}{\conj{w}}.                                                                                   &  & \by{d.0.3}
+    \conj{\dfrac{z}{w}} & = \conj{z \cdot w^{-1}}                                                                                          &  & \by{d.0.3}  \\
+                        & = \conj{z} \cdot \conj{w^{-1}}                                                                                   &  & \by{d.2}[c] \\
+                        & = \conj{z} \cdot \pa{\conj{\dfrac{\Re(w)}{(\Re(w))^2 + (\Im(w))^2} - \dfrac{\Im(w)}{(\Re(w))^2 + (\Im(w))^2} i}} &  & \by{d.0.3}  \\
+                        & = \conj{z} \cdot \pa{\dfrac{\Re(w)}{(\Re(w))^2 + (\Im(w))^2} + \dfrac{\Im(w)}{(\Re(w))^2 + (\Im(w))^2} i}        &  & \by{d.0.4}  \\
+                        & = \conj{z} \cdot (\Re(w) - \Im(w))^{-1}                                                                          &  & \by{d.0.3}  \\
+                        & = \conj{z} \cdot \conj{w}^{-1}                                                                                   &  & \by{d.0.4}  \\
+                        & = \dfrac{\conj{z}}{\conj{w}}.                                                                                    &  & \by{d.0.3}
   \end{align*}
 \end{proof}
 
@@ -189,7 +189,7 @@
   The fact that the product of a complex number and its conjugate is real provides an easy method for determining the quotient of two complex numbers;
   for if \(c + di \neq 0\), then
   \[
-    \frac{a + bi}{c + di} = \frac{a + bi}{c + di} \cdot \frac{c - di}{c - di} = \frac{(ac + bd) + (bc - ad) i}{c^2 + d^2} = \frac{ac + bd}{c^2 + d^2} + \frac{bc - ad}{c^2 + d^2} i.
+    \dfrac{a + bi}{c + di} = \dfrac{a + bi}{c + di} \cdot \dfrac{c - di}{c - di} = \dfrac{(ac + bd) + (bc - ad) i}{c^2 + d^2} = \dfrac{ac + bd}{c^2 + d^2} + \dfrac{bc - ad}{c^2 + d^2} i.
   \]
 \end{defn}
 
@@ -198,7 +198,7 @@
   Then the following statements are true.
   \begin{enumerate}
     \item \(\abs{zw} = \abs{z} \cdot \abs{w}\).
-    \item \(\abs{\frac{z}{w}} = \frac{\abs{z}}{\abs{w}}\) if \(w \neq 0\).
+    \item \(\abs{\dfrac{z}{w}} = \dfrac{\abs{z}}{\abs{w}}\) if \(w \neq 0\).
     \item \(\abs{z + w} \leq \abs{z} + \abs{w}\).
     \item \(\abs{z} - \abs{w} \leq \abs{z + w}\).
   \end{enumerate}
@@ -215,12 +215,12 @@
 \begin{proof}[\pf{d.3}(b)]
   We have
   \begin{align*}
-    \abs{z} & = \abs{\frac{z}{w} w}       &  & \by{d.0.3}  \\
-            & = \abs{\frac{z}{w}} \abs{w} &  & \by{d.3}[a]
+    \abs{z} & = \abs{\dfrac{z}{w} w}       &  & \by{d.0.3}  \\
+            & = \abs{\dfrac{z}{w}} \abs{w} &  & \by{d.3}[a]
   \end{align*}
   and thus
   \[
-    \frac{\abs{z}}{\abs{w}} = \abs{\frac{z}{w}}.
+    \dfrac{\abs{z}}{\abs{w}} = \abs{\dfrac{z}{w}}.
   \]
 \end{proof}
 
@@ -298,7 +298,7 @@
   We argue by contradiction.
 
   Assume that \(m \neq 0\).
-  Let \(q(z) = \frac{p(z + z_0)}{p(z_0)}\).
+  Let \(q(z) = \dfrac{p(z + z_0)}{p(z_0)}\).
   Then \(q(z)\) is a polynomial of degree \(n\), \(q(0) = 1\), and \(\abs{q(z)} \geq 1\) for all \(z \in \C\)
   (this is true since \(\abs{p(z + z_0)} \geq \abs{p(z_0)}\)).
   So we may write
@@ -306,7 +306,7 @@
     q(z) = 1 + b_k z^k + b_{k + 1} z^{k + 1} + \cdots + b_n z^n,
   \]
   where \(k \in \N\), \(1 \leq k \leq n\) and \(b_k \neq 0\).
-  Because \(-\frac{\abs{b_k}}{b_k}\) has modulus one (\(\abs{-\frac{\abs{b_k}}{b_k}} = 1\)), we may pick a real number \(\theta\) such that \(e^{i k \theta} = - \frac{\abs{b_k}}{b_k}\), or \(e^{i k \theta} b_k = -\abs{b_k}\).
+  Because \(-\dfrac{\abs{b_k}}{b_k}\) has modulus one (\(\abs{-\dfrac{\abs{b_k}}{b_k}} = 1\)), we may pick a real number \(\theta\) such that \(e^{i k \theta} = - \dfrac{\abs{b_k}}{b_k}\), or \(e^{i k \theta} b_k = -\abs{b_k}\).
   For any \(r > 0\), we have
   \begin{align*}
     q(r e^{i \theta}) & = 1 + b_k r^k e^{i k \theta} + b_{k + 1} r^{k + 1} e^{i (k + 1) \theta} + \cdots + b_n r^n e^{i n \theta} \\
@@ -359,7 +359,7 @@
   \[
     \forall z \in \C, p(z) = a_{n + 1} (z - c_{n + 1}) q_2(z)
   \]
-  where \(q_2 = \frac{1}{a_{n + 1}} q_1\).
+  where \(q_2 = \dfrac{1}{a_{n + 1}} q_1\).
   Since \(p\) has degree \(n + 1\), we know that \(q_2\) has degree \(n\).
   Then there exist \(\seq{b}{0,,n-1} \in \C\) such that
   \[

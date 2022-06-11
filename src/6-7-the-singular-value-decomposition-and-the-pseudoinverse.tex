@@ -25,19 +25,19 @@
   We first establish the existence of the bases and scalars.
   By \cref{ex:6.4.18} and \cref{ex:6.3.15}(d), \(\T^* \T\) is a positive semidefinite linear operator of rank \(r\) on \(\V\);
   hence there is an orthonormal basis \(\set{\seq{v}{1,,n}}\) for \(\V\) over \(\F\) with respect to \(\inn{\cdot, \cdot}_{\V}\) consisting of eigenvectors of \(\T^* \T\) with corresponding eigenvalues \(\lambda_i\), where \(\seq[\geq]{\lambda}{1,,r} > 0\), and \(\lambda_i = 0\) for \(i \in \set{r + 1, \dots, n}\) (see \cref{ex:6.4.17}(a)).
-  For \(i \in \set{1, \dots, r}\), define \(\sigma_i = \sqrt{\lambda_i}\) and \(u_i = \frac{1}{\sigma_i} \T(v_i)\).
+  For \(i \in \set{1, \dots, r}\), define \(\sigma_i = \sqrt{\lambda_i}\) and \(u_i = \dfrac{1}{\sigma_i} \T(v_i)\).
   We show that \(\set{\seq{u}{1,,r}}\) is an orthonormal subset of \(\W\) with respect to \(\inn{\cdot, \cdot}_{\W}\).
   Suppose \(i, j \in \set{1, \dots, r}\).
   Then
   \begin{align*}
-    \inn{u_i, u_j}_{\W} & = \inn{\frac{1}{\sigma_i} \T(v_i), \frac{1}{\sigma_j} \T(v_j)}_{\W}                        \\
-                        & = \frac{1}{\sigma_i} \inn{\T(v_i), \frac{1}{\sigma_j} \T(v_j)}_{\W} &  & \by{6.1.1}[b]     \\
-                        & = \frac{1}{\sigma_i \sigma_j} \inn{\T(v_i), \T(v_j)}_{\W}           &  & \by{6.1}[b]       \\
-                        & = \frac{1}{\sigma_i \sigma_j} \inn{\T^*(\T(v_i)), v_j}_{\V}         &  & \by{ex:6.3.15}[a] \\
-                        & = \frac{1}{\sigma_i \sigma_j} \inn{\lambda_i v_i, v_j}_{\V}         &  & \by{5.1.2}        \\
-                        & = \frac{\sigma_i^2}{\sigma_i \sigma_j} \inn{v_i, v_j}_{\V}          &  & \by{6.1.1}[b]     \\
-                        & = \frac{\sigma_i^2}{\sigma_i \sigma_j} \delta_{i j}                 &  & \by{6.1.12}       \\
-                        & = \delta_{i j},                                                     &  & \by{2.3.4}
+    \inn{u_i, u_j}_{\W} & = \inn{\dfrac{1}{\sigma_i} \T(v_i), \dfrac{1}{\sigma_j} \T(v_j)}_{\W}                        \\
+                        & = \dfrac{1}{\sigma_i} \inn{\T(v_i), \dfrac{1}{\sigma_j} \T(v_j)}_{\W} &  & \by{6.1.1}[b]     \\
+                        & = \dfrac{1}{\sigma_i \sigma_j} \inn{\T(v_i), \T(v_j)}_{\W}            &  & \by{6.1}[b]       \\
+                        & = \dfrac{1}{\sigma_i \sigma_j} \inn{\T^*(\T(v_i)), v_j}_{\V}          &  & \by{ex:6.3.15}[a] \\
+                        & = \dfrac{1}{\sigma_i \sigma_j} \inn{\lambda_i v_i, v_j}_{\V}          &  & \by{5.1.2}        \\
+                        & = \dfrac{\sigma_i^2}{\sigma_i \sigma_j} \inn{v_i, v_j}_{\V}           &  & \by{6.1.1}[b]     \\
+                        & = \dfrac{\sigma_i^2}{\sigma_i \sigma_j} \delta_{i j}                  &  & \by{6.1.12}       \\
+                        & = \delta_{i j},                                                       &  & \by{2.3.4}
   \end{align*}
   and hence \(\set{\seq{u}{1,,r}}\) is orthonormal.
   By \cref{6.7}(a), this set extends to an orthonormal basis \(\set{\seq{u}{1,,r,,m}}\) for \(\W\) over \(\F\).
@@ -235,12 +235,12 @@
   Let \(\set{\seq{v}{1,,n}}\) and \(\set{\seq{u}{1,,m}}\) be orthonormal bases for \(\V\) and \(\W\) over \(\F\), respectively, and let \(\seq[\geq]{\sigma}{1,,r}\) be the nonzero singular values of \(\T\) satisfying \cref{eq:6.7.1} in \cref{6.26}.
   Then \(\set{\seq{v}{1,,r}}\) is a basis for \(\ns{\T}^{\perp}\) over \(\F\), \(\set{\seq{v}{r+1,,n}}\) is a basis for \(\ns{\T}\) over \(\F\), \(\set{\seq{u}{1,,r}}\) is a basis for \(\rg{\T}\) over \(\F\), and \(\set{\seq{u}{r+1,,m}}\) is a basis for \(\rg{\T}^{\perp}\) over \(\F\).
   Let \(\lt{L}\) be the restriction of \(\T\) to \(\ns{\T}^{\perp}\), as in the definition of pseudoinverse (\cref{6.7.6}).
-  Then \(\lt{L}^{-1}(u_i) = \frac{1}{\sigma_i} v_i\) for \(i \in \set{1, \dots, r}\).
+  Then \(\lt{L}^{-1}(u_i) = \dfrac{1}{\sigma_i} v_i\) for \(i \in \set{1, \dots, r}\).
   Therefore
   \begin{equation}\label{eq:6.7.3}
     \T^{\dag}(u_i) = \begin{dcases}
-      \frac{1}{\sigma_i} v_i & \text{if } i \in \set{1, \dots, r}     \\
-      \zv_{\V}               & \text{if } i \in \set{r + 1, \dots, m}
+      \dfrac{1}{\sigma_i} v_i & \text{if } i \in \set{1, \dots, r}     \\
+      \zv_{\V}                & \text{if } i \in \set{r + 1, \dots, m}
     \end{dcases}.
   \end{equation}
 \end{prop}
@@ -249,12 +249,12 @@
   By \cref{6.7}(c) and \cref{ex:6.2.13} we see that \(\set{\seq{v}{1,,r}}\) is a basis for \(\ns{\T}^{\perp}\) over \(\F\), \(\set{\seq{v}{r+1,,n}}\) is a basis for \(\ns{\T}\) over \(\F\), \(\set{\seq{u}{1,,r}}\) is a basis for \(\rg{\T}\) over \(\F\), and \(\set{\seq{u}{r+1,,m}}\) is a basis for \(\rg{\T}^{\perp}\).
   Then we have
   \begin{align*}
-             & \forall x \in \ns{\T}^{\perp}, \lt{L}(x) = \T(x)                           &  & \by{6.7.6}                        \\
-    \implies & \forall i \in \set{1, \dots, r}, \lt{L}(v_i) = \T(v_i) = \sigma_i u_i      &  & \by{6.26}                         \\
-    \implies & \forall i \in \set{1, \dots, r}, \lt{L}^{-1}(u_i) = \frac{1}{\sigma_i} v_i &  & \by{2.17}                         \\
+             & \forall x \in \ns{\T}^{\perp}, \lt{L}(x) = \T(x)                            &  & \by{6.7.6}                        \\
+    \implies & \forall i \in \set{1, \dots, r}, \lt{L}(v_i) = \T(v_i) = \sigma_i u_i       &  & \by{6.26}                         \\
+    \implies & \forall i \in \set{1, \dots, r}, \lt{L}^{-1}(u_i) = \dfrac{1}{\sigma_i} v_i &  & \by{2.17}                         \\
     \implies & \forall i \in \set{1, \dots, m}, \T^{\dag}(u_i) = \begin{dcases}
-                                                                   \frac{1}{\sigma_i} v_i & \text{if } i \in \set{1, \dots, r}     \\
-                                                                   \zv_{\V}               & \text{if } i \in \set{r + 1, \dots, m}
+                                                                   \dfrac{1}{\sigma_i} v_i & \text{if } i \in \set{1, \dots, r}     \\
+                                                                   \zv_{\V}                & \text{if } i \in \set{r + 1, \dots, m}
                                                                  \end{dcases}.         &  & \by{6.7.6}
   \end{align*}
 \end{proof}
@@ -274,8 +274,8 @@
   Let \(\Sigma^{\dag} \in \ms[n][m][\F]\) defined by
   \[
     \Sigma_{i j}^{\dag} = \begin{dcases}
-      \frac{1}{\sigma_i} & \text{if } i = j \leq r \\
-      0                  & \text{otherwise}
+      \dfrac{1}{\sigma_i} & \text{if } i = j \leq r \\
+      0                   & \text{otherwise}
     \end{dcases}.
   \]
   Then \(A^{\dag} = V \Sigma^{\dag} U^*\), and this is a singular value decomposition of \(A^{\dag}\).
@@ -541,22 +541,22 @@
   Since \(A\) is normal, by \cref{ex:6.7.11}(b) we know that the singular values of \(A\) are \(\abs{\lambda_1}, \dots, \abs{\lambda_n}\).
   Observe that
   \begin{align*}
-    \forall i \in \set{1, \dots, n}, \L_A(v_i) & = A v_i                                                                                   &  & \by{2.3.8} \\
-                                               & = \lambda_i v_i                                                                           &  & \by{5.1.2} \\
+    \forall i \in \set{1, \dots, n}, \L_A(v_i) & = A v_i                                                                                    &  & \by{2.3.8} \\
+                                               & = \lambda_i v_i                                                                            &  & \by{5.1.2} \\
                                                & = \begin{dcases}
-                                                     \abs{\lambda_i} \pa{\frac{\lambda_i}{\abs{\lambda_i}} v_i} & \text{if } \lambda_i \neq 0 \\
-                                                     \zv                                                        & \text{if } \lambda_i = 0
+                                                     \abs{\lambda_i} \pa{\dfrac{\lambda_i}{\abs{\lambda_i}} v_i} & \text{if } \lambda_i \neq 0 \\
+                                                     \zv                                                         & \text{if } \lambda_i = 0
                                                    \end{dcases} &  & \by{1.2}[a]                \\
                                                & = \begin{dcases}
-                                                     \abs{\lambda_i} \pa{\frac{\lambda_i}{\abs{\lambda_i}} v_i} & \text{if } \lambda_i \neq 0 \\
-                                                     1 \zv                                                      & \text{if } \lambda_i = 0
+                                                     \abs{\lambda_i} \pa{\dfrac{\lambda_i}{\abs{\lambda_i}} v_i} & \text{if } \lambda_i \neq 0 \\
+                                                     1 \zv                                                       & \text{if } \lambda_i = 0
                                                    \end{dcases}. &  & \by{1.2}[c]
   \end{align*}
   Now we define \(\theta_i\) as follow:
   \[
     \forall i \in \set{1, \dots, n}, \theta_i = \begin{dcases}
-      \frac{\lambda_i}{\abs{\lambda_i}} & \text{if } \lambda_i \neq 0 \\
-      1                                 & \text{if } \lambda_i = 0
+      \dfrac{\lambda_i}{\abs{\lambda_i}} & \text{if } \lambda_i \neq 0 \\
+      1                                  & \text{if } \lambda_i = 0
     \end{dcases}.
   \]
   Clearly \(\abs{\theta_i} = 1\) for all \(i \in \set{1, \dots, n}\).
@@ -595,8 +595,8 @@
   If \(\seq{\lambda}{1,,n} \in \F\) are eigenvalues of \(A\) corresponding to \(\seq{v}{1,,n}\), then by \cref{ex:6.4.17}(a) we know that \(\lambda_i > 0\) for all \(i \in \set{1, \dots, n}\).
   Then we have
   \begin{align*}
-    \forall i \in \set{1, \dots, n}, u_i & = \frac{1}{\lambda_i} \L_A(v_i)   &  & \by{ex:6.7.13} \\
-                                         & = \frac{\lambda_i}{\lambda_i} v_i &  & \by{5.1.2}     \\
+    \forall i \in \set{1, \dots, n}, u_i & = \dfrac{1}{\lambda_i} \L_A(v_i)   &  & \by{ex:6.7.13} \\
+                                         & = \dfrac{\lambda_i}{\lambda_i} v_i &  & \by{5.1.2}     \\
                                          & = v_i.
   \end{align*}
   Thus \(U = V\).
@@ -842,16 +842,16 @@
   By \cref{6.7.8} we have
   \[
     \forall i \in \set{1, \dots, m}, \T^{\dag}(u_i) = \begin{dcases}
-      \frac{1}{\sigma_i} v_i & \text{if } i \in \set{1, \dots, r}     \\
-      \zv_{\V}               & \text{if } i \in \set{r + 1, \dots, m}
+      \dfrac{1}{\sigma_i} v_i & \text{if } i \in \set{1, \dots, r}     \\
+      \zv_{\V}                & \text{if } i \in \set{r + 1, \dots, m}
     \end{dcases}.
   \]
   Thus we have
   \begin{align*}
-    \forall i \in \set{1, \dots, r}, (\T \T^{\dag} \T)(v_i) & = \T(\T^{\dag}(\T(v_i)))                                 \\
-                                                            & = \T(\T^{\dag}(\sigma_i u_i))            &  & \by{6.26}  \\
-                                                            & = \T(\sigma_i \T^{\dag}(u_i))            &  & \by{6.7.6} \\
-                                                            & = \T\pa{\sigma_i \frac{1}{\sigma_i} v_i} &  & \by{6.7.8} \\
+    \forall i \in \set{1, \dots, r}, (\T \T^{\dag} \T)(v_i) & = \T(\T^{\dag}(\T(v_i)))                                  \\
+                                                            & = \T(\T^{\dag}(\sigma_i u_i))             &  & \by{6.26}  \\
+                                                            & = \T(\sigma_i \T^{\dag}(u_i))             &  & \by{6.7.6} \\
+                                                            & = \T\pa{\sigma_i \dfrac{1}{\sigma_i} v_i} &  & \by{6.7.8} \\
                                                             & = \T(v_i)
   \end{align*}
   and
@@ -868,10 +868,10 @@
 \begin{proof}[\pf{ex:6.7.21}(b)]
   Continue the proof of \cref{ex:6.7.21}(a), we have
   \begin{align*}
-    \forall i \in \set{1, \dots, r}, (\T^{\dag} \T \T^{\dag})(u_i) & = \T^{\dag}(\T(\T^{\dag}(u_i)))                                    \\
-                                                                   & = \T^{\dag}\pa{\T\pa{\frac{1}{\sigma_i} v_i}}   &  & \by{6.7.8}    \\
-                                                                   & = \T^{\dag}\pa{\frac{1}{\sigma_i} \T(v_i)}      &  & \by{2.1.2}[b] \\
-                                                                   & = \T^{\dag}\pa{\frac{1}{\sigma_i} \sigma_i u_i} &  & \by{6.26}     \\
+    \forall i \in \set{1, \dots, r}, (\T^{\dag} \T \T^{\dag})(u_i) & = \T^{\dag}(\T(\T^{\dag}(u_i)))                                     \\
+                                                                   & = \T^{\dag}\pa{\T\pa{\dfrac{1}{\sigma_i} v_i}}   &  & \by{6.7.8}    \\
+                                                                   & = \T^{\dag}\pa{\dfrac{1}{\sigma_i} \T(v_i)}      &  & \by{2.1.2}[b] \\
+                                                                   & = \T^{\dag}\pa{\dfrac{1}{\sigma_i} \sigma_i u_i} &  & \by{6.26}     \\
                                                                    & = \T^{\dag}(u_i)
   \end{align*}
   and
@@ -1183,10 +1183,10 @@
   By \cref{6.7.8,6.29} we know that
   \[
     [\T^{\dag}]_{\gamma'}^{\beta'} = \begin{pmatrix}
-      \frac{1}{\sigma_1} & \cdots & 0                  &     \\
-      \vdots             & \ddots & \vdots             & \zm \\
-      0                  & \cdots & \frac{1}{\sigma_r} &     \\
-                         & \zm    &                    & \zm
+      \dfrac{1}{\sigma_1} & \cdots & 0                   &     \\
+      \vdots              & \ddots & \vdots              & \zm \\
+      0                   & \cdots & \dfrac{1}{\sigma_r} &     \\
+                          & \zm    &                     & \zm
     \end{pmatrix} = \pa{[\T]_{\beta'}^{\gamma'}}^{\dag}.
   \]
   Then we have

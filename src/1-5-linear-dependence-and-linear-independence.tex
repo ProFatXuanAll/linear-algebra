@@ -267,18 +267,18 @@
 \begin{proof}[\pf{ex:1.5.9}]
   We have
   \begin{align*}
-         & \set{u, v} \text{ is linearly dependent}                       \\
+         & \set{u, v} \text{ is linearly dependent}                        \\
     \iff & \exists a, b \in \F : \begin{dcases}
                                    au + bv = \zv \\
                                    \lnot (a = b = 0)
-                                 \end{dcases}        &  & \by{1.5.1}      \\
+                                 \end{dcases}         &  & \by{1.5.1}      \\
     \iff & \exists a, b \in \F : \begin{dcases}
                                    au = -bv \\
                                    \lnot (a = b = 0)
-                                 \end{dcases}                         \\
+                                 \end{dcases}                          \\
     \iff & \exists a, b \in \F : \begin{dcases}
-                                   u = -\frac{b}{a} v & \text{if } a \neq 0 \\
-                                   v = -\frac{a}{b} u & \text{if } b \neq 0
+                                   u = -\dfrac{b}{a} v & \text{if } a \neq 0 \\
+                                   v = -\dfrac{a}{b} u & \text{if } b \neq 0
                                  \end{dcases} \\
     \iff & \exists c \in \F : u = cv.
   \end{align*}

@@ -395,7 +395,7 @@
   where \(A^{i j}\) is the \(n \times n\) matrix having \(1\) in the \(i\)th row and \(j\)th column, \(1\) in the \(j\)th row and \(i\)th column, and \(0\) elsewhere.
   It follows that
   \[
-    \dim(\W) = n + (n - 1) + \cdots + 1 = \frac{1}{2} n(n + 1).
+    \dim(\W) = n + (n - 1) + \cdots + 1 = \dfrac{1}{2} n(n + 1).
   \]
 \end{eg}
 
@@ -409,7 +409,7 @@
     \implies & \W = \spn{\set{A^{i j} : 1 \leq i \leq j \leq n}}                   &  & \by{1.5}       \\
     \implies & \dim(\W) \leq \#\pa{\set{A^{i j} : 1 \leq i \leq j \leq n}},        &  & \by{1.6.15}[a]
   \end{align*}
-  we have \(\dim(\W) = \#\pa{\set{A^{i j} : 1 \leq i \leq j \leq n}} = \frac{1}{2} n(n + 1)\).
+  we have \(\dim(\W) = \#\pa{\set{A^{i j} : 1 \leq i \leq j \leq n}} = \dfrac{1}{2} n(n + 1)\).
 \end{proof}
 
 \begin{cor}\label{1.6.19}
@@ -425,7 +425,7 @@
   Let \(\seq{c}{0,1,,n}\) be distinct scalars in an infinite field \(\F\).
   The polynomials \(f_0(x), f_1(x), \dots, f_n(x)\) defined by
   \[
-    f_i(x) = \frac{(x - c_0) \cdots (x - c_{i - 1}) (x - c_{i + 1}) \cdots (x - c_n)}{(c_i - c_0) \cdots (c_i - c_{i - 1}) (c_i - c_{i + 1}) \cdots (c_i - c_n)} = \prod_{\substack{k = 0 \\ k \neq i}}^n \frac{x - c_k}{c_i - c_k}
+    f_i(x) = \dfrac{(x - c_0) \cdots (x - c_{i - 1}) (x - c_{i + 1}) \cdots (x - c_n)}{(c_i - c_0) \cdots (c_i - c_{i - 1}) (c_i - c_{i + 1}) \cdots (c_i - c_n)} = \prod_{\substack{k = 0 \\ k \neq i}}^n \dfrac{x - c_k}{c_i - c_k}
   \]
   are called the \textbf{Lagrange polynomials} (associated with \(\seq{c}{0,1,,n}\)).
   Note that each \(f_i(x)\) is a polynomial of degree \(n\) and hence is in \(\ps[n]{\F}\).
@@ -611,7 +611,7 @@
     \implies & \W = \spn{\beta}                                                                                                    &  & \by{1.5}
   \end{align*}
   and \(\beta\) is linearly independent (by \cref{ex:1.5.6}), by \cref{1.6.1} we know that \(\beta\) is a basis for \(\W\) over \(\F\).
-  Thus by \cref{1.6.8} we have \(\dim(\W) = \frac{1}{2} n(n + 1)\).
+  Thus by \cref{1.6.8} we have \(\dim(\W) = \dfrac{1}{2} n(n + 1)\).
 \end{proof}
 
 \begin{ex}\label{ex:1.6.17}
@@ -642,7 +642,7 @@
     \implies & \W = \spn{\beta}                                                               &  & \by{1.5}
   \end{align*}
   and \(\beta\) is linearly independent (by \cref{ex:1.5.6}), by \cref{1.6.1} we know that \(\beta\) is a basis for \(\W\) over \(\F\).
-  Thus by \cref{1.6.8} we have \(\dim(\W) = \frac{1}{2} n(n - 1)\).
+  Thus by \cref{1.6.8} we have \(\dim(\W) = \dfrac{1}{2} n(n - 1)\).
 \end{proof}
 
 \begin{ex}\label{ex:1.6.18}
@@ -866,15 +866,15 @@
                  \beta_2 \text{ is a basis for } \W_2 \text{ over } \F
                \end{dcases} &  & \by{1.6.1} \\
     \implies & \begin{dcases}
-                 \dim(\W_1) = \#(\beta_1) = \frac{n - 1}{2} \\
-                 \dim(\W_2) = \#(\beta_2) = \frac{n - 1}{2}
-               \end{dcases}.            &  & \by{1.6.8}
+                 \dim(\W_1) = \#(\beta_1) = \dfrac{n - 1}{2} \\
+                 \dim(\W_2) = \#(\beta_2) = \dfrac{n - 1}{2}
+               \end{dcases}.           &  & \by{1.6.8}
   \end{align*}
   Using similar arguments as above we can show that when \(n\) is even we have
   \[
     \begin{dcases}
-      \dim(\W_1) = \#(\beta_1) = \frac{n}{2} + 1 \\
-      \dim(\W_2) = \#(\beta_2) = \frac{n}{2}
+      \dim(\W_1) = \#(\beta_1) = \dfrac{n}{2} + 1 \\
+      \dim(\W_2) = \#(\beta_2) = \dfrac{n}{2}
     \end{dcases}.
   \]
 \end{proof}

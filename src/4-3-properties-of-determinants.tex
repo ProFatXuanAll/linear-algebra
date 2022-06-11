@@ -34,7 +34,7 @@
 
 \begin{cor}\label{4.3.1}
   A matrix \(A \in \ms[n][n][\F]\) is invertible iff \(\det(A) \neq 0\).
-  Furthermore, if \(A\) is invertible, then \(\det(A^{-1}) = \frac{1}{\det(A)}\).
+  Furthermore, if \(A\) is invertible, then \(\det(A^{-1}) = \dfrac{1}{\det(A)}\).
 \end{cor}
 
 \begin{proof}[\pf{4.3.1}]
@@ -45,7 +45,7 @@
     \det(A) \cdot \det(A^{-1}) = \det(A A^{-1}) = \det(I_n) = 1
   \]
   by \cref{4.7}.
-  Hence \(\det(A) \neq 0\) and \(\det(A^{-1}) = \frac{1}{\det(A)}\).
+  Hence \(\det(A) \neq 0\) and \(\det(A^{-1}) = \dfrac{1}{\det(A)}\).
 \end{proof}
 
 \begin{thm}\label{4.8}
@@ -81,7 +81,7 @@
   Let \(Ax = b\) be the matrix form of a system of \(n\) linear equations in \(n\) unknowns, where \(x = \tp{\tuple{x}{1,,n}}\).
   If \(\det(A) \neq 0\), then this system has a unique solution, and for each \(k \in \set{1, \dots, n}\),
   \[
-    x_k = \frac{\det(M_k)}{\det(A)},
+    x_k = \dfrac{\det(M_k)}{\det(A)},
   \]
   where \(M_k \in \ms[n][n][\F]\) is obtained from \(A\) by replacing column \(k\) of \(A\) by \(b\).
 \end{thm}
@@ -474,7 +474,8 @@
 \end{ex}
 
 \begin{proof}[\pf{ex:4.3.21}]
-  Let \(m \in \set{1, \dots, n - 1}\) such that \(A \in \ms[m][m][\F]\) and \(C \in \ms[(n - m)][(n - m)][\F]\).
+  Let \(m \in \set{1, \dots, n - 1}\) such that \(A \in \ms[m][m][\F]\).
+  Then \(C \in \ms[(n - m)][(n - m)][\F]\).
   We split into two cases:
   \begin{itemize}
     \item If \(C\) is not invertible, then by \cref{3.2.2} and \cref{3.2.5}(b) we know that \(\rk{\zm | C} = \rk{C} < n - m\).
@@ -485,24 +486,24 @@
           \]
     \item If \(C\) is invertible, then we have
           \begin{align*}
-            \det(M) \frac{1}{\det(C)} & = \det(M) \det(C^{-1})        &  & \by{4.3.1}     \\
-                                      & = \det(M) \det\begin{pmatrix}
-                                                        I_m   & \zm_1  \\
-                                                        \zm_2 & C^{-1}
-                                                      \end{pmatrix} &  & \by{4.2.5}       \\
-                                      & = \det\pa{M \begin{pmatrix}
-                                                        I_m   & \zm_1  \\
-                                                        \zm_2 & C^{-1}
-                                                      \end{pmatrix}}   &  & \by{4.7}        \\
-                                      & = \det\begin{pmatrix}
-                                                A   & BC^{-1} \\
-                                                \zm & CC^{-1}
-                                              \end{pmatrix}         &  & \by{2.3.1}       \\
-                                      & = \det\begin{pmatrix}
-                                                A   & BC^{-1}   \\
-                                                \zm & I_{n - m}
-                                              \end{pmatrix}         &  & \by{2.4.3}       \\
-                                      & = \det(A)                     &  & \by{ex:4.3.20}
+            \det(M) \dfrac{1}{\det(C)} & = \det(M) \det(C^{-1})        &  & \by{4.3.1}     \\
+                                       & = \det(M) \det\begin{pmatrix}
+                                                         I_m   & \zm_1  \\
+                                                         \zm_2 & C^{-1}
+                                                       \end{pmatrix} &  & \by{4.2.5}       \\
+                                       & = \det\pa{M \begin{pmatrix}
+                                                         I_m   & \zm_1  \\
+                                                         \zm_2 & C^{-1}
+                                                       \end{pmatrix}}   &  & \by{4.7}        \\
+                                       & = \det\begin{pmatrix}
+                                                 A   & BC^{-1} \\
+                                                 \zm & CC^{-1}
+                                               \end{pmatrix}         &  & \by{2.3.1}       \\
+                                       & = \det\begin{pmatrix}
+                                                 A   & BC^{-1}   \\
+                                                 \zm & I_{n - m}
+                                               \end{pmatrix}         &  & \by{2.4.3}       \\
+                                       & = \det(A)                     &  & \by{ex:4.3.20}
           \end{align*}
           where \(\zm_1 \in \ms[m][(n - m)][\F]\) and \(\zm_2 \in \ms[(n - m)][m][\F]\) are zero matrices.
           Thus \(\det(M) = \det(A) \det(C)\).
@@ -852,7 +853,7 @@
              & AC = \det(A) I_n = \det(A) A A^{-1}                       &  & \by{ex:4.3.25}[c] \\
     \implies & C = A^{-1} AC = A^{-1} (\det(A) I_n) = \det(A) A^{-1} I_n &  & \by{2.12}[b]      \\
              & = \det(A) A^{-1}                                                                 \\
-    \implies & A^{-1} = \frac{1}{\det(A)} C.
+    \implies & A^{-1} = \dfrac{1}{\det(A)} C.
   \end{align*}
 \end{proof}
 
@@ -927,7 +928,7 @@
   and
   \begin{align*}
              & \det(A) \neq 0                                                                   \\
-    \implies & A^{-1} = \frac{1}{\det(A)} C                  &  & \by{ex:4.3.25}[d]             \\
+    \implies & A^{-1} = \dfrac{1}{\det(A)} C                 &  & \by{ex:4.3.25}[d]             \\
     \implies & A^{-1} \text{ is an upper triangular matrix}. &  & \text{(from the proof above)}
   \end{align*}
 \end{proof}

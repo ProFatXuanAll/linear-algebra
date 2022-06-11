@@ -29,11 +29,11 @@
   Define \(\T \in \ls(\vs{H})\) by \(\T(f) = hf\).
   Then
   \begin{align*}
-    \norm{\T(f)}^2 & = \norm{hf}^2                                                                     \\
-                   & = \inn{hf, hf}                                                    &  & \by{6.1.9} \\
-                   & = \frac{1}{2 \pi} \int_0^{2 \pi} h(t) f(t) \conj{h(t) f(t)} \; dt &  & \by{6.1.8} \\
-                   & = \inn{f, f}                                                      &  & \by{6.1.8} \\
-                   & = \norm{f}^2                                                      &  & \by{6.1.9}
+    \norm{\T(f)}^2 & = \norm{hf}^2                                                                      \\
+                   & = \inn{hf, hf}                                                     &  & \by{6.1.9} \\
+                   & = \dfrac{1}{2 \pi} \int_0^{2 \pi} h(t) f(t) \conj{h(t) f(t)} \; dt &  & \by{6.1.8} \\
+                   & = \inn{f, f}                                                       &  & \by{6.1.8} \\
+                   & = \norm{f}^2                                                       &  & \by{6.1.9}
   \end{align*}
   since \(\abs{h(t)}^2 = 1\) for all \(t \in [0, 2 \pi]\).
   So \(\T\) is a unitary operator.
@@ -1169,17 +1169,17 @@
   Let \(x, y \in \W\).
   If \(\F = \R\), then we have
   \begin{align*}
-    \inn{\U(x), \U(y)} & = \frac{1}{4} \norm{\U(x) + \U(y)}^2 - \frac{1}{4} \norm{\U(x) - \U(y)}^2 &  & \by{ex:6.1.20}  \\
-                       & = \frac{1}{4} \norm{\U(x + y)}^2 - \frac{1}{4} \norm{\U(x - y)}^2         &  & \by{2.1.2}[b,c] \\
-                       & = \frac{1}{4} \norm{x + y}^2 - \frac{1}{4} \norm{x - y}^2                 &  & \by{ex:6.5.20}  \\
-                       & = \inn{x, y}.                                                             &  & \by{ex:6.1.20}
+    \inn{\U(x), \U(y)} & = \dfrac{1}{4} \norm{\U(x) + \U(y)}^2 - \dfrac{1}{4} \norm{\U(x) - \U(y)}^2 &  & \by{ex:6.1.20}  \\
+                       & = \dfrac{1}{4} \norm{\U(x + y)}^2 - \dfrac{1}{4} \norm{\U(x - y)}^2         &  & \by{2.1.2}[b,c] \\
+                       & = \dfrac{1}{4} \norm{x + y}^2 - \dfrac{1}{4} \norm{x - y}^2                 &  & \by{ex:6.5.20}  \\
+                       & = \inn{x, y}.                                                               &  & \by{ex:6.1.20}
   \end{align*}
   If \(\F = \C\), then we have
   \begin{align*}
-    \inn{\U(x), \U(y)} & = \frac{1}{4} \sum_{k = 1}^4 i^k \norm{\U(x) + i^k \U(y)}^2 &  & \by{ex:6.1.20} \\
-                       & = \frac{1}{4} \sum_{k = 1}^4 i^k \norm{\U(x + i^k y)}^2     &  & \by{2.1.2}[b]  \\
-                       & = \frac{1}{4} \sum_{k = 1}^4 i^k \norm{x + i^k y}^2         &  & \by{ex:6.5.20} \\
-                       & = \inn{x, y}.                                               &  & \by{ex:6.1.20}
+    \inn{\U(x), \U(y)} & = \dfrac{1}{4} \sum_{k = 1}^4 i^k \norm{\U(x) + i^k \U(y)}^2 &  & \by{ex:6.1.20} \\
+                       & = \dfrac{1}{4} \sum_{k = 1}^4 i^k \norm{\U(x + i^k y)}^2     &  & \by{2.1.2}[b]  \\
+                       & = \dfrac{1}{4} \sum_{k = 1}^4 i^k \norm{x + i^k y}^2         &  & \by{ex:6.5.20} \\
+                       & = \inn{x, y}.                                                &  & \by{ex:6.1.20}
   \end{align*}
   Thus we conclude that \(\inn{\U(x), \U(y)} = \inn{x, y}\) for all \(x, y \in \W\).
 \end{proof}
@@ -1550,7 +1550,7 @@
                           \sin(2 \psi - \phi) & -\cos(2 \psi - \phi)
                         \end{pmatrix}. &  & \by{2.3.1}
   \end{align*}
-  Thus the angle from the positive \(x\)-axis to \(\L_1\) is \(\psi - \frac{1}{2} \phi\).
+  Thus the angle from the positive \(x\)-axis to \(\L_1\) is \(\psi - \dfrac{1}{2} \phi\).
 \end{proof}
 
 \begin{proof}[\pf{ex:6.5.26}(b)]
@@ -1574,7 +1574,7 @@
                           \sin(\phi + 2 \psi) & -\cos(\phi + 2 \psi)
                         \end{pmatrix}. &  & \by{2.3.1}
   \end{align*}
-  Thus the angle from the positive \(x\)-axis to \(\L_2\) is \(\frac{1}{2} \phi + \psi\).
+  Thus the angle from the positive \(x\)-axis to \(\L_2\) is \(\dfrac{1}{2} \phi + \psi\).
 \end{proof}
 
 \setcounter{ex}{28}
@@ -1609,9 +1609,9 @@
 \begin{proof}[\pf{ex:6.5.29}(a)]
   For all \(k \in \set{1, \dots, n}\), we have
   \begin{align*}
-    w_k & = v_k + \sum_{j = 1}^{k - 1} \frac{\inn{w_k, v_j}}{\norm{v_j}^2} v_j                           &  & \by{6.4}    \\
-        & = v_k + \sum_{j = 1}^{k - 1} \inn{w_k, \frac{1}{\norm{v_j}} v_j} \pa{\frac{1}{\norm{v_j}} v_j} &  & \by{6.1}[b] \\
-        & = \norm{v_k} u_k + \sum_{j = 1}^{k - 1} \inn{w_k, u_j} u_j.                                    &  & \by{6.1.12}
+    w_k & = v_k + \sum_{j = 1}^{k - 1} \dfrac{\inn{w_k, v_j}}{\norm{v_j}^2} v_j                            &  & \by{6.4}    \\
+        & = v_k + \sum_{j = 1}^{k - 1} \inn{w_k, \dfrac{1}{\norm{v_j}} v_j} \pa{\dfrac{1}{\norm{v_j}} v_j} &  & \by{6.1}[b] \\
+        & = \norm{v_k} u_k + \sum_{j = 1}^{k - 1} \inn{w_k, u_j} u_j.                                      &  & \by{6.1.12}
   \end{align*}
 \end{proof}
 
@@ -1782,49 +1782,49 @@
   Since \(x, y\) are linearly independent, we know that \(x - \theta y \neq \zv\) for all \(\theta \in \C\).
 
   First suppose that \(\inn{x, y} = 0\).
-  Let \(\theta = 1\) and let \(u = \frac{x - y}{\norm{x- y}}\).
+  Let \(\theta = 1\) and let \(u = \dfrac{x - y}{\norm{x- y}}\).
   Then we have
   \begin{align*}
-    \lt{H}_u(x) & = x - 2 \inn{x, u} u                                                     &  & \by{6.5.20}            \\
-                & = x - \frac{2 \inn{x, \frac{x - y}{\norm{x - y}}}}{\norm{x - y}} (x - y)                             \\
-                & = x - \frac{2 \inn{x, x - y}}{\norm{x - y}^2} (x - y)                    &  & \by{6.1}[b]            \\
-                & = x - \frac{2 \inn{x, x} - 2 \inn{x, y}}{\norm{x - y}^2} (x - y)         &  & \by{6.1}[a,b]          \\
-                & = x - \frac{2 \inn{x, x}}{\norm{x - y}^2} (x - y)                        &  & \by{6.1.12}            \\
-                & = x - \frac{2 \inn{x, x}}{\norm{x}^2 + \norm{y}^2} (x - y)               &  & \by{ex:6.1.10}         \\
-                & = x - \frac{2 \norm{x}^2}{\norm{x}^2 + \norm{y}^2} (x - y)               &  & \by{6.1.9}             \\
-                & = x - \frac{\norm{x}^2 + \norm{y}^2}{\norm{x}^2 + \norm{y}^2} (x - y)    &  & \text{(by hypothesis)} \\
+    \lt{H}_u(x) & = x - 2 \inn{x, u} u                                                       &  & \by{6.5.20}            \\
+                & = x - \dfrac{2 \inn{x, \dfrac{x - y}{\norm{x - y}}}}{\norm{x - y}} (x - y)                             \\
+                & = x - \dfrac{2 \inn{x, x - y}}{\norm{x - y}^2} (x - y)                     &  & \by{6.1}[b]            \\
+                & = x - \dfrac{2 \inn{x, x} - 2 \inn{x, y}}{\norm{x - y}^2} (x - y)          &  & \by{6.1}[a,b]          \\
+                & = x - \dfrac{2 \inn{x, x}}{\norm{x - y}^2} (x - y)                         &  & \by{6.1.12}            \\
+                & = x - \dfrac{2 \inn{x, x}}{\norm{x}^2 + \norm{y}^2} (x - y)                &  & \by{ex:6.1.10}         \\
+                & = x - \dfrac{2 \norm{x}^2}{\norm{x}^2 + \norm{y}^2} (x - y)                &  & \by{6.1.9}             \\
+                & = x - \dfrac{\norm{x}^2 + \norm{y}^2}{\norm{x}^2 + \norm{y}^2} (x - y)     &  & \text{(by hypothesis)} \\
                 & = y.
   \end{align*}
 
   Now suppose that \(\inn{x, y} \neq 0\).
-  Let \(\theta = \frac{\inn{x, y}}{\abs{\inn{x, y}}}\) and let \(u = \frac{x - \theta y}{\norm{x - \theta y}}\).
+  Let \(\theta = \dfrac{\inn{x, y}}{\abs{\inn{x, y}}}\) and let \(u = \dfrac{x - \theta y}{\norm{x - \theta y}}\).
   Then we have
   \begin{align*}
-    \abs{\theta} & = \abs{\frac{\inn{x, y}}{\abs{\inn{x, y}}}} \\
-                 & = \frac{\abs{\inn{x, y}}}{\abs{\inn{x, y}}} \\
+    \abs{\theta} & = \abs{\dfrac{\inn{x, y}}{\abs{\inn{x, y}}}} \\
+                 & = \dfrac{\abs{\inn{x, y}}}{\abs{\inn{x, y}}} \\
                  & = 1
   \end{align*}
   and
   \begin{align*}
-    \inn{x, \theta y} & = \conj{\theta} \inn{x, y}                              &  & \by{6.1}[b]   \\
-                      & = \conj{\frac{\inn{x, y}}{\abs{\inn{x, y}}}} \inn{x, y}                    \\
-                      & = \frac{\inn{y, x}}{\abs{x, y}} \inn{x, y}              &  & \by{6.1.1}[c] \\
-                      & = \abs{x, y}                                            &  & \by{d.0.5}    \\
+    \inn{x, \theta y} & = \conj{\theta} \inn{x, y}                               &  & \by{6.1}[b]   \\
+                      & = \conj{\dfrac{\inn{x, y}}{\abs{\inn{x, y}}}} \inn{x, y}                    \\
+                      & = \dfrac{\inn{y, x}}{\abs{x, y}} \inn{x, y}              &  & \by{6.1.1}[c] \\
+                      & = \abs{x, y}                                             &  & \by{d.0.5}    \\
                       & \in \R.
   \end{align*}
   Thus
   \begin{align*}
-    \lt{H}_u(x) & = x - 2 \inn{x, u} u                                                                                               &  & \by{6.5.20}                \\
-                & = x - \frac{2 \inn{x, \frac{x - \theta y}{\norm{x - \theta y}}}}{\norm{x - \theta y}} (x - \theta y)                                               \\
-                & = x - \frac{2 \inn{x, x - \theta y}}{\norm{x - \theta y}^2} (x - \theta y)                                         &  & \by{6.1}[b]                \\
-                & = x - \frac{2 \inn{x, x} - 2 \conj{\theta} \inn{x, y}}{\norm{x - \theta y}^2} (x - \theta y)                       &  & \by{6.1}[a,b]              \\
-                & = x - \frac{2 \norm{x}^2 - 2 \conj{\theta} \inn{x, y}}{\norm{x - \theta y}^2} (x - \theta y)                       &  & \by{6.1.9}                 \\
-                & = x - \frac{\norm{x}^2 - 2 \conj{\theta} \inn{x, y} + \norm{y}^2}{\norm{x - \theta y}^2} (x - \theta y)            &  & \text{(by hypothesis)}     \\
-                & = x - \frac{\norm{x}^2 - 2 \inn{x, \theta y} + \norm{y}^2}{\norm{x - \theta y}^2} (x - \theta y)                   &  & \by{6.1}[b]                \\
-                & = x - \frac{\norm{x}^2 - 2 \Re(\inn{x, \theta y}) + \norm{y}^2}{\norm{x - \theta y}^2} (x - \theta y)              &  & (\inn{x, \theta y} \in \R) \\
-                & = x - \frac{\norm{x}^2 - 2 \Re(\inn{x, \theta y}) + \abs{\theta} \norm{y}^2}{\norm{x - \theta y}^2} (x - \theta y) &  & (\abs{\theta} = 1)         \\
-                & = x - \frac{\norm{x}^2 - 2 \Re(\inn{x, \theta y}) + \norm{\theta y}^2}{\norm{x - \theta y}^2} (x - \theta y)       &  & \by{6.2}[a]                \\
-                & = x - \frac{\norm{x - \theta y}^2}{\norm{x - \theta y}^2} (x - \theta y)                                           &  & \by{ex:6.1.19}[a]          \\
+    \lt{H}_u(x) & = x - 2 \inn{x, u} u                                                                                                &  & \by{6.5.20}                \\
+                & = x - \dfrac{2 \inn{x, \dfrac{x - \theta y}{\norm{x - \theta y}}}}{\norm{x - \theta y}} (x - \theta y)                                              \\
+                & = x - \dfrac{2 \inn{x, x - \theta y}}{\norm{x - \theta y}^2} (x - \theta y)                                         &  & \by{6.1}[b]                \\
+                & = x - \dfrac{2 \inn{x, x} - 2 \conj{\theta} \inn{x, y}}{\norm{x - \theta y}^2} (x - \theta y)                       &  & \by{6.1}[a,b]              \\
+                & = x - \dfrac{2 \norm{x}^2 - 2 \conj{\theta} \inn{x, y}}{\norm{x - \theta y}^2} (x - \theta y)                       &  & \by{6.1.9}                 \\
+                & = x - \dfrac{\norm{x}^2 - 2 \conj{\theta} \inn{x, y} + \norm{y}^2}{\norm{x - \theta y}^2} (x - \theta y)            &  & \text{(by hypothesis)}     \\
+                & = x - \dfrac{\norm{x}^2 - 2 \inn{x, \theta y} + \norm{y}^2}{\norm{x - \theta y}^2} (x - \theta y)                   &  & \by{6.1}[b]                \\
+                & = x - \dfrac{\norm{x}^2 - 2 \Re(\inn{x, \theta y}) + \norm{y}^2}{\norm{x - \theta y}^2} (x - \theta y)              &  & (\inn{x, \theta y} \in \R) \\
+                & = x - \dfrac{\norm{x}^2 - 2 \Re(\inn{x, \theta y}) + \abs{\theta} \norm{y}^2}{\norm{x - \theta y}^2} (x - \theta y) &  & (\abs{\theta} = 1)         \\
+                & = x - \dfrac{\norm{x}^2 - 2 \Re(\inn{x, \theta y}) + \norm{\theta y}^2}{\norm{x - \theta y}^2} (x - \theta y)       &  & \by{6.2}[a]                \\
+                & = x - \dfrac{\norm{x - \theta y}^2}{\norm{x - \theta y}^2} (x - \theta y)                                           &  & \by{ex:6.1.19}[a]          \\
                 & = \theta y.
   \end{align*}
 \end{proof}
@@ -1832,17 +1832,17 @@
 \begin{proof}[\pf{ex:6.5.32}(b)]
   Let \(\inn{\cdot, \cdot}\) be an inner product on \(\V\) over \(\R\) such that \(\norm{x} = \inn{x, x} = \inn{y, y} = \norm{y}\).
   Since \(x, y\) are linearly independent, we know that \(x - y \neq \zv\).
-  Let \(u = \frac{x - y}{\norm{x- y}}\).
+  Let \(u = \dfrac{x - y}{\norm{x- y}}\).
   Then we have
   \begin{align*}
-    \lt{H}_u(x) & = x - 2 \inn{x, u} u                                                             &  & \by{6.5.20}            \\
-                & = x - \frac{2 \inn{x, \frac{x - y}{\norm{x - y}}}}{\norm{x - y}} (x - y)                                     \\
-                & = x - \frac{2 \inn{x, x - y}}{\norm{x - y}^2} (x - y)                            &  & \by{6.1}[b]            \\
-                & = x - \frac{2 \inn{x, x} - 2 \inn{x, y}}{\norm{x - y}^2} (x - y)                 &  & \by{6.1}[a,b]          \\
-                & = x - \frac{2 \norm{x}^2 - 2 \inn{x, y}}{\norm{x - y}^2} (x - y)                 &  & \by{6.1.9}             \\
-                & = x - \frac{\norm{x}^2 - 2 \inn{x, y} + \norm{y}^2}{\norm{x - y}^2} (x - y)      &  & \text{(by hypothesis)} \\
-                & = x - \frac{\norm{x}^2 - 2 \Re(\inn{x, y}) + \norm{y}^2}{\norm{x - y}^2} (x - y) &  & (\F = \R)              \\
-                & = x - \frac{\norm{x - y}^2}{\norm{x - y}^2} (x - y)                              &  & \by{ex:6.1.19}[a]      \\
+    \lt{H}_u(x) & = x - 2 \inn{x, u} u                                                              &  & \by{6.5.20}            \\
+                & = x - \dfrac{2 \inn{x, \dfrac{x - y}{\norm{x - y}}}}{\norm{x - y}} (x - y)                                    \\
+                & = x - \dfrac{2 \inn{x, x - y}}{\norm{x - y}^2} (x - y)                            &  & \by{6.1}[b]            \\
+                & = x - \dfrac{2 \inn{x, x} - 2 \inn{x, y}}{\norm{x - y}^2} (x - y)                 &  & \by{6.1}[a,b]          \\
+                & = x - \dfrac{2 \norm{x}^2 - 2 \inn{x, y}}{\norm{x - y}^2} (x - y)                 &  & \by{6.1.9}             \\
+                & = x - \dfrac{\norm{x}^2 - 2 \inn{x, y} + \norm{y}^2}{\norm{x - y}^2} (x - y)      &  & \text{(by hypothesis)} \\
+                & = x - \dfrac{\norm{x}^2 - 2 \Re(\inn{x, y}) + \norm{y}^2}{\norm{x - y}^2} (x - y) &  & (\F = \R)              \\
+                & = x - \dfrac{\norm{x - y}^2}{\norm{x - y}^2} (x - y)                              &  & \by{ex:6.1.19}[a]      \\
                 & = y.
   \end{align*}
 \end{proof}

@@ -176,7 +176,7 @@
   \(e^c = e^a\).
   We can show by the use of trigonometric identities that
   \[
-    e^{c + d} = e^c e^d \quad \text{and} \quad e^{-c} = \frac{1}{e^c}
+    e^{c + d} = e^c e^d \quad \text{and} \quad e^{-c} = \dfrac{1}{e^c}
   \]
   for any complex number \(c\) and \(d\).
 \end{defn}
@@ -546,10 +546,10 @@
   Observe that
   \begin{align*}
              & (\Dop - c_{k + 1} \IT)(t^j e^{c_i t}) = j t^{j - 1} e^{c_i t} + (c_i - c_{k + 1}) t^j e^{c_i t}                                                                                                             \\
-    \implies & (\Dop - c_{k + 1} \IT)^{n_{k + 1}} \pa{t^j e^{c_i t}} = \sum_{q = 0}^{\min(n_{k + 1} - 1, j)} \binom{n_{k + 1}}{q} (c_i - c_{k + 1})^{n_{k + 1} - q} \frac{j!}{(j - q)!} t^{j - q} e^{c_i t}                \\
+    \implies & (\Dop - c_{k + 1} \IT)^{n_{k + 1}} \pa{t^j e^{c_i t}} = \sum_{q = 0}^{\min(n_{k + 1} - 1, j)} \binom{n_{k + 1}}{q} (c_i - c_{k + 1})^{n_{k + 1} - q} \dfrac{j!}{(j - q)!} t^{j - q} e^{c_i t}               \\
     \implies & \zv = (\Dop - c_{k + 1} \IT)^{n_{k + 1}} \pa{\sum_{i = 1}^{k + 1} \sum_{j = 0}^{n_i - 1} b_{i j} t^j e^{c_i t}} = \sum_{i = 1}^{k + 1} \sum_{j = 0}^{n_i - 1} b_{i j} (\Dop - c_{k + 1} \IT)(t^j e^{c_i t}) \\
-             & = \sum_{i = 1}^{k + 1} \sum_{j = 0}^{n_i - 1} \sum_{q = 0}^{\min(n_{k + 1} - 1, j)} b_{i j} \binom{n_{k + 1}}{q} (c_i - c_{k + 1})^{n_{k + 1} - q} \frac{j!}{(j - q)!} t^{j - q} e^{c_i t}                  \\
-             & = \sum_{i = 1}^k \sum_{j = 0}^{n_i - 1} \sum_{q = 0}^{\min(n_{k + 1} - 1, j)} b_{i j} \binom{n_{k + 1}}{q} (c_i - c_{k + 1})^{n_{k + 1} - q} \frac{j!}{(j - q)!} t^{j - q} e^{c_i t}.
+             & = \sum_{i = 1}^{k + 1} \sum_{j = 0}^{n_i - 1} \sum_{q = 0}^{\min(n_{k + 1} - 1, j)} b_{i j} \binom{n_{k + 1}}{q} (c_i - c_{k + 1})^{n_{k + 1} - q} \dfrac{j!}{(j - q)!} t^{j - q} e^{c_i t}                 \\
+             & = \sum_{i = 1}^k \sum_{j = 0}^{n_i - 1} \sum_{q = 0}^{\min(n_{k + 1} - 1, j)} b_{i j} \binom{n_{k + 1}}{q} (c_i - c_{k + 1})^{n_{k + 1} - q} \dfrac{j!}{(j - q)!} t^{j - q} e^{c_i t}.
   \end{align*}
   Note that the last line follow since \(q \leq n_{k + 1} - 1 < n_{k + 1}\).
   Since \(c_i - c_{k + 1} \neq 0\) for all \(i \in \set{1, \dots, k}\) and factorials are positive, by induction hypothesis we must have \(b_{i j} = 0\) for all \(i \in \set{1, \dots, k}\) and \(j \in \set{0, \dots n_i - 1}\).
@@ -620,7 +620,7 @@
 \begin{ex}\label{ex:2.7.7}
   Prove that if \(\set{x, y}\) is a basis for a vector space \(\V\) over \(\C\), then so is
   \[
-    \set{\frac{1}{2} (x + y), \frac{1}{2i} (x - y)}.
+    \set{\dfrac{1}{2} (x + y), \dfrac{1}{2i} (x - y)}.
   \]
 \end{ex}
 
@@ -629,12 +629,12 @@
   By \cref{1.6.1} there exist \(\seq{c}{1,2} \in \C\) such that \(v = c_1 x + c_2 y\).
   Then we have
   \begin{align*}
-    v & = c_1 x + c_2 y                                                                      \\
-      & = \frac{c_1}{2} x + \frac{c_2}{2} y + \frac{c_1 i}{2 i} x - \frac{-c_2 i}{2 i} y     \\
-      & \quad + \frac{c_2}{2} x + \frac{c_1}{2} y - \frac{c_2 i}{2 i} x - \frac{c_1 i}{2i} y \\
-      & = \pa{\frac{c_1 + c_2}{2}} (x + y) + i \pa{\frac{c_1 - c_2}{2i}} (x - y).
+    v & = c_1 x + c_2 y                                                                          \\
+      & = \dfrac{c_1}{2} x + \dfrac{c_2}{2} y + \dfrac{c_1 i}{2 i} x - \dfrac{-c_2 i}{2 i} y     \\
+      & \quad + \dfrac{c_2}{2} x + \dfrac{c_1}{2} y - \dfrac{c_2 i}{2 i} x - \dfrac{c_1 i}{2i} y \\
+      & = \pa{\dfrac{c_1 + c_2}{2}} (x + y) + i \pa{\dfrac{c_1 - c_2}{2i}} (x - y).
   \end{align*}
-  Thus by \cref{1.6.15}(a) we know that \(\set{\frac{1}{2} (x + y), \frac{1}{2i} (x - y)}\) is a basis for \(\V\) over \(\C\).
+  Thus by \cref{1.6.15}(a) we know that \(\set{\dfrac{1}{2} (x + y), \dfrac{1}{2i} (x - y)}\) is a basis for \(\V\) over \(\C\).
 \end{proof}
 
 \begin{ex}\label{ex:2.7.8}
@@ -654,7 +654,7 @@
   \end{align*}
   By \cref{ex:2.7.7} we know that the set
   \[
-    \set{\frac{1}{2} (e^{(a + ib) t} + e^{(a - ib) t}), \frac{1}{2i} (e^{(a + ib) t} - e^{(a - ib) t})} = \set{e^{at} \cos(bt), e^{at} \sin(bt)}
+    \set{\dfrac{1}{2} (e^{(a + ib) t} + e^{(a - ib) t}), \dfrac{1}{2i} (e^{(a + ib) t} - e^{(a - ib) t})} = \set{e^{at} \cos(bt), e^{at} \sin(bt)}
   \]
   is also a basis for the solution space.
 \end{proof}
@@ -704,7 +704,7 @@
     \implies & y \in \ns{h(\Dop)},                                           &  & \by{2.1.10}
   \end{align*}
   we know that \(g(\Dop)(\ns{p(\Dop)}) \subseteq \ns{h(\Dop)}\).
-  By \cref{1.11} if we can show that \(\dim(g(\Dop)(\ns{p(\Dop)})) = \dim(\ns{h(\Dop)})\), then we can prove that \(g(\Dop)(\ns{p(\Dop)}) = \ns{h(\Dop)}\).
+  If we can show that \(\dim(g(\Dop)(\ns{p(\Dop)})) = \dim(\ns{h(\Dop)})\), then by \cref{1.11} we can prove that \(g(\Dop)(\ns{p(\Dop)}) = \ns{h(\Dop)}\).
   This is true since
   \begin{align*}
      & \dim(g(\Dop)(\ns{p(\Dop)}))                                                     \\
@@ -889,7 +889,7 @@
 \begin{ex}[Pendular Motion]\label{ex:2.7.16}
   It is well known that the motion of a pendulum is approximated by the differential equation
   \[
-    \theta'' + \frac{g}{l} \theta = \zv,
+    \theta'' + \dfrac{g}{l} \theta = \zv,
   \]
   where \(\theta(t)\) is the angle in radians that the pendulum makes with a vertical line at time \(t\), interpreted so that \(\theta\) is positive if the pendulum is to the right and negative if the pendulum is to the left of the vertical line as viewed by the reader.
   Here \(l\) is the length of the pendulum and \(g\) is the magnitude of acceleration due to gravity.
@@ -910,12 +910,12 @@
 \begin{proof}[\pf{ex:2.7.16}(a)]
   Since
   \[
-    t^2 + \frac{g}{l} = \pa{t - i \sqrt{\frac{g}{l}}} \pa{t + i \sqrt{\frac{g}{l}}} = 0 \implies t = \pm i \sqrt{\frac{g}{l}},
+    t^2 + \dfrac{g}{l} = \pa{t - i \sqrt{\dfrac{g}{l}}} \pa{t + i \sqrt{\dfrac{g}{l}}} = 0 \implies t = \pm i \sqrt{\dfrac{g}{l}},
   \]
   by \cref{2.7.14} we know that
   \begin{align*}
-    \forall t \in \R, \theta(t) & = a e^{i \sqrt{\frac{g}{l}} t} + b e^{- i \sqrt{\frac{g}{l}} t}                        \\
-                                & = a \cos\pa{\sqrt{\frac{g}{l}} t} + b \sin\pa{\sqrt{\frac{g}{l}} t} &  & \by{ex:2.7.8}
+    \forall t \in \R, \theta(t) & = a e^{i \sqrt{\dfrac{g}{l}} t} + b e^{- i \sqrt{\dfrac{g}{l}} t}                        \\
+                                & = a \cos\pa{\sqrt{\dfrac{g}{l}} t} + b \sin\pa{\sqrt{\dfrac{g}{l}} t} &  & \by{ex:2.7.8}
   \end{align*}
   for some \(a, b \in \C\).
 \end{proof}
@@ -923,36 +923,36 @@
 \begin{proof}[\pf{ex:2.7.16}(b)]
   Since
   \begin{align*}
-    \theta_0 & = \theta(0)                                                                                                                                               \\
-             & = a \cos\pa{\sqrt{\frac{g}{l}} 0} + b \sin\pa{\sqrt{\frac{g}{l}} 0}                                                                &  & \by{ex:2.7.16}[a] \\
-             & = a                                                                                                                                                       \\
-    0        & = \theta'(0)                                                                                                                                              \\
-             & = -a \cdot \sin\pa{\sqrt{\frac{g}{l}} 0} \cdot \sqrt{\frac{g}{l}} + b \cdot \cos\pa{\sqrt{\frac{g}{l}} 0} \cdot \sqrt{\frac{g}{l}} &  & \by{ex:2.7.16}[a] \\
-             & = b \sqrt{\frac{g}{l}},
+    \theta_0 & = \theta(0)                                                                                                                                                   \\
+             & = a \cos\pa{\sqrt{\dfrac{g}{l}} 0} + b \sin\pa{\sqrt{\dfrac{g}{l}} 0}                                                                  &  & \by{ex:2.7.16}[a] \\
+             & = a                                                                                                                                                           \\
+    0        & = \theta'(0)                                                                                                                                                  \\
+             & = -a \cdot \sin\pa{\sqrt{\dfrac{g}{l}} 0} \cdot \sqrt{\dfrac{g}{l}} + b \cdot \cos\pa{\sqrt{\dfrac{g}{l}} 0} \cdot \sqrt{\dfrac{g}{l}} &  & \by{ex:2.7.16}[a] \\
+             & = b \sqrt{\dfrac{g}{l}},
   \end{align*}
   we know that \(a = \theta_0\) and \(b = 0\).
   Thus we have
   \[
-    \forall t \in \R, \theta(t) = \theta_0 \cos\pa{\sqrt{\frac{g}{l}} t}
+    \forall t \in \R, \theta(t) = \theta_0 \cos\pa{\sqrt{\dfrac{g}{l}} t}
   \]
 \end{proof}
 
 \begin{proof}[\pf{ex:2.7.16}(c)]
   Since
   \begin{align*}
-    \theta(0) & = a \cos\pa{\sqrt{\frac{g}{l}} 0} + b \sin\pa{\sqrt{\frac{g}{l}} 0}                                                            &  & \by{ex:2.7.16}[a] \\
-              & = a \cos(0) + b \sin(0)                                                                                                                               \\
-              & = a \cos(2 \pi) + b \sin(2 \pi)                                                                                                                       \\
-              & = a \cos\pa{\sqrt{\frac{g}{l}} \cdot 2 \pi \sqrt{\frac{l}{g}}} + b \sin\pa{\sqrt{\frac{g}{l}}  \cdot 2 \pi \sqrt{\frac{l}{g}}}                        \\
-              & = \theta\pa{2 \pi \sqrt{\frac{l}{g}}},                                                                                         &  & \by{ex:2.7.16}[a]
+    \theta(0) & = a \cos\pa{\sqrt{\dfrac{g}{l}} 0} + b \sin\pa{\sqrt{\dfrac{g}{l}} 0}                                                              &  & \by{ex:2.7.16}[a] \\
+              & = a \cos(0) + b \sin(0)                                                                                                                                   \\
+              & = a \cos(2 \pi) + b \sin(2 \pi)                                                                                                                           \\
+              & = a \cos\pa{\sqrt{\dfrac{g}{l}} \cdot 2 \pi \sqrt{\dfrac{l}{g}}} + b \sin\pa{\sqrt{\dfrac{g}{l}}  \cdot 2 \pi \sqrt{\dfrac{l}{g}}}                        \\
+              & = \theta\pa{2 \pi \sqrt{\dfrac{l}{g}}},                                                                                            &  & \by{ex:2.7.16}[a]
   \end{align*}
-  we know that the period of \(\theta\) is \(2 \pi \sqrt{\frac{l}{g}}\).
+  we know that the period of \(\theta\) is \(2 \pi \sqrt{\dfrac{l}{g}}\).
 \end{proof}
 
 \begin{ex}[Periodic Motion of a Spring without Damping]\label{ex:2.7.17}
   Find the general solution to
   \[
-    y'' + \frac{k}{m} y = \zv,
+    y'' + \dfrac{k}{m} y = \zv,
   \]
   which describes the periodic motion of a spring, ignoring frictional forces.
 \end{ex}
@@ -960,12 +960,12 @@
 \begin{proof}[\pf{ex:2.7.17}]
   Since
   \[
-    t^2 + \frac{k}{m} = \pa{t - i \sqrt{\frac{k}{m}}} \pa{t + i \sqrt{\frac{k}{m}}} = 0 \implies t = \pm i \sqrt{\frac{k}{m}},
+    t^2 + \dfrac{k}{m} = \pa{t - i \sqrt{\dfrac{k}{m}}} \pa{t + i \sqrt{\dfrac{k}{m}}} = 0 \implies t = \pm i \sqrt{\dfrac{k}{m}},
   \]
   we know that
   \begin{align*}
-    \forall t \in \R, y(t) & = a e^{i \sqrt{\frac{k}{m}} t} + b e^{-i \sqrt{\frac{k}{m}} t}      &  & \by{2.7.14}   \\
-                           & = a \cos\pa{\sqrt{\frac{k}{m}} t} + b \sin\pa{\sqrt{\frac{k}{m}} t} &  & \by{ex:2.7.8}
+    \forall t \in \R, y(t) & = a e^{i \sqrt{\dfrac{k}{m}} t} + b e^{-i \sqrt{\dfrac{k}{m}} t}      &  & \by{2.7.14}   \\
+                           & = a \cos\pa{\sqrt{\dfrac{k}{m}} t} + b \sin\pa{\sqrt{\dfrac{k}{m}} t} &  & \by{ex:2.7.8}
   \end{align*}
   for some \(a, b \in \C\).
 \end{proof}
@@ -989,11 +989,11 @@
 \begin{proof}[\pf{ex:2.7.18}(a)]
   Since
   \[
-    t^2 + \frac{r}{m} t + \frac{k}{m} = 0 \implies t = \frac{-r \pm \sqrt{r^2 - 4mk}}{2m},
+    t^2 + \dfrac{r}{m} t + \dfrac{k}{m} = 0 \implies t = \dfrac{-r \pm \sqrt{r^2 - 4mk}}{2m},
   \]
   by \cref{2.7.14} we know that
   \[
-    \forall t \in \R, y(t) = a e^{\pa{\frac{-r + \sqrt{r^2 - 4mk}}{2m}} t} + b e^{\pa{\frac{-r - \sqrt{r^2 - 4mk}}{2m}} t}
+    \forall t \in \R, y(t) = a e^{\pa{\dfrac{-r + \sqrt{r^2 - 4mk}}{2m}} t} + b e^{\pa{\dfrac{-r - \sqrt{r^2 - 4mk}}{2m}} t}
   \]
   for some \(a, b \in \C\).
 \end{proof}
@@ -1001,18 +1001,18 @@
 \begin{proof}[\pf{ex:2.7.18}(b)]
   Since
   \begin{align*}
-    0   & = y(0)                                                                                                      \\
-        & = a + b                                                                              &  & \by{ex:2.7.18}[a] \\
-    v_0 & = y'(0)                                                                                                     \\
-        & = a \pa{\frac{-r + \sqrt{r^2 - 4mk}}{2m}} + b \pa{\frac{-r - \sqrt{r^2 - 4mk}}{2m}},
+    0   & = y(0)                                                                                                        \\
+        & = a + b                                                                                &  & \by{ex:2.7.18}[a] \\
+    v_0 & = y'(0)                                                                                                       \\
+        & = a \pa{\dfrac{-r + \sqrt{r^2 - 4mk}}{2m}} + b \pa{\dfrac{-r - \sqrt{r^2 - 4mk}}{2m}},
   \end{align*}
   we have
   \[
-    a = \frac{v_0 m}{\sqrt{r^2 - 4mk}} \quad \text{and} \quad b = \frac{-v_0 m}{\sqrt{r^2 - 4mk}}
+    a = \dfrac{v_0 m}{\sqrt{r^2 - 4mk}} \quad \text{and} \quad b = \dfrac{-v_0 m}{\sqrt{r^2 - 4mk}}
   \]
   and thus
   \[
-    \forall y \in \R, y(t) = \frac{v_0 m}{\sqrt{r^2 - 4mk}} e^{\pa{\frac{-r + \sqrt{r^2 - 4mk}}{2m}} t} - \frac{v_0 m}{\sqrt{r^2 - 4mk}} e^{\pa{\frac{-r - \sqrt{r^2 - 4mk}}{2m}} t}.
+    \forall y \in \R, y(t) = \dfrac{v_0 m}{\sqrt{r^2 - 4mk}} e^{\pa{\dfrac{-r + \sqrt{r^2 - 4mk}}{2m}} t} - \dfrac{v_0 m}{\sqrt{r^2 - 4mk}} e^{\pa{\dfrac{-r - \sqrt{r^2 - 4mk}}{2m}} t}.
   \]
 \end{proof}
 
@@ -1021,29 +1021,29 @@
   \begin{itemize}
     \item If \(r^2 - 4mk \geq 0\), then we have
           \begin{align*}
-                     & r^2 > r^2 - 4mk                                                                                                                       &  & (mk > 0)          \\
-            \implies & r > \sqrt{r^2 - 4mk} \geq -\sqrt{r^2 - 4mk}                                                                                           &  & (r > 0)           \\
-            \implies & 0 > -r + \sqrt{r^2 - 4mk} \geq -r - \sqrt{r^2 - 4mk}                                                                                                         \\
-            \implies & 0 > \frac{-r + \sqrt{r^2 - 4mk}}{2m} \geq \frac{-r - \sqrt{r^2 - 4mk}}{2m}                                                            &  & (m > 0)           \\
-            \implies & \Lim_{t \to \infty} e^{\pa{\frac{-r + \sqrt{r^2 - 4mk}}{2m}} t} = \Lim_{t \to \infty} e^{\pa{\frac{-r - \sqrt{r^2 - 4mk}}{2m}} t} = 0                        \\
-            \implies & \Lim_{t \to \infty} y(t) = 0.                                                                                                         &  & \by{ex:2.7.18}[b]
+                     & r^2 > r^2 - 4mk                                                                                                                         &  & (mk > 0)          \\
+            \implies & r > \sqrt{r^2 - 4mk} \geq -\sqrt{r^2 - 4mk}                                                                                             &  & (r > 0)           \\
+            \implies & 0 > -r + \sqrt{r^2 - 4mk} \geq -r - \sqrt{r^2 - 4mk}                                                                                                           \\
+            \implies & 0 > \dfrac{-r + \sqrt{r^2 - 4mk}}{2m} \geq \dfrac{-r - \sqrt{r^2 - 4mk}}{2m}                                                            &  & (m > 0)           \\
+            \implies & \Lim_{t \to \infty} e^{\pa{\dfrac{-r + \sqrt{r^2 - 4mk}}{2m}} t} = \Lim_{t \to \infty} e^{\pa{\dfrac{-r - \sqrt{r^2 - 4mk}}{2m}} t} = 0                        \\
+            \implies & \Lim_{t \to \infty} y(t) = 0.                                                                                                           &  & \by{ex:2.7.18}[b]
           \end{align*}
     \item If \(r^2 - 4mk < 0\), then we have
           \begin{align*}
-             & \abs{e^{\pa{\frac{-r + \sqrt{r^2 - 4mk}}{2m}} t}}                                                                                            \\
-             & = \abs{e^{\frac{-rt}{2m}} \pa{\cos\pa{\frac{\sqrt{r^2 - 4mk}}{2m} t} + i \sin\pa{\frac{\sqrt{r^2 - 4mk}}{2m} t}}} &  & \by{2.7.8}            \\
-             & \leq \abs{e^{\frac{-rt}{2m}}}                                                                                     &  & (\cos^2 + \sin^2 = 1)
+             & \abs{e^{\pa{\dfrac{-r + \sqrt{r^2 - 4mk}}{2m}} t}}                                                                                              \\
+             & = \abs{e^{\dfrac{-rt}{2m}} \pa{\cos\pa{\dfrac{\sqrt{r^2 - 4mk}}{2m} t} + i \sin\pa{\dfrac{\sqrt{r^2 - 4mk}}{2m} t}}} &  & \by{2.7.8}            \\
+             & \leq \abs{e^{\dfrac{-rt}{2m}}}                                                                                       &  & (\cos^2 + \sin^2 = 1)
           \end{align*}
           and
           \begin{align*}
-             & \abs{e^{\pa{\frac{-r - \sqrt{r^2 - 4mk}}{2m}} t}}                                                                                              \\
-             & = \abs{e^{\frac{-rt}{2m}} \pa{\cos\pa{\frac{-\sqrt{r^2 - 4mk}}{2m} t} + i \sin\pa{\frac{-\sqrt{r^2 - 4mk}}{2m} t}}} &  & \by{2.7.8}            \\
-             & \leq \abs{e^{\frac{-rt}{2m}}}.                                                                                      &  & (\cos^2 + \sin^2 = 1)
+             & \abs{e^{\pa{\dfrac{-r - \sqrt{r^2 - 4mk}}{2m}} t}}                                                                                                \\
+             & = \abs{e^{\dfrac{-rt}{2m}} \pa{\cos\pa{\dfrac{-\sqrt{r^2 - 4mk}}{2m} t} + i \sin\pa{\dfrac{-\sqrt{r^2 - 4mk}}{2m} t}}} &  & \by{2.7.8}            \\
+             & \leq \abs{e^{\dfrac{-rt}{2m}}}.                                                                                        &  & (\cos^2 + \sin^2 = 1)
           \end{align*}
           Thus
           \begin{align*}
-                     & \Lim_{t \to \infty} \abs{e^{\pa{\frac{-r - \sqrt{r^2 - 4mk}}{2m}} t}} = \Lim_{t \to \infty} \abs{e^{\pa{\frac{-r - \sqrt{r^2 - 4mk}}{2m}} t}} = 0 \\
-            \implies & \Lim_{t \to \infty} e^{\pa{\frac{-r - \sqrt{r^2 - 4mk}}{2m}} t} = \Lim_{t \to \infty} e^{\pa{\frac{-r - \sqrt{r^2 - 4mk}}{2m}} t} = 0             \\
+                     & \Lim_{t \to \infty} \abs{e^{\pa{\dfrac{-r - \sqrt{r^2 - 4mk}}{2m}} t}} = \Lim_{t \to \infty} \abs{e^{\pa{\dfrac{-r - \sqrt{r^2 - 4mk}}{2m}} t}} = 0 \\
+            \implies & \Lim_{t \to \infty} e^{\pa{\dfrac{-r - \sqrt{r^2 - 4mk}}{2m}} t} = \Lim_{t \to \infty} e^{\pa{\dfrac{-r - \sqrt{r^2 - 4mk}}{2m}} t} = 0             \\
             \implies & \Lim_{t \to \infty} y(t) = 0.
           \end{align*}
   \end{itemize}

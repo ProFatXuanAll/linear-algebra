@@ -568,10 +568,10 @@
     \forall p, q \in \set{1, \dots, n}, E_{p q} & = \begin{dcases}
                                                       \delta_{p q}   & \text{if } p \neq i \\
                                                       c \delta_{i q} & \text{if } p = i
-                                                    \end{dcases}                                      &  & \by{2.3.4}           \\
+                                                    \end{dcases}                                       &  & \by{2.3.4}           \\
                                                 & = \begin{dcases}
-                                                      \delta_{p q}                  & \text{if } p \neq i \\
-                                                      \frac{1}{c^{-1}} \delta_{i q} & \text{if } p = i
+                                                      \delta_{p q}                   & \text{if } p \neq i \\
+                                                      \dfrac{1}{c^{-1}} \delta_{i q} & \text{if } p = i
                                                     \end{dcases}. &  & (c \neq 0)
   \end{align*}
   Thus \(E\) can be obtained by dividing the \(i\)th row of \(I_n\) with \(c^{-1}\).
@@ -630,7 +630,7 @@
   If \(C_{(m + 1) 1} = 0\) then we do nothing.
   If not, then we split into two cases:
   \begin{itemize}
-    \item If \(C_{1 1} \neq 0\), then we multiply the first row of \(C\) with \(\frac{-C_{(m + 1) 1}}{C_{1 1}}\) and add it to the \((m + 1)\)th row of \(C\).
+    \item If \(C_{1 1} \neq 0\), then we multiply the first row of \(C\) with \(\dfrac{-C_{(m + 1) 1}}{C_{1 1}}\) and add it to the \((m + 1)\)th row of \(C\).
           The resulting matrix, called it \(D\), will have \(D_{(m + 1) 1} = 0\) (thanks to the elementary row operation of type 3) and the first \(m\) rows of \(D\) is upper triangular (since they are the first \(m\) rows of \(C\)).
     \item If \(C_{1 1} = 0\), then we interchange the first and the \((m + 1)\)th rows of \(C\).
           The resulting matrix, called it \(D\), will have \(D_{(m + 1) 1} = 0\) (thanks to the elementary row operation of type 1) and the first \(m\) rows of \(D\) is upper triangular (since the second to the \(m\)th rows of \(D\) is the same as \(C\)).
@@ -640,7 +640,7 @@
   If \(D_{(m + 1) 2} = 0\) then we do nothing.
   If not, then we split into two cases:
   \begin{itemize}
-    \item If \(D_{2 2} \neq 0\), then we multiply the second row of \(D\) with \(\frac{-D_{(m + 1) 2}}{D_{2 2}}\) and add it to the \((m + 1)\)th row of \(D\).
+    \item If \(D_{2 2} \neq 0\), then we multiply the second row of \(D\) with \(\dfrac{-D_{(m + 1) 2}}{D_{2 2}}\) and add it to the \((m + 1)\)th row of \(D\).
           The resulting matrix, called it \(E\), will have \(E_{(m + 1) 1} = E_{(m + 1) 2} = 0\) (thanks to the elementary row operation of type 3 and \(D_{2 1} = 0\)) and the first \(m\) rows of \(E\) is upper triangular (since they are the first \(m\) rows of \(D\)).
     \item If \(D_{2 2} = 0\), then we interchange the second and the \((m + 1)\)th rows of \(D\).
           The resulting matrix, called it \(E\), will have \(E_{(m + 1) 1} = E_{(m + 1) 2} = 0\) (thanks to the elementary row operation of type 1 and \(D_{2 1} = 0\)) and the first \(m\) rows of \(E\) is upper triangular (since the first row and the third to the \(m\)th rows of \(E\) is the same as \(D\), and \(E_{2 1} = D_{(m + 1) 1} = 0\)).

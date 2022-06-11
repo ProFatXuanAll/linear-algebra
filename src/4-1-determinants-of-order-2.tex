@@ -93,7 +93,7 @@
   Then the determinant of \(A\) is nonzero iff \(A\) is invertible.
   Moreover, if \(A\) is invertible, then
   \[
-    A^{-1} = \frac{1}{\det(A)} \begin{pmatrix}
+    A^{-1} = \dfrac{1}{\det(A)} \begin{pmatrix}
       A_{2 2}  & -A_{1 2} \\
       -A_{2 1} & A_{1 1}
     \end{pmatrix}.
@@ -103,7 +103,7 @@
 \begin{proof}[\pf{4.2}]
   If \(\det(A) \neq 0\), then we can define a matrix
   \[
-    M = \frac{1}{\det(A)} \begin{pmatrix}
+    M = \dfrac{1}{\det(A)} \begin{pmatrix}
       A_{2 2}  & -A_{1 2} \\
       -A_{2 1} & A_{1 1}
     \end{pmatrix}.
@@ -123,13 +123,13 @@
   If \(A_{1 1} \neq 0\), add \(-A_{2 1} / A_{1 1}\) times row \(1\) of \(A\) to row \(2\) to obtain the matrix
   \[
     \begin{pmatrix}
-      A_{1 1} & A_{1 2}                                   \\
-      0       & A_{2 2} - \frac{A_{1 2} A_{2 1}}{A_{1 1}}
+      A_{1 1} & A_{1 2}                                    \\
+      0       & A_{2 2} - \dfrac{A_{1 2} A_{2 1}}{A_{1 1}}
     \end{pmatrix}.
   \]
   Because elementary row operations are rank-preserving by \cref{3.2.3}, it follows that
   \[
-    A_{2 2} - \frac{A_{1 2} A_{2 1}}{A_{1 1}} \neq 0.
+    A_{2 2} - \dfrac{A_{1 2} A_{2 1}}{A_{1 1}} \neq 0.
   \]
   Therefore \(\det(A) = A_{1 1} A_{2 2} - A_{1 2} A_{2 1} \neq 0\).
   On the other hand, if \(A_{2 1} \neq 0\), we see that \(\det(A) \neq 0\) by adding \(-A_{1 1} / A_{2 1}\) times row \(2\) of \(A\) to row \(1\) and applying a similar argument.
@@ -144,7 +144,7 @@
     \mathbf{O}\begin{pmatrix}
       u \\
       v
-    \end{pmatrix} = \frac{\det\begin{pmatrix}
+    \end{pmatrix} = \dfrac{\det\begin{pmatrix}
         u \\
         v
       \end{pmatrix}}{\abs{\det\begin{pmatrix}
@@ -312,21 +312,21 @@
                                               \end{pmatrix} \cdot \mathbf{A}\begin{pmatrix}
                                                                               u \\
                                                                               cv
-                                                                            \end{pmatrix}                                              \\
-                                  & = \pa{\frac{c}{\abs{c}} \mathbf{O}\begin{pmatrix}
-                                                                          u \\
-                                                                          v
-                                                                        \end{pmatrix}} \pa{\abs{c} \mathbf{A}\begin{pmatrix}
-                                                                                                               u \\
-                                                                                                               v
-                                                                                                             \end{pmatrix}} &  & \by{4.1} \\
+                                                                            \end{pmatrix}                                               \\
+                                  & = \pa{\dfrac{c}{\abs{c}} \mathbf{O}\begin{pmatrix}
+                                                                           u \\
+                                                                           v
+                                                                         \end{pmatrix}} \pa{\abs{c} \mathbf{A}\begin{pmatrix}
+                                                                                                                u \\
+                                                                                                                v
+                                                                                                              \end{pmatrix}} &  & \by{4.1} \\
                                   & = c \cdot \mathbf{O}\begin{pmatrix}
                                                           u \\
                                                           v
                                                         \end{pmatrix} \cdot \mathbf{A}\begin{pmatrix}
                                                                                         u \\
                                                                                         v
-                                                                                      \end{pmatrix}                                    \\
+                                                                                      \end{pmatrix}                                     \\
                                   & = c \cdot \delta\begin{pmatrix}
                                                       u \\
                                                       v
@@ -385,10 +385,10 @@
               au + bw
             \end{pmatrix} = a \cdot \delta\begin{pmatrix}
               u \\
-              u + \frac{b}{a} w
+              u + \dfrac{b}{a} w
             \end{pmatrix} = a \cdot \delta\begin{pmatrix}
               u \\
-              \frac{b}{a} w
+              \dfrac{b}{a} w
             \end{pmatrix} = b \cdot \delta\begin{pmatrix}
               u \\
               w
@@ -664,11 +664,11 @@
 \begin{proof}[\pf{ex:4.1.10}(d)]
   We have
   \begin{align*}
-    \frac{1}{\det(A)} C & = \frac{1}{\det(A)} \begin{pmatrix}
-                                                A_{2 2}  & -A_{1 2} \\
-                                                -A_{2 1} & A_{1 1}
-                                              \end{pmatrix} &  & \by{ex:4.1.10} \\
-                        & = A^{-1}.                           &  & \by{4.2}
+    \dfrac{1}{\det(A)} C & = \dfrac{1}{\det(A)} \begin{pmatrix}
+                                                  A_{2 2}  & -A_{1 2} \\
+                                                  -A_{2 1} & A_{1 1}
+                                                \end{pmatrix} &  & \by{ex:4.1.10} \\
+                         & = A^{-1}.                            &  & \by{4.2}
   \end{align*}
 \end{proof}
 
@@ -811,13 +811,13 @@
     \mathbf{O}\begin{pmatrix}
       u \\
       v
-    \end{pmatrix} = \frac{\det\begin{pmatrix}
+    \end{pmatrix} = \dfrac{\det\begin{pmatrix}
         u \\
         v
       \end{pmatrix}}{\abs{\det\begin{pmatrix}
           u \\
           v
-        \end{pmatrix}}} = \frac{\det\begin{pmatrix}
+        \end{pmatrix}}} = \dfrac{\det\begin{pmatrix}
         u \\
         v
       \end{pmatrix}}{\det\begin{pmatrix}

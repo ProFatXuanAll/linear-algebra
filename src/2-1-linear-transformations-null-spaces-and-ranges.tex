@@ -658,11 +658,11 @@
   Let \(f \in \ps{\R}\).
   Since
   \begin{align*}
-             & f \in \ps{\R}                                                                          \\
-    \implies & \exists \seq{a}{0,1,,n} \in \R : f(x) = a_0 + a_1 x + \cdots + a_n x^n                 \\
+             & f \in \ps{\R}                                                                            \\
+    \implies & \exists \seq{a}{0,1,,n} \in \R : f(x) = a_0 + a_1 x + \cdots + a_n x^n                   \\
     \implies & \begin{dcases}
-                 x \mapsto a_0 x + \frac{a_1}{2} x^2 + \cdots + \frac{a_n}{n + 1} x^{n + 1} \in \ps{\R} \\
-                 (x \mapsto a_0 x + \frac{a_1}{2} x^2 + \cdots + \frac{a_n}{n + 1} x^{n + 1})' = f
+                 x \mapsto a_0 x + \dfrac{a_1}{2} x^2 + \cdots + \dfrac{a_n}{n + 1} x^{n + 1} \in \ps{\R} \\
+                 (x \mapsto a_0 x + \dfrac{a_1}{2} x^2 + \cdots + \dfrac{a_n}{n + 1} x^{n + 1})' = f
                \end{dcases}
   \end{align*}
   and \(f\) is arbitrary, we know that \(\T\) is onto.
@@ -1340,9 +1340,9 @@
 \begin{proof}[\pf{ex:2.1.37}]
   First observe that for all \(b \in \Z^+\) we have
   \begin{align*}
-             & \forall x \in \V, \T(x) = \T\pa{b \frac{1}{b} x} = \T\pa{\sum_{i = 1}^b \frac{1}{b} x} &  & \by{1.2.1}     \\
-             & = \sum_{i = 1}^b \T\pa{\frac{1}{b} x} = b \T\pa{\frac{1}{b} x}                         &  & \by{ex:2.1.37} \\
-    \implies & \forall x \in \V, \frac{1}{b} \T(x) = \T\pa{\frac{1}{b} x}.                            &  & \by{1.2.1}
+             & \forall x \in \V, \T(x) = \T\pa{b \dfrac{1}{b} x} = \T\pa{\sum_{i = 1}^b \dfrac{1}{b} x} &  & \by{1.2.1}     \\
+             & = \sum_{i = 1}^b \T\pa{\dfrac{1}{b} x} = b \T\pa{\dfrac{1}{b} x}                         &  & \by{ex:2.1.37} \\
+    \implies & \forall x \in \V, \dfrac{1}{b} \T(x) = \T\pa{\dfrac{1}{b} x}.                            &  & \by{1.2.1}
   \end{align*}
   Let \(q \in \Q\).
   Then there exists some \((a, b) \in \Z \times \Z^+\) such that \(q = a / b\).
@@ -1350,27 +1350,27 @@
   \begin{itemize}
     \item If \(a = 0\), then we have
           \begin{align*}
-                     & \forall x \in \V, \T\pa{\frac{0}{b} x} = \T(0x) = \T(0x + \zv_{\V}) &  & \text{(by \ref{vs3})} \\
-                     & = \T(0x + 0x)                                                       &  & \by{1.2}[a]           \\
-                     & = \T(0x) + \T(0x) = \T(0x) + \T\pa{\frac{0}{b} x}                   &  & \by{ex:2.1.37}        \\
-                     & = \T(0x) + \zv_{\W}                                                 &  & \text{(by \ref{vs3})} \\
-                     & = \T(0x) + 0 \T(x) = \T(0x) + \frac{0}{b} \T(x)                     &  & \by{1.2}[a]           \\
-            \implies & \forall x \in \V, \T\pa{\frac{0}{b}x} = \frac{0}{b} \T(x).          &  & \by{1.1}
+                     & \forall x \in \V, \T\pa{\dfrac{0}{b} x} = \T(0x) = \T(0x + \zv_{\V}) &  & \text{(by \ref{vs3})} \\
+                     & = \T(0x + 0x)                                                        &  & \by{1.2}[a]           \\
+                     & = \T(0x) + \T(0x) = \T(0x) + \T\pa{\dfrac{0}{b} x}                   &  & \by{ex:2.1.37}        \\
+                     & = \T(0x) + \zv_{\W}                                                  &  & \text{(by \ref{vs3})} \\
+                     & = \T(0x) + 0 \T(x) = \T(0x) + \dfrac{0}{b} \T(x)                     &  & \by{1.2}[a]           \\
+            \implies & \forall x \in \V, \T\pa{\dfrac{0}{b}x} = \dfrac{0}{b} \T(x).         &  & \by{1.1}
           \end{align*}
     \item If \(a > 0\), then we have
           \begin{align*}
-            \forall x \in \V, \frac{a}{b} \T(x) & = \sum_{i = 1}^a \frac{1}{b} \T(x)    &  & \by{1.2.1}                    \\
-                                                & = \sum_{i = 1}^a \T\pa{\frac{1}{b} x} &  & \text{(from the proof above)} \\
-                                                & = \T\pa{\sum_{i = 1}^a \frac{1}{b} x} &  & \by{ex:2.1.37}                \\
-                                                & = \T\pa{\frac{a}{b} x}.               &  & \by{1.2.1}
+            \forall x \in \V, \dfrac{a}{b} \T(x) & = \sum_{i = 1}^a \dfrac{1}{b} \T(x)    &  & \by{1.2.1}                    \\
+                                                 & = \sum_{i = 1}^a \T\pa{\dfrac{1}{b} x} &  & \text{(from the proof above)} \\
+                                                 & = \T\pa{\sum_{i = 1}^a \dfrac{1}{b} x} &  & \by{ex:2.1.37}                \\
+                                                 & = \T\pa{\dfrac{a}{b} x}.               &  & \by{1.2.1}
           \end{align*}
     \item If \(a < 0\), then we have
           \begin{align*}
-                     & \forall x \in \V, \T\pa{\frac{a}{b} x} + \T\pa{\frac{-a}{b} x} = \T\pa{\frac{a}{b} x + \frac{-a}{b} x} &  & \by{ex:2.1.37}                \\
-                     & = \T(\zv_{\V})                                                                                         &  & \by{1.2.1}                    \\
-                     & = \zv_{\W}                                                                                             &  & \text{(from the proof above)} \\
-            \implies & \forall x \in \V, \T\pa{\frac{a}{b} x} + \frac{-a}{b} \T(x) = \zv_{\W}                                 &  & \text{(from the proof above)} \\
-            \implies & \forall x \in \V, \T\pa{\frac{a}{b} x} = \frac{a}{b} \T(x).
+                     & \forall x \in \V, \T\pa{\dfrac{a}{b} x} + \T\pa{\dfrac{-a}{b} x} = \T\pa{\dfrac{a}{b} x + \dfrac{-a}{b} x} &  & \by{ex:2.1.37}                \\
+                     & = \T(\zv_{\V})                                                                                             &  & \by{1.2.1}                    \\
+                     & = \zv_{\W}                                                                                                 &  & \text{(from the proof above)} \\
+            \implies & \forall x \in \V, \T\pa{\dfrac{a}{b} x} + \dfrac{-a}{b} \T(x) = \zv_{\W}                                   &  & \text{(from the proof above)} \\
+            \implies & \forall x \in \V, \T\pa{\dfrac{a}{b} x} = \dfrac{a}{b} \T(x).
           \end{align*}
   \end{itemize}
   From all cases above we conclude that \(\T(qx) = q \T(x)\).
@@ -1418,8 +1418,8 @@
   Since \(\T\) is linear over \(\Q\), by \cref{2.1.1,ex:2.1.37} we know that \(\T\) additive.
   But for \(c = y / x \in \R\), we have
   \begin{align*}
-     & \T(cx) = \T\pa{\frac{y}{x} x} = \T(y) = x                         \\
-     & \neq c \T(x) = \frac{y}{x} \T(x) = \frac{y}{x} y = \frac{y^2}{x}.
+     & \T(cx) = \T\pa{\dfrac{y}{x} x} = \T(y) = x                           \\
+     & \neq c \T(x) = \dfrac{y}{x} \T(x) = \dfrac{y}{x} y = \dfrac{y^2}{x}.
   \end{align*}
   Thus by \cref{2.1.1} \(\T\) is additive but not linear over \(\R\).
 \end{proof}

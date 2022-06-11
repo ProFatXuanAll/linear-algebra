@@ -599,18 +599,18 @@
   First suppose that \(\norm{\T(x)} = \norm{x}\) for all \(x \in \V\).
   If \(\F = \C\), then we have
   \begin{align*}
-    \forall x, y \in \V, \inn{\T(x), \T(y)} & = \frac{1}{4} \sum_{k = 1}^4 i^k \norm{\T(x) + i^k \T(y)}^2 &  & \by{ex:6.1.20}[b]      \\
-                                            & = \frac{1}{4} \sum_{k = 1}^4 i^k \norm{\T(x + i^k y)}^2     &  & \by{2.1.2}[b]          \\
-                                            & = \frac{1}{4} \sum_{k = 1}^4 i^k \norm{x + i^k y}^2         &  & \text{(by hypothesis)} \\
-                                            & = \inn{x, y}.                                               &  & \by{ex:6.1.20}[b]
+    \forall x, y \in \V, \inn{\T(x), \T(y)} & = \dfrac{1}{4} \sum_{k = 1}^4 i^k \norm{\T(x) + i^k \T(y)}^2 &  & \by{ex:6.1.20}[b]      \\
+                                            & = \dfrac{1}{4} \sum_{k = 1}^4 i^k \norm{\T(x + i^k y)}^2     &  & \by{2.1.2}[b]          \\
+                                            & = \dfrac{1}{4} \sum_{k = 1}^4 i^k \norm{x + i^k y}^2         &  & \text{(by hypothesis)} \\
+                                            & = \inn{x, y}.                                                &  & \by{ex:6.1.20}[b]
   \end{align*}
   If \(\F = \R\), then we have
   \begin{align*}
-     & \forall x, y \in \V, \inn{\T(x), \T(y)}                                                        \\
-     & = \frac{1}{4} \pa{\norm{\T(x) + \T(y)}^2 - \norm{\T(x) - \T(y)}^2} &  & \by{ex:6.1.20}[a]      \\
-     & = \frac{1}{4} \pa{\norm{\T(x + y)}^2 - \norm{\T(x - y)}^2}         &  & \by{2.1.2}[b]          \\
-     & = \frac{1}{4} \pa{\norm{x + y}^2 - \norm{x - y}^2}                 &  & \text{(by hypothesis)} \\
-     & = \inn{x, y}.                                                      &  & \by{ex:6.1.20}[a]
+     & \forall x, y \in \V, \inn{\T(x), \T(y)}                                                         \\
+     & = \dfrac{1}{4} \pa{\norm{\T(x) + \T(y)}^2 - \norm{\T(x) - \T(y)}^2} &  & \by{ex:6.1.20}[a]      \\
+     & = \dfrac{1}{4} \pa{\norm{\T(x + y)}^2 - \norm{\T(x - y)}^2}         &  & \by{2.1.2}[b]          \\
+     & = \dfrac{1}{4} \pa{\norm{x + y}^2 - \norm{x - y}^2}                 &  & \text{(by hypothesis)} \\
+     & = \inn{x, y}.                                                       &  & \by{ex:6.1.20}[a]
   \end{align*}
   In either cases we have \(\inn{\T(x), \T(y)} = \inn{x, y}\) for all \(x, y \in \V\).
 
@@ -1012,7 +1012,7 @@
           These equations may also be obtained from the error \(E\) by setting the partial derivatives of \(E\) with respect to both \(c\) and \(d\) equal to zero.
     \item Use the second normal equation of (a) to show that the least squares line must pass through the \emph{center of mass}, \((\overline{t}, \overline{y})\), where
           \[
-            \overline{t} = \frac{1}{m} \sum_{i = 1}^m t_i \quad \text{and} \quad \overline{y} = \frac{1}{m} \sum_{i = 1}^m y_i.
+            \overline{t} = \dfrac{1}{m} \sum_{i = 1}^m t_i \quad \text{and} \quad \overline{y} = \dfrac{1}{m} \sum_{i = 1}^m y_i.
           \]
   \end{enumerate}
 \end{ex}
@@ -1070,9 +1070,9 @@
 \begin{proof}[\pf{ex:6.3.23}(b)]
   We have
   \begin{align*}
-             & \frac{1}{m} \pa{\pa{\sum_{i = 1}^m t_i} c + md} = \frac{1}{m} \pa{\sum_{i = 1}^m y_i} &  & \by{ex:6.3.23}[a] \\
-    \implies & \overline{t} c + d = \overline{y}                                                                            \\
-    \implies & (\overline{t}, \overline{y}) \text{ pass through } y = ct + d.                        &  & \by{6.12}
+             & \dfrac{1}{m} \pa{\pa{\sum_{i = 1}^m t_i} c + md} = \dfrac{1}{m} \pa{\sum_{i = 1}^m y_i} &  & \by{ex:6.3.23}[a] \\
+    \implies & \overline{t} c + d = \overline{y}                                                                              \\
+    \implies & (\overline{t}, \overline{y}) \text{ pass through } y = ct + d.                          &  & \by{6.12}
   \end{align*}
 \end{proof}
 
