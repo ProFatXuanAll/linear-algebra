@@ -812,7 +812,7 @@
 \end{proof}
 
 \begin{defn}\label{6.8.23}
-  Any two matrix representations of a bilinear form have the same rank because rank is preserved under congruence (\cref{3.4,6.33}).
+  Any two matrix representations of a bilinear form have the same rank because rank is preserved under congruence (\cref{ex:6.8.14}).
   We can therefore define the \textbf{rank} of a bilinear form to be the rank of any of its matrix representations.
   If a matrix representation is a diagonal matrix, then the rank is equal to the number of nonzero diagonal entries of the matrix.
 \end{defn}
@@ -1210,7 +1210,87 @@
 \end{proof}
 
 \begin{ex}\label{ex:6.8.13}
+  The following outline provides an alternative proof to \cref{6.33}.
+  \begin{enumerate}
+    \item Suppose that \(\beta\) and \(\gamma\) are ordered bases for a finite-dimensional vector space \(\V\) over \(\F\), and let \(Q\) be the change of coordinate matrix changing \(\gamma\)-coordinates into \(\beta\)-coordinates.
+          Prove that \(\phi_{\beta} = \L_Q \phi_{\gamma}\), where \(\phi_{\beta}\) and \(\phi_{\gamma}\) are the standard representations of \(\V\) with respect to \(\beta\) and \(\gamma\), respectively.
+    \item Apply \cref{6.8.7} to (a) to obtain an alternative proof of \cref{6.33}.
+  \end{enumerate}
 \end{ex}
+
+\begin{proof}[\pf{ex:6.8.13}(a)]
+  Suppose that \(n = \dim(\V)\).
+  Then we have
+  \begin{align*}
+    \forall x \in \V, (\L_Q \phi_{\gamma})(x) & = \L_Q(\phi_{\gamma}(x))                                        \\
+                                              & = \L_Q([x]_{\gamma})                            &  & \by{2.2.3} \\
+                                              & = Q [x]_{\gamma}                                &  & \by{2.3.8} \\
+                                              & = [\IT[\vs{F}^n]]_{\gamma}^{\beta} [x]_{\gamma} &  & \by{2.5.1} \\
+                                              & = [x]_{\beta}                                   &  & \by{2.14}  \\
+                                              & = \phi_{\beta}(x)                               &  & \by{2.2.3}
+  \end{align*}
+  and thus \(\L_Q \phi_{\gamma} = \phi_{\beta}\).
+\end{proof}
+
+\begin{proof}[\pf{ex:6.8.13}(b)]
+  Continue the proof of \cref{ex:6.8.13}(a).
+  Let \(H \in \bi(\V)\).
+  Then we have
+  \begin{align*}
+    \forall x, y \in \V, H(x, y) & = \tp{(\phi_{\beta}(x))} \psi_{\beta}(H) \phi_{\beta}(y)    &  & \by{6.8.7}        \\
+                                 & = \tp{([x]_{\beta})} \psi_{\beta}(H) [y]_{\beta}            &  & \by{2.2.3}        \\
+                                 & = \tp{(Q [x]_{\gamma})} \psi_{\beta}(H) Q [y]_{\gamma}      &  & \by{ex:6.8.13}[a] \\
+                                 & = \tp{([x]_{\gamma})} \tp{Q} \psi_{\beta}(H) Q [y]_{\gamma} &  & \by{2.3.2}        \\
+                                 & = \tp{([x]_{\gamma})} \psi_{\gamma}(H) [y]_{\gamma}.        &  & \by{6.8.7}
+  \end{align*}
+  Thus by \cref{2.15}(b) we have \(\psi_{\gamma}(H) = \tp{Q} \psi_{\beta}(H) Q\).
+\end{proof}
+
+\begin{ex}\label{ex:6.8.14}
+  Let \(\V\) be a finite-dimensional vector space over \(\F\) and \(H \in \bi(\V)\).
+  Prove that, for any ordered bases \(\beta\) and \(\gamma\) of \(\V\) over \(\F\), \(\rk{\psi_{\beta}(H)} = \rk{\psi_{\gamma}(H)}\).
+\end{ex}
+
+\begin{proof}[\pf{ex:6.8.14}]
+  Let \(n = \dim(\V)\).
+  By \cref{6.33} there exists a \(Q \in \ms[n][n][\F]\) such that \(Q\) is invertible and \(\psi_{\gamma}(H) = \tp{Q} \psi_{\beta}(H) Q\).
+  Then we have
+  \begin{align*}
+    \rk{\psi_{\gamma}(H)} & = \rk{\tp{Q} \psi_{\beta}(H) Q} &  & \by{6.33}   \\
+                          & = \rk{\psi_{\beta}(H)}.         &  & \by{3.4}[c]
+  \end{align*}
+\end{proof}
+
+\begin{ex}\label{ex:6.8.15}
+  Prove the following results.
+  \begin{enumerate}
+    \item Any square diagonal matrix is symmetric.
+    \item Any matrix congruent to a diagonal matrix is symmetric.
+    \item \cref{6.8.16}.
+  \end{enumerate}
+\end{ex}
+
+\begin{proof}[\pf{ex:6.8.15}(a)]
+  See \cref{ex:1.3.7}.
+\end{proof}
+
+\begin{proof}[\pf{ex:6.8.15}(b)]
+  Let \(A, D, Q \in \ms[n][n][\F]\) such that \(Q\) is invertible and \(D = \tp{Q} A Q\) is a diagonal matrix.
+  Then we have
+  \begin{align*}
+    \tp{A} & = \tp{\pa{\pa{\tp{Q}}^{-1} D Q^{-1}}}                &  & \by{2.4.3}    \\
+           & = \tp{\pa{Q^{-1}}} \tp{D} \tp{\pa{\pa{\tp{Q}}^{-1}}} &  & \by{2.3.2}    \\
+           & = \pa{\tp{Q}}^{-1} \tp{D} \tp{\pa{\tp{\pa{Q^{-1}}}}} &  & \by{ex:2.4.5} \\
+           & = \pa{\tp{Q}}^{-1} \tp{D} Q^{-1}                     &  & \by{ex:1.3.4} \\
+           & = \pa{\tp{Q}}^{-1} D Q^{-1}                          &  & \by{ex:1.3.7} \\
+           & = A.
+  \end{align*}
+  Thus by \cref{1.3.4} \(A\) is symmetric.
+\end{proof}
+
+\begin{proof}[\pf{ex:6.8.15}(c)]
+  See \cref{6.8.16}.
+\end{proof}
 
 \begin{ex}\label{ex:6.8.16}
   Let \(\V\) be a vector space over a field \(\F\) not of characteristic two, and let \(H\) be a symmetric bilinear form on \(\V\).
