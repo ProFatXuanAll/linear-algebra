@@ -886,6 +886,104 @@
   Notice that the values of any two of these invariants determine the value of the third.
 \end{defn}
 
+\begin{eg}\label{6.8.25}
+  The matrix representation of the bilinear form corresponding to the quadratic form \(K(x, y) = x^2 - y^2\) on \(\R^2\) with respect to the standard ordered basis is the diagonal matrix with diagonal entries of \(1\) and \(-1\).
+  Therefore the rank of \(K\) is \(2\), the index of \(K\) is \(1\), and the signature of \(K\) is \(0\).
+\end{eg}
+
+\begin{proof}[\pf{6.8.25}]
+  Let \(\beta = \set{\seq{e}{1,2}}\) and let \(H \in \bi(\R^2)\) such that
+  \[
+    \forall u, v \in \R^2, H(u, v) = \dfrac{1}{2} (K(u + v) - K(u) - K(v)).
+  \]
+  By \cref{6.8.19}, \(H\) is the unique bilinear form associated with \(K\).
+  Since
+  \begin{align*}
+    H(e_1, e_1) & = \dfrac{1}{2} (K(2 e_1) - K(e_1) - K(e_1))                         \\
+                & = \dfrac{1}{2} (2^2 - 0^2 - 1^2 + 0^2 - 1^2 + 0^2)                  \\
+                & = 1;                                                                \\
+    H(e_1, e_2) & = H(e_2, e_1)                                      &  & \by{6.8.19} \\
+                & = \dfrac{1}{2} (K(e_1 + e_2) - K(e_1) - K(e_2))                     \\
+                & = \dfrac{1}{2} (1^2 - 1^2 - 1^2 + 0^2 - 0^2 + 1^2)                  \\
+                & = 0;                                                                \\
+    H(e_2, e_2) & = \dfrac{1}{2} (K(2 e_2) - K(e_2) - K(e_2))                         \\
+                & = \dfrac{1}{2} (0^2 - 2^2 - 0^2 + 1^2 - 0^2 + 1^2)                  \\
+                & = -1,
+  \end{align*}
+  by \cref{6.8.5} we have
+  \[
+    \psi_{\beta}(H) = \begin{pmatrix}
+      1 & 0  \\
+      0 & -1
+    \end{pmatrix}.
+  \]
+\end{proof}
+
+\begin{cor}[Sylvester's Law of Inertia for Matrices]\label{6.8.26}
+  Let \(A\) be a real symmetric matrix.
+  Then the number of positive diagonal entries and the number of negative diagonal entries in any diagonal matrix congruent to \(A\) is independent of the choice of the diagonal matrix.
+\end{cor}
+
+\begin{proof}[\pf{6.8.26}]
+  Let \(A \in \ms[n][n][\R]\) be symmetric, and suppose that \(D\) and \(E\) are each diagonal matrices congruent to \(A\).
+  By \cref{6.8.8}, \(A\) is the matrix representation of the bilinear form \(H\) on \(\R^n\) defined by \(H(x, y) = \tp{x} A y\) with respect to the standard ordered basis for \(\R^n\).
+  Therefore Sylvester's law of inertia (\cref{6.38}) tells us that \(D\) and \(E\) have the same number of positive and negative diagonal entries.
+\end{proof}
+
+\begin{defn}\label{6.8.27}
+  Let \(A\) be a real symmetric matrix, and let \(D\) be a diagonal matrix that is congruent to \(A\).
+  The number of positive diagonal entries of \(D\) is called the \textbf{index} of \(A\).
+  The difference between the number of positive diagonal entries and the number of negative diagonal entries of \(D\) is called the \textbf{signature} of \(A\).
+  As before, the rank, index, and signature of a matrix are called the \textbf{invariants} of the matrix, and the values of any two of these invariants determine the value of the third.
+\end{defn}
+
+\begin{cor}\label{6.8.28}
+  Two real symmetric \(n \times n\) matrices are congruent iff they have the same invariants.
+\end{cor}
+
+\begin{proof}[\pf{6.8.28}]
+  If \(A\) and \(B\) are congruent \(n \times n\) real symmetric matrices, then by \cref{6.33,6.35} they are both congruent to the same diagonal matrix, and it follows from \cref{6.8.26} that they have the same invariants.
+
+  Conversely, suppose that \(A\) and \(B\) are \(n \times n\) symmetric matrices with the same invariants.
+  Let \(D\) and \(E\) be diagonal matrices congruent to \(A\) and \(B\), respectively, chosen so that the diagonal entries are in the order of positive, negative, and zero.
+  (\cref{ex:6.8.23} allows us to do this.)
+  Since \(A\) and \(B\) have the same invariants, so do \(D\) and \(E\).
+  Let \(p\) and \(r\) denote the index and the rank, respectively, of both \(D\) and \(E\).
+  Let \(d_i\) denote the \(i\)th diagonal entry of \(D\), and let \(Q\) be the \(n \times n\) diagonal matrix whose \(i\)th diagonal entry \(q_i\) is given by
+  \[
+    q_i = \begin{dcases}
+      \dfrac{1}{\sqrt{d_i}}  & \text{if } i \in \set{1, \dots, p}     \\
+      \dfrac{1}{\sqrt{-d_i}} & \text{if } i \in \set{p + 1, \dots, r} \\
+      1                      & \text{if } i \in \set{r + 1, \dots, n}
+    \end{dcases}.
+  \]
+  Then \(\tp{Q} D Q = J_{pr}\), where
+  \[
+    J_{pr} = \begin{pmatrix}
+      I_p & \zm         & \zm \\
+      \zm & - I_{r - p} & \zm \\
+      \zm & \zm         & \zm
+    \end{pmatrix}.
+  \]
+  It follows that \(A\) is congruent to \(J_{pr}\).
+  Similarly, \(B\) is congruent to \(J_{pr}\), and hence \(A\) is congruent to \(B\).
+\end{proof}
+
+\begin{note}
+  By \cref{6.8.27,6.8.28}, any two of the invariants can be used to determine an equivalence class of congruent real symmetric matrices.
+
+  The matrix \(J_{pr}\) in \cref{6.28} acts as a \emph{canonical form} for the theory of real symmetric matrices.
+  \cref{6.8.29} describes the role of \(J_{pr}\).
+\end{note}
+
+\begin{cor}\label{6.8.29}
+  A real symmetric \(n \times n\) matrix \(A\) has index \(p\) and rank \(r\) iff \(A\) is congruent to \(J_{pr}\) (as defined in \cref{6.8.28}).
+\end{cor}
+
+\begin{proof}[\pf{6.8.29}]
+  See the proof of \cref{6.8.28}.
+\end{proof}
+
 \exercisesection
 
 \begin{ex}\label{ex:6.8.12}
@@ -947,4 +1045,7 @@
 \end{proof}
 
 \begin{ex}\label{ex:6.8.21}
+\end{ex}
+
+\begin{ex}\label{ex:6.8.23}
 \end{ex}
