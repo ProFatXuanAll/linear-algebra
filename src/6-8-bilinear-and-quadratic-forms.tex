@@ -1495,3 +1495,40 @@
   \end{align*}
   Thus \(H\) may fail to be a bilinear form if \(\V\) is a complex inner product space.
 \end{proof}
+
+\begin{ex}\label{ex:6.8.25}
+  Prove the converse to \cref{ex:6.8.24}(a):
+  Let \(\V\) be a finite-dimensional real inner product space, and let \(H \in \bi(\V)\).
+  Then there exists a unique \(\T \in \ls(\V)\) such that \(H(x, y) = \inn{x, \T(y)}\) for all \(x, y \in \V\).
+\end{ex}
+
+\begin{proof}[\pf{ex:6.8.25}]
+  Let \(\beta\) be an orthonormal basis (with respect to \(\inn{\cdot, \cdot}\)) for \(\V\) over \(\R\), and let \(A = \psi_{\beta}(H)\).
+  By \cref{2.6} we can define a \(\T \in \ls(\V)\) such that \([\T]_{\beta} = A\).
+  Let \(\inn{\cdot, \cdot}'\) be the standard ordered basis for \(\R^n\) over \(\R\).
+  Then we have
+  \begin{align*}
+    \forall x, y \in \V, H(x, y) & = \tp{(\phi_{\beta}(x))} A \phi_{\beta}(y)    &  & \by{6.8.7}        \\
+                                 & = \tp{([x]_{\beta})} A [y]_{\beta}            &  & \by{2.2.3}        \\
+                                 & = \tp{([x]_{\beta})} [\T]_{\beta} [y]_{\beta} &  & \by{2.6}          \\
+                                 & = \tp{([x]_{\beta})} [\T(y)]_{\beta}          &  & \by{2.14}         \\
+                                 & = \inn{[x]_{\beta}, [\T(y)]_{\beta}}'         &  & \by{6.1.2}        \\
+                                 & = \inn{x, \T(y)}.                             &  & \by{ex:6.2.15}[b]
+  \end{align*}
+\end{proof}
+
+\begin{ex}\label{ex:6.8.26}
+  Prove that the number of distinct equivalence classes of congruent \(n \times n\) real symmetric matrices is
+  \[
+    \dfrac{(n + 1)(n + 2)}{2}.
+  \]
+\end{ex}
+
+\begin{proof}[\pf{ex:6.8.26}]
+  By \cref{6.8.27,6.8.28} the equivalent classes of congruent \(n \times n\) real symmetric matrices is determined by the index and signature, or equivalently, the number of positive and negative diagonal entries \(p\) and \(q\).
+  We want to find all possible combinations of \(p, q \in \set{0, \dots, n}\) such that \(0 \leq p + q \leq n\).
+  By enumerating all possible outcomes, namely \(p + q = 0, p + q = 1, \dots, p + q = n\), we see that the number of possible combinations are
+  \[
+    1 + 2 + \cdots + n + (n + 1) = \dfrac{(n + 1 + 1) (n + 1)}{2} = \dfrac{(n + 1)(n + 2)}{2}.
+  \]
+\end{proof}
