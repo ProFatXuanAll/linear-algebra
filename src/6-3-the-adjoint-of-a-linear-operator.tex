@@ -2,7 +2,7 @@
 
 \begin{thm}\label{6.8}
   Let \(\V\) be a finite-dimensional inner product space over \(\F\), and let \(g \in \ls(\V, \F)\).
-  Then there exists a unique vector \(y \in \V\) such that \(g(x) = \inn{x, y}\) for all \(x \in \V\).
+  Then there exists an unique vector \(y \in \V\) such that \(g(x) = \inn{x, y}\) for all \(x \in \V\).
 \end{thm}
 
 \begin{proof}[\pf{6.8}]
@@ -27,7 +27,7 @@
 
 \begin{thm}\label{6.9}
   Let \(\V\) be a finite-dimensional inner product space over \(\F\), and let \(\T \in \ls(\V)\).
-  Then there exists a unique \(\T^* \in \ls(\V)\) such that \(\inn{\T(x), y} = \inn{x, \T^*(y)}\) for all \(x, y \in \V\).
+  Then there exists an unique \(\T^* \in \ls(\V)\) such that \(\inn{\T(x), y} = \inn{x, \T^*(y)}\) for all \(x, y \in \V\).
   \(\T^*\) is called the \textbf{adjoint} of the operator \(\T\).
   The symbol \(\T^*\) is read ``\(\T\) star.''
 \end{thm}
@@ -46,7 +46,7 @@
   \end{align*}
   Hence by \cref{2.1.2}(b) \(g \in \ls(\V, \F)\).
 
-  We now apply \cref{6.8} to obtain a unique vector \(y' \in \V\) such that \(g(x) = \inn{x, y'}\);
+  We now apply \cref{6.8} to obtain an unique vector \(y' \in \V\) such that \(g(x) = \inn{x, y'}\);
   that is, \(\inn{\T(x), y} = \inn{x, y'}\) for all \(x \in \V\).
   Defining \(\T^* : \V \to \V\) by \(\T^*(y) = y'\), we have \(\inn{\T(x), y} = \inn{x, \T^*(y)}\).
 
@@ -317,7 +317,7 @@
 \begin{proof}[\pf{6.12}]
   Define \(\W = \set{Ax : x \in \vs{F}^n}\);
   that is, \(\W = \rg{\L_A}\).
-  By \cref{6.2.12}, there exists a unique vector in \(\W\) that is closest to \(y\).
+  By \cref{6.2.12}, there exists an unique vector in \(\W\) that is closest to \(y\).
   Call this vector \(A x_0\), where \(x_0 \in \vs{F}^n\).
   Then \(\norm{A x_0 - y} \leq \norm{Ax - y}\) for all \(x \in \vs{F}^n\).
 
@@ -441,7 +441,7 @@
 \end{proof}
 
 \begin{note}
-  \cref{6.13} assures that every consistent system of linear equations has a unique minimal solution and provides a method for computing it.
+  \cref{6.13} assures that every consistent system of linear equations has an unique minimal solution and provides a method for computing it.
 \end{note}
 
 \exercisesection
@@ -795,7 +795,7 @@
   Let \(\T \in \ls(\V, \W)\), where \(\V\) and \(\W\) are finite-dimensional inner product spaces over \(\F\) with inner products \(\inn{\cdot, \cdot}_1\) and \(\inn{\cdot, \cdot}_2\), respectively.
   Prove the following results.
   \begin{enumerate}
-    \item There is a unique adjoint \(\T^*\) of \(\T\), and \(\T^* \in \ls(\W, \V)\).
+    \item There is an unique adjoint \(\T^*\) of \(\T\), and \(\T^* \in \ls(\W, \V)\).
     \item If \(\beta\) and \(\gamma\) are orthonormal bases for \(\V\) and \(\W\) over \(\F\), respectively, then \([\T^*]_{\gamma}^{\beta} = ([\T]_{\beta}^{\gamma})^*\).
     \item \(\rk{\T^*} = \rk{\T}\).
     \item \(\inn{\T^*(x), y}_1 = \inn{x, \T(y)}_2\) for all \(x \in \W\) and \(y \in \V\).
@@ -817,7 +817,7 @@
   \end{align*}
   Hence by \cref{2.1.2}(b) we see that \(g \in \ls(\V, \F)\).
 
-  We now apply \cref{6.8} to obtain a unique vector \(y' \in \V\) such that \(g(x) = \inn{x, y'}_1\);
+  We now apply \cref{6.8} to obtain an unique vector \(y' \in \V\) such that \(g(x) = \inn{x, y'}_1\);
   that is, \(\inn{\T(x), y}_2 = \inn{x, y'}_1\) for all \(x \in \V\).
   Defining \(\T^* : \W \to \V\) by \(\T^*(y) = y'\), we have \(\inn{\T(x), y}_2 = \inn{x, \T^*(y)}_1\).
 

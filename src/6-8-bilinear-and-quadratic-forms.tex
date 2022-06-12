@@ -237,7 +237,7 @@
 
 \begin{cor}\label{6.8.8}
   Let \(\F\) be a field, \(n\) a positive integer, and \(\beta\) be the standard ordered basis for \(\vs{F}^n\) over \(\F\).
-  Then for any \(H \in \bi(\vs{F}^n)\), there exists a unique matrix \(A \in \ms[n][n][\F]\), namely, \(A = \psi_{\beta}(H)\), such that
+  Then for any \(H \in \bi(\vs{F}^n)\), there exists an unique matrix \(A \in \ms[n][n][\F]\), namely, \(A = \psi_{\beta}(H)\), such that
   \[
     H(x, y) = \tp{x} A y \quad \text{for all } x, y \in \vs{F}^n.
   \]
@@ -985,6 +985,60 @@
 \end{proof}
 
 \exercisesection
+
+\setcounter{ex}{5}
+\begin{ex}\label{ex:6.8.6}
+  Let \(H : \R^2 \to \R\) be the function defined by
+  \[
+    H\pa{\begin{pmatrix}
+        a_1 \\
+        a_2
+      \end{pmatrix}, \begin{pmatrix}
+        b_1 \\
+        b_2
+      \end{pmatrix}} = a_1 b_2 + a_2 b_1 \quad \text{for } \begin{pmatrix}
+      a_1 \\
+      a_2
+    \end{pmatrix}, \begin{pmatrix}
+      b_1 \\
+      b_2
+    \end{pmatrix} \in \R^2.
+  \]
+  \begin{enumerate}
+    \item Prove that \(H\) is a bilinear form.
+    \item Find the \(2 \times 2\) matrix \(A\) such that \(H(x, y) = \tp{x} A y\) for all \(x, y \in \R^2\).
+  \end{enumerate}
+  For a \(2 \times 2\) matrix \(M\) with columns \(x\) and \(y\), the bilinear form \(H(M) = H(x, y)\) is called the \textbf{permanent} of \(M\).
+\end{ex}
+
+\begin{proof}[\pf{ex:6.8.6}(a)]
+  Let \(x, y, z \in \R^2\) and let \(c \in \R\).
+  Since
+  \begin{align*}
+    H(cx + y, z) & = (cx + y)_1 z_2 + (cx + y)_2 z_1           &  & \by{ex:6.8.6} \\
+                 & = c x_1 z_2 + y_1 z_2 + c x_2 z_1 + y_2 z_1 &  & \by{1.2.5}    \\
+                 & = c (x_1 z_2 + x_2 z_1) + y_1 z_2 + y_2 z_1                    \\
+                 & = c H(x, z) + H(y, z);                      &  & \by{ex:6.8.6} \\
+    H(z, cx + y) & = z_1 (cx + y)_2 + z_2 (cx + y)_1           &  & \by{ex:6.8.6} \\
+                 & = z_1 c x_2 + z_1 y_2 + z_2 c x_1 + z_2 y_1 &  & \by{1.2.5}    \\
+                 & = c (z_1 x_2 + z_2 x_1) + z_1 y_2 + z_2 y_1                    \\
+                 & = c H(z, x) + H(z, y),                      &  & \by{ex:6.8.6}
+  \end{align*}
+  by \cref{6.8.1} we know that \(H \in \bi(\R^2)\).
+\end{proof}
+
+\begin{proof}[\pf{ex:6.8.6}(b)]
+  By \cref{6.8.8} we see that
+  \[
+    A = \begin{pmatrix}
+      H(e_1, e_1) & H(e_1, e_2) \\
+      H(e_2, e_1) & H(e_2, e_2)
+    \end{pmatrix} = \begin{pmatrix}
+      0 & 1 \\
+      1 & 0
+    \end{pmatrix}.
+  \]
+\end{proof}
 
 \begin{ex}\label{ex:6.8.12}
   Prove that the relation of congruence is an equivalence relation.

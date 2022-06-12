@@ -79,7 +79,7 @@
 
 \begin{thm}[Cramer's Rule]\label{4.9}
   Let \(Ax = b\) be the matrix form of a system of \(n\) linear equations in \(n\) unknowns, where \(x = \tp{\tuple{x}{1,,n}}\).
-  If \(\det(A) \neq 0\), then this system has a unique solution, and for each \(k \in \set{1, \dots, n}\),
+  If \(\det(A) \neq 0\), then this system has an unique solution, and for each \(k \in \set{1, \dots, n}\),
   \[
     x_k = \dfrac{\det(M_k)}{\det(A)},
   \]
@@ -87,7 +87,7 @@
 \end{thm}
 
 \begin{proof}[\pf{4.9}]
-  If \(\det(A) \neq 0\), then the system \(Ax = b\) has a unique solution by the \cref{4.3.1,3.10}.
+  If \(\det(A) \neq 0\), then the system \(Ax = b\) has an unique solution by the \cref{4.3.1,3.10}.
   For each integer \(k \in \set{1, \dots, n}\), let \(a_k\) denote the \(k\)th column of \(A\) and \(X_k\) denote the matrix obtained from the \(I_n\) by replacing column \(k\) by \(x\).
   Then by \cref{2.13}, \(A X_k\) is the \(n \times n\) matrix whose \(i\)th column is
   \[
