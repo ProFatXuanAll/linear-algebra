@@ -988,7 +988,7 @@
 
 \setcounter{ex}{5}
 \begin{ex}\label{ex:6.8.6}
-  Let \(H : \R^2 \to \R\) be the function defined by
+  Let \(H : \R^2 \times \R^2 \to \R\) be the function defined by
   \[
     H\pa{\begin{pmatrix}
         a_1 \\
@@ -1309,6 +1309,86 @@
      & = \dfrac{1}{2} 2 H(x, y)                                   &  & \by{6.8.11}   \\
      & = H(x, y).
   \end{align*}
+\end{proof}
+
+\setcounter{ex}{18}
+\begin{ex}\label{ex:6.8.19}
+  Prove the following refinement of \cref{6.37}(d).
+  \begin{enumerate}
+    \item If \(0 < \rk{A} < n\) and \(A\) has no negative eigenvalues, then \(f\) has no local maximum at \(p\).
+    \item If \(0 < \rk{A} < n\) and \(A\) has no positive eigenvalues, then \(f\) has no local minimum at \(p\).
+  \end{enumerate}
+\end{ex}
+
+\begin{proof}[\pf{ex:6.8.19}(a)]
+  Continue the proof of \cref{6.37}.
+  Since \(A\) has no negative eigenvalues and \(\rk{A} \in \set{1, \dots, n - 1}\), there exist an \(i \in \set{1, \dots, n}\) such that \(\lambda_i > 0\) and
+  \[
+    \dfrac{1}{2} \lambda_i - \epsilon > 0.
+  \]
+  Let \(s \in \R\) such that \(\abs{s} \in (0, \delta)\).
+  Substituting \(x = s v_i\) into the left inequality of \cref{ex:6.8.7} we obtain
+  \[
+    f(\zv) = 0 < \pa{\dfrac{1}{2} \lambda_i - \epsilon} s^2 < f(s v_i).
+  \]
+  Thus \(f\) has no local maximum at \(p\).
+\end{proof}
+
+\begin{proof}[\pf{ex:6.8.19}(b)]
+  Continue the proof of \cref{6.37}.
+  Since \(A\) has no positive eigenvalues and \(\rk{A} \in \set{1, \dots, n - 1}\), there exist an \(i \in \set{1, \dots, n}\) such that \(\lambda_i < 0\) and
+  \[
+    \dfrac{1}{2} \lambda_i + \epsilon < 0.
+  \]
+  Let \(s \in \R\) such that \(\abs{s} \in (0, \delta)\).
+  Substituting \(x = s v_i\) into the right inequality of \cref{ex:6.8.7} we obtain
+  \[
+    f(s v_i) < \pa{\dfrac{1}{2} \lambda_i + \epsilon} s^2 < \zv = f(\zv).
+  \]
+  Thus \(f\) has no local minimum at \(p\).
+\end{proof}
+
+\begin{ex}\label{ex:6.8.20}
+  Prove the following variation of the second-derivative test (\cref{6.37}) for the case \(n = 2\):
+  Define
+  \[
+    D = \pa{\dfrac{\partial^2 f}{\partial t_1^2}(p)} \pa{\dfrac{\partial^2 f}{\partial t_2^2}(p)} - \pa{\dfrac{\partial^2 f}{\partial t_1 \partial t_2}(p)}^2.
+  \]
+  \begin{enumerate}
+    \item If \(D > 0\) and \(\dfrac{\partial^2 f}{\partial t_1^2}(p) > 0\), then \(f\) has a local minimum at \(p\).
+    \item If \(D > 0\) and \(\dfrac{\partial^2 f}{\partial t_1^2}(p) < 0\), then \(f\) has a local maximum at \(p\).
+    \item If \(D < 0\), then \(f\) has no local extremum at \(p\).
+    \item If \(D = 0\), then the test is inconclusive.
+  \end{enumerate}
+\end{ex}
+
+\begin{proof}[\pf{ex:6.8.20}]
+  Define
+  \[
+    A(p) = \begin{pmatrix}
+      \dfrac{\partial^2 f}{\partial t_1^2}(p)            & \dfrac{\partial^2 f}{\partial t_1 \partial t_2}(p) \\
+      \dfrac{\partial^2 f}{\partial t_2 \partial t_1}(p) & \dfrac{\partial^2 f}{\partial t_2^2}(p)
+    \end{pmatrix}
+  \]
+  to be the Hessian of \(f : \R^2 \to \R\).
+  Since \(f \in \cfs[3]\), we know that \(A(p)\) is symmetric.
+  Observe that \(D = \det(A(p))\).
+
+  First suppose that \(D > 0\).
+  By \cref{ex:6.5.12} this means either all eigenvalues of \(A(p)\) are positive or negative.
+  If \(\dfrac{\partial^2 f}{\partial t_1^2}(p) > 0\), then by the definition of \(D\) we know that \(\dfrac{\partial^2 f}{\partial t_2^2}(p) > 0\).
+  Thus by \cref{ex:6.5.10} we know that all eigenvalues are positive and by \cref{6.37}(a) we know that \(f\) has a local minimum at \(p\).
+  If \(\dfrac{\partial^2 f}{\partial t_1^2}(p) < 0\), then by the definition of \(D\) we know that \(\dfrac{\partial^2 f}{\partial t_2^2}(p) < 0\).
+  Thus by \cref{ex:6.5.10} we know that all eigenvalues are negative and by \cref{6.37}(b) we know that \(f\) has a local maximum at \(p\).
+
+  Next suppose that \(D < 0\).
+  By \cref{ex:6.5.12} this means \(A(p)\) have exactly one positive and one negative eigenvalues.
+  Thus by \cref{6.37}(c) \(f\) has no local extremum at \(p\).
+
+  Now suppose that \(D = 0\).
+  By \cref{4.3.1} this means \(\rk{A(p)} < 2\).
+  This means \(A(p)\) has a least one eigenvalue equals to \(0\) and \(A(p)\) cannot have both positive and negative eigenvalues.
+  Thus by \cref{6.37}(d) the second derivative test is inconclusive.
 \end{proof}
 
 \begin{ex}\label{ex:6.8.21}
