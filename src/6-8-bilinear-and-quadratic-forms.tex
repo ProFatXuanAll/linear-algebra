@@ -1392,7 +1392,106 @@
 \end{proof}
 
 \begin{ex}\label{ex:6.8.21}
+  Let \(A, E \in \ms[n][n][\F]\), with \(E\) be an elementary matrix.
+  In \cref{3.1}, it was shown that \(AE\) can be obtained from \(A\) by means of an elementary column operation.
+  Prove that \(\tp{E} A\) can be obtained by means of the same elementary operation performed on the rows rather than on the columns of \(A\).
 \end{ex}
 
+\begin{proof}[\pf{ex:6.8.21}]
+  See \cref{ex:3.1.5}.
+\end{proof}
+
+\setcounter{ex}{22}
 \begin{ex}\label{ex:6.8.23}
+  Prove that if the diagonal entries of a diagonal matrix are permuted, then the resulting diagonal matrix is congruent to the original one.
 \end{ex}
+
+\begin{proof}[\pf{ex:6.8.23}]
+  Let \(D \in \ms[n][n][\F]\) be a diagonal matrix and let \(\beta\) be the standard ordered basis for \(\vs{F}^n\) over \(\F\).
+  Let \(D' \in \ms[n][n][\F]\) be a diagonal matrix such that the diagonal entries of \(D'\) are the same as \(D\) but permuted.
+  Let \(f : \set{1, \dots, n} \to \set{1, \dots, n}\) be a permutation, i.e.,
+  \[
+    \forall i \in \set{1, \dots, n}, D_{i i}' = D_{f(i) f(i)}.
+  \]
+  Then we can define an ordered basis \(\gamma = \set{e_{f(i)} : i \in \set{1, \dots, n}}\) for \(\vs{F}^n\) over \(\F\).
+  We claim that \([\L_D]_{\gamma} = D'\).
+  Since
+  \begin{align*}
+    \forall i \in \set{1, \dots, n}, \L_D(e_{f(i)}) & = D e_{f(i)}             &  & \by{2.15}[a] \\
+                                                    & = D_{f(i) f(i)} e_{f(i)} &  & \by{2.3.1}   \\
+                                                    & = D_{i i}' e_{f(i)},
+  \end{align*}
+  by \cref{2.2.4} we know that \([\L_D]_{\gamma} = D'\).
+  Thus
+  \begin{align*}
+    D & = [\L_D]_{\beta}                                                                    &  & \by{2.15}[a]                  \\
+      & = [\IT[\vs{F}^n]]_{\gamma}^{\beta} [\L_D]_{\gamma} [\IT[\vs{F}^n]]_{\beta}^{\gamma} &  & \by{2.23}                     \\
+      & = [\IT[\vs{F}^n]]_{\gamma}^{\beta} D' [\IT[\vs{F}^n]]_{\beta}^{\gamma}              &  & \text{(from the claim above)} \\
+      & = \tp{\pa{[\IT[\vs{F}^n]]_{\beta}^{\gamma}}} D' [\IT[\vs{F}^n]]_{\beta}^{\gamma}    &  & \by{ex:6.5.30}
+  \end{align*}
+  and by \cref{6.8.9} \(D\) and \(D'\) are congruent.
+\end{proof}
+
+\begin{ex}\label{ex:6.8.24}
+  Let \(\T\) be a linear operator on a real inner product space \(\V\), and define \(H : \V \times \V \to \R\) by \(H(x, y) = \inn{x, \T(y)}\) for all \(x, y \in \V\).
+  \begin{enumerate}
+    \item Prove that \(H\) is a bilinear form.
+    \item Prove that \(H\) is symmetric iff \(\T\) is self-adjoint.
+    \item What properties must \(\T\) have for \(H\) to be an inner product on \(\V\) over \(\R\)?
+    \item Explain why \(H\) may fail to be a bilinear form if \(\V\) is a complex inner product space.
+  \end{enumerate}
+\end{ex}
+
+\begin{proof}[\pf{ex:6.8.24}(a)]
+  Let \(x, y, z \in \V\) and let \(a \in \R\).
+  Since
+  \begin{align*}
+    H(ax + y, z) & = \inn{ax + y, \T(z)}               &  & \by{ex:6.8.24}  \\
+                 & = a \inn{x, \T(z)} + \inn{y, \T(z)} &  & \by{6.1.1}[a,b] \\
+                 & = a H(x, z) + H(y, z);              &  & \by{ex:6.8.24}  \\
+    H(z, ax + y) & = \inn{z, \T(ax + y)}               &  & \by{ex:6.8.24}  \\
+                 & = \inn{z, a \T(x) + \T(y)}          &  & \by{2.1.2}[b]   \\
+                 & = a \inn{z, \T(x)} + \inn{z, \T(y)} &  & \by{6.1}[a,b]   \\
+                 & = a H(z, x) + H(z, y),              &  & \by{ex:6.8.24}
+  \end{align*}
+  by \cref{6.8.1} we know that \(H \in \bi(\V)\).
+\end{proof}
+
+\begin{proof}[\pf{ex:6.8.24}(b)]
+  First suppose that \(H\) is symmetric.
+  Then we have
+  \begin{align*}
+             & \forall x, y \in \V, H(x, y) = \inn{x, \T(y)} = \inn{y, \T(x)} = H(y, x) &  & \by{6.8.11}   \\
+    \implies & \forall x, y \in \V, \inn{\T^*(x), y} = \inn{y, \T(x)}                   &  & \by{6.9}      \\
+             & = \conj{\inn{\T(x), y}} = \inn{\T(x), y}                                 &  & \by{6.1.1}[c] \\
+    \implies & \T^* = \T                                                                &  & \by{6.1}[e]   \\
+    \implies & \T \text{ is self-adjoint}.                                              &  & \by{6.4.8}
+  \end{align*}
+
+  Now suppose that \(\T\) is self-adjoint.
+  Then we have
+  \begin{align*}
+    H(x, y) & = \inn{x, \T(y)}        &  & \by{ex:6.8.24} \\
+            & = \inn{x, \T^*(y)}      &  & \by{6.4.8}     \\
+            & = \inn{\T(x), y}        &  & \by{6.9}       \\
+            & = \conj{\inn{y, \T(x)}} &  & \by{6.1.1}[c]  \\
+            & = \inn{y, \T(x)}                            \\
+            & = H(y, x).              &  & \by{ex:6.8.24}
+  \end{align*}
+  Thus by \cref{6.8.11} \(H\) is symmetric.
+\end{proof}
+
+\begin{proof}[\pf{ex:6.8.24}(c)]
+  By \cref{ex:6.4.22} \(\T\) must be positive definite.
+\end{proof}
+
+\begin{proof}[\pf{ex:6.8.24}(d)]
+  If \(x, y \in \V\), then we have
+  \begin{align*}
+    H(x, iy) & = \inn{x, \T(iy)}   &  & \by{ex:6.8.24} \\
+             & = \inn{x, i \T(y)}  &  & \by{2.1.1}[b]  \\
+             & = -i \inn{x, \T(y)} &  & \by{6.1}[b]    \\
+             & \neq i H(x, y).     &  & \by{ex:6.8.24}
+  \end{align*}
+  Thus \(H\) may fail to be a bilinear form if \(\V\) is a complex inner product space.
+\end{proof}
