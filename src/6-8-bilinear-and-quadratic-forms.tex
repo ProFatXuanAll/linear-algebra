@@ -1040,6 +1040,139 @@
   \]
 \end{proof}
 
+\begin{ex}\label{ex:6.8.7}
+  Let \(\V\) and \(\W\) be vector spaces over the same field \(\F\), and let \(\T \in \ls(\V, \W)\).
+  For any \(H \in \bi(\W)\), define \(\widehat{\T}(H) : \V \times \V \to \F\) by \(\widehat{\T}(H)(x, y) = H(\T(x), \T(y))\) for all \(x, y \in \V\).
+  Prove the following results.
+  \begin{enumerate}
+    \item If \(H \in \bi(\W)\), then \(\widehat{\T}(H) \in \bi(\V)\).
+    \item \(\widehat{\T} \in \ls(\bi(\W), \bi(\V))\).
+    \item If \(\T\) is an isomorphism, then so is \(\widehat{\T}\).
+  \end{enumerate}
+\end{ex}
+
+\begin{proof}[\pf{ex:6.8.7}(a)]
+  Let \(x, y, z \in \V\) and let \(c \in \F\).
+  Since
+  \begin{align*}
+    \widehat{\T}(H)(cx + y, z) & = H(\T(cx + y), \T(z))                             &  & \by{ex:6.8.7} \\
+                               & = H(c \T(x) + \T(y), \T(z))                        &  & \by{2.1.2}[b] \\
+                               & = c H(\T(x), \T(z)) + H(\T(y), \T(z))              &  & \by{6.8.1}[a] \\
+                               & = c \widehat{\T}(H)(x, z) + \widehat{\T}(H)(y, z); &  & \by{ex:6.8.7} \\
+    \widehat{\T}(H)(z, cx + y) & = H(\T(z), \T(cx + y))                             &  & \by{ex:6.8.7} \\
+                               & = H(\T(z), c \T(x) + \T(y))                        &  & \by{2.1.2}[b] \\
+                               & = c H(\T(z), \T(x)) + H(\T(z), \T(y))              &  & \by{6.8.1}[a] \\
+                               & = c \widehat{\T}(H)(z, x) + \widehat{\T}(H)(z, y), &  & \by{ex:6.8.7}
+  \end{align*}
+  by \cref{6.8.1} we see that \(\widehat{\T}(H) \in \bi(\V)\).
+\end{proof}
+
+\begin{proof}[\pf{ex:6.8.7}(b)]
+  Let \(f, g \in \bi(\W)\) and let \(c \in \F\).
+  Since
+  \begin{align*}
+    \forall x, y \in \V, \widehat{\T}(cf + g)(x, y) & = (cf + g)(\T(x), \T(y))                           &  & \by{ex:6.8.7} \\
+                                                    & = c f(\T(x), \T(y)) + g(\T(x), \T(y))              &  & \by{6.31}     \\
+                                                    & = c \widehat{\T}(f)(x, y) + \widehat{\T}(g)(x, y), &  & \by{ex:6.8.7}
+  \end{align*}
+  we have \(\widehat{\T}(cf + g) = c \widehat{\T}(f) + \widehat{\T}(g)\).
+  Thus by \cref{2.1.2}(b) and \cref{ex:6.8.7}(a) we know that \(\widehat{\T} \in \ls(\bi(\W), \bi(\V))\).
+\end{proof}
+
+\begin{proof}[\pf{ex:6.8.7}(c)]
+  By \cref{ex:6.8.7}(b) we know that \(\widehat{\T} \in \ls(\bi(\W), \bi(\V))\), thus by \cref{2.4.8} we only need to show that \(\widehat{\T}\) is one-to-one and onto.
+
+  First we show that \(\widehat{\T}\) is one-to-one.
+  Let \(H \in \ns{\widehat{\T}}\).
+  Then \(\widehat{\T}(H)\) is the zero bilinear transformation in \(\bi(\V)\).
+  Since
+  \begin{align*}
+             & \forall x, y \in \V, \widehat{\T}(H)(x, y) = H(\T(x), \T(y)) = 0 &  & \by{ex:6.8.7} \\
+    \implies & \forall u, v \in \W, H(u, v) = 0,                                &  & \by{2.4.8}
+  \end{align*}
+  we know that \(H\) is the zero bilinear transformation in \(\bi(\W)\).
+  Thus \(\ns{\widehat{\T}} = \set{\zv}\) and by \cref{2.4} \(\widehat{\T}\) is one-to-one.
+
+  Now we show that \(\widehat{\T}\) is onto.
+  Let \(g \in \bi(\V)\).
+  Now we define \(f \in \W \times \W \to \F\) by \(f = \widehat{\T^{-1}}(g)\).
+  By \cref{ex:6.8.7}(a) we know that \(f \in \bi(\W)\).
+  Since
+  \begin{align*}
+    \forall x, y \in \V, \widehat{\T}(f)(x, y) & = f\pa{\T(x), \T(y)}                   &  & \by{ex:6.8.7} \\
+                                               & = \widehat{\T^{-1}}(g)(\T(x), \T(y))                      \\
+                                               & = g\pa{\T^{-1}(\T(x)), \T^{-1}(\T(y))} &  & \by{ex:6.8.7} \\
+                                               & = g(x, y),
+  \end{align*}
+  we know that \(\widehat{\T}(f) = g\).
+  Thus \(\widehat{\T}\) is onto, and we conclude that \(\widehat{\T}\) is an isomorphism from \(\bi(\W)\) to \(\bi(\V)\).
+\end{proof}
+
+\begin{ex}\label{ex:6.8.8}
+  Assume the notation of \cref{6.32}.
+  \begin{enumerate}
+    \item Prove that for any ordered basis \(\beta\), \(\psi_{\beta}\) is linear.
+    \item Let \(\beta\) be an ordered basis for an \(n\)-dimensional space \(\V\) over \(\F\), and let \(\phi_{\beta} : \V \to \vs{F}^n\) be the standard representation of \(\V\) with respect to \(\beta\).
+          For \(A \in \ms[n][n][\F]\), define \(H : \V \times \V \to \F\) by \(H(x, y) = \tp{(\phi_{\beta}(x))} A \phi_{\beta}(y)\).
+          Prove that \(H \in \bi(V)\).
+          Can you establish this as a corollary to \cref{ex:6.8.7}?
+    \item Prove the converse of (b):
+          Let \(H\) be a bilinear form on \(\V\).
+          If \(A = \psi_{\beta}(H)\), then \(H(x, y) = \tp{(\phi_{\beta}(x))} A \phi_{\beta}(y)\).
+  \end{enumerate}
+\end{ex}
+
+\begin{proof}[\pf{ex:6.8.8}(a)]
+  See \cref{6.32}.
+\end{proof}
+
+\begin{proof}[\pf{ex:6.8.8}(b)]
+  Define \(G : \vs{F}^n \times \vs{F}^n \to \F\) by
+  \[
+    \forall x, y \in \vs{F}^n, G(x, y) = \tp{x} A y.
+  \]
+  By \cref{6.8.2} we know that \(G \in \bi(\vs{F}^n)\).
+  By \cref{ex:6.8.7} we see that \(H = \widehat{\phi_{\beta}}(G)\) and by \cref{ex:6.8.7}(a) we have \(H \in \bi(\V)\).
+\end{proof}
+
+\begin{proof}[\pf{ex:6.8.8}(c)]
+  See \cref{6.8.7}.
+\end{proof}
+
+\begin{ex}\label{ex:6.8.9}
+  \begin{enumerate}
+    \item Prove \cref{6.8.6}.
+    \item For a finite-dimensional vector space \(\V\) over \(\F\), describe a method for finding an ordered basis for \(\bi(\V)\).
+  \end{enumerate}
+\end{ex}
+
+\begin{proof}[\pf{ex:6.8.9}(a)]
+  See \cref{6.8.6}.
+\end{proof}
+
+\begin{proof}[\pf{ex:6.8.9}(b)]
+  Let \(n = \dim(\V)\) and let \(\beta\) be an ordered basis for \(\V\) over \(\F\).
+  By \cref{6.32} we know that \(\psi_{\beta}\) is an isomorphism from \(\bi(\V)\) to \(\ms[n][n][\F]\).
+  Now we define \(\gamma = \set{E^{i j} \in \ms[n][n][\F] : i, j \in \set{1, \dots, n}}\) as in \cref{1.6.4}.
+  Then by \cref{2.2,2.3} we know that \(\psi_{\beta}^{-1}(\gamma)\) is an ordered basis for \(\bi(\V)\) over \(\F\).
+\end{proof}
+
+\begin{ex}\label{ex:6.8.10}
+  Prove \cref{6.8.7}.
+\end{ex}
+
+\begin{proof}[\pf{ex:6.8.10}]
+  See \cref{6.8.7}.
+\end{proof}
+
+\begin{ex}\label{ex:6.8.11}
+  Prove \cref{6.8.8}.
+\end{ex}
+
+\begin{proof}[\pf{ex:6.8.11}]
+  See \cref{6.8.8}.
+\end{proof}
+
 \begin{ex}\label{ex:6.8.12}
   Prove that the relation of congruence is an equivalence relation.
 \end{ex}
