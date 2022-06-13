@@ -229,3 +229,284 @@
   and hence \(\T_v^*(e_2) = e_2\).
   Similarly, \(\T_v^*(e_3) = e_3\).
 \end{proof}
+
+\begin{thm}\label{6.40}
+  Suppose that, at the instant the origins of \(S\) and \(S'\) coincide, a light flash is emitted from their common origin.
+  The event of the light flash when measured either relative to \(S\) and \(C\) or relative to \(S'\) and \(C'\) has space--time
+  coordinates
+  \[
+    \begin{pmatrix}
+      0 \\
+      0 \\
+      0 \\
+      0
+    \end{pmatrix}.
+  \]
+  Let \(P\) be the set of all events whose space--time coordinates
+  \[
+    \begin{pmatrix}
+      x \\
+      y \\
+      z \\
+      t
+    \end{pmatrix}
+  \]
+  relative to \(S\) and \(C\) are such that the flash is observable from the point with coordinates
+  \[
+    \begin{pmatrix}
+      x \\
+      y \\
+      z
+    \end{pmatrix}
+  \]
+  (as measured relative to \(S\)) at the time \(t\) (as measured on \(C\)).
+  Let us characterize \(P\) in terms of \(x, y, z\), and \(t\).
+  Since the speed of light is \(1\), at any time \(t \geq 0\) the light flash is observable from any point whose distance to the origin of \(S\) (as measured on \(S\)) is \(t \cdot 1 = t\).
+  These are precisely the points that lie on the sphere of radius \(t\) with center at the origin.
+  The coordinates (relative to \(S\)) of such points satisfy the equation \(x^2 + y^2 + z^2 - t^2 = 0\).
+  Hence an event lies in \(P\) iff its space--time coordinates
+  \[
+    \begin{pmatrix}
+      x \\
+      y \\
+      z \\
+      t
+    \end{pmatrix} \quad (t \geq 0)
+  \]
+  relative to \(S\) and \(C\) satisfy the equation \(x^2 + y^2 + z^2 - t^2 = 0\).
+  By virtue of \cref{6.9.2} (R 1), we can characterize \(P\) in terms of the space--time coordinates relative to \(S'\) and \(C'\) similarly:
+  An event lies in \(P\) iff, relative to \(S'\) and \(C'\), its space--time coordinates
+  \[
+    \begin{pmatrix}
+      x' \\
+      y' \\
+      z' \\
+      t'
+    \end{pmatrix} \quad (t' \geq 0)
+  \]
+  satisfy the equation \((x')^2 + (y')^2 + (z')^2 - (t')^2 = 0\).
+  Let
+  \[
+    A = \begin{pmatrix}
+      1 & 0 & 0 & 0  \\
+      0 & 1 & 0 & 0  \\
+      0 & 0 & 1 & 0  \\
+      0 & 0 & 0 & -1
+    \end{pmatrix}.
+  \]
+  If \(\inn{\L_A(w), w} = 0\) for some \(w \in \R^4\), then
+  \[
+    \inn{\T_v^* \L_A \T_v(w), w} = 0.
+  \]
+\end{thm}
+
+\begin{proof}[\pf{6.40}]
+  Let
+  \[
+    w = \begin{pmatrix}
+      x \\
+      y \\
+      z \\
+      t
+    \end{pmatrix} \in \R^4,
+  \]
+  and suppose that \(\inn{\L_A(w), w} = 0\).
+  \begin{description}
+    \item[Case 1.]
+      \(t \geq 0\).
+      Since \(\inn{\L_A(w), w} = x^2 + y^2 + z^2 - t^2\), the vector \(w\) gives the coordinates of an event in \(P\) relative to \(S\) and \(C\).
+      Because
+      \[
+        \begin{pmatrix}
+          x \\
+          y \\
+          z \\
+          t
+        \end{pmatrix} \quad \text{and} \quad \begin{pmatrix}
+          x' \\
+          y' \\
+          z' \\
+          t'
+        \end{pmatrix}
+      \]
+      are the space--time coordinates of the same event relative to \(S'\) and \(C'\), \cref{6.9.2} (R 1) yields
+      \[
+        (x')^2 + (y')^2 + (z')^2 - (t')^2 = 0.
+      \]
+      Thus \(\inn{\T_v^* \L_A \T_v(w), w} = \inn{\L_A \T_v(w), \T_v(w)} = (x')^2 + (y')^2 + (z')^2 - (t')^2 = 0\), and the conclusion follows.
+    \item[Case 2.]
+      \(t < 0\).
+      The proof follows by applying Case 1 to \(-w\), i.e.,
+      \begin{align*}
+        0 & = \inn{\T_v^* \L_A \T_v(-w), -w} &  & \text{(by Case 1)} \\
+          & = \inn{-\T_v^* \L_A \T_v(w), -w} &  & \by{2.1.1}[b]      \\
+          & = -\inn{\T_v^* \L_A \T_v(w), -w} &  & \by{6.1.1}[b]      \\
+          & = \inn{\T_v^* \L_A \T_v(w), w}.  &  & \by{6.1}[b]
+      \end{align*}
+  \end{description}
+\end{proof}
+
+\begin{thm}\label{6.41}
+  We now proceed to deduce information about \(\T_v\).
+  Let
+  \[
+    w_1 = \begin{pmatrix}
+      1 \\
+      0 \\
+      0 \\
+      1
+    \end{pmatrix} \quad \text{and} \quad w_2 = \begin{pmatrix}
+      1 \\
+      0 \\
+      0 \\
+      -1
+    \end{pmatrix}.
+  \]
+  By \cref{ex:6.9.3}, \(\set{\seq{w}{1,2}}\) is an orthogonal basis for \(\spn{\set{\seq{e}{1,4}}}\) over \(\R\), and \(\spn{\set{\seq{e}{1,4}}}\) is \(\T_v^* \L_A \T_v\)-invariant.
+  Then there exist nonzero scalars \(a, b \in \R\) such that
+  \begin{enumerate}
+    \item \(\T_v^* \L_A \T_v(w_1) = a w_2\).
+    \item \(\T_v^* \L_A \T_v(w_2) = b w_1\).
+  \end{enumerate}
+\end{thm}
+
+\begin{proof}[\pf{6.41}]
+  Because \(\inn{\L_A(w_1), w_1} = 0\), \(\inn{\T_v^* \L_A \T_v(w_1), w_1} = 0\) by \cref{6.40}.
+  Thus \(\T_v^* \L_A \T_v(w_1)\) is orthogonal to \(w_1\).
+  Since \(\spn{\set{\seq{e}{1,4}}} = \spn{\set{\seq{w}{1,2}}}\) is \(\T_v^* \L_A \T_v\)-invariant, \(\T_v^* \L_A \T_v(w_1)\) must lie in this set.
+  But \(\set{\seq{w}{1,2}}\) is an orthogonal basis for this subspace, and so \(\T_v^* \L_A \T_v(w_1)\) must be a multiple of \(w_2\).
+  Thus \(\T_v^* \L_A \T_v (w_1) = a w_2\) for some scalar \(a \in \R\).
+  Since \(\T_v\) and \(A\) are invertible, so is \(\T_v^* \L_A \T_v\) (\cref{ex:6.3.8}).
+  Thus \(a \neq 0\), proving (a).
+
+  The proof of (b) is similar to (a).
+\end{proof}
+
+\begin{cor}\label{6.9.3}
+  Let \(B_v = [\T_v]_{\beta}\), where \(\beta\) is the standard ordered basis for \(\R^4\) over \(\R\).
+  Then
+  \begin{enumerate}
+    \item \(B_v^* A B_v = A\).
+    \item \(\T_v^* \L_A \T_v = \L_A\).
+  \end{enumerate}
+\end{cor}
+
+\begin{proof}[\pf{6.9.3}]
+  By \cref{6.41} we know that there exist \(a, b \in \R \setminus \set{0}\) such that
+  \begin{align*}
+    \T_v^* \L_A \T_v(e_1 + e_4) & = \T_v^* \L_A \T_v(e_1) + \T_v^* \L_A \T_v(e_4) &  & \by{2.1.1}[a] \\
+                                & = a e_1 - a e_4;                                &  & \by{6.41}     \\
+    \T_v^* \L_A \T_v(e_1 - e_4) & = \T_v^* \L_A \T_v(e_1) - \T_v^* \L_A \T_v(e_4) &  & \by{2.1.2}[c] \\
+                                & = b e_1 + b e_4.                                &  & \by{6.41}
+  \end{align*}
+  Thus we have
+  \begin{align*}
+    \T_v^* \L_A \T_v(e_1) & = \dfrac{a + b}{2} e_1 - \dfrac{a - b}{2} e_4; \\
+    \T_v^* \L_A \T_v(e_4) & = \dfrac{a - b}{2} e_1 - \dfrac{a + b}{2} e_4.
+  \end{align*}
+  Since
+  \begin{align*}
+    \forall i \in \set{2, 3}, \T_v^* \L_A \T_v(e_i) & = \T_v^* \L_A(e_i) &  & \by{6.39}[a] \\
+                                                    & = \T_v^*(e_i)      &  & \by{2.3.8}   \\
+                                                    & = e_i,             &  & \by{6.39}[e]
+  \end{align*}
+  we have
+  \begin{align*}
+    [\T_v^* \L_A \T_v]_{\beta} & = [\T_v^*]_{\beta} [\L_A]_{\beta} [\T_v]_{\beta} &  & \by{2.3.3}   \\
+                               & = [\T_v]_{\beta}^* [\L_A]_{\beta} [\T_v]_{\beta} &  & \by{6.10}    \\
+                               & = [\T_v]_{\beta}^* A [\T_v]_{\beta}              &  & \by{2.15}[a] \\
+                               & = B_v^* A B_v                                                      \\
+                               & = \begin{pmatrix}
+                                     \dfrac{a + b}{2}  & 0 & 0 & \dfrac{a - b}{2}  \\
+                                     0                 & 1 & 0 & 0                 \\
+                                     0                 & 0 & 1 & 0                 \\
+                                     -\dfrac{a - b}{2} & 0 & 0 & -\dfrac{a + b}{2}
+                                   \end{pmatrix}. &  & \by{2.2.4}
+  \end{align*}
+  Then we have
+  \begin{align*}
+             & (B_v^* A B_v)^* = B_v^* A^* B_v = B_v^* A B_v   &  & \by{6.3.2}[c,d] \\
+    \implies & \dfrac{a - b}{2} = -\dfrac{a - b}{2}            &  & \by{6.1.5}      \\
+    \implies & \dfrac{a - b}{2} = 0                                                 \\
+    \implies & B_v^* A B_v = \begin{pmatrix}
+                               \dfrac{a + b}{2} & 0 & 0 & 0                 \\
+                               0                & 1 & 0 & 0                 \\
+                               0                & 0 & 1 & 0                 \\
+                               0                & 0 & 0 & -\dfrac{a + b}{2}
+                             \end{pmatrix}.
+  \end{align*}
+  But
+  \begin{align*}
+    \inn{\L_A(e_2 + e_4), e_2 + e_4} & = \inn{\L_A(e_2) + \L_A(e_4), e_2 + e_4} &  & \by{2.1.1}[a] \\
+                                     & = \inn{e_2 - e_4, e_2 + e_4}             &  & \by{6.39}[a]  \\
+                                     & = 0                                      &  & \by{6.1.2}
+  \end{align*}
+  implies
+  \begin{align*}
+             & \inn{\T_v^* \L_A \T_v(e_2 + e_4), e_2 + e_4} = 0 &  & \by{6.40}       \\
+    \implies & \inn{\begin{pmatrix}
+                        0 \\
+                        1 \\
+                        0 \\
+                        -\dfrac{a + b}{2}
+                      \end{pmatrix}, e_2 + e_4} = 0                    &  & \by{2.3.1} \\
+    \implies & 1 - \dfrac{a + b}{2} = 0                         &  & \by{6.1.2}      \\
+    \implies & \dfrac{a + b}{2} = 1                                                  \\
+    \implies & B_v^* A B_v = \begin{pmatrix}
+                               1 & 0 & 0 & 0  \\
+                               0 & 1 & 0 & 0  \\
+                               0 & 0 & 1 & 0  \\
+                               0 & 0 & 0 & -1
+                             \end{pmatrix} = A.
+  \end{align*}
+  Thus by \cref{2.3.3} we have \(\T_v^* \L_A \T_v = \L_A\).
+\end{proof}
+
+\exercisesection
+
+\setcounter{ex}{2}
+\begin{ex}\label{ex:6.9.3}
+  For
+  \[
+    w_1 = \begin{pmatrix}
+      1 \\
+      0 \\
+      0 \\
+      1
+    \end{pmatrix} \quad \text{and} \quad w_2 = \begin{pmatrix}
+      1 \\
+      0 \\
+      0 \\
+      -1
+    \end{pmatrix},
+  \]
+  show that
+  \begin{enumerate}
+    \item \(\set{\seq{w}{1,2}}\) is an orthogonal basis for \(\spn{\set{\seq{e}{1,4}}}\) over \(\R\);
+    \item \(\spn{\set{\seq{e}{1,4}}}\) is \(\T_v^* \L_A \T_v\)-invariant, where \(\L_A\) is defined in \cref{6.40}.
+  \end{enumerate}
+\end{ex}
+
+\begin{proof}[\pf{ex:6.9.3}(a)]
+  By \cref{6.1.2} \(\set{\seq{w}{1,2}}\) is orthogonal with respect to the standard inner product on \(\R^4\) over \(\R\).
+  Since
+  \begin{align*}
+    w_1                            & = e_1 + e_4; \\
+    w_2                            & = e_1 - e_4; \\
+    \dim(\spn{\set{\seq{e}{1,4}}}) & = 2,
+  \end{align*}
+  by \cref{1.6.15}(b) and \cref{6.2.4} we know that \(\set{\seq{w}{1,2}}\) is an orthogonal basis for \(\spn{\set{\seq{e}{1,4}}}\) over \(\R\).
+\end{proof}
+
+\begin{proof}[\pf{ex:6.9.3}(b)]
+  Since
+  \begin{align*}
+    (\T_v^* \L_A \T_v)(\spn{\set{\seq{e}{1,4}}}) & = \T_v^*(\L_A(\T_v(\spn{\set{\seq{e}{1,4}}})))                         \\
+                                                 & \subseteq \T_v^*(\L_A(\spn{\set{\seq{e}{1,4}}})) &  & \by{6.39}[c]     \\
+                                                 & = \T_v^*(\L_A(\spn{\set{\seq{w}{1,2}}}))         &  & \by{ex:6.9.3}[a] \\
+                                                 & = \T_v^*(\spn{\set{\seq{w}{1,2}}})               &  & \by{2.3.1}       \\
+                                                 & = \T_v^*(\spn{\set{\seq{e}{1,4}}})               &  & \by{ex:6.9.3}[a] \\
+                                                 & \subseteq \spn{\set{\seq{e}{1,4}}},              &  & \by{6.39}[d]
+  \end{align*}
+  by \cref{5.4.1} we know that \(\spn{\set{\seq{e}{1,4}}}\) is \(\T_v^* \L_A \T_v\)-invariant.
+\end{proof}
