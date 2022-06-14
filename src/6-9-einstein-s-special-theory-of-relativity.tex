@@ -1037,6 +1037,145 @@
   \end{align*}
 \end{proof}
 
-\begin{ex}\label{ex:6.9.9}
-
+\begin{ex}\label{ex:6.9.8}
+  Suppose that an astronaut left Earth in the year \(2000\) and traveled to a star \(99\) light years away from Earth at \(99\%\) of the speed of light and that upon reaching the star immediately turned around and returned to Earth at the same speed.
+  Assuming Einstein's special theory of relativity, show that if the astronaut was \(20\) years old at the time of departure, then he or she would return to Earth at age \(48.2\) in the year \(2200\).
+  Explain the use of \cref{ex:6.9.7} in solving this problem.
 \end{ex}
+
+\begin{proof}[\pf{ex:6.9.8}]
+  The time (measure on Earth) traveling from Earth to the star is \(\dfrac{99}{0.99} = 100\) years.
+  The time (measure on the space ship) traveling from Earth to the star is \(100 \sqrt{1 - 0.99^2} \approx 14.1\) years by \cref{6.9.4}.
+  Using \cref{ex:6.9.7}, we get the same result when traveling back from the star to Earth.
+  Thus the total time measure on Earth is \(100 \times 2 = 200\) years and the total time measure on space ship is \(14.1 \times 2 = 28.2\) years.
+  If the astronaut was \(20\) years old at the time of departure (year \(2000\)), then he or she would return to Earth at age \(20 + 28.2 = 48.2\) in the year \(2000 + 200 = 2200\).
+\end{proof}
+
+\begin{ex}\label{ex:6.9.9}
+  Recall the moving space vehicle considered in the study of time contraction.
+  Suppose that the vehicle is moving toward a fixed star located on the \(x\)-axis of \(S\) at a distance \(b\) units from the origin of \(S\).
+  If the space vehicle moves toward the star at velocity \(v\), Earthlings (who remain ``almost'' stationary relative to \(S\)) compute the time it takes for the vehicle to reach the star as \(t = b / v\).
+  Due to the phenomenon of time contraction, the astronaut perceives a time span of \(t' = t \sqrt{1 - v^2} = (b / v) \sqrt{1 - v^2}\).
+  A paradox appears in that the astronaut perceives a time span inconsistent with a distance of \(b\) and a velocity of \(v\).
+  The paradox is resolved by observing that the distance from the solar system to the star as measured by the astronaut is less than \(b\).
+
+  Assuming that the coordinate systems \(S\) and \(S'\) and clocks \(C\) and \(C'\) are as in the discussion of time contraction, prove the following results.
+  \begin{enumerate}
+    \item At time \(t\) (as measured on \(C\)), the space--time coordinates of star relative to \(S\) and \(C\) are
+          \[
+            \begin{pmatrix}
+              b \\
+              0 \\
+              0 \\
+              t
+            \end{pmatrix}.
+          \]
+    \item At time \(t\) (as measured on \(C\)), the space--time coordinates of the star relative to \(S'\) and \(C'\) are
+          \[
+            \begin{pmatrix}
+              \dfrac{b - vt}{\sqrt{1 - v^2}} \\
+              0                              \\
+              0                              \\
+              \dfrac{t - bv}{\sqrt{1 - v^2}}
+            \end{pmatrix}.
+          \]
+    \item For
+          \[
+            x' = \dfrac{b - tv}{\sqrt{1 - v^2}} \quad \text{and} \quad t' = \dfrac{t - bv}{\sqrt{1 - v^2}},
+          \]
+          we have \(x' = b \sqrt{1 - v^2} - t' v\).
+          This result may be interpreted to mean that at time \(t'\) as measured by the astronaut, the distance from the astronaut to the star as measured by the astronaut is
+          \[
+            b \sqrt{1 - v^2} - t' v.
+          \]
+    \item Conclude from the preceding equation that
+          \begin{enumerate}[label=(\arabic*)]
+            \item the speed of the space vehicle relative to the star, as measured by the astronaut, is \(v\);
+            \item the distance from Earth to the star, as measured by the astronaut, is \(b \sqrt{1 - v^2}\).
+          \end{enumerate}
+          Thus distances along the line of motion of the space vehicle appear to be contracted by a factor of \(\sqrt{1 - v^2}\).
+  \end{enumerate}
+\end{ex}
+
+\begin{proof}[\pf{ex:6.9.9}(a)]
+  We have
+  \[
+    \begin{pmatrix}
+      vt \\
+      0  \\
+      0  \\
+      t
+    \end{pmatrix} = \begin{pmatrix}
+      \dfrac{b}{t} t \\
+      0              \\
+      0              \\
+      t
+    \end{pmatrix} = \begin{pmatrix}
+      b \\
+      0 \\
+      0 \\
+      t
+    \end{pmatrix}.
+  \]
+\end{proof}
+
+\begin{proof}[\pf{ex:6.9.9}(b)]
+  We have
+  \begin{align*}
+    \br{\T_v\begin{pmatrix}
+                b \\
+                0 \\
+                0 \\
+                t
+              \end{pmatrix}}_{\beta} & = [\T_v]_{\beta} \begin{pmatrix}
+                                                        b \\
+                                                        0 \\
+                                                        0 \\
+                                                        t
+                                                      \end{pmatrix}                                                     &  & \by{2.14} \\
+                            & = \begin{pmatrix}
+                                  \dfrac{1}{\sqrt{1 - v^2}}  & 0 & 0 & \dfrac{-v}{\sqrt{1 - v^2}} \\
+                                  0                          & 1 & 0 & 0                          \\
+                                  0                          & 0 & 1 & 0                          \\
+                                  \dfrac{-v}{\sqrt{1 - v^2}} & 0 & 0 & \dfrac{1}{\sqrt{1 - v^2}}
+                                \end{pmatrix} \begin{pmatrix}
+                                                b \\
+                                                0 \\
+                                                0 \\
+                                                t
+                                              \end{pmatrix} &  & \by{6.42}                      \\
+                            & = \begin{pmatrix}
+                                  \dfrac{b - vt}{\sqrt{1 - v^2}} \\
+                                  0                              \\
+                                  0                              \\
+                                  \dfrac{t - bv}{\sqrt{1 - v^2}}
+                                \end{pmatrix}.                                           &  & \by{2.3.1}
+  \end{align*}
+\end{proof}
+
+\begin{proof}[\pf{ex:6.9.9}(c)]
+  We have
+  \begin{align*}
+    b \sqrt{1 - v^2} - t' v & = b \sqrt{1 - v^2} - \dfrac{t - bv}{\sqrt{1 - v^2}} v \\
+                            & = \dfrac{b - b v^2 - tv + b v^2}{\sqrt{1 - v^2}}      \\
+                            & = \dfrac{b - tv}{\sqrt{1 - v^2}}                      \\
+                            & = x'.
+  \end{align*}
+\end{proof}
+
+\begin{proof}[\pf{ex:6.9.9}(d)]
+  For (1), we have
+  \begin{align*}
+    \dfrac{\eval{x'}_{t'} - \eval{x'}_0}{t' - 0} & = \dfrac{b \sqrt{1 - v^2} - t' v - b \sqrt{1 - v^2}}{t'} &  & \by{ex:6.9.9}[c] \\
+                                                 & = -v.
+  \end{align*}
+  Thus the speed of the space vehicle measured by the astronaut is \(\abs{-v} = v\).
+
+  For (2), we have
+  \begin{align*}
+    v t' & = v t \sqrt{1 - v^2}            &  & \by{6.9.4} \\
+         & = \dfrac{b}{t} t \sqrt{1 - v^2}                 \\
+         & = b \sqrt{1 - v^2}.
+  \end{align*}
+  Thus the distances from Earch to the star, as measured by the astronaut, is \(b \sqrt{1 - v^2}\).
+\end{proof}
