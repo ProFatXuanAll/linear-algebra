@@ -774,6 +774,123 @@
   \]
 \end{proof}
 
+\begin{cor}\label{6.9.4}
+  A most curious and paradoxical conclusion follows if we accept Einstein's theory.
+  Suppose that an astronaut leaves our solar system in a space vehicle traveling at a fixed velocity \(v\) as measured relative to our solar system.
+  It follows from Einstein's theory that, at the end of time \(t\) as measured on Earth, the time that passes on the space vehicle is only \(t \sqrt{1 - v^2}\).
+\end{cor}
+
+\begin{proof}[\pf{6.9.4}]
+  To establish this result, consider the coordinate systems \(S\) and \(S'\) and clocks \(C\) and \(C'\) that we have been studying.
+  Suppose that the origin of \(S'\) coincides with the space vehicle and the origin of \(S\) coincides with a point in the solar system (stationary relative to the sun) so that the origins of \(S\) and \(S'\) coincide and clocks \(C\) and \(C'\) read zero at the moment the astronaut embarks on the trip.
+
+  As viewed from \(S\), the space--time coordinates of the vehicle at any time \(t > 0\) as measured by \(C\) are
+  \[
+    \begin{pmatrix}
+      vt \\
+      0  \\
+      0  \\
+      t
+    \end{pmatrix},
+  \]
+  whereas, as viewed from \(S'\), the space--time coordinates of the vehicle at any time \(t' > 0\) as measured by \(C'\) are
+  \[
+    \begin{pmatrix}
+      0 \\
+      0 \\
+      0 \\
+      t'
+    \end{pmatrix}.
+  \]
+  But if two sets of space--time coordinates
+  \[
+    \begin{pmatrix}
+      vt \\
+      0  \\
+      0  \\
+      t
+    \end{pmatrix} \quad \text{and} \quad \begin{pmatrix}
+      0 \\
+      0 \\
+      0 \\
+      t'
+    \end{pmatrix}
+  \]
+  are to describe the same event, it must follow that
+  \[
+    \T_v\begin{pmatrix}
+      vt \\
+      0  \\
+      0  \\
+      t
+    \end{pmatrix} = \begin{pmatrix}
+      0 \\
+      0 \\
+      0 \\
+      t'
+    \end{pmatrix}.
+  \]
+  Thus
+  \begin{align*}
+    [\T_v]_{\beta} \begin{pmatrix}
+                     vt \\
+                     0  \\
+                     0  \\
+                     t
+                   \end{pmatrix} & = \begin{pmatrix}
+                                       \dfrac{1}{\sqrt{1 - v^2}}  & 0 & 0 & \dfrac{-v}{\sqrt{1 - v^2}} \\
+                                       0                          & 1 & 0 & 0                          \\
+                                       0                          & 0 & 1 & 0                          \\
+                                       \dfrac{-v}{\sqrt{1 - v^2}} & 0 & 0 & \dfrac{1}{\sqrt{1 - v^2}}
+                                     \end{pmatrix} \begin{pmatrix}
+                                                     vt \\
+                                                     0  \\
+                                                     0  \\
+                                                     t
+                                                   \end{pmatrix} &  & \by{6.42} \\
+                                   & = \begin{pmatrix}
+                                         0 \\
+                                         0 \\
+                                         0 \\
+                                         t'
+                                       \end{pmatrix}.
+  \end{align*}
+  From the preceding equation, we obtain \(\dfrac{-v^2 t}{\sqrt{1 - v^2}} + \dfrac{t}{\sqrt{1 - v^2}} = t'\), or
+  \[
+    t' = t \sqrt{1 - v^2}.
+  \]
+  This is the desired result.
+\end{proof}
+
+\begin{note}
+  A dramatic consequence of time contraction is that distances are contracted along the line of motion (see \cref{ex:6.9.9}).
+\end{note}
+
+\begin{cor}\label{6.9.5}
+  Let us make one additional point.
+  Suppose that we consider units of distance and time more commonly used than the light second and second, such as the mile and hour, or the kilometer and second.
+  Let \(c\) denote the speed of light relative to our chosen units of distance.
+  It is easily seen that if an object travels at a velocity \(v\) relative to a set of units, then it is traveling at a velocity \(v / c\) in units of light seconds per second.
+  Thus, for an arbitrary set of units of distance and time, we have
+  \[
+    t' = t \sqrt{1 - \dfrac{v^2}{c^2}}.
+  \]
+\end{cor}
+
+\begin{proof}[\pf{6.9.5}]
+  Let the distance and time units of \(v\) be \(d_v\) and \(s_v\).
+  Let the unit of light second and second be \(d_c\) and \(s_c\).
+  So the object is traveling at velocity \(v \, d_v\) unit per \(s_v\) time and light is traveling at velocity \(1 \, d_c\) per \(s_c\) time.
+  If light is traveling at velocity \(c \, d_v\) unit per \(s_v\) time, then the object must be traveling at velocity \(v / c \, d_c\) per \(s_c\) time since
+  \[
+    \dfrac{1}{c} = \dfrac{\dfrac{v}{c}}{v}.
+  \]
+  Thus by \cref{6.9.4} we have
+  \[
+    t' = t \sqrt{1 - \dfrac{v^2}{c^2}}.
+  \]
+\end{proof}
+
 \exercisesection
 
 \setcounter{ex}{2}
@@ -822,3 +939,7 @@
   \end{align*}
   by \cref{5.4.1} we know that \(\spn{\set{\seq{e}{1,4}}}\) is \(\T_v^* \L_A \T_v\)-invariant.
 \end{proof}
+
+\begin{ex}\label{ex:6.9.9}
+
+\end{ex}
