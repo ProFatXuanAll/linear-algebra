@@ -940,6 +940,103 @@
   by \cref{5.4.1} we know that \(\spn{\set{\seq{e}{1,4}}}\) is \(\T_v^* \L_A \T_v\)-invariant.
 \end{proof}
 
+\setcounter{ex}{5}
+\begin{ex}\label{ex:6.9.6}
+  Consider three coordinate systems \(S\), \(S'\), and \(S''\) with the corresponding axes (\(x, x', x''\); \(y, y', y''\); and \(z, z', z''\)) parallel and such that the \(x\)-, \(x'\)-, and \(x''\)-axes coincide.
+  Suppose that \(S'\) is moving past \(S\) at a velocity \(v_1 > 0\) (as measured on \(S\)), \(S''\) is moving past \(S'\) at a velocity \(v_2 > 0\) (as measured on \(S'\)), and \(S''\) is moving past \(S\) at a velocity \(v_3 > 0\) (as measured on \(S\)), and that there are three clocks \(C\), \(C'\), and \(C''\) such that \(C\) is stationary relative to \(S\), \(C'\) is stationary relative to \(S'\), and \(C''\) is stationary relative to \(S''\).
+  Suppose that when measured on any of the three clocks, all the origins of \(S\), \(S'\), and \(S''\) coincide at time \(0\).
+  Assuming that \(\T_{v_3} = \T_{v_2} \T_{v_1}\) (i.e., \(B_{v_3} = B_{v_2} B_{v_1}\)), prove that
+  \[
+    v_3 = \dfrac{v_1 + v_2}{1 + v_1 v_2}.
+  \]
+  Note that substituting \(v_2 = 1\) in this equation yields \(v_3 = 1\).
+  This tells us that the speed of light as measured in \(S\) or \(S'\) is the same.
+  Why would we be surprised if this were not the case?
+\end{ex}
+
+\begin{proof}[\pf{ex:6.9.6}]
+  Let \(\beta\) be the standard ordered basis for \(\R^4\) over \(\R\).
+  Then we have
+  \begin{align*}
+             & \T_{v_3} = \T_{v_2} \T_{v_1}                                                                                                                                           \\
+    \implies & B_{v_3} = [\T_{v_3}]_{\beta} = [\T_{v_2} \T_{v_1}]_{\beta}                                                                                             &  & \by{6.9.3} \\
+             & = [\T_{v_2}]_{\beta} [\T_{v_1}]_{\beta} = B_{v_2} B_{v_1}                                                                                              &  & \by{2.3.3} \\
+    \implies & \begin{pmatrix}
+                 \dfrac{1}{\sqrt{1 - v_3^2}}    & 0 & 0 & \dfrac{-v_3}{\sqrt{1 - v_3^2}} \\
+                 0                              & 1 & 0 & 0                              \\
+                 0                              & 0 & 1 & 0                              \\
+                 \dfrac{-v_3}{\sqrt{1 - v_3^2}} & 0 & 0 & \dfrac{1}{\sqrt{1 - v_3^2}}
+               \end{pmatrix}                                                               &  & \by{6.42}                                                                             \\
+             & = \begin{pmatrix}
+                   \dfrac{1}{\sqrt{1 - v_2^2}}    & 0 & 0 & \dfrac{-v_2}{\sqrt{1 - v_2^2}} \\
+                   0                              & 1 & 0 & 0                              \\
+                   0                              & 0 & 1 & 0                              \\
+                   \dfrac{-v_2}{\sqrt{1 - v_2^2}} & 0 & 0 & \dfrac{1}{\sqrt{1 - v_2^2}}
+                 \end{pmatrix} \begin{pmatrix}
+                                 \dfrac{1}{\sqrt{1 - v_1^2}}    & 0 & 0 & \dfrac{-v_1}{\sqrt{1 - v_1^2}} \\
+                                 0                              & 1 & 0 & 0                              \\
+                                 0                              & 0 & 1 & 0                              \\
+                                 \dfrac{-v_1}{\sqrt{1 - v_1^2}} & 0 & 0 & \dfrac{1}{\sqrt{1 - v_1^2}}
+                               \end{pmatrix}                                                               &  & \by{6.42}                                                             \\
+             & = \begin{pmatrix}
+                   \dfrac{1 + v_1 v_2}{\sqrt{1 - v_2^2} \sqrt{1 - v_1^2}} & 0 & 0 & -\dfrac{v_1 + v_2}{\sqrt{1 - v_2^2} \sqrt{1 - v_1^2}}  \\
+                   0                                                      & 1 & 0 & 0                                                      \\
+                   0                                                      & 0 & 1 & 0                                                      \\
+                   -\dfrac{v_1 + v_2}{\sqrt{1 - v_2^2} \sqrt{1 - v_1^2}}  & 0 & 0 & \dfrac{1 + v_1 v_2}{\sqrt{1 - v_2^2} \sqrt{1 - v_1^2}}
+                 \end{pmatrix} &  & \by{2.3.1}                  \\
+    \implies & \begin{dcases}
+                 \dfrac{1}{\sqrt{1 - v_3^2}} = \dfrac{1 + v_1 v_2}{\sqrt{1 - v_2^2} \sqrt{1 - v_1^2}} \\
+                 \dfrac{v_3}{\sqrt{1 - v_3^2}} = \dfrac{v_1 + v_2}{\sqrt{1 - v_2^2} \sqrt{1 - v_1^2}}
+               \end{dcases}                                           &  & \by{1.2.8}                                                              \\
+    \implies & v_3 = \dfrac{v_3}{1} = \dfrac{v_1 + v_2}{1 + v_1 v_2}.
+  \end{align*}
+  If \(v_1 = v_2 = 1\) but \(v_3 \neq 1\), then \cref{6.9.2} (R 1) does not hold.
+\end{proof}
+
+\begin{ex}\label{ex:6.9.7}
+  Compute \((B_v)^{-1}\).
+  Show \((B_v)^{-1} = B_{(-v)}\).
+  Conclude that if \(S'\) moves at a negative velocity \(v\) relative to \(S\), then \([\T_v]_{\beta} = B_v\), where \(B_v\) is of the form given in \cref{6.42}.
+\end{ex}
+
+\begin{proof}[\pf{ex:6.9.7}]
+  First observe that
+  \begin{align*}
+             & \begin{pmatrix}
+                 \dfrac{1}{\sqrt{1 - v^2}} & 0 & 0 & \dfrac{v}{\sqrt{1 - v^2}} \\
+                 0                         & 1 & 0 & 0                         \\
+                 0                         & 0 & 1 & 0                         \\
+                 \dfrac{v}{\sqrt{1 - v^2}} & 0 & 0 & \dfrac{1}{\sqrt{1 - v^2}}
+               \end{pmatrix} \begin{pmatrix}
+                               \dfrac{1}{\sqrt{1 - v^2}}  & 0 & 0 & \dfrac{-v}{\sqrt{1 - v^2}} \\
+                               0                          & 1 & 0 & 0                          \\
+                               0                          & 0 & 1 & 0                          \\
+                               \dfrac{-v}{\sqrt{1 - v^2}} & 0 & 0 & \dfrac{1}{\sqrt{1 - v^2}}
+                             \end{pmatrix}            \\
+             & = I_4                                                                                      &  & \by{2.3.1} \\
+    \implies & (B_v)^{-1} = \begin{pmatrix}
+                              \dfrac{1}{\sqrt{1 - v^2}} & 0 & 0 & \dfrac{v}{\sqrt{1 - v^2}} \\
+                              0                         & 1 & 0 & 0                         \\
+                              0                         & 0 & 1 & 0                         \\
+                              \dfrac{v}{\sqrt{1 - v^2}} & 0 & 0 & \dfrac{1}{\sqrt{1 - v^2}}
+                            \end{pmatrix}         &  & \by{ex:2.4.10}[b]               \\
+             & = \begin{pmatrix}
+                   \dfrac{1}{\sqrt{1 - (-v)^2}}     & 0 & 0 & \dfrac{-(-v)}{\sqrt{1 - (-v)^2}} \\
+                   0                                & 1 & 0 & 0                                \\
+                   0                                & 0 & 1 & 0                                \\
+                   \dfrac{-(-v)}{\sqrt{1 - (-v)^2}} & 0 & 0 & \dfrac{1}{\sqrt{1 - (-v)^2}}
+                 \end{pmatrix} = B_{(-v)}. &  & \by{6.42}
+  \end{align*}
+  If \(S'\) moves at a negative velocity \(v\) relative to \(S\), then \(S\) moves at a positive velocity \(-v\) relative to \(S'\).
+  Thus
+  \begin{align*}
+    [\T_v]_{\beta} & = [\T_{-v}^{-1}]_{\beta}                                    \\
+                   & = [\T_{-v}]_{\beta}^{-1} &  & \by{2.4.6}                    \\
+                   & = B_{(-v)}^{-1}          &  & \by{6.42}                     \\
+                   & = B_v.                   &  & \text{(from the proof above)}
+  \end{align*}
+\end{proof}
+
 \begin{ex}\label{ex:6.9.9}
 
 \end{ex}
