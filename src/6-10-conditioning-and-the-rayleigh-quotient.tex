@@ -1,1 +1,106 @@
 \section{Conditioning and the Rayleigh Quotient}\label{sec:6.10}
+
+\begin{defn}\label{6.10.1}
+  In \cref{sec:3.4}, we studied specific techniques that allow us to solve systems of linear equations in the form \(Ax = b\), where \(A \in \ms\) and \(b \in \ms[m][1][\F]\).
+  Such systems often arise in applications to the real world.
+  The coefficients in the system are frequently obtained from experimental data, and, in many cases, both \(m\) and \(n\) are so large that a computer must be used in the calculation of the solution.
+  Thus two types of errors must be considered.
+  First, experimental errors arise in the collection of data since no instruments can provide completely accurate measurements.
+  Second, computers introduce roundoff errors.
+  One might intuitively feel that small relative changes in the coefficients of the system cause small relative errors in the solution.
+  A system that has this property is called \textbf{well-conditioned};
+  otherwise, the system is called \textbf{ill-conditioned}.
+\end{defn}
+
+\begin{note}
+  We now consider several examples of these types of errors, concentrating primarily on changes in \(b\) rather than on changes in the entries of \(A\).
+  In addition, we assume that \(A\) is a square, complex (or real), invertible matrix since this is the case most frequently encountered in applications.
+
+  Of course, we are really interested in \emph{relative changes} since a change in the solution of, say, \(10\), is considered large if the original solution is of the order \(10^{-2}\), but small if the original solution is of the order \(10^6\).
+\end{note}
+
+\begin{defn}\label{6.10.2}
+  We use the notation \(\delta b\) to denote the vector \(b' - b\), where \(b\) is the vector in the original system and \(b'\) is the vector in the modified system.
+  We now define the \textbf{relative change} in \(b\) to be the scalar \(\dfrac{\norm{\delta b}}{\norm{b}}\), where \(\norm{\cdot}\) denotes the standard norm on \(\C^n\) (or \(\R^n\));
+  that is, \(\norm{b} = \sqrt{\inn{b, b}}\).
+  Most of what follows, however, is true for any norm.
+  Similar definitions hold for the \textbf{relative change} in \(x\).
+\end{defn}
+
+\begin{note}
+  If the lines defined by the two equations are nearly coincident, then a small change in either line could greatly alter the point of intersection, that is, the solution to the system.
+\end{note}
+
+\begin{defn}\label{6.10.3}
+  Let \(A\) be a complex (or real) \(n \times n\) matrix.
+  Define the \textbf{(Euclidean) norm} of \(A\) by
+  \[
+    \norm{A} = \max_{x \neq \zv} \dfrac{\norm{Ax}}{\norm{x}},
+  \]
+  where \(x \in \C^n\) or \(x \in \R^n\).
+\end{defn}
+
+\begin{note}
+  Intuitively, \(\norm{A}\) represents the maximum \emph{magnification} of a vector by the matrix \(A\).
+  The question of whether or not this maximum exists, as well as the problem of how to compute it, can be answered by the use of the so-called \emph{Rayleigh quotient}.
+\end{note}
+
+\begin{defn}\label{6.10.4}
+  Let \(B\) be an \(n \times n\) self-adjoint matrix.
+  The \textbf{Rayleigh quotient} for \(x \neq \zv\) is defined to be the scalar \(R(x) = \dfrac{\inn{Bx, x}}{\norm{x}^2}\).
+\end{defn}
+
+\begin{thm}\label{6.43}
+  For a self-adjoint matrix \(B \in \ms[n][n][\F]\), we have that \(\max_{x \neq \zv} R(x)\) is the largest eigenvalue of \(B\) and \(\min_{x \neq \zv} R(x)\) is the smallest eigenvalue of \(B\).
+\end{thm}
+
+\begin{proof}[\pf{6.10.4}]
+  By \cref{6.19,6.20}, we may choose an orthonormal basis \(\set{\seq{v}{1,,n}}\) of eigenvectors of \(B\) over \(\F\) such that \(B v_i = \lambda_i v_i\) (\(i \in \set{1, \dots, n}\)), where \(\seq[\geq]{\lambda}{1,,n}\).
+  (Recall that by \cref{6.4.10}(a), the eigenvalues of \(B\) are real.)
+  Now, for \(x \in \vs{F}^n\), there exist scalars \(\seq{a}{1,,n} \in \F\) such that
+  \[
+    x = \sum_{i = 1}^n a_i v_i.
+  \]
+  Hence
+  \begin{align*}
+    R(x) & = \dfrac{\inn{Bx, x}}{\norm{x}^2}                                                           &  & \by{6.10.4}     \\
+         & = \dfrac{\inn{\sum_{i = 1}^n a_i \lambda_i v_i, \sum_{j = 1}^n a_j v_j}}{\norm{x}^2}        &  & \by{5.1.2}      \\
+         & = \dfrac{\sum_{i = 1}^n a_i \lambda_i \inn{v_i, \sum_{j = 1}^n a_j v_j}}{\norm{x}^2}        &  & \by{6.1.1}[a,b] \\
+         & = \dfrac{\sum_{i = 1}^n \sum_{j = 1}^n a_i \conj{a_j} \lambda_i \inn{v_i, v_j}}{\norm{x}^2} &  & \by{6.1}[a,b]   \\
+         & = \dfrac{\sum_{i = 1}^n a_i \conj{a_i} \lambda_i}{\norm{x}^2}                               &  & \by{6.1.12}     \\
+         & = \dfrac{\sum_{i = 1}^n \lambda_i \abs{a_i}^2}{\norm{x}^2}                                  &  & \by{d.0.5}      \\
+         & \leq \dfrac{\lambda_1 \sum_{i = 1}^n \abs{a_i}^2}{\norm{x}^2}                               &  & \by{6.2}[b]     \\
+         & = \dfrac{\lambda_1 \norm{x}^2}{\norm{x}^2}                                                  &  & \by{ex:6.1.12}  \\
+         & = \lambda_1.
+  \end{align*}
+  It is easy to see that \(R(v_1) = \lambda_1\), so we have demonstrated the first half of the theorem.
+  The second half is proved similarly, i.e.,
+  \begin{align*}
+    R(x) & = \dfrac{\sum_{i = 1}^n \lambda_i \abs{a_i}^2}{\norm{x}^2}    &  & \text{(from the proof above)} \\
+         & \geq \dfrac{\lambda_n \sum_{i = 1}^n \abs{a_i}^2}{\norm{x}^2} &  & \by{6.2}[b]                   \\
+         & = \dfrac{\lambda_n \norm{x}^2}{\norm{x}^2}                    &  & \by{ex:6.1.12}                \\
+         & = \lambda_n.
+  \end{align*}
+\end{proof}
+
+\begin{cor}\label{6.10.5}
+  For any square matrix \(A\), \(\norm{A}\) is finite and, in fact, equals \(\sqrt{\lambda}\), where \(\lambda\) is the largest eigenvalue of \(A^* A\).
+\end{cor}
+
+\begin{proof}[\pf{6.10.5}]
+  Let \(B\) be the self-adjoint matrix \(A^* A\) (\cref{ex:6.4.18}(a)), and let \(\lambda\) be the largest eigenvalue of \(B\) (\cref{ex:6.4.17}(a)).
+  Since, for \(x \neq \zv\),
+  \begin{align*}
+    0 & \leq \dfrac{\norm{Ax}^2}{\norm{x}^2}   &  & \by{6.2}[b] \\
+      & = \dfrac{\inn{Ax, Ax}}{\norm{x}^2}     &  & \by{6.1.9}  \\
+      & = \dfrac{\inn{A^* A x, x}}{\norm{x}^2} &  & \by{6.3.4}  \\
+      & = \dfrac{\inn{Bx, x}}{\norm{x}^2}                       \\
+      & = R(x),                                &  & \by{6.10.4}
+  \end{align*}
+  it follows from \cref{6.43} that \(\norm{A}^2 = \lambda\).
+\end{proof}
+
+\begin{note}
+  Observe that the proof of \cref{6.10.5} shows that all the eigenvalues of \(A^* A\) are nonnegative.
+  (positive semidefinite by \cref{ex:6.4.17}(a).)
+\end{note}
