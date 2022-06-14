@@ -462,6 +462,318 @@
   Thus by \cref{2.3.3} we have \(\T_v^* \L_A \T_v = \L_A\).
 \end{proof}
 
+\begin{thm}\label{6.42}
+  Let \(\beta\) be the standard ordered basis for \(\R^4\).
+  Then
+  \[
+    [\T_v]_{\beta} = B_v = \begin{pmatrix}
+      \dfrac{1}{\sqrt{1 - v^2}}  & 0 & 0 & \dfrac{-v}{\sqrt{1 - v^2}} \\
+      0                          & 1 & 0 & 0                          \\
+      0                          & 0 & 1 & 0                          \\
+      \dfrac{-v}{\sqrt{1 - v^2}} & 0 & 0 & \dfrac{1}{\sqrt{1 - v^2}}
+    \end{pmatrix}.
+  \]
+\end{thm}
+
+\begin{proof}[\pf{6.42}]
+  Consider the situation \(1\) second after the origins of \(S\) and \(S'\) have coincided as measured by the clock \(C\).
+  Since the origin of \(S'\) is moving along the \(x\)-axis at a velocity \(v\) as measured in \(S\), its space--time coordinates relative to \(S\) and \(C\) are
+  \[
+    \begin{pmatrix}
+      v \\
+      0 \\
+      0 \\
+      1
+    \end{pmatrix}.
+  \]
+  Similarly, the space--time coordinates for the origin of \(S'\) relative to \(S'\) and \(C'\) must be
+  \[
+    \begin{pmatrix}
+      0 \\
+      0 \\
+      0 \\
+      t'
+    \end{pmatrix}
+  \]
+  for some \(t' > 0\).
+  Thus we have
+  \[
+    \T_v\begin{pmatrix}
+      v \\
+      0 \\
+      0 \\
+      1
+    \end{pmatrix} = \begin{pmatrix}
+      0 \\
+      0 \\
+      0 \\
+      t'
+    \end{pmatrix} \quad \text{for some } t' > 0.
+  \]
+  By \cref{6.9.3},
+  \begin{align*}
+    \inn{\T_v^* \L_A \T_v\begin{pmatrix}
+                             v \\
+                             0 \\
+                             0 \\
+                             1
+                           \end{pmatrix}, \begin{pmatrix}
+                                            v \\
+                                            0 \\
+                                            0 \\
+                                            1
+                                          \end{pmatrix}} & = \inn{\L_A\begin{pmatrix}
+                                                                        v \\
+                                                                        0 \\
+                                                                        0 \\
+                                                                        1
+                                                                      \end{pmatrix}, \begin{pmatrix}
+                                                                                       v \\
+                                                                                       0 \\
+                                                                                       0 \\
+                                                                                       1
+                                                                                     \end{pmatrix}} &  & \by{6.9.3}[b] \\
+                                         & = \inn{\begin{pmatrix}
+                                                      v \\
+                                                      0 \\
+                                                      0 \\
+                                                      -1
+                                                    \end{pmatrix}, \begin{pmatrix}
+                                                                     v \\
+                                                                     0 \\
+                                                                     0 \\
+                                                                     1
+                                                                   \end{pmatrix}} &  & \by{2.3.1}                      \\
+                                         & = v^2 - 1.                     &  & \by{6.1.2}
+  \end{align*}
+  But also
+  \begin{align*}
+    \inn{\T_v^* \L_A \T_v\begin{pmatrix}
+                             v \\
+                             0 \\
+                             0 \\
+                             1
+                           \end{pmatrix}, \begin{pmatrix}
+                                            v \\
+                                            0 \\
+                                            0 \\
+                                            1
+                                          \end{pmatrix}} & = \inn{\L_A \T_v\begin{pmatrix}
+                                                                             v \\
+                                                                             0 \\
+                                                                             0 \\
+                                                                             1
+                                                                           \end{pmatrix}, \T_v\begin{pmatrix}
+                                                                                                v \\
+                                                                                                0 \\
+                                                                                                0 \\
+                                                                                                1
+                                                                                              \end{pmatrix}} &  & \by{6.9} \\
+                                         & = \inn{\L_A\begin{pmatrix}
+                                                          0 \\
+                                                          0 \\
+                                                          0 \\
+                                                          t'
+                                                        \end{pmatrix}, \begin{pmatrix}
+                                                                         0 \\
+                                                                         0 \\
+                                                                         0 \\
+                                                                         t'
+                                                                       \end{pmatrix}}                                      \\
+                                         & = \inn{\begin{pmatrix}
+                                                      0 \\
+                                                      0 \\
+                                                      0 \\
+                                                      -t'
+                                                    \end{pmatrix}, \begin{pmatrix}
+                                                                     0 \\
+                                                                     0 \\
+                                                                     0 \\
+                                                                     t'
+                                                                   \end{pmatrix}}     &  & \by{2.3.1}                      \\
+                                         & = -(t')^2.                         &  & \by{6.1.2}
+  \end{align*}
+  Combining equations above, we conclude that \(v^2 - 1 = -(t')^2\), or
+  \[
+    t' = \sqrt{1 - v^2}.
+  \]
+  Thus we obtain
+  \[
+    \T_v\begin{pmatrix}
+      v \\
+      0 \\
+      0 \\
+      1
+    \end{pmatrix} = \begin{pmatrix}
+      0 \\
+      0 \\
+      0 \\
+      \sqrt{1 - v^2}
+    \end{pmatrix}.
+  \]
+
+  Next recall that the origin of \(S\) moves in the negative direction of the \(x'\)-axis of \(S'\) at the constant velocity \(-v < 0\) as measured from \(S'\).
+  (This fact is \cref{6.9.2} (R 5))
+  Consequently, \(1\) second after the origins of \(S\) and \(S'\) have coincided as measured on clock \(C\), there exists a time \(t'' > 0\) as measured on clock \(C'\) such that
+  \[
+    \T_v\begin{pmatrix}
+      0 \\
+      0 \\
+      0 \\
+      1
+    \end{pmatrix} = \begin{pmatrix}
+      -v t'' \\
+      0      \\
+      0      \\
+      t''
+    \end{pmatrix}.
+  \]
+  Since
+  \begin{align*}
+    \inn{\T_v^* \L_A \T_v\begin{pmatrix}
+                             0 \\
+                             0 \\
+                             0 \\
+                             1
+                           \end{pmatrix}, \begin{pmatrix}
+                                            0 \\
+                                            0 \\
+                                            0 \\
+                                            1
+                                          \end{pmatrix}} & = \inn{\L_A\begin{pmatrix}
+                                                                        0 \\
+                                                                        0 \\
+                                                                        0 \\
+                                                                        1
+                                                                      \end{pmatrix}, \begin{pmatrix}
+                                                                                       0 \\
+                                                                                       0 \\
+                                                                                       0 \\
+                                                                                       1
+                                                                                     \end{pmatrix}} &  & \by{6.9.3}[b] \\
+                                         & = \inn{\begin{pmatrix}
+                                                      0 \\
+                                                      0 \\
+                                                      0 \\
+                                                      -1
+                                                    \end{pmatrix}, \begin{pmatrix}
+                                                                     0 \\
+                                                                     0 \\
+                                                                     0 \\
+                                                                     1
+                                                                   \end{pmatrix}} &  & \by{2.3.1}                      \\
+                                         & = -1                           &  & \by{6.1.2}
+  \end{align*}
+  and
+  \begin{align*}
+    \inn{\T_v^* \L_A \T_v\begin{pmatrix}
+                             0 \\
+                             0 \\
+                             0 \\
+                             1
+                           \end{pmatrix}, \begin{pmatrix}
+                                            0 \\
+                                            0 \\
+                                            0 \\
+                                            1
+                                          \end{pmatrix}} & = \inn{\L_A \T_v\begin{pmatrix}
+                                                                             0 \\
+                                                                             0 \\
+                                                                             0 \\
+                                                                             1
+                                                                           \end{pmatrix}, \T_v\begin{pmatrix}
+                                                                                                0 \\
+                                                                                                0 \\
+                                                                                                0 \\
+                                                                                                1
+                                                                                              \end{pmatrix}} &  & \by{6.9} \\
+                                         & = \inn{\L_A\begin{pmatrix}
+                                                          -v t'' \\
+                                                          0      \\
+                                                          0      \\
+                                                          t''
+                                                        \end{pmatrix}, \begin{pmatrix}
+                                                                         -v t'' \\
+                                                                         0      \\
+                                                                         0      \\
+                                                                         t''
+                                                                       \end{pmatrix}}     &  & \by{6.9.2}[R 5]             \\
+                                         & = \inn{\begin{pmatrix}
+                                                      -v t'' \\
+                                                      0      \\
+                                                      0      \\
+                                                      -t''
+                                                    \end{pmatrix}, \begin{pmatrix}
+                                                                     -v t'' \\
+                                                                     0      \\
+                                                                     0      \\
+                                                                     t''
+                                                                   \end{pmatrix}}     &  & \by{2.3.1}                      \\
+                                         & =  v^2 (t'')^2 - (t'')^2,          &  & \by{6.1.2}
+  \end{align*}
+  it follows that
+  \begin{align*}
+             & -1 = v^2 (t'')^2 - (t'')^2 = (v^2 - 1) (t'')^2 \\
+    \implies & \dfrac{1}{1 - v^2} = (t'')^2                   \\
+    \implies & t'' = \dfrac{1}{\sqrt{1 - v^2}};
+  \end{align*}
+  hence
+  \[
+    \T_v\begin{pmatrix}
+      0 \\
+      0 \\
+      0 \\
+      1
+    \end{pmatrix} = \begin{pmatrix}
+      \dfrac{-v}{\sqrt{1 - v^2}} \\
+      0                          \\
+      0                          \\
+      \dfrac{1}{\sqrt{1 - v^2}}
+    \end{pmatrix}.
+  \]
+
+  Since
+  \begin{align*}
+    \T_v(e_1) & = \dfrac{1}{v} \T_v(v e_1)                                &  & \by{2.1.1}[b]    \\
+              & = \dfrac{1}{v} \T_v(v e_1 + e_4 - e_4)                                          \\
+              & = \dfrac{1}{v} \T_v(v e_1 + e_4) - \dfrac{1}{v} \T_v(e_4) &  & \by{2.1.2}[c]    \\
+              & = \dfrac{1}{v} \begin{pmatrix}
+                                 0 \\
+                                 0 \\
+                                 0 \\
+                                 \sqrt{1 - v^2}
+                               \end{pmatrix} - \dfrac{1}{v} \begin{pmatrix}
+                                                              \dfrac{-v}{\sqrt{1 - v^2}} \\
+                                                              0                          \\
+                                                              0                          \\
+                                                              \dfrac{1}{\sqrt{1 - v^2}}
+                                                            \end{pmatrix} \\
+              & = \begin{pmatrix}
+                    \dfrac{1}{\sqrt{1 - v^2}} \\
+                    0                         \\
+                    0                         \\
+                    \dfrac{-v}{\sqrt{1 - v^2}}
+                  \end{pmatrix};                                            \\
+    \T_v(e_2) & = e_2;                                                    &  & \by{6.39}[a]     \\
+    \T_v(e_3) & = e_3;                                                    &  & \by{6.39}[a]     \\
+    \T_v(e_4) & = \begin{pmatrix}
+                    \dfrac{-v}{\sqrt{1 - v^2}} \\
+                    0                          \\
+                    0                          \\
+                    \dfrac{1}{\sqrt{1 - v^2}}
+                  \end{pmatrix},
+  \end{align*}
+  by \cref{2.2.4} we conclude that
+  \[
+    [\T_v]_{\beta} = \begin{pmatrix}
+      \dfrac{1}{\sqrt{1 - v^2}}  & 0 & 0 & \dfrac{-v}{\sqrt{1 - v^2}} \\
+      0                          & 1 & 0 & 0                          \\
+      0                          & 0 & 1 & 0                          \\
+      \dfrac{-v}{\sqrt{1 - v^2}} & 0 & 0 & \dfrac{1}{\sqrt{1 - v^2}}
+    \end{pmatrix}.
+  \]
+\end{proof}
+
 \exercisesection
 
 \setcounter{ex}{2}
