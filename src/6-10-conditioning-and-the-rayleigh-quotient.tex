@@ -271,5 +271,88 @@
 
 \exercisesection
 
-\begin{ex}\label{ex:6.10.11}
+\setcounter{ex}{2}
+\begin{ex}\label{ex:6.10.3}
+  Prove that if \(B\) is a symmetric real matrix, then \(\norm{B}\) is the eigenvalue of \(B\) with the largest absolute value.
 \end{ex}
+
+\begin{proof}[\pf{ex:6.10.3}]
+  Since \(B\) is a symmetric real matrix, by \cref{6.4.8} we see that \(B^* = \tp{B} = B\).
+  Thus by \cref{6.10.5} \(\norm{B}\) is the largest eigenvalue of \(B^* B = B^2\), which equals to the square of the eigenvalue of \(B\) with the largest absolute value.
+\end{proof}
+
+\setcounter{ex}{6}
+\begin{ex}\label{ex:6.10.7}
+  Let \(B\) be a symmetric matrix.
+  Prove that \(\min_{x \neq \zv} R(x)\) equals the smallest eigenvalue of \(B\).
+\end{ex}
+
+\begin{proof}[\pf{ex:6.10.7}]
+  See \cref{6.43}.
+\end{proof}
+
+\begin{ex}\label{ex:6.10.8}
+  Prove that if \(\lambda\) is an eigenvalue of \(A A^*\), then \(\lambda\) is an eigenvalue of \(A^* A\).
+  This completes the proof of \cref{6.10.6}.
+\end{ex}
+
+\begin{proof}[\pf{ex:6.10.8}]
+  See \cref{6.10.6}.
+\end{proof}
+
+\begin{ex}\label{ex:6.10.9}
+  Prove that if \(A\) is an invertible matrix and \(Ax = b\), then
+  \[
+    \dfrac{1}{\norm{A} \cdot \norm{A^{-1}}} \dfrac{\norm{\delta b}}{\norm{b}} \leq \dfrac{\norm{\delta x}}{\norm{x}}.
+  \]
+\end{ex}
+
+\begin{proof}[\pf{ex:6.10.9}]
+  See \cref{6.10.9}.
+\end{proof}
+
+\begin{ex}\label{ex:6.10.10}
+  Prove the left inequality of \cref{6.44}(a).
+\end{ex}
+
+\begin{proof}[\pf{ex:6.10.10}]
+  See \cref{6.10.9}.
+\end{proof}
+
+\begin{ex}\label{ex:6.10.11}
+  Let \(A \in \ms[n][n][\F]\) be invertible.
+  Prove that \(\cond{A} = 1\) iff \(A\) is a scalar multiple of an unitary or orthogonal matrix.
+\end{ex}
+
+\begin{proof}[\pf{ex:6.10.11}]
+  Let \(\beta\) be the standard ordered basis for \(\vs{F}^n\) over \(\F\), and let \(\lambda_1, \lambda_n \in \F\) be the largest and the smallest eigenvalues, respectively, of \(A^* A\) (\cref{ex:6.4.18}(a)).
+
+  First suppose that \(\cond{A} = 1\).
+  Then we have
+  \begin{align*}
+             & 1 = \cond{A} = \sqrt{\dfrac{\lambda_1}{\lambda_n}}     &  & \by{6.44}[b]      \\
+    \implies & \lambda_1 = \lambda_n                                                         \\
+    \implies & \text{all eigenvalues of } A^* A \text{ are the same}. &  & \by{ex:6.4.17}[a]
+  \end{align*}
+  By \cref{6.19,6.20} there exists an unitary (orthogonal) matrix \(Q \in \ms[n][n][\F]\) such that \(Q^* A^* A Q = \lambda_1 I_n\).
+  Then we have
+  \begin{align*}
+             & Q^* A^* A Q = \lambda_1 I_n                                                                                                       \\
+    \implies & A^* A = Q (\lambda_1 I_n) Q^*                                                                              &  & \by{ex:6.1.23}[c] \\
+             & = \lambda_1 Q I_n Q^*                                                                                      &  & \by{2.12}[b]      \\
+             & = \lambda_1 I_n                                                                                            &  & \by{ex:6.1.23}[c] \\
+    \implies & I_n = \dfrac{1}{\lambda_1} A^* A = \pa{\dfrac{1}{\sqrt{\lambda_1}} A}^* \pa{\dfrac{1}{\sqrt{\lambda_1}} A} &  & \by{6.3.2}[b]     \\
+    \implies & \dfrac{1}{\sqrt{\lambda_1}} A \text{ is unitary (orthogonal)}                                              &  & \by{6.5.9}        \\
+    \implies & A \text{ is a multiple of an unitary or orthogonal matrix}.
+  \end{align*}
+
+  Now suppose that \(A = \lambda Q\) where \(\lambda \in \F \setminus \set{0}\) and \(Q \in \ms[n][n][\F]\) is unitary (orthogonal).
+  Then we have
+  \begin{align*}
+    A^* A & = \pa{\conj{\lambda} Q^*} (\lambda Q) &  & \by{6.3.2}[b]     \\
+          & = \abs{\lambda}^2 I_n                 &  & \by{ex:6.1.23}[c]
+  \end{align*}
+  and thus \(\abs{\lambda}^2\) is the only eigenvalue of \(A^* A\).
+  By \cref{6.10.5,6.10.7} this means \(\norm{A} = \sqrt{\abs{\lambda}^2}\) and \(\norm{A^{-1}} = 1 / \sqrt{\abs{\lambda}^2}\).
+  By \cref{6.10.10} this means \(\cond{A} = 1\).
+\end{proof}
