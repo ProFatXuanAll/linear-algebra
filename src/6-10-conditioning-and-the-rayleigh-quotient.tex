@@ -101,6 +101,57 @@
 \end{proof}
 
 \begin{note}
-  Observe that the proof of \cref{6.10.5} shows that all the eigenvalues of \(A^* A\) are nonnegative.
-  (positive semidefinite by \cref{ex:6.4.17}(a).)
+  Observe that the proof of \cref{6.10.5} shows that all the eigenvalues of \(A^* A\) are nonnegative
+  (positive semidefinite by \cref{ex:6.4.17}(a)).
+\end{note}
+
+\begin{lem}\label{6.10.6}
+  For any square matrix \(A\), \(\lambda\) is an eigenvalue of \(A^* A\) iff \(\lambda\) is an eigenvalue of \(A A^*\).
+\end{lem}
+
+\begin{proof}[\pf{6.10.6}]
+  Let \(\lambda\) be an eigenvalue of \(A^* A\).
+  If \(\lambda = 0\), then \(A^* A\) is not invertible.
+  Hence \(A\) and \(A^*\) are not invertible (\cref{6.3.6}), so that \(\lambda\) is also an eigenvalue of \(A A^*\).
+  The proof of the converse is similar.
+
+  Now suppose that \(\lambda \neq 0\) and there exists \(x \neq \zv\) such that \(A^* A x = \lambda x\).
+  Apply \(A\) to both sides to obtain
+  \begin{align*}
+    A A^* A x & = A (\lambda x) &  & \by{5.1.2}   \\
+              & = \lambda (Ax). &  & \by{2.12}[b]
+  \end{align*}
+  Note that \(Ax \neq \zv\), otherwise we would have \(A^* A x = A^* \zv = \zv \neq \lambda x\).
+  So we have that \(\lambda\) is an eigenvalue of \(A A^*\) and \(Ax\) is an eigenvector of \(A A^*\).
+
+  Finally suppose that \(\lambda \neq 0\) and \(A A^* x = \lambda x\) for some \(x \neq \zv\).
+  Apply \(A^*\) to both sides to obtain
+  \begin{align*}
+    A^* A A^* x & = A^* (\lambda x) &  & \by{5.1.2}   \\
+                & = \lambda A^* x.  &  & \by{2.12}[b]
+  \end{align*}
+  Note that \(A^* x \neq \zv\), otherwise we would have \(A A^* x = A \zv = \zv \neq \lambda x\).
+  So we have that \(\lambda\) is an eigenvalue of \(A^* A\) and \(A^* x\) is an eigenvector of \(A^* A\).
+\end{proof}
+
+\begin{cor}\label{6.10.7}
+  Let \(A\) be an invertible matrix.
+  Then \(\norm{A^{-1}} = 1 / \sqrt{\lambda}\), where \(\lambda\) is the smallest eigenvalue of \(A^* A\).
+\end{cor}
+
+\begin{proof}[\pf{6.10.7}]
+  Recall that \(\lambda\) is an eigenvalue of an invertible matrix iff \(\lambda^{-1}\) is an eigenvalue of its inverse (\cref{ex:5.1.8}(b)).
+
+  Now let \(\seq[\geq]{\lambda}{1,,n}\) be the eigenvalues of \(A^* A\), which by \cref{6.10.6} are the eigenvalues of \(A A^*\).
+  Then \(\norm{A^{-1}}^2\) equals the largest eigenvalue of \((A A^*)^{-1}\) which equals \(1 / \lambda_n\).
+  This is true since
+  \begin{align*}
+    \pa{A^{-1}}^* A^{-1} & = \pa{A^*}^{-1} A^{-1} &  & \by{ex:6.3.8} \\
+                         & = (A A^*)^{-1}.        &  & \by{ex:2.4.4}
+  \end{align*}
+\end{proof}
+
+\begin{note}
+  For many applications, it is only the largest and smallest eigenvalues that are of interest.
+  For example, in the case of vibration problems, the smallest eigenvalue represents the lowest frequency at which vibrations can occur.
 \end{note}
