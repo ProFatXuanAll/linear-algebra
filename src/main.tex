@@ -362,6 +362,11 @@
 % Make limit always in display mode.
 \NewDocumentCommand{\Lim}{}{\lim\limits}
 
+% Condition number of A.
+% For example:
+% 	\cond{A}
+\NewDocumentCommand{\cond}{m}{\operatorname{cond}\pa{#1}}
+
 % Formatting exercises section.
 \NewDocumentCommand{\exercisesection}{}{
 	\begin{center}

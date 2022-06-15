@@ -155,3 +155,121 @@
   For many applications, it is only the largest and smallest eigenvalues that are of interest.
   For example, in the case of vibration problems, the smallest eigenvalue represents the lowest frequency at which vibrations can occur.
 \end{note}
+
+\begin{cor}\label{6.10.8}
+  Now that we know \(\norm{A}\) exists for every square matrix \(A\) (\cref{6.10.5}), we can make use of the inequality \(\norm{Ax} \leq \norm{A} \cdot \norm{x}\), which holds for every \(x\).
+\end{cor}
+
+\begin{proof}[\pf{6.10.8}]
+  Suppose that \(x = \zv\).
+  Then we have
+  \begin{align*}
+             & \zv = A \zv                                                    &  & \by{2.1.2}[a] \\
+    \implies & 0 = \norm{\zv} = \norm{A \zv} = \norm{A} \cdot \norm{\zv} = 0. &  & \by{6.2}[b]
+  \end{align*}
+
+  Now suppose that \(x \neq \zv\).
+  Then we have
+  \begin{align*}
+             & \norm{A} = \max_{y \neq \zv} \dfrac{\norm{Ay}}{\norm{y}} \geq \dfrac{\norm{Ax}}{\norm{x}} &  & \by{6.10.3} \\
+    \implies & \norm{Ax} \leq \norm{A} \cdot \norm{x}.
+  \end{align*}
+\end{proof}
+
+\begin{cor}\label{6.10.9}
+  Assume in what follows that \(A\) is invertible, \(b \neq \zv\), and \(Ax = b\).
+  For a given \(\delta b\), let \(\delta x\) be the vector that satisfies \(A(x + \delta x) = b + \delta b\).
+  Prove that \(A(\delta x) = \delta b\), \(\delta x = A^{-1} (\delta b)\), and
+  \[
+    \dfrac{1}{\norm{A} \cdot \norm{A^{-1}}} \cdot \dfrac{\norm{\delta b}}{\norm{b}} \leq \dfrac{\norm{\delta x}}{\norm{x}} \leq \norm{A} \cdot \norm{A^{-1}} \cdot \dfrac{\norm{\delta b}}{\norm{b}}.
+  \]
+\end{cor}
+
+\begin{proof}[\pf{6.10.9}]
+  Since
+  \begin{align*}
+             & A (x + \delta x) = b + \delta b                 \\
+    \implies & b + A (\delta x) = b + \delta b &  & (Ax = b)   \\
+    \implies & A (\delta x) = \delta b         &  & \by{1.1}   \\
+    \implies & (\delta x) = A^{-1} (\delta b), &  & \by{2.4.4}
+  \end{align*}
+  by \cref{6.10.8} we have
+  \begin{align*}
+    \norm{b}        & = \norm{Ax} \leq \norm{A} \cdot \norm{x};                            \\
+    \norm{\delta b} & = \norm{A (\delta x)} \leq \norm{A} \cdot \norm{\delta x};           \\
+    \norm{x}        & = \norm{A^{-1} b} \leq \norm{A^{-1}} \cdot \norm{b};                 \\
+    \norm{\delta x} & = \norm{A^{-1} (\delta b)} \leq \norm{A^{-1}} \cdot \norm{\delta b}.
+  \end{align*}
+  Since \(b \neq \zv\), by \cref{2.4} we have \(x \neq \zv\).
+  Thus
+  \begin{align*}
+    \dfrac{\norm{\delta x}}{\norm{x}} & \leq \norm{A} \cdot \dfrac{\norm{\delta x}}{\norm{b}}                     &  & (\norm{b} \leq \norm{A} \cdot \norm{x})                    \\
+                                      & \leq \norm{A} \cdot \norm{A^{-1}} \cdot \dfrac{\norm{\delta b}}{\norm{b}} &  & (\norm{\delta x} \leq \norm{A^{-1}} \cdot \norm{\delta b})
+  \end{align*}
+  and
+  \begin{align*}
+    \dfrac{\norm{\delta x}}{\norm{x}} & \geq \dfrac{1}{\norm{A^{-1}}} \cdot \dfrac{\norm{\delta x}}{\norm{b}}                 &  & (\norm{x} \leq \norm{A^{-1}} \cdot \norm{b})          \\
+                                      & \geq \dfrac{1}{\norm{A} \cdot \norm{A^{-1}}} \cdot \dfrac{\norm{\delta b}}{\norm{b}}. &  & (\norm{\delta b} \leq \norm{A} \cdot \norm{\delta x})
+  \end{align*}
+\end{proof}
+
+\begin{defn}\label{6.10.10}
+  The number \(\norm{A} \cdot \norm{A^{-1}}\) is called the \textbf{condition number} of \(A\) and is denoted \(\cond{A}\).
+  It should be noted that the definition of \(\cond{A}\) depends on how the norm of \(A\) is defined.
+  There are many reasonable ways of defining the norm of a matrix.
+  In fact, the only property needed to establish the inequalities above is that \(\norm{Ax} \leq \norm{A} \cdot \norm{x}\) for all \(x\).
+  We summarize these results in \cref{6.44}.
+\end{defn}
+
+\begin{thm}\label{6.44}
+  For the system \(Ax = b\), where \(A\) is invertible and \(b \neq \zv\), the following statements are true.
+  \begin{enumerate}
+    \item For any norm \(\norm{\cdot}\), we have
+          \[
+            \dfrac{1}{\cond{A}} \dfrac{\norm{\delta b}}{\norm{b}} \leq \dfrac{\norm{\delta x}}{\norm{x}} \leq \cond{A} \dfrac{\norm{\delta b}}{\norm{b}}.
+          \]
+    \item If \(\norm{\cdot}\) is the Euclidean norm, then \(\cond{A} = \sqrt{\dfrac{\lambda_1}{\lambda_n}}\), where \(\lambda_1\) and \(\lambda_n\) are the largest and smallest eigenvalues, respectively, of \(A^* A\).
+    \item \(\cond{A} \geq 1\).
+  \end{enumerate}
+\end{thm}
+
+\begin{proof}[\pf{6.44}(a)]
+  See \cref{6.10.9,6.10.10}.
+\end{proof}
+
+\begin{proof}[\pf{6.44}(b)]
+  See \cref{6.10.5,6.10.7,6.10.10}.
+\end{proof}
+
+\begin{proof}[\pf{6.44}(c)]
+  This follows from \cref{6.44}(b).
+\end{proof}
+
+\begin{note}
+  In \cref{ex:6.10.11} we show that \(\cond{A} = 1\) iff \(A\) is a scalar multiple of a unitary or orthogonal matrix.
+  Moreover, it can be shown with some work that equality can be obtained in \cref{6.44}(a) by an appropriate choice of \(b\) and \(\delta b\).
+
+  We can see immediately from \cref{6.44}(a) that if \(\cond{A}\) is close to \(1\), then a small relative error in \(b\) forces a small relative error in \(x\).
+  If \(\cond{A}\) is large, however, then the relative error in \(x\) may be small even though the relative error in \(b\) is large, or the relative error in \(x\) may be large even though the relative error in \(b\) is small!
+  In short, \(\cond{A}\) merely indicates the \emph{potential} for large relative errors.
+
+  We have so far considered only errors in the vector \(b\).
+  If there is an error \(\delta A\) in the coefficient matrix of the system \(Ax = b\), the situation is more complicated.
+  For example, \(A + \delta A\) may fail to be invertible.
+  But under the appropriate assumptions, it can be shown that a bound for the relative error in \(x\) can be given in terms of \(\cond{A}\).
+  For example, Charles Cullen (Charles G. Cullen, An Introduction to Numerical Linear Algebra, PWS Publishing Co., Boston 1994, p. 60) shows that if \(A + \delta A\) is invertible, then
+  \[
+    \dfrac{\norm{\delta x}}{\norm{x + \delta x}} \leq \cond{A} \dfrac{\norm{\delta A}}{\norm{A}}.
+  \]
+
+  It should be mentioned that, in practice, one never computes \(\cond{A}\) from its definition, for it would be an unnecessary waste of time to compute \(A^{-1}\) merely to determine its norm.
+  In fact, if a computer is used to find \(A^{-1}\), the computed inverse of \(A\) in all likelihood only approximates \(A^{-1}\), and the error in the computed inverse is affected by the size of \(\cond{A}\).
+  So we are caught in a vicious circle!
+  There are, however, some situations in which a usable approximation of \(\cond{A}\) can be found.
+  Thus, in most cases, the estimate of the relative error in \(x\) is based on an estimate of \(\cond{A}\).
+\end{note}
+
+\exercisesection
+
+\begin{ex}\label{ex:6.10.11}
+\end{ex}
