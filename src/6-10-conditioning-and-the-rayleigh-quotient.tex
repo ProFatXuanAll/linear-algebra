@@ -356,3 +356,90 @@
   By \cref{6.10.5,6.10.7} this means \(\norm{A} = \sqrt{\abs{\lambda}^2}\) and \(\norm{A^{-1}} = 1 / \sqrt{\abs{\lambda}^2}\).
   By \cref{6.10.10} this means \(\cond{A} = 1\).
 \end{proof}
+
+\begin{ex}\label{ex:6.10.12}
+  \begin{enumerate}
+    \item Let \(A\) and \(B\) be square matrices that are unitarily equivalent.
+          Prove that \(\norm{A} = \norm{B}\).
+    \item Let \(\T\) be a linear operator on a finite-dimensional inner product space \(\V\) over \(\F\).
+          Define
+          \[
+            \norm{\T} = \max_{x \neq \zv} \dfrac{\norm{\T(x)}}{\norm{x}}.
+          \]
+          Prove that \(\norm{\T} = \norm{[\T]_{\beta}}\), where \(\beta\) is any orthonormal basis for \(\V\) over \(\F\).
+    \item Let \(\V\) be an infinite-dimensional inner product space with an orthonormal basis \(\set{\seq{v}{1,2,}}\).
+          Let \(\T \in \ls(\V)\) such that \(\T(v_k) = k v_k\).
+          Prove that \(\norm{\T}\) (defined in (b)) does not exist.
+  \end{enumerate}
+\end{ex}
+
+\begin{proof}[\pf{ex:6.10.12}(a)]
+  By \cref{6.5.13} there exists an unitary matrix \(Q\) such that \(B = Q^* A Q\).
+  Then we have
+  \begin{align*}
+    \norm{B} & = \norm{Q^* A Q}                                                        \\
+             & = \max_{x \neq \zv} \dfrac{\norm{Q^* A Q x}}{\norm{x}} &  & \by{6.10.3} \\
+             & = \max_{x \neq \zv} \dfrac{\norm{A Q x}}{\norm{Q x}}   &  & \by{6.5.1}  \\
+             & = \max_{y \neq \zv} \dfrac{\norm{A y}}{\norm{y}}       &  & \by{2.5}    \\
+             & = \norm{A}.                                            &  & \by{6.10.3}
+  \end{align*}
+\end{proof}
+
+\begin{proof}[\pf{ex:6.10.12}(b)]
+  Let \(\dim(\V) = n\).
+  Let \(\inn{\cdot, \cdot}\) be an inner product on \(\V\) over \(\F\) such that \(\norm{\cdot}^2 = \inn{\cdot, \cdot}\).
+  Let \(\inn{\cdot, \cdot}'\) be the standard inner product on \(\vs{F}^n\) over \(\F\) and let \((\norm{\cdot}')^2 = \inn{\cdot, \cdot}'\).
+  Let \(\beta = \set{\seq{v}{1,,n}}\) be an orthonormal basis for \(\V\) over \(\F\) with respect to \(\inn{\cdot, \cdot}\).
+  Let \(\phi_{\beta} \in \ls(\V)\) be defined as in \cref{2.4.11}.
+  Since
+  \begin{align*}
+    \forall x \in \V, \norm{x}^2 & = \norm{\sum_{i = 1}^n \inn{x, v_i} v_i}^2         &  & \by{6.5}       \\
+                                 & = \sum_{i = 1}^k \abs{\inn{x, v_i}}^2 \norm{v_i}^2 &  & \by{ex:6.1.12} \\
+                                 & = \sum_{i = 1}^k \abs{\inn{x, v_i}}^2              &  & \by{6.1.12}    \\
+                                 & = \sum_{i = 1}^k \abs{(\phi_{\beta}(x))_i}^2       &  & \by{2.4.11}    \\
+                                 & = \inn{\phi_{\beta}(x), \phi_{\beta}(x)}'          &  & \by{6.1.2}     \\
+                                 & = (\norm{\phi_{\beta}(x)}')^2,                     &  & \by{6.1.9}
+  \end{align*}
+  we have
+  \begin{align*}
+    \norm{\T} & = \max_{x \in \V, x \neq \zv} \dfrac{\norm{\T(x)}}{\norm{x}}                                        &  & \by{6.10.3}                   \\
+              & = \max_{x \in \V, x \neq \zv} \dfrac{\norm{\phi_{\beta}(\T(x))}'}{\norm{\phi_{\beta}(x)}'}          &  & \text{(from the proof above)} \\
+              & = \max_{x \in \V, x \neq \zv} \dfrac{\norm{[\T]_{\beta} \phi_{\beta}(x)}'}{\norm{\phi_{\beta}(x)}'} &  & \by{2.4.12}                   \\
+              & = \max_{x \in \vs{F}^n, x \neq \zv} \dfrac{\norm{[\T]_{\beta} x}'}{\norm{x}'}                                                          \\
+              & = \norm{[\T]_{\beta}}.                                                                              &  & \by{6.10.3}
+  \end{align*}
+\end{proof}
+
+\begin{proof}[\pf{ex:6.10.12}(c)]
+  Since
+  \begin{align*}
+             & \forall k \in \Z^+, \T(v_k) = k v_k                                                                                                                                \\
+    \implies & \forall k \in \Z^+, \dfrac{\norm{\T(v_k)}}{\norm{v_k}} = \dfrac{\norm{k v_k}}{\norm{v_k}} = \dfrac{\abs{k} \norm{v_k}}{\norm{v_k}} = \abs{k} = k, &  & \by{6.2}[a]
+  \end{align*}
+  we know that \(\max_{x \neq \zv} \dfrac{\norm{\T(x)}}{\norm{x}} = \infty\), thus \(\norm{\T}\) is not well-defined.
+\end{proof}
+
+\begin{ex}\label{ex:6.10.13}
+  Let \(A \in \ms[n][n][\F]\) be of rank \(r\) with the nonzero singular values \(\seq[\geq]{\sigma}{1,,r}\).
+  Prove each of the following results.
+  \begin{enumerate}
+    \item \(\norm{A} = \sigma_1\).
+    \item \(\norm{A^{\dag}} = \dfrac{1}{\sigma_r}\).
+    \item If \(A\) is invertible (and hence \(r = n\)), then \(\cond{A} = \dfrac{\sigma_1}{\sigma_n}\).
+  \end{enumerate}
+\end{ex}
+
+\begin{proof}[\pf{ex:6.10.13}(a)]
+  By \cref{6.26} we know that \(\sigma_1^2\) is the largest eigenvalue of \(A^* A\).
+  Thus by \cref{6.10.5} we have \(\norm{A} = \sigma_1\).
+\end{proof}
+
+\begin{proof}[\pf{ex:6.10.13}(b)]
+  By \cref{6.29} we know that the nonzero singular values of \(A^{\dag}\) are \(\dfrac{1}{\sigma_r} \geq \dots \geq \dfrac{1}{\sigma_1}\).
+  Thus by \cref{ex:6.10.13}(a) we know that \(\norm{A^{\dag}} = \dfrac{1}{\sigma_r}\).
+\end{proof}
+
+\begin{proof}[\pf{ex:6.10.13}(c)]
+  By \cref{6.26} we know that \(\sigma_n^2\) is the smallest eigenvalue of \(A^* A\).
+  Thus by \cref{6.10.7} we have \(\norm{A^{-1}} = \dfrac{1}{\sigma_n}\) and by \cref{6.10.10} \(\cond{A} = \dfrac{\sigma_1}{\sigma_n}\).
+\end{proof}
