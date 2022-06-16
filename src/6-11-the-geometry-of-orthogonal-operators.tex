@@ -1,1 +1,119 @@
 \section{The Geometry of Orthogonal Operators}\label{sec:6.11}
+
+\begin{note}
+  By \cref{6.22}, any rigid motion on a finite-dimensional real inner product space is the composite of an orthogonal operator and a translation.
+  Thus, to understand the geometry of rigid motions thoroughly, we must analyze the structure of orthogonal operators.
+  Such is the aim of this section.
+  We show that any orthogonal operator on a finite-dimensional real inner product space is the composite of rotations and reflections.
+\end{note}
+
+\begin{defn}\label{6.11.1}
+  Let \(\T\) be a linear operator on a finite-dimensional real inner product space \(\V\).
+  The operator \(\T\) is called a \textbf{rotation} if \(\T\) is the identity on \(\V\) or if there exists a two-dimensional subspace \(\W\) of \(\V\) over \(\R\), an orthonormal basis \(\beta = \set{\seq{x}{1,2}}\) for \(\W\) over \(\R\), and a real number \(\theta\) such that
+  \[
+    \T(x_1) = \cos(\theta) x_1 + \sin(\theta) x_2, \quad \T(x_2) = -\sin(\theta) x_1 + \cos(\theta) x_2,
+  \]
+  and \(\T(y) = y\) for all \(y \in \W^{\perp}\).
+  In this context, \(\T\) is called a \textbf{rotation of \(\W\) about \(\W^{\perp}\)}.
+  The subspace \(\W^{\perp}\) is called the \textbf{axis of rotation}.
+\end{defn}
+
+\begin{defn}\label{6.11.2}
+  Let \(\T\) be a linear operator on a finite-dimensional real inner product space \(\V\).
+  The operator \(\T\) is called a \textbf{reflection} if there exists a one-dimensional subspace \(\W\) of \(\V\) over \(\R\) such that \(\T(x) = -x\) for all \(x \in \W\) and \(\T(y) = y\) for all \(y \in \W^{\perp}\).
+  In this context, \(\T\) is called a \textbf{reflection of \(\V\) about \(\W^{\perp}\)}.
+\end{defn}
+
+\begin{note}
+  It should be noted that rotations and reflections (or composites of these) are orthogonal operators (see \cref{ex:6.11.2}).
+  The principal aim of this section is to establish that the converse is also true, that is, any orthogonal operator on a finite-dimensional real inner product space is the composite of rotations and reflections.
+\end{note}
+
+\begin{eg}\label{6.11.3}
+  A Characterization of Orthogonal Operators on a One-Dimensional Real Inner Product Space.
+
+  Let \(\T\) be an orthogonal operator on a one-dimensional real inner product space \(\V\).
+  Choose any nonzero vector \(x\) in \(\V\).
+  Then \(\V = \spn{\set{x}}\), and so \(\T(x) = \lambda x\) for some \(\lambda \in \R\).
+  Since \(\T\) is orthogonal and \(\lambda\) is an eigenvalue of \(\T\), \(\lambda = \pm 1\) (see \cref{6.2}(a) and \cref{6.5.1}).
+  If \(\lambda = 1\), then \(\T\) is the identity on \(\V\), and hence \(\T\) is a rotation (\cref{6.11.1}).
+  If \(\lambda = -1\), then \(\T(x) = -x\) for all \(x \in \V\);
+  so \(\T\) is a reflection of \(\V\) about \(\V^{\perp} = \set{\zv}\) (\cref{6.2.11,6.11.2}).
+  Thus \(\T\) is either a rotation or a reflection.
+  Note that in the first case, \(\det(\T) = 1\), and in the second case, \(\det(\T) = -1\) (\cref{ex:5.1.7}).
+\end{eg}
+
+\exercisesection
+
+\setcounter{ex}{1}
+\begin{ex}\label{ex:6.11.2}
+  Prove that rotations, reflections, and composites of rotations and reflections are orthogonal operators.
+\end{ex}
+
+\begin{proof}[\pf{ex:6.11.2}]
+  Let \(\T\) be a linear operator on a \(n\)-dimensional real inner product space \(\V\).
+
+  First we show that rotations are orthogonal operators.
+  Suppose that \(\T\) is a rotation.
+  By \cref{6.11.1} there exists a two-dimensional subspace \(\W\) of \(\V\) over \(\R\), an orthonormal basis \(\beta = \set{\seq{x}{1,2}}\) for \(\W\) over \(\R\), and a \(\theta \in \R\) such that
+  \begin{align*}
+    \T(x_1)                         & = \cos(\theta) x_1 + \sin(\theta) x_2;  \\
+    \T(x_2)                         & = -\sin(\theta) x_1 + \cos(\theta) x_2; \\
+    \forall y \in \W^{\perp}, \T(y) & = y.
+  \end{align*}
+  Let \(\gamma = \set{\seq{v}{1,,n-2}}\) be an orthonormal basis for \(\W^{\perp}\) over \(\R\).
+  By \cref{6.2.4} we know that \(\beta \cup \gamma\) is an orthonormal basis for \(\V\) over \(\R\).
+  Since
+  \begin{align*}
+    \inn{\T(x_1), \T(x_1)} & = \inn{\cos(\theta) x_1 + \sin(\theta) x_2, \cos(\theta) x_1 + \sin(\theta) x_2}        &  & \by{6.11.1}     \\
+                           & = \cos(\theta) \inn{x_1, \cos(\theta) x_1 + \sin(\theta) x_2}                           &  & \by{6.1.1}[a,b] \\
+                           & \quad + \sin(\theta) \inn{x_2, \cos(\theta) x_1 + \sin(\theta) x_2}                     &  & \by{6.1.1}[a,b] \\
+                           & = \cos(\theta) \inn{x_1, \cos(\theta) x_1} + \sin(\theta) \inn{x_2, \sin(\theta) x_2}   &  & \by{6.1.12}     \\
+                           & = (\cos(\theta))^2 \inn{x_1, x_1} + (\sin(\theta))^2 \inn{x_2, x_2}                     &  & \by{6.1.1}[b]   \\
+                           & = (\cos(\theta))^2 + (\sin(\theta))^2                                                   &  & \by{6.1.12}     \\
+                           & = 1;                                                                                                         \\
+    \inn{\T(x_1), \T(x_2)} & = \inn{\cos(\theta) x_1 + \sin(\theta) x_2, -\sin(\theta) x_1 + \cos(\theta) x_2}       &  & \by{6.11.1}     \\
+                           & = \cos(\theta) \inn{x_1, -\sin(\theta) x_1 + \cos(\theta) x_2}                          &  & \by{6.1.1}[a,b] \\
+                           & \quad + \sin(\theta) \inn{x_2, -\sin(\theta) x_1 + \cos(\theta) x_2}                    &  & \by{6.1.1}[a,b] \\
+                           & = \cos(\theta) \inn{x_1, -\sin(\theta) x_1} + \sin(\theta) \inn{x_2, \cos(\theta) x_2}  &  & \by{6.1.12}     \\
+                           & = -\sin(\theta) \cos(\theta) \inn{x_1, x_1} + \sin(\theta) \cos(\theta) \inn{x_2, x_2}  &  & \by{6.1}[b]     \\
+                           & = -\sin(\theta) \cos(\theta) + \sin(\theta) \cos(\theta)                                &  & \by{6.1.12}     \\
+                           & = 0;                                                                                                         \\
+    \inn{\T(x_2), \T(x_2)} & = \inn{-\sin(\theta) x_1 + \cos(\theta) x_2, -\sin(\theta) x_1 + \cos(\theta) x_2}      &  & \by{6.11.1}     \\
+                           & = -\sin(\theta) \inn{x_1, -\sin(\theta) x_1 + \cos(\theta) x_2}                         &  & \by{6.1.1}[a,b] \\
+                           & \quad + \cos(\theta) \inn{x_2, -\sin(\theta) x_1 + \cos(\theta) x_2}                    &  & \by{6.1.1}[a,b] \\
+                           & = -\sin(\theta) \inn{x_1, -\sin(\theta) x_1} + \cos(\theta) \inn{x_2, \cos(\theta) x_2} &  & \by{6.1.12}     \\
+                           & = (\sin(\theta))^2 \inn{x_1, x_1} + (\cos(\theta))^2 \inn{x_2, x_2}                     &  & \by{6.1.1}[b]   \\
+                           & = (\sin(\theta))^2 + (\cos(\theta))^2                                                   &  & \by{6.1.12}     \\
+                           & = 1,
+  \end{align*}
+  we know that \(\T(\beta) \subseteq \W\) is orthonormal.
+  Since \(\T(\gamma) = \gamma\), we know that \(\T(\beta) \cup \T(\gamma)\) is an orthonormal basis for \(\V\) over \(\R\).
+  Thus by \cref{6.18}(c)(e) we know that \(\T\) is an orthogonal operator.
+
+  Next we show that reflections are orthogonal operators.
+  Suppose that \(\T\) is a reflection.
+  By \cref{6.11.2} there exists a one-dimensional subspace \(\W\) of \(\V\) over \(\R\) such that
+  \begin{align*}
+     & \forall x \in \W, \T(x) = -x;        \\
+     & \forall x \in \W^{\perp}, \T(x) = x.
+  \end{align*}
+  Let \(y \in \V\).
+  By \cref{6.6} there exists an unique tuple \(\tuple{y}{1,2} \in \W \times \W^{\perp}\) such that \(y = y_1 + y_2\).
+  Since
+  \begin{align*}
+    \norm{\T(y)} & = \norm{\T(y_1 + y_2)}     &  & \by{6.6}       \\
+                 & = \norm{\T(y_1) + \T(y_2)} &  & \by{2.1.1}[a]  \\
+                 & = \norm{-y_1 + y_2}        &  & \by{6.11.2}    \\
+                 & = \norm{-y_1} + \norm{y_2} &  & \by{ex:6.1.10} \\
+                 & = \norm{y_1} + \norm{y_2}  &  & \by{6.2}[a]    \\
+                 & = \norm{y_1 + y_2}         &  & \by{ex:6.1.10} \\
+                 & = \norm{y},                &  & \by{6.6}
+  \end{align*}
+  by \cref{6.5.1} we know that \(\T\) is an orthogonal operator.
+
+  Finally we show that composites of rotations and reflections are orthogonal operators.
+  From the proof above we see that rotations and reflections are orthogonal operators.
+  Thus we only need to prove that the composites of orthogonal operators are orthogonal operators.
+  This is done by \cref{ex:6.5.3}.
+\end{proof}
