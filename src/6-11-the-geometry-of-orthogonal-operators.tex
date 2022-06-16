@@ -43,6 +43,93 @@
   Note that in the first case, \(\det(\T) = 1\), and in the second case, \(\det(\T) = -1\) (\cref{ex:5.1.7}).
 \end{eg}
 
+\begin{cor}\label{6.11.4}
+  Let \(\V\) be an \(n\)-dimensional vector space over \(\R\).
+  Let \(\T \in \ls(\V)\) be a rotation.
+  Then there exists an orthonormal basis \(\gamma\) for \(\V\) over \(\R\) such that
+  \[
+    [\T]_{\gamma} = \begin{pmatrix}
+      \cos(\theta) & -\sin(\theta) & \zm       \\
+      \sin(\theta) & \cos(\theta)  & \zm       \\
+      \zm          & \zm           & I_{n - 2}
+    \end{pmatrix}.
+  \]
+\end{cor}
+
+\begin{proof}[\pf{6.11.4}]
+  Following the notation of \cref{6.11.1}, let \(\gamma = \set{\seq{x}{1,2}, \seq{v}{1,,n-2}}\) be an orthonormal basis for \(\V\) over \(\R\), where \(\set{\seq{v}{1,,n-2}}\) is an orthonormal basis for \(\W^{\perp}\).
+  By \cref{6.5} such \(\gamma\) must exist.
+  The proof follows from \cref{2.2.4,6.11.1}.
+\end{proof}
+
+\begin{thm}\label{6.45}
+  Let \(\T\) be an orthogonal operator on a two-dimensional real inner product space \(\V\).
+  Then \(\T\) is either a rotation or a reflection.
+  Furthermore, \(\T\) is a rotation iff \(\det(\T) = 1\), and \(\T\) is a reflection iff \(\det(\T) = -1\).
+\end{thm}
+
+\begin{proof}[\pf{6.45}]
+  Let \(\inn{\cdot, \cdot}\) be an inner product on \(\V\) over \(\R\) and let \(\inn{\cdot, \cdot}'\) be the standard inner product on \(\R^2\) over \(\R\).
+  Let \(\norm{\cdot}\) be a norm on \(\V\) over \(\R\) such that \(\norm{\cdot}^2 = \inn{\cdot, \cdot}\).
+  Let \(\norm{\cdot}'\) be a norm on \(\R^2\) over \(\R\) such that \((\norm{\cdot}')^2 = \inn{\cdot, \cdot}'\).
+  Let \(\T \in \ls(\V)\) be orthogonal with respect to \(\norm{\cdot}\) and let \(\beta = \set{\seq{v}{1,2}}\) be an orthonormal basis with respect to \(\inn{\cdot, \cdot}\) for \(\V\) over \(\R\).
+  Define \(\phi_{\beta} \in \ls(\V, \R^2)\) as in \cref{2.4.11}.
+
+  Because \(\T\) is an orthogonal operator, \(\T(\beta)\) is an orthonormal basis for \(\V\) over \(\R\) by \cref{6.18}(c).
+  Since
+  \begin{align*}
+    1 & = \norm{v_1}^2                                      &  & \by{6.1.12}    \\
+      & = \norm{\T(v_1)}^2                                  &  & \by{6.5.1}     \\
+      & = \inn{\T(v_1), \T(v_1)}                            &  & \by{6.1.9}     \\
+      & = \inn{\phi_{\beta} \T(v_1), \phi_{\beta} \T(v_1)}' &  & \by{ex:6.2.15} \\
+      & = (\norm{\phi_{\beta} \T(v_1)}')^2,                 &  & \by{6.1.9}
+  \end{align*}
+  we know that \(\phi_{\beta} \T(v_1)\) is a unit vector and there is an unique angle \(\theta \in [0, 2 \pi)\) such that \(\phi_{\beta} \T(v_1) = (\cos(\theta), \sin(\theta))\).
+  Similarly \(\phi_{\beta} \T(v_2)\) is a unit vector and is orthogonal to \(\phi_{\beta} \T(v_1)\) (\cref{ex:6.2.15}), there are only two possible choices for \(\phi_{\beta} \T(v_2)\).
+  Either
+  \[
+    \phi_{\beta} \T(v_2) = (-\sin(\theta), \cos(\theta)) \quad \text{or} \quad \phi_{\beta} \T(v_2) = (\sin(\theta), -\cos(\theta)).
+  \]
+  First, suppose that \(\phi_{\beta} \T(v_2) = (-\sin(\theta), \cos(\theta))\).
+  Then
+  \begin{align*}
+    \begin{pmatrix}
+      \cos(\theta) & -\sin(\theta) \\
+      \sin(\theta) & \cos(\theta)
+    \end{pmatrix} & = [\phi_{\beta} \T]_{\beta}           &  & \by{2.2.4}                   \\
+                                    & = [\phi_{\beta}]_{\beta} [\T]_{\beta} &  & \by{2.11}  \\
+                                    & = I_2 [\T]_{\beta}                    &  & \by{2.2.4} \\
+                                    & = [\T]_{\beta}.                       &  & \by{2.3.8}
+  \end{align*}
+  It follows from \cref{6.11.1} that \(\T\) is a rotation of \(\V\) about \(\V^{\perp} = \set{\zv}\) (\cref{6.2.11}).
+  Also
+  \begin{align*}
+    \det(\T) & = \det([\T]_{\beta})                       &  & \by{ex:5.1.7} \\
+             & = (\cos(\theta))^2 + (\sin(\theta))^2 = 1. &  & \by{4.1.1}
+  \end{align*}
+  Now suppose that \(\phi_{\beta} \T(v_2) = (\sin(\theta), -\cos(\theta))\).
+  Then
+  \[
+    \begin{pmatrix}
+      \cos(\theta) & \sin(\theta)  \\
+      \sin(\theta) & -\cos(\theta)
+    \end{pmatrix} = [\phi_{\beta} \T]_{\beta} = [\T]_{\beta}.
+  \]
+  It follows from \cref{6.11.2} that \(\T\) is a reflection on \(\V\) about
+  \[
+    \W^{\perp} = \spn{\set{\sin(\theta) v_1 + (1 - \cos(\theta)) v_2}}
+  \]
+  where
+  \[
+    \W = \spn{\set{(\cos(\theta) - 1) v_1 + \sin(\theta) v_2}}.
+  \]
+  Furthermore,
+  \begin{align*}
+    \det(\T) & = \det([\T]_{\beta})                          &  & \by{ex:5.1.7} \\
+             & = - (\cos(\theta))^2 - (\sin(\theta))^2 = -1. &  & \by{4.1.1}
+  \end{align*}
+\end{proof}
+
 \exercisesection
 
 \setcounter{ex}{1}
@@ -117,3 +204,6 @@
   Thus we only need to prove that the composites of orthogonal operators are orthogonal operators.
   This is done by \cref{ex:6.5.3}.
 \end{proof}
+
+\begin{ex}\label{ex:6.11.8}
+\end{ex}
