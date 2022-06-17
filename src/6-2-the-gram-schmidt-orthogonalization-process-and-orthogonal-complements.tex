@@ -422,11 +422,12 @@
   By \cref{ex:2.1.26}(a)(b) we see that \(\T \in \ls(\V)\) and \(\ns{\T} = \W^{\perp}\).
   Then we have
   \begin{align*}
-    \forall x \in \V, \norm{\T(x)} & = \norm{x_1}                 &  & \by{2.1.14}    \\
-                                   & \leq \norm{x_1} + \norm{x_2} &  & \by{6.2}[b]    \\
-                                   & = \norm{x_1 + x_2}           &  & \by{ex:6.1.10} \\
-                                   & = \norm{x}.
+    \forall x \in \V, \norm{\T(x)}^2 & = \norm{x_1}^2                   &  & \by{2.1.14}    \\
+                                     & \leq \norm{x_1}^2 + \norm{x_2}^2 &  & \by{6.2}[b]    \\
+                                     & = \norm{x_1 + x_2}^2             &  & \by{ex:6.1.10} \\
+                                     & = \norm{x}^2
   \end{align*}
+  and thus by \cref{6.2}(b) \(\norm{\T(x)} \leq \norm{x}\) for all \(x \in \V\).
 \end{proof}
 
 \begin{ex}\label{ex:6.2.11}

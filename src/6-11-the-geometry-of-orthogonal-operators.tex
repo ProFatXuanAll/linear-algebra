@@ -235,6 +235,210 @@
   \]
 \end{proof}
 
+\begin{note}
+  Applying \cref{6.11.3,6.45} in the context of \cref{6.46}, we conclude that the restriction of \(\T\) to \(\W_i\) is either a rotation or a reflection for each \(i \in \set{1, \dots, m}\).
+  Thus, in some sense, \(\T\) is composed of rotations and reflections.
+  Unfortunately, very little can be said about the uniqueness of the decomposition of \(\V\) in \cref{6.46}.
+  For example, the \(\W_i\)'s, the number \(m\) of \(\W_i\)'s, and the number of \(\W_i\)'s for which \(\T_{\W_i}\) is a reflection are not unique.
+  Although the number of \(\W_i\)'s for which \(\T_{\W_i}\) is a reflection is not unique, whether this number is even or odd is an intrinsic property of \(\T\).
+  Moreover, we can always decompose \(\V\) so that \(\T_{\W_i}\) is a reflection for at most one \(\W_i\).
+  These facts are established in \cref{6.47}.
+\end{note}
+
+\begin{thm}\label{6.47}
+  Let \(\T, \V, \seq{\W}{1,,m}\) be as in \cref{6.46}.
+  \begin{enumerate}
+    \item The number of \(\W_i\)'s for which \(\T_{\W_i}\) is a reflection is even or odd according to whether \(\det(\T) = 1\) or \(\det(\T) = -1\).
+    \item It is always possible to decompose \(\V\) as in \cref{6.46} so that the number of \(\W_i\)'s for which \(\T_{\W_i}\) is a reflection is zero or one according to whether \(\det(\T) = 1\) or \(\det(\T) = -1\).
+          Furthermore, if \(\T_{\W_i}\) is a reflection, then \(\dim(\W_i) = 1\).
+  \end{enumerate}
+\end{thm}
+
+\begin{proof}[\pf{6.47}(a)]
+  Let \(r\) denote the number of \(\W_i\)'s in the decomposition for which \(\T_{\W_i}\) is a reflection.
+  Then we have
+  \begin{align*}
+    \det(\T) & = \det(\T_{\W_1}) \cdots \det(\T_{\W_m}) &  & \by{ex:6.11.15}  \\
+             & = 1^{m - r} \cdot (-1)^r                 &  & \by{6.11.3,6.45} \\
+             & = (-1)^r.
+  \end{align*}
+\end{proof}
+
+\begin{proof}[\pf{6.47}(b)]
+  Let \(E = \set{x \in \V : \T(x) = -x}\);
+  then \(E\) is a \(\T\)-invariant subspace of \(\V\) over \(\R\).
+  If \(\W = E^{\perp}\), then \(\W\) is \(\T\)-invariant (\cref{ex:6.11.14}(b)).
+  So by applying \cref{6.46} to \(\T_{\W}\), we obtain a collection of pairwise orthogonal \(\T\)-invariant subspaces \(\set{\seq{\W}{1,,k}}\) of \(\W\) such that \(\W = \seq[\oplus]{\W}{1,,k}\) and for \(i \in \set{1, \dots, k}\), the dimension of each \(\W_i\) is either \(1\) or \(2\).
+  Observe that, for each \(i \in \set{1, \dots, k}\), \(\T_{\W_i}\) is a rotation.
+  For otherwise, if \(\T_{\W_i}\) is a reflection, there exists a nonzero \(x \in \W_i\) for which \(\T(x) = -x\).
+  But then, \(x \in \W_i \cap E \subseteq E^{\perp} \cap E = \set{\zv}\), a contradiction.
+  If \(E = \set{\zv}\), the result follows.
+  Otherwise, choose an orthonormal basis \(\beta\) for \(E\) over \(\R\) containing \(p\) vectors (\(p > 0\)).
+  It is possible to decompose \(\beta\) into a pairwise disjoint union \(\beta = \seq[\cup]{\beta}{1,,r}\) such that each \(\beta_i\) contains exactly two vectors for \(i \in \set{1, \dots, r - 1}\), and \(\beta_r\) contains two vectors if \(p\) is even and one vector if \(p\) is odd.
+  For each \(i \in \set{1, \dots, r}\), let \(\W_{k + i} = \spn{\beta_i}\).
+  Then, clearly, \(\set{\seq{\W}{1,,k,,k+r}}\) is pairwise orthogonal, and
+  \[
+    \V = \seq[\oplus]{\W}{1,,k,,k+r}.
+  \]
+  Moreover, if any \(\beta_i\) contains two vectors, then
+  \begin{align*}
+    \det(\T_{\W_{k + i}}) & = \det([\T_{\W_{k + i}}]_{\beta_i}) &  & \by{ex:5.1.7} \\
+                          & = \det\begin{pmatrix}
+                                    -1 & 0  \\
+                                    0  & -1
+                                  \end{pmatrix}               &  & (\T(x) = -x)    \\
+                          & = 1.                                &  & \by{4.1.1}
+  \end{align*}
+  So \(\T_{\W_{k + i}}\) is a rotation, and hence \(\T_{\W_j}\) is a rotation for \(j \in \set{1, \dots, k + r - 1}\).
+  If \(\beta_r\) consists of one vector, then \(\dim(\W_{k + r}) = 1\) and
+  \begin{align*}
+    \det(\T_{\W_{k + r}}) & = \det([\T_{\W_{k + r}}]_{\beta_r}) &  & \by{ex:5.1.7} \\
+                          & = \det(-1)                          &  & (\T(x) = -x)  \\
+                          & = -1.                               &  & \by{4.2.2}
+  \end{align*}
+  Thus \(\T_{\W_{k + r}}\) is a reflection by \cref{6.46}, and we conclude that the decomposition
+  \[
+    \V = \seq[\oplus]{\W}{1,,k,,k+r}
+  \]
+  satisfies the condition of (b).
+\end{proof}
+
+\begin{cor}\label{6.11.7}
+  Let \(\T\) be an orthogonal operator on a finite-dimensional real inner product space \(\V\).
+  Then there exists a collection \(\set{\seq{\T}{1,,m}}\) of orthogonal operators on \(\V\) such that the following statements are true.
+  \begin{enumerate}
+    \item For each \(i \in \set{1, \dots, m}\), \(\T_i\) is either a reflection or a rotation.
+    \item For at most one \(i \in \set{1, \dots, m}\), \(\T_i\) is a reflection.
+    \item \(\T_i \T_j = \T_j \T_i\) for all \(i, j \in \set{1, \dots, m}\).
+    \item \(\T = \seq[]{\T}{1,,m}\).
+    \item \[
+            \det(\T) = \begin{dcases}
+              1  & \text{if } \T_i \text{ is a rotation for each } i \in \set{1, \dots, m} \\
+              -1 & \text{otherwise}.
+            \end{dcases}
+          \]
+  \end{enumerate}
+\end{cor}
+
+\begin{proof}[\pf{6.11.7}]
+  As in the proof of \cref{6.47}(b), we can write
+  \[
+    \V = \seq[\oplus]{\W}{1,,m},
+  \]
+  where \(\T_{\W_i}\) is a rotation for \(i \in \set{1, \dots, m - 1}\).
+  For each \(i \in \set{1, \dots, m}\), define \(\T_i : \V \to \V\) by
+  \[
+    \T_i(\seq[+]{x}{1,,m}) = \seq[+]{x}{1,,i-1} + \T(x_i) + \seq[+]{x}{i+1,,m},
+  \]
+  where \(x_j \in \W_j\) for all \(j \in \set{1, \dots, m}\).
+
+  First we show that \(\T_i\) is an orthogonal operator on \(\V\) for all \(i \in \set{1, \dots, m}\).
+  Clearly \(\T_i \in \ls(\V)\).
+  Since
+  \begin{align*}
+             & \forall x \in \V, \exists \tuple{x}{1,,m} \in \seq[\times]{\W}{1,,m} : x = \seq[+]{x}{1,,m}                  &  & \by{5.2.7}     \\
+    \implies & \forall x \in \V, \norm{\T_i(x)}^2                                                                                               \\
+             & = \norm{\seq[+]{x}{1,,i-1} + \T(x_i) + \seq[+]{x}{i+1,,m}}^2                                                                     \\
+             & = \norm{x_1}^2 + \cdots + \norm{x_{i - 1}}^2 + \norm{\T(x_i)}^2 + \norm{x_{i + 1}}^2 + \cdots + \norm{x_m}^2 &  & \by{ex:6.1.10} \\
+             & = \norm{x_1}^2 + \cdots + \norm{x_{i - 1}}^2 + \norm{x_i}^2 + \norm{x_{i + 1}}^2 + \cdots + \norm{x_m}^2     &  & \by{6.5.1}     \\
+             & = \norm{\seq[+]{x}{1,,m}}^2                                                                                  &  & \by{ex:6.1.10} \\
+             & = \norm{x}^2                                                                                                 &  & \by{5.2.7}     \\
+    \implies & \forall x \in \V, \norm{\T(x)} = \norm{x},                                                                   &  & \by{6.2}[b]
+  \end{align*}
+  by \cref{6.5.1} we know that \(\T_i\) is orthogonal for all \(i \in \set{1, \dots, m}\).
+
+  Next we claim that \(\T_i\) is a rotation or a reflection according to whether \(\T_{\W_i}\) is a rotation or a reflection.
+  We split into two cases:
+  \begin{itemize}
+    \item If \(\T_{\W_i}\) is a rotation, then by \cref{6.11.1} there exists an orthonormal basis \(\beta = \set{\seq{v}{1,2}}\) for \(\W_i\) over \(\R\), and a \(\theta \in \R\) such that
+          \begin{align*}
+            \T_{\W_i}(v_1) & = \cos(\theta) v_1 + \sin(\theta) v_2;  \\
+            \T_{\W_i}(v_2) & = -\sin(\theta) v_1 + \cos(\theta) v_2.
+          \end{align*}
+          Note that \(\dim(\W_i) = 2\) and thus \(\W_i^{\perp} = \set{\zv}\) when we only consider vectors in \(\W_i\) itself.
+          Since \(\seq{\W}{1,,k}\) are pairwise orthogonal, we see that
+          \[
+            \W_i^{\perp} = \pa{\sum_{j = 1}^m \W_j} \setminus \W_i \quad \text{and} \quad \forall x \in \pa{\sum_{j = 1}^m \W_j} \setminus \W_i, \T_i(x) = x.
+          \]
+          Thus by \cref{6.11.1} \(\T_i\) is rotation when \(\T_{\W_i}\) is a rotation.
+    \item If \(\T_{\W_i}\) is a reflection, then by \cref{6.47}(b) we have \(\dim(\W_i) = 1\).
+          By \cref{6.11.2} we see that \(\T_{\W_i}(x) = -x\) for all \(x \in \W_i\).
+          Note that \(\dim(\W_i) = 1\) and thus \(\W_i^{\perp} = \set{\zv}\) when we only consider vectors in \(\W_i\) itself.
+          Since \(\seq{\W}{1,,k}\) are pairwise orthogonal, we see that
+          \[
+            \W_i^{\perp} = \pa{\sum_{j = 1}^m \W_j} \setminus \W_i \quad \text{and} \quad \forall x \in \pa{\sum_{j = 1}^m \W_j} \setminus \W_i, \T_i(x) = x.
+          \]
+          Thus by \cref{6.11.2} \(\T_i\) is reflection when \(\T_{\W_i}\) is a reflection.
+  \end{itemize}
+  This establishes (a).
+
+  Next we proof (b).
+  Since there is at most one \(\T_{\W_i}\) is a reflection by \cref{6.47}(b), we know that at most one \(\T_i\) is a reflection.
+  This establish (b).
+
+  Next we proof (c).
+  Thus case for \(i = j\) is trivial.
+  So we proof the case \(i \neq j\).
+  Without the loss of generality, suppose that \(i < j\).
+  Since
+  \begin{align*}
+    \forall x \in \V, (\T_i \T_j)(x) & = \T_i(\T_j(x))                                                                   \\
+                                     & = \T_i(\T_j(\seq[+]{x}{1,,m}))                                 &  & \by{5.2.7}    \\
+                                     & = \T_i(\T_j(x_1)) + \cdots + \T_i(\T_j(x_i))                                      \\
+                                     & \quad + \cdots \T_i(\T_j(x_j)) + \cdots + \T_i(\T_j(x_m))      &  & \by{2.1.1}[a] \\
+                                     & = x_1 + \cdots + \T_i(x_i) + \cdots + \T_j(x_j) + \cdots + x_m                    \\
+                                     & = \T_j(\T_i(x_1)) + \cdots + \T_j(\T_i(x_i))                                      \\
+                                     & \quad + \cdots \T_j(\T_i(x_j)) + \cdots + \T_j(\T_i(x_m))      &  & \by{2.1.1}[a] \\
+                                     & = \T_j(\T_i(\seq[+]{x}{1,,m}))                                 &  & \by{2.1.1}[a] \\
+                                     & = \T_j(\T_i(x))                                                &  & \by{5.2.7}    \\
+                                     & = (\T_j \T_i)(x),
+  \end{align*}
+  we see that \(\T_i \T_j = \T_j \T_i\).
+  This establish (c).
+
+  Next we proof (d).
+  Since
+  \begin{align*}
+    \forall x \in \V, (\seq[]{\T}{1,,m})(x) & = (\seq[]{\T}{1,,m-1})(\T_m(x))                                                  \\
+                                            & = (\seq[]{\T}{1,,m-1})\pa{\sum_{i = 1}^{m - 1} x_i + \T(x_m)} &  & \by{5.2.7}    \\
+                                            & = (\seq[]{\T}{1,,m-1})\pa{\sum_{i = 1}^{m - 1} x_i} + \T(x_m) &  & \by{2.1.1}[a] \\
+                                            & = \sum_{i = 1}^m \T(x_i)                                                         \\
+                                            & = \T\pa{\sum_{i = 1}^m x_i}                                   &  & \by{2.1.1}[a] \\
+                                            & = \T(x),                                                      &  & \by{5.2.7}
+  \end{align*}
+  we see that \(\T = \seq[]{\T}{1,,m}\).
+  This establish (d).
+
+  Finally we proof (e).
+  By \cref{ex:5.1.7}(d) and \cref{6.11.7}(d) we have \(\det(\T) = \det(\T_1) \cdots \det(\T_m)\).
+  The rest follows from \cref{6.47}(b).
+\end{proof}
+
+\begin{eg}\label{6.11.8}
+  Orthogonal Operators on a Three-Dimensional Real Inner Product Space.
+
+  Let \(\T\) be an orthogonal operator on a three-dimensional real inner product space \(\V\).
+  We show that \(\T\) can be decomposed into the composite of a rotation and at most one reflection.
+  Let
+  \[
+    \V = \seq[\oplus]{\W}{1,,m}
+  \]
+  be a decomposition as in \cref{6.47}(b).
+  Clearly, \(m = 2\) or \(m = 3\).
+
+  If \(m = 2\), then \(\V = \W_1 \oplus \W_2\).
+  Without loss of generality, suppose that \(\dim(\W_1) = 1\) and \(\dim(\W_2) = 2\).
+  Thus \(\T_{\W_1}\) is a reflection or the identity on \(\W_1\), and \(\T_{\W_2}\) is a rotation.
+  Defining \(\T_1\) and \(\T_2\) as in the proof of \cref{6.11.7}, we have that \(\T = \T_1 \T_2\) is the composite of a rotation and at most one reflection.
+  (Note that if \(\T_{\W_1}\) is not a reflection, then \(\T_1\) is the identity on \(\V\) and \(\T = \T_2\).)
+
+  If \(m = 3\), then \(\V = \W_1 \oplus \W_2 \oplus \W_3\) and \(\dim(\W_i) = 1\) for all \(i \in \set{1, 2, 3}\).
+  For each \(i \in \set{1, 2, 3}\), let \(\T_i\) be as in the proof of \cref{6.11.7}.
+  If \(\T_{\W_i}\) is not a reflection, then \(\T_i\) is the identity on \(\W_i\).
+  Otherwise, \(\T_i\) is a reflection.
+  Since \(\T_{\W_i}\) is a reflection for at most one \(i \in \set{1, 2, 3}\), we conclude that \(\T\) is either a single reflection or the identity (a rotation).
+\end{eg}
+
 \exercisesection
 
 \setcounter{ex}{1}
@@ -294,15 +498,16 @@
   By \cref{6.6} there exists an unique tuple \(\tuple{y}{1,2} \in \W \times \W^{\perp}\) such that \(y = y_1 + y_2\).
   Since
   \begin{align*}
-    \norm{\T(y)} & = \norm{\T(y_1 + y_2)}     &  & \by{6.6}       \\
-                 & = \norm{\T(y_1) + \T(y_2)} &  & \by{2.1.1}[a]  \\
-                 & = \norm{-y_1 + y_2}        &  & \by{6.11.2}    \\
-                 & = \norm{-y_1} + \norm{y_2} &  & \by{ex:6.1.10} \\
-                 & = \norm{y_1} + \norm{y_2}  &  & \by{6.2}[a]    \\
-                 & = \norm{y_1 + y_2}         &  & \by{ex:6.1.10} \\
-                 & = \norm{y},                &  & \by{6.6}
+    \norm{\T(y)}^2 & = \norm{\T(y_1 + y_2)}^2       &  & \by{6.6}       \\
+                   & = \norm{\T(y_1) + \T(y_2)}^2   &  & \by{2.1.1}[a]  \\
+                   & = \norm{-y_1 + y_2}^2          &  & \by{6.11.2}    \\
+                   & = \norm{-y_1}^2 + \norm{y_2}^2 &  & \by{ex:6.1.10} \\
+                   & = \norm{y_1}^2 + \norm{y_2}^2  &  & \by{6.2}[a]    \\
+                   & = \norm{y_1 + y_2}^2           &  & \by{ex:6.1.10} \\
+                   & = \norm{y}^2,                  &  & \by{6.6}
   \end{align*}
-  by \cref{6.5.1} we know that \(\T\) is an orthogonal operator.
+  by \cref{6.2}(b) we have \(\norm{\T(y)} = \norm{y}\).
+  Thus by \cref{6.5.1} we know that \(\T\) is an orthogonal operator.
 
   Finally we show that composites of rotations and reflections are orthogonal operators.
   From the proof above we see that rotations and reflections are orthogonal operators.
@@ -549,4 +754,27 @@
 
 \begin{proof}[\pf{ex:6.11.14}(c)]
   This follows from \cref{ex:6.11.14}(a)(b).
+\end{proof}
+
+\begin{ex}\label{ex:6.11.15}
+  Let \(\T\) be a linear operator on a finite-dimensional vector space \(\V\) over \(\F\), where \(\V\) is a direct sum of \(\T\)-invariant subspaces, say, \(\V = \seq[\oplus]{\W}{1,,k}\).
+  Prove that \(\det(\T) = \det(\T_{\W_1}) \cdots \det(\T_{\W_k})\).
+\end{ex}
+
+\begin{proof}[\pf{ex:6.11.15}]
+  By \cref{5.25} we have
+  \[
+    [\T]_{\beta} = \begin{pmatrix}
+      [\T_{\W_1}]_{\beta_1} & \zm                   & \cdots & \zm                   \\
+      \zm                   & [\T_{\W_2}]_{\beta_2} & \cdots & \zm                   \\
+      \zm                   & \zm                   & \cdots & [\T_{\W_k}]_{\beta_k}
+    \end{pmatrix},
+  \]
+  where \(\beta\) is an ordered basis for \(\V\) over \(\F\) and \(\beta_i = \beta \cap \W_i\) for all \(i \in \set{1, \dots, k}\).
+  Thus we have
+  \begin{align*}
+    \det(\T) & = \det([\T]_{\beta})                                             &  & \by{ex:5.1.7}  \\
+             & = \det([\T_{\W_1}]_{\beta_1}) \cdots \det([\T_{\W_k}]_{\beta_k}) &  & \by{ex:4.3.21} \\
+             & = \det(\T_{\W_1}) \cdots \det(\T_{\W_k}).                        &  & \by{ex:5.1.7}
+  \end{align*}
 \end{proof}
