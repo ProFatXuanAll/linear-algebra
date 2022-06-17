@@ -46,7 +46,7 @@
 \begin{cor}\label{6.11.4}
   Let \(\V\) be an \(n\)-dimensional vector space over \(\R\).
   Let \(\T \in \ls(\V)\) be a rotation.
-  Then there exists an orthonormal basis \(\gamma\) for \(\V\) over \(\R\) such that
+  Then there exists an orthonormal basis \(\gamma\) for \(\V\) over \(\R\) and a \(\theta \in \R\) such that
   \[
     [\T]_{\gamma} = \begin{pmatrix}
       \cos(\theta) & -\sin(\theta) & \zm       \\
@@ -73,6 +73,7 @@
   Let \(\norm{\cdot}\) be a norm on \(\V\) over \(\R\) such that \(\norm{\cdot}^2 = \inn{\cdot, \cdot}\).
   Let \(\norm{\cdot}'\) be a norm on \(\R^2\) over \(\R\) such that \((\norm{\cdot}')^2 = \inn{\cdot, \cdot}'\).
   Let \(\T \in \ls(\V)\) be orthogonal with respect to \(\norm{\cdot}\) and let \(\beta = \set{\seq{v}{1,2}}\) be an orthonormal basis with respect to \(\inn{\cdot, \cdot}\) for \(\V\) over \(\R\).
+  Let \(\gamma\) be the standard ordered basis for \(\R^2\) over \(\R\).
   Define \(\phi_{\beta} \in \ls(\V, \R^2)\) as in \cref{2.4.11}.
 
   Because \(\T\) is an orthogonal operator, \(\T(\beta)\) is an orthonormal basis for \(\V\) over \(\R\) by \cref{6.18}(c).
@@ -96,10 +97,10 @@
     \begin{pmatrix}
       \cos(\theta) & -\sin(\theta) \\
       \sin(\theta) & \cos(\theta)
-    \end{pmatrix} & = [\phi_{\beta} \T]_{\beta}           &  & \by{2.2.4}                   \\
-                                    & = [\phi_{\beta}]_{\beta} [\T]_{\beta} &  & \by{2.11}  \\
-                                    & = I_2 [\T]_{\beta}                    &  & \by{2.2.4} \\
-                                    & = [\T]_{\beta}.                       &  & \by{2.3.8}
+    \end{pmatrix} & = [\phi_{\beta} \T]_{\beta}^{\gamma}           &  & \by{2.2.4}                   \\
+                                    & = [\phi_{\beta}]_{\beta}^{\gamma} [\T]_{\beta} &  & \by{2.11}  \\
+                                    & = I_2 [\T]_{\beta}                             &  & \by{2.2.4} \\
+                                    & = [\T]_{\beta}.                                &  & \by{2.3.8}
   \end{align*}
   It follows from \cref{6.11.1} that \(\T\) is a rotation of \(\V\) about \(\V^{\perp} = \set{\zv}\) (\cref{6.2.11}).
   Also
@@ -113,7 +114,7 @@
     \begin{pmatrix}
       \cos(\theta) & \sin(\theta)  \\
       \sin(\theta) & -\cos(\theta)
-    \end{pmatrix} = [\phi_{\beta} \T]_{\beta} = [\T]_{\beta}.
+    \end{pmatrix} = [\phi_{\beta} \T]_{\beta}^{\gamma} = [\T]_{\beta}.
   \]
   It follows from \cref{6.11.2} that \(\T\) is a reflection on \(\V\) about
   \[
@@ -128,6 +129,110 @@
     \det(\T) & = \det([\T]_{\beta})                          &  & \by{ex:5.1.7} \\
              & = - (\cos(\theta))^2 - (\sin(\theta))^2 = -1. &  & \by{4.1.1}
   \end{align*}
+\end{proof}
+
+\begin{cor}\label{6.11.5}
+  Let \(\V\) be a two-dimensional real inner product space.
+  The composite of a reflection and a rotation on \(\V\) is a reflection on \(\V\).
+\end{cor}
+
+\begin{proof}[\pf{6.11.5}]
+  If \(\T_1\) is a reflection on \(\V\) and \(\T_2\) is a rotation on \(\V\), then by \cref{6.45}, \(\det(\T_1) = 1\) and \(\det(\T_2) = -1\).
+  Let \(\T = \T_2 \T_1\) be the composite.
+  Since \(\T_2\) and \(\T_1\) are orthogonal, so is \(\T\) (\cref{ex:6.5.3}).
+  Moreover,
+  \begin{align*}
+    \det(\T) & = \det(\T_2) \cdot \det(\T_1) &  & \by{ex:5.1.7}[d] \\
+             & = -1.                         &  & \by{6.45}
+  \end{align*}
+  Thus, by \cref{6.45}, \(\T\) is a reflection.
+  The proof for \(\T_1 \T_2\) is similar, i.e.,
+  \begin{align*}
+    \det(\T_1 \T_2) & = \det(\T_1) \cdot \det(\T_2) &  & \by{ex:5.1.7}[d] \\
+                    & = -1.
+  \end{align*}
+\end{proof}
+
+\begin{lem}\label{6.11.6}
+  If \(\T\) is a linear operator on a nonzero finite-dimensional real vector space \(\V\), then there exists a \(\T\)-invariant subspace \(\W\) of \(\V\) over \(\R\) such that \(1 \leq \dim(\W) \leq 2\).
+\end{lem}
+
+\begin{proof}[\pf{6.11.6}]
+  Fix an ordered basis \(\beta = \set{\seq{y}{1,,n}}\) for \(\V\) over \(\R\), and let \(A = [\T]_{\beta}\).
+  Let \(\phi_{\beta} \in \ls(\V, \R^n)\) be the isomorphism defined by \cref{2.4.11}.
+  By \cref{2.4.12} \(\L_A \phi_{\beta} = \phi_{\beta} \T\).
+  As a consequence, it suffices to show that there exists an \(\L_A\)-invariant subspace \(\vs{Z}\) of \(\R^n\) such that \(1 \leq \dim(\vs{Z}) \leq 2\).
+  If we then define \(\W = \phi_{\beta}^{-1}(\vs{Z})\), it follows that \(\W\) satisfies the conclusions of the lemma (see \cref{ex:6.11.13}).
+
+  The matrix \(A\) can be considered as an \(n \times n\) matrix over \(\C\) and, as such, can be used to define a linear operator \(\U\) on \(\C^n\) by \(\U(v) = Av\).
+  Since \(\U\) is a linear operator on a finite-dimensional vector space over \(\C\), it has an eigenvalue \(\lambda \in \C\) (\cref{5.2,d.4}).
+  Let \(x \in \C^n\) be an eigenvector corresponding to \(\lambda\).
+  We may write \(\lambda = \lambda_1 + i \lambda_2\), where \(\lambda_1\) and \(\lambda_2\) are real, and
+  \[
+    x = \begin{pmatrix}
+      a_1 + i b_1 \\
+      \vdots      \\
+      a_n + i b_n
+    \end{pmatrix},
+  \]
+  where the \(a_i\)'s and \(b_i\)'s are real.
+  Thus, setting
+  \[
+    x_1 = \begin{pmatrix}
+      a_1    \\
+      \vdots \\
+      a_n
+    \end{pmatrix} \quad \text{and} \quad x_2 = \begin{pmatrix}
+      b_1    \\
+      \vdots \\
+      b_n
+    \end{pmatrix},
+  \]
+  we have \(x = x_1 + i x_2\), where \(x_1\) and \(x_2\) have real entries.
+  Note that at least one of \(x_1\) or \(x_2\) is nonzero since \(x \neq \zv\).
+  Hence
+  \begin{align*}
+    \U(x) & = \lambda x                                                            \\
+          & = (\lambda_1 + i \lambda_2) (x_1 + i x_2)                              \\
+          & = (\lambda_1 x_1 - \lambda_2 x_2) + i (\lambda_1 x_2 + \lambda_2 x_1).
+  \end{align*}
+  Similarly,
+  \[
+    \U(x) = A (x_1 + i x_2) = A x_1 + i A x_2.
+  \]
+  Comparing the real and imaginary parts of these two expressions for \(\U(x)\), we conclude that
+  \[
+    A x_1 = \lambda_1 x_1 - \lambda_2 x_2 \quad \text{and} \quad A x_2 = \lambda_1 x_2 + \lambda_2 x_1.
+  \]
+  Finally, let \(\vs{Z} = \spn{\set{\seq{x}{1,2}}}\), the span being taken as a subspace of \(\R^n\) over \(\R\).
+  Since \(x_1 \neq \zv\) or \(x_2 \neq \zv\), \(\vs{Z}\) is a nonzero subspace.
+  Thus \(1 \leq \dim(\vs{Z}) \leq 2\), and the preceding pair of equations shows that \(\vs{Z}\) is \(\L_A\)-invariant.
+\end{proof}
+
+\begin{thm}\label{6.46}
+  Let \(\T\) be an orthogonal operator on a nonzero finite-dimensional real inner product space \(\V\).
+  Then there exists a collection of pairwise orthogonal \(\T\)-invariant subspaces \(\set{\seq{\W}{1,,m}}\) of \(\V\) such that
+  \begin{enumerate}
+    \item \(1 \leq \dim(\W_i) \leq 2\) for \(i \in \set{1, \dots, m}\).
+    \item \(\V = \seq[\oplus]{\W}{1,,m}\).
+  \end{enumerate}
+\end{thm}
+
+\begin{proof}[\pf{6.46}]
+  The proof is by mathematical induction on \(\dim(\V)\).
+  If \(\dim(\V) = 1\), the result is obvious.
+  So assume that the result is true whenever \(\dim(\V) = n\) for some fixed integer \(n \geq 1\).
+
+  Suppose \(\dim(\V) = n + 1\).
+  By \cref{6.11.6}, there exists a \(\T\)-invariant subspace \(\W_1\) of \(\V\) such that \(1 \leq \dim(\W_1) \leq 2\).
+  If \(\W_1 = \V\), the result is established.
+  Otherwise, \(\W_1^{\perp} \neq \set{\zv}\) (\cref{6.2.11}).
+  By \cref{ex:6.11.14}, \(\W_1^{\perp}\) is \(\T\)-invariant and the restriction of \(\T\) to \(\W_1^{\perp}\) is orthogonal.
+  Since \(\dim(\W_1^{\perp}) \leq n\), we may apply the induction hypothesis to \(\T_{\W_1^{\perp}}\) and conclude that there exists a collection of pairwise orthogonal \(\T\)-invariant subspaces \(\set{\seq{\W}{2,,m}}\) of \(\W_1^{\perp}\) such that \(1 \leq \dim(\W_i) \leq 2\) for \(i \in \set{2, \dots, m}\) and \(\W_1^{\perp} = \seq[\oplus]{\W}{2,,m}\).
+  Thus \(\set{\seq{\W}{1,,m}}\) is pairwise orthogonal, and by \cref{ex:6.2.13}(d),
+  \[
+    \V = \W_1 \oplus \W_1^{\perp} = \seq[\oplus]{\W}{1,,m}.
+  \]
 \end{proof}
 
 \exercisesection
@@ -205,5 +310,243 @@
   This is done by \cref{ex:6.5.3}.
 \end{proof}
 
-\begin{ex}\label{ex:6.11.8}
+\setcounter{ex}{3}
+\begin{ex}\label{ex:6.11.4}
+  For any real number \(\phi\), let
+  \[
+    A = \begin{pmatrix}
+      \cos(\phi) & \sin(\phi)  \\
+      \sin(\phi) & -\cos(\phi)
+    \end{pmatrix}.
+  \]
+  \begin{enumerate}
+    \item Prove that \(\L_A\) is a reflection.
+    \item Find the axis in \(\R^2\) about which \(\L_A\) reflects.
+  \end{enumerate}
 \end{ex}
+
+\begin{proof}[\pf{ex:6.11.4}(a)]
+  Since
+  \begin{align*}
+    \det(\L_A) & = \det(A)                          &  & \by{ex:5.1.7} \\
+               & = -(\cos(\phi))^2 - (\sin(\phi))^2 &  & \by{4.1.1}    \\
+               & = -1,
+  \end{align*}
+  by \cref{6.45} we know that \(\L_A\) is a reflection.
+\end{proof}
+
+\begin{proof}[\pf{ex:6.11.4}(b)]
+  Since
+  \begin{align*}
+             & A \begin{pmatrix}
+                   x \\
+                   y
+                 \end{pmatrix} = \begin{pmatrix}
+                                   x \\
+                                   y
+                                 \end{pmatrix}                                 &  & \by{6.11.2} \\
+    \implies & \begin{pmatrix}
+                 \cos(\phi) x + \sin(\phi) y \\
+                 \sin(\phi) x - \cos(\phi) y
+               \end{pmatrix} = \begin{pmatrix}
+                                 x \\
+                                 y
+                               \end{pmatrix}                                 &  & \by{2.3.1}    \\
+    \implies & \begin{dcases}
+                 \sin(\phi) y = (1 - \cos(\phi)) x \\
+                 \sin(\phi) x = (1 + \cos(\phi)) y
+               \end{dcases}                                                \\
+    \implies & (\sin(\phi), 1 - \cos(\phi)) \in \set{x \in \R^2 : Ax = x},                      \\
+    \implies & \set{x \in \R^2 : Ax = x} = \spn{(\sin(\phi), 1 - \cos(\phi))}, &  & \by{6.11.2}
+  \end{align*}
+  by \cref{6.11.2} we know that \(\L_A\) is a reflection of \(\R^2\) about \(\spn{(\sin(\phi), 1 - \cos(\phi))}\).
+\end{proof}
+
+\begin{ex}\label{ex:6.11.5}
+  For any real number \(\phi\), define \(\T_{\phi} = \L_A\), where
+  \[
+    A = \begin{pmatrix}
+      \cos(\phi) & -\sin(\phi) \\
+      \sin(\phi) & \cos(\phi)
+    \end{pmatrix}.
+  \]
+  \begin{enumerate}
+    \item Prove that any rotation on \(\R^2\) is of the form \(\T_{\phi}\) for some \(\phi\).
+    \item Prove that \(\T_{\phi} \T_{\psi} = \T_{(\phi + \psi)}\) for any \(\phi, \psi \in \R\).
+    \item Deduce that any two rotations on \(\R^2\) commute.
+  \end{enumerate}
+\end{ex}
+
+\begin{proof}[\pf{ex:6.11.5}(a)]
+  See \cref{6.11.4}.
+\end{proof}
+
+\begin{proof}[\pf{ex:6.11.5}(b)]
+  Since
+  \begin{align*}
+     & \begin{pmatrix}
+         \cos(\phi) & -\sin(\phi) \\
+         \sin(\phi) & \cos(\phi)
+       \end{pmatrix} \begin{pmatrix}
+                       \cos(\psi) & -\sin(\psi) \\
+                       \sin(\psi) & \cos(\psi)
+                     \end{pmatrix}                                                            \\
+     & = \begin{pmatrix}
+           \cos(\phi) \cos(\psi) - \sin(\phi) \sin(\psi) & - \cos(\phi) \sin(\psi) - \sin(\phi) \cos(\psi) \\
+           \sin(\phi) \cos(\psi) + \cos(\phi) \sin(\psi) & - \sin(\phi) \sin(\psi) + \cos(\phi) \cos(\psi)
+         \end{pmatrix} &  & \by{2.3.1} \\
+     & = \begin{pmatrix}
+           \cos(\phi + \psi) & -\sin(\phi + \psi) \\
+           \sin(\phi + \psi) & \cos(\phi + \psi)
+         \end{pmatrix},
+  \end{align*}
+  by \cref{2.15}(e) we know that \(\T_{\phi} \T_{\psi} = \T_{\phi + \psi}\).
+\end{proof}
+
+\begin{proof}[\pf{ex:6.11.5}(c)]
+  We have
+  \begin{align*}
+    \T_{\phi} \T_{\psi} & = \T_{\phi + \psi}    &  & \by{ex:6.11.5}[b] \\
+                        & = \T_{\psi + \phi}                           \\
+                        & = \T_{\psi} \T_{\phi} &  & \by{ex:6.11.5}[b]
+  \end{align*}
+  and thus any two rotations on \(\R^2\) commute.
+\end{proof}
+
+\begin{ex}\label{ex:6.11.6}
+  Prove that the composite of any two rotations on \(\R^3\) is a rotation on \(\R^3\).
+\end{ex}
+
+\begin{proof}[\pf{ex:6.11.6}]
+
+\end{proof}
+
+\begin{ex}\label{ex:6.11.7}
+  Given real numbers \(\phi\) and \(\psi\), define matrices
+  \[
+    A = \begin{pmatrix}
+      1 & 0          & 0           \\
+      0 & \cos(\phi) & -\sin(\phi) \\
+      0 & \sin(\phi) & \cos(\phi)
+    \end{pmatrix} \quad \text{and} \quad B = \begin{pmatrix}
+      \cos(\psi) & -\sin(\psi) & 0 \\
+      \sin(\psi) & \cos(\psi)  & 0 \\
+      0          & 0           & 1
+    \end{pmatrix}.
+  \]
+  \begin{enumerate}
+    \item Prove that \(\L_{A}\) and \(\L_{B}\) are rotations.
+    \item Prove that \(\L_{AB}\) is a rotation.
+    \item Find the axis of rotation for \(\L_{AB}\).
+  \end{enumerate}
+\end{ex}
+
+\begin{proof}[\pf{ex:6.11.7}(a)]
+
+\end{proof}
+
+\begin{proof}[\pf{ex:6.11.7}(b)]
+
+\end{proof}
+
+\begin{proof}[\pf{ex:6.11.7}(c)]
+
+\end{proof}
+
+\begin{ex}\label{ex:6.11.8}
+  Prove \cref{6.45} using the hints preceding the statement of the theorem.
+\end{ex}
+
+\begin{proof}[\pf{ex:6.11.8}]
+  See \cref{6.45}.
+\end{proof}
+
+\begin{ex}\label{ex:6.11.9}
+  Prove that no orthogonal operator can be both a rotation and a reflection.
+\end{ex}
+
+\begin{proof}[\pf{ex:6.11.9}]
+
+\end{proof}
+
+\begin{ex}\label{ex:6.11.10}
+  Prove that if \(\V\) is a two- or three-dimensional real inner product space, then the composite of two reflections on \(\V\) is a rotation of \(\V\).
+\end{ex}
+
+\begin{proof}[\pf{ex:6.11.10}]
+
+\end{proof}
+
+\begin{ex}\label{ex:6.11.11}
+  Give an example of an orthogonal operator that is neither a reflection nor a rotation.
+\end{ex}
+
+\begin{proof}[\pf{ex:6.11.11}]
+
+\end{proof}
+
+\begin{ex}\label{ex:6.11.12}
+  Let \(\V\) be a finite-dimensional real inner product space.
+  Define \(\T : \V \to \V\) by \(\T(x) = -x\).
+  Prove that \(\T\) is a product of rotations iff \(\dim(\V)\) is even.
+\end{ex}
+
+\begin{proof}[\pf{ex:6.11.12}]
+
+\end{proof}
+
+\begin{ex}\label{ex:6.11.13}
+  Complete the proof of \cref{6.11.6} by showing that \(\W = \phi_{\beta}^{-1}(\vs{Z})\) satisfies the required conditions.
+\end{ex}
+
+\begin{proof}[\pf{ex:6.11.13}]
+  By \cref{6.11.6} we need to show that \(\W\) is a subspace of \(\V\) over \(\R\), \(\W\) is \(\T\)-invariant and \(1 \leq \dim(\W) \leq 2\).
+
+  First we show that \(\W\) is a subspace of \(\V\) over \(\R\).
+  Since \(\vs{Z}\) is a subspace of \(\R^n\) over \(\R\) and \(\phi_{\beta}^{-1} \in \ls(\R^n, \V)\), by \cref{2.1} we know that \(\W = \phi_{\beta}^{-1}(\vs{Z})\) is a subspace of \(\V\) over \(\R\).
+
+  Next we show that \(\W\) is \(\T\)-invariant.
+  Let \(x \in \W\).
+  Then there exists a \(y \in \vs{Z}\) such that \(\phi_{\beta}^{-1}(y) = x\) or \(\phi_{\beta}(x) = y\).
+  By \cref{6.11.6} we know that \(\vs{Z}\) is \(\L_A\)-invariant.
+  Thus by \cref{5.4.1} \(\L_A(y) \in \vs{Z}\).
+  By \cref{2.21} this means \((\phi_{\beta}^{-1} \L_A)(y) \in \W\).
+  Thus we have
+  \begin{align*}
+    \T(x) & = (\phi_{\beta}^{-1} \phi_{\beta} \T)(x)   &  & \by{2.21}   \\
+          & = (\phi_{\beta}^{-1} \L_A \phi_{\beta})(x) &  & \by{2.4.12} \\
+          & = (\phi_{\beta}^{-1} \L_A)(y)                               \\
+          & \in \W.
+  \end{align*}
+  By \cref{5.4.1} \(\W\) is \(\T\)-invariant.
+
+  Finally we show that \(1 \leq \dim(\W) \leq 2\).
+  Since \(1 \leq \dim(\vs{Z}) \leq 2\) and \(\W = \phi_{\beta}^{-1}(\vs{Z})\), by \cref{2.19} we have \(1 \leq \dim(\W) \leq 2\).
+\end{proof}
+
+\begin{ex}\label{ex:6.11.14}
+  Let \(\T\) be an orthogonal (unitary) operator on a finite-dimensional real (complex) inner product space \(\V\).
+  If \(\W\) is a \(\T\)-invariant subspace of \(\V\) over \(\R\), prove the following results.
+  \begin{enumerate}
+    \item \(\T_{\W}\) is an orthogonal (unitary) operator on \(\W\).
+    \item \(\W^{\perp}\) is a \(\T\)-invariant subspace of \(\V\).
+    \item \(\T_{\W^{\perp}}\) is an orthogonal (unitary) operator on \(\W\).
+  \end{enumerate}
+\end{ex}
+
+\begin{proof}[\pf{ex:6.11.14}(a)]
+  We have
+  \begin{align*}
+    \forall x \in \W, \norm{\T_{\W}(x)} & = \norm{\T(x)} &  & \by{b.0.4} \\
+                                        & = \norm{x}     &  & \by{6.5.1}
+  \end{align*}
+  and thus by \cref{6.5.1} \(\T_{\W}\) is orthogonal (unitary).
+\end{proof}
+
+\begin{proof}[\pf{ex:6.11.14}(b)]
+  See \cref{ex:6.5.15}.
+\end{proof}
+
+\begin{proof}[\pf{ex:6.11.14}(c)]
+  This follows from \cref{ex:6.11.14}(a)(b).
+\end{proof}
