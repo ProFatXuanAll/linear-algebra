@@ -808,11 +808,18 @@
 \begin{ex}\label{ex:6.11.12}
   Let \(\V\) be a finite-dimensional real inner product space.
   Define \(\T : \V \to \V\) by \(\T(x) = -x\).
-  Prove that \(\T\) is a product of rotations iff \(\dim(\V)\) is even.
+  Prove that \(\T\) is a composite of rotations iff \(\dim(\V)\) is even.
 \end{ex}
 
 \begin{proof}[\pf{ex:6.11.12}]
-
+  Let \(\dim(\V) = n\) and let \(\beta\) be an ordered basis for \(\V\) over \(\R\).
+  Since
+  \begin{align*}
+    \det(\T) & = \det([\T]_{\beta}) &  & \by{ex:5.1.7} \\
+             & = \det(-I_n)         &  & \by{2.2.4}    \\
+             & = (-1)^n             &  & \by{4.2.2}
+  \end{align*}
+  By \cref{6.11.7} we see that \(\T\) is a composite of rotations iff \(n\) is even, iff \(\dim(\V)\) is even.
 \end{proof}
 
 \begin{ex}\label{ex:6.11.13}
@@ -892,4 +899,103 @@
              & = \det([\T_{\W_1}]_{\beta_1}) \cdots \det([\T_{\W_k}]_{\beta_k}) &  & \by{ex:4.3.21} \\
              & = \det(\T_{\W_1}) \cdots \det(\T_{\W_k}).                        &  & \by{ex:5.1.7}
   \end{align*}
+\end{proof}
+
+\begin{ex}\label{ex:6.11.16}
+  Complete the proof of \cref{6.11.7}.
+\end{ex}
+
+\begin{proof}[\pf{ex:6.11.16}]
+  See \cref{6.11.7}.
+\end{proof}
+
+\begin{ex}\label{ex:6.11.17}
+  Let \(\T\) be a linear operator on an \(n\)-dimensional real inner product space \(\V\).
+  Suppose that \(\T\) is not the identity.
+  Prove the following results.
+  \begin{enumerate}
+    \item If \(n\) is odd, then \(\T\) can be expressed as the composite of at most one reflection and at most \(\dfrac{n - 1}{2}\) two-dimensional rotations.
+    \item If \(n\) is even, then \(\T\) can be expressed as the composite of at most \(\dfrac{n}{2}\) two-dimensional rotations or as the composite of one reflection and at most \(\dfrac{n - 2}{2}\) two-dimensional rotations.
+  \end{enumerate}
+\end{ex}
+
+\begin{proof}[\pf{ex:6.11.17}(a)]
+  By \cref{6.47}(b) and \cref{6.11.7} we know that \(\T\) can be decomposed into one reflection and \(\dfrac{n - 1}{2}\) two-dimensional rotations.
+\end{proof}
+
+\begin{proof}[\pf{ex:6.11.17}(b)]
+  By \cref{6.47}(b) and \cref{6.11.7} we know that \(\T\) can be decomposed into at least two different compositions:
+  \begin{itemize}
+    \item \(0\) reflection and \(\dfrac{n}{2}\) two-dimensional rotations.
+    \item \(1\) reflection, \(1\) identity transformation and \(\dfrac{n - 2}{2}\) two-dimensional rotations.
+  \end{itemize}
+\end{proof}
+
+\begin{ex}\label{ex:6.11.18}
+  Let \(\V\) be a real inner product space of dimension \(2\).
+  For any \(x, y \in \V\) such that \(x \neq y\) and \(\norm{x} = \norm{y} = 1\), show that there exists a unique rotation \(\T\) on \(\V\) such that \(\T(x) = y\).
+\end{ex}
+
+\begin{proof}[\pf{ex:6.11.18}]
+  Let \(\beta = \set{\seq{v}{1,2}}\) be an orthonormal basis for \(\V\) over \(\R\).
+  Define \(\phi_{\beta}\) as in \cref{2.4.11}.
+  By \cref{ex:6.2.15} we see that
+  \[
+    \tp{\pa{\phi_{\beta}(x)}} \phi_{\beta}(x) = \norm{x} = 1 = \norm{y} = \tp{\pa{\phi_{\beta}(y)}} \phi_{\beta}(y).
+  \]
+  Since \(\phi_{\beta}(x), \phi_{\beta}(y) \in \R^2\), we can define \(\seq{\theta}{x,y} \in \R\) to be angles between positive \(x\)-axis and \(x, y\), respectively, such that
+  \begin{align*}
+    \phi_{\beta}(x) & = \tp{(\cos(\theta_x), \sin(\theta_x))}; \\
+    \phi_{\beta}(y) & = \tp{(\cos(\theta_y), \sin(\theta_y))}.
+  \end{align*}
+  Let \(\theta = \theta_y - \theta_x\) and let
+  \[
+    A = \begin{pmatrix}
+      \cos(\theta) & -\sin(\theta) \\
+      \sin(\theta) & \cos(\theta)
+    \end{pmatrix}.
+  \]
+  Since
+  \begin{align*}
+    A \phi_{\beta}(x) & = \begin{pmatrix}
+                            \cos(\theta) \cos(\theta_x) - \sin(\theta) \sin(\theta_x) \\
+                            \sin(\theta) \cos(\theta_x) + \cos(\theta) \sin(\theta_x)
+                          \end{pmatrix} \\
+                      & = \begin{pmatrix}
+                            \cos(\theta + \theta_x) \\
+                            \sin(\theta + \theta_x)
+                          \end{pmatrix} = \begin{pmatrix}
+                                            \cos(\theta_y) \\
+                                            \sin(\theta_y)
+                                          \end{pmatrix} = \phi_{\beta}(y),
+  \end{align*}
+  we see that \(\L_A(\phi_{\beta}(x)) = \phi_{\beta}(y)\).
+  If we let \(\T = \phi_{\beta}^{-1} \L_A \phi_{\beta}\), then we see that \(\T(x) = y\) and \([\T]_{\beta} = A\).
+  Thus by \cref{6.11.1} \(\T\) is a rotation.
+
+  Now we show that such rotation is unique.
+  Let \(\U, \T\) be rotations on \(\V\) such that \(\U(x) = \T(x) = y\).
+  Then there exist \(\theta_1, \theta_2 \in \R\) and a orthonormal basis \(\beta\) for \(\V\) over \(\R\) such that
+  \begin{align*}
+    [\U]_{\beta} & = \begin{pmatrix}
+                       \cos(\theta_1) & -\sin(\theta_1) \\
+                       \sin(\theta_1) & \cos(\theta_1)
+                     \end{pmatrix}; \\
+    [\T]_{\beta} & = \begin{pmatrix}
+                       \cos(\theta_2) & -\sin(\theta_2) \\
+                       \sin(\theta_2) & \cos(\theta_2)
+                     \end{pmatrix}.
+  \end{align*}
+  Since
+  \begin{align*}
+             & \U(x) = \T(x)                                             \\
+    \implies & \begin{dcases}
+                 \cos(\theta_1) = \cos(\theta_2) \\
+                 \sin(\theta_1) = \sin(\theta_2)
+               \end{dcases}                        &  & \by{1.8}         \\
+    \implies & \tan(\theta_1) = \tan(\theta_2)                           \\
+    \implies & \theta_1 = \theta_2 + 2 k \pi \text{ for some } k \in \Z,
+  \end{align*}
+  we see that \([\U]_{\beta} = [\T]_{\beta}\).
+  Thus such rotation is unique.
 \end{proof}
