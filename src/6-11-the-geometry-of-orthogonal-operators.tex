@@ -623,7 +623,17 @@
 \end{ex}
 
 \begin{proof}[\pf{ex:6.11.6}]
-
+  Let \(\U, \T \in \ls(\R^3)\) be two rotations.
+  Since
+  \begin{align*}
+    \det(\U \T) & = \det(\U) \cdot \det(\T) &  & \by{ex:5.1.7}[d] \\
+                & = 1 \cdot 1               &  & \by{6.47}[b]     \\
+                & = 1,
+  \end{align*}
+  by \cref{6.47}(b) we know that \(\V\) can be decomposed into \(\W_1 \oplus \W_2\) or \(\W_1 \oplus \W_2 \oplus \W_3\) such that \(\W_i\) are \((\U \T)\)-invariant and no \((\U \T)_{\W_i}\) is a reflection.
+  If \(\V = \W_1 \oplus \W_2\), then by \cref{6.11.1} we know that \(\U \T\) is a composite of identity and rotation.
+  If \(\V = \W_1 \oplus \W_2 \oplus \W_3\), then by \cref{6.11.1} we know that \(\U \T\) is identity.
+  In either case we see that \(\U \T\) is a rotation.
 \end{proof}
 
 \begin{ex}\label{ex:6.11.7}
@@ -647,15 +657,79 @@
 \end{ex}
 
 \begin{proof}[\pf{ex:6.11.7}(a)]
-
+  Since
+  \begin{align*}
+    A e_1 & = e_1;                              &  & \by{2.3.1} \\
+    A e_2 & = \cos(\phi) e_2 + \sin(\phi) e_3;  &  & \by{2.3.1} \\
+    A e_3 & = -\sin(\phi) e_2 + \cos(\phi) e_3; &  & \by{2.3.1} \\
+    B e_1 & = \cos(\psi) e_1 + \sin(\psi) e_2;  &  & \by{2.3.1} \\
+    B e_2 & = -\sin(\psi) e_1 + \cos(\psi) e_2; &  & \by{2.3.1} \\
+    B e_3 & = e_3,                              &  & \by{2.3.1}
+  \end{align*}
+  by \cref{6.11.1} we see that \(\L_A\) is a rotation of \(\spn{\set{\seq{e}{2,3}}}\) about \(\spn{\set{e_1}}\) and \(\L_B\) is a rotation of \(\spn{\set{\seq{e}{1,2}}}\) about \(\spn{\set{e_3}}\).
 \end{proof}
 
 \begin{proof}[\pf{ex:6.11.7}(b)]
-
+  By \cref{2.15}(e) we have \(\L_{AB} = \L_A \L_B\), thus by \cref{ex:6.11.6} this is true.
 \end{proof}
 
 \begin{proof}[\pf{ex:6.11.7}(c)]
-
+  First observe that
+  \begin{align*}
+     & \begin{pmatrix}
+         1 & 0          & 0           \\
+         0 & \cos(\phi) & -\sin(\phi) \\
+         0 & \sin(\phi) & \cos(\phi)
+       \end{pmatrix} \begin{pmatrix}
+                       \cos(\psi) & -\sin(\psi) & 0 \\
+                       \sin(\psi) & \cos(\psi)  & 0 \\
+                       0          & 0           & 1
+                     \end{pmatrix}                    \\
+     & = \begin{pmatrix}
+           \cos(\psi)            & -\sin(\psi)           & 0           \\
+           \cos(\phi) \sin(\psi) & \cos(\phi) \cos(\psi) & -\sin(\phi) \\
+           \sin(\phi) \sin(\psi) & \sin(\phi) \cos(\psi) & \cos(\phi)
+         \end{pmatrix}
+  \end{align*}
+  and
+  \begin{align*}
+             & \begin{pmatrix}
+                 \cos(\psi)            & -\sin(\psi)           & 0           \\
+                 \cos(\phi) \sin(\psi) & \cos(\phi) \cos(\psi) & -\sin(\phi) \\
+                 \sin(\phi) \sin(\psi) & \sin(\phi) \cos(\psi) & \cos(\phi)
+               \end{pmatrix} \begin{pmatrix}
+                               x \\
+                               y \\
+                               z
+                             \end{pmatrix} = \begin{pmatrix}
+                                               x \\
+                                               y \\
+                                               z
+                                             \end{pmatrix}            \\
+    \implies & \begin{pmatrix}
+                 \cos(\psi) x - \sin(\psi) y                                      \\
+                 \cos(\phi) \sin(\psi) x + \cos(\phi) \cos(\psi) y - \sin(\phi) z \\
+                 \sin(\phi) \sin(\psi) x + \sin(\phi) \cos(\psi) y + \cos(\phi) z
+               \end{pmatrix} = \begin{pmatrix}
+                                 x \\
+                                 y \\
+                                 z
+                               \end{pmatrix}       \\
+    \implies & \begin{dcases}
+                 (\cos(\psi) - 1) x = \sin(\psi) y                                      \\
+                 \cos(\phi) \sin(\psi) x + (\cos(\phi) \cos(\psi) - 1) y = \sin(\phi) z \\
+                 \sin(\phi) \sin(\psi) x + \sin(\phi) \cos(\psi) y = (1 - \cos(\phi)) z
+               \end{dcases} \\
+    \implies & \begin{dcases}
+                 x = \sin(\phi) \sin(\psi)       \\
+                 y = \sin(\phi) (\cos(\psi) - 1) \\
+                 z = (1 + \cos(\phi)) (1 - \cos(\psi))
+               \end{dcases}.
+  \end{align*}
+  By \cref{6.11.1} we see that the axis of rotation for \(\L_{AB}\) is
+  \[
+    \spn{\set{(\sin(\phi) \sin(\psi), \sin(\phi) (\cos(\psi) - 1), (1 + \cos(\phi)) (1 - \cos(\psi)))}}.
+  \]
 \end{proof}
 
 \begin{ex}\label{ex:6.11.8}
@@ -671,7 +745,8 @@
 \end{ex}
 
 \begin{proof}[\pf{ex:6.11.9}]
-
+  Suppose that \(\T\) is both rotation and reflection.
+  By by \cref{6.47}(b) we see that \(\det(\T) = 1 = -1\), a contradiction.
 \end{proof}
 
 \begin{ex}\label{ex:6.11.10}
@@ -679,7 +754,14 @@
 \end{ex}
 
 \begin{proof}[\pf{ex:6.11.10}]
-
+  Let \(\U, \T \in \ls(\V)\) be reflections.
+  Then we have
+  \begin{align*}
+    \det(\U \T) & = \det(\U) \det(\T) &  & \by{ex:5.1.7}[d] \\
+                & = (-1) (-1)         &  & \by{6.47}(b)     \\
+                & = 1.
+  \end{align*}
+  Follow the same argument in the proof of \cref{ex:6.11.6} we see that \(\U \T\) is a rotation.
 \end{proof}
 
 \begin{ex}\label{ex:6.11.11}
@@ -687,7 +769,40 @@
 \end{ex}
 
 \begin{proof}[\pf{ex:6.11.11}]
-
+  Define
+  \[
+    A = \begin{pmatrix}
+      \cos(\theta) & -\sin(\theta) & \zm \\
+      \sin(\theta) & \cos(\theta)  & \zm \\
+      \zm          & \zm           & I_2
+    \end{pmatrix} \quad \text{and} \quad B = \begin{pmatrix}
+      I_2 & \zm        & \zm         \\
+      \zm & \cos(\phi) & -\sin(\phi) \\
+      \zm & \sin(\phi) & \cos(\phi)
+    \end{pmatrix}
+  \]
+  where \(\theta, \phi \in \R \setminus \set{0}\).
+  By \cref{6.11.1} we see that \(\L_A, \L_B\) are rotations on \(\R^4\).
+  By \cref{2.15}(e) and \cref{ex:6.11.2} we see that \(\L_{AB}\) is orthogonal.
+  By \cref{2.3.1} we have
+  \[
+    AB = \begin{pmatrix}
+      \cos(\theta) & -\sin(\theta) & 0          & 0           \\
+      \sin(\theta) & \cos(\theta)  & 0          & 0           \\
+      0            & 0             & \cos(\phi) & -\sin(\phi) \\
+      0            & 0             & \sin(\phi) & \cos(\phi)
+    \end{pmatrix}.
+  \]
+  We claim that \(\L_{AB}\) is neither a reflection nor a rotation.
+  Clearly \(\L_{AB} \neq \IT[\R^4]\).
+  Since
+  \begin{align*}
+    \det(\L_{AB}) & = \det(\L_A \L_B)       &  & \by{2.15}[e]     \\
+                  & = \det(\L_A) \det(\L_B) &  & \by{ex:5.1.7}[d] \\
+                  & = 1,                    &  & \by{6.47}[b]
+  \end{align*}
+  by \cref{6.47}(b) we see that \(\L_{AB}\) is not a reflection.
+  By \cref{6.11.1} we cannot find an axis of rotation, thus \(\L_{AB}\) is not a rotation.
 \end{proof}
 
 \begin{ex}\label{ex:6.11.12}
