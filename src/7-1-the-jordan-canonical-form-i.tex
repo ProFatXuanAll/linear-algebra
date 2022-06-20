@@ -1,1 +1,277 @@
 \section{The Jordan Canonical Form I}\label{sec:7.1}
+
+\begin{defn}\label{7.1.1}
+  Let \(\T\) be a linear operator on a finite-dimensional vector space \(\V\) over \(\F\), and suppose that the characteristic polynomial of \(\T\) splits.
+  Recall from \cref{5.9} that the diagonalizability of \(\T\) depends on whether the union of ordered bases for the distinct eigenspaces of \(\T\) is an ordered basis for \(\V\) over \(\F\).
+  So a lack of diagonalizability means that at least one eigenspace of \(\T\) is too ``small.''
+
+  In this section, we extend the definition of eigenspace to \emph{generalized eigenspace}.
+  From these subspaces, we select ordered bases whose union is an ordered basis \(\beta\) for \(\V\) over \(\F\) such that
+  \[
+    [\T]_{\beta} = \begin{pmatrix}
+      A_1    & \zm    & \cdots & \zm    \\
+      \zm    & A_2    & \cdots & \zm    \\
+      \vdots & \vdots &        & \vdots \\
+      \zm    & \zm    & \cdots & A_k
+    \end{pmatrix},
+  \]
+  where each \(\zm\) is a zero matrix, and each \(A_i\) is a square matrix of the form \((\lambda)\) or
+  \[
+    \begin{pmatrix}
+      \lambda & 1       & \zv    & \cdots & \zv     & \zv     \\
+      \zv     & \lambda & 1      & \cdots & \zv     & \zv     \\
+      \vdots  & \vdots  & \vdots &        & \vdots  & \vdots  \\
+      \zv     & \zv     & \zv    & \cdots & \lambda & 1       \\
+      \zv     & \zv     & \zv    & \cdots & \zv     & \lambda
+    \end{pmatrix}
+  \]
+  for some eigenvalue \(\lambda\) of \(\T\).
+  Such a matrix \(A_i\) is called a \textbf{Jordan block} corresponding to \(\lambda\), and the matrix \([\T]_{\beta}\) is called a \textbf{Jordan canonical form} of \(\T\).
+  We also say that the ordered basis \(\beta\) is a \textbf{Jordan canonical basis} for \(\T\).
+  Observe that each Jordan block \(A_i\) is ``almost'' a diagonal matrix
+  ---
+  in fact, \([\T]_{\beta}\) is a diagonal matrix iff each \(A_i\) is of the form \((\lambda)\).
+\end{defn}
+
+\begin{note}
+  In \cref{sec:7.1,sec:7.2}, we prove that every linear operator whose characteristic polynomial splits has a Jordan canonical form that is unique up to the order of the Jordan blocks.
+  Nevertheless, it is not the case that the Jordan canonical form is completely determined by the characteristic polynomial of the operator.
+\end{note}
+
+\begin{defn}\label{7.1.2}
+  Let \(\T\) be a linear operator on a vector space \(\V\) over \(\F\), and let \(\lambda \in \F\).
+  Because of the structure of each Jordan block in a Jordan canonical form, we can generalize these observations:
+  If \(v\) lies in a Jordan canonical basis for a linear operator \(\T\) and is associated with a Jordan block with diagonal entry \(\lambda\), then \((\T - \lambda \IT[\V])^p(v) = \zv\) for sufficiently large \(p\).
+  Eigenvectors satisfy this condition for \(p = 1\).
+  A nonzero vector \(x\) in \(\V\) is called a \textbf{generalized eigenvector of \(\T\) corresponding to \(\lambda\)} if \((\T - \lambda \IT[\V])^p(x) = \zv\) for some positive integer \(p\).
+\end{defn}
+
+\begin{cor}\label{7.1.3}
+  Let \(\T\) be a linear operator on a vector space \(\V\) over \(\F\), and let \(\lambda \in \F\).
+  If \(x\) is a generalized eigenvector of \(\T\) corresponding to \(\lambda\), and \(p\) is the smallest positive integer for which \((\T - \lambda \IT[\V])^p(x) = \zv\), then \((\T - \lambda \IT[\V])^{p - 1}(x)\) is an eigenvector of \(\T\) corresponding to \(\lambda\).
+  Therefore \(\lambda\) is an eigenvalue of \(\T\).
+\end{cor}
+
+\begin{proof}[\pf{7.1.3}]
+  Observe that
+  \begin{align*}
+             & (\T - \lambda \IT[\V])^p(x) = \zv                                   \\
+    \implies & (\T - \lambda \IT[\V])\pa{(\T - \lambda \IT[\V])^{p - 1}(x)} = \zv.
+  \end{align*}
+  Since \(p\) is the smallest positive integer for which \((\T - \lambda \IT[\V])^p(x) = \zv\), we know that \((\T - \lambda \IT[\V])^{p - 1}(x) \neq \zv\).
+  Thus by \cref{5.4} \((\T - \lambda \IT[\V])^{p - 1}(x)\) is an eigenvector of \(\T\) and therefore \(\lambda\) is an eigenvalue of \(\T\).
+\end{proof}
+
+\begin{defn}\label{7.1.4}
+  Let \(\T\) be a linear operator on a vector space \(\V\) over \(\F\), and let \(\lambda\) be an eigenvalue of \(\T\).
+  The \textbf{generalized eigenspace of \(\T\) corresponding to \(\lambda\)}, denoted \(\vs{K}_{\lambda}\), is the subset of \(\V\) defined by
+  \[
+    \vs{K}_{\lambda} = \set{x \in \V : (\T - \lambda \IT[\V])^p(x) = \zv \text{ for some } p \in \Z^+}.
+  \]
+  Note that \(\vs{K}_{\lambda}\) consists of the zero vector (\cref{2.1.2}(a)) and all generalized eigenvectors corresponding to \(\lambda\) (\cref{7.1.2}).
+\end{defn}
+
+\begin{thm}\label{7.1}
+  Let \(\T\) be a linear operator on a vector space \(\V\) over \(\F\), and let \(\lambda \in \F\) be an eigenvalue of \(\T\).
+  Then
+  \begin{enumerate}
+    \item \(\vs{K}_{\lambda}\) is a \(\T\)-invariant subspace of \(\V\) containing \(\vs{E}_{\lambda}\)
+          (the eigenspace of \(\T\) corresponding to \(\lambda\)).
+    \item For any scalar \(\mu \neq \lambda\), the restriction of \(\T - \mu \IT[\V]\) to \(\vs{K}_{\lambda}\) is one-to-one.
+  \end{enumerate}
+\end{thm}
+
+\begin{proof}[\pf{7.1}(a)]
+  Clearly, \(\zv \in \vs{K}_{\lambda}\).
+  Suppose that \(x\) and \(y\) are in \(\vs{K}_{\lambda}\).
+  Then by \cref{7.1.4} there exist positive integers \(p\) and \(q\) such that
+  \[
+    (\T - \lambda \IT[\V])^p(x) = (\T - \lambda \IT[\V])^q(y) = \zv.
+  \]
+  Therefore
+  \begin{align*}
+    (\T - \lambda \IT[\V])^{p + q}(x + y) & = (\T - \lambda \IT[\V])^{p + q}(x) + (\T - \lambda \IT[\V])^{p + q}(y) &  & \by{2.9}      \\
+                                          & = (\T - \lambda \IT[\V])^q(\zv) + (\T - \lambda \IT[\V])^p(\zv)         &  & \by{7.1.4}    \\
+                                          & = \zv,                                                                  &  & \by{2.1.2}[a]
+  \end{align*}
+  and hence \(x + y \in \vs{K}_{\lambda}\).
+  Similarly,
+  \begin{align*}
+    \forall c \in \F, (\T - \lambda \IT[\V])^p(cx) & = c (\T - \lambda \IT[\V])^p(x) &  & \by{2.9}    \\
+                                                   & = c \zv                         &  & \by{7.1.4}  \\
+                                                   & = \zv                           &  & \by{1.2}[c]
+  \end{align*}
+  and hence \(cx \in \vs{K}_{\lambda}\).
+
+  To show that \(\vs{K}_{\lambda}\) is \(\T\)-invariant, consider any \(x \in \vs{K}_{\lambda}\).
+  Choose a positive integer \(p\) such that \((\T - \lambda \IT[\V])^p(x) = \zv\).
+  Then
+  \begin{align*}
+    (\T - \lambda \IT[\V])^p \T(x) & = \T (\T - \lambda \IT[\V])^p(x) &  & \by{ex:5.4.4} \\
+                                   & = \T(\zv)                        &  & \by{7.1.4}    \\
+                                   & = \zv.                           &  & \by{2.1.2}[a]
+  \end{align*}
+  Therefore \(\T(x) \in \vs{K}_{\lambda}\).
+
+  Finally, it is a simple observation that \(\vs{E}_{\lambda}\) is contained in \(\vs{K}_{\lambda}\).
+\end{proof}
+
+\begin{proof}[\pf{7.1}(b)]
+  Let \(x \in \vs{K}_{\lambda}\) and \((\T - \mu \IT[\V])(x) = \zv\).
+  By way of contradiction, suppose that \(x \neq \zv\).
+  Let \(p\) be the smallest positive integer for which \((\T - \lambda \IT[\V])^p(x) = \zv\), and let \(y = (\T - \lambda \IT[\V])^{p - 1}(x)\).
+  Then
+  \[
+    (\T - \lambda \IT[\V])(y) = (\T - \lambda \IT[\V])^p(x) = \zv,
+  \]
+  and hence \(y \in \vs{E}_{\lambda}\) (\cref{7.1.3}).
+  Furthermore,
+  \begin{align*}
+    (\T - \mu \IT[\V])(y) & = (\T - \mu \IT[\V]) (\T - \lambda \IT[\V])^{p - 1}(x)  &  & \by{7.1.3}    \\
+                          & = (\T - \lambda \IT[\V])^{p - 1} (\T - \mu \IT[\V]) (x) &  & \by{ex:5.4.4} \\
+                          & = \zv,                                                  &  & \by{2.1.2}[a]
+  \end{align*}
+  so that \(y \in \vs{E}_{\mu}\).
+  But by \cref{5.8} \(\vs{E}_{\lambda} \cap \vs{E}_{\mu} = \set{\zv}\), and thus \(y = \zv\), contrary to the hypothesis of \(p\).
+  So \(x = \zv\), and the restriction of \(\T - \mu \IT[\V]\) to \(\vs{K}_{\lambda}\) is one-to-one.
+\end{proof}
+
+\begin{thm}\label{7.2}
+  Let \(\T\) be a linear operator on a finite-dimensional vector space \(\V\) over \(\F\) such that the characteristic polynomial of \(\T\) splits.
+  Suppose that \(\lambda\) is an eigenvalue of \(\T\) with multiplicity \(m\).
+  Then
+  \begin{enumerate}
+    \item \(\dim(\vs{K}_{\lambda}) \leq m\).
+    \item \(\vs{K}_{\lambda} = \ns{(\T - \lambda \IT[\V])^m}\).
+  \end{enumerate}
+\end{thm}
+
+\begin{proof}[\pf{7.2}(a)]
+  Let \(h\) be the characteristic polynomial of \(\T_{\vs{K}_{\lambda}}\).
+  By \cref{5.21}, \(h\) divides the characteristic polynomial of \(\T\), and by \cref{7.1}(b), \(\lambda\) is the only eigenvalue of \(\T_{\vs{K}_{\lambda}}\).
+  Hence \(h(t) = (-1)^d (t - \lambda)^d\), where \(d = \dim(\vs{K}_{\lambda})\) (\cref{2.5}), and \(d \leq m\).
+\end{proof}
+
+\begin{proof}[\pf{7.2}(b)]
+  Clearly \(\ns{(\T - \lambda \IT[\V])^m} \subseteq \vs{K}_{\lambda}\).
+  Now let \(h\) and \(d\) be as in (a).
+  Then \(h(\T_{\vs{K}_{\lambda}})\) is identically zero by the Cayley--Hamilton theorem (\cref{5.23});
+  therefore \((\T - \lambda \IT[\V])^d(x) = \zv\) for all \(x \in \vs{K}_{\lambda}\).
+  Since \(d \leq m\), we have \(\vs{K}_{\lambda} \subseteq \ns{(\T - \lambda \IT[\V])^m}\).
+\end{proof}
+
+\begin{thm}\label{7.3}
+  Let \(\T\) be a linear operator on a finite-dimensional vector space \(\V\) over \(\F\) such that the characteristic polynomial of \(\T\) splits, and let \(\seq{\lambda}{1,,k} \in \F\) be the distinct eigenvalues of \(\T\).
+  Then, for every \(x \in \V\), there exist vectors \(v_i \in \vs{K}_{\lambda_i}\), \(i \in \set{1, \dots, k}\), such that
+  \[
+    x = \seq[+]{v}{1,,k}.
+  \]
+\end{thm}
+
+\begin{proof}[\pf{7.3}]
+  The proof is by mathematical induction on the number \(k\) of distinct eigenvalues of \(\T\).
+  First suppose that \(k = 1\), and let \(m\) be the multiplicity of \(\lambda_1\).
+  Then \((\lambda_1 - t)^m\) is the characteristic polynomial of \(\T\), and hence \((\lambda_1 \IT[\V] - \T)^m = \zT\) by the Cayley--Hamilton theorem (\cref{5.23}).
+  Thus
+  \begin{align*}
+    \V & = \ns{\zT}                      &  & \by{2.3}    \\
+       & = \ns{(\T - \lambda \IT[\V])^m} &  & \by{5.23}   \\
+       & = \vs{K}_{\lambda_1},           &  & \by{7.2}(b)
+  \end{align*}
+  and the result follows.
+
+  Now suppose that for some integer \(k \geq 1\), the result is established whenever \(\T\) has fewer than \(k + 1\) distinct eigenvalues, and suppose that \(\T\) has \(k + 1\) distinct eigenvalues.
+  Let \(m\) be the multiplicity of \(\lambda_{k + 1}\), and let \(f\) be the characteristic polynomial of \(\T\).
+  Then \(f(t) = (t - \lambda_{k + 1})^m g(t)\) for some polynomial \(g\) not divisible by \((t - \lambda_{k + 1})\).
+  Let \(\W = \rg{(\T - \lambda_{k + 1} \IT[\V])^m}\).
+  Clearly \(\W\) is \(\T\)-invariant since,
+  \begin{align*}
+             & \forall y \in \rg{(\T - \lambda_{k + 1} \IT[\V])^m}, \exists x \in \V : (\T - \lambda_{k + 1} \IT[\V])^m(x) = y \\
+    \implies & \forall y \in \rg{(\T - \lambda_{k + 1} \IT[\V])^m}, \T(y) = (\T (\T - \lambda_{k + 1} \IT[\V])^m)(x)           \\
+             & = ((\T - \lambda_{k + 1} \IT[\V])^m \T)(x) = ((\T - \lambda_{k + 1} \IT[\V])^m)(\T(x))                          \\
+             & \in \rg{(\T - \lambda_{k + 1} \IT[\V])^m}                                                                       \\
+    \implies & \T(\rg{(\T - \lambda_{k + 1} \IT[\V])^m}) \subseteq \rg{(\T - \lambda_{k + 1} \IT[\V])^m}.
+  \end{align*}
+  Observe that \((\T - \lambda_{k + 1} \IT[\V])^m\) maps \(\vs{K}_{\lambda_i}\) onto itself for \(i \in \set{1, \dots, k}\).
+  For suppose that \(i \in \set{1, \dots, k}\).
+  Since \((\T - \lambda_{k + 1} \IT[\V])^m\) maps \(\vs{K}_{\lambda_i}\) into itself and \(\lambda_{k + 1} \neq \lambda_i\), the restriction of \(\T - \lambda_{k + 1} \IT[\V]\) to \(\vs{K}_{\lambda_i}\) is one-to-one (by \cref{7.1}(b)) and hence is onto.
+  One consequence of this is that for \(i \in \set{1, \dots, k}\), \(\vs{K}_{\lambda_i}\) is contained in \(\W\);
+  hence \(\lambda_i\) is an eigenvalue of \(\T_{\W}\) for \(i \in \set{1, \dots, k}\).
+
+  Next, observe that \(\lambda_{k + 1}\) is not an eigenvalue of \(\T_{\W}\).
+  For suppose that \(\T(v) = \lambda_{k + 1} v\) for some \(v \in \W\).
+  Then \(v = (\T - \lambda_{k + 1} \IT[\V])^m(y)\) for some \(y \in \V\), and it follows that
+  \[
+    \zv = (\T - \lambda_{k + 1} \IT[\V])(v) = (\T - \lambda_{k + 1} \IT[\V])^{m + 1}(y).
+  \]
+  Therefore \(y \in \vs{K}_{\lambda_{k + 1}}\).
+  So by \cref{7.2}, \(v = (\T - \lambda_{k + 1} \IT[\V])^m(y) = \zv\).
+
+  Since every eigenvalue of \(\T_{\W}\) is an eigenvalue of \(\T\), the distinct eigenvalues of \(\T_{\W}\) are \(\seq{\lambda}{1,,k}\).
+
+  Now let \(x \in \V\).
+  Then \((\T - \lambda_{k + 1} \IT[V])^m(x) \in \W\).
+  Since \(\T_{\W}\) has the \(k\) distinct eigenvalues \(\seq{\lambda}{1,,k}\), the induction hypothesis applies.
+  Hence there are vectors \(w_i \in \vs{K}_{\lambda_i}'\), \(i \in \set{1, \dots, k}\), such that
+  \[
+    (\T - \lambda_{k + 1} \IT[\V])^m(x) = \seq[+]{w}{1,,k}.
+  \]
+  Since \(\vs{K}_{\lambda_i}' \subseteq \vs{K}_{\lambda_i}\) for \(i \in \set{1, \dots, k}\) and \((\T - \lambda_{k + 1} \IT[\V])^m\) maps \(\vs{K}_{\lambda_i}\) onto itself for \(i \in \set{1, \dots, k}\), there exist vectors \(v_i \in \vs{K}_{\lambda_i}\) such that \((\T - \lambda_{k + 1} \IT[\V])^m(v_i) = w_i\) for \(i \in \set{1, \dots, k}\).
+  Thus we have
+  \[
+    (\T - \lambda_{k + 1} \IT[\V])^m(x) = (\T - \lambda_{k + 1} \IT[\V])^m(v_1) + \cdots + (\T - \lambda_{k + 1} \IT[\V])^m(v_{k}),
+  \]
+  and it follows that \(x - (\seq[+]{v}{1,,k}) \in \vs{K}_{\lambda_{k + 1}}\).
+  Therefore there exists a vector \(v_k \in \vs{K}_{\lambda_{k + 1}}\) such that
+  \[
+    x = \seq[+]{v}{1,,k}.
+  \]
+\end{proof}
+
+\begin{thm}\label{7.4}
+  Let \(\T\) be a linear operator on a finite-dimensional vector space \(\V\) over \(\F\) such that the characteristic polynomial of \(\T\) splits, and let \(\seq{\lambda}{1,,k} \in \F\) be the distinct eigenvalues of \(\T\) with corresponding multiplicities \(\seq{m}{1,,k}\).
+  For \(i \in \set{1, \dots, k}\), let \(\beta_i\) be an ordered basis for \(\vs{K}_{\lambda_i}\) over \(\F\).
+  Then the following statements are true.
+  \begin{enumerate}
+    \item \(\beta_i \cap \beta_j = \varnothing\) for \(i \neq j\).
+    \item \(\beta = \seq[\cup]{\beta}{1,,k}\) is an ordered basis for \(\V\) over \(\F\).
+    \item \(\dim(\vs{K}_{\lambda_i}) = m_i\) for all \(i \in \set{1, \dots, k}\).
+  \end{enumerate}
+\end{thm}
+
+\begin{proof}[\pf{7.4}(a)]
+  Suppose that \(x \in \beta_i \cap \beta_j \subseteq \vs{K}_{\lambda_i} \cap \vs{K}_{\lambda_j}\), where \(i \neq j\).
+  By \cref{7.1}(b), \(\T - \lambda_i \IT[\V]\) is one-to-one on \(\vs{K}_{\lambda_j}\), and therefore \((\T - \lambda_i \IT[\V])^p(x) \neq \zv\) for any positive integer \(p\).
+  But this contradicts the fact that \(x \in \vs{K}_{\lambda_i}\), and the result follows.
+\end{proof}
+
+\begin{proof}[\pf{7.4}(b)]
+  Let \(x \in \V\).
+  By \cref{7.3}, for \(i \in \set{1, \dots, k}\), there exist vectors \(v_i \in \vs{K}_{\lambda_i}\) such that \(x = \seq[+]{v}{1,,k}\).
+  Since each \(v_i\) is a linear combination of the vectors of \(\beta_i\), it follows that \(x\) is a linear combination of the vectors of \(\beta\).
+  Therefore \(\beta\) spans \(\V\).
+  Let \(q\) be the number of vectors in \(\beta\).
+  Then \(\dim(\V) \leq q\).
+  For each \(i \in \set{1, \dots, k}\), let \(d_i = \dim(\vs{K}_{\lambda_i})\).
+  Then, by \cref{7.2}(a),
+  \[
+    q = \sum_{i = 1}^k d_i \leq \sum_{i = 1}^k m_i = \dim(\V).
+  \]
+  Hence \(q = \dim(\V)\).
+  Consequently \(\beta\) is a basis for \(\V\) over \(\F\) by Corollary 2 to the replacement theorem.
+\end{proof}
+
+\begin{proof}[\pf{7.4}(c)]
+  Using the notation and result of (b), we see that \(\sum_{i = 1}^k d_i = \sum_{i = 1}^k m_i\).
+  But \(d_i \leq m_i\) by \cref{7.2}(a), and therefore \(d_i = m_i\) for all \(i \in \set{1, \dots, k}\).
+\end{proof}
+
+\begin{cor}\label{7.1.5}
+  Let \(\T\) be a linear operator on a finite-dimensional vector space \(\V\) over \(\F\) such that the characteristic polynomial of \(\T\) splits.
+  Then \(\T\) is diagonalizable iff \(E_{\lambda} = \vs{K}_{\lambda}\) for every eigenvalue \(\lambda\) of \(\T\).
+\end{cor}
+
+\begin{proof}[\pf{7.1.5}]
+  Combining \cref{7.4} and \cref{5.9}(a), we see that \(\T\) is diagonalizable iff \(\dim(E_{\lambda}) = \dim(\vs{K}_{\lambda})\) for each eigenvalue \(\lambda\) of \(\T\).
+  But \(E_{\lambda} \subseteq \vs{K}_{\lambda}\), and hence these subspaces have the same dimension iff they are equal.
+\end{proof}

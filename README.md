@@ -9,5 +9,4 @@ If you are not familiar with set theory, make sure you learn them first (you can
 
 - Chapter3
   - Theorem 3.12
-- Chapter6
 - Chapter7

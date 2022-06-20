@@ -758,27 +758,27 @@
   We need to show that this is true for \(n + 1\).
   Let \(\dim(\V) = n + 1\), let \(\T, \U \in \ls(\V)\) such that \(\T^* = \T\), \(\U^* = \U\) and \(\U \T = \T \U\).
   Since \(\T\) is self-adjoint, by \cref{6.17} there exists an orthonormal basis \(\beta\) for \(\V\) over \(\R\) consisting of eigenvectors of \(\T\).
-  Let \(\lambda \in \R\) be an eigenvalue of \(\T\) and let \(E_{\lambda}\) be the eigenspace of \(\lambda\).
+  Let \(\lambda \in \R\) be an eigenvalue of \(\T\) and let \(\vs{E}_{\lambda}\) be the eigenspace of \(\lambda\).
   Now we split into two cases:
   \begin{itemize}
-    \item If \(E_{\lambda} = \V\), then any basis for \(\V\) over \(\R\) is consist of eigenvectors of \(\T\).
+    \item If \(\vs{E}_{\lambda} = \V\), then any basis for \(\V\) over \(\R\) is consist of eigenvectors of \(\T\).
           Since \(\U\) is self-adjoint, by \cref{6.17} we know that there exists an orthonormal basis for \(\V\) over \(\R\) consist of eigenvectors of \(\U\).
           Thus by \cref{5.2.8} \(\T, \U\) are simultaneously diagonalizable by some orthonormal bases for \(\V\) over \(\R\).
-    \item If \(E_{\lambda} \neq \V\), then by \cref{5.7} we have \(1 \leq \dim(E_{\lambda}) < n + 1\).
-          By \cref{5.4.2}(e) we know that \(E_{\lambda}\) is \(\T\)-invariant.
-          We claim that \(E_{\lambda}\) is \(\U\)-invariant.
+    \item If \(\vs{E}_{\lambda} \neq \V\), then by \cref{5.7} we have \(1 \leq \dim(\vs{E}_{\lambda}) < n + 1\).
+          By \cref{5.4.2}(e) we know that \(\vs{E}_{\lambda}\) is \(\T\)-invariant.
+          We claim that \(\vs{E}_{\lambda}\) is \(\U\)-invariant.
           Since
           \begin{align*}
-                     & \forall v \in E_{\lambda}, \T(v) = \lambda v             &  & \by{5.2.4}    \\
-            \implies & \forall v \in E_{\lambda}, \lambda \U(v) = \U(\lambda v) &  & \by{2.1.1}[b] \\
-                     & = \U(\T(v)) = \T(\U(v))                                  &  & \by{5.1.2}    \\
-            \implies & \forall v \in E_{\lambda}, \U(v) \in E_{\lambda}         &  & \by{5.1.2}    \\
-            \implies & \U(E_{\lambda}) \subseteq E_{\lambda},
+                     & \forall v \in \vs{E}_{\lambda}, \T(v) = \lambda v             &  & \by{5.2.4}    \\
+            \implies & \forall v \in \vs{E}_{\lambda}, \lambda \U(v) = \U(\lambda v) &  & \by{2.1.1}[b] \\
+                     & = \U(\T(v)) = \T(\U(v))                                       &  & \by{5.1.2}    \\
+            \implies & \forall v \in \vs{E}_{\lambda}, \U(v) \in \vs{E}_{\lambda}    &  & \by{5.1.2}    \\
+            \implies & \U(\vs{E}_{\lambda}) \subseteq \vs{E}_{\lambda},
           \end{align*}
-          by \cref{5.4.1} we know that \(E_{\lambda}\) is \(\U\)-invariant.
-          Since \(\T, \U\) are self-adjoint, by \cref{ex:6.4.7}(b) we know that \(E_{\lambda}^{\perp}\) is both \(\T\)- and \(\U\)-invariant.
-          By \cref{6.7}(c) we know that \(\dim(E_{\lambda}^{\perp}) < n + 1\).
-          Thus by induction hypothesis we can find some orthonormal bases \(\beta_1\) and \(\beta_2\) for \(E_{\lambda}\) and \(E_{\lambda}^{\perp}\) over \(\R\), respectively, consist of eigenvectors of both \(\T\) and \(\U\).
+          by \cref{5.4.1} we know that \(\vs{E}_{\lambda}\) is \(\U\)-invariant.
+          Since \(\T, \U\) are self-adjoint, by \cref{ex:6.4.7}(b) we know that \(\vs{E}_{\lambda}^{\perp}\) is both \(\T\)- and \(\U\)-invariant.
+          By \cref{6.7}(c) we know that \(\dim(\vs{E}_{\lambda}^{\perp}) < n + 1\).
+          Thus by induction hypothesis we can find some orthonormal bases \(\beta_1\) and \(\beta_2\) for \(\vs{E}_{\lambda}\) and \(\vs{E}_{\lambda}^{\perp}\) over \(\R\), respectively, consist of eigenvectors of both \(\T\) and \(\U\).
           By \cref{5.10}(d) and \cref{6.7}(c) we know that \(\beta = \beta_1 \cup \beta_2\) is an orthonormal basis for \(\V\) over \(\R\) consist of eigenvectors of both \(\T\) and \(\U\).
           Thus by \cref{5.2.8} \(\T, \U\) are simultaneously diagonalizable by some orthonormal bases for \(\V\) over \(\R\).
   \end{itemize}

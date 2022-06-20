@@ -13,7 +13,7 @@
     \item \(\V\)
     \item \(\rg{\T}\)
     \item \(\ns{\T}\)
-    \item \(E_{\lambda}\), for any eigenvalue \(\lambda\) of \(\T\).
+    \item \(\vs{E}_{\lambda}\), for any eigenvalue \(\lambda\) of \(\T\).
   \end{enumerate}
 \end{eg}
 
@@ -27,10 +27,10 @@
   \end{align*}
   and
   \begin{align*}
-             & \forall v \in E_{\lambda}, \T(v) = \lambda v \in E_{\lambda} &  & \by{5.2.4} \\
-    \implies & \T(E_{\lambda}) \subseteq E_{\lambda}.
+             & \forall v \in \vs{E}_{\lambda}, \T(v) = \lambda v \in \vs{E}_{\lambda} &  & \by{5.2.4} \\
+    \implies & \T(\vs{E}_{\lambda}) \subseteq \vs{E}_{\lambda}.
   \end{align*}
-  Thus by \cref{5.4.1} \(\set{\zv}, \V, \rg{\T}, \ns{\T}, E_{\lambda}\) are \(\T\)-invariant subspace of \(\V\) over \(\F\).
+  Thus by \cref{5.4.1} \(\set{\zv}, \V, \rg{\T}, \ns{\T}, \vs{E}_{\lambda}\) are \(\T\)-invariant subspace of \(\V\) over \(\F\).
 \end{proof}
 
 \begin{defn}\label{5.4.3}
@@ -816,18 +816,18 @@
 \end{ex}
 
 \begin{proof}[\pf{ex:5.4.25}(a)]
-  Let \(\lambda\) be an eigenvalue of \(\T\) and let \(E_{\lambda} = \ns{\T - \lambda \IT[\V]}\).
-  We claim that \(E_{\lambda}\) is \(\U\)-invariant.
+  Let \(\lambda\) be an eigenvalue of \(\T\) and let \(\vs{E}_{\lambda} = \ns{\T - \lambda \IT[\V]}\).
+  We claim that \(\vs{E}_{\lambda}\) is \(\U\)-invariant.
   This is true since
   \begin{align*}
-             & \forall v \in E_{\lambda}, \T(v) = \lambda v                                     &  & \by{5.1.2}      \\
-    \implies & \forall v \in E_{\lambda}, \U(\T(v)) = \U(\lambda v) = \lambda \U(v) = \T(\U(v)) &  & (\U \T = \T \U) \\
-    \implies & \forall v \in E_{\lambda}, \U(v) \in E_{\lambda}                                 &  & \by{5.2.4}      \\
-    \implies & \U(E_{\lambda}) \subseteq E_{\lambda}.
+             & \forall v \in \vs{E}_{\lambda}, \T(v) = \lambda v                                     &  & \by{5.1.2}      \\
+    \implies & \forall v \in \vs{E}_{\lambda}, \U(\T(v)) = \U(\lambda v) = \lambda \U(v) = \T(\U(v)) &  & (\U \T = \T \U) \\
+    \implies & \forall v \in \vs{E}_{\lambda}, \U(v) \in \vs{E}_{\lambda}                            &  & \by{5.2.4}      \\
+    \implies & \U(\vs{E}_{\lambda}) \subseteq \vs{E}_{\lambda}.
   \end{align*}
-  Since \(\U\) is diagonalizable and \(E_{\lambda}\) is \(\U\)-invariant, by \cref{ex:5.4.24} we see that \(\U_{E_{\lambda}}\) is diagonalizable.
-  Thus we can find an ordered basis \(\beta_{\lambda}\) for \(E_{\lambda}\) over \(\F\) such that \([\U]_{\beta_{\lambda}}\) is a diagonal matrix.
-  Note that since \(\beta_{\lambda}\) is an ordered basis for \(E_{\lambda}\) over \(\F\), \([\T]_{\beta_{\lambda}}\) is also a diagonal matrix.
+  Since \(\U\) is diagonalizable and \(\vs{E}_{\lambda}\) is \(\U\)-invariant, by \cref{ex:5.4.24} we see that \(\U_{\vs{E}_{\lambda}}\) is diagonalizable.
+  Thus we can find an ordered basis \(\beta_{\lambda}\) for \(\vs{E}_{\lambda}\) over \(\F\) such that \([\U]_{\beta_{\lambda}}\) is a diagonal matrix.
+  Note that since \(\beta_{\lambda}\) is an ordered basis for \(\vs{E}_{\lambda}\) over \(\F\), \([\T]_{\beta_{\lambda}}\) is also a diagonal matrix.
   Applying the above argument to every eigenvalue of \(\T\) we can find an ordered basis \(\beta\) over \(\F\) such that \(\beta\) is an union of bases of eigenspaces (by \cref{5.9}(b)) and both \([\U]_{\beta}\) and \([\T]_{\beta}\) are diagonal matrix.
   Thus by \cref{5.2.8} \(\T, \U\) are simultaneously diagonalizable.
 \end{proof}

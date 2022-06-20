@@ -354,7 +354,7 @@
 
 \begin{thm}\label{5.18}
   Let \(A \in \ms[n][n][\C]\) be a matrix in which each entry is positive, and let \(\lambda\) be an eigenvalue of \(A\) such that \(\abs{\lambda} = \rho(A)\).
-  Then \(\lambda = \rho(A)\) and \(\set{u}\) is a basis for \(E_{\lambda}\) over \(\C\), where \(u \in \C^n\) is the column vector in which each coordinate equals \(1\).
+  Then \(\lambda = \rho(A)\) and \(\set{u}\) is a basis for \(\vs{E}_{\lambda}\) over \(\C\), where \(u \in \C^n\) is the column vector in which each coordinate equals \(1\).
 \end{thm}
 
 \begin{proof}[\pf{5.18}]
@@ -407,7 +407,7 @@
       bz
     \end{pmatrix} = bzu,
   \]
-  and hence \(\set{u}\) is a basis for \(E_{\lambda}\) over \(\C\).
+  and hence \(\set{u}\) is a basis for \(\vs{E}_{\lambda}\) over \(\C\).
 
   Finally, observe that all of the entries of \(Au\) are positive because the same is true for the entries of both \(A\) and \(u\).
   But \(Au = \lambda u\), and hence \(\lambda > 0\).
@@ -416,7 +416,7 @@
 
 \begin{cor}\label{5.3.13}
   Let \(A \in \ms[n][n][\C]\) be a matrix in which each entry is positive, and let \(\lambda\) be an eigenvalue of \(A\) such that \(\abs{\lambda} = \nu(A)\).
-  Then \(\lambda = \nu(A)\), and the dimension of \(E_{\lambda} = 1\).
+  Then \(\lambda = \nu(A)\), and the dimension of \(\vs{E}_{\lambda} = 1\).
 \end{cor}
 
 \begin{proof}[\pf{5.3.13}]
@@ -459,7 +459,7 @@
   Then
   \begin{enumerate}
     \item \(\abs{\lambda} \leq 1\).
-    \item If \(\abs{\lambda} = 1\), then \(\lambda = 1\), and \(\dim(E_{\lambda}) = 1\).
+    \item If \(\abs{\lambda} = 1\), then \(\lambda = 1\), and \(\dim(\vs{E}_{\lambda}) = 1\).
   \end{enumerate}
 \end{thm}
 
@@ -472,9 +472,9 @@
   Then \(\lambda^s\) and \(\lambda^{s + 1}\) are eigenvalues of \(A^s\) and \(A^{s + 1}\), respectively, having absolute value \(1\).
   So by \cref{5.3.14}, \(\lambda^s = \lambda^{s + 1} = 1\).
   Thus \(\lambda = 1\).
-  Let \(E_{\lambda}\) and \(E_{\lambda}'\) denote the eigenspaces of \(A\) and \(A^s\), respectively, corresponding to \(\lambda = 1\).
-  Then \(E_{\lambda} \subseteq E_{\lambda}'\) and, by \cref{5.3.14}, \(\dim(E_{\lambda}') = 1\).
-  Hence \(E_{\lambda} = E_{\lambda}'\), and \(\dim(E_{\lambda}) = 1\).
+  Let \(\vs{E}_{\lambda}\) and \(\vs{E}_{\lambda}'\) denote the eigenspaces of \(A\) and \(A^s\), respectively, corresponding to \(\lambda = 1\).
+  Then \(\vs{E}_{\lambda} \subseteq \vs{E}_{\lambda}'\) and, by \cref{5.3.14}, \(\dim(\vs{E}_{\lambda}') = 1\).
+  Hence \(\vs{E}_{\lambda} = \vs{E}_{\lambda}'\), and \(\dim(\vs{E}_{\lambda}) = 1\).
 \end{proof}
 
 \begin{cor}\label{5.3.15}

@@ -1,5 +1,24 @@
 \chapter{Canonical Forms}\label{ch:7}
 
+\begin{note}
+  As we learned in \cref{ch:5}, the advantage of a diagonalizable linear operator lies in the simplicity of its description.
+  Such an operator has a diagonal matrix representation, or, equivalently, there is an ordered basis for the underlying vector space consisting of eigenvectors of the operator.
+  However, not every linear operator is diagonalizable, even if its characteristic polynomial splits.
+
+  It is the purpose of this chapter to consider alternative matrix representations for nondiagonalizable operators.
+  These representations are called \emph{canonical forms}.
+  There are different kinds of canonical forms, and their advantages and disadvantages depend on how they are applied.
+  The choice of a canonical form is determined by the appropriate choice of an ordered basis.
+  Naturally, the canonical forms of a linear operator are not diagonal matrices if the linear operator is not diagonalizable.
+
+  In this chapter, we treat two common canonical forms.
+  The first of these, the \emph{Jordan canonical form}, requires that the characteristic polynomial of the operator splits.
+  This form is always available if the underlying field is algebraically closed, that is, if every polynomial with coefficients from the field splits.
+  For example, the field of complex numbers is algebraically closed by the fundamental theorem of algebra (see \cref{d.4}).
+  The first two sections deal with this form.
+  The \emph{rational canonical form}, treated in \cref{sec:7.4}, does not require such a factorization.
+\end{note}
+
 % All sections are in separated files.  We include them here.
 \input{7-1-the-jordan-canonical-form-i.tex}
 \input{7-2-the-jordan-canonical-form-ii.tex}
