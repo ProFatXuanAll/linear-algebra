@@ -174,9 +174,9 @@
   Then \((\lambda_1 - t)^m\) is the characteristic polynomial of \(\T\), and hence \((\lambda_1 \IT[\V] - \T)^m = \zT\) by the Cayley--Hamilton theorem (\cref{5.23}).
   Thus
   \begin{align*}
-    \V & = \ns{\zT}                      &  & \by{2.3}    \\
-       & = \ns{(\T - \lambda \IT[\V])^m} &  & \by{5.23}   \\
-       & = \vs{K}_{\lambda_1},           &  & \by{7.2}(b)
+    \V & = \ns{\zT}                        &  & \by{2.3}    \\
+       & = \ns{(\T - \lambda_1 \IT[\V])^m} &  & \by{5.23}   \\
+       & = \vs{K}_{\lambda_1},             &  & \by{7.2}(b)
   \end{align*}
   and the result follows.
 
@@ -184,33 +184,48 @@
   Let \(m\) be the multiplicity of \(\lambda_{k + 1}\), and let \(f\) be the characteristic polynomial of \(\T\).
   Then \(f(t) = (t - \lambda_{k + 1})^m g(t)\) for some polynomial \(g\) not divisible by \((t - \lambda_{k + 1})\).
   Let \(\W = \rg{(\T - \lambda_{k + 1} \IT[\V])^m}\).
-  Clearly \(\W\) is \(\T\)-invariant since,
+  Then \(\W\) is \(\T\)-invariant since
   \begin{align*}
              & \forall y \in \rg{(\T - \lambda_{k + 1} \IT[\V])^m}, \exists x \in \V : (\T - \lambda_{k + 1} \IT[\V])^m(x) = y \\
-    \implies & \forall y \in \rg{(\T - \lambda_{k + 1} \IT[\V])^m}, \T(y) = (\T (\T - \lambda_{k + 1} \IT[\V])^m)(x)           \\
+    \implies & \forall y \in \rg{(\T - \lambda_{k + 1} \IT[\V])^m}, \T(y) = \T ((\T - \lambda_{k + 1} \IT[\V])^m(x))           \\
              & = ((\T - \lambda_{k + 1} \IT[\V])^m \T)(x) = ((\T - \lambda_{k + 1} \IT[\V])^m)(\T(x))                          \\
              & \in \rg{(\T - \lambda_{k + 1} \IT[\V])^m}                                                                       \\
     \implies & \T(\rg{(\T - \lambda_{k + 1} \IT[\V])^m}) \subseteq \rg{(\T - \lambda_{k + 1} \IT[\V])^m}.
   \end{align*}
-  Observe that \((\T - \lambda_{k + 1} \IT[\V])^m\) maps \(\vs{K}_{\lambda_i}\) onto itself for \(i \in \set{1, \dots, k}\).
-  For suppose that \(i \in \set{1, \dots, k}\).
-  Since \((\T - \lambda_{k + 1} \IT[\V])^m\) maps \(\vs{K}_{\lambda_i}\) into itself and \(\lambda_{k + 1} \neq \lambda_i\), the restriction of \(\T - \lambda_{k + 1} \IT[\V]\) to \(\vs{K}_{\lambda_i}\) is one-to-one (by \cref{7.1}(b)) and hence is onto.
+  We claim that \((\T - \lambda_{k + 1} \IT[\V])^m\) maps \(\vs{K}_{\lambda_i}\) onto itself for \(i \in \set{1, \dots, k}\).
+  Suppose that \(i \in \set{1, \dots, k}\).
+  First we show that \((\T - \lambda_{k + 1} \IT[\V])^m\) maps \(\vs{K}_{\lambda_i}\) into itself.
+  This is true since
+  \begin{align*}
+             & \forall x \in \vs{K}_{\lambda_i}, \exists p \in \Z^+ : (\T - \lambda_i \IT[\V])^p(x) = \zv        &  & \by{7.1.4}    \\
+    \implies & \forall x \in \vs{K}_{\lambda_i}, (\T - \lambda_i \IT[\V])^p((\T - \lambda_{k + 1} \IT[\V])^m(x))                    \\
+             & = (\T - \lambda_{k + 1} \IT[\V])^m((\T - \lambda_i \IT[\V])^p(x))                                 &  & \by{ex:5.4.4} \\
+             & = \zv                                                                                             &  & \by{2.1.2}[a] \\
+    \implies & \forall x \in \vs{K}_{\lambda_i}, (\T - \lambda_{k + 1} \IT[\V])^m(x) \in \vs{K}_{\lambda_i}.     &  & \by{7.1.4}
+  \end{align*}
+  Now we show the claim is true.
+  Since \((\T - \lambda_{k + 1} \IT[\V])^m\) maps \(\vs{K}_{\lambda_i}\) into itself and \(\lambda_{k + 1} \neq \lambda_i\), the restriction of \(\T - \lambda_{k + 1} \IT[\V]\) to \(\vs{K}_{\lambda_i}\) is one-to-one (by \cref{7.1}(b)) and hence is onto (\cref{2.4,2.5}).
   One consequence of this is that for \(i \in \set{1, \dots, k}\), \(\vs{K}_{\lambda_i}\) is contained in \(\W\);
   hence \(\lambda_i\) is an eigenvalue of \(\T_{\W}\) for \(i \in \set{1, \dots, k}\).
 
   Next, observe that \(\lambda_{k + 1}\) is not an eigenvalue of \(\T_{\W}\).
   For suppose that \(\T(v) = \lambda_{k + 1} v\) for some \(v \in \W\).
-  Then \(v = (\T - \lambda_{k + 1} \IT[\V])^m(y)\) for some \(y \in \V\), and it follows that
+  Then \(v = (\T - \lambda_{k + 1} \IT[\V])^m(y)\) for some \(y \in \V\), and it follows from \cref{5.4} that
   \[
     \zv = (\T - \lambda_{k + 1} \IT[\V])(v) = (\T - \lambda_{k + 1} \IT[\V])^{m + 1}(y).
   \]
   Therefore \(y \in \vs{K}_{\lambda_{k + 1}}\).
-  So by \cref{7.2}, \(v = (\T - \lambda_{k + 1} \IT[\V])^m(y) = \zv\).
+  So by \cref{7.2}(b), \(v = (\T - \lambda_{k + 1} \IT[\V])^m(y) = \zv\).
 
   Since every eigenvalue of \(\T_{\W}\) is an eigenvalue of \(\T\), the distinct eigenvalues of \(\T_{\W}\) are \(\seq{\lambda}{1,,k}\).
+  For each \(i \in \set{1, \dots, k}\), we defined the generalized eigenspace for \(\T_{\W}\) corresponding to \(\lambda_i\) as follow:
+  \[
+    \vs{K}_{\lambda_i}' = \set{x \in \W | \exists p \in \Z^+ : (\T_{\W} - \lambda_i)^p(x) = \zv}.
+  \]
+  Clearly we have \(\vs{K}_{\lambda_i}' \subseteq \vs{K}_{\lambda_i}\) for each \(i \in \set{1, \dots, k}\).
 
   Now let \(x \in \V\).
-  Then \((\T - \lambda_{k + 1} \IT[V])^m(x) \in \W\).
+  Then \((\T - \lambda_{k + 1} \IT[\V])^m(x) \in \W\).
   Since \(\T_{\W}\) has the \(k\) distinct eigenvalues \(\seq{\lambda}{1,,k}\), the induction hypothesis applies.
   Hence there are vectors \(w_i \in \vs{K}_{\lambda_i}'\), \(i \in \set{1, \dots, k}\), such that
   \[
@@ -221,10 +236,14 @@
   \[
     (\T - \lambda_{k + 1} \IT[\V])^m(x) = (\T - \lambda_{k + 1} \IT[\V])^m(v_1) + \cdots + (\T - \lambda_{k + 1} \IT[\V])^m(v_{k}),
   \]
-  and it follows that \(x - (\seq[+]{v}{1,,k}) \in \vs{K}_{\lambda_{k + 1}}\).
+  and it follows that \(x - (\seq[+]{v}{1,,k}) \in \vs{K}_{\lambda_{k + 1}}\) since
+  \begin{align*}
+    \zv & = (\T - \lambda_{k + 1} \IT[\V])^m(x) - (\T - \lambda_{k + 1} \IT[\V])^m(v_1) + \cdots + (\T - \lambda_{k + 1} \IT[\V])^m(v_{k}) \\
+        & = (\T - \lambda_{k + 1} \IT[\V])^m(x - (\seq[+]{v}{1,,k})).
+  \end{align*}
   Therefore there exists a vector \(v_k \in \vs{K}_{\lambda_{k + 1}}\) such that
   \[
-    x = \seq[+]{v}{1,,k}.
+    x = \seq[+]{v}{1,,k+1}.
   \]
 \end{proof}
 
@@ -240,7 +259,7 @@
 \end{thm}
 
 \begin{proof}[\pf{7.4}(a)]
-  Suppose that \(x \in \beta_i \cap \beta_j \subseteq \vs{K}_{\lambda_i} \cap \vs{K}_{\lambda_j}\), where \(i \neq j\).
+  Suppose for sake of contradiction that \(x \in \beta_i \cap \beta_j \subseteq \vs{K}_{\lambda_i} \cap \vs{K}_{\lambda_j}\), where \(i \neq j\).
   By \cref{7.1}(b), \(\T - \lambda_i \IT[\V]\) is one-to-one on \(\vs{K}_{\lambda_j}\), and therefore \((\T - \lambda_i \IT[\V])^p(x) \neq \zv\) for any positive integer \(p\).
   But this contradicts the fact that \(x \in \vs{K}_{\lambda_i}\), and the result follows.
 \end{proof}
@@ -253,12 +272,12 @@
   Let \(q\) be the number of vectors in \(\beta\).
   Then \(\dim(\V) \leq q\).
   For each \(i \in \set{1, \dots, k}\), let \(d_i = \dim(\vs{K}_{\lambda_i})\).
-  Then, by \cref{7.2}(a),
+  Then, by \cref{5.3} and \cref{7.2}(a),
   \[
     q = \sum_{i = 1}^k d_i \leq \sum_{i = 1}^k m_i = \dim(\V).
   \]
   Hence \(q = \dim(\V)\).
-  Consequently \(\beta\) is a basis for \(\V\) over \(\F\) by Corollary 2 to the replacement theorem.
+  Consequently \(\beta\) is a basis for \(\V\) over \(\F\) by \cref{1.6.15}(a).
 \end{proof}
 
 \begin{proof}[\pf{7.4}(c)]
@@ -268,10 +287,10 @@
 
 \begin{cor}\label{7.1.5}
   Let \(\T\) be a linear operator on a finite-dimensional vector space \(\V\) over \(\F\) such that the characteristic polynomial of \(\T\) splits.
-  Then \(\T\) is diagonalizable iff \(E_{\lambda} = \vs{K}_{\lambda}\) for every eigenvalue \(\lambda\) of \(\T\).
+  Then \(\T\) is diagonalizable iff \(\vs{E}_{\lambda} = \vs{K}_{\lambda}\) for every eigenvalue \(\lambda\) of \(\T\).
 \end{cor}
 
 \begin{proof}[\pf{7.1.5}]
-  Combining \cref{7.4} and \cref{5.9}(a), we see that \(\T\) is diagonalizable iff \(\dim(E_{\lambda}) = \dim(\vs{K}_{\lambda})\) for each eigenvalue \(\lambda\) of \(\T\).
-  But \(E_{\lambda} \subseteq \vs{K}_{\lambda}\), and hence these subspaces have the same dimension iff they are equal.
+  Combining \cref{7.4}(c) and \cref{5.9}(a), we see that \(\T\) is diagonalizable iff \(\dim(\vs{E}_{\lambda}) = \dim(\vs{K}_{\lambda})\) for each eigenvalue \(\lambda\) of \(\T\).
+  But \(\vs{E}_{\lambda} \subseteq \vs{K}_{\lambda}\) (\cref{7.1}(a)), and hence these subspaces have the same dimension iff they are equal (\cref{1.11}).
 \end{proof}
