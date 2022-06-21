@@ -18,11 +18,11 @@
   where each \(\zm\) is a zero matrix, and each \(A_i\) is a square matrix of the form \((\lambda)\) or
   \[
     \begin{pmatrix}
-      \lambda & 1       & \zv    & \cdots & \zv     & \zv     \\
-      \zv     & \lambda & 1      & \cdots & \zv     & \zv     \\
+      \lambda & 1       & 0      & \cdots & 0       & 0       \\
+      0       & \lambda & 1      & \cdots & 0       & 0       \\
       \vdots  & \vdots  & \vdots &        & \vdots  & \vdots  \\
-      \zv     & \zv     & \zv    & \cdots & \lambda & 1       \\
-      \zv     & \zv     & \zv    & \cdots & \zv     & \lambda
+      0       & 0       & 0      & \cdots & \lambda & 1       \\
+      0       & 0       & 0      & \cdots & 0       & \lambda
     \end{pmatrix}
   \]
   for some eigenvalue \(\lambda\) of \(\T\).
@@ -293,4 +293,257 @@
 \begin{proof}[\pf{7.1.5}]
   Combining \cref{7.4}(c) and \cref{5.9}(a), we see that \(\T\) is diagonalizable iff \(\dim(\vs{E}_{\lambda}) = \dim(\vs{K}_{\lambda})\) for each eigenvalue \(\lambda\) of \(\T\).
   But \(\vs{E}_{\lambda} \subseteq \vs{K}_{\lambda}\) (\cref{7.1}(a)), and hence these subspaces have the same dimension iff they are equal (\cref{1.11}).
+\end{proof}
+
+\begin{defn}\label{7.1.6}
+  Let \(\T\) be a linear operator on a vector space \(\V\) over \(\F\), and let \(x\) be a generalized eigenvector of \(\T\) corresponding to the eigenvalue \(\lambda\).
+  Suppose that \(p\) is the smallest positive integer for which \((\T - \lambda \IT[\V])^p(x) = \zv\).
+  Then the ordered set
+  \[
+    \set{(\T - \lambda \IT[\V])^{p - 1}(x), (\T - \lambda \IT[\V])^{p - 2}(x), \dots, (\T - \lambda \IT[\V])(x), x}
+  \]
+  is called a \textbf{cycle of generalized eigenvectors} of \(\T\) corresponding to \(\lambda\).
+  The vectors \((\T - \lambda \IT[\V])^{p - 1}(x)\) and \(x\) are called the \textbf{initial vector} and the \textbf{end vector} of the cycle, respectively.
+  We say that the \textbf{length} of the cycle is \(p\).
+\end{defn}
+
+\begin{note}
+  The initial vector of a cycle of generalized eigenvectors of a linear operator \(\T\) is the only eigenvector of \(\T\) in the cycle.
+  Also observe that if \(x\) is an eigenvector of \(\T\) corresponding to the eigenvalue \(\lambda\), then the set \(\set{x}\) is a cycle of generalized eigenvectors of \(\T\) corresponding to \(\lambda\) of length \(1\).
+\end{note}
+
+\begin{thm}\label{7.5}
+  Let \(\T\) be a linear operator on a finite-dimensional vector space \(\V\) over \(\F\) whose characteristic polynomial splits, and suppose that \(\beta\) is a basis for \(\V\) over \(\F\) such that \(\beta\) is a disjoint union of cycles of generalized eigenvectors of \(\T\).
+  Then the following statements are true.
+  \begin{enumerate}
+    \item For each cycle \(\gamma\) of generalized eigenvectors contained in \(\beta\), \(\W = \spn{\gamma}\) is \(\T\)-invariant, and \([\T_{\W}]_{\gamma}\) is a Jordan block.
+    \item \(\beta\) is a Jordan canonical basis for \(\V\) over \(\F\).
+  \end{enumerate}
+\end{thm}
+
+\begin{proof}[\pf{7.5}(a)]
+  Suppose that \(\gamma\) corresponds to \(\lambda\), \(\gamma\) has length \(p\), and \(x\) is the end vector of \(\gamma\).
+  Then \(\gamma = \set{\seq{v}{1,,p}}\), where
+  \[
+    v_i = (\T - \lambda \IT[\V])^{p - i}(x) \quad \text{ for } i \in \set{1, \dots, p - 1}
+  \]
+  and \(v_p = x\).
+  So
+  \[
+    (\T - \lambda \IT[\V])(v_1) = (\T - \lambda \IT[\V])^p(x) = \zv,
+  \]
+  and hence \(\T(v_1) = \lambda v_1\).
+  For \(i \in \set{2, \dots, p}\),
+  \[
+    (\T - \lambda \IT[\V])(v_i) = (\T - \lambda \IT[\V])^{p - (i - 1)}(x) = v_{i - 1}.
+  \]
+  Therefore \(\T\) maps \(\W\) into itself, and, by the preceding equations, we see that \([\T_{\W}]_{\gamma}\) is a Jordan block.
+\end{proof}
+
+\begin{proof}[\pf{7.5}(b)]
+  Let \(\seq{\gamma}{1,,k}\) be cycles in \(\beta\) and let \(\W_i = \spn{\gamma_i}\) for each \(i \in \set{1, \dots, k}\).
+  By \cref{5.25} we see that \([\T]_{\beta} = [\T_{\W_1}]_{\beta_1} \oplus \cdots \oplus [\T_{\W_k}]_{\beta_k}\).
+  By \cref{7.5}(a) we know that \([\T_{\W_i}]_{\gamma_i}\) is a Jordan block for each \(i \in \set{1, \dots, k}\).
+  Thus by \cref{7.1.1} \(\beta\) is a Jordan canonical basis for \(\V\) over \(\F\).
+\end{proof}
+
+\begin{thm}\label{7.6}
+  Let \(\T\) be a linear operator on a vector space \(\V\) over \(\F\), and let \(\lambda\) be an eigenvalue of \(\T\).
+  Suppose that \(\seq{\gamma}{1,,q}\) are cycles of generalized eigenvectors of \(\T\) corresponding to \(\lambda\) such that the initial vectors of the \(\gamma_i\)'s are distinct and form a linearly independent set.
+  Then the \(\gamma_i\)'s are disjoint, and their union \(\gamma = \bigcup_{i = 1}^q \gamma_i\) is linearly independent.
+\end{thm}
+
+\begin{proof}[\pf{7.6}]
+  \cref{ex:7.1.5} shows that the \(\gamma_i\)'s are disjoint.
+
+  The proof that \(\gamma\) is linearly independent is by mathematical induction on the number of vectors in \(\gamma\).
+  If this number is less than \(2\), then the result is clear.
+  So assume that, for some integer \(n > 1\), the result is valid whenever \(\gamma\) has fewer than \(n\) vectors, and suppose that \(\gamma\) has exactly \(n\) vectors.
+  Let \(\W\) be the subspace of \(\V\) over \(\F\) generated by \(\gamma\).
+  Clearly \(\W\) is \((\T - \lambda \IT[\V])\)-invariant, and \(\dim(\W) \leq n\).
+  Let \(\U\) denote the restriction of \(\T - \lambda \IT[\V]\) to \(\W\).
+
+  For each \(i \in \set{1, \dots, q}\), let \(\gamma_i'\) denote the cycle obtained from \(\gamma_i\) by deleting the end vector.
+  Note that if \(\gamma_i\) has length one, then \(\gamma_i' = \varnothing\).
+  In the case that \(\gamma_i' \neq \varnothing\), each vector of \(\gamma_i'\) is the image under \(\U\) of a vector in \(\gamma_i\), and conversely, every nonzero image under \(\U\) of a vector of \(\gamma_i\) is contained in \(\gamma_i'\).
+  Let \(\gamma' = \bigcup_{i = 1}^q \gamma_i'\).
+  Then by the last statement, \(\gamma'\) generates \(\rg{\U}\).
+  Furthermore, \(\gamma'\) consists of \(n - q\) vectors, and the initial vectors of the \(\gamma_i'\)'s are also initial vectors of the \(\gamma_i\)'s.
+  Thus we may apply the induction hypothesis to conclude that \(\gamma'\) is linearly independent.
+  Therefore \(\gamma'\) is a basis for \(\rg{\U}\) over \(\F\).
+  Hence \(\rk{\U} = n - q\).
+  Since the \(q\) initial vectors of the \(\gamma_i\)'s form a linearly independent set and lie in \(\ns{\U}\) (\cref{7.1.6}), we have \(\nt{\U} \geq q\).
+  From these inequalities and the dimension theorem, we obtain
+  \begin{align*}
+    n & \geq \dim(\W)                     \\
+      & = \rk{\U} + \nt{\U} &  & \by{2.3} \\
+      & \geq (n - q) + q                  \\
+      & = n.
+  \end{align*}
+  We conclude that \(\dim(\W) = n\).
+  Since \(\gamma\) generates \(\W\) and consists of \(n\) vectors, it must be a basis for \(\W\) over \(\F\).
+  Hence \(\gamma\) is linearly independent.
+\end{proof}
+
+\begin{cor}\label{7.1.7}
+  Every cycle of generalized eigenvectors of a linear operator is linearly independent.
+\end{cor}
+
+\begin{proof}[\pf{7.1.7}]
+  Let \(\V\) be a vector space over \(\F\) and let \(\T \in \ls(\V)\).
+  Let \(\gamma\) be a cycle of generalized eigenvectors of \(\T\) corresponding to \(\lambda \in \F\).
+  Let \(p\) be the length of \(\gamma\) and let \(x\) be the end vector of \(\gamma\).
+  By \cref{7.1.6} we can define \(v_i = (\T - \lambda \IT[\V])^{p - i}(x)\) for each \(i \in \set{1, \dots, p}\).
+  Let \(\seq{a}{1,,p} \in \F\) such that \(\sum_{i = 1}^p a_i v_i = \zv\).
+  Since
+  \begin{align*}
+             & \sum_{i = 1}^p a_i v_i = \zv                                                                                        \\
+    \implies & \zv = (\T - \lambda \IT[\V])^{p - 1}\pa{\sum_{i = 1}^p a_i v_i}   &  & \by{2.1.2}[a]                                \\
+             & = \sum_{i = 1}^p a_i (\T - \lambda \IT[\V])^{p - 1}(v_i)          &  & \by{2.1.2}[d]                                \\
+             & = \sum_{i = 1}^p a_i (\T - \lambda \IT[\V])^{2p - 1 - i}(x)       &  & \by{7.1.6}                                   \\
+             & = a_p (\T - \lambda \IT[\V])^{p - 1}(x)                           &  & \by{7.1.6}                                   \\
+    \implies & a_p = 0                                                           &  & ((\T - \lambda \IT[\V])^{p - 1}(x) \neq \zv) \\
+    \implies & \zv = (\T - \lambda \IT[\V])^{p - 2}\pa{\sum_{i = 1}^p a_i v_i}   &  & \by{2.1.2}[a]                                \\
+             & = (\T - \lambda \IT[\V])^{p - 2}\pa{\sum_{i = 1}^{p - 1} a_i v_i} &  & (a_p = 0)                                    \\
+             & = \sum_{i = 1}^{p - 1} a_i (\T - \lambda \IT[\V])^{2p - 2 - i}(x) &  & \by{7.1.6}                                   \\
+             & = a_{p - 1} (\T - \lambda \IT[\V])^{p - 1}(x)                     &  & \by{7.1.6}                                   \\
+    \implies & \seq[=]{a}{p-1,p} = 0                                             &  & ((\T - \lambda \IT[\V])^{p - 1}(x) \neq \zv) \\
+    \implies & \vdots                                                                                                              \\
+    \implies & \seq[=]{a}{1,,p} = 0,
+  \end{align*}
+  by \cref{1.5.3} we see that \(\gamma\) is linearly independent.
+\end{proof}
+
+\begin{thm}\label{7.7}
+  Let \(\T\) be a linear operator on a finite-dimensional vector space \(\V\) over \(\F\), and let \(\lambda\) be an eigenvalue of \(\T\).
+  Then \(\vs{K}_\lambda\) has an ordered basis consisting of a union of disjoint cycles of generalized eigenvectors corresponding to \(\lambda\).
+\end{thm}
+
+\begin{proof}[\pf{7.7}]
+  The proof is by mathematical induction on \(n = \dim(\vs{K}_\lambda)\).
+  The result is clear for \(n = 1\).
+  So suppose that for some integer \(n > 1\) the result is valid whenever \(\dim(\vs{K}_\lambda) < n\), and assume that \(\dim(\vs{K}_\lambda) = n\).
+  Let \(\U\) denote the restriction of \(\T - \lambda \IT[\V]\) to \(\vs{K}_\lambda\).
+  Then \(\rg{\U}\) is a subspace of \(\vs{K}_\lambda\) of lesser dimension, and \(\rg{\U}\) is the space of generalized eigenvectors corresponding to \(\lambda\) for the restriction of \(\T\) to \(\rg{\U}\).
+  Therefore, by the induction hypothesis, there exist disjoint cycles \(\seq{\gamma}{1,,q}\) of generalized eigenvectors of this restriction, and hence of \(\T\) itself, corresponding to \(\lambda\) for which \(\gamma = \bigcup_{i = 1}^q \gamma_i\) is a basis for \(\rg{\U}\).
+  For \(i \in \set{1, \dots, q}\), the end vector of \(\gamma_i\) is the image under \(\U\) of a vector \(v_i \in \vs{K}_\lambda\), and so we can extend each \(\gamma_i\) to a larger cycle \(\tilde{\gamma}_i = \gamma_i \cup \set{v_i}\) of generalized eigenvectors of \(\T\) corresponding to \(\lambda\).
+  For \(i \in \set{1 \dots, q}\), let \(w_i\) be the initial vector of \(\tilde{\gamma}_i\) (and hence of \(\gamma_i\)).
+  Since \(\set{\seq{w}{1,,q}}\) is a linearly independent subset of \(\vs{E}_\lambda\), this set can be extended to a basis \(\set{\seq{w}{1,,q}, \seq{u}{1,,s}}\) for \(\vs{E}_\lambda\).
+  Then \(\seq{\tilde{\gamma}}{1,,q}, \set{u_1}, \dots, \set{u_s}\) are disjoint cycles of generalized eigenvectors of \(\T\) corresponding to \(\lambda\) such that the initial vectors of these cycles are linearly independent.
+  Therefore their union \(\tilde{\gamma}\) is a linearly independent subset of \(\vs{K}_\lambda\) by \cref{7.6}.
+
+  We show that \(\tilde{\gamma}\) is a basis for \(\vs{K}_\lambda\).
+  Suppose that \(\gamma\) consists of \(r = \rk{\U}\) vectors.
+  Then \(\tilde{\gamma}\) consists of \(r + q + s\) vectors.
+  Furthermore, since \(\set{\seq{w}{1,,q}, \seq{u}{1,,s}}\) is a basis for \(\vs{E}_\lambda = \ns{\U}\) over \(\F\), it follows that \(\nt{\U} = q + s\).
+  Therefore
+  \[
+    \dim(\vs{K}_{\lambda}) = \rk{\U} + \nt{\U} = r + q + s.
+  \]
+  So \(\tilde{\gamma}\) is a linearly independent subset of \(\vs{K}_\lambda\) containing \(\dim(\vs{K}_\lambda)\) vectors.
+  It follows that \(\tilde{\gamma}\) is a basis for \(\vs{K}_\lambda\).
+\end{proof}
+
+\begin{cor}\label{7.1.8}
+  Let \(\T\) be a linear operator on a finite-dimensional vector space \(\V\) over \(\F\) whose characteristic polynomial splits.
+  Then \(\T\) has a Jordan canonical form.
+\end{cor}
+
+\begin{proof}[\pf{7.1.8}]
+  Let \(\seq{\lambda}{1,,k}\) be the distinct eigenvalues of \(\T\).
+  By \cref{7.7}, for each \(i \in \set{1, \dots, k}\) there is an ordered basis \(\beta_i\) consisting of a disjoint union of cycles of generalized eigenvectors corresponding to \(\lambda_i\).
+  Let \(\beta = \seq[\cup]{\beta}{1,,k}\).
+  Then, by \cref{7.4}(b), \(\beta\) is an ordered basis for \(\V\) over \(\F\).
+\end{proof}
+
+\begin{defn}\label{7.1.9}
+  Let \(A \in \ms[n][n][\F]\) be such that the characteristic polynomial of \(A\) (and hence of \(\L_A\)) splits.
+  Then the Jordan canonical form of \(A\) is defined to be the Jordan canonical form of the linear operator \(\L_A\) on \(\vs{F}^n\).
+\end{defn}
+
+\begin{cor}\label{7.1.10}
+  Let \(A \in \ms[n][n][\F]\) whose characteristic polynomial splits.
+  Then \(A\) has a Jordan canonical form \(J\), and \(A\) is similar to \(J\).
+\end{cor}
+
+\exercisesection
+
+\setcounter{ex}{3}
+\begin{ex}\label{ex:7.1.4}
+  Let \(\T\) be a linear operator on a vector space \(\V\) over \(\F\), and let \(\gamma\) be a cycle of generalized eigenvectors that corresponds to the eigenvalue \(\lambda\).
+  Prove that \(\spn{\gamma}\) is a \(\T\)-invariant subspace of \(\V\) over \(\F\).
+\end{ex}
+
+\begin{proof}[\pf{ex:7.1.4}]
+  Suppose that \(\gamma\) has length \(p\) and end vector \(x \in \V\).
+  By \cref{7.1.6} we see that
+  \[
+    \gamma = \set{(\T - \lambda \IT[\V])^{p - 1}(x), \dots, (\T - \lambda \IT[\V])(x), x}.
+  \]
+  For each \(i \in \set{1, \dots, p}\), we define \(v_i = (\T - \lambda \IT[\V])^{p - i}(x)\).
+  Observe that
+  \begin{align*}
+    \forall i \in \set{1, \dots, p}, (\T - \lambda \IT[\V])(v_i) & = (\T - \lambda \IT[\V])^{p - (i - 1)}(x)        \\
+                                                                 & = \begin{dcases}
+                                                                       \zv       & \text{if } i = 1                   \\
+                                                                       v_{i - 1} & \text{if } i \in \set{2, \dots, p}
+                                                                     \end{dcases} &  & \by{7.1.6}
+  \end{align*}
+  and
+  \[
+    \forall i \in \set{1, \dots, p}, \T(v_i) = \begin{dcases}
+      \lambda v_1             & \text{if } i = 1                   \\
+      \lambda v_i + v_{i - 1} & \text{if } i \in \set{2, \dots, p}
+    \end{dcases}.
+  \]
+  Let \(y \in \spn{\gamma}\).
+  By \cref{1.4.3} there exist some \(\seq{a}{1,,p} \in \F\) such that \(y = \sum_{i = 1}^p a_i v_i\).
+  Since
+  \begin{align*}
+    \T(y) & = \T\pa{\sum_{i = 1}^p a_i v_i}                                  &  & \by{1.4.3}    \\
+          & = \sum_{i = 1}^p a_i \T(v_i)                                     &  & \by{2.1.2}[d] \\
+          & = a_1 \lambda v_1 + \sum_{i = 2}^p a_i (\lambda v_i + v_{i - 1}) &  & \by{7.1.6}    \\
+          & \in \spn{\gamma},                                                &  & \by{1.4.3}
+  \end{align*}
+  by \cref{5.4.1} we see that \(\spn{\gamma}\) is \(\T\)-invariant.
+\end{proof}
+
+\begin{ex}\label{ex:7.1.5}
+  Let \(\seq{\gamma}{1,,p}\) be cycles of generalized eigenvectors of a linear operator \(\T\) corresponding to an eigenvalue \(\lambda\).
+  Prove that if the initial eigenvectors are distinct, then the cycles are disjoint.
+\end{ex}
+
+\begin{proof}[\pf{ex:7.1.5}]
+  Suppose for sake of contradiction that there exist \(i, j \in \set{1, \dots, p}\) such that \(i \neq j\) and \(\gamma_i \cap \gamma_j \neq \varnothing\).
+  Let \(m, n\) be lengths of \(\gamma_i, \gamma_j\), respectively.
+  Let \(x, y\) be the end vector of \(\gamma_i, \gamma_j\), respectively.
+  Then we have
+  \begin{align*}
+    \gamma_i & = \set{(\T - \lambda \IT[\V])^{m - 1}(x), \dots, (\T - \lambda \IT[\V])(x), x}; &  & \by{7.1.6} \\
+    \gamma_j & = \set{(\T - \lambda \IT[\V])^{n - 1}(y), \dots, (\T - \lambda \IT[\V])(y), y}. &  & \by{7.1.6}
+  \end{align*}
+  By hypothesis we have \((\T - \lambda \IT[\V])^{m - 1}(x) \neq (\T - \lambda \IT[\V])^{n - 1}(y)\).
+  Let \(z \in \beta_i \cap \beta_j\).
+  Then there exist \(m' \in \set{0, \dots, m - 1}\) and \(n' \in \set{0, \dots, n - 1}\) such that
+  \[
+    z = (\T - \lambda \IT[\V])^{m'}(x) = (\T - \lambda \IT[\V])^{n'}(y).
+  \]
+  We cannot have \(m - m' < n - n'\) since
+  \begin{align*}
+             & (\T - \lambda \IT[\V])^{m - m'}(z) = (\T - \lambda \IT[\V])^m(x) = \zv     &  & \by{7.1.6}    \\
+    \implies & (\T - \lambda \IT[\V])^{n - 1}(y) = (\T - \lambda \IT[\V])^{n - 1 - n'}(z) &  & \by{7.1.6}    \\
+             & = (\T - \lambda \IT[\V])^{n - n' - m + m' + m - m' - 1}(z)                                    \\
+             & = (\T - \lambda \IT[\V])^{n - n' - m + m' - 1}(\zv)                        &  & \by{7.1.6}    \\
+             & = \zv                                                                      &  & \by{2.1.2}[a] \\
+    \implies & \gamma_j \text{ has length } \leq n - 1,                                   &  & \by{7.1.6}
+  \end{align*}
+  a contradiction.
+  Similarly we cannot have \(n - n' < m - m'\).
+  Thus we must have \(n - n = m - m'\).
+  But this means
+  \[
+    (\T - \lambda \IT[\V])^{m - 1}(x) = (\T - \lambda \IT[\V])^{m - 1 - m'}(z) = (\T - \lambda \IT[\V])^{n - 1 - n'}(z) = (\T - \lambda \IT[\V])^{n - 1}(y),
+  \]
+  a contradiction.
+  Thus \(\gamma_i \cap \gamma_j = \varnothing\).
 \end{proof}
