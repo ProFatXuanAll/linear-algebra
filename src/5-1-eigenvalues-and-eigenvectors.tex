@@ -86,7 +86,7 @@
 \end{thm}
 
 \begin{proof}[\pf{5.2}]
-  A scalar \(\lambda \in \F\) is an eigenvalue of \(A\) iff there exists a nonzero vector \(v \in \vs{F}^n\) such that \(Av = \lambda v\), that is, \((A - \lambda I_n)(v) = 0\).
+  A scalar \(\lambda \in \F\) is an eigenvalue of \(A\) iff there exists a nonzero vector \(v \in \vs{F}^n\) such that \(Av = \lambda v\), that is, \((A - \lambda I_n)(v) = \zv\).
   By \cref{2.5}, this is true iff \(A - \lambda I_n\) is not invertible.
   However, by \cref{4.3.1} this result is equivalent to the statement that \(\det(A - \lambda I_n) = 0\).
 \end{proof}
@@ -202,7 +202,7 @@
 
 \begin{thm}\label{5.4}
   Let \(\T\) be a linear operator on a vector space \(\V\) over \(\F\), and let \(\lambda\) be an eigenvalue of \(\T\).
-  A vector \(v \in \V\) is an eigenvector of \(\T\) corresponding to \(\lambda\) iff \(v \neq 0\) and \(v \in \ns{\T - \lambda \IT[\V]}\).
+  A vector \(v \in \V\) is an eigenvector of \(\T\) corresponding to \(\lambda\) iff \(v \neq \zv\) and \(v \in \ns{\T - \lambda \IT[\V]}\).
 \end{thm}
 
 \begin{proof}[\pf{5.4}]
@@ -210,15 +210,15 @@
   \begin{align*}
          & v \text{ is an eigenvector of } \T \text{ corresponds to eigenvalue } \lambda               \\
     \iff & \begin{dcases}
-             v \neq 0 \\
+             v \neq \zv \\
              \T(v) = \lambda v
            \end{dcases}                                                                &  & \by{5.1.2} \\
     \iff & \begin{dcases}
-             v \neq 0 \\
+             v \neq \zv \\
              (\T - \lambda \IT[\V])(v) = \T(v) - \lambda \IT[\V](v) = \T(v) - \lambda v = \zv
            \end{dcases} &  & \by{2.1.9}             \\
     \iff & \begin{dcases}
-             v \neq 0 \\
+             v \neq \zv \\
              v \in \ns{\T - \lambda \IT[\V]}
            \end{dcases}.                                   &  & \by{2.1.10}
   \end{align*}
