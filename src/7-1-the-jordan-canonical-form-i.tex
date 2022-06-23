@@ -485,6 +485,26 @@
   and thus by \cref{2.5.4} \(A, J\) are similar.
 \end{proof}
 
+\begin{note}
+  Let \(\T\) be a linear operator on a finite-dimensional vector space \(\V\) over \(\F\), and suppose that the characteristic polynomial of \(\T\) splits.
+  By \cref{5.11}, \(\T\) is diagonalizable iff \(\V\) is the direct sum of the eigenspaces of \(\T\).
+  If \(\T\) is diagonalizable, then the eigenspaces and the generalized eigenspaces coincide (\cref{7.1.5}).
+  \cref{7.8}, which is optional, extends \cref{5.11} to the nondiagonalizable case.
+\end{note}
+
+\begin{thm}\label{7.8}
+  Let \(\T\) be a linear operator on a finite-dimensional vector space \(\V\) over \(\F\) whose characteristic polynomial splits.
+  Then \(\V\) is the direct sum of the generalized eigenspaces of \(\T\).
+\end{thm}
+
+\begin{proof}[\pf{7.8}]
+  Let \(\seq{\lambda}{1,,k} \in \F\) be eigenvalues of \(\T\).
+  By \cref{7.1.8} we see that \(\T\) has a Jordan canonical form.
+  By \cref{7.7}, for each \(i \in \set{1, \dots, k}\), there exists an ordered basis \(\beta_i\) for \(\vs{K}_{\lambda_i}\) over \(\F\) such that \(\beta_i\) is consist of disjoint union of cycles of generalized eigenvectors corresponding to \(\lambda_i\), and \(\beta = \bigcup_{i = 1}^k \beta_i\) is an ordered basis for \(\V\) over \(\F\).
+  By \cref{7.4} we see that \(\beta_i \cap \beta_j = \varnothing\) for all \(i \neq j\).
+  By \cref{7.3} we see that \(\V\) is the direct sum of the generalized eigenspaces of \(\T\).
+\end{proof}
+
 \exercisesection
 
 \setcounter{ex}{3}
