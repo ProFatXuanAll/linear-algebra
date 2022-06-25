@@ -458,7 +458,7 @@
   Let \(\seq{\lambda}{1,,k} \in \F\) be the distinct eigenvalues of \(\T\).
   By \cref{7.7}, for each \(i \in \set{1, \dots, k}\), there is an ordered basis \(\beta_i\) for \(\V\) over \(\F\) consisting of a disjoint union of cycles of generalized eigenvectors corresponding to \(\lambda_i\).
   Let \(\beta = \seq[\cup]{\beta}{1,,k}\).
-  Then, by \cref{7.4}(b), \(\beta\) is an ordered basis for \(\V\) over \(\F\).
+  Then, by \cref{7.5}(b), \(\beta\) is an ordered basis for \(\V\) over \(\F\).
 \end{proof}
 
 \begin{defn}\label{7.1.9}
@@ -585,4 +585,130 @@
   \]
   a contradiction.
   Thus \(\gamma_i \cap \gamma_j = \varnothing\).
+\end{proof}
+
+\begin{ex}\label{ex:7.1.6}
+  Let \(\V, \W\) be vector spaces over \(\F\) and let \(\T \in \ls(\V, \W)\).
+  Prove the following results.
+  \begin{enumerate}
+    \item \(\ns{\T} = \ns{-\T}\).
+    \item \(\ns{\T^k} = \ns{(-\T)^k}\).
+    \item If \(\V = \W\) (so that \(\T\) is a linear operator on \(\V\)) and \(\lambda\) is an eigenvalue of \(\T\), then for any positive integer \(k\)
+          \[
+            \ns{(\T - \lambda \IT[\V])^k} = \ns{(\lambda \IT[\V] - \T)^k}.
+          \]
+  \end{enumerate}
+\end{ex}
+
+\begin{proof}[\pf{ex:7.1.6}(a)]
+  We have
+  \begin{align*}
+         & v \in \ns{\T}                    \\
+    \iff & \T(v) = \zv     &  & \by{2.1.10} \\
+    \iff & -\T(v) = \zv    &  & \by{1.2}[c] \\
+    \iff & v \in \ns{-\T}. &  & \by{2.1.10}
+  \end{align*}
+\end{proof}
+
+\begin{proof}[\pf{ex:7.1.6}(b)]
+  We have
+  \begin{align*}
+         & v \in \ns{\T^k}                       \\
+    \iff & \T^k(v) = \zv        &  & \by{2.1.10} \\
+    \iff & (-1)^k \T^k(v) = \zv &  & \by{1.2}[c] \\
+    \iff & (-\T)^k(v) = \zv     &  & \by{2.2.5}  \\
+    \iff & v \in \ns{(-\T)^k}.  &  & \by{2.1.10}
+  \end{align*}
+\end{proof}
+
+\begin{proof}[\pf{ex:7.1.6}(c)]
+  By \cref{ex:7.1.6}(b) We have \(\ns{(\T - \lambda \IT[\V])^k} = \ns{(\lambda \IT[\V] - \T)^k}\).
+\end{proof}
+
+\begin{ex}\label{ex:7.1.7}
+  Let \(\U\) be a linear operator on a finite-dimensional vector space \(\V\) over \(\F\).
+  Prove the following results.
+  \begin{enumerate}
+    \item \(\ns{\U} \subseteq \ns{\U^2} \subseteq \cdots \subseteq \ns{\U^k} \subseteq \ns{\U^{k + 1}} \subseteq \cdots\).
+    \item If \(\rk{\U^m} = \rk{\U^{m + 1}}\) for some positive integer \(m\), then \(\rk{\U^m} = \rk{\U^k}\) for any positive integer \(k \geq m\).
+    \item If \(\rk{\U^m} = \rk{\U^{m + 1}}\) for some positive integer \(m\), then \(\ns{\U^m} = \ns{\U^k}\) for any positive integer \(k \geq m\).
+    \item Let \(\T \in \ls(\V)\), and let \(\lambda\) be an eigenvalue of \(\T\).
+          Prove that if \(\rk{(\T - \lambda \IT[\V])^m} = \rk{(\T - \lambda \IT[\V])^{m + 1}}\) for some integer \(m\), then \(\vs{K}_{\lambda} = \ns{(\T - \lambda \IT[\V])^m}\).
+    \item \emph{Second Test for Diagonalizability}.
+          Let \(\T\) be a linear operator on \(\V\) whose characteristic polynomial splits, and let \(\seq{\lambda}{1,,k}\) be the distinct eigenvalues of \(\T\).
+          Then \(\T\) is diagonalizable iff \(\rk{\T - \lambda \IT[\V]} = \rk{(\T - \lambda \IT[\V])^2}\) for \(i \in \set{1, \dots, k}\).
+    \item Use (e) to obtain a simpler proof of \cref{ex:5.4.24}:
+          If \(\T\) is a diagonalizable linear operator on a finite-dimensional vector space \(\V\) and \(\W\) is a \(\T\)-invariant subspace of \(\V\) over \(\F\), then \(\T_{\W}\) is diagonalizable.
+  \end{enumerate}
+\end{ex}
+
+\begin{proof}[\pf{ex:7.1.7}(a)]
+  We have
+  \begin{align*}
+             & v \in \ns{\U}                                                                                                                   \\
+    \implies & \U(v) = \zv                                                                                                  &  & \by{2.1.10}   \\
+    \implies & \forall k \in \Z^+, \U^k(v) = \zv                                                                            &  & \by{2.1.2}[a] \\
+    \implies & \ns{\U} \subseteq \ns{\U^2} \subseteq \cdots \subseteq \ns{\U^k} \subseteq \ns{\U^{k + 1}} \subseteq \cdots.
+  \end{align*}
+\end{proof}
+
+\begin{proof}[\pf{ex:7.1.7}(b)]
+  We have
+  \begin{align*}
+             & \rk{\U^m} = \rk{\U^{m + 1}}                                                                      \\
+    \implies & \nt{\U^m} = \nt{\U^{m + 1}}                                                &  & \by{2.3}         \\
+    \implies & \forall k \in \Z^+ \setminus \set{1, \dots, m - 1}, \nt{\U^m} = \nt{\U^k}  &  & \by{ex:7.1.7}[a] \\
+    \implies & \forall k \in \Z^+ \setminus \set{1, \dots, m - 1}, \rk{\U^m} = \rk{\U^k}. &  & \by{2.3}
+  \end{align*}
+\end{proof}
+
+\begin{proof}[\pf{ex:7.1.7}(c)]
+  We have
+  \begin{align*}
+             & \rk{\U^m} = \rk{\U^{m + 1}}                                                                      \\
+    \implies & \forall k \in \Z^+ \setminus \set{1, \dots, m - 1}, \rk{\U^m} = \rk{\U^k}  &  & \by{ex:7.1.7}[b] \\
+    \implies & \forall k \in \Z^+ \setminus \set{1, \dots, m - 1}, \nt{\U^m} = \nt{\U^k}  &  & \by{2.3}         \\
+    \implies & \forall k \in \Z^+ \setminus \set{1, \dots, m - 1}, \ns{\U^m} = \ns{\U^k}. &  & \by{ex:7.1.7}[a]
+  \end{align*}
+\end{proof}
+
+\begin{proof}[\pf{ex:7.1.7}(d)]
+  We have
+  \begin{align*}
+    \vs{K}_{\lambda} & = \bigcup_{i = 1}^\infty \ns{(\T - \lambda \IT[\V])^i} &  & \by{7.1.4}       \\
+                     & = \bigcup_{i = 1}^m \ns{(\T - \lambda \IT[\V])^i}      &  & \by{ex:7.1.7}[c] \\
+                     & = \ns{(\T - \lambda \IT[\V])^m}.                       &  & \by{ex:7.1.7}[a]
+  \end{align*}
+\end{proof}
+
+\begin{proof}[\pf{ex:7.1.7}(e)]
+  We have
+  \begin{align*}
+         & \T \text{ is diagonalizable}                                                                                                                \\
+    \iff & \forall i \in \set{1, \dots, k}, \vs{E}_{\lambda_i} = \vs{K}_{\lambda_i}                                              &  & \by{7.1.5}       \\
+    \iff & \forall i \in \set{1, \dots, k}, \ns{\T - \lambda_i \IT[\V]} = \bigcup_{m = 1}^\infty \ns{(\T - \lambda_i \IT[\V])^m} &  & \by{7.1.4}       \\
+    \iff & \forall i \in \set{1, \dots, k}, \rk{\T - \lambda_i \IT[\V]} = \rk{(\T - \lambda_i \IT[\V])^2}.                       &  & \by{ex:7.1.7}[d]
+  \end{align*}
+\end{proof}
+
+\begin{proof}[\pf{ex:7.1.7}(f)]
+  Let \(\lambda\) be an eigenvalue of \(\T_{\W}\).
+  Since
+  \begin{align*}
+             & \T \text{ is diagonalizable}                                                              \\
+    \implies & \rk{\T - \lambda \IT[\V]} = \rk{(\T - \lambda \IT[\V])^2}           &  & \by{ex:7.1.7}[e] \\
+    \implies & \ns{\T - \lambda \IT[\V]} = \ns{(\T - \lambda \IT[\V])^2}           &  & \by{ex:7.1.7}[c] \\
+    \implies & \ns{\T_{\W} - \lambda \IT[\V]} = \ns{(\T_{\W} - \lambda \IT[\V])^2} &  & \by{5.4.1}       \\
+    \implies & \rk{\T_{\W} - \lambda \IT[\V]} = \rk{(\T_{\W} - \lambda \IT[\V])^2} &  & \by{2.3}
+  \end{align*}
+  and \(\lambda\) is arbitrary, by \cref{ex:7.1.7}(e) we see that \(\T_{\W}\) is diagonalizable.
+\end{proof}
+
+\begin{ex}\label{ex:7.1.8}
+  Use \cref{7.4} to prove that the vectors \(\seq{v}{1,,k}\) in the statement of \cref{7.3} are unique.
+\end{ex}
+
+\begin{proof}[\pf{ex:7.1.8}]
+  By \cref{5.2.7,7.4} we have \(\V = \vs{K}_{\lambda_1} \oplus \cdots \oplus \vs{K}_{\lambda_k}\).
+  Thus by \cref{5.10}(c) we see that \(\seq{v}{1,,k}\) are unique.
 \end{proof}
