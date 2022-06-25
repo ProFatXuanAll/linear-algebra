@@ -1,6 +1,175 @@
 \section{The Jordan Canonical Form II}\label{sec:7.2}
 
+\begin{defn}\label{7.2.1}
+  For the purposes of this section, we fix a linear operator \(\T\) on an \(n\)-dimensional vector space \(\V\) over \(\F\) such that the characteristic polynomial of \(\T\) splits.
+  Let \(\seq{\lambda}{1,,k}\) be the distinct eigenvalues of \(\T\).
+
+  By \cref{7.7}, each generalized eigenspace \(\vs{K}_{\lambda_i}\) contains an ordered basis \(\beta_i\) consisting of a union of disjoint cycles of generalized eigenvectors corresponding to \(\lambda_i\).
+  So by \cref{7.4}(b) and \cref{7.5}, the union \(\beta = \bigcup_{i = 1}^k \beta_i\) is a Jordan canonical basis for \(\T\).
+  For each \(i \in \set{1, \dots, k}\), let \(\T_i\) be the restriction of \(\T\) to \(\vs{K}_{\lambda_i}\), and let \(A_i = [\T_i]_{\beta_i}\).
+  Then \(A_i\) is a Jordan canonical form of \(\T_i\), and
+  \[
+    J = [\T]_{\beta} = \begin{pmatrix}
+      A_1    & \zm    & \cdots & \zm    \\
+      \zm    & A_2    & \cdots & \zm    \\
+      \vdots & \vdots &        & \vdots \\
+      \zm    & \zm    & \cdots & A_k
+    \end{pmatrix}
+  \]
+  is a Jordan canonical form of \(\T\).
+  In this matrix, each \(\zm\) is a zero matrix of appropriate size.
+
+  In this section, we compute the matrices \(A_i\) and the bases \(\beta_i\), thereby computing \(J\) and \(\beta\) as well.
+  While developing a method for finding \(J\), it becomes evident that in some sense the matrices \(A_i\) are unique.
+
+  To aid in formulating the uniqueness theorem for \(J\), we adopt the following convention:
+  The basis \(\beta_i\) for \(\vs{K}_{\lambda_i}\) will henceforth be ordered in such a way that the cycles appear in order of decreasing length.
+  That is, if \(\beta_i\) is a disjoint union of cycles \(\seq{\gamma}{1,,n_i}\) and if the length of the cycle \(\gamma_j\) is \(p_j\), we index the cycles so that \(\seq[\geq]{p}{1,,n_i}\).
+  This ordering of the cycles limits the possible orderings of vectors in \(\beta_i\), which in turn determines the matrix \(A_i\).
+  It is in this sense that \(A_i\) is unique.
+  It then follows that the Jordan canonical form for \(\T\) is unique up to an ordering of the eigenvalues of \(\T\).
+  As we will see, there is no uniqueness theorem for the bases \(\beta_i\) or for \(\beta\)
+  (See \cref{ex:7.2.8}, it is for this reason that we associate the dot diagram with \(\T_i\) rather than with \(\beta_i\)).
+  Specifically, we show that for each \(i \in \set{1, \dots, k}\), the number \(n_i\) of cycles that form \(\beta_i\), and the length \(p_j\) (\(j \in \set{1, \dots, n_i}\)) of each cycle, is completely determined by \(\T\).
+
+  To help us visualize each of the matrices \(A_i\) and ordered bases \(\beta_i\), we use an array of dots called a \textbf{dot diagram} of \(\T_i\), where \(\T_i\) is the restriction of \(\T\) to \(\vs{K}_{\lambda_i}\).
+  Suppose that \(\beta_i\) is a disjoint union of cycles of generalized eigenvectors \(\seq{\gamma}{1,,n_i}\) with lengths \(\seq[\geq]{p}{1,,n_i}\), respectively.
+  The dot diagram of \(\T_i\) contains one dot for each vector in \(\beta_i\), and the dots are configured according to the following rules.
+  \begin{itemize}
+    \item The array consists of \(n_i\) columns (one column for each cycle).
+    \item Counting from left to right, the \(j\)th column consists of the \(p_j\) dots that correspond to the vectors of \(\gamma_j\) starting with the initial vector at the top and continuing down to the end vector.
+  \end{itemize}
+
+  Denote the end vectors of the cycles by \(\seq{v}{1,,n_i}\).
+  In the following dot diagram of \(\T_i\), each dot is labeled with the name of the vector in \(\beta_i\) to which it corresponds.
+  \begin{align*}
+     & \bullet (\T - \lambda_i \IT[\V])^{p_1 - 1}(v_1) &  & \bullet (\T - \lambda_i \IT[\V])^{p_2 - 1}(v_2) &  & \cdots &  & \bullet (\T - \lambda_i \IT[\V])^{p_{n_i} - 1}(v_{n_i}) \\
+     & \bullet (\T - \lambda_i \IT[\V])^{p_1 - 2}(v_1) &  & \bullet (\T - \lambda_i \IT[\V])^{p_2 - 2}(v_2) &  & \cdots &  & \bullet (\T - \lambda_i \IT[\V])^{p_{n_i} - 2}(v_{n_i}) \\
+     & \vdots                                          &  & \vdots                                          &  &        &  & \vdots                                                  \\
+     &                                                 &  &                                                 &  &        &  & \bullet (\T - \lambda_i \IT[\V])(v_{n_i})               \\
+     &                                                 &  &                                                 &  &        &  & \bullet v_{n_i}                                         \\
+     &                                                 &  & \bullet (\T - \lambda_i \IT[\V])(v_2)           &  &        &  &                                                         \\
+     &                                                 &  & \bullet v_2                                     &  &        &  &                                                         \\
+     & \bullet (\T - \lambda_i \IT[\V])(v_1)           &  &                                                 &  &        &  &                                                         \\
+     & \bullet v_1                                     &  &                                                 &  &        &  &
+  \end{align*}
+  Notice that the dot diagram of \(\T_i\) has \(n_i\) columns (one for each cycle) and \(p_1\) rows.
+  Since \(\seq[\geq]{p}{1,,n_i}\), the columns of the dot diagram become shorter (or at least not longer) as we move from left to right.
+
+  Now let \(r_j\) denote the number of dots in the \(j\)th row of the dot diagram.
+  Observe that \(\seq[\geq]{r}{1,,p_1}\).
+  Furthermore, the diagram can be reconstructed from the values of the \(r_i\)'s.
+  The proofs of these facts, which are combinatorial in nature, are treated in \cref{ex:7.2.9}.
+\end{defn}
+
+\begin{thm}\label{7.9}
+  Using the notations in \cref{7.2.1}.
+  For any positive integer \(r\), the vectors in \(\beta_i\) that are associated with the dots in the first \(r\) rows of the dot diagram of \(\T_i\) constitute a basis for \(\ns{(\T - \lambda_i \IT[\V])^r}\) over \(\F\).
+  Hence the number of dots in the first \(r\) rows of the dot diagram equals \(\nt{(\T - \lambda_i \IT[\V])^r}\).
+\end{thm}
+
+\begin{proof}[\pf{7.9}]
+  By \cref{7.1.4} \(\ns{(\T - \lambda_i \IT[\V])^r} \subseteq \vs{K}_{\lambda_i}\), and \(\vs{K}_{\lambda_i}\) is invariant under \((\T - \lambda_i \IT[\V])^r\).
+  Let \(\U\) denote the restriction of \((\T - \lambda_i \IT[\V])^r\) to \(\vs{K}_{\lambda_i}\).
+  By \cref{7.1}(b), \(\ns{(\T - \lambda_i \IT[\V])^r} = \ns{\U}\), and hence it suffices to establish the theorem for \(\U\).
+  Now define
+  \[
+    S_1 = \set{x \in \beta_i : \U(x) = \zv} \quad \text{and} \quad S_2 = \set{x \in \beta_i : \U(x) \neq \zv}.
+  \]
+  Let \(a\) and \(b\) denote the number of vectors in \(S_1\) and \(S_2\), respectively, and let \(m_i = \dim(\vs{K}_{\lambda_i})\).
+  Then \(a + b = m_i\).
+  For any \(x \in \beta_i\), \(x \in S_1\) iff \(x\) is one of the first \(r\) vectors of a cycle (\cref{7.1.6}), and this is true iff \(x\) corresponds to a dot in the first \(r\) rows of the dot diagram (\cref{7.2.1}).
+  Hence \(a\) is the number of dots in the first \(r\) rows of the dot diagram.
+  For any \(x \in S_2\), the effect of applying \(\U\) to \(x\) is to move the dot corresponding to \(x\) exactly \(r\) places up its column to another dot.
+  It follows that \(\U\) maps \(S_2\) in a one-to-one fashion into \(\beta_i\) (since \(\beta_i\) is linearly independent).
+  Thus \(\set{\U(x) : x \in S_2}\) is a basis for \(\rg{\U}\) over \(\F\) consisting of \(b\) vectors (\cref{2.2}).
+  Hence \(\rk{\U} = b\), and so \(\nt{\U} = m_i - b = a\) (\cref{2.3}).
+  But \(S_1\) is a linearly independent subset of \(\ns{\U}\) consisting of \(a\) vectors;
+  therefore \(S_1\) is a basis for \(\ns{\U}\).
+\end{proof}
+
+\begin{note}
+  In the case that \(r = 1\), \cref{7.9} yields \cref{7.2.2}.
+\end{note}
+
+\begin{cor}\label{7.2.2}
+  Using the notations in \cref{7.2.1}.
+  The dimension of \(\vs{E}_{\lambda_i}\) is \(n_i\).
+  Hence in a Jordan canonical form of \(\T\), the number of Jordan blocks corresponding to \(\lambda_i\) equals the dimension of \(\vs{E}_{\lambda_i}\).
+\end{cor}
+
+\begin{proof}[\pf{7.2.2}]
+  By \cref{5.4} we have \(\vs{E}_{\lambda_i} = \ns{\T - \lambda_i \IT[\V]}\).
+  Thus by \cref{7.9} the first row of the dot diagram of \(\T_i\) constitute a basis for \(\vs{E}_{\lambda_i}\) over \(\F\).
+\end{proof}
+
+\begin{thm}\label{7.10}
+  Using the notations in \cref{7.2.1}.
+  Let \(r_j\) denote the number of dots in the \(j\)th row of the dot diagram of \(\T_i\), the restriction of \(\T\) to \(\vs{K}_{\lambda_i}\).
+  Then the following statements are true.
+  \begin{enumerate}
+    \item \(r_1 = \dim(\V) - \rk{\T - \lambda_i \IT[\V]}\).
+    \item \(r_j = \rk{(\T - \lambda_i \IT[\V])^{j - 1}} - \rk{(\T - \lambda_i \IT[\V])^j}\) if \(j \in \set{2, \dots, p_1}\).
+  \end{enumerate}
+\end{thm}
+
+\begin{proof}[\pf{7.10}]
+  By \cref{7.9}, for \(j \in \set{1, \dots, p_1}\), we have
+  \begin{align*}
+    \seq[+]{r}{1,,j} & = \nt{(\T - \lambda_i \IT[\V])^j}             &  & \by{7.9} \\
+                     & = \dim(\V) - \rk{(\T - \lambda_i \IT[\V])^j}. &  & \by{2.3}
+  \end{align*}
+  Hence \(r_1 = \dim(\V) - \rk{\T - \lambda_i \IT[\V]}\), and for \(j \in \set{2, \dots, p_1}\),
+  \begin{align*}
+    r_j & = (\seq[+]{r}{1,,j}) - (\seq[+]{r}{1,,j-1})                                                               \\
+        & = \pa{\dim(\V) - \rk{(\T - \lambda_i \IT[\V])^j}} - \pa{\dim(\V) - \rk{(\T - \lambda_i \IT[\V])^{j - 1}}} \\
+        & = \rk{(\T - \lambda_i \IT[\V])^{j - 1}} - \rk{(\T - \lambda_i \IT[\V])^j}.
+  \end{align*}
+\end{proof}
+
+\begin{cor}\label{7.2.3}
+  Using the notations in \cref{7.2.1}.
+  For any eigenvalue \(\lambda_i\) of \(\T\), the dot diagram of \(\T_i\) is unique.
+  Thus, subject to the convention that the cycles of generalized eigenvectors for the bases of each generalized eigenspace are listed in order of decreasing length, the Jordan canonical form of a linear operator or a matrix is unique up to the ordering of the eigenvalues.
+\end{cor}
+
+\begin{proof}[\pf{7.2.3}]
+  \cref{7.10} shows that the dot diagram of \(\T_i\) is completely determined by \(\T\) and \(\lambda_i\).
+\end{proof}
+
+\begin{thm}\label{7.11}
+  Let \(A\) and \(B\) be \(n \times n\) matrices, each having Jordan canonical forms computed according to the conventions of this section.
+  Then \(A\) and \(B\) are similar iff they have (up to an ordering of their eigenvalues) the same Jordan canonical form.
+\end{thm}
+
+\begin{proof}[\pf{7.11}]
+  If \(A\) and \(B\) have the same Jordan canonical form \(J\), then \(A\) and \(B\) are each similar to \(J\) and hence are similar to each other.
+
+  Conversely, suppose that \(A\) and \(B\) are similar.
+  Then \(A\) and \(B\) have the same eigenvalues (\cref{ex:5.1.12}).
+  Let \(J_A\) and \(J_B\) denote the Jordan canonical forms of \(A\) and \(B\), respectively, with the same ordering of their eigenvalues.
+  Then \(A\) is similar to both \(J_A\) and \(J_B\), and therefore, by the \cref{2.5.3}, \(J_A\) and \(J_B\) are matrix representations of \(\L_A\).
+  Hence \(J_A\) and \(J_B\) are Jordan canonical forms of \(\L_A\). Thus \(J_A = J_B\) by the \cref{7.2.3}.
+\end{proof}
+
+\begin{cor}\label{7.2.4}
+  A linear operator \(\T\) on a finite-dimensional vector space \(\V\) over \(\F\) is diagonalizable iff its Jordan canonical form is a diagonal matrix.
+  Hence \(\T\) is diagonalizable iff the Jordan canonical basis for \(\T\) consists of eigenvectors of \(\T\).
+\end{cor}
+
+\begin{proof}[\pf{7.2.4}]
+  By \cref{7.1.5,7.2.3} we see that this is true.
+\end{proof}
+
 \exercisesection
+
+\begin{ex}\label{ex:7.2.8}
+
+\end{ex}
+
+\begin{ex}\label{ex:7.2.9}
+
+\end{ex}
 
 \begin{ex}\label{ex:7.2.20}
 \end{ex}
