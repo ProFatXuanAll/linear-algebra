@@ -432,6 +432,151 @@
   \end{align*}
 \end{proof}
 
+\begin{defn}\label{7.2.5}
+  A linear operator \(\T\) on a vector space \(\V\) is called \textbf{nilpotent} if \(\T^p = \zT\) for some positive integer \(p\).
+  An \(n \times n\) matrix \(A\) is called \textbf{nilpotent} if \(A^p = \zm\) for some positive integer \(p\).
+\end{defn}
+
+\begin{ex}\label{ex:7.2.11}
+  Let \(\T\) be a linear operator on a finite-dimensional vector space \(\V\) over \(\F\), and let \(\beta\) be an ordered basis for \(\V\) over \(\F\).
+  Prove that \(\T\) is nilpotent iff \([\T]_{\beta}\) is nilpotent.
+\end{ex}
+
+\begin{proof}[\pf{ex:7.2.11}]
+  We have
+  \begin{align*}
+         & \T \text{ is nilpotent}                                                                            \\
+    \iff & \exists p \in \Z^+ : \T^p = \zT                                              &  & \by{7.2.5}       \\
+    \iff & \exists p \in \Z^+ : ([\T]_{\beta})^p = [\T^p]_{\beta} = [\zT]_{\beta} = \zm &  & \by{2.11,2.1.13} \\
+    \iff & [\T]_{\beta} \text{ is nilpotent}.                                           &  & \by{7.2.5}
+  \end{align*}
+\end{proof}
+
+\begin{ex}\label{ex:7.2.12}
+  Prove that any square upper triangular matrix with each diagonal entry equal to zero is nilpotent.
+\end{ex}
+
+\begin{proof}[\pf{ex:7.2.12}]
+  Let \(A \in \ms[n][n][\F]\) be an upper triangular matrix with each diagonal entry equal to zero.
+  Let \(\beta = \set{\seq{e}{1,,n}}\) be the standard ordered basis for \(\vs{F}^n\) over \(\F\).
+  By \cref{2.2.4} we have \(\L_A(e_1) = \zv\) and
+  \[
+    \forall i \in \set{2, \dots, n}, \L_A(e_i) = \sum_{k = 1}^{i - 1} A_{k i} e_k.
+  \]
+  This means \(\L_A^n(e_i) = \zv\) for all \(i \in \set{1, \dots, n}\).
+  Thus by \cref{2.1.13} \(\L_A^p = \zT\).
+  By \cref{7.2.5} this means \(\L_A\) is nilpotent.
+  By \cref{ex:7.2.11} we conclude that \(A\) is nilpotent.
+\end{proof}
+
+\begin{ex}\label{ex:7.2.13}
+  Let \(\T\) be a nilpotent operator on an \(n\)-dimensional vector space \(\V\) over \(\F\), and suppose that \(p\) is the smallest positive integer for which \(\T^p = \zT\).
+  Prove the following results.
+  \begin{enumerate}
+    \item \(\ns{\T^i} \subseteq \ns{\T^{i + 1}}\) for every positive integer \(i\).
+    \item There is a sequence of ordered bases \(\seq{\beta}{1,,p}\) such that \(\beta_i\) is a basis for \(\ns{\T^i}\) over \(\F\) and \(\beta_{i + 1}\) contains \(\beta_i\) for \(i \in \set{1, \dots, p - 1}\).
+    \item Let \(\beta = \beta_p\) be the ordered basis for \(\ns{\T^p} = \V\) over \(\F\) in (b).
+          Then \([\T]_{\beta}\) is an upper triangular matrix with each diagonal entry equal to zero.
+    \item The characteristic polynomial of \(\T\) is \((-1)^n t^n\).
+          Hence the characteristic polynomial of \(\T\) splits, and \(0\) is the only eigenvalue of \(\T\).
+  \end{enumerate}
+\end{ex}
+
+\begin{proof}[\pf{ex:7.2.13}(a)]
+  See \cref{ex:7.1.7}(a).
+\end{proof}
+
+\begin{proof}[\pf{ex:7.2.13}(b)]
+  Let \(\beta_1\) be a basis for \(\ns{\T}\) over \(\F\).
+  Since \(\beta_1 \subseteq \ns{\T} \subseteq \ns{\T^2}\), by \cref{1.6.15}(c) we can extend \(\beta_1\) to an ordered basis \(\beta_2\) for \(\ns{\T^2}\) over \(\F\).
+  Similarly we can extend \(\beta_2\) to an ordered basis \(\beta_3\) for \(\ns{\T^3}\) over \(\F\).
+  Continue this process we can construct the sequence \(\seq{\beta}{1,,p}\) which satisfy the requirement of \cref{ex:7.2.13}(b).
+\end{proof}
+
+\begin{proof}[\pf{ex:7.2.13}(c)]
+  Let \(i \in \set{1, \dots, p - 1}\).
+  By \cref{ex:7.1.7}(c) we have \(\ns{\T^i} \neq \ns{\T^{i + 1}}\).
+  Thus
+  \begin{align*}
+             & \beta_{i + 1} \setminus \beta_i \neq \varnothing                   &  & \by{ex:7.2.13}[b]                 \\
+    \implies & \forall v \in \beta_{i + 1} \setminus \beta_i, \begin{dcases}
+                                                                \T^i(v) \neq \zv \\
+                                                                \T^{i + 1}(v) = \zv
+                                                              \end{dcases}      &  & \by{2.1.10}                         \\
+    \implies & \forall v \in \beta_{i + 1} \setminus \beta_i, \T(v) \in \ns{\T^i} &  & \by{2.1.10}                       \\
+    \implies & \forall v \in \beta_{i + 1}, \T(v) \in \ns{\T^i}                   &  & (\beta_i \subseteq \beta_{i + 1}) \\
+    \implies & \T(\beta_{i + 1}) \subseteq \ns{\T^i} = \spn{\beta_i}.             &  & \by{ex:7.2.13}[b]
+  \end{align*}
+  By \cref{2.2.4} this means \([\T]_{\beta}\) is an upper triangular matrix with each diagonal entry equal to \(0\).
+\end{proof}
+
+\begin{proof}[\pf{ex:7.2.13}(d)]
+  By \cref{ex:7.2.13}[c] we know that \([\T]_{\beta}\) is an upper triangular matrix with each diagonal entry equal to \(0\).
+  Thus by \cref{ex:4.2.23} we see that the characteristic polynomial of \(\T\) is \((-1)^n t^n\).
+  By \cref{5.2} we know that \(0\) is the only eigenvalue of \(\T\).
+\end{proof}
+
+\begin{ex}\label{ex:7.2.14}
+  Prove the converse of \cref{ex:7.2.13}(d):
+  If \(\T\) is a linear operator on an \(n\)-dimensional vector space \(\V\) over \(\F\) and \((-1)^n t^n\) is the characteristic polynomial of \(\T\), then \(\T\) is nilpotent.
+\end{ex}
+
+\begin{proof}[\pf{ex:7.2.14}]
+  Since the characteristic polynomial of \(\T\) splits, by \cref{7.1.8} we know that \(\T\) has a Jordan form and a Jordan canonical basis \(\beta\).
+  By \cref{5.2} we know that \(0\) is the only eigenvalue of \(\T\), thus by \cref{7.1.1} \([\T]_{\beta}\) is an upper triangular matrix with each diagonal entry equal to \(0\).
+  By \cref{ex:7.2.12} we know that \([\T]_{\beta}\) is nilpotent.
+  Thus by \cref{ex:7.2.11} we conclude that \(\T\) is nilpotent.
+\end{proof}
+
+\begin{ex}\label{ex:7.2.15}
+  Give an example of a linear operator \(\T\) on a finite-dimensional vector space \(\V\) over \(\F\) such that \(\T\) is not nilpotent, but zero is the only eigenvalue of \(\T\).
+  Characterize all such operators.
+\end{ex}
+
+\begin{proof}[\pf{ex:7.2.15}]
+  First we give an example as required.
+  Let \(\V = \R^3\) and let \(\F = \R\).
+  Define
+  \[
+    A = \begin{pmatrix}
+      0 & 0  & 0 \\
+      0 & 0  & 1 \\
+      0 & -1 & 0
+    \end{pmatrix}.
+  \]
+  Then \(\det(A - t I_3) = (-t)(t^2 + 1)\).
+  Thus the characteristic polynomial of \(A\) does not split and \(0\) is the only eigenvalue of \(A\).
+  Since \(A^3 = -A\), we know that \(A^p \neq \zm\) for all \(p \in \Z^+\).
+  Thus by \cref{7.2.5} \(A\) is not nilpotent.
+
+  Now we characterize all such operator.
+  By \cref{ex:7.2.13}(d) and \cref{ex:7.2.14} we know that \(\T\) is nilpotent iff the characteristic polynomial of \(\T\) is \((-1)^n t^n\).
+  Thus \(\T\) is not nilpotent iff the characteristic polynomial of \(\T\) is not \((-1)^n t^n\).
+\end{proof}
+
+\begin{ex}\label{ex:7.2.16}
+  Let \(\T\) be a nilpotent linear operator on a finite-dimensional vector space \(\V\) over \(\F\).
+  Recall from \cref{ex:7.2.13} that \(\lambda = 0\) is the only eigenvalue of \(\T\), and hence \(\V = \vs{K}_0\).
+  Let \(\beta\) be a Jordan canonical basis for \(\T\).
+  Prove that for any positive integer \(i\), if we delete from \(\beta\) the vectors corresponding to the last \(i\) dots in each column of a dot diagram of \(\beta\), the resulting set is a basis for \(\rg{\T^i}\) over \(\F\).
+  (If a column of the dot diagram contains fewer than \(i\) dots, all the vectors associated with that column are removed from \(\beta\).)
+\end{ex}
+
+\begin{proof}[\pf{ex:7.2.16}]
+  Let \(\gamma\) be a cycle in \(\beta\) with length \(p\) and end vector \(x\).
+  By \cref{7.1.6} we have
+  \[
+    \gamma = \set{\T^{p - 1}(x), \dots, \T^i(x), \T^{i - 1}(x), \dots, \T(x), x}.
+  \]
+  Let \(\alpha\) be the set obtained from removing the last \(i\) vector in \(\gamma\), i.e.,
+  \[
+    \alpha = \set{\T^{p - 1}(x), \dots, \T^i(x)}.
+  \]
+  Note that \(\alpha = \varnothing\) when \(p \leq i\).
+  If \(\alpha \neq \varnothing\), then each vector in \(\alpha\) is mapped by \(\T^i\) from exactly one vector in \(\gamma \setminus \alpha\).
+  Thus by \cref{2.2} \(\alpha\) is linearly independent and the union of all \(\alpha\) is a basis for \(\rg{\T^i}\) over \(\F\).
+\end{proof}
+
 \begin{ex}\label{ex:7.2.20}
 \end{ex}
 
