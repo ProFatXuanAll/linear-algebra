@@ -256,12 +256,181 @@
 \end{proof}
 
 \begin{ex}\label{ex:7.2.8}
-
+  Let \(\T\) be a linear operator on a finite-dimensional vector space \(\V\) over \(\F\), and suppose that the characteristic polynomial of \(\T\) splits.
+  Let \(\beta\) be a Jordan canonical basis for \(\T\).
+  \begin{enumerate}
+    \item Prove that for any nonzero scalar \(c\), \(\set{cx : x \in \beta}\) is a Jordan canonical basis for \(\T\).
+    \item Suppose that \(\gamma\) is one of the cycles of generalized eigenvectors that forms \(\beta\), and suppose that \(\gamma\) corresponds to the eigenvalue \(\lambda\) and has length greater than \(1\).
+          Let \(x\) be the end vector of \(\gamma\), and let \(y\) be a nonzero vector in \(\vs{E}_{\lambda}\).
+          Let \(\gamma'\) be the ordered set obtained from \(\gamma\) by replacing \(x\) by \(x + y\).
+          Prove that \(\gamma'\) is a cycle of generalized eigenvectors corresponding to \(\lambda\), and that if \(\gamma'\) replaces \(\gamma\) in the union that defines \(\beta\), then the new union is also a Jordan canonical basis for \(\T\).
+  \end{enumerate}
 \end{ex}
+
+\begin{proof}[\pf{ex:7.2.8}(a)]
+  Let \(\lambda\) be an eigenvalue of \(\T\) and let \(x \in \beta\) be an generalized eigenvector of \(\T\) corresponding to \(\lambda\).
+  If \(x \in \vs{E}_{\lambda}\), then by \cref{5.1.2} we have \(\T(x) = \lambda x\).
+  If \(x \in \vs{K}_{\lambda} \setminus \vs{E}_{\lambda}\), then by \cref{7.1.1} there exists a \(v \in \beta\) such that \(\T(x) = \lambda x + v\).
+  In either cases we have
+  \[
+    \T(cx) = c \T(x) = \begin{dcases}
+      c \lambda x \\
+      c \lambda x + cv
+    \end{dcases} = \begin{dcases}
+      \lambda (cx) \\
+      \lambda (cx) + (cv)
+    \end{dcases}.
+  \]
+  Thus by \cref{7.1.1} \(\set{cx : x \in \beta}\) is a Jordan canonical basis for \(\T\).
+\end{proof}
+
+\begin{proof}[\pf{ex:7.2.8}(b)]
+  Since
+  \begin{align*}
+    (\T - \lambda \IT[\V])(x + y) & = (\T - \lambda \IT[\V])(x) + (\T - \lambda \IT[\V])(y) &  & \by{2.1.1}[a] \\
+                                  & = (\T - \lambda \IT[\V])(x) + \zv                       &  & \by{5.4}      \\
+                                  & = (\T - \lambda \IT[\V])(x),                            &  & \by{1.2.1}
+  \end{align*}
+  we see that \((\T - \lambda \IT[\V])^p(x + y) = (\T - \lambda \IT[\V])^p(x)\) for any \(p \in \Z^+\).
+  Thus \(\gamma'\) is a cycle of generalized eigenvectors corresponding to \(\lambda\), and the rest claim follows.
+\end{proof}
 
 \begin{ex}\label{ex:7.2.9}
-
+  Suppose that a dot diagram has \(k\) columns and \(m\) rows with \(p_j\) dots in column \(j\) and \(r_i\) dots in row \(i\).
+  Prove the following results.
+  \begin{enumerate}
+    \item \(m = p_1\) and \(k = r_1\).
+    \item We have
+          \begin{align*}
+             & \forall j \in \set{1, \dots, k}, p_j = \max \set{i \in \set{1, \dots, m} : r_i \geq j}; \\
+             & \forall i \in \set{1, \dots, m}, r_i = \max \set{j \in \set{1, \dots, k} : p_j \geq i}.
+          \end{align*}
+    \item \(\seq[\geq]{r}{1,,m}\).
+    \item Deduce that the number of dots in each column of a dot diagram is completely determined by the number of dots in the rows.
+  \end{enumerate}
 \end{ex}
+
+\begin{proof}[\pf{ex:7.2.9}(a)]
+  By \cref{7.2.1} we know that \(p_1\) is the column with the most number of dots.
+  Thus \(m = p_1\).
+  Since the number of columns equals the number of disjoint cycles, we have \(k = r_1\).
+\end{proof}
+
+
+\begin{proof}[\pf{ex:7.2.9}(b)]
+  We first fix \(k\) and use induction on \(m\) to prove that
+  \[
+    \forall i \in \set{1, \dots, m}, r_i = \max \set{j \in \set{1, \dots, k} : p_j \geq i}.
+  \]
+  For \(m = 1\), our dot diagram have \(1\) row and \(k\) columns.
+  This means the first row has \(k\) dots and each column has one dot.
+  Thus
+  \begin{align*}
+    \forall i \in \set{1}, r_i & = k                                                    \\
+                               & = \max \set{1, \dots, k}                               \\
+                               & = \max \set{j \in \set{1, \dots, k} : 1 = p_j \geq i}.
+  \end{align*}
+  So the base case holds.
+  Suppose inductively that for some \(m \geq 1\) the statement is true.
+  We need to show that for \(m + 1\) the statement is also true.
+  So suppose that there are \(k\) columns and \(m + 1\) rows in a dot diagram.
+  By \cref{7.2.1} we see that columns in dot diagram are ordered by decreasing length.
+  Thus the first \(r_{m + 1}\) columns are the longest columns of all.
+  Since there are \(m + 1\) rows, we know that the first \(r_{m + 1}\) columns have \(m + 1\) dots and the rest \((k - r_{m + 1})\) columns have less than \(m + 1\) dots.
+  Thus we have
+  \begin{align*}
+             & \begin{dcases}
+                 \forall j \in \set{1, \dots, r_{m + 1}}, p_j = m + 1 \\
+                 \forall j \in \set{r_{m + 1} + 1, \dots, k}, p_j < m + 1
+               \end{dcases} \\
+    \implies & r_{m + 1} = \max \set{1, \dots, r_{m + 1}}                                   \\
+             & = \max \set{j \in \set{1, \dots, r_{m + 1}} : p_j \geq m + 1}                \\
+             & = \max \set{j \in \set{1, \dots, k} : p_j \geq m + 1}.
+  \end{align*}
+  By induction hypothesis we have
+  \[
+    \forall i \in \set{1, \dots, m + 1}, r_i = \max \set{j \in \set{1, \dots, k} : p_j \geq i}.
+  \]
+  This closes the induction.
+
+  Now we fix \(m\) and use induction on \(k\) to prove that
+  \[
+    \forall j \in \set{1, \dots, k}, p_j = \max \set{i \in \set{1, \dots, m} : r_i \geq j}.
+  \]
+  For \(k = 1\), our dot diagram have \(m\) rows and \(1\) column.
+  This means the first column has \(m\) dots and each row has one dot.
+  Thus
+  \begin{align*}
+    \forall j \in \set{1}, p_j & = m                                                    \\
+                               & = \max \set{1, \dots, m}                               \\
+                               & = \max \set{i \in \set{1, \dots, m} : 1 = r_i \geq j}.
+  \end{align*}
+  So the base case holds.
+  Suppose inductively that for some \(k \geq 1\) the statement is true.
+  We need to show that for \(k + 1\) the statement is also true.
+  So suppose that there are \(k + 1\) columns and \(m\) rows in a dot diagram.
+  By \cref{7.2.1} we see that columns in dot diagram are ordered by decreasing length.
+  Thus the first \(p_{k + 1}\) rows are the longest rows of all.
+  Since there are \(k + 1\) columns, we know that the first \(p_{k + 1}\) rows have \(k + 1\) dots and the rest \((m - p_{k + 1})\) rows have less than \(k + 1\) dots.
+  Thus we have
+  \begin{align*}
+             & \begin{dcases}
+                 \forall i \in \set{1, \dots, p_{k + 1}}, r_i = k + 1 \\
+                 \forall i \in \set{p_{k + 1} + 1, \dots, m}, r_i < k + 1
+               \end{dcases} \\
+    \implies & p_{k + 1} = \max \set{1, \dots, p_{k + 1}}                                   \\
+             & = \max \set{i \in \set{1, \dots, p_{k + 1}} : r_i \geq k + 1}                \\
+             & = \max \set{i \in \set{1, \dots, m} : r_i \geq k + 1}.
+  \end{align*}
+  By induction hypothesis we have
+  \[
+    \forall j \in \set{1, \dots, k + 1}, p_j = \max \set{i \in \set{1, \dots, m} : r_i \geq j}.
+  \]
+  This closes the induction.
+\end{proof}
+
+\begin{proof}[\pf{ex:7.2.9}(c)]
+  Suppose that \(i_1, i_2 \in \set{1, \dots, m}\) and \(i_1 < i_2\).
+  Since
+  \begin{align*}
+             & i_1 < i_2                                                                                                                      \\
+    \implies & \set{j \in \set{1, \dots, k} : p_j \geq i_2} \subseteq \set{j \in \set{1, \dots, k} : p_j \geq i_1}                            \\
+    \implies & \max \set{j \in \set{1, \dots, k} : p_j \geq i_2} \leq \max \set{j \in \set{1, \dots, k} : p_j \geq i_1} &  & \by{7.2.1}       \\
+    \implies & r_{i_2} \leq r_{i_1}                                                                                     &  & \by{ex:7.2.9}[b]
+  \end{align*}
+  and \(i_1, i_2\) are arbitrary, we have \(\seq[\geq]{r}{1,,m}\).
+\end{proof}
+
+\begin{proof}[\pf{ex:7.2.9}(d)]
+  By \cref{ex:7.2.9}(b) we have
+  \[
+    \forall j \in \set{1, \dots, k}, p_j = \max{i \in \set{1, \dots, m} : r_i \geq j}.
+  \]
+  This means when number of dots in the rows of a dot diagram is defined, the number of dots in the columns of the same dot diagram is also defined.
+\end{proof}
+
+\begin{ex}\label{ex:7.2.10}
+  Let \(\T\) be a linear operator whose characteristic polynomial splits, and let \(\lambda\) be an eigenvalue of \(\T\).
+  \begin{enumerate}
+    \item Prove that \(\dim(\vs{K}_{\lambda})\) is the sum of the lengths of all the cycles corresponding to \(\lambda\) in the Jordan canonical form of \(\T\).
+    \item Deduce that \(\vs{E}_{\lambda} = \vs{K}_{\lambda}\) iff all the Jordan blocks corresponding to \(\lambda\) are \(1 \times 1\) matrices.
+  \end{enumerate}
+\end{ex}
+
+\begin{proof}[\pf{ex:7.2.10}(a)]
+  By \cref{7.6} we know that the union of disjoint cycles are linearly independent.
+  By \cref{7.5} each cycle forms a Jordan block corresponding to \(\lambda\), and the union of cycles is a basis for \(\vs{K}_{\lambda}\).
+  Thus \(\dim(\vs{K}_{\lambda})\) is the sum of the lengths of all cycles corresponding to \(\lambda\).
+\end{proof}
+
+\begin{proof}[\pf{ex:7.2.10}(b)]
+  We have
+  \begin{align*}
+         & \vs{E}_{\lambda} = \vs{K}_{\lambda}                                                         \\
+    \iff & \text{each cycle has length } 1                                             &  & \by{5.4}   \\
+    \iff & \text{all Jordan blocks corresponding to } \lambda \text{ are } 1 \times 1. &  & \by{7.1.1}
+  \end{align*}
+\end{proof}
 
 \begin{ex}\label{ex:7.2.20}
 \end{ex}
