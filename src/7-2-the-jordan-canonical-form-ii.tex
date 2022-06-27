@@ -404,7 +404,7 @@
 \begin{proof}[\pf{ex:7.2.9}(d)]
   By \cref{ex:7.2.9}(b) we have
   \[
-    \forall j \in \set{1, \dots, k}, p_j = \max{i \in \set{1, \dots, m} : r_i \geq j}.
+    \forall j \in \set{1, \dots, k}, p_j = \max \set{i \in \set{1, \dots, m} : r_i \geq j}.
   \]
   This means when number of dots in the rows of a dot diagram is defined, the number of dots in the columns of the same dot diagram is also defined.
 \end{proof}
@@ -511,7 +511,7 @@
 \end{proof}
 
 \begin{proof}[\pf{ex:7.2.13}(d)]
-  By \cref{ex:7.2.13}[c] we know that \([\T]_{\beta}\) is an upper triangular matrix with each diagonal entry equal to \(0\).
+  By \cref{ex:7.2.13}(c) we know that \([\T]_{\beta}\) is an upper triangular matrix with each diagonal entry equal to \(0\).
   Thus by \cref{ex:4.2.23} we see that the characteristic polynomial of \(\T\) is \((-1)^n t^n\).
   By \cref{5.2} we know that \(0\) is the only eigenvalue of \(\T\).
 \end{proof}
@@ -573,8 +573,244 @@
     \alpha = \set{\T^{p - 1}(x), \dots, \T^i(x)}.
   \]
   Note that \(\alpha = \varnothing\) when \(p \leq i\).
-  If \(\alpha \neq \varnothing\), then each vector in \(\alpha\) is mapped by \(\T^i\) from exactly one vector in \(\gamma \setminus \alpha\).
+  If \(\alpha \neq \varnothing\), then each vector in \(\alpha\) is mapped by \(\T^i\) from exactly one vector in \(\gamma\).
   Thus by \cref{2.2} \(\alpha\) is linearly independent and the union of all \(\alpha\) is a basis for \(\rg{\T^i}\) over \(\F\).
+\end{proof}
+
+\begin{ex}\label{ex:7.2.17}
+  Let \(\T\) be a linear operator on a finite-dimensional vector space \(\V\) over \(\F\) such that the characteristic polynomial of \(\T\) splits, and let \(\seq{\lambda}{1,,k}\) be the distinct eigenvalues of \(\T\).
+  Let \(\lt{S} : \V \to \V\) be the mapping defined by
+  \[
+    \lt{S}(x) = \seq[+]{\lambda,v}{1,,k},
+  \]
+  where, for each \(i \in \set{1, \dots, k}\), \(v_i\) is the unique vector in \(\vs{K}_{\lambda_i}\) such that \(x = \seq[+]{v}{1,,k}\).
+  (This unique representation is guaranteed by \cref{7.3} and \cref{ex:7.1.8}.)
+  \begin{enumerate}
+    \item Prove that \(\lt{S}\) is a diagonalizable linear operator on \(\V\).
+    \item Let \(\U = \T - \lt{S}\).
+          Prove that \(\U\) is nilpotent and commutes with \(\lt{S}\), that is, \(\lt{S} \U = \U \lt{S}\).
+  \end{enumerate}
+\end{ex}
+
+\begin{proof}[\pf{ex:7.2.17}(a)]
+  First we show that \(\lt{S} \in \ls(\V)\).
+  Let \(x, y \in \V\) and let \(c \in \F\).
+  By \cref{7.3} there exist \(\tuple{v}{1,,k}, \tuple{u}{1,,k} \in \prod_{i = 1}^k \vs{K}_{\lambda_i}\) such that \(x = \sum_{i = 1}^k v_i\) and \(y = \sum_{i = 1}^k u_i\).
+  Then we have
+  \begin{align*}
+    \lt{S}(cx + y) & = \lt{S}\pa{\sum_{i = 1}^k c v_i + u_i}                                   &  & \by{7.3}   \\
+                   & = \sum_{i = 1}^k \lambda_i (c v_i + u_i)                                                  \\
+                   & = c \pa{\sum_{i = 1}^k \lambda_i v_i} + \pa{\sum_{i = 1}^k \lambda_i u_i} &  & \by{1.2.1} \\
+                   & = c \lt{S}(x) + \lt{S}(y).
+  \end{align*}
+  Thus by \cref{2.1.2}(b) \(\lt{S} \in \ls(\V)\).
+
+  Now we show that \(\lt{S}\) is diagonalizable.
+  Since
+  \[
+    \forall i \in \set{1, \dots, k}, \forall v \in \vs{K}_{\lambda_i}, \lt{S}(v) = \lambda_i v
+  \]
+  and \(\V = \vs{K}_{\lambda_1} \oplus \cdots \oplus \vs{K}_{\lambda_k}\) (\cref{7.8}), we see that every vectors of \(\V\) is an eigenvector of \(\lt{S}\) (\cref{5.1.2}).
+  Thus by \cref{5.1.1} \(\lt{S}\) is diagonalizable.
+\end{proof}
+
+\begin{proof}[\pf{ex:7.2.17}(b)]
+  Fix one \(i \in \set{1, \dots, k}\) and let \(v \in \vs{K}_{\lambda_i}\).
+  Let \(p\) be the longest cycle of all \(\vs{K}_{\lambda_1}, \dots, \vs{K}_{\lambda_k}\)
+  (\(p\) is well-defined since \(\V\) is finite-dimensional).
+  Since
+  \begin{align*}
+    \U(v) & = \T(v) - \lt{S}(v)                           \\
+          & = \T(v) - \lambda_i v         &  & \by{7.3}   \\
+          & = (\T - \lambda_i \IT[\V])(v) &  & \by{2.2.5} \\
+          & \in \vs{K}_{\lambda_i},       &  & \by{7.1.6}
+  \end{align*}
+  we see that
+  \begin{align*}
+    \U^p(v) & = (\T - \lambda_i \IT[\V])^p(v)                 \\
+            & = \zv.                          &  & \by{7.1.6}
+  \end{align*}
+  Since \(v\) is arbitrary, we see that \(\U^p(\vs{K}_{\lambda_i}) = \set{\zv}\).
+  Since \(i\) is arbitrary, by \cref{2.1.13,7.8} we see that \(\U^p = \zT\).
+  Thus by \cref{7.2.5} \(\U\) is nilpotent.
+
+  Now we show that \(\U \lt{S} = \lt{S} \U\).
+  Since
+  \begin{align*}
+    \U \lt{S}(v) & = \U(\lambda_i v)                       &  & \by{7.3}                                             \\
+                 & = \lambda_i \U(v)                       &  & \by{2.1.1}[b]                                        \\
+                 & = \lambda_i (\T - \lambda_i \IT[\V])(v)                                                           \\
+                 & = \lt{S}((\T - \lambda_i \IT[\V])(v))   &  & ((\T - \lambda_i \IT[\V])(v) \in \vs{K}_{\lambda_i}) \\
+                 & = \lt{S} \U(v)
+  \end{align*}
+  and \(v\) is arbitrary, we see that \(\U \lt{S} = \lt{S} \U\) on \(\vs{K_{\lambda_i}}\).
+  Since \(i\) is arbitrary, by \cref{2.1.13,7.8} we see that \(\U \lt{S} = \lt{S} \U\) on \(\V\).
+\end{proof}
+
+\begin{ex}\label{ex:7.2.18}
+  Let \(\T\) be a linear operator on a finite-dimensional vector space \(\V\) over \(\C\), and let \(J\) be the Jordan canonical form of \(\T\).
+  Let \(D\) be the diagonal matrix whose diagonal entries are the diagonal entries of \(J\), and let \(M = J - D\).
+  Prove the following results.
+  \begin{enumerate}
+    \item \(M\) is nilpotent.
+    \item \(MD = DM\).
+    \item If \(p\) is the smallest positive integer for which \(M^p = \zm\), then, for any positive integer \(r < p\),
+          \[
+            J^r = D^r + r D^{r - 1} M + \dfrac{r (r - 1)}{2!} D^{r - 2} M^2 + \cdots + r D M^{r - 1} + M^r,
+          \]
+          and, for any positive integer \(r \geq p\),
+          \begin{align*}
+            J^r & = D^r + r D^{r - 1} M + \dfrac{r (r - 1)}{2!} D^{r - 2} M^2 + \cdots \\
+                & \quad + \dfrac{r!}{(r - p + 1)! (p - 1)!} D^{r - p + 1} M^{p - 1}.
+          \end{align*}
+  \end{enumerate}
+\end{ex}
+
+\begin{proof}[\pf{ex:7.2.18}(a)]
+  By \cref{7.1.1} \(M\) is an upper triangular matrix with each diagonal entry equal to zero.
+  Thus by \cref{ex:7.2.12} \(M\) is nilpotent.
+\end{proof}
+
+\begin{proof}[\pf{ex:7.2.18}(b)]
+  Suppose that \(\dim(\V) = n\).
+  Then we have
+  \begin{align*}
+    \forall i, j \in \set{1, \dots, n}, (MD)_{i j} & = \sum_{k = 1}^n M_{i k} D_{k j}    &  & \by{2.3.1} \\
+                                                   & = M_{i j} D_{j j}                   &  & \by{1.3.8} \\
+                                                   & = \begin{dcases}
+                                                         D_{j j} & \text{if } M_{i j} = 1 \\
+                                                         0       & \text{if } M_{i j} = 0
+                                                       \end{dcases} &  & \by{7.1.1}                  \\
+                                                   & = \begin{dcases}
+                                                         D_{i i} & \text{if } M_{i j} = 1 \\
+                                                         0       & \text{if } M_{i j} = 0
+                                                       \end{dcases}; &  & \by{7.1.1}                  \\
+                                                   & = D_{i i} M_{i j}                                   \\
+                                                   & = \sum_{k = 1}^n D_{i k} M_{k j}    &  & \by{1.3.8} \\
+                                                   & = (DM)_{i j}.                       &  & \by{2.3.1}
+  \end{align*}
+  Thus by \cref{1.2.8} \(MD = DM\).
+\end{proof}
+
+\begin{proof}[\pf{ex:7.2.18}(c)]
+  We have
+  \[
+    J^r = (M + D)^r = \sum_{i = 0}^r \binom{r}{i} M^i D^{r - i}
+  \]
+  for \(r < p\) and
+  \[
+    J^r = (M + D)^r = \sum_{i = 0}^{p - 1} \binom{r}{i} M^i D^{r - i}
+  \]
+  for \(r \geq p\) since \(M^p = \zm\).
+\end{proof}
+
+\begin{ex}\label{ex:7.2.19}
+  Let
+  \[
+    J = \begin{pmatrix}
+      \lambda & 1       & 0       & \cdots & 0       \\
+      0       & \lambda & 1       & \cdots & 0       \\
+      0       & 0       & \lambda & \cdots & 0       \\
+      \vdots  & \vdots  & \vdots  &        & \vdots  \\
+      0       & 0       & 0       & \cdots & 1       \\
+      0       & 0       & 0       & \cdots & \lambda
+    \end{pmatrix}
+  \]
+  be the \(m \times m\) Jordan block corresponding to \(\lambda\), and let \(N = J - \lambda I_m\).
+  Prove the following results:
+  \begin{enumerate}
+    \item \(N^m = \zm\), and for \(r \in \set{1, \dots, m - 1}\),
+          \[
+            N_{i j}^r = \begin{dcases}
+              1 & \text{if } j = i + r \\
+              0 & \text{otherwise}
+            \end{dcases}.
+          \]
+    \item For any integer \(r \geq m\),
+          \[
+            J^r = \begin{pmatrix}
+              \lambda^r & r \lambda^{r - 1} & \dfrac{r (r - 1)}{2!} \lambda^{r - 2} & \cdots & \dfrac{r(r - 1) \cdots (r - m + 2)}{(m - 1)!} \lambda^{r - m + 1} \\
+              0         & \lambda^r         & r \lambda^{r - 1}                     & \cdots & \dfrac{r(r - 1) \cdots (r - m + 3)}{(m - 2)!} \lambda^{r - m + 2} \\
+              \vdots    & \vdots            & \vdots                                &        & \vdots                                                            \\
+              0         & 0                 & 0                                     & \cdots & \lambda^r
+            \end{pmatrix}.
+          \]
+    \item \(\Lim_{r \to \infty} J^r\) exists iff one of the following holds:
+          \begin{enumerate}[label=(\roman*)]
+            \item \(\abs{\lambda} < 1\).
+            \item \(\lambda = 1\) and \(m = 1\).
+                  (Note that \(\Lim_{r \to \infty} \lambda^r\) exists under these conditions.
+                  See the discussion preceding \cref{5.13}.)
+          \end{enumerate}
+          Furthermore, \(\Lim_{r \to \infty} J^r\) is the zero matrix if condition (i) holds and is the \(1 \times 1\) matrix \((1)\) if condition (ii) holds.
+    \item Prove \cref{5.13}.
+  \end{enumerate}
+\end{ex}
+
+\begin{proof}[\pf{ex:7.2.19}(a)]
+  We have \(N e_1 = \zv\) and
+  \[
+    \forall i \in \set{2, \dots, m}, N e_i = e_{i - 1}.
+  \]
+  Thus \(N^m e_i = \zv\) for all \(i \in \set{1, \dots, m}\).
+  By \cref{2.1.13} this means \(N^m = \zm\).
+  Since \(N^r e_j = e_{j - r}\) for all \(j \in \set{1, \dots, m}\), by \cref{2.2.4} we see that
+  \[
+    \forall i, j \in \set{1, \dots, m}, N_{i j}^r = \begin{dcases}
+      1 & \text{if } j = i + r \\
+      0 & \text{otherwise}
+    \end{dcases}.
+  \]
+\end{proof}
+
+\begin{proof}[\pf{ex:7.2.19}(b)]
+  By \cref{ex:7.2.18}(c) we have
+  \[
+    J^r = (N + \lambda I_m)^r = \sum_{k = 0}^{m - 1} \binom{r}{k} N^k (\lambda I_m)^{r - k}.
+  \]
+  Let \(i, j \in \set{1, \dots, m}\).
+  Since
+  \begin{align*}
+     & (J^r)_{i j} = \pa{\sum_{k = 0}^{m - 1} \binom{r}{k} N^k (\lambda I_m)^{r - k}}_{i j}                 &  & \by{ex:7.2.18}[c] \\
+     & = \sum_{k = 0}^{m - 1} \binom{r}{k} \pa{N^k (\lambda I_m)^{r - k}}_{i j}                             &  & \by{1.2.9}        \\
+     & = \sum_{k = 0}^{m - 1} \binom{r}{k} \pa{\sum_{p = 1}^m (N^k)_{i p} \pa{(\lambda I_m)^{r - k}}_{p j}} &  & \by{2.3.1}        \\
+     & = \sum_{k = 0}^{m - 1} \binom{r}{k} \pa{(N^k)_{i j} \pa{(\lambda I_m)^{r - k}}_{j j}}                &  & \by{1.3.8}        \\
+     & = \sum_{k = 0}^{m - 1} \binom{r}{k} \pa{(N^k)_{i j} \lambda^{r - k}},                                &  & \by{1.3.8}
+  \end{align*}
+  by \cref{ex:7.2.19}(a) we have
+  \[
+    J^r = \begin{pmatrix}
+      \binom{r}{0} \lambda^r & \binom{r}{1} \lambda^{r - 1} & \binom{r}{2} \lambda^{r - 2} & \cdots & \binom{r}{m - 1} \lambda^{r - (m - 1)} \\
+      0                      & \binom{r}{0} \lambda^r       & \binom{r}{1} \lambda^{r - 1} & \cdots & \binom{r}{m - 2} \lambda^{r - (m - 2)} \\
+      \vdots                 & \vdots                       & \vdots                       &        & \vdots                                 \\
+      0                      & 0                            & 0                            & \cdots & \binom{r}{0} \lambda^r
+    \end{pmatrix}.
+  \]
+\end{proof}
+
+\begin{proof}[\pf{ex:7.2.19}(c)]
+  By \cref{5.3.1} we have
+  \begin{align*}
+         & \Lim_{r \to \infty} J^r \in \ms[m][m][\C]                                                                                          \\
+    \iff & \forall k \in \set{1, \dots, m - 1}, \Lim_{r \to \infty} \binom{r}{k} \lambda^{r - k} \in \C                                       \\
+    \iff & \forall k \in \set{1, \dots, m - 1}, \Lim_{r \to \infty} \binom{r}{k} \lambda^{r - k} = \begin{dcases}
+                                                                                                     0 & \text{if } \abs{\lambda} < 1           \\
+                                                                                                     1 & \text{if } (\lambda = 1) \land (m = 1)
+                                                                                                   \end{dcases}.
+  \end{align*}
+\end{proof}
+
+\begin{proof}[\pf{ex:7.2.19}(d)]
+  Let \(A \in \ms[n][n][\C]\).
+  Since the characteristic polynomial of \(A\) split, we know that \(A\) has a Jordan form \(J\).
+  By \cref{7.1.10} we have \(J = Q^{-1} A Q\) for some \(Q \in \ms[n][n][\C]\).
+  Thus by \cref{5.3.2} \(\Lim_{r \to \infty} A^r\) exists iff \(\Lim_{r \to \infty} J^r\) exists.
+  Let \(\seq{J}{1,,k}\) be Jordan blocks such that \(J = \seq[\oplus]{J}{1,,k}\).
+  By \cref{2.3.1} we have \(J^r = J_1^r \oplus \cdots J_k^r\).
+  Thus we see that \(\Lim_{r \to \infty} J^r\) exists iff \(\Lim_{r \to \infty} J_i^r\) exists for all \(i \in \set{1, \dots, k}\).
+  By \cref{ex:7.2.19}(c) we see that if \(1\) is an eigenvalue of \(J_i\) for some \(i \in \set{1, \dots, k}\), then \(J_i = (1)\).
+  Thus by \cref{7.8} we have \(\dim(\vs{E}_1) = \dim(\vs{K}_1) = m\), where \(m\) is the multiplicity of \(1\).
+  We conclude that if \(\lim_{r \to \infty} A^r\) exists and \(1\) is an eigenvalue of \(A\), then \(\dim(E_1) = m\).
 \end{proof}
 
 \begin{ex}\label{ex:7.2.20}
