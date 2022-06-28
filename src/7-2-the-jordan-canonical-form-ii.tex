@@ -813,8 +813,92 @@
   We conclude that if \(\lim_{r \to \infty} A^r\) exists and \(1\) is an eigenvalue of \(A\), then \(\dim(E_1) = m\).
 \end{proof}
 
+\begin{defn}\label{7.2.6}
+  For any \(A \in \ms[n][n][\C]\), define the norm of \(A\) by
+  \[
+    \norm{A} = \max \set{\abs{A_{i j}} : i, j \in \set{1, \dots, n}}.
+  \]
+\end{defn}
+
 \begin{ex}\label{ex:7.2.20}
+  Let \(A, B \in \ms[n][n][\C]\).
+  Prove the following results.
+  \begin{enumerate}
+    \item \(\norm{A} \geq 0\) and \(\norm{A} = 0\) iff \(A = \zm\).
+    \item \(\norm{cA} = \abs{c} \cdot \norm{A}\) for any scalar \(c \in \C\).
+    \item \(\norm{A + B} \leq \norm{A} + \norm{B}\).
+    \item \(\norm{AB} \leq n \norm{A} \norm{B}\).
+  \end{enumerate}
 \end{ex}
 
+\begin{proof}[\pf{ex:7.2.20}(a)(b)(c)]
+  See \cref{ex:6.1.24}(a).
+\end{proof}
+
+\begin{proof}[\pf{ex:7.2.20}(d)]
+  We have
+  \begin{align*}
+    \norm{AB} & = \max \set{\abs{(AB)_{i j}} : i, j \in \set{1, \dots, n}}                              &  & \by{7.2.6}  \\
+              & = \max \set{\abs{\sum_{k = 1}^n A_{i k} B_{k j}} : i, j \in \set{1, \dots, n}}          &  & \by{2.3.1}  \\
+              & \leq \max \set{\sum_{k = 1}^n \abs{A_{i k}} \abs{B_{k j}} : i, j \in \set{1, \dots, n}} &  & \by{d.3}[c] \\
+              & \leq \max \set{\sum_{k = 1}^n \norm{A} \abs{B_{k j}} : j \in \set{1, \dots, n}}         &  & \by{7.2.6}  \\
+              & \leq \sum_{k = 1}^n \norm{A} \norm{B}                                                   &  & \by{7.2.6}  \\
+              & = n \norm{A} \norm{B}.
+  \end{align*}
+\end{proof}
+
 \begin{ex}\label{ex:7.2.21}
+  Let \(A \in \ms[n][n][\C]\) be a transition matrix.
+  (See \cref{5.3.4}.)
+  Since \(\C\) is an algebraically closed field, \(A\) has a Jordan canonical form \(J\) to which \(A\) is similar.
+  Let \(P\) be an invertible matrix such that \(P^{-1} A P = J\).
+  Prove the following results.
+  \begin{enumerate}
+    \item \(\norm{A^m} \leq 1\) for every positive integer \(m\).
+    \item There exists a positive number \(c\) such that \(\norm{J^m} \leq c\) for every positive integer \(m\).
+    \item Each Jordan block of \(J\) corresponding to the eigenvalue \(\lambda = 1\) is a \(1 \times 1\) matrix.
+    \item \(\Lim_{m \to \infty} A^m\) exists iff \(1\) is the only eigenvalue of \(A\) with absolute value \(1\).
+    \item \cref{5.20}(a) using (c) and \cref{5.19}.
+  \end{enumerate}
 \end{ex}
+
+\begin{proof}[\pf{ex:7.2.21}(a)]
+  By \cref{5.3.5} we know that \(A^m\) is a transition matrix for all \(m \in \Z^+\).
+  Thus by \cref{5.3.4} we know that \(\abs{(A^m)_{i j}} \leq 1\) for all \(i, j \in \set{1, \dots, n}\).
+  By \cref{7.2.6} this means \(\norm{A^m} \leq 1\) for all \(m \in \Z^+\).
+\end{proof}
+
+\begin{proof}[\pf{ex:7.2.21}(b)]
+  Since
+  \begin{align*}
+    \norm{P}                       & > 0                                        &  & \by{ex:7.2.20}    \\
+    \norm{P^{-1}}                  & > 0                                        &  & \by{ex:7.2.20}    \\
+    \forall m \in \Z^+, \norm{J^m} & = \norm{\pa{P^{-1} A P}^m}                 &  & \by{7.1.10}       \\
+                                   & = \norm{P^{-1} A^m P}                      &  & \by{2.3.4}        \\
+                                   & \leq n^2 \norm{P^{-1}} \norm{A^m} \norm{P} &  & \by{ex:7.2.20}[d] \\
+                                   & \leq n^2 \norm{P^{-1}} \norm{P},           &  & \by{ex:7.2.21}[a]
+  \end{align*}
+  by setting \(c = n^2 \norm{P^{-1}} \norm{P}\) we are done.
+\end{proof}
+
+\begin{proof}[\pf{ex:7.2.21}(c)]
+  Suppose for sake of contradiction that for some \(p > 1\), \(J \in \ms[p][p][\F]\) is a Jordan block of the transition matrix \(A\) corresponding to \(\lambda = 1\).
+  Let \(c \in \F\) be the number in \cref{ex:7.2.21}(b).
+  Let \(d\) be the positive integer closest to \(c + 1\).
+  Then \((J^d)_{1 2} \geq d > c\).
+  But this contradict to \cref{ex:7.2.21}(b).
+  Thus \(J \in \ms[1][1][\F]\).
+\end{proof}
+
+\begin{proof}[\pf{ex:7.2.21}(d)]
+  If \(\Lim_{m \to \infty} A^m\) exists, then by \cref{5.13} we know that \(1\) is the only eigenvalue of \(A\) with absolute value \(1\).
+  So suppose that \(1\) is the only eigenvalue of \(A\) with absolute value \(1\).
+  Since \(A\) is a transition matrix, by \cref{5.3.12} we know that any eigenvalue \(\lambda\) of \(A\) not equals to \(1\) must have \(\abs{\lambda} < 1\).
+  Thus by \cref{5.13} and \cref{ex:7.2.21}(c) \(\Lim_{m \to \infty} A^m\) exists.
+\end{proof}
+
+\begin{proof}[\pf{ex:7.2.21}(e)]
+  Suppose that \(A\) is a regular transition matrix.
+  By \cref{5.19}(b) and \cref{ex:7.2.21}(c) we know that \(1 = \dim(\vs{E}_1) = \dim(\vs{K}_1)\).
+  Thus by \cref{7.4}(c) we conclude that the multiplicity of \(1\) as an eigenvalue of \(A\) is \(1\).
+\end{proof}
