@@ -109,8 +109,8 @@
 
 \begin{defn}\label{5.2.4}
   Let \(\T\) be a linear operator on a vector space \(\V\) over \(\F\), and let \(\lambda\) be an eigenvalue of \(\T\).
-  Define \(E_\lambda = \set{x \in \V : \T(x) = \lambda x} = \ns{\T - \lambda \IT[\V]}\).
-  The set \(E_\lambda\) is called the \textbf{eigenspace} of \(\T\) corresponding to the eigenvalue \(\lambda\).
+  Define \(\vs{E}_\lambda = \set{x \in \V : \T(x) = \lambda x} = \ns{\T - \lambda \IT[\V]}\).
+  The set \(\vs{E}_\lambda\) is called the \textbf{eigenspace} of \(\T\) corresponding to the eigenvalue \(\lambda\).
   Analogously, we define the \textbf{eigenspace} of a square matrix \(A\) to be the eigenspace of \(\L_A\).
 \end{defn}
 
@@ -151,7 +151,7 @@
 
 \begin{lem}\label{5.2.5}
   Let \(\T\) be a linear operator, and let \(\seq{\lambda}{1,,k}\) be distinct eigenvalues of \(\T\).
-  For each \(i \in \set{1, \dots, k}\), let \(v_i \in E_{\lambda_i}\), the eigenspace corresponding to \(\lambda_i\).
+  For each \(i \in \set{1, \dots, k}\), let \(v_i \in \vs{E}_{\lambda_i}\), the eigenspace corresponding to \(\lambda_i\).
   If
   \[
     \seq[+]{v}{1,,k} = \zv,
@@ -172,7 +172,7 @@
 
 \begin{thm}\label{5.8}
   Let \(\T\) be a linear operator on a vector space \(\V\) over \(\F\), and let \(\seq{\lambda}{1,,k}\) be distinct eigenvalues of \(\T\).
-  For each \(i \in \set{1, \dots, k}\), let \(S_i\) be a finite linearly independent subset of the eigenspace \(E_{\lambda_i}\).
+  For each \(i \in \set{1, \dots, k}\), let \(S_i\) be a finite linearly independent subset of the eigenspace \(\vs{E}_{\lambda_i}\).
   Then \(S = \bigcup_{i = 1}^k S_i\) is a linearly independent subset of \(\V\).
 \end{thm}
 
@@ -190,7 +190,7 @@
   \[
     w_i = \sum_{j = 1}^{n_i} a_{i j} v_{i j}.
   \]
-  Then \(w_i \in E_{\lambda_i}\) for each \(i \in \set{1, \dots, k}\), and \(\seq[+]{w}{1,,k} = \zv\).
+  Then \(w_i \in \vs{E}_{\lambda_i}\) for each \(i \in \set{1, \dots, k}\), and \(\seq[+]{w}{1,,k} = \zv\).
   Therefore, by \cref{5.2.5}, \(w_i = \zv\) for all \(i \in \set{1, \dots, k}\).
   But each \(S_i\) is linearly independent, and hence \(a_{i j} = 0\) for all \(j \in \set{1, \dots, n_i}\).
   We conclude that \(S\) is linearly independent.
@@ -201,17 +201,17 @@
   Let \(\seq{\lambda}{1,,k}\) be the distinct eigenvalues of \(\T\).
   Then
   \begin{enumerate}
-    \item \(\T\) is diagonalizable iff the multiplicity of \(\lambda_i\) is equal to \(\dim(E_{\lambda_i})\) for all \(i \in \set{1, \dots, k}\).
-    \item If \(\T\) is diagonalizable and \(\beta_i\) is an ordered basis for \(E_{\lambda_i}\) over \(\F\) for each \(i \in \set{1, \dots, k}\), then \(\beta = \bigcup_{i = 1}^k \beta_i\) is an ordered basis for \(\V\) over \(\F\) consisting of eigenvectors of \(\T\).
+    \item \(\T\) is diagonalizable iff the multiplicity of \(\lambda_i\) is equal to \(\dim(\vs{E}_{\lambda_i})\) for all \(i \in \set{1, \dots, k}\).
+    \item If \(\T\) is diagonalizable and \(\beta_i\) is an ordered basis for \(\vs{E}_{\lambda_i}\) over \(\F\) for each \(i \in \set{1, \dots, k}\), then \(\beta = \bigcup_{i = 1}^k \beta_i\) is an ordered basis for \(\V\) over \(\F\) consisting of eigenvectors of \(\T\).
   \end{enumerate}
 \end{thm}
 
 \begin{proof}[\pf{5.9}]
-  For each \(i \in \set{1, \dots, k}\), let \(m_i\) denote the multiplicity of \(\lambda_i\), \(d_i = \dim(E_{\lambda_i})\), and \(n = \dim(\V)\).
+  For each \(i \in \set{1, \dots, k}\), let \(m_i\) denote the multiplicity of \(\lambda_i\), \(d_i = \dim(\vs{E}_{\lambda_i})\), and \(n = \dim(\V)\).
 
   First, suppose that \(\T\) is diagonalizable.
   Let \(\beta\) be a basis for \(\V\) over \(\F\) consisting of eigenvectors of \(\T\).
-  For each \(i \in \set{1, \dots, k}\), let \(\beta_i = \beta \cap E_{\lambda_i}\), the set of vectors in \(\beta\) that are eigenvectors corresponding to \(\lambda_i\), and let \(n_i\) denote the number of vectors in \(\beta_i\).
+  For each \(i \in \set{1, \dots, k}\), let \(\beta_i = \beta \cap \vs{E}_{\lambda_i}\), the set of vectors in \(\beta\) that are eigenvectors corresponding to \(\lambda_i\), and let \(n_i\) denote the number of vectors in \(\beta_i\).
   Then \(n_i \leq d_i\) for each \(i \in \set{1, \dots, k}\) because \(\beta_i\) is a linearly independent subset of a subspace of dimension \(d_i\), and \(d_i \leq m_i\) by \cref{5.7}.
   The \(n_i\)'s sum to \(n\) because \(\beta\) contains \(n\) vectors.
   The \(m_i\)'s also sum to \(n\) because the degree of the characteristic polynomial of \(\T\) is equal to the sum of the multiplicities of the eigenvalues.
@@ -227,7 +227,7 @@
 
   Conversely, suppose that \(m_i = d_i\) for all \(i \in \set{1, \dots, k}\).
   We simultaneously show that \(\T\) is diagonalizable and prove (b).
-  For each \(i \in \set{1, \dots, k}\), let \(\beta_i\) be an ordered basis for \(E_{\lambda_i}\), and let \(\beta = \bigcup_{i = 1}^k \beta_i\).
+  For each \(i \in \set{1, \dots, k}\), let \(\beta_i\) be an ordered basis for \(\vs{E}_{\lambda_i}\), and let \(\beta = \bigcup_{i = 1}^k \beta_i\).
   By \cref{5.8}, \(\beta\) is linearly independent.
   Furthermore, since \(d_i = m_i\) for all \(i \in \set{1, \dots, k}\), \(\beta\) contains
   \[
@@ -387,11 +387,11 @@
 \begin{proof}[\pf{5.11}]
   Let \(\seq{\lambda}{1,,k}\) be the distinct eigenvalues of \(\T\).
 
-  First suppose that \(\T\) is diagonalizable, and for each \(i \in \set{1, \dots, k}\) choose an ordered basis \(\gamma_i\) for the eigenspace \(E_{\lambda_i}\) over \(\F\).
-  By \cref{5.9}, \(\bigcup_{i = 1}^k \gamma_i\) is a basis for \(\V\) over \(\F\), and hence \(\V\) is a direct sum of the \(E_{\lambda_i}\)'s by \cref{5.10}.
+  First suppose that \(\T\) is diagonalizable, and for each \(i \in \set{1, \dots, k}\) choose an ordered basis \(\gamma_i\) for the eigenspace \(\vs{E}_{\lambda_i}\) over \(\F\).
+  By \cref{5.9}, \(\bigcup_{i = 1}^k \gamma_i\) is a basis for \(\V\) over \(\F\), and hence \(\V\) is a direct sum of the \(\vs{E}_{\lambda_i}\)'s by \cref{5.10}.
 
   Conversely, suppose that \(\V\) is a direct sum of the eigenspaces of \(\T\).
-  For each \(i \in \set{1, \dots, k}\), choose an ordered basis \(\gamma_i\) for \(E_{\lambda_i}\) over \(\F\).
+  For each \(i \in \set{1, \dots, k}\), choose an ordered basis \(\gamma_i\) for \(\vs{E}_{\lambda_i}\) over \(\F\).
   By \cref{5.10}, the union \(\bigcup_{i = 1}^k \gamma_i\) is a basis for \(\V\) over \(\F\).
   Since this basis consists of eigenvectors of \(\T\), we conclude that \(\T\) is diagonalizable.
 \end{proof}
@@ -431,19 +431,19 @@
 
 \setcounter{ex}{7}
 \begin{ex}\label{ex:5.2.8}
-  Suppose that \(A \in \ms[n][n][\F]\) has two distinct eigenvalues, \(\lambda_1\) and \(\lambda_2\), and that \(\dim(E_{\lambda_1}) = n - 1\).
+  Suppose that \(A \in \ms[n][n][\F]\) has two distinct eigenvalues, \(\lambda_1\) and \(\lambda_2\), and that \(\dim(\vs{E}_{\lambda_1}) = n - 1\).
   Prove that \(A\) is diagonalizable.
 \end{ex}
 
 \begin{proof}[\pf{ex:5.2.8}]
-  Let \(\beta_1, \beta_2\) be ordered bases for \(E_{\lambda_1}, E_{\lambda_2}\) over \(\F\), respectively.
+  Let \(\beta_1, \beta_2\) be ordered bases for \(\vs{E}_{\lambda_1}, \vs{E}_{\lambda_2}\) over \(\F\), respectively.
   By \cref{5.8} we know that \(\beta = \beta_1 \cup \beta_2\) is linearly independent.
   Since
   \begin{align*}
              & \begin{dcases}
-                 \dim(E_{\lambda_1}) = n - 1 \\
-                 \dim(E_{\lambda_2}) \geq 1
-               \end{dcases}                                    &  & \by{5.7}       \\
+                 \dim(\vs{E}_{\lambda_1}) = n - 1 \\
+                 \dim(\vs{E}_{\lambda_2}) \geq 1
+               \end{dcases}                               &  & \by{5.7}            \\
     \implies & \begin{dcases}
                  \#(\beta_1) = n - 1 \\
                  1 \leq \#(\beta_2) \leq n
@@ -588,7 +588,7 @@
                                                           0
                                                         \end{pmatrix}     \\
     \implies & (a, b) = t(2, -1) \text{ for all } t \in \R                 \\
-    \implies & E_2 = \spn{\set{(2, -1)}}                   &  & \by{5.2.4}
+    \implies & \vs{E}_2 = \spn{\set{(2, -1)}}              &  & \by{5.2.4}
   \end{align*}
   and
   \begin{align*}
@@ -603,9 +603,9 @@
                                                                0
                                                              \end{pmatrix} \\
     \implies & (a, b) = t(1, 1) \text{ for all } t \in \R                   \\
-    \implies & E_2' = \spn{\set{(1, 1)}}.                 &  & \by{5.2.4}
+    \implies & \vs{E}_2' = \spn{\set{(1, 1)}}.            &  & \by{5.2.4}
   \end{align*}
-  Clearly \(E_2 \neq E_2'\).
+  Clearly \(\vs{E}_2 \neq \vs{E}_2'\).
 \end{proof}
 
 \begin{proof}[\pf{ex:5.2.13}(b)]
@@ -655,7 +655,7 @@
   \[
     x(t) = e^{\lambda_1 t} z_1 + e^{\lambda_2 t} z_2 + \cdots + e^{\lambda_k t} z_k,
   \]
-  where \(z_i \in E_{\lambda_i}\) for \(i \in \set{1, \dots, k}\).
+  where \(z_i \in \vs{E}_{\lambda_i}\) for \(i \in \set{1, \dots, k}\).
   Use this result to prove that the set of solutions to the system is an \(n\)-dimensional real vector space.
 \end{ex}
 
@@ -686,12 +686,12 @@
   By \cref{5.1.1} we see that \(\seq{q}{1,,m_1}\) are eigenvectors of \(A\) corresponding to \(\lambda_1\), and in general \(\seq{q}{\pa{\sum_{p = 1}^{j - 1} m_p} + 1,,\sum_{p = 1}^j m_p}\) are eigenvectors of \(A\) corresponding to \(\lambda_j\) for all \(j \in \set{1, \dots, k}\).
   Thus a solution of \(Ax = x'\) is in the form
   \begin{align*}
-    x(t) & = Qy(t)                                                                                                                                            \\
-         & = y_1(t) q_1 + \cdots + y_n(t) q_n                                           &  & \by{ex:2.3.14}[a]                                                \\
-         & = c_1 e^{D_{1 1} t} q_1 + \cdots + c_n e^{D_{n n} t} q_n                                                                                           \\
-         & = e^{\lambda_1 t} (c_1 q_1 + \cdots + c_{m_1} q_{m_1}) + \cdots                                                                                    \\
-         & \quad + e^{\lambda_k t} (c_{n - m_k + 1} q_{n - m_k + 1} + \cdots + c_n q_n)                                                                       \\
-         & = e^{\lambda_1 t} z_1 + \cdots + e^{\lambda_k t} z_k.                        &  & (z_i \in E_{\lambda_i} \text{ for all } i \in \set{1, \dots, k})
+    x(t) & = Qy(t)                                                                                                                                                 \\
+         & = y_1(t) q_1 + \cdots + y_n(t) q_n                                           &  & \by{ex:2.3.14}[a]                                                     \\
+         & = c_1 e^{D_{1 1} t} q_1 + \cdots + c_n e^{D_{n n} t} q_n                                                                                                \\
+         & = e^{\lambda_1 t} (c_1 q_1 + \cdots + c_{m_1} q_{m_1}) + \cdots                                                                                         \\
+         & \quad + e^{\lambda_k t} (c_{n - m_k + 1} q_{n - m_k + 1} + \cdots + c_n q_n)                                                                            \\
+         & = e^{\lambda_1 t} z_1 + \cdots + e^{\lambda_k t} z_k.                        &  & (z_i \in \vs{E}_{\lambda_i} \text{ for all } i \in \set{1, \dots, k})
   \end{align*}
   By \cref{2.33} we know that the set \(\set{e^{\lambda_1 t}, \dots, e^{\lambda_k t}}\) is linearly independent.
   If \(\seq{a}{1,,n} \in \F\) such that
@@ -889,7 +889,7 @@
   Let \(\T\) be a linear operator on a finite-dimensional vector space \(\V\) over \(\F\), and suppose that the distinct eigenvalues of \(\T\) are \(\seq{\lambda}{1,,k}\).
   Prove that
   \[
-    \spn{\set{x \in \V : x \text{ is an eigenvector of } \T}} = E_{\lambda_1} \oplus \cdots \oplus E_{\lambda_k}.
+    \spn{\set{x \in \V : x \text{ is an eigenvector of } \T}} = \vs{E}_{\lambda_1} \oplus \cdots \oplus \vs{E}_{\lambda_k}.
   \]
 \end{ex}
 
@@ -897,13 +897,13 @@
   Let \(S = \set{x \in \V : x \text{ is an eigenvector of } \T}\).
   Since
   \begin{align*}
-         & v \in S                                                               \\
-    \iff & \exists i \in \set{1, \dots, k} : \T(v) = \lambda_i v &  & \by{5.1.2} \\
-    \iff & \exists i \in \set{1, \dots, k} : v \in E_{\lambda_i} &  & \by{5.2.4} \\
-    \iff & v \in \bigcup_{i = 1}^k E_{\lambda_i},
+         & v \in S                                                                    \\
+    \iff & \exists i \in \set{1, \dots, k} : \T(v) = \lambda_i v      &  & \by{5.1.2} \\
+    \iff & \exists i \in \set{1, \dots, k} : v \in \vs{E}_{\lambda_i} &  & \by{5.2.4} \\
+    \iff & v \in \bigcup_{i = 1}^k \vs{E}_{\lambda_i},
   \end{align*}
-  we know that \(S = \bigcup_{i = 1}^k E_{\lambda_i}\).
-  For each \(i \in \set{1, \dots, k}\), let \(\beta_i\) be an ordered basis for \(E_{\lambda_i}\) over \(\F\).
+  we know that \(S = \bigcup_{i = 1}^k \vs{E}_{\lambda_i}\).
+  For each \(i \in \set{1, \dots, k}\), let \(\beta_i\) be an ordered basis for \(\vs{E}_{\lambda_i}\) over \(\F\).
   We claim that for all \(i, j \in \set{1, \dots, k}\), \(\beta_i \cap \beta_j = \varnothing\) if \(i \neq j\).
   If not, then there exist some \(i, j \in \set{1, \dots, k}\) such that \(i \neq j\) and \(\beta_i \cap \beta_j \neq \varnothing\).
   Let \(v \in \beta_i \cap \beta_j\).
@@ -918,8 +918,8 @@
   Thus we know that for all \(i, j \in \set{1, \dots, k}\), \(\beta_i \cap \beta_j = \varnothing\) if \(i \neq j\).
   Now let \(\beta = \bigcup_{i = 1}^k \beta_i\).
   By \cref{ex:5.2.21} we know that \(\seq{\beta}{1,,k}\) is a partition of \(\beta\).
-  Since \(S = \bigcup_{i = 1}^k E_{\lambda_i}\), by \cref{1.8} we know that \(\beta\) is a basis for \(\spn{S}\) over \(\F\).
-  Thus by \cref{5.10}(a)(d) we have \(\spn{S} = E_{\lambda_1} \oplus \cdots \oplus E_{\lambda_k}\).
+  Since \(S = \bigcup_{i = 1}^k \vs{E}_{\lambda_i}\), by \cref{1.8} we know that \(\beta\) is a basis for \(\spn{S}\) over \(\F\).
+  Thus by \cref{5.10}(a)(d) we have \(\spn{S} = \vs{E}_{\lambda_1} \oplus \cdots \oplus \vs{E}_{\lambda_k}\).
 \end{proof}
 
 \begin{ex}\label{ex:5.2.23}

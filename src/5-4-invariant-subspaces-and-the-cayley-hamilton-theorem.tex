@@ -232,7 +232,7 @@
   As an illustration of \cref{5.24}, suppose that \(\T\) is a diagonalizable linear operator on a finite-dimensional vector space \(\V\) over \(\F\) with distinct eigenvalues \(\seq{\lambda}{1,,k}\).
   By \cref{5.11}, \(\V\) is a direct sum of the eigenspaces of \(\T\).
   Since each eigenspace is \(\T\)-invariant, we may view this situation in the context of \cref{5.24}.
-  For each eigenvalue \(\lambda_i\), the restriction of \(\T\) to \(E_{\lambda_i}\) has characteristic polynomial \((\lambda_i - t)^{m_i}\), where \(m_i\) is the dimension of \(E_{\lambda_i}\).
+  For each eigenvalue \(\lambda_i\), the restriction of \(\T\) to \(\vs{E}_{\lambda_i}\) has characteristic polynomial \((\lambda_i - t)^{m_i}\), where \(m_i\) is the dimension of \(\vs{E}_{\lambda_i}\).
   By \cref{5.24}, the characteristic polynomial \(f\) of \(\T\) is the product
   \[
     f(t) = (\lambda_1 - t)^{m_1} (\lambda_2 - t)^{m_2} \cdots (\lambda_k - t)^{m_k}.
@@ -780,7 +780,7 @@
     \implies & (\T - \lambda_{k + 1} \IT[\V])(\seq[+]{v}{1,,k+1}) \in \W                              &  & \by{5.4.1} \\
     \implies & (\lambda_1 - \lambda_{k + 1}) v_1 + \cdots + (\lambda_k - \lambda_{k + 1}) v_k \in \W. &  & \by{5.1.2}
   \end{align*}
-  Since \(\lambda_i - \lambda_{k + 1} \neq 0\) for all \(i \in \set{1, \dots, k}\), by \cref{5.2.4} we see that \((\lambda_i - \lambda_{k + 1}) v_i\) is an eigenvector of \(\T\) and \((\lambda_i - \lambda_{k + 1}) v_i \in E_{\lambda_i}\).
+  Since \(\lambda_i - \lambda_{k + 1} \neq 0\) for all \(i \in \set{1, \dots, k}\), by \cref{5.2.4} we see that \((\lambda_i - \lambda_{k + 1}) v_i\) is an eigenvector of \(\T\) and \((\lambda_i - \lambda_{k + 1}) v_i \in \vs{E}_{\lambda_i}\).
   Thus by induction hypothesis we see that \((\lambda_i - \lambda_{k + 1}) v_i \in \W\) for all \(i \in \set{1, \dots, k}\).
   Then we have
   \begin{align*}
