@@ -152,15 +152,99 @@
 \begin{defn}\label{e.0.7}
 	Let
 	\[
-		f(x) = a_0 + a_1(x) + \cdots + a_n x^n
+		f(x) = a_0 + a_1 x + \cdots + a_n x^n
 	\]
 	be a polynomial with coefficients from a field \(\F\).
 	If \(\T\) is a linear operator on a vector space \(\V\) over \(\F\), we define
 	\[
-		f(\T) = a_0 \IT + a_1 \T + \cdots + a_n \T^n.
+		f(\T) = a_0 \IT[\V] + a_1 \T + \cdots + a_n \T^n.
 	\]
 	Similarly, if \(A \in \ms[n][n][\F]\), we define
 	\[
-		f(A) = a_0 I + a_1 A + \cdots + a_n A^n.
+		f(A) = a_0 I_n + a_1 A + \cdots + a_n A^n.
 	\]
 \end{defn}
+
+\begin{thm}\label{e.3}
+	Let \(f\) be a polynomial with coefficients from a field \(\F\), and let \(\T\) be a linear operator on a vector space \(\V\) over \(\F\).
+	Then the following statements are true.
+	\begin{enumerate}
+		\item \(f(\T)\) is a linear operator on \(\V\).
+		\item If \(\beta\) is a finite ordered basis for \(\V\) over \(\F\) and \(A = [\T]_{\beta}\), then \([f(\T)]_{\beta} = f(A)\).
+	\end{enumerate}
+\end{thm}
+
+\begin{proof}[\pf{e.3}]
+	Let \(f(x) = a_0 + a_1 x + \cdots + a_n x^n\).
+	By \cref{e.0.7} we have
+	\[
+		f(\T) = a_0 \IT[\V] + a_1 \T + \cdots + a_n \T^n \quad \text{and} \quad f(A) = a_0 I_n + a_1 A + \cdots + a_n A^n.
+	\]
+	By \cref{2.7,2.9} we see that \(f(\T) \in \ls(\V)\).
+	Suppose that \(A = [\T]_{\beta} \in \ms[n][n][\F]\).
+	Then we have
+	\begin{align*}
+		[f(\T)]_{\beta} & = [a_0 \IT[\V] + a_1 \T + \cdots + a_n \T^n]_{\beta}                       &  & \by{e.0.7}   \\
+		                & = a_0 [\IT[\V]]_{\beta} + a_1 [\T]_{\beta} + \cdots + a_n [\T^n]_{\beta}   &  & \by{2.8}     \\
+		                & = a_0 [\IT[\V]]_{\beta} + a_1 [\T]_{\beta} + \cdots + a_n ([\T]_{\beta})^n &  & \by{2.11}    \\
+		                & = a_0 I_n + a_1 A + \cdots + a_n A^n                                       &  & \by{2.12}[d] \\
+		                & = f(A).                                                                    &  & \by{e.0.7}
+	\end{align*}
+\end{proof}
+
+\begin{thm}\label{e.4}
+	Let \(\T\) be a linear operator on a vector space \(\V\) over field \(\F\), and let \(A \in \ms[n][n][\F]\).
+	Then, for any polynomials \(f_1\) and \(f_2\) with coefficients from \(\F\),
+	\begin{enumerate}
+		\item \(f_1(\T) f_2(\T) = f_2(\T) f_1(\T)\);
+		\item \(f_1(A) f_2(A) = f_2(A) f_1(A)\).
+	\end{enumerate}
+\end{thm}
+
+\begin{proof}[\pf{e.4}(a)]
+	Let \(f_1(x) = a_0 + a_1 x + \cdots + a_n x^n\) and \(f_2(x) = b_0 + b_1 x + \cdots + b_m x^m\).
+	Since
+	\begin{align*}
+		\forall i \in \set{0, \dots, n}, & (a_i \T^i) f_2(\T)                                                                  \\
+		                                 & = (a_i \T^i) (b_0 \IT[\V] + b_1 \T + \cdots + b_m \T^m)       &  & \by{e.0.7}       \\
+		                                 & = b_0 a_i \T^i + b_1 a_i \T^{1 + i} + \cdots + b_m \T^{m + i} &  & \by{2.10}[a,c,d] \\
+		                                 & = (b_0 \IT[\V] + b_1 \T + \cdots + b_m \T^m) (a_i \T^i)       &  & \by{2.10}[b,c]   \\
+		                                 & = f_2(\T) (a_i \T^i),                                         &  & \by{e.0.7}
+	\end{align*}
+	we have
+	\begin{align*}
+		f_1(\T) f_2(\T) & = (a_0 \IT[\V] + a_1 \T + \cdots + a_n \T^n) f_2(\T)                     &  & \by{e.0.7}                    \\
+		                & = (a_0 \IT[\V]) f_2(\T) + (a_1 \T) f_2(\T) + \cdots + (a_n \T^n) f_2(\T) &  & \by{2.10}[a,d]                \\
+		                & = f_2(\T) (a_0 \IT[\V]) + f_2(\T) (a_1 \T) + \cdots + f_2(\T) (a_n \T^n) &  & \text{(from the proof above)} \\
+		                & = f_2(\T) (a_0 \IT[\V] + a_1 \T + \cdots + a_n \T^n)                     &  & \by{2.10}[a,d]                \\
+		                & = f_2(\T) f_1(\T).                                                       &  & \by{e.0.7}
+	\end{align*}
+\end{proof}
+
+\begin{proof}[\pf{e.4}(b)]
+	Let \(\beta\) be the standard ordered basis for \(\vs{F}^n\) over \(\F\).
+	Then we have
+	\begin{align*}
+		f_1(A) f_2(A) & = f_1([\L_A]_{\beta}) f_2([\L_A]_{\beta}) &  & \by{2.15}[a] \\
+		              & = [f_1(\L_A)]_{\beta} [f_2(\L_A)]_{\beta} &  & \by{e.3}[b]  \\
+		              & = [f_1(\L_A) f_2(\L_A)]_{\beta}           &  & \by{2.3.3}   \\
+		              & = [f_2(\L_A) f_1(\L_A)]_{\beta}           &  & \by{e.4}[a]  \\
+		              & = [f_2(\L_A)]_{\beta} [f_1(\L_A)]_{\beta} &  & \by{2.3.3}   \\
+		              & = f_2([\L_A]_{\beta}) f_1([\L_A]_{\beta}) &  & \by{2.15}[a] \\
+		              & = f_2(A) f_1(A).                          &  & \by{e.3}[b]
+	\end{align*}
+\end{proof}
+
+\begin{thm}\label{e.5}
+	Let \(\T\) be a linear operator on a vector space \(\V\) over field \(\F\), and let \(A \in \ms[n][n][\F]\).
+	If \(f_1\) and \(f_2\) are relatively prime polynomials with entries from \(\F\), then there exist polynomials \(q_1\) and \(q_2\) with entries from \(\F\) such that
+	\begin{enumerate}
+		\item \(q_1(\T) f_1(\T) + q_2(\T) f_2(\T) = \IT[\V]\);
+		\item \(q_1(A) f_1(A) + q_2(A) f_2(A) = I_n\).
+	\end{enumerate}
+\end{thm}
+
+\begin{proof}[\pf{e.5}]
+	By \cref{e.2} there exist polynomials \(q_1\) and \(q_2\) such that \(q_1(x) f_1(x) + q_2(x) f_2(x) = 1\).
+	Thus by \cref{e.0.7} we have \(q_1(\T) f_1(\T) + q_2(\T) f_2(\T) = \IT[\V]\) and \(q_1(A) f_1(A) + q_2(A) f_2(A) = I_n\).
+\end{proof}
