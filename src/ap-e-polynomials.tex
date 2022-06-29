@@ -248,3 +248,164 @@
 	By \cref{e.2} there exist polynomials \(q_1\) and \(q_2\) such that \(q_1(x) f_1(x) + q_2(x) f_2(x) = 1\).
 	Thus by \cref{e.0.7} we have \(q_1(\T) f_1(\T) + q_2(\T) f_2(\T) = \IT[\V]\) and \(q_1(A) f_1(A) + q_2(A) f_2(A) = I_n\).
 \end{proof}
+
+\begin{defn}\label{e.0.8}
+	A polynomial \(f\) with coefficients from a field \(\F\) is called \textbf{monic} if its leading coefficient is \(1\).
+	If \(f\) has positive degree and cannot be expressed as a product of polynomials with coefficients from \(\F\) each having positive degree, then \(f\) is called \textbf{irreducible}.
+
+	Observe that whether a polynomial is irreducible depends on the field \(\F\) from which its coefficients come.
+	Clearly any polynomial of degree \(1\) is irreducible.
+	Moreover, for polynomials with coefficients from an algebraically closed field, the polynomials of degree \(1\) are the only irreducible polynomials.
+\end{defn}
+
+\begin{thm}\label{e.6}
+	Let \(\phi\) and \(f\) be polynomials.
+	If \(\phi\) is irreducible and \(\phi\) does not divide \(f\), then \(\phi\) and \(f\) are relatively prime.
+\end{thm}
+
+\begin{proof}[\pf{e.6}]
+	Suppose for sake of contradiction that \(\phi\) and \(f\) are not relatively prime.
+	Then there exists a polynomial \(g\) such that \(g\) divides \(\phi\) and \(f\).
+	Since \(\phi\) is irreducible, by \cref{e.0.8} we must have \(\phi = cg\) for some \(c \in \F\).
+	Since \(g\) divides \(f\), we know that \(\phi\) divides \(f\).
+	But this contradict to the fact that \(\phi\) does not divide \(f\).
+	Thus \(\phi\) and \(f\) are relatively prime.
+\end{proof}
+
+\begin{thm}\label{e.7}
+	Any two distinct irreducible monic polynomials are relatively prime.
+\end{thm}
+
+\begin{proof}[\pf{e.7}]
+	Let \(\phi\) and \(f\) be distinct irreducible monic polynomials.
+	Since \(\phi\) and \(f\) are irreducible and monic, by \cref{e.0.8} we know that \(\phi\) does not divide \(f\).
+	Thus by \cref{e.6} \(\phi\) and \(f\) are relatively prime.
+\end{proof}
+
+\begin{thm}\label{e.8}
+	Let \(f, g\), and \(\phi\) be polynomials.
+	If \(\phi\) is irreducible and divides the product \(fg\), then \(\phi\) divides \(f\) or \(\phi\) divides \(g\).
+\end{thm}
+
+\begin{proof}[\pf{e.8}]
+	Suppose that \(\phi\) does not divide \(f\).
+	Then \(\phi\) and \(f\) are relatively prime by \cref{e.6}, and so there exist polynomials \(q_1\) and \(q_2\) such that
+	\[
+		1 = q_1(x) \phi(x) + q_2(x) f(x).
+	\]
+	Multiplying both sides of this equation by \(g\) yields
+	\begin{equation}\label{eq:e.0.7}
+		g(x) = q_1(x) \phi(x) g(x) + q_2(x) f(x) g(x).
+	\end{equation}
+	Since \(\phi\) divides \(fg\), there is a polynomial \(h\) such that \(fg = \phi h\).
+	Thus \cref{eq:e.0.7} becomes
+	\[
+		g(x) = q_1(x) \phi(x) g(x) + q_2(x) \phi(x) h(x) = \phi(x) (q_1(x) g(x) + q_2(x) h(x)).
+	\]
+	So \(\phi\) divides \(g\).
+\end{proof}
+
+\begin{cor}\label{e.0.9}
+	Let \(\phi, \seq{\phi}{1,,n}\) be irreducible monic polynomials.
+	If \(\phi\) divides the product \(\seq[]{\phi}{1,,n}\), then \(\phi = \phi_i\) for some \(i \in \set{1, 2, . . . , n}\).
+\end{cor}
+
+\begin{proof}[\pf{e.0.9}]
+	We prove the corollary by mathematical induction on \(n\).
+	For \(n = 1\), the result is an immediate consequence of \cref{e.7}.
+	Suppose then that for some \(n > 1\), the corollary is true for any \(n - 1\) irreducible monic polynomials, and let \(\seq{\phi}{1,,n}\) be \(n\) irreducible polynomials.
+	If \(\phi\) divides
+	\[
+		\seq[]{\phi}{1,,n} = (\seq[]{\phi}{1,,n-1}) \phi_n,
+	\]
+	then \(\phi\) divides the product \(\seq[]{\phi}{1,,n-1}\) or \(\phi\) divides \(\phi_n\) by \cref{e.8}.
+	In the first case, \(\phi = \phi_i\) for some \(i \in \set{1, \dots, n - 1}\) by the induction hypothesis;
+	in the second case, \(\phi = \phi_n\) by \cref{e.7}.
+\end{proof}
+
+\begin{thm}[Unique Factorization Theorem for Polynomials]\label{e.9}
+	For any polynomial \(f\) of positive degree, there exist a unique constant \(c\);
+	unique distinct irreducible monic polynomials \(\seq{\phi}{1,,k}\);
+	and unique positive integers \(\seq{n}{1,,k}\) such that
+	\[
+		f(x) = c (\phi_1(x))^{n_1} \cdots (\phi_k(x))^{n_k}.
+	\]
+\end{thm}
+
+\begin{proof}[\pf{e.9}]
+	We begin by showing the existence of such a factorization using mathematical induction on the degree of \(f\).
+	If \(f\) is of degree \(1\), then \(f(x) = ax + b\) for some constants \(a\) and \(b\) with \(a \neq 0\).
+	Setting \(\phi(x) = x + b / a\), we have \(f = a \phi\).
+	Since \(\phi\) is an irreducible monic polynomial, the result is proved in this case.
+	Now suppose that the conclusion is true for any polynomial with positive degree less than some integer \(n > 1\), and let \(f\) be a polynomial of degree \(n\).
+	Then
+	\[
+		f(x) = a_n x^n + \cdots + a_1 x + a_0
+	\]
+	for some constants \(a_i\) with \(a_n \neq 0\).
+	If \(f\) is irreducible, then
+	\[
+		f(x) = a_n \pa{x^n + \dfrac{a_{n - 1}}{a_n} x^{n - 1} + \cdots + \dfrac{a_1}{a_n} x + \dfrac{a_0}{a_n}}
+	\]
+	is a representation of \(f\) as a product of \(a_n\) and an irreducible monic polynomial.
+	If \(f\) is not irreducible, then \(f = gh\) for some polynomials \(g\) and \(h\), each of positive degree less than \(n\).
+	The induction hypothesis guarantees that both \(g\) and \(h\) factor as products of a constant and powers of distinct irreducible monic polynomials.
+	Consequently \(f = gh\) also factors in this way.
+	Thus, in either case, \(f\) can be factored as a product of a constant and powers of distinct irreducible monic polynomials.
+
+	It remains to establish the uniqueness of such a factorization.
+	Suppose that
+	\begin{equation}\label{eq:e.0.8}
+		\begin{aligned}
+			f(x) & = c (\phi_1(x))^{n_1} \cdots (\phi_k(x))^{n_k}  \\
+			     & = d (\psi_1(x))^{m_1} \cdots (\psi_r(x))^{m_r},
+		\end{aligned}
+	\end{equation}
+	where \(c\) and \(d\) are constants, \(\phi_i\) and \(\psi_j\) are irreducible monic polynomials, and \(n_i\) and \(m_j\) are positive integers for \(i \in \set{1, \dots, k}\) and \(j \in \set{1, \dots, r}\).
+	Clearly both \(c\) and \(d\) must be the leading coefficient of \(f\);
+	hence \(c = d\).
+	Dividing by \(c\), we find that \cref{eq:e.0.8} becomes
+	\begin{equation}\label{eq:e.0.9}
+		(\phi_1)^{n_1} \cdots (\phi_k)^{n_k} = (\psi_1)^{m_1} \cdots (\psi_r)^{m_r}.
+	\end{equation}
+	So \(\phi_i\) divides the right side of \cref{eq:e.0.9} for \(i \in \set{1, \dots, k}\).
+	Consequently, by \cref{e.0.9}, each \(\phi_i\) equals some \(\psi_j\), and similarly, each \(\psi_j\) equals some \(\phi_i\).
+	We conclude that \(r = k\) and that, by renumbering if necessary, \(\phi_i = \psi_i\) for \(i \in \set{1, \dots, k}\).
+	Suppose that \(n_i \neq m_i\) for some \(i \in \set{1, \dots, k}\).
+	Without loss of generality, we may suppose that \(i = 1\) and \(n_1 > m_1\).
+	Then by canceling \((\phi_1)^{m_1}\) from both sides of \cref{eq:e.0.9}, we obtain
+	\begin{equation}\label{eq:e.0.10}
+		(\phi_1)^{n_1 - m_1} (\phi_2)^{n_2} \cdots (\phi_k)^{n_k} = (\phi_2)^{m_2} \cdots (\phi_k)^{m_k}.
+	\end{equation}
+	Since \(n_1 - m_1 > 0\), \(\phi_1\) divides the left side of \cref{eq:e.0.10} and hence divides the right side also.
+	So \(\phi_1 = \phi_i\) for some \(i \in \set{2, \dots, k}\) by \cref{e.0.9}.
+	But this contradicts that \(\seq{\phi}{1,,k}\) are distinct.
+	Hence the factorizations of \(f\) in \cref{eq:e.0.8} are the same.
+\end{proof}
+
+\begin{note}
+	It is often useful to regard a polynomial \(f(x) = a_n x^n + \cdots + a_1 x + a_0\) with coefficients from a field \(\F\) as a function \(f : \F \to \F\).
+	In this case, the value of \(f\) at \(c \in \F\) is \(f(c) = a_n c^n + \cdots + a_1 c + a_0\).
+	Unfortunately, for arbitrary fields there is not a one-to-one correspondence between polynomials and polynomial functions.
+	For example, if \(f(x) = x^2\) and \(g(x) = x\) are two polynomials over the field \(\Z^2\) (defined in \cref{c.0.4}), then \(f\) and \(g\) have different degrees and hence are not equal as polynomials.
+	But \(f(a) = g(a)\) for all \(a \in \Z^2\), so that \(f\) and \(g\) are equal polynomial functions.
+	Our final result shows that this anomaly cannot occur over an infinite field.
+\end{note}
+
+\begin{thm}\label{e.10}
+	Let \(f\) and \(g\) be polynomials with coefficients from an infinite field \(\F\).
+	If \(f(a) = g(a)\) for all \(a \in \F\), then \(f\) and \(g\) are equal.
+\end{thm}
+
+\begin{proof}[\pf{e.10}]
+	Suppose that \(f(a) = g(a)\) for all \(a \in \F\).
+	Define \(h = f - g\), and suppose that \(h\) is of degree \(n \geq 1\).
+	It follows from \cref{e.0.5} that \(h\) can have at most \(n\) zeroes.
+	But
+	\[
+		h(a) = f(a) - g(a) = 0
+	\]
+	for every \(a \in \F\), contradicting the assumption that \(h\) has positive degree.
+	Thus \(h\) is a constant polynomial, and since \(h(a) = 0\) for each \(a \in \F\), it follows that \(h\) is the zero polynomial.
+	Hence \(f = g\).
+\end{proof}
