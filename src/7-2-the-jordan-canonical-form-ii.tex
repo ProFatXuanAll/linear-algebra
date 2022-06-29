@@ -810,7 +810,7 @@
   Thus we see that \(\Lim_{r \to \infty} J^r\) exists iff \(\Lim_{r \to \infty} J_i^r\) exists for all \(i \in \set{1, \dots, k}\).
   By \cref{ex:7.2.19}(c) we see that if \(1\) is an eigenvalue of \(J_i\) for some \(i \in \set{1, \dots, k}\), then \(J_i = (1)\).
   Thus by \cref{7.8} we have \(\dim(\vs{E}_1) = \dim(\vs{K}_1) = m\), where \(m\) is the multiplicity of \(1\).
-  We conclude that if \(\lim_{r \to \infty} A^r\) exists and \(1\) is an eigenvalue of \(A\), then \(\dim(E_1) = m\).
+  We conclude that if \(\lim_{r \to \infty} A^r\) exists and \(1\) is an eigenvalue of \(A\), then \(\dim(\vs{E}_1) = m\).
 \end{proof}
 
 \begin{defn}\label{7.2.6}
@@ -901,4 +901,65 @@
   Suppose that \(A\) is a regular transition matrix.
   By \cref{5.19}(b) and \cref{ex:7.2.21}(c) we know that \(1 = \dim(\vs{E}_1) = \dim(\vs{K}_1)\).
   Thus by \cref{7.4}(c) we conclude that the multiplicity of \(1\) as an eigenvalue of \(A\) is \(1\).
+\end{proof}
+
+\begin{ex}\label{ex:7.2.22}
+  Use \cref{ex:7.2.20}(d) to prove that \(e^A\) exists for every \(A \in \ms[n][n][\C]\).
+  (See \cref{5.3.18}.)
+\end{ex}
+
+\begin{proof}[\pf{ex:7.2.22}]
+  Since
+  \begin{align*}
+    \forall M \in \N, \norm{\sum_{m = 0}^M \dfrac{A^m}{m!}} & \leq \sum_{m = 0}^M \dfrac{\norm{A^m}}{m!}           &  & \by{ex:7.2.20}[b,c] \\
+                                                            & \leq \sum_{m = 0}^M \dfrac{n^{m - 1} \norm{A}^m}{m!} &  & \by{ex:7.2.20}[d]   \\
+                                                            & \leq \sum_{m = 0}^M \dfrac{n^m \norm{A}^m}{m!}       &  & (n \geq 1)          \\
+                                                            & = \sum_{m = 0}^M \dfrac{(n \norm{A})^m}{m!}                                   \\
+                                                            & = e^{n \norm{A}} \in \R,
+  \end{align*}
+  the series \(\sum_{m = 0}^\infty \dfrac{A^m}{m!}\) is absolutely convergent.
+  Thus by \cref{5.3.18} we see that \(e^A = \sum_{m = 0}^\infty \dfrac{A^m}{m!}\) exists.
+\end{proof}
+
+\begin{ex}\label{ex:7.2.23}
+  Let \(x' = Ax\) be a system of \(n\) linear differential equations, where \(x\) is an \(n\)-tuple of differentiable functions \(x_1(t), \dots, x_n(t)\) of the real variable \(t\), and \(A\) is an \(n \times n\) coeﬃcient matrix as in \cref{ex:5.2.15}.
+  In contrast to that exercise, however, do not assume that \(A\) is diagonalizable, but assume that the characteristic polynomial of \(A\) splits.
+  Let \(\seq{\lambda}{1,,k}\) be the distinct eigenvalues of \(A\).
+  \begin{enumerate}
+    \item Prove that if \(u\) is the end vector of a cycle of generalized eigenvectors of \(\L_A\) of length \(p\) and \(u\) corresponds to the eigenvalue \(\lambda_i\), then for any polynomial \(f\) of degree less than \(p\), the function
+          \[
+            e^{\lambda_i t} \pa{f(t) (A - \lambda_i I_n)^{p - 1} + f'(t) (A - \lambda_i I_n)^{p - 2} + \cdots + f^{(p - 1)}(t)} u
+          \]
+          is a solution to the system \(x' = Ax\).
+    \item Prove that the general solution to \(x' = Ax\) is a sum of the functions of the form given in (a), where the vectors \(u\) are the end vectors of the distinct cycles that constitute a fixed Jordan canonical basis for \(\L_A\).
+  \end{enumerate}
+\end{ex}
+
+\begin{proof}[\pf{ex:7.2.23}(a)]
+  Let \(x(t) = e^{\lambda_i t} \pa{\sum_{k = 1}^p f^{(k - 1)}(t) (A - \lambda_i I_n)^{p - k} u}\).
+  Since
+  \begin{align*}
+    x'(t) & = \dfrac{d e^{\lambda_i t} \pa{\sum_{k = 1}^p f^{(k - 1)}(t) (A - \lambda_i I_n)^{p - k} u}}{dt}                                                             \\
+          & = \lambda_i e^{\lambda_i t} \pa{\sum_{k = 1}^p f^{(k - 1)}(t) (A - \lambda_i I_n)^{p - k} u}                                                                 \\
+          & \quad + e^{\lambda_i t} \pa{\sum_{k = 1}^p f^{(k)}(t) (A - \lambda_i I_n)^{p - k} u}                                                                         \\
+          & = \lambda_i x(t) + e^{\lambda_i t} \pa{\sum_{k = 1}^{p - 1} f^{(k)}(t) (A - \lambda_i I_n)^{p - k} u}                   &  & (f^p(t) = 0)                    \\
+          & = \lambda_i x(t) + e^{\lambda_i t} \pa{\sum_{k = 2}^p f^{(k - 1)}(t) (A - \lambda_i I_n)^{p - k + 1} u}                                                      \\
+          & = \lambda_i x(t) + (A - \lambda_i I_n) e^{\lambda_i t} \pa{\sum_{k = 2}^p f^{(k - 1)}(t) (A - \lambda_i I_n)^{p - k} u}                                      \\
+          & = \lambda_i x(t) + (A - \lambda_i I_n) (x(t) - e^{\lambda_i t} f(t) (A - \lambda_i I_n)^{p - 1} u)                                                           \\
+          & = \lambda_i x(t) + (A - \lambda_i I_n) x(t)                                                                             &  & ((A - \lambda_i I_n)^p u = \zv) \\
+          & = A x(t),
+  \end{align*}
+  we see that \(x(t)\) is a solution to the system \(x' = Ax\).
+\end{proof}
+
+\begin{proof}[\pf{ex:7.2.23}(b)]
+  By \cref{7.1.10} we know that \(A\) has a Jordan form \(J\) and there exists a \(Q \in \ms[n][n][\R]\) such that \(J = Q^{-1} A Q\).
+  Then we have
+  \begin{align*}
+         & x' = Ax = Q J Q^{-1} x                &  & \by{2.4.4}     \\
+    \iff & (Q^{-1} x)' = Q^{-1} x' = J Q^{-1} x. &  & \by{ex:5.2.16}
+  \end{align*}
+  This means by solving \(y' = J y\) we can solve \(x' = Ax\) by setting \(x = Q y\).
+  Since \(J\) is consist of Jordan blocks, by \cref{2.3.1} we can solve \(y' = Jy\) by solving each Jordan block \(K\) in \(J\).
+  So suppose that \(K \in \ms[p][p][\C]\) is a Jordan block in \(J\) corresponding to eigenvalue \(\lambda\).
 \end{proof}

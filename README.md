@@ -10,3 +10,5 @@ If you are not familiar with set theory, make sure you learn them first (you can
 - Chapter3
   - Theorem 3.12
 - Chapter7
+  - Exercise 7.2.22
+  - Exercise 7.2.23
