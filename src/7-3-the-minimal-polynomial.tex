@@ -1,3 +1,123 @@
 \section{The Minimal Polynomial}\label{sec:7.3}
 
+\begin{defn}\label{7.3.1}
+  Let \(\T\) be a linear operator on a finite-dimensional vector space.
+  A polynomial \(p\) is called a \textbf{minimal polynomial} of \(\T\) if \(p\) is a monic polynomial of least positive degree for which \(p(\T) = \zT\).
+\end{defn}
 
+\begin{cor}\label{7.3.2}
+  Every linear operator on a finite-dimensional vector space has a minimal polynomial.
+\end{cor}
+
+\begin{proof}[\pf{7.3.2}]
+  The Cayley--Hamilton theorem (\cref{5.23}) tells us that for any linear operator \(\T\) on an \(n\)-dimensional vector space, there is a polynomial \(f\) of degree \(n\) such that \(f(\T) = \zT\), namely, the characteristic polynomial of \(\T\).
+  Hence there is a polynomial of least degree with this property, and this degree is at most \(n\).
+  If \(g\) is such a polynomial, we can divide \(g\) by its leading coefficient to obtain another polynomial \(p\) of the same degree with leading coefficient \(1\), that is, \(p\) is a \emph{monic} polynomial.
+\end{proof}
+
+\begin{thm}\label{7.12}
+  Let \(p\) be a minimal polynomial of a linear operator \(\T\) on a finite-dimensional vector space \(\V\) over \(\F\).
+  \begin{enumerate}
+    \item For any polynomial \(g\), if \(g(\T) = \zT\), then \(p\) divides \(g\).
+          In particular, \(p\) divides the characteristic polynomial of \(\T\).
+    \item The minimal polynomial of \(\T\) is unique.
+  \end{enumerate}
+\end{thm}
+
+\begin{proof}[\pf{7.12}(a)]
+  Let \(g\) be a polynomial for which \(g(\T) = \zT\).
+  By the division algorithm for polynomials (\cref{e.1}), there exist polynomials \(q\) and \(r\) such that
+  \begin{equation}\label{eq:7.3.1}
+    g(t) = q(t) p(t) + r(t),
+  \end{equation}
+  where \(r\) has degree less than the degree of \(p\).
+  Substituting \(\T\) into \cref{eq:7.3.1} and using that \(g(\T) = p(\T) = \zT\), we have \(r(\T) = \zT\).
+  Since \(r\) has degree less than \(p\) and \(p\) is the minimal polynomial of \(\T\), \(r\) must be the zero polynomial.
+  Thus \cref{eq:7.3.1} simplifies to \(g = qp\), proving (a).
+\end{proof}
+
+\begin{proof}[\pf{7.12}(b)]
+  Suppose that \(p_1\) and \(p_2\) are each minimal polynomials of \(\T\).
+  Then \(p_1\) divides \(p_2\) by (a).
+  Since \(p_1\) and \(p_2\) have the same degree, we have that \(p_2 = c p_1\) for some nonzero scalar \(c\).
+  Because \(p_1\) and \(p_2\) are monic, \(c = 1\);
+  hence \(p_1 = p_2\).
+\end{proof}
+
+\begin{defn}\label{7.3.3}
+  Let \(A \in \ms[n][n][\F]\).
+  The \textbf{minimal polynomial} \(p\) of \(A\) is the monic polynomial of least positive degree for which \(p(A) = \zm\).
+\end{defn}
+
+\begin{thm}\label{7.13}
+  Let \(\T\) be a linear operator on a finite-dimensional vector space \(\V\) over \(\F\), and let \(\beta\) be an ordered basis for \(\V\) over \(\F\).
+  Then the minimal polynomial of \(\T\) is the same as the minimal polynomial of \([\T]_{\beta}\).
+\end{thm}
+
+\begin{proof}[\pf{7.13}]
+  Let \(p\) be the minimal polynomial of \(\T\).
+  By \cref{7.3.1} we have \(p(\T) = \zT\).
+  Thus by \cref{e.3}(b) we have \(\zm = [p(\T)]_{\beta} = p([\T]_{\beta})\).
+  Suppose for sake of contradiction that \(q\) is the minimal polynomial of \(A\) and \(q \neq p\).
+  Then the degree of \(q\) must be less than the degree of \(p\).
+  Thus by \cref{e.3}(b) this means \(\zm = q([\T]_{\beta}) = [q(\T)]_{\beta}\).
+  But by \cref{2.2.4} this means \(q(\T) = \zT\), which contradict to the uniqueness of \(p\) (\cref{7.12}(b)).
+  Thus \(p = q\).
+\end{proof}
+
+\begin{cor}\label{7.3.4}
+  For any \(A \in \ms[n][n][\F]\), the minimal polynomial of \(A\) is the same as the minimal polynomial of \(\L_A\).
+\end{cor}
+
+\begin{proof}[\pf{7.3.4}]
+  Let \(\beta\) be the standard ordered basis for \(\vs{F}^n\) over \(\F\).
+  By \cref{2.15}(a) we have \([\L_A]_{\beta} = A\).
+  Thus by \cref{7.13} the minimal polynomial of \(A\) is the same as the minimal polynomial of \(\L_A\).
+\end{proof}
+
+\begin{note}
+  In view of \cref{7.13,7.3.4}, \cref{7.12} and all subsequent theorems in this section that are stated for operators are also valid for matrices.
+\end{note}
+
+\begin{thm}\label{7.14}
+  Let \(\T\) be a linear operator on a finite-dimensional vector space \(\V\) over \(\F\), and let \(p\) be the minimal polynomial of \(\T\).
+  A scalar \(\lambda\) is an eigenvalue of \(\T\) iff \(p(\lambda) = 0\).
+  Hence the characteristic polynomial and the minimal polynomial of \(\T\) have the same zeros.
+\end{thm}
+
+\begin{proof}[\pf{7.14}]
+  Let \(f\) be the characteristic polynomial of \(\T\).
+  Since \(p\) divides \(f\) (\cref{7.12}(a)), there exists a polynomial \(q\) such that \(f = qp\).
+  If \(\lambda\) is a zero of \(p\), then
+  \[
+    f(\lambda) = q(\lambda) p(\lambda) = q(\lambda) \cdot 0 = 0.
+  \]
+  So \(\lambda\) is a zero of \(f\);
+  that is, \(\lambda\) is an eigenvalue of \(\T\).
+
+  Conversely, suppose that \(\lambda\) is an eigenvalue of \(\T\), and let \(x \in \V\) be an eigenvector corresponding to \(\lambda\).
+  By \cref{ex:5.1.22}, we have
+  \[
+    \zv = \zT(x) = p(\T)(x) = p(\lambda)(x).
+  \]
+  Since \(x \neq \zv\), it follows that \(p(\lambda) = 0\), and so \(\lambda\) is a zero of \(p\).
+\end{proof}
+
+\begin{cor}\label{7.3.5}
+  Let \(\T\) be a linear operator on a finite-dimensional vector space \(\V\) over \(\F\) with minimal polynomial \(p\) and characteristic polynomial \(f\).
+  Suppose that \(f\) factors as
+  \[
+    f(t) = (\lambda_1 - t)^{n_1} \cdots (\lambda_k - t)^{n_k},
+  \]
+  where \(\seq{\lambda}{1,,k}\) are the distinct eigenvalues of \(\T\).
+  Then there exist integers \(\seq{m}{1,,k}\) such that \(1 \leq m_i \leq n_i\) for all \(i \in \set{1, \dots, k}\) and
+  \[
+    p(t) = (t - \lambda_1)^{m_1} \cdots (t - \lambda_k)^{m_k}.
+  \]
+\end{cor}
+
+\begin{proof}[\pf{7.3.5}]
+  By \cref{7.14} we know that \(f\) and \(p\) have the same zeros, and by \cref{5.2} these zeros are exactly the eigenvalues of \(\T\).
+  Thus \(\seq{m}{1,,k}\) exist and \(m_i \geq 1\) for all \(i \in \set{1, \dots, k}\).
+  Since \(p\) divides \(f\) (\cref{7.12}(a)), we know that \(m_i \leq n_i\) for all \(i \in \set{1, \dots, k}\).
+\end{proof}
