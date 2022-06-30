@@ -121,3 +121,113 @@
   Thus \(\seq{m}{1,,k}\) exist and \(m_i \geq 1\) for all \(i \in \set{1, \dots, k}\).
   Since \(p\) divides \(f\) (\cref{7.12}(a)), we know that \(m_i \leq n_i\) for all \(i \in \set{1, \dots, k}\).
 \end{proof}
+
+\begin{thm}\label{7.15}
+  Let \(\T\) be a linear operator on an \(n\)-dimensional vector space \(\V\) such that \(\V\) is a \(\T\)-cyclic subspace of itself.
+  Then the characteristic polynomial \(f\) and the minimal polynomial \(p\) have the same degree, and hence \(f = (-1)^n p\).
+\end{thm}
+
+\begin{proof}[\pf{7.15}]
+  Since \(\V\) is a \(\T\)-cyclic space, there exists an \(x \in \V\) such that
+  \[
+    \beta = \set{x, \T(x), \dots, \T^{n - 1}(x)}
+  \]
+  is a basis for \(\V\) over \(\F\) (\cref{5.22}).
+  Let
+  \[
+    g(t) = a_0 + a_1 t + \cdots + a_k t^k
+  \]
+  be a polynomial of degree \(k < n\).
+  Then \(a_k \neq 0\) and
+  \[
+    g(\T)(x) = a_0 x + a_1 \T(x) + \cdots a_k \T^k(x),
+  \]
+  and so \(g(\T)(x)\) is a linear combination of the vectors of \(\beta\) having at least one nonzero coefficient, namely, \(a_k\).
+  Since \(\beta\) is linearly independent, it follows that \(g(\T)(x) \neq 0\);
+  hence \(g(\T) \neq \zT\).
+  Therefore the minimal polynomial of \(\T\) has degree \(n\), which is also the degree of the characteristic polynomial of \(\T\).
+\end{proof}
+
+\begin{note}
+  \cref{7.15} gives a condition under which the degree of the minimal polynomial of an operator is as large as possible.
+  By \cref{7.14}, the degree of the minimal polynomial of an operator must be greater than or equal to the number of distinct eigenvalues of the operator.
+  \cref{7.16} shows that the operators for which the degree of the minimal polynomial is as small as possible are precisely the diagonalizable operators.
+\end{note}
+
+\begin{thm}\label{7.16}
+  Let \(\T\) be a linear operator on a finite-dimensional vector space \(\V\) over \(\F\).
+  Then \(\T\) is diagonalizable iff the minimal polynomial of \(\T\) is of the form
+  \[
+    p(t) = (t - \lambda_1) \cdots (t - \lambda_k),
+  \]
+  where \(\seq{\lambda}{1,,k}\) are the distinct eigenvalues of \(\T\).
+\end{thm}
+
+\begin{proof}[\pf{7.16}]
+  Suppose that \(\T\) is diagonalizable.
+  Let \(\seq{\lambda}{1,,k}\) be the distinct eigenvalues of \(\T\), and define
+  \[
+    p(t) = (t - \lambda_1) \cdots (t - \lambda_k).
+  \]
+  By \cref{7.14}, \(p\) divides the minimal polynomial of \(\T\).
+  Let \(\beta = \set{\seq{v}{1,,n}}\) be a basis for \(\V\) over \(\F\) consisting of eigenvectors of \(\T\), and consider any \(v_i \in \beta\).
+  Then \((\T - \lambda_j \IT[\V])(v_i) = \zv\) for some eigenvalue \(\lambda_j\).
+  Since \(t - \lambda_j\) divides \(p\), there is a polynomial \(q_j\) such that \(p(t) = q_j(t) (t - \lambda_j)\).
+  Hence
+  \[
+    p(\T)(v_i) = q_j(\T) (\T - \lambda_j \IT[\V])(v_i) = \zv.
+  \]
+  It follows that \(p(\T) = \zT\), since \(p(\T)\) takes each vector in a basis for \(\V\) over \(\F\) into \(\zv\).
+  Therefore \(p\) is the minimal polynomial of \(\T\).
+
+  Conversely, suppose that there are distinct scalars \(\seq{\lambda}{1,,k}\) such that the minimal polynomial \(p\) of \(\T\) factors as
+  \[
+    p(t) = (t - \lambda_1) \cdots (t - \lambda_k).
+  \]
+  By \cref{7.14}, the \(\lambda_i\)'s are eigenvalues of \(\T\).
+  We apply mathematical induction on \(n = \dim(\V)\).
+  Clearly \(\T\) is diagonalizable for \(n = 1\).
+  Now assume that \(\T\) is diagonalizable whenever \(\dim(\V) < n\) for some \(n > 1\), and let \(\dim(\V) = n\) and \(\W = \rg{\T - \lambda_k \IT[\V]}\).
+  Obviously \(\W \neq \V\), because \(\lambda_k\) is an eigenvalue of \(\T\).
+  If \(\W = \set{\zv}\), then \(\T = \lambda_k \IT[\V]\), which is clearly diagonalizable.
+  So suppose that \(0 < \dim(\W) < n\).
+  Then \(\W\) is \(\T\)-invariant, and for any \(x \in \W\),
+  \[
+    (\T - \lambda_1 \IT[\V]) \cdots (\T - \lambda_{k - 1} \IT[\V])(x) = \zv.
+  \]
+  It follows that the minimal polynomial of \(\T_{\W}\) divides the polynomial \((t - \lambda_1) \cdots (t - \lambda_{k - 1})\).
+  Hence by the induction hypothesis, \(\T_{\W}\) is diagonalizable.
+  Furthermore, \(\lambda_k\) is not an eigenvalue of \(\T_{\W}\) by \cref{7.14}.
+  Therefore \(\W \cap \ns{\T - \lambda_k \IT[\V]} = \set{\zv}\).
+  Now let \(\beta_1 = \set{\seq{v}{1,,m}}\) be a basis for \(\W\) over \(\F\) consisting of eigenvectors of \(\T_{\W}\) (and hence of \(\T\)), and let \(\beta_2 = \set{\seq{w}{1,,p}}\) be a basis for \(\ns{\T - \lambda_k \IT[\V]}\) over \(\F\), the eigenspace of \(\T\) corresponding to \(\lambda_k\).
+  Then \(\beta_1\) and \(\beta_2\) are disjoint by the previous comment.
+  Moreover, \(m + p = n\) by the dimension theorem applied to \(\T - \lambda_k \IT[\V]\).
+  We show that \(\beta = \beta_1 \cup \beta_2\) is linearly independent.
+  Consider scalars \(\seq{a}{1,,m}\) and \(\seq{b}{1,,p}\) such that
+  \[
+    \seq[+]{a,v}{1,,m} + \seq[+]{b,w}{1,,p} = \zv.
+  \]
+  Let
+  \[
+    x = \sum_{i = 1}^m a_i v_i \quad \text{and} \quad y = \sum_{i = 1}^p b_i w_i.
+  \]
+  Then \(x \in \W\), \(y \in \ns{\T - \lambda_k \IT[\V]}\), and \(x + y = \zv\).
+  It follows that \(x = -y \in \W \cap \ns{\T - \lambda_k \IT[\V]}\), and therefore \(x = \zv\).
+  Since \(\beta_1\) is linearly independent, we have that \(\seq[=]{a}{1,,m} = 0\).
+  Similarly, \(\seq[=]{b}{1,,p} = 0\), and we conclude that \(\beta\) is a linearly independent subset of \(\V\) consisting of \(n\) eigenvectors.
+  It follows that \(\beta\) is a basis for \(\V\) over \(\F\) consisting of eigenvectors of \(\T\), and consequently \(\T\) is diagonalizable.
+\end{proof}
+
+\begin{note}
+  In addition to diagonalizable operators, there are methods for determining the minimal polynomial of any linear operator on a finite-dimensional vector space.
+  In the case that the characteristic polynomial of the operator splits, the minimal polynomial can be described using the Jordan canonical form of the operator.
+  (See \cref{ex:7.3.13}.)
+  In the case that the characteristic polynomial does not split, the minimal polynomial can be described using the rational canonical form, which we study in \cref{sec:7.4}.
+  (See \cref{ex:7.4.7}.)
+\end{note}
+
+\exercisesection
+
+\begin{ex}\label{ex:7.3.13}
+
+\end{ex}
